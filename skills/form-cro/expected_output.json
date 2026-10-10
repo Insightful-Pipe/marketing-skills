@@ -1,0 +1,273 @@
+{
+  "report": "Form CRO audit",
+  "form_page": "https://example.com/pages/page-1",
+  "form_type": "demo request (read from the submit text and fields; assumed)",
+  "date_range": {
+    "default": "2026-09-06 to 2026-10-05",
+    "used": "2026-07-08 to 2026-10-05",
+    "why": "The form page had 8 sessions in 30 days (under 100), so the window was widened to 90 days."
+  },
+  "property": "the site's GA4 property (main web stream)",
+  "grade": 50,
+  "grade_math": "4 graded areas, all warn: 4 of 8 points. Left out: Funnel (not graded) and Page and mobile (unknown).",
+  "scorecard": [
+    {
+      "area": "1. Measurement",
+      "result": "warn",
+      "key_number": "3 key events could count one demo request",
+      "why": "Form interaction tracking is on, but 3 key events stand for the same submission; none fired in 90 days."
+    },
+    {
+      "area": "2. Funnel",
+      "result": "not graded",
+      "key_number": "8 form-page sessions, 0 form starts in 90 days",
+      "why": "Below the grading floor of 100 sessions and 30 form starts, so only counts are shown."
+    },
+    {
+      "area": "3. Field load",
+      "result": "warn",
+      "key_number": "7 of 7 visible fields required",
+      "why": "A demo form passes at up to 5 required fields; 6 to 7 is a warn."
+    },
+    {
+      "area": "4. Input quality and structure",
+      "result": "warn",
+      "key_number": "0 of 7 fields have autocomplete",
+      "why": "Labels, the email type and the dropdown are right; no field helps autofill, every field is required, and Country and Job Title come before the email field."
+    },
+    {
+      "area": "5. Submit and trust",
+      "result": "warn",
+      "key_number": "button 'Book demo'; no heading before the form",
+      "why": "The button text, its place at the end of the form and the privacy line are good; nothing above or inside the form says what the demo is or what happens after a submit."
+    },
+    {
+      "area": "6. Page and mobile",
+      "result": "unknown",
+      "key_number": "PageSpeed and Screenshot both refused the connection",
+      "why": "Both services also failed on a neutral public URL in the same session, so this is a service problem, not the page."
+    }
+  ],
+  "measurement_detail": {
+    "web_streams": "4 web streams; 1 matches the site, the other 3 are test streams and were ignored",
+    "form_interactions_enabled": true,
+    "form_key_events": [
+      {
+        "event": "demo_booking (custom)",
+        "counting": "ONCE_PER_EVENT",
+        "fired_in_90_days": 0
+      },
+      {
+        "event": "form_submit",
+        "counting": "ONCE_PER_EVENT",
+        "fired_in_90_days": 0
+      },
+      {
+        "event": "demo_form_submit (custom)",
+        "counting": "ONCE_PER_EVENT",
+        "fired_in_90_days": 0
+      }
+    ],
+    "other_key_events": "5 (purchase, sign-up and lead-stage events, not tied to this form)",
+    "test_key_events": "4 key events named as tests; archive them so key event totals stay clean",
+    "form_id_or_name_dimension": "not registered (fine while the page has one form)",
+    "checks": {
+      "form_tracking": "pass",
+      "form_event_arrives": "pass",
+      "starts_without_submits": "pass",
+      "key_event": "pass",
+      "double_counting": "warn",
+      "which_form": "pass"
+    }
+  },
+  "funnel": {
+    "graded": false,
+    "form_page_sessions_90d": 8,
+    "engaged_sessions_90d": 3,
+    "sessions_by_device_90d": {
+      "desktop": 8
+    },
+    "form_start_90d": 0,
+    "form_submit_90d": 0,
+    "site_lead_events_on_page_90d": 0,
+    "note": "Counts only. Field-level drop-off isn't in GA4."
+  },
+  "field_table": [
+    {
+      "field": "First Name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "merge",
+      "reason": "Merge first and last name into one Full name field; split only if your emails or CRM need it (treat it as a test)."
+    },
+    {
+      "field": "Last Name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "merge",
+      "reason": "Merged into Full name."
+    },
+    {
+      "field": "Country",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "check with sales",
+      "reason": "Can be derived from the visitor's IP or enrichment; cut it unless sales routes on it. It is also free text, so answers won't be clean."
+    },
+    {
+      "field": "Job Title",
+      "type": "select",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "check with sales",
+      "reason": "Keep if it routes the lead. The dropdown is well built: a Select prompt first and an Other choice.",
+      "choices": "8 choices after a 'Select...' prompt; last choice 'Other'"
+    },
+    {
+      "field": "Business Email",
+      "type": "email",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "keep",
+      "reason": "Needed to reply. Already type=email; add autocomplete=email."
+    },
+    {
+      "field": "Company Name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "make optional",
+      "reason": "The form already asks for a business email, so the company usually comes from its domain."
+    },
+    {
+      "field": "How can we help you?",
+      "type": "textarea",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "make optional",
+      "reason": "A required free-text box is the costliest field on a demo form. Keep it, optional, with a hint about what helps."
+    }
+  ],
+  "field_summary": {
+    "visible_fields": 7,
+    "required_now": 7,
+    "after": "7 required → 4 required, 2 optional (6 visible); 3 required if Country goes",
+    "phone_field": false,
+    "multi_step": "Not needed after the cuts: 4 required fields is short enough for one step."
+  },
+  "input_checks": {
+    "labels": "pass",
+    "input_types": "pass",
+    "autofill": "warn",
+    "required_marking": "warn",
+    "dropdowns": "pass",
+    "field_order": "warn"
+  },
+  "submit_and_trust": {
+    "submit_text": "Book demo",
+    "privacy_line": "By submitting, you agree to our Privacy Policy.",
+    "heading_before_form": null,
+    "button_placement": "The button is the last thing in the form, right after the last field and the privacy line. Spacing and whether it stays reachable on mobile need the screenshot, which failed.",
+    "effort_cue": null,
+    "effort_cue_note": "Note only: neither the heading before the form nor the end of the form says how much is asked. After the cuts, a line such as '6 quick fields' would be true; don't claim a time nobody has measured. Confirm on the screenshot once it works.",
+    "proof_near_form": "Note only: no testimonial, logo or customer count in the form text read; add one only if it is true.",
+    "checks": {
+      "button_text": "pass",
+      "button_placement": "pass",
+      "context_above": "warn",
+      "what_happens_next": "warn",
+      "privacy_line": "pass"
+    }
+  },
+  "mobile_load_note": "Note only: with 7 visible fields, consider asking fewer on mobile and collecting the rest later (the thank-you page, the first email, enrichment from the business email). The cuts above already take it to 6.",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Keep one key event for a demo request",
+      "detail": "demo_booking (custom), form_submit, demo_form_submit (custom) are all key events. If more than one fires on a submission, one demo request could count up to 3 times. Keep the one your site sends on purpose, archive the others, then send one test entry and watch it arrive in GA4 DebugView.",
+      "evidence": "list_key_events; get_report eventName x keyEvents (2026-07-08 to 2026-10-05): 0 key events fired across the property",
+      "who": "in GA4 admin (archiving a key event isn't an action this skill has)"
+    },
+    {
+      "rank": 2,
+      "fix": "Make Message and Company optional",
+      "detail": "Both are required today. Give the message box a hint about what helps, and read the company from the business email's domain.",
+      "evidence": "page reader: message is a required textarea; company is a required text field next to a required business email",
+      "who": "on the site"
+    },
+    {
+      "rank": 3,
+      "fix": "Merge First and Last name into one Full name field, and move Business Email up to follow it",
+      "detail": "With the merge and the two optional fields, the form goes from 7 required fields to 4 required and 2 optional, and to 3 required if sales doesn't use Country. Easy fields first: name and email, then Country and Job Title, then the message box last, where it already is.",
+      "evidence": "page reader: firstName and lastName are separate required text fields; Business Email is field 5 of 7, after Country and Job Title",
+      "who": "on the site"
+    },
+    {
+      "rank": 4,
+      "fix": "Add autocomplete to every field",
+      "detail": "name, email, organization, organization-title and country-name let phones and browsers fill the form in one tap.",
+      "evidence": "page reader: 0 of 7 fields set autocomplete",
+      "who": "on the site"
+    },
+    {
+      "rank": 5,
+      "fix": "Put a heading and a 'what happens next' line above the form",
+      "detail": "Say what the demo covers, how long it takes and who replies, and how soon. Use only promises the team keeps.",
+      "evidence": "page reader: heading_before is empty and the page's 1 heading sits after the form; the text inside the form ends with the privacy line and the button",
+      "who": "on the site"
+    }
+  ],
+  "test_plan": {
+    "volume_note": "No demo submission was tracked in 90 days and the page had 8 sessions, far below about 100 submissions a month. An A/B test won't reach a clear answer; ship fixes 2 to 5 as low-risk changes and watch the trend.",
+    "hypotheses": [
+      "If we make Message and Company optional, then form completion will rise, because they are the two required fields that ask for effort or repeat what the business email already tells us.",
+      "If we merge First and Last name, then completion will rise slightly, because it removes one required field without losing data.",
+      "If we add a heading and a 'what happens next' line, then form starts will rise, because visitors see what they get before they type."
+    ],
+    "watch_quality": "Track lead-to-customer rate as well as completions: dropping Company and Message can make leads harder to qualify. Enrichment from the business email covers most of it."
+  },
+  "check_by_hand": [
+    "Submit the empty form on a phone: does it jump to the first error, and does each message say how to fix it, next to the field?",
+    "Type a wrong email: is it flagged when leaving the field, not on every keystroke? Does a valid answer show it was accepted?",
+    "Type name+test@gmail.com and name@gmial.com: is the alias accepted, and is the typo caught with a suggestion?",
+    "After an error, is everything typed still there?",
+    "After a submit: is there a clear success state, and does the button show it is working while it waits?"
+  ],
+  "unknowns": [
+    "Funnel rates: 8 sessions and 0 form starts in 90 days, below the grading floor.",
+    "Page and mobile: PageSpeed accessibility-seo and Screenshot capture both returned a connection reset, also for a neutral public URL. Retry later for the above-the-fold, layout and accessibility checks.",
+    "Which field people stop at: GA4 doesn't report it, and no Clarity project is connected.",
+    "Tag Manager: the connected container is for a different site, so duplicate lead triggers on this form weren't checked."
+  ],
+  "go_deeper": [
+    {
+      "need": "the page around the form",
+      "skill": "landing-page-auditor"
+    },
+    {
+      "need": "designing the test once volume allows",
+      "skill": "ab-test-designer"
+    },
+    {
+      "need": "site-wide tracking",
+      "skill": "conversion-tracking-auditor (if installed)"
+    }
+  ],
+  "offered_fixes_not_run": [
+    {
+      "action": "create_key_event",
+      "status": "not offered: key events for the form already exist; the fix is archiving duplicates in GA4 admin"
+    },
+    {
+      "action": "update_enhanced_measurement_settings",
+      "status": "not needed: formInteractionsEnabled is already true"
+    },
+    {
+      "action": "create_custom_dimension",
+      "status": "not needed while the page has one form; offer form_id if a second form is added"
+    }
+  ]
+}

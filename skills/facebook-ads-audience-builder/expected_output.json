@@ -1,0 +1,448 @@
+{
+  "header": {
+    "account": "A B2B software company",
+    "currency": "USD",
+    "date_range": "2026-07-07 to 2026-10-04 (last 90 days)",
+    "data_stage": "0. No signal: no pixel on the ad account and no sign-ups recorded",
+    "daily_budget_used": 30
+  },
+  "inventory": {
+    "custom_audiences": 0,
+    "lookalike_audiences": 0,
+    "saved_audiences": 0,
+    "pixel": "none on the ad account",
+    "engagement_sources": {
+      "facebook_pages_linked": 2,
+      "facebook_pages_usable": 1,
+      "note": "The user confirmed one of the two linked Pages and the Instagram account as theirs. The other linked Page belongs to another business, so it is not used as a source.",
+      "instagram_accounts_linked": 1
+    },
+    "lifetime_spend": 0.15,
+    "seeds_ranked": [],
+    "seed_note": "No audience exists, so there is no seed for a lookalike. The customer list (paying customers only, since this is B2B) is the first candidate. Meta accepts a seed from 100 matched people in one country, but the plan builds a lookalike from it only at stage 1 (pixel firing) and only once it matches 1,000 or more people in the US."
+  },
+  "what_has_worked": {
+    "window": "last 90 days",
+    "ad_sets_with_delivery": 0,
+    "spend": 0,
+    "rows": [],
+    "finding": "No ad set delivered in the last 90 days.",
+    "lifetime_context": {
+      "window": "2025-11-01 to 2026-10-05 (date_preset maximum)",
+      "rows": [
+        {
+          "ad_set": "adset-3",
+          "audience_type": "unknown (ad set archived or deleted)",
+          "spend": 0.08,
+          "impressions": 4,
+          "results_signups": 0
+        },
+        {
+          "ad_set": "adset-4",
+          "audience_type": "unknown (ad set archived or deleted)",
+          "spend": 0.07,
+          "impressions": 60,
+          "results_signups": 0
+        }
+      ],
+      "note": "Both ad sets that ever delivered are no longer returned by get_adsets, so their targeting can't be read."
+    },
+    "advantage_vs_manual": "not graded: nothing delivered in the 90 days, neither live ad set uses Advantage+ audience, and no ad set has ever had a sign-up (there is no pixel to count one).",
+    "lookalike_ranking": "not graded: the account has no lookalike audience, and no ad set targets one.",
+    "live_ad_sets": [
+      {
+        "ad_set": "adset-1",
+        "campaign": "campaign-1",
+        "status": "PAUSED",
+        "optimization_goal": "REACH",
+        "daily_budget": 1.0,
+        "audience_type": "Broad, manual",
+        "targeting": "US, ages 25-65, advantage_audience 0"
+      },
+      {
+        "ad_set": "adset-2",
+        "campaign": "campaign-2",
+        "status": "PAUSED",
+        "optimization_goal": "POST_ENGAGEMENT",
+        "daily_budget": 1.0,
+        "audience_type": "Broad, manual",
+        "targeting": "US, ages 25-65, advantage_audience 0"
+      }
+    ]
+  },
+  "plan": {
+    "budget_split": {
+      "cold": 100,
+      "warm": 0,
+      "hot": 0,
+      "why": "No warm or hot audience exists yet. Warm gets 20% (an 80/20 split) once the Page and Instagram engager audiences each pass 1,000 people with no 'too small' status; hot waits for the pixel."
+    },
+    "cold": [
+      {
+        "audience": "COLD | Advantage+ audience | US 25-65",
+        "type": "Advantage+ audience",
+        "size": {
+          "low": 220000000,
+          "high": 250000000
+        },
+        "window": "none (prospecting)",
+        "budget_share": "100% ($30 a day)",
+        "daily_budget": 30,
+        "exclusions": "the customer list (order 3) once uploaded; the sign-up converters audience (order 5) once the pixel fires",
+        "warm_overlap": "accepted: the Page and Instagram engagers (orders 1 and 2) and site visitors (order 8) are not excluded, because Advantage+ audience picks its own people and excluding small warm pools would only narrow it. Warm and hot ad sets show those people their own message.",
+        "why": "With no conversions and no seeds there is nothing for manual targeting or a lookalike to build on. Every cold option is well above the 500,000 floor for a budget under $50 a day, so size doesn't decide it; signal does."
+      }
+    ],
+    "cold_options_sized": [
+      {
+        "option": "Advantage+ audience, US, ages 25-65",
+        "spec": "targeting_automation.advantage_audience 1",
+        "reach_estimate": {
+          "low": 220000000,
+          "high": 250000000
+        },
+        "above_floor": true
+      },
+      {
+        "option": "Broad, manual, US, ages 25-65",
+        "spec": "advantage_audience 0, no interests",
+        "reach_estimate": {
+          "low": 220000000,
+          "high": 250000000
+        },
+        "above_floor": true
+      },
+      {
+        "option": "Interests A or B (two broad interests)",
+        "spec": "flexible_spec with 2 interest ids",
+        "reach_estimate": {
+          "low": 70000000,
+          "high": 82000000
+        },
+        "above_floor": true
+      },
+      {
+        "option": "Interest B alone",
+        "spec": "flexible_spec with 1 interest id",
+        "reach_estimate": {
+          "low": 62000000,
+          "high": 73000000
+        },
+        "above_floor": true
+      },
+      {
+        "option": "Interests C or D (two narrow interests)",
+        "spec": "flexible_spec with 2 interest ids",
+        "reach_estimate": {
+          "low": 17000000,
+          "high": 20000000
+        },
+        "above_floor": true
+      }
+    ],
+    "interest_size_check": {
+      "interests": [
+        {
+          "interest": "Interest A (broad, marketing topic)",
+          "size_shown_by_search_interests": {
+            "low": 150000000,
+            "high": 180000000
+          }
+        },
+        {
+          "interest": "Interest C (narrow, marketing topic)",
+          "size_shown_by_search_interests": {
+            "low": 850000,
+            "high": 1000000
+          }
+        },
+        {
+          "interest": "Interest B (broad, business topic)",
+          "size_shown_by_search_interests": {
+            "low": 180000000,
+            "high": 210000000
+          }
+        },
+        {
+          "interest": "Interest D (narrow, software topic)",
+          "size_shown_by_search_interests": {
+            "low": 270000,
+            "high": 320000
+          }
+        }
+      ],
+      "finding": "The two narrow interests show about 0.27-1 million people each in search_interests, yet the US reach estimate for the pair came back at about 17-20 million. Use the estimate for your spec, never the size printed next to an interest."
+    },
+    "warm": [
+      {
+        "audience": "WARM | Page | Engaged with Page | 365d",
+        "type": "Engagement custom audience (Facebook Page)",
+        "status": "to create",
+        "size": "unknown until created",
+        "window_days": 365,
+        "budget_share": "0% now; 20% of the budget, shared with the Instagram engagers, once both pass 1,000 people",
+        "exclusions": "the customer list (order 3); once the pixel fires, the sign-up converters audience (order 5) and the hot audience (order 7), so each person sees one message"
+      },
+      {
+        "audience": "WARM | IG | Engaged with account | 365d",
+        "type": "Engagement custom audience (Instagram account)",
+        "status": "to create",
+        "size": "unknown until created",
+        "window_days": 365,
+        "budget_share": "0% now; 20% of the budget, shared with the Page engagers, once both pass 1,000 people",
+        "exclusions": "the customer list (order 3); once the pixel fires, the sign-up converters audience (order 5) and the hot audience (order 7), so each person sees one message"
+      }
+    ],
+    "warm_skipped": [
+      {
+        "audience": "WARM | Video | Watched 50% | 365d",
+        "type": "Engagement custom audience (video)",
+        "window_days": 365,
+        "status": "later",
+        "why": "only 2 video views in the account's whole history, so the pool would stay too small"
+      },
+      {
+        "audience": "WARM | Ads | Engaged with an ad | 365d",
+        "type": "Engagement custom audience (ads)",
+        "window_days": 365,
+        "status": "later",
+        "why": "the account's ads have about 64 impressions in its whole history, so the pool would stay too small"
+      }
+    ],
+    "hot": [
+      {
+        "audience": "HOT | Web | Pricing or sign-up page, no sign-up | 90d",
+        "type": "Website custom audience",
+        "status": "blocked: needs the pixel",
+        "size": "unknown until the pixel fires",
+        "window_days": 90,
+        "window_why": "B2B: the 30-day key-page window is stretched to 90 days for a longer sales cycle",
+        "budget_share": "0% until the pixel fires and the audience passes 1,000 people; then 10% (70/20/10)",
+        "exclusions": "sign-up converters, built into its rule (minus order 5)",
+        "if_under_1000": "it already uses the longest B2B window (90 days), so fold it into the warm tier until it passes 1,000 people"
+      }
+    ],
+    "cold_next_stage": [
+      {
+        "audience": "LAL | List | Paying customers | 1% | US",
+        "type": "Lookalike (customer list)",
+        "stage": "1: once the pixel fires",
+        "condition": "the uploaded customer list (order 3) matches 1,000 or more people in the US",
+        "size": "unknown: estimate_audience_size can't size a lookalike that doesn't exist yet; read it from get_custom_audiences once built",
+        "window": "none (prospecting)",
+        "ratio": "1%",
+        "budget_share": "0% at stage 0; at stage 1, a test ad set against the Advantage+ audience ad set",
+        "exclusions": "the customer list (order 3) and the sign-up converters audience (order 5)"
+      }
+    ]
+  },
+  "audiences_to_create_note": "Orders 1-3 are for now (stage 0). Orders 4-8 need the pixel (stage 1) and are specced now so they can be built the day it fires; they get no budget until then.",
+  "audiences_to_create": [
+    {
+      "order": 1,
+      "stage": "0: now",
+      "name": "WARM | Page | Engaged with Page | 365d",
+      "source": "the Facebook Page the user confirmed as theirs",
+      "rule": "everyone who engaged with the Page",
+      "window_days": 365,
+      "job": "warm tier"
+    },
+    {
+      "order": 2,
+      "stage": "0: now",
+      "name": "WARM | IG | Engaged with account | 365d",
+      "source": "the Instagram account the user confirmed as theirs",
+      "rule": "everyone who engaged with the account",
+      "window_days": 365,
+      "job": "warm tier"
+    },
+    {
+      "order": 3,
+      "stage": "0: now",
+      "name": "EXCL | List | Paying customers",
+      "source": "customer list upload (columns: email, phone, first and last name, country)",
+      "rule": "everyone who has paid; not trial or free sign-ups",
+      "refresh": "monthly",
+      "job": "exclude from the cold and warm ad sets; seed for order 4",
+      "expected_matched_size": "unknown: the list size isn't known and lists can't be read through the MCP; Meta shows the matched size after upload",
+      "segments_later": "high-value, recent (last 90 days) and lapsed (no purchase in 180+ days) segments need value or date columns the user hasn't mentioned"
+    },
+    {
+      "order": 4,
+      "stage": "1: once the pixel fires",
+      "name": "LAL | List | Paying customers | 1% | US",
+      "source": "order 3 as the seed",
+      "seed": "paying customers only (B2B: not every sign-up)",
+      "expected_matched_size": "unknown until order 3 is uploaded",
+      "ratio": "1%",
+      "country": "US",
+      "job": "stage-1 cold test against Advantage+ audience",
+      "condition": "only if order 3 matches 1,000 or more people in the US; below that, skip it and keep Advantage+ audience as the only cold ad set"
+    },
+    {
+      "order": 5,
+      "stage": "1: once the pixel fires",
+      "name": "EXCL | Web | CompleteRegistration | 180d",
+      "source": "website pixel (install first)",
+      "rule": "CompleteRegistration event",
+      "window_days": 180,
+      "job": "exclude from every cold and warm ad set; not a lookalike seed, because for B2B the seed is paying customers (order 3), not every sign-up"
+    },
+    {
+      "order": 6,
+      "stage": "1: once the pixel fires",
+      "name": "EXCL | Web | CompleteRegistration | 30d",
+      "source": "website pixel",
+      "rule": "CompleteRegistration event",
+      "window_days": 30,
+      "job": "exclude from retargeting"
+    },
+    {
+      "order": 7,
+      "stage": "1: once the pixel fires",
+      "name": "HOT | Web | Pricing or sign-up page, no sign-up | 90d",
+      "source": "website pixel",
+      "rule": "URL contains the pricing or sign-up path, minus order 5",
+      "window_days": 90,
+      "job": "hot tier"
+    },
+    {
+      "order": 8,
+      "stage": "1: once the pixel fires",
+      "name": "WARM | Web | All visitors | 90d",
+      "source": "website pixel",
+      "rule": "all website traffic, minus order 5",
+      "window_days": 90,
+      "window_why": "B2B: the 30-day site-visitor window is stretched to 90 days",
+      "job": "warm tier once it passes 1,000 people; under 1,000, stretch toward 180 days and run it with the Page and Instagram engagers"
+    }
+  ],
+  "setup_checklist": [
+    {
+      "step": 1,
+      "do": "Install the Meta pixel on the site and fire CompleteRegistration on sign-up (in Events Manager; the MCP has no action for it).",
+      "needs_first": "nothing"
+    },
+    {
+      "step": 2,
+      "do": "Build orders 1 and 2 in Ads Manager and share their ids.",
+      "needs_first": "nothing"
+    },
+    {
+      "step": 3,
+      "do": "Upload the customer list as order 3 and note the matched size Meta shows.",
+      "needs_first": "the list file"
+    },
+    {
+      "step": 4,
+      "do": "Create a Leads or Sales campaign with no campaign budget, then approve the cold ad set payload (created paused) and turn it on in Ads Manager.",
+      "needs_first": "step 1, so promoted_object has a pixel"
+    },
+    {
+      "step": 5,
+      "do": "Build orders 5 to 8, and add orders 3 and 5 to the cold ad set's exclusions (update_adset with the full targeting). Build order 4 and its paused test ad set only if order 3 matched 1,000+ people in the US.",
+      "needs_first": "the pixel firing"
+    },
+    {
+      "step": 6,
+      "do": "Start a warm ad set at 20% of the budget, excluding orders 3, 5 and 7, and a hot one at 10% once order 7 passes 1,000 people.",
+      "needs_first": "orders 1 and 2 each over 1,000 people with no 'too small' status"
+    },
+    {
+      "step": 7,
+      "do": "Run the skill again 30 days after the cold ad set starts, so there are results to grade.",
+      "needs_first": "step 4"
+    }
+  ],
+  "exclusion_fixes": [
+    {
+      "ad_set": "adset-1",
+      "finding": "paused; targets US 25-65 with no custom audiences, so there is nothing to exclude yet",
+      "fix": "when it runs again, exclude the customer list (order 3) and the sign-up converters audience (order 5); it uses manual targeting, so also exclude the engagers (orders 1 and 2), or switch it to Advantage+ audience and accept that overlap"
+    },
+    {
+      "ad_set": "adset-2",
+      "finding": "paused; targets US 25-65 with no custom audiences, so there is nothing to exclude yet",
+      "fix": "when it runs again, exclude the customer list (order 3) and the sign-up converters audience (order 5); it uses manual targeting, so also exclude the engagers (orders 1 and 2), or switch it to Advantage+ audience and accept that overlap"
+    }
+  ],
+  "changes_offered": [
+    {
+      "action": "create_adset",
+      "purpose": "The cold tier: one Advantage+ audience ad set optimised for sign-ups.",
+      "status": "not run: blocked until a pixel fires and a Leads or Sales campaign exists",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_adset",
+        "ad_account_id": "act_123456789",
+        "name": "COLD | Advantage+ audience | US 25-65",
+        "campaign_id": "<CAMPAIGN_ID of a new Leads or Sales campaign>",
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "targeting": {
+          "geo_locations": {
+            "countries": [
+              "US"
+            ]
+          },
+          "age_min": 25,
+          "age_max": 65,
+          "targeting_automation": {
+            "advantage_audience": 1
+          }
+        },
+        "daily_budget": 3000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "destination_type": "WEBSITE",
+        "promoted_object": {
+          "page_id": "<PAGE_ID of the advertiser's own Page>",
+          "pixel_id": "<PIXEL_ID once installed>",
+          "custom_event_type": "COMPLETE_REGISTRATION"
+        }
+      },
+      "budget_note": "The budget sits on the ad set, so the new campaign must be created without a campaign budget (no daily_budget or lifetime_budget on the campaign)."
+    },
+    {
+      "action": "update_adset",
+      "purpose": "Switch the paused engagement ad set (adset-2) to Advantage+ audience so it can grow the Page and Instagram engager pools. The full current targeting is sent with one change merged in.",
+      "status": "not run",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "adset-2",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 25,
+          "geo_locations": {
+            "countries": [
+              "US"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          }
+        }
+      }
+    }
+  ],
+  "unknowns": [
+    "Sign-up results: no pixel, so sign-ups can't be counted and no ad set can be graded.",
+    "Customer list size: not readable through the MCP; the lookalike in order 4 depends on it.",
+    "Engager audience sizes: Meta reports them only after the audiences are created."
+  ],
+  "go_deeper": [
+    "meta-advantage-plus-auditor: Advantage+ settings once the cold ad set runs",
+    "facebook-ads-campaign-structure: where the cold, warm and hot ad sets sit",
+    "retargeting-sequence-designer: what the warm and hot tiers see",
+    "audience-overlap-analyzer: measured overlap once there are several audiences"
+  ]
+}

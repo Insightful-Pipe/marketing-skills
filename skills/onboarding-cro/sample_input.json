@@ -1,0 +1,32 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Pulled on 2026-10-06 through the InsightfulPipe CLI from our GA4 property and our Klaviyo account. The property tracks only the marketing site, so the sample shows how the skill reports a journey that goes dark after the signup click.",
+  "request": "Hey Claude, I just added the \"onboarding-cro\" skill. Map our new-user journey from first visit to activation and tell me where onboarding loses people. We're a self-serve B2B SaaS: people connect their data accounts and run reports.",
+  "account": {
+    "ga4_property": "properties/123456789",
+    "tracks": "3 hosts: the marketing site (two spellings) and localhost",
+    "klaviyo": "connected"
+  },
+  "window": "2026-07-13 to 2026-10-04",
+  "user_answers": {
+    "where_signup_happens": "on the app's own subdomain, linked from the site's buttons; the app is a separate product",
+    "signup_event": "not sure, so the default sign_up is used",
+    "onboarding_steps": "not sure, so the defaults tutorial_begin and tutorial_complete are used",
+    "activation_candidate": "first data source connected and first report run (not tracked yet)",
+    "pages": "defaults: pricing, signup, sign-up, demo, onboarding and /docs",
+    "current_onboarding": "not described, so the patterns are recommended without checking which are already in place"
+  },
+  "data_pulled": [
+    "list_key_events (12 configured)",
+    "list_audiences (5 existing)",
+    "events (7 event names in the window)",
+    "get_report hostName (3 hosts)",
+    "get_report firstSessionDate x firstUserDefaultChannelGroup x eventName (460 rows)",
+    "get_report firstSessionDate x deviceCategory x journey events (68 rows, first_visit only: no other journey event fired)",
+    "get_report time to value (0 rows: no journey event after first visit fired)",
+    "get_report journey pages (110 rows, 2 pages dropped as off-topic, 1 path cut short by GA4 left out)",
+    "get_report outbound clicks (7 links)",
+    "get_report weekly cohorts (12 cohorts)",
+    "call 11 (repeat use of the activation event) not run: no activation event fired",
+    "klaviyo get_flows (0) and get_flow_report (0 rows)"
+  ]
+}

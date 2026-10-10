@@ -1,0 +1,27 @@
+{
+  "request": "Hey Claude, I just added the \"facebook-ads-creative-tester\" skill. We have never compared formats on Meta. Tell me which format has worked for us, then plan a test of a single image against a video for link clicks at $20 a day per variant, and prepare both ads from my media library. Don't create anything yet.",
+  "account": {
+    "platform": "facebook-ads",
+    "ad_account": "Example SaaS, LLC (act_123456789)",
+    "workspace_id": 1,
+    "brand_id": 1,
+    "currency": "USD"
+  },
+  "user_inputs": {
+    "budget_per_variant_per_day_usd": 20,
+    "goal": "LINK_CLICKS",
+    "test": "single image vs video",
+    "mde": "20% (skill default)"
+  },
+  "run_date": "2026-10-05",
+  "data_pulled": [
+    "get_insights_adaccount level=ad last_90d (0 rows) and maximum (2 ads)",
+    "get_insights_adaccount level=ad maximum with breakdowns video_asset and image_asset",
+    "get_ads (2 paused ads; neither is one of the 2 ads with delivery)",
+    "get_ad_creatives_by_ad for the 2 delivering ads",
+    "get_adaccount, get_minimum_budgets, get_campaigns, get_adsets",
+    "get_pages (the brand's own Page only is used)",
+    "list_media_files on media-files (12 files)"
+  ],
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. The ad account has had almost no delivery, so the sample shows the skill's calibration path: format comparison not graded, baseline unknown, and a plan sized from the user's budget and the SKILL.md formula. The media files are test uploads, renumbered file 1 to 12 in listing order. Payloads were built from the real account and not run."
+}

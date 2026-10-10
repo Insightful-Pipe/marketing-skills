@@ -1,0 +1,33 @@
+{
+  "skill": "meta/orchestrator",
+  "request": "We're a small B2B SaaS. We want more sign-ups and I'm not sure where to start. What should we do first, and what can I put on a schedule?",
+  "mode": "B. Diagnose and sequence, plus C. Automate",
+  "business": "A B2B SaaS (our own accounts, anonymised)",
+  "site": "https://example.com/",
+  "windows": {
+    "current": {
+      "start": "2026-09-06",
+      "end": "2026-10-05"
+    },
+    "prior": {
+      "start": "2026-08-07",
+      "end": "2026-09-05"
+    }
+  },
+  "calls_run": [
+    "query_contexts request=accounts (no platform)",
+    "google-analytics get_report by sessionDefaultChannelGroup x2 (S1)",
+    "google-analytics get_report by eventName, current window (S2)",
+    "google-search-console search_analytics by date, 60 days in one call (S3)",
+    "google-analytics get_report by sessionDefaultChannelGroup, current window ending on Search Console's last day (S1 rerun for rule 2)",
+    "google-ads: not run, no account for this business (S4)",
+    "facebook-ads get_insights_adaccount, level account: main account x2 windows, the owner-named account x1 call over both windows (S5); the generically named account was left out at inventory",
+    "linkedin-ads get_account_analytics: main account x2 windows, second account x1 call over both windows (S6)"
+  ],
+  "answers_to_questions": {
+    "goal": "sign-ups (from the request)",
+    "what_exists": "not given; assumed only what the data shows",
+    "constraint": "not given; no deadline assumed"
+  },
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly."
+}

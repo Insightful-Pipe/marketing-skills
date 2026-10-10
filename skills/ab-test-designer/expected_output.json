@@ -1,0 +1,450 @@
+{
+  "readout": {
+    "test": "Ad A vs Ad B, Criminal Defense ad group, 2026-07-08 to 2026-10-05",
+    "currency": "USD",
+    "design_type": "observational",
+    "why_observational": "No Google Ads experiments exist in the account (0 rows). The two ads rotate under maximize conversions with ad rotation not set (Google default: optimise), so Google sends more auctions to the ad it predicts will do better. Ad A got 55% of impressions.",
+    "what_differs": [
+      "One reworded headline: Ad A \"[N]+ 5-Star Reviews\", Ad B \"[N]+ Perfect 5 Star Ratings\"",
+      "Ad B pins \"[State] Criminal Defense\" to headline 1; Ad A pins nothing"
+    ],
+    "isolation": "2 differences. The result belongs to the bundle (the pin plus the reworded review headline), not to either change alone.",
+    "ads": {
+      "ad_a": {
+        "impressions": 8962,
+        "clicks": 456,
+        "conversions": 116.9,
+        "ctr_pct": 5.09,
+        "conv_per_click_pct": 25.6,
+        "conv_per_1000_impr": 13.0,
+        "cost": 2750,
+        "cost_per_click": 6.0,
+        "cost_per_conversion": 24,
+        "ad_strength": "GOOD",
+        "pins": "none"
+      },
+      "ad_b": {
+        "impressions": 7342,
+        "clicks": 309,
+        "conversions": 64.6,
+        "ctr_pct": 4.21,
+        "conv_per_click_pct": 20.9,
+        "conv_per_1000_impr": 8.8,
+        "cost": 1600,
+        "cost_per_click": 5.2,
+        "cost_per_conversion": 25,
+        "ad_strength": "AVERAGE",
+        "pins": "headline 1"
+      }
+    },
+    "tests": {
+      "click_through_rate (clicks / impressions)": {
+        "rate_a": 5.09,
+        "rate_b": 4.21,
+        "lift_b_vs_a_pct": -17.3,
+        "diff_pp": -0.88,
+        "ci95_pp": [
+          -1.53,
+          -0.23
+        ],
+        "ci95_relative_pct": [
+          -30.0,
+          -4.6
+        ],
+        "z": -2.64,
+        "p_value": 0.0082,
+        "detectable_lift_pct": 20.0,
+        "significant": true
+      },
+      "conversion_rate (conversions / clicks)": {
+        "rate_a": 25.63,
+        "rate_b": 20.92,
+        "lift_b_vs_a_pct": -18.4,
+        "diff_pp": -4.71,
+        "ci95_pp": [
+          -10.76,
+          1.34
+        ],
+        "ci95_relative_pct": [
+          -42.0,
+          5.2
+        ],
+        "z": -1.5,
+        "p_value": 0.1328,
+        "detectable_lift_pct": 38.4,
+        "significant": false
+      },
+      "conversions_per_impression": {
+        "rate_a": 1.3,
+        "rate_b": 0.88,
+        "lift_b_vs_a_pct": -32.5,
+        "diff_pp": -0.42,
+        "ci95_pp": [
+          -0.74,
+          -0.11
+        ],
+        "ci95_relative_pct": [
+          -56.8,
+          -8.1
+        ],
+        "z": -2.57,
+        "p_value": 0.0103,
+        "detectable_lift_pct": 40.2,
+        "significant": true
+      }
+    },
+    "guardrail_cost_per_conversion": {
+      "ad_a": 24,
+      "ad_b": 25,
+      "change_b_vs_a_pct": 5.0,
+      "note": "Within the 20% limit. Ad B's cheaper clicks offset its lower conversion rate."
+    },
+    "checks": {
+      "same_dates": "Both ads served on all 90 days.",
+      "sample_ratio": "Not tested: the split is set by Google's optimised rotation, not by a planned 50/50.",
+      "conversion_counting": "5 counted conversion actions; 1 counts many per click. Several can fire on one click, so the conversion-rate test is approximate.",
+      "conversion_lag": "The window ends on 2026-10-05, within 7 days of the run. Both ads lag alike, so the comparison holds; totals will still rise a little."
+    },
+    "segments": [
+      {
+        "device": "mobile",
+        "ad_a": {
+          "impressions": 8417,
+          "clicks": 442,
+          "conversions": 113.9
+        },
+        "ad_b": {
+          "impressions": 6950,
+          "clicks": 279,
+          "conversions": 57.6
+        },
+        "ctr": {
+          "rate_a": 5.25,
+          "rate_b": 4.01,
+          "lift_b_vs_a_pct": -23.6,
+          "diff_pp": -1.24,
+          "ci95_pp": [
+            -1.9,
+            -0.57
+          ],
+          "ci95_relative_pct": [
+            -36.2,
+            -10.9
+          ],
+          "z": -3.61,
+          "p_value": 0.0003,
+          "detectable_lift_pct": 20.2,
+          "significant": true
+        },
+        "reported": "tested (both ads have at least 30 clicks)"
+      },
+      {
+        "device": "desktop",
+        "ad_a": {
+          "impressions": 511,
+          "clicks": 12,
+          "conversions": 2.0
+        },
+        "ad_b": {
+          "impressions": 356,
+          "clicks": 30,
+          "conversions": 7.0
+        },
+        "ctr_pct": {
+          "ad_a": 2.3,
+          "ad_b": 8.4
+        },
+        "reported": "direction only (fewer than 30 clicks on one ad)"
+      },
+      {
+        "device": "tablet",
+        "ad_a": {
+          "impressions": 34,
+          "clicks": 2,
+          "conversions": 1.0
+        },
+        "ad_b": {
+          "impressions": 36,
+          "clicks": 0,
+          "conversions": 0.0
+        },
+        "ctr_pct": {
+          "ad_a": 5.9,
+          "ad_b": 0.0
+        },
+        "reported": "direction only (fewer than 30 clicks on one ad)"
+      }
+    ],
+    "week_by_week": {
+      "blocks": [
+        {
+          "start": "2026-07-08",
+          "end": "2026-07-13",
+          "days": 6,
+          "ctr_a": 4.17,
+          "ctr_b": 5.3,
+          "higher": "B"
+        },
+        {
+          "start": "2026-07-14",
+          "end": "2026-07-20",
+          "days": 7,
+          "ctr_a": 5.13,
+          "ctr_b": 4.35,
+          "higher": "A"
+        },
+        {
+          "start": "2026-07-21",
+          "end": "2026-07-27",
+          "days": 7,
+          "ctr_a": 5.82,
+          "ctr_b": 5.82,
+          "higher": "tie"
+        },
+        {
+          "start": "2026-07-28",
+          "end": "2026-08-03",
+          "days": 7,
+          "ctr_a": 5.35,
+          "ctr_b": 5.95,
+          "higher": "B"
+        },
+        {
+          "start": "2026-08-04",
+          "end": "2026-08-10",
+          "days": 7,
+          "ctr_a": 5.06,
+          "ctr_b": 4.46,
+          "higher": "A"
+        },
+        {
+          "start": "2026-08-11",
+          "end": "2026-08-17",
+          "days": 7,
+          "ctr_a": 5.9,
+          "ctr_b": 3.96,
+          "higher": "A"
+        },
+        {
+          "start": "2026-08-18",
+          "end": "2026-08-24",
+          "days": 7,
+          "ctr_a": 5.08,
+          "ctr_b": 3.56,
+          "higher": "A"
+        },
+        {
+          "start": "2026-08-25",
+          "end": "2026-08-31",
+          "days": 7,
+          "ctr_a": 4.66,
+          "ctr_b": 2.64,
+          "higher": "A"
+        },
+        {
+          "start": "2026-09-01",
+          "end": "2026-09-07",
+          "days": 7,
+          "ctr_a": 6.29,
+          "ctr_b": 4.42,
+          "higher": "A"
+        },
+        {
+          "start": "2026-09-08",
+          "end": "2026-09-14",
+          "days": 7,
+          "ctr_a": 5.16,
+          "ctr_b": 3.04,
+          "higher": "A"
+        },
+        {
+          "start": "2026-09-15",
+          "end": "2026-09-21",
+          "days": 7,
+          "ctr_a": 5.5,
+          "ctr_b": 2.63,
+          "higher": "A"
+        },
+        {
+          "start": "2026-09-22",
+          "end": "2026-09-28",
+          "days": 7,
+          "ctr_a": 4.95,
+          "ctr_b": 4.33,
+          "higher": "A"
+        },
+        {
+          "start": "2026-09-29",
+          "end": "2026-10-05",
+          "days": 7,
+          "ctr_a": 2.99,
+          "ctr_b": 5.42,
+          "higher": "B"
+        }
+      ],
+      "ad_a_higher_ctr_in": "9 of 13 blocks"
+    },
+    "verdict": {
+      "result": "Leaning winner: Ad A",
+      "reason": "Ad A's click-through rate is higher by 17.3% relative (p = 0.0082), and it also leads on conversions per impression (p = 0.0103). Conversion rate per click is not significantly different (p = 0.1328). It is a leaning winner, not a winner, because the comparison is observational and the ads differ in 2 ways.",
+      "worth_per_month": "About 22 more clicks and 10 more conversions a month if Ad B's impressions (about 2450 a month) performed at Ad A's rates. Estimate: it assumes the gap is caused by the ad.",
+      "next": "Pause Ad B (do this in Google Ads), then test a single change to Ad A (the design below). Avoid pinning headline 1 in new ads until a controlled test says otherwise."
+    }
+  },
+  "design": {
+    "evidence": {
+      "search_terms_visible_clicks": 185,
+      "search_terms_visible_share_of_clicks_pct": 24,
+      "drug_related_share_of_visible_clicks_pct": 0,
+      "drug_related_share_of_visible_impressions_pct": 0.6,
+      "drug_related_terms": "14 of 1379 visible terms",
+      "ad_a_lines_about_drug_charges": [
+        "[State] Drug Crime Lawyer",
+        "Aggressive Drug Charge Defense",
+        "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+        "Call Now if you have been arrested for possession of a controlled substance in [State]."
+      ],
+      "gap": "Ad A spends 2 of its 4 descriptions and 2 of its 13 headlines on drug charges, while most visible clicks come from searches that are not about drugs."
+    },
+    "hypothesis": "If we replace Ad A's 2 drug-possession descriptions with two general criminal-defense descriptions, click-through rate will rise by about 30%, because 100% of visible clicks and 99% of visible impressions come from searches that are not about drugs. 30% is also the smallest lift this ad group's volume can detect within 8 weeks; a smaller real lift would read as inconclusive.",
+    "control": "Ad A as it is",
+    "variant": "Ad A with descriptions 1 and 2 replaced; every headline, the other two descriptions, the URL and the paths unchanged",
+    "single_change": "the message of descriptions 1 and 2 (drug possession → general criminal defense)",
+    "sizing": {
+      "baseline_ctr_pct": 4.25,
+      "baseline_source": "the ad group, last 28 days",
+      "daily_impressions": 163,
+      "daily_conversions": 2.2,
+      "table": [
+        {
+          "mde_relative_pct": 10,
+          "impressions_per_arm": 37054,
+          "days_at_current_volume": 455,
+          "planned_days": 455,
+          "fits_8_weeks": false
+        },
+        {
+          "mde_relative_pct": 20,
+          "impressions_per_arm": 9682,
+          "days_at_current_volume": 119,
+          "planned_days": 119,
+          "fits_8_weeks": false
+        },
+        {
+          "mde_relative_pct": 30,
+          "impressions_per_arm": 4489,
+          "days_at_current_volume": 56,
+          "planned_days": 56,
+          "fits_8_weeks": true
+        },
+        {
+          "mde_relative_pct": 50,
+          "impressions_per_arm": 1748,
+          "days_at_current_volume": 22,
+          "planned_days": 28,
+          "fits_8_weeks": true
+        }
+      ],
+      "chosen_mde_pct": 30,
+      "planned_days": 56,
+      "conversions_per_arm_by_end": 61,
+      "primary_metric": "click-through rate",
+      "why": "About 61 conversions per ad by the end, under 100, so conversion rate is a guardrail, not the primary metric. A 30% lift is the smallest that fits in 8 weeks at this volume."
+    },
+    "design": "A/B as a Google Ads ad variation experiment, 50/50 split (controlled). The user sets it up in Google Ads, scoped to Ad A, and enters the text change in ad_variation_change; an ad variation edits Ad A's text inside the experiment and doesn't use a separately created ad. The quicker option, the paused challenger in fixes_offered enabled beside Ad A, gives another observational readout.",
+    "ad_variation_change": [
+      {
+        "field": "description 1",
+        "from": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+        "to": "Charged With a Crime in [State]? Free Case Evaluation. Call or Text 24/7."
+      },
+      {
+        "field": "description 2",
+        "from": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+        "to": "Local Criminal Defense Attorneys Serving All of [State]. Flexible Payment Plans."
+      }
+    ],
+    "rules": {
+      "primary": "click-through rate, at least +30% relative at 95% confidence",
+      "secondary": [
+        "conversions per impression"
+      ],
+      "guardrails": [
+        "cost per conversion no more than 20% worse",
+        "conversion rate per click no more than 15% worse"
+      ],
+      "decision": {
+        "winner_and_guardrails_hold": "apply the variant",
+        "winner_but_guardrail_broke": "don't apply; check which searches the new copy attracted",
+        "inconclusive_at_end": "keep Ad A; record the detectable lift",
+        "loser": "keep Ad A; record that the drug angle helps here"
+      },
+      "end_date": "fixed at 56 days after launch; no early stop except broken tracking or a disapproved ad"
+    },
+    "launch_checklist": [
+      "write down the hypothesis, metrics, sample size and end date",
+      "pause Ad B first, so the experiment compares Ad A with its variation only",
+      "in Google Ads, create the ad variation scoped to Ad A, change only descriptions 1 and 2 (ad_variation_change), 50/50 split",
+      "check on day 1-2 that both arms record clicks and conversions",
+      "no budget, bid or keyword changes in the Criminal Defense campaign during the test",
+      "note promotions, holidays or site outages",
+      "book the readout for the end date"
+    ]
+  },
+  "write_up": {
+    "before": {
+      "test": "Criminal Defense descriptions: drug angle vs general angle",
+      "hypothesis": "see design.hypothesis",
+      "start": "launch day",
+      "end": "launch day + 56 days",
+      "criteria": "click-through rate +30% at 95%; cost per conversion within 20%; conversion rate per click within 15%"
+    },
+    "after": {
+      "result": "to fill at the end date",
+      "verdict": "to fill",
+      "lesson": "to fill",
+      "next_test": "to fill"
+    }
+  },
+  "fixes_offered": [
+    {
+      "action": "create_responsive_search_ad",
+      "status": "not run (offered after confirmation; always created paused)",
+      "use": "Only for the quicker observational route: the user enables it beside Ad A. The recommended ad variation experiment doesn't use this ad; skip this fix for that route.",
+      "payload": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "create_responsive_search_ad",
+        "ad_group_id": "<AD_GROUP_ID>",
+        "final_urls": [
+          "https://www.example-law-firm.com/criminal-defense-attorney/"
+        ],
+        "headlines": [
+          "100% Free Case Evaluation",
+          "[State] Criminal Defense",
+          "[N]+ 5-Star Reviews",
+          "Serving All [State]",
+          "[State] Drug Crime Lawyer",
+          "[N]+ Charges Resolved",
+          "Local Defense Attorneys",
+          "Call or text 24×7",
+          "[Firm] - Criminal Defense",
+          "Aggressive Drug Charge Defense",
+          "Flexible Payment Plans - [State]",
+          "Criminal Defense - All of [State]",
+          "We Fight to Keep Your Freedom"
+        ],
+        "descriptions": [
+          "Charged With a Crime in [State]? Free Case Evaluation. Call or Text 24/7.",
+          "Local Criminal Defense Attorneys Serving All of [State]. Flexible Payment Plans.",
+          "Some of the most experienced lawyers, offering representation across the entire state",
+          "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon"
+        ],
+        "path1": "Criminal",
+        "path2": "Defense Lawyer"
+      }
+    }
+  ]
+}

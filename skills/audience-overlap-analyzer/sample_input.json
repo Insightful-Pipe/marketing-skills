@@ -1,0 +1,42 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. The Google Ads part is a client account, anonymised: campaigns renamed, the firm, the attorney and places in search terms replaced, no account id, money rounded to the nearest $10. Run on 2026-10-05 through the InsightfulPipe MCP.",
+  "request": "Hey Claude, I just added the \"audience-overlap-analyzer\" skill. Check whether my Meta ad sets and Google Ads campaigns are reaching the same people, and tell me what to exclude or merge.",
+  "accounts": {
+    "meta": {
+      "name": "Our own Meta ad account (masked): a test account with paused test campaigns",
+      "status": "active"
+    },
+    "google_ads": {
+      "name": "A US criminal and traffic defense law firm (client)",
+      "currency": "USD"
+    }
+  },
+  "date_range": "last 30 days (2026-09-05 to 2026-10-04); trends: last 90 days in weekly rows",
+  "answers_to_the_three_questions": {
+    "result_and_target": "not given, so the default applies: each ad set's own optimisation event and the account's own 30-day cost per result. No figure was needed in this run: the Meta account spent nothing, and Google pairs are scored on overlap and budget only.",
+    "converter_and_warm_audiences": "none exist on the Meta account, so nothing to label",
+    "brand_terms": "taken from the Google account name"
+  },
+  "data_pulled": {
+    "meta": [
+      "get_adaccount (status, currency)",
+      "get_campaigns (310 campaigns)",
+      "get_adsets with targeting (120 ad sets, 0 live)",
+      "get_custom_audiences (0 audiences)",
+      "get_saved_audiences (0 saved audiences)",
+      "get_insights_adaccount level=adset, 30 days (0 rows)",
+      "get_insights_adaccount level=campaign and level=account, 30 days (0 and 0 rows)",
+      "get_insights_adaccount level=adset, 90 days weekly (0 rows) and 7 days (0 rows)",
+      "estimate_audience_size on the largest targeting group and the interest ad set (2 calls)"
+    ],
+    "google_ads": [
+      "search_term_view, 30 days (906 rows, 820 terms)",
+      "campaign spend, 30 days (9 campaigns with impressions)",
+      "campaign locations (1393 location criteria) and location type (9 campaigns)",
+      "enabled keywords (269)",
+      "audience criteria: ad group (3), campaign (0)",
+      "ad group targeting settings (14 enabled ad groups)",
+      "user lists (15)"
+    ]
+  }
+}

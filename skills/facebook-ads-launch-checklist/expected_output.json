@@ -1,0 +1,349 @@
+{
+  "header": {
+    "account": "Example SaaS ad account",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "campaign": "Engagement test (3-day)",
+    "objective": "OUTCOME_ENGAGEMENT",
+    "planned": "2026-10-06T09:00:00-0400 to 2026-10-13T09:00:00-0400",
+    "run_date": "2026-10-05",
+    "verdict": "NOT READY",
+    "before_switch_on": "Fix the blocker, then tick the sign-off list. This campaign has no conversion goal, so sign-off items 1 to 4 are n/a for now."
+  },
+  "blockers": [
+    {
+      "check": "1.3 Dates",
+      "evidence": "ad set end_time 2026-08-16T09:00:00-0400 and campaign stop_time 2026-08-16T09:00:00-0400: both before the planned start 2026-10-06T09:00:00-0400 and before today (2026-10-05). Switched on as it is, it would not deliver",
+      "fix": "Move the ad set's dates to 2026-10-06T09:00:00-0400 to 2026-10-13T09:00:00-0400; the campaign's dates follow its ad set",
+      "who": "I can do this now"
+    }
+  ],
+  "summary": {
+    "tier_1": {
+      "pass": 4,
+      "fail": 1,
+      "warn": 2,
+      "unknown": 1
+    },
+    "tier_2": {
+      "warn": 2,
+      "unknown": 2,
+      "pass": 3,
+      "n/a": 1
+    },
+    "tier_3": {
+      "warn": 3,
+      "pass": 3,
+      "n/a": 1
+    }
+  },
+  "checklist": {
+    "tier_1": [
+      {
+        "check": "1.1 Account can spend",
+        "result": "pass",
+        "value": "account_status 1 (active), disable_reason 0, a funding source is on file, spend_cap 0 (no cap)",
+        "calls": "A"
+      },
+      {
+        "check": "1.2 The ad's identity can run",
+        "result": "pass",
+        "value": "the creative's Page is one of the 2 Pages the account can promote; its Instagram account is linked",
+        "calls": "E, F"
+      },
+      {
+        "check": "1.3 Dates",
+        "result": "fail",
+        "value": "ad set end_time 2026-08-16T09:00:00-0400 and campaign stop_time 2026-08-16T09:00:00-0400: both before the planned start 2026-10-06T09:00:00-0400 and before today (2026-10-05). Switched on as it is, it would not deliver",
+        "calls": "B, C"
+      },
+      {
+        "check": "1.4 Something will serve",
+        "result": "pass",
+        "value": "1 ad set and 1 ad, all status PAUSED (effective_status PAUSED); none DISAPPROVED or WITH_ISSUES",
+        "calls": "C, D"
+      },
+      {
+        "check": "1.5 Tracking fits the goal",
+        "result": "warn",
+        "value": "optimization_goal POST_ENGAGEMENT needs no pixel, but the account has 0 pixels and 0 custom conversions, so no website conversion data or retargeting audience can build up from this spend",
+        "calls": "C, G"
+      },
+      {
+        "check": "1.6 Budget is above Meta's floor",
+        "result": "warn",
+        "value": "ad set daily_budget 100 cents ($1.00) vs the floor for billing_event IMPRESSIONS: min_daily_budget_imp 100 cents ($1.00) in USD; exactly at the floor, so it will deliver, but slowly",
+        "calls": "A, C, H"
+      },
+      {
+        "check": "1.7 The landing page answers",
+        "result": "unknown",
+        "value": "crawler status-code-checker returned Error: Crawler API error: SEO API returned 400: {'detail': 'Error fetching URL: '} (it failed for every URL, including a neutral test URL, after retries); open the page on a phone before switching on",
+        "calls": "M"
+      },
+      {
+        "check": "1.8 Special ad category",
+        "result": "pass",
+        "value": "what's advertised is a B2B software product, which needs no special ad category; special_ad_categories is []",
+        "calls": "B"
+      }
+    ],
+    "tier_2": [
+      {
+        "check": "2.1 Objective, goal and destination agree",
+        "result": "warn",
+        "value": "objective OUTCOME_ENGAGEMENT, optimization_goal POST_ENGAGEMENT, destination_type ON_POST, but the creative is a link ad with a LEARN_MORE button to the home page. Meta will find people who react and comment, not people who visit. Right if comments are the aim (this campaign was a comment test); for site visits, use a Traffic campaign optimising for LANDING_PAGE_VIEWS. No conversion event to rank: promoted_object has no custom_event_type, which is normal for an engagement goal",
+        "calls": "B, C, E, G"
+      },
+      {
+        "check": "2.2 Enough results to learn",
+        "result": "unknown",
+        "value": "no history: the 90-day account insights by campaign returned 0 rows, so there is no cost per post engagement to divide the $1.00 a day by. Check on day 3 that post engagements are being recorded",
+        "calls": "C, K"
+      },
+      {
+        "check": "2.3 Audience size and targeting",
+        "result": "pass",
+        "value": "countries US, matching the US market named in the request; ages 25-65, all genders (no genders field), nothing narrowed without a reason. Advantage+ audience off: 220,000,000 to 250,000,000 people, far above the size guide for $1 a day",
+        "calls": "C, I"
+      },
+      {
+        "check": "2.4 Exclusions",
+        "result": "n/a",
+        "value": "one ad set, and the account has 0 custom audiences, so there is nothing to exclude or overlap",
+        "calls": "C, I"
+      },
+      {
+        "check": "2.5 Creative specs",
+        "result": "warn",
+        "value": "automatic placements, but the only image is about 1200x680 (landscape, about 1.8:1) with no square or vertical version; primary text is about 140 characters (over 125, so Feeds cut it with \"See more\"); headline about 30 characters (under 40, fine); image status ACTIVE",
+        "calls": "E, J"
+      },
+      {
+        "check": "2.6 Copy reads safely",
+        "result": "pass",
+        "value": "headline, primary text and description read: no personal attributes, no promised results, no before and after, and the button matches what it does. The text names other companies' products in plain words as integrations; that is allowed, provided the image carries none of their logos (on the sign-off list)",
+        "calls": "E"
+      },
+      {
+        "check": "2.7 Landing page speed (mobile)",
+        "result": "unknown",
+        "value": "pagespeed-insights core-web-vitals returned Error: PageSpeed API returned 500: {'detail': 'PageSpeed API request failed: [Errno 104] Connection reset by peer'} (failed for every URL after retries)",
+        "calls": "M"
+      },
+      {
+        "check": "2.8 Landing page matches the ad",
+        "result": "pass",
+        "value": "read with Claude's own web fetch (no crawler call): the page title and main heading share 2 key words with the ad's headline besides the brand name, and name the same product and offer. Quotes are withheld in this anonymised sample",
+        "calls": "E"
+      }
+    ],
+    "tier_3": [
+      {
+        "check": "3.1 Ads to test",
+        "result": "warn",
+        "value": "1 ad in the ad set (3 or more is the usual starting point); fine for a comment test, thin for anything you want to learn from",
+        "calls": "D, E"
+      },
+      {
+        "check": "3.2 UTMs",
+        "result": "warn",
+        "value": "url_tags is empty and the link has no utm_ parameters, so analytics will show these visits as plain Facebook or Instagram referrals",
+        "calls": "E"
+      },
+      {
+        "check": "3.3 Names",
+        "result": "warn",
+        "value": "the campaign name ends \"(3-day)\" and the ad set name ends \"• 3 days\"; after the date move it runs 7 days, so both names would be wrong. The creative still carries a leftover test name (creatives can't be renamed through this skill's fixes; leave it or rename it in Ads Manager)",
+        "calls": "B, C, D"
+      },
+      {
+        "check": "3.4 Placements and Advantage+ audience",
+        "result": "pass",
+        "value": "no publisher_platforms in targeting, so automatic placements; Advantage+ audience off with a wide US 25-65 box, which is fine for an engagement goal",
+        "calls": "C"
+      },
+      {
+        "check": "3.5 Attribution",
+        "result": "n/a",
+        "value": "engagement goal; the ad set returns no attribution_spec",
+        "calls": "C"
+      },
+      {
+        "check": "3.6 Bid strategy",
+        "result": "pass",
+        "value": "LOWEST_COST_WITHOUT_CAP (highest volume, no cap)",
+        "calls": "B, C"
+      },
+      {
+        "check": "3.7 Budget level (CBO or ABO)",
+        "result": "pass",
+        "value": "no daily_budget or lifetime_budget on the campaign, so ad set budget (ABO): $1.00 a day on the ad set; 1 ad set, so the level makes no difference",
+        "calls": "B, C, I"
+      }
+    ]
+  },
+  "other_fixes": [
+    {
+      "check": "1.5 Tracking fits the goal",
+      "fix": "Create a pixel (dataset) in Events Manager, install it on the site with Conversions API, and attach it to this ad account before any conversion campaign",
+      "who": "do this in Events Manager"
+    },
+    {
+      "check": "2.5 Creative specs",
+      "fix": "Add a 1080x1080 or 1080x1350 version of the image (and 1080x1920 for Stories and Reels) and trim the primary text so the point lands in the first 125 characters",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "check": "3.2 UTMs",
+      "fix": "Copy the creative with url_tags and point the ad at the copy",
+      "who": "I can do this now"
+    },
+    {
+      "check": "3.3 Names",
+      "fix": "Rename the campaign to end \"(7-day)\" and the ad set to end \"• 7 days\"",
+      "who": "I can do this now"
+    }
+  ],
+  "sign_off": [
+    {
+      "item": "Conversion event fires once, with value and currency",
+      "where": "Events Manager > Test events",
+      "status": "n/a: engagement goal, no pixel"
+    },
+    {
+      "item": "Conversions API on and deduplicated (shared event_id)",
+      "where": "Events Manager > dataset > Overview",
+      "status": "n/a: no pixel yet"
+    },
+    {
+      "item": "Event match quality for the main event",
+      "where": "Events Manager > Overview",
+      "status": "n/a: no pixel yet"
+    },
+    {
+      "item": "The pixel is on every page and PageView fires, including the landing page",
+      "where": "Meta Pixel Helper, or Events Manager > Test events",
+      "status": "n/a: no pixel on the account yet"
+    },
+    {
+      "item": "The landing page works on a phone: call to action without scrolling, no pop-up over the content, no broken links or images, the form or checkout submits",
+      "where": "the ad's link, on a phone",
+      "status": "to tick (1.7 and 2.7 were unknown, so this is the only landing page check); the ad links to the home page, so there is no form to submit"
+    },
+    {
+      "item": "The ad looks right on a phone: crop, text cut-off, video cover frame, no third-party logos",
+      "where": "the mobile Feed preview from get_ad_preview",
+      "status": "to tick (single image, no video)"
+    },
+    {
+      "item": "EU targeting: payer and beneficiary filled",
+      "where": "Ads Manager > ad set",
+      "status": "n/a: US only"
+    }
+  ],
+  "unknowns": [
+    {
+      "check": "1.7 The landing page answers",
+      "why": "crawler status-code-checker returned Error: Crawler API error: SEO API returned 400: {'detail': 'Error fetching URL: '} (it failed for every URL, including a neutral test URL, after retries); open the page on a phone before switching on"
+    },
+    {
+      "check": "2.2 Enough results to learn",
+      "why": "no history: the 90-day account insights by campaign returned 0 rows, so there is no cost per post engagement to divide the $1.00 a day by. Check on day 3 that post engagements are being recorded"
+    },
+    {
+      "check": "2.7 Landing page speed (mobile)",
+      "why": "pagespeed-insights core-web-vitals returned Error: PageSpeed API returned 500: {'detail': 'PageSpeed API request failed: [Errno 104] Connection reset by peer'} (failed for every URL after retries)"
+    }
+  ],
+  "fix_payloads": [
+    {
+      "fix": "1.3 Dates",
+      "action": "update_adset",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "<adset-id-1>",
+        "start_time": "2026-10-06T09:00:00-0400",
+        "end_time": "2026-10-13T09:00:00-0400"
+      }
+    },
+    {
+      "fix": "3.3 Names, campaign",
+      "action": "update_campaign",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "<campaign-id-1>",
+        "name": "<campaign name> (7-day)"
+      }
+    },
+    {
+      "fix": "3.3 Names, ad set",
+      "action": "update_adset",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "<adset-id-1>",
+        "name": "<ad set name> • 7 days"
+      }
+    },
+    {
+      "fix": "3.2 UTMs, step 1: copy the creative with tracking tags",
+      "action": "create_ad_creative",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "create_ad_creative",
+        "ad_account_id": "act_123456789",
+        "name": "Engagement test ad (UTM)",
+        "object_story_spec": {
+          "page_id": "<page-id-1>",
+          "link_data": {
+            "link": "https://example.com/",
+            "message": "<primary text, unchanged>",
+            "name": "<headline, unchanged>",
+            "description": "<description, unchanged>",
+            "image_hash": "<image-hash-1>",
+            "call_to_action": {
+              "type": "LEARN_MORE"
+            }
+          }
+        },
+        "url_tags": "utm_source=facebook&utm_medium=paid_social&utm_campaign=engagement_test&utm_content=comment_test_ad"
+      }
+    },
+    {
+      "fix": "3.2 UTMs, step 2: point the ad at the copy",
+      "action": "update_ad",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_ad",
+        "ad_account_id": "act_123456789",
+        "ad_id": "<ad-id-1>",
+        "creative_id": "<id returned by step 1>"
+      }
+    }
+  ],
+  "not_offered": [
+    "Switching on: Meta's API here accepts only PAUSED, so you turn the campaign on in Ads Manager after the date fix.",
+    "Budget: $1.00 a day is at the floor; no change unless you want one.",
+    "Objective: changing Engagement to Traffic needs a new campaign."
+  ],
+  "after_launch": [
+    "Day 1: the ad leaves review and starts spending; no delivery error on the ad set.",
+    "Days 2-3: post engagements are recorded; spend paces near $1 a day.",
+    "Day 7: cost per post engagement, and whether comments came in (the aim of this test). Avoid big edits before then."
+  ],
+  "go_deeper": [
+    "Before any conversion campaign: meta-pixel-capi-health-check, if installed (no pixel on this account).",
+    "For site visits instead of comments: facebook-ads-campaign-structure, if installed."
+  ]
+}

@@ -1,0 +1,428 @@
+{
+  "header": {
+    "property": "properties/123456789",
+    "window": "2026-07-13 to 2026-10-04 (12 complete weeks, pulled 2026-10-06)",
+    "activation_event": "unknown: no key event fired in the window",
+    "grade": "not graded",
+    "grade_math": "not graded: 4 of 7 areas are unknown (the rule is no grade at 3 or more)"
+  },
+  "headline": [
+    "Only the marketing site is tracked: the journey is visible up to the pricing page and goes dark at the signup click (calls 3, 4 and 9).",
+    "68.5% of new visitors leave without an engaged visit, and Direct visitors engage at 18% against 61% for the rest (call 5).",
+    "New users read the troubleshooting help page more than any other help page (22 users, against 6 for the next), a sign that setup goes wrong for some of them (call 8)."
+  ],
+  "journey_map": [
+    {
+      "stage": "1. Arrive",
+      "signal": "first_visit",
+      "source": "call 5",
+      "new_users": 530,
+      "step_rate_pct": null,
+      "share_of_new_users_pct": 100.0
+    },
+    {
+      "stage": "2. Engage",
+      "signal": "user_engagement",
+      "source": "call 5",
+      "new_users": 170,
+      "step_rate_pct": 31.5,
+      "share_of_new_users_pct": 31.5
+    },
+    {
+      "stage": "3. Evaluate",
+      "signal": "pricing page",
+      "source": "call 8",
+      "new_users": "at least 61",
+      "step_rate_pct": null,
+      "share_of_new_users_pct": 11.4,
+      "note": "At least, because pricing and demo users can't be added together; 7 new users opened the demo page. No step rate: a visitor can reach pricing without an engaged visit, so the two don't nest."
+    },
+    {
+      "stage": "4. Hand-off",
+      "signal": "not tracked",
+      "source": "calls 8 and 9",
+      "new_users": null,
+      "status": "not tracked",
+      "note": "Signup happens on the app's subdomain (user's answer). No click to it shows up in call 9, because GA4 doesn't treat a link to a subdomain of the same site as outbound, and there is no signup page on the site."
+    },
+    {
+      "stage": "5. Sign up",
+      "signal": "sign_up (key event, never fired)",
+      "source": "calls 1 and 3",
+      "new_users": null,
+      "status": "not tracked"
+    },
+    {
+      "stage": "6. Onboard",
+      "signal": "no step events",
+      "source": "call 3",
+      "new_users": null,
+      "status": "not tracked"
+    },
+    {
+      "stage": "7. Activate and return",
+      "signal": "no activation event",
+      "source": "calls 1, 3 and 10",
+      "new_users": null,
+      "status": "not tracked",
+      "note": "Site-visitor return is in the Early return area: 0.0% in week 1."
+    }
+  ],
+  "fix_first": "Stage 4, Hand-off. It is the first stage that isn't tracked, and every stage after it is dark too, so the first fix is to track it. Among tracked stages the biggest drop is first visit to engaged visit: 68.5% of new users leave without engaging (call 5).",
+  "weekly_new_users": {
+    "source": "call 5: first_visit users summed by first-session week",
+    "weeks": [
+      81,
+      56,
+      18,
+      12,
+      6,
+      16,
+      9,
+      12,
+      8,
+      14,
+      11,
+      290
+    ],
+    "flagged_weeks": "w01, w02, w12: 81, 56, 290 new users, each 3 or more times the median of the other weeks (12)",
+    "steady_weeks": "w03-w11, 110 new users",
+    "engaged_pct_all_weeks": 31.5,
+    "engaged_pct_steady_weeks": 17.0
+  },
+  "scorecard": [
+    {
+      "area": "Measurement",
+      "result": "fail",
+      "source": "calls 1, 3, 4 and 5",
+      "key_number": "0 of 12 key events fired",
+      "why": "The property sees only the marketing site (3 hosts, no app host), so nothing after the signup click is tracked: sign_up, tutorial_begin and tutorial_complete never fired. 12 key events are configured and none fired in the window. Weeks w01, w02, w12 brought 81, 56, 290 new users against a median of 12 for the other weeks, so tracking or traffic quality likely changed around them, and a localhost session reached the property."
+    },
+    {
+      "area": "Hand-off",
+      "result": "unknown",
+      "source": "calls 5, 8 and 9",
+      "key_number": "signup click not recorded",
+      "why": "No signup page on the site and no click to the signup domain in call 9; the 9 outbound clicks went to social profiles (5), listings in AI assistants' app directories (2) and an AI assistant's connector settings page (2). Evaluation pages are reported as information."
+    },
+    {
+      "area": "Onboarding completion",
+      "result": "unknown",
+      "source": "call 3",
+      "key_number": "no step events",
+      "why": "Neither sign_up nor any onboarding step event fired in the window."
+    },
+    {
+      "area": "Activation and time to value",
+      "result": "unknown",
+      "source": "calls 1, 3 and 7",
+      "key_number": "no activation event",
+      "why": "No key event fired, so there is no activation event to measure, and feature adoption can't be read either; call 7 returned 0 rows and call 11 was not run."
+    },
+    {
+      "area": "Early return",
+      "result": "unknown",
+      "source": "call 10",
+      "key_number": "week-1 return 0.0% of site visitors",
+      "why": "Signup isn't tracked, so these are site visitors, not product users: 0 of 240 new visitors in cohorts w01-w11 came back in week 1, and 0 of 210 in week 4. Information only."
+    },
+    {
+      "area": "Segments",
+      "result": "warn",
+      "source": "calls 5 and 6",
+      "key_number": "Direct engages at 18% vs 61%",
+      "why": "The stage to fix isn't tracked, so the deepest tracked step is used (first visit to engaged visit). Direct brings 69% of new users and engages at under half the rate of the other channels; the gap is real (43.0 points against a 8.7-point threshold). The other 5 channels and mobile (26 new users) are too few to compare."
+    },
+    {
+      "area": "Onboarding emails",
+      "result": "fail",
+      "source": "call 12",
+      "key_number": "0 flows",
+      "why": "The connected Klaviyo account has no flows, so no email goes out after signup; the flow report for the last 90 days is empty."
+    }
+  ],
+  "top_fixes": [
+    {
+      "rank": 1,
+      "kind": "tracking",
+      "fix": "Send the product's own events to GA4",
+      "what": "Add the app's host to this property's web stream (or link its stream) and fire sign_up with a method parameter, tutorial_begin and tutorial_complete around setup, and login on return visits. Every later stage depends on this.",
+      "evidence": "Call 4: 3 hosts, all on the marketing site or localhost; call 3: none of these events fired.",
+      "expected_impact": "makes stages 5 to 7 visible, so their drops can be counted and ranked",
+      "effort": "medium: event code in the product",
+      "who": "do this in the product and GA4"
+    },
+    {
+      "rank": 2,
+      "kind": "tracking",
+      "fix": "Record the click on the signup button",
+      "what": "Fire a click event with the button's location on every signup link, or set up cross-domain measurement between the site and the app, so the hand-off from visitor to signup is counted.",
+      "evidence": "Call 9: 9 outbound clicks, none to the signup domain.",
+      "expected_impact": "makes stage 4 visible: the share of visitors who start signing up",
+      "effort": "low: a tag change",
+      "who": "do this in the site's tag setup"
+    },
+    {
+      "rank": 3,
+      "kind": "tracking",
+      "fix": "Pick an activation event, track it, and clean up the key events",
+      "what": "Use the user's candidate (first data source connected and first report run) until it can be tested against week-4 retention, and mark it as a key event once it fires. Of the 12 key events that never fired, keep sign_up (it is in the plan), remove the 4 with test names, and check whether the rest should fire on the site at all.",
+      "evidence": "Call 1: 12 key events configured; call 3: 0 of them fired.",
+      "expected_impact": "gives the report an activation rate, a time to value and a week-1 return for product users",
+      "effort": "medium: one event in the product, then settings in GA4",
+      "who": "do this in GA4; marking the key event can be done here once the event fires"
+    },
+    {
+      "rank": 4,
+      "kind": "drop",
+      "fix": "Separate the Direct visitors who never engage",
+      "users_lost_per_month": 110,
+      "loss_counted_as": "Direct new users who never had an engaged visit, x 30 / 84 days",
+      "what": "Check the Direct visits for automated traffic and add a filter for it and for localhost, so the journey's base counts people. Then recheck the engage rate.",
+      "evidence": "Call 5: 370 Direct new users, 67 engaged (18%) vs 61% for the rest; 300 unengaged Direct users over 84 days is about 110 a month. Call 6: 510 first-visit users on desktop, against 26 on mobile and 1 on tablet. Call 4: a localhost host reached the property.",
+      "expected_impact": "if the check finds automated traffic, takes up to about 110 unengaged Direct 'users' a month out of the base, so every rate after it is read on people",
+      "effort": "low: a filter in GA4",
+      "who": "do this in GA4"
+    },
+    {
+      "rank": 5,
+      "kind": "missing",
+      "fix": "Start a signup-triggered onboarding email flow",
+      "users_lost_per_month": "can't be counted: signup isn't tracked, so it is ranked after the fix whose loss is counted",
+      "what": "A welcome email with one link to the first task, then messages triggered by what the user did or didn't do: no return, no key action, key action done, still inactive after about a week.",
+      "evidence": "Call 12: 0 flows in the connected Klaviyo account.",
+      "expected_impact": "can't be counted until signup is tracked; it goes after every new user who signs up and doesn't return",
+      "effort": "medium: a flow in Klaviyo, plus the signup and activation events sent to it",
+      "who": "do this in Klaviyo; send the signup and activation events to Klaviyo so the triggers and conversions work"
+    }
+  ],
+  "help_pages_read_by_new_users": {
+    "source": "call 8",
+    "rows": [
+      {
+        "type": "troubleshooting",
+        "pages": 1,
+        "users_on_most_read_page": 22,
+        "most_read_page": "https://example.com/docs/page-5"
+      },
+      {
+        "type": "connection guide for one platform",
+        "pages": 22,
+        "platforms": 21,
+        "note": "One platform's guide shows up at two different paths, so there are more pages than platforms. Users on different pages are never added together, so the duplicate doesn't inflate any number.",
+        "users_on_most_read_page": 6,
+        "most_read_page": "https://example.com/docs/page-2"
+      },
+      {
+        "type": "account and workspace setup",
+        "pages": 7,
+        "users_on_most_read_page": 6,
+        "most_read_page": "https://example.com/docs/page-3"
+      },
+      {
+        "type": "list of all connection guides",
+        "pages": 1,
+        "users_on_most_read_page": 5,
+        "most_read_page": "https://example.com/docs/page-4"
+      },
+      {
+        "type": "overview and FAQ",
+        "pages": 5,
+        "users_on_most_read_page": 4,
+        "most_read_page": "https://example.com/docs/page-6"
+      },
+      {
+        "type": "feature guides",
+        "pages": 4,
+        "users_on_most_read_page": 3,
+        "most_read_page": "https://example.com/docs/page-1"
+      },
+      {
+        "type": "plans and billing",
+        "pages": 1,
+        "users_on_most_read_page": 1,
+        "most_read_page": "https://example.com/docs/page-7"
+      }
+    ],
+    "dropped_pages": "2 library pages that only mention signup or pricing in their path, and 1 help path that GA4 returned cut short, so its page can't be told",
+    "reading": "The single most-read help page is the troubleshooting page. Pages can't be added together, so each type shows its most-read page. Onboarding pattern it points to: inside the setup steps, show progress, save partial work and handle the most common connection error in the product, with the fix next to it."
+  },
+  "segments": {
+    "source": "calls 5 and 6",
+    "step": "first visit to engaged visit (deepest tracked step)",
+    "by_first_channel": [
+      {
+        "channel": "Direct",
+        "new_users": 370,
+        "engaged_users": 67,
+        "engaged_pct": 18.2,
+        "share_of_new_users_pct": 69.0
+      },
+      {
+        "channel": "Organic Search",
+        "new_users": 99,
+        "engaged_users": 56,
+        "engaged_pct": 56.6,
+        "share_of_new_users_pct": 18.6
+      },
+      {
+        "channel": "Organic Video",
+        "new_users": 26,
+        "engaged_users": 14,
+        "engaged_pct": "too few users to compare",
+        "share_of_new_users_pct": 4.9
+      },
+      {
+        "channel": "Unassigned",
+        "new_users": 23,
+        "engaged_users": 22,
+        "engaged_pct": "too few users to compare",
+        "share_of_new_users_pct": 4.3
+      },
+      {
+        "channel": "Paid Search",
+        "new_users": 11,
+        "engaged_users": 6,
+        "engaged_pct": "too few users to compare",
+        "share_of_new_users_pct": 2.1
+      },
+      {
+        "channel": "AI Assistant",
+        "new_users": 5,
+        "engaged_users": 3,
+        "engaged_pct": "too few users to compare",
+        "share_of_new_users_pct": 0.9
+      },
+      {
+        "channel": "Referral",
+        "new_users": 1,
+        "engaged_users": 0,
+        "engaged_pct": "too few users to compare",
+        "share_of_new_users_pct": 0.2
+      }
+    ],
+    "direct_vs_rest": {
+      "direct_pct": 18.2,
+      "rest_pct": 61.2,
+      "gap_points": 43.0,
+      "threshold_points": 8.7,
+      "verdict": "real"
+    },
+    "by_device": {
+      "desktop": 510,
+      "mobile": 26,
+      "tablet": 1
+    },
+    "device_verdict": "mobile and tablet under 30 new users: too few to compare"
+  },
+  "early_return_site_visitors": {
+    "source": "call 10",
+    "week_1": {
+      "cohorts": "w01-w11",
+      "cohort_users": 240,
+      "returned": 0,
+      "rate_pct": 0.0
+    },
+    "week_4": {
+      "cohorts": "w01-w08",
+      "cohort_users": 210,
+      "returned": 0,
+      "rate_pct": 0.0
+    },
+    "blank_cell": "GA4 returned 9 for w12 week 1, but that week ends after the window, so it is left blank"
+  },
+  "measurement_plan": [
+    {
+      "event": "sign_up",
+      "params": "method",
+      "stage": "5. Sign up",
+      "key_event": "yes (already configured; it needs to fire)"
+    },
+    {
+      "event": "tutorial_begin",
+      "params": "none",
+      "stage": "6. Onboard",
+      "key_event": "no"
+    },
+    {
+      "event": "tutorial_complete",
+      "params": "none",
+      "stage": "6. Onboard",
+      "key_event": "no"
+    },
+    {
+      "event": "login",
+      "params": "method",
+      "stage": "7. Return",
+      "key_event": "no"
+    },
+    {
+      "event": "the activation event (user's candidate: first data source connected and first report run)",
+      "params": "source type",
+      "stage": "7. Activate",
+      "key_event": "yes, once it fires"
+    },
+    {
+      "event": "a click event on signup buttons",
+      "params": "button location",
+      "stage": "4. Hand-off",
+      "key_event": "no"
+    }
+  ],
+  "onboarding_emails": {
+    "source": "call 12",
+    "flows": 0,
+    "flow_report_rows": 0,
+    "plan": [
+      "started signing up, didn't finish: a link back to the step they left (needs an event when signup starts; none is tracked yet)",
+      "right after signup: welcome and one link to the first task",
+      "signed up, never came back: the one thing to do first",
+      "came back, no key action: why it matters, with a direct link",
+      "key action done: the next most useful thing",
+      "not active after about a week: ask what's in the way and offer help"
+    ]
+  },
+  "personalisation_opportunities": [
+    {
+      "segment": "first channel: Organic Search",
+      "source": "call 5",
+      "number": "99 new users, 56.6% engaged",
+      "tailored_experience": "open the first screen after signup on one concrete task, the activation candidate (connect one data source and run one report), with a short example before any setup form, since visitors from search often need more explanation"
+    },
+    {
+      "segment": "platform they want to connect first",
+      "source": "call 8",
+      "number": "new users read connection guides for 21 different platforms",
+      "tailored_experience": "ask at signup which platform they want to connect first, then open on that platform's connection step with its guide beside it"
+    },
+    {
+      "segment": "device",
+      "source": "call 6",
+      "number": "26 mobile and 1 tablet first-visit users",
+      "tailored_experience": "none yet: too few users to compare, so a separate mobile first run isn't justified by this data"
+    },
+    {
+      "segment": "first channel: Direct",
+      "source": "call 5",
+      "number": "370 new users, 18.2% engaged",
+      "tailored_experience": "none yet: check it for automated traffic first (fix 4); a segment that may not be people isn't worth tailoring"
+    }
+  ],
+  "onboarding_model": "Self-serve, with an assisted option at the setup step (the user described a self-serve product; help-page reading points to setup as the hard part).",
+  "fixes_offered": {
+    "source": "calls 2 and 3",
+    "offered": [],
+    "why_none": "create_key_event and create_audience are offered only for events that fire. Neither the signup event nor an activation event fired, and the 5 existing audiences include none for an onboarding stage. Rerun after fixes 1-3 are live and the skill will offer the key event and a 'signed up, not activated' audience."
+  },
+  "unknowns": [
+    "Hand-off, onboarding completion, activation and time to value: not tracked on this property.",
+    "Which first-week action predicts staying: needs user-level data (BigQuery export or the product's own data); neither is connected.",
+    "A custom event named after the brand fired for 390 new users; its stage is unclear, so it was left off the map and the user is asked what it records (call 5)."
+  ],
+  "go_deeper": [
+    "measurement/conversion-tracking-auditor: check that the events in the measurement plan fire and count as key events",
+    "cro/signup-flow-cro: the signup form once the hand-off is tracked",
+    "marketing/email-sequence-builder: copy for the onboarding emails",
+    "measurement/ga4-audience-retention (if installed): retention by cohort once product events flow"
+  ]
+}

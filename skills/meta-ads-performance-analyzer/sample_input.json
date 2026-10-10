@@ -1,0 +1,32 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-05 (account time zone) through the InsightfulPipe MCP; campaign and ad set names are replaced by their objective. This account has had almost no Meta spend, so the sample shows the skill's empty-account path rather than a full analysis.",
+  "request": "Hey Claude, I just added the \"meta-ads-performance-analyzer\" skill. Can you analyze my Meta Ads account for the last 28 days and tell me what's working, what's broken and what to do?",
+  "account": {
+    "name": "Our own Meta ad account (anonymised)",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "status": "active"
+  },
+  "inputs_from_user": {
+    "target_cost_per_result": "not given; the default is the account's own cost per result over the current window, and there were no results",
+    "target_roas": "not given; no ad set optimises for purchases",
+    "result_definition": "default: each ad set's own optimisation event"
+  },
+  "windows": {
+    "current": "2026-09-07 to 2026-10-04",
+    "previous": "2026-08-10 to 2026-09-06",
+    "last_7_days": "2026-09-28 to 2026-10-04",
+    "change_history": "2026-08-31 to 2026-10-05"
+  },
+  "data_pulled": [
+    "get_adaccount (currency, time zone, status)",
+    "get_campaigns (2 campaigns listed)",
+    "get_adsets (2 ad sets with goals, bid strategies, budgets and targeting)",
+    "get_ads (2 ads, to tie edits in the change history to their ad sets)",
+    "get_insights_adaccount call A, ad set level, current window with 1d_click / 7d_click / 1d_view (2 rows, spend 0.00)",
+    "get_activities_adaccount (22 events)",
+    "get_insights_adaccount, campaign level, date_preset maximum: the empty-account lifetime call (2 rows)"
+  ],
+  "calls_skipped": "Calls B to E (weekly ads, daily ad sets, last 7 days, six breakdowns) and the lead form calls, because the current window spent nothing.",
+  "calls": 7
+}

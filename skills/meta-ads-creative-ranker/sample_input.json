@@ -1,0 +1,43 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-06 through the InsightfulPipe MCP on our own Meta ad account; ad copy is described by type instead of quoted. The account had no delivery in the last 30 or 90 days, so the run fell back to lifetime data, and every ad is 'too early': this sample shows the skill's honest empty result, not a ranking.",
+  "request": "Hey Claude, I just added the \"meta-ads-creative-ranker\" skill. Rank my Meta ads from the last 30 days and tell me which ones to keep, scale and switch off.",
+  "account": {
+    "name": "Example SaaS",
+    "ad_account_id": "act_123456789",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "account_status": 1
+  },
+  "target": "not given; with no results in any window there is no account average to fall back on",
+  "result_counted": "link_click (both ads optimise for LINK_CLICKS)",
+  "windows_tried": [
+    {
+      "date_preset": "last_30d",
+      "ad_rows": 0
+    },
+    {
+      "date_preset": "last_90d",
+      "ad_rows": 0
+    },
+    {
+      "date_preset": "maximum",
+      "ad_rows": 2,
+      "since": "2025-11-01",
+      "until": "2026-10-05"
+    }
+  ],
+  "data_pulled": [
+    "get_adaccount (currency, time zone, status)",
+    "get_insights_adaccount level=ad: last_30d 0 rows, last_90d 0 rows, maximum 2 rows",
+    "get_ads (2 ads listed, none of them the 2 ads that delivered)",
+    "get_ad_creatives_by_ad for each of the 2 ads that delivered",
+    "get_ad_videos (13 videos with a length)",
+    "get_ad_preview for one ad: an iframe returned"
+  ],
+  "also_run_to_test_the_skill_not_used_in_report": [
+    "get_ad_creatives (account-wide: 210 creatives, test creatives included; the per-ad call covers 2 ads)",
+    "get_insights_adaccount with body_asset and title_asset breakdowns (maximum): 2 and 2 rows",
+    "get_insights_adaccount level=ad last_7d: 0 rows",
+    "The account-wide creatives call is the path for more than 25 ads; the breakdowns and the 7-day pull belong to the pattern and red-flag steps, which the stop rule skips when nothing spent in 30 or 90 days."
+  ]
+}

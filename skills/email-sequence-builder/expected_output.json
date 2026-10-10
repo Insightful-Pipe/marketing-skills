@@ -1,0 +1,395 @@
+{
+  "header": {
+    "account": "Example SaaS (Klaviyo)",
+    "job": "Onboarding (product sign-up)",
+    "trigger": "Added to List: Email List (the Subscribed to List metric shows the list is tracked)",
+    "goal": "connect a calendar and share the booking link",
+    "data_read": "2026-10-06",
+    "product": "Cal.com, from its public home page (neutral public example)"
+  },
+  "fix_first": [
+    {
+      "check": "Postal address in every commercial email",
+      "action": "Every draft's footer prints {{ organization.full_address }}."
+    },
+    {
+      "check": "Working unsubscribe",
+      "action": "Every draft's footer has {% unsubscribe %}."
+    },
+    {
+      "check": "Honest sender and subject",
+      "action": "Send from, and reply to, a mailbox someone reads (for example a hello@ or team address on the same domain)."
+    }
+  ],
+  "account_readiness": [
+    {
+      "item": "Sender and address",
+      "source": "get_account_details",
+      "found": "Sender name is the brand. Sender email is a developer mailbox on the brand's own domain (address withheld in this sample). A postal address is set. The website URL is saved with http://, not https://. Industry: Software / SaaS.",
+      "means": "The footer can print the saved address. Replies to a developer mailbox are easy to miss; use a monitored address before launch."
+    },
+    {
+      "item": "Triggers tracked",
+      "source": "get_metrics",
+      "found": "27 metrics. Subscribed to List: yes (Klaviyo); Started Checkout: no; Viewed Product: no; Added to Cart: no; Placed Order: yes (API); Active on Site: yes (API). Custom product events: 0 real, 3 test-named (not usable).",
+      "means": "A flow triggered by joining Email List can start the sequence today (Subscribed to List is tracked). No product event (for example a calendar connected) is tracked, so emails can't skip people who already took a step. Placed Order exists (created through the API); whether real orders fire it wasn't checked, and it isn't this sequence's goal."
+    },
+    {
+      "item": "Existing flows",
+      "source": "get_flows",
+      "found": "0 flows.",
+      "means": "Nothing to duplicate or rewrite: this is a new flow."
+    },
+    {
+      "item": "Baseline from past sends",
+      "source": "get_flow_report (90 days), get_campaigns, get_campaign_report (365 days)",
+      "found": "Flow report: 0 rows. Campaign report: 0 rows. 3 email campaigns, all 3 in Draft and test-named.",
+      "means": "No baseline yet: the account has never sent. Timing uses the skill's defaults, and no performance target is published."
+    },
+    {
+      "item": "Entry list and consent",
+      "source": "get_lists, get_segments",
+      "found": "6 lists: Preview List, Email List, Text Messaging List (Klaviyo defaults) plus 3 test lists. Email List is single opt-in. 0 segments.",
+      "means": "Email List is the entry list. Single opt-in is fine under US rules; for EU, UK or Canadian sign-ups, switch it to double opt-in or keep a consent record. With no segments, there is nothing to exclude yet."
+    },
+    {
+      "item": "Reusable template",
+      "source": "get_email_templates",
+      "found": "7 templates, 7 test-named; 0 contain an unsubscribe link and 0 the postal address.",
+      "means": "No house template to reuse. Every draft below carries its own footer with the unsubscribe tag and the address tag."
+    },
+    {
+      "item": "Incentives",
+      "source": "get_coupons",
+      "found": "4 coupons, 4 of them test or QA coupons.",
+      "means": "No real coupon, so no email offers a discount."
+    }
+  ],
+  "sequence_map": [
+    {
+      "email": 1,
+      "day": 0,
+      "name": "Welcome: connect your calendar",
+      "purpose": "Get the one first step done: connect a calendar.",
+      "filter": "Everyone who joins Email List."
+    },
+    {
+      "email": 2,
+      "day": 1,
+      "name": "Quick win: set your hours and limits",
+      "purpose": "Get availability set so the first booking lands at a good time.",
+      "filter": "Everyone still in the flow."
+    },
+    {
+      "email": 3,
+      "day": 3,
+      "name": "Core feature: your booking link",
+      "purpose": "Get the booking link shared once.",
+      "filter": "Everyone still in the flow."
+    },
+    {
+      "email": 4,
+      "day": 6,
+      "name": "Use case: fewer no-shows",
+      "purpose": "Turn on reminders, the feature that keeps booked meetings happening.",
+      "filter": "Everyone still in the flow."
+    },
+    {
+      "email": 5,
+      "day": 10,
+      "name": "Proof: it fits the tools you use",
+      "purpose": "Answer 'will it work with my setup?' and bring back anyone who stalled.",
+      "filter": "Everyone still in the flow."
+    },
+    {
+      "email": 6,
+      "day": 14,
+      "name": "Progress check: is your link out there?",
+      "purpose": "Get the link shared, or get a reply saying what's in the way.",
+      "filter": "Everyone still in the flow (no skip rule is possible until a product event is tracked)."
+    }
+  ],
+  "calendar": [
+    {
+      "week": 1,
+      "days": "0-6",
+      "emails": [
+        "1 (day 0)",
+        "2 (day 1)",
+        "3 (day 3)",
+        "4 (day 6)"
+      ]
+    },
+    {
+      "week": 2,
+      "days": "7-13",
+      "emails": [
+        "5 (day 10)"
+      ]
+    },
+    {
+      "week": 3,
+      "days": "14-20",
+      "emails": [
+        "6 (day 14)"
+      ]
+    }
+  ],
+  "exit_rule": "Flow filter: none possible on the goal yet, because no product event is tracked. Once the app sends events such as 'Connected Calendar' and 'Shared Booking Link' to Klaviyo, add the filter 'Connected Calendar zero times since starting this flow' to emails 1 and 2 and 'Shared Booking Link zero times since starting this flow' to emails 3 and 6.",
+  "left_out": "No upgrade or plan email: the goal is activation, and prices were not asked for. Add one at the end when the plan question matters.",
+  "emails": [
+    {
+      "email": 1,
+      "name": "Welcome: connect your calendar",
+      "send": "immediately after joining Email List",
+      "goal": "Get the one first step done: connect a calendar.",
+      "filter": "Everyone who joins Email List.",
+      "subject_options": {
+        "benefit": "No more double bookings, starting now",
+        "question": "Which calendar should we check first?",
+        "specific": "Step 1 of 3: connect your calendar"
+      },
+      "preview": "Connect it once and booked times stop clashing with the rest of your day.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nThanks for signing up. Getting set up takes three steps, and the first one does most of the work: connect your calendar.\n\nOnce it's connected, we check your existing events before offering any time, so nobody can book you on top of something you already have.\n\nSteps 2 and 3, setting your hours and sharing your booking link, come in the next emails.",
+      "cta": {
+        "button": "Connect my calendar",
+        "to": "the calendar settings page in the app"
+      },
+      "ps": "Stuck? Reply to this email and tell us where.",
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "three steps (connect, hours, share the link)": "the user's goal (a connected calendar and a shared booking link), with the hours step from email 2",
+        "connect first, no double bookings": "https://cal.com/ (home page), 'How it works', step 'Connect your calendar': 'We'll handle all the cross-referencing, so you don't have to worry about double bookings.'"
+      },
+      "notes": "Keep the PS only once replies go to a mailbox someone reads (see the compliance check)."
+    },
+    {
+      "email": 2,
+      "name": "Quick win: set your hours and limits",
+      "send": "day 1 after joining",
+      "goal": "Get availability set so the first booking lands at a good time.",
+      "filter": "Everyone still in the flow.",
+      "subject_options": {
+        "benefit": "Keep your weekends yours",
+        "question": "How many meetings is too many?",
+        "specific": "Set your hours and a daily meeting cap"
+      },
+      "preview": "Set your working hours, buffers and a cap on meetings per day.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nBefore you share anything, tell us when you're actually free.\n\nSet your working hours, block off weekends, and add buffers before and after meetings so you get a break between them. You can also cap how many meetings people can book per day, week or month.\n\nDo it now and your first booking lands at a time that suits you.",
+      "cta": {
+        "button": "Set my availability",
+        "to": "the availability page in the app"
+      },
+      "ps": null,
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "hours, weekends, buffers": "https://cal.com/ (home page): 'Want to block off weekends? Set up any buffers? We make that easy.'",
+        "limits per day, week or month": "https://cal.com/ (home page): 'Set daily, weekly or monthly limits and add buffers around your events'"
+      },
+      "notes": null
+    },
+    {
+      "email": 3,
+      "name": "Core feature: your booking link",
+      "send": "day 3 after joining",
+      "goal": "Get the booking link shared once.",
+      "filter": "Everyone still in the flow.",
+      "subject_options": {
+        "benefit": "Your booking link, ready to share",
+        "question": "Where do people ask you for a meeting?",
+        "specific": "Put your booking link in your email signature"
+      },
+      "preview": "Make it short, then add it where people already ask for your time.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nYour booking link is how people pick a time without the back-and-forth. Make it short and easy to remember, then put it where people already ask for your time:\n\n- your email signature\n- your website, as an embedded booking page\n- your social profiles\n\nThe next person who asks \"when are you free?\" gets a link instead of a list of times.",
+      "cta": {
+        "button": "Customise my booking link",
+        "to": "the booking link settings in the app"
+      },
+      "ps": "To embed it on your site, copy the embed code from the same page.",
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "no back-and-forth": "https://cal.com/ (home page) FAQ: 'eliminate booking back-and-forth'",
+        "short custom link": "https://cal.com/ (home page): 'Customize your booking link so it’s short and easy to remember for your bookers.'",
+        "embed": "https://cal.com/ (home page): 'Embed your booking page anywhere with just a few clicks.'"
+      },
+      "notes": null
+    },
+    {
+      "email": 4,
+      "name": "Use case: fewer no-shows",
+      "send": "day 6 after joining",
+      "goal": "Turn on reminders, the feature that keeps booked meetings happening.",
+      "filter": "Everyone still in the flow.",
+      "subject_options": {
+        "benefit": "Fewer no-shows, no extra work",
+        "question": "Did your last meeting start on time?",
+        "specific": "Reminders by email or text, set once"
+      },
+      "preview": "Send reminders and follow-ups automatically for every booking.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nA booked meeting only helps if the other person shows up.\n\nTurn on reminders and every booking gets an email or text before it starts. You can also send automatic follow-ups to collect anything you need before the call.\n\nSet it up once and it runs for every meeting after.",
+      "cta": {
+        "button": "Turn on reminders",
+        "to": "the workflows or reminders page in the app"
+      },
+      "ps": null,
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "email or text reminders, automatic follow-ups": "https://cal.com/ (home page): 'Easily send sms or meeting reminder emails about bookings, and send automated follow-ups'"
+      },
+      "notes": null
+    },
+    {
+      "email": 5,
+      "name": "Proof: it fits the tools you use",
+      "send": "day 10 after joining",
+      "goal": "Answer 'will it work with my setup?' and bring back anyone who stalled.",
+      "filter": "Everyone still in the flow.",
+      "subject_options": {
+        "benefit": "Works with the apps you already use",
+        "question": "Zoom, Meet or Teams?",
+        "specific": "100+ apps, 65+ languages"
+      },
+      "preview": "Video calls, time zones and the tools your team already works in.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nIt's used by over a million people. Here's how it fits around the tools you already have:\n\n- Meet on Zoom, Google Meet, Microsoft Teams or the built-in video, or by phone.\n- Time zones are detected for you, so nobody turns up an hour late.\n- It connects to Slack, Salesforce and 100+ more apps.\n- Bookers can use it in 65+ languages.",
+      "cta": {
+        "button": "Browse the apps",
+        "to": "the app directory in the product"
+      },
+      "ps": "Haven't connected your calendar yet? It's still the step that makes everything else work.",
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "over a million people": "https://cal.com/ (home page) FAQ: 'used by over a million people to eliminate booking back-and-forth'",
+        "video options": "https://cal.com/ (home page) FAQ: 'video calls through Zoom, Google Meet, Microsoft Teams, and Cal Video'",
+        "or by phone": "https://cal.com/ (home page), 'How it works', step 'Choose how to meet': 'It could be a video chat, phone call, or a walk in the park!'",
+        "time zones": "https://cal.com/ (home page) FAQ: 'calendar syncing, timezone detection, reminders, and video calls'",
+        "100+ apps": "https://cal.com/ (home page): 'Connects to Slack, Salesforce, and 100+ more.'",
+        "65+ languages": "https://cal.com/ (home page): 'Talk to anyone around the globe with support for 65+ languages.'"
+      },
+      "notes": "The home page carries customer quotes, but they name people; none is used without the user's go-ahead."
+    },
+    {
+      "email": 6,
+      "name": "Progress check: is your link out there?",
+      "send": "day 14 after joining",
+      "goal": "Get the link shared, or get a reply saying what's in the way.",
+      "filter": "Everyone still in the flow (no skip rule is possible until a product event is tracked).",
+      "subject_options": {
+        "benefit": "Your first booking is one link away",
+        "question": "Anything stopping you?",
+        "specific": "Two weeks in: one link to share"
+      },
+      "preview": "If something got in the way, hit reply and tell us what it was.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nIt's been two weeks since you signed up. If your calendar is connected and your link is out there, you're set; the rest is optional.\n\nIf not, the shortest path is:\n1. Connect your calendar.\n2. Set your hours.\n3. Share your link once.\n\nIf something stopped you, reply and tell us what it was.",
+      "cta": {
+        "button": "Finish my setup",
+        "to": "the setup checklist or dashboard in the app"
+      },
+      "ps": null,
+      "footer": "Footer: {{ organization.name }}, {{ organization.full_address }} · {% unsubscribe %}",
+      "sources": {
+        "three setup steps (connect, hours, share the link)": "the same three steps as email 1, from the user's goal",
+        "connect your calendar": "https://cal.com/ (home page): 'We'll handle all the cross-referencing, so you don't have to worry about double bookings.'",
+        "set your hours": "https://cal.com/ (home page): 'Want to block off weekends? Set up any buffers? We make that easy.'",
+        "share your link": "https://cal.com/ (home page): 'Customize your booking link so it’s short and easy to remember for your bookers.'"
+      },
+      "notes": "Without a product event this email also reaches people who finished setup; the first paragraph is written for both groups. Ask for replies only once they go to a mailbox someone reads."
+    }
+  ],
+  "compliance_check": [
+    {
+      "check": "Postal address in every commercial email",
+      "result": "fix",
+      "evidence": "Address set in the account; 0 of 7 templates print it.",
+      "action": "Every draft's footer prints {{ organization.full_address }}."
+    },
+    {
+      "check": "Working unsubscribe",
+      "result": "fix",
+      "evidence": "0 of 7 templates contain an unsubscribe link.",
+      "action": "Every draft's footer has {% unsubscribe %}."
+    },
+    {
+      "check": "Honest sender and subject",
+      "result": "fix",
+      "evidence": "Sender name is the brand; sender email is a developer mailbox. Every subject line describes its email.",
+      "action": "Send from, and reply to, a mailbox someone reads (for example a hello@ or team address on the same domain)."
+    },
+    {
+      "check": "Spam-style content",
+      "result": "pass",
+      "evidence": "18 subject lines and 6 preview lines: 0 with spam-style wording ('free', 'act now', '!!', money claims) and 0 fake 'Re:' or 'Fwd:' subjects. Subjects, previews and bodies: 0 ALL-CAPS words. The drafts are text with one link each and no images, so the text-to-image balance holds.",
+      "action": null
+    },
+    {
+      "check": "Marked as an ad",
+      "result": "pass",
+      "evidence": "Recipients opted in to Email List, and the emails are setup help, not promotions.",
+      "action": null
+    },
+    {
+      "check": "Consent for the region",
+      "result": "unknown",
+      "evidence": "Email List is single opt-in; where sign-ups live wasn't given.",
+      "action": "If any sign-ups are in the EU, UK or Canada, switch Email List to double opt-in or keep a record of each consent."
+    },
+    {
+      "check": "Opt-outs honoured",
+      "result": "unknown",
+      "evidence": "Not readable through the API.",
+      "action": "Confirm in Klaviyo that unsubscribes are suppressed at once."
+    },
+    {
+      "check": "Bulk-sender rules",
+      "result": "unknown",
+      "evidence": "Domain authentication (SPF, DKIM, DMARC) isn't readable through the API.",
+      "action": "Check the sending domain is authenticated in Klaviyo before volume grows."
+    }
+  ],
+  "build_steps": [
+    "In Klaviyo, create a flow with the trigger 'Added to List: Email List'.",
+    "Add the 6 emails in order with time delays of 1 day, 2 days, 3 days, 4 days, 4 days between them (email 1 sends at once).",
+    "Pick each email's saved template, or paste the copy into Klaviyo's editor with the footer shown.",
+    "Set the sender and reply-to to a mailbox someone reads.",
+    "Leave the flow in draft, preview every email, send yourself a test from Klaviyo, then set it live."
+  ],
+  "measurement": {
+    "per_email": "click rate on the setup link, unsubscribe rate and spam complaints; opens are context only",
+    "goal": "not measurable in Klaviyo until the app sends the activation events above; until then, clicks on the setup links stand in",
+    "judge_after": "500 delivered per email or 2 weeks, whichever is later",
+    "target": "none published: the account has no sending history; set the baseline from the first 2 weeks",
+    "first_test": "email 1, subject A (benefit) against subject C (specific step), split 50/50",
+    "winner_rule": "the subject with the higher click rate once each side has at least 500 delivered and at least 2 weeks have passed; until both are true, no winner is called and both subjects keep sending"
+  },
+  "unknowns": [
+    "Where sign-ups live, so which consent rule applies.",
+    "Whether the sending domain is authenticated and how opt-outs are handled: not readable through the API.",
+    "Whether the Placed Order metric receives real orders: the metric exists, but its events weren't pulled."
+  ],
+  "actions_offered": [
+    {
+      "action": "create_email_template",
+      "status": "not run",
+      "body": {
+        "data": {
+          "type": "template",
+          "attributes": {
+            "name": "Onboarding 1 - Welcome: connect your calendar",
+            "editor_type": "CODE",
+            "html": "<html><body><p>Hi {{ first_name|default:'there' }},</p><p>Thanks for signing up. ...</p><p><a href=\"<CALENDAR_SETTINGS_URL>\">Connect my calendar</a></p><p style=\"font-size:12px\">{{ organization.name }}, {{ organization.full_address }}<br>{% unsubscribe %}</p></body></html>"
+          }
+        }
+      },
+      "note": "One such call per email (6 in total), each with that email's full html. Shown for email 1; the body is shortened here."
+    },
+    {
+      "action": "create_campaign",
+      "status": "not offered",
+      "note": "This is a flow, not a one-off campaign, so no draft campaign is needed."
+    }
+  ],
+  "go_deeper": [
+    "klaviyo-flow-auditor: the account has 0 flows; check which other core flows are missing",
+    "onboarding-cro: the product steps the emails point to",
+    "email-campaign-analyst: once the flow has sent, judge it on clicks and unsubscribes"
+  ]
+}

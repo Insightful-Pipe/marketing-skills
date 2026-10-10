@@ -1,0 +1,41 @@
+{
+  "request": "Hey Claude, I just added the \"referral-program\" skill. Design a referral or affiliate program for us from our own data. Sign-ups are what we'd pay on. A customer brings in about $1,000 in the first year and our gross margin is about 80%.",
+  "business": "A B2B SaaS (anonymised)",
+  "inputs": {
+    "program_type_wanted": "not sure",
+    "business_model": "SaaS",
+    "reward_conversion": "sign_up",
+    "first_year_revenue_per_customer_usd": 1000,
+    "gross_margin_pct": 80,
+    "current_cac": "not given",
+    "brand_terms": [
+      "[brand]"
+    ],
+    "rewards_budget": "not given"
+  },
+  "run_date": "2026-10-06",
+  "accounts": {
+    "workspace_id": 1,
+    "brand_id": 1,
+    "ga4_property": "properties/123456789",
+    "search_console": "https://example.com/",
+    "klaviyo": "connected",
+    "google_ads": "connected, but it belongs to a different business (a client), so it is left out"
+  },
+  "date_ranges": {
+    "ga4_and_klaviyo": "2026-07-08 to 2026-10-05 (last 90 days)",
+    "search_console": "2026-07-06 to 2026-08-19 and 2026-08-20 to 2026-10-03 (two 45-day halves ending 3 days ago)"
+  },
+  "data_pulled": [
+    "GA4 get_report: sessions, new users, engaged sessions, key events by sessionDefaultChannelGroup",
+    "GA4 get_report: same metrics by sessionSource and sessionMedium",
+    "GA4 get_report: users, sessions, engaged sessions, key events by firstUserDefaultChannelGroup",
+    "GA4 get_report: landingPagePlusQueryString filtered to referral parameters",
+    "GA4 get_report: eventName counts; list_key_events; list_custom_dimensions",
+    "GA4 get_report: orderCoupon transactions and revenue",
+    "Search Console search_analytics by query for each 45-day half, row_limit 25000",
+    "Klaviyo get_flows, get_flow_report (last_90_days), get_lists, get_segments, get_coupons"
+  ],
+  "calls": 15,
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Third-party referring sites other than youtube.com are described by type. First-year revenue and margin are the example request's input, not account data."
+}

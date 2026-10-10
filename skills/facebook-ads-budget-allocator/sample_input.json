@@ -1,0 +1,31 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-05 through the InsightfulPipe MCP; campaign names are replaced by their objective. This account has had almost no Meta spend, so the sample shows the skill's empty-account path rather than a reallocation.",
+  "request": "Hey Claude, I just added the \"facebook-ads-budget-allocator\" skill. Look at my Meta ad account and tell me where to move budget, and how fast.",
+  "account": {
+    "name": "Our own Meta ad account (anonymised)",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "status": "active"
+  },
+  "inputs_from_user": {
+    "target_cost_per_result": "not given; the default is the account's own 30-day cost per result, and there were no results",
+    "budget_plan": "not given, so hold",
+    "must_run_campaigns": "none",
+    "customer_audiences": "not asked: the account has no custom audiences"
+  },
+  "windows": {
+    "current": "2026-09-05 to 2026-10-04",
+    "previous": "2026-08-06 to 2026-09-04",
+    "budget_edits": "2026-09-21 to 2026-10-05"
+  },
+  "data_pulled": [
+    "get_adaccount (currency, time zone, status)",
+    "get_campaigns (2 campaigns listed)",
+    "get_adsets (2 ad sets with budgets, goals, billing events and targeting)",
+    "get_minimum_budgets (row for USD)",
+    "get_insights_adaccount at ad set level: current window (0 rows), previous window (0 rows), and date_preset maximum (2 rows) for the empty-account rule",
+    "get_custom_audiences (0 audiences)",
+    "get_activities_adaccount (22 events in the last 14 days)"
+  ],
+  "calls": 9
+}

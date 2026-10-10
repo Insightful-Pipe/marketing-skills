@@ -1,0 +1,56 @@
+{
+  "note": "Real run on 2026-10-06 through the InsightfulPipe MCP on a client Google Ads account, anonymised: firm, attorney, state, city, phone and directory names replaced, identifying counts shown as N+, state-specific deadlines and fine amounts shown as N, ids removed. Ad metrics are unrounded counts; no account spend is shown.",
+  "request": "Hey Claude, I just added the \"marketing-psychology\" skill. Which persuasion angles actually work on my Google Ads audience, and do my landing pages use them?",
+  "account": {
+    "name": "A US criminal and traffic defense law firm",
+    "platform": "Google Ads"
+  },
+  "date_range": "2026-09-06 to 2026-10-05",
+  "behaviour_to_change": "a call, text or case-evaluation request (the account's counted conversions)",
+  "brand_terms": "the firm's name; the Brand campaign is left out",
+  "location_words": "the state name, shown as [State]",
+  "data_pulled": [
+    {
+      "call": "google-ads gaql on ad_group_ad_asset_view (A1)",
+      "result": "281 rows; 247 in non-brand campaigns, 83 distinct lines (near-duplicate variants merged); performance_label values: NOT_APPLICABLE"
+    },
+    {
+      "call": "google-ads gaql on ad_group_ad (A2)",
+      "result": "19 live ads, 17 non-brand with 9,109 impressions"
+    },
+    {
+      "call": "google-ads gaql on landing_page_view (A3)",
+      "result": "20 non-brand rows (URL by campaign) with clicks, 9 distinct pages; top 3 by clicks read"
+    },
+    {
+      "call": "dataforseo onpage_instant_pages with the SKILL.md page script, enable_javascript true",
+      "paid": true,
+      "result": [
+        {
+          "page": "https://www.example.com/traffic-ticket-attorney/",
+          "attempts": [
+            "status 403, broken",
+            "status 200, html"
+          ]
+        },
+        {
+          "page": "https://www.example.com/criminal-defense-attorney/",
+          "attempts": [
+            "status 200, html"
+          ]
+        },
+        {
+          "page": "https://www.example.com/dui-attorney/",
+          "attempts": [
+            "status 200, html"
+          ]
+        }
+      ]
+    },
+    {
+      "call": "facebook-ads",
+      "result": "not used: the business has no Meta ad account connected"
+    }
+  ],
+  "paid_calls": 4
+}

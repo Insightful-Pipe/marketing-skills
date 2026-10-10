@@ -1,0 +1,37 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly.",
+  "request": "Hey Claude, I just added the \"retargeting-sequence-designer\" skill. Can you design a retargeting sequence that brings back visitors who didn't convert? We're a B2B SaaS and want to run it on Meta and Google, and check it against our Klaviyo emails.",
+  "business": "Example SaaS, a B2B software company (self-serve sign-up and demo booking)",
+  "answers_to_setup_questions": {
+    "conversion": "not given, so the GA4 key events are used (sign-up and demo booking)",
+    "buying_cycle": "not given, so the SaaS default of 30 days is used",
+    "offers": "none confirmed",
+    "platforms": "Meta and Google Ads, as asked"
+  },
+  "date_ranges": {
+    "performance": "2026-09-06 to 2026-10-05",
+    "pool_windows": {
+      "7d": "2026-09-29 to 2026-10-05",
+      "30d": "2026-09-06 to 2026-10-05",
+      "90d": "2026-07-08 to 2026-10-05"
+    }
+  },
+  "sources": {
+    "google-analytics": "one GA4 property",
+    "facebook-ads": "one Meta ad account",
+    "google-ads": "two Google Ads accounts are linked to the GA4 property; the connected one is a test account (by its name in the account list), the other isn't connected",
+    "klaviyo": "one Klaviyo account"
+  },
+  "data_pulled": [
+    "list_key_events (12 key events)",
+    "events, 90 days (8 event names fired)",
+    "get_report by date, 30 days (24 days with traffic)",
+    "pages, 30 days (150 paths)",
+    "get_report with dimensionFilter and no dimensions (unique people): 6 page-group pools over 30 days, and 3 tier pools over 7, 30 and 90 days (15 calls)",
+    "list_audiences (5 audiences)",
+    "list_google_ads_links (2 links)",
+    "Meta get_pixels (0), get_custom_audiences (0), get_campaigns, get_adsets (2), get_insights_adaccount (ad set 30 days, account 90 days)",
+    "Google Ads gaql on the connected linked account: user_list (48 lists) and ad_group_audience_view, 30 days (0 rows)",
+    "Klaviyo get_flows (0), get_flow_report (30 days, 0 rows), get_metrics (27 metrics)"
+  ]
+}

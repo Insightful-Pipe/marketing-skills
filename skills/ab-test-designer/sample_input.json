@@ -1,0 +1,79 @@
+{
+  "request": "Two ads have been running side by side in our Criminal Defense ad group. Over the last 90 days, did one of them really win? Then design the next test for that ad group.",
+  "mode": [
+    "read out",
+    "design"
+  ],
+  "account": {
+    "platform": "google-ads",
+    "account": "A US criminal and traffic defense law firm",
+    "currency": "USD"
+  },
+  "ad_group": {
+    "campaign": "Criminal Defense",
+    "ad_group": "Criminal Defense",
+    "bidding": "MAXIMIZE_CONVERSIONS",
+    "ad_rotation": "not set (Google default: optimise)"
+  },
+  "date_ranges": {
+    "readout": {
+      "start": "2026-07-08",
+      "end": "2026-10-05",
+      "days": 90
+    },
+    "design_volume": {
+      "start": "2026-09-08",
+      "end": "2026-10-05",
+      "days": 28
+    }
+  },
+  "defaults_used": {
+    "primary_metric": "click-through rate (too few conversions to test conversion rate, see sizing)",
+    "mde": "smallest relative lift that fits in 8 weeks",
+    "confidence": "95%, two-sided",
+    "power": "80%"
+  },
+  "data_pulled": [
+    {
+      "call": "gaql FROM experiment / experiment_arm",
+      "rows": 0,
+      "used_for": "controlled experiments (none in this account)"
+    },
+    {
+      "call": "gaql FROM ad_group (rotation, bidding)",
+      "rows": 14,
+      "used_for": "controlled vs observational"
+    },
+    {
+      "call": "gaql FROM ad_group_ad (RSA text)",
+      "rows": 2,
+      "used_for": "what differs between the ads"
+    },
+    {
+      "call": "gaql FROM ad_group_ad by date",
+      "rows": 180,
+      "used_for": "same dates, week-by-week"
+    },
+    {
+      "call": "gaql FROM conversion_action",
+      "rows": 5,
+      "used_for": "conversion counting"
+    },
+    {
+      "call": "gaql FROM ad_group_ad by device",
+      "rows": 6,
+      "used_for": "totals and segments"
+    },
+    {
+      "call": "gaql FROM search_term_view",
+      "rows": 1379,
+      "used_for": "message gap for the next hypothesis"
+    },
+    {
+      "call": "gaql FROM ad_group (last 28 days)",
+      "rows": 14,
+      "used_for": "daily volume for sizing"
+    }
+  ],
+  "note": "Real run on 2026-10-06 on a client Google Ads account through the InsightfulPipe CLI, anonymised: firm name, state, website, ids and the numbers in ad claims are replaced ([Firm], [State], [N]); campaign names are generic; money is rounded to the nearest $10, cost per click to the nearest 10 cents and cost per conversion to whole dollars. Impressions, clicks and conversions are as returned."
+}

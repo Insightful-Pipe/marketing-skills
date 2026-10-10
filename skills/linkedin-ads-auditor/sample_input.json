@@ -1,0 +1,37 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Campaign names, conversion name and URL replaced; job function, industry and title names replaced by labels. Run on 2026-10-06 through the InsightfulPipe MCP; the account had no spend in the last 30 days, so the window is the last months that spent.",
+  "request": "Hey Claude, I just added the \"linkedin-ads-auditor\" skill. Audit my LinkedIn Ads account and tell me why my campaigns aren't producing sign-ups.",
+  "account": {
+    "name": "A B2B software company's LinkedIn ad account (masked)",
+    "ad_account_id": "500000001",
+    "currency": "USD"
+  },
+  "inputs": {
+    "target_cost_per_conversion": "not given; no default because the account has no conversions",
+    "who_they_sell_to": "taken from the spending campaigns' targeting",
+    "main_competitors": "not given",
+    "crm_numbers": "not given",
+    "audience_size": "not given"
+  },
+  "window": {
+    "default_last_30_days": "2026-09-06 to 2026-10-05: no spend",
+    "used": "2025-12-01 to 2026-01-31",
+    "months_with_spend_in_24_months": [
+      "2025-12",
+      "2026-01"
+    ]
+  },
+  "data_pulled": [
+    "get_account_analytics MONTHLY over 24 months (months with spend)",
+    "get_campaigns (92), get_campaign_groups (34), get_creatives (49), get_conversions (1), get_lead_forms (2)",
+    "get_analytics CAMPAIGN with every campaign id (2 spent)",
+    "get_analytics CAMPAIGN: results and format metrics for the spending campaigns",
+    "get_analytics CONVERSION over 24 months on the campaigns the rule is attached to (0 rows)",
+    "get_analytics PLACEMENT_NAME per spending campaign",
+    "get_demographic_analytics: seniority, job function, company size, industry and job title per spending campaign; country once",
+    "get_campaign_analytics MONTHLY (reach) and DAILY",
+    "get_campaign_group_analytics for the spending group",
+    "get_creative_analytics for the 2 ads"
+  ],
+  "not_connected": "LinkedIn Pages: the company page isn't connected, so ad post text and authors were not read"
+}

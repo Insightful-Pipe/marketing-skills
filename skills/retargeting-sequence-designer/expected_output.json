@@ -1,0 +1,652 @@
+{
+  "header": {
+    "business": "Example SaaS, a B2B software company",
+    "performance_range": "2026-09-06 to 2026-10-05",
+    "pool_windows": "7, 30 and 90 days ending 2026-10-05",
+    "sources": [
+      "GA4",
+      "Meta",
+      "Klaviyo",
+      "Google Ads (a linked test account only)"
+    ],
+    "conversion": "sign-up and demo booking (GA4 key events), excluded through a customer list because neither event fired",
+    "buying_cycle_days": 30
+  },
+  "readiness": [
+    {
+      "check": "Meta pixel",
+      "result": "fail",
+      "number": "0 pixels on the ad account",
+      "why": "No website custom audience can fill, so no Meta retargeting tier can run. Install the pixel first."
+    },
+    {
+      "check": "GA4 audiences reach Google Ads",
+      "result": "fail",
+      "number": "2 of 2 links have personalised ads off",
+      "why": "GA4 audiences can't be used for remarketing until personalised advertising is switched on in the link."
+    },
+    {
+      "check": "Converter event fires",
+      "result": "fail",
+      "number": "6 of 6 standard key events silent for 90 days (sign_up, book_demo, form_submit, purchase, qualify_lead, close_convert_lead)",
+      "why": "Converters can't be excluded from GA4 data. Upload a customer list of sign-ups and booked demos and exclude it everywhere."
+    },
+    {
+      "check": "Tracking steady",
+      "result": "warn",
+      "number": "last 7 days hold 90% of 30-day users; change date 2026-10-01",
+      "why": "Traffic was tracked at the new level for only 5 days, so the 30-day pools cover 5 days. Run the skill again after 2026-10-31."
+    },
+    {
+      "check": "GA4 audiences already built",
+      "result": "info",
+      "number": "5 audiences",
+      "why": "The two defaults (all users and purchasers, 540 days) and 3 test audiences (30, 1, 1 days). None matches a retargeting tier."
+    },
+    {
+      "check": "Google Ads lists",
+      "result": "not graded",
+      "number": "ad_group_audience_view on the connected linked account: 0 rows in 30 days; 48 of its 48 lists have 0 members",
+      "why": "No ad group targets or excludes a list, so no enabled campaign uses one: the connected linked account is a test account, and the other linked account isn't connected. The tiers below become new lists."
+    },
+    {
+      "check": "Email triggers",
+      "result": "warn",
+      "number": "0 of 3 browse and cart metrics tracked; Active on Site is tracked",
+      "why": "Klaviyo has no Viewed Product, Started Checkout or Added to Cart metric, so browse and cart flows can't trigger. Active on Site supports only a site-visit trigger."
+    }
+  ],
+  "funnel_now": {
+    "result": "not graded",
+    "why": "The Meta ad account spent $0 in the last 30 days and served 0 impressions in 90 days.",
+    "ad_sets_by_stage_from_settings": {
+      "TOF": 2,
+      "MOF": 0,
+      "BOF": 0,
+      "Customers": 0
+    },
+    "detail": "2 ad sets, 2 paused, 2 with broad targeting and no custom audience, so both are TOF. There is no retargeting layer, and the account has 0 custom audiences."
+  },
+  "email_and_paid_overlap": {
+    "result": "not graded",
+    "why": "Klaviyo has 0 flows, and Meta has 0 retargeting audiences, so nothing overlaps yet.",
+    "gaps": "The Hot tier has neither an email flow nor an ad set, so pricing and demo visitors who leave hear nothing back.",
+    "order_to_use": "When flows exist, email goes first from day 0 and paid retargeting starts on day 2; paid excludes people who clicked the flow's email."
+  },
+  "pools_by_page_group": [
+    {
+      "page_group": "pricing page",
+      "tier": "hot",
+      "people_30d": 77
+    },
+    {
+      "page_group": "demo booking page",
+      "tier": "hot",
+      "people_30d": 9
+    },
+    {
+      "page_group": "product and integration pages (5 path groups)",
+      "tier": "warm",
+      "people_30d": 130
+    },
+    {
+      "page_group": "template library (2 path groups)",
+      "tier": "warm",
+      "people_30d": 77
+    },
+    {
+      "page_group": "docs and developer pages (3 path groups)",
+      "tier": "warm",
+      "people_30d": 34
+    },
+    {
+      "page_group": "blog",
+      "tier": "cool",
+      "people_30d": 18
+    },
+    {
+      "page_group": "all visitors",
+      "tier": "cool",
+      "people_30d": 410
+    }
+  ],
+  "tiers": [
+    {
+      "tier": "Hot: pricing and demo page visitors",
+      "people_7d": 81,
+      "people_30d": 83,
+      "people_90d": 87,
+      "projected_30d": 500,
+      "google_ads": "recheck",
+      "meta": "under about 1,000 a month: merged into the next tier"
+    },
+    {
+      "tier": "Warm: product, template library and docs visitors",
+      "people_7d": 180,
+      "people_30d": 220,
+      "people_90d": 480,
+      "projected_30d": 1300,
+      "google_ads": "viable",
+      "meta": "own tier"
+    },
+    {
+      "tier": "Cool: all visitors (hotter tiers excluded in the platform)",
+      "people_7d": 370,
+      "people_30d": 410,
+      "people_90d": 680,
+      "projected_30d": 2500,
+      "google_ads": "viable",
+      "meta": "own tier"
+    }
+  ],
+  "tier_notes": [
+    "Pools are unique people before exclusions; a person can sit in several page groups. Projections divide the 30-day pool by the 5 days since the change date and multiply by 30. They are upper bounds, because returning visitors are counted again.",
+    "Google Ads: Hot is recheck; Warm is viable; Cool is viable (100 active people in 30 days is the floor; recheck means the projection passes it, so build the list now and check it again).",
+    "Meta: Hot + Warm run as one Meta tier; Cool runs on its own. A merged tier runs the hotter tier's sequence."
+  ],
+  "sequence_maps": [
+    {
+      "tier": "Hot: pricing and demo page visitors",
+      "window_days": 30,
+      "angle": "plan fit and value",
+      "stages": [
+        {
+          "days": "1–3",
+          "stage": "Reminder",
+          "message": "pick up where you left off: the plan you looked at",
+          "creative": "single image of the pricing table or the demo page",
+          "cta": "See plans",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "4–7",
+          "stage": "Value",
+          "message": "the main job the product does, and how fast it starts working",
+          "creative": "short product video",
+          "cta": "Start now",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "8–14",
+          "stage": "Proof",
+          "message": "a customer result or a review",
+          "creative": "testimonial or customer clip",
+          "cta": "Read the story",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "15–21",
+          "stage": "Offer",
+          "message": "no offer confirmed: answer the price and setup worries (what each plan includes, setup time)",
+          "creative": "single image, one objection per ad",
+          "cta": "Compare plans",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "22–30",
+          "stage": "Last call",
+          "message": "no real deadline: a low-pressure reminder with the demo option",
+          "creative": "single image",
+          "cta": "Book a demo",
+          "offer": "none confirmed"
+        }
+      ],
+      "frequency": {
+        "per_day": "2",
+        "per_week": "7–10",
+        "whole_sequence": "20"
+      },
+      "exclude": [
+        "converters (customer list of sign-ups and booked demos)"
+      ],
+      "platforms": [
+        "Google Ads (own list)",
+        "Meta (Hot + Warm as one tier, on this sequence)"
+      ]
+    },
+    {
+      "tier": "Warm: product, template library and docs visitors",
+      "window_days": 30,
+      "angle": "benefits and proof",
+      "stages": [
+        {
+          "days": "1–3",
+          "stage": "Reminder",
+          "message": "the feature or template they viewed",
+          "creative": "carousel of the pages they viewed",
+          "cta": "Learn more",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "4–7",
+          "stage": "Value",
+          "message": "what they can do with it in their first week",
+          "creative": "short how-it-works video",
+          "cta": "See how it works",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "8–14",
+          "stage": "Proof",
+          "message": "a customer result",
+          "creative": "testimonial",
+          "cta": "Read the story",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "15–21",
+          "stage": "Offer",
+          "message": "no offer confirmed: answer the setup worry",
+          "creative": "single image",
+          "cta": "See plans",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "22–30",
+          "stage": "Last call",
+          "message": "no real deadline: a final reminder",
+          "creative": "single image",
+          "cta": "See plans",
+          "offer": "none confirmed"
+        }
+      ],
+      "frequency": {
+        "per_day": "2",
+        "per_week": "7–10",
+        "whole_sequence": "20"
+      },
+      "exclude": [
+        "converters (customer list)",
+        "Hot tier"
+      ],
+      "platforms": [
+        "Google Ads (own list)"
+      ],
+      "meta": "On Meta these people are in the Hot + Warm tier and see the Hot sequence, so this map runs on Google Ads only."
+    },
+    {
+      "tier": "Cool: all visitors (hotter tiers excluded in the platform)",
+      "window_days": 30,
+      "angle": "a low-effort next step",
+      "stages": [
+        {
+          "days": "1–3",
+          "stage": "Reminder",
+          "message": "a next step that takes little effort: the most useful guide or template",
+          "creative": "single image",
+          "cta": "Read the guide",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "4–7",
+          "stage": "Value",
+          "message": "the product in one line: what it does for a team like theirs",
+          "creative": "short video",
+          "cta": "Learn more",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "8–14",
+          "stage": "Proof",
+          "message": "a customer result",
+          "creative": "testimonial",
+          "cta": "Learn more",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "15–21",
+          "stage": "Offer",
+          "message": "no offer confirmed: answer the 'is it worth the setup' worry",
+          "creative": "single image",
+          "cta": "See how it works",
+          "offer": "none confirmed"
+        },
+        {
+          "days": "22–30",
+          "stage": "Last call",
+          "message": "no real deadline: a final, low-pressure reminder",
+          "creative": "single image",
+          "cta": "See plans",
+          "offer": "none confirmed"
+        }
+      ],
+      "frequency": {
+        "per_day": "1–2",
+        "per_week": "5–7",
+        "whole_sequence": "15"
+      },
+      "exclude": [
+        "Hot tier",
+        "Warm tier",
+        "converters (customer list)"
+      ],
+      "platforms": [
+        "Google Ads (own list)",
+        "Meta"
+      ]
+    }
+  ],
+  "creative_briefs_hot_tier": [
+    {
+      "stage": "Reminder (days 1–3)",
+      "goal": "pick up where you left off: the plan you looked at",
+      "audience": "Hot: pricing and demo page visitors",
+      "format": "single image of the pricing table or the demo page",
+      "headline_direction": "name the plan or the demo they looked at",
+      "body_direction": "one line on what that plan includes, and that they can pick up where they left off",
+      "visual": "the pricing table or demo page they saw",
+      "landing_page": "pricing page",
+      "cta": "See plans"
+    },
+    {
+      "stage": "Value (days 4–7)",
+      "goal": "the main job the product does, and how fast it starts working",
+      "audience": "Hot: pricing and demo page visitors",
+      "format": "short product video",
+      "headline_direction": "the main outcome in plain words",
+      "body_direction": "how quickly a new team gets to that outcome",
+      "visual": "a 15-second screen recording of the product doing that job",
+      "landing_page": "pricing page",
+      "cta": "Start now"
+    },
+    {
+      "stage": "Proof (days 8–14)",
+      "goal": "a customer result or a review",
+      "audience": "Hot: pricing and demo page visitors",
+      "format": "testimonial or customer clip",
+      "headline_direction": "a customer's result, in their words",
+      "body_direction": "who the customer is and what changed for them",
+      "visual": "the customer's quote or a short clip",
+      "landing_page": "pricing page",
+      "cta": "Read the story"
+    },
+    {
+      "stage": "Offer (days 15–21)",
+      "goal": "no offer confirmed: answer the price and setup worries (what each plan includes, setup time)",
+      "audience": "Hot: pricing and demo page visitors",
+      "format": "single image, one objection per ad",
+      "headline_direction": "one objection per ad, answered",
+      "body_direction": "what each plan includes and how long setup takes; no discount, because none is confirmed",
+      "visual": "a plan comparison or a setup checklist",
+      "landing_page": "pricing page",
+      "cta": "Compare plans"
+    },
+    {
+      "stage": "Last call (days 22–30)",
+      "goal": "no real deadline: a low-pressure reminder with the demo option",
+      "audience": "Hot: pricing and demo page visitors",
+      "format": "single image",
+      "headline_direction": "a calm reminder that the demo is there when they're ready",
+      "body_direction": "what the demo covers and how long it takes; no invented deadline",
+      "visual": "the demo booking page",
+      "landing_page": "demo booking page",
+      "cta": "Book a demo"
+    }
+  ],
+  "platform_setup": {
+    "meta": {
+      "objective": "Leads or Sales, optimised for the sign-up event once the pixel fires",
+      "attribution": "the default 7-day click, 1-day view",
+      "audience_rules": "website custom audiences: URL contains the tier's paths, retention 30 days",
+      "exclusions": "the customer list and every hotter tier; when prospecting runs again, it excludes all three tiers and the customer list",
+      "frequency": "held by budget and audience size; Meta caps frequency only on reach-optimised ad sets"
+    },
+    "google_ads": {
+      "campaign_type": "Display, or Demand Gen with the lists as targeting",
+      "list_source": "GA4 audiences (after personalised ads is switched on in the link)",
+      "membership_days": 30,
+      "frequency": "set the Display frequency cap to the tier's per-day figure"
+    }
+  },
+  "budget": {
+    "by_tier": [
+      {
+        "tier": "Hot",
+        "share": "40–50% + the customers' 10–15% = 50–65%",
+        "why": "highest intent; takes the customers' share because no customer tier is built"
+      },
+      {
+        "tier": "Warm",
+        "share": "30–35%",
+        "why": "intent with volume"
+      },
+      {
+        "tier": "Cool",
+        "share": "10–15%",
+        "why": "lower intent, keeps you in mind"
+      },
+      {
+        "tier": "Customers",
+        "share": "0% (not built)",
+        "why": "no purchase or sign-up data in GA4 and no customer list yet"
+      }
+    ],
+    "meta_split": [
+      {
+        "meta_tier": "Hot + Warm",
+        "share": "80–100% (hot 50–65% + warm 30–35%)"
+      },
+      {
+        "meta_tier": "Cool",
+        "share": "10–15%"
+      }
+    ],
+    "by_phase": "about 50% in days 1–7, 30% in days 8–14, 20% in days 15–30",
+    "spend_ceiling": "unknown: the Meta account served 0 impressions in 90 days, under the 1,000 a usable CPM needs, and no Google Ads ad group used a list in 30 days"
+  },
+  "kpis": {
+    "basis": "no retargeting history, so these are outside starting points that vary by industry",
+    "targets": [
+      {
+        "tier": "Hot",
+        "ctr": "1–3%",
+        "conversion_rate": "5–15%"
+      },
+      {
+        "tier": "Warm",
+        "ctr": "0.5–1.5%",
+        "conversion_rate": "1–5%"
+      },
+      {
+        "tier": "Cool",
+        "ctr": "0.2–0.8%",
+        "conversion_rate": "0.5–2%"
+      }
+    ],
+    "monitor": [
+      "frequency daily: above 4 a week on Cool, refresh creative",
+      "CTR weekly: below 0.2%, change message or creative",
+      "conversion rate weekly: if it falls, check the landing page",
+      "CPM weekly: rising on a flat audience means fatigue",
+      "cost per result weekly: once prospecting has a baseline, cut a tier that costs more"
+    ]
+  },
+  "launch_checklist": [
+    "Install the Meta pixel and confirm it fires",
+    "Switch on personalised advertising in the GA4 to Google Ads link",
+    "Upload a customer list of sign-ups and booked demos; exclude it everywhere",
+    "Create the three GA4 audiences (30 days) and the Meta website audiences",
+    "Launch Hot first on Google; add Warm and Cool after 3–7 days",
+    "Check exclusions after the first week; refresh creative every 2–3 weeks",
+    "Re-run this skill after 2026-10-31 to split the Meta tier when it grows"
+  ],
+  "unknowns": [
+    "Funnel performance (TOF, MOF, BOF): no delivery in 90 days",
+    "Email and paid overlap: no live flows and no paid retargeting",
+    "Google Ads list performance: no enabled campaign uses a list on the connected linked account (a test account), and the other linked account isn't connected",
+    "Spend ceiling per tier: no usable CPM",
+    "6 other key events (6 silent) are test or custom events and were left out"
+  ],
+  "go_deeper": [
+    "facebook-ads-audience-builder, if installed, to build the Meta website audiences once the pixel fires",
+    "email-sequence-builder, if installed, to write the email side so it can go first",
+    "ad-creative-brief-generator, if installed, to turn the Hot briefs into full briefs",
+    "audience-overlap-analyzer, if installed, to measure overlap between ad sets once they deliver"
+  ],
+  "fixes_offered": [
+    {
+      "action": "google-analytics create_audience",
+      "status": "not run (offered after confirmation; needs personalised ads switched on in the GA4 to Google Ads link first)",
+      "note": "placeholder paths in this sample; the real payload lists the 2 path prefixes the Hot pool was sized on",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_audience",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "display_name": "Retargeting - Hot - pricing and demo - 30d",
+        "description": "Visited the pricing or demo page in the last 30 days",
+        "membership_duration_days": 30,
+        "filter_clauses": [
+          {
+            "clauseType": "INCLUDE",
+            "simpleFilter": {
+              "scope": "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS",
+              "filterExpression": {
+                "andGroup": {
+                  "filterExpressions": [
+                    {
+                      "orGroup": {
+                        "filterExpressions": [
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/pricing"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/demo"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "google-analytics create_audience",
+      "status": "not run (offered after confirmation; needs personalised ads switched on in the GA4 to Google Ads link first)",
+      "note": "placeholder paths in this sample; the real payload lists the 10 path prefixes the Warm pool was sized on",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_audience",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "display_name": "Retargeting - Warm - product, library, docs - 30d",
+        "description": "Visited product, template library or docs pages in the last 30 days",
+        "membership_duration_days": 30,
+        "filter_clauses": [
+          {
+            "clauseType": "INCLUDE",
+            "simpleFilter": {
+              "scope": "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS",
+              "filterExpression": {
+                "andGroup": {
+                  "filterExpressions": [
+                    {
+                      "orGroup": {
+                        "filterExpressions": [
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/features"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/templates"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/guides"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "google-analytics create_audience",
+      "status": "not run (offered after confirmation; needs personalised ads switched on in the GA4 to Google Ads link first)",
+      "note": "every page path starts with /",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_audience",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "display_name": "Retargeting - Cool - all visitors - 30d",
+        "description": "Visited any page in the last 30 days",
+        "membership_duration_days": 30,
+        "filter_clauses": [
+          {
+            "clauseType": "INCLUDE",
+            "simpleFilter": {
+              "scope": "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS",
+              "filterExpression": {
+                "andGroup": {
+                  "filterExpressions": [
+                    {
+                      "orGroup": {
+                        "filterExpressions": [
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "not_possible_here": [
+    "create Meta custom audiences (Ads Manager, using the rules above)",
+    "create Klaviyo flows",
+    "set a Meta frequency cap"
+  ]
+}

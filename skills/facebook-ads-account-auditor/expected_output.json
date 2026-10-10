@@ -1,0 +1,261 @@
+{
+  "header": {
+    "account": "Example SaaS ad account",
+    "ad_account_id": "act_123456789",
+    "currency": "USD",
+    "timezone": "America/New_York",
+    "date_range": "2026-09-05 to 2026-10-04",
+    "spend_30d": 0,
+    "results_30d": 0,
+    "cost_per_result": null,
+    "lifetime_spend": 0.15,
+    "grade": "not graded",
+    "headline": "No spend in the last 30 days, so structure, budget and creative are not graded. The account can spend (active, no cap, payment method on file), nothing is blocked, but there is no pixel and no naming convention."
+  },
+  "scorecard": [
+    {
+      "area": "Account status and billing",
+      "result": "pass",
+      "key_number": "status 1 (active), no spend cap",
+      "why": "Disable reason 0, no account or campaign spend cap, a payment method is on file, unbilled balance $0.00. Nothing will stop delivery."
+    },
+    {
+      "area": "Ad review and policy",
+      "result": "pass",
+      "key_number": "0 blocked ads, 0 rejections in 30 days",
+      "why": "2 of 2 ads are paused, none disapproved, flagged or pending. The activity log shows 2 completed reviews on 2 ads, each cleared in 2 to 4 minutes."
+    },
+    {
+      "area": "Tracking",
+      "result": "warn",
+      "key_number": "0 pixels, 0 custom conversions",
+      "why": "No pixel is attached. No ad set optimises for a website event (REACH, POST_ENGAGEMENT), so nothing is broken today, but no website result can be measured or optimised. Conversions API and deduplication: not asked (no pixel)."
+    },
+    {
+      "area": "Structure",
+      "result": "not graded",
+      "key_number": "$0 spend in 30 days",
+      "why": "No ad set had results to judge learning on. Information: 2 paused campaigns and 2 paused ad sets with no spend in 30 days (archive candidates); 2 of 2 ad sets hold a single ad; 0 live campaigns, so the too-many-campaigns check has nothing to count; 2 of 2 ad sets have daily budgets under $20 ($1.00), which the thin-budget check would flag once they are live. No consolidation plan: nothing is live."
+    },
+    {
+      "area": "Audiences",
+      "result": "not graded",
+      "key_number": "0 live ad sets, 0 custom audiences",
+      "why": "Nothing is live to overlap. Inventory: 0 custom or lookalike audiences and 0 website audiences, so there is no pool to size and no 180-day window to check; all 2 ad sets target country and age only, with Advantage+ audience off."
+    },
+    {
+      "area": "Budget efficiency",
+      "result": "not graded",
+      "key_number": "$0 spend in 30 days",
+      "why": "No spend to allocate. Ad set daily budgets: $1.00; account minimum $1.00, so none is below it."
+    },
+    {
+      "area": "Creative health",
+      "result": "not graded",
+      "key_number": "0 ad rows in the 30-day and 7-day insights",
+      "why": "No impressions, so no frequency, CTR, CPM or conversion-rate trend and no ranking to read, and 0 ads are live, so the format mix is not judged. Inventory: 2 ads, 2 static; no live ad, so no oldest-live age; newest ad created 2026-09-30."
+    },
+    {
+      "area": "Naming convention",
+      "result": "warn",
+      "key_number": "0 of 4 names follow a convention",
+      "why": "No separator is shared by 60% of names, so the account has no convention. One name is a Meta default and one carries a leftover '(renamed)' suffix. Capped at warn: fewer than 5 campaigns."
+    }
+  ],
+  "grade_math": "withheld: 4 of 8 areas not graded (no spend in 30 days). Deductions so far: 0 fails x 12 + 2 warns x 5 = 10",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Attach a pixel (dataset) and send the main result event before the first sales or leads campaign",
+      "money_at_stake": "none in the last 30 days (no spend); ranked first because without it no website result can be optimised, measured or retargeted",
+      "evidence": "get_pixels returned 0 pixels; get_custom_conversions 0; ad set goals: REACH x1, POST_ENGAGEMENT x1",
+      "who": "do this in Events Manager"
+    },
+    {
+      "rank": 2,
+      "fix": "Agree a naming convention and rename the paused campaigns to it",
+      "money_at_stake": "none in the last 30 days; ranked for readability of the next launch and of reports",
+      "evidence": "0 of 4 campaign names follow a shared pattern; no separator appears in more than 1 of 4 names",
+      "who": "I can do this now, after you approve the convention and each new name"
+    },
+    {
+      "rank": 3,
+      "fix": "Build website and engagement custom audiences once the pixel fires",
+      "money_at_stake": "none in the last 30 days; needed before any retargeting or exclusion",
+      "evidence": "get_custom_audiences returned 0; all 2 ad sets target by country and age only",
+      "who": "do this in Ads Manager (Audiences)"
+    }
+  ],
+  "top_fixes_ranking": "No money at stake in the window, so fixes are ranked by what would block or blur the next launch.",
+  "creative_inventory": {
+    "ads": 2,
+    "by_format": {
+      "static": 2
+    },
+    "live_ads": 0,
+    "oldest_live_ad_days": null,
+    "newest_ad_created": "2026-09-30",
+    "format_mix": "not judged: no ads in live ad sets"
+  },
+  "consolidation_plan": [],
+  "consolidation_note": "Nothing is live and nothing spent in 30 days, so there is nothing to merge. Information: the paused campaigns and ad sets are archive candidates once you no longer need them.",
+  "naming": {
+    "convention_found": null,
+    "proposed_convention": "<Funnel> | <Objective> | <Offer> | <Country> | <YYYY-MM>",
+    "convention_status": "proposed, waiting for your approval before any rename",
+    "rows": [
+      {
+        "campaign_id": "120000000000000001",
+        "current_name": "[XX-TEST] 20261001 campaign (renamed)",
+        "status": "paused",
+        "found_in": "get_campaigns",
+        "objective": "OUTCOME_AWARENESS",
+        "problems": [
+          "leftover '(renamed)' suffix",
+          "date written as YYYYMMDD, not in a fixed slot",
+          "no objective, audience, country or month slot"
+        ],
+        "proposed_name": "Prospecting | Awareness | [?] | US | 2026-09",
+        "unknown_parts": "Offer"
+      },
+      {
+        "campaign_id": "120000000000000002",
+        "current_name": "Comment-moderation test — [product] (3-day)",
+        "status": "paused",
+        "found_in": "get_campaigns",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "problems": [
+          "no objective, audience, country or month slot"
+        ],
+        "proposed_name": "Prospecting | Engagement | [?] | US | 2026-08",
+        "unknown_parts": "Offer"
+      },
+      {
+        "campaign_id": "120000000000000003",
+        "current_name": "New Traffic Campaign with recommended settings",
+        "status": "archived or deleted (not in get_campaigns)",
+        "found_in": "all-time insights",
+        "objective": "LINK_CLICKS",
+        "problems": [
+          "Meta default name",
+          "no objective, audience, country or month slot"
+        ],
+        "proposed_name": "[?] | Traffic | [?] | [?] | [?]",
+        "unknown_parts": "Offer, funnel, country and month (archived: no ad set data)"
+      },
+      {
+        "campaign_id": "120000000000000004",
+        "current_name": "Campaign - [product]",
+        "status": "archived or deleted (not in get_campaigns)",
+        "found_in": "all-time insights",
+        "objective": "LINK_CLICKS",
+        "problems": [
+          "no objective, audience, country or month slot"
+        ],
+        "proposed_name": "[?] | Traffic | [?] | [?] | [?]",
+        "unknown_parts": "Offer, funnel, country and month (archived: no ad set data)"
+      }
+    ]
+  },
+  "policy": {
+    "blocked_ads": [],
+    "review_history_30d": [
+      {
+        "ad_id": "120000000000200001",
+        "outcome": "Pending Review -> Inactive",
+        "minutes_in_review": 2
+      },
+      {
+        "ad_id": "120000000000200002",
+        "outcome": "Pending Review -> Inactive",
+        "minutes_in_review": 4
+      }
+    ],
+    "rejections_30d": 0,
+    "note": "Inactive after review means the ad passed review and stayed paused. Rejection reasons are not in the API; none were needed."
+  },
+  "billing": [
+    {
+      "check": "Account status",
+      "value": "1 (active)",
+      "result": "pass"
+    },
+    {
+      "check": "Disable reason",
+      "value": "0",
+      "result": "pass"
+    },
+    {
+      "check": "Account spend cap",
+      "value": "none (spend_cap 0)",
+      "result": "pass"
+    },
+    {
+      "check": "Campaign spend caps",
+      "value": "0 of 2 campaigns have one",
+      "result": "pass"
+    },
+    {
+      "check": "Payment method",
+      "value": "on file",
+      "result": "pass"
+    },
+    {
+      "check": "Unbilled balance",
+      "value": "$0.00",
+      "result": "information"
+    }
+  ],
+  "unknowns": [
+    "Conversions API, deduplication and Event Match Quality: not in the API and not asked, because no pixel is attached.",
+    "Audience overlap percentages: not in the API; nothing live to compare.",
+    "Archived campaigns: their ad sets are hidden from get_adsets, so funnel, country and month in their proposed names stay [?]."
+  ],
+  "fixes_offered": [
+    {
+      "action": "update_campaign",
+      "campaign_id": "120000000000000001",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000001",
+        "name": "Prospecting | Awareness | [?] | US | 2026-09"
+      },
+      "status": "not run: waiting for approval of the convention, the [?] parts and each name"
+    },
+    {
+      "action": "update_campaign",
+      "campaign_id": "120000000000000002",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000002",
+        "name": "Prospecting | Engagement | [?] | US | 2026-08"
+      },
+      "status": "not run: waiting for approval of the convention, the [?] parts and each name"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "Pixel and Conversions API",
+      "skill": "meta-pixel-capi-health-check",
+      "when": "after the pixel is attached"
+    },
+    {
+      "area": "Before the next launch",
+      "skill": "facebook-ads-launch-checklist",
+      "when": "before the first sales or leads campaign"
+    },
+    {
+      "area": "Rebuilding the structure",
+      "skill": "facebook-ads-campaign-structure",
+      "when": "when planning the first live campaigns"
+    }
+  ]
+}

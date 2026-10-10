@@ -1,0 +1,226 @@
+{
+  "header": {
+    "property": "GA4 property for a B2B SaaS marketing site",
+    "signup_url": "https://app.example.com/signup",
+    "signup_host": "app.example.com",
+    "date_range": "2026-09-05 to 2026-10-04",
+    "measurement_grade": "not measured"
+  },
+  "measurement": [
+    {
+      "check": "Signup host is in the property",
+      "result": "fail",
+      "evidence": "hostName in the last 30 days: example.com, www.example.com (380 and 23 sessions). The signup host app.example.com never appears, so nothing after the click reaches this property."
+    },
+    {
+      "check": "sign_up fires",
+      "result": "fail",
+      "evidence": "7 event names fired in the 30 days (page views, session starts, first visits, engagement, scrolls, outbound clicks, plus 1 custom event). None is sign_up, login, form_start, form_submit or generate_lead."
+    },
+    {
+      "check": "sign_up is a key event",
+      "result": "warn",
+      "evidence": "sign_up is one of 12 key events, but it never fired in the window, so it counts nothing."
+    },
+    {
+      "check": "Signup clicks are recorded",
+      "result": "fail",
+      "evidence": "Outbound clicks are on for the marketing site's stream, yet clicks to the signup URL: 0 rows in 30 days, 0 in 90 days. Over 13 months: 6 clicks from 3 pages, the last in 2026-03."
+    },
+    {
+      "check": "Form events",
+      "result": "fail",
+      "evidence": "Form interactions are on, but no form_start or form_submit in the window. The signup form is on the app host, which this property doesn't receive."
+    }
+  ],
+  "measurement_summary": "Not measured. GA4 sees the marketing site only; the signup happens on the app host, which sends its events to another tool. Clicks into signup stopped being recorded months ago. Steps 2 and 4 ran; step 3's query ran once to confirm it returns no rows, and the funnel analysis was skipped.",
+  "path_into_signup": {
+    "pages_with_button": [
+      {
+        "page": "https://example.com/",
+        "sessions_30d": 160,
+        "mobile_share_pct": 9,
+        "signup_clicks_30d": 0,
+        "signup_clicks_90d": 0,
+        "signup_clicks_13m": 3,
+        "why_listed": "had a recorded signup click in 13 months"
+      },
+      {
+        "page": "https://example.com/pricing",
+        "sessions_30d": 62,
+        "mobile_share_pct": 8,
+        "signup_clicks_30d": 0,
+        "signup_clicks_90d": 0,
+        "signup_clicks_13m": 2,
+        "why_listed": "had a recorded signup click in 13 months"
+      },
+      {
+        "page": "https://example.com/integrations/page-1",
+        "sessions_30d": 4,
+        "mobile_share_pct": 0,
+        "signup_clicks_30d": 0,
+        "signup_clicks_90d": 0,
+        "signup_clicks_13m": 1,
+        "why_listed": "had a recorded signup click in 13 months"
+      }
+    ],
+    "sessions_on_button_pages_30d": 230,
+    "mobile_share_pct": 8,
+    "click_rates": "not computed: 0 signup clicks in 30 and 90 days, under the 30-click minimum"
+  },
+  "funnel": {
+    "status": "not measured past the marketing site",
+    "reason": "The signup host is not in this property and sign_up never fires, so there are no step rates, method mix, device gap or activation figures. Signups were not estimated from page views or clicks."
+  },
+  "page_teardown": {
+    "url": "https://app.example.com/signup",
+    "javascript": true,
+    "checks": [
+      {
+        "check": "Sign-in options",
+        "result": "pass",
+        "evidence": "4 single sign-on buttons (Google, Microsoft, LinkedIn, Facebook) plus a \"Sign up with email\" route."
+      },
+      {
+        "check": "Fields at signup",
+        "result": "pass",
+        "evidence": "2 visible fields: email, password."
+      },
+      {
+        "check": "Field setup",
+        "result": "pass",
+        "evidence": "Email is type=\"email\" with autocomplete=\"email\"; password has autocomplete=\"new-password\"."
+      },
+      {
+        "check": "Password rule",
+        "result": "pass",
+        "evidence": "Shown before typing: the password field's placeholder states a minimum length."
+      },
+      {
+        "check": "Clicks to the first field",
+        "result": "pass",
+        "evidence": "The email form sits in a hidden block until \"Sign up with email\" is clicked: one click."
+      },
+      {
+        "check": "Distractions",
+        "result": "pass",
+        "evidence": "3 links on the whole page, so no site navigation around the form."
+      },
+      {
+        "check": "Value line",
+        "result": "warn",
+        "evidence": "H1 \"Heading title 1\", a generic create-account heading. The line under it is an offer line about plan terms; nothing near the form says what the account lets people do."
+      },
+      {
+        "check": "Submit button",
+        "result": "pass",
+        "evidence": "\"Create account\". (The raw button text also contains its hidden loading label, which is ignored.)"
+      },
+      {
+        "check": "Bot protection",
+        "result": "pass",
+        "evidence": "1 unlabelled input pushed off screen and out of the tab order (a honeypot); no CAPTCHA among the inputs."
+      },
+      {
+        "check": "Legal",
+        "result": "pass",
+        "evidence": "A \"by signing up you agree\" line, and no checkbox among the inputs."
+      },
+      {
+        "check": "Labels",
+        "result": "pass",
+        "evidence": "Both visible fields have labels (Email, Password)."
+      },
+      {
+        "check": "Load (one crawl)",
+        "result": "pass",
+        "evidence": "dom_complete 2,400 ms, time_to_interactive 680 ms, 2 render-blocking scripts and 5 render-blocking stylesheets. One crawl from DataForSEO's servers, not a phone: a rough signal."
+      }
+    ],
+    "summary": "11 pass, 1 warn, 0 fail. A lean page: 4 single sign-on options, 2 fields, a visible password rule, a honeypot instead of a CAPTCHA and 3 links. The gap is the value line."
+  },
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Send sign_up, with method (Google, Microsoft, LinkedIn, Facebook or email), from the app to this GA4 property when an account is created.",
+      "step": "Measurement: every signup",
+      "visitors_touched": "every new account; today GA4 records none of them",
+      "evidence": "The app host is not in hostName; sign_up fired 0 times in 30 days, though it is already a key event, so it will count as soon as it arrives.",
+      "who": "do this in your app (code or tag); this skill doesn't change the app"
+    },
+    {
+      "rank": 2,
+      "fix": "Fire a dedicated click event on every signup button, with the page it sits on as a parameter (for example signup_click with signup_location), then register that parameter as a custom dimension.",
+      "step": "Path into signup",
+      "visitors_touched": "230 sessions in 30 days on the 3 pages known to carry the button",
+      "evidence": "Outbound clicks are on, yet 0 signup clicks in 30 or 90 days and 6 in 13 months (last in 2026-03). Clicks into a subdomain of the same site were not reliably recorded as outbound here.",
+      "who": "add the event in your tag manager; I can then register signup_location with create_custom_dimension after you confirm"
+    },
+    {
+      "rank": 3,
+      "fix": "Add one line under the heading that says what the account lets people do, next to the offer line.",
+      "step": "Signup page",
+      "visitors_touched": "everyone who reaches the signup page (count unknown until fix 1 lands)",
+      "evidence": "Value line: warn. H1 \"Heading title 1\" (a generic create-account heading) plus an offer line only.",
+      "who": "do this on your signup page; run it as a test once sign_up is measured"
+    }
+  ],
+  "tests_to_run": [
+    {
+      "hypothesis": "If we add a line under the heading that names what the account does, sign_up per signup page view will rise, because the page today shows only a generic heading and an offer line.",
+      "needs": "fix 1"
+    },
+    {
+      "hypothesis": "If we show the email field on load instead of behind \"Sign up with email\", email signups will rise without lowering single sign-on signups, because the email route is the only one that takes an extra click.",
+      "needs": "fix 1, with method recorded"
+    },
+    {
+      "hypothesis": "If we order the 4 single sign-on buttons by the method mix and drop any provider with almost no use, signups will rise, because this run found 5 sign-in routes (4 single sign-on buttons plus email) in an order no signup data supports yet: GA4 recorded 0 sign_up events, so which provider people pick is unknown.",
+      "needs": "fix 1 and 30 days of sign_up by method"
+    }
+  ],
+  "unknowns": [
+    "The funnel (signup page users, form starts, signups, activation), method mix and device gap: GA4 receives nothing from the app host. The step 3 query returned no sign_up, login, form_start, form_submit or generate_lead rows for either 30-day window.",
+    "Signup click rates per page: 0 recorded clicks in 90 days, so no rate can be computed.",
+    "What happens after the form: the verification email, the first screen and onboarding. The skill never signs up to find out; ask the owner.",
+    "What a phone shows above the fold, and lab mobile speed: the optional screenshot and PageSpeed Insights calls returned connection errors when this was built."
+  ],
+  "fixes_this_skill_can_run": [
+    {
+      "action": "create_custom_dimension",
+      "status": "offered after fix 2, not run",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_custom_dimension",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "parameter_name": "signup_location",
+        "display_name": "Signup location",
+        "scope": "EVENT"
+      }
+    },
+    {
+      "action": "create_key_event",
+      "status": "not needed: sign_up is already a key event"
+    },
+    {
+      "action": "update_enhanced_measurement_settings",
+      "status": "not needed: outbound clicks and form interactions are already on"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "What happens after signup",
+      "skill": "onboarding-cro"
+    },
+    {
+      "area": "Tagging the signup button click",
+      "skill": "gtm-container-auditor"
+    },
+    {
+      "area": "The pricing page that carries the button",
+      "skill": "landing-page-auditor"
+    }
+  ]
+}

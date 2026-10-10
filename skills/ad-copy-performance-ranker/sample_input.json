@@ -1,0 +1,2442 @@
+{
+  "request": "Hey Claude, I just added the \"ad-copy-performance-ranker\" skill. Rank my responsive search ads and tell me which headlines and descriptions are working, which to replace, and whether ad strength means anything here.",
+  "note": "Real run on 2026-10-05 on a client Google Ads account, anonymised: the business, attorney, state, city, rating site, the firm's own numbers ([N]), campaign and ad group names, and every id are replaced; money is rounded to the nearest $10. Character counts of suggested lines and of the description audit are of the real lines before anonymising. Data was pulled by the skill through the InsightfulPipe MCP; nothing was pasted.",
+  "account": {
+    "name": "A US criminal and traffic defense law firm",
+    "currency": "USD",
+    "account_id": "<client account id>"
+  },
+  "date_range": {
+    "start_date": "2026-09-05",
+    "end_date": "2026-10-04",
+    "gaql": "DURING LAST_30_DAYS"
+  },
+  "defaults_used": {
+    "brand_terms": "campaigns with \"brand\" in the name",
+    "win_metric": "conversions per 1,000 impressions"
+  },
+  "calls_run": [
+    {
+      "step": 1,
+      "call": "gaql on customer",
+      "rows": 1
+    },
+    {
+      "step": 1,
+      "call": "ad_performance_report, limit 10000",
+      "rows": 3922,
+      "lesson": "the default limit of 1,000 rows returned 18 of the 19 RSAs that served; 10,000 returned all of them"
+    },
+    {
+      "step": 2,
+      "call": "gaql on ad_group_ad (responsive search ads)",
+      "rows": 22
+    },
+    {
+      "step": 5,
+      "call": "gaql on ad_group_ad_asset_view",
+      "rows": 281
+    },
+    {
+      "step": 7,
+      "call": "gaql on ad_group_ad_asset_combination_view, one per top-3 ad",
+      "rows": [
+        10,
+        10,
+        10
+      ]
+    }
+  ],
+  "ads": [
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Drug Crime Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call or text 24×7",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive Drug Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "We Fight to Keep Your Freedom",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the most experienced lawyers, offering representation across the entire state",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 2512,
+      "clicks": 129,
+      "conversions": 38.3,
+      "spend": 710
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Criminal Defense",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Drug Crime Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive Drug Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "We Fight to Keep Your Freedom",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call or text 24×7",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the most experienced lawyers, offering representation across the entire state",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 2174,
+      "clicks": 83,
+      "conversions": 22.7,
+      "spend": 430
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[State] Traffic Ticket?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Speeding Charge?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight Your Ticket",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Traffic Defense Lawyers",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Driving Record",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call [Firm] Today",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 1098,
+      "clicks": 127,
+      "conversions": 33.0,
+      "spend": 850
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Beat Your DUI With Us Today",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "[State] DUI Lawyer",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "[N]+Charges Resolved",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "GOOD"
+        },
+        {
+          "text": "Keep Your License - Call Today",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Aggressive DUI Charge Defense",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "GOOD"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "GOOD"
+        },
+        {
+          "text": "Beat Your DUI in [State].",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Call or text 24×7 | Free Eval",
+          "google_rating": "LEARNING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "LEARNING"
+        },
+        {
+          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+          "google_rating": "GOOD"
+        },
+        {
+          "text": "Some of the most experienced lawyers, offering representation across the entire state",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Don't let a DUI conviction ruin your job, record and future. [N]+ 5 Star Client Reviews.",
+          "google_rating": "GOOD"
+        }
+      ],
+      "impressions": 1032,
+      "clicks": 66,
+      "conversions": 12.0,
+      "spend": 630
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[State] Traffic Ticket?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Speeding Charge?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight Your Ticket",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Traffic Defense Lawyers",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Driving Record",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call [Firm] Today",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 559,
+      "clicks": 72,
+      "conversions": 22.0,
+      "spend": 750
+    },
+    {
+      "campaign": "Drug Charges",
+      "ad_group": "Drug Defense Lawyer",
+      "ad": "<ad 6>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "We Fight to Keep Your Freedom",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Drug Crime Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive Drug Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call or text 24×7",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 372,
+      "clicks": 35,
+      "conversions": 4.0,
+      "spend": 650
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "[state] traffic lawyer",
+      "ad": "<ad 7>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[State] Traffic Ticket?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Speeding Charge?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight Your Ticket",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Traffic Defense Lawyers",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Driving Record",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call [Firm] Today",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 351,
+      "clicks": 40,
+      "conversions": 13.0,
+      "spend": 260
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic attorney",
+      "ad": "<ad 8>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[State] Traffic Ticket?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Speeding Charge?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight Your Ticket",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Traffic Defense Lawyers",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Driving Record",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call [Firm] Today",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 303,
+      "clicks": 27,
+      "conversions": 7.6,
+      "spend": 150
+    },
+    {
+      "campaign": "Brand",
+      "ad_group": "Firm name",
+      "ad": "<ad 9>",
+      "status": "ENABLED",
+      "ad_strength": "EXCELLENT",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[Attorney], Attorney At Law",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Attorney], [State] Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic & DUI Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Perfect [Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ of Cases Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Attorney], [State] Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating site] Rating 10",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Legal Trouble? Call 24x7",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] ® (Official)",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Get a 100% Free Consultation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "DUI, Traffic, Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Reviews",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[N]+ of [State] traffic & DUI cases resolved! Don't give up. Call [Firm] today!",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Speeding and traffic ticket, DUI and DWI, Criminal Defense, Administrative Law.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Highest Dismissal Rate. [N]+ 5 Star [Rating site] Reviews.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Available 24x7 by phone, text and email.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 297,
+      "clicks": 53,
+      "conversions": 17.4,
+      "spend": 150
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 10>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI With Us Today",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Keep Your License - Call Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive DUI Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Don't Let a DUI Conviction Ruin Your Job, Record and Future. [N]+ 5 Star Client Reviews.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 197,
+      "clicks": 8,
+      "conversions": 2.0,
+      "spend": 60
+    },
+    {
+      "campaign": "Out-of-State DUI",
+      "ad_group": "Out of State DUI",
+      "ad": "<ad 11>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI With Us Today",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Keep Your License - Call Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Lawyer",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI in [State]",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[Firm] - DUI Defense Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive DUI Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Need a DUI Lawyer In [State]?",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Facing DUI Charges in [State]?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "DUI Help in [State] - Call Now",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "Facing DUI Charges in [State]? Contact [Firm] Today. Do Not Wait.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "If You Are Looking For an Experienced [State] DUI Attorney, We’re Ready For Your Call.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Law Cases Can Be Won. Never Give Up! Call or Text for Free Case Evaluation.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Attorney - #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 175,
+      "clicks": 12,
+      "conversions": 4.0,
+      "spend": 120
+    },
+    {
+      "campaign": "Drug Charges",
+      "ad_group": "Drug Defense Lawyer",
+      "ad": "<ad 12>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Criminal Defense",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Drug Crime Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call or text 24×7",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - Criminal Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive Drug Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Criminal Defense - All of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "We Fight to Keep Your Freedom",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 142,
+      "clicks": 9,
+      "conversions": 1.0,
+      "spend": 180
+    },
+    {
+      "campaign": "Nursing Board",
+      "ad_group": "Nursing Board",
+      "ad": "<ad 13>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "Nursing License Defense Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Nursing Board Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Urgent Legal Advice for Nurses",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Cases Resolved",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_3"
+        },
+        {
+          "text": "Beat the Board. Call Us Now",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now - We're Online",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving [State] for [N]+ Yrs.",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_3"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews - Call Now",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_3"
+        },
+        {
+          "text": "Beat The Board With [Firm]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Pro License Defense Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Get a Nurse Lawyer - Call Now",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Nurse License Defense Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Facing Disciplinary Action?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Reputation",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "Defend Your Rights and Protect Your Reputation by Standing Up for Your Good Name.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Keep Your License. Seek Professional Help from an [State] Board of Nursing Lawyer.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Contact Us Today For A Free Consultation. 100% Confidential Case Analysis.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Are You a Nurse in [State] and You Are Facing Disciplinary Action or Other Issues?",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 96,
+      "clicks": 18,
+      "conversions": 3.0,
+      "spend": 390
+    },
+    {
+      "campaign": "Brand",
+      "ad_group": "Attorney name",
+      "ad": "<ad 14>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[Attorney], Attorney At Law",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Attorney], [State] Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic & DUI Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Perfect [Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ of Cases Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Attorney], [State] Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5-Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "100% Free Consultation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Legal Trouble? Call [Firm]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI & Criminal Defense",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[N]+ of [State] traffic & DUI cases resolved! Don't give up. Call [Firm] today!",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Speeding and traffic ticket, DUI and DWI, Criminal Defense, Administrative Law.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Highest Dismissal Rate. [N]+ Client Reviews.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Available 24x7 by phone, text and email.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 92,
+      "clicks": 16,
+      "conversions": 3.0,
+      "spend": 90
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Cost",
+      "ad": "<ad 15>",
+      "status": "ENABLED",
+      "ad_strength": "EXCELLENT",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "Keep Your License - Call Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI With Us Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Need a DUI Lawyer In [State]?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - DUI Defense Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive DUI Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI in [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Attorney · #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 33,
+      "clicks": 4,
+      "conversions": 2.0,
+      "spend": 20
+    },
+    {
+      "campaign": "Pharmacy Board",
+      "ad_group": "Pharmacy Board",
+      "ad": "<ad 16>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "Pharmacy License Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Pharmacy Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Us Today, We Can Help",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Pharmacy License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Facing Board Action? Call Us",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[ST] Pharmacy Board Help",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Legal Help for Pharmacists",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Keep Your License Safe",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Pharmacy Law Experts",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight License Suspension",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "Facing board action in [State]? [Firm] is ready to fight for you.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] protects pharmacists in [State] from license loss or penalties.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Experienced defense for pharmacists in [State]. Free consultation.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call us today. if you need an [State] Board of Pharmacy Defense Lawyer.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 33,
+      "clicks": 5,
+      "conversions": 0.0,
+      "spend": 50
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket attorney",
+      "ad": "<ad 17>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "[State] Traffic Ticket?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Traffic Attorney",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] Speeding Charge?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Reviews",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Fight Your Ticket",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Rating]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your License",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Traffic Defense Lawyers",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Protect Your Driving Record",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call [Firm] Today",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 20,
+      "clicks": 1,
+      "conversions": 0.0,
+      "spend": 10
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Cost",
+      "ad": "<ad 18>",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "Trusted DUI Lawyer in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Need a DUI Lawyer? Call [Firm]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Years [ST] DUI Experience.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ [ST] Charges Resolved.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ 5 Star [Rating site] Reviews.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Don't Wait. Take Action Today.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "([ST] DUI Lawyer) Call Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Don't Wait, Beat Your DUI ASAP",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "DUI Lawyer [State] - Call Now",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving The Entire State Of [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Dependable DUI Attorney In [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Free DUI Consult - [ST] DUI Law",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "Don't let a DUI conviction ruin your job, record and future! [N]+ 5 Star Client Reviews.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Don't let a DUI conviction ruin your job, record and future! We Fight for our clients.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] answers questions. Gives an honest case assessment. Won't scare you to hire us.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ years of experience and [N]+ charges resolved means [Firm] knows how to protect you.",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 6,
+      "clicks": 0,
+      "conversions": 0.0,
+      "spend": 0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Cost",
+      "ad": "<ad 19>",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval": "APPROVED",
+      "headlines": [
+        {
+          "text": "100% Free Case Evaluation",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI With Us Today",
+          "google_rating": "PENDING",
+          "pinned": "HEADLINE_1"
+        },
+        {
+          "text": "[N]+ Perfect 5 Star Ratings",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Keep Your License - Call Today",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[N]+ Charges Resolved",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Serving All [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Beat Your DUI in [State]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[Firm] - DUI Defense Lawyer",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Aggressive DUI Charge Defense",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Flexible Payment Plans - [ST]",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Need a DUI Lawyer In [State]?",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Local Defense Attorneys",
+          "google_rating": "PENDING"
+        }
+      ],
+      "descriptions": [
+        {
+          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Call Now if You Have Been Arrested For Possession of a Controlled Substance in [State].",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
+          "google_rating": "PENDING"
+        },
+        {
+          "text": "[State] DUI Attorney · #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
+          "google_rating": "PENDING"
+        }
+      ],
+      "impressions": 6,
+      "clicks": 1,
+      "conversions": 0.0,
+      "spend": 10
+    }
+  ],
+  "ads_not_serving": 3,
+  "line_rows_for_ads_with_500_plus_impressions": [
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "[State] Criminal Defense",
+      "impressions": 2174,
+      "clicks": 83,
+      "conversions": 22.7
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "description",
+      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+      "impressions": 1876,
+      "clicks": 94,
+      "conversions": 29.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "description",
+      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+      "impressions": 1682,
+      "clicks": 61,
+      "conversions": 17.7
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Criminal Defense - All of [ST]",
+      "impressions": 1435,
+      "clicks": 63,
+      "conversions": 17.3
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Flexible Payment Plans - [ST]",
+      "impressions": 1348,
+      "clicks": 88,
+      "conversions": 25.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "description",
+      "text": "Some of the most experienced lawyers, offering representation across the entire state",
+      "impressions": 1145,
+      "clicks": 54,
+      "conversions": 12.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "100% Free Case Evaluation",
+      "impressions": 1078,
+      "clicks": 58,
+      "conversions": 19.3
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "description",
+      "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+      "impressions": 1072,
+      "clicks": 126,
+      "conversions": 33.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "description",
+      "text": "Some of the most experienced lawyers, offering representation across the entire state",
+      "impressions": 1071,
+      "clicks": 39,
+      "conversions": 10.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Aggressive Drug Charge Defense",
+      "impressions": 1043,
+      "clicks": 63,
+      "conversions": 17.3
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Flexible Payment Plans - [ST]",
+      "impressions": 989,
+      "clicks": 36,
+      "conversions": 11.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Aggressive Drug Charge Defense",
+      "impressions": 878,
+      "clicks": 29,
+      "conversions": 7.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "[State] Traffic Attorney",
+      "impressions": 858,
+      "clicks": 118,
+      "conversions": 29.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "description",
+      "text": "Don't let a DUI conviction ruin your job, record and future. [N]+ 5 Star Client Reviews.",
+      "impressions": 854,
+      "clicks": 56,
+      "conversions": 9.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "description",
+      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+      "impressions": 816,
+      "clicks": 51,
+      "conversions": 17.3
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Call or text 24×7",
+      "impressions": 746,
+      "clicks": 25,
+      "conversions": 7.8
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Criminal Defense - All of [ST]",
+      "impressions": 735,
+      "clicks": 27,
+      "conversions": 6.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "[State] Criminal Defense",
+      "impressions": 721,
+      "clicks": 29,
+      "conversions": 10.5
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Beat Your DUI in [State].",
+      "impressions": 682,
+      "clicks": 37,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "[State] Traffic Ticket?",
+      "impressions": 666,
+      "clicks": 79,
+      "conversions": 21.5
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "100% Free Case Evaluation",
+      "impressions": 642,
+      "clicks": 29,
+      "conversions": 12.7
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "description",
+      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+      "impressions": 613,
+      "clicks": 25,
+      "conversions": 9.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Aggressive DUI Charge Defense",
+      "impressions": 529,
+      "clicks": 31,
+      "conversions": 6.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Local Defense Attorneys",
+      "impressions": 527,
+      "clicks": 33,
+      "conversions": 6.5
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "description",
+      "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
+      "impressions": 526,
+      "clicks": 71,
+      "conversions": 22.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Fight Your Ticket",
+      "impressions": 525,
+      "clicks": 69,
+      "conversions": 19.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Flexible Payment Plans - [ST]",
+      "impressions": 514,
+      "clicks": 42,
+      "conversions": 6.7
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "description",
+      "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+      "impressions": 486,
+      "clicks": 65,
+      "conversions": 10.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "[State] Speeding Charge?",
+      "impressions": 480,
+      "clicks": 65,
+      "conversions": 19.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Call or text 24×7",
+      "impressions": 478,
+      "clicks": 18,
+      "conversions": 5.7
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Free Case Evaluation",
+      "impressions": 472,
+      "clicks": 55,
+      "conversions": 15.5
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Local Defense Attorneys",
+      "impressions": 429,
+      "clicks": 16,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "[State] Traffic Attorney",
+      "impressions": 419,
+      "clicks": 58,
+      "conversions": 19.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "description",
+      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
+      "impressions": 385,
+      "clicks": 24,
+      "conversions": 4.7
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "[State] Traffic Ticket?",
+      "impressions": 352,
+      "clicks": 55,
+      "conversions": 16.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "description",
+      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
+      "impressions": 340,
+      "clicks": 23,
+      "conversions": 4.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "Serving All [State]",
+      "impressions": 335,
+      "clicks": 21,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "[State] DUI Lawyer",
+      "impressions": 289,
+      "clicks": 20,
+      "conversions": 4.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "description",
+      "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+      "impressions": 277,
+      "clicks": 44,
+      "conversions": 13.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Traffic Defense Lawyers",
+      "impressions": 274,
+      "clicks": 45,
+      "conversions": 8.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "[State] Speeding Charge?",
+      "impressions": 273,
+      "clicks": 37,
+      "conversions": 11.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Fight Your Ticket",
+      "impressions": 263,
+      "clicks": 34,
+      "conversions": 9.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "description",
+      "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
+      "impressions": 263,
+      "clicks": 28,
+      "conversions": 11.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "100% Free Case Evaluation",
+      "impressions": 261,
+      "clicks": 11,
+      "conversions": 2.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "description",
+      "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+      "impressions": 230,
+      "clicks": 41,
+      "conversions": 10.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "[State] Drug Crime Lawyer",
+      "impressions": 227,
+      "clicks": 11,
+      "conversions": 2.5
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "[N]+ Charges Resolved",
+      "impressions": 225,
+      "clicks": 18,
+      "conversions": 8.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Beat Your DUI With Us Today",
+      "impressions": 223,
+      "clicks": 19,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Free Case Evaluation",
+      "impressions": 210,
+      "clicks": 28,
+      "conversions": 8.5
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "description",
+      "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
+      "impressions": 189,
+      "clicks": 28,
+      "conversions": 12.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "[State] Drug Crime Lawyer",
+      "impressions": 165,
+      "clicks": 6,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "description",
+      "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
+      "impressions": 162,
+      "clicks": 12,
+      "conversions": 5.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "[Firm] - Criminal Defense",
+      "impressions": 161,
+      "clicks": 8,
+      "conversions": 2.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Traffic Defense Lawyers",
+      "impressions": 158,
+      "clicks": 16,
+      "conversions": 3.5
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "Serving All [State]",
+      "impressions": 154,
+      "clicks": 10,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "description",
+      "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
+      "impressions": 143,
+      "clicks": 24,
+      "conversions": 7.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "description",
+      "text": "Some of the most experienced lawyers, offering representation across the entire state",
+      "impressions": 132,
+      "clicks": 7,
+      "conversions": 0.3
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "description",
+      "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
+      "impressions": 128,
+      "clicks": 8,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "We Fight to Keep Your Freedom",
+      "impressions": 119,
+      "clicks": 4,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "[Firm] - Criminal Defense",
+      "impressions": 107,
+      "clicks": 5,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "[N]+ Perfect 5 Star Ratings",
+      "impressions": 91,
+      "clicks": 3,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Serving All [State]",
+      "impressions": 82,
+      "clicks": 4,
+      "conversions": 2.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 1>",
+      "type": "headline",
+      "text": "[N]+ 5-Star Reviews",
+      "impressions": 81,
+      "clicks": 5,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "[N]+ Charges Resolved",
+      "impressions": 75,
+      "clicks": 4,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Call or text 24×7 | Free Eval",
+      "impressions": 63,
+      "clicks": 6,
+      "conversions": 1.3
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "[N]+ 5 Star Reviews",
+      "impressions": 63,
+      "clicks": 11,
+      "conversions": 5.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Call [Firm] Today",
+      "impressions": 60,
+      "clicks": 6,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Protect Your Driving Record",
+      "impressions": 58,
+      "clicks": 6,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "[N]+ 5 Star Reviews",
+      "impressions": 57,
+      "clicks": 10,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Criminal Defense",
+      "ad_group": "Criminal Defense Lawyer",
+      "ad": "<ad 2>",
+      "type": "headline",
+      "text": "We Fight to Keep Your Freedom",
+      "impressions": 42,
+      "clicks": 2,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Protect Your Driving Record",
+      "impressions": 34,
+      "clicks": 9,
+      "conversions": 3.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "Protect Your License",
+      "impressions": 33,
+      "clicks": 3,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "[N]+ Perfect 5 Star Ratings",
+      "impressions": 32,
+      "clicks": 3,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Call [Firm] Today",
+      "impressions": 31,
+      "clicks": 6,
+      "conversions": 2.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Criminal Defense - All of [ST]",
+      "impressions": 30,
+      "clicks": 0,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Keep Your License - Call Today",
+      "impressions": 18,
+      "clicks": 4,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "Local Defense Attorneys",
+      "impressions": 12,
+      "clicks": 1,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "Protect Your License",
+      "impressions": 11,
+      "clicks": 1,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Traffic Tickets",
+      "ad_group": "traffic ticket lawyer",
+      "ad": "<ad 3>",
+      "type": "headline",
+      "text": "[Rating]",
+      "impressions": 10,
+      "clicks": 1,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "[Firm] - Criminal Defense",
+      "impressions": 10,
+      "clicks": 2,
+      "conversions": 1.0
+    },
+    {
+      "campaign": "DUI",
+      "ad_group": "DUI Lawyer Terms",
+      "ad": "<ad 4>",
+      "type": "headline",
+      "text": "[N]+Charges Resolved",
+      "impressions": 10,
+      "clicks": 0,
+      "conversions": 0.0
+    },
+    {
+      "campaign": "Out-of-State Traffic",
+      "ad_group": "[State] Traffic Lawyer",
+      "ad": "<ad 5>",
+      "type": "headline",
+      "text": "[Rating]",
+      "impressions": 2,
+      "clicks": 0,
+      "conversions": 0.0
+    }
+  ]
+}

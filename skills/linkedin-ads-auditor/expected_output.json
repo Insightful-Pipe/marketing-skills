@@ -1,0 +1,1134 @@
+{
+  "header": {
+    "account": "A B2B software company's LinkedIn ad account (masked)",
+    "ad_account_id": "500000001",
+    "currency": "USD",
+    "window": "2025-12-01 to 2026-01-31",
+    "why_this_window": "No spend in the last 30 days. The 24-month monthly check found spend only in 2025-12, 2026-01, so the audit covers those months (under 92 days, so reach works).",
+    "spend": 150,
+    "impressions": 7800,
+    "clicks": 87,
+    "conversions": 0,
+    "leads": 0,
+    "grade": 58,
+    "rating": "at risk",
+    "grade_math": "100 - 1 fail x 12 - 6 warns x 5 = 58; 1 area not graded (no deduction)"
+  },
+  "scorecard": [
+    {
+      "area": "Tracking and conversions",
+      "result": "fail",
+      "key_number": "0 conversions from 87 clicks; no conversion recorded in 24 months",
+      "why": "Both campaigns bid for conversions through one Insight Tag URL rule that has never recorded one, so auto-bidding had no signal and no result can be judged.",
+      "deduction": -12
+    },
+    {
+      "area": "Efficiency and campaign structure",
+      "result": "warn",
+      "key_number": "$150 spent, CPC $1.7, 0 conversions",
+      "why": "No target was given and there are no conversions, so no campaign can be tiered on results; feed CTR can't be judged on 25 feed impressions. Campaign structure: pass (one group, one objective, and the two campaigns never ran on the same days).",
+      "deduction": -5
+    },
+    {
+      "area": "Audience Network and expansion",
+      "result": "warn",
+      "key_number": "99.5% of spend on the Audience Network",
+      "why": "Both campaigns had the Audience Network on and it took almost all delivery; with tracking broken, its value can't be proven either way. Expansion was off on both, so there is no on/off comparison.",
+      "deduction": -5
+    },
+    {
+      "area": "Targeting and who the ads reached",
+      "result": "warn",
+      "key_number": "34% of Campaign A's job function impressions outside its 6 functions",
+      "why": "Campaign B requires titles, skills and interests all together, with 19 titles. Campaign A's seniority held (3% outside) but its function did not; Campaign B's company size was 17% outside (under the 20% line). Rows overlap, so these are shares.",
+      "deduction": -5
+    },
+    {
+      "area": "Frequency and saturation",
+      "result": "warn",
+      "key_number": "frequency 3.4 in 2 days on Campaign B",
+      "why": "Campaign B reached about 1,400 people and showed each one the ad 3.4 times in 2 days: a small pool for its budget.",
+      "deduction": -5
+    },
+    {
+      "area": "Bidding, budgets and pacing",
+      "result": "warn",
+      "key_number": "flights of 6 and 2 days",
+      "why": "Both run maximum delivery, so no bid type comparison is possible. Both flights were under 14 days. Campaign A hit its $15 daily budget on 3 of 6 days (up to 150%), and Campaign B reached 124% of its $35 budget on 1 of its 2 days. The spending group has no total budget, so there is nothing to pace.",
+      "deduction": -5
+    },
+    {
+      "area": "Ads and formats",
+      "result": "warn",
+      "key_number": "1 ad per campaign",
+      "why": "Nothing to compare or rotate. Video: 24% view rate and the steepest drop from 75% to 100%. Document, message and event formats not used; thought leader unknown.",
+      "deduction": -5
+    },
+    {
+      "area": "Lead gen forms and lead quality",
+      "result": "not graded",
+      "key_number": "no lead gen campaign spent; no CRM numbers",
+      "why": "2 lead forms exist (2 questions each) but no ad on a spending campaign uses one. Lead quality needs lead-to-opportunity numbers from the CRM.",
+      "deduction": 0
+    }
+  ],
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Make the conversion rule record before the next launch",
+      "what_to_do": "Check the Insight Tag is on the sign-up completion page (Campaign Manager > Insight Tag, or the page source), then change the rule from an exact match to 'starts with' on the page path, and confirm one test conversion shows up before any campaign bids for conversions again. If the test records, the 0 conversions from the window mean nobody who clicked signed up, and the landing page is the next place to look.",
+      "money_at_stake": 150,
+      "how": "all spend in the window went to campaigns bidding for this rule's conversions",
+      "evidence": "get_conversions: 1 rule, EXACT match; CONVERSION pivot over 24 months: 0 rows; 87 clicks, 0 conversions",
+      "who": "do this on the site and in Campaign Manager (conversion rules are recommendations only in this skill)"
+    },
+    {
+      "rank": 2,
+      "fix": "Run the relaunch long enough for auto-bidding to settle",
+      "what_to_do": "Plan each campaign as one flight of at least 14 days, with a daily budget it can spend on every day of it, and judge cost per result only after the first two weeks. Give the group a total budget and a run schedule so pacing can be checked.",
+      "money_at_stake": 150,
+      "how": "all spend in the window was on flights under 14 days",
+      "evidence": "get_campaign_analytics DAILY: Campaign A delivered on 6 days and Campaign B on 2, both on maximum delivery (MAX_CONVERSION); busiest days at 150% and 124% of the daily budget",
+      "who": "do this in Campaign Manager (budgets and schedules are recommendations only)"
+    },
+    {
+      "rank": 3,
+      "fix": "Turn the Audience Network off on the relaunch, or split-test it",
+      "what_to_do": "Relaunch with offsiteDeliveryEnabled false, or run two copies of one campaign with it on and off for two weeks on the same budget, once tracking works.",
+      "money_at_stake": 150,
+      "how": "spend on OFFSITE and OFFSITE_IN_STREAM placements across both campaigns",
+      "evidence": "PLACEMENT_NAME per campaign: 99.5% of spend off LinkedIn; the LinkedIn feed got 25 impressions",
+      "who": "I can do this now on a campaign you relaunch (update_campaign, after your yes)"
+    },
+    {
+      "rank": 4,
+      "fix": "Give Campaign B a bigger pool",
+      "what_to_do": "Drop the requirement that members match titles, skills and interests all at once (keep titles or skills, not both plus interests), and size its daily budget so frequency stays under about 3 a week; the flight length is the pacing fix.",
+      "money_at_stake": 46,
+      "how": "Campaign B's spend in the window",
+      "evidence": "get_campaigns targeting: 19 titles AND 20 skills AND 21 interests; reach 1,400, frequency 3.4 in 2 days",
+      "who": "do this in Campaign Manager (targeting is a recommendation only)"
+    },
+    {
+      "rank": 5,
+      "fix": "Check where Campaign A's job function targeting leaks",
+      "what_to_do": "Compare the functions that got impressions with the ones you sell to. Members can hold more than one position, so part of this is overlap; if one off-target function keeps taking spend without converting once tracking works, exclude it.",
+      "money_at_stake": 23,
+      "how": "spend in the job function rows outside the targeted functions (rows overlap, so this is approximate)",
+      "evidence": "Campaign A job function: 34% of impressions outside 6 targeted values",
+      "who": "do this in Campaign Manager"
+    }
+  ],
+  "campaign_table": [
+    {
+      "campaign": "Campaign A (video, website conversions)",
+      "status": "COMPLETED",
+      "spend": 100,
+      "share_of_spend": "70%",
+      "impressions": 3100,
+      "clicks": 40,
+      "ctr": "1.3%",
+      "cpc": 2.6,
+      "cpm": 34,
+      "conversions": 0,
+      "post_click_and_post_view_conversions": "not available: the fields came back missing",
+      "leads": 0,
+      "cost_per_result": null,
+      "frequency": 1.8,
+      "bid_type": "maximum delivery",
+      "audience_network": "on",
+      "audience_expansion": "off",
+      "tier": "not tiered: no target and no conversions"
+    },
+    {
+      "campaign": "Campaign B (single image, website conversions)",
+      "status": "COMPLETED",
+      "spend": 46,
+      "share_of_spend": "30%",
+      "impressions": 4700,
+      "clicks": 47,
+      "ctr": "1.0%",
+      "cpc": 0.97,
+      "cpm": 9.7,
+      "conversions": 0,
+      "post_click_and_post_view_conversions": "not available: the fields came back missing",
+      "leads": 0,
+      "cost_per_result": null,
+      "frequency": 3.4,
+      "bid_type": "maximum delivery",
+      "audience_network": "on",
+      "audience_expansion": "off",
+      "tier": "not tiered: no target and no conversions"
+    }
+  ],
+  "area_details": {
+    "tracking_and_conversions": [
+      {
+        "check": "Conversion rule attached to every spending campaign",
+        "result": "pass",
+        "evidence": "1 enabled rule (INSIGHT_TAG_URL_MATCH_RULES, KEY_PAGE_VIEW) is attached to both spending campaigns"
+      },
+      {
+        "check": "MAX_CONVERSION campaigns get a conversion signal",
+        "result": "fail",
+        "evidence": "both campaigns optimise for MAX_CONVERSION; the rule recorded 0 conversions from 87 clicks in the window"
+      },
+      {
+        "check": "Rule has recorded a conversion (24 months)",
+        "result": "fail",
+        "evidence": "the CONVERSION pivot from 2024-10-06 to 2026-10-05, on the 2 campaigns the rule is attached to, returned 0 rows: no conversion has ever been attributed to these ads. That can mean the tag is missing from the page, the URL rule doesn't match, or nobody who clicked signed up; a test conversion tells which, and campaigns depend on it, so this is a fail"
+      },
+      {
+        "check": "URL rule match type",
+        "result": "warn",
+        "evidence": "EXACT match on one URL ending in a slash (https://example.com/pages/page-1/); the same page without the slash, with a query string or with www would not match"
+      },
+      {
+        "check": "Conversion value",
+        "result": "information",
+        "evidence": "value type DYNAMIC with a default of 0 and no value has come back; not a warn, because no value or return-on-spend goal was given"
+      },
+      {
+        "check": "Attribution windows",
+        "result": "information",
+        "evidence": "30 days after a click, 7 days after a view; LAST_TOUCH_BY_CAMPAIGN"
+      },
+      {
+        "check": "Insight Tag vs Conversions API",
+        "result": "information",
+        "evidence": "tag only (URL rules); no Conversions API rule, so browsers that block the tag are missed"
+      }
+    ],
+    "campaign_structure": {
+      "checks": [
+        {
+          "check": "Objective fits the offer",
+          "result": "information",
+          "evidence": "both spending campaigns use WEBSITE_CONVERSION for a product sign-up: the high-intent choice, dearer per result than a lead gen form and usually warmer. It fits a sign-up; a content offer would suit a lead gen form or document ad better."
+        },
+        {
+          "check": "One goal per campaign group",
+          "result": "pass",
+          "evidence": "the 2 campaigns in the spending group are both spending campaigns, with one objective (WEBSITE_CONVERSION)"
+        },
+        {
+          "check": "Campaigns competing for the same people",
+          "result": "pass",
+          "evidence": "Campaign A delivered 2025-12-18 to 2025-12-24, Campaign B 2026-01-30 to 2026-01-31: 0 shared delivery days, so they never bid against each other. Both require industries and locations, sharing 9 industries and 1 location, but A narrows by seniority and function and B by titles, skills and interests, so overlap can't be measured from the setup."
+        },
+        {
+          "check": "Prospecting and retargeting kept apart",
+          "result": "pass",
+          "evidence": "neither campaign uses a matched or retargeting audience; both are prospecting"
+        }
+      ],
+      "proposed_structure": [
+        "One campaign group for the sign-up goal, with a total budget and a run schedule, so group pacing can be read (the current group has no total budget).",
+        "Inside it, one campaign per audience you want to judge apart: Campaign A's seniority and function audience, and Campaign B's title audience once loosened (fix on Campaign B), live on the same dates for at least 14 days so their cost per result can be compared.",
+        "Because they would then run together, check Campaign Manager's audience overlap and exclude one from the other if they share most of their pool.",
+        "2 to 5 ads per campaign, so a weak ad can be paused without stopping the campaign.",
+        "If you add retargeting of site visitors, give it its own campaign and exclude that audience from the prospecting campaigns."
+      ]
+    },
+    "placement_and_expansion": {
+      "by_campaign": [
+        {
+          "campaign": "Campaign A (video, website conversions)",
+          "audience_network": "on",
+          "audience_expansion": "off",
+          "linkedin_feed": {
+            "spend": 0.65,
+            "impressions": 24,
+            "clicks": 0,
+            "conversions": 0
+          },
+          "audience_network_placements": {
+            "spend": 100,
+            "impressions": 3100,
+            "clicks": 40,
+            "conversions": 0
+          },
+          "audience_network_share_of_spend": "99.4%",
+          "result": "warn"
+        },
+        {
+          "campaign": "Campaign B (single image, website conversions)",
+          "audience_network": "on",
+          "audience_expansion": "off",
+          "linkedin_feed": {
+            "spend": 0.05,
+            "impressions": 1,
+            "clicks": 0,
+            "conversions": 0
+          },
+          "audience_network_placements": {
+            "spend": 46,
+            "impressions": 4700,
+            "clicks": 47,
+            "conversions": 0
+          },
+          "audience_network_share_of_spend": "99.9%",
+          "result": "warn"
+        }
+      ],
+      "audience_expansion": "off on both spending campaigns: no comparison possible",
+      "suggested_test": "two copies of one campaign, Audience Network on in one and off in the other, same budget, at least two weeks, after tracking works"
+    },
+    "targeting": {
+      "setup": [
+        {
+          "campaign": "Campaign A (video, website conversions)",
+          "facets_required": [
+            "industries",
+            "jobFunctions",
+            "locations",
+            "seniorities",
+            "interface language"
+          ],
+          "locations": 2,
+          "notes": [
+            "seniority and job function filters set",
+            "1 employer excluded: the advertiser's own company"
+          ],
+          "competitor_exclusion": "unknown: no competitors were named, and the only excluded employer is the advertiser's own company",
+          "result": "pass"
+        },
+        {
+          "campaign": "Campaign B (single image, website conversions)",
+          "facets_required": [
+            "industries",
+            "interests",
+            "locations",
+            "skills",
+            "staffCountRanges",
+            "titles",
+            "interface language"
+          ],
+          "locations": 1,
+          "notes": [
+            "no seniority or job function filter; titles, skills and interests are used instead",
+            "titles (19), skills (20) and interests (21) are all required together, which shrinks the pool fast",
+            "19 job titles, over the ~10 that keeps a title list focused",
+            "1 employer excluded: the advertiser's own company"
+          ],
+          "competitor_exclusion": "unknown: no competitors were named, and the only excluded employer is the advertiser's own company",
+          "result": "warn"
+        }
+      ],
+      "leakage": [
+        {
+          "campaign": "Campaign A (video, website conversions)",
+          "facet": "seniority",
+          "values_targeted": 6,
+          "share_of_impressions_outside": "3%",
+          "spend_in_rows_outside": 0,
+          "result": "pass"
+        },
+        {
+          "campaign": "Campaign A (video, website conversions)",
+          "facet": "job function",
+          "values_targeted": 6,
+          "share_of_impressions_outside": "34%",
+          "spend_in_rows_outside": 23,
+          "result": "warn"
+        },
+        {
+          "campaign": "Campaign B (single image, website conversions)",
+          "facet": "company size",
+          "values_targeted": 5,
+          "share_of_impressions_outside": "17%",
+          "spend_in_rows_outside": 8.0,
+          "result": "pass"
+        }
+      ],
+      "audience_size": "unknown: no action returns it; read the forecasted audience in Campaign Manager",
+      "reach_so_far": {
+        "Campaign A (video, website conversions)": 1700,
+        "Campaign B (single image, website conversions)": 1400
+      }
+    },
+    "who_the_ads_reached": {
+      "note": "LinkedIn's Website Demographics report (site visitors, from the Insight Tag) has no action; this is who saw and clicked the ads. Function, industry and title names are replaced by labels; '(targeted)' marks a value the campaign targets directly. Rows overlap, so shares are within each pivot. Industry and title are listed, not graded for leakage.",
+      "by_campaign": {
+        "Campaign A (video, website conversions)": {
+          "seniority": [
+            {
+              "segment": "Owner (targeted)",
+              "share_of_impressions": "38%",
+              "clicks": 15,
+              "spend": 51,
+              "cpc": 3.4,
+              "conversions": 0
+            },
+            {
+              "segment": "CXO (targeted)",
+              "share_of_impressions": "17%",
+              "clicks": 11,
+              "spend": 25,
+              "cpc": 2.3,
+              "conversions": 0
+            },
+            {
+              "segment": "Manager (targeted)",
+              "share_of_impressions": "14%",
+              "clicks": 6,
+              "spend": 21,
+              "cpc": 3.5,
+              "conversions": 0
+            },
+            {
+              "segment": "Director (targeted)",
+              "share_of_impressions": "14%",
+              "clicks": 7,
+              "spend": 24,
+              "cpc": 3.5,
+              "conversions": 0
+            },
+            {
+              "segment": "VP (targeted)",
+              "share_of_impressions": "8%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Partner (targeted)",
+              "share_of_impressions": "6%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Senior",
+              "share_of_impressions": "2%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Entry",
+              "share_of_impressions": "1%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            }
+          ],
+          "job_function_top5": [
+            {
+              "segment": "Function 1 (targeted)",
+              "share_of_impressions": "44%",
+              "clicks": 28,
+              "spend": 88,
+              "cpc": 3.1,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 2 (targeted)",
+              "share_of_impressions": "8%",
+              "clicks": 9,
+              "spend": 15,
+              "cpc": 1.7,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 3",
+              "share_of_impressions": "6%",
+              "clicks": 5,
+              "spend": 14,
+              "cpc": 2.8,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 4",
+              "share_of_impressions": "5%",
+              "clicks": 6,
+              "spend": 7.0,
+              "cpc": 1.2,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 5 (targeted)",
+              "share_of_impressions": "4%",
+              "clicks": 3,
+              "spend": 8.8,
+              "cpc": 2.9,
+              "conversions": 0
+            }
+          ],
+          "company_size": [
+            {
+              "segment": "2-10",
+              "share_of_impressions": "31%",
+              "clicks": 9,
+              "spend": 29,
+              "cpc": 3.2,
+              "conversions": 0
+            },
+            {
+              "segment": "11-50",
+              "share_of_impressions": "19%",
+              "clicks": 6,
+              "spend": 26,
+              "cpc": 4.3,
+              "conversions": 0
+            },
+            {
+              "segment": "51-200",
+              "share_of_impressions": "12%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "10,001+",
+              "share_of_impressions": "11%",
+              "clicks": 4,
+              "spend": 14,
+              "cpc": 3.5,
+              "conversions": 0
+            },
+            {
+              "segment": "1,001-5,000",
+              "share_of_impressions": "8%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "201-500",
+              "share_of_impressions": "7%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "501-1,000",
+              "share_of_impressions": "5%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "1",
+              "share_of_impressions": "5%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "5,001-10,000",
+              "share_of_impressions": "3%",
+              "clicks": 5,
+              "spend": 3.3,
+              "cpc": 0.66,
+              "conversions": 0
+            }
+          ],
+          "industry_top5": [
+            {
+              "segment": "Industry 1 (targeted)",
+              "share_of_impressions": "13%",
+              "clicks": 12,
+              "spend": 32,
+              "cpc": 2.7,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 2 (targeted)",
+              "share_of_impressions": "11%",
+              "clicks": 11,
+              "spend": 28,
+              "cpc": 2.5,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 3 (targeted)",
+              "share_of_impressions": "8%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 4 (targeted)",
+              "share_of_impressions": "7%",
+              "clicks": 3,
+              "spend": 20,
+              "cpc": 6.7,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 5",
+              "share_of_impressions": "4%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            }
+          ],
+          "job_title_top5": [
+            {
+              "segment": "Title 1",
+              "share_of_impressions": "22%",
+              "clicks": 10,
+              "spend": 36,
+              "cpc": 3.6,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 2",
+              "share_of_impressions": "7%",
+              "clicks": 5,
+              "spend": 12,
+              "cpc": 2.5,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 3",
+              "share_of_impressions": "7%",
+              "clicks": 4,
+              "spend": 6.0,
+              "cpc": 1.5,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 4",
+              "share_of_impressions": "5%",
+              "clicks": 4,
+              "spend": 6.6,
+              "cpc": 1.6,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 5",
+              "share_of_impressions": "3%",
+              "clicks": 4,
+              "spend": 3.7,
+              "cpc": 0.93,
+              "conversions": 0
+            }
+          ]
+        },
+        "Campaign B (single image, website conversions)": {
+          "seniority": [
+            {
+              "segment": "Senior",
+              "share_of_impressions": "35%",
+              "clicks": 18,
+              "spend": 16,
+              "cpc": 0.88,
+              "conversions": 0
+            },
+            {
+              "segment": "Manager",
+              "share_of_impressions": "24%",
+              "clicks": 15,
+              "spend": 14,
+              "cpc": 0.93,
+              "conversions": 0
+            },
+            {
+              "segment": "Director",
+              "share_of_impressions": "22%",
+              "clicks": 14,
+              "spend": 12,
+              "cpc": 0.84,
+              "conversions": 0
+            },
+            {
+              "segment": "Owner",
+              "share_of_impressions": "8%",
+              "clicks": 4,
+              "spend": 2.8,
+              "cpc": 0.7,
+              "conversions": 0
+            },
+            {
+              "segment": "CXO",
+              "share_of_impressions": "4%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Entry",
+              "share_of_impressions": "4%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "VP",
+              "share_of_impressions": "2%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "Partner",
+              "share_of_impressions": "1%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            }
+          ],
+          "company_size": [
+            {
+              "segment": "11-50 (targeted)",
+              "share_of_impressions": "29%",
+              "clicks": 17,
+              "spend": 19,
+              "cpc": 1.1,
+              "conversions": 0
+            },
+            {
+              "segment": "51-200 (targeted)",
+              "share_of_impressions": "21%",
+              "clicks": 17,
+              "spend": 13,
+              "cpc": 0.78,
+              "conversions": 0
+            },
+            {
+              "segment": "1,001-5,000 (targeted)",
+              "share_of_impressions": "15%",
+              "clicks": 10,
+              "spend": 8.9,
+              "cpc": 0.89,
+              "conversions": 0
+            },
+            {
+              "segment": "201-500 (targeted)",
+              "share_of_impressions": "11%",
+              "clicks": 6,
+              "spend": 8.6,
+              "cpc": 1.4,
+              "conversions": 0
+            },
+            {
+              "segment": "2-10",
+              "share_of_impressions": "10%",
+              "clicks": 4,
+              "spend": 5.8,
+              "cpc": 1.5,
+              "conversions": 0
+            },
+            {
+              "segment": "501-1,000 (targeted)",
+              "share_of_impressions": "8%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "1",
+              "share_of_impressions": "4%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            },
+            {
+              "segment": "10,001+",
+              "share_of_impressions": "2%",
+              "clicks": 3,
+              "spend": 2.1,
+              "cpc": 0.7,
+              "conversions": 0
+            },
+            {
+              "segment": "5,001-10,000",
+              "share_of_impressions": "1%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            }
+          ],
+          "job_function_top5": [
+            {
+              "segment": "Function 5",
+              "share_of_impressions": "38%",
+              "clicks": 35,
+              "spend": 32,
+              "cpc": 0.9,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 1",
+              "share_of_impressions": "11%",
+              "clicks": 10,
+              "spend": 11,
+              "cpc": 1.1,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 3",
+              "share_of_impressions": "8%",
+              "clicks": 3,
+              "spend": 4.6,
+              "cpc": 1.5,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 6",
+              "share_of_impressions": "7%",
+              "clicks": 7,
+              "spend": 6.4,
+              "cpc": 0.91,
+              "conversions": 0
+            },
+            {
+              "segment": "Function 7",
+              "share_of_impressions": "5%",
+              "clicks": 3,
+              "spend": 6.8,
+              "cpc": 2.3,
+              "conversions": 0
+            }
+          ],
+          "industry_top5": [
+            {
+              "segment": "Industry 1 (targeted)",
+              "share_of_impressions": "22%",
+              "clicks": 40,
+              "spend": 31,
+              "cpc": 0.78,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 2 (targeted)",
+              "share_of_impressions": "13%",
+              "clicks": 20,
+              "spend": 20,
+              "cpc": 1.0,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 3 (targeted)",
+              "share_of_impressions": "12%",
+              "clicks": 27,
+              "spend": 20,
+              "cpc": 0.76,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 6",
+              "share_of_impressions": "3%",
+              "clicks": 4,
+              "spend": 5.5,
+              "cpc": 1.4,
+              "conversions": 0
+            },
+            {
+              "segment": "Industry 4 (targeted)",
+              "share_of_impressions": "3%",
+              "clicks": 4,
+              "spend": 3.5,
+              "cpc": 0.88,
+              "conversions": 0
+            }
+          ],
+          "job_title_top5": [
+            {
+              "segment": "Title 6 (targeted)",
+              "share_of_impressions": "10%",
+              "clicks": 6,
+              "spend": 7.6,
+              "cpc": 1.3,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 7 (targeted)",
+              "share_of_impressions": "8%",
+              "clicks": 4,
+              "spend": 8.7,
+              "cpc": 2.2,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 8 (targeted)",
+              "share_of_impressions": "7%",
+              "clicks": 7,
+              "spend": 5.4,
+              "cpc": 0.78,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 9 (targeted)",
+              "share_of_impressions": "5%",
+              "clicks": 4,
+              "spend": 4.0,
+              "cpc": 0.99,
+              "conversions": 0
+            },
+            {
+              "segment": "Title 10",
+              "share_of_impressions": "3%",
+              "clicks": 0,
+              "spend": 0,
+              "cpc": null,
+              "conversions": 0
+            }
+          ]
+        }
+      },
+      "countries_both_campaigns": [
+        {
+          "country": "United States",
+          "share_of_impressions": "92%",
+          "clicks": 71
+        },
+        {
+          "country": "United Kingdom",
+          "share_of_impressions": "4%",
+          "clicks": 14
+        },
+        {
+          "country": "18 other countries",
+          "share_of_impressions": "4%",
+          "clicks": 0
+        }
+      ],
+      "observation": "35% of Campaign B's seniority impressions went to Senior individual contributors; it targets titles rather than seniorities."
+    },
+    "frequency": [
+      {
+        "campaign": "Campaign A (video, website conversions)",
+        "month": "2025-12",
+        "impressions": 3100,
+        "reach": 1700,
+        "frequency": 1.8,
+        "days_delivered": 6,
+        "result": "pass"
+      },
+      {
+        "campaign": "Campaign B (single image, website conversions)",
+        "month": "2026-01",
+        "impressions": 4700,
+        "reach": 1400,
+        "frequency": 3.4,
+        "days_delivered": 2,
+        "result": "warn"
+      }
+    ],
+    "bidding_budgets_pacing": {
+      "by_campaign": [
+        {
+          "campaign": "Campaign A (video, website conversions)",
+          "optimizationTargetType": "MAX_CONVERSION",
+          "bid_type": "maximum delivery",
+          "cost_type": "CPM",
+          "unitCost_note": "set but ignored under maximum delivery",
+          "daily_budget": 15,
+          "days_delivered": 6,
+          "days_at_or_over_budget": 3,
+          "highest_day": 22,
+          "highest_day_vs_budget": "150%",
+          "pacing": "LIFETIME",
+          "flight_under_14_days": true
+        },
+        {
+          "campaign": "Campaign B (single image, website conversions)",
+          "optimizationTargetType": "MAX_CONVERSION",
+          "bid_type": "maximum delivery",
+          "cost_type": "CPM",
+          "unitCost_note": "set but ignored under maximum delivery",
+          "daily_budget": 35,
+          "days_delivered": 2,
+          "days_at_or_over_budget": 1,
+          "highest_day": 43,
+          "highest_day_vs_budget": "124%",
+          "pacing": "LIFETIME",
+          "flight_under_14_days": true
+        }
+      ],
+      "bid_type_comparison": "no comparison possible: both campaigns use maximum delivery (MAX_CONVERSION)",
+      "over_budget_spend": 30,
+      "over_budget_note": "LinkedIn can spend up to 50% over the daily budget on a single day; both campaigns went over on their busiest days: Campaign A up to 150% ($21 over in total) and Campaign B up to 124% ($8.4 over)",
+      "campaign_group_pacing": "the group both campaigns sit in has no total budget, so there is nothing to pace; 1 other group has a total budget but no spend and an end-date hold",
+      "serving_holds": "both campaigns are COMPLETED with CAMPAIGN_END_DATE_HOLD, as expected"
+    },
+    "ads_and_formats": {
+      "ads": [
+        {
+          "ad": "Campaign A, ad 1",
+          "review": "APPROVED",
+          "impressions": 3100,
+          "clicks": 40,
+          "ctr": "1.3%",
+          "spend": 100,
+          "conversions": 0,
+          "share_of_campaign_spend": "100%"
+        },
+        {
+          "ad": "Campaign B, ad 1",
+          "review": "APPROVED",
+          "impressions": 4700,
+          "clicks": 47,
+          "ctr": "1.0%",
+          "spend": 46,
+          "conversions": 0,
+          "share_of_campaign_spend": "100%"
+        }
+      ],
+      "ads_per_campaign": {
+        "Campaign A (video, website conversions)": 1,
+        "Campaign B (single image, website conversions)": 1
+      },
+      "formats": {
+        "video": {
+          "campaign": "Campaign A (video, website conversions)",
+          "impressions": 3100,
+          "video_starts": 2900,
+          "video_views": 760,
+          "view_rate": "24% of impressions",
+          "curve_share_of_starts": {
+            "25%": "46%",
+            "50%": "34%",
+            "75%": "25%",
+            "100%": "4%"
+          },
+          "completion_rate": "4% of starts",
+          "cost_per_view": 0.14,
+          "biggest_drop": "75% to 100%: 82% of viewers lost",
+          "views_on_audience_network": "98%"
+        },
+        "document": "not used: no document metrics on any spending campaign",
+        "message_and_conversation": "not used: no SPONSORED_INMAILS campaign spent and sends are 0",
+        "event": "not used; the fields registrations, postClickRegistrations, postViewRegistrations came back missing (not available), not 0",
+        "thought_leader": "unknown: the ads reference posts, and the post author needs a connected LinkedIn Page (fetch_post_by_urn) or the user's answer",
+        "copy_length_vs_ctr": "not graded: 2 ads in the window (6 with 1,000+ feed impressions are needed), and ad text needs a connected LinkedIn Page or the user's paste"
+      },
+      "rejected_ads_on_spending_campaigns": 0
+    },
+    "lead_gen_and_lead_quality": {
+      "forms": [
+        {
+          "form": "Test form 1",
+          "state": "PUBLISHED",
+          "questions": 2,
+          "fields": [
+            "FIRST_NAME",
+            "EMAIL"
+          ],
+          "privacy_policy_url": "set"
+        },
+        {
+          "form": "Test form 2",
+          "state": "DRAFT",
+          "questions": 2,
+          "fields": [
+            "FIRST_NAME",
+            "EMAIL"
+          ],
+          "privacy_policy_url": "set"
+        }
+      ],
+      "completion_rate": "not graded: no lead gen campaign spent",
+      "lead_quality": "unknown: no CRM numbers given",
+      "economics": "not graded: with 0 conversions and 0 leads there is no cost per lead; cost per landing-page click was $1.7"
+    }
+  },
+  "account_hygiene": {
+    "campaigns": 92,
+    "never_spent": 90,
+    "test_named": 84,
+    "ads": 49,
+    "rejected_ads": 40,
+    "rejection_reasons": {
+      "MISSING_URL_FOR_WEBSITE_OBJECTIVE": 36,
+      "TEST_ADS": 4
+    },
+    "rejected_on_spending_campaigns": 0,
+    "campaign_groups": 34,
+    "groups_with_no_live_campaigns": 34,
+    "groups_with_no_campaigns": 24,
+    "groups_note": "no campaign in the account is live, so none of the 34 groups has a live campaign; 24 hold no campaigns at all",
+    "advice": "archive the test campaigns, their rejected ads and the empty groups in Campaign Manager so real campaigns are easy to find; this skill doesn't archive anything"
+  },
+  "unknowns_and_not_graded": [
+    "Lead gen completion and cost per lead: no lead gen campaign spent.",
+    "Lead quality, cost per customer and LTV to CAC: needs lead-to-opportunity and customer numbers from the CRM.",
+    "Thought leader ads and copy length vs CTR: need the ad posts (a connected LinkedIn Page) or the user's answer.",
+    "Audience size: read the forecasted audience in Campaign Manager.",
+    "Competitor exclusion: name your main competitors to check their staff are excluded.",
+    "Insight Tag status on the site: no action reads it; check the page source or Campaign Manager."
+  ],
+  "monitoring": {
+    "weekly": [
+      "cost per result per campaign",
+      "feed CTR",
+      "frequency",
+      "daily budget use"
+    ],
+    "monthly": [
+      "lead-to-opportunity rate",
+      "reach trend",
+      "group pacing"
+    ],
+    "rerun_when": [
+      "cost per result up 20% or more on the previous period",
+      "feed CTR under 0.30%",
+      "frequency over 5 in a month",
+      "sales flag lead quality"
+    ]
+  },
+  "fixes_offered": [
+    {
+      "fix": "Audience Network off on the relaunched campaign",
+      "action": "update_campaign",
+      "status": "not run",
+      "note": "both campaigns are completed, so this applies to the campaign you relaunch",
+      "payload": {
+        "platform": "linkedin-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "500000001",
+        "campaign_id": "<RELAUNCHED_CAMPAIGN_ID>",
+        "offsiteDeliveryEnabled": false
+      }
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "Lead gen forms and lead cost",
+      "skill": "linkedin-lead-gen-optimizer"
+    },
+    {
+      "area": "Building the fixed campaign",
+      "skill": "linkedin-ads-campaign-builder"
+    },
+    {
+      "area": "Targeting and bidding for B2B",
+      "skill": "linkedin-ads-b2b-optimizer"
+    },
+    {
+      "area": "Account-based campaigns and pipeline",
+      "skill": "linkedin-abm-reporting"
+    },
+    {
+      "area": "Budget across channels",
+      "skill": "cross-platform-budget-allocator"
+    },
+    {
+      "area": "The landing page",
+      "skill": "landing-page-auditor"
+    }
+  ]
+}

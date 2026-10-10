@@ -1,0 +1,553 @@
+{
+  "header": {
+    "account": "Example SaaS",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "windows": {
+      "current": [
+        "2026-09-05",
+        "2026-10-04"
+      ],
+      "previous": [
+        "2026-08-06",
+        "2026-09-04"
+      ],
+      "history_12_weeks": [
+        "2026-07-13",
+        "2026-10-04"
+      ],
+      "recent_edits": [
+        "2026-09-21",
+        "2026-10-05"
+      ]
+    },
+    "current_daily_spend": 0,
+    "current_live_daily_budget": 0,
+    "plan_event": "lead (website form)",
+    "results_current_window": 0,
+    "cost_per_result_current_window": null,
+    "summary": "No spend in the current or previous window, nothing live, no pixel and no custom audiences. The account isn't ready to scale; this report lays out the foundation and the budget path that starts once it passes."
+  },
+  "scaling_overview": {
+    "start_daily_budget": 50,
+    "start_basis": "default: the lower of the learning budget and half the target (no live budget and no planned start given)",
+    "target_daily_spend": 100,
+    "target_monthly_spend": 3000,
+    "pace": "Conservative",
+    "weekly_increase": "15%",
+    "pace_reason": "The verdict is Not ready, so the conditional schedule uses Conservative (15% a week): an account with no proven winner never gets a faster pace than one that is almost ready. Conservative needs 5 scaling weeks plus a hold week, which leaves 2 of the 8 weeks for the Foundation. Aggressive would need readiness Ready.",
+    "weeks_needed": {
+      "Conservative": 5,
+      "Moderate": 4,
+      "Aggressive": 3
+    },
+    "scaling_weeks": 5,
+    "hold_weeks": 1,
+    "foundation_weeks": "unknown: starts when the failed checks pass",
+    "target_cost_per_result": 25,
+    "ceiling": 30,
+    "expected_cost_at_phase_ends": [
+      {
+        "phase": "Early",
+        "week": 2,
+        "daily_budget": 66,
+        "expected_cost": 26.5
+      },
+      {
+        "phase": "Growth",
+        "week": 4,
+        "daily_budget": 87,
+        "expected_cost": 28
+      },
+      {
+        "phase": "Stabilise",
+        "week": 6,
+        "daily_budget": 100,
+        "expected_cost": 28.75
+      }
+    ],
+    "learning_budget_per_day": 178.57,
+    "expected_cost_at_target": 28.75,
+    "expected_cost_basis": "Assumption: nothing has spent, so the target (25) is the starting cost; slope default (+15% per doubling): the 12-week history has no weeks with results. 25 × (1 + 0.15 × log2(100 ÷ 50)).",
+    "efficient_limit_per_day": 125.99,
+    "efficient_limit_note": "Where the expected cost meets the 30 ceiling under the same assumption: above the 100 target, so the target is inside the limit.",
+    "learning_budget_warning": "Learning on leads at 25 a lead needs about 178.57 a day (25 × 50 ÷ 7). The 100 a day target can't fund even one ad set at that level: at 25 a lead, 100 a day buys about 28 leads a week, not 50.",
+    "learning_budget_fixes": [
+      {
+        "fix": "Keep leads as the plan's event and one main ad set until volume grows",
+        "chosen": true,
+        "what_it_means": "The ad set stays in learning, and winners are judged on leads at 25 or less, as the request asks. This is the path the plan below follows."
+      },
+      {
+        "fix": "Optimise for landing page views, an earlier event with more volume",
+        "chosen": false,
+        "what_it_means": "This changes the plan's event to landing page views: winners, the target cost, the learning budget and the ceiling would all be on cost per landing page view, and you'd need to give a target for it. Leads would be reported alongside but wouldn't pick winners. Say so if you want the plan rebuilt this way."
+      }
+    ]
+  },
+  "readiness": {
+    "checks": [
+      {
+        "check": "Tracking",
+        "result": "fail",
+        "evidence": "The goal is a website event (form leads), and get_pixels returned no pixel on the account, so no website lead can be recorded. Conversions API and event match quality can't be read through these actions: check them in Events Manager."
+      },
+      {
+        "check": "A proven winner",
+        "result": "fail",
+        "evidence": "0 ad rows in the current window (2026-09-05 to 2026-10-04): no ad has results to judge, so there are 0 winners and 0 watch-list ads."
+      },
+      {
+        "check": "Result volume",
+        "result": "fail",
+        "evidence": "0 leads a week (0 in the current window ÷ 30 × 7). The bar is 50."
+      },
+      {
+        "check": "Creative depth",
+        "result": "fail",
+        "evidence": "0 winning ads; 0 live ads in the account."
+      },
+      {
+        "check": "Creative pipeline",
+        "result": "pass",
+        "evidence": "Need at the 100 a day target: 4 new ads a month (band below 300 a day) = 1 a week. The team makes 2 a week."
+      },
+      {
+        "check": "Budget approved",
+        "result": "pass",
+        "evidence": "The user confirmed the budget is approved."
+      }
+    ],
+    "fails": 4,
+    "warns": 0,
+    "verdict": "Not ready",
+    "verdict_reasons": [
+      "The current window has no spend (0.00 USD).",
+      "No proven winner.",
+      "4 of 6 checks fail."
+    ],
+    "before_the_first_increase": [
+      "Install the Meta pixel on the site and fire a Lead event on the demo form's thank-you page; check the Conversions API and event match quality in Events Manager.",
+      "Launch one test: one campaign, one ad set optimised for leads from the demo form (the plan's event), 45 a day of the 50 a day start budget with the 5 a day testing reserve beside it, and 3 or 4 new concepts. It stays in learning at this budget (see the learning budget warning).",
+      "Run until an ad has 10 or more leads at 25 or less in the last 30 days (Check B): that is the first winner. At 45 a day and 25 a lead, 10 leads take at least 6 days of delivery.",
+      "Build a website visitors custom audience as soon as the pixel fires, for retargeting later."
+    ]
+  },
+  "winning_ads_to_scale": {
+    "winners": [],
+    "watch_list": [],
+    "left_out": "No ad had a row in the current window. 0 live ads; get_ads lists 2 ad(s), all paused.",
+    "rule": "Live, 10+ results in the current window, cost per result at or below 25, frequency at most 3 (8 when targeting a custom audience), cost not worse by more than 20% on the previous window."
+  },
+  "where_money_last_went": {
+    "lifetime_spend_in_insights": 0.15,
+    "ads": [
+      {
+        "campaign": "Archived traffic campaign 1",
+        "objective_in_insights": "LINK_CLICKS",
+        "optimization_goal": "LINK_CLICKS",
+        "status": "archived (missing from get_campaigns)",
+        "spend": 0.08,
+        "impressions": 4,
+        "reach": 4,
+        "link_clicks": 0,
+        "report_window_start": "2025-11-01",
+        "report_window_end": "2026-10-05"
+      },
+      {
+        "campaign": "Archived traffic campaign 2",
+        "objective_in_insights": "LINK_CLICKS",
+        "optimization_goal": "LINK_CLICKS",
+        "status": "archived (missing from get_campaigns)",
+        "spend": 0.07,
+        "impressions": 60,
+        "reach": 29,
+        "link_clicks": 0,
+        "report_window_start": "2025-11-01",
+        "report_window_end": "2026-10-05"
+      }
+    ],
+    "note": "Both archived campaigns optimised for link clicks and recorded 0 link clicks. Nothing to scale from."
+  },
+  "setup": {
+    "campaigns": [
+      {
+        "campaign": "Paused awareness campaign 1",
+        "objective": "OUTCOME_AWARENESS",
+        "effective_status": "PAUSED",
+        "budget_type": "ad set budgets",
+        "ad_sets": 1,
+        "ad_set_daily_budgets": [
+          1.0
+        ],
+        "ad_set_goals": [
+          "REACH"
+        ],
+        "live_ads": 0
+      },
+      {
+        "campaign": "Paused engagement campaign 1",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "effective_status": "PAUSED",
+        "budget_type": "ad set budgets",
+        "ad_sets": 1,
+        "ad_set_daily_budgets": [
+          1.0
+        ],
+        "ad_set_goals": [
+          "POST_ENGAGEMENT"
+        ],
+        "live_ads": 0
+      }
+    ],
+    "floor": {
+      "currency": "USD",
+      "impressions": 1.0,
+      "video_views": 1.0,
+      "high_frequency_events": 5.0,
+      "low_frequency_events": 40.0
+    },
+    "settling": [
+      {
+        "unit": "the ad set of Paused awareness campaign 1",
+        "settling_until": "2026-10-07"
+      }
+    ],
+    "recent_edit_types_14_days": [
+      "add_images",
+      "create_ad",
+      "create_ad_set",
+      "create_campaign_group",
+      "edit_images",
+      "update_ad_creative",
+      "update_ad_friendly_name",
+      "update_ad_run_status",
+      "update_ad_set_bid_strategy",
+      "update_ad_set_name",
+      "update_ad_set_optimization_goal",
+      "update_ad_set_run_status",
+      "update_ad_set_target_spec",
+      "update_campaign_name"
+    ]
+  },
+  "budget_path": {
+    "conditional": "Week 1 starts the week after the Foundation checks pass; week numbers and cumulative spend count from that start. The Foundation row is the first test's budget, spent for as many weeks as the Foundation takes, so it has no cumulative figure.",
+    "assumption": "The first winner comes from the Foundation's test ad set, which then grows as the one main unit: every step stays within its +20% a week, so no new ad set is needed and new ad sets get 0.",
+    "floor_per_ad_set": 1.0,
+    "floor_basis": "min_daily_budget_imp for the account currency: an ad set optimised for leads bills on impressions.",
+    "weeks": [
+      {
+        "week": "Foundation",
+        "daily_budget": 50,
+        "weekly_spend": 350,
+        "cumulative": null,
+        "testing_reserve": 5,
+        "existing_winners": 0,
+        "new_ad_sets": 45,
+        "main_ad_set_below_learning_budget_by": 133.57,
+        "testing_ad_set_below_learning_budget_by": 173.57,
+        "meets_floor": true,
+        "milestone": "the first test ad set runs here until the Foundation checks pass"
+      },
+      {
+        "week": 1,
+        "daily_budget": 57,
+        "weekly_spend": 399,
+        "cumulative": 399,
+        "testing_reserve": 5.7,
+        "existing_winners": 51.3,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 127.27,
+        "testing_ad_set_below_learning_budget_by": 172.87,
+        "meets_floor": true,
+        "milestone": "first +15% step"
+      },
+      {
+        "week": 2,
+        "daily_budget": 66,
+        "weekly_spend": 462,
+        "cumulative": 861,
+        "testing_reserve": 6.6,
+        "existing_winners": 59.4,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 119.17,
+        "testing_ad_set_below_learning_budget_by": 171.97,
+        "meets_floor": true,
+        "milestone": "second +15% step; 2 weeks of new ads in hand"
+      },
+      {
+        "week": 3,
+        "daily_budget": 76,
+        "weekly_spend": 532,
+        "cumulative": 1393,
+        "testing_reserve": 7.6,
+        "existing_winners": 68.4,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 110.17,
+        "testing_ad_set_below_learning_budget_by": 170.97,
+        "meets_floor": true,
+        "milestone": "third +15% step"
+      },
+      {
+        "week": 4,
+        "daily_budget": 87,
+        "weekly_spend": 609,
+        "cumulative": 2002,
+        "testing_reserve": 8.7,
+        "existing_winners": 78.3,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 100.27,
+        "testing_ad_set_below_learning_budget_by": 169.87,
+        "meets_floor": true,
+        "milestone": "fourth +15% step"
+      },
+      {
+        "week": 5,
+        "daily_budget": 100,
+        "weekly_spend": 700,
+        "cumulative": 2702,
+        "testing_reserve": 10,
+        "existing_winners": 90,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 88.57,
+        "testing_ad_set_below_learning_budget_by": 168.57,
+        "meets_floor": true,
+        "milestone": "fifth +15% step (capped): target reached"
+      },
+      {
+        "week": 6,
+        "daily_budget": 100,
+        "weekly_spend": 700,
+        "cumulative": 3402,
+        "testing_reserve": 10,
+        "existing_winners": 90,
+        "new_ad_sets": 0,
+        "main_ad_set_below_learning_budget_by": 88.57,
+        "testing_ad_set_below_learning_budget_by": 168.57,
+        "meets_floor": true,
+        "milestone": "hold at target: Stabilise"
+      }
+    ],
+    "split_rule": "Testing reserve 10% (below 2,000 a day). In the Foundation the test ad set is new; from week 1 it is the existing winner's unit and grows at most +20% a week; new ad sets would take anything above that. Every ad set is above the 1.0 floor and below the 178.57 learning budget.",
+    "funnel_split": {
+      "reference_below_500_a_day": {
+        "prospecting": 70,
+        "retargeting": 20,
+        "testing": 10
+      },
+      "this_account": {
+        "prospecting": 90,
+        "retargeting": 0,
+        "testing": 10
+      },
+      "why": "0 custom audiences, so there is no retargeting audience yet: its share goes to prospecting, and building one is a Foundation task."
+    }
+  },
+  "audience_expansion": {
+    "custom_audiences": 0,
+    "lookalikes": 0,
+    "seed_audiences": 0,
+    "where_the_account_is": "Before step 1: there is no winning audience to fill yet.",
+    "sequence": [
+      {
+        "step": 1,
+        "action": "Fill the first winner's audience until audience used passes 25%",
+        "when": "once a winner exists"
+      },
+      {
+        "step": 2,
+        "action": "Widen lookalikes",
+        "when": "skipped for now: no lookalike exists"
+      },
+      {
+        "step": 3,
+        "action": "Build lookalike seeds from website visitors and leads (100 people in one country at least, 1,000 or more better)",
+        "when": "once the pixel has recorded enough people"
+      },
+      {
+        "step": 4,
+        "action": "Add interest-based prospecting",
+        "when": "if the first audience can't spend the budget"
+      },
+      {
+        "step": 5,
+        "action": "Test Advantage+ audience or broad targeting",
+        "when": "once the pixel records 50+ leads a week"
+      },
+      {
+        "step": 6,
+        "action": "Add countries",
+        "when": "once the home market saturates"
+      }
+    ],
+    "audience_size_example": {
+      "targeting": "US, ages 25 to 65",
+      "users_lower_bound": 220000000,
+      "users_upper_bound": 250000000,
+      "note": "Sized with the SKILL.md example spec only. There is no winning ad set, so no audience-used share."
+    },
+    "saturation_signals": [
+      "prospecting frequency above 3",
+      "CPM up more than 20% while frequency rose",
+      "cost per lead rising at flat spend",
+      "spend below 70% of the budget (70 a day at the target)"
+    ]
+  },
+  "creative_requirements": {
+    "need_per_week": 1,
+    "team_per_week": 2,
+    "covered": true,
+    "calendar": [
+      {
+        "weeks": "1-2",
+        "new_concepts": 1,
+        "variations_of_winners": 1,
+        "refreshes": 0,
+        "total": 2,
+        "why": "The schedule starts once the first winner exists, so the mix is about 40% concepts, 40% variations and 20% refreshes: 2 ads a block rounds to 1, 1 and 0. Every Foundation slot (before the winner) is a new concept.",
+        "production_checklist": {
+          "concept_briefs_to_write": 1,
+          "variations_to_cut_from_the_first_winner": 1,
+          "refreshes_due": 0,
+          "ugc_creators_or_shoots": "book them only if the first winner or the planned concepts are creator videos; the Foundation's briefs decide it"
+        }
+      },
+      {
+        "weeks": "3-4",
+        "new_concepts": 1,
+        "variations_of_winners": 1,
+        "refreshes": 0,
+        "total": 2,
+        "why": "The schedule starts once the first winner exists, so the mix is about 40% concepts, 40% variations and 20% refreshes: 2 ads a block rounds to 1, 1 and 0. Every Foundation slot (before the winner) is a new concept.",
+        "production_checklist": {
+          "concept_briefs_to_write": 1,
+          "variations_to_cut_from_the_first_winner": 1,
+          "refreshes_due": 0,
+          "ugc_creators_or_shoots": "book them only if the first winner or the planned concepts are creator videos; the Foundation's briefs decide it"
+        }
+      },
+      {
+        "weeks": "5-6",
+        "new_concepts": 1,
+        "variations_of_winners": 1,
+        "refreshes": 0,
+        "total": 2,
+        "why": "The schedule starts once the first winner exists, so the mix is about 40% concepts, 40% variations and 20% refreshes: 2 ads a block rounds to 1, 1 and 0. Every Foundation slot (before the winner) is a new concept.",
+        "production_checklist": {
+          "concept_briefs_to_write": 1,
+          "variations_to_cut_from_the_first_winner": 1,
+          "refreshes_due": 0,
+          "ugc_creators_or_shoots": "book them only if the first winner or the planned concepts are creator videos; the Foundation's briefs decide it"
+        }
+      }
+    ],
+    "refresh_list": [],
+    "refresh_note": "No live ads, so nothing to refresh."
+  },
+  "risks_and_rollback": {
+    "triggers": [
+      {
+        "trigger": "cost per lead above 30 for 5 days in a row",
+        "action": "cut the latest increases by 30% and hold 7 days"
+      },
+      {
+        "trigger": "spend below 70% of the budget for 3 days (70 a day at the target)",
+        "action": "widen the audience; don't add budget"
+      },
+      {
+        "trigger": "a winner's link CTR down more than 20% on its first 2 weeks",
+        "action": "swap in a refresh"
+      },
+      {
+        "trigger": "new ad sets under 50 results a week after 2 weeks",
+        "action": "merge them into fewer ad sets"
+      }
+    ],
+    "rollback": "Cut every budget raised in the last 2 weeks by 30%, pause ad sets with 0 leads after spending 75 (3 × the target), find the cause, then resume at the Conservative pace (15%)."
+  },
+  "roadmap": [
+    {
+      "phase": "Foundation",
+      "weeks": "until the checks pass",
+      "daily_budget": 50,
+      "tasks": [
+        "pixel and Lead event",
+        "first test ad set optimised for leads at the start budget",
+        "3 or 4 new concepts",
+        "website visitors audience"
+      ],
+      "success_test": "the pixel fires the Lead event, the account has spend in the last 30 days, and one ad has 10+ leads at 25 or less (a proven winner), so the verdict leaves Not ready",
+      "what_still_fails": "Result volume: 50 a day buys at most 14 leads a week at 25 a lead (50 × 7 ÷ 25), under the 20 a week warn line, and one winner leaves creative depth at warn. Expect Almost ready, not Ready, when the Foundation passes; volume grows with the budget path."
+    },
+    {
+      "phase": "Early",
+      "weeks": [
+        1,
+        2
+      ],
+      "daily_budgets": [
+        57,
+        66
+      ],
+      "tasks": [
+        "one +15% step a week on the total, all of it in the winner's ad set (within its +20%)",
+        "hold any step while that ad set is settling from an edit",
+        "launch 1 new ad(s) a week"
+      ],
+      "success_test": "cost per lead under 30 at each step"
+    },
+    {
+      "phase": "Growth",
+      "weeks": [
+        3,
+        4
+      ],
+      "daily_budgets": [
+        76,
+        87
+      ],
+      "tasks": [
+        "first lookalike from leads",
+        "refresh the first winner once it is 6 weeks old or its link CTR falls more than 20%"
+      ],
+      "success_test": "two audiences at or under the target"
+    },
+    {
+      "phase": "Stabilise",
+      "weeks": [
+        5,
+        6
+      ],
+      "daily_budgets": [
+        100,
+        100
+      ],
+      "tasks": [
+        "reach the target, then hold one week",
+        "write down what worked"
+      ],
+      "success_test": "100 a day for a full week with cost per lead under 30"
+    }
+  ],
+  "weekly_check_in": [
+    "spend within 10% of plan",
+    "cost per lead under 30",
+    "at least 2 new ads ready (2 weeks)",
+    "prospecting frequency under 3",
+    "any trigger hit"
+  ],
+  "unknowns": [
+    "Conversions API and event match quality: not readable through these actions.",
+    "Own scaling slope: the 12-week history has no weeks with results, so the default +15% per doubling is used.",
+    "Foundation length: depends on when the pixel and the first winner are in place.",
+    "Business context: no seasonality, offer changes or competitor moves were given, so none is in the schedule.",
+    "Hard budget ceiling: none given, so the 100 a day target is the most the plan spends."
+  ],
+  "changes_offered": [],
+  "changes_note": "None. There is no winner to raise or duplicate, and no live budget to roll back. Nothing was run.",
+  "go_deeper": [
+    "facebook-ads-campaign-structure to set up the first test (nothing is live)",
+    "facebook-ads-creative-tester for the first concepts",
+    "facebook-ads-audience-builder once the pixel can seed audiences"
+  ]
+}

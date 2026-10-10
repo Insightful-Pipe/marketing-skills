@@ -1,0 +1,52 @@
+{
+  "request": "Hey Claude, I just added the \"ad-creative-fatigue-detector\" skill. Check my Google Ads ads for creative fatigue. Which ones are wearing out, and what should I rotate?",
+  "account": {
+    "platform": "Google Ads",
+    "business": "A US criminal and traffic defense law firm",
+    "currency": "USD",
+    "campaign_types": "Search only (responsive search ads)"
+  },
+  "window": {
+    "from": "2026-04-20",
+    "to": "2026-10-04",
+    "rule": "24 complete Monday-to-Sunday weeks for Google Ads, as six 4-week periods",
+    "periods": [
+      "2026-04-20 to 2026-05-17",
+      "2026-05-18 to 2026-06-14",
+      "2026-06-15 to 2026-07-12",
+      "2026-07-13 to 2026-08-09",
+      "2026-08-10 to 2026-09-06",
+      "2026-09-07 to 2026-10-04"
+    ],
+    "recent_period": "2026-09-07 to 2026-10-04"
+  },
+  "assumptions": {
+    "prospecting_or_retargeting": "not used on Search (no frequency); exposure comes from ad age",
+    "campaigns_left_out": "none",
+    "target_cpa": "not given"
+  },
+  "data_pulled": [
+    {
+      "step": 1,
+      "call": "query_contexts accounts + actions_details (gaql)",
+      "result": "1 Google Ads account chosen"
+    },
+    {
+      "step": 2,
+      "call": "gaql: ad_group_ad by segments.week, 24 weeks",
+      "rows": 464
+    },
+    {
+      "step": 3,
+      "call": "gaql: ad_group_ad by segments.month, 24 months (ad age)",
+      "rows": 684
+    },
+    {
+      "step": 4,
+      "call": "gaql: enabled ads in enabled ad groups and campaigns",
+      "rows": 19
+    }
+  ],
+  "ads_with_delivery_in_window": 23,
+  "note": "Real run on 2026-10-06 on a client Google Ads account, anonymised: the business, attorney, firm and state names, campaign and ad group names, and every id are replaced; ads are numbered by impressions; spend is rounded to the nearest $10, cost per click to whole dollars. Data was pulled by the skill through the InsightfulPipe MCP; nothing was pasted. Only Google Ads is in this sample: the Meta, TikTok, LinkedIn, Snapchat and X calls were tested on our own accounts, which had no delivery in the window."
+}

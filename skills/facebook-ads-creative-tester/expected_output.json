@@ -1,0 +1,694 @@
+{
+  "skill": "facebook-ads-creative-tester",
+  "header": {
+    "account": "Example SaaS, LLC (act_123456789)",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "run_date": "2026-10-05",
+    "windows": [
+      "last_90d",
+      "maximum (fallback)"
+    ],
+    "asked": "compare formats, plan an image vs video test at $20/day per variant, prepare the variants from the media library"
+  },
+  "baseline": {
+    "last_90d": {
+      "rows": 0,
+      "result": "no delivery in the last 90 days"
+    },
+    "lifetime_fallback": {
+      "date_preset": "maximum",
+      "ads_with_delivery": 2,
+      "first_and_last_day": [
+        "2025-12-27",
+        "2026-01-26"
+      ],
+      "impressions": 64,
+      "spend_usd": 0.15,
+      "link_clicks": 0,
+      "three_second_views": 2,
+      "thruplays": 0,
+      "results_link_click": 0,
+      "cpm_usd_not_used": 2.3
+    },
+    "rates": {
+      "link_ctr": {
+        "value": null,
+        "denominator_impressions": 64,
+        "status": "unknown",
+        "why": "64 impressions, below the 5,000-impression gate"
+      },
+      "hook_rate": {
+        "value": null,
+        "denominator_impressions": 64,
+        "status": "unknown",
+        "why": "below the gate; 3-second views were recorded on one ad only"
+      },
+      "hold_rate": {
+        "value": null,
+        "status": "unknown",
+        "why": "no ThruPlays recorded"
+      },
+      "cpm": {
+        "value": null,
+        "status": "unknown",
+        "why": "CPM over 64 impressions is noise, not a baseline"
+      }
+    },
+    "baseline_status": "unknown: the plan runs in calibration mode (Step 4)"
+  },
+  "format_comparison": {
+    "window": "maximum (the 90-day window had no delivery)",
+    "creatives_of_delivering_ads": [
+      {
+        "ad": "Ad 1",
+        "listed_by_get_ads": false,
+        "format": "Flexible",
+        "asset_feed": {
+          "images": 1,
+          "videos": 1,
+          "ad_formats": [
+            "AUTOMATIC_FORMAT"
+          ]
+        },
+        "impressions": 4
+      },
+      {
+        "ad": "Ad 2",
+        "listed_by_get_ads": false,
+        "format": "Flexible",
+        "asset_feed": {
+          "images": 1,
+          "videos": 0,
+          "ad_formats": [
+            "AUTOMATIC_FORMAT"
+          ]
+        },
+        "impressions": 60
+      }
+    ],
+    "split_by": "video_asset and image_asset breakdowns (both delivering ads were flexible creatives)",
+    "rows": [
+      {
+        "format": "Video",
+        "ads": 1,
+        "impressions": 4,
+        "spend_usd": 0.08,
+        "link_clicks": 0,
+        "results": 0,
+        "link_ctr_pct": 0.0,
+        "cpm_usd": 20,
+        "cost_per_result_usd": null,
+        "three_second_views": 2,
+        "hook_rate_pct": 50,
+        "hold_rate_pct": 0.0,
+        "status": "not graded",
+        "why": "1 ad, 4 impressions (needs 2 ads and 5,000)"
+      },
+      {
+        "format": "Single image",
+        "ads": 1,
+        "impressions": 32,
+        "spend_usd": 0.02,
+        "link_clicks": 0,
+        "results": 0,
+        "link_ctr_pct": 0.0,
+        "cpm_usd": 0.62,
+        "cost_per_result_usd": null,
+        "status": "not graded",
+        "why": "1 ad, 32 impressions (needs 2 ads and 5,000)"
+      },
+      {
+        "format": "Not attributed by the asset breakdowns",
+        "impressions": 28,
+        "share_of_impressions": "44%"
+      }
+    ],
+    "significance_test": "not run: no format is graded",
+    "verdict": "not graded. The account has no format history to compare, so the format question becomes a controlled test (job B).",
+    "caveat": "Even with data, formats that ran in different ad sets and weeks are not a test."
+  },
+  "account_limits": {
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "account_status": 1,
+    "min_daily_budget_usd": 1.0,
+    "minimum_budgets_usd": {
+      "imp": 1.0,
+      "video_views": 1.0,
+      "high_freq": 5.0,
+      "low_freq": 40.0
+    },
+    "campaigns": [
+      {
+        "campaign": "Campaign 1",
+        "status": "PAUSED",
+        "objective": "OUTCOME_AWARENESS",
+        "campaign_budget": false
+      },
+      {
+        "campaign": "Campaign 2",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "campaign_budget": false
+      }
+    ],
+    "ad_sets": [
+      {
+        "ad_set": "Ad set 1",
+        "status": "PAUSED",
+        "optimization_goal": "REACH",
+        "daily_budget_usd": 1.0,
+        "dynamic_creative": false
+      },
+      {
+        "ad_set": "Ad set 2",
+        "status": "PAUSED",
+        "optimization_goal": "POST_ENGAGEMENT",
+        "daily_budget_usd": 1.0,
+        "dynamic_creative": false
+      }
+    ],
+    "proven_audience": "none: no ad set has results. Targeting is copied from the most recent ad set (Ad set 1); confirm it before launch.",
+    "running_tests": "none (every campaign is paused)"
+  },
+  "test_plan": {
+    "test_name": "[Test] Format: single image vs video",
+    "hypothesis": "If we show the same message as a short vertical video instead of a single image, link CTR will rise by at least 20% because motion stops the scroll better than a still.",
+    "variable": "media format only",
+    "variants": [
+      {
+        "variant": "A (control)",
+        "media": "file 9",
+        "format": "Single image",
+        "aspect": "9:16"
+      },
+      {
+        "variant": "B (challenger)",
+        "media": "file 3",
+        "format": "Video",
+        "aspect": "9:16",
+        "length_s": 6
+      }
+    ],
+    "isolation_check": {
+      "same": [
+        "primary text",
+        "headline",
+        "link",
+        "call to action (LEARN_MORE)",
+        "audience",
+        "placements",
+        "optimisation (LINK_CLICKS)",
+        "daily budget",
+        "shape (9:16)"
+      ],
+      "warning": "The picked image is below Meta's recommended size (see media_check); replace it with a full-size version in the same shape before launch, or the test also measures image quality.",
+      "creative_features_off": [
+        "media_type_automation",
+        "image_templates",
+        "image_touchups",
+        "image_enhancement",
+        "image_background_gen",
+        "text_optimizations",
+        "music"
+      ]
+    },
+    "primary_metric": "link CTR (inline_link_clicks / impressions)",
+    "watch_as_well": [
+      "CPC",
+      "CPM"
+    ],
+    "minimum_detectable_effect": "20%",
+    "mode": "calibration (baseline unknown)",
+    "sample_size_grid": [
+      {
+        "baseline_link_ctr": "0.5%",
+        "detects": "20% lift (to 0.6%)",
+        "impressions_per_variant": 85765,
+        "highest_cpm_to_finish_in_28_days_usd": 6.53
+      },
+      {
+        "baseline_link_ctr": "1%",
+        "detects": "20% lift (to 1.2%)",
+        "impressions_per_variant": 42645,
+        "highest_cpm_to_finish_in_28_days_usd": 13.13
+      },
+      {
+        "baseline_link_ctr": "2%",
+        "detects": "20% lift (to 2.4%)",
+        "impressions_per_variant": 21085,
+        "highest_cpm_to_finish_in_28_days_usd": 26.56
+      }
+    ],
+    "budget": {
+      "per_variant_per_day_usd": 20,
+      "variants": 2,
+      "per_day_usd": 40,
+      "calibration_week_usd": 280,
+      "maximum_at_28_days_usd": 1120,
+      "clears_minimum": "$20 per ad set is above the account's $5 minimum for frequent events such as link clicks"
+    },
+    "length": {
+      "calibration_days": 7,
+      "then": "after day 7, run job C: recompute n from the observed pooled CTR and CPM, round up to whole weeks, stop at 28 days",
+      "minimum_days": 7,
+      "maximum_days": 28
+    },
+    "structure": {
+      "recommended": "Meta A/B test in Ads Manager (Experiments): split the audience, 2 variants, link CTR as the key metric, 28-day end date",
+      "via_mcp": "one test campaign with no campaign budget, one ad set per variant with the same targeting and $20/day, one ad in each",
+      "not_a_test": "both ads in one ad set (Meta would favour one within days)"
+    }
+  },
+  "success_criteria": {
+    "table": [
+      {
+        "outcome": "Winner",
+        "when": "p < 0.05 and lift >= 20%",
+        "action": "keep the winner, pause the other, log the learning"
+      },
+      {
+        "outcome": "Real but small",
+        "when": "p < 0.05 and 0 < lift < 20%",
+        "action": "keep either; test a bigger change next"
+      },
+      {
+        "outcome": "Leaning",
+        "when": "0.05 <= p < 0.10 and lift >= 20%",
+        "action": "extend once by up to 50% more sample, then decide"
+      },
+      {
+        "outcome": "No difference",
+        "when": "p >= 0.10",
+        "action": "format doesn't move CTR at this size; test the first line or image next"
+      },
+      {
+        "outcome": "Loser",
+        "when": "p < 0.05 and the video is worse",
+        "action": "stop the video and log why"
+      }
+    ],
+    "guardrail": "When both variants have 30 or more results, the winner's cost per result may be at most 20% worse than the other's.",
+    "rules_during_test": [
+      "no budget, targeting, copy or creative changes",
+      "no pausing and restarting",
+      "no new variants",
+      "no verdict before day 7",
+      "log outside events"
+    ]
+  },
+  "read": {
+    "status": "not run: no test is live yet. After day 7, pull each ad with get_insights_ad for the days since launch and apply Step 5."
+  },
+  "media_check": {
+    "source": "Media Library, read with media-files list_media_files through the InsightfulPipe MCP",
+    "files": [
+      {
+        "file": "file 1",
+        "type": "image",
+        "format": "png",
+        "size_px": "320x180",
+        "aspect": "16:9",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 2",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "500x500",
+        "aspect": "1:1",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 3",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1920",
+        "aspect": "9:16",
+        "length_s": 6,
+        "flags": [
+          "ok"
+        ]
+      },
+      {
+        "file": "file 4",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "72x72",
+        "aspect": "1:1",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 5",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "320x176",
+        "aspect": "1.82:1",
+        "length_s": 10,
+        "flags": [
+          "1.82:1: not 9:16, 1:1 or 4:5"
+        ]
+      },
+      {
+        "file": "file 6",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "128x128",
+        "aspect": "1:1",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 7",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "128x128",
+        "aspect": "1:1",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 8",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1280x720",
+        "aspect": "16:9",
+        "length_s": 195,
+        "flags": [
+          "16:9: not 9:16, 1:1 or 4:5"
+        ]
+      },
+      {
+        "file": "file 9",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "285x506",
+        "aspect": "9:16",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 10",
+        "type": "image",
+        "format": "png",
+        "size_px": "640x360",
+        "aspect": "16:9",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      },
+      {
+        "file": "file 11",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "0x0",
+        "aspect": "unknown",
+        "length_s": 0,
+        "flags": [
+          "no size or length recorded: re-upload"
+        ]
+      },
+      {
+        "file": "file 12",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "600x600",
+        "aspect": "1:1",
+        "length_s": null,
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      }
+    ],
+    "images_meeting_recommended_size": 0,
+    "picked": {
+      "control_image": "file 9",
+      "challenger_video": "file 3",
+      "why": "the only image and video pair in the same shape (9:16), so the test compares image and video, not placements"
+    },
+    "not_picked": "file 12 is the largest image (600x600) but 1:1, which would not match the 9:16 video",
+    "warning": "No image in the library reaches 1,080 px; the picked 9:16 image is 285x506. Ask for a 1,080 x 1,920 version of it before launch."
+  },
+  "launch_payloads": {
+    "confirmation": "none given: nothing was created",
+    "calls": [
+      {
+        "step": 1,
+        "call": "upload_ad_image",
+        "status": "not run",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "upload_ad_image",
+          "url": "https://example.com/media/file-9.jpg"
+        },
+        "returns": "image_hash"
+      },
+      {
+        "step": 2,
+        "call": "upload_ad_video",
+        "status": "not run",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "upload_ad_video",
+          "file_url": "https://example.com/media/file-3.mp4",
+          "name": "Format test - video"
+        },
+        "returns": "video_id"
+      },
+      {
+        "step": 3,
+        "call": "create_campaign",
+        "status": "not run (created paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_campaign",
+          "name": "[Test] Format: single image vs video",
+          "objective": "OUTCOME_TRAFFIC",
+          "special_ad_categories": [],
+          "is_adset_budget_sharing_enabled": false
+        }
+      },
+      {
+        "step": 4,
+        "call": "create_adset",
+        "status": "not run (created paused)",
+        "variant": "A image",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_adset",
+          "name": "[Test] Format - A image",
+          "campaign_id": "<id from step 3>",
+          "billing_event": "IMPRESSIONS",
+          "optimization_goal": "LINK_CLICKS",
+          "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+          "destination_type": "WEBSITE",
+          "daily_budget": 2000,
+          "targeting": {
+            "age_min": 25,
+            "age_max": 65,
+            "geo_locations": {
+              "countries": [
+                "US"
+              ],
+              "location_types": [
+                "home",
+                "recent"
+              ]
+            },
+            "targeting_automation": {
+              "advantage_audience": 0
+            }
+          }
+        }
+      },
+      {
+        "step": 4,
+        "call": "create_adset",
+        "status": "not run (created paused)",
+        "variant": "B video",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_adset",
+          "name": "[Test] Format - B video",
+          "campaign_id": "<id from step 3>",
+          "billing_event": "IMPRESSIONS",
+          "optimization_goal": "LINK_CLICKS",
+          "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+          "destination_type": "WEBSITE",
+          "daily_budget": 2000,
+          "targeting": {
+            "age_min": 25,
+            "age_max": 65,
+            "geo_locations": {
+              "countries": [
+                "US"
+              ],
+              "location_types": [
+                "home",
+                "recent"
+              ]
+            },
+            "targeting_automation": {
+              "advantage_audience": 0
+            }
+          }
+        }
+      },
+      {
+        "step": 5,
+        "call": "create_ad_creative",
+        "status": "not run",
+        "variant": "A image",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad_creative",
+          "name": "[Test] Format - A image",
+          "image_hash": "<from step 1>",
+          "page_id": "100000000000000",
+          "body": "<primary text: the same in A and B>",
+          "title": "<headline: the same in A and B>",
+          "link_url": "https://example.com/",
+          "call_to_action_type": "LEARN_MORE",
+          "creative_feature_opt_outs": [
+            "media_type_automation",
+            "image_templates",
+            "image_touchups",
+            "image_enhancement",
+            "image_background_gen",
+            "text_optimizations",
+            "music"
+          ]
+        }
+      },
+      {
+        "step": 5,
+        "call": "create_ad_creative",
+        "status": "not run",
+        "variant": "B video",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad_creative",
+          "name": "[Test] Format - B video",
+          "video_id": "<from step 2>",
+          "page_id": "100000000000000",
+          "body": "<primary text: the same in A and B>",
+          "title": "<headline: the same in A and B>",
+          "link_url": "https://example.com/",
+          "call_to_action_type": "LEARN_MORE",
+          "creative_feature_opt_outs": [
+            "media_type_automation",
+            "image_templates",
+            "image_touchups",
+            "image_enhancement",
+            "image_background_gen",
+            "text_optimizations",
+            "music"
+          ]
+        }
+      },
+      {
+        "step": 6,
+        "call": "create_ad",
+        "status": "not run (always paused)",
+        "variant": "A image",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad",
+          "name": "[Test] Format - A image",
+          "adset_id": "<A image ad set from step 4>",
+          "creative": {
+            "creative_id": "<A image creative from step 5>"
+          }
+        }
+      },
+      {
+        "step": 6,
+        "call": "create_ad",
+        "status": "not run (always paused)",
+        "variant": "B video",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad",
+          "name": "[Test] Format - B video",
+          "adset_id": "<B video ad set from step 4>",
+          "creative": {
+            "creative_id": "<B video creative from step 5>"
+          }
+        }
+      }
+    ],
+    "after": "switch both ads on together in Ads Manager; the MCP cannot activate ads"
+  },
+  "test_log": {
+    "test": "[Test] Format: single image vs video",
+    "launched": null,
+    "ended": null,
+    "days": null,
+    "spend_usd": {
+      "A": null,
+      "B": null
+    },
+    "impressions": {
+      "A": null,
+      "B": null
+    },
+    "link_clicks": {
+      "A": null,
+      "B": null
+    },
+    "lift": null,
+    "p_value": null,
+    "verdict": null,
+    "learning": null,
+    "next_test": null
+  },
+  "go_deeper": [
+    "creative-testing-roadmap (if installed): order the next tests",
+    "meta-ad-copy-writer (if installed): write the shared primary text and headline",
+    "ugc-brief-generator (if installed): brief the next vertical video once this test has a verdict"
+  ]
+}

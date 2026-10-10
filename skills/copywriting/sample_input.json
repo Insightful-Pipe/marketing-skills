@@ -1,0 +1,56 @@
+{
+  "note": "Real run on 2026-10-06 through the InsightfulPipe MCP on a client Google Ads account, anonymised: firm, attorney, state, city, phone, directory, competitor firm and competitor brand names replaced, identifying counts shown as N+ or N, ids removed. Ad and search-term numbers are unrounded counts; no spend is shown. The page body was blocked by bot protection, so the current copy is the page's own title and snippet on the results page and its live ad lines. During the build, a third page read without JavaScript rendering was also refused (status 403), and one more results-page check on another term was made; neither is part of this run.",
+  "request": "Hey Claude, I just added the \"copywriting\" skill. Rewrite the hero and headlines of my traffic ticket landing page in the words my searchers actually use, and review what's there now.",
+  "account": {
+    "name": "A US criminal and traffic defense law firm",
+    "platform": "Google Ads"
+  },
+  "asset": {
+    "job": "website copy and headlines, plus a copy review",
+    "page": "https://www.example.com/traffic-ticket-attorney/",
+    "picked_by": "most paid clicks of any landing page (E1)"
+  },
+  "date_range": "2026-07-08 to 2026-10-05",
+  "window_rule": "The page's campaigns had 760 search-term impressions in the last 30 days, under 1,000, so the run uses 90 days.",
+  "the_one_action": "a call, text or case-evaluation request (the account's counted conversions)",
+  "reader": "inferred from E1 and E2, not given by the user: a driver with a traffic or speeding ticket in [State] (some from out of state, some with a commercial licence), comparing lawyers (63 competitor-name terms) and asking what it costs (48 cost terms). Success in the first week: knowing their options and the fee before the court date.",
+  "proof_offered": "the review count, directory rating, years of experience and charges-resolved count already in the live ads; listed under claims to confirm",
+  "brand_terms": "the firm's name; the Brand campaign sends no traffic to this page",
+  "data_pulled": [
+    {
+      "call": "E1 google-ads gaql on ad_group_ad",
+      "result": "5 live ads in 2 campaigns point at the page"
+    },
+    {
+      "call": "E2 google-ads search_terms_report, once per campaign (campaign_id), limit 5000",
+      "result": "578 rows, 397 distinct terms after adding rows up by term"
+    },
+    {
+      "call": "E3 google-search-console search_analytics",
+      "result": "not used: the business's site isn't connected to Search Console"
+    },
+    {
+      "call": "E4 google-ads gaql on ad_group_ad_asset_view",
+      "result": "73 rows, 15 distinct lines in the page's campaigns"
+    },
+    {
+      "call": "E5 dataforseo onpage_instant_pages with the copy reader",
+      "paid": true,
+      "result": [
+        "JavaScript rendering, default user agent: status 403, broken",
+        "retry with a desktop browser user agent and accept_language en-US: status 403, broken"
+      ]
+    },
+    {
+      "call": "E6 dataforseo serp_google_organic, keyword '[State] traffic ticket attorney' (matches the page's URL slug), location_code 2840, en, depth 10",
+      "paid": true,
+      "result": "1 competing seller among 9 organic results (4 directories or matching services, 4 of the firm's other pages); this page doesn't rank. Fewer than 3 sellers, so one close variant was tried."
+    },
+    {
+      "call": "E6 dataforseo serp_google_organic, keyword '[State] traffic ticket lawyer' (the variant), location_code 2840, en, depth 10",
+      "paid": true,
+      "result": "6 competing sellers among 9 organic results; this page ranks at position 9; 3 local listings, 4 People Also Ask questions. This results page is the one used."
+    }
+  ],
+  "paid_calls": 4
+}

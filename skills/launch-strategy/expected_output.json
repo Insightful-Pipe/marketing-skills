@@ -1,0 +1,485 @@
+{
+  "header": {
+    "business": "A B2B SaaS (anonymised)",
+    "launch": "A new feature, tier 1",
+    "launch_date": "2026-11-03",
+    "days_to_go": 28,
+    "today": "2026-10-06",
+    "sources_used": [
+      "GA4",
+      "Search Console",
+      "Klaviyo",
+      "Facebook Pages",
+      "YouTube Analytics",
+      "PageSpeed (failed)"
+    ],
+    "verdict": "at risk"
+  },
+  "baseline": {
+    "ga4": {
+      "days": "2026-10-01 to 2026-10-05",
+      "good_days": 5,
+      "thin": true,
+      "sessions_per_day": 91,
+      "new_users_per_day": 70,
+      "key_events_per_day": 0.0
+    },
+    "pre_gap_reference": {
+      "days": "2026-04-18 to 2026-05-15",
+      "sessions_per_day": 120,
+      "new_users_per_day": 74,
+      "key_events_per_day": 0.0
+    },
+    "tracking_gaps": [
+      {
+        "from": "2026-05-16",
+        "to": "2026-09-30",
+        "days": 138,
+        "median_sessions_before": 140,
+        "sessions_per_day_during": 3.8,
+        "status": "closed 5 days ago"
+      }
+    ],
+    "channel_mix": [
+      {
+        "group": "Owned",
+        "channels": {
+          "Direct": 180,
+          "Organic Search": 160
+        },
+        "sessions": 330,
+        "share_pct": 65
+      },
+      {
+        "group": "Rented",
+        "channels": {
+          "Organic Video": 25
+        },
+        "sessions": 25,
+        "share_pct": 5
+      },
+      {
+        "group": "Borrowed",
+        "channels": {
+          "Referral": 1,
+          "AI Assistant": 7
+        },
+        "sessions": 8,
+        "share_pct": 2
+      },
+      {
+        "group": "Paid",
+        "channels": {
+          "Paid Search": 18,
+          "Cross-network": 36
+        },
+        "sessions": 54,
+        "share_pct": 11
+      },
+      {
+        "group": "Unknown",
+        "channels": {
+          "Unassigned": 92
+        },
+        "sessions": 92,
+        "share_pct": 18
+      }
+    ],
+    "search_console": {
+      "window": "2026-09-06 to 2026-10-03 (28 days)",
+      "rows_returned": 1000,
+      "row_limit_hit": true,
+      "row_limit_note": "the pull hit the 1,000-row limit, so brand and topic totals cover the visible rows only",
+      "brand_queries": 9,
+      "brand_clicks_per_day": 32,
+      "brand_avg_position": 1.1,
+      "pre_launch_content_topics": [
+        {
+          "query": "query-1 (category)",
+          "impressions": 410,
+          "clicks": 3,
+          "avg_position": 9.6
+        },
+        {
+          "query": "query-2 (category)",
+          "impressions": 400,
+          "clicks": 4,
+          "avg_position": 11.0
+        },
+        {
+          "query": "query-3 (category)",
+          "impressions": 310,
+          "clicks": 7,
+          "avg_position": 6.8
+        },
+        {
+          "query": "query-4 (integration)",
+          "impressions": 280,
+          "clicks": 2,
+          "avg_position": 8.5
+        },
+        {
+          "query": "query-5 (category)",
+          "impressions": 220,
+          "clicks": 0,
+          "avg_position": 8.6
+        }
+      ]
+    }
+  },
+  "launch_memory": {
+    "moments": [
+      {
+        "dates": "2025-12-30",
+        "peak_day": "2025-12-30",
+        "peak_sessions": 530,
+        "median_before": 12,
+        "peak_multiple": 46,
+        "days_to_fade": 1,
+        "top_source": "a software directory (Referral)",
+        "top_source_share_pct": 95,
+        "one_source_burst": true
+      },
+      {
+        "dates": "2026-01-30 to 2026-02-06",
+        "peak_day": "2026-01-30",
+        "peak_sessions": 110,
+        "median_before": 19,
+        "peak_multiple": 5.7,
+        "days_to_fade": 1,
+        "top_source": "(direct) (Direct)",
+        "top_source_share_pct": 59,
+        "one_source_burst": false
+      },
+      {
+        "dates": "2026-04-01",
+        "peak_day": "2026-04-01",
+        "peak_sessions": 350,
+        "median_before": 110,
+        "peak_multiple": 3.3,
+        "days_to_fade": 1,
+        "top_source": "(direct) (Direct)",
+        "top_source_share_pct": 28,
+        "one_source_burst": false
+      }
+    ],
+    "step_changes": [
+      {
+        "from": "2026-02-25",
+        "to": "2026-03-18",
+        "spike_days": 14,
+        "median_before": 36,
+        "median_sessions_per_day_after": 110,
+        "reading": "step change: traffic moved to a new level and stayed; not a launch-day pattern"
+      }
+    ],
+    "planning_multiple": 4.5,
+    "stretch_multiple": 5.7,
+    "rule": "spike day = sessions >= 2x the median of the 28 days before and >= 30 above it; days in a tracking gap and the 28 days after it are not tested"
+  },
+  "readiness": {
+    "checks": [
+      {
+        "check": "Tracking records the launch conversion",
+        "result": "fail",
+        "evidence": "12 key events are defined, including purchase, close_convert_lead, qualify_lead, sign_up, book_demo, form_submit; key events recorded in the last 28 good days: 0, and in the whole year of history: 0. The chosen conversion (sign_up) is a key event and fired 0 times in the last 28 days. Separately, GA4 recorded almost nothing from 2026-05-16 to 2026-09-30 (closed 5 days ago).",
+        "why": "Without a recorded conversion there is no way to tell whether the launch produced sign-ups. Fix the sign-up tag before the build-up starts."
+      },
+      {
+        "check": "Email list is warm",
+        "result": "fail",
+        "evidence": "Klaviyo is connected with 6 lists, but no email campaign was sent in the last 90 days (3 campaigns exist, all drafts). Reachable list: 0 recipients mailed in 90 days.",
+        "why": "A list that hasn't been mailed in 90 days can't carry a launch email safely. Warm it with two ordinary sends before launch day."
+      },
+      {
+        "check": "Waitlist or registration capture",
+        "result": "fail",
+        "evidence": "get_form_report for the last 90 days returned no form with views or submissions.",
+        "why": "There is nowhere for build-up traffic to leave an email. Add a waitlist form to the launch page."
+      },
+      {
+        "check": "Welcome flow for new sign-ups",
+        "result": "fail",
+        "evidence": "get_flows returned no flows.",
+        "why": "New sign-ups from launch day would get nothing after they join."
+      },
+      {
+        "check": "Launch page speed (mobile)",
+        "result": "unknown",
+        "evidence": "core-web-vitals for the launch page failed on every try with 'PageSpeed API returned 500: connection reset by peer'.",
+        "why": "Run the check again before the build-up; a slow launch page wastes the launch-day peak."
+      },
+      {
+        "check": "Brand search capture",
+        "result": "pass",
+        "evidence": "9 brand queries, 32 clicks a day at an average position of 1.1. No Google Ads account for this business is connected, so the paid half of the check is unknown.",
+        "why": "People searching the name after the announcement find the site first."
+      }
+    ],
+    "rented_reach": {
+      "facebook_page": {
+        "followers": 7,
+        "posts_90d": 19
+      },
+      "youtube": [
+        {
+          "channel": "YouTube channel 1",
+          "views_90d": 53000,
+          "subscribers_gained": 180,
+          "subscribers_lost": 73,
+          "net_subscribers": 110,
+          "amplifier": true
+        },
+        {
+          "channel": "YouTube channel 2",
+          "views_90d": 18000,
+          "subscribers_gained": 330,
+          "subscribers_lost": 1900,
+          "net_subscribers": -1600,
+          "amplifier": false
+        }
+      ]
+    },
+    "user_confirms": [
+      {
+        "area": "Product",
+        "question": "Does the feature work reliably for the users it is for, with known blocking bugs fixed and onboarding tried by real users?",
+        "answer": "ask the user"
+      },
+      {
+        "area": "Capacity",
+        "question": "Can the product, support and sign-up path take about 410 sessions on launch day (the planning target), with headroom for 520?",
+        "answer": "ask the user"
+      },
+      {
+        "area": "Support",
+        "question": "Are help docs or an FAQ for the feature ready, and is someone answering questions on launch day?",
+        "answer": "ask the user"
+      },
+      {
+        "area": "Assets",
+        "question": "Are the launch page copy, a demo video, social images and the email drafts ready? A press kit only if press is part of the plan.",
+        "answer": "ask the user"
+      }
+    ]
+  },
+  "timeline": {
+    "fix_first": [
+      "By 2026-10-13, before the build-up starts: fix the sign_up tag so it records in GA4 (it is a key event but has never recorded), and confirm GA4 keeps recording daily after the 138-day gap.",
+      "Add a waitlist form to the launch page and a live welcome flow in Klaviyo for people who join.",
+      "Warm the email list with two ordinary sends before the launch email.",
+      "Re-run the mobile page speed check on the launch page."
+    ],
+    "phase_note": "A tier 1 feature uses three phases (build-up, launch day and momentum), so foundation, seeding and iteration are not planned.",
+    "phases": [
+      {
+        "phase": "Build-up",
+        "planned": "2026-10-13 to 2026-11-02",
+        "runs": "2026-10-13 to 2026-11-02",
+        "status": "on time",
+        "tasks": [
+          "Announce the date on 2026-10-20 and tell supporters the same day.",
+          "Publish problem-focused content on the top search topics (query-1 (category), query-2 (category), query-3 (category)).",
+          "Ask the software directory behind the biggest past moment about a listing or feature for launch week.",
+          "Second warming email by 2026-10-20; launch email to all users drafted by 2026-10-27.",
+          "Write the in-app message and the landing page update by 2026-10-27.",
+          "Paid creative submitted by 2026-10-27 to leave time for ad review.",
+          "Remind supporters on 2026-11-02."
+        ]
+      },
+      {
+        "phase": "Launch day",
+        "planned": "2026-11-03",
+        "runs": "2026-11-03",
+        "status": "on time",
+        "tasks": [
+          "Run of show below: the launch post, the email to all users, social, the in-app message switched on and the landing page update live."
+        ]
+      },
+      {
+        "phase": "Momentum",
+        "planned": "2026-11-04 to 2026-12-01",
+        "runs": "2026-11-04 to 2026-12-01",
+        "status": "on time",
+        "tasks": [
+          "Follow up with everyone who engaged, onboarding emails to new sign-ups, a launch recap post in week 1, a case study by week 3, retargeting of launch visitors.",
+          "Outreach to press or partners only if the launch turns out newsworthy."
+        ]
+      }
+    ]
+  },
+  "channel_plan": [
+    {
+      "group": "Owned",
+      "share_pct": 65,
+      "plan": "The site and organic search carry most traffic, but the email list is cold: building and warming it is the first owned task. Point every rented and borrowed link at the waitlist."
+    },
+    {
+      "group": "Rented",
+      "share_pct": 5,
+      "plan": "YouTube is the only network with real reach (53,000 views in 90 days on channel 1, which gained subscribers). Make the launch demo a YouTube video. Channel 2 lost more subscribers than it gained, and the Facebook Page has 7 followers: post there, but don't count on it. In the April moment, instagram.com was the second source as GA4 reports it (98 of 350 sessions, just behind (direct)), and l.instagram.com was fourth (49); no Instagram account is connected, so its reach is unknown."
+    },
+    {
+      "group": "Borrowed",
+      "share_pct": 2,
+      "plan": "The largest past moment was a one-source burst from a software directory (upside you can't count on, but worth asking for again). Line up directory listings and partner mentions for launch week; AI assistants already send a few visits."
+    },
+    {
+      "group": "Paid",
+      "share_pct": 11,
+      "plan": "With the $2,000 budget: about $400 in the two weeks before (promote the build-up content to grow the waitlist), $1,000 in launch week (amplify the best-performing launch post), $600 over the next three weeks (retargeting launch visitors). No branded search: brand capture passes (average position 1.1). The baseline already gets paid traffic (Paid Search 18, Cross-network 36 sessions over the 5 baseline days), but no call in this run measures audience sizes, so whether a retargeting pool exists is unknown: check it in the ad platform before spending the pre-launch share, and spend less before launch if there is none.",
+      "budget_split": {
+        "pre_launch_2_weeks": 400,
+        "launch_week": 1000,
+        "post_launch_3_weeks": 600
+      }
+    }
+  ],
+  "launch_day_run_of_show": [
+    {
+      "block": "Before the morning peak (launch time zone)",
+      "do": "Systems check, publish the landing page update, the announcement post and the YouTube demo, switch on the in-app message, send the launch email to all users."
+    },
+    {
+      "block": "Morning",
+      "do": "Post on YouTube, the Facebook Page and personal profiles; personal notes to early users and partners; reply to every comment."
+    },
+    {
+      "block": "Midday to evening",
+      "do": "Keep replying, share quotes as they come in, thank people who share. No second email: the list is cold."
+    },
+    {
+      "block": "End of day",
+      "do": "Short progress post, public thanks, triage issues, plan day 2."
+    }
+  ],
+  "targets": {
+    "launch_day_sessions": {
+      "planning": 410,
+      "stretch": 520,
+      "formula": "baseline 91 sessions a day x planning multiple 4.5 (stretch x 5.7)",
+      "assumption": "past moments predict the size of a spike only if the launch reaches a similar audience; the baseline is thin (5 days since tracking recovered)"
+    },
+    "brand_clicks_launch_day": {
+      "baseline_per_day": 32,
+      "watch": "brand clicks on launch day and the week after against this baseline"
+    },
+    "conversions": {
+      "baseline_per_day": 0.0,
+      "target": null,
+      "why": "sign_up has never recorded, so there is no conversion baseline; set the sign-up target after tracking is fixed"
+    },
+    "after_30_days": "compare the 28 days after launch with this baseline for sessions, new users, key events and brand clicks; ask the user for activation, week-1 retention, paid conversions and NPS from the product, each against their own pre-launch figure and labelled 'from the user, not measured' (none was given for this run)"
+  },
+  "drafts": {
+    "launch_email": {
+      "status": "draft, not created",
+      "subject": "[Feature name] is live",
+      "body_outline": [
+        "Why: the problem early users told us about, in one sentence.",
+        "What: what [feature name] does and the outcome it gives, in one sentence each.",
+        "How: three steps to try it, with one button to the launch page.",
+        "Next: what comes after, and thanks to the people who tested it early."
+      ]
+    },
+    "launch_post": {
+      "status": "draft, not published",
+      "outline": [
+        "One line on the problem.",
+        "What is live today and who it is for.",
+        "Three short highlights.",
+        "Link to the launch page.",
+        "Thanks to the early users who asked for it."
+      ]
+    },
+    "follow_up_email": {
+      "status": "draft, not created",
+      "send": "about 7 days after each sign-up, through the welcome flow once it exists",
+      "subject": "A week with [feature name]",
+      "body_outline": [
+        "One line: you started using [feature name] a week ago.",
+        "Where to get help, and an invitation to reply with questions.",
+        "One ask for people who like it: a review or a share.",
+        "What ships next."
+      ]
+    }
+  },
+  "actions_offered": [
+    {
+      "action": "create_campaign",
+      "platform": "klaviyo",
+      "status": "offered after confirmation, not run",
+      "payload": {
+        "action": "create_campaign",
+        "body": {
+          "data": {
+            "type": "campaign",
+            "attributes": {
+              "name": "Launch: [feature name]",
+              "audiences": {
+                "included": [
+                  "<EMAIL_LIST_ID>"
+                ]
+              },
+              "campaign-messages": {
+                "data": [
+                  {
+                    "type": "campaign-message",
+                    "attributes": {
+                      "definition": {
+                        "channel": "email",
+                        "label": "Main",
+                        "content": {
+                          "subject": "[Feature name] is live",
+                          "preview_text": "[one-line benefit]",
+                          "from_email": "<FROM_EMAIL>",
+                          "from_label": "<FROM_NAME>"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "send_strategy": {
+                "method": "static",
+                "datetime": "2026-11-03T14:00:00+00:00"
+              }
+            }
+          }
+        }
+      },
+      "note": "Uses the account's list named 'Email List'. Created as a draft; the user adds content and sends it from Klaviyo."
+    },
+    {
+      "action": "create_post",
+      "platform": "facebook-pages",
+      "status": "offered for launch day only, not run",
+      "payload": {
+        "action": "create_post",
+        "page_id": "100000000000000",
+        "message": "<approved launch post text>",
+        "link": "https://example.com/"
+      },
+      "note": "Publishes immediately, so it runs only on launch day with the text the user approved."
+    }
+  ],
+  "actions_not_offered": [
+    {
+      "action": "create_key_event",
+      "why": "sign_up is already a key event; the problem is that the event never fires, which a key-event setting can't fix."
+    }
+  ],
+  "unknowns": [
+    "Launch page speed: the PageSpeed call failed with a server error on every try.",
+    "Paid brand capture: no Google Ads account for this business is connected.",
+    "Conversion baseline: no key event has recorded in the year of history.",
+    "LinkedIn and Instagram: no account for this business is connected, though instagram.com was a top source in one past moment.",
+    "Retargeting pool: no call in this run measures ad-platform audience sizes."
+  ],
+  "go_deeper": [
+    "conversion-tracking-auditor or gtm-container-auditor (if installed) to find why sign_up never fires",
+    "email-sequence-builder (if installed) for the warming and launch emails",
+    "landing-page-auditor (if installed) for the launch page",
+    "social-content (if installed) for the build-up posts"
+  ]
+}

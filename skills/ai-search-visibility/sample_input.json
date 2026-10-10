@@ -1,0 +1,44 @@
+{
+  "note": "Real run on a live site's accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. DataForSEO mention counts, AI search volumes and share-of-voice percentages are rounded to 1 significant figure. The run was made on 2026-10-02 through the InsightfulPipe MCP, and every number in expected_output.json was computed by a script from the raw responses. Third-party domains in AI answers and search results are described by type (vendor site, listing site, platform docs). FAQ answers were drafted from each page's own text and are shown as a summary with their real word count. 8 DataForSEO calls: the 7 the skill makes, plus one ai_opt_llm_mentions_aggregated test call that came back empty, which is why the skill uses cross_aggregated only. The user supplied the priority questions and competitors when asked in step 3 of Before you start; they are not the step 3 defaults (which would have been the top non-brand question queries by impressions and the domains that outrank the site).",
+  "request": "Hey Claude, I just added the \"ai-search-visibility\" skill. Check how visible example.com is in AI search and tell me what to do to get cited more.",
+  "site": {
+    "domain": "example.com",
+    "ga4_property": "the site's GA4 property",
+    "search_console": "https://example.com/",
+    "bing": "https://example.com/"
+  },
+  "brand_terms": [
+    "[brand]",
+    "[brand variant]"
+  ],
+  "competitors": [
+    "competitor-a.com",
+    "competitor-b.com",
+    "competitor-c.com"
+  ],
+  "priority_questions": [
+    "query-1 (head term)",
+    "query-2 (how-to question)",
+    "query-3 (head term)"
+  ],
+  "chatgpt_prompts": [
+    "query-4 (best-of question, ChatGPT prompt)",
+    "query-5 (how-to question, ChatGPT prompt)"
+  ],
+  "date_ranges": {
+    "search_console": "2026-09-02 to 2026-09-29 (last date returned)",
+    "ga4_ai_referrals": "2026-07-04 to 2026-10-01",
+    "bing": "weekly rows filtered from 2026-09-02"
+  },
+  "data_pulled": [
+    "GA4 get_report by sessionSource and sessionMedium, 90 days (7 rows, 480 sessions)",
+    "GA4 get_report by sessionSource and landingPage, 90 days (130 rows)",
+    "GA4 get_report by date, 90 days (68 days with sessions)",
+    "GA4 get_report by source on the Search Console dates (3 rows)",
+    "Search Console search_analytics by query (1600 rows), query and page (2300 rows), and date (28 days)",
+    "Bing get_query_stats (790 weekly rows, 190 in the window)",
+    "DataForSEO ai_opt_llm_mentions_cross_aggregated (4 domains), ai_opt_llm_mentions_aggregated, ai_opt_llm_mentions_search (4 answers)",
+    "DataForSEO serp_google_organic x3, ai_opt_chatgpt_scraper x2",
+    "crawler robots-txt-checker, ai-crawler-checker, llms-txt-checker, structured-data-checker x2 (home page and /blog/post-1, the area 4 cited page with the most AI search volume), plus a direct fetch of llms.txt and both pages"
+  ]
+}

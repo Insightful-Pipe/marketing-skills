@@ -1,0 +1,44 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-05 and 2026-10-06 through the InsightfulPipe MCP on our own Meta ad account; campaign, ad set and ad names are replaced by labels and ad text is described by type. Money under $1 is shown to the cent. Nothing was changed in the account.",
+  "request": "Hey Claude, I just added the \"facebook-ads-monthly-report\" skill. Write last month's Meta Ads report for our account. If last month was quiet, use the most recent month that had spend. We don't have formal goals yet, and the result we care about is clicks to the site.",
+  "account": {
+    "name": "A B2B software company",
+    "ad_account_id": "act_123456789",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "account_status": 1,
+    "access": "Read & Write"
+  },
+  "inputs_from_user": {
+    "month": "last month (September 2026)",
+    "result_that_counts": "link clicks",
+    "goals": "none set",
+    "audience_for_report": "internal",
+    "outside_events": "none named"
+  },
+  "date_range": {
+    "requested": "2026-09-01 to 2026-09-30",
+    "reported": "2026-01-01 to 2026-01-31",
+    "compared_with": "2025-12-01 to 2025-12-31"
+  },
+  "data_pulled": [
+    "get_adaccount (currency, time zone, status)",
+    "get_insights_adaccount, level account, August-September 2026 by month (0 rows: no delivery)",
+    "get_insights_adaccount, level account, date_preset maximum by month: the delivery scan (2 months with spend)",
+    "get_insights_adaccount, level account and level campaign, December 2025-January 2026 by month",
+    "get_insights_adaccount, level adset, January 2026; get_adsets (targeting)",
+    "get_insights_adaccount, January 2026, breakdowns publisher_platform + platform_position, and age + gender",
+    "get_insights_adaccount, level ad, December 2025-January 2026 by month; get_ad_creatives_by_ad for both ads that ever delivered",
+    "get_ads (created_time, status); get_activities_adaccount, January 2026",
+    "get_insights_adaccount, level ad, October 2025-March 2026 by month (the quarterly creative call, run to check it)"
+  ],
+  "calls_run": {
+    "get_adaccount": 1,
+    "get_insights_adaccount": 9,
+    "get_adsets": 1,
+    "get_ad_creatives_by_ad": 2,
+    "get_ads": 1,
+    "get_activities_adaccount": 1
+  },
+  "write_actions_run": []
+}

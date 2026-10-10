@@ -1,0 +1,127 @@
+{
+  "request": "Hey Claude, I just added the \"form-cro\" skill. Audit the demo request form on our site and tell me which fields to cut and what to fix first.",
+  "account": {
+    "site": "example.com (a B2B SaaS site)",
+    "form_page": "https://example.com/pages/page-1",
+    "ga4_property": "properties/123456789",
+    "workspace_id": 1,
+    "brand_id": 1
+  },
+  "date_range": {
+    "default_30_days": "2026-09-06 to 2026-10-05",
+    "widened_to_90_days": "2026-07-08 to 2026-10-05"
+  },
+  "user_answers": {
+    "fields_used_after_submit": "not given, so country and job title are marked 'check with sales'",
+    "phones_leads": "not given",
+    "fields_required_by_law_or_policy": "not given; no consent or legal field is on the form",
+    "lead_value": "not given",
+    "field_level_analytics": "none, so field drop-off is unknown"
+  },
+  "calls": [
+    {
+      "call": "dataforseo onpage_instant_pages with the SKILL.md form script, enable_javascript true",
+      "paid": true,
+      "result": "1 form, 7 visible fields, submit 'Book demo'"
+    },
+    {
+      "call": "google-analytics list_data_streams",
+      "result": "4 web streams"
+    },
+    {
+      "call": "google-analytics get_enhanced_measurement_settings",
+      "result": "formInteractionsEnabled true"
+    },
+    {
+      "call": "google-analytics list_key_events",
+      "result": "12 key events, 3 tied to the demo form"
+    },
+    {
+      "call": "google-analytics list_custom_dimensions",
+      "result": "11 custom dimensions, none for form_id or form_name"
+    },
+    {
+      "call": "google-analytics get_report F2 (form events by page)",
+      "result": "0 rows"
+    },
+    {
+      "call": "google-analytics get_report F2 with the site's lead events and deviceCategory",
+      "result": "0 rows"
+    },
+    {
+      "call": "google-analytics get_report F3 (form page by device), 30 and 90 days",
+      "result": "8 sessions in 30 days, 8 in 90"
+    },
+    {
+      "call": "google-analytics get_report F4 (events and key events)",
+      "result": "0 key events fired across the property in 90 days"
+    },
+    {
+      "call": "pagespeed-insights accessibility-seo (mobile)",
+      "result": "failed: connection reset (HTTP 500 from the service)"
+    },
+    {
+      "call": "screenshot capture (desktop, mobile)",
+      "result": "failed: connection reset (HTTP 502 from the service)"
+    }
+  ],
+  "form_fields_read": [
+    {
+      "type": "text",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "",
+      "label": "First Name",
+      "choices": 0
+    },
+    {
+      "type": "text",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "",
+      "label": "Last Name",
+      "choices": 0
+    },
+    {
+      "type": "text",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "",
+      "label": "Country",
+      "choices": 0
+    },
+    {
+      "type": "select",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "",
+      "label": "Job Title",
+      "choices": 8
+    },
+    {
+      "type": "email",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "you@company.com",
+      "label": "Business Email",
+      "choices": 0
+    },
+    {
+      "type": "text",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "",
+      "label": "Company Name",
+      "choices": 0
+    },
+    {
+      "type": "textarea",
+      "required": true,
+      "autocomplete": "",
+      "placeholder": "Anything you'd like us to know...",
+      "label": "How can we help you?",
+      "choices": 0
+    }
+  ],
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-06 against the live demo request page and its GA4 property; dropdown choices are summarised as a count, and the site's custom event names are renamed."
+}

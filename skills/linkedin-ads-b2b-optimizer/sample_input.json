@@ -1,0 +1,56 @@
+{
+  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Also replaced: campaign, group and conversion names, and the job function, industry and job title ids (lettered, because they would reveal the business's niche). Run on 2026-10-06 through the InsightfulPipe MCP; 20 read calls, no changes made.",
+  "request": "Hey Claude, I just added the \"linkedin-ads-b2b-optimizer\" skill. Show me which seniorities, job titles, company sizes and industries are worth paying for on LinkedIn, and check the bid and budget on our paused website-visits campaign before we turn it back on. Use what our campaigns already target as the buying committee.",
+  "account": {
+    "name": "A B2B software company's LinkedIn ad account",
+    "id": "500000000",
+    "currency": "USD",
+    "access_level": "full"
+  },
+  "window": {
+    "start": "2025-12-01",
+    "end": "2026-01-31",
+    "why": "Nothing spent in the last 90 days, so the skill looked back 24 months and used the months with spend."
+  },
+  "buying_committee": {
+    "source": "what the campaigns that spent target (the user's choice)",
+    "seniorities": [
+      "Manager",
+      "Director",
+      "VP",
+      "CXO",
+      "Partner",
+      "Owner"
+    ],
+    "company_sizes": [
+      "11-50",
+      "51-200",
+      "201-500",
+      "501-1,000",
+      "1,001-5,000"
+    ],
+    "job_functions": "6 functions (lettered in this sample)",
+    "industries": "11 industries (lettered in this sample)"
+  },
+  "target_cost_per_qualified_lead": "not given, and no lead or conversion was recorded, so no target could be set",
+  "crm_counts": "none given",
+  "campaign_to_restart": "Campaign C (website visits, paused)",
+  "data_pulled": [
+    "get_campaigns (92 campaigns: 85 paused, 4 archived, 3 completed, 0 active)",
+    "get_campaign_groups",
+    "get_creatives",
+    "get_conversions (1 rule)",
+    "get_analytics CAMPAIGN, last 90 days (no rows: nothing spent)",
+    "get_analytics CAMPAIGN, last 24 months (2 campaigns spent)",
+    "get_analytics CAMPAIGN MONTHLY on those 2 (Dec 2025 and Jan 2026)",
+    "get_analytics CAMPAIGN over the window, with leads, conversions and reach",
+    "get_analytics PLACEMENT_NAME",
+    "get_analytics CREATIVE",
+    "get_analytics CAMPAIGN DAILY (pacing history)",
+    "get_demographic_analytics MEMBER_SENIORITY, MEMBER_JOB_TITLE, MEMBER_JOB_FUNCTION, MEMBER_COMPANY_SIZE, MEMBER_INDUSTRY",
+    "get_demographic_analytics MEMBER_SENIORITY on Campaign A (it targets seniorities)",
+    "get_demographic_analytics MEMBER_COMPANY_SIZE on Campaign B (it targets company sizes)",
+    "get_budget_pricing CPC on Campaign C's current targeting",
+    "get_budget_pricing CPC on the drafted targeting"
+  ]
+}
