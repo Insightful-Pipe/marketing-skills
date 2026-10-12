@@ -46,7 +46,7 @@ Most skills only read data and make recommendations. Skills that write, such as 
 ## Skills
 
 <!-- SKILLS:START -->
-**72 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
+**73 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
 
 ### Audience
 
@@ -198,6 +198,7 @@ Keyword research, content decay, cannibalization, briefs, schema, internal links
 |---|---|---|
 | [Ai Search Visibility](skills/ai-search-visibility/) | Tracks how visible a website is in AI search on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/ai-search-visibility) |
 | [Content Brief Writer](skills/content-brief-writer/) | Writes an SEO content brief for one target keyword from the live Google top 10, through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/content-brief-writer) |
+| [Internal Linking Planner](skills/internal-linking-planner/) | Plans internal links on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/internal-linking-planner) |
 | [Keyword Cannibalization Fixer](skills/keyword-cannibalization-fixer/) | Finds keyword cannibalization on live Google Search Console data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/keyword-cannibalization-fixer) |
 | [Keyword Research Clustering](skills/keyword-research-clustering/) | Researches keywords for a topic on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/keyword-research-clustering) |
 | [Schema Markup Generator](skills/schema-markup-generator/) | Audits and writes schema markup on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/seo/schema-markup-generator) |
