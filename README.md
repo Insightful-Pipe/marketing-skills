@@ -46,7 +46,7 @@ Most skills only read data and make recommendations. Skills that write, such as 
 ## Skills
 
 <!-- SKILLS:START -->
-**74 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
+**75 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
 
 ### Audience
 
@@ -117,6 +117,7 @@ Search term, keyword, bidding, budget, PMax and reporting skills for Google Ads.
 | [Negative Keyword Implementer](skills/negative-keyword-implementer/) | Finds, checks and adds Google Ads negative keywords on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/negative-keyword-implementer) |
 | [PMax Asset Group Analyzer](skills/pmax-asset-group-analyzer/) | Reviews Google Performance Max campaigns on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/pmax-asset-group-analyzer) |
 | [Quality Score Fixer](skills/quality-score-fixer/) | Diagnoses and fixes low Google Ads Quality Score on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/quality-score-fixer) |
+| [Rsa Ad Copy Writer](skills/rsa-ad-copy-writer/) | Writes Google Ads responsive search ad copy from live account data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/rsa-ad-copy-writer) |
 | [Scaling Roadmap Builder](skills/scaling-roadmap-builder/) | Builds a phased plan to scale Google Ads spend on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/scaling-roadmap-builder) |
 | [Search Term Gold Miner](skills/search-term-gold-miner/) | Mines Google Ads search terms on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/search-term-gold-miner) |
 | [Shopping Feed Optimizer](skills/shopping-feed-optimizer/) | Audits and optimizes product feeds for Google Shopping, Meta Catalog, and other platforms. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/shopping-feed-optimizer) |
