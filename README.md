@@ -46,7 +46,7 @@ Most skills only read data and make recommendations. Skills that write, such as 
 ## Skills
 
 <!-- SKILLS:START -->
-**75 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
+**76 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
 
 ### Audience
 
@@ -164,6 +164,7 @@ GA4 tracking, attribution audits, A/B tests, incrementality and LTV:CAC.
 | [A/B Test Designer](skills/ab-test-designer/) | Designs A/B tests and reads out finished ones on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/ab-test-designer) |
 | [Attribution Model Auditor](skills/attribution-model-auditor/) | Audits how conversions are attributed across Google Ads, Meta, LinkedIn, Microsoft Ads, TikTok and GA4 on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/attribution-model-auditor) |
 | [Conversion Tracking Auditor](skills/conversion-tracking-auditor/) | Audits conversion tracking end to end on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/conversion-tracking-auditor) |
+| [GA4 Property Audit](skills/ga4-property-audit/) | Audits a GA4 property's setup and data quality on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/ga4-property-audit) |
 | [Incrementality Test Designer](skills/incrementality-test-designer/) | Designs an incrementality test (geo holdout, audience holdout or platform conversion lift) from live ad data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/incrementality-test-designer) |
 | [LTV CAC Ratio Optimizer](skills/ltv-cac-ratio-optimizer/) | Analyzes customer lifetime value (LTV) and customer acquisition cost (CAC) to optimize advertising profitability. | [Page](https://insightfulpipe.com/marketing-claude-skills/measurement/ltv-cac-ratio-optimizer) |
 

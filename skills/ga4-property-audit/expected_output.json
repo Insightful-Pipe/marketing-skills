@@ -1,0 +1,164 @@
+{
+  "header": {
+    "property": "Example SaaS",
+    "property_id": "123456789",
+    "time_zone": "America/New_York",
+    "currency": "USD",
+    "date_range": "2026-09-01 to 2026-09-30",
+    "sessions": 60,
+    "engaged_sessions": 10,
+    "key_events": 0,
+    "grade": 51,
+    "rating": "the numbers shouldn't drive decisions yet"
+  },
+  "scorecard": [
+    {
+      "area": "Property settings",
+      "result": "pass",
+      "key_number": "2 Google Ads links, 1 BigQuery export",
+      "why": "Time zone America/New_York, currency USD. Google Ads customer ids 123-456-7890 and 098-765-4321 are linked; confirm each one is yours. Raw events export to BigQuery."
+    },
+    {
+      "area": "Streams and tag coverage",
+      "result": "fail",
+      "key_number": "fewer than 10 GA4 Google organic sessions vs 2000 Search Console clicks (0.1%), 2026-09-01 to 2026-09-29",
+      "why": "From 2026-09-01 to 2026-09-29 (Search Console's last day), GA4 saw 60 sessions in all while Google alone sent 2000 clicks. 3 of 4 web streams sent no events and all 3 are test streams. Hostnames are clean."
+    },
+    {
+      "area": "Retention and privacy",
+      "result": "warn",
+      "key_number": "event data kept two months",
+      "why": "Explorations and funnels can only look back two months. Reset on new activity is on; ads personalisation is on for 0 of 2 Google Ads links."
+    },
+    {
+      "area": "Key events",
+      "result": "fail",
+      "key_number": "0 key events from 60 sessions",
+      "why": "12 key events are defined and 12 of them never fired. 4 are test events, and 4 lead events count every repeat submit."
+    },
+    {
+      "area": "Event coverage",
+      "result": "warn",
+      "key_number": "6 event names, 0 business events",
+      "why": "Automatic events all fire and scroll shows from enhanced measurement. No lead or sign-up event fired. Custom event 'ExampleSaaS' (50 events) uses the brand name as its event name."
+    },
+    {
+      "area": "Custom definitions",
+      "result": "warn",
+      "key_number": "23 of 23 receive no values",
+      "why": "11 of 11 custom dimensions and 12 of 12 custom metrics got no values in 30 days; 8 are test definitions and 2 copy built-in dimensions."
+    },
+    {
+      "area": "Attribution quality",
+      "result": "warn",
+      "key_number": "Unassigned 0.0%, cross-domain referrer on 5.2% of events",
+      "why": "No Unassigned, (not set) or self-referral sessions inside the window. 10 events arrived from app.example.com, which is not a host in this property, so journeys between the site and the app aren't joined."
+    },
+    {
+      "area": "Traffic quality",
+      "result": "warn",
+      "key_number": "37% of sessions look automated",
+      "why": "Singapore, Argentina: 20 sessions, 0 engaged, under 2 seconds on average. Yesterday shows 80 sessions against a median of 2 a day, 0 engaged (provisional)."
+    }
+  ],
+  "grade_math": "100 - 12 x 2 fails - 5 x 5 warns = 51",
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "Find out why GA4 misses almost every visit",
+      "what_it_fixes": "every report: 60 sessions recorded against 2000 Google clicks alone, 2026-09-01 to 2026-09-29",
+      "evidence": "search_analytics: 2000 clicks over 29 days, 2026-09-01 to 2026-09-29 (the last day it returns); get_report sessionSource/sessionMedium for the same dates: google / organic = fewer than 10 sessions, 60 sessions in total",
+      "next_step": "Check whether the consent banner defaults analytics to denied and how many visitors accept, and whether the tag loads on every page template. A consent choice is the visitor's; if that is the cause, accept lower counts or rely on modelled data rather than bypassing it.",
+      "who": "the site code and consent banner"
+    },
+    {
+      "rank": 2,
+      "fix": "Decide where sign-ups are measured, and measure them there",
+      "what_it_fixes": "12 key events with 0 conversions recorded",
+      "evidence": "list_key_events: 12 defined, 12 never fired; pageReferrer: 10 events referred by app.example.com, hosts seen: example.com, www.example.com",
+      "next_step": "If sign-ups happen in the app, tag the app with the same measurement id and add both domains to the cross-domain setting, or report sign-ups from the app's own analytics. Then mark the real sign-up event as a key event.",
+      "who": "do this in GA4 Admin and the app code; I can mark the event as a key event once it fires"
+    },
+    {
+      "rank": 3,
+      "fix": "Remove the test key events and count leads once per session",
+      "what_it_fixes": "4 test key events and 4 lead events that count repeat submits",
+      "evidence": "list_key_events: test events site_qa_test_v1, qa_write_test_v2, site_qa_test_v2, qa_check_v3; ONCE_PER_EVENT lead events sign_up, book_demo, form_submit, site_demo_form_submit",
+      "next_step": "Delete the test key events in GA4 Admin. Switch the lead events to ONCE_PER_SESSION.",
+      "who": "I can change the counting now (update_key_event); deleting is done in GA4 Admin"
+    },
+    {
+      "rank": 4,
+      "fix": "Keep bot traffic out of the reports",
+      "what_it_fixes": "20 of 60 sessions (37%), plus a provisional spike of 80 sessions yesterday",
+      "evidence": "get_report country: Singapore 20 sessions, 0 engaged, 0.04s; Argentina fewer than 10 sessions, 0 engaged, 1.2s; get_report date: 2026-10-01 80 sessions vs median 2",
+      "next_step": "Re-run the spike check in 2 days. If it holds, build reports on engaged sessions, and block the source at the site or CDN; GA4 has no setting to drop a country.",
+      "who": "the site or CDN"
+    },
+    {
+      "rank": 5,
+      "fix": "Raise event data retention to 14 months",
+      "what_it_fixes": "explorations and funnels limited to two months of history",
+      "evidence": "get_data_retention_settings: eventDataRetention TWO_MONTHS",
+      "next_step": "Set it in GA4 Admin > Data collection and modification > Data retention. It is not retroactive.",
+      "who": "do this in GA4 Admin"
+    }
+  ],
+  "everything_else": {
+    "Streams and tag coverage": [
+      "Delete the 3 test streams with no data: QA Test Stream (https://qa.example.com), Site QA Stream v2 Verified (https://site-qa-v2.invalid), QA Stream v3 (https://qa2-v3.invalid)"
+    ],
+    "Event coverage": [
+      "Enhanced measurement is on for click, view_search_results, video_start, file_download, form_start but none fired; with 60 sessions that may just be low volume.",
+      "Rename the 'ExampleSaaS' event to a lowercase name that says what it records, or remove it if it duplicates page_view."
+    ],
+    "Custom definitions": [
+      "Archive the 8 test definitions: site_qa_test_v1, qa_test_param, site_qa_dimension_v2, qa_dim_v3, site_qa_metric_v1, qa_test_metric, site_qa_metric_v2, qa_metric_v3.",
+      "Use the built-in campaign and source dimensions instead of campaign_name, traffic_source.",
+      "Unused custom dimensions: page_type, signup_method, plan_name, lead_source, campaign_name, traffic_source, site_qa_test_v1, site_demo_lead_source, qa_test_param, site_qa_dimension_v2, qa_dim_v3.",
+      "Unused custom metrics: trial_value, engagement_time, lead_value, time_on_page, demo_value, scroll_depth, Legacy_Metric, site_qa_metric_v1, site_demo_lead_value, qa_test_metric, site_qa_metric_v2, qa_metric_v3."
+    ],
+    "Attribution quality": [
+      "When the same report ran through yesterday, 80 sessions showed as (not set) or (data not available), all dated yesterday. That is processing, not broken tagging, and why the window ends two days back."
+    ],
+    "Property settings": [
+      "Ads personalisation is off on 2 of 2 Google Ads links; check that matches the consent banner."
+    ]
+  },
+  "unknowns": [
+    {
+      "check": "GA4 tag in Tag Manager",
+      "why": "No connected Tag Manager container carries G-XXXXXXXXXX. The site may load the tag in its own code."
+    },
+    {
+      "check": "Internal traffic filter",
+      "why": "The API cannot read active data filters. No filter is in testing state (testDataFilterName is (not set) on every event). Confirm in GA4 Admin > Data filters that an internal traffic filter exists and is Active."
+    }
+  ],
+  "fixes_offered": [
+    {
+      "action": "update_key_event",
+      "change": "counting_method ONCE_PER_SESSION on sign_up, book_demo, form_submit, site_demo_form_submit",
+      "status": "offered, waiting for a yes"
+    },
+    {
+      "action": "create_key_event",
+      "change": "the real sign-up event, once it fires on this property",
+      "status": "offered later"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "UTM tagging behind future Unassigned traffic",
+      "skill": "utm-auditor"
+    },
+    {
+      "area": "Conversion tracking across ad platforms",
+      "skill": "conversion-tracking-auditor"
+    },
+    {
+      "area": "Weekly GA4 reporting once the data is clean",
+      "skill": "ga4-weekly-report"
+    }
+  ]
+}
