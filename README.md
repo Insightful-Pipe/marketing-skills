@@ -46,7 +46,7 @@ Most skills only read data and make recommendations. Skills that write, such as 
 ## Skills
 
 <!-- SKILLS:START -->
-**76 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
+**77 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
 
 ### Audience
 
@@ -112,6 +112,7 @@ Search term, keyword, bidding, budget, PMax and reporting skills for Google Ads.
 | [Geo Performance Optimizer](skills/geo-performance-optimizer/) | Finds where, on which device and at what hour a Google Ads account wastes or earns its money, on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/geo-performance-optimizer) |
 | [Google Ads Account Audit](skills/google-ads-account-audit/) | Runs a full Google Ads account audit on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/google-ads-account-audit) |
 | [Google Ads Weekly Brief](skills/google-ads-weekly-brief/) | Writes the weekly Google Ads brief for a client, boss or team from live account data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/google-ads-weekly-brief) |
+| [Impression Share Analyst](skills/impression-share-analyst/) | Analyzes Google Ads search impression share on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/impression-share-analyst) |
 | [Keyword Performance Analyzer](skills/keyword-performance-analyzer/) | Analyzes Google Ads keywords on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/keyword-performance-analyzer) |
 | [Month End Report Generator](skills/month-end-report-generator/) | Writes the month-end Google Ads report from live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/month-end-report-generator) |
 | [Negative Keyword Implementer](skills/negative-keyword-implementer/) | Finds, checks and adds Google Ads negative keywords on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/google-ads/negative-keyword-implementer) |
