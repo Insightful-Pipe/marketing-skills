@@ -1,0 +1,107 @@
+{
+  "header": {
+    "ga4_property": "Example SaaS",
+    "site_host": "example.com",
+    "date_range": "2026-09-01 to 2026-09-30",
+    "sessions": "about 60",
+    "grade": 95,
+    "rating": "clean",
+    "accounts_checked": [
+      "GA4",
+      "Google Ads (separate advertiser, anonymised)",
+      "Meta",
+      "LinkedIn"
+    ]
+  },
+  "scorecard": [
+    {
+      "area": "Naming hygiene",
+      "result": "pass",
+      "key_number": "0 case or spelling splits, 0 sessions with a partner id but no source",
+      "why": "0 tagged rows in the window, so the 2026-07-03 to 2026-09-30 lookback was read too (5 rows). No source, medium or campaign is spelled two ways, and no landing page carries a partner or click id beside a different source."
+    },
+    {
+      "area": "Channel mapping",
+      "result": "pass",
+      "key_number": "0.0% of sessions Unassigned",
+      "why": "All sessions (about 60) landed in one of 3 named channels. No unknown mediums, no (not set) and no Cross-network rows in the window."
+    },
+    {
+      "area": "Google Ads",
+      "result": "warn",
+      "key_number": "100% of spend bypasses the account tracking template",
+      "why": "Auto-tagging is on. The account template points to a third-party click monitor, but all 9 spending campaigns set their own template, so the account one never runs. 7 parameters are set twice (campaign template and account URL suffix)."
+    },
+    {
+      "area": "Meta",
+      "result": "not scored",
+      "key_number": "$0 spend in the window, 0 live ads",
+      "why": "Nothing delivered, so nothing to score. Inventory only: 4 of about 200 creatives carry URL tags, and 3 of those hold a full URL instead of key=value pairs."
+    },
+    {
+      "area": "LinkedIn",
+      "result": "not scored",
+      "key_number": "$0 spend in the window, 0 active campaigns",
+      "why": "Nothing delivered. The 3 campaigns that spent before have no UTM tracking parameters set."
+    }
+  ],
+  "grade_math": "100 - 12 x 0 fail - 5 x 1 warn = 95",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Google Ads: choose one tracking template level",
+      "affected": "$5580 of spend in the window across 9 campaigns",
+      "evidence": "customer.tracking_url_template is a click-monitor redirect; campaign.tracking_url_template is set on 9 of 9 campaigns and overrides it; no keyword (0 of 270), ad (0) or ad group (0) sets one; 7 keys repeat in customer.final_url_suffix",
+      "who": "I can do this now with update_campaign: either add the click-monitor redirect to each campaign template, or clear the campaign templates so the account one applies. Ask the click-monitor vendor which they need."
+    },
+    {
+      "rank": 2,
+      "fix": "Find the cause of the (not set) sessions before blaming tags",
+      "affected": "about 10 sessions in the 2026-07-03 to 2026-09-30 lookback, none in the window, 0 engaged",
+      "evidence": "get_report: (not set) / (not set) / (not set), Unassigned. The day split spreads them over about 10 separate days in July and August, all long processed, so they are a measurement gap and not data GA4 was still attributing",
+      "who": "run ga4-property-audit if installed; otherwise check that the tag fires session_start on every page"
+    },
+    {
+      "rank": 3,
+      "fix": "Set Meta and LinkedIn tags before the next launch",
+      "affected": "no spend now; every future paid click",
+      "evidence": "Meta: only 4 of about 200 creatives have URL tags; the one well-formed tag uses 'utm_source=fb&utm_medium=cpc'. LinkedIn: no tracking parameters on the 3 past campaigns",
+      "who": "Meta: new creatives with url_tags (I can create them after you confirm). LinkedIn: set the values in Campaign Manager."
+    }
+  ],
+  "other_findings": [
+    "Left out: 2026-10-01 to 2026-10-02, which GA4 may still be processing (about 200 sessions). On the run day, 2026-10-02 already showed about 30 Unassigned and 20 Cross-network sessions. Re-run after both days are 2 days old before reading anything into those rows.",
+    "Google Ads: 0 of 50 ads and 0 of 40 sitelinks put utm_ in the final URL; 0 ads, 0 ad groups and 0 of 270 keywords set their own template. No manual UTMs are needed while auto-tagging is on.",
+    "The property has custom GA4 channel groups and linked Google Ads accounts; with no unknown mediums in the window, neither changes a result.",
+    "A referral site / (not set): 1 session in the 2026-07-03 to 2026-09-30 lookback, none in the window, in July. A real source with no medium is a tagging fix, not a measurement gap: if a link you control sends it, tag it utm_medium=referral."
+  ],
+  "convention": {
+    "rules": {
+      "utm_source": "platform or partner, lowercase: google, facebook, instagram, linkedin, the partner's domain",
+      "utm_medium": "paid_social for Meta and LinkedIn ads, cpc for search ads, affiliate, referral, email",
+      "utm_campaign": "<goal>_<offer-or-theme>_<yyyymm>: lowercase, - between words, _ between parts",
+      "utm_content": "the ad: {{ad.name}} in Meta"
+    },
+    "templates": {
+      "meta_url_tags": "utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&utm_term={{adset.name}}",
+      "linkedin_tracking_parameters": "utm_source=linkedin&utm_medium=paid_social&utm_campaign=<campaign name slug>",
+      "google_ads": "keep auto-tagging; no manual UTMs"
+    },
+    "old_to_new": [
+      {
+        "old": "utm_source=fb&utm_medium=cpc",
+        "new": "utm_source=facebook&utm_medium=paid_social"
+      }
+    ]
+  },
+  "not_checked": [
+    "Meta and LinkedIn: no delivery in the window, so not scored",
+    "Google Ads click-to-session check: its ads land on a different site than this GA4 property",
+    "2026-10-01 to 2026-10-02: still inside GA4's processing time"
+  ],
+  "go_deeper": [
+    "ga4-property-audit (if installed) for the (not set) sessions; otherwise check that the GA4 tag fires session_start on every page",
+    "conversion-tracking-auditor (if installed) for conversion setup; otherwise check in GA4 Admin which events are marked as key events",
+    "attribution-model-auditor (if installed); otherwise compare last-click and data-driven conversions in GA4 Advertising"
+  ]
+}
