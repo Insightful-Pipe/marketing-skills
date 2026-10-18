@@ -1,0 +1,682 @@
+{
+  "header": {
+    "property": "Example SaaS",
+    "property_id": "123456789",
+    "time_zone": "America/Los_Angeles",
+    "currency": "USD",
+    "date_range": "2026-04-01 to 2026-04-30",
+    "compared_with": "2026-03-02 to 2026-03-31",
+    "sessions": 3800,
+    "sessions_prior": 3200,
+    "page_views": 9500,
+    "grade": 85,
+    "rating": "healthy"
+  },
+  "numbers_note": "Counts are rounded to 2 significant figures, so channel and page counts may not add up to the totals exactly. Scroll rates are shown to one decimal. Rates, verdicts and thresholds were worked out from the unrounded data.",
+  "scorecard": [
+    {
+      "area": "Data health",
+      "result": "warn",
+      "key_number": "12% of sessions have a (not set) landing page; 12 key events defined, 0 fired",
+      "why": "460 sessions started without a page view and only 4 of them engaged. Key events exist but none fired, so conversion checks are unknown and pages are ranked on engaged sessions."
+    },
+    {
+      "area": "Landing pages and leaks",
+      "result": "pass",
+      "key_number": "2 leaking pages hold 2% of sessions",
+      "why": "Site engagement rate is 57% (excluding not set). Pages labelled leak: /library/page-3 at 33% engaged, about 8 sessions lost beyond an average page; /pages/page-1 at 41% engaged, about 8 sessions lost beyond an average page. The most visitors lost beyond an average page are on /library/page-1: about 72 sessions, though at 46% engaged it stays above the leak line."
+    },
+    {
+      "area": "Traffic source fit",
+      "result": "warn",
+      "key_number": "1 weak source; 3 pages where GA4 records under 60% of Search Console clicks",
+      "why": "Organic Social (240 sessions, 230 with a known landing page) engages 19% of the 230 vs 57% site rate. /blog/post-1: 89 GA4 organic sessions for 160 Google clicks; /library/page-2: 47 GA4 organic sessions for 96 Google clicks; /blog/post-2: 19 GA4 organic sessions for 44 Google clicks. Paid traffic is 2 sessions, under 30, so paid landing page quality can't be judged."
+    },
+    {
+      "area": "Content engagement and scroll",
+      "result": "pass",
+      "key_number": "median 16s engaged per view, 12.0% of users reach 90% depth",
+      "why": "2 pages with 100+ views have a scroll rate under half the median. The scroll event only fires at 90%, so this is read-to-the-bottom, not a depth curve."
+    },
+    {
+      "area": "Broken pages",
+      "result": "warn",
+      "key_number": "41 404 views on 12 paths (0.4% of page views)",
+      "why": "4 broken paths are linked from the site's own pages. The site's 404 titles contain 'not found' but never '404' (titles masked here as 'Not-found title 1' and similar), so the default filter needed the 'not found' match."
+    },
+    {
+      "area": "Site search",
+      "result": "not applicable",
+      "key_number": "0 search terms",
+      "why": "Site search tracking is on, but no view_search_results events: the site has no search that uses the tracked query parameters. Costs no points."
+    }
+  ],
+  "grade_math": "100 - 5 (Data health warn) - 5 (Traffic source fit warn) - 5 (Broken pages warn) = 85",
+  "data_health": {
+    "key_events_defined": [
+      "close_convert_lead",
+      "contact_request",
+      "form_submit",
+      "lead_form_submit",
+      "manual_event_PURCHASE",
+      "purchase",
+      "qa_test_event_1",
+      "qa_test_event_2",
+      "qa_test_event_3",
+      "qa_test_event_4",
+      "qualify_lead",
+      "sign_up"
+    ],
+    "key_events_fired": 0,
+    "not_set_landing_page_sessions": 460,
+    "not_set_share_pct": 12,
+    "gap_days": [],
+    "web_streams": 4,
+    "web_streams_note": "Several web streams send to this property, including test streams; check hostName if numbers look high.",
+    "scrolls_enabled": true,
+    "site_search_enabled": true,
+    "events_seen": [
+      "page_view",
+      "custom_brand_event",
+      "session_start",
+      "user_engagement",
+      "first_visit",
+      "scroll",
+      "click",
+      "form_start"
+    ]
+  },
+  "top_5_page_fixes": [
+    {
+      "rank": 1,
+      "page": "(not set)",
+      "fix": "Find why sessions start without a page view: an event that fires before the page view, or sessions restarting after 30 idle minutes",
+      "numbers": "460 sessions (12%) have no landing page, and 4 engaged",
+      "evidence": "landingPage report (area 1)",
+      "at_stake": 460,
+      "at_stake_unit": "(not set) sessions"
+    },
+    {
+      "rank": 2,
+      "page": "/integrations/page-2",
+      "fix": "Move the call to action and the key content higher; most readers never reach the bottom",
+      "numbers": "170 views, 5.6% of users reach 90% depth vs 12.0% median",
+      "evidence": "pages report, scrolledUsers / activeUsers (area 4)",
+      "at_stake": 160,
+      "at_stake_unit": "views that never reach the bottom"
+    },
+    {
+      "rank": 3,
+      "page": "/integrations/page-4",
+      "fix": "Move the call to action and the key content higher; most readers never reach the bottom",
+      "numbers": "120 views, 2.6% of users reach 90% depth vs 12.0% median",
+      "evidence": "pages report, scrolledUsers / activeUsers (area 4)",
+      "at_stake": 120,
+      "at_stake_unit": "views that never reach the bottom"
+    },
+    {
+      "rank": 4,
+      "page": "/library/page-1",
+      "fix": "Give Organic Social visitors a page that matches the post or link they came from",
+      "numbers": "200 Organic Social sessions land on /library/page-1 and engage 19% vs 57% site rate: about 78 more leave than at the site rate (Organic Social overall: 240 sessions, 230 with a known landing page, 19% of those engaged); also 72 excess leaked sessions from the landingPage report (area 2)",
+      "evidence": "landingPage x sessionDefaultChannelGroup (area 3)",
+      "at_stake": 78,
+      "at_stake_unit": "Organic Social sessions lost beyond the site rate"
+    },
+    {
+      "rank": 5,
+      "page": "/pricing",
+      "fix": "Rework the first screen for the visitors this page actually gets",
+      "numbers": "170 sessions, 43% engaged vs 57% site rate: about 25 more visitors leave than on an average page",
+      "evidence": "landingPage report (area 2)",
+      "at_stake": 25,
+      "at_stake_unit": "excess leaked sessions"
+    }
+  ],
+  "landing_page_table": [
+    {
+      "page": "/",
+      "sessions": 1400,
+      "change_vs_prior": "-9%",
+      "engagement_rate_pct": 63,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/library/page-1",
+      "sessions": 650,
+      "change_vs_prior": "+120%",
+      "engagement_rate_pct": 46,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/integrations/page-1",
+      "sessions": 270,
+      "change_vs_prior": "+75%",
+      "engagement_rate_pct": 68,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/pricing",
+      "sessions": 170,
+      "change_vs_prior": "-2%",
+      "engagement_rate_pct": 43,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/blog/post-1",
+      "sessions": 95,
+      "change_vs_prior": "+230%",
+      "engagement_rate_pct": 51,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/integrations/page-2",
+      "sessions": 70,
+      "change_vs_prior": "+17%",
+      "engagement_rate_pct": 63,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/library/page-2",
+      "sessions": 54,
+      "change_vs_prior": "+390%",
+      "engagement_rate_pct": 69,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/pages/page-1",
+      "sessions": 51,
+      "change_vs_prior": "+630%",
+      "engagement_rate_pct": 41,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "leak"
+    },
+    {
+      "page": "/docs/page-1",
+      "sessions": 50,
+      "change_vs_prior": "+25%",
+      "engagement_rate_pct": 60,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/integrations/page-3",
+      "sessions": 50,
+      "change_vs_prior": "+22%",
+      "engagement_rate_pct": 64,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "steady"
+    },
+    {
+      "page": "/integrations/page-4",
+      "sessions": 44,
+      "change_vs_prior": "+100%",
+      "engagement_rate_pct": 75,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "winner"
+    },
+    {
+      "page": "/integrations/page-5",
+      "sessions": 38,
+      "change_vs_prior": "+36%",
+      "engagement_rate_pct": 76,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "winner"
+    },
+    {
+      "page": "/library/page-3",
+      "sessions": 33,
+      "change_vs_prior": "+32%",
+      "engagement_rate_pct": 33,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "leak"
+    },
+    {
+      "page": "/blog/post-2",
+      "sessions": 24,
+      "change_vs_prior": "+500%",
+      "engagement_rate_pct": 33,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "too little traffic"
+    },
+    {
+      "page": "/integrations/page-6",
+      "sessions": 24,
+      "change_vs_prior": "+14%",
+      "engagement_rate_pct": 79,
+      "key_event_rate": "unknown (no key events fired)",
+      "verdict": "too little traffic"
+    }
+  ],
+  "biggest_movers_vs_prior": [
+    {
+      "page": "/library/page-1",
+      "sessions_prior": 300,
+      "sessions_now": 650,
+      "change": "+120%"
+    },
+    {
+      "page": "/integrations/page-1",
+      "sessions_prior": 150,
+      "sessions_now": 270,
+      "change": "+75%"
+    },
+    {
+      "page": "/blog/post-1",
+      "sessions_prior": 29,
+      "sessions_now": 95,
+      "change": "+230%"
+    },
+    {
+      "page": "/pages/page-1",
+      "sessions_prior": 7,
+      "sessions_now": 51,
+      "change": "+630%"
+    },
+    {
+      "page": "/library/page-2",
+      "sessions_prior": 11,
+      "sessions_now": 54,
+      "change": "+390%"
+    }
+  ],
+  "by_source": {
+    "channels": [
+      {
+        "channel": "Organic Search",
+        "sessions": 2000,
+        "sessions_excluding_not_set": 1800,
+        "share_pct": 53,
+        "engagement_rate_pct_excluding_not_set": 65
+      },
+      {
+        "channel": "Direct",
+        "sessions": 890,
+        "sessions_excluding_not_set": 790,
+        "share_pct": 23,
+        "engagement_rate_pct_excluding_not_set": 43
+      },
+      {
+        "channel": "Organic Video",
+        "sessions": 530,
+        "sessions_excluding_not_set": 470,
+        "share_pct": 14,
+        "engagement_rate_pct_excluding_not_set": 73
+      },
+      {
+        "channel": "Organic Social",
+        "sessions": 240,
+        "sessions_excluding_not_set": 230,
+        "share_pct": 6,
+        "engagement_rate_pct_excluding_not_set": 19
+      },
+      {
+        "channel": "Referral",
+        "sessions": 120,
+        "sessions_excluding_not_set": 110,
+        "share_pct": 3,
+        "engagement_rate_pct_excluding_not_set": 59
+      },
+      {
+        "channel": "Unassigned",
+        "sessions": 13,
+        "sessions_excluding_not_set": 9,
+        "share_pct": 0,
+        "engagement_rate_pct_excluding_not_set": 33
+      },
+      {
+        "channel": "Paid Search",
+        "sessions": 2,
+        "sessions_excluding_not_set": 2,
+        "share_pct": 0,
+        "engagement_rate_pct_excluding_not_set": 0
+      }
+    ],
+    "paid_sessions": 2,
+    "paid_search_sessions": 2,
+    "paid_note": "Under 30 paid sessions, so the paid checks were skipped. Google Ads landing_page_view for the linked account returned no spend in the period.",
+    "organic_top_landing_pages": [
+      {
+        "page": "/",
+        "sessions": 830,
+        "engagement_rate_pct": 67
+      },
+      {
+        "page": "/library/page-1",
+        "sessions": 250,
+        "engagement_rate_pct": 76
+      },
+      {
+        "page": "/integrations/page-1",
+        "sessions": 180,
+        "engagement_rate_pct": 70
+      },
+      {
+        "page": "/blog/post-1",
+        "sessions": 89,
+        "engagement_rate_pct": 52
+      },
+      {
+        "page": "/pricing",
+        "sessions": 81,
+        "engagement_rate_pct": 49
+      },
+      {
+        "page": "/library/page-2",
+        "sessions": 47,
+        "engagement_rate_pct": 70
+      },
+      {
+        "page": "/pages/page-1",
+        "sessions": 33,
+        "engagement_rate_pct": 36
+      },
+      {
+        "page": "/docs/page-1",
+        "sessions": 21,
+        "engagement_rate_pct": 71
+      }
+    ],
+    "weak_sources": [
+      {
+        "channel": "Organic Social",
+        "sessions": 240,
+        "sessions_excluding_not_set": 230,
+        "engagement_rate_pct_excluding_not_set": 19,
+        "top_landing_pages": [
+          {
+            "page": "/library/page-1",
+            "sessions": 200,
+            "engagement_rate_pct": 19
+          },
+          {
+            "page": "/",
+            "sessions": 21,
+            "engagement_rate_pct": 19
+          },
+          {
+            "page": "/library/page-21",
+            "sessions": 2,
+            "engagement_rate_pct": 0
+          }
+        ]
+      }
+    ],
+    "search_console_vs_ga4": [
+      {
+        "page": "/",
+        "search_console_clicks": 1100,
+        "ga4_organic_sessions": 830,
+        "ga4_share_of_clicks_pct": 78
+      },
+      {
+        "page": "/library/page-1",
+        "search_console_clicks": 300,
+        "ga4_organic_sessions": 250,
+        "ga4_share_of_clicks_pct": 82
+      },
+      {
+        "page": "/blog/post-1",
+        "search_console_clicks": 160,
+        "ga4_organic_sessions": 89,
+        "ga4_share_of_clicks_pct": 57
+      },
+      {
+        "page": "/integrations/page-1",
+        "search_console_clicks": 160,
+        "ga4_organic_sessions": 180,
+        "ga4_share_of_clicks_pct": 110
+      },
+      {
+        "page": "/library/page-2",
+        "search_console_clicks": 96,
+        "ga4_organic_sessions": 47,
+        "ga4_share_of_clicks_pct": 49
+      },
+      {
+        "page": "/blog/post-2",
+        "search_console_clicks": 44,
+        "ga4_organic_sessions": 19,
+        "ga4_share_of_clicks_pct": 43
+      },
+      {
+        "page": "/pricing",
+        "search_console_clicks": 27,
+        "ga4_organic_sessions": 81,
+        "ga4_share_of_clicks_pct": 300
+      },
+      {
+        "page": "/integrations/page-4",
+        "search_console_clicks": 15,
+        "ga4_organic_sessions": 12,
+        "ga4_share_of_clicks_pct": 80
+      }
+    ],
+    "tracking_gaps": [
+      "/blog/post-1",
+      "/library/page-2",
+      "/blog/post-2"
+    ]
+  },
+  "leaks": [
+    {
+      "page": "/pages/page-1",
+      "sessions": 51,
+      "engagement_rate_pct": 41,
+      "non_engaged_sessions": 30,
+      "excess_leaked_sessions": 8
+    },
+    {
+      "page": "/library/page-3",
+      "sessions": 33,
+      "engagement_rate_pct": 33,
+      "non_engaged_sessions": 22,
+      "excess_leaked_sessions": 8
+    }
+  ],
+  "excess_leak_ranking": [
+    {
+      "page": "/library/page-1",
+      "sessions": 650,
+      "engagement_rate_pct": 46,
+      "non_engaged_sessions": 350,
+      "excess_leaked_sessions": 72,
+      "labelled_leak": false
+    },
+    {
+      "page": "/pricing",
+      "sessions": 170,
+      "engagement_rate_pct": 43,
+      "non_engaged_sessions": 99,
+      "excess_leaked_sessions": 25,
+      "labelled_leak": false
+    },
+    {
+      "page": "/pages/page-1",
+      "sessions": 51,
+      "engagement_rate_pct": 41,
+      "non_engaged_sessions": 30,
+      "excess_leaked_sessions": 8,
+      "labelled_leak": true
+    },
+    {
+      "page": "/library/page-3",
+      "sessions": 33,
+      "engagement_rate_pct": 33,
+      "non_engaged_sessions": 22,
+      "excess_leaked_sessions": 8,
+      "labelled_leak": true
+    },
+    {
+      "page": "/blog/post-1",
+      "sessions": 95,
+      "engagement_rate_pct": 51,
+      "non_engaged_sessions": 47,
+      "excess_leaked_sessions": 6,
+      "labelled_leak": false
+    }
+  ],
+  "pages_read_to_the_bottom_least": [
+    {
+      "page": "/integrations/page-2",
+      "views": 170,
+      "scroll_rate_pct": 5.6,
+      "engagement_seconds_per_view": 17
+    },
+    {
+      "page": "/integrations/page-4",
+      "views": 120,
+      "scroll_rate_pct": 2.6,
+      "engagement_seconds_per_view": 13
+    }
+  ],
+  "broken_pages": [
+    {
+      "page": "/integrations/page-20",
+      "title": "Not-found title 1",
+      "views": 15,
+      "linked_from_own_pages": [
+        "/integrations/page-1",
+        "/library/page-3"
+      ],
+      "views_from_own_pages": 11,
+      "views_from_outside_sites": 2,
+      "views_with_no_referrer": 2,
+      "fix": "fix the internal link"
+    },
+    {
+      "page": "/integrations/page-40",
+      "title": "Not-found title 1",
+      "views": 7,
+      "linked_from_own_pages": [
+        "/integrations/page-1"
+      ],
+      "views_from_own_pages": 5,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 2,
+      "fix": "fix the internal link"
+    },
+    {
+      "page": "/integrations/page-41",
+      "title": "Not-found title 1",
+      "views": 6,
+      "linked_from_own_pages": [
+        "/integrations/page-1"
+      ],
+      "views_from_own_pages": 4,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 2,
+      "fix": "fix the internal link"
+    },
+    {
+      "page": "/integrations/page-42",
+      "title": "Not-found title 1",
+      "views": 4,
+      "linked_from_own_pages": [
+        "/integrations/page-1"
+      ],
+      "views_from_own_pages": 2,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 2,
+      "fix": "fix the internal link"
+    },
+    {
+      "page": "/docs/page-4",
+      "title": "Not-found title 2",
+      "views": 2,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 2,
+      "views_with_no_referrer": 0,
+      "fix": "redirect the old URL"
+    },
+    {
+      "page": "/docs/page-2",
+      "title": "Not-found title 2",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    },
+    {
+      "page": "/docs/page-3",
+      "title": "Not-found title 2",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 1,
+      "views_with_no_referrer": 0,
+      "fix": "redirect the old URL"
+    },
+    {
+      "page": "/docs/page-38",
+      "title": "Not-found title 2",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    },
+    {
+      "page": "/docs/page-5",
+      "title": "Not-found title 2",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    },
+    {
+      "page": "/docs/page-6",
+      "title": "Not-found title 2",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    },
+    {
+      "page": "/integrations/page-25",
+      "title": "Not-found title 1",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    },
+    {
+      "page": "/integrations/page-30",
+      "title": "Not-found title 1",
+      "views": 1,
+      "linked_from_own_pages": [],
+      "views_from_own_pages": 0,
+      "views_from_outside_sites": 0,
+      "views_with_no_referrer": 1,
+      "fix": "check, typed or bookmarked"
+    }
+  ],
+  "unknowns": [
+    "Conversion rate by landing page and by ad source: key events are defined but none fired in the period.",
+    "Paid landing page quality and cost per engaged visit: under 30 paid sessions, and no Google Ads spend on the linked account.",
+    "Exit rates: the GA4 Data API has no exits metric; leaks are measured as non-engaged sessions instead."
+  ],
+  "fixes_offered": [],
+  "fixes_note": "No fix from this skill applies: the key events are already defined and scroll and site search tracking are already on. Conversions are missing because the site doesn't send the key events, and that change belongs on the site, not in GA4. Nothing was changed.",
+  "go_deeper": [
+    "landing-page-auditor for the leaking pages",
+    "ga4-property-audit (if installed) for the missing key events and the (not set) sessions"
+  ]
+}
