@@ -1,0 +1,28 @@
+{
+  "note": "Real run on a live Meta ad account and the public Meta Ad Library, anonymised. The account calls ran on 2026-10-02: the account's name, campaigns, ad copy, calls to action and ids are withheld and its figures shown in bands. Because that copy would identify the account, the library half uses a neutral public niche instead: real pulls of Lindblad Expeditions' and Viking's public ads on 2026-10-04 through the InsightfulPipe CLI (asked with status ALL, so rows are kept to is_active, which is what the skill's default returns), and the copy is written from the example product brief in facts_given. Built from the raw responses; no number was typed by hand.",
+  "request": "Hey Claude, I just added the \"meta-ad-copy-writer\" skill. Find my best Meta ads and write five new primary texts and five headlines based on what's winning. Competitors: Lindblad Expeditions, Viking. Use only the facts below.",
+  "account": {
+    "name": "Example account",
+    "currency": "USD"
+  },
+  "date_range": "last_90d preset (90 complete days before 2026-10-02)",
+  "target_cost_per_result": "not given",
+  "facts_given": [
+    "Example Voyages runs small-ship expedition cruises in Alaska, Norway and Iceland.",
+    "Every ship carries naturalist guides who lead each day ashore.",
+    "Guests go ashore by kayak and Zodiac landings.",
+    "Groups are small, so the ship can stop where the wildlife is.",
+    "Guests can talk to a voyage planner who has sailed the route before they book.",
+    "No price, offer or deposit terms to mention."
+  ],
+  "data_pulled": [
+    "get_insights_adaccount level=ad, last_90d (0 rows)",
+    "get_insights_adaccount level=account, maximum (lifetime spend under $1, under 100 impressions)",
+    "get_insights_adaccount level=ad, maximum (2 ads)",
+    "get_ad_creatives_by_ad for 2 ads (both dynamic creative, 1 with a video asset)",
+    "query_contexts actions_details for create_ad_creative (call_to_action_type_values only; nothing created)",
+    "facebook_search_companies for 2 competitors (the Viking search returned 3 pages with the same name and like count)",
+    "facebook_company_ads for 3 pages; it found active ads for 2 of them",
+    "facebook_search_ads 'Viking Cruises' for the 1 page where facebook_company_ads found none, kept to rows with that page_id; it found 6 active rows, all catalog templates"
+  ]
+}

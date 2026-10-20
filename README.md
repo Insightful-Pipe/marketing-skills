@@ -46,7 +46,7 @@ Most skills only read data and make recommendations. Skills that write, such as 
 ## Skills
 
 <!-- SKILLS:START -->
-**80 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
+**81 skills in 16 categories.** The skill name opens its folder here; **Page** opens it on insightfulpipe.com with the full sample run and a ZIP download.
 
 ### Audience
 
@@ -186,6 +186,7 @@ Placement, creative and audience performance analysis for Meta Ads.
 
 | Skill | What it does | |
 |---|---|---|
+| [Meta Ad Copy Writer](skills/meta-ad-copy-writer/) | Writes new Meta (Facebook and Instagram) ad copy from the ads that already win. | [Page](https://insightfulpipe.com/marketing-claude-skills/meta-ads/meta-ad-copy-writer) |
 | [Meta Ads Performance Analyzer](skills/meta-ads-performance-analyzer/) | Analyzes Meta Ads (Facebook and Instagram) performance on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/meta-ads/meta-ads-performance-analyzer) |
 
 ### Playbooks
