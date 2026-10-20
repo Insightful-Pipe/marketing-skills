@@ -1,6 +1,6 @@
-# Marketing Claude Skills by InsightfulPipe
+# Free Claude Marketing Skills by InsightfulPipe
 
-Claude skills for Google Ads, Meta Ads, GA4, SEO, content and reporting that work on your live marketing data. Each skill pulls the numbers itself through [InsightfulPipe](https://insightfulpipe.com) MCP servers, so there is nothing to export. It runs the analysis and comes back with the findings, the fixes and a plan.
+Free, MIT-licensed Claude skills for Google Ads, Meta Ads, GA4, SEO, content and reporting that work on your live marketing data. Download any of the 80+ skills from this repository, or install them all in Claude Code with one command. Each skill pulls the numbers itself through [InsightfulPipe](https://insightfulpipe.com) MCP servers, so there is nothing to export. It runs the analysis and comes back with the findings, the fixes and a plan.
 
 Browse every skill with its sample run at **[insightfulpipe.com/marketing-claude-skills](https://insightfulpipe.com/marketing-claude-skills)**.
 
@@ -41,7 +41,7 @@ Then start with a request from the skill's `HOW_TO_USE.md`, for example:
 
 > Hey Claude, I just added the "google-ads-account-audit" skill. Audit my Google Ads account and tell me the five fixes worth the most money.
 
-Most skills only read data and make recommendations. Skills that write, such as adding negative keywords, ask you to confirm first. Accounts connect as Read-only or Read & Write, owners, admins and operators can turn individual actions off per account, and destructive actions such as deletes are off by default.
+Most skills only read data and make recommendations. Skills that write, such as adding negative keywords, ask you to confirm first. Accounts connect as Read-only or Read & Write, and owners, admins and operators switch each action on or off per account. Delete-type actions start switched off until an admin turns them on.
 
 ## Skills
 
