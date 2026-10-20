@@ -1,0 +1,673 @@
+{
+  "header": {
+    "site": "example.com",
+    "property": "https://example.com/",
+    "date_range": "2026-09-02 to 2026-09-29",
+    "clicks_28d": 1800,
+    "impressions_28d": 48000,
+    "grade": 39,
+    "rating": "at risk",
+    "numbers_note": "counts are rounded to 2 significant figures, so parts may not add up exactly to totals; every check and estimate was worked out on the unrounded data"
+  },
+  "scorecard": [
+    {
+      "area": "Crawl access",
+      "result": "warn",
+      "key_number": "www serves 200 with no redirect",
+      "why": "robots.txt allows all crawlers and names the sitemap; http:// 301s to https:// in 1 hop; the certificate is valid for over 30 more days and HSTS is on. https://www. answers 200 instead of redirecting, and http://www. 301s to it (https://www.example.com/) in 1 hop. The www home page declares a canonical to https://example.com/ (onpage_instant_pages), so it is a warn, not a fail."
+    },
+    {
+      "area": "Indexation",
+      "result": "fail",
+      "key_number": "~27% of sitemap URLs not indexed (estimate)",
+      "why": "20 of 20 top pages are indexed and 19 declare a canonical that matches Google's choice; / has no user-declared canonical in the inspection (Google chose /); its live HTML declares a self-referencing canonical (onpage_instant_pages), so Google picked the same page. Of 480 sitemap URLs, 190 had no impressions; 20 of 30 sampled were not indexed (14 crawled not indexed, 3 unknown to Google, 2 redirect errors, 1 discovered not crawled)."
+    },
+    {
+      "area": "Broken and redirected URLs",
+      "result": "fail",
+      "key_number": "19 URLs people reach return 404",
+      "why": "All 19 GA4 landing pages checked (the top 15 by sessions, with ties) return 404. /integrations/page-1 also has 250 Search Console impressions. /integrations/page-2 also has 17 Search Console impressions. GA4 recorded 49 sessions on them, which shows people reach them; GA4 is not measuring search traffic on this site (see Search performance), so that count is a floor, not a share of the site's traffic. All 8 audit-set pages end in a 200 (/blog/post-2 through a redirect). Of the 10 Search Console URLs not in the sitemap with the most impressions, 9 redirect in a single 308 hop and 1 returns 404 (/integrations/page-1). No chains or loops."
+    },
+    {
+      "area": "On-page tags",
+      "result": "warn",
+      "key_number": "4 of 8 pages have titles over 60 characters",
+      "why": "Every page has one H1 and a self-referencing canonical, and no titles repeat. The /about title is 27 characters (under 30); 2 descriptions run over 160 characters; / and /integrations/page-3 have images without alt text; the home page skips heading levels."
+    },
+    {
+      "area": "Content depth",
+      "result": "warn",
+      "key_number": "47% of the sample crawled but not indexed",
+      "why": "3 audit-set pages have under 300 words (the library hub has 92 words after JavaScript runs). Crawled-not-indexed pages cluster in library (6), docs (4), templates (3)."
+    },
+    {
+      "area": "Speed (lab, mobile)",
+      "result": "fail",
+      "key_number": "LCP 13.0 s on /blog/post-1",
+      "why": "Home LCP 8.4 s and blog post LCP 13.0 s are past 4 s; pricing 3.2 s and the library hub 3.0 s are in the warn band. CLS is fine everywhere. The slowest template is the blog post (/blog/post-1, 2200 impressions); its top resource-optimizations saving: Reduce unused JavaScript (Est savings of 1,300 KiB)."
+    },
+    {
+      "area": "Search performance",
+      "result": "warn",
+      "key_number": "~48 clicks at stake from 4 snippet gaps",
+      "why": "4 live pages rank in the top 10 with a CTR under half the site median for their position. GA4 recorded 1 Organic Search session against 1800 Search Console clicks, so GA4 is not measuring search traffic."
+    },
+    {
+      "area": "Authority and trust",
+      "result": "warn",
+      "key_number": "290 referring domains, spam score under 30",
+      "why": "3 backlinks point at broken pages. One country-code TLD outside the site's market carries over a third of the links (about 40%) in the TLD breakdown. The About page has 170 words and a 27-character title. Rich results found: Breadcrumbs on about 15 of the top 20 pages."
+    }
+  ],
+  "grade_math": "100 - 12 x 3 fails - 5 x 5 warns = 39",
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "Cut mobile LCP on the home page and blog template",
+      "area": "Speed (lab, mobile)",
+      "impressions_at_stake": 5000,
+      "detail": [
+        {
+          "page": "/",
+          "lcp_s": 8.4,
+          "tbt_ms": 470
+        },
+        {
+          "page": "/blog/post-1",
+          "lcp_s": 13.0,
+          "tbt_ms": 550
+        }
+      ],
+      "evidence": "pagespeed-insights core-web-vitals (mobile); resource-optimizations on the slowest template, /blog/post-1: Reduce unused JavaScript, Est savings of 1,300 KiB",
+      "who": "do this in your site code"
+    },
+    {
+      "rank": 2,
+      "fix": "301 the 404 URLs that people still land on",
+      "area": "Broken and redirected URLs",
+      "impressions_at_stake": 270,
+      "sessions_at_stake_28d": 49,
+      "sessions_note": "GA4 recorded these sessions, so people reach these URLs; GA4 is not measuring search traffic here (area 7), so they are a floor, not what the pages are worth",
+      "detail": [
+        {
+          "url": "/integrations/page-1",
+          "sessions_28d": 4,
+          "impressions_28d": 250
+        },
+        {
+          "url": "/integrations/page-2",
+          "sessions_28d": 1,
+          "impressions_28d": 17
+        },
+        {
+          "url": "/page-1",
+          "sessions_28d": 9,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/docs/page-2",
+          "sessions_28d": 7,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/integrations/page-4",
+          "sessions_28d": 4,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/integrations/page-5",
+          "sessions_28d": 3,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/integrations/page-6",
+          "sessions_28d": 3,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/page-2",
+          "sessions_28d": 3,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/docs/page-3",
+          "sessions_28d": 2,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/docs/page-4",
+          "sessions_28d": 2,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/templates/page-3",
+          "sessions_28d": 2,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/integrations/page-7",
+          "sessions_28d": 2,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/blog/post-3",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/page-3",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/page-4",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/page-5",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/docs/page-5",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/docs/page-6",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        },
+        {
+          "url": "/page-6",
+          "sessions_28d": 1,
+          "impressions_28d": 0
+        }
+      ],
+      "evidence": "google-analytics get_report (landingPage) + google-search-console search_analytics (page) + crawler status-code-checker: 19 URLs return 404",
+      "who": "do this in your site or CMS (redirect rules)"
+    },
+    {
+      "rank": 3,
+      "fix": "Get the crawled-not-indexed templates indexed: add unique text and internal links, or drop thin ones from the sitemap",
+      "area": "Indexation",
+      "impressions_at_stake": 0,
+      "pages_at_stake": 89,
+      "detail": [
+        {
+          "section": "library",
+          "crawled_not_indexed_in_sample": 6
+        },
+        {
+          "section": "docs",
+          "crawled_not_indexed_in_sample": 4
+        },
+        {
+          "section": "templates",
+          "crawled_not_indexed_in_sample": 3
+        },
+        {
+          "section": "integrations",
+          "crawled_not_indexed_in_sample": 1
+        }
+      ],
+      "evidence": "google-search-console batch_url_inspection on 30 of 190 zero-impression sitemap URLs",
+      "who": "do this in your site or CMS; then I can resubmit the sitemap to Bing"
+    },
+    {
+      "rank": 4,
+      "fix": "Bring titles to 30-60 characters (trim the long ones, lengthen /about) and shorten long descriptions",
+      "area": "On-page tags",
+      "impressions_at_stake": 16000,
+      "detail": [
+        {
+          "page": "/",
+          "title_length": 50,
+          "description_length": 190
+        },
+        {
+          "page": "/library",
+          "title_length": 73,
+          "description_length": 150
+        },
+        {
+          "page": "/blog/post-1",
+          "title_length": 76,
+          "description_length": 150
+        },
+        {
+          "page": "/integrations",
+          "title_length": 68,
+          "description_length": 140
+        },
+        {
+          "page": "/pricing",
+          "title_length": 66,
+          "description_length": 170
+        },
+        {
+          "page": "/about",
+          "title_length": 27,
+          "description_length": 100
+        }
+      ],
+      "evidence": "dataforseo onpage_instant_pages on the 8 audit-set pages",
+      "who": "do this in your site or CMS"
+    },
+    {
+      "rank": 5,
+      "fix": "Rewrite titles and descriptions on the top-10 pages with low CTR",
+      "area": "Search performance",
+      "impressions_at_stake": 4600,
+      "clicks_at_stake_28d": 48,
+      "detail": [
+        {
+          "page": "/blog/post-1",
+          "impressions_28d": 2200,
+          "position": 9.5,
+          "ctr_pct": 0.32,
+          "band_median_ctr_pct": 1.4,
+          "clicks_at_stake_28d": 23
+        },
+        {
+          "page": "/blog/post-4",
+          "impressions_28d": 1300,
+          "position": 9.0,
+          "ctr_pct": 0.0,
+          "band_median_ctr_pct": 1.4,
+          "clicks_at_stake_28d": 17
+        },
+        {
+          "page": "/library/page-4",
+          "impressions_28d": 600,
+          "position": 8.6,
+          "ctr_pct": 0.33,
+          "band_median_ctr_pct": 1.4,
+          "clicks_at_stake_28d": 6
+        },
+        {
+          "page": "/blog",
+          "impressions_28d": 530,
+          "position": 2.4,
+          "ctr_pct": 0.0,
+          "band_median_ctr_pct": 0.28,
+          "clicks_at_stake_28d": 2
+        }
+      ],
+      "estimate": "impressions x (site median CTR for the position band - page CTR); band medians 0.28% (positions 1-3) and 1.4% (3-10). Assumes position holds. Worked out on the unrounded numbers, so the rounded fields do not multiply out exactly.",
+      "evidence": "google-search-console search_analytics (page), 2026-09-02 to 2026-09-29",
+      "who": "do this in your site or CMS"
+    }
+  ],
+  "content_inventory": [
+    {
+      "section": "(top-level pages)",
+      "urls": 21,
+      "impressions": 6800,
+      "clicks": 1200,
+      "zero_impression_urls": 0,
+      "zero_impression_urls_inspected": 0,
+      "indexed_in_inspection": 0,
+      "indexed_share_pct_est": 100
+    },
+    {
+      "section": "templates",
+      "urls": 85,
+      "impressions": 720,
+      "clicks": 7,
+      "zero_impression_urls": 41,
+      "zero_impression_urls_inspected": 7,
+      "indexed_in_inspection": 2,
+      "indexed_share_pct_est": 66
+    },
+    {
+      "section": "library",
+      "urls": 150,
+      "impressions": 13000,
+      "clicks": 230,
+      "zero_impression_urls": 76,
+      "zero_impression_urls_inspected": 7,
+      "indexed_in_inspection": 1,
+      "indexed_share_pct_est": 57
+    },
+    {
+      "section": "docs",
+      "urls": 110,
+      "impressions": 3000,
+      "clicks": 39,
+      "zero_impression_urls": 60,
+      "zero_impression_urls_inspected": 7,
+      "indexed_in_inspection": 0,
+      "indexed_share_pct_est": 44
+    },
+    {
+      "section": "blog",
+      "urls": 38,
+      "impressions": 11000,
+      "clicks": 57,
+      "zero_impression_urls": 6,
+      "zero_impression_urls_inspected": 4,
+      "indexed_in_inspection": 3,
+      "indexed_share_pct_est": 96
+    },
+    {
+      "section": "integrations",
+      "urls": 75,
+      "impressions": 7600,
+      "clicks": 150,
+      "zero_impression_urls": 8,
+      "zero_impression_urls_inspected": 5,
+      "indexed_in_inspection": 4,
+      "indexed_share_pct_est": 98
+    }
+  ],
+  "content_inventory_note": "indexed_share_pct_est = (URLs with impressions + zero-impression URLs x indexed share of that section's inspection sample) / URLs; an estimate from 30 inspected URLs, worked out before rounding. URL counts are scaled by a different factor per section (the sitemap total with them) and all counts are rounded to 2 significant figures, so the sections do not add up exactly to the header.",
+  "page_table": [
+    {
+      "page": "/",
+      "title": "Page title 1",
+      "title_length": 50,
+      "description_length": 190,
+      "h1_count": 1,
+      "word_count": 880,
+      "canonical": "/",
+      "no_image_alt": true,
+      "lcp_s": 8.4,
+      "impressions_28d": 2800,
+      "position": 2.5
+    },
+    {
+      "page": "/library",
+      "title": "Page title 2",
+      "title_length": 73,
+      "description_length": 150,
+      "h1_count": 1,
+      "word_count": 92,
+      "canonical": "/library",
+      "no_image_alt": false,
+      "lcp_s": 3.0,
+      "impressions_28d": 6800,
+      "position": 8.6
+    },
+    {
+      "page": "/blog/post-1",
+      "title": "Page title 3",
+      "title_length": 76,
+      "description_length": 150,
+      "h1_count": 1,
+      "word_count": 3500,
+      "canonical": "/blog/post-1",
+      "no_image_alt": false,
+      "lcp_s": 13.0,
+      "impressions_28d": 2200,
+      "position": 9.5
+    },
+    {
+      "page": "/integrations/page-3",
+      "title": "Page title 4",
+      "title_length": 39,
+      "description_length": 160,
+      "h1_count": 1,
+      "word_count": 2100,
+      "canonical": "/integrations/page-3",
+      "no_image_alt": true,
+      "lcp_s": null,
+      "impressions_28d": 1200,
+      "position": 6.7
+    },
+    {
+      "page": "/integrations",
+      "title": "Page title 5",
+      "title_length": 68,
+      "description_length": 140,
+      "h1_count": 1,
+      "word_count": 65,
+      "canonical": "/integrations",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 1700,
+      "position": 2.2
+    },
+    {
+      "page": "/pricing",
+      "title": "Page title 6",
+      "title_length": 66,
+      "description_length": 170,
+      "h1_count": 1,
+      "word_count": 390,
+      "canonical": "/pricing",
+      "no_image_alt": false,
+      "lcp_s": 3.2,
+      "impressions_28d": 1500,
+      "position": 1.8
+    },
+    {
+      "page": "/library/page-5",
+      "title": "Page title 7",
+      "title_length": 56,
+      "description_length": 160,
+      "h1_count": 1,
+      "word_count": 3300,
+      "canonical": "/library/page-5",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 1400,
+      "position": 6.2
+    },
+    {
+      "page": "/about",
+      "title": "Page title 8",
+      "title_length": 27,
+      "description_length": 100,
+      "h1_count": 1,
+      "word_count": 170,
+      "canonical": "/about",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 1200,
+      "position": 1.5
+    }
+  ],
+  "page_table_note": "word_count is the HTML text without JavaScript, except the library hub (/library), which builds its cards in JavaScript and was re-run with JavaScript, so its count is after rendering. description_length is rounded to 2 significant figures; the over-160 check used the exact lengths. title_length and word_count are shifted a few units, each inside its band (under 30 / 30-60 / over 60 characters; under or over 300 words), so the checks are unchanged. The brand-name-twice title check is left out of this sample because the brand is masked.",
+  "other_findings": {
+    "crawler_gate": "crawler meta-tags-checker returned title None and 0 title tags on a 200 page, so crawler HTML checkers were skipped; page checks used DataForSEO and PageSpeed.",
+    "stale_redirect_errors": [
+      {
+        "url": "/docs/page-7",
+        "last_crawl": "2026-07-08",
+        "status_now": 200
+      },
+      {
+        "url": "/docs/page-8",
+        "last_crawl": "2026-06-30",
+        "status_now": 200
+      }
+    ],
+    "orphan_candidates": [
+      "/templates/page-6",
+      "/blog/post-5",
+      "/templates/page-7"
+    ],
+    "retired_urls_still_shown": {
+      "impressions_28d": 5700,
+      "retired_folder_urls_with_impressions": 310,
+      "note": "every row in a retired folder that now redirects as a whole (the folder redirect was status-checked on one URL in it, listed below) plus the other URLs below, each status-checked",
+      "checked_redirects": [
+        {
+          "url": "/blog/post-2",
+          "redirects_to": "/integrations/page-3",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 1900
+        },
+        {
+          "url": "/blog/post-6",
+          "redirects_to": "/library/page-1",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 930
+        },
+        {
+          "url": "/blog/post-7",
+          "redirects_to": "/integrations/page-8",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 480
+        },
+        {
+          "url": "/blog/post-8",
+          "redirects_to": "/docs/page-1",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 340
+        },
+        {
+          "url": "/blog/post-9",
+          "redirects_to": "/templates",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 280
+        },
+        {
+          "url": "/blog/post-10",
+          "redirects_to": "/library/page-2",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 220
+        },
+        {
+          "url": "/docs/page-9",
+          "redirects_to": "/docs",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 59
+        },
+        {
+          "url": "/archive/library",
+          "redirects_to": "/library",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 55
+        },
+        {
+          "url": "/blog/post-11",
+          "redirects_to": "/integrations/page-9",
+          "code": 308,
+          "hops": 1,
+          "impressions_28d": 53
+        }
+      ]
+    },
+    "bing": {
+      "day": "2026-09-30",
+      "in_index": 840,
+      "code_4xx": 9,
+      "code_5xx": 0,
+      "sitemap_urls": 480,
+      "crawl_issue_rows": 0
+    },
+    "gsc_sitemap": {
+      "submitted": 860,
+      "last_downloaded": "2026-09-30",
+      "note": "indexed shows 0 in the API for every sitemap; not used"
+    },
+    "measurement": {
+      "ga4_organic_sessions": 1,
+      "ga4_all_sessions": 55,
+      "gsc_clicks": 1800
+    },
+    "lighthouse_seo_failing_audits": 0,
+    "security": {
+      "hsts": true,
+      "csp": true
+    },
+    "thin_pages": [
+      {
+        "page": "/library",
+        "word_count": 92,
+        "word_count_note": "after JavaScript rendering",
+        "impressions_28d": 6800,
+        "action": "improve",
+        "why": "6800 impressions at position 8.6, so it targets a query people search: add unique intro text above the cards and links to its best child pages; keep it in the sitemap"
+      },
+      {
+        "page": "/integrations",
+        "word_count": 65,
+        "impressions_28d": 1700,
+        "action": "improve",
+        "why": "1700 impressions at position 2.2, so it targets a query people search: add unique intro text above the cards and links to its best child pages; keep it in the sitemap"
+      },
+      {
+        "page": "/about",
+        "word_count": 170,
+        "impressions_28d": 1200,
+        "action": "improve",
+        "why": "trust page (area 8): grow it past 300 words with who runs the company, why they are qualified and how to reach a person"
+      }
+    ]
+  },
+  "eeat_plan": [
+    "Name the author on every blog post and link a short profile that says why they can speak to the site's topic.",
+    "Grow the About page past 170 words: who runs the company, where, since when, and how to reach a person.",
+    "Show first-hand proof on guides and reviews: real screenshots, real numbers.",
+    "Recover the 3 backlinks that point at broken pages: backlinks_summary counts them but does not list them, so pull the list with a backlinks report, then 301 each dead target to its closest live page (the same redirect work as fix 2)."
+  ],
+  "unknowns": [
+    {
+      "check": "Speed on /integrations",
+      "why": "pagespeed-insights rate limit reached after 4 templates"
+    },
+    {
+      "check": "Crawler HTML checkers (meta, headings, links, images, hreflang, structured data)",
+      "why": "failed the crawler gate; replaced by DataForSEO and PageSpeed"
+    },
+    {
+      "check": "International (hreflang)",
+      "why": "not applicable: the site is in one language"
+    }
+  ],
+  "go_deeper": {
+    "note": "name a skill only if it is installed; otherwise give the plain next step",
+    "next_steps": [
+      {
+        "skill": "internal-linking-planner",
+        "for": "3 orphan candidates (URL is unknown to Google)",
+        "without_it": "link each orphan candidate from its section hub and from 2 or 3 related pages, then request indexing in Search Console"
+      },
+      {
+        "skill": "striking-distance-optimizer",
+        "for": "4 snippet gaps and 48 live pages with 100+ impressions at an average position of 4 to 20",
+        "without_it": "pull search_analytics by page and query for those pages, and rewrite each title around the query that brings the most impressions"
+      },
+      {
+        "skill": "schema-markup-generator",
+        "for": "rich results found: Breadcrumbs",
+        "without_it": "only those types were detected on the top 20 pages; check whether the blog posts and FAQ blocks among them should carry Article or FAQ markup before adding any"
+      }
+    ]
+  },
+  "offered_actions": [
+    {
+      "action": "submit_sitemap",
+      "platform": "bing-webmaster",
+      "body": {
+        "site_url": "https://example.com/",
+        "feed_url": "https://example.com/sitemap.xml"
+      },
+      "why": "Bing holds 840 URLs against 480 in the sitemap, so it still holds retired URLs"
+    },
+    {
+      "action": "submit_url_batch",
+      "platform": "bing-webmaster",
+      "body": {
+        "site_url": "https://example.com/",
+        "url_list": [
+          "https://example.com/docs/page-7",
+          "https://example.com/docs/page-8"
+        ]
+      },
+      "why": "these pages show a stale redirect error and return 200 now; check get_url_submission_quota first"
+    }
+  ]
+}

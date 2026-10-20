@@ -152,7 +152,7 @@ Copywriting, brand voice, SEO, landing pages, email and competitor research.
 | [Pricing Page Auditor](skills/pricing-page-auditor/) | Audits a pricing page on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/pricing-page-auditor) |
 | [Programmatic SEO](skills/programmatic-seo/) | Plans programmatic SEO pages (one template filled from data, one page per variable such as a city, trade, integration or competitor) on live data through the… | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/programmatic-seo) |
 | [Retargeting Sequence Designer](skills/retargeting-sequence-designer/) | Designs retargeting ad sequences from live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/retargeting-sequence-designer) |
-| [SEO Audit](skills/seo-audit/) | "When the user needs to audit, diagnose, or improve organic search performance. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/seo-audit) |
+| [SEO Audit](skills/seo-audit/) | Runs a full SEO audit of a website on live data through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/seo-audit) |
 | [Social Content](skills/social-content/) | Plans and writes organic social media content from the brand's own post history through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/social-content) |
 | [USP Extractor](skills/usp-extractor/) | Finds a business's unique selling proposition from live evidence through the InsightfulPipe MCP. | [Page](https://insightfulpipe.com/marketing-claude-skills/marketing/usp-extractor) |
 
