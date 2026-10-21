@@ -1,27 +1,226 @@
 {
-  "request": "Hey Claude, I just added the \"facebook-ads-creative-tester\" skill. We have never compared formats on Meta. Tell me which format has worked for us, then plan a test of a single image against a video for link clicks at $20 a day per variant, and prepare both ads from my media library. Don't create anything yet.",
+  "request": "Hey Claude, I just added the \"facebook-ads-creative-tester\" skill. Tell me which format has worked for us, then plan a test of a new opening for our glow routine video at $40 a day per variant, and prepare both ads from my media library. Don't create anything yet.",
   "account": {
     "platform": "facebook-ads",
-    "ad_account": "Example SaaS, LLC (act_123456789)",
+    "ad_account": "Example DTC skincare store (act_123456789)",
     "workspace_id": 1,
     "brand_id": 1,
-    "currency": "USD"
+    "currency": "USD",
+    "time_zone": "America/Los_Angeles"
   },
   "user_inputs": {
-    "budget_per_variant_per_day_usd": 20,
-    "goal": "LINK_CLICKS",
-    "test": "single image vs video",
+    "budget_per_variant_per_day_usd": 40,
+    "goal": "OFFSITE_CONVERSIONS (purchase)",
+    "test": "the first 3 seconds of UGC video - glow routine: the original opening vs a question opening",
     "mde": "20% (skill default)"
   },
-  "run_date": "2026-10-05",
-  "data_pulled": [
-    "get_insights_adaccount level=ad last_90d (0 rows) and maximum (2 ads)",
-    "get_insights_adaccount level=ad maximum with breakdowns video_asset and image_asset",
-    "get_ads (2 paused ads; neither is one of the 2 ads with delivery)",
-    "get_ad_creatives_by_ad for the 2 delivering ads",
-    "get_adaccount, get_minimum_budgets, get_campaigns, get_adsets",
-    "get_pages (the brand's own Page only is used)",
-    "list_media_files on media-files (12 files)"
-  ],
-  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. The ad account has had almost no delivery, so the sample shows the skill's calibration path: format comparison not graded, baseline unknown, and a plan sized from the user's budget and the SKILL.md formula. The media files are test uploads, renumbered file 1 to 12 in listing order. Payloads were built from the real account and not run."
+  "run_date": "2026-10-21",
+  "data_pulled": {
+    "get_insights_adaccount_ad_last_90d": [
+      {
+        "ad": "UGC video - glow routine",
+        "format": "Video",
+        "impressions": 290000,
+        "spend": 4120,
+        "link_clicks": 4180,
+        "video_3s_views": 92800,
+        "thruplays": 19500,
+        "purchases": 98
+      },
+      {
+        "ad": "Static - before/after",
+        "format": "Single image",
+        "impressions": 90000,
+        "spend": 1240,
+        "link_clicks": 990,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 31
+      },
+      {
+        "ad": "Carousel - bestsellers",
+        "format": "Carousel",
+        "impressions": 150000,
+        "spend": 2270,
+        "link_clicks": 1430,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 46
+      },
+      {
+        "ad": "Static - claims v2",
+        "format": "Single image",
+        "impressions": 14000,
+        "spend": 210,
+        "link_clicks": 98,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 0
+      },
+      {
+        "ad": "UGC video - texture",
+        "format": "Video",
+        "impressions": 220000,
+        "spend": 3280,
+        "link_clicks": 2640,
+        "video_3s_views": 48400,
+        "thruplays": 13100,
+        "purchases": 66
+      },
+      {
+        "ad": "Static - serum hero",
+        "format": "Single image",
+        "impressions": 290000,
+        "spend": 3920,
+        "link_clicks": 3630,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 98
+      },
+      {
+        "ad": "Carousel - reviews",
+        "format": "Carousel",
+        "impressions": 200000,
+        "spend": 4480,
+        "link_clicks": 3600,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 146
+      },
+      {
+        "ad": "Static - 15% off returning",
+        "format": "Single image",
+        "impressions": 38000,
+        "spend": 800,
+        "link_clicks": 740,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 26
+      },
+      {
+        "ad": "New Sales Ad",
+        "format": "Single image",
+        "impressions": 140000,
+        "spend": 2210,
+        "link_clicks": 980,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "purchases": 27
+      }
+    ],
+    "get_ad_creatives_by_ad": {
+      "UGC video - glow routine": "Video",
+      "Static - before/after": "Single image",
+      "Carousel - bestsellers": "Carousel",
+      "Static - claims v2": "Single image",
+      "UGC video - texture": "Video",
+      "Static - serum hero": "Single image",
+      "Carousel - reviews": "Carousel",
+      "Static - 15% off returning": "Single image",
+      "New Sales Ad": "Single image"
+    },
+    "get_minimum_budgets_usd": {
+      "imp": 1.0,
+      "video_views": 1.0,
+      "high_freq": 5.0,
+      "low_freq": 40.0
+    },
+    "get_adsets": [
+      {
+        "name": "Broad 25-54 | US",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 9000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "Interest - skincare",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 4000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "LAL 1% purchasers 180d",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 4000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "broad serum",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 6000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "Site visitors 30d + ATC 14d",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 7000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "New Sales Ad Set",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 5000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "Blog readers | US",
+        "optimization_goal": "LINK_CLICKS",
+        "daily_budget": 3000,
+        "status": "ACTIVE"
+      },
+      {
+        "name": "Night cream launch | US",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "daily_budget": 4000,
+        "status": "PAUSED"
+      }
+    ],
+    "get_campaigns": "6 campaigns, none with a campaign budget, none named [Test]",
+    "get_pages": "the brand's own Page only is used",
+    "list_media_files": [
+      {
+        "file": "glow-routine-original.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1920",
+        "length_s": 22
+      },
+      {
+        "file": "glow-routine-hook-question.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1920",
+        "length_s": 22
+      },
+      {
+        "file": "glow-routine-hook-texture-closeup.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1350",
+        "length_s": 21
+      },
+      {
+        "file": "serum-hero.jpg",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "1080x1080",
+        "length_s": null
+      },
+      {
+        "file": "before-after-day28.webp",
+        "type": "image",
+        "format": "webp",
+        "size_px": "1080x1350",
+        "length_s": null
+      },
+      {
+        "file": "bestsellers-flatlay.png",
+        "type": "image",
+        "format": "png",
+        "size_px": "720x720",
+        "length_s": null
+      }
+    ]
+  },
+  "note": "Example data: an invented store, not a real account. Every number in expected_output.json follows from this input. Payloads are drafts and were not run."
 }

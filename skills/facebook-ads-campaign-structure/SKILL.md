@@ -245,7 +245,7 @@ Build every payload in full from the account's real ids and show them all before
 4. `create_ad_creative`, one per ad: `name`, `object_story_spec` with the linked `page_id`, the linked Instagram account as `instagram_user_id` (when there is one), and `link_data` (`link`, `message`, `name` as the headline, `image_hash`, `call_to_action`). For a lead form, put `lead_gen_form_id` in `call_to_action.value`. Add `url_tags` for UTM parameters.
 5. `create_ad`, one per ad: `name`, `adset_id`, `creative: {"creative_id": "<CREATIVE_ID>"}`.
 
-A worked shape for one conversion ad set, as built in a real run (ids replaced):
+A worked shape for one conversion ad set (ids are placeholders):
 
 ```json
 {"action": "create_adset", "name": "BROAD - US 25-65 - ADV+", "campaign_id": "<CAMPAIGN_ID from step 1>", "billing_event": "IMPRESSIONS", "optimization_goal": "OFFSITE_CONVERSIONS", "promoted_object": {"pixel_id": "<PIXEL_ID>", "custom_event_type": "COMPLETE_REGISTRATION"}, "destination_type": "WEBSITE", "targeting": {"geo_locations": {"countries": ["US"]}, "age_min": 25, "age_max": 65, "targeting_automation": {"advantage_audience": 1}}, "daily_budget": 5000, "bid_strategy": "LOWEST_COST_WITHOUT_CAP"}

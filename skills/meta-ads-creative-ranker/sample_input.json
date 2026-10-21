@@ -1,43 +1,426 @@
 {
-  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly. Run on 2026-10-06 through the InsightfulPipe MCP on our own Meta ad account; ad copy is described by type instead of quoted. The account had no delivery in the last 30 or 90 days, so the run fell back to lifetime data, and every ad is 'too early': this sample shows the skill's honest empty result, not a ranking.",
-  "request": "Hey Claude, I just added the \"meta-ads-creative-ranker\" skill. Rank my Meta ads from the last 30 days and tell me which ones to keep, scale and switch off.",
+  "note": "Example data: an invented store, not a real account. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"meta-ads-creative-ranker\" skill. Rank my Meta ads from the last 30 days and tell me which to scale and which to kill.",
   "account": {
-    "name": "Example SaaS",
     "ad_account_id": "act_123456789",
+    "name": "Example DTC skincare store",
     "currency": "USD",
-    "time_zone": "America/New_York",
-    "account_status": 1
+    "timezone": "America/Los_Angeles",
+    "status": "active"
   },
-  "target": "not given; with no results in any window there is no account average to fall back on",
-  "result_counted": "link_click (both ads optimise for LINK_CLICKS)",
-  "windows_tried": [
-    {
-      "date_preset": "last_30d",
-      "ad_rows": 0
-    },
-    {
-      "date_preset": "last_90d",
-      "ad_rows": 0
-    },
-    {
-      "date_preset": "maximum",
-      "ad_rows": 2,
-      "since": "2025-11-01",
-      "until": "2026-10-05"
-    }
-  ],
-  "data_pulled": [
-    "get_adaccount (currency, time zone, status)",
-    "get_insights_adaccount level=ad: last_30d 0 rows, last_90d 0 rows, maximum 2 rows",
-    "get_ads (2 ads listed, none of them the 2 ads that delivered)",
-    "get_ad_creatives_by_ad for each of the 2 ads that delivered",
-    "get_ad_videos (13 videos with a length)",
-    "get_ad_preview for one ad: an iframe returned"
-  ],
-  "also_run_to_test_the_skill_not_used_in_report": [
-    "get_ad_creatives (account-wide: 210 creatives, test creatives included; the per-ad call covers 2 ads)",
-    "get_insights_adaccount with body_asset and title_asset breakdowns (maximum): 2 and 2 rows",
-    "get_insights_adaccount level=ad last_7d: 0 rows",
-    "The account-wide creatives call is the path for more than 25 ads; the breakdowns and the 7-day pull belong to the pattern and red-flag steps, which the stop rule skips when nothing spent in 30 or 90 days."
-  ]
+  "target": {
+    "cost_per_purchase": 45.0,
+    "source": "given by you"
+  },
+  "result_counted": "purchases for the purchase ad sets; link clicks for the one traffic ad, ranked apart",
+  "window": "last_30d: 2026-09-21 to 2026-10-20",
+  "data_pulled": {
+    "get_insights_adaccount_ad_last_30d": [
+      {
+        "ad_id": "120000000000200001",
+        "ad": "UGC video - glow routine",
+        "ad_set": "Broad 25-54 | US",
+        "event": "purchase",
+        "spend": 1500,
+        "impressions": 105634,
+        "link_clicks": 1479,
+        "results": 36,
+        "video_3s_views": 33803,
+        "thruplays": 7099,
+        "reactions": 1480,
+        "comments": 96,
+        "shares": 64,
+        "saves": 210,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200002",
+        "ad": "Static - before/after",
+        "ad_set": "Broad 25-54 | US",
+        "event": "purchase",
+        "spend": 1200,
+        "impressions": 86957,
+        "link_clicks": 957,
+        "results": 30,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 820,
+        "comments": 41,
+        "shares": 22,
+        "saves": 95,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200003",
+        "ad": "Carousel - bestsellers",
+        "ad_set": "Interest - skincare",
+        "event": "purchase",
+        "spend": 990,
+        "impressions": 65563,
+        "link_clicks": 623,
+        "results": 21,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 410,
+        "comments": 12,
+        "shares": 9,
+        "saves": 60,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200004",
+        "ad": "Static - claims v2",
+        "ad_set": "Interest - skincare",
+        "event": "purchase",
+        "spend": 210,
+        "impressions": 14000,
+        "link_clicks": 98,
+        "results": 0,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 30,
+        "comments": 2,
+        "shares": 0,
+        "saves": 1,
+        "rankings": {
+          "quality": null,
+          "engagement_rate": null,
+          "conversion_rate": null
+        }
+      },
+      {
+        "ad_id": "120000000000200005",
+        "ad": "UGC video - texture",
+        "ad_set": "LAL 1% purchasers 180d",
+        "event": "purchase",
+        "spend": 1200,
+        "impressions": 80537,
+        "link_clicks": 966,
+        "results": 24,
+        "video_3s_views": 17718,
+        "thruplays": 4784,
+        "reactions": 640,
+        "comments": 22,
+        "shares": 15,
+        "saves": 70,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200006",
+        "ad": "Static - serum hero",
+        "ad_set": "broad serum",
+        "event": "purchase",
+        "spend": 1800,
+        "impressions": 133333,
+        "link_clicks": 1667,
+        "results": 45,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 900,
+        "comments": 35,
+        "shares": 18,
+        "saves": 120,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "BELOW_AVERAGE_35"
+        }
+      },
+      {
+        "ad_id": "120000000000200007",
+        "ad": "Carousel - reviews",
+        "ad_set": "Site visitors 30d + ATC 14d",
+        "event": "purchase",
+        "spend": 1300,
+        "impressions": 58036,
+        "link_clicks": 1045,
+        "results": 44,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 1200,
+        "comments": 140,
+        "shares": 38,
+        "saves": 160,
+        "rankings": {
+          "quality": "ABOVE_AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "ABOVE_AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200008",
+        "ad": "Static - 15% off returning",
+        "ad_set": "Site visitors 30d + ATC 14d",
+        "event": "purchase",
+        "spend": 800,
+        "impressions": 38095,
+        "link_clicks": 743,
+        "results": 26,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 300,
+        "comments": 11,
+        "shares": 6,
+        "saves": 40,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "AVERAGE",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200009",
+        "ad": "New Sales Ad",
+        "ad_set": "New Sales Ad Set",
+        "event": "purchase",
+        "spend": 1500,
+        "impressions": 94937,
+        "link_clicks": 665,
+        "results": 18,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 260,
+        "comments": 6,
+        "shares": 1,
+        "saves": 9,
+        "rankings": {
+          "quality": "BELOW_AVERAGE_20",
+          "engagement_rate": "BELOW_AVERAGE_35",
+          "conversion_rate": "AVERAGE"
+        }
+      },
+      {
+        "ad_id": "120000000000200010",
+        "ad": "Blog - 5 ingredient myths",
+        "ad_set": "Blog readers | US",
+        "event": "link_click",
+        "spend": 900,
+        "impressions": 95745,
+        "link_clicks": 2011,
+        "results": 2011,
+        "video_3s_views": 0,
+        "thruplays": 0,
+        "reactions": 2100,
+        "comments": 180,
+        "shares": 95,
+        "saves": 640,
+        "rankings": {
+          "quality": "AVERAGE",
+          "engagement_rate": "ABOVE_AVERAGE",
+          "conversion_rate": null
+        }
+      }
+    ],
+    "get_ads": [
+      {
+        "id": "120000000000200001",
+        "name": "UGC video - glow routine",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100001"
+      },
+      {
+        "id": "120000000000200002",
+        "name": "Static - before/after",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100001"
+      },
+      {
+        "id": "120000000000200003",
+        "name": "Carousel - bestsellers",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100002"
+      },
+      {
+        "id": "120000000000200004",
+        "name": "Static - claims v2",
+        "effective_status": "DISAPPROVED",
+        "adset_id": "120000000000100002"
+      },
+      {
+        "id": "120000000000200005",
+        "name": "UGC video - texture",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100003"
+      },
+      {
+        "id": "120000000000200006",
+        "name": "Static - serum hero",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100004"
+      },
+      {
+        "id": "120000000000200007",
+        "name": "Carousel - reviews",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100005"
+      },
+      {
+        "id": "120000000000200008",
+        "name": "Static - 15% off returning",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100005"
+      },
+      {
+        "id": "120000000000200009",
+        "name": "New Sales Ad",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100006"
+      },
+      {
+        "id": "120000000000200010",
+        "name": "Blog - 5 ingredient myths",
+        "effective_status": "ACTIVE",
+        "adset_id": "120000000000100007"
+      }
+    ],
+    "get_ad_creatives_by_ad": [
+      {
+        "ad_id": "120000000000200001",
+        "body_first_line": "My 3-step glow routine, start to finish",
+        "title": "The routine that fixed my dull skin",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "video"
+      },
+      {
+        "ad_id": "120000000000200002",
+        "body_first_line": "Day 1 vs day 28: same light, same camera",
+        "title": "See the difference in 4 weeks",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "single image"
+      },
+      {
+        "ad_id": "120000000000200003",
+        "body_first_line": "Our 4 bestsellers, in one routine",
+        "title": "The full routine",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "carousel"
+      },
+      {
+        "ad_id": "120000000000200004",
+        "body_first_line": "Clinically shown to cut redness by 40%",
+        "title": "Calm skin, proven",
+        "call_to_action_type": "LEARN_MORE",
+        "format": "single image"
+      },
+      {
+        "ad_id": "120000000000200005",
+        "body_first_line": "Watch how it melts in",
+        "title": "Lightweight, never greasy",
+        "call_to_action_type": "LEARN_MORE",
+        "format": "video"
+      },
+      {
+        "ad_id": "120000000000200006",
+        "body_first_line": "Hydration that lasts 72 hours",
+        "title": "Hydra Serum",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "single image"
+      },
+      {
+        "ad_id": "120000000000200007",
+        "body_first_line": "4.8 stars from 2,300 reviews",
+        "title": "Rated 4.8 by real customers",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "carousel"
+      },
+      {
+        "ad_id": "120000000000200008",
+        "body_first_line": "Welcome back: 15% off your next order",
+        "title": "15% off, this week only",
+        "call_to_action_type": "GET_OFFER",
+        "format": "single image"
+      },
+      {
+        "ad_id": "120000000000200009",
+        "body_first_line": "Shop our skincare",
+        "title": "New Sales Ad",
+        "call_to_action_type": "SHOP_NOW",
+        "format": "single image"
+      },
+      {
+        "ad_id": "120000000000200010",
+        "body_first_line": "5 ingredient myths, busted",
+        "title": "Read the guide",
+        "call_to_action_type": "LEARN_MORE",
+        "format": "single image"
+      }
+    ],
+    "get_ad_videos": [
+      {
+        "ad": "UGC video - glow routine",
+        "length": 22
+      },
+      {
+        "ad": "UGC video - texture",
+        "length": 12
+      }
+    ],
+    "get_insights_adaccount_ad_last_7d": [
+      {
+        "ad_id": "120000000000200001",
+        "spend": 350,
+        "purchases": 6,
+        "frequency": 3.8
+      },
+      {
+        "ad_id": "120000000000200002",
+        "spend": 280,
+        "purchases": 7,
+        "frequency": 1.9
+      },
+      {
+        "ad_id": "120000000000200003",
+        "spend": 230,
+        "purchases": 5,
+        "frequency": 2.2
+      },
+      {
+        "ad_id": "120000000000200005",
+        "spend": 280,
+        "purchases": 5,
+        "frequency": 2.4
+      },
+      {
+        "ad_id": "120000000000200006",
+        "spend": 420,
+        "purchases": 10,
+        "frequency": 2.1
+      },
+      {
+        "ad_id": "120000000000200007",
+        "spend": 300,
+        "purchases": 10,
+        "frequency": 4.1
+      },
+      {
+        "ad_id": "120000000000200008",
+        "spend": 190,
+        "purchases": 6,
+        "frequency": 3.2
+      },
+      {
+        "ad_id": "120000000000200009",
+        "spend": 350,
+        "purchases": 4,
+        "frequency": 1.8
+      }
+    ]
+  },
+  "calls": 15
 }

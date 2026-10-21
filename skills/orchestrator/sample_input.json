@@ -1,33 +1,254 @@
 {
   "skill": "meta/orchestrator",
-  "request": "We're a small B2B SaaS. We want more sign-ups and I'm not sure where to start. What should we do first, and what can I put on a schedule?",
+  "request": "We sell skincare online. We want more sales and I'm not sure where to start. What should we do first, and what can I put on a schedule?",
   "mode": "B. Diagnose and sequence, plus C. Automate",
-  "business": "A B2B SaaS (our own accounts, anonymised)",
+  "business": "Example DTC skincare store (an invented business)",
   "site": "https://example.com/",
   "windows": {
     "current": {
-      "start": "2026-09-06",
-      "end": "2026-10-05"
+      "start": "2026-09-21",
+      "end": "2026-10-20"
     },
     "prior": {
-      "start": "2026-08-07",
-      "end": "2026-09-05"
+      "start": "2026-08-22",
+      "end": "2026-09-20"
     }
   },
-  "calls_run": [
-    "query_contexts request=accounts (no platform)",
-    "google-analytics get_report by sessionDefaultChannelGroup x2 (S1)",
-    "google-analytics get_report by eventName, current window (S2)",
-    "google-search-console search_analytics by date, 60 days in one call (S3)",
-    "google-analytics get_report by sessionDefaultChannelGroup, current window ending on Search Console's last day (S1 rerun for rule 2)",
-    "google-ads: not run, no account for this business (S4)",
-    "facebook-ads get_insights_adaccount, level account: main account x2 windows, the owner-named account x1 call over both windows (S5); the generically named account was left out at inventory",
-    "linkedin-ads get_account_analytics: main account x2 windows, second account x1 call over both windows (S6)"
-  ],
+  "data_pulled": {
+    "query_contexts_accounts": [
+      {
+        "family": "site and search",
+        "platform": "google-analytics",
+        "connections": 2,
+        "for_this_business": 1,
+        "flags": [
+          {
+            "count": 1,
+            "reason": "another site (an old store), left out"
+          }
+        ]
+      },
+      {
+        "family": "site and search",
+        "platform": "google-search-console",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "site and search",
+        "platform": "google-tag-manager",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "paid search",
+        "platform": "google-ads",
+        "connections": 2,
+        "for_this_business": 1,
+        "flags": [
+          {
+            "count": 1,
+            "reason": "a manager account: never read directly"
+          }
+        ]
+      },
+      {
+        "family": "paid social",
+        "platform": "facebook-ads",
+        "connections": 2,
+        "for_this_business": 1,
+        "flags": [
+          {
+            "count": 1,
+            "reason": "named as a test or sandbox account"
+          }
+        ]
+      },
+      {
+        "family": "paid social",
+        "platform": "tiktok-ads",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "organic social",
+        "platform": "instagram",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "organic social",
+        "platform": "facebook-pages",
+        "connections": 2,
+        "for_this_business": 1,
+        "flags": [
+          {
+            "count": 1,
+            "reason": "belongs to another business"
+          }
+        ]
+      },
+      {
+        "family": "email",
+        "platform": "klaviyo",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "stores",
+        "platform": "shopify",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "stores",
+        "platform": "merchant-center",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      },
+      {
+        "family": "workspace tools",
+        "platform": "google-sheets",
+        "connections": 1,
+        "for_this_business": 1,
+        "flags": []
+      }
+    ],
+    "S1_ga4_channels": {
+      "current": {
+        "Paid Social": [
+          24000,
+          11200,
+          150
+        ],
+        "Organic Search": [
+          18400,
+          9900,
+          290
+        ],
+        "Unassigned": [
+          18300,
+          7100,
+          120
+        ],
+        "Direct": [
+          12600,
+          6900,
+          230
+        ],
+        "Paid Search": [
+          9800,
+          5600,
+          180
+        ],
+        "Referral": [
+          2900,
+          1500,
+          30
+        ]
+      },
+      "prior": {
+        "Paid Social": [
+          19500,
+          9100,
+          128
+        ],
+        "Organic Search": [
+          19600,
+          10400,
+          300
+        ],
+        "Unassigned": [
+          16900,
+          6600,
+          110
+        ],
+        "Direct": [
+          12100,
+          6600,
+          220
+        ],
+        "Paid Search": [
+          9100,
+          5200,
+          170
+        ],
+        "Referral": [
+          2800,
+          1450,
+          28
+        ]
+      }
+    },
+    "S1_rerun_organic_to_search_console_end": 17200,
+    "S2_ga4_events": {
+      "purchase": [
+        1000,
+        1000
+      ],
+      "view_item": [
+        31000,
+        0
+      ],
+      "add_to_cart": [
+        5100,
+        0
+      ],
+      "begin_checkout": [
+        2300,
+        0
+      ],
+      "newsletter_sign_up": [
+        640,
+        0
+      ]
+    },
+    "S3_search_console": {
+      "current": {
+        "days": 28,
+        "clicks": 19950,
+        "impressions": 1120000
+      },
+      "prior": {
+        "days": 30,
+        "clicks": 22500,
+        "impressions": 1230000
+      }
+    },
+    "S4_google_ads": {
+      "current": {
+        "cost": 4000,
+        "clicks": 5100,
+        "conversions": 196
+      },
+      "prior": {
+        "cost": 3800,
+        "clicks": 4900,
+        "conversions": 181
+      }
+    },
+    "S5_meta": {
+      "current": {
+        "spend": 11400,
+        "purchases": 244
+      },
+      "prior": {
+        "spend": 9500,
+        "purchases": 232
+      }
+    }
+  },
   "answers_to_questions": {
-    "goal": "sign-ups (from the request)",
+    "goal": "sales (from the request)",
     "what_exists": "not given; assumed only what the data shows",
     "constraint": "not given; no deadline assumed"
   },
-  "note": "Real run on our own accounts, anonymised: brand, domain, pages, queries, competitors and ids replaced; numbers rounded to 2 significant figures, so totals may not add up exactly."
+  "note": "Example data: an invented store, not real accounts. Every number in expected_output.json follows from this input."
 }

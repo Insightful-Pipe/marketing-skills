@@ -1,176 +1,414 @@
 {
   "header": {
-    "account": "Our own Meta ad account (anonymised)",
+    "account": "Example DTC skincare store",
     "currency": "USD",
-    "time_zone": "America/New_York",
-    "current_window": "2026-09-05 to 2026-10-04",
-    "previous_window": "2026-08-06 to 2026-09-04",
-    "spend_current": 0,
-    "spend_previous": 0,
-    "results_current": 0,
-    "verdict": "No spend in either window, so there is nothing to reallocate. Following the empty-account rule, this report shows the setup and where money last went, and stops before the plan."
+    "time_zone": "America/Los_Angeles",
+    "current_window": "2026-09-21 to 2026-10-20",
+    "previous_window": "2026-08-22 to 2026-09-20",
+    "spend_current": 11400,
+    "spend_previous": 9500,
+    "by_event": [
+      {
+        "event": "purchase",
+        "spend": 10500,
+        "results": 244,
+        "cost_per_result": 43.03
+      },
+      {
+        "event": "link_click",
+        "spend": 900,
+        "results": 1500,
+        "cost_per_result": 0.6
+      }
+    ],
+    "verdict": "Move $41 a day out of three purchase ad sets, give $14 of it to the retargeting Star, and hold $27 a day as a testing reserve. Projected blended cost per purchase drops from $43.03 to $40.68, an estimate."
   },
-  "objective_mix": {
-    "result": "not graded: no spend in the current window",
-    "configured_daily_budget_by_objective": {
-      "Awareness": 1.0,
-      "Engagement": 1.0
+  "objective_mix": [
+    {
+      "objective": "OUTCOME_SALES",
+      "result_event": "purchase",
+      "spend": 10500,
+      "share_of_spend_pct": 92.1,
+      "live_daily_budget": 350,
+      "share_of_live_budget_pct": 92.1,
+      "results": 244,
+      "cost_per_result": 43.03,
+      "flags": "none"
     },
-    "live_daily_budget": 0,
-    "note": "Both campaigns are paused, so no budget is live. Their configured budgets are shown for reference only."
-  },
+    {
+      "objective": "OUTCOME_TRAFFIC",
+      "result_event": "link_click",
+      "spend": 900,
+      "share_of_spend_pct": 7.9,
+      "live_daily_budget": 30,
+      "share_of_live_budget_pct": 7.9,
+      "results": 1500,
+      "cost_per_result": 0.6,
+      "flags": "none"
+    }
+  ],
   "budget_type": {
     "campaigns": [
       {
-        "campaign": "Awareness test campaign",
-        "objective": "OUTCOME_AWARENESS",
+        "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "objective": "OUTCOME_SALES",
         "budget_type": "ad set budget (ABO)",
-        "ad_sets": 1,
-        "status": "PAUSED"
+        "live_ad_sets": 3
       },
       {
-        "campaign": "Engagement test campaign",
-        "objective": "OUTCOME_ENGAGEMENT",
+        "campaign": "PROSP_Broad_Serum",
+        "objective": "OUTCOME_SALES",
         "budget_type": "ad set budget (ABO)",
-        "ad_sets": 1,
-        "status": "PAUSED"
+        "live_ad_sets": 1
+      },
+      {
+        "campaign": "Retargeting | Sales | All Products | US | 2026-07",
+        "objective": "OUTCOME_SALES",
+        "budget_type": "ad set budget (ABO)",
+        "live_ad_sets": 1
+      },
+      {
+        "campaign": "New Sales Campaign",
+        "objective": "OUTCOME_SALES",
+        "budget_type": "ad set budget (ABO)",
+        "live_ad_sets": 1
+      },
+      {
+        "campaign": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+        "objective": "OUTCOME_TRAFFIC",
+        "budget_type": "ad set budget (ABO)",
+        "live_ad_sets": 1
       }
     ],
     "cbo_split": "none: no campaign uses a campaign budget",
-    "head_to_head": "not enough data to compare: the account runs no CBO campaign and no ad set has results",
-    "abo_pooling_flag": "none: each campaign has a single ad set"
-  },
-  "setup": [
-    {
-      "unit": "Awareness test campaign: ad set",
-      "campaign": "Awareness test campaign",
-      "objective": "OUTCOME_AWARENESS",
-      "budget_type": "ad set budget (ABO)",
-      "optimization_goal": "REACH",
-      "result_event": "none (judged on CPM and frequency)",
-      "billing_event": "IMPRESSIONS",
-      "daily_budget": 1.0,
-      "floor": 1.0,
-      "at_floor": true,
-      "status": "PAUSED",
-      "end_date": null,
-      "funnel_label": "prospecting"
+    "abo_pooling_flag": {
+      "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+      "live_ad_sets_on_purchase": 3,
+      "all_below_learning_budget": true,
+      "daily_budgets": [
+        90,
+        40,
+        40
+      ],
+      "pooled_daily_budget": 170,
+      "pooled_results_per_week": 25.9,
+      "flag": "every ad set is below its learning budget; one campaign budget would pool their results"
     },
-    {
-      "unit": "Engagement test campaign: ad set",
-      "campaign": "Engagement test campaign",
-      "objective": "OUTCOME_ENGAGEMENT",
-      "budget_type": "ad set budget (ABO)",
-      "optimization_goal": "POST_ENGAGEMENT",
-      "result_event": "post_engagement",
-      "billing_event": "IMPRESSIONS",
-      "daily_budget": 1.0,
-      "floor": 1.0,
-      "at_floor": true,
-      "status": "PAUSED",
-      "end_date": "2026-08-16",
-      "funnel_label": "prospecting"
-    }
-  ],
+    "head_to_head": "not enough data to compare: the account runs no campaign budget"
+  },
   "units": [
     {
-      "unit": "Awareness test campaign: ad set",
-      "tier": "not graded: paused, with no spend in either window",
-      "spend_current": 0,
-      "results_current": 0,
-      "trend": "no trend",
-      "marginal_cost": "not measurable",
-      "learning_budget": "unknown: no target and no results to default to",
+      "unit": "Broad 25-54 | US",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 90,
+      "spend_current": 2700,
+      "results_current": 66,
+      "cost_per_result": 40.91,
+      "efficiency_index": 110.0,
+      "trend_pct": 9.1,
+      "frequency": 2.7,
+      "cpm_change_pct": 2.9,
+      "marginal_cost": "not measurable: spend moved less than 15%",
+      "learning_budget": 321.43,
+      "tier": "Potential",
       "settling": true
     },
     {
-      "unit": "Engagement test campaign: ad set",
-      "tier": "not graded: paused, with no spend in either window",
+      "unit": "Interest - skincare",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 40,
+      "spend_current": 1200,
+      "results_current": 21,
+      "cost_per_result": 57.14,
+      "efficiency_index": 78.8,
+      "trend_pct": 14.3,
+      "frequency": 2.2,
+      "cpm_change_pct": 23.1,
+      "marginal_cost": "not measurable: spend moved less than 15%",
+      "learning_budget": 321.43,
+      "tier": "Declining",
+      "settling": false
+    },
+    {
+      "unit": "LAL 1% purchasers 180d",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 40,
+      "spend_current": 1200,
+      "results_current": 24,
+      "cost_per_result": 50.0,
+      "efficiency_index": 90.0,
+      "trend_pct": 22.2,
+      "frequency": 2.4,
+      "cpm_change_pct": 3.4,
+      "marginal_cost": 150.0,
+      "learning_budget": 321.43,
+      "tier": "Declining",
+      "settling": false
+    },
+    {
+      "unit": "broad serum",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 60,
+      "spend_current": 1800,
+      "results_current": 45,
+      "cost_per_result": 40.0,
+      "efficiency_index": 112.5,
+      "trend_pct": 11.1,
+      "frequency": 2.5,
+      "cpm_change_pct": 3.0,
+      "marginal_cost": "not measurable: spend moved less than 15%",
+      "learning_budget": 321.43,
+      "tier": "Potential",
+      "settling": false
+    },
+    {
+      "unit": "Site visitors 30d + ATC 14d",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "retargeting",
+      "daily_budget": 70,
+      "spend_current": 2100,
+      "results_current": 70,
+      "cost_per_result": 30.0,
+      "efficiency_index": 150.0,
+      "trend_pct": 12.7,
+      "frequency": 5.6,
+      "cpm_change_pct": 4.3,
+      "marginal_cost": 56.25,
+      "learning_budget": 321.43,
+      "tier": "Star",
+      "settling": false
+    },
+    {
+      "unit": "New Sales Ad Set",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 50,
+      "spend_current": 1500,
+      "results_current": 18,
+      "cost_per_result": 83.33,
+      "efficiency_index": 54.0,
+      "trend_pct": 25.0,
+      "frequency": 1.9,
+      "cpm_change_pct": 2.6,
+      "marginal_cost": 100.0,
+      "learning_budget": 321.43,
+      "tier": "Failing",
+      "settling": false
+    },
+    {
+      "unit": "Blog readers | US",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 30,
+      "spend_current": 900,
+      "results_current": 1500,
+      "cost_per_result": 0.6,
+      "efficiency_index": 100.0,
+      "trend_pct": 3.3,
+      "frequency": 1.7,
+      "cpm_change_pct": 2.2,
+      "marginal_cost": "not measurable: spend moved less than 15%",
+      "learning_budget": 4.29,
+      "tier": "Potential",
+      "settling": false
+    },
+    {
+      "unit": "Night cream launch | US",
+      "budget_type": "ad set budget (ABO)",
+      "funnel_label": "prospecting",
+      "daily_budget": 40,
       "spend_current": 0,
       "results_current": 0,
-      "trend": "no trend",
-      "marginal_cost": "not measurable",
-      "learning_budget": "unknown: no target and no results to default to",
+      "tier": "not graded: paused, no spend in the current window",
       "settling": false
     }
   ],
-  "saturation": "not checked: no impressions in the current window",
+  "saturation": {
+    "Interest - skincare": [
+      "CPM up 23.1% while frequency rose from 1.9 to 2.2"
+    ]
+  },
+  "learning_budget": {
+    "purchase_per_day": 321.43,
+    "link_click_per_day": 4.29,
+    "live_units_below": 6,
+    "live_units": 7,
+    "note": "Every purchase ad set runs below $321.43 a day, so none can leave learning on purchases alone. Pooling Prospecting | Sales | Hydra Serum | US | 2026-08's three ad sets is the fix inside this account."
+  },
   "funnel_balance": {
-    "prospecting": 2,
-    "retargeting": 0,
-    "retention": 0,
-    "note": "No ad set targets a custom audience and the account has none, so every ad set is prospecting. With no spend, the split is not graded."
+    "spend": {
+      "prospecting": 9300,
+      "retargeting": 2100,
+      "retention": 0
+    },
+    "share_pct": {
+      "prospecting": 81.6,
+      "retargeting": 18.4,
+      "retention": 0.0
+    },
+    "prospecting_cost_per_purchase": 48.28,
+    "retargeting_cost_per_purchase": 30.0,
+    "note": "Prospecting costs 1.6 times retargeting per purchase, under the 3x line, and retargeting isn't saturated, so the split holds."
   },
   "recent_edits": {
-    "events_in_window": 22,
-    "learning_events": {
-      "update_ad_set_target_spec": 1,
-      "update_ad_set_optimization_goal": 1,
-      "update_ad_set_bid_strategy": 1,
-      "create_ad_set": 1,
-      "create_campaign_group": 1
-    },
-    "ignored_events": 17,
-    "ignored_reason": "ad status changes, ad creative edits, renames and image uploads don't restart learning",
+    "events_in_window": 3,
+    "learning_events": 1,
     "settling_units": [
-      "Awareness test campaign: ad set"
+      "Broad 25-54 | US"
     ],
-    "settling_until": "2026-10-08"
-  },
-  "where_money_last_went": {
-    "call": "get_insights_adaccount, level adset, date_preset maximum",
-    "window": "2025-11-01 to 2026-10-05 (date_preset maximum)",
-    "lifetime_spend": 0.15,
-    "lifetime_impressions": 64,
-    "rows": [
-      {
-        "campaign": "Archived traffic campaign 1",
-        "objective_reported": "LINK_CLICKS",
-        "objective_mapped": "Traffic",
-        "optimization_goal": "LINK_CLICKS",
-        "spend": 0.08,
-        "impressions": 4,
-        "reach": 4,
-        "frequency": 1.0,
-        "result_event": "link_click",
-        "results": 0,
-        "in_campaign_list": false
-      },
-      {
-        "campaign": "Archived traffic campaign 2",
-        "objective_reported": "LINK_CLICKS",
-        "objective_mapped": "Traffic",
-        "optimization_goal": "LINK_CLICKS",
-        "spend": 0.07,
-        "impressions": 60,
-        "reach": 29,
-        "frequency": 2.1,
-        "result_event": "link_click",
-        "results": 0,
-        "in_campaign_list": false
-      }
-    ],
-    "note": "All of it sits on 2 archived campaigns that no longer appear in get_campaigns, so it counts in totals but can't be moved. The insights call returns their objective under the old name LINK_CLICKS, mapped here to Traffic. Neither recorded a link click."
+    "settling_until": "2026-10-24",
+    "note": "Broad 25-54 | US's budget went from $75 to $90 on 2026-10-17, so it gets no change this round."
   },
   "plan": {
-    "moves": [],
-    "reason": "No live unit and no graded unit, so the skill stops before the plan instead of inventing one."
+    "cuts": [
+      {
+        "from": "New Sales Ad Set",
+        "tier": "Failing",
+        "cut_per_day": 25.0,
+        "new_daily_budget": 25.0,
+        "reason": "Failing, index 54.0, cost per purchase up 25.0% on the previous window",
+        "cost_basis": 100.0,
+        "results_lost_per_day": 0.25,
+        "results_lost_30d": 7.5
+      },
+      {
+        "from": "Interest - skincare",
+        "tier": "Declining",
+        "cut_per_day": 8.0,
+        "new_daily_budget": 32.0,
+        "reason": "Declining, index 78.8",
+        "cost_basis": 57.14,
+        "results_lost_per_day": 0.14,
+        "results_lost_30d": 4.2
+      },
+      {
+        "from": "LAL 1% purchasers 180d",
+        "tier": "Declining",
+        "cut_per_day": 8.0,
+        "new_daily_budget": 32.0,
+        "reason": "Declining, index 90.0, cost per purchase up 22.2% on the previous window",
+        "cost_basis": 150.0,
+        "results_lost_per_day": 0.05,
+        "results_lost_30d": 1.6
+      }
+    ],
+    "raises": [
+      {
+        "to": "Site visitors 30d + ATC 14d",
+        "add_per_day": 14.0,
+        "new_daily_budget": 84.0,
+        "cost_basis": 56.25,
+        "reason": "Star, index 150.0, marginal cost $56.25, below its learning budget",
+        "results_gained_per_day": 0.25,
+        "results_gained_30d": 7.5
+      }
+    ],
+    "testing_reserve_per_day": 27.0,
+    "testing_reserve_note": "No other Star can take more at +20%, so $27 a day (7.1% of the $380 total) funds a new prospecting test; below the usual 10 to 20%, so it is the whole reserve.",
+    "totals": {
+      "live_daily_budget_before": 380,
+      "live_daily_budget_after": 380,
+      "purchase_spend_30d_before": 10500,
+      "purchase_spend_30d_after": 9690,
+      "purchases_30d_before": 244,
+      "purchases_30d_after": 238.2,
+      "blended_cost_per_purchase_before": 43.03,
+      "blended_cost_per_purchase_after": 40.68
+    },
+    "assumptions": [
+      "Results lost = cut / the source's marginal cost (its cost per result when not measurable).",
+      "Results gained = raise / the destination's marginal cost.",
+      "The testing reserve is left out of the projection.",
+      "Estimates only: Meta's delivery can move either way within a week."
+    ]
   },
-  "changes_drafted": {
-    "payloads": [],
-    "reason": "Nothing qualifies: both ad sets are paused, and the API can pause but not switch an ad set back on."
-  },
-  "unknowns_and_not_graded": [
-    "No unit is graded: both are paused, with 0 spend and 0 results in both windows.",
-    "Learning budget is unknown without a target cost per result.",
-    "Saturation and marginal cost need spend in both windows."
+  "rollout": [
+    {
+      "week": 1,
+      "date": "2026-10-22",
+      "steps": "make every cut and the retargeting raise"
+    },
+    {
+      "week": 2,
+      "date": "2026-10-29",
+      "steps": "repeat the raise only if Site visitors 30d + ATC 14d stayed within 15% of $30.00 per purchase (up to $34.50)"
+    },
+    {
+      "week": 3,
+      "date": "2026-11-05",
+      "steps": "review every unit on the full week"
+    }
   ],
-  "next_steps": [
-    "Decide the one event that matters (for example a sign-up) and give a target cost per result for it.",
-    "Learning budget = target cost per result x 50 / 7 a day. Fund one ad set at that level, or optimise for an earlier event until volume builds.",
-    "The ad set in the Engagement test campaign sits at the USD floor of 1.00 a day for impression billing. At that budget, leaving learning on post_engagement would need a cost per result of 0.14 or less (7 days x 1.00 / 50 events).",
-    "The ad set in the Awareness test campaign optimises for REACH, which has no result event, so the 50-events learning math doesn't apply; judge it on CPM and frequency once it delivers.",
-    "Run this skill again after 30 days of delivery; a unit needs at least 10 results, or 3 times its target in spend, to be graded.",
-    "Go deeper (if installed): facebook-ads-campaign-structure to set up the campaign, facebook-ads-launch-checklist before switching it on."
+  "next_review": "2026-11-05",
+  "risks": [
+    "New Sales Ad Set: the 50% cut may push it further into learning; stop and pause it instead if cost per purchase rises above $67.50.",
+    "Site visitors 30d + ATC 14d: a small pool saturates fast; stop raising if 30-day frequency passes 8 or reach passes 60% of the audience.",
+    "Daily budgets can overspend by up to 25% on one day, so judge each step on the full week."
+  ],
+  "changes_drafted": [
+    {
+      "change": "New Sales Ad Set: $50.00 to $25.00 a day",
+      "payload": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100006",
+        "daily_budget": 2500
+      },
+      "status": "not run: waiting for your yes"
+    },
+    {
+      "change": "Interest - skincare: $40.00 to $32.00 a day",
+      "payload": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100002",
+        "daily_budget": 3200
+      },
+      "status": "not run: waiting for your yes"
+    },
+    {
+      "change": "LAL 1% purchasers 180d: $40.00 to $32.00 a day",
+      "payload": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100003",
+        "daily_budget": 3200
+      },
+      "status": "not run: waiting for your yes"
+    },
+    {
+      "change": "Site visitors 30d + ATC 14d: $70.00 to $84.00 a day",
+      "payload": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100005",
+        "daily_budget": 8400
+      },
+      "status": "not run: waiting for your yes"
+    }
+  ],
+  "unknowns_and_not_graded": [
+    "Night cream launch | US: paused, no spend in either window.",
+    "Traffic money is not moved to purchases: that is your call across events (see the objective mix)."
+  ],
+  "go_deeper": [
+    "facebook-ads-campaign-structure to pool the three Hydra Serum ad sets under one campaign budget",
+    "facebook-ads-scaling-roadmap for a longer plan once a unit leaves learning"
   ]
 }
