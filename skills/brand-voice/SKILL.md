@@ -135,13 +135,13 @@ Give each line every message type it carries, from this list. A line can carry s
 
 | Type | How to recognise it |
 |---|---|
-| Counted proof | a number backs the claim: reviews, cases, customers, years, a rating. A percentage on its own ("100% free") is not a count |
-| Unproven claim | a superlative or adjective with no number: most experienced, highest, #1, best, expert, aggressive, leading |
+| Counted proof | a number backs the claim: reviews, jobs, customers, years, a rating. A percentage on its own ("100% free") is not a count |
+| Unproven claim | a superlative or adjective with no number: most experienced, highest, #1, best, expert, unbeatable, leading |
 | Offer | the whole word free (not "freedom"), consultation, evaluation, trial, payment plan, discount, confidential |
-| Stakes | what the reader could lose: record, licence, job, money, time, reputation |
+| Stakes | what the reader could lose: money, time, health, safety, data, reputation |
 | Fight words | fight, beat, defend, crush, win |
 | Always on | 24/7, any time, online now |
-| Place | a state, city, region, "local", "statewide" |
+| Place | a state, city, region, "local", "area-wide" |
 | Direct ask | call, contact, book, get, start, today, now |
 | Question | the line asks the reader something |
 | Plain help | the line explains what happens next or what the brand will do: review the facts, explain the options, answer questions, give an honest view |
@@ -152,7 +152,7 @@ Rename or add a type when the brand's copy has a pattern this list misses (for e
 
 ## Step 3: What earns clicks
 
-**Ads.** A line's clicks only mean something next to the campaign it ran in: a traffic-ticket campaign and a drug-charge campaign have very different click rates.
+**Ads.** A line's clicks only mean something next to the campaign it ran in: an emergency-plumbing campaign and a furnace tune-up campaign have very different click rates.
 
 - **Expected clicks** for each campaign row = the row's impressions × the click rate of all lines of the same field type (headline or description) in that campaign.
 - **Click index** for a line = its clicks ÷ its expected clicks, summed over its rows. 1.00 is an ordinary line for where it ran.
@@ -171,7 +171,7 @@ When nothing wins or loses, say so plainly: then the voice choice rests on the c
 
 From the Google Ads search terms (and the Search Console queries when connected), leave out brand terms and any term with a person's or a rival's name. Then:
 
-- **Word choices.** For each pair of words the brand mixes (lawyer / attorney, ticket / citation, cheap / affordable, course / class), take the share of non-brand impressions that contain each. The one with more impressions leads in headlines. When one has 3 times the other's impressions or more, the other is dropped from ads.
+- **Word choices.** For each pair of words the brand mixes (AC / air conditioner, plumber / plumbing company, cheap / affordable, course / class), take the share of non-brand impressions that contain each. The one with more impressions leads in headlines. When one has 3 times the other's impressions or more, the other is dropped from ads.
 - **Habits.** Share of impressions that say "near me", that ask a question (start with how, what, do, can, should, is, will or end in ?) and that mention cost (cost, price, cheap, afford, fee, how much, payment).
 - **Brand words searchers don't use.** Words of 4 or more letters that appear in 5 or more graded ad lines (step 3) and in under 1% of non-brand search impressions. These are fine in body copy; they just don't match the search.
 - **Visibility.** Google hides low-volume search terms. State the impressions the report covers against the account's total from the customer totals call, and how many of them are non-brand.
@@ -184,7 +184,7 @@ Run `serp_google_organic` for the brand's top 2 non-brand search themes (the big
 - Use the organic results. Local results show Google's summary and customer reviews, which are not the rival's own words.
 - Label each rival's title and snippet with the step 2 types, except brand name.
 - A type is **crowded** when half or more of the rivals use it, **open** when fewer than a quarter do, and **in between** otherwise.
-- Describe rivals by type ("a statewide ticket service", "a defense firm in the largest city"). Name them only if the user named them first. Never reuse a rival's wording.
+- Describe rivals by type ("a national home-services franchise", "a family-owned plumber in the largest town"). Name them only if the user named them first. Never reuse a rival's wording.
 - **The brand's own results** in the same searches show how its pages sound: list their titles and snippets as page-voice evidence when the pages themselves can't be read. List each distinct title and snippet once, with the number of pages it stands for: location pages often share one template.
 
 ## Step 6: Consistency and claims

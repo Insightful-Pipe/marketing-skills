@@ -90,7 +90,7 @@ WHERE campaign.status = 'ENABLED' AND campaign_asset.status = 'ENABLED'
 
 From that text, list the route's claims in five buckets: **topic** (the service or product the keywords and headlines name), **offer** (free consultation, discount, trial, payment plans, price), **proof** (reviews, ratings, years, numbers), **call to action** (call, text, book, buy) and **audience** (who it speaks to: nurses, out-of-state drivers, small businesses). Quote the exact ad wording; the page is checked against it.
 
-Also flag **off-topic lines**: a headline or description that names a different topic from the route's keywords, for example drug-possession descriptions in a DUI ad group. The page can't match a line that doesn't match its own ad group.
+Also flag **off-topic lines**: a headline or description that names a different topic from the route's keywords, for example drain-cleaning descriptions in a water-heater ad group. The page can't match a line that doesn't match its own ad group.
 
 ## Step 3: What Google already measures after the click
 
@@ -185,7 +185,7 @@ These need only the ad account, so they run even when no page can be read.
 | Flag | Fail when | Warn when |
 |---|---|---|
 | Generic destination | a non-brand route lands on the home page while the account already uses a page about that topic | a non-brand route lands on a category or contact page |
-| Off-topic ad lines | any enabled ad in the route carries a line about another topic (a broad topic such as "criminal defense" may name its sub-topics) | (no warn level) |
+| Off-topic ad lines | any enabled ad in the route carries a line about another topic (a broad topic such as "HVAC repair" may name its sub-topics) | (no warn level) |
 | Google's landing page rating | 25%+ of the route's keyword spend is BELOW_AVERAGE | any BELOW_AVERAGE spend, or most spend AVERAGE |
 | Conversion rate | under half the non-brand baseline on 30+ clicks | under 0.8 times the baseline on 30+ clicks |
 | Extension claims | a sitelink names a topic and lands on a page that isn't about it, while the account already uses a page about that topic | a reviews, offer or help sitelink lands on the home page, or a callout claim isn't visible on the landing page |

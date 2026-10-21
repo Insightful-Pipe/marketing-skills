@@ -42,13 +42,13 @@ If a call fails, keep going. Mark that part **unknown**, say which call failed a
 
 ## The lever table
 
-Tag every ad line and every page segment with the levers it uses. A line can carry several levers. A line with none is **plain** (it just names the service). The cue words are where to start; read the line and use judgment, and list every cue you overrule with the reason (for example, "fight" in "fight your ticket" is ally framing, but "fines up to $500" is a cost of the problem, not a price, and "time is not on your side" is urgency, not ally framing).
+Tag every ad line and every page segment with the levers it uses. A line can carry several levers. A line with none is **plain** (it just names the service). The cue words are where to start; read the line and use judgment, and list every cue you overrule with the reason (for example, "fight" in "we fight for your refund" is ally framing, but "repairs can cost $500" is a cost of the problem, not a price, and "time is not on your side" is urgency, not ally framing).
 
 | Lever | Principle behind it | Cue words | Backfires when |
 |---|---|---|---|
 | Loss framing | Losses weigh more than equal gains | don't let, lose, ruin, avoid, protect, keep your, cost you | it exaggerates the threat or scares people who aren't at risk |
 | Social proof | People copy others when unsure | reviews, stars, rated, rating, testimonials, "clients say" | the numbers are vague, old or can't be checked |
-| Authority and track record | People defer to proven experts | years of experience, experienced, expert, award, certified, "N+ cases resolved" | it's about you, not what the buyer gets |
+| Authority and track record | People defer to proven experts | years of experience, experienced, expert, award, certified, "N+ homes served" | it's about you, not what the buyer gets |
 | Zero price | "Free" is felt differently from "cheap" | free | the free thing has strings attached |
 | Risk reversal | Removing the downside makes yes easier | guarantee, money-back, risk-free, no obligation, refund, cancel anytime | the promise can't be kept |
 | Pain of paying eased | Spreading or reframing cost softens it | payment plan, pay monthly, instalments, financing, per day | it hides the full price |
@@ -57,7 +57,7 @@ Tag every ad line and every page segment with the levers it uses. A line can car
 | Ally framing | Shared identity: "we're on your side against the problem" | fight, beat, aggressive, on your side, we handle | it sounds combative to a calm buyer |
 | Question hook | People notice what names their situation | a line that asks "…?" | the question is too broad to self-select |
 | Local match | Similarity and relevance build liking | local, near me, serving, the user's location words | the business can't actually serve that area |
-| Price shown | The first number anchors every later one | a currency figure | the figure is a fine or a cost, not your price (read it) |
+| Price shown | The first number anchors every later one | a currency figure | the figure is a cost of the problem, not your price (read it) |
 
 ## Step 1. What your audience already responds to (ads)
 
@@ -71,9 +71,9 @@ Tag every ad line and every page segment with the levers it uses. A line can car
 {"platform": "google-ads", "workspace_id": "<WORKSPACE_ID>", "brand_id": "<BRAND_ID>", "account_id": "<ACCOUNT_ID>", "action": "gaql", "query": "SELECT campaign.name, ad_group.name, ad_group_ad.ad.id, ad_group_ad.ad.final_urls, metrics.impressions, metrics.clicks, metrics.conversions, metrics.cost_micros FROM ad_group_ad WHERE segments.date DURING LAST_30_DAYS AND campaign.status = 'ENABLED' AND ad_group_ad.status = 'ENABLED' AND metrics.impressions > 0"}
 ```
 
-**How to score a lever.** Lines in an ad are not a fair test: Google picks the combinations, and a DUI campaign and a traffic-ticket campaign have different click rates whatever the copy says. So compare each line only with the other lines in the **same ad and the same slot** (headlines with headlines, descriptions with descriptions):
+**How to score a lever.** Lines in an ad are not a fair test: Google picks the combinations, and an emergency-plumbing campaign and a furnace tune-up campaign have different click rates whatever the copy says. So compare each line only with the other lines in the **same ad and the same slot** (headlines with headlines, descriptions with descriptions):
 
-1. Leave out brand campaigns. Merge near-duplicate variants of a line (same words, different case, spacing or punctuation, like "25,000+ Charges Resolved" and "25,000+Charges Resolved"): they count as one line.
+1. Leave out brand campaigns. Merge near-duplicate variants of a line (same words, different case, spacing or punctuation, like "1,200+ Five-Star Reviews" and "1,200+Five-Star Reviews"): they count as one line.
 2. For each ad and slot, the baseline CTR is the slot's total clicks ÷ total impressions, and the baseline conversion rate is its conversions ÷ clicks.
 3. For each line, expected clicks = its impressions × the baseline CTR, and expected conversions = its clicks × the baseline conversion rate.
 4. For each lever, add up the actual and the expected numbers over every line that carries it. **CTR index** = actual clicks ÷ expected clicks. **Conversion index** = actual conversions ÷ expected conversions.
@@ -146,7 +146,7 @@ Run this on every page and on all live ad lines, brand campaigns included. Each 
 | Pre-ticked boxes | `prechecked` is more than 0 on a consent, add-on or newsletter box |
 | Real urgency | an urgency line names a limit ("limited", "only N left", "expires") the user can't confirm is real. "Call now" with no deadline is fine |
 | Proof you can back | a claim nobody can check, such as a superlative with no source ("highest", "best", "top-rated"). A review count, rating or track-record number that may be true is **check**: ask for the source and date |
-| Outcome promises | a line promises a result the business can't control ("guaranteed dismissal", "guaranteed rankings") |
+| Outcome promises | a line promises a result the business can't control ("guaranteed approval", "guaranteed rankings") |
 | Honest "free" | the free thing needs a payment, card or commitment the line doesn't mention |
 | Fear in proportion | loss framing describes harm worse than the typical case, or aims at people in distress |
 | Easy way out | cancelling, unsubscribing or saying no is harder than saying yes (ask the user if the page doesn't show it) |

@@ -14,7 +14,7 @@ No connection? Paste the page text, a list of customer phrases (search terms, re
 ## Example requests
 
 **Landing page rewrite**
-Hey Claude, I just added the "copywriting" skill. Rewrite the hero and headlines of my traffic ticket landing page in the words my searchers actually use, and review what's there now.
+Hey Claude, I just added the "copywriting" skill. Rewrite the hero and headlines of my AC repair landing page in the words my searchers actually use, and review what's there now.
 
 **Copy review**
 Hey Claude, I just added the "copywriting" skill. Run your copy review on my pricing page and tell me the three fixes that matter most.

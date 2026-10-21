@@ -1,54 +1,426 @@
 {
-  "note": "Real run on 2026-10-06 through the InsightfulPipe CLI on a client Google Ads account, anonymised: the firm, its state, cities, attorneys, directory, phone numbers and ids are replaced, identifying counts become [X]+, [Y]+, [Z]+, and competitors are lettered A to C. Competitor pages are public pages read with DataForSEO on the run date. Quotes from the firm's own page are cut to a few words around the cue word and its business panel is paraphrased, so an exact-phrase search can't find it. Character counts are taken on the real text, so a line with a masked number shows more characters than its placeholder.",
-  "request": "Hey Claude, I just added the \"usp-extractor\" skill. Find our USP: what can we say that the firms around us can't, and that people actually respond to?",
-  "business": "A US criminal and traffic defense law firm",
-  "date_range": "2026-07-08 to 2026-10-05 (90 complete days)",
-  "focus": "Traffic tickets: the service line with the most non-brand conversions",
+  "note": "Example data: an invented heating, cooling and plumbing company with an invented Google Ads account, not a real business. Every number in expected_output.json follows from this input. The example's competitors are invented and lettered A to C.",
+  "request": "Hey Claude, I just added the \"usp-extractor\" skill. Find our USP: what can we say that the companies around us can't, and that people actually respond to?",
+  "business": "Example Home Services, a heating, cooling and plumbing company (invented example)",
+  "date_range": "2026-07-22 to 2026-10-19 (90 complete days)",
+  "focus": "AC repair: the service line with the most non-brand conversions",
   "service_lines": [
     {
-      "service_line": "Traffic tickets",
-      "clicks": 919,
-      "conversions": 261,
-      "share_of_non_brand_conversions": "50%"
+      "service_line": "AC repair",
+      "clicks": 3150,
+      "conversions": 378,
+      "share_of_non_brand_conversions": "42%"
     },
     {
-      "service_line": "Criminal defense",
-      "clicks": 765,
-      "conversions": 182,
-      "share_of_non_brand_conversions": "35%"
+      "service_line": "Emergency plumbing",
+      "clicks": 1900,
+      "conversions": 246,
+      "share_of_non_brand_conversions": "27%"
     },
     {
-      "service_line": "DUI",
-      "clicks": 300,
-      "conversions": 52,
+      "service_line": "Water heaters",
+      "clicks": 1410,
+      "conversions": 124,
+      "share_of_non_brand_conversions": "14%"
+    },
+    {
+      "service_line": "Furnace repair",
+      "clicks": 930,
+      "conversions": 93,
       "share_of_non_brand_conversions": "10%"
     },
     {
-      "service_line": "Drug charges",
-      "clicks": 119,
-      "conversions": 16,
-      "share_of_non_brand_conversions": "3%"
+      "service_line": "Drain cleaning",
+      "clicks": 1170,
+      "conversions": 35,
+      "share_of_non_brand_conversions": "4%"
     },
     {
-      "service_line": "License defense",
-      "clicks": 96,
-      "conversions": 13,
-      "share_of_non_brand_conversions": "2%"
+      "service_line": "HVAC installation",
+      "clicks": 360,
+      "conversions": 27,
+      "share_of_non_brand_conversions": "3%"
     }
   ],
-  "market_search": "'traffic ticket lawyer' searched from the firm's largest city, desktop, top 20 results",
-  "competitors": "not given, so the first 3 law firms in that search (directories and other sites left out)",
+  "market_search": "'ac repair' searched from Riverton, the largest town, desktop, top 20 results",
+  "competitors": "not given, so the first 3 companies in that search (directories and matching services left out)",
   "data_pulled": [
-    "ad_group_ad_asset_view: 95 distinct headline and description lines in non-brand campaigns",
-    "search_terms_report: 2516 search terms (2485 non-brand)",
+    "ad_group_ad_asset_view: 18 distinct headline and description lines in non-brand campaigns",
+    "search_terms_report: 18 non-brand search terms",
     "campaign totals (visible share and segment conversion rates)",
-    "ad_group_ad: final URLs and ad groups (for the challenger payload)",
-    "serp_google_organic: 1 call (competitors, the firm's business panel and Google rating)",
-    "onpage_content_parsing: your top paid landing page and 3 competitor pages; your home page came back empty twice"
+    "serp_google_organic: 1 call (competitors)",
+    "onpage_content_parsing: your AC-repair page and 3 competitor pages; your home page came back empty twice"
   ],
   "not_connected": [
-    "Google Business Profile for this firm (customer voice comes from the testimonials on its own page)",
-    "Search Console for this firm (buyer words come from search terms only)"
+    "Google Business Profile for this company (customer voice comes from the testimonials on its own page)",
+    "Search Console for this company (buyer words come from search terms only)"
   ],
-  "paid_calls": "7 DataForSEO calls: 1 search + 6 page reads (2 were the empty home-page attempts)"
+  "data": {
+    "ad_lines": [
+      {
+        "line": "AC Repair in Riverton",
+        "slot": "headline",
+        "impressions": 14200,
+        "clicks": 774,
+        "conversions": 99
+      },
+      {
+        "line": "Same-Day AC Repair",
+        "slot": "headline",
+        "impressions": 11800,
+        "clicks": 595,
+        "conversions": 66
+      },
+      {
+        "line": "1,200+ Five-Star Reviews",
+        "slot": "headline",
+        "impressions": 9400,
+        "clicks": 590,
+        "conversions": 87
+      },
+      {
+        "line": "Rated 4.9 by Local Customers",
+        "slot": "headline",
+        "impressions": 6200,
+        "clicks": 365,
+        "conversions": 40
+      },
+      {
+        "line": "Available 24/7",
+        "slot": "headline",
+        "impressions": 6800,
+        "clicks": 293,
+        "conversions": 52
+      },
+      {
+        "line": "Emergency Plumber Near You",
+        "slot": "headline",
+        "impressions": 8900,
+        "clicks": 490,
+        "conversions": 64
+      },
+      {
+        "line": "Free Estimate on New Systems",
+        "slot": "headline",
+        "impressions": 3100,
+        "clicks": 152,
+        "conversions": 21
+      },
+      {
+        "line": "Upfront Flat-Rate Pricing",
+        "slot": "headline",
+        "impressions": 3000,
+        "clicks": 176,
+        "conversions": 25
+      },
+      {
+        "line": "90-Day Repair Guarantee",
+        "slot": "headline",
+        "impressions": 2500,
+        "clicks": 116,
+        "conversions": 18
+      },
+      {
+        "line": "Serving Riverton & Lakemoor",
+        "slot": "headline",
+        "impressions": 4100,
+        "clicks": 218,
+        "conversions": 21
+      },
+      {
+        "line": "Financing Available",
+        "slot": "headline",
+        "impressions": 2800,
+        "clicks": 145,
+        "conversions": 19
+      },
+      {
+        "line": "25 Years in Riverton",
+        "slot": "headline",
+        "impressions": 2600,
+        "clicks": 165,
+        "conversions": 28
+      },
+      {
+        "line": "Rated 4.9 stars on 1,200+ reviews. See why your neighbors call us first.",
+        "slot": "description",
+        "impressions": 8100,
+        "clicks": 571,
+        "conversions": 69
+      },
+      {
+        "line": "Same-day AC repair from licensed technicians. Upfront prices before any work starts.",
+        "slot": "description",
+        "impressions": 9800,
+        "clicks": 512,
+        "conversions": 67
+      },
+      {
+        "line": "Call or book online. Evening and weekend slots, no overtime charges, 90-day guarantee.",
+        "slot": "description",
+        "impressions": 6600,
+        "clicks": 325,
+        "conversions": 44
+      },
+      {
+        "line": "Our technicians give honest advice and never push a replacement you don't need.",
+        "slot": "description",
+        "impressions": 600,
+        "clicks": 23,
+        "conversions": 1
+      },
+      {
+        "line": "Free estimate on any new system, and financing on approved credit.",
+        "slot": "description",
+        "impressions": 3300,
+        "clicks": 166,
+        "conversions": 23
+      },
+      {
+        "line": "Licensed, insured technicians with 25 years of experience in local homes.",
+        "slot": "description",
+        "impressions": 4400,
+        "clicks": 209,
+        "conversions": 25
+      }
+    ],
+    "ad_baseline": {
+      "click_rate": 0.052,
+      "conversion_rate": 0.12
+    },
+    "search_terms": [
+      {
+        "term": "ac repair near me",
+        "impressions": 2600,
+        "clicks": 190,
+        "conversions": 24
+      },
+      {
+        "term": "ac repair",
+        "impressions": 2100,
+        "clicks": 120,
+        "conversions": 14
+      },
+      {
+        "term": "ac repair riverton",
+        "impressions": 1400,
+        "clicks": 110,
+        "conversions": 15
+      },
+      {
+        "term": "ac not cooling",
+        "impressions": 800,
+        "clicks": 55,
+        "conversions": 7
+      },
+      {
+        "term": "how much does ac repair cost",
+        "impressions": 260,
+        "clicks": 20,
+        "conversions": 3
+      },
+      {
+        "term": "ac repair cost",
+        "impressions": 210,
+        "clicks": 15,
+        "conversions": 2
+      },
+      {
+        "term": "emergency ac repair",
+        "impressions": 380,
+        "clicks": 30,
+        "conversions": 5
+      },
+      {
+        "term": "same day ac repair",
+        "impressions": 240,
+        "clicks": 18,
+        "conversions": 3
+      },
+      {
+        "term": "best ac repair riverton",
+        "impressions": 180,
+        "clicks": 12,
+        "conversions": 1
+      },
+      {
+        "term": "ac repair reviews",
+        "impressions": 90,
+        "clicks": 5,
+        "conversions": 0
+      },
+      {
+        "term": "is it worth repairing an old ac",
+        "impressions": 160,
+        "clicks": 11,
+        "conversions": 2
+      },
+      {
+        "term": "repair or replace ac unit",
+        "impressions": 140,
+        "clicks": 9,
+        "conversions": 1
+      },
+      {
+        "term": "should i replace my ac",
+        "impressions": 110,
+        "clicks": 7,
+        "conversions": 1
+      },
+      {
+        "term": "free ac estimate",
+        "impressions": 120,
+        "clicks": 6,
+        "conversions": 0
+      },
+      {
+        "term": "local ac repair company",
+        "impressions": 150,
+        "clicks": 10,
+        "conversions": 1
+      },
+      {
+        "term": "central air repair",
+        "impressions": 400,
+        "clicks": 22,
+        "conversions": 3
+      },
+      {
+        "term": "hvac repair near me",
+        "impressions": 700,
+        "clicks": 45,
+        "conversions": 5
+      },
+      {
+        "term": "air conditioner repair",
+        "impressions": 900,
+        "clicks": 50,
+        "conversions": 6
+      }
+    ],
+    "your_page_units": [
+      {
+        "text": "AC repair in Riverton, Lakemoor and the nearby towns, from licensed local technicians.",
+        "kind": "claim"
+      },
+      {
+        "text": "Rated 4.9 stars on 1,200+ reviews from homeowners across Riverton.",
+        "kind": "claim"
+      },
+      {
+        "text": "1,200+ five-star reviews",
+        "kind": "claim"
+      },
+      {
+        "text": "We tell you the price before any work starts, and the price we agree is the price you pay.",
+        "kind": "claim"
+      },
+      {
+        "text": "Every repair comes with a 90-day guarantee on parts and labour.",
+        "kind": "claim"
+      },
+      {
+        "text": "We repair before we replace. If a new system makes more sense, we explain why and give you a free second opinion.",
+        "kind": "claim"
+      },
+      {
+        "text": "Same-day appointments on most days, evenings and weekends included.",
+        "kind": "claim"
+      },
+      {
+        "text": "Available 24/7 for emergencies.",
+        "kind": "claim"
+      },
+      {
+        "text": "Licensed, insured technicians with 25 years of experience.",
+        "kind": "claim"
+      },
+      {
+        "text": "Financing available on new systems.",
+        "kind": "claim"
+      },
+      {
+        "text": "Free estimate on any new system.",
+        "kind": "claim"
+      },
+      {
+        "text": "No overtime charges, ever.",
+        "kind": "claim"
+      },
+      {
+        "text": "Book online in 60 seconds or call (555) 010-0199.",
+        "kind": "claim"
+      },
+      {
+        "text": "How an AC works: the compressor moves refrigerant between the coils.",
+        "kind": "general information, not a claim about the business"
+      },
+      {
+        "text": "What our customers say",
+        "kind": "review section heading or intro"
+      },
+      {
+        "text": "Book now",
+        "kind": "FAQ, form, badge or navigation"
+      },
+      {
+        "text": "Frequently asked questions",
+        "kind": "FAQ, form, badge or navigation"
+      },
+      {
+        "text": "Name, phone, address",
+        "kind": "FAQ, form, badge or navigation"
+      }
+    ],
+    "testimonials": [
+      "They fixed it the same day and the price was exactly what they quoted.",
+      "Honest advice: they repaired our old unit instead of selling us a new one.",
+      "On time, polite, and the price was agreed before they started.",
+      "Five stars. Fast and friendly.",
+      "They told us a repair would do for now and never pushed a replacement.",
+      "Great service, fair price."
+    ],
+    "competitor_pages": {
+      "Competitor A": [
+        "Riverton AC repair, 24/7 emergency service.",
+        "Free estimates on all new systems.",
+        "Serving Riverton since 2004.",
+        "The best technicians in the area."
+      ],
+      "Competitor B": [
+        "Same-day AC repair from a local technician.",
+        "Upfront, flat-rate prices.",
+        "Free estimate on replacements.",
+        "Financing available."
+      ],
+      "Competitor C": [
+        "Family owned for 30 years.",
+        "Fast, honest AC repair for local homes.",
+        "Call today for a free quote.",
+        "Rated 4.8 stars by local customers."
+      ]
+    },
+    "results_page": [
+      {
+        "result": "Competitor A",
+        "position": 1
+      },
+      {
+        "result": "A home-services matching service",
+        "position": 2
+      },
+      {
+        "result": "Competitor B",
+        "position": 3
+      },
+      {
+        "result": "Competitor C",
+        "position": 4
+      },
+      {
+        "result": "You",
+        "position": 6
+      }
+    ]
+  }
 }

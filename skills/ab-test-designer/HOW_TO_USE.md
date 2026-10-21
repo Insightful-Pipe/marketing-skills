@@ -12,7 +12,7 @@ Hey Claude, I just added the "ab-test-designer" skill. Two ads have been running
 ## Example requests
 
 **Who won?**
-Hey Claude, I just added the "ab-test-designer" skill. Read out the two ads in my Criminal Defense ad group for the last 90 days. Is the gap real?
+Hey Claude, I just added the "ab-test-designer" skill. Read out the two ads in my AC Repair ad group for the last 90 days. Is the gap real?
 
 **Google Ads experiment readout**
 Hey Claude, I just added the "ab-test-designer" skill. My Target CPA experiment ended last week. Read the results against the original campaign and tell me whether to apply it.

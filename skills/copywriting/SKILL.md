@@ -23,7 +23,7 @@ You need the InsightfulPipe MCP connected. **Google Ads** gives the buyers' sear
    - **The one action the reader should take:** call, book, buy, sign up, reply. Default: the account's main conversion.
    - **Who the reader is:** their role or situation, what pressures them, what they tried before, and what success looks like in the first week and after 90 days. Default: infer it from the E2 and E3 themes and say it's inferred.
    - **Proof you can back:** review counts and ratings, years, results, guarantees, certifications. The skill only writes claims you confirm are true today.
-   - **Voice and limits:** words the brand never uses, legal or industry rules (for example, no promised outcomes for a law firm or a clinic). If a brand voice guide exists, follow it.
+   - **Voice and limits:** words the brand never uses, legal or industry rules (for example, no promised outcomes for a clinic or a financial adviser). If a brand voice guide exists, follow it.
    - **Brand terms and competitor names,** so they are kept out of the buyers'-words themes. Default: words from the account name, any campaign with "brand" in its name, and business names on the results page (E6).
 
 Use the last 30 complete days. If the page's campaigns had fewer than 1,000 search-term impressions, widen to 90 days and say so. State the dates and the account at the top of the report.
@@ -60,13 +60,13 @@ Run it once per campaign from E1. Add rows up by term. Then:
 |---|---|---|
 | Place | near me, local, the user's state, county, city or region names, a street address | say where you serve, early |
 | Cost | cost, price, how much, cheap, cheapest, affordable, fee, a price figure ("$99") | answer price or how payment works; never dodge it |
-| Situation | the specific problem named (for example speeding, reckless driving, a commercial licence; or a product's use case) | name the situations in headings, in the buyers' words |
+| Situation | the specific problem named (for example an AC that won't cool, a burst pipe, no hot water; or a product's use case) | name the situations in headings, in the buyers' words |
 | Question | starts with how, what, do, does, can, should, is, where, why, or ends in "?" | answer it on the page, near the top or in the FAQ |
 | Choice | best, top, rated, reviews, good, vs | show proof that helps them pick |
 | Speed | today, now, same day, fast, emergency, 24 hour | say how fast you respond, only if true |
-| Competitor name | business names other than yours, including other professionals' names, brands run together ("acmelaw" for Acme Law) or shortened to initials | keep out of the copy; note them as comparison shoppers |
+| Competitor name | business names other than yours, including other professionals' names, brands run together ("acmeplumbing" for Acme Plumbing) or shortened to initials | keep out of the copy; note them as comparison shoppers |
 | Other language | terms in another language | note the language; a translated page or line may be worth a test |
-| Head term only | none of the above (just the service, like "traffic lawyer") | the headline must name the service plainly |
+| Head term only | none of the above (just the service, like "ac repair") | the headline must name the service plainly |
 
 3. Rank themes by impressions, and report clicks and conversions next to them. **Words that convert:** count the terms with at least one conversion and list the top 12 by conversions. These are the strongest candidates for headline words.
 
@@ -104,11 +104,11 @@ For an email, an ad, a tagline or a draft, there's nothing to read: the user's t
 ```json
 {"platform": "dataforseo", "workspace_id": "<WORKSPACE_ID>", "brand_id": "<BRAND_ID>", "action": "serp_google_organic", "keyword": "<KEYWORD>", "location_code": 2840, "language_code": "en", "depth": 10}
 ```
-**Which term.** Use the converting term from E2 (or the query with the most clicks in E3) that matches the page's URL slug or title, because that's the results page the reader sees just before landing on this page. Leave out terms with "near me" or a competitor's name: near-me results depend on where the searcher stands, and this call runs at country level. Results pages swing with small changes in wording. If the first one shows **fewer than 3 competing sellers** (directories, matching services, government sites and your own other pages crowd it out), try one close variant (lawyer or attorney, a different word order) and use whichever page shows more sellers. Stop at two calls.
+**Which term.** Use the converting term from E2 (or the query with the most clicks in E3) that matches the page's URL slug or title, because that's the results page the reader sees just before landing on this page. Leave out terms with "near me" or a competitor's name: near-me results depend on where the searcher stands, and this call runs at country level. Results pages swing with small changes in wording. If the first one shows **fewer than 3 competing sellers** (directories, matching services, government sites and your own other pages crowd it out), try one close variant (plumber or plumbing, a different word order) and use whichever page shows more sellers. Stop at two calls.
 
 Results come back in `data` as a list: `organic` items have a `title`, `description` and `url`; `local_pack` items show the listing; `people_also_ask` holds the questions; `related_searches` holds other searches. If this page's URL is among the organic results, its title and description are the copy Google is showing for it right now; your other pages don't count.
 
-Tally which claims the competing sellers make in their organic titles and descriptions. Leave out directories, lawyer-matching or comparison services, government sites and your own pages, and list them separately:
+Tally which claims the competing sellers make in their organic titles and descriptions. Leave out directories, matching or comparison services, government sites and your own pages, and list them separately:
 
 | Claim | Cue words |
 |---|---|
@@ -117,7 +117,7 @@ Tally which claims the competing sellers make in their organic titles and descri
 | Free first step | free, no cost, no obligation |
 | Aggressive or fighting | aggressive, fight, beat, defend |
 | Proof | reviews, rated, stars, testimonial, "clients say" |
-| Outcome | dismissed, reduced, won, results, saved |
+| Outcome | fixed, solved, results, saved, cut |
 | Speed | immediate, 24, same day, today, fast |
 | Place | city, state or region names, serving |
 | Price | a price, a fee, "how much", quote |
@@ -177,13 +177,13 @@ Offer names in four styles: **descriptive** (says what it does), **evocative** (
 A hook earns the next line or the next 3 seconds. Write 10, at least one of each: a bold specific claim, a question that names the viewer's situation, a short story opening ("Last month a client..."), a surprising number, a myth to correct, and "what nobody tells you about...". Take the words from the strongest themes in E2 and E3. No bait the content doesn't pay off.
 
 ### Ads
-Search ads: headlines up to 30 characters, descriptions up to 90, 3 to 15 headlines and 2 to 4 descriptions. Include the head term in at least 2 headlines, vary the length and angle, and pin only what must sit in a slot (a legal line, for example). Keep the ideas that won in E4 and replace the weak lines with new angles. Social ads: a first line that stops the scroll, one line of the problem, what you offer, a quick proof point, the next step.
+Search ads: headlines up to 30 characters, descriptions up to 90, 3 to 15 headlines and 2 to 4 descriptions. Include the head term in at least 2 headlines, vary the length and angle, and pin only what must sit in a slot (a required disclaimer, for example). Keep the ideas that won in E4 and replace the weak lines with new angles. Social ads: a first line that stops the scroll, one line of the problem, what you offer, a quick proof point, the next step.
 
 ### Emails
 Subject lines: 5 options mixing curiosity, specificity, a direct benefit and a plain personal note. The first sentence must deliver on the subject. One email, one ask.
 
 ### Calls to action
-Name what the reader gets, not what they do: "Get my ticket reviewed" beats "Submit". Ownership words ("my") and a time or effort cue ("2-minute form") help. Put the reassurance next to the button (what happens next, cost, privacy) and the proof just under it. Start with the smallest step that is still a real step.
+Name what the reader gets, not what they do: "Get my free estimate" beats "Submit". Ownership words ("my") and a time or effort cue ("2-minute form") help. Put the reassurance next to the button (what happens next, cost, privacy) and the proof just under it. Start with the smallest step that is still a real step.
 
 ### Objections
 Answer them before they're raised. Useful moves: name the doubt and answer it ("You might be wondering whether..."), say who it isn't for, show what makes you different from what they tried before, and reduce the risk with what you really offer (a no-cost first call, a guarantee, an easy exit). For cost, show what the problem costs if left alone and how payment works.

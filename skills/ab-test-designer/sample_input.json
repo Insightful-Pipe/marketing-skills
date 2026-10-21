@@ -1,29 +1,29 @@
 {
-  "request": "Two ads have been running side by side in our Criminal Defense ad group. Over the last 90 days, did one of them really win? Then design the next test for that ad group.",
+  "request": "Two ads have been running side by side in our AC Repair ad group. Over the last 90 days, did one of them really win? Then design the next test for that ad group.",
   "mode": [
     "read out",
     "design"
   ],
   "account": {
     "platform": "google-ads",
-    "account": "A US criminal and traffic defense law firm",
+    "account": "Example Home Services, a heating, cooling and plumbing company (invented example)",
     "currency": "USD"
   },
   "ad_group": {
-    "campaign": "Criminal Defense",
-    "ad_group": "Criminal Defense",
+    "campaign": "AC Repair",
+    "ad_group": "AC Repair",
     "bidding": "MAXIMIZE_CONVERSIONS",
     "ad_rotation": "not set (Google default: optimise)"
   },
   "date_ranges": {
     "readout": {
-      "start": "2026-07-08",
-      "end": "2026-10-05",
+      "start": "2026-07-22",
+      "end": "2026-10-19",
       "days": 90
     },
     "design_volume": {
-      "start": "2026-09-08",
-      "end": "2026-10-05",
+      "start": "2026-09-22",
+      "end": "2026-10-19",
       "days": 28
     }
   },
@@ -41,7 +41,7 @@
     },
     {
       "call": "gaql FROM ad_group (rotation, bidding)",
-      "rows": 14,
+      "rows": 1,
       "used_for": "controlled vs observational"
     },
     {
@@ -50,9 +50,9 @@
       "used_for": "what differs between the ads"
     },
     {
-      "call": "gaql FROM ad_group_ad by date",
-      "rows": 180,
-      "used_for": "same dates, week-by-week"
+      "call": "gaql FROM ad_group_ad by date and device",
+      "rows": 540,
+      "used_for": "same dates, totals, segments, week-by-week, last-28-day volume (summed by day and by device below)"
     },
     {
       "call": "gaql FROM conversion_action",
@@ -60,20 +60,1744 @@
       "used_for": "conversion counting"
     },
     {
-      "call": "gaql FROM ad_group_ad by device",
-      "rows": 6,
-      "used_for": "totals and segments"
-    },
-    {
       "call": "gaql FROM search_term_view",
-      "rows": 1379,
+      "rows": 406,
       "used_for": "message gap for the next hypothesis"
-    },
-    {
-      "call": "gaql FROM ad_group (last 28 days)",
-      "rows": 14,
-      "used_for": "daily volume for sizing"
     }
   ],
-  "note": "Real run on 2026-10-06 on a client Google Ads account through the InsightfulPipe CLI, anonymised: firm name, state, website, ids and the numbers in ad claims are replaced ([Firm], [State], [N]); campaign names are generic; money is rounded to the nearest $10, cost per click to the nearest 10 cents and cost per conversion to whole dollars. Impressions, clicks and conversions are as returned."
+  "data": {
+    "ads": {
+      "A": {
+        "ad_id": "700000000001",
+        "ad_strength": "GOOD",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path1": "ac-repair",
+        "path2": "same-day",
+        "headlines": [
+          {
+            "text": "AC Repair in Riverton",
+            "pinned": null
+          },
+          {
+            "text": "Same-Day AC Repair",
+            "pinned": null
+          },
+          {
+            "text": "1,200+ Five-Star Reviews",
+            "pinned": null
+          },
+          {
+            "text": "Upfront Flat-Rate Pricing",
+            "pinned": null
+          },
+          {
+            "text": "Licensed HVAC Technicians",
+            "pinned": null
+          },
+          {
+            "text": "Open 7 Days a Week",
+            "pinned": null
+          },
+          {
+            "text": "Book Online in 60 Seconds",
+            "pinned": null
+          },
+          {
+            "text": "No Overtime Charges",
+            "pinned": null
+          },
+          {
+            "text": "AC Not Cooling? Call Today",
+            "pinned": null
+          },
+          {
+            "text": "Duct Cleaning Add-On $99",
+            "pinned": null
+          },
+          {
+            "text": "Breathe Cleaner Indoor Air",
+            "pinned": null
+          },
+          {
+            "text": "Serving Riverton & Lakemoor",
+            "pinned": null
+          },
+          {
+            "text": "90-Day Repair Guarantee",
+            "pinned": null
+          }
+        ],
+        "descriptions": [
+          "Dusty vents? Add whole-home duct cleaning to any visit and breathe cleaner air all year.",
+          "Allergy season? Our indoor air quality check finds dust, mold and worn filters fast.",
+          "Same-day AC repair from licensed technicians. Upfront prices before any work starts.",
+          "Call or book online. Evening and weekend slots, no overtime charges, 90-day guarantee."
+        ]
+      },
+      "B": {
+        "ad_id": "700000000002",
+        "ad_strength": "AVERAGE",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path1": "ac-repair",
+        "path2": "same-day",
+        "headlines": [
+          {
+            "text": "AC Repair in Riverton",
+            "pinned": "HEADLINE_1"
+          },
+          {
+            "text": "Same-Day AC Repair",
+            "pinned": null
+          },
+          {
+            "text": "Rated 4.9 by 1,200 Customers",
+            "pinned": null
+          },
+          {
+            "text": "Upfront Flat-Rate Pricing",
+            "pinned": null
+          },
+          {
+            "text": "Licensed HVAC Technicians",
+            "pinned": null
+          },
+          {
+            "text": "Open 7 Days a Week",
+            "pinned": null
+          },
+          {
+            "text": "Book Online in 60 Seconds",
+            "pinned": null
+          },
+          {
+            "text": "No Overtime Charges",
+            "pinned": null
+          },
+          {
+            "text": "AC Not Cooling? Call Today",
+            "pinned": null
+          },
+          {
+            "text": "Duct Cleaning Add-On $99",
+            "pinned": null
+          },
+          {
+            "text": "Breathe Cleaner Indoor Air",
+            "pinned": null
+          },
+          {
+            "text": "Serving Riverton & Lakemoor",
+            "pinned": null
+          },
+          {
+            "text": "90-Day Repair Guarantee",
+            "pinned": null
+          }
+        ],
+        "descriptions": [
+          "Dusty vents? Add whole-home duct cleaning to any visit and breathe cleaner air all year.",
+          "Allergy season? Our indoor air quality check finds dust, mold and worn filters fast.",
+          "Same-day AC repair from licensed technicians. Upfront prices before any work starts.",
+          "Call or book online. Evening and weekend slots, no overtime charges, 90-day guarantee."
+        ]
+      }
+    },
+    "conversion_actions": [
+      {
+        "name": "Calls from ads",
+        "counting_type": "ONE_PER_CLICK"
+      },
+      {
+        "name": "Website phone calls",
+        "counting_type": "ONE_PER_CLICK"
+      },
+      {
+        "name": "Booking form submit",
+        "counting_type": "ONE_PER_CLICK"
+      },
+      {
+        "name": "Click to call (mobile)",
+        "counting_type": "MANY_PER_CLICK"
+      },
+      {
+        "name": "Chat lead",
+        "counting_type": "ONE_PER_CLICK"
+      }
+    ],
+    "daily_by_ad": {
+      "columns": [
+        "date",
+        "ad",
+        "impressions",
+        "clicks",
+        "conversions",
+        "cost"
+      ],
+      "rows": [
+        [
+          "2026-07-22",
+          "A",
+          159,
+          10,
+          3,
+          62.83
+        ],
+        [
+          "2026-07-22",
+          "B",
+          132,
+          7,
+          2,
+          36.19
+        ],
+        [
+          "2026-07-23",
+          "A",
+          175,
+          8,
+          2,
+          44.08
+        ],
+        [
+          "2026-07-23",
+          "B",
+          138,
+          4,
+          1,
+          17.88
+        ],
+        [
+          "2026-07-24",
+          "A",
+          135,
+          2,
+          1,
+          11.56
+        ],
+        [
+          "2026-07-24",
+          "B",
+          159,
+          6,
+          0,
+          31.46
+        ],
+        [
+          "2026-07-25",
+          "A",
+          171,
+          6,
+          2,
+          35.88
+        ],
+        [
+          "2026-07-25",
+          "B",
+          165,
+          6,
+          1,
+          31.53
+        ],
+        [
+          "2026-07-26",
+          "A",
+          136,
+          6,
+          2,
+          37.13
+        ],
+        [
+          "2026-07-26",
+          "B",
+          134,
+          5,
+          1,
+          29.22
+        ],
+        [
+          "2026-07-27",
+          "A",
+          177,
+          8,
+          3,
+          46.57
+        ],
+        [
+          "2026-07-27",
+          "B",
+          127,
+          4,
+          1,
+          21.28
+        ],
+        [
+          "2026-07-28",
+          "A",
+          149,
+          7,
+          1,
+          41.77
+        ],
+        [
+          "2026-07-28",
+          "B",
+          118,
+          4,
+          1,
+          19.13
+        ],
+        [
+          "2026-07-29",
+          "A",
+          145,
+          10,
+          1,
+          52.41
+        ],
+        [
+          "2026-07-29",
+          "B",
+          131,
+          5,
+          2,
+          22.7
+        ],
+        [
+          "2026-07-30",
+          "A",
+          166,
+          7,
+          1,
+          37.8
+        ],
+        [
+          "2026-07-30",
+          "B",
+          114,
+          5,
+          1,
+          26.96
+        ],
+        [
+          "2026-07-31",
+          "A",
+          169,
+          4,
+          2,
+          20.74
+        ],
+        [
+          "2026-07-31",
+          "B",
+          132,
+          8,
+          1,
+          39.07
+        ],
+        [
+          "2026-08-01",
+          "A",
+          147,
+          9,
+          1,
+          55.75
+        ],
+        [
+          "2026-08-01",
+          "B",
+          113,
+          3,
+          1,
+          15.72
+        ],
+        [
+          "2026-08-02",
+          "A",
+          140,
+          8,
+          3,
+          48.72
+        ],
+        [
+          "2026-08-02",
+          "B",
+          109,
+          7,
+          0,
+          34.42
+        ],
+        [
+          "2026-08-03",
+          "A",
+          142,
+          16,
+          4,
+          98.47
+        ],
+        [
+          "2026-08-03",
+          "B",
+          97,
+          3,
+          1,
+          14.32
+        ],
+        [
+          "2026-08-04",
+          "A",
+          145,
+          7,
+          1,
+          39.76
+        ],
+        [
+          "2026-08-04",
+          "B",
+          143,
+          3,
+          1,
+          14.62
+        ],
+        [
+          "2026-08-05",
+          "A",
+          200,
+          12,
+          5,
+          76.51
+        ],
+        [
+          "2026-08-05",
+          "B",
+          139,
+          11,
+          1,
+          61.02
+        ],
+        [
+          "2026-08-06",
+          "A",
+          185,
+          6,
+          1,
+          31.79
+        ],
+        [
+          "2026-08-06",
+          "B",
+          116,
+          2,
+          0,
+          8.98
+        ],
+        [
+          "2026-08-07",
+          "A",
+          144,
+          9,
+          5,
+          52.44
+        ],
+        [
+          "2026-08-07",
+          "B",
+          134,
+          4,
+          2,
+          22.37
+        ],
+        [
+          "2026-08-08",
+          "A",
+          155,
+          8,
+          0,
+          44.42
+        ],
+        [
+          "2026-08-08",
+          "B",
+          126,
+          8,
+          0,
+          39.27
+        ],
+        [
+          "2026-08-09",
+          "A",
+          173,
+          7,
+          2,
+          44.27
+        ],
+        [
+          "2026-08-09",
+          "B",
+          129,
+          11,
+          5,
+          54.33
+        ],
+        [
+          "2026-08-10",
+          "A",
+          116,
+          3,
+          1,
+          18.76
+        ],
+        [
+          "2026-08-10",
+          "B",
+          133,
+          9,
+          3,
+          45.87
+        ],
+        [
+          "2026-08-11",
+          "A",
+          188,
+          9,
+          2,
+          48.93
+        ],
+        [
+          "2026-08-11",
+          "B",
+          138,
+          4,
+          1,
+          18.83
+        ],
+        [
+          "2026-08-12",
+          "A",
+          164,
+          4,
+          2,
+          22.67
+        ],
+        [
+          "2026-08-12",
+          "B",
+          139,
+          4,
+          1,
+          18.66
+        ],
+        [
+          "2026-08-13",
+          "A",
+          179,
+          7,
+          3,
+          44.64
+        ],
+        [
+          "2026-08-13",
+          "B",
+          161,
+          11,
+          2,
+          59.52
+        ],
+        [
+          "2026-08-14",
+          "A",
+          157,
+          9,
+          5,
+          59.21
+        ],
+        [
+          "2026-08-14",
+          "B",
+          133,
+          5,
+          2,
+          24.53
+        ],
+        [
+          "2026-08-15",
+          "A",
+          163,
+          10,
+          2,
+          57.18
+        ],
+        [
+          "2026-08-15",
+          "B",
+          129,
+          8,
+          0,
+          41.7
+        ],
+        [
+          "2026-08-16",
+          "A",
+          146,
+          4,
+          0,
+          25.94
+        ],
+        [
+          "2026-08-16",
+          "B",
+          135,
+          6,
+          1,
+          30.97
+        ],
+        [
+          "2026-08-17",
+          "A",
+          138,
+          9,
+          2,
+          47.58
+        ],
+        [
+          "2026-08-17",
+          "B",
+          138,
+          7,
+          3,
+          34.0
+        ],
+        [
+          "2026-08-18",
+          "A",
+          134,
+          5,
+          3,
+          32.42
+        ],
+        [
+          "2026-08-18",
+          "B",
+          140,
+          7,
+          4,
+          41.46
+        ],
+        [
+          "2026-08-19",
+          "A",
+          155,
+          9,
+          2,
+          48.11
+        ],
+        [
+          "2026-08-19",
+          "B",
+          108,
+          4,
+          2,
+          21.18
+        ],
+        [
+          "2026-08-20",
+          "A",
+          177,
+          5,
+          1,
+          29.92
+        ],
+        [
+          "2026-08-20",
+          "B",
+          117,
+          2,
+          1,
+          9.75
+        ],
+        [
+          "2026-08-21",
+          "A",
+          132,
+          9,
+          1,
+          49.78
+        ],
+        [
+          "2026-08-21",
+          "B",
+          120,
+          5,
+          0,
+          29.34
+        ],
+        [
+          "2026-08-22",
+          "A",
+          158,
+          8,
+          1,
+          47.29
+        ],
+        [
+          "2026-08-22",
+          "B",
+          109,
+          7,
+          2,
+          31.93
+        ],
+        [
+          "2026-08-23",
+          "A",
+          163,
+          3,
+          0,
+          19.29
+        ],
+        [
+          "2026-08-23",
+          "B",
+          123,
+          8,
+          1,
+          45.28
+        ],
+        [
+          "2026-08-24",
+          "A",
+          155,
+          5,
+          4,
+          34.2
+        ],
+        [
+          "2026-08-24",
+          "B",
+          126,
+          3,
+          1,
+          17.35
+        ],
+        [
+          "2026-08-25",
+          "A",
+          215,
+          7,
+          3,
+          37.31
+        ],
+        [
+          "2026-08-25",
+          "B",
+          124,
+          7,
+          2,
+          37.41
+        ],
+        [
+          "2026-08-26",
+          "A",
+          120,
+          6,
+          2,
+          32.58
+        ],
+        [
+          "2026-08-26",
+          "B",
+          137,
+          5,
+          0,
+          27.63
+        ],
+        [
+          "2026-08-27",
+          "A",
+          180,
+          8,
+          1,
+          46.75
+        ],
+        [
+          "2026-08-27",
+          "B",
+          108,
+          2,
+          2,
+          10.53
+        ],
+        [
+          "2026-08-28",
+          "A",
+          143,
+          8,
+          0,
+          51.46
+        ],
+        [
+          "2026-08-28",
+          "B",
+          150,
+          5,
+          2,
+          26.53
+        ],
+        [
+          "2026-08-29",
+          "A",
+          207,
+          10,
+          4,
+          54.3
+        ],
+        [
+          "2026-08-29",
+          "B",
+          142,
+          5,
+          1,
+          28.22
+        ],
+        [
+          "2026-08-30",
+          "A",
+          169,
+          7,
+          0,
+          42.96
+        ],
+        [
+          "2026-08-30",
+          "B",
+          109,
+          5,
+          0,
+          22.17
+        ],
+        [
+          "2026-08-31",
+          "A",
+          159,
+          10,
+          3,
+          59.01
+        ],
+        [
+          "2026-08-31",
+          "B",
+          150,
+          10,
+          3,
+          56.48
+        ],
+        [
+          "2026-09-01",
+          "A",
+          144,
+          7,
+          1,
+          43.21
+        ],
+        [
+          "2026-09-01",
+          "B",
+          163,
+          6,
+          0,
+          32.28
+        ],
+        [
+          "2026-09-02",
+          "A",
+          184,
+          7,
+          2,
+          41.07
+        ],
+        [
+          "2026-09-02",
+          "B",
+          123,
+          5,
+          3,
+          22.55
+        ],
+        [
+          "2026-09-03",
+          "A",
+          155,
+          10,
+          2,
+          65.05
+        ],
+        [
+          "2026-09-03",
+          "B",
+          119,
+          4,
+          2,
+          21.04
+        ],
+        [
+          "2026-09-04",
+          "A",
+          119,
+          5,
+          2,
+          26.32
+        ],
+        [
+          "2026-09-04",
+          "B",
+          141,
+          6,
+          1,
+          30.95
+        ],
+        [
+          "2026-09-05",
+          "A",
+          107,
+          6,
+          1,
+          40.72
+        ],
+        [
+          "2026-09-05",
+          "B",
+          98,
+          7,
+          2,
+          40.29
+        ],
+        [
+          "2026-09-06",
+          "A",
+          128,
+          6,
+          1,
+          32.66
+        ],
+        [
+          "2026-09-06",
+          "B",
+          116,
+          5,
+          1,
+          26.36
+        ],
+        [
+          "2026-09-07",
+          "A",
+          135,
+          7,
+          0,
+          44.89
+        ],
+        [
+          "2026-09-07",
+          "B",
+          106,
+          4,
+          0,
+          20.26
+        ],
+        [
+          "2026-09-08",
+          "A",
+          130,
+          3,
+          3,
+          16.95
+        ],
+        [
+          "2026-09-08",
+          "B",
+          130,
+          3,
+          1,
+          15.03
+        ],
+        [
+          "2026-09-09",
+          "A",
+          167,
+          10,
+          2,
+          59.61
+        ],
+        [
+          "2026-09-09",
+          "B",
+          115,
+          3,
+          0,
+          15.43
+        ],
+        [
+          "2026-09-10",
+          "A",
+          134,
+          8,
+          0,
+          42.62
+        ],
+        [
+          "2026-09-10",
+          "B",
+          109,
+          6,
+          3,
+          33.87
+        ],
+        [
+          "2026-09-11",
+          "A",
+          145,
+          4,
+          0,
+          26.63
+        ],
+        [
+          "2026-09-11",
+          "B",
+          120,
+          7,
+          1,
+          34.51
+        ],
+        [
+          "2026-09-12",
+          "A",
+          148,
+          8,
+          1,
+          45.49
+        ],
+        [
+          "2026-09-12",
+          "B",
+          123,
+          4,
+          1,
+          22.29
+        ],
+        [
+          "2026-09-13",
+          "A",
+          147,
+          9,
+          3,
+          57.83
+        ],
+        [
+          "2026-09-13",
+          "B",
+          106,
+          2,
+          0,
+          9.85
+        ],
+        [
+          "2026-09-14",
+          "A",
+          119,
+          8,
+          0,
+          52.39
+        ],
+        [
+          "2026-09-14",
+          "B",
+          104,
+          6,
+          0,
+          32.31
+        ],
+        [
+          "2026-09-15",
+          "A",
+          140,
+          6,
+          2,
+          37.0
+        ],
+        [
+          "2026-09-15",
+          "B",
+          114,
+          4,
+          3,
+          18.49
+        ],
+        [
+          "2026-09-16",
+          "A",
+          132,
+          9,
+          3,
+          50.63
+        ],
+        [
+          "2026-09-16",
+          "B",
+          77,
+          2,
+          0,
+          11.7
+        ],
+        [
+          "2026-09-17",
+          "A",
+          104,
+          4,
+          1,
+          25.73
+        ],
+        [
+          "2026-09-17",
+          "B",
+          107,
+          6,
+          0,
+          29.24
+        ],
+        [
+          "2026-09-18",
+          "A",
+          160,
+          5,
+          3,
+          33.44
+        ],
+        [
+          "2026-09-18",
+          "B",
+          141,
+          10,
+          0,
+          45.1
+        ],
+        [
+          "2026-09-19",
+          "A",
+          132,
+          6,
+          2,
+          32.66
+        ],
+        [
+          "2026-09-19",
+          "B",
+          117,
+          4,
+          1,
+          19.01
+        ],
+        [
+          "2026-09-20",
+          "A",
+          129,
+          11,
+          3,
+          61.76
+        ],
+        [
+          "2026-09-20",
+          "B",
+          111,
+          3,
+          1,
+          13.51
+        ],
+        [
+          "2026-09-21",
+          "A",
+          165,
+          7,
+          1,
+          43.28
+        ],
+        [
+          "2026-09-21",
+          "B",
+          96,
+          1,
+          0,
+          4.63
+        ],
+        [
+          "2026-09-22",
+          "A",
+          143,
+          7,
+          3,
+          40.71
+        ],
+        [
+          "2026-09-22",
+          "B",
+          115,
+          5,
+          1,
+          25.23
+        ],
+        [
+          "2026-09-23",
+          "A",
+          155,
+          5,
+          1,
+          28.23
+        ],
+        [
+          "2026-09-23",
+          "B",
+          106,
+          3,
+          1,
+          13.26
+        ],
+        [
+          "2026-09-24",
+          "A",
+          136,
+          8,
+          3,
+          49.96
+        ],
+        [
+          "2026-09-24",
+          "B",
+          95,
+          7,
+          2,
+          36.24
+        ],
+        [
+          "2026-09-25",
+          "A",
+          131,
+          3,
+          0,
+          18.18
+        ],
+        [
+          "2026-09-25",
+          "B",
+          93,
+          3,
+          1,
+          15.46
+        ],
+        [
+          "2026-09-26",
+          "A",
+          101,
+          3,
+          1,
+          19.27
+        ],
+        [
+          "2026-09-26",
+          "B",
+          113,
+          8,
+          2,
+          38.38
+        ],
+        [
+          "2026-09-27",
+          "A",
+          181,
+          9,
+          4,
+          55.26
+        ],
+        [
+          "2026-09-27",
+          "B",
+          122,
+          3,
+          1,
+          14.52
+        ],
+        [
+          "2026-09-28",
+          "A",
+          137,
+          5,
+          2,
+          31.49
+        ],
+        [
+          "2026-09-28",
+          "B",
+          99,
+          7,
+          2,
+          31.86
+        ],
+        [
+          "2026-09-29",
+          "A",
+          170,
+          13,
+          3,
+          84.48
+        ],
+        [
+          "2026-09-29",
+          "B",
+          91,
+          1,
+          0,
+          5.78
+        ],
+        [
+          "2026-09-30",
+          "A",
+          114,
+          6,
+          2,
+          33.01
+        ],
+        [
+          "2026-09-30",
+          "B",
+          89,
+          7,
+          1,
+          31.54
+        ],
+        [
+          "2026-10-01",
+          "A",
+          161,
+          5,
+          1,
+          31.85
+        ],
+        [
+          "2026-10-01",
+          "B",
+          145,
+          3,
+          1,
+          17.79
+        ],
+        [
+          "2026-10-02",
+          "A",
+          107,
+          2,
+          1,
+          12.75
+        ],
+        [
+          "2026-10-02",
+          "B",
+          106,
+          7,
+          2,
+          41.14
+        ],
+        [
+          "2026-10-03",
+          "A",
+          156,
+          11,
+          6,
+          71.73
+        ],
+        [
+          "2026-10-03",
+          "B",
+          108,
+          3,
+          0,
+          15.87
+        ],
+        [
+          "2026-10-04",
+          "A",
+          107,
+          3,
+          2,
+          16.12
+        ],
+        [
+          "2026-10-04",
+          "B",
+          108,
+          3,
+          0,
+          14.89
+        ],
+        [
+          "2026-10-05",
+          "A",
+          144,
+          10,
+          2,
+          60.1
+        ],
+        [
+          "2026-10-05",
+          "B",
+          104,
+          9,
+          3,
+          43.63
+        ],
+        [
+          "2026-10-06",
+          "A",
+          134,
+          3,
+          1,
+          19.08
+        ],
+        [
+          "2026-10-06",
+          "B",
+          90,
+          3,
+          1,
+          17.69
+        ],
+        [
+          "2026-10-07",
+          "A",
+          140,
+          5,
+          0,
+          32.2
+        ],
+        [
+          "2026-10-07",
+          "B",
+          111,
+          6,
+          1,
+          29.7
+        ],
+        [
+          "2026-10-08",
+          "A",
+          125,
+          7,
+          1,
+          41.13
+        ],
+        [
+          "2026-10-08",
+          "B",
+          107,
+          3,
+          2,
+          15.32
+        ],
+        [
+          "2026-10-09",
+          "A",
+          160,
+          13,
+          2,
+          67.73
+        ],
+        [
+          "2026-10-09",
+          "B",
+          84,
+          5,
+          2,
+          26.34
+        ],
+        [
+          "2026-10-10",
+          "A",
+          125,
+          13,
+          5,
+          77.34
+        ],
+        [
+          "2026-10-10",
+          "B",
+          86,
+          2,
+          0,
+          11.65
+        ],
+        [
+          "2026-10-11",
+          "A",
+          162,
+          11,
+          1,
+          72.82
+        ],
+        [
+          "2026-10-11",
+          "B",
+          102,
+          1,
+          0,
+          4.78
+        ],
+        [
+          "2026-10-12",
+          "A",
+          139,
+          6,
+          1,
+          40.84
+        ],
+        [
+          "2026-10-12",
+          "B",
+          109,
+          3,
+          0,
+          15.19
+        ],
+        [
+          "2026-10-13",
+          "A",
+          123,
+          7,
+          2,
+          40.87
+        ],
+        [
+          "2026-10-13",
+          "B",
+          91,
+          4,
+          2,
+          20.85
+        ],
+        [
+          "2026-10-14",
+          "A",
+          103,
+          4,
+          1,
+          27.11
+        ],
+        [
+          "2026-10-14",
+          "B",
+          90,
+          3,
+          1,
+          17.17
+        ],
+        [
+          "2026-10-15",
+          "A",
+          124,
+          6,
+          1,
+          32.88
+        ],
+        [
+          "2026-10-15",
+          "B",
+          120,
+          4,
+          1,
+          20.22
+        ],
+        [
+          "2026-10-16",
+          "A",
+          154,
+          7,
+          0,
+          44.13
+        ],
+        [
+          "2026-10-16",
+          "B",
+          73,
+          1,
+          0,
+          5.64
+        ],
+        [
+          "2026-10-17",
+          "A",
+          129,
+          6,
+          1,
+          33.21
+        ],
+        [
+          "2026-10-17",
+          "B",
+          141,
+          9,
+          1,
+          53.13
+        ],
+        [
+          "2026-10-18",
+          "A",
+          137,
+          9,
+          1,
+          56.83
+        ],
+        [
+          "2026-10-18",
+          "B",
+          102,
+          5,
+          0,
+          29.03
+        ],
+        [
+          "2026-10-19",
+          "A",
+          139,
+          8,
+          4,
+          48.81
+        ],
+        [
+          "2026-10-19",
+          "B",
+          125,
+          4,
+          1,
+          21.5
+        ]
+      ]
+    },
+    "totals_by_device": {
+      "columns": [
+        "device",
+        "ad",
+        "impressions",
+        "clicks",
+        "conversions",
+        "cost"
+      ],
+      "rows": [
+        [
+          "mobile",
+          "A",
+          12097,
+          599,
+          156,
+          3578.54
+        ],
+        [
+          "mobile",
+          "B",
+          9702,
+          427,
+          98,
+          2213.07
+        ],
+        [
+          "desktop",
+          "A",
+          927,
+          34,
+          8,
+          203.51
+        ],
+        [
+          "desktop",
+          "B",
+          765,
+          20,
+          4,
+          100.27
+        ],
+        [
+          "tablet",
+          "A",
+          268,
+          13,
+          3,
+          79.2
+        ],
+        [
+          "tablet",
+          "B",
+          219,
+          8,
+          3,
+          38.97
+        ]
+      ]
+    },
+    "search_terms_visible": {
+      "terms": 406,
+      "impressions": 6159,
+      "clicks": 264,
+      "about_duct_cleaning_or_indoor_air": {
+        "terms": 10,
+        "impressions": 60,
+        "clicks": 0
+      },
+      "top_terms_by_clicks": [
+        {
+          "term": "central air repair 8",
+          "impressions": 20,
+          "clicks": 5
+        },
+        {
+          "term": "ac blowing warm air 1",
+          "impressions": 6,
+          "clicks": 4
+        },
+        {
+          "term": "hvac repair near me 20",
+          "impressions": 4,
+          "clicks": 3
+        },
+        {
+          "term": "ac repair lakemoor",
+          "impressions": 7,
+          "clicks": 3
+        },
+        {
+          "term": "central air repair",
+          "impressions": 4,
+          "clicks": 3
+        },
+        {
+          "term": "central air repair 4",
+          "impressions": 4,
+          "clicks": 3
+        },
+        {
+          "term": "ac compressor repair",
+          "impressions": 18,
+          "clicks": 3
+        },
+        {
+          "term": "ac compressor repair 17",
+          "impressions": 14,
+          "clicks": 3
+        },
+        {
+          "term": "ac repair near me",
+          "impressions": 12,
+          "clicks": 2
+        },
+        {
+          "term": "ac repair near me 3",
+          "impressions": 14,
+          "clicks": 2
+        }
+      ]
+    }
+  },
+  "note": "Example data: an invented heating, cooling and plumbing company with an invented Google Ads account, not a real business. Every number in expected_output.json follows from this input."
 }

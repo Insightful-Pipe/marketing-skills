@@ -203,10 +203,10 @@ A customer list not updated in 30 days is stale.
 
 | Segment | Ecommerce | Lead gen or services | Use |
 |---|---|---|---|
-| High value | top 20% of customers by revenue | the top 20% of signed clients by fee or deal value | source for lookalikes and value-based lists |
-| Recent customers | bought in the last 30 days | signed in the last 30 days | exclude from prospecting |
+| High value | top 20% of customers by revenue | the top 20% of won clients by deal value | source for lookalikes and value-based lists |
+| Recent customers | bought in the last 30 days | won in the last 30 days | exclude from prospecting |
 | Lapsed | no purchase in 90+ days | past clients | win-back offers; for services bought once, referral and review asks |
-| High intent | cart abandoners, frequent visitors | form starters, missed calls, consultations not yet signed | retargeting first |
+| High intent | cart abandoners, frequent visitors | form starters, missed calls, quotes not yet accepted | retargeting first |
 | Email engaged | opened or clicked recently | the same | warm audience |
 
 A segment's size comes from the user, or from the list once it is uploaded (`user_list.size_for_search`, Meta `approximate_count_lower_bound`). Until then, write "ask"; never guess a size.

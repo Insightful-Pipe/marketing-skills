@@ -22,7 +22,7 @@ Hey Claude, I just added the "privacy-first-targeting-strategist" skill. Score h
 Hey Claude, I just added the "privacy-first-targeting-strategist" skill. Our Meta results dropped and we think it's tracking. Check the pixel, our audiences and our targeting, and tell me what to fix first.
 
 **Lead gen with offline sales**
-Hey Claude, I just added the "privacy-first-targeting-strategist" skill. We're a law firm; cases sign after a phone consultation. Check whether Google Ads is learning from the right signal and plan our first-party data.
+Hey Claude, I just added the "privacy-first-targeting-strategist" skill. We're a home services company; most jobs are booked by phone. Check whether Google Ads is learning from the right signal and plan our first-party data.
 
 **Build the audience**
 Hey Claude, I just added the "privacy-first-targeting-strategist" skill. Set up a Customer Match list in Google Ads from our client list. Show me the payload first.

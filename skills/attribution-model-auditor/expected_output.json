@@ -1,16 +1,16 @@
 {
   "header": {
     "title": "Attribution audit",
-    "business": "A US criminal and traffic defense law firm",
+    "business": "Example Home Services, a heating, cooling and plumbing company (invented example)",
     "platforms_audited": [
       "Google Ads"
     ],
-    "period": "2026-07-08 to 2026-10-05",
-    "time_zone": "America/Los_Angeles",
+    "period": "2026-07-22 to 2026-10-19",
+    "time_zone": "America/Chicago",
     "currency": "USD",
-    "spend": 16980,
-    "clicks": 2412,
-    "conversions_counted": 574.5,
+    "spend": 42450,
+    "clicks": 6510,
+    "conversions_counted": 832.0,
     "health": "NEEDS WORK",
     "health_math": "0 fail, 2 warn, 1 unknown: no fail in areas 1-2 and two warns, so NEEDS WORK"
   },
@@ -31,7 +31,7 @@
       "note": "no account of this business is connected on these platforms"
     },
     {
-      "source": "Backend (CRM or intake count)",
+      "source": "Backend (CRM or booking count)",
       "status": "not given",
       "note": "needed for the over-count check"
     }
@@ -46,14 +46,14 @@
     {
       "area": "2. What counts as a conversion",
       "result": "warn",
-      "key_number": "5 counted actions; 1 lead action counts every conversion per click (1.2% of counted)",
-      "why": "'Phone Call (imported)' counts MANY_PER_CLICK on a lead. It is under 10% of counted conversions, so warn, not fail. It can also record the same caller as 'Call or Text' (a tap on the site's phone link); the overlap is at most 7 conversions, 1.2% of counted."
+      "key_number": "5 counted actions; 1 lead action counts every conversion per click (3.8% of counted)",
+      "why": "'Phone call (imported)' counts MANY_PER_CLICK on a lead. It is under 10% of counted conversions, so warn, not fail. It can also record the same caller as 'Tap to call on site' (a tap on the site's phone link); the overlap is at most 32 conversions, 3.8% of counted."
     },
     {
       "area": "3. Windows against time to convert",
       "result": "warn",
       "key_number": "click windows of 30 and 90 days on counted actions; 100% of counted conversions arrive within 30 days",
-      "why": "92% of counted conversions came the same day as the click. The slowest counted action reached 95% by day 21, so the target window is 30 days. Call or Text and Phone Call (imported) use a 90-day click window and recorded nothing after day 30: the extra days can only let late touches claim credit (over-attribution). The 30-day actions put at most 2% in their last bucket (21-30 days), under the 5% that would suggest the window cuts conversions off. Counted actions also use both 30 and 90 days, so they are credited on different rules."
+      "why": "72% of counted conversions came the same day as the click. The slowest counted action reached 95% by day 21, so the target window is 30 days. Tap to call on site and Phone call (imported) use a 90-day click window and recorded nothing after day 30: the extra days can only let late touches claim credit (over-attribution). The 30-day actions put at most 1% in their last bucket (21-30 days), under the 5% that would suggest the window cuts conversions off. Counted actions also use both 30 and 90 days, so they are credited on different rules."
     },
     {
       "area": "4. Attribution models",
@@ -71,21 +71,32 @@
       "area": "6. Cross-platform agreement",
       "result": "unknown",
       "key_number": "1 platform connected; no backend count given",
-      "why": "Only Google Ads is connected for this business and no CRM or intake count was given, so the over-count against the real number of leads and the GA4 first-touch versus last-touch view could not be measured."
+      "why": "Only Google Ads is connected for this business and no CRM or booking count was given, so the over-count against the real number of leads and the GA4 first-touch versus last-touch view could not be measured."
     }
   ],
   "settings": {
     "counted_actions": [
       {
-        "action": "Call or Text",
-        "source": "WEBPAGE",
-        "category": "CONTACT",
+        "action": "Website phone calls",
+        "source": "WEBSITE_CALL",
+        "category": "PHONE_CALL_LEAD",
         "counting": "ONE_PER_CLICK",
-        "click_window_days": 90,
+        "click_window_days": 30,
         "view_window_days": 1,
         "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
         "data_driven_status": "AVAILABLE",
-        "conversions": 217.5
+        "conversions": 260.0
+      },
+      {
+        "action": "Booking form submit",
+        "source": "WEBPAGE",
+        "category": "SUBMIT_LEAD_FORM",
+        "counting": "ONE_PER_CLICK",
+        "click_window_days": 30,
+        "view_window_days": 1,
+        "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+        "data_driven_status": "AVAILABLE",
+        "conversions": 210.0
       },
       {
         "action": "Calls from ads",
@@ -96,40 +107,29 @@
         "view_window_days": 30,
         "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
         "data_driven_status": "AVAILABLE",
-        "conversions": 210.0
+        "conversions": 180.0
       },
       {
-        "action": "Contact us",
+        "action": "Tap to call on site",
         "source": "WEBPAGE",
-        "category": "CONTACT",
+        "category": "PHONE_CALL_LEAD",
         "counting": "ONE_PER_CLICK",
-        "click_window_days": 30,
+        "click_window_days": 90,
         "view_window_days": 1,
         "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
         "data_driven_status": "AVAILABLE",
-        "conversions": 140.0
+        "conversions": 150.0
       },
       {
-        "action": "Phone Call (imported)",
+        "action": "Phone call (imported)",
         "source": "UPLOAD_CLICKS",
-        "category": "CONTACT",
+        "category": "PHONE_CALL_LEAD",
         "counting": "MANY_PER_CLICK",
         "click_window_days": 90,
         "view_window_days": 1,
         "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
         "data_driven_status": "AVAILABLE",
-        "conversions": 7.0
-      },
-      {
-        "action": "Live Chat",
-        "source": "WEBPAGE",
-        "category": "CONTACT",
-        "counting": "ONE_PER_CLICK",
-        "click_window_days": 30,
-        "view_window_days": 1,
-        "model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-        "data_driven_status": "AVAILABLE",
-        "conversions": 0.0
+        "conversions": 32.0
       }
     ],
     "click_windows_in_use_days": [
@@ -138,32 +138,25 @@
     ],
     "secondary_actions": [
       {
-        "group": "Second-site actions",
-        "actions": 4,
-        "all_conversions": 0.0,
-        "models": [
-          "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN"
-        ]
-      },
-      {
         "group": "Google-hosted local actions",
-        "actions": 5,
-        "all_conversions": 463.0,
+        "actions": 7,
+        "all_conversions": 1030.0,
         "models": [
           "GOOGLE_ADS_LAST_CLICK"
         ]
       },
       {
         "group": "Other",
-        "actions": 2,
-        "all_conversions": 19.0,
+        "actions": 4,
+        "all_conversions": 75.0,
         "models": [
-          "GOOGLE_ADS_LAST_CLICK",
           "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN"
         ],
         "names": [
-          "Android installs (all other apps)",
-          "Contact page load (codeless)"
+          "Chat lead",
+          "Coupon download",
+          "Newsletter signup",
+          "Careers page apply"
         ]
       }
     ],
@@ -174,65 +167,76 @@
     }
   },
   "what_google_ads_claims": {
-    "conversions_by_click_date": 574.5,
-    "conversions_by_conversion_date": 587.0,
-    "all_conversions": 1056.5,
-    "secondary_conversions_not_counted": 482.0,
+    "conversions_by_click_date": 832.0,
+    "conversions_by_conversion_date": 814.0,
+    "all_conversions": 1937.0,
+    "secondary_conversions_not_counted": 1105.0,
     "view_through_conversions": 0.0,
-    "reading": "Bidding and the Conversions column use 574.5. 'All conversions' is 1056.5 because it adds 482 secondary actions, mostly Google-hosted local actions such as profile engagements, which nobody should read as leads."
+    "reading": "Bidding and the Conversions column use 832. 'All conversions' is 1937 because it adds 1105 secondary actions, mostly Google-hosted local actions such as profile engagements, which nobody should read as leads."
   },
   "time_to_convert": {
     "overall": {
-      "conversions": 574.5,
-      "same_day_pct": 92,
-      "within_7_days_pct": 97,
+      "conversions": 832.0,
+      "same_day_pct": 72,
+      "within_7_days_pct": 94,
       "within_30_days_pct": 100,
       "after_30_days": 0.0,
-      "days_to_reach_95_pct": 4
+      "days_to_reach_95_pct": 9
     },
     "by_action": [
       {
-        "action": "Call or Text",
-        "click_window_days": 90,
-        "conversions": 217.5,
-        "same_day_pct": 90,
-        "within_7_days_pct": 96,
+        "action": "Website phone calls",
+        "click_window_days": 30,
+        "conversions": 260.0,
+        "same_day_pct": 72,
+        "within_7_days_pct": 94,
         "within_30_days_pct": 100,
         "after_30_days": 0.0,
-        "days_to_reach_95_pct": 7,
-        "share_in_last_bucket_before_window_ends_pct": 0
+        "days_to_reach_95_pct": 9,
+        "share_in_last_bucket_before_window_ends_pct": 1
+      },
+      {
+        "action": "Booking form submit",
+        "click_window_days": 30,
+        "conversions": 210.0,
+        "same_day_pct": 55,
+        "within_7_days_pct": 89,
+        "within_30_days_pct": 100,
+        "after_30_days": 0.0,
+        "days_to_reach_95_pct": 21,
+        "share_in_last_bucket_before_window_ends_pct": 1
       },
       {
         "action": "Calls from ads",
         "click_window_days": 30,
-        "conversions": 210.0,
-        "same_day_pct": 100,
-        "within_7_days_pct": 100,
+        "conversions": 180.0,
+        "same_day_pct": 88,
+        "within_7_days_pct": 98,
         "within_30_days_pct": 100,
         "after_30_days": 0.0,
-        "days_to_reach_95_pct": 1,
+        "days_to_reach_95_pct": 3,
         "share_in_last_bucket_before_window_ends_pct": 0
       },
       {
-        "action": "Contact us",
-        "click_window_days": 30,
-        "conversions": 140.0,
-        "same_day_pct": 86,
+        "action": "Tap to call on site",
+        "click_window_days": 90,
+        "conversions": 150.0,
+        "same_day_pct": 80,
+        "within_7_days_pct": 98,
+        "within_30_days_pct": 100,
+        "after_30_days": 0.0,
+        "days_to_reach_95_pct": 4,
+        "share_in_last_bucket_before_window_ends_pct": 0
+      },
+      {
+        "action": "Phone call (imported)",
+        "click_window_days": 90,
+        "conversions": 32.0,
+        "same_day_pct": 62,
         "within_7_days_pct": 94,
         "within_30_days_pct": 100,
         "after_30_days": 0.0,
-        "days_to_reach_95_pct": 21,
-        "share_in_last_bucket_before_window_ends_pct": 2
-      },
-      {
-        "action": "Phone Call (imported)",
-        "click_window_days": 90,
-        "conversions": 7.0,
-        "same_day_pct": 57,
-        "within_7_days_pct": 86,
-        "within_30_days_pct": 100,
-        "after_30_days": 0.0,
-        "days_to_reach_95_pct": 21,
+        "days_to_reach_95_pct": 14,
         "share_in_last_bucket_before_window_ends_pct": 0
       }
     ],
@@ -244,102 +248,88 @@
   },
   "over_count": {
     "result": "not graded",
-    "platform_sum": 574.5,
+    "platform_sum": 832.0,
     "backend_count": null,
-    "why": "Only one ad platform is connected, so there is no sum of platforms, and no backend count was given. Give the intake count of new leads for the same 90 days to see how far Google Ads' claim is from it."
+    "why": "Only one ad platform is connected, so there is no sum of platforms, and no backend count was given. Give the booking count of new leads for the same 90 days to see how far Google Ads' claim is from it."
   },
   "overlap_inside_google_ads": {
     "pair": [
-      "Call or Text",
-      "Phone Call (imported)"
+      "Tap to call on site",
+      "Phone call (imported)"
     ],
-    "call_or_text": 217.5,
-    "phone_call_imported": 7.0,
-    "most_that_could_be_double": 7.0,
-    "share_of_counted": 1.2,
-    "reading": "A tap on the site's phone number fires 'Call or Text'; the imported 'Phone Call' is uploaded later for calls tied to an ad click. One person can trigger both. The import is small, so at worst it adds about 1% to the count, but it counts every conversion per click and runs on a 90-day window."
+    "tap_to_call_on_site": 150.0,
+    "phone_call_imported": 32.0,
+    "most_that_could_be_double": 32.0,
+    "share_of_counted": 3.8,
+    "reading": "A tap on the site's phone number fires 'Tap to call on site'; the imported 'Phone call' is uploaded later from the call-tracking tool for calls tied to an ad click. One person can trigger both. The import is small, so at worst it adds about 4% to the count, but it counts every conversion per click and runs on a 90-day window."
   },
   "bidding_exposure": {
     "smart_bidding_campaigns": 7,
-    "share_of_counted_conversions_on_smart_bidding_pct": 90,
+    "share_of_counted_conversions_on_smart_bidding_pct": 82,
     "campaigns": [
       {
-        "campaign": "Traffic Tickets",
+        "campaign": "AC Repair",
         "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 4380,
-        "conversions": 181.6,
-        "all_conversions": 329.6
-      },
-      {
-        "campaign": "Criminal Defense",
-        "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 4340,
-        "conversions": 181.5,
-        "all_conversions": 246.5
-      },
-      {
-        "campaign": "Out-of-State Traffic",
-        "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 2040,
-        "conversions": 79.0,
-        "all_conversions": 137.0
+        "spend": 11800,
+        "conversions": 260.0,
+        "all_conversions": 605.3
       },
       {
         "campaign": "Brand",
         "bidding": "TARGET_IMPRESSION_SHARE",
-        "spend": 800,
-        "conversions": 51.9,
-        "all_conversions": 189.9
+        "spend": 4100,
+        "conversions": 150.0,
+        "all_conversions": 349.2
       },
       {
-        "campaign": "DUI",
+        "campaign": "Emergency Plumbing",
         "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 1530,
-        "conversions": 40.0,
-        "all_conversions": 62.0
+        "spend": 8400,
+        "conversions": 140.0,
+        "all_conversions": 325.9
       },
       {
-        "campaign": "Drug Charges",
+        "campaign": "Water Heaters",
         "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 1740,
-        "conversions": 15.5,
-        "all_conversions": 17.5
+        "spend": 6200,
+        "conversions": 110.0,
+        "all_conversions": 256.1
       },
       {
-        "campaign": "Out-of-State DUI",
+        "campaign": "Furnace Repair",
         "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 670,
-        "conversions": 12.0,
-        "all_conversions": 41.0
+        "spend": 4300,
+        "conversions": 70.0,
+        "all_conversions": 163.0
       },
       {
-        "campaign": "Nursing Board",
+        "campaign": "Drain Cleaning",
         "bidding": "MAXIMIZE_CONVERSIONS",
-        "spend": 1030,
-        "conversions": 10.0,
-        "all_conversions": 19.0
+        "spend": 3100,
+        "conversions": 60.0,
+        "all_conversions": 139.7
       },
       {
-        "campaign": "Pharmacy Board",
-        "bidding": "TARGET_SPEND",
-        "spend": 190,
-        "conversions": 2.0,
-        "all_conversions": 7.0
+        "campaign": "HVAC Installation",
+        "bidding": "TARGET_CPA",
+        "spend": 3900,
+        "conversions": 35.0,
+        "all_conversions": 81.5
       },
       {
-        "campaign": "Professional Board",
-        "bidding": "TARGET_SPEND",
-        "spend": 240,
-        "conversions": 1.0,
-        "all_conversions": 7.0
+        "campaign": "Out of Area",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "spend": 650,
+        "conversions": 7.0,
+        "all_conversions": 16.3
       }
     ],
-    "reading": "Most counted conversions sit in campaigns on Maximize Conversions, so whatever the counted set includes is what bidding chases. That is why counting and overlap matter more here than in reporting."
+    "reading": "Most counted conversions sit in campaigns on Maximize Conversions or Target CPA, so whatever the counted set includes is what bidding chases. That is why counting and overlap matter more here than in reporting."
   },
   "source_of_truth": [
     {
       "rank": 1,
-      "source": "The firm's intake or CRM count of new leads and signed cases",
+      "source": "The company's booking system or CRM count of new leads and booked jobs",
       "use_for": "how many leads really came in"
     },
     {
@@ -356,35 +346,35 @@
   "model_recommendation": {
     "current": "data-driven on every counted action",
     "recommended": "keep data-driven",
-    "why": "The model is available on every counted action and 92% of conversions happen the same day as the click, so most paths are one click long and data-driven and last click give nearly the same answer. Last click would only be the better choice if data-driven stopped being available.",
-    "windows": "30-day click window on every counted action: the slowest counted actions (Contact us and Phone Call (imported)) reached 95% by day 21 (all counted conversions together by day 4), and 30 is the next of 7, 14, 30, 60 or 90 days. It matches the three actions already on 30 days and drops the 90-day windows that only over-credit late touches."
+    "why": "The model is available on every counted action and 72% of conversions happen the same day as the click, so most paths are one click long and data-driven and last click give nearly the same answer. Last click would only be the better choice if data-driven stopped being available.",
+    "windows": "30-day click window on every counted action: the slowest counted action (Booking form submit) reached 95% by day 21 (all counted conversions together by day 9), and 30 is the next of 7, 14, 30, 60 or 90 days. It matches the 3 actions already on 30 days and drops the 90-day windows that only over-credit late touches."
   },
   "measurement_stage": {
     "stage": "between 2 and 3",
     "evidence": [
       "enhanced conversions for leads on",
       "1 counted action imported with the ad click id (calls)",
-      "no imported closed outcome (signed cases) among the counted actions",
+      "no imported closed outcome (booked or completed jobs) among the counted actions",
       "no backend count given, so the monthly comparison isn't in place"
     ],
-    "next_rung": "import signed cases from the CRM and compare counted conversions with the intake count every month"
+    "next_rung": "import booked jobs from the CRM and compare counted conversions with the booking count every month"
   },
   "action_plan": {
     "this_week": [
       {
-        "action": "Set 'Phone Call (imported)' to count one conversion per click",
+        "action": "Set 'Phone call (imported)' to count one conversion per click",
         "who": "do this in Google Ads (the skill's update action can't change counting)",
-        "evidence": "7 conversions, MANY_PER_CLICK, 90-day click window"
+        "evidence": "32 conversions, MANY_PER_CLICK, 90-day click window"
       },
       {
-        "action": "Shorten the click window of Call or Text and Phone Call (imported) to the 30-day target, like the other counted actions",
+        "action": "Shorten the click window of Tap to call on site and Phone call (imported) to the 30-day target, like the other counted actions",
         "who": "I can do this now, after your yes",
         "evidence": "neither action recorded a conversion after day 30 of a 90-day window; the slowest counted action reached 95% by day 21; the other counted actions use 30 days"
       }
     ],
     "next_2_to_4_weeks": [
       {
-        "action": "Find the tool that uploads the imported calls and check whether they are the same callers who tapped the number on the site; if they are, make one of the two secondary",
+        "action": "Find the call-tracking tool that uploads the imported calls and check whether they are the same callers who tapped the number on the site; if they are, make one of the two secondary",
         "who": "you, then I can switch primary_for_goal after your yes"
       },
       {
@@ -392,13 +382,13 @@
         "who": "you"
       },
       {
-        "action": "Share the intake count of new leads for the same 90 days",
+        "action": "Share the booking count of new leads for the same 90 days",
         "who": "you"
       }
     ],
     "next_1_to_3_months": [
       {
-        "action": "Import signed cases from the CRM as an offline conversion, so bidding learns from cases, not calls",
+        "action": "Import booked jobs from the CRM as an offline conversion, so bidding learns from jobs, not calls",
         "who": "you, with the CRM"
       },
       {
@@ -416,7 +406,7 @@
         "platform": "google-ads",
         "action": "update_conversion_action",
         "account_id": "<GOOGLE_ADS_ID>",
-        "conversion_action_id": "<CALL_OR_TEXT_ACTION_ID>",
+        "conversion_action_id": "<TAP_TO_CALL_ACTION_ID>",
         "click_through_lookback_window_days": 30
       },
       "expected_effect": "no change to counted conversions in this period: the action recorded nothing after day 30"
@@ -437,7 +427,7 @@
   ],
   "monitoring": {
     "weekly": [
-      "counted conversions against the intake count",
+      "counted conversions against the booking count",
       "share of counted conversions from the imported call action"
     ],
     "monthly": [
@@ -445,7 +435,7 @@
       "data-driven model status on every counted action"
     ],
     "red_flags": [
-      "counted conversions rise while intake stays flat",
+      "counted conversions rise while bookings stay flat",
       "a new counted action appears that nobody added on purpose",
       "data-driven status changes from available"
     ]

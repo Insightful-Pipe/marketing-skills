@@ -15,7 +15,7 @@ You need the InsightfulPipe MCP connected. The skill uses **Google Ads** (your a
 2. Call `query_contexts` with `request="actions_details"` for `gaql`, `search_terms_report`, `serp_google_organic`, `onpage_content_parsing`, `search_analytics` and `get_reviews`, and follow the body shapes it returns.
 3. Ask the user, and use the defaults if they don't know:
    - **The offer to find a USP for.** Default: the service line with the most non-brand conversions (step 1). A USP is for one offer and one buyer; for a business with several lines, run the skill once per line.
-   - **The market search.** Default: the plainest name of that service ("traffic ticket lawyer", "project management software"), searched from the city or country where most of your customers are.
+   - **The market search.** Default: the plainest name of that service ("ac repair", "project management software"), searched from the city or country where most of your customers are.
    - **Competitors.** Default: the first 3 businesses in that search (step 5). Better: the 3 the user actually loses deals to.
    - **Brand terms.** Default: the business name, its spellings and the owners' names.
    - **Proof you can share** (customer counts, ratings, guarantees, awards). Default: only what your page and ads already say.
@@ -56,7 +56,7 @@ WHERE segments.date BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD'
   AND campaign.status = ENABLED AND ad_group_ad_asset_view.enabled = TRUE AND metrics.impressions > 0
 ```
 
-- **Tag every line** with the selling-point themes below. A line with no theme is "topic only" (the service and the place, like "Traffic Ticket Attorney").
+- **Tag every line** with the selling-point themes below. A line with no theme is "topic only" (the service and the place, like "Plumber in Springfield").
 - **Score response within the ad.** Campaigns differ too much to compare lines across them. For each line, the expected clicks are its impressions × the click rate of all lines in the **same ad, same slot (headline or description) and same pin position**. A theme's **CTR index** is its clicks ÷ its expected clicks. Its **conversion index** is its conversions ÷ (its clicks × the conversion rate of its ad, slot and pin position).
 - **Leave out** brand campaigns (brand searchers click anything), and any line with no other line in its ad, slot and pin position: it serves every time, so there is nothing to compare it with. In testing, 4 line placements were pinned alone.
 - **Minimums:** a theme needs 1,000 impressions and 2 distinct lines for a verdict, and 30 clicks for a conversion index.
@@ -70,7 +70,7 @@ WHERE segments.date BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD'
 Run the `search_terms_report` action with `start_date`, `end_date` and `limit` 10000. Leave out brand campaigns and terms that contain a brand term.
 
 - **Visible share first.** Google hides low-volume terms. Divide the search-term clicks by the non-brand campaign clicks from step 1 and state it (26% in testing). Every buyer-word figure covers only the visible part.
-- **Buyer cues:** for each theme in the buyer-cue table below, add up the clicks and conversions of the terms that carry its cue words. Report the cue words found, the share of non-brand search-term clicks and the conversion rate. Never print the raw terms: they hold other firms' names and people's names.
+- **Buyer cues:** for each theme in the buyer-cue table below, add up the clicks and conversions of the terms that carry its cue words. Report the cue words found, the share of non-brand search-term clicks and the conversion rate. Never print the raw terms: they hold other businesses' names and people's names.
 - **Search Console** (if connected), for buyers who reach you without ads:
 
 ```json
@@ -100,8 +100,8 @@ Strip the tracking template (`{ignore}?campaignid=...`) and add up clicks by pag
 
 - **Empty page:** `data` can come back as an empty list with status Ok. That usually means bot protection. Send the call once with the browser fields above if the first try didn't have them; if it is still empty, mark the page **not read**. In testing, one site's home page came back empty both ways while its service page read fine.
 - **Claim units:** each heading and each `primary_content` text in `main_topic` and `secondary_topic`, deduplicated. Keep a unit when it is a heading, a short line (12 words or fewer), or a sentence where the business speaks (we, our, us, I, or its name). Leave out, and count by reason:
-  - FAQ questions and answers, forms, badge labels and navigation headings. A short line under a navigation heading is kept: sidebars carry claims like "N decades of courtroom experience". A short label (8 words or fewer) inside a review block counts too, unless it talks about reviews.
-  - long general information that doesn't speak about the business (how the law works, what a speeding ticket costs)
+  - FAQ questions and answers, forms, badge labels and navigation headings. A short line under a navigation heading is kept: sidebars carry claims like "N decades of trade experience". A short label (8 words or fewer) inside a review block counts too, unless it talks about reviews.
+  - long general information that doesn't speak about the business (how an AC works, what a repair usually costs)
   - testimonials and reviews, labelled or not (first-person customer stories, "Thank you for...", reviewer names and places). On your own page they become **customer voice**; on a competitor's page they are left out.
 - **Customer voice:** count how many testimonials mention each theme. Never quote them and never print names. Add Google Business Profile review text when connected:
 
@@ -131,17 +131,17 @@ Tag ad lines, claim units and testimonials with each theme whose cue words they 
 | Theme | Cue words |
 |---|---|
 | No-risk first step | free (not "free up" or "stress-free"), no obligation, risk-free, money-back, guarantee, no cost to |
-| Price and payment | payment plan, affordable, low-cost, cheap, reasonable price, financing, flat fee, fee quote, lawyer cost, fair price, save (you) money or thousands |
-| Reviews and track record | a number + reviews, ratings, stars, cases, charges, clients, customers or endorsements; a numeric rating ("10.0 rating"); hundreds of 5-star; top-rated; trusted by |
-| Experience | a number + years, over or more than N years, decades, experienced, expertise, former prosecutor or judge |
+| Price and payment | payment plan, affordable, low-cost, cheap, reasonable price, financing, flat fee, fee quote, service cost, fair price, save (you) money or thousands |
+| Reviews and track record | a number + reviews, ratings, stars, jobs, projects, clients, customers or endorsements; a numeric rating ("4.9 rating"); hundreds of 5-star; top-rated; trusted by |
+| Experience | a number + years, over or more than N years, decades, experienced, expertise, licensed or certified since |
 | Speed and availability | 24/7, 24×7, 24 hours, call or text, same-day, available 24/7 or by phone, immediate, quick, fast, we're online |
-| We handle it for you | appear in court for you, on your behalf, no need to travel, without going to court or travelling, no court appearance, never had to appear, handle everything or every step, do all the work |
-| Coverage and local reach | statewide, entire state, all of [state], every court, every county, serving all, local attorneys or firm, near me, nationwide |
-| Outcome promised | dismiss, reduce, beat, win, keep your license or record, protect your record, off your record, no points, no record, record clean, avoid |
+| We handle it for you | on your behalf, no need to be there, we deal with it, no time off needed, handle everything or every step, do all the work, we take care of it |
+| Coverage and local reach | area-wide, the whole region, all of [region], every town, every county, serving all, local team or company, near me, nationwide |
+| Outcome promised | fixed for good, never again, solve, stop, cut your (bills, costs), protect your, results in, avoid |
 | Fighting stance | aggressive, fight, fought, stand up |
 | Specialist focus | specialise, exclusively, practice emphasis, focus on, dedicated to |
 
-**Market-specific themes:** add up to 2 when the table misses what your market argues about, and print each one's cue words in the report. For traffic tickets the test run added **Out-of-state drivers** (on pages and in ads: out of state, passing through, another state, every U.S. state, home state, vacationing; in search terms: out of state, another state).
+**Market-specific themes:** add up to 2 when the table misses what your market argues about, and print each one's cue words in the report. For home services the test run added **Repair before replace** (on pages and in ads: repair before, repair or replace, never push, only replace, honest advice, second opinion; in search terms: worth repairing, repair or replace, should I replace).
 
 **Buyer cues** in search terms (what people type, not what ads say):
 
@@ -150,8 +150,8 @@ Tag ad lines, claim units and testimonials with each theme whose cue words they 
 | Price and payment | cheap, affordable, cost, how much, price, fee, payment, low cost |
 | Reviews and track record | best, top, rated, reviews |
 | Coverage and local reach | near me, near, local, in my area |
-| Outcome promised | dismiss, get out of, reduce, beat, points, off my record, fight |
-| We handle it for you | without going to court, do I have to go to court |
+| Outcome promised | fix, stop, get rid of, solve, prevent |
+| We handle it for you | do it for me, do I need to be there |
 | Speed and availability | 24 hour, emergency, same day |
 | No-risk first step | free |
 
@@ -169,17 +169,17 @@ For each theme, mark whether you claim it (page units and ad lines) and which co
 
 Quote each site's first unit with the theme: the sentence that holds the cue, at most 160 characters, cut at a word, with "..." before the cue when it sits late in the sentence. In a report that will be published without the business's name, cut your own quotes to a few words around the cue so an exact-phrase search can't find you; competitors keep the full sentence.
 
-**Competitor weaknesses** come only from competitor reviews the user gives. Count the reviews per competitor that complain about each theme (slow replies, hidden fees, never met the lawyer) and add a "their customers complain about" column, labelled "from the user". Count, never quote, and never print reviewer names. A complaint about a theme you can prove makes that theme a stronger candidate to name in the "unlike" lines; it is never your customer voice and never changes a score. Without competitor reviews, leave the column out and say once, under the table, that competitor weaknesses were **not measured**.
+**Competitor weaknesses** come only from competitor reviews the user gives. Count the reviews per competitor that complain about each theme (slow replies, hidden fees, a no-show appointment) and add a "their customers complain about" column, labelled "from the user". Count, never quote, and never print reviewer names. A complaint about a theme you can prove makes that theme a stronger candidate to name in the "unlike" lines; it is never your customer voice and never changes a score. Without competitor reviews, leave the column out and say once, under the table, that competitor weaknesses were **not measured**.
 
 ### Proof points and consistency
 
 List your specific, checkable proof: numbers, ratings, credentials, coverage and concrete service commitments. For each one, say where it appears (page, ad lines, business panel), whether every place says the same thing, and whether any competitor states the same capability. Judge the capability, not the word. Flag:
-- **the same fact told differently** (in testing: years of experience "combined" across two attorneys on the page, the same number without "combined" in ads, and a figure 10 years lower in the business profile)
-- **proof that a buyer can check and that looks different there** (in testing: ads promising hundreds of "perfect 5-star" ratings without naming the directory, next to a Google rating between 4.5 and 4.7 from about 50 reviews in the same search)
+- **the same fact told differently** (for example: years of experience "combined" across two owners on the page, the same number without "combined" in ads, and a figure 10 years lower in the business profile)
+- **proof that a buyer can check and that looks different there** (for example: ads promising "1,200+ five-star reviews" without naming where they are, next to a Google rating of 4.6 from about 80 reviews in the same search)
 
 ### Candidates
 
-Build 3 to 5 candidate angles. Each has a **lead theme** you claim that at most one competitor read claims, and at most one **supporting theme** that makes it concrete ("every court in the state" + "we appear for you"). If fewer than 3 themes qualify, add the best contested ones and say so. A promised outcome never leads in a regulated field (law, health, finance) unless the business really guarantees it.
+Build 3 to 5 candidate angles. Each has a **lead theme** you claim that at most one competitor read claims, and at most one **supporting theme** that makes it concrete ("1,200+ five-star reviews" + "a 90-day guarantee"). If fewer than 3 themes qualify, add the best contested ones and say so. A promised outcome never leads in a regulated field (law, health, finance) unless the business really guarantees it.
 
 ### Scoring the candidates
 
@@ -193,7 +193,7 @@ Score each candidate 1 to 5 on five tests, using these rules:
 | **Sustainable** (hard to copy?) | Fixed by the lead theme: track record 5; coverage, specialist focus and experience 4; a named segment and "we handle it" 3; availability and price 2; a no-risk offer, fighting stance and outcome promises 1. Any other market-specific theme scores as the closest theme here; name it in the reason. |
 | **Memorable** (easy to grasp?) | Write the shortest true headline for it. 30 characters or fewer: 5. Up to 60: 3. Longer: 1. |
 
-- **Relevance gate:** a candidate needs relevance 4 or more to be the primary USP or an alternative. Different isn't useful when no buyer signal shows anyone cares. A strong candidate that fails the gate becomes the proof under the USP (in testing, a large case-count claim scored 23/25 but had no buyer signal).
+- **Relevance gate:** a candidate needs relevance 4 or more to be the primary USP or an alternative. Different isn't useful when no buyer signal shows anyone cares. A strong candidate that fails the gate becomes the proof under the USP (for example, a long experience claim can score 21/25 with no buyer signal).
 - **Primary** = the highest total that passes the gate (ties: higher relevance, then higher credibility). **Alternatives** = the next 2 that pass.
 - **USP score** = the primary's total × 4, out of 100.
 - **Confidence:** High when relevance is 4 or more and at least one positive signal comes from ad results or a segment campaign, with 3 competitors read; Medium when relevance is 4 or more from search terms or customer voice only, or fewer than 3 competitors were read; Low otherwise.
@@ -204,7 +204,7 @@ Every fact in the copy must appear on your page or in your ads. Keep the busines
 
 1. **Intersection:** what you do well, what buyers care about (with the numbers), what competitors don't say (the "yours alone" themes) and the sweet spot in one sentence.
 2. **Primary USP:** the statement, its USP type, why (capability, relevance, uniqueness, proof), 3 proof points with where each appears, and four versions:
-   - **only:** with its scope ("of the 3 firms at the top of the search for..."). Write it only when no competitor read claims the lead theme.
+   - **only:** with its scope ("of the 3 companies at the top of the search for..."). Write it only when no competitor read claims the lead theme.
    - **for-who-that:** for [buyer] who [need], [business] is the [category] that [benefit] because [proof].
    - **unlike:** unlike [the alternative], we [difference], so you [outcome].
    - **what-how-why:** we help [buyer] [outcome] by [how], so they can [bigger benefit].
@@ -290,6 +290,6 @@ Only after the user says yes to the exact change. Show the full payload first an
 - **Competitors in their own words.** Describe a competitor only by quoting its page or snippet, with the scope "of the pages read". Never invent a competitor's claim or weakness: a weakness comes only from competitor reviews the user gives, counted and labelled.
 - **No invented proof.** Copy uses only facts from your page and ads, keeps their hedges, and never adds numbers.
 - **Customer voice is counted, not quoted.** No reviewer names, ever.
-- **Regulated fields.** Lawyers, doctors and financial firms have advertising rules on comparisons and outcomes. Flag claims that may break them, and suggest the factual version.
-- **Name businesses, never private people.** Lawyers and owners appear only as part of their business's claims, and in reports you share, as "[attorney]".
+- **Regulated fields.** Health, legal and financial businesses have advertising rules on comparisons and outcomes. Flag claims that may break them, and suggest the factual version.
+- **Name businesses, never private people.** Staff and owners appear only as part of their business's claims, and in reports you share, as "[person]".
 - **What this skill can't do.** It can't interview customers, read win/loss notes or fetch competitors' reviews. Ask for them. Add the user's own customer notes as customer voice, labelled; competitor reviews go only into the competitor-complaints column, never into your customer voice.

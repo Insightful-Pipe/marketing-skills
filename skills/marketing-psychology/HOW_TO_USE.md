@@ -17,7 +17,7 @@ No connection? Paste your best and worst ads with impressions and clicks, or a p
 Hey Claude, I just added the "marketing-psychology" skill. Tag my Google Ads headlines by persuasion lever and tell me which ones my audience clicks and converts on.
 
 **Why a page underperforms**
-Hey Claude, I just added the "marketing-psychology" skill. My DUI landing page converts worse than the others. Read it and tell me which levers are missing or buried.
+Hey Claude, I just added the "marketing-psychology" skill. My drain-cleaning landing page converts worse than the others. Read it and tell me which levers are missing or buried.
 
 **Pricing page**
 Hey Claude, I just added the "marketing-psychology" skill. Review my pricing page for anchoring, decoy and charm pricing, and tell me what to test first.

@@ -18,7 +18,7 @@ Hey Claude, I just added the "ad-landing-page-match-scorer" skill. Score every a
 Hey Claude, I just added the "ad-landing-page-match-scorer" skill. Take desktop and mobile screenshots of the landing page behind every active ad, grouped by the ads that use each page.
 
 **Clicks but no conversions**
-Hey Claude, I just added the "ad-landing-page-match-scorer" skill. My DUI campaign gets clicks but few leads. Check whether the ads and the page say the same thing, and what happens after the click.
+Hey Claude, I just added the "ad-landing-page-match-scorer" skill. My Drain Cleaning campaign gets clicks but few leads. Check whether the ads and the page say the same thing, and what happens after the click.
 
 **Quality Score**
 Hey Claude, I just added the "ad-landing-page-match-scorer" skill. Google rates my landing page experience below average on some keywords. Find which pages and why.
