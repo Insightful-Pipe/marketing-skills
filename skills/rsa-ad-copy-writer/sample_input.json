@@ -1,34 +1,605 @@
 {
-  "note": "Real run on 2026-10-02 through the InsightfulPipe MCP. Account anonymised: firm, campaign, state and city names replaced, the site domain replaced with example-lawfirm.com, review counts and ratings replaced with [N] and [Rating], ids removed, money rounded to the nearest $10.",
+  "note": "Example data: an invented home services company and Google Ads account, not a real business or account. Every number in expected_output.json follows from this input.",
   "request": "Hey Claude, I just added the \"rsa-ad-copy-writer\" skill. Write a new responsive search ad for my weakest high-spend ad group and check its sitelinks and callouts.",
-  "account": {
-    "name": "A US criminal and traffic defense law firm",
-    "currency": "USD"
-  },
-  "date_range": "2026-09-02 to 2026-10-01",
+  "account": {"name": "Example home services company", "customer_id": "123-456-7890", "currency": "USD"},
+  "date_range": "2026-09-21 to 2026-10-20",
   "ad_group": "not given, so the skill picks one",
   "must_not_say": "nothing extra given",
-  "data_pulled": [
-    "19 enabled RSAs with impressions",
-    "15 lines served in the chosen ad",
-    "18 keywords with impressions",
-    "8 search terms with clicks",
-    "39 campaign sitelink links",
-    "4 account-level assets",
-    "70 campaign callouts, snippets and promotions",
-    "landing page: crawler and web fetch blocked (403)"
-  ],
-  "queries_run": [
-    "gaql customer (name and currency)",
-    "gaql ad_group_ad (RSA text, strength, 30-day metrics)",
-    "gaql ad_group_ad_asset_view (per-line serving)",
-    "gaql keyword_view (ad group keywords)",
-    "gaql search_term_view (ad group terms)",
-    "gaql campaign_asset sitelinks",
-    "gaql customer_asset (account-level assets)",
-    "gaql campaign_asset callouts, snippets, promotion, price, lead form",
-    "crawler headings-checker (403)",
-    "crawler meta-tags-checker (403)",
-    "web fetch of the final URL (403)"
-  ]
+  "tone": "match the ads already running",
+  "data_pulled": {
+    "ad_group_ad": [
+      {
+        "campaign": "Brand | Search",
+        "ad_group_id": "410000000001",
+        "ad_group": "Brand",
+        "ad_id": "610000000001",
+        "ad_strength": "EXCELLENT",
+        "headlines": [
+          "Example Home Services",
+          "Heating, Cooling & Plumbing",
+          "Same-Day Service in Denver",
+          "Licensed Local Technicians",
+          "Upfront Pricing, No Surprises",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "Call Now for a Free Quote",
+          "Family Owned Since 2004",
+          "Serving the Denver Metro",
+          "Trusted by Your Neighbors"
+        ],
+        "descriptions": [
+          "Heating, cooling and plumbing from one local team. Book online or call today.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "Same-day appointments across the Denver metro, seven days a week.",
+          "Read 1,200 reviews from homeowners near you, then book in under a minute."
+        ],
+        "final_url": "https://example.com/",
+        "created": "2026-03-02",
+        "impressions": 1900,
+        "clicks": 410,
+        "cost": 540,
+        "conversions": 62
+      },
+      {
+        "campaign": "Furnace Repair | Search",
+        "ad_group_id": "410000000002",
+        "ad_group": "Furnace repair",
+        "ad_id": "610000000002",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Furnace Repair in Denver",
+          "Same-Day Furnace Repair",
+          "Furnace Not Working?",
+          "Upfront Furnace Repair Prices",
+          "Licensed Heating Technicians",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "Most Repairs Done in One Visit",
+          "Call for Fast Heat Restoration",
+          "All Furnace Brands Repaired",
+          "No Overtime Charges"
+        ],
+        "descriptions": [
+          "Furnace out? Our heating techs fix most problems in one visit. Book a same-day slot.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "We repair every furnace brand. Open 7 days across the Denver metro.",
+          "Read 1,200 reviews from homeowners near you, then book in under a minute."
+        ],
+        "final_url": "https://example.com/furnace-repair",
+        "created": "2026-05-11",
+        "impressions": 2852,
+        "clicks": 169,
+        "cost": 1519,
+        "conversions": 27
+      },
+      {
+        "campaign": "Furnace Repair | Search",
+        "ad_group_id": "410000000002",
+        "ad_group": "Furnace repair",
+        "ad_id": "610000000003",
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Example Home Services",
+          "Heating Experts Near You",
+          "Call Today",
+          "Licensed Technicians",
+          "Upfront Pricing",
+          "Book Online",
+          "Open 7 Days a Week"
+        ],
+        "descriptions": [
+          "Heating, cooling and plumbing from one local team.",
+          "Upfront prices before any work starts.",
+          "Book online or call today."
+        ],
+        "final_url": "https://example.com/",
+        "created": "2026-01-19",
+        "impressions": 1748,
+        "clicks": 104,
+        "cost": 931,
+        "conversions": 12
+      },
+      {
+        "campaign": "Furnace Repair | Search",
+        "ad_group_id": "410000000003",
+        "ad_group": "Furnace not working",
+        "ad_id": "610000000004",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Furnace Blowing Cold Air?",
+          "Furnace Not Turning On?",
+          "Same-Day Furnace Repair",
+          "Upfront Repair Prices",
+          "Licensed Heating Technicians",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "All Furnace Brands Repaired",
+          "No Overtime Charges"
+        ],
+        "descriptions": [
+          "Cold air or no heat at all? Book a same-day furnace visit with a licensed tech.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "We repair every furnace brand. Open 7 days across the Denver metro."
+        ],
+        "final_url": "https://example.com/furnace-repair",
+        "created": "2026-06-02",
+        "impressions": 1550,
+        "clicks": 84,
+        "cost": 700,
+        "conversions": 12
+      },
+      {
+        "campaign": "Furnace Repair | Search",
+        "ad_group_id": "410000000004",
+        "ad_group": "Heating emergency",
+        "ad_id": "610000000005",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Emergency Furnace Repair",
+          "No Heat? We Come Tonight",
+          "24/7 Heating Repair",
+          "No Overtime Charges",
+          "Licensed Heating Technicians",
+          "Call Now, Live Dispatcher",
+          "4.9 Stars From 1,200 Reviews",
+          "Serving the Denver Metro",
+          "Upfront Emergency Pricing",
+          "Most Repairs in One Visit"
+        ],
+        "descriptions": [
+          "No heat at night? A licensed tech can be at your door tonight, with no overtime fee.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "Call and talk to a live dispatcher, day or night, across the Denver metro.",
+          "Read 1,200 reviews from homeowners near you."
+        ],
+        "final_url": "https://example.com/emergency-heating",
+        "created": "2026-07-06",
+        "impressions": 750,
+        "clicks": 38,
+        "cost": 330,
+        "conversions": 7
+      },
+      {
+        "campaign": "AC Repair | Search",
+        "ad_group_id": "410000000005",
+        "ad_group": "AC repair",
+        "ad_id": "610000000006",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "AC Repair in Denver",
+          "Same-Day AC Repair",
+          "AC Not Cooling?",
+          "Upfront AC Repair Prices",
+          "Licensed Cooling Technicians",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "All AC Brands Repaired",
+          "No Overtime Charges",
+          "Most Repairs in One Visit"
+        ],
+        "descriptions": [
+          "AC down? Our cooling techs fix most problems in one visit. Book a same-day slot.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "We repair every AC brand. Open 7 days across the Denver metro.",
+          "Read 1,200 reviews from homeowners near you, then book in under a minute."
+        ],
+        "final_url": "https://example.com/ac-repair",
+        "created": "2026-04-14",
+        "impressions": 3010,
+        "clicks": 136,
+        "cost": 1155,
+        "conversions": 16
+      },
+      {
+        "campaign": "AC Repair | Search",
+        "ad_group_id": "410000000005",
+        "ad_group": "AC repair",
+        "ad_id": "610000000007",
+        "ad_strength": "POOR",
+        "headlines": ["Cooling Services", "Call Today", "Licensed Technicians", "Book Online", "Upfront Pricing"],
+        "descriptions": ["Cooling services from a local team.", "Book online or call today."],
+        "final_url": "https://example.com/ac-repair",
+        "created": "2025-11-03",
+        "impressions": 1290,
+        "clicks": 58,
+        "cost": 495,
+        "conversions": 5
+      },
+      {
+        "campaign": "AC Repair | Search",
+        "ad_group_id": "410000000006",
+        "ad_group": "AC not cooling",
+        "ad_id": "610000000008",
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "AC Repair in Denver",
+          "Same-Day AC Repair",
+          "Upfront AC Repair Prices",
+          "Licensed Cooling Technicians",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "All AC Brands Repaired",
+          "Furnace Tune-Up Special"
+        ],
+        "descriptions": [
+          "AC down? Our cooling techs fix most problems in one visit.",
+          "Upfront prices before any work starts.",
+          "Open 7 days across the Denver metro."
+        ],
+        "final_url": "https://example.com/ac-repair",
+        "created": "2026-04-14",
+        "impressions": 900,
+        "clicks": 44,
+        "cost": 360,
+        "conversions": 5
+      },
+      {
+        "campaign": "Water Heaters | Search",
+        "ad_group_id": "410000000007",
+        "ad_group": "Water heater repair",
+        "ad_id": "610000000009",
+        "ad_strength": "EXCELLENT",
+        "headlines": [
+          "Water Heater Repair Denver",
+          "No Hot Water? Same-Day Fix",
+          "Water Heater Experts",
+          "Upfront Repair Prices",
+          "Licensed Plumbers",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "Tank and Tankless Repair",
+          "No Overtime Charges",
+          "Most Repairs in One Visit",
+          "All Brands Repaired",
+          "Free Replacement Quote"
+        ],
+        "descriptions": [
+          "No hot water? Our plumbers repair tank and tankless heaters, most in one visit.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "Same-day water heater service, seven days a week across the Denver metro.",
+          "Read 1,200 reviews from homeowners near you, then book in under a minute."
+        ],
+        "final_url": "https://example.com/water-heaters",
+        "created": "2026-05-20",
+        "impressions": 1900,
+        "clicks": 112,
+        "cost": 920,
+        "conversions": 17
+      },
+      {
+        "campaign": "Water Heaters | Search",
+        "ad_group_id": "410000000008",
+        "ad_group": "Tankless water heater",
+        "ad_id": "610000000010",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Tankless Water Heaters",
+          "Tankless Installation Quotes",
+          "Endless Hot Water",
+          "Upfront Install Prices",
+          "Licensed Plumbers",
+          "Book a Free In-Home Quote",
+          "4.9 Stars From 1,200 Reviews",
+          "Financing Available",
+          "Rebate Help Included",
+          "Install in One Day"
+        ],
+        "descriptions": [
+          "Switch to tankless: endless hot water and a lower energy bill. Book a free quote.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "Most tankless installs take one day. Financing and rebate help available."
+        ],
+        "final_url": "https://example.com/tankless-water-heaters",
+        "created": "2026-05-20",
+        "impressions": 1250,
+        "clicks": 69,
+        "cost": 620,
+        "conversions": 10
+      },
+      {
+        "campaign": "Water Heaters | Search",
+        "ad_group_id": "410000000009",
+        "ad_group": "Water heater replacement",
+        "ad_id": "610000000011",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Water Heater Replacement",
+          "New Water Heater Today",
+          "Upfront Replacement Prices",
+          "Licensed Plumbers",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Haul Away Included",
+          "Tank and Tankless Options",
+          "Free Replacement Quote",
+          "Open 7 Days a Week"
+        ],
+        "descriptions": [
+          "Old heater failing? Get a new tank or tankless unit installed, often the same day.",
+          "Upfront prices before any work starts. Haul away of the old unit included.",
+          "Licensed plumbers across the Denver metro, seven days a week."
+        ],
+        "final_url": "https://example.com/water-heaters",
+        "created": "2026-05-20",
+        "impressions": 450,
+        "clicks": 24,
+        "cost": 200,
+        "conversions": 4
+      },
+      {
+        "campaign": "Plumbing | Search",
+        "ad_group_id": "410000000010",
+        "ad_group": "Emergency plumber",
+        "ad_id": "610000000012",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Emergency Plumber Denver",
+          "24/7 Emergency Plumbing",
+          "Burst Pipe? Call Now",
+          "No Overtime Charges",
+          "Licensed Plumbers",
+          "Live Dispatcher, Day or Night",
+          "4.9 Stars From 1,200 Reviews",
+          "Upfront Pricing",
+          "At Your Door in 60 Minutes",
+          "Serving the Denver Metro",
+          "Water Damage Stopped Fast"
+        ],
+        "descriptions": [
+          "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.",
+          "No overtime charges, ever. Upfront prices before any work starts.",
+          "Call and talk to a live dispatcher, day or night, across the Denver metro.",
+          "Read 1,200 reviews from homeowners near you."
+        ],
+        "final_url": "https://example.com/emergency-plumber",
+        "created": "2026-03-09",
+        "impressions": 2262,
+        "clicks": 115,
+        "cost": 963,
+        "conversions": 17
+      },
+      {
+        "campaign": "Plumbing | Search",
+        "ad_group_id": "410000000010",
+        "ad_group": "Emergency plumber",
+        "ad_id": "610000000013",
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Emergency Plumber Denver",
+          "24/7 Emergency Plumbing",
+          "Burst Pipe? Call Now",
+          "No Overtime Charges",
+          "Licensed Plumbers",
+          "Live Dispatcher, Day or Night",
+          "4.9 Stars From 1,200 Reviews",
+          "Upfront Pricing"
+        ],
+        "descriptions": [
+          "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.",
+          "No overtime charges, ever. Upfront prices before any work starts.",
+          "Call and talk to a live dispatcher, day or night."
+        ],
+        "final_url": "https://example.com/emergency-plumber",
+        "created": "2026-03-09",
+        "impressions": 1638,
+        "clicks": 83,
+        "cost": 697,
+        "conversions": 10
+      },
+      {
+        "campaign": "Plumbing | Search",
+        "ad_group_id": "410000000011",
+        "ad_group": "Drain cleaning",
+        "ad_id": "610000000014",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Drain Cleaning in Denver",
+          "Clogged Drain? Same Day",
+          "Hydro Jetting Available",
+          "Upfront Drain Prices",
+          "Licensed Plumbers",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Camera Inspection Included",
+          "Open 7 Days a Week",
+          "No Overtime Charges"
+        ],
+        "descriptions": [
+          "Slow or clogged drain? Same-day drain cleaning with a camera check included.",
+          "Upfront prices before any work starts. Licensed, insured and background checked.",
+          "Hydro jetting for tough clogs. Open 7 days across the Denver metro."
+        ],
+        "final_url": "https://example.com/drain-cleaning",
+        "created": "2026-06-23",
+        "impressions": 1500,
+        "clicks": 70,
+        "cost": 470,
+        "conversions": 9
+      },
+      {
+        "campaign": "Plumbing | Search",
+        "ad_group_id": "410000000012",
+        "ad_group": "Leak repair",
+        "ad_id": "610000000015",
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Plumbing Repairs Denver",
+          "Licensed Plumbers",
+          "Upfront Pricing",
+          "Book Online in 60 Seconds",
+          "4.9 Stars From 1,200 Reviews",
+          "Open 7 Days a Week",
+          "No Overtime Charges",
+          "Same-Day Appointments"
+        ],
+        "descriptions": [
+          "Plumbing repairs from one local team. Book online or call today.",
+          "Upfront prices before any work starts.",
+          "Open 7 days across the Denver metro."
+        ],
+        "final_url": "https://example.com/",
+        "created": "2026-06-23",
+        "impressions": 400,
+        "clicks": 22,
+        "cost": 210,
+        "conversions": 3
+      },
+      {
+        "campaign": "AC Installation | Search",
+        "ad_group_id": "410000000013",
+        "ad_group": "AC installation",
+        "ad_id": "610000000016",
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "AC Installation Denver",
+          "New AC Units Installed",
+          "Free In-Home Estimate",
+          "Financing Available",
+          "Licensed Cooling Technicians",
+          "4.9 Stars From 1,200 Reviews",
+          "10-Year Parts Warranty",
+          "Upfront Install Prices",
+          "Rebate Help Included"
+        ],
+        "descriptions": [
+          "Replace your old AC with a high-efficiency unit. Free in-home estimate.",
+          "Financing and rebate help available. Licensed, insured and background checked.",
+          "Most installs take one day. 10-year parts warranty on new units."
+        ],
+        "final_url": "https://example.com/ac-installation",
+        "created": "2025-09-15",
+        "impressions": 4800,
+        "clicks": 179,
+        "cost": 1112,
+        "conversions": 6
+      },
+      {
+        "campaign": "AC Installation | Search",
+        "ad_group_id": "410000000013",
+        "ad_group": "AC installation",
+        "ad_id": "610000000017",
+        "ad_strength": "PENDING",
+        "headlines": [
+          "New Central Air in One Day",
+          "AC Install Quotes in 24h",
+          "Free In-Home Estimate",
+          "Financing Available",
+          "Licensed Cooling Technicians",
+          "4.9 Stars From 1,200 Reviews",
+          "10-Year Parts Warranty",
+          "Upfront Install Prices",
+          "Rebate Help Included",
+          "High-Efficiency AC Units"
+        ],
+        "descriptions": [
+          "Central air installed in one day, with a free quote within 24 hours.",
+          "Financing and rebate help available. Licensed, insured and background checked.",
+          "10-year parts warranty on every new unit across the Denver metro."
+        ],
+        "final_url": "https://example.com/ac-installation",
+        "created": "2026-10-15",
+        "impressions": 1200,
+        "clicks": 45,
+        "cost": 278,
+        "conversions": 1
+      },
+      {
+        "campaign": "AC Installation | Search",
+        "ad_group_id": "410000000014",
+        "ad_group": "Heat pump installation",
+        "ad_id": "610000000018",
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Heat Pump Installation",
+          "Heat Pumps for Denver Homes",
+          "Free In-Home Estimate",
+          "Rebate Help Included",
+          "Licensed HVAC Technicians",
+          "4.9 Stars From 1,200 Reviews",
+          "Financing Available",
+          "Heat and Cool With One Unit",
+          "10-Year Parts Warranty"
+        ],
+        "descriptions": [
+          "Heat and cool with one efficient unit. Free in-home estimate and rebate help.",
+          "Financing available. Licensed, insured and background checked.",
+          "10-year parts warranty on every heat pump we install."
+        ],
+        "final_url": "https://example.com/heat-pumps",
+        "created": "2026-02-09",
+        "impressions": 1400,
+        "clicks": 46,
+        "cost": 260,
+        "conversions": 2
+      }
+    ],
+    "customer": {"descriptive_name": "Example home services company", "currency_code": "USD"},
+    "ad_group_ad_asset_view": [
+      {"field_type": "HEADLINE", "text": "AC Installation Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "impressions": 4800, "clicks": 179, "conversions": 6},
+      {"field_type": "HEADLINE", "text": "New AC Units Installed", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 2700, "clicks": 101, "conversions": 3},
+      {"field_type": "HEADLINE", "text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 2439, "clicks": 91, "conversions": 3},
+      {"field_type": "HEADLINE", "text": "Financing Available", "pinned_field": null, "asset_performance_label": "LOW", "impressions": 476, "clicks": 14, "conversions": 0},
+      {"field_type": "HEADLINE", "text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 2043, "clicks": 76, "conversions": 3},
+      {"field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 1890, "clicks": 70, "conversions": 2},
+      {"field_type": "HEADLINE", "text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 1758, "clicks": 66, "conversions": 2},
+      {"field_type": "HEADLINE", "text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 1643, "clicks": 61, "conversions": 2},
+      {"field_type": "HEADLINE", "text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 1543, "clicks": 58, "conversions": 2},
+      {"field_type": "DESCRIPTION", "text": "Replace your old AC with a high-efficiency unit. Free in-home estimate.", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 4560, "clicks": 170, "conversions": 6},
+      {"field_type": "DESCRIPTION", "text": "Financing and rebate help available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 4071, "clicks": 152, "conversions": 5},
+      {"field_type": "DESCRIPTION", "text": "Most installs take one day. 10-year parts warranty on new units.", "pinned_field": null, "asset_performance_label": "GOOD", "impressions": 3677, "clicks": 137, "conversions": 5}
+    ],
+    "keyword_view": [
+      {"keyword": "ac installation", "match_type": "PHRASE", "impressions": 3200, "clicks": 112, "cost": 690, "conversions": 6},
+      {"keyword": "central air installation", "match_type": "PHRASE", "impressions": 800, "clicks": 30, "cost": 180, "conversions": 1},
+      {"keyword": "new ac unit cost", "match_type": "BROAD", "impressions": 2000, "clicks": 82, "cost": 520, "conversions": 0}
+    ],
+    "search_term_view": [
+      {"search_term": "ac installation", "clicks": 62, "cost": 380, "conversions": 3},
+      {"search_term": "ac installation cost", "clicks": 26, "cost": 160, "conversions": 1},
+      {"search_term": "central air installation", "clicks": 24, "cost": 150, "conversions": 1},
+      {"search_term": "new ac unit cost", "clicks": 48, "cost": 300, "conversions": 0},
+      {"search_term": "home depot ac installation", "clicks": 19, "cost": 120, "conversions": 0},
+      {"search_term": "how much is a new ac unit", "clicks": 15, "cost": 90, "conversions": 0},
+      {"search_term": "ac installation jobs", "clicks": 11, "cost": 70, "conversions": 0}
+    ],
+    "campaign_sitelinks": [
+      {"campaign": "Furnace Repair | Search", "link_text": "Same-Day Furnace Repair", "final_url": "https://example.com/furnace-repair", "impressions": 2600, "clicks": 180, "conversions": 14},
+      {"campaign": "Plumbing | Search", "link_text": "Emergency Plumber", "final_url": "https://example.com/emergency-plumber", "impressions": 1900, "clicks": 120, "conversions": 9},
+      {"campaign": "Water Heaters | Search", "link_text": "Tankless Water Heaters", "final_url": "https://example.com/tankless-water-heaters", "impressions": 1200, "clicks": 64, "conversions": 4},
+      {"campaign": "AC Installation | Search", "link_text": "Free Estimate", "final_url": "https://example.com/ac-installation", "impressions": 820, "clicks": 41, "conversions": 2},
+      {"campaign": "AC Installation | Search", "link_text": "Furnace Repair", "final_url": "https://example.com/furnace-repair", "impressions": 140, "clicks": 0, "conversions": 0}
+    ],
+    "customer_assets": [
+      {"field_type": "SITELINK", "link_text": "Book Online", "final_url": "https://example.com/book", "impressions": 9400, "clicks": 610, "conversions": 48},
+      {"field_type": "SITELINK", "link_text": "Read Our Reviews", "final_url": "https://example.com/reviews", "impressions": 7200, "clicks": 360, "conversions": 21},
+      {"field_type": "SITELINK", "link_text": "Financing Options", "final_url": "https://example.com/financing", "impressions": 3100, "clicks": 95, "conversions": 6}
+    ],
+    "campaign_assets": [
+      {"campaign": "AC Installation | Search", "field_type": "CALLOUT", "callout_text": "Free In-Home Estimates", "impressions": 1800, "clicks": 22, "conversions": 1},
+      {"campaign": "AC Installation | Search", "field_type": "CALLOUT", "callout_text": "Financing Available", "impressions": 1500, "clicks": 9, "conversions": 0},
+      {"campaign": "AC Installation | Search", "field_type": "CALLOUT", "callout_text": "10-Year Parts Warranty", "impressions": 1650, "clicks": 14, "conversions": 1},
+      {"campaign": "AC Installation | Search", "field_type": "CALLOUT", "callout_text": "Licensed & Insured", "impressions": 1400, "clicks": 6, "conversions": 0},
+      {"campaign": "AC Installation | Search", "field_type": "STRUCTURED_SNIPPET", "header": "Types", "values": ["Central air", "Heat pumps", "AC units"], "impressions": 600, "clicks": 4, "conversions": 0}
+    ],
+    "crawler_headings_checker": {
+      "url": "https://example.com/ac-installation",
+      "status": 200,
+      "h1": ["AC Installation in Denver"],
+      "h2": [
+        "Free in-home estimates",
+        "Most installs done in one day",
+        "Financing on approved credit",
+        "Rebates up to $1,500 on high-efficiency units",
+        "10-year parts warranty on new systems"
+      ]
+    },
+    "crawler_meta_tags_checker": {"url": "https://example.com/ac-installation", "title": "AC Installation Denver | Example Home Services", "description": "New central air and AC units installed in one day. Free in-home estimate, financing and rebate help. Call or book online."},
+    "ad_group_targeting": {"location": "Colorado (state)"}
+  }
 }

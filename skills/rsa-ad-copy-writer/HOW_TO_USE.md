@@ -11,7 +11,7 @@ Hey Claude, I just added the "rsa-ad-copy-writer" skill. Write a new responsive 
 ## Example requests
 
 **New ad for an ad group**
-Hey Claude, I just added the "rsa-ad-copy-writer" skill. Write 15 headlines and 4 descriptions for my "Speeding Tickets" ad group, using the keywords that convert.
+Hey Claude, I just added the "rsa-ad-copy-writer" skill. Write 15 headlines and 4 descriptions for my "AC installation" ad group, using the keywords that convert.
 
 **Headlines from search terms**
 Hey Claude, I just added the "rsa-ad-copy-writer" skill. Turn my top converting search terms into headlines for my main campaign.

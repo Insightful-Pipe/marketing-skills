@@ -17,7 +17,7 @@ You need the InsightfulPipe MCP connected with at least one ad account. No conne
 4. Ask for these, and use the defaults when the user doesn't know:
    - **Mode.** Rebalance the current total (default), propose next quarter's budget, plan the channel mix (including channels not running yet), or plan a whole marketing budget. The data pull is the same for all four.
    - **Total budget and period.** Default for a rebalance: the last 30 days' spend, kept the same. Default for next quarter: the last 90 days' spend as a monthly run-rate.
-   - **What counts as a result,** and its value. Purchase, lead, booked call or sign-up. Default: each platform's own conversion count (see Step 1). If results differ in value between channels or campaigns (a demo request against a newsletter sign-up, a large case against a small one), ask for a value per result. Without one, every result counts the same, and the report says so.
+   - **What counts as a result,** and its value. Purchase, lead, booked call or sign-up. Default: each platform's own conversion count (see Step 1). If results differ in value between channels or campaigns (a demo request against a newsletter sign-up, a large job against a small one), ask for a value per result. Without one, every result counts the same, and the report says so.
    - **Goal.** A target CPA or ROAS, or "most results within the total". Default: the yardstick in Step 4.
    - **Limits.** A minimum or maximum per platform or campaign, a brand-search amount to leave alone, contracts or commitments, and the share to keep for tests. Default: brand search is left alone, a 10% test reserve in channel-mix and next-quarter modes and none in a rebalance, and no other limits.
 

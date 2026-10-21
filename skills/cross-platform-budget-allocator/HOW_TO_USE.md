@@ -45,6 +45,6 @@ It never pauses, creates or removes campaigns, and never changes bid strategies.
 
 ## Tips
 
-- Give the value of a result when channels or campaigns bring different kinds of results (a demo request against a newsletter sign-up, a large case against a small one). Without it, every result counts the same and cuts wait for you to confirm.
+- Give the value of a result when channels or campaigns bring different kinds of results (a demo request against a newsletter sign-up, a large job against a small one). Without it, every result counts the same and cuts wait for you to confirm.
 - Tag your ad links with UTM parameters so GA4 can check each platform's numbers.
 - Rerun it after each rollout step, and whenever a rebalancing trigger fires.

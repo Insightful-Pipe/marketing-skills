@@ -124,8 +124,8 @@ The crawler can come back blocked or empty: a 403 from a bot shield, or no headi
 - **Claims rule.** A number, price, rating, award, guarantee or result appears only if it is already in the account's approved ads or assets, or on the landing page (read by a tool, or pasted by the user). Anything else is marked `[confirm]`, and you ask the user.
 - Keep the lines that serve and convert (step 2). Replace the low-serving ones first.
 - No two headlines that say the same thing in other words. No exclamation mark in a headline, no all-caps words, no phone number in the text.
-- Don't pin. If something must show every time, like a legal disclaimer, pin 2 or 3 options to that position, never one. The create action can't set pins, so pinning is done in Google Ads.
-- Paths name the place and the service, for example `ohio` / `traffic-ticket`. Take the place from the ad group's targeting or its top keywords (a state or city), never a guess. When neither names a place, use the service alone, for example `traffic` / `ticket-lawyer`.
+- Don't pin. If something must show every time, like a required disclaimer, pin 2 or 3 options to that position, never one. The create action can't set pins, so pinning is done in Google Ads.
+- Paths name the place and the service, for example `denver` / `furnace-repair`. Take the place from the ad group's targeting or its top keywords (a state or city), never a guess. When neither names a place, use the service alone, for example `furnace` / `repair`.
 
 **Tag every line** with its source: `keyword`, `search term`, `kept` (it already serves), `landing page`, `account asset`, or `new` (wording with no claim in it, such as a call to action; a `new` line may not hold a number, rating, price, guarantee or result).
 

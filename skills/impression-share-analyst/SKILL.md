@@ -206,14 +206,14 @@ LIMIT 50
 
 Run the `search_terms_report` action for the 30 days, with `limit` 5000. Find terms that name a rival:
 - every known competitor from the user's list and the domains found in sections 4 and 5
-- terms that are a person's or firm's name with no service word in them (a name, optionally with a town, and no "lawyer", "plumber", "ticket" and so on)
+- terms that are a person's or company's name with no service word in them (a name, optionally with a town, and no "plumber", "repair", "installation" and so on)
 - named app or service brands that compete with the advertiser
 
 Report the count, the spend, the clicks and the conversions, by campaign, and say which match types let them in. Then ask whether conquesting is on purpose. If not, those terms are negative candidates. If it is, judge them like any other term: spend against target CPA.
 
 Google hides low-volume search terms, so state the share of spend the report covers, and say that the rival-name count covers only the visible part.
 
-Never print a private person's name from the search terms in a shared report without the user's say-so. Group them ("57 searches for named attorneys") and give the list only to the user.
+Never print a private person's name from the search terms in a shared report without the user's say-so. Group them ("57 searches for named people") and give the list only to the user.
 
 ## Report format
 

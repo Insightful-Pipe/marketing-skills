@@ -1,132 +1,176 @@
 {
-  "header": {
-    "account": "A US criminal and traffic defense law firm",
-    "date_range": "2026-09-02 to 2026-10-01",
-    "spend": 5560,
-    "conversions": 183,
-    "cpa": 30,
-    "grade": 68,
-    "rating": "needs work"
-  },
+  "header": {"account": "Example home services company", "customer_id": "123-456-7890", "currency": "USD", "date_range": "2026-09-21 to 2026-10-20", "spend": 14040, "conversions": 258, "cpa": 54.42, "target_cpa": 65.0, "grade": 68, "rating": "needs work"},
   "scorecard": [
-    {
-      "area": "Measurement",
-      "result": "fail",
-      "key_number": "1 lead action counts every conversion per click",
-      "why": "An imported 'Phone Call' action counts MANY_PER_CLICK, and three call actions are counted side by side, so call leads can be counted more than once."
-    },
-    {
-      "area": "Wasted spend",
-      "result": "warn",
-      "key_number": "9% of visible search-term spend",
-      "why": "Only 22% of spend shows up as search terms. The two terms over target CPA with no conversions are core services, so they go on a watch list, not a negative list."
-    },
-    {
-      "area": "Structure",
-      "result": "warn",
-      "key_number": "2 campaigns under 5% of spend",
-      "why": "Out-of-State DUI and Pharmacy Board may overlap the goals of larger campaigns (Nursing Board, DUI); check whether to consolidate. No brand terms leak into non-brand campaigns."
-    },
-    {
-      "area": "Keywords and Quality Score",
-      "result": "pass",
-      "key_number": "spend-weighted QS 6.4",
-      "why": "Only 4% of keyword spend sits on QS 1-4. Expected CTR is below average on 12 of the top 20 keywords. 146 live keywords had no impressions (information only)."
-    },
-    {
-      "area": "Ads and assets",
-      "result": "warn",
-      "key_number": "58% of rated RSAs are POOR or AVERAGE",
-      "why": "No structured snippet on Drug Charges, Pharmacy Board, Nursing Board, Criminal Defense; Nursing Board has fewer than 4 sitelinks. Every ad group has a responsive search ad and no ad is disapproved."
-    },
-    {
-      "area": "Bidding and budget",
-      "result": "warn",
-      "key_number": "43% lost to budget on the best campaign",
-      "why": "Criminal Defense and Traffic Tickets beat target CPA but lose share to budget; DUI loses 64% to rank; 5 Smart Bidding campaigns had under 30 conversions."
-    },
-    {
-      "area": "Settings",
-      "result": "pass",
-      "key_number": "9 of 9 campaigns clean",
-      "why": "Display network off, search partners off, location set to people in the area."
-    },
-    {
-      "area": "Change hygiene",
-      "result": "pass",
-      "key_number": "45 asset edits on Sept 18",
-      "why": "No bid or budget churn in the last 14 days. 57 Google recommendations are open, mostly opt-ins that raise spend; treated as information only."
-    }
+    {"area": "Measurement", "result": "fail", "key_number": "1 lead action counts every conversion per click", "why": "'Calls from website (60s+)' counts MANY_PER_CLICK, and 2 call actions are counted side by side (Phone call from ads (60s+), Calls from website (60s+)), so one caller can be counted more than once. Auto-tagging is on and every counted action uses data-driven attribution."},
+    {"area": "Wasted spend", "result": "pass", "key_number": "6.6% of search spend", "why": "9 visible terms spent more than the $65 target with no conversion, $780 in all. 94.4% of search spend shows up as search terms, so waste covers only that part. 2 more name the campaign's own service and go on the watch list."},
+    {"area": "Structure", "result": "pass", "key_number": "7 campaigns with impressions", "why": "Brand is the only campaign under 5% of spend, and it has its own goal, so nothing needs merging. No brand terms show up in non-brand campaigns."},
+    {"area": "Keywords and Quality Score", "result": "warn", "key_number": "13.0% of keyword spend on Quality Score 1-4", "why": "Spend-weighted Quality Score is 6.1. Below-average expected CTR is the weakest part on 9 of the top 20 keywords. 5 live keywords had no impressions (information only)."},
+    {"area": "Ads and assets", "result": "warn", "key_number": "3 search campaigns miss an asset", "why": "Every ad group has a responsive search ad, and 35.3% of rated RSAs are POOR or AVERAGE. One ad is approved with limits (DESTINATION_MISMATCH) in Plumbing | Search."},
+    {"area": "Bidding and budget", "result": "warn", "key_number": "21% lost to budget on Furnace Repair | Search", "why": "Furnace Repair | Search beats the target at $60.00 a conversion but loses share to budget. 4 campaigns lose more than 30% to rank. 1 Smart Bidding campaign had under 30 conversions."},
+    {"area": "Settings", "result": "warn", "key_number": "1 campaign shows ads to people outside the area", "why": "Plumbing | Search uses presence or interest, so people interested in Colorado can see its ads from elsewhere. Display network and search partners are off everywhere."},
+    {"area": "Change hygiene", "result": "pass", "key_number": "4 changes in 14 days", "why": "1 bid or budget change on a Smart Bidding campaign, so nothing is stuck in learning. 22 Google recommendations are open, treated as information only."}
   ],
-  "grade_math": "100 - 12 (Measurement fail) - 5 x 4 warns = 68",
+  "grade_math": "100 - 1 fail x 12 - 4 warns x 5 = 68 (needs work: 65 to 84)",
   "top_5_fixes": [
     {
       "rank": 1,
-      "fix": "Raise the Criminal Defense budget in steps",
-      "money_at_stake": "up to ~87 more conversions a month for ~$1810 more spend",
-      "estimate": "55 conversions x 43% lost to budget / 27% impression share, at the current $21 CPA. Upper bound; CPA will rise as budget grows.",
-      "evidence": "campaign query: impression share 27%, lost to budget 43%, CPA $21 vs $30 target",
-      "who": "do this in Google Ads (budget changes are out of scope for this skill)"
+      "fix": "Fix call counting before trusting any bid change",
+      "money_at_stake": "steers $11,850 a month of conversion-based bidding",
+      "estimate": "Smart Bidding optimises toward counted conversions, so a call counted twice pulls budget toward the campaigns that get repeat callers.",
+      "evidence": "conversion_action query: 'Calls from website (60s+)' counts MANY_PER_CLICK; 'Phone call from ads (60s+)', 'Calls from website (60s+)' are both counted",
+      "who": "do this in Google Ads: set lead actions to one per click and check whether both call actions can fire for the same caller"
     },
     {
       "rank": 2,
-      "fix": "Fix call conversion counting before trusting any bid change",
-      "money_at_stake": "steers ~$5270 a month of conversion-based bidding",
-      "estimate": "Smart Bidding optimises toward counted conversions, so double-counted calls send budget to the wrong places.",
-      "evidence": "conversion_action query: 'Phone Call' (imported clicks, CONTACT) counts MANY_PER_CLICK; 'Calls from ads', 'Phone Call' and 'Call or Text' are all counted",
-      "who": "do this in Google Ads: set lead actions to one per click and keep one primary call action"
+      "fix": "Fix AC Installation | Search before it gets more money",
+      "money_at_stake": "$1,650 a month at $183.33 a conversion, 2.8x target",
+      "estimate": "It loses 58% of impressions to rank on Maximize clicks, and 3 of its 4 scored keywords are below average on landing page experience.",
+      "evidence": "campaign query: 9 conversions on $1,650; keyword_view: Quality Score 3 to 6 on its 4 scored keywords",
+      "who": "review keywords, ads and the landing page; quality-score-fixer and bid-strategy-auditor go deeper"
     },
     {
       "rank": 3,
-      "fix": "Stop feeding Drug Charges until its CPA is fixed",
-      "money_at_stake": "~$850 a month at $171 CPA, 5.6x target",
-      "estimate": "It loses share to budget, but more budget at this CPA buys expensive leads.",
-      "evidence": "campaign query: 5 conversions on $850, lost to budget 26%",
-      "who": "review keywords, ads and landing page; quality-score-fixer and search-term-gold-miner go deeper"
+      "fix": "Lift the keywords on Quality Score 1-4",
+      "money_at_stake": "$1,530 a month on 4 keywords scored 1-4",
+      "estimate": "Below-average expected CTR is the weakest part across the top keywords, which points to ad copy first. $520 of it sits in AC Installation | Search, fix 2.",
+      "evidence": "keyword_view: 'new ac unit cost' QS 3 ($520), 'heating repair' QS 4 ($390), 'plumber near me' QS 4 ($370), 'air conditioner repair' QS 4 ($250)",
+      "who": "rsa-ad-copy-writer drafts new ads; quality-score-fixer covers the rest"
     },
     {
       "rank": 4,
-      "fix": "Raise the Traffic Tickets budget in steps",
-      "money_at_stake": "up to ~25 more conversions a month for ~$620 more spend",
-      "estimate": "54 conversions x 26% / 55%, at the current $25 CPA. Upper bound.",
-      "evidence": "campaign query: impression share 55%, lost to budget 26%",
-      "who": "do this in Google Ads"
+      "fix": "Raise the Furnace Repair | Search budget in steps",
+      "money_at_stake": "up to 25.4 more conversions a month for about $1,522 more spend",
+      "estimate": "58 conversions x 21% lost to budget / 48% impression share, at the current $60.00 CPA. Upper bound; the CPA will rise as the budget grows.",
+      "evidence": "campaign query: impression share 48%, lost to budget 21%, CPA $60.00 against the $65 target",
+      "who": "do this in Google Ads (budget changes are out of scope for this skill)"
     },
     {
       "rank": 5,
-      "fix": "Win back DUI rank with better ads, not higher bids first",
-      "money_at_stake": "~$650 a month of spend losing 64% of impressions to rank",
-      "estimate": "Expected CTR is the weakest Quality Score part across the top keywords, which points to ad copy.",
-      "evidence": "campaign query: lost to rank 64%; keyword_view: expected CTR below average on 12 of top 20 keywords",
-      "who": "rsa-ad-copy-writer drafts new ads; do this in Google Ads"
+      "fix": "Add negatives for the low-intent search terms",
+      "money_at_stake": "$780 a month on 9 terms with no conversion",
+      "estimate": "Spend on the visible terms only. Terms that name the campaign's own service stay on the watch list.",
+      "evidence": "search_terms_report: 'furnace repair jobs' $85, 'how to fix furnace igniter' $70, 'furnace repair phoenix' $75, 'ac repair technician salary' $90, 'car ac repair' $130, 'why is my ac not cooling' $70, 'plumber jobs denver' $70, 'home depot ac installation' $120, 'ac installation jobs' $70",
+      "who": "I can do this now, after your yes"
     }
   ],
-  "watch_list": [
-    {
-      "term": "nurse attorney",
-      "campaign": "Nursing Board",
-      "spend": 70,
-      "clicks": 3,
-      "conversions": 0,
-      "why_not_negative": "names the campaign's own service; check bid and landing page"
+  "everything_else": {
+    "measurement": "3 counted actions: Phone call from ads (60s+), Booking form submit, Calls from website (60s+). Check whether 'Phone call from ads (60s+)' and 'Calls from website (60s+)' can fire for the same caller.",
+    "wasted_spend": {
+      "visible_share_of_search_spend": 94.4,
+      "waste_by_cluster": {"jobs": 315, "DIY": 140, "wrong location": 75, "retailer or competitor": 120, "wrong product": 130},
+      "brand_leakage": "none"
     },
-    {
-      "term": "dui lawyer near me",
-      "campaign": "DUI",
-      "spend": 40,
-      "clicks": 1,
-      "conversions": 0,
-      "why_not_negative": "core DUI search; one click is too little data"
+    "keywords": {
+      "spend_weighted_quality_score": 6.1,
+      "coverage": "31 of 33 keywords with impressions have a score; $90 sits on unscored keywords",
+      "below_average_in_top_20": {"expected_ctr": 9, "ad_relevance": 2, "landing_page": 6},
+      "live_keywords_with_no_impressions": [
+        "furnace repair",
+        "furnace repair englewood",
+        "tankless water heater flush",
+        "emergency plumbers",
+        "mini split installation"
+      ]
+    },
+    "ads_and_assets": {
+      "rated_rsas": 17,
+      "poor_or_average": 6,
+      "pending": 1,
+      "approved_limited": [
+        {"campaign": "Plumbing | Search", "ad_group": "Leak repair", "policy_topic": "DESTINATION_MISMATCH"}
+      ],
+      "asset_gaps": [
+        {"campaign": "Water Heaters | Search", "gaps": ["no structured snippet"]},
+        {"campaign": "Plumbing | Search", "gaps": ["3 callouts"]},
+        {"campaign": "AC Installation | Search", "gaps": ["2 sitelinks", "no call asset"]}
+      ],
+      "image_assets": "none on any search campaign"
+    },
+    "bidding_and_budget": {
+      "lost_to_budget_and_on_target": ["Furnace Repair | Search"],
+      "lost_to_rank_over_30_percent": [
+        {"campaign": "Furnace Repair | Search", "rank_lost": 0.31, "cpa": 60.0},
+        {"campaign": "AC Repair | Search", "rank_lost": 0.4, "cpa": 77.31},
+        {"campaign": "Plumbing | Search", "rank_lost": 0.46, "cpa": 60.0},
+        {"campaign": "AC Installation | Search", "rank_lost": 0.58, "cpa": 183.33}
+      ],
+      "smart_bidding_under_30_conversions": [
+        {"campaign": "AC Repair | Search", "conversions": 26}
+      ]
+    },
+    "settings": {"presence_or_interest": ["Plumbing | Search"], "display_network_on": [], "search_partners_on": []},
+    "change_hygiene": {
+      "changes_last_14_days": 4,
+      "bid_or_budget_changes_on_smart_bidding": 1,
+      "open_recommendations": {"KEYWORD": 9, "CAMPAIGN_BUDGET": 4, "RAISE_TARGET_CPA_BID_TOO_LOW": 2, "RESPONSIVE_SEARCH_AD_ASSET": 6, "MAXIMIZE_CLICKS_OPT_IN": 1},
+      "optimization_score": "81% (not a performance grade)"
     }
+  },
+  "watch_list": [
+    {"term": "new ac unit cost", "campaign": "AC Installation | Search", "spend": 300, "clicks": 48, "conversions": 0, "why_not_negative": "names the campaign's own service; check the bid, ads and landing page"},
+    {"term": "how much is a new ac unit", "campaign": "AC Installation | Search", "spend": 90, "clicks": 15, "conversions": 0, "why_not_negative": "names the campaign's own service; check the bid, ads and landing page"}
   ],
   "unknowns": [
-    "78% of spend has no visible search term (Google hides low-volume terms)",
-    "the change log reached its 50-row limit on Sept 18, so earlier edits in the 14-day window may be missing"
+    "5.6% of search spend has no visible search term (Google hides low-volume terms)",
+    "Performance Max is outside the search terms report, so its queries are not checked"
   ],
   "offered_actions": [
-    "add 2 sitelinks to Nursing Board with add_sitelinks, using pages you confirm are live (not run)"
+    {
+      "action": "add_negative_keywords",
+      "campaign": "AC Installation | Search",
+      "keywords": [
+        {"text": "home depot", "match_type": "PHRASE"},
+        {"text": "jobs", "match_type": "PHRASE"}
+      ],
+      "backed_by": ["ac installation jobs", "home depot ac installation"],
+      "status": "not run"
+    },
+    {
+      "action": "add_negative_keywords",
+      "campaign": "AC Repair | Search",
+      "keywords": [
+        {"text": "car ac", "match_type": "PHRASE"},
+        {"text": "salary", "match_type": "PHRASE"},
+        {"text": "why is my", "match_type": "PHRASE"}
+      ],
+      "backed_by": ["ac repair technician salary", "car ac repair", "why is my ac not cooling"],
+      "status": "not run"
+    },
+    {
+      "action": "add_negative_keywords",
+      "campaign": "Furnace Repair | Search",
+      "keywords": [
+        {"text": "how to", "match_type": "PHRASE"},
+        {"text": "jobs", "match_type": "PHRASE"},
+        {"text": "phoenix", "match_type": "PHRASE"}
+      ],
+      "backed_by": ["furnace repair jobs", "furnace repair phoenix", "how to fix furnace igniter"],
+      "status": "not run"
+    },
+    {
+      "action": "add_negative_keywords",
+      "campaign": "Plumbing | Search",
+      "keywords": [
+        {"text": "jobs", "match_type": "PHRASE"}
+      ],
+      "backed_by": ["plumber jobs denver"],
+      "status": "not run"
+    },
+    {
+      "action": "add_sitelinks",
+      "campaign": "AC Installation | Search",
+      "sitelinks": [
+        {"link_text": "Heat Pump Installation", "final_url": "https://example.com/heat-pumps"},
+        {"link_text": "AC Repair", "final_url": "https://example.com/ac-repair"}
+      ],
+      "note": "pages taken from the account's own final URLs; confirm they are live first",
+      "status": "not run"
+    }
   ],
   "do_in_google_ads": [
-    "add a structured snippet to the 4 campaigns without one"
-  ]
+    "add a structured snippet to Water Heaters | Search",
+    "add a call asset to AC Installation | Search",
+    "switch Plumbing | Search to people in or regularly in the area"
+  ],
+  "go_deeper": {"Search term detail": "search-term-gold-miner", "Negatives": "negative-keyword-implementer", "Quality Score": "quality-score-fixer", "Ad copy": "rsa-ad-copy-writer", "Bidding": "bid-strategy-auditor", "Budgets and pacing": "spend-pacing-monitor", "Tracking": "conversion-tracking-auditor"}
 }

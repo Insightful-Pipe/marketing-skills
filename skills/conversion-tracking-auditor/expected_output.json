@@ -1,209 +1,107 @@
 {
   "header": {
-    "business": "A US criminal and traffic defense law firm",
-    "ads_account": "a client account, id removed",
+    "business": "Example home services company",
+    "ads_account": "123-456-7890",
     "currency": "USD",
-    "time_zone": "America/Los_Angeles",
-    "results_range": "2026-09-02 to 2026-10-01",
-    "lag_and_signal_range": "2026-07-04 to 2026-10-01",
-    "platforms_checked": [
-      "google-ads"
-    ],
-    "platforms_unknown": [
-      "google-tag-manager",
-      "google-analytics"
-    ],
-    "platforms_skipped": [
-      "facebook-ads (not connected for this business)",
-      "linkedin-ads (not connected for this business)"
-    ],
-    "spend": 5560,
-    "conversions": 183,
-    "cpa": 30,
-    "grade": 83,
-    "rating": "needs work"
+    "time_zone": "America/Denver",
+    "results_range": "2026-09-21 to 2026-10-20",
+    "lag_and_signal_range": "2026-07-23 to 2026-10-20",
+    "platforms_checked": ["google-ads", "google-tag-manager", "google-analytics"],
+    "platforms_skipped": ["facebook-ads (not connected)", "linkedin-ads (not connected)"],
+    "spend": 14040,
+    "conversions": 258,
+    "cpa": 54.42,
+    "grade": 56,
+    "rating": "don't bid on it"
   },
   "scorecard": [
-    {
-      "area": "Account setup",
-      "result": "pass",
-      "key_number": "auto-tagging on, tracking managed in this account",
-      "why": "Auto-tagging is on, conversion tracking is managed by the account itself, and it owns its own conversion actions."
-    },
-    {
-      "area": "What counts",
-      "result": "fail",
-      "key_number": "5 counted actions; 1 lead action counts every conversion",
-      "why": "'Phone Call' (UPLOAD_CLICKS, CONTACT) counts MANY_PER_CLICK, and 3 call actions are counted side by side, so one caller can be counted more than once."
-    },
-    {
-      "area": "Live signal",
-      "result": "warn",
-      "key_number": "1 counted action silent for 90 days",
-      "why": "'Live Chat' is counted in the goal but recorded nothing between 2026-07-04 and 2026-10-01. The other 4 counted actions all recorded a conversion in the last 3 days, and none stopped in the last week."
-    },
-    {
-      "area": "Lag and windows",
-      "result": "pass",
-      "key_number": "93% of counted conversions arrive within a day",
-      "why": "90% have arrived by day 1. No counted action shows more than 5% of its conversions at the edge of its window. Windows are mixed: 30 and 90 days."
-    },
-    {
-      "area": "Offline imports",
-      "result": "pass",
-      "key_number": "status EXCELLENT, success rate 100%",
-      "why": "One API client uploads to 'Phone Call'. One upload failed on 2026-09-04; the uploads after it succeeded. Volume is small: 2 conversions in 30 days against 181 from the other counted actions."
-    },
-    {
-      "area": "Enhanced conversions and consent",
-      "result": "pass (partly checked)",
-      "key_number": "customer data terms accepted, enhanced conversions for leads on",
-      "why": "Account side is ready. Whether the website tags send enhanced conversions can only be read from the GTM container, which isn't connected for this site."
-    },
-    {
-      "area": "Tags on the site",
-      "result": "unknown",
-      "key_number": "0 of 1 connected containers belong to this site",
-      "why": "The only connected GTM container is for a different website, and the firm's site answers automated requests with a bot check ('Just a moment...'), so its container id couldn't be read."
-    },
-    {
-      "area": "GA4",
-      "result": "unknown",
-      "key_number": "0 of 3 connected GA4 properties belong to this business",
-      "why": "The connected properties are other businesses. In Google Ads, all 20 GA4-imported actions are hidden, so GA4 feeds nothing into bidding today."
-    }
+    {"area": "Account setup", "result": "pass", "key_number": "auto-tagging on, tracking managed in this account", "why": "Auto-tagging is on, conversion tracking is managed by the account itself, and it owns its own conversion actions."},
+    {"area": "What counts", "result": "fail", "key_number": "4 counted actions; 1 lead action counts every conversion", "why": "'Calls from website (60s+)' (PHONE_CALL_LEAD) counts MANY_PER_CLICK, and 2 call actions are counted side by side ('Phone call from ads (60s+)', 'Calls from website (60s+)'), so one caller can be counted more than once."},
+    {"area": "Live signal", "result": "warn", "key_number": "1 counted action silent for 90 days", "why": "'Chat lead' is counted in the goal but recorded nothing between 2026-07-23 and 2026-10-20. The other 3 counted actions recorded conversions in the last 7 days, and none stopped."},
+    {"area": "Lag and windows", "result": "warn", "key_number": "6.7% of 'Booking form submit' lands at the edge of its 30-day window", "why": "82.6% of counted conversions arrive within a day and 90% by day 4, but bookings for installs take weeks: 6.7% arrive 21 to 30 days after the click, so the window probably drops some."},
+    {"area": "Offline imports", "result": "skipped", "key_number": "no upload actions", "why": "The account has no UPLOAD_CLICKS or UPLOAD_CALLS action, and both import summaries are empty."},
+    {"area": "Enhanced conversions and consent", "result": "warn", "key_number": "enhanced conversions off for leads and on the web tag", "why": "Customer data terms are accepted, but enhanced conversions for leads is off although the booking software knows which leads closed, and 'Google Ads - Booking form' has enableEnhancedConversion off. Consent not checked: no EEA or UK visitors."},
+    {"area": "Tags on the site", "result": "fail", "key_number": "1 counted website action has no live tag", "why": "The site's GTM-EXMPL12 matches the connected container. 'Chat lead' is counted, but its Google Ads tag sits only in the draft (Google Ads - Chat lead), so it never fires. The booking tag, the Conversion Linker and the account id are right."},
+    {"area": "GA4", "result": "warn", "key_number": "1 key event with no events; form submits can count twice", "why": "The live Google tag sends to G-EXAMPLE1 and GA4 is linked to this Ads account. 'test_event' (created 2026-06-11) fired nothing in 30 days, and enhanced measurement's form interactions run next to the custom generate_lead key event."}
   ],
-  "grade_math": "100 - 12 x 1 fail - 5 x 1 warn = 83",
+  "grade_math": "100 - 12 x 2 fails - 5 x 4 warns = 56 (don't bid on it: under 65)",
   "what_google_ads_counts": [
-    {
-      "action": "Calls from ads",
-      "type": "AD_CALL",
-      "category": "PHONE_CALL_LEAD",
-      "counting": "ONE_PER_CLICK",
-      "click_window_days": 30,
-      "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-      "conversions_30d": 73,
-      "last_conversion": "2026-10-01"
-    },
-    {
-      "action": "Call or Text",
-      "type": "WEBPAGE",
-      "category": "CONTACT",
-      "counting": "ONE_PER_CLICK",
-      "click_window_days": 90,
-      "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-      "conversions_30d": 62,
-      "last_conversion": "2026-10-01"
-    },
-    {
-      "action": "Contact us",
-      "type": "WEBPAGE",
-      "category": "CONTACT",
-      "counting": "ONE_PER_CLICK",
-      "click_window_days": 30,
-      "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-      "conversions_30d": 46,
-      "last_conversion": "2026-10-01"
-    },
-    {
-      "action": "Phone Call",
-      "type": "UPLOAD_CLICKS",
-      "category": "CONTACT",
-      "counting": "MANY_PER_CLICK",
-      "click_window_days": 90,
-      "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-      "conversions_30d": 2,
-      "last_conversion": "2026-09-29"
-    },
-    {
-      "action": "Live Chat",
-      "type": "WEBPAGE",
-      "category": "CONTACT",
-      "counting": "ONE_PER_CLICK",
-      "click_window_days": 30,
-      "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
-      "conversions_30d": 0,
-      "last_conversion": "none in 90 days"
-    }
+    {"action": "Phone call from ads (60s+)", "type": "AD_CALL", "category": "PHONE_CALL_LEAD", "counting": "ONE_PER_CLICK", "click_window_days": 30, "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN", "conversions_30d": 139, "last_conversion": "2026-10-20"},
+    {"action": "Booking form submit", "type": "WEBPAGE", "category": "SUBMIT_LEAD_FORM", "counting": "ONE_PER_CLICK", "click_window_days": 30, "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN", "conversions_30d": 88, "last_conversion": "2026-10-20"},
+    {"action": "Calls from website (60s+)", "type": "WEBSITE_CALL", "category": "PHONE_CALL_LEAD", "counting": "MANY_PER_CLICK", "click_window_days": 30, "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN", "conversions_30d": 31, "last_conversion": "2026-10-20"},
+    {"action": "Chat lead", "type": "WEBPAGE", "category": "CONTACT", "counting": "ONE_PER_CLICK", "click_window_days": 30, "attribution": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN", "conversions_30d": 0, "last_conversion": "none in 90 days"}
   ],
-  "lag": {
-    "within_1_day_pct": 93,
-    "within_7_days_pct": 97,
-    "within_14_days_pct": 98,
-    "days_to_90_pct": 1,
-    "advice": "Leave out the last 1 day before judging a CPA or a change."
-  },
   "top_fixes": [
     {
-      "rank": 1,
-      "fix": "Connect the site's GTM container and GA4 property",
-      "spend_steered": "all ~$5560 of 30-day spend: tag coverage can't be checked without them",
-      "evidence": "1 connected container belongs to another site; 3 connected GA4 properties belong to other businesses",
-      "who": "add them in the InsightfulPipe MCP, then run this skill again"
+      "fix": "Count 'Calls from website (60s+)' once per click",
+      "spend_steered": "$11,850 a month on 5 campaigns with conversion-based bidding",
+      "evidence": "conversion_action query: WEBSITE_CALL, PHONE_CALL_LEAD, MANY_PER_CLICK; 31 conversions in 30 days",
+      "who": "do this in Google Ads (Goals, the action, Count: One). update_conversion_action has no counting field; the alternative is a new ONE_PER_CLICK action with create_conversion_action, then setting this one to secondary.",
+      "rank": 1
     },
     {
-      "rank": 2,
-      "fix": "Count 'Phone Call' once per click",
-      "spend_steered": "~$5270 a month on 7 campaigns with conversion-based bidding",
-      "evidence": "conversion_action query: UPLOAD_CLICKS, CONTACT, MANY_PER_CLICK, 90-day window; 2 conversions in 30 days",
-      "who": "do this in Google Ads (Goals, the action, Count: One). update_conversion_action has no counting field; the alternative is a new ONE_PER_CLICK action with create_conversion_action, then setting this one to secondary."
+      "fix": "Check whether one caller can fire both call actions",
+      "spend_steered": "the same $11,850: 'Phone call from ads (60s+)', 'Calls from website (60s+)' are both counted",
+      "evidence": "'Phone call from ads (60s+)' AD_CALL 139 in 30 days; 'Calls from website (60s+)' WEBSITE_CALL 31 in 30 days",
+      "who": "check with the call tracking setup. If one call can fire both, I can set the duplicate to secondary with update_conversion_action (primary_for_goal: false) after you confirm.",
+      "rank": 2
     },
+    {"fix": "Lengthen the 'Booking form submit' window from 30 to 90 days", "spend_steered": "the same $11,850: bookings feed every conversion-based campaign", "evidence": "conversion lag, 90 days: 6.7% of its conversions arrive 21 to 30 days after the click", "who": "I can do this now (update_conversion_action click_through_lookback_window_days: 90), after you confirm", "rank": 3},
+    {"fix": "Turn on enhanced conversions for leads and on the booking tag", "spend_steered": "the same $11,850", "evidence": "customer: enhanced_conversions_for_leads_enabled false; live tag 'Google Ads - Booking form' has enableEnhancedConversion false", "who": "do this in Google Ads (Goals, Settings) and in Tag Manager (the tag's Include user-provided data)", "rank": 4},
     {
-      "rank": 3,
-      "fix": "Pick one primary call action",
-      "spend_steered": "same ~$5270: 'Calls from ads', 'Call or Text', 'Phone Call' are all counted",
-      "evidence": "'Calls from ads' AD_CALL 73 in 30 days; 'Call or Text' WEBPAGE 62 in 30 days; 'Phone Call' UPLOAD_CLICKS 2 in 30 days",
-      "who": "check with the firm whether a caller from an ad can also trigger the website call tag and the uploaded call. If so, I can set the duplicates to secondary with update_conversion_action (primary_for_goal: false) after you confirm."
-    },
-    {
-      "rank": 4,
-      "fix": "Fix or retire 'Live Chat'",
-      "spend_steered": "no direct spend, but a counted action that never fires may mean the chat tag broke",
-      "evidence": "daily query 2026-07-04 to 2026-10-01: 0 conversions; it is primary and counted",
-      "who": "test the chat on the site. If chat is gone, I can set the action to HIDDEN with update_conversion_action after you confirm."
+      "fix": "Publish the 'Google Ads - Chat lead' tag, or stop counting 'Chat lead'",
+      "spend_steered": "no direct spend, but a counted action that never fires gives Smart Bidding a goal it can't see",
+      "evidence": "live version v14 - call tracking update has no awct tag with label AbC-chat1; the draft has it; 0 conversions in 90 days",
+      "who": "publish the container in Tag Manager after a preview; or I can set the action to secondary with update_conversion_action after you confirm",
+      "rank": 5
     }
   ],
+  "lag": {"within_1_day_pct": 82.6, "within_7_days_pct": 94.5, "within_14_days_pct": 96.8, "days_to_90_pct": 4, "advice": "Leave out the last 4 days before judging a CPA or a change."},
   "everything_else": [
-    "5 primary actions are not counted because their goals aren't biddable (the Google-hosted local actions: website visits, calls, directions, other engagements, menu views). That looks intended for a law firm.",
-    "36 hidden actions are clutter: 16 old Universal Analytics goals and 20 GA4 imports. 16 of them still say include in conversions but record nothing.",
-    "All 9 enabled campaigns use the account's goals (goal_config_level CUSTOMER); none has a custom goal.",
-    "Every counted action uses data-driven attribution.",
-    "No campaign bids on value, so the default values of 0 and 1 do no harm.",
-    "Lag: 93% within 1 day, 97% within 7, 98% within 14. Leave out the last 1 day before judging a CPA."
+    "2 hidden actions are clutter: old Universal Analytics goals ('UA - Contact form (old)', 'UA - Call click (old)'). They still say include in conversions but record nothing.",
+    "Secondary actions record but don't count: 'Page view - thank you' (92 in 30 days) and 'GA4 session_start (imported)' (10,600). That is right: neither is a lead.",
+    "All 7 enabled campaigns use the account's goals (goal_config_level CUSTOMER); none has a custom goal.",
+    "Every counted action uses data-driven attribution. No campaign bids on value, so the default values of 0 do no harm.",
+    "Windows: every counted action uses 30 days; view-through is 1 day.",
+    "GA4 counts generate_lead ONCE_PER_EVENT, so a repeat submit counts twice. GA4 shows 74 generate_lead key events from google / cpc against 88 'Booking form submit' conversions in Ads, a 15.9% gap: different attribution, under the 30% line.",
+    "Unattributed GA4 sessions: (not set) and (data not available) are 6.8% of sessions, under 20%. Event data retention is 14 months."
   ],
-  "unknowns": [
-    "Tags on the site: the connected GTM container is for another website, and the firm's site blocks automated fetches.",
-    "Web enhanced conversions: visible only in the GTM conversion tags.",
-    "GA4: no property for this business is connected.",
+  "unknowns_and_skipped": [
+    "Offline imports: skipped, no upload actions.",
+    "Meta Ads and LinkedIn Ads: skipped, not connected.",
+    "Consent settings: not checked, the business serves no EEA or UK visitors.",
     "Enhanced conversions for leads imports: Google shows their health only in the Google Ads diagnostics screen, not in the API report."
   ],
   "offered_actions": [
-    "update_conversion_action: set duplicate call actions to secondary (primary_for_goal: false), not run",
-    "update_conversion_action: set 'Live Chat' to HIDDEN if chat is gone, not run"
+    {
+      "action": "update_conversion_action",
+      "body": {"conversion_action_id": "703", "primary_for_goal": false},
+      "when": "only if one caller can fire both call actions",
+      "status": "not run"
+    },
+    {
+      "action": "update_conversion_action",
+      "body": {"conversion_action_id": "702", "click_through_lookback_window_days": 90},
+      "status": "not run"
+    },
+    {
+      "action": "update_conversion_action",
+      "body": {"conversion_action_id": "704", "primary_for_goal": false},
+      "when": "if the chat tag won't be published soon",
+      "status": "not run"
+    }
   ],
-  "do_in_google_ads": [
-    "set 'Phone Call' to count one conversion per click"
+  "do_in_google_ads_or_gtm": [
+    "set 'Calls from website (60s+)' to count one conversion per click",
+    "turn on enhanced conversions for leads",
+    "turn on Include user-provided data in 'Google Ads - Booking form'",
+    "preview and publish the container so 'Google Ads - Chat lead' goes live",
+    "remove the GA4 key event 'test_event'"
   ],
   "go_deeper": [
-    {
-      "skill": "attribution-model-auditor",
-      "for": "attribution choices",
-      "if_not_installed": "compare data-driven and last-click conversions for the counted actions before changing the model"
-    },
-    {
-      "skill": "google-ads-account-audit",
-      "for": "the whole account",
-      "if_not_installed": "audit search terms, budgets and bidding once the conversion fixes are in"
-    },
-    {
-      "skill": "cross-channel-attribution-analyst",
-      "for": "comparing platforms",
-      "if_not_installed": "once GA4 is connected, line up Google Ads leads against GA4 key events for the same days"
-    },
-    {
-      "skill": "incrementality-test-designer",
-      "for": "testing whether the conversions are real",
-      "if_not_installed": "pause one campaign in a few matched areas for a few weeks and compare calls and forms"
-    }
+    {"skill": "attribution-model-auditor", "for": "attribution choices"},
+    {"skill": "google-ads-account-audit", "for": "the whole account"},
+    {"skill": "cross-channel-attribution-analyst", "for": "comparing platforms"},
+    {"skill": "incrementality-test-designer", "for": "testing whether the conversions are real"}
   ]
 }

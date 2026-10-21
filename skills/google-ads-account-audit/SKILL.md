@@ -69,7 +69,7 @@ Run the `search_terms_report` action for the 30 days, with `limit` 5000.
 - **Waste:** a search term that spent more than your target CPA and has 0 conversions. Add up its spend. Report it as a share of total search spend and as a monthly dollar figure.
 - **Brand leakage:** brand terms showing up in non-brand campaigns, and the reverse.
 - **Intent clusters:** group the wasting terms by intent (jobs, free, DIY, wrong location, competitor). Base the groups only on terms that actually appear in the report. Never propose a negative that isn't backed by a real term with spend. A generic starter list of negatives is not allowed.
-- **Relevance check before any negative.** A wasting term that names the campaign's own service, like "dui lawyer near me" in a DUI campaign, is not a negative. It's a bid, ad or landing-page problem. Put it on a watch list with the reason.
+- **Relevance check before any negative.** A wasting term that names the campaign's own service, like "furnace repair near me" in a furnace repair campaign, is not a negative. It's a bid, ad or landing-page problem. Put it on a watch list with the reason.
 
 Fail when waste is more than 15% of search spend, and warn above 7%.
 
