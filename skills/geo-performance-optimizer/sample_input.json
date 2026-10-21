@@ -1,1320 +1,217 @@
 {
-  "request": "Where, on which devices and at what hours is my Google Ads money working, and what should I change? Use the last 90 days. I don't have targets per campaign.",
-  "account": "A US criminal and traffic defense law firm (Google Ads, USD)",
-  "date_range": {
-    "start": "2026-07-07",
-    "end": "2026-10-04",
-    "days": 90
-  },
-  "targets": "none given: each campaign's own CPA is the benchmark",
-  "service_area": "not given",
+  "request": "Hey Claude, I just added the \"geo-performance-optimizer\" skill. Where, on which devices and at what hours are my Google Ads wasting money?",
+  "account": "Example home services company (Google Ads, USD)",
+  "date_range": {"start": "2026-07-23", "end": "2026-10-20", "days": 90},
+  "targets": "not given: each campaign's own CPA over the window",
+  "service_area": "the Denver metro and Colorado Springs",
   "queries_run": [
-    "customer: name, currency, time zone",
-    "campaign: status, bid strategy, location matching, spend, conversions",
-    "campaign_criterion: locations, exclusions, ad schedules, device and location bid adjustments",
-    "ad_group_bid_modifier: device modifiers per ad group",
-    "user_location_view by segments.geo_target_region and by segments.geo_target_metro",
-    "user_location_view by segments.geo_target_city, one campaign and metro at a time, for the 3 metros on the watch list",
-    "geographic_view: presence vs interest",
-    "geo_target_constant: names for every location id, including the drill-down cities",
-    "campaign by segments.device",
-    "campaign by segments.day_of_week and segments.hour"
+    "customer and campaigns",
+    "campaign_criterion (locations, devices, schedules)",
+    "user_location_view by metro",
+    "user_location_view by city (drill-down)",
+    "geographic_view location type",
+    "geo_target_constant names",
+    "campaign by device",
+    "campaign by hour"
   ],
   "data_pulled": {
-    "account": {
-      "currency": "USD",
-      "time_zone": "America/Los_Angeles"
-    },
+    "account": {"currency": "USD", "time_zone": "America/Denver"},
     "campaigns": [
       {
-        "campaign": "Traffic Tickets",
+        "campaign": "Brand | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
+        "bid_strategy": "TARGET_IMPRESSION_SHARE",
         "location_matching": "PRESENCE",
-        "spend": 4360,
-        "conversions": 180.6
+        "spend": 1590,
+        "conversions": 180,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {}
       },
       {
-        "campaign": "Criminal Defense",
+        "campaign": "Furnace Repair | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
+        "bid_strategy": "MAXIMIZE_CONVERSIONS",
         "location_matching": "PRESENCE",
-        "spend": 4340,
-        "conversions": 182.5
+        "spend": 6990,
+        "conversions": 112,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {"Denver CO": 1.1}
       },
       {
-        "campaign": "Out-of-State Traffic",
+        "campaign": "AC Repair | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
+        "bid_strategy": "TARGET_CPA",
         "location_matching": "PRESENCE",
-        "spend": 2090,
-        "conversions": 80
+        "spend": 7160,
+        "conversions": 101,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {}
       },
       {
-        "campaign": "Drug Charges",
+        "campaign": "Water Heaters | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
+        "bid_strategy": "MAXIMIZE_CONVERSIONS",
         "location_matching": "PRESENCE",
-        "spend": 1740,
-        "conversions": 15.5
+        "spend": 5090,
+        "conversions": 90,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {}
       },
       {
-        "campaign": "DUI",
+        "campaign": "Plumbing | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
-        "location_matching": "PRESENCE",
-        "spend": 1490,
-        "conversions": 40.0
+        "bid_strategy": "TARGET_CPA",
+        "location_matching": "PRESENCE_OR_INTEREST",
+        "spend": 6920,
+        "conversions": 117,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {}
       },
       {
-        "campaign": "Nursing Board",
+        "campaign": "AC Installation | Search",
         "status": "enabled",
-        "bid_strategy": "Maximize conversions",
+        "bid_strategy": "MAXIMIZE_CLICKS",
         "location_matching": "PRESENCE",
-        "spend": 1030,
-        "conversions": 10.0
+        "spend": 5550,
+        "conversions": 33,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "Monday to Sunday, 06:00 to 22:00",
+        "location_bid_modifiers": {}
       },
       {
-        "campaign": "Brand",
+        "campaign": "PMax | All services",
         "status": "enabled",
-        "bid_strategy": "Target impression share",
+        "bid_strategy": "MAXIMIZE_CONVERSIONS",
         "location_matching": "PRESENCE",
-        "spend": 810,
-        "conversions": 51.9
-      },
-      {
-        "campaign": "Out-of-State DUI",
-        "status": "enabled",
-        "bid_strategy": "Maximize conversions",
-        "location_matching": "PRESENCE",
-        "spend": 690,
-        "conversions": 12
-      },
-      {
-        "campaign": "Professional Board",
-        "status": "paused",
-        "bid_strategy": "Maximize clicks",
-        "location_matching": "PRESENCE",
-        "spend": 240,
-        "conversions": 1
-      },
-      {
-        "campaign": "Pharmacy Board",
-        "status": "enabled",
-        "bid_strategy": "Maximize clicks",
-        "location_matching": "PRESENCE",
-        "spend": 190,
-        "conversions": 2
+        "spend": 6670,
+        "conversions": 93,
+        "targeted": "Colorado (state)",
+        "ad_schedule": "none (24/7)",
+        "location_bid_modifiers": {}
       }
     ],
-    "locations": {
-      "slices_with_spend_of_50_or_more": [
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Home metro A",
-          "spend": 2180,
-          "clicks": 346,
-          "conversions": 81.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Home metro A",
-          "spend": 1770,
-          "clicks": 260,
-          "conversions": 78.6
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Home metro B",
-          "spend": 850,
-          "clicks": 131,
-          "conversions": 30.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Home metro B",
-          "spend": 660,
-          "clicks": 125,
-          "conversions": 29.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Home metro D",
-          "spend": 610,
-          "clicks": 93,
-          "conversions": 25.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Home metro A",
-          "spend": 610,
-          "clicks": 98,
-          "conversions": 18.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Home metro C",
-          "spend": 600,
-          "clicks": 118,
-          "conversions": 27.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Home metro A",
-          "spend": 570,
-          "clicks": 39,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Home metro D",
-          "spend": 510,
-          "clicks": 108,
-          "conversions": 22.5
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Home metro A",
-          "spend": 500,
-          "clicks": 24,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Home metro A",
-          "spend": 490,
-          "clicks": 123,
-          "conversions": 24.4
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 1 (borders the home state)",
-          "spend": 450,
-          "clicks": 39,
-          "conversions": 20.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Home metro C",
-          "spend": 410,
-          "clicks": 74,
-          "conversions": 24.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Cross-border metro A (based in a neighbouring state)",
-          "spend": 280,
-          "clicks": 13,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Home metro B",
-          "spend": 280,
-          "clicks": 43,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Home metro C",
-          "spend": 270,
-          "clicks": 17,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 2 (borders the home state)",
-          "spend": 270,
-          "clicks": 30,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Home metro E",
-          "spend": 270,
-          "clicks": 51,
-          "conversions": 12.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 3",
-          "spend": 260,
-          "clicks": 27,
-          "conversions": 5.5
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Home metro B",
-          "spend": 260,
-          "clicks": 18,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Cross-border metro A (based in a neighbouring state)",
-          "spend": 240,
-          "clicks": 37,
-          "conversions": 8.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Home metro C",
-          "spend": 200,
-          "clicks": 30,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Home metro D",
-          "spend": 200,
-          "clicks": 20,
-          "conversions": 4.5
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Home metro B",
-          "spend": 190,
-          "clicks": 11,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Home metro E",
-          "spend": 170,
-          "clicks": 39,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 5",
-          "spend": 170,
-          "clicks": 25,
-          "conversions": 10.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Cross-border metro A (based in a neighbouring state)",
-          "spend": 150,
-          "clicks": 30,
-          "conversions": 9.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Home metro D",
-          "spend": 150,
-          "clicks": 30,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Pharmacy Board",
-          "slice": "Home metro A",
-          "spend": 150,
-          "clicks": 13,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 6",
-          "spend": 140,
-          "clicks": 21,
-          "conversions": 9.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "State 4 (borders the home state)",
-          "spend": 130,
-          "clicks": 11,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "State 1 (borders the home state)",
-          "spend": 130,
-          "clicks": 11,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "State 2 (borders the home state)",
-          "spend": 120,
-          "clicks": 10,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Home metro C",
-          "spend": 120,
-          "clicks": 10,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 7",
-          "spend": 110,
-          "clicks": 9,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Cross-border metro A (based in a neighbouring state)",
-          "spend": 100,
-          "clicks": 4,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Cross-border metro A (based in a neighbouring state)",
-          "spend": 100,
-          "clicks": 12,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Home metro D",
-          "spend": 100,
-          "clicks": 27,
-          "conversions": 4.5
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Home metro E",
-          "spend": 90,
-          "clicks": 9,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Home metro B",
-          "spend": 90,
-          "clicks": 23,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Home metro E",
-          "spend": 80,
-          "clicks": 10,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 8",
-          "spend": 80,
-          "clicks": 9,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Home metro C",
-          "spend": 70,
-          "clicks": 25,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 4 (borders the home state)",
-          "spend": 70,
-          "clicks": 7,
-          "conversions": 3.5
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Home metro E",
-          "spend": 70,
-          "clicks": 14,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 13",
-          "spend": 60,
-          "clicks": 3,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Cross-border metro C (based in a neighbouring state)",
-          "spend": 60,
-          "clicks": 12,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Cross-border metro C (based in a neighbouring state)",
-          "spend": 60,
-          "clicks": 1,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 11",
-          "spend": 60,
-          "clicks": 10,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "State 10",
-          "spend": 50,
-          "clicks": 4,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Cross-border metro B (based in a neighbouring state)",
-          "spend": 50,
-          "clicks": 2,
-          "conversions": 0.0
-        }
-      ],
-      "other_slices": {
-        "count": 92,
-        "spend": 1010
-      }
-    },
-    "devices": {
-      "slices_with_spend_of_50_or_more": [
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Mobile",
-          "spend": 4170,
-          "clicks": 721,
-          "conversions": 172.5
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Mobile",
-          "spend": 3810,
-          "clicks": 596,
-          "conversions": 155.6
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Mobile",
-          "spend": 1790,
-          "clicks": 194,
-          "conversions": 64.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Mobile",
-          "spend": 1660,
-          "clicks": 114,
-          "conversions": 15.5
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Mobile",
-          "spend": 1410,
-          "clicks": 217,
-          "conversions": 38.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Mobile",
-          "spend": 980,
-          "clicks": 59,
-          "conversions": 10.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Mobile",
-          "spend": 660,
-          "clicks": 173,
-          "conversions": 44.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Mobile",
-          "spend": 630,
-          "clicks": 58,
-          "conversions": 12.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Desktop",
-          "spend": 520,
-          "clicks": 84,
-          "conversions": 23.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Desktop",
-          "spend": 280,
-          "clicks": 36,
-          "conversions": 15.0
-        },
-        {
-          "campaign": "Pharmacy Board",
-          "slice": "Mobile",
-          "spend": 170,
-          "clicks": 14,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Desktop",
-          "spend": 170,
-          "clicks": 42,
-          "conversions": 9.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Desktop",
-          "spend": 150,
-          "clicks": 41,
-          "conversions": 6.9
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Desktop",
-          "spend": 80,
-          "clicks": 7,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Desktop",
-          "spend": 80,
-          "clicks": 16,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Desktop",
-          "spend": 60,
-          "clicks": 3,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Tablet",
-          "spend": 60,
-          "clicks": 5,
-          "conversions": 0.0
-        }
-      ],
-      "other_slices": {
-        "count": 7,
-        "spend": 90
-      }
-    },
-    "hour_blocks": {
-      "slices_with_spend_of_50_or_more": [
-        {
-          "campaign": "Criminal Defense",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 1840,
-          "clicks": 272,
-          "conversions": 69.3
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 1530,
-          "clicks": 195,
-          "conversions": 64.3
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 1180,
-          "clicks": 185,
-          "conversions": 32.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "04:00-08:00 account time (market 06:00-10:00)",
-          "spend": 970,
-          "clicks": 172,
-          "conversions": 45.8
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "04:00-08:00 account time (market 06:00-10:00)",
-          "spend": 960,
-          "clicks": 157,
-          "conversions": 39.8
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 870,
-          "clicks": 156,
-          "conversions": 40.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "08:00-12:00 account time",
-          "spend": 700,
-          "clicks": 69,
-          "conversions": 24.5
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "04:00-08:00 account time",
-          "spend": 550,
-          "clicks": 53,
-          "conversions": 20.5
-        },
-        {
-          "campaign": "DUI",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 520,
-          "clicks": 69,
-          "conversions": 16.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 490,
-          "clicks": 34,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "12:00-16:00 account time",
-          "spend": 470,
-          "clicks": 53,
-          "conversions": 20.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "04:00-08:00 account time (market 06:00-10:00)",
-          "spend": 450,
-          "clicks": 18,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 450,
-          "clicks": 73,
-          "conversions": 13.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 380,
-          "clicks": 84,
-          "conversions": 28.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 350,
-          "clicks": 25,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 350,
-          "clicks": 83,
-          "conversions": 12.5
-        },
-        {
-          "campaign": "Brand",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 300,
-          "clicks": 80,
-          "conversions": 19.5
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "16:00-20:00 account time",
-          "spend": 270,
-          "clicks": 41,
-          "conversions": 11.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 260,
-          "clicks": 75,
-          "conversions": 22.5
-        },
-        {
-          "campaign": "DUI",
-          "slice": "04:00-08:00 account time (market 06:00-10:00); the ad schedule runs only 07:00-08:00 of this block",
-          "spend": 250,
-          "clicks": 23,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "08:00-12:00 account time",
-          "spend": 250,
-          "clicks": 26,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 230,
-          "clicks": 14,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 230,
-          "clicks": 19,
-          "conversions": 1.5
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "08:00-12:00 account time (market 10:00-14:00)",
-          "spend": 220,
-          "clicks": 16,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "12:00-16:00 account time",
-          "spend": 210,
-          "clicks": 17,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "12:00-16:00 account time (market 14:00-18:00)",
-          "spend": 190,
-          "clicks": 15,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "04:00-08:00 account time (market 06:00-10:00)",
-          "spend": 190,
-          "clicks": 9,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 160,
-          "clicks": 36,
-          "conversions": 5.9
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "00:00-04:00 account time (market 02:00-06:00)",
-          "spend": 160,
-          "clicks": 40,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "20:00-24:00 account time (market 22:00-02:00)",
-          "spend": 160,
-          "clicks": 42,
-          "conversions": 8.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 160,
-          "clicks": 46,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "00:00-04:00 account time (market 02:00-06:00)",
-          "spend": 160,
-          "clicks": 40,
-          "conversions": 6.9
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "20:00-24:00 account time (market 22:00-02:00)",
-          "spend": 150,
-          "clicks": 31,
-          "conversions": 9.5
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "00:00-04:00 account time (market 02:00-06:00)",
-          "spend": 130,
-          "clicks": 13,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "16:00-20:00 account time",
-          "spend": 120,
-          "clicks": 9,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "20:00-24:00 account time (market 22:00-02:00)",
-          "spend": 110,
-          "clicks": 22,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "00:00-04:00 account time (market 02:00-06:00)",
-          "spend": 110,
-          "clicks": 5,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "20:00-24:00 account time (market 22:00-02:00)",
-          "spend": 100,
-          "clicks": 12,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "20:00-24:00 account time (market 22:00-02:00)",
-          "spend": 90,
-          "clicks": 3,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "20:00-24:00 account time",
-          "spend": 60,
-          "clicks": 12,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "20:00-24:00 account time",
-          "spend": 50,
-          "clicks": 5,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "04:00-08:00 account time; the ad schedule runs only 07:00-08:00 of this block",
-          "spend": 50,
-          "clicks": 6,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Pharmacy Board",
-          "slice": "04:00-08:00 account time (market 06:00-10:00)",
-          "spend": 50,
-          "clicks": 4,
-          "conversions": 0.6
-        },
-        {
-          "campaign": "Pharmacy Board",
-          "slice": "16:00-20:00 account time (market 18:00-22:00)",
-          "spend": 50,
-          "clicks": 5,
-          "conversions": 1.0
-        }
-      ],
-      "other_slices": {
-        "count": 7,
-        "spend": 210
-      }
-    },
-    "days": {
-      "slices_with_spend_of_50_or_more": [
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Monday",
-          "spend": 910,
-          "clicks": 138,
-          "conversions": 34.7
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Tuesday",
-          "spend": 820,
-          "clicks": 139,
-          "conversions": 27.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Monday",
-          "spend": 770,
-          "clicks": 118,
-          "conversions": 38.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Tuesday",
-          "spend": 770,
-          "clicks": 136,
-          "conversions": 29.5
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Wednesday",
-          "spend": 760,
-          "clicks": 110,
-          "conversions": 29.5
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Wednesday",
-          "spend": 730,
-          "clicks": 115,
-          "conversions": 35.3
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Thursday",
-          "spend": 680,
-          "clicks": 109,
-          "conversions": 29.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Thursday",
-          "spend": 680,
-          "clicks": 123,
-          "conversions": 31.5
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Friday",
-          "spend": 550,
-          "clicks": 79,
-          "conversions": 20.5
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Friday",
-          "spend": 520,
-          "clicks": 99,
-          "conversions": 26.5
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Monday",
-          "spend": 480,
-          "clicks": 54,
-          "conversions": 15.5
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Saturday",
-          "spend": 460,
-          "clicks": 69,
-          "conversions": 21.5
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Sunday",
-          "spend": 430,
-          "clicks": 83,
-          "conversions": 15.3
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Tuesday",
-          "spend": 430,
-          "clicks": 44,
-          "conversions": 19.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Wednesday",
-          "spend": 410,
-          "clicks": 47,
-          "conversions": 12.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Monday",
-          "spend": 380,
-          "clicks": 21,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Traffic Tickets",
-          "slice": "Sunday",
-          "spend": 330,
-          "clicks": 68,
-          "conversions": 15.1
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Friday",
-          "spend": 330,
-          "clicks": 35,
-          "conversions": 11.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Friday",
-          "spend": 330,
-          "clicks": 24,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Tuesday",
-          "spend": 320,
-          "clicks": 50,
-          "conversions": 9.0
-        },
-        {
-          "campaign": "Criminal Defense",
-          "slice": "Saturday",
-          "spend": 300,
-          "clicks": 71,
-          "conversions": 9.7
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Wednesday",
-          "spend": 300,
-          "clicks": 23,
-          "conversions": 1.5
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Thursday",
-          "spend": 290,
-          "clicks": 34,
-          "conversions": 14.5
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Wednesday",
-          "spend": 280,
-          "clicks": 14,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Thursday",
-          "spend": 270,
-          "clicks": 17,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Monday",
-          "spend": 250,
-          "clicks": 43,
-          "conversions": 8.7
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Thursday",
-          "spend": 240,
-          "clicks": 35,
-          "conversions": 8.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Tuesday",
-          "spend": 240,
-          "clicks": 20,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Wednesday",
-          "spend": 230,
-          "clicks": 59,
-          "conversions": 17.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Wednesday",
-          "spend": 210,
-          "clicks": 27,
-          "conversions": 2.3
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Friday",
-          "spend": 190,
-          "clicks": 14,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Saturday",
-          "spend": 180,
-          "clicks": 25,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Thursday",
-          "spend": 170,
-          "clicks": 7,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Monday",
-          "spend": 150,
-          "clicks": 7,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Friday",
-          "spend": 150,
-          "clicks": 24,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "DUI",
-          "slice": "Sunday",
-          "spend": 130,
-          "clicks": 29,
-          "conversions": 2.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Friday",
-          "spend": 130,
-          "clicks": 33,
-          "conversions": 9.0
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Sunday",
-          "spend": 120,
-          "clicks": 7,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Tuesday",
-          "spend": 120,
-          "clicks": 8,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Sunday",
-          "spend": 120,
-          "clicks": 11,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Thursday",
-          "spend": 120,
-          "clicks": 9,
-          "conversions": 4.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Monday",
-          "spend": 110,
-          "clicks": 28,
-          "conversions": 10.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Monday",
-          "spend": 110,
-          "clicks": 10,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Tuesday",
-          "spend": 110,
-          "clicks": 33,
-          "conversions": 7.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Friday",
-          "spend": 110,
-          "clicks": 8,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Thursday",
-          "spend": 110,
-          "clicks": 36,
-          "conversions": 3.5
-        },
-        {
-          "campaign": "Drug Charges",
-          "slice": "Saturday",
-          "spend": 100,
-          "clicks": 9,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Tuesday",
-          "spend": 90,
-          "clicks": 10,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Sunday",
-          "spend": 90,
-          "clicks": 11,
-          "conversions": 5.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Wednesday",
-          "spend": 80,
-          "clicks": 11,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Brand",
-          "slice": "Saturday",
-          "spend": 80,
-          "clicks": 15,
-          "conversions": 3.4
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Saturday",
-          "spend": 60,
-          "clicks": 7,
-          "conversions": 1.0
-        },
-        {
-          "campaign": "Nursing Board",
-          "slice": "Sunday",
-          "spend": 60,
-          "clicks": 5,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Out-of-State Traffic",
-          "slice": "Saturday",
-          "spend": 60,
-          "clicks": 8,
-          "conversions": 3.0
-        },
-        {
-          "campaign": "Out-of-State DUI",
-          "slice": "Saturday",
-          "spend": 50,
-          "clicks": 4,
-          "conversions": 0.0
-        },
-        {
-          "campaign": "Pharmacy Board",
-          "slice": "Wednesday",
-          "spend": 50,
-          "clicks": 4,
-          "conversions": 0.6
-        }
-      ],
-      "other_slices": {
-        "count": 7,
-        "spend": 180
-      }
-    }
+    "metro": [
+      {"campaign": "Brand | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 1431, "conversions": 166},
+      {"campaign": "Brand | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 127, "conversions": 14},
+      {"campaign": "Brand | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 32, "conversions": 0},
+      {"campaign": "Furnace Repair | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 5802, "conversions": 97},
+      {"campaign": "Furnace Repair | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 909, "conversions": 15},
+      {"campaign": "Furnace Repair | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 279, "conversions": 0},
+      {"campaign": "AC Repair | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 5728, "conversions": 83},
+      {"campaign": "AC Repair | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 1146, "conversions": 18},
+      {"campaign": "AC Repair | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 286, "conversions": 0},
+      {"campaign": "Water Heaters | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 4326, "conversions": 79},
+      {"campaign": "Water Heaters | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 611, "conversions": 11},
+      {"campaign": "Water Heaters | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 153, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 5398, "conversions": 101},
+      {"campaign": "Plumbing | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 761, "conversions": 14},
+      {"campaign": "Plumbing | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 207, "conversions": 2},
+      {"campaign": "Plumbing | Search", "metro": "geoTargetConstants/200759", "metro_code": "759", "targeting_location": false, "cost": 554, "conversions": 0},
+      {"campaign": "AC Installation | Search", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 3885, "conversions": 28},
+      {"campaign": "AC Installation | Search", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 1332, "conversions": 5},
+      {"campaign": "AC Installation | Search", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 333, "conversions": 0},
+      {"campaign": "PMax | All services", "metro": "geoTargetConstants/200751", "metro_code": "751", "targeting_location": true, "cost": 5603, "conversions": 82},
+      {"campaign": "PMax | All services", "metro": "geoTargetConstants/200752", "metro_code": "752", "targeting_location": true, "cost": 867, "conversions": 11},
+      {"campaign": "PMax | All services", "metro": "geoTargetConstants/200773", "metro_code": "773", "targeting_location": true, "cost": 200, "conversions": 0}
+    ],
+    "cities": [
+      {"campaign": "Brand | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 22, "conversions": 0},
+      {"campaign": "Brand | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 5, "conversions": 0},
+      {"campaign": "Brand | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 3, "conversions": 0},
+      {"campaign": "Furnace Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 186, "conversions": 0},
+      {"campaign": "Furnace Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 47, "conversions": 0},
+      {"campaign": "Furnace Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 26, "conversions": 0},
+      {"campaign": "AC Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 191, "conversions": 0},
+      {"campaign": "AC Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 48, "conversions": 0},
+      {"campaign": "AC Repair | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 27, "conversions": 0},
+      {"campaign": "Water Heaters | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 102, "conversions": 0},
+      {"campaign": "Water Heaters | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 26, "conversions": 0},
+      {"campaign": "Water Heaters | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 14, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 139, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 35, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 19, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "Cheyenne WY-Scottsbluff NE", "city": "Cheyenne", "state": "Wyoming", "cost": 412, "conversions": 0},
+      {"campaign": "Plumbing | Search", "metro": "Cheyenne WY-Scottsbluff NE", "city": "Laramie", "state": "Wyoming", "cost": 103, "conversions": 0},
+      {"campaign": "AC Installation | Search", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 223, "conversions": 0},
+      {"campaign": "AC Installation | Search", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 56, "conversions": 0},
+      {"campaign": "AC Installation | Search", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 31, "conversions": 0},
+      {"campaign": "PMax | All services", "metro": "Grand Junction-Montrose CO", "city": "Grand Junction", "state": "Colorado", "cost": 134, "conversions": 0},
+      {"campaign": "PMax | All services", "metro": "Grand Junction-Montrose CO", "city": "Montrose", "state": "Colorado", "cost": 33, "conversions": 0},
+      {"campaign": "PMax | All services", "metro": "Grand Junction-Montrose CO", "city": "Fruita", "state": "Colorado", "cost": 19, "conversions": 0}
+    ],
+    "devices": [
+      {"campaign": "Brand | Search", "device": "MOBILE", "cost": 1113, "conversions": 129},
+      {"campaign": "Brand | Search", "device": "DESKTOP", "cost": 398, "conversions": 49},
+      {"campaign": "Brand | Search", "device": "TABLET", "cost": 79, "conversions": 2},
+      {"campaign": "Furnace Repair | Search", "device": "MOBILE", "cost": 4893, "conversions": 81},
+      {"campaign": "Furnace Repair | Search", "device": "DESKTOP", "cost": 1748, "conversions": 30},
+      {"campaign": "Furnace Repair | Search", "device": "TABLET", "cost": 349, "conversions": 1},
+      {"campaign": "AC Repair | Search", "device": "MOBILE", "cost": 5012, "conversions": 73},
+      {"campaign": "AC Repair | Search", "device": "DESKTOP", "cost": 1790, "conversions": 27},
+      {"campaign": "AC Repair | Search", "device": "TABLET", "cost": 358, "conversions": 1},
+      {"campaign": "Water Heaters | Search", "device": "MOBILE", "cost": 3563, "conversions": 65},
+      {"campaign": "Water Heaters | Search", "device": "DESKTOP", "cost": 1273, "conversions": 24},
+      {"campaign": "Water Heaters | Search", "device": "TABLET", "cost": 254, "conversions": 1},
+      {"campaign": "Plumbing | Search", "device": "MOBILE", "cost": 4844, "conversions": 84},
+      {"campaign": "Plumbing | Search", "device": "DESKTOP", "cost": 1730, "conversions": 32},
+      {"campaign": "Plumbing | Search", "device": "TABLET", "cost": 346, "conversions": 1},
+      {"campaign": "AC Installation | Search", "device": "MOBILE", "cost": 3441, "conversions": 26},
+      {"campaign": "AC Installation | Search", "device": "DESKTOP", "cost": 1332, "conversions": 7},
+      {"campaign": "AC Installation | Search", "device": "TABLET", "cost": 777, "conversions": 0},
+      {"campaign": "PMax | All services", "device": "MOBILE", "cost": 4669, "conversions": 67},
+      {"campaign": "PMax | All services", "device": "DESKTOP", "cost": 1668, "conversions": 25},
+      {"campaign": "PMax | All services", "device": "TABLET", "cost": 333, "conversions": 1}
+    ],
+    "hour_blocks": [
+      {"campaign": "Brand | Search", "block": "00-04", "cost": 48, "conversions": 0},
+      {"campaign": "Brand | Search", "block": "04-08", "cost": 127, "conversions": 13},
+      {"campaign": "Brand | Search", "block": "08-12", "cost": 477, "conversions": 61},
+      {"campaign": "Brand | Search", "block": "12-16", "cost": 477, "conversions": 59},
+      {"campaign": "Brand | Search", "block": "16-20", "cost": 334, "conversions": 38},
+      {"campaign": "Brand | Search", "block": "20-24", "cost": 127, "conversions": 9},
+      {"campaign": "Furnace Repair | Search", "block": "00-04", "cost": 210, "conversions": 0},
+      {"campaign": "Furnace Repair | Search", "block": "04-08", "cost": 559, "conversions": 8},
+      {"campaign": "Furnace Repair | Search", "block": "08-12", "cost": 2097, "conversions": 38},
+      {"campaign": "Furnace Repair | Search", "block": "12-16", "cost": 2097, "conversions": 37},
+      {"campaign": "Furnace Repair | Search", "block": "16-20", "cost": 1468, "conversions": 23},
+      {"campaign": "Furnace Repair | Search", "block": "20-24", "cost": 559, "conversions": 6},
+      {"campaign": "AC Repair | Search", "block": "00-04", "cost": 215, "conversions": 0},
+      {"campaign": "AC Repair | Search", "block": "04-08", "cost": 573, "conversions": 7},
+      {"campaign": "AC Repair | Search", "block": "08-12", "cost": 2148, "conversions": 35},
+      {"campaign": "AC Repair | Search", "block": "12-16", "cost": 2148, "conversions": 33},
+      {"campaign": "AC Repair | Search", "block": "16-20", "cost": 1503, "conversions": 21},
+      {"campaign": "AC Repair | Search", "block": "20-24", "cost": 573, "conversions": 5},
+      {"campaign": "Water Heaters | Search", "block": "00-04", "cost": 153, "conversions": 0},
+      {"campaign": "Water Heaters | Search", "block": "04-08", "cost": 407, "conversions": 6},
+      {"campaign": "Water Heaters | Search", "block": "08-12", "cost": 1527, "conversions": 31},
+      {"campaign": "Water Heaters | Search", "block": "12-16", "cost": 1527, "conversions": 30},
+      {"campaign": "Water Heaters | Search", "block": "16-20", "cost": 1069, "conversions": 19},
+      {"campaign": "Water Heaters | Search", "block": "20-24", "cost": 407, "conversions": 4},
+      {"campaign": "Plumbing | Search", "block": "00-04", "cost": 415, "conversions": 8},
+      {"campaign": "Plumbing | Search", "block": "04-08", "cost": 553, "conversions": 8},
+      {"campaign": "Plumbing | Search", "block": "08-12", "cost": 1938, "conversions": 35},
+      {"campaign": "Plumbing | Search", "block": "12-16", "cost": 1938, "conversions": 34},
+      {"campaign": "Plumbing | Search", "block": "16-20", "cost": 1384, "conversions": 22},
+      {"campaign": "Plumbing | Search", "block": "20-24", "cost": 692, "conversions": 10},
+      {"campaign": "AC Installation | Search", "block": "00-04", "cost": 167, "conversions": 0},
+      {"campaign": "AC Installation | Search", "block": "04-08", "cost": 444, "conversions": 2},
+      {"campaign": "AC Installation | Search", "block": "08-12", "cost": 1665, "conversions": 11},
+      {"campaign": "AC Installation | Search", "block": "12-16", "cost": 1665, "conversions": 11},
+      {"campaign": "AC Installation | Search", "block": "16-20", "cost": 1165, "conversions": 7},
+      {"campaign": "AC Installation | Search", "block": "20-24", "cost": 444, "conversions": 2},
+      {"campaign": "PMax | All services", "block": "00-04", "cost": 200, "conversions": 0},
+      {"campaign": "PMax | All services", "block": "04-08", "cost": 534, "conversions": 6},
+      {"campaign": "PMax | All services", "block": "08-12", "cost": 2001, "conversions": 32},
+      {"campaign": "PMax | All services", "block": "12-16", "cost": 2001, "conversions": 31},
+      {"campaign": "PMax | All services", "block": "16-20", "cost": 1401, "conversions": 19},
+      {"campaign": "PMax | All services", "block": "20-24", "cost": 533, "conversions": 5}
+    ],
+    "location_names": {"geoTargetConstants/200751": "Denver CO", "geoTargetConstants/200752": "Colorado Springs-Pueblo CO", "geoTargetConstants/200773": "Grand Junction-Montrose CO", "geoTargetConstants/200759": "Cheyenne WY-Scottsbluff NE"}
   },
-  "note": "Real run on a client Google Ads account, anonymised: the account, campaign names, ids and places are replaced (home state, metros and other states are labelled by spend). Money is rounded to the nearest $10 and CPAs to whole dollars; grades were computed on the unrounded numbers, so a rounded spend can sit slightly off a threshold."
+  "note": "Example data: an invented home services company and Google Ads account, not a real business or account. Every number in expected_output.json follows from this input."
 }

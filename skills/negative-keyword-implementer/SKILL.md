@@ -106,7 +106,7 @@ Use Google's rules, applied to whole words, ignoring case:
 - **Phrase negative:** blocks a query that contains the words in the same order, with anything before or after.
 - **Exact negative:** blocks only a query made of exactly those words.
 
-Negatives don't stretch to close variants: blocking `lawyer` does not block `lawyers`. When the report shows a plural or a synonym of a term you are blocking, add it too.
+Negatives don't stretch to close variants: blocking `plumber` does not block `plumbers`. When the report shows a plural or a synonym of a term you are blocking, add it too.
 
 To test a negative against a keyword, treat the keyword's text as a search. If the negative would block that search, it blocks the keyword.
 
@@ -149,7 +149,7 @@ Price, "near me" and "best" searches are usually buyers. Don't block them on spe
 
 ### Match type
 
-- **Phrase (default):** a name, brand or word sequence that marks the wrong intent whatever surrounds it. For a name, block the name only, not the city or "attorney" around it.
+- **Phrase (default):** a name, brand or word sequence that marks the wrong intent whatever surrounds it. For a name, block the name only, not the city or "plumber" around it.
 - **Exact:** one specific query is wrong but its words are fine in other queries.
 - **Broad:** only a single word that is wrong in any position and appears in no live keyword (for example "jobs"). Never a multi-word broad negative built from a single query.
 

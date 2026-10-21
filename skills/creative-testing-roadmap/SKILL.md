@@ -169,7 +169,7 @@ List every ad that served in the window: platform, campaign, ad group or ad set,
 | No test running | an ad group or ad set has only one serving ad. Report the count. |
 | Concentration | one ad takes more than 40% of non-brand spend, or the top 3 more than 75%. |
 | Same copy everywhere | the same headline set (or the same creative) runs in 2+ ad groups or ad sets. A win or loss there is one result, not several. |
-| Off-topic lines | a line names a product or service the ad group doesn't sell (for example a drug-charge description in a DUI ad group). Fix these before testing, or the test measures the mistake. |
+| Off-topic lines | a line names a product or service the ad group doesn't sell (for example a water heater description in an AC repair ad group). Fix these before testing, or the test measures the mistake. |
 | Old ads with no challenger | a serving ad is 12+ months old and is still the only ad in its group. |
 | Ratings coverage (Google) | most lines are `PENDING` or `LEARNING`. |
 | Format coverage | Search: campaigns with no image, call, sitelink, callout or structured snippet assets of their own and none of that type at account level (account-level assets serve in every campaign that has none of its own, so they close the gap). Social: formats (video, single image, carousel) with no spend at all. |
@@ -230,7 +230,7 @@ Fill each lane's slots for the quarter top-down: the best concept first, then th
 3. **Lower effort** within the stated capacity: a new line is cheap, a new video is expensive.
 4. If still tied, choose, and say it is judgement and why.
 
-Skip a candidate whose claim isn't approved or whose landing page doesn't support it: mark it "blocked until ...". A claim approved for one service (it runs only in DUI ads, say) isn't approved for the others until the user confirms it. Never schedule a line the hook bank marks "confirm before use". Fix the hygiene flags from step 2 first, in week 0. If one test's winner should carry into the next test in the same lane, put it in both arms of the next test, so the new change stays the only difference.
+Skip a candidate whose claim isn't approved or whose landing page doesn't support it: mark it "blocked until ...". A claim approved for one service (it runs only in furnace repair ads, say) isn't approved for the others until the user confirms it. Never schedule a line the hook bank marks "confirm before use". Fix the hygiene flags from step 2 first, in week 0. If one test's winner should carry into the next test in the same lane, put it in both arms of the next test, so the new change stays the only difference.
 
 **How to run a test, by platform:**
 - **Google Search, Smart Bidding campaigns** (Maximize Conversions, Target CPA, Target ROAS, Maximize Conversion Value): Google forces optimized ad rotation, so two ads in one ad group are not a fair split. Use a custom experiment in Google Ads (Campaigns > Experiments) that splits the campaign 50/50. Put the variant ad in the trial arm.

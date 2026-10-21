@@ -21,7 +21,7 @@ Hey Claude, I just added the "negative-keyword-implementer" skill. Go through th
 Hey Claude, I just added the "negative-keyword-implementer" skill. Make sure every search campaign has our negative keyword list, and tell me if anything on it would block a keyword.
 
 **Add a list you already have**
-Hey Claude, I just added the "negative-keyword-implementer" skill. Add these as phrase negatives to my DUI campaign: jobs, salary, school. Check them first.
+Hey Claude, I just added the "negative-keyword-implementer" skill. Add these as phrase negatives to my Plumbing campaign: jobs, salary, school. Check them first.
 
 **After Search Term Gold Miner**
 Hey Claude, I just added the "negative-keyword-implementer" skill. Take the negatives from the search term analysis above and add the safe ones.

@@ -1,783 +1,206 @@
 {
-  "header": {
-    "account": "A US criminal and traffic defense law firm",
-    "currency": "USD",
-    "account_time_zone": "America/Los_Angeles",
-    "market_time": "the 7 campaigns that target the home state: market is 2 hours ahead of the account time zone, so their hours show both clocks; the 2 nationwide campaigns span several time zones, so their hours are in account time only",
-    "window": "2026-07-07 to 2026-10-04 (90 days)",
-    "campaigns_analysed": 9,
-    "campaigns_left_out": [
-      {
-        "campaign": "Professional Board",
-        "status": "paused",
-        "spend": 240
-      }
-    ],
-    "spend_analysed": 16740,
-    "conversions_analysed": 574.5,
-    "benchmark": "each campaign's own CPA over the window (no targets given)"
-  },
+  "header": {"account": "Example home services company", "currency": "USD", "time_zone": "America/Denver", "window": "2026-07-23 to 2026-10-20 (90 days)", "campaigns_analysed": 7, "left_out": "none", "spend": 39970, "conversions": 726, "benchmark": "each campaign's own CPA over the window (no targets given)"},
   "health": {
-    "overall": "green",
-    "location": {
-      "act_spend": 0,
-      "share_of_analysed_spend": "0.0%",
-      "light": "green"
-    },
-    "device": {
-      "act_spend": 0,
-      "share_of_analysed_spend": "0.0%",
-      "light": "green"
-    },
-    "schedule": {
-      "act_spend": 450,
-      "share_of_analysed_spend": "2.7%",
-      "light": "green"
-    },
-    "rule": "share of analysed spend in Act findings: green under 5%, yellow 5-15%, red above 15%"
+    "overall": "yellow",
+    "location": {"act_share_of_spend": "5.1%", "light": "yellow"},
+    "device": {"act_share_of_spend": "1.9%", "light": "green"},
+    "schedule": {"act_share_of_spend": "1.2%", "light": "green"}
   },
   "bid_strategy_map": [
-    {
-      "campaign": "Traffic Tickets",
-      "bid_strategy": "Maximize conversions",
-      "spend": 4360,
-      "conversions": 180.6,
-      "benchmark_cpa": 24,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Criminal Defense",
-      "bid_strategy": "Maximize conversions",
-      "spend": 4340,
-      "conversions": 182.5,
-      "benchmark_cpa": 24,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "bid_strategy": "Maximize conversions",
-      "spend": 2090,
-      "conversions": 80,
-      "benchmark_cpa": 26,
-      "location_graded_by": "region",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Drug Charges",
-      "bid_strategy": "Maximize conversions",
-      "spend": 1740,
-      "conversions": 15.5,
-      "benchmark_cpa": 112,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "DUI",
-      "bid_strategy": "Maximize conversions",
-      "spend": 1490,
-      "conversions": 40.0,
-      "benchmark_cpa": 37,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Nursing Board",
-      "bid_strategy": "Maximize conversions",
-      "spend": 1030,
-      "conversions": 10.0,
-      "benchmark_cpa": 103,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Brand",
-      "bid_strategy": "Target impression share",
-      "spend": 810,
-      "conversions": 51.9,
-      "benchmark_cpa": 16,
-      "location_graded_by": "metro",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Out-of-State DUI",
-      "bid_strategy": "Maximize conversions",
-      "spend": 690,
-      "conversions": 12,
-      "benchmark_cpa": 57,
-      "location_graded_by": "region",
-      "levers_that_work": "exclusions (location, device -100%) and ad schedule hours only"
-    },
-    {
-      "campaign": "Pharmacy Board",
-      "bid_strategy": "Maximize clicks",
-      "spend": 190,
-      "conversions": 2,
-      "benchmark_cpa": 95,
-      "location_graded_by": "metro",
-      "levers_that_work": "location, schedule and device bid adjustments, plus exclusions"
-    }
+    {"campaign": "Brand | Search", "strategy": "TARGET_IMPRESSION_SHARE", "benchmark_cpa": 9, "levers": "exclusions and ad schedule hours; device -100% only"},
+    {"campaign": "Furnace Repair | Search", "strategy": "MAXIMIZE_CONVERSIONS", "benchmark_cpa": 62, "levers": "exclusions and ad schedule hours; device -100% only"},
+    {"campaign": "AC Repair | Search", "strategy": "TARGET_CPA", "benchmark_cpa": 71, "levers": "exclusions and ad schedule hours; device -100% only"},
+    {"campaign": "Water Heaters | Search", "strategy": "MAXIMIZE_CONVERSIONS", "benchmark_cpa": 57, "levers": "exclusions and ad schedule hours; device -100% only"},
+    {"campaign": "Plumbing | Search", "strategy": "TARGET_CPA", "benchmark_cpa": 59, "levers": "exclusions and ad schedule hours; device -100% only"},
+    {"campaign": "AC Installation | Search", "strategy": "MAXIMIZE_CLICKS", "benchmark_cpa": 168, "levers": "location, schedule and device bid %, plus exclusions"},
+    {"campaign": "PMax | All services", "strategy": "MAXIMIZE_CONVERSIONS", "benchmark_cpa": 72, "levers": "exclusions and ad schedule hours; device -100% only"}
   ],
   "checks": [
-    {
-      "check": "Location matching",
-      "result": "pass",
-      "evidence": "all 9 enabled campaigns match people in the area (PRESENCE); interest-matched spend $0 (0%)"
-    },
-    {
-      "check": "Spend outside the targeted area",
-      "result": "pass",
-      "evidence": "$0 of $16740 (0%) came from people outside every targeted area"
-    },
-    {
-      "check": "Adjustments that do nothing",
-      "result": "warn",
-      "evidence": "5 bid adjustments sit on strategies that ignore them; they change nothing but suggest a lever that isn't working",
-      "items": [
-        {
-          "campaign": "Brand",
-          "strategy": "Target impression share",
-          "adjustment": "location Home state: +5%"
-        },
-        {
-          "campaign": "DUI",
-          "strategy": "Maximize conversions",
-          "adjustment": "location Home state: +10%"
-        },
-        {
-          "campaign": "Drug Charges",
-          "strategy": "Maximize conversions",
-          "adjustment": "location Home state: +15%"
-        },
-        {
-          "campaign": "Nursing Board",
-          "strategy": "Maximize conversions",
-          "adjustment": "location Home state: +15%"
-        },
-        {
-          "campaign": "Criminal Defense",
-          "strategy": "Maximize conversions",
-          "adjustment": "location Home state: +15%"
-        }
-      ],
-      "fix": "remove them in Google Ads, or leave them and note why; no InsightfulPipe MCP action edits location bid adjustments"
-    },
+    {"check": "Location matching", "campaign": "Plumbing | Search", "result": "warn", "detail": "PRESENCE_OR_INTEREST on a local service; 8% of its spend came from people outside every targeted area"},
+    {"check": "Spend outside the targeted area", "result": "pass", "detail": "1.4% of analysed spend"},
+    {"check": "Adjustments that do nothing", "result": "warn", "detail": "Furnace Repair | Search has a +10% Denver location adjustment on Maximize conversions, which ignores it"},
     {
       "check": "Current schedule",
       "result": "info",
-      "evidence": [
-        "Brand: 7 days, 07:00-24:00 account time (21 schedule rows)",
-        "DUI: 7 days, 07:00-24:00 account time (21 schedule rows)",
-        "Out-of-State DUI: 7 days, 07:00-24:00 account time (21 schedule rows)",
-        "no ad schedule (24/7): Criminal Defense, Drug Charges, Nursing Board, Out-of-State Traffic, Pharmacy Board, Traffic Tickets",
-        "device exclusions already set: Out-of-State DUI: desktop excluded"
-      ]
+      "detail": {"Brand | Search": "none (24/7)", "Furnace Repair | Search": "none (24/7)", "AC Repair | Search": "none (24/7)", "Water Heaters | Search": "none (24/7)", "Plumbing | Search": "none (24/7)", "AC Installation | Search": "Monday to Sunday, 06:00 to 22:00", "PMax | All services": "none (24/7)"},
+      "time_zone": "America/Denver (the account's and the market's)"
     },
-    {
-      "check": "Coverage",
-      "result": "info",
-      "evidence": [
-        "region: 99.8% of spend in the 2 campaigns graded at this level",
-        "metro: 99.4% of spend in the 7 campaigns graded at this level"
-      ]
-    }
+    {"check": "Coverage", "result": "info", "detail": "metro rows explain 100% of spend"}
   ],
   "act_now": [
     {
-      "campaign": "Drug Charges",
-      "slice": "04:00-08:00 account time (market 06:00-10:00)",
-      "spend": 450,
-      "clicks": 18,
-      "conversions": 0.0,
+      "campaign": "Brand | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 32,
+      "conversions": 0,
       "cpa": null,
-      "benchmark_cpa": 112,
-      "cpa_vs_benchmark": null,
-      "confidence": "n/a: 0 conversions, graded on spend",
+      "benchmark_cpa": 9,
+      "spend_vs_benchmark": 3.6,
+      "confidence": null,
       "verdict": "Dead",
-      "spend_vs_benchmark": "4.0x",
-      "change": "remove these hours from the ad schedule",
-      "who": "do this in Google Ads (no InsightfulPipe MCP action writes ad schedules)",
-      "money_a_month": 150
-    }
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 11,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "Furnace Repair | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 279,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 62,
+      "spend_vs_benchmark": 4.5,
+      "confidence": null,
+      "verdict": "Dead",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 93,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "AC Repair | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 286,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 71,
+      "spend_vs_benchmark": 4.0,
+      "confidence": null,
+      "verdict": "Dead",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 95,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "Water Heaters | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 153,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 57,
+      "spend_vs_benchmark": 2.7,
+      "confidence": null,
+      "verdict": "Watch: no conversions",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 51,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "Plumbing | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 207,
+      "conversions": 2,
+      "cpa": 104,
+      "benchmark_cpa": 59,
+      "spend_vs_benchmark": 3.5,
+      "confidence": "low",
+      "verdict": "Watch: weak, low confidence",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 69,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "Plumbing | Search",
+      "dimension": "location",
+      "slice": "Cheyenne WY-Scottsbluff NE",
+      "spend": 554,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 59,
+      "spend_vs_benchmark": 9.4,
+      "confidence": null,
+      "verdict": "Dead",
+      "change": "exclude Cheyenne WY-Scottsbluff NE (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 185,
+      "who": "I can do this now: add_location_targeting negative (759)"
+    },
+    {
+      "campaign": "AC Installation | Search",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 333,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 168,
+      "spend_vs_benchmark": 2.0,
+      "confidence": null,
+      "verdict": "Too little data",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 111,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {
+      "campaign": "PMax | All services",
+      "dimension": "location",
+      "slice": "Grand Junction-Montrose CO",
+      "spend": 200,
+      "conversions": 0,
+      "cpa": null,
+      "benchmark_cpa": 72,
+      "spend_vs_benchmark": 2.8,
+      "confidence": null,
+      "verdict": "Watch: no conversions",
+      "change": "exclude Grand Junction-Montrose CO (outside the Denver metro and Colorado Springs)",
+      "money_a_month": 67,
+      "who": "I can do this now: add_location_targeting negative (773)"
+    },
+    {"campaign": "AC Installation | Search", "dimension": "device", "slice": "TABLET", "spend": 777, "conversions": 0, "cpa": null, "benchmark_cpa": 168, "spend_vs_benchmark": 4.6, "confidence": null, "verdict": "Dead", "change": "exclude tablet (-100%)", "money_a_month": 259, "who": "I can do this now: set_campaign_device_targeting bid_modifier 0"},
+    {"campaign": "Brand | Search", "dimension": "schedule", "slice": "00-04", "spend": 48, "conversions": 0, "cpa": null, "benchmark_cpa": 9, "spend_vs_benchmark": 5.4, "confidence": null, "verdict": "Dead", "change": "drop 00-04 from the ad schedule", "money_a_month": 16, "who": "do this in Google Ads (ad schedule)"},
+    {"campaign": "Furnace Repair | Search", "dimension": "schedule", "slice": "00-04", "spend": 210, "conversions": 0, "cpa": null, "benchmark_cpa": 62, "spend_vs_benchmark": 3.4, "confidence": null, "verdict": "Dead", "change": "drop 00-04 from the ad schedule", "money_a_month": 70, "who": "do this in Google Ads (ad schedule)"},
+    {"campaign": "AC Repair | Search", "dimension": "schedule", "slice": "00-04", "spend": 215, "conversions": 0, "cpa": null, "benchmark_cpa": 71, "spend_vs_benchmark": 3.0, "confidence": null, "verdict": "Dead", "change": "drop 00-04 from the ad schedule", "money_a_month": 72, "who": "do this in Google Ads (ad schedule)"}
   ],
   "watch_list": [
-    {
-      "campaign": "Nursing Board",
-      "slice": "Home metro A",
-      "spend": 500,
-      "clicks": 24,
-      "conversions": 2.0,
-      "cpa": 251,
-      "benchmark_cpa": 103,
-      "cpa_vs_benchmark": "2.43x",
-      "confidence": "low",
-      "verdict": "Watch: weak, low confidence",
-      "spend_vs_benchmark": "4.9x",
-      "level": "metro",
-      "what_would_make_it_an_action": "re-grade once it has 3 conversions"
-    },
-    {
-      "campaign": "Drug Charges",
-      "slice": "Cross-border metro A (based in a neighbouring state)",
-      "spend": 280,
-      "clicks": 13,
-      "conversions": 0.0,
-      "cpa": null,
-      "benchmark_cpa": 112,
-      "cpa_vs_benchmark": null,
-      "confidence": "n/a: 0 conversions, graded on spend",
-      "verdict": "Watch: no conversions",
-      "spend_vs_benchmark": "2.5x",
-      "level": "metro",
-      "what_would_make_it_an_action": "Dead if it reaches $340 spend (3x benchmark) with still no conversion"
-    },
-    {
-      "campaign": "DUI",
-      "slice": "Home metro B",
-      "spend": 280,
-      "clicks": 43,
-      "conversions": 4.0,
-      "cpa": 70,
-      "benchmark_cpa": 37,
-      "cpa_vs_benchmark": "1.88x",
-      "confidence": "medium",
-      "verdict": "Bleeder",
-      "level": "metro",
-      "what_would_make_it_an_action": "act if it is still a Bleeder at 10 conversions"
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "slice": "State 3",
-      "spend": 260,
-      "clicks": 27,
-      "conversions": 5.5,
-      "cpa": 47,
-      "benchmark_cpa": 26,
-      "cpa_vs_benchmark": "1.81x",
-      "confidence": "medium",
-      "verdict": "Bleeder",
-      "level": "region",
-      "what_would_make_it_an_action": "act if it is still a Bleeder at 10 conversions"
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "slice": "State 10",
-      "spend": 50,
-      "clicks": 4,
-      "conversions": 0.0,
-      "cpa": null,
-      "benchmark_cpa": 26,
-      "cpa_vs_benchmark": null,
-      "confidence": "n/a: 0 conversions, graded on spend",
-      "verdict": "Watch: no conversions",
-      "spend_vs_benchmark": "2.1x",
-      "level": "region",
-      "what_would_make_it_an_action": "Dead if it reaches $80 spend (3x benchmark) with still no conversion"
-    },
-    {
-      "campaign": "DUI",
-      "slice": "04:00-08:00 account time (market 06:00-10:00); the ad schedule runs only 07:00-08:00 of this block",
-      "spend": 250,
-      "clicks": 23,
-      "conversions": 3.0,
-      "cpa": 84,
-      "benchmark_cpa": 37,
-      "cpa_vs_benchmark": "2.26x",
-      "confidence": "medium",
-      "verdict": "Bleeder",
-      "what_would_make_it_an_action": "act if it is still a Bleeder at 10 conversions"
-    },
-    {
-      "campaign": "Brand",
-      "slice": "16:00-20:00 account time (market 18:00-22:00)",
-      "spend": 160,
-      "clicks": 36,
-      "conversions": 5.9,
-      "cpa": 28,
-      "benchmark_cpa": 16,
-      "cpa_vs_benchmark": "1.78x",
-      "confidence": "medium",
-      "verdict": "Bleeder",
-      "what_would_make_it_an_action": "act if it is still a Bleeder at 10 conversions"
-    },
-    {
-      "campaign": "Out-of-State DUI",
-      "slice": "16:00-20:00 account time",
-      "spend": 120,
-      "clicks": 9,
-      "conversions": 0.0,
-      "cpa": null,
-      "benchmark_cpa": 57,
-      "cpa_vs_benchmark": null,
-      "confidence": "n/a: 0 conversions, graded on spend",
-      "verdict": "Watch: no conversions",
-      "spend_vs_benchmark": "2.1x",
-      "what_would_make_it_an_action": "Dead if it reaches $170 spend (3x benchmark) with still no conversion"
-    },
-    {
-      "campaign": "DUI",
-      "slice": "Wednesday",
-      "spend": 210,
-      "clicks": 27,
-      "conversions": 2.3,
-      "cpa": 92,
-      "benchmark_cpa": 37,
-      "cpa_vs_benchmark": "2.46x",
-      "confidence": "low",
-      "verdict": "Watch: weak, low confidence",
-      "spend_vs_benchmark": "5.7x",
-      "what_would_make_it_an_action": "re-grade once it has 3 conversions"
-    },
-    {
-      "campaign": "DUI",
-      "slice": "Sunday",
-      "spend": 130,
-      "clicks": 29,
-      "conversions": 2.0,
-      "cpa": 67,
-      "benchmark_cpa": 37,
-      "cpa_vs_benchmark": "1.80x",
-      "confidence": "low",
-      "verdict": "Watch: weak, low confidence",
-      "spend_vs_benchmark": "3.6x",
-      "what_would_make_it_an_action": "re-grade once it has 3 conversions"
-    },
-    {
-      "campaign": "Out-of-State DUI",
-      "slice": "Sunday",
-      "spend": 120,
-      "clicks": 11,
-      "conversions": 0.0,
-      "cpa": null,
-      "benchmark_cpa": 57,
-      "cpa_vs_benchmark": null,
-      "confidence": "n/a: 0 conversions, graded on spend",
-      "verdict": "Watch: no conversions",
-      "spend_vs_benchmark": "2.1x",
-      "what_would_make_it_an_action": "Dead if it reaches $170 spend (3x benchmark) with still no conversion"
-    },
-    {
-      "campaign": "Brand",
-      "slice": "Thursday",
-      "spend": 110,
-      "clicks": 36,
-      "conversions": 3.5,
-      "cpa": 31,
-      "benchmark_cpa": 16,
-      "cpa_vs_benchmark": "1.97x",
-      "confidence": "medium",
-      "verdict": "Bleeder",
-      "what_would_make_it_an_action": "act if it is still a Bleeder at 10 conversions"
-    }
+    {"campaign": "Brand | Search", "dimension": "device", "slice": "TABLET", "spend": 79, "conversions": 2, "spend_vs_benchmark": 8.9, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "Furnace Repair | Search", "dimension": "device", "slice": "TABLET", "spend": 349, "conversions": 1, "spend_vs_benchmark": 5.6, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "AC Repair | Search", "dimension": "device", "slice": "TABLET", "spend": 358, "conversions": 1, "spend_vs_benchmark": 5.0, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "Water Heaters | Search", "dimension": "device", "slice": "TABLET", "spend": 254, "conversions": 1, "spend_vs_benchmark": 4.5, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "Plumbing | Search", "dimension": "device", "slice": "TABLET", "spend": 346, "conversions": 1, "spend_vs_benchmark": 5.8, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "PMax | All services", "dimension": "device", "slice": "TABLET", "spend": 333, "conversions": 1, "spend_vs_benchmark": 4.6, "verdict": "Watch: weak, low confidence", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "Water Heaters | Search", "dimension": "schedule", "slice": "00-04", "spend": 153, "conversions": 0, "spend_vs_benchmark": 2.7, "verdict": "Watch: no conversions", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "Water Heaters | Search", "dimension": "schedule", "slice": "20-24", "spend": 407, "conversions": 4, "spend_vs_benchmark": null, "verdict": "Bleeder", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"},
+    {"campaign": "PMax | All services", "dimension": "schedule", "slice": "00-04", "spend": 200, "conversions": 0, "spend_vs_benchmark": 2.8, "verdict": "Watch: no conversions", "turns_into_action_when": "spend reaches 3 x benchmark with no conversion, or a 10th conversion confirms the CPA"}
   ],
+  "weak_slices_on_smart_bidding": {"count": 4, "spend": 1792},
   "city_drill_down": [
     {
-      "campaign": "Nursing Board",
-      "metro": "Home metro A",
-      "verdict": "Watch: weak, low confidence",
-      "metro_spend": 500,
-      "cities_with_spend": 15,
-      "share_of_metro_spend_explained": "88%",
-      "home_state_share_of_city_spend": "100%",
+      "metro": "Grand Junction-Montrose CO",
+      "cities_explain": "93% of the metro's spend",
       "top_cities": [
-        {
-          "city": "City 1 (home state)",
-          "spend": 130,
-          "clicks": 6,
-          "conversions": 2.0
-        },
-        {
-          "city": "City 2 (home state)",
-          "spend": 60,
-          "clicks": 1,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 3 (home state)",
-          "spend": 60,
-          "clicks": 1,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 4 (home state)",
-          "spend": 40,
-          "clicks": 3,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 5 (home state)",
-          "spend": 30,
-          "clicks": 2,
-          "conversions": 0.0
-        }
+        {"city": "Grand Junction", "state": "Colorado", "spend": 223, "conversions": 0, "campaign": "AC Installation | Search"},
+        {"city": "Grand Junction", "state": "Colorado", "spend": 191, "conversions": 0, "campaign": "AC Repair | Search"},
+        {"city": "Grand Junction", "state": "Colorado", "spend": 186, "conversions": 0, "campaign": "Furnace Repair | Search"},
+        {"city": "Grand Junction", "state": "Colorado", "spend": 139, "conversions": 0, "campaign": "Plumbing | Search"},
+        {"city": "Grand Junction", "state": "Colorado", "spend": 134, "conversions": 0, "campaign": "PMax | All services"}
       ],
-      "what_it_shows": "15 cities explain 88% of the metro's spend, and 100% of that came from home-state cities. The largest city took 30% of the spend and 2 of the 2 conversions these cities recorded; the other 14 spent $310 for 0."
+      "reading": "outside the service area"
     },
     {
-      "campaign": "Drug Charges",
-      "metro": "Cross-border metro A (based in a neighbouring state)",
-      "verdict": "Watch: no conversions",
-      "metro_spend": 280,
-      "cities_with_spend": 4,
-      "share_of_metro_spend_explained": "99%",
-      "home_state_share_of_city_spend": "100%",
+      "metro": "Cheyenne WY-Scottsbluff NE",
+      "cities_explain": "93% of the metro's spend",
       "top_cities": [
-        {
-          "city": "City 1 (home state)",
-          "spend": 120,
-          "clicks": 4,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 2 (home state)",
-          "spend": 90,
-          "clicks": 2,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 3 (home state)",
-          "spend": 40,
-          "clicks": 2,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 4 (home state)",
-          "spend": 30,
-          "clicks": 4,
-          "conversions": 0.0
-        }
+        {"city": "Cheyenne", "state": "Wyoming", "spend": 412, "conversions": 0, "campaign": "Plumbing | Search"},
+        {"city": "Laramie", "state": "Wyoming", "spend": 103, "conversions": 0, "campaign": "Plumbing | Search"}
       ],
-      "what_it_shows": "4 cities explain 99% of the metro's spend, and 100% of that came from home-state cities. None of them converted; the largest took 44% of the spend. The metro is based in a neighbouring state, but this spend came from the home-state side of the border, so it is inside the targeted area: excluding the whole metro would cut home-state searchers."
-    },
-    {
-      "campaign": "DUI",
-      "metro": "Home metro B",
-      "verdict": "Bleeder",
-      "metro_spend": 280,
-      "cities_with_spend": 14,
-      "share_of_metro_spend_explained": "98%",
-      "home_state_share_of_city_spend": "100%",
-      "top_cities": [
-        {
-          "city": "City 1 (home state)",
-          "spend": 90,
-          "clicks": 7,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 2 (home state)",
-          "spend": 70,
-          "clicks": 15,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 3 (home state)",
-          "spend": 40,
-          "clicks": 2,
-          "conversions": 0.0
-        },
-        {
-          "city": "City 4 (home state)",
-          "spend": 30,
-          "clicks": 1,
-          "conversions": 1.0
-        },
-        {
-          "city": "City 5 (home state)",
-          "spend": 10,
-          "clicks": 2,
-          "conversions": 1.0
-        }
-      ],
-      "what_it_shows": "14 cities explain 98% of the metro's spend, and 100% of that came from home-state cities. The largest city took 32% of the spend and 0 of the 3 conversions these cities recorded; the other 13 spent $180 for 3."
+      "reading": "outside the service area; the Wyoming side of the metro is where people matched by interest"
     }
   ],
-  "weak_slices": {
-    "location": {
-      "count": 4,
-      "spend": 970,
-      "note": "no change: every weak slice sits in a campaign whose strategy ignores these bid adjustments"
-    },
-    "device": {
-      "count": 1,
-      "spend": 150,
-      "note": "no change: every weak slice sits in a campaign whose strategy ignores these bid adjustments"
-    },
-    "schedule": {
-      "count": 6,
-      "spend": 2930,
-      "note": "no change: every weak slice sits in a campaign whose strategy ignores these bid adjustments"
-    }
-  },
-  "strong_slices": {
-    "location": [
-      {
-        "campaign": "Criminal Defense",
-        "slice": "Home metro C",
-        "spend": 410,
-        "clicks": 74,
-        "conversions": 24.0,
-        "cpa": 17,
-        "benchmark_cpa": 24,
-        "cpa_vs_benchmark": "0.71x",
-        "confidence": "high",
-        "verdict": "Strong",
-        "level": "metro",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Drug Charges",
-        "slice": "Home metro B",
-        "spend": 260,
-        "clicks": 18,
-        "conversions": 4.0,
-        "cpa": 64,
-        "benchmark_cpa": 112,
-        "cpa_vs_benchmark": "0.57x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "level": "metro",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Drug Charges",
-        "slice": "Home metro D",
-        "spend": 200,
-        "clicks": 20,
-        "conversions": 4.5,
-        "cpa": 44,
-        "benchmark_cpa": 112,
-        "cpa_vs_benchmark": "0.39x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "level": "metro",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Nursing Board",
-        "slice": "Home metro B",
-        "spend": 190,
-        "clicks": 11,
-        "conversions": 5.0,
-        "cpa": 37,
-        "benchmark_cpa": 103,
-        "cpa_vs_benchmark": "0.36x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "level": "metro",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Out-of-State Traffic",
-        "slice": "State 5",
-        "spend": 170,
-        "clicks": 25,
-        "conversions": 10.0,
-        "cpa": 17,
-        "benchmark_cpa": 26,
-        "cpa_vs_benchmark": "0.65x",
-        "confidence": "high",
-        "verdict": "Strong",
-        "level": "region",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      }
-    ],
-    "device": [
-      {
-        "campaign": "Out-of-State Traffic",
-        "slice": "Desktop",
-        "spend": 280,
-        "clicks": 36,
-        "conversions": 15.0,
-        "cpa": 19,
-        "benchmark_cpa": 26,
-        "cpa_vs_benchmark": "0.71x",
-        "confidence": "high",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and uses device adjustments only to exclude"
-      }
-    ],
-    "schedule": [
-      {
-        "campaign": "Traffic Tickets",
-        "slice": "16:00-20:00 account time (market 18:00-22:00)",
-        "spend": 380,
-        "clicks": 84,
-        "conversions": 28.0,
-        "cpa": 14,
-        "benchmark_cpa": 24,
-        "cpa_vs_benchmark": "0.57x",
-        "confidence": "high",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Drug Charges",
-        "slice": "12:00-16:00 account time (market 14:00-18:00)",
-        "spend": 350,
-        "clicks": 25,
-        "conversions": 7.0,
-        "cpa": 51,
-        "benchmark_cpa": 112,
-        "cpa_vs_benchmark": "0.45x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Nursing Board",
-        "slice": "Wednesday",
-        "spend": 280,
-        "clicks": 14,
-        "conversions": 4.0,
-        "cpa": 70,
-        "benchmark_cpa": 103,
-        "cpa_vs_benchmark": "0.68x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Drug Charges",
-        "slice": "Thursday",
-        "spend": 270,
-        "clicks": 17,
-        "conversions": 4.0,
-        "cpa": 68,
-        "benchmark_cpa": 112,
-        "cpa_vs_benchmark": "0.60x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      },
-      {
-        "campaign": "Drug Charges",
-        "slice": "Tuesday",
-        "spend": 240,
-        "clicks": 20,
-        "conversions": 5.0,
-        "cpa": 49,
-        "benchmark_cpa": 112,
-        "cpa_vs_benchmark": "0.43x",
-        "confidence": "medium",
-        "verdict": "Strong",
-        "what_to_do": "nothing: Maximize conversions already bids up where conversions are likely, and ignores location and schedule bid adjustments"
-      }
-    ]
-  },
-  "bid_adjustment_sheet": {
-    "rows": [],
-    "why_empty": "Pharmacy Board (Maximize clicks): 2 conversions on $190 in 90 days; 0 of its slices had enough data to grade. The other campaigns' strategies ignore location and schedule adjustments."
-  },
-  "ad_schedule_drafts": [
-    {
-      "campaign": "Drug Charges",
-      "starts_from": "24/7 (no ad schedule today)",
-      "removes": "04:00-08:00 account time every day (06:00-10:00 market time)",
-      "rows_to_keep_account_time": [
-        {
-          "day": "Monday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Monday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Tuesday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Tuesday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Wednesday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Wednesday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Thursday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Thursday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Friday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Friday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Saturday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Saturday",
-          "start": "08:00",
-          "end": "24:00"
-        },
-        {
-          "day": "Sunday",
-          "start": "00:00",
-          "end": "04:00"
-        },
-        {
-          "day": "Sunday",
-          "start": "08:00",
-          "end": "24:00"
-        }
-      ],
-      "bid_percent": "none: Maximize conversions ignores schedule bid adjustments",
-      "status": "not applied: paste into the campaign's Ad schedule in Google Ads or Google Ads Editor"
-    }
+  "strong_slices": {"location": [], "device": [], "schedule": []},
+  "bid_adjustment_sheet": [
+    {"campaign": "AC Installation | Search", "slice": "location: Colorado Springs-Pueblo CO", "current": "0%", "recommended": "-20%", "change": "-20 points"}
   ],
-  "expansion": {
-    "ideas": [],
-    "why": "none found: every campaign matches people in the area and 0% of spend came from outside the targeted areas, so the data shows no converting area beyond today's targeting. Adjacent-area tests need the service area, which wasn't given."
-  },
-  "estimate": {
-    "rows": [
-      {
-        "campaign": "Drug Charges",
-        "money_freed_a_month": 150,
-        "benchmark_cpa": 112,
-        "conversions_it_could_buy_a_month": 1.3
-      }
-    ],
-    "money_freed_a_month": 150,
-    "assumption": "estimate: the freed money is spent at the campaign's benchmark CPA elsewhere in the same campaign; nothing guarantees that"
-  },
-  "fixes_offered": {
-    "run_now": [],
-    "why_none": "the only Act finding is a schedule change, and no InsightfulPipe MCP action writes ad schedules; no location or device met the bar for exclusion",
-    "manual": [
-      "apply the ad schedule draft in Google Ads",
-      "remove the ignored location bid adjustments in Google Ads (optional clean-up)"
-    ]
-  },
+  "ad_schedule_draft": [
+    {"campaign": "Brand | Search", "keep": ["04-08", "08-12", "12-16", "16-20", "20-24"], "drop": "00-04", "base": "24/7"},
+    {"campaign": "Furnace Repair | Search", "keep": ["04-08", "08-12", "12-16", "16-20", "20-24"], "drop": "00-04", "base": "24/7"},
+    {"campaign": "AC Repair | Search", "keep": ["04-08", "08-12", "12-16", "16-20", "20-24"], "drop": "00-04", "base": "24/7"}
+  ],
+  "expansion": "none found: no area outside the targets converted at or under its campaign's benchmark with 3 or more conversions",
+  "estimate": {"money_freed_a_month": 1099, "if_spent_at_benchmark": "about 20.0 conversions a month at the account's average benchmark", "label": "estimate: the window scaled to 30 days, assuming the freed money buys conversions at the benchmark"},
   "unknowns": [
-    "service area: not given, so no location is flagged as outside it",
-    "market time zone: inferred from the targeted state for the home-state campaigns; confirm before applying the schedule. The nationwide campaigns have no single market time zone",
-    "no campaign records a conversion value and none bids on value (Target ROAS or Maximize conversion value), so CPA is used throughout, not ROAS"
+    "City rows explain only part of each metro's spend, so cities are a drill-down, not a grade.",
+    "Performance Max reports location only at metro level here."
   ]
 }

@@ -1,52 +1,298 @@
 {
-  "request": "Hey Claude, I just added the \"ad-creative-fatigue-detector\" skill. Check my Google Ads ads for creative fatigue. Which ones are wearing out, and what should I rotate?",
-  "account": {
-    "platform": "Google Ads",
-    "business": "A US criminal and traffic defense law firm",
-    "currency": "USD",
-    "campaign_types": "Search only (responsive search ads)"
-  },
+  "request": "Hey Claude, I just added the \"ad-creative-fatigue-detector\" skill. Are any of my Google Ads wearing out?",
+  "account": {"platform": "Google Ads", "business": "Example home services company", "currency": "USD", "campaign_types": "Search (responsive search ads); Performance Max is left to pmax-asset-group-analyzer"},
   "window": {
-    "from": "2026-04-20",
-    "to": "2026-10-04",
+    "from": "2026-05-04",
+    "to": "2026-10-18",
     "rule": "24 complete Monday-to-Sunday weeks for Google Ads, as six 4-week periods",
     "periods": [
-      "2026-04-20 to 2026-05-17",
-      "2026-05-18 to 2026-06-14",
-      "2026-06-15 to 2026-07-12",
-      "2026-07-13 to 2026-08-09",
-      "2026-08-10 to 2026-09-06",
-      "2026-09-07 to 2026-10-04"
+      "2026-05-04 to 2026-05-31",
+      "2026-06-01 to 2026-06-28",
+      "2026-06-29 to 2026-07-26",
+      "2026-07-27 to 2026-08-23",
+      "2026-08-24 to 2026-09-20",
+      "2026-09-21 to 2026-10-18"
     ],
-    "recent_period": "2026-09-07 to 2026-10-04"
+    "recent_period": "2026-09-21 to 2026-10-18"
   },
-  "assumptions": {
-    "prospecting_or_retargeting": "not used on Search (no frequency); exposure comes from ad age",
-    "campaigns_left_out": "none",
-    "target_cpa": "not given"
-  },
+  "assumptions": {"prospecting_or_retargeting": "not used on Search (no frequency); exposure comes from ad age", "campaigns_left_out": "Performance Max (no ad-level rows)", "target_cpa": "not given"},
   "data_pulled": [
+    {"step": 1, "call": "query_contexts accounts + actions_details (gaql)", "result": "1 Google Ads account chosen"},
+    {"step": 2, "call": "gaql: ad_group_ad by segments.week, 24 weeks, rolled into 4-week periods"},
+    {"step": 3, "call": "gaql: ad_group_ad by segments.month, 24 months (ad age)"},
+    {"step": 4, "call": "gaql: enabled ads in enabled ad groups and campaigns", "rows": 18}
+  ],
+  "ads_with_delivery_in_window": [
     {
-      "step": 1,
-      "call": "query_contexts accounts + actions_details (gaql)",
-      "result": "1 Google Ads account chosen"
+      "ad_id": "610000000001",
+      "campaign": "Brand | Search",
+      "ad_group": "Brand",
+      "first_served": "2026-03",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1773, "clicks": 386, "cost": 508, "conversions": 58, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1773, "clicks": 394, "cost": 519, "conversions": 60, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1738, "clicks": 375, "cost": 494, "conversions": 57, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1773, "clicks": 390, "cost": 514, "conversions": 59, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1773, "clicks": 386, "cost": 508, "conversions": 58, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1773, "clicks": 383, "cost": 504, "conversions": 58, "top_impression_rate": 0.7}
+      ]
     },
     {
-      "step": 2,
-      "call": "gaql: ad_group_ad by segments.week, 24 weeks",
-      "rows": 464
+      "ad_id": "610000000002",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "first_served": "2026-05",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1098, "clicks": 66, "cost": 593, "conversions": 11, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1198, "clicks": 73, "cost": 656, "conversions": 12, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1118, "clicks": 66, "cost": 593, "conversions": 11, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1331, "clicks": 80, "cost": 719, "conversions": 13, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1917, "clicks": 115, "cost": 1034, "conversions": 18, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 2662, "clicks": 158, "cost": 1420, "conversions": 25, "top_impression_rate": 0.7}
+      ]
     },
     {
-      "step": 3,
-      "call": "gaql: ad_group_ad by segments.month, 24 months (ad age)",
-      "rows": 684
+      "ad_id": "610000000003",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "first_served": "2026-01",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 897, "clicks": 70, "cost": 627, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 734, "clicks": 60, "cost": 537, "conversions": 7, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 685, "clicks": 59, "cost": 528, "conversions": 7, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 816, "clicks": 64, "cost": 573, "conversions": 7, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1175, "clicks": 79, "cost": 707, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1631, "clicks": 97, "cost": 868, "conversions": 11, "top_impression_rate": 0.7}
+      ]
     },
     {
-      "step": 4,
-      "call": "gaql: enabled ads in enabled ad groups and campaigns",
-      "rows": 19
+      "ad_id": "610000000004",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace not working",
+      "first_served": "2026-06",
+      "status": "ENABLED",
+      "periods": [
+        null,
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 628, "clicks": 35, "cost": 292, "conversions": 5, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 608, "clicks": 33, "cost": 275, "conversions": 5, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 723, "clicks": 40, "cost": 333, "conversions": 6, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1042, "clicks": 57, "cost": 475, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1447, "clicks": 78, "cost": 650, "conversions": 11, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000005",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Heating emergency",
+      "first_served": "2026-07",
+      "status": "ENABLED",
+      "periods": [
+        null,
+        null,
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 220, "clicks": 11, "cost": 96, "conversions": 2, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 350, "clicks": 18, "cost": 156, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 504, "clicks": 26, "cost": 226, "conversions": 5, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 700, "clicks": 35, "cost": 304, "conversions": 6, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000006",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "first_served": "2026-04",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 3801, "clicks": 223, "cost": 1894, "conversions": 26, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 4627, "clicks": 285, "cost": 2420, "conversions": 34, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 4792, "clicks": 281, "cost": 2386, "conversions": 33, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 4297, "clicks": 240, "cost": 2038, "conversions": 28, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 3470, "clicks": 171, "cost": 1452, "conversions": 20, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 2809, "clicks": 127, "cost": 1079, "conversions": 15, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000007",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "first_served": "2025-11",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1629, "clicks": 94, "cost": 802, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1983, "clicks": 119, "cost": 1016, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 2054, "clicks": 118, "cost": 1007, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1841, "clicks": 100, "cost": 853, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1487, "clicks": 73, "cost": 623, "conversions": 6, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1204, "clicks": 54, "cost": 461, "conversions": 5, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000008",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC not cooling",
+      "first_served": "2026-04",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1136, "clicks": 70, "cost": 573, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1384, "clicks": 88, "cost": 720, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1433, "clicks": 89, "cost": 728, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1285, "clicks": 76, "cost": 622, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1038, "clicks": 55, "cost": 450, "conversions": 6, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 840, "clicks": 41, "cost": 335, "conversions": 5, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000009",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Water heater repair",
+      "first_served": "2026-05",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 760, "clicks": 45, "cost": 370, "conversions": 7, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1773, "clicks": 108, "cost": 887, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1738, "clicks": 102, "cost": 838, "conversions": 15, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1773, "clicks": 107, "cost": 879, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1773, "clicks": 106, "cost": 871, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1773, "clicks": 105, "cost": 862, "conversions": 16, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000010",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Tankless water heater",
+      "first_served": "2026-05",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 500, "clicks": 28, "cost": 252, "conversions": 4, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1167, "clicks": 66, "cost": 593, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1143, "clicks": 63, "cost": 566, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1167, "clicks": 66, "cost": 593, "conversions": 10, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1167, "clicks": 65, "cost": 584, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1167, "clicks": 64, "cost": 575, "conversions": 9, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000011",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Water heater replacement",
+      "first_served": "2026-05",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 180, "clicks": 10, "cost": 83, "conversions": 2, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 420, "clicks": 23, "cost": 192, "conversions": 4, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 412, "clicks": 22, "cost": 183, "conversions": 4, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 420, "clicks": 23, "cost": 192, "conversions": 4, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 420, "clicks": 23, "cost": 192, "conversions": 4, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 420, "clicks": 22, "cost": 183, "conversions": 4, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000012",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Emergency plumber",
+      "first_served": "2026-03",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 2111, "clicks": 108, "cost": 904, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 2111, "clicks": 111, "cost": 930, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 2069, "clicks": 105, "cost": 879, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 2111, "clicks": 109, "cost": 913, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 2111, "clicks": 108, "cost": 904, "conversions": 16, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 2111, "clicks": 107, "cost": 896, "conversions": 16, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000013",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Emergency plumber",
+      "first_served": "2026-03",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1529, "clicks": 97, "cost": 815, "conversions": 12, "top_impression_rate": 0.74},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 1529, "clicks": 99, "cost": 831, "conversions": 12, "top_impression_rate": 0.73},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1498, "clicks": 99, "cost": 831, "conversions": 12, "top_impression_rate": 0.74},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1529, "clicks": 97, "cost": 815, "conversions": 12, "top_impression_rate": 0.72},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1529, "clicks": 90, "cost": 756, "conversions": 11, "top_impression_rate": 0.64},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1529, "clicks": 77, "cost": 647, "conversions": 9, "top_impression_rate": 0.58}
+      ]
+    },
+    {
+      "ad_id": "610000000014",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Drain cleaning",
+      "first_served": "2026-06",
+      "status": "ENABLED",
+      "periods": [
+        null,
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 300, "clicks": 14, "cost": 94, "conversions": 2, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 1372, "clicks": 64, "cost": 430, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1400, "clicks": 67, "cost": 450, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1400, "clicks": 66, "cost": 443, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1400, "clicks": 65, "cost": 436, "conversions": 8, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000015",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Leak repair",
+      "first_served": "2026-06",
+      "status": "ENABLED",
+      "periods": [
+        null,
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 80, "clicks": 5, "cost": 48, "conversions": 1, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 366, "clicks": 20, "cost": 191, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 373, "clicks": 21, "cost": 200, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 373, "clicks": 21, "cost": 200, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 373, "clicks": 21, "cost": 200, "conversions": 3, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000016",
+      "campaign": "AC Installation | Search",
+      "ad_group": "AC installation",
+      "first_served": "2025-09",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 6061, "clicks": 276, "cost": 1715, "conversions": 9, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 7379, "clicks": 349, "cost": 2168, "conversions": 12, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 7642, "clicks": 368, "cost": 2286, "conversions": 12, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 6852, "clicks": 318, "cost": 1976, "conversions": 11, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 5534, "clicks": 239, "cost": 1485, "conversions": 8, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 4480, "clicks": 167, "cost": 1037, "conversions": 6, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000017",
+      "campaign": "AC Installation | Search",
+      "ad_group": "AC installation",
+      "first_served": "2026-10",
+      "status": "ENABLED",
+      "periods": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 160, "clicks": 6, "cost": 37, "conversions": 0, "top_impression_rate": 0.7}
+      ]
+    },
+    {
+      "ad_id": "610000000018",
+      "campaign": "AC Installation | Search",
+      "ad_group": "Heat pump installation",
+      "first_served": "2026-02",
+      "status": "ENABLED",
+      "periods": [
+        {"period": "2026-05-04 to 2026-05-31", "impressions": 1768, "clicks": 59, "cost": 333, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-06-01 to 2026-06-28", "impressions": 2152, "clicks": 73, "cost": 413, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-06-29 to 2026-07-26", "impressions": 2229, "clicks": 73, "cost": 413, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-07-27 to 2026-08-23", "impressions": 1998, "clicks": 67, "cost": 379, "conversions": 3, "top_impression_rate": 0.7},
+        {"period": "2026-08-24 to 2026-09-20", "impressions": 1614, "clicks": 54, "cost": 305, "conversions": 2, "top_impression_rate": 0.7},
+        {"period": "2026-09-21 to 2026-10-18", "impressions": 1307, "clicks": 43, "cost": 243, "conversions": 2, "top_impression_rate": 0.7}
+      ]
     }
   ],
-  "ads_with_delivery_in_window": 23,
-  "note": "Real run on 2026-10-06 on a client Google Ads account, anonymised: the business, attorney, firm and state names, campaign and ad group names, and every id are replaced; ads are numbered by impressions; spend is rounded to the nearest $10, cost per click to whole dollars. Data was pulled by the skill through the InsightfulPipe MCP; nothing was pasted. Only Google Ads is in this sample: the Meta, TikTok, LinkedIn, Snapchat and X calls were tested on our own accounts, which had no delivery in the window."
+  "note": "Example data: an invented home services company and Google Ads account, not a real business or account. Every number in expected_output.json follows from this input."
 }

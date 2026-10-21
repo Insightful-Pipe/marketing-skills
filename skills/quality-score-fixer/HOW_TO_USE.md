@@ -20,7 +20,7 @@ Hey Claude, I just added the "quality-score-fixer" skill. Review the ad strength
 Hey Claude, I just added the "quality-score-fixer" skill. Check every final URL in my account: is any broken, slow or rated below average for landing page experience?
 
 **One campaign, then fix**
-Hey Claude, I just added the "quality-score-fixer" skill. Fix Quality Score in my DUI campaign. Draft a new ad for the weakest ad group and show it to me before you add it.
+Hey Claude, I just added the "quality-score-fixer" skill. Fix Quality Score in my AC Repair campaign. Draft a new ad for the weakest ad group and show it to me before you add it.
 
 ## What you get
 

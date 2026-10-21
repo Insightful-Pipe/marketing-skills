@@ -1,915 +1,310 @@
 {
-  "header": {
-    "account": "A US criminal and traffic defense law firm",
-    "currency": "USD",
-    "date_range": "2026-09-05 to 2026-10-04 (last 30 complete days)",
-    "lookback_for_negatives": "2026-07-07 to 2026-10-04 (90 days)",
-    "mode": "CPA (the account records no conversion value)",
-    "target_cpa": 33,
-    "target_cpa_source": "not given, so the account's own 30-day CPA across non-brand search campaigns (non-brand cost / non-brand conversions)",
-    "brand_terms": "words from the account name (masked here as [firm name] and [attorney name])"
-  },
-  "summary": {
-    "health": "YELLOW",
-    "health_rule": "share of visible non-brand spend on zero-conversion terms at or above target CPA: 7% or less green, up to 15% yellow, above 15% red",
-    "garbage_share_of_visible_non_brand_spend": "14%",
-    "search_campaign_spend": 5510,
-    "search_term_spend_visible": 1190,
-    "visible_share": "22%",
-    "search_term_rows": 933,
-    "unique_search_terms": 820,
-    "terms_with_spend_or_conversions": 108,
-    "negatives_proposed": 1,
-    "spend_they_would_have_blocked_30d": 10,
-    "garbage_spend_kept_on_purpose": 150,
-    "keywords_to_add": 3,
-    "expansion_ideas": 4,
-    "note": "Google hides low-volume search terms, so every term-level figure covers only the visible share of spend."
-  },
-  "immediate_negatives": {
-    "terms": [],
-    "patterns": [
-      {
-        "ngram": "defenders office",
-        "words": 2,
-        "search_terms_30d": 2,
-        "search_terms_90d": 2,
-        "spend": 10,
-        "clicks": 1,
-        "conversions_30d": 0,
-        "conversions_90d": 0.0,
-        "match_type": "PHRASE",
-        "campaign": "Criminal Defense",
-        "reason": "intent mismatch: looking for free or public help",
-        "conflict_check": "no search term with a conversion in 90 days contains it"
-      }
+  "header": {"account": "Example home services company", "currency": "USD", "window": "2026-09-21 to 2026-10-20", "lookback": "2026-07-23 to 2026-10-20", "mode": "CPA (the converting terms carry no conversion value)", "target_cpa": 65.0, "target_source": "given by the user", "brand_terms": ["example"]},
+  "summary": {"health": "yellow", "garbage_share_of_visible_non_brand_spend": "11.0%", "search_spend": 11760, "visible_search_term_spend": 11103, "visible_share": "94.4%", "rows": 71, "unique_terms": 68, "terms_with_spend_or_conversions": 68, "negatives_proposed": 10, "spend_they_would_have_blocked": 1075, "garbage_spend_kept_on_purpose": 460, "keywords_to_add": 12, "expansion_ideas": 10},
+  "block_today": {
+    "term_negatives": [
+      {"term": "car ac repair", "campaign": "AC Repair | Search", "spend": 130, "clicks": 15, "waste_score": 8, "reason": "a different product (cars)", "match_type": "EXACT"},
+      {"term": "ac repair technician salary", "campaign": "AC Repair | Search", "spend": 90, "clicks": 10, "waste_score": 6, "reason": "job seekers", "match_type": "EXACT"},
+      {"term": "how much is a new ac unit", "campaign": "AC Installation | Search", "spend": 90, "clicks": 15, "waste_score": 6, "reason": "research only", "match_type": "EXACT"},
+      {"term": "furnace repair jobs", "campaign": "Furnace Repair | Search", "spend": 85, "clicks": 9, "waste_score": 6, "reason": "job seekers", "match_type": "EXACT"},
+      {"term": "furnace repair phoenix", "campaign": "Furnace Repair | Search", "spend": 75, "clicks": 8, "waste_score": 6, "reason": "names a place outside the Colorado target", "match_type": "EXACT"},
+      {"term": "why is my ac not cooling", "campaign": "AC Repair | Search", "spend": 70, "clicks": 9, "waste_score": 6, "reason": "research only", "match_type": "EXACT"},
+      {"term": "plumber jobs denver", "campaign": "Plumbing | Search", "spend": 70, "clicks": 8, "waste_score": 6, "reason": "job seekers", "match_type": "EXACT"},
+      {"term": "how to unclog a drain", "campaign": "Plumbing | Search", "spend": 45, "clicks": 7, "waste_score": 0, "reason": "DIY", "match_type": "EXACT"}
     ],
-    "copy_paste_list": "\"defenders office\"",
-    "copy_paste_format": "[term] = exact match, \"term\" = phrase match",
-    "considered_but_not_negated": [
-      {
-        "search_term": "nurse attorney",
-        "campaign": "Nursing Board",
-        "spend": 70,
-        "clicks": 3,
-        "conversions_30d": 0,
-        "conversions_90d": 0,
-        "match_type": "NEAR_EXACT",
-        "why_not_a_negative": "a close variant of one of your own exact keywords, so it is a bid, ad or landing-page problem, not a negative"
-      },
-      {
-        "search_term": "dui lawyer near me",
-        "campaign": "DUI",
-        "spend": 40,
-        "clicks": 1,
-        "conversions_30d": 0,
-        "conversions_90d": 0,
-        "match_type": "EXACT",
-        "why_not_a_negative": "it is one of your own exact keywords, so it is a bid, ad or landing-page problem, not a negative"
-      },
-      {
-        "search_term": "[state] traffic lawyer",
-        "campaign": "Out-of-State Traffic",
-        "spend": 40,
-        "clicks": 3,
-        "conversions_30d": 0,
-        "conversions_90d": 5,
-        "match_type": "EXACT",
-        "why_not_a_negative": "converted 5 times in the 90-day lookback"
-      }
+    "pattern_negatives": [
+      {"phrase": "jobs", "terms": ["ac installation jobs", "furnace repair jobs", "heat pump installation jobs", "plumber jobs denver"], "terms_in_lookback": 6, "spend": 265, "clicks": 35, "campaign": "AC Installation | Search", "match_type": "PHRASE", "conflict_check": "passed: no term containing it converted in 90 days"},
+      {"phrase": "how to", "terms": ["how to fix furnace igniter", "how to unclog a drain", "pilot light out furnace how to relight"], "terms_in_lookback": 3, "spend": 155, "clicks": 20, "campaign": "Furnace Repair | Search", "match_type": "PHRASE", "conflict_check": "passed: no term containing it converted in 90 days"}
     ],
-    "ngrams_that_did_not_qualify": [
-      {
-        "ngram": "dui lawyer",
-        "words": 2,
-        "search_terms_30d": 28,
-        "search_terms_90d": 51,
-        "spend": 70,
-        "clicks": 7,
-        "conversions_30d": 0,
-        "conversions_90d": 1.0,
-        "why_not_a_negative": "terms containing it converted 1.0 times in 90 days"
-      },
-      {
-        "ngram": "nurse",
-        "words": 1,
-        "search_terms_30d": 4,
-        "search_terms_90d": 9,
-        "spend": 70,
-        "clicks": 4,
-        "conversions_30d": 0,
-        "conversions_90d": 1.0,
-        "why_not_a_negative": "terms containing it converted 1.0 times in 90 days"
-      },
-      {
-        "ngram": "nurse attorney",
-        "words": 2,
-        "search_terms_30d": 2,
-        "search_terms_90d": 2,
-        "spend": 70,
-        "clicks": 3,
-        "conversions_30d": 0,
-        "conversions_90d": 0.0,
-        "why_not_a_negative": "a hidden-traffic category containing it converted"
-      },
-      {
-        "ngram": "dui lawyer near",
-        "words": 3,
-        "search_terms_30d": 3,
-        "search_terms_90d": 4,
-        "spend": 40,
-        "clicks": 1,
-        "conversions_30d": 0,
-        "conversions_90d": 0.0,
-        "why_not_a_negative": "it is part of one of your own enabled keywords"
-      },
-      {
-        "ngram": "best",
-        "words": 1,
-        "search_terms_30d": 42,
-        "search_terms_90d": 84,
-        "spend": 40,
-        "clicks": 9,
-        "conversions_30d": 0,
-        "conversions_90d": 0.0,
-        "why_not_a_negative": "it is part of one of your own enabled keywords"
-      },
-      {
-        "ngram": "[state] traffic lawyer",
-        "words": 3,
-        "search_terms_30d": 1,
-        "search_terms_90d": 1,
-        "spend": 40,
-        "clicks": 3,
-        "conversions_30d": 0,
-        "conversions_90d": 5.0,
-        "why_not_a_negative": "appears in only one search term; handle it as a term"
-      }
+    "copy_paste": [
+      "[car ac repair]",
+      "[ac repair technician salary]",
+      "[how much is a new ac unit]",
+      "[furnace repair jobs]",
+      "[furnace repair phoenix]",
+      "[why is my ac not cooling]",
+      "[plumber jobs denver]",
+      "[how to unclog a drain]",
+      "\"jobs\"",
+      "\"how to\""
+    ],
+    "considered_not_negated": [
+      {"term": "new ac unit cost", "campaign": "AC Installation | Search", "spend": 300, "clicks": 48, "reason": "converted 2 time(s) in the 90-day lookback"},
+      {"term": "home depot ac installation", "campaign": "AC Installation | Search", "spend": 120, "clicks": 19, "reason": "names another business: Home Depot (a retailer); ask before blocking"},
+      {"term": "free plumbing estimate", "campaign": "Plumbing | Search", "spend": 40, "clicks": 5, "reason": "already blocked by free (shared list 'Account negatives' (broad))"}
+    ],
+    "phrases_that_failed_a_test": [
+      {"phrase": "new", "spend": 390, "failed": "a term containing it converted in the lookback"},
+      {"phrase": "new ac unit", "spend": 390, "failed": "a term containing it converted in the lookback"},
+      {"phrase": "ac unit", "spend": 390, "failed": "a term containing it converted in the lookback"},
+      {"phrase": "new ac", "spend": 390, "failed": "a term containing it converted in the lookback"},
+      {"phrase": "unit", "spend": 390, "failed": "a term containing it converted in the lookback"},
+      {"phrase": "unit cost", "spend": 300, "failed": "appears in only 1 term in the lookback"}
     ]
   },
-  "keywords_to_promote": {
-    "rule": "2+ conversions in 30 days at or below target CPA (opportunity score 6+), not already a keyword in any match type, not a competitor or other business name, not blocked by an existing negative",
-    "add_as_exact": [
-      {
-        "search_term": "criminal defense attorney [city 4] [state]",
-        "conversions": 3,
-        "spend": 10,
-        "cpa": 2,
-        "opportunity_score": 8,
-        "matched_as": [
-          "NEAR_EXACT",
-          "PHRASE"
-        ],
-        "add_to": "Criminal Defense / Criminal Defense Lawyer",
-        "match_type": "EXACT",
-        "blocked_by_existing_negative": false
-      },
-      {
-        "search_term": "lawyers for traffic tickets",
-        "conversions": 2,
-        "spend": 10,
-        "cpa": 4,
-        "opportunity_score": 6,
-        "matched_as": [
-          "NEAR_EXACT"
-        ],
-        "add_to": "Traffic Tickets / traffic ticket lawyer",
-        "match_type": "EXACT",
-        "blocked_by_existing_negative": false
-      },
-      {
-        "search_term": "criminal lawyer",
-        "conversions": 2,
-        "spend": "under $5",
-        "cpa": 2,
-        "opportunity_score": 6,
-        "matched_as": [
-          "NEAR_EXACT"
-        ],
-        "add_to": "Criminal Defense / Criminal Defense Lawyer",
-        "match_type": "EXACT",
-        "blocked_by_existing_negative": false
-      }
+  "add_as_keywords": {
+    "promote_to_exact": [
+      {"term": "emergency plumber near me", "ad_group": "Emergency plumber", "campaign": "Plumbing | Search", "conversions": 6, "cpa": 56.67, "opportunity_score": 10, "match_type": "EXACT"},
+      {"term": "water heater repair near me", "ad_group": "Water heater repair", "campaign": "Water Heaters | Search", "conversions": 4, "cpa": 45.0, "opportunity_score": 8, "match_type": "EXACT"},
+      {"term": "furnace repair cost", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 3, "cpa": 63.33, "opportunity_score": 8, "match_type": "EXACT"},
+      {"term": "furnace repair aurora", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 3, "cpa": 50.0, "opportunity_score": 8, "match_type": "EXACT"},
+      {"term": "ac repair denver", "ad_group": "AC repair", "campaign": "AC Repair | Search", "conversions": 3, "cpa": 46.67, "opportunity_score": 8, "match_type": "EXACT"},
+      {"term": "emergency plumber denver", "ad_group": "Emergency plumber", "campaign": "Plumbing | Search", "conversions": 3, "cpa": 36.67, "opportunity_score": 8, "match_type": "EXACT"},
+      {"term": "furnace repair colorado springs", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 2, "cpa": 65.0, "opportunity_score": 6, "match_type": "EXACT"},
+      {"term": "same day furnace repair", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 2, "cpa": 45.0, "opportunity_score": 6, "match_type": "EXACT"},
+      {"term": "furnace not turning on", "ad_group": "Furnace not working", "campaign": "Furnace Repair | Search", "conversions": 2, "cpa": 60.0, "opportunity_score": 6, "match_type": "EXACT"},
+      {"term": "emergency furnace repair near me", "ad_group": "Heating emergency", "campaign": "Furnace Repair | Search", "conversions": 2, "cpa": 40.0, "opportunity_score": 6, "match_type": "EXACT"},
+      {"term": "water heater leaking", "ad_group": "Water heater repair", "campaign": "Water Heaters | Search", "conversions": 2, "cpa": 45.0, "opportunity_score": 6, "match_type": "EXACT"},
+      {"term": "tankless water heater installation cost", "ad_group": "Tankless water heater", "campaign": "Water Heaters | Search", "conversions": 2, "cpa": 45.0, "opportunity_score": 6, "flag": "blocked by cost (campaign negative (broad)); remove the negative first"},
+      {"term": "drain cleaning near me", "ad_group": "Drain cleaning", "campaign": "Plumbing | Search", "conversions": 2, "cpa": 55.0, "opportunity_score": 6, "match_type": "EXACT"}
     ],
     "ask_first": [
-      {
-        "search_term": "[competitor brand] [state]",
-        "conversions": 3.0,
-        "spend": 60,
-        "cpa": 20,
-        "opportunity_score": 8,
-        "matched_as": [
-          "NEAR_PHRASE"
-        ],
-        "why": "names a competitor brand: bidding on it is a deliberate choice, so ask before adding it"
-      }
+      {"term": "lennox furnace repair", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 2, "cpa": 47.5, "opportunity_score": 6, "note": "names another business: Lennox (a furnace maker)"}
     ],
-    "already_keywords": [
-      {
-        "search_term": "criminal defense attorney [city 2] [state]",
-        "conversions": 3,
-        "spend": 30,
-        "cpa": 11,
-        "opportunity_score": 8,
-        "matched_as": [
-          "EXACT"
-        ],
-        "status": "already a keyword (phrase match, enabled) in Criminal Defense / Criminal Defense Lawyer"
-      },
-      {
-        "search_term": "traffic lawyer near me",
-        "conversions": 2,
-        "spend": 60,
-        "cpa": 32,
-        "opportunity_score": 6,
-        "matched_as": [
-          "EXACT",
-          "NEAR_EXACT"
-        ],
-        "status": "already a keyword (exact match, enabled) in Traffic Tickets / traffic ticket lawyer"
-      },
-      {
-        "search_term": "[state] traffic attorney",
-        "conversions": 2,
-        "spend": 40,
-        "cpa": 19,
-        "opportunity_score": 6,
-        "matched_as": [
-          "EXACT",
-          "NEAR_EXACT",
-          "PHRASE"
-        ],
-        "status": "already a keyword (exact match, enabled) in Out-of-State Traffic / [state] Traffic Lawyer"
-      },
-      {
-        "search_term": "[state] traffic ticket lawyer",
-        "conversions": 2,
-        "spend": 10,
-        "cpa": 6,
-        "opportunity_score": 6,
-        "matched_as": [
-          "EXACT",
-          "NEAR_EXACT",
-          "NEAR_PHRASE"
-        ],
-        "status": "already a keyword (exact match, enabled) in Out-of-State Traffic / [state] Traffic Lawyer"
-      }
+    "already_a_keyword": [
+      {"term": "furnace repair", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 12, "cpa": 53.33, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "emergency plumber", "ad_group": "Emergency plumber", "campaign": "Plumbing | Search", "conversions": 10, "cpa": 52.0, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "water heater repair", "ad_group": "Water heater repair", "campaign": "Water Heaters | Search", "conversions": 9, "cpa": 46.67, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "furnace repair near me", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 8, "cpa": 54.38, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "tankless water heater installation", "ad_group": "Tankless water heater", "campaign": "Water Heaters | Search", "conversions": 6, "cpa": 46.67, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "furnace repair denver", "ad_group": "Furnace repair", "campaign": "Furnace Repair | Search", "conversions": 5, "cpa": 59.6, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "furnace not working", "ad_group": "Furnace not working", "campaign": "Furnace Repair | Search", "conversions": 5, "cpa": 52.0, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "drain cleaning", "ad_group": "Drain cleaning", "campaign": "Plumbing | Search", "conversions": 5, "cpa": 40.0, "opportunity_score": 10, "note": "already a keyword"},
+      {"term": "furnace blowing cold air", "ad_group": "Furnace not working", "campaign": "Furnace Repair | Search", "conversions": 4, "cpa": 45.0, "opportunity_score": 8, "note": "already a keyword"},
+      {"term": "emergency furnace repair", "ad_group": "Heating emergency", "campaign": "Furnace Repair | Search", "conversions": 4, "cpa": 40.0, "opportunity_score": 8, "note": "already a keyword"},
+      {"term": "24 hour plumber", "ad_group": "Emergency plumber", "campaign": "Plumbing | Search", "conversions": 4, "cpa": 57.5, "opportunity_score": 8, "note": "already a keyword"},
+      {"term": "ac not cooling", "ad_group": "AC not cooling", "campaign": "AC Repair | Search", "conversions": 3, "cpa": 50.0, "opportunity_score": 8, "note": "already a keyword"},
+      {"term": "water heater replacement", "ad_group": "Water heater replacement", "campaign": "Water Heaters | Search", "conversions": 3, "cpa": 43.33, "opportunity_score": 8, "note": "already a keyword"},
+      {"term": "clogged drain", "ad_group": "Drain cleaning", "campaign": "Plumbing | Search", "conversions": 2, "cpa": 45.0, "opportunity_score": 6, "note": "already a keyword"},
+      {"term": "water leak repair", "ad_group": "Leak repair", "campaign": "Plumbing | Search", "conversions": 2, "cpa": 60.0, "opportunity_score": 6, "note": "already a keyword"},
+      {"term": "heat pump installation", "ad_group": "Heat pump installation", "campaign": "AC Installation | Search", "conversions": 2, "cpa": 65.0, "opportunity_score": 6, "note": "already a keyword"}
     ],
-    "watch_single_conversion": [
-      {
-        "search_term": "traffic ticket lawyer in [state]",
-        "conversions": 1,
-        "spend": "under $5",
-        "cpa": 3,
-        "conversions_90d": 2,
-        "opportunity_score": 4
-      },
-      {
-        "search_term": "ticket lawyer near me",
-        "conversions": 1,
-        "spend": 20,
-        "cpa": 16,
-        "conversions_90d": 2,
-        "opportunity_score": 4
-      },
-      {
-        "search_term": "speeding ticket lawyer",
-        "conversions": 1,
-        "spend": 10,
-        "cpa": 11,
-        "conversions_90d": 1.5,
-        "opportunity_score": 4
-      },
-      {
-        "search_term": "reckless driving lawyer",
-        "conversions": 1,
-        "spend": "under $5",
-        "cpa": 2,
-        "conversions_90d": 1,
-        "opportunity_score": 4
-      },
-      {
-        "search_term": "truancy lawyers near me",
-        "conversions": 1,
-        "spend": "under $5",
-        "cpa": 3,
-        "conversions_90d": 1,
-        "opportunity_score": 4
-      },
-      {
-        "search_term": "attorney for probation violation",
-        "conversions": 1,
-        "spend": "under $5",
-        "cpa": 3,
-        "conversions_90d": 1,
-        "opportunity_score": 4
-      }
+    "single_conversion_watchlist": [
+      {"term": "water heater replacement cost", "campaign": "Water Heaters | Search", "conversions": 1, "cpa": 50.0, "lookback_conversions": 2}
     ]
   },
   "ad_group_themes": [
-    {
-      "ngram": "traffic tickets",
-      "search_terms": 10,
-      "spend": 20,
-      "conversions": 2,
-      "cpa": 8,
-      "already_in_a_keyword": false,
-      "suggestion": "winning phrase that none of your enabled keywords contains: give it its own keywords and an ad that repeats it"
-    },
-    {
-      "ngram": "defense attorney [city 4]",
-      "search_terms": 2,
-      "spend": 10,
-      "conversions": 3,
-      "cpa": 2,
-      "already_in_a_keyword": false,
-      "suggestion": "winning phrase that none of your enabled keywords contains: give it its own keywords and an ad that repeats it"
-    },
-    {
-      "ngram": "lawyers for traffic",
-      "search_terms": 4,
-      "spend": 10,
-      "conversions": 2,
-      "cpa": 4,
-      "already_in_a_keyword": false,
-      "suggestion": "winning phrase that none of your enabled keywords contains: give it its own keywords and an ad that repeats it"
-    }
+    {"theme": "same day", "terms": 2, "conversions": 3, "cpa": 56.67, "terms_list": ["same day furnace repair", "same day plumber"]}
   ],
-  "expansion_ideas": {
-    "seeds": {
-      "the account's state": [
-        "criminal defense attorney [city 4] [state]",
-        "criminal defense attorney [city 2] [state]",
-        "criminal lawyer",
-        "lawyers for traffic tickets",
-        "traffic lawyer near me",
-        "reckless driving lawyer",
-        "truancy lawyers near me",
-        "attorney for probation violation",
-        "affordable criminal defense attorney near me",
-        "traffic ticket lawyer in [state]"
-      ],
-      "United States": [
-        "[state] traffic ticket lawyer",
-        "[state] traffic attorney",
-        "traffic attorney in [city 1] [state]"
-      ]
-    },
+  "expansion": {
+    "seeds": [
+      "furnace repair",
+      "emergency plumber",
+      "water heater repair",
+      "furnace repair near me",
+      "tankless water heater installation",
+      "emergency plumber near me",
+      "furnace repair denver",
+      "furnace not working",
+      "drain cleaning",
+      "furnace blowing cold air"
+    ],
+    "location": "Colorado (21138)",
     "kept": [
-      {
-        "keyword": "criminal law lawyers near me",
-        "avg_monthly_searches": 880,
-        "competition": "LOW",
-        "top_of_page_bid_low": 2.58,
-        "top_of_page_bid_high": 71.35,
-        "suggested_ad_group": "Criminal Defense / Criminal Defense Lawyer",
-        "location": "the account's state"
-      },
-      {
-        "keyword": "criminal law firms near me",
-        "avg_monthly_searches": 10,
-        "competition": "HIGH",
-        "top_of_page_bid_low": 0.95,
-        "top_of_page_bid_high": 5.9,
-        "suggested_ad_group": "Criminal Defense / Criminal Defense Lawyer",
-        "location": "the account's state"
-      },
-      {
-        "keyword": "affordable criminal lawyers",
-        "avg_monthly_searches": 10,
-        "competition": "LOW",
-        "top_of_page_bid_low": null,
-        "top_of_page_bid_high": null,
-        "suggested_ad_group": "Criminal Defense / Criminal Defense Lawyer",
-        "location": "the account's state"
-      },
-      {
-        "keyword": "[state] traffic ticket law firm",
-        "avg_monthly_searches": 10,
-        "competition": "UNSPECIFIED",
-        "top_of_page_bid_low": null,
-        "top_of_page_bid_high": null,
-        "suggested_ad_group": "Out-of-State Traffic / [state] Traffic Lawyer",
-        "location": "United States"
-      }
+      {"idea": "plumber near me open now", "avg_monthly_searches": 1900, "competition": "HIGH", "top_of_page_bid": "$10.90 to $29.70", "ad_group": "Emergency plumber"},
+      {"idea": "heater repair", "avg_monthly_searches": 1600, "competition": "HIGH", "top_of_page_bid": "$8.40 to $22.10", "ad_group": "Water heater repair"},
+      {"idea": "furnace tune up", "avg_monthly_searches": 1300, "competition": "MEDIUM", "top_of_page_bid": "$5.20 to $14.80", "ad_group": "Furnace repair"},
+      {"idea": "hot water heater repair", "avg_monthly_searches": 1300, "competition": "HIGH", "top_of_page_bid": "$9.30 to $25.10", "ad_group": "Water heater repair"},
+      {"idea": "water heater installation", "avg_monthly_searches": 1000, "competition": "HIGH", "top_of_page_bid": "$9.80 to $26.20", "ad_group": "Tankless water heater"},
+      {"idea": "furnace repair service", "avg_monthly_searches": 880, "competition": "HIGH", "top_of_page_bid": "$9.10 to $24.50", "ad_group": "Furnace repair"},
+      {"idea": "sewer line repair", "avg_monthly_searches": 880, "competition": "HIGH", "top_of_page_bid": "$12.80 to $36.40", "ad_group": "Furnace repair"},
+      {"idea": "emergency plumbing service", "avg_monthly_searches": 720, "competition": "HIGH", "top_of_page_bid": "$11.40 to $31.80", "ad_group": "Emergency plumber"},
+      {"idea": "drain cleaning service", "avg_monthly_searches": 590, "competition": "MEDIUM", "top_of_page_bid": "$7.20 to $19.40", "ad_group": "Drain cleaning"},
+      {"idea": "water heater service", "avg_monthly_searches": 480, "competition": "MEDIUM", "top_of_page_bid": "$8.10 to $21.60", "ad_group": "Water heater repair"}
     ],
-    "kept_total": 4,
-    "dropped": {
-      "already a search term in the last 90 days (its results are known)": 54,
-      "already a keyword": 19,
-      "contains a topic or spelling that never converted here (e.g. car accident, personal injury)": 21,
-      "names a brand, a person, or a price": 13
-    }
+    "dropped_by_reason": {"already a keyword or a search term": 4, "intent mismatch": 3, "names a brand, a person or a price": 2, "topic word that never converted": 1}
   },
-  "watchlist": [
-    {
-      "search_term": "nurse attorney",
-      "campaign": "Nursing Board",
-      "spend": 70,
-      "clicks": 3,
-      "signal": "a close variant of one of your own exact keywords, so it is a bid, ad or landing-page problem, not a negative",
-      "conversions_90d": 0,
-      "review_on": "2026-10-18"
-    },
-    {
-      "search_term": "dui lawyer near me",
-      "campaign": "DUI",
-      "spend": 40,
-      "clicks": 1,
-      "signal": "it is one of your own exact keywords, so it is a bid, ad or landing-page problem, not a negative",
-      "conversions_90d": 0,
-      "review_on": "2026-10-18"
-    },
-    {
-      "search_term": "[state] traffic lawyer",
-      "campaign": "Out-of-State Traffic",
-      "spend": 40,
-      "clicks": 3,
-      "signal": "converted 5 times in the 90-day lookback",
-      "conversions_90d": 5,
-      "review_on": "2026-10-18"
-    },
-    {
-      "search_term": "traffic lawyer",
-      "campaign": "Traffic Tickets",
-      "spend": 20,
-      "clicks": 5,
-      "signal": "no conversion in the 30-day window, but 5 in the 90-day lookback; spend below the $33 target CPA",
-      "conversions_90d": 5,
-      "review_on": "2026-10-18"
-    },
-    {
-      "search_term": "cheap dui lawyers near me",
-      "campaign": "DUI",
-      "spend": 20,
-      "clicks": 1,
-      "signal": "no conversion in the 30-day window or the 90-day lookback; spend below the $33 target CPA",
-      "conversions_90d": 0,
-      "review_on": "2026-10-18"
-    },
-    {
-      "search_term": "hidden category: first dui in [state]",
-      "campaign": "DUI",
-      "spend": "not reported for categories",
-      "clicks": 14,
-      "signal": "hidden-traffic category with 10+ clicks and no conversion; categories can't be negated as a whole, so check it again",
-      "conversions_90d": "not pulled for categories",
-      "review_on": "2026-10-18"
-    }
-  ],
-  "other_waste_checks": [
-    {
-      "check": "terms naming a place outside the campaign's location target, checked in every campaign with term spend: another state, a city in another state or another country for the state-targeted campaigns; another country for the United States-targeted ones",
-      "rule": "location mismatch: negative candidate",
-      "terms_found": 0,
-      "spend": 0,
-      "campaigns_checked": "6 targeting one state, 2 targeting the United States",
-      "terms_naming_a_place": 37,
-      "terms_naming_a_place_inside_the_target": 37
-    },
-    {
-      "check": "0 conversions and 20+ clicks while still under target CPA",
-      "rule": "likely intent or landing-page mismatch: review",
-      "terms_found": 0,
-      "spend": 0
-    },
-    {
-      "check": "converting at more than 3x target CPA",
-      "rule": "waste score 4: lower the bid or watch, not a negative",
-      "terms_found": 0,
-      "spend": 0
-    },
-    {
-      "check": "grey-zone terms with 10+ clicks",
-      "rule": "waste score 2: watch",
-      "terms_found": 0,
-      "spend": 0
-    }
-  ],
-  "quality_breakdown": {
-    "gold": {
-      "terms": 8,
-      "spend": 230,
-      "share_of_visible_spend": "19%",
-      "conversions": 19.0
-    },
-    "converting": {
-      "terms": 21,
-      "spend": 330,
-      "share_of_visible_spend": "27%",
-      "conversions": 20.3
-    },
-    "garbage": {
-      "terms": 3,
-      "spend": 150,
-      "share_of_visible_spend": "12%",
-      "conversions": 0.0
-    },
-    "grey": {
-      "terms": 71,
-      "spend": 350,
-      "share_of_visible_spend": "29%",
-      "conversions": 0.0
-    },
-    "brand": {
-      "terms": 5,
-      "spend": 140,
-      "share_of_visible_spend": "12%",
-      "conversions": 18.5
-    }
+  "watchlist": {
+    "review_date": "2026-11-03",
+    "terms": [
+      {"term": "new ac unit cost", "campaign": "AC Installation | Search", "spend": 300, "clicks": 48, "reason": "converted 2 time(s) in the 90-day lookback", "review": "2026-11-03"},
+      {"term": "furnace making loud noise", "campaign": "Furnace Repair | Search", "spend": 60, "converted_in_lookback": true, "review": "2026-11-03"},
+      {"term": "heat pump rebate colorado", "campaign": "AC Installation | Search", "spend": 60, "converted_in_lookback": false, "review": "2026-11-03"}
+    ],
+    "hidden_categories": [
+      {"campaign": "Furnace Repair | Search", "category": "hvac jobs", "clicks": 14, "review": "2026-11-03"},
+      {"campaign": "AC Repair | Search", "category": "car ac", "clicks": 18, "review": "2026-11-03"},
+      {"campaign": "Plumbing | Search", "category": "plumbing school", "clicks": 11, "review": "2026-11-03"},
+      {"campaign": "AC Installation | Search", "category": "hvac careers", "clicks": 12, "review": "2026-11-03"}
+    ]
   },
+  "other_waste_checks": {
+    "wrong_location": {"terms_naming_a_place": 8, "inside_target": 7, "outside_target": ["furnace repair phoenix"]},
+    "high_clicks_no_conversions": ["new ac unit cost"],
+    "too_expensive": []
+  },
+  "quality_breakdown": [
+    {"bucket": "gold", "terms": 30, "spend": 6158, "share_of_visible_spend": "55.5%", "conversions": 122},
+    {"bucket": "converting", "terms": 17, "spend": 2985, "share_of_visible_spend": "26.9%", "conversions": 33},
+    {"bucket": "garbage", "terms": 11, "spend": 1170, "share_of_visible_spend": "10.5%", "conversions": 0},
+    {"bucket": "grey zone", "terms": 6, "spend": 285, "share_of_visible_spend": "2.6%", "conversions": 0},
+    {"bucket": "brand", "terms": 4, "spend": 505, "share_of_visible_spend": "4.5%", "conversions": 59}
+  ],
   "ngrams": {
-    "winning": [
-      {
-        "ngram": "defense attorney",
-        "search_terms": 74,
-        "spend": 130,
-        "conversions": 9.3,
-        "cpa": 14,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "criminal defense attorney",
-        "search_terms": 48,
-        "spend": 110,
-        "conversions": 8.3,
-        "cpa": 13,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "criminal defense",
-        "search_terms": 81,
-        "spend": 120,
-        "conversions": 8.3,
-        "cpa": 14,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "ticket lawyer",
-        "search_terms": 26,
-        "spend": 80,
-        "conversions": 6,
-        "cpa": 13,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "traffic ticket",
-        "search_terms": 27,
-        "spend": 100,
-        "conversions": 5,
-        "cpa": 19,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "traffic attorney",
-        "search_terms": 10,
-        "spend": 130,
-        "conversions": 5,
-        "cpa": 25,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "traffic ticket lawyer",
-        "search_terms": 13,
-        "spend": 40,
-        "conversions": 4,
-        "cpa": 10,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "[state] traffic",
-        "search_terms": 4,
-        "spend": 90,
-        "conversions": 4,
-        "cpa": 23,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "attorney [city 4]",
-        "search_terms": 6,
-        "spend": 10,
-        "conversions": 3,
-        "cpa": 2,
-        "already_in_a_keyword": true
-      },
-      {
-        "ngram": "[city 4] [state]",
-        "search_terms": 15,
-        "spend": 10,
-        "conversions": 3,
-        "cpa": 2,
-        "already_in_a_keyword": true
-      }
+    "winning_phrases": [
+      {"phrase": "furnace repair", "terms": 12, "conversions": 43, "cpa": 56.47},
+      {"phrase": "water heater", "terms": 9, "conversions": 29, "cpa": 49.83},
+      {"phrase": "repair near", "terms": 4, "conversions": 19, "cpa": 56.58},
+      {"phrase": "repair near me", "terms": 4, "conversions": 19, "cpa": 56.58},
+      {"phrase": "emergency plumber", "terms": 3, "conversions": 19, "cpa": 51.05},
+      {"phrase": "water heater repair", "terms": 2, "conversions": 13, "cpa": 46.15},
+      {"phrase": "heater repair", "terms": 2, "conversions": 13, "cpa": 46.15},
+      {"phrase": "furnace repair near", "terms": 2, "conversions": 10, "cpa": 51.5},
+      {"phrase": "tankless water", "terms": 4, "conversions": 10, "cpa": 57.5},
+      {"phrase": "tankless water heater", "terms": 4, "conversions": 10, "cpa": 57.5}
     ],
-    "winning_phrases_total": 26,
-    "winning_note": "the 10 with the most conversions of the 26 phrases that pass the winning test; ad group themes are drawn from all 26",
-    "zero_conversion": [
-      {
-        "ngram": "dui lawyer",
-        "search_terms": 28,
-        "spend": 70,
-        "clicks": 7,
-        "conversions_90d": 1.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "nurse",
-        "search_terms": 4,
-        "spend": 70,
-        "clicks": 4,
-        "conversions_90d": 1.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "nurse attorney",
-        "search_terms": 2,
-        "spend": 70,
-        "clicks": 3,
-        "conversions_90d": 0.0,
-        "in_your_keywords": false
-      },
-      {
-        "ngram": "dui lawyer near",
-        "search_terms": 3,
-        "spend": 40,
-        "clicks": 1,
-        "conversions_90d": 0.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "best",
-        "search_terms": 42,
-        "spend": 40,
-        "clicks": 9,
-        "conversions_90d": 0.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "cheap",
-        "search_terms": 4,
-        "spend": 20,
-        "clicks": 1,
-        "conversions_90d": 0.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "dui lawyers",
-        "search_terms": 14,
-        "spend": 20,
-        "clicks": 1,
-        "conversions_90d": 1.0,
-        "in_your_keywords": true
-      },
-      {
-        "ngram": "cheap dui",
-        "search_terms": 2,
-        "spend": 20,
-        "clicks": 1,
-        "conversions_90d": 0.0,
-        "in_your_keywords": true
-      }
+    "winning_phrases_passed": 22,
+    "costliest_zero_conversion_phrases": [
+      {"phrase": "new", "terms": 2, "spend": 390, "clicks": 63},
+      {"phrase": "new ac unit", "terms": 2, "spend": 390, "clicks": 63},
+      {"phrase": "ac unit", "terms": 2, "spend": 390, "clicks": 63},
+      {"phrase": "new ac", "terms": 2, "spend": 390, "clicks": 63},
+      {"phrase": "unit", "terms": 2, "spend": 390, "clicks": 63},
+      {"phrase": "jobs", "terms": 4, "spend": 265, "clicks": 35},
+      {"phrase": "how", "terms": 4, "spend": 245, "clicks": 35},
+      {"phrase": "how to", "terms": 3, "spend": 155, "clicks": 20}
     ]
   },
   "long_tail": {
-    "1-3 words": {
-      "spend": 470,
-      "clicks": 59,
-      "conversions": 15.0,
-      "conversion_rate": "25%",
-      "cpa": 31
-    },
-    "4+ words": {
-      "spend": 590,
-      "clicks": 97,
-      "conversions": 24.3,
-      "conversion_rate": "25%",
-      "cpa": 24
-    }
+    "one_to_three_words": {"terms": 36, "spend": 6783, "conversion_rate": "12.5%", "cpa": 64.6},
+    "four_plus_words": {"terms": 28, "spend": 3815, "conversion_rate": "10.5%", "cpa": 76.3}
   },
   "hidden_traffic": [
-    {
-      "campaign": "Criminal Defense",
-      "campaign_clicks": 212,
-      "clicks_in_insights_report": 212,
-      "clicks_visible_as_search_terms": 48,
-      "uncategorised_clicks": 130,
-      "categories_with_10_plus_clicks": [
-        {
-          "category": "best criminal defense attorney in [state]",
-          "clicks": 18,
-          "conversions": 2.3
-        },
-        {
-          "category": "criminal defense attorney [city 2] [state]",
-          "clicks": 11,
-          "conversions": 5
-        }
-      ]
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "campaign_clicks": 195,
-      "clicks_in_insights_report": 195,
-      "clicks_visible_as_search_terms": 69,
-      "uncategorised_clicks": 84,
-      "categories_with_10_plus_clicks": [
-        {
-          "category": "traffic lawyer near me",
-          "clicks": 47,
-          "conversions": 8.6
-        },
-        {
-          "category": "traffic attorney",
-          "clicks": 40,
-          "conversions": 12
-        },
-        {
-          "category": "[state] traffic lawyers",
-          "clicks": 11,
-          "conversions": 3.5
-        }
-      ]
-    },
-    {
-      "campaign": "DUI",
-      "campaign_clicks": 79,
-      "clicks_in_insights_report": 79,
-      "clicks_visible_as_search_terms": 18,
-      "uncategorised_clicks": 33,
-      "categories_with_10_plus_clicks": [
-        {
-          "category": "first dui in [state]",
-          "clicks": 14,
-          "conversions": 0
-        },
-        {
-          "category": "dui attorney [state]",
-          "clicks": 10,
-          "conversions": 2.7
-        }
-      ]
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "campaign_clicks": 72,
-      "clicks_in_insights_report": 72,
-      "clicks_visible_as_search_terms": 14,
-      "uncategorised_clicks": 32,
-      "categories_with_10_plus_clicks": [
-        {
-          "category": "[state] traffic lawyers",
-          "clicks": 15,
-          "conversions": 2
-        },
-        {
-          "category": "[state] traffic lawyer",
-          "clicks": 11,
-          "conversions": 4
-        },
-        {
-          "category": "traffic ticket lawyer [city 1] [state]",
-          "clicks": 10,
-          "conversions": 4
-        }
-      ]
-    },
-    {
-      "campaign": "Drug Charges",
-      "campaign_clicks": 44,
-      "clicks_in_insights_report": 44,
-      "clicks_visible_as_search_terms": 2,
-      "uncategorised_clicks": 23,
-      "categories_with_10_plus_clicks": [
-        {
-          "category": "drug attorney",
-          "clicks": 19,
-          "conversions": 3
-        }
-      ]
-    },
-    {
-      "campaign": "Nursing Board",
-      "campaign_clicks": 18,
-      "clicks_in_insights_report": 18,
-      "clicks_visible_as_search_terms": 4,
-      "uncategorised_clicks": 10,
-      "categories_with_10_plus_clicks": []
-    },
-    {
-      "campaign": "Out-of-State DUI",
-      "campaign_clicks": 12,
-      "clicks_in_insights_report": 12,
-      "clicks_visible_as_search_terms": 1,
-      "uncategorised_clicks": 10,
-      "categories_with_10_plus_clicks": []
-    },
-    {
-      "campaign": "Pharmacy Board",
-      "campaign_clicks": 5,
-      "clicks_in_insights_report": 5,
-      "clicks_visible_as_search_terms": 0,
-      "uncategorised_clicks": 5,
-      "categories_with_10_plus_clicks": []
-    }
+    {"campaign": "Furnace Repair | Search", "category": "furnace repair", "clicks": 150, "conversions": 26},
+    {"campaign": "Furnace Repair | Search", "category": "heating service", "clicks": 38, "conversions": 5},
+    {"campaign": "Furnace Repair | Search", "category": "hvac jobs", "clicks": 14, "conversions": 0},
+    {"campaign": "AC Repair | Search", "category": "ac repair", "clicks": 160, "conversions": 15},
+    {"campaign": "AC Repair | Search", "category": "air conditioning service", "clicks": 36, "conversions": 3},
+    {"campaign": "AC Repair | Search", "category": "car ac", "clicks": 18, "conversions": 0},
+    {"campaign": "Water Heaters | Search", "category": "water heater", "clicks": 170, "conversions": 26},
+    {"campaign": "Water Heaters | Search", "category": "tankless water heater", "clicks": 46, "conversions": 5},
+    {"campaign": "Plumbing | Search", "category": "plumber", "clicks": 210, "conversions": 30},
+    {"campaign": "Plumbing | Search", "category": "drain cleaning", "clicks": 60, "conversions": 7},
+    {"campaign": "Plumbing | Search", "category": "plumbing school", "clicks": 11, "conversions": 0},
+    {"campaign": "AC Installation | Search", "category": "air conditioner installation", "clicks": 170, "conversions": 5},
+    {"campaign": "AC Installation | Search", "category": "heat pump", "clicks": 40, "conversions": 2},
+    {"campaign": "AC Installation | Search", "category": "hvac careers", "clicks": 12, "conversions": 0}
   ],
-  "competitor_and_named_searches": {
-    "competitor_brands": {
-      "terms_30d": 19,
-      "spend_30d": 70,
-      "conversions_30d": 3.0,
-      "spend_90d": 140,
-      "conversions_90d": 7.0,
-      "cpa_90d": 20
-    },
-    "other_attorneys_by_name": {
-      "terms_30d": 194,
-      "spend_30d": 50,
-      "conversions_30d": 1,
-      "spend_90d": 440,
-      "conversions_90d": 8,
-      "cpa_90d": 55
-    }
-  },
+  "competitor_and_named_searches": [
+    {"term": "lennox furnace repair", "names": "Lennox (a furnace maker)", "spend_30d": 95, "conversions_30d": 2, "cpa_30d": 47.5, "spend_90d": 165, "conversions_90d": 3, "cpa_90d": 55.0},
+    {"term": "rinnai tankless water heater", "names": "Rinnai (a water heater maker)", "spend_30d": 85, "conversions_30d": 1, "cpa_30d": 85.0, "spend_90d": 235, "conversions_90d": 2, "cpa_90d": 117.5},
+    {"term": "home depot ac installation", "names": "Home Depot (a retailer)", "spend_30d": 120, "conversions_30d": 0, "cpa_30d": null, "spend_90d": 310, "conversions_90d": 0, "cpa_90d": null}
+  ],
   "payloads": [
     {
-      "action": "add_keywords",
-      "status": "not run: offered after the user confirms",
-      "target": "Criminal Defense / Criminal Defense Lawyer",
-      "body": {
-        "platform": "google-ads",
-        "workspace_id": "<WORKSPACE_ID>",
-        "brand_id": "<BRAND_ID>",
-        "account_id": "<CUSTOMER_ID>",
-        "action": "add_keywords",
-        "ad_group_id": "<AD_GROUP_ID: Criminal Defense / Criminal Defense Lawyer>",
-        "keywords": [
-          {
-            "text": "criminal defense attorney [city 4] [state]",
-            "match_type": "EXACT"
-          },
-          {
-            "text": "criminal lawyer",
-            "match_type": "EXACT"
-          }
-        ]
-      }
-    },
-    {
-      "action": "add_keywords",
-      "status": "not run: offered after the user confirms",
-      "target": "Traffic Tickets / traffic ticket lawyer",
-      "body": {
-        "platform": "google-ads",
-        "workspace_id": "<WORKSPACE_ID>",
-        "brand_id": "<BRAND_ID>",
-        "account_id": "<CUSTOMER_ID>",
-        "action": "add_keywords",
-        "ad_group_id": "<AD_GROUP_ID: Traffic Tickets / traffic ticket lawyer>",
-        "keywords": [
-          {
-            "text": "lawyers for traffic tickets",
-            "match_type": "EXACT"
-          }
-        ]
-      }
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {"campaign_id": "210000000003", "keywords": ["car ac repair", "ac repair technician salary", "why is my ac not cooling"], "match_type": "EXACT"}
     },
     {
       "action": "add_negative_keywords",
-      "status": "not run: offered after the user confirms",
-      "target": "Criminal Defense",
+      "status": "not run",
+      "body": {"campaign_id": "210000000006", "keywords": ["how much is a new ac unit"], "match_type": "EXACT"}
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {"campaign_id": "210000000002", "keywords": ["furnace repair jobs", "furnace repair phoenix"], "match_type": "EXACT"}
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {"campaign_id": "210000000005", "keywords": ["plumber jobs denver", "how to unclog a drain"], "match_type": "EXACT"}
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {"campaign_id": "210000000006", "keywords": ["jobs"], "match_type": "PHRASE"}
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {"campaign_id": "210000000002", "keywords": ["how to"], "match_type": "PHRASE"}
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
       "body": {
-        "platform": "google-ads",
-        "workspace_id": "<WORKSPACE_ID>",
-        "brand_id": "<BRAND_ID>",
-        "account_id": "<CUSTOMER_ID>",
-        "action": "add_negative_keywords",
-        "campaign_id": "<CAMPAIGN_ID: Criminal Defense>",
+        "ad_group_id": "410000000010",
         "keywords": [
-          "defenders office"
-        ],
-        "match_type": "PHRASE"
+          {"text": "emergency plumber near me", "match_type": "EXACT"},
+          {"text": "emergency plumber denver", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000007",
+        "keywords": [
+          {"text": "water heater repair near me", "match_type": "EXACT"},
+          {"text": "water heater leaking", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000002",
+        "keywords": [
+          {"text": "furnace repair cost", "match_type": "EXACT"},
+          {"text": "furnace repair aurora", "match_type": "EXACT"},
+          {"text": "furnace repair colorado springs", "match_type": "EXACT"},
+          {"text": "same day furnace repair", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000005",
+        "keywords": [
+          {"text": "ac repair denver", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000003",
+        "keywords": [
+          {"text": "furnace not turning on", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000004",
+        "keywords": [
+          {"text": "emergency furnace repair near me", "match_type": "EXACT"}
+        ]
+      }
+    },
+    {
+      "action": "add_keywords",
+      "status": "not run",
+      "body": {
+        "ad_group_id": "410000000011",
+        "keywords": [
+          {"text": "drain cleaning near me", "match_type": "EXACT"}
+        ]
       }
     }
   ],
-  "unknowns": [
-    "Search term cost for the hidden share: search term insights report clicks and conversions only.",
-    "Lead quality: conversions are counted leads; whether they became clients is not in Google Ads."
-  ],
   "strategic_insights": [
-    {
-      "pattern": "Little visible waste",
-      "observation": "Only 22% of search spend shows up as search terms. Of the visible non-brand spend, 14% went to zero-conversion terms at or above target CPA, and none of those terms can be negated: each one is the account's own exact keyword or a close variant of one, and one converted 5 times in 90 days.",
-      "recommendation": "Treat these as bid, ad or landing-page problems on your own keywords, not as negatives."
-    },
-    {
-      "pattern": "Long tail",
-      "observation": "4+ word terms converted at 25% of clicks (CPA $24) against 25% (CPA $31) for 1-3 word terms.",
-      "recommendation": "Long-tail terms convert as often and cost less per conversion: keep promoting the converting ones to exact keywords."
-    },
-    {
-      "pattern": "Competitor and named-attorney searches",
-      "observation": "Competitor-brand searches converted 7.0 times in 90 days at about $20 per conversion; searches for other attorneys by name converted 8 times at about $55.",
-      "recommendation": "Neither is waste on these numbers. Decide on purpose whether to keep bidding on other firms' names; the skill does not negate them on its own."
-    }
+    "Job seekers cost $355 in 30 days across 5 terms. One phrase negative, \"jobs\", blocks them in the campaign where they spend most; add it to the shared list so it covers every campaign.",
+    "Long-tail terms (4+ words) convert at 10.5% for $76.3 against 12.5% for $64.6 on short terms, so keep promoting long converting terms.",
+    "13 converting terms aren't keywords yet; 'emergency plumber near me' alone brought 6 leads at $56.67."
+  ],
+  "unknowns": [
+    "Hidden terms: 5.6% of search spend is in terms Google doesn't show; the insights report covers their clicks, not their cost.",
+    "Lead quality: conversions are calls and forms the account counts; which became jobs isn't in Google Ads.",
+    "Performance Max search terms are not in this report."
   ]
 }

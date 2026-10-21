@@ -177,7 +177,7 @@ Only terms with spend or conversions in the window are sorted. Brand terms (any 
 
 ## Waste: what to block
 
-**Candidates** are garbage terms, plus any grey-zone term that shows an intent mismatch the account itself contains: job seekers (jobs, careers, salary), people wanting free or public help (free, legal aid, public defender, for a law firm), students and DIY (course, template, how to) or research only. Build the mismatch words from terms that are actually in the report. A generic starter list of negatives is not allowed.
+**Candidates** are garbage terms, plus any grey-zone term that shows an intent mismatch the account itself contains: job seekers (jobs, careers, salary), people wanting free or public help (free, donated, government programs), students and DIY (course, template, how to) or research only. Build the mismatch words from terms that are actually in the report. A generic starter list of negatives is not allowed.
 
 **Never a negative** (show these in "considered, not negated", with the reason):
 1. It converted in the 90-day lookback. One good conversion can pay for the waste.
@@ -224,7 +224,7 @@ Seeds are the non-brand terms that converted at or below target CPA, excluding c
 - is already a keyword, or already appeared as a search term in the 90-day lookback (you already know how it performs)
 - names a brand, a person or a price
 - shows an intent mismatch
-- contains a topic word that never converted in the account (for a law firm, "car accident" or "personal injury")
+- contains a topic word that never converted in the account (for a plumber, "pool" or "septic")
 - would be blocked by an existing negative in the ad group it maps to
 
 Map each idea to the ad group of the converting term that shares the most topic words. Show the 10 kept ideas with the most monthly searches, with competition and the top-of-page bid range, and count the dropped ideas by reason.

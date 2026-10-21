@@ -123,13 +123,13 @@ Tag every non-brand headline with the angles it uses (one line can have several)
 
 | Angle | Signals |
 |---|---|
-| proof | a count with "+", reviews, ratings, stars, cases resolved, years of experience |
+| proof | a count with "+", reviews, ratings, stars, jobs completed, years of experience |
 | offer | free, consultation, evaluation, payment plans, % off, discount, guarantee |
 | call to action | starts with a verb (call, text, get, contact, book, beat, fight, keep, protect, defend, seek…), or "call now/us/today" |
 | availability | 24/7, online, available, ASAP, today, now |
 | location | the state or city, "local", "serving", "entire state" |
 | question | contains "?" |
-| pain point | what the searcher fears: facing or arrested, trouble, a ruined record, a suspension, a conviction, their reputation |
+| pain point | what the searcher fears or is dealing with: a breakdown, damage, trouble, a deadline, a penalty, their reputation |
 | brand | the business or a person's name |
 | service only | none of the above |
 
@@ -138,8 +138,8 @@ Descriptions are tagged the same way, except that a call to action counts when a
 For each angle, add up the headlines' clicks and expected clicks (impressions × the ad's CTR) and report the angle's click index and conversion index. An angle with under 3 distinct headlines across the account is a **gap**. A **winning angle** has a click index of 110 or more on 300+ impressions; the winners drive the rewrites and the new headline ideas. Brand and service-only lines never count as winners.
 
 **Weak headlines.** List every service-only headline, rolled up by text, with its impressions, click index and verdicts, and name its pattern:
-- **Feature-only:** names the service ("Traffic Defense Lawyers") and gives no proof, offer, action, place, question or pain point.
-- **Generic:** names no service at all ("We Fight to Keep Your Freedom", "Quality Service"); it could run for any business.
+- **Feature-only:** names the service ("Furnace Repair Services") and gives no proof, offer, action, place, question or pain point.
+- **Generic:** names no service at all ("Your Comfort Is Our Priority", "Quality Service"); it could run for any business.
 
 A pattern is a flag, not a verdict: the line's verdict still comes from its numbers in step 5, so a feature-only line that earns a click index of 110 stays. Use the flagged lines first when you need room for a new headline.
 
@@ -159,7 +159,7 @@ Show each description's characters, impressions, click index, angles and flags, 
 
 ## Step 7: copy hygiene
 
-- **Off-topic lines.** Read each serving ad's lines against its ad group name. Flag a line that names a different service from the ad group's (for example a drug-charge description in a DUI ad group), with its impressions. A line that names a narrower part of the same service is a note, not a flag.
+- **Off-topic lines.** Read each serving ad's lines against its ad group name. Flag a line that names a different service from the ad group's (for example a water heater description in an AC repair ad group), with its impressions. A line that names a narrower part of the same service is a note, not a flag.
 - **Pins.** List every pinned line from `pinned_field`. A position pinned to one line alone stops Google testing that position: warn. Two or more lines pinned to the same position are fine.
 - **Policy.** Any active ad, or line, that isn't `APPROVED` is a fail: name the line and its status.
 - **Combinations.** For the top 3 non-brand ads by impressions, run:

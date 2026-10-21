@@ -139,7 +139,7 @@ ORDER BY metrics.conversions DESC LIMIT 500
   FROM campaign
   WHERE segments.date BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD' AND campaign.id IN (<same ids>)
   ```
-- Group the terms into themes that fit the business, for example: cost and payment, first-time worry, getting out of it ("how to beat", "get out of"), what is at stake (license, job, record), court and process, "best" and trust, local and "near me", and information. Count the terms, clicks, cost and conversions in each theme, and sort the themes by conversions, breaking ties on clicks. When themes tie on conversions, say so in the read instead of calling one of them the runner-up.
+- Group the terms into themes that fit the business, for example: cost and payment, first-time worry, the fix itself ("how to fix", "repair or replace"), what is at stake (safety, damage, a deadline), the process, "best" and trust, local and "near me", and information. Count the terms, clicks, cost and conversions in each theme, and sort the themes by conversions, breaking ties on clicks. When themes tie on conversions, say so in the read instead of calling one of them the runner-up.
 - Exclude brand terms and any term that names a person or another firm. Never quote them. When you can't tell whether a word is a name, leave the term out, and report the excluded terms only as a total.
 
 ```sql
@@ -214,9 +214,9 @@ Start with the shortest length that fits the message. Make it longer only when t
 
 Write 3 hooks from 3 different families. Tie each one to evidence where you have it: a top hook from step 1, or a search theme or ad line from step 2.
 
-1. **Call-out:** name the viewer and their situation. "First DUI and no idea what happens next?"
+1. **Call-out:** name the viewer and their situation. "First cold night and the furnace just quit?"
 2. **Question from search:** the exact question people type. "How much does a [service] actually cost?"
-3. **Stakes:** what they stand to lose or gain. "One charge can follow you into every job application."
+3. **Stakes:** what they stand to lose or gain. "One cold night can freeze your pipes."
 4. **Pattern break:** an unexpected image or line in the first second, explained in the next.
 5. **Proof first:** open on the result or the number, then show how it happened.
 6. **Story:** "Last month a client walked in with…", but only with a real story the user gives you.

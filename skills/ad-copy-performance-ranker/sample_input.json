@@ -1,2442 +1,839 @@
 {
-  "request": "Hey Claude, I just added the \"ad-copy-performance-ranker\" skill. Rank my responsive search ads and tell me which headlines and descriptions are working, which to replace, and whether ad strength means anything here.",
-  "note": "Real run on 2026-10-05 on a client Google Ads account, anonymised: the business, attorney, state, city, rating site, the firm's own numbers ([N]), campaign and ad group names, and every id are replaced; money is rounded to the nearest $10. Character counts of suggested lines and of the description audit are of the real lines before anonymising. Data was pulled by the skill through the InsightfulPipe MCP; nothing was pasted.",
-  "account": {
-    "name": "A US criminal and traffic defense law firm",
-    "currency": "USD",
-    "account_id": "<client account id>"
-  },
-  "date_range": {
-    "start_date": "2026-09-05",
-    "end_date": "2026-10-04",
-    "gaql": "DURING LAST_30_DAYS"
-  },
-  "defaults_used": {
-    "brand_terms": "campaigns with \"brand\" in the name",
-    "win_metric": "conversions per 1,000 impressions"
-  },
+  "request": "Hey Claude, I just added the \"ad-copy-performance-ranker\" skill. Rank my Google Ads responsive search ads and tell me which headlines to keep, replace or rewrite.",
+  "note": "Example data: an invented home services company and Google Ads account, not a real business or account. Every number in expected_output.json follows from this input.",
+  "account": {"name": "Example home services company", "customer_id": "123-456-7890", "currency": "USD"},
+  "date_range": {"start_date": "2026-09-21", "end_date": "2026-10-20"},
+  "defaults_used": {"brand_terms": "campaigns with 'brand' in the name", "win_metric": "conversions per 1,000 impressions"},
   "calls_run": [
-    {
-      "step": 1,
-      "call": "gaql on customer",
-      "rows": 1
-    },
-    {
-      "step": 1,
-      "call": "ad_performance_report, limit 10000",
-      "rows": 3922,
-      "lesson": "the default limit of 1,000 rows returned 18 of the 19 RSAs that served; 10,000 returned all of them"
-    },
-    {
-      "step": 2,
-      "call": "gaql on ad_group_ad (responsive search ads)",
-      "rows": 22
-    },
-    {
-      "step": 5,
-      "call": "gaql on ad_group_ad_asset_view",
-      "rows": 281
-    },
-    {
-      "step": 7,
-      "call": "gaql on ad_group_ad_asset_combination_view, one per top-3 ad",
-      "rows": [
-        10,
-        10,
-        10
-      ]
-    }
+    "customer",
+    "ad_performance_report (limit 10000)",
+    "gaql ad_group_ad (RSAs)",
+    "gaql ad_group_ad_asset_view (headlines and descriptions)",
+    "gaql ad_group_ad_asset_combination_view (top 3 non-brand ads)"
   ],
+  "ad_performance_report_spend_by_type": {"RESPONSIVE_SEARCH_AD": 11760},
   "ads": [
     {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
+      "ad_id": "610000000001",
+      "campaign": "Brand | Search",
+      "ad_group": "Brand",
       "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
+      "ad_strength": "EXCELLENT",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/",
       "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Drug Crime Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call or text 24×7",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive Drug Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "We Fight to Keep Your Freedom",
-          "google_rating": "PENDING"
-        }
+        {"text": "Example Home Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "BEST"},
+        {"text": "Heating, Cooling & Plumbing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Same-Day Service in Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Licensed Local Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing, No Surprises", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call Now for a Free Quote", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Family Owned Since 2004", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Trusted by Your Neighbors", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the most experienced lawyers, offering representation across the entire state",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
-          "google_rating": "PENDING"
-        }
+        {"text": "Heating, cooling and plumbing from one local team. Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Same-day appointments across the Denver metro, seven days a week.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 2512,
-      "clicks": 129,
-      "conversions": 38.3,
-      "spend": 710
+      "cost": 540,
+      "clicks": 410,
+      "impressions": 1900,
+      "conversions": 62
     },
     {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
+      "ad_id": "610000000002",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
       "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/furnace-repair",
       "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Criminal Defense",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Drug Crime Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive Drug Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "We Fight to Keep Your Freedom",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call or text 24×7",
-          "google_rating": "PENDING"
-        }
+        {"text": "Furnace Repair in Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Same-Day Furnace Repair", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Furnace Not Working?", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Furnace Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Most Repairs Done in One Visit", "pinned_field": null, "asset_performance_label": "LOW"},
+        {"text": "Call for Fast Heat Restoration", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "All Furnace Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the most experienced lawyers, offering representation across the entire state",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
-          "google_rating": "PENDING"
-        }
+        {"text": "Furnace out? Our heating techs fix most problems in one visit. Book a same-day slot.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "We repair every furnace brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 2174,
+      "cost": 1519,
+      "clicks": 169,
+      "impressions": 2852,
+      "conversions": 27
+    },
+    {
+      "ad_id": "610000000003",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/",
+      "headlines": [
+        {"text": "Example Home Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "Heating Experts Near You", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call Today", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "LOW"}
+      ],
+      "descriptions": [
+        {"text": "Heating, cooling and plumbing from one local team.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 931,
+      "clicks": 104,
+      "impressions": 1748,
+      "conversions": 12
+    },
+    {
+      "ad_id": "610000000004",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace not working",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/furnace-repair",
+      "headlines": [
+        {"text": "Furnace Blowing Cold Air?", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Furnace Not Turning On?", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Same-Day Furnace Repair", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "All Furnace Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Cold air or no heat at all? Book a same-day furnace visit with a licensed tech.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "We repair every furnace brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 700,
+      "clicks": 84,
+      "impressions": 1550,
+      "conversions": 12
+    },
+    {
+      "ad_id": "610000000005",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Heating emergency",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/emergency-heating",
+      "headlines": [
+        {"text": "Emergency Furnace Repair", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "No Heat? We Come Tonight", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "24/7 Heating Repair", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call Now, Live Dispatcher", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Emergency Pricing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "No heat at night? A licensed tech can be at your door tonight, with no overtime fee.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call and talk to a live dispatcher, day or night, across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 330,
+      "clicks": 38,
+      "impressions": 750,
+      "conversions": 7
+    },
+    {
+      "ad_id": "610000000006",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/ac-repair",
+      "headlines": [
+        {"text": "AC Repair in Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Same-Day AC Repair", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "AC Not Cooling?", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront AC Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "All AC Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "LOW"},
+        {"text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "AC down? Our cooling techs fix most problems in one visit. Book a same-day slot.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "We repair every AC brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 1155,
+      "clicks": 136,
+      "impressions": 3010,
+      "conversions": 16
+    },
+    {
+      "ad_id": "610000000007",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "status": "ENABLED",
+      "ad_strength": "POOR",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/ac-repair",
+      "headlines": [
+        {"text": "Cooling Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "LOW"},
+        {"text": "Call Today", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Cooling services from a local team.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 495,
+      "clicks": 58,
+      "impressions": 1290,
+      "conversions": 5
+    },
+    {
+      "ad_id": "610000000008",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC not cooling",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/ac-repair",
+      "headlines": [
+        {"text": "AC Repair in Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "Same-Day AC Repair", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront AC Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "All AC Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Furnace Tune-Up Special", "pinned_field": null, "asset_performance_label": "LOW"}
+      ],
+      "descriptions": [
+        {"text": "AC down? Our cooling techs fix most problems in one visit.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 360,
+      "clicks": 44,
+      "impressions": 900,
+      "conversions": 5
+    },
+    {
+      "ad_id": "610000000009",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Water heater repair",
+      "status": "ENABLED",
+      "ad_strength": "EXCELLENT",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/water-heaters",
+      "headlines": [
+        {"text": "Water Heater Repair Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "No Hot Water? Same-Day Fix", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Water Heater Experts", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Tank and Tankless Repair", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "All Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Free Replacement Quote", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "No hot water? Our plumbers repair tank and tankless heaters, most in one visit.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Same-day water heater service, seven days a week across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 920,
+      "clicks": 112,
+      "impressions": 1900,
+      "conversions": 17
+    },
+    {
+      "ad_id": "610000000010",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Tankless water heater",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/tankless-water-heaters",
+      "headlines": [
+        {"text": "Tankless Water Heaters", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Tankless Installation Quotes", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Endless Hot Water", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book a Free In-Home Quote", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Financing Available", "pinned_field": null, "asset_performance_label": "LOW"},
+        {"text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Install in One Day", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Switch to tankless: endless hot water and a lower energy bill. Book a free quote.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Most tankless installs take one day. Financing and rebate help available.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 620,
+      "clicks": 69,
+      "impressions": 1250,
+      "conversions": 10
+    },
+    {
+      "ad_id": "610000000011",
+      "campaign": "Water Heaters | Search",
+      "ad_group": "Water heater replacement",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/water-heaters",
+      "headlines": [
+        {"text": "Water Heater Replacement", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "New Water Heater Today", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Replacement Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Haul Away Included", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Tank and Tankless Options", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Free Replacement Quote", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Old heater failing? Get a new tank or tankless unit installed, often the same day.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Haul away of the old unit included.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed plumbers across the Denver metro, seven days a week.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 200,
+      "clicks": 24,
+      "impressions": 450,
+      "conversions": 4
+    },
+    {
+      "ad_id": "610000000012",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Emergency plumber",
+      "status": "ENABLED",
+      "ad_strength": "GOOD",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/emergency-plumber",
+      "headlines": [
+        {"text": "Emergency Plumber Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "24/7 Emergency Plumbing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Burst Pipe? Call Now", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Live Dispatcher, Day or Night", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "At Your Door in 60 Minutes", "pinned_field": null, "asset_performance_label": "LOW"},
+        {"text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Water Damage Stopped Fast", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No overtime charges, ever. Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call and talk to a live dispatcher, day or night, across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Read 1,200 reviews from homeowners near you.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 963,
+      "clicks": 115,
+      "impressions": 2262,
+      "conversions": 17
+    },
+    {
+      "ad_id": "610000000013",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Emergency plumber",
+      "status": "ENABLED",
+      "ad_strength": "AVERAGE",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/emergency-plumber",
+      "headlines": [
+        {"text": "Emergency Plumber Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "24/7 Emergency Plumbing", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "Burst Pipe? Call Now", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Live Dispatcher, Day or Night", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "descriptions": [
+        {"text": "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No overtime charges, ever. Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Call and talk to a live dispatcher, day or night.", "pinned_field": null, "asset_performance_label": "GOOD"}
+      ],
+      "cost": 697,
       "clicks": 83,
-      "conversions": 22.7,
-      "spend": 430
+      "impressions": 1638,
+      "conversions": 10
     },
     {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
+      "ad_id": "610000000014",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Drain cleaning",
       "status": "ENABLED",
       "ad_strength": "GOOD",
-      "approval": "APPROVED",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/drain-cleaning",
       "headlines": [
-        {
-          "text": "[State] Traffic Ticket?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Speeding Charge?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight Your Ticket",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Traffic Defense Lawyers",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Driving Record",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call [Firm] Today",
-          "google_rating": "PENDING"
-        }
+        {"text": "Drain Cleaning in Denver", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Clogged Drain? Same Day", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Hydro Jetting Available", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Drain Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Camera Inspection Included", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-          "google_rating": "PENDING"
-        }
+        {"text": "Slow or clogged drain? Same-day drain cleaning with a camera check included.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Hydro jetting for tough clogs. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 1098,
-      "clicks": 127,
-      "conversions": 33.0,
-      "spend": 850
+      "cost": 470,
+      "clicks": 70,
+      "impressions": 1500,
+      "conversions": 9
     },
     {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Beat Your DUI With Us Today",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "[State] DUI Lawyer",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "[N]+Charges Resolved",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "GOOD"
-        },
-        {
-          "text": "Keep Your License - Call Today",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Aggressive DUI Charge Defense",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "GOOD"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "GOOD"
-        },
-        {
-          "text": "Beat Your DUI in [State].",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Call or text 24×7 | Free Eval",
-          "google_rating": "LEARNING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "LEARNING"
-        },
-        {
-          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-          "google_rating": "GOOD"
-        },
-        {
-          "text": "Some of the most experienced lawyers, offering representation across the entire state",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Don't let a DUI conviction ruin your job, record and future. [N]+ 5 Star Client Reviews.",
-          "google_rating": "GOOD"
-        }
-      ],
-      "impressions": 1032,
-      "clicks": 66,
-      "conversions": 12.0,
-      "spend": 630
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
+      "ad_id": "610000000015",
+      "campaign": "Plumbing | Search",
+      "ad_group": "Leak repair",
       "status": "ENABLED",
       "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
+      "approval_status": "APPROVED_LIMITED",
+      "final_url": "https://example.com/",
       "headlines": [
-        {
-          "text": "[State] Traffic Ticket?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Speeding Charge?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight Your Ticket",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Traffic Defense Lawyers",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Driving Record",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call [Firm] Today",
-          "google_rating": "PENDING"
-        }
+        {"text": "Plumbing Repairs Denver", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Same-Day Appointments", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-          "google_rating": "PENDING"
-        }
+        {"text": "Plumbing repairs from one local team. Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 559,
-      "clicks": 72,
-      "conversions": 22.0,
-      "spend": 750
+      "cost": 210,
+      "clicks": 22,
+      "impressions": 400,
+      "conversions": 3
     },
     {
-      "campaign": "Drug Charges",
-      "ad_group": "Drug Defense Lawyer",
-      "ad": "<ad 6>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "We Fight to Keep Your Freedom",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Drug Crime Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive Drug Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call or text 24×7",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 372,
-      "clicks": 35,
-      "conversions": 4.0,
-      "spend": 650
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "[state] traffic lawyer",
-      "ad": "<ad 7>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "[State] Traffic Ticket?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Speeding Charge?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight Your Ticket",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Traffic Defense Lawyers",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Driving Record",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call [Firm] Today",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 351,
-      "clicks": 40,
-      "conversions": 13.0,
-      "spend": 260
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic attorney",
-      "ad": "<ad 8>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "[State] Traffic Ticket?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Speeding Charge?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight Your Ticket",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Traffic Defense Lawyers",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Driving Record",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call [Firm] Today",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 303,
-      "clicks": 27,
-      "conversions": 7.6,
-      "spend": 150
-    },
-    {
-      "campaign": "Brand",
-      "ad_group": "Firm name",
-      "ad": "<ad 9>",
-      "status": "ENABLED",
-      "ad_strength": "EXCELLENT",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "[Attorney], Attorney At Law",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Attorney], [State] Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic & DUI Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Perfect [Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ of Cases Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Attorney], [State] Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating site] Rating 10",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Legal Trouble? Call 24x7",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] ® (Official)",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Get a 100% Free Consultation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "DUI, Traffic, Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Reviews",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "[N]+ of [State] traffic & DUI cases resolved! Don't give up. Call [Firm] today!",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Speeding and traffic ticket, DUI and DWI, Criminal Defense, Administrative Law.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Highest Dismissal Rate. [N]+ 5 Star [Rating site] Reviews.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Available 24x7 by phone, text and email.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 297,
-      "clicks": 53,
-      "conversions": 17.4,
-      "spend": 150
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 10>",
+      "ad_id": "610000000016",
+      "campaign": "AC Installation | Search",
+      "ad_group": "AC installation",
       "status": "ENABLED",
       "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/ac-installation",
       "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI With Us Today",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Keep Your License - Call Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive DUI Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        }
+        {"text": "AC Installation Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD"},
+        {"text": "New AC Units Installed", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Financing Available", "pinned_field": null, "asset_performance_label": "LOW"},
+        {"text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Don't Let a DUI Conviction Ruin Your Job, Record and Future. [N]+ 5 Star Client Reviews.",
-          "google_rating": "PENDING"
-        }
+        {"text": "Replace your old AC with a high-efficiency unit. Free in-home estimate.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Financing and rebate help available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Most installs take one day. 10-year parts warranty on new units.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 197,
-      "clicks": 8,
-      "conversions": 2.0,
-      "spend": 60
+      "cost": 1112,
+      "clicks": 179,
+      "impressions": 4800,
+      "conversions": 6
     },
     {
-      "campaign": "Out-of-State DUI",
-      "ad_group": "Out of State DUI",
-      "ad": "<ad 11>",
+      "ad_id": "610000000017",
+      "campaign": "AC Installation | Search",
+      "ad_group": "AC installation",
       "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
+      "ad_strength": "PENDING",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/ac-installation",
       "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI With Us Today",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Keep Your License - Call Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Lawyer",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI in [State]",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[Firm] - DUI Defense Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive DUI Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Need a DUI Lawyer In [State]?",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Facing DUI Charges in [State]?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "DUI Help in [State] - Call Now",
-          "google_rating": "PENDING"
-        }
+        {"text": "New Central Air in One Day", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "AC Install Quotes in 24h", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Financing Available", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "High-Efficiency AC Units", "pinned_field": null, "asset_performance_label": "PENDING"}
       ],
       "descriptions": [
-        {
-          "text": "Facing DUI Charges in [State]? Contact [Firm] Today. Do Not Wait.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "If You Are Looking For an Experienced [State] DUI Attorney, We’re Ready For Your Call.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Law Cases Can Be Won. Never Give Up! Call or Text for Free Case Evaluation.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Attorney - #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
-          "google_rating": "PENDING"
-        }
+        {"text": "Central air installed in one day, with a free quote within 24 hours.", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "Financing and rebate help available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "PENDING"},
+        {"text": "10-year parts warranty on every new unit across the Denver metro.", "pinned_field": null, "asset_performance_label": "PENDING"}
       ],
-      "impressions": 175,
-      "clicks": 12,
-      "conversions": 4.0,
-      "spend": 120
+      "cost": 278,
+      "clicks": 45,
+      "impressions": 1200,
+      "conversions": 1
     },
     {
-      "campaign": "Drug Charges",
-      "ad_group": "Drug Defense Lawyer",
-      "ad": "<ad 12>",
-      "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Criminal Defense",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Drug Crime Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call or text 24×7",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - Criminal Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive Drug Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Criminal Defense - All of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "We Fight to Keep Your Freedom",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if You Have Been Arrested for Possession of a Controlled Substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 142,
-      "clicks": 9,
-      "conversions": 1.0,
-      "spend": 180
-    },
-    {
-      "campaign": "Nursing Board",
-      "ad_group": "Nursing Board",
-      "ad": "<ad 13>",
-      "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "Nursing License Defense Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Nursing Board Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Urgent Legal Advice for Nurses",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Cases Resolved",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_3"
-        },
-        {
-          "text": "Beat the Board. Call Us Now",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now - We're Online",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving [State] for [N]+ Yrs.",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_3"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews - Call Now",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_3"
-        },
-        {
-          "text": "Beat The Board With [Firm]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Pro License Defense Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Get a Nurse Lawyer - Call Now",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Nurse License Defense Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Facing Disciplinary Action?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Reputation",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "Defend Your Rights and Protect Your Reputation by Standing Up for Your Good Name.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Keep Your License. Seek Professional Help from an [State] Board of Nursing Lawyer.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Contact Us Today For A Free Consultation. 100% Confidential Case Analysis.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Are You a Nurse in [State] and You Are Facing Disciplinary Action or Other Issues?",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 96,
-      "clicks": 18,
-      "conversions": 3.0,
-      "spend": 390
-    },
-    {
-      "campaign": "Brand",
-      "ad_group": "Attorney name",
-      "ad": "<ad 14>",
+      "ad_id": "610000000018",
+      "campaign": "AC Installation | Search",
+      "ad_group": "Heat pump installation",
       "status": "ENABLED",
       "ad_strength": "GOOD",
-      "approval": "APPROVED",
+      "approval_status": "APPROVED",
+      "final_url": "https://example.com/heat-pumps",
       "headlines": [
-        {
-          "text": "[Attorney], Attorney At Law",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Attorney], [State] Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic & DUI Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Perfect [Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ of Cases Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Attorney], [State] Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5-Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "100% Free Consultation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Legal Trouble? Call [Firm]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI & Criminal Defense",
-          "google_rating": "PENDING"
-        }
+        {"text": "Heat Pump Installation", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Heat Pumps for Denver Homes", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "BEST"},
+        {"text": "Licensed HVAC Technicians", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Financing Available", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Heat and Cool With One Unit", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
       "descriptions": [
-        {
-          "text": "[N]+ of [State] traffic & DUI cases resolved! Don't give up. Call [Firm] today!",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Speeding and traffic ticket, DUI and DWI, Criminal Defense, Administrative Law.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Highest Dismissal Rate. [N]+ Client Reviews.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Available 24x7 by phone, text and email.",
-          "google_rating": "PENDING"
-        }
+        {"text": "Heat and cool with one efficient unit. Free in-home estimate and rebate help.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "Financing available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD"},
+        {"text": "10-year parts warranty on every heat pump we install.", "pinned_field": null, "asset_performance_label": "GOOD"}
       ],
-      "impressions": 92,
-      "clicks": 16,
-      "conversions": 3.0,
-      "spend": 90
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Cost",
-      "ad": "<ad 15>",
-      "status": "ENABLED",
-      "ad_strength": "EXCELLENT",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "Keep Your License - Call Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI With Us Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Need a DUI Lawyer In [State]?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - DUI Defense Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive DUI Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI in [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Attorney · #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 33,
-      "clicks": 4,
-      "conversions": 2.0,
-      "spend": 20
-    },
-    {
-      "campaign": "Pharmacy Board",
-      "ad_group": "Pharmacy Board",
-      "ad": "<ad 16>",
-      "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "Pharmacy License Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Pharmacy Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Us Today, We Can Help",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Pharmacy License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Facing Board Action? Call Us",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[ST] Pharmacy Board Help",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Legal Help for Pharmacists",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Keep Your License Safe",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Pharmacy Law Experts",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight License Suspension",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "Facing board action in [State]? [Firm] is ready to fight for you.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] protects pharmacists in [State] from license loss or penalties.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Experienced defense for pharmacists in [State]. Free consultation.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call us today. if you need an [State] Board of Pharmacy Defense Lawyer.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 33,
-      "clicks": 5,
-      "conversions": 0.0,
-      "spend": 50
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket attorney",
-      "ad": "<ad 17>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "[State] Traffic Ticket?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Traffic Attorney",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] Speeding Charge?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Reviews",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Fight Your Ticket",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Rating]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your License",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Traffic Defense Lawyers",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Protect Your Driving Record",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call [Firm] Today",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 20,
-      "clicks": 1,
-      "conversions": 0.0,
-      "spend": 10
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Cost",
-      "ad": "<ad 18>",
-      "status": "ENABLED",
-      "ad_strength": "GOOD",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "Trusted DUI Lawyer in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Need a DUI Lawyer? Call [Firm]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Years [ST] DUI Experience.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ [ST] Charges Resolved.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ 5 Star [Rating site] Reviews.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Don't Wait. Take Action Today.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "([ST] DUI Lawyer) Call Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Don't Wait, Beat Your DUI ASAP",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "DUI Lawyer [State] - Call Now",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving The Entire State Of [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Dependable DUI Attorney In [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Free DUI Consult - [ST] DUI Law",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "Don't let a DUI conviction ruin your job, record and future! [N]+ 5 Star Client Reviews.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Don't let a DUI conviction ruin your job, record and future! We Fight for our clients.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] answers questions. Gives an honest case assessment. Won't scare you to hire us.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ years of experience and [N]+ charges resolved means [Firm] knows how to protect you.",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 6,
-      "clicks": 0,
-      "conversions": 0.0,
-      "spend": 0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Cost",
-      "ad": "<ad 19>",
-      "status": "ENABLED",
-      "ad_strength": "AVERAGE",
-      "approval": "APPROVED",
-      "headlines": [
-        {
-          "text": "100% Free Case Evaluation",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI With Us Today",
-          "google_rating": "PENDING",
-          "pinned": "HEADLINE_1"
-        },
-        {
-          "text": "[N]+ Perfect 5 Star Ratings",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Keep Your License - Call Today",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[N]+ Charges Resolved",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Serving All [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Beat Your DUI in [State]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[Firm] - DUI Defense Lawyer",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Aggressive DUI Charge Defense",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Flexible Payment Plans - [ST]",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Need a DUI Lawyer In [State]?",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Local Defense Attorneys",
-          "google_rating": "PENDING"
-        }
-      ],
-      "descriptions": [
-        {
-          "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Call Now if You Have Been Arrested For Possession of a Controlled Substance in [State].",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "Some of the Most Experienced Lawyers, Offering Representation Across the Entire State.",
-          "google_rating": "PENDING"
-        },
-        {
-          "text": "[State] DUI Attorney · #1 Goal is a Dismissal or Reduction. Get Legal Help From [Firm] Soon",
-          "google_rating": "PENDING"
-        }
-      ],
-      "impressions": 6,
-      "clicks": 1,
-      "conversions": 0.0,
-      "spend": 10
+      "cost": 260,
+      "clicks": 46,
+      "impressions": 1400,
+      "conversions": 2
     }
   ],
-  "ads_not_serving": 3,
-  "line_rows_for_ads_with_500_plus_impressions": [
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "[State] Criminal Defense",
-      "impressions": 2174,
-      "clicks": 83,
-      "conversions": 22.7
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "description",
-      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-      "impressions": 1876,
-      "clicks": 94,
-      "conversions": 29.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "description",
-      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-      "impressions": 1682,
-      "clicks": 61,
-      "conversions": 17.7
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Criminal Defense - All of [ST]",
-      "impressions": 1435,
-      "clicks": 63,
-      "conversions": 17.3
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Flexible Payment Plans - [ST]",
-      "impressions": 1348,
-      "clicks": 88,
-      "conversions": 25.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "description",
-      "text": "Some of the most experienced lawyers, offering representation across the entire state",
-      "impressions": 1145,
-      "clicks": 54,
-      "conversions": 12.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "100% Free Case Evaluation",
-      "impressions": 1078,
-      "clicks": 58,
-      "conversions": 19.3
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "description",
-      "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-      "impressions": 1072,
-      "clicks": 126,
-      "conversions": 33.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "description",
-      "text": "Some of the most experienced lawyers, offering representation across the entire state",
-      "impressions": 1071,
-      "clicks": 39,
-      "conversions": 10.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Aggressive Drug Charge Defense",
-      "impressions": 1043,
-      "clicks": 63,
-      "conversions": 17.3
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Flexible Payment Plans - [ST]",
-      "impressions": 989,
-      "clicks": 36,
-      "conversions": 11.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Aggressive Drug Charge Defense",
-      "impressions": 878,
-      "clicks": 29,
-      "conversions": 7.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "[State] Traffic Attorney",
-      "impressions": 858,
-      "clicks": 118,
-      "conversions": 29.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "description",
-      "text": "Don't let a DUI conviction ruin your job, record and future. [N]+ 5 Star Client Reviews.",
-      "impressions": 854,
-      "clicks": 56,
-      "conversions": 9.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "description",
-      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-      "impressions": 816,
-      "clicks": 51,
-      "conversions": 17.3
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Call or text 24×7",
-      "impressions": 746,
-      "clicks": 25,
-      "conversions": 7.8
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Criminal Defense - All of [ST]",
-      "impressions": 735,
-      "clicks": 27,
-      "conversions": 6.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "[State] Criminal Defense",
-      "impressions": 721,
-      "clicks": 29,
-      "conversions": 10.5
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Beat Your DUI in [State].",
-      "impressions": 682,
-      "clicks": 37,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "[State] Traffic Ticket?",
-      "impressions": 666,
-      "clicks": 79,
-      "conversions": 21.5
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "100% Free Case Evaluation",
-      "impressions": 642,
-      "clicks": 29,
-      "conversions": 12.7
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "description",
-      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-      "impressions": 613,
-      "clicks": 25,
-      "conversions": 9.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Aggressive DUI Charge Defense",
-      "impressions": 529,
-      "clicks": 31,
-      "conversions": 6.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Local Defense Attorneys",
-      "impressions": 527,
-      "clicks": 33,
-      "conversions": 6.5
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "description",
-      "text": "[State] Speeding Ticket? Don't Plead Guilty & Ruin Your Driving Record w/o Calling First.",
-      "impressions": 526,
-      "clicks": 71,
-      "conversions": 22.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Fight Your Ticket",
-      "impressions": 525,
-      "clicks": 69,
-      "conversions": 19.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Flexible Payment Plans - [ST]",
-      "impressions": 514,
-      "clicks": 42,
-      "conversions": 6.7
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "description",
-      "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-      "impressions": 486,
-      "clicks": 65,
-      "conversions": 10.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "[State] Speeding Charge?",
-      "impressions": 480,
-      "clicks": 65,
-      "conversions": 19.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Call or text 24×7",
-      "impressions": 478,
-      "clicks": 18,
-      "conversions": 5.7
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Free Case Evaluation",
-      "impressions": 472,
-      "clicks": 55,
-      "conversions": 15.5
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Local Defense Attorneys",
-      "impressions": 429,
-      "clicks": 16,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "[State] Traffic Attorney",
-      "impressions": 419,
-      "clicks": 58,
-      "conversions": 19.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "description",
-      "text": "Call Now if you have been arrested for possession of a controlled substance in [State].",
-      "impressions": 385,
-      "clicks": 24,
-      "conversions": 4.7
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "[State] Traffic Ticket?",
-      "impressions": 352,
-      "clicks": 55,
-      "conversions": 16.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "description",
-      "text": "We Fight All Types of Drug Possession Charges – Aggressive Drug Crime Defense.",
-      "impressions": 340,
-      "clicks": 23,
-      "conversions": 4.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "Serving All [State]",
-      "impressions": 335,
-      "clicks": 21,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "[State] DUI Lawyer",
-      "impressions": 289,
-      "clicks": 20,
-      "conversions": 4.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "description",
-      "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-      "impressions": 277,
-      "clicks": 44,
-      "conversions": 13.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Traffic Defense Lawyers",
-      "impressions": 274,
-      "clicks": 45,
-      "conversions": 8.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "[State] Speeding Charge?",
-      "impressions": 273,
-      "clicks": 37,
-      "conversions": 11.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Fight Your Ticket",
-      "impressions": 263,
-      "clicks": 34,
-      "conversions": 9.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "description",
-      "text": "[Firm] has resolved [N]+ Charges Over [N]+ Years and Can Help You Too. Take Action Now.",
-      "impressions": 263,
-      "clicks": 28,
-      "conversions": 11.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "100% Free Case Evaluation",
-      "impressions": 261,
-      "clicks": 11,
-      "conversions": 2.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "description",
-      "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-      "impressions": 230,
-      "clicks": 41,
-      "conversions": 10.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "[State] Drug Crime Lawyer",
-      "impressions": 227,
-      "clicks": 11,
-      "conversions": 2.5
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "[N]+ Charges Resolved",
-      "impressions": 225,
-      "clicks": 18,
-      "conversions": 8.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Beat Your DUI With Us Today",
-      "impressions": 223,
-      "clicks": 19,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Free Case Evaluation",
-      "impressions": 210,
-      "clicks": 28,
-      "conversions": 8.5
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "description",
-      "text": "[N]+ 5 Star Perfect Client Reviews. Perfect [Rating] - Call Us Today.",
-      "impressions": 189,
-      "clicks": 28,
-      "conversions": 12.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "[State] Drug Crime Lawyer",
-      "impressions": 165,
-      "clicks": 6,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "description",
-      "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
-      "impressions": 162,
-      "clicks": 12,
-      "conversions": 5.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "[Firm] - Criminal Defense",
-      "impressions": 161,
-      "clicks": 8,
-      "conversions": 2.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Traffic Defense Lawyers",
-      "impressions": 158,
-      "clicks": 16,
-      "conversions": 3.5
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "Serving All [State]",
-      "impressions": 154,
-      "clicks": 10,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "description",
-      "text": "Find Out What Makes [Firm] So Different From Others Out There. Contact us Today.",
-      "impressions": 143,
-      "clicks": 24,
-      "conversions": 7.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "description",
-      "text": "Some of the most experienced lawyers, offering representation across the entire state",
-      "impressions": 132,
-      "clicks": 7,
-      "conversions": 0.3
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "description",
-      "text": "[N]+ 5-Star Reviews. [N]+ Charges Resolved. [N]+ Yrs of Experience. Get Help Soon",
-      "impressions": 128,
-      "clicks": 8,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "We Fight to Keep Your Freedom",
-      "impressions": 119,
-      "clicks": 4,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "[Firm] - Criminal Defense",
-      "impressions": 107,
-      "clicks": 5,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "[N]+ Perfect 5 Star Ratings",
-      "impressions": 91,
-      "clicks": 3,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Serving All [State]",
-      "impressions": 82,
-      "clicks": 4,
-      "conversions": 2.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 1>",
-      "type": "headline",
-      "text": "[N]+ 5-Star Reviews",
-      "impressions": 81,
-      "clicks": 5,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "[N]+ Charges Resolved",
-      "impressions": 75,
-      "clicks": 4,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Call or text 24×7 | Free Eval",
-      "impressions": 63,
-      "clicks": 6,
-      "conversions": 1.3
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "[N]+ 5 Star Reviews",
-      "impressions": 63,
-      "clicks": 11,
-      "conversions": 5.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Call [Firm] Today",
-      "impressions": 60,
-      "clicks": 6,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Protect Your Driving Record",
-      "impressions": 58,
-      "clicks": 6,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "[N]+ 5 Star Reviews",
-      "impressions": 57,
-      "clicks": 10,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Criminal Defense",
-      "ad_group": "Criminal Defense Lawyer",
-      "ad": "<ad 2>",
-      "type": "headline",
-      "text": "We Fight to Keep Your Freedom",
-      "impressions": 42,
-      "clicks": 2,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Protect Your Driving Record",
-      "impressions": 34,
-      "clicks": 9,
-      "conversions": 3.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "Protect Your License",
-      "impressions": 33,
-      "clicks": 3,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "[N]+ Perfect 5 Star Ratings",
-      "impressions": 32,
-      "clicks": 3,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Call [Firm] Today",
-      "impressions": 31,
-      "clicks": 6,
-      "conversions": 2.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Criminal Defense - All of [ST]",
-      "impressions": 30,
-      "clicks": 0,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Keep Your License - Call Today",
-      "impressions": 18,
-      "clicks": 4,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "Local Defense Attorneys",
-      "impressions": 12,
-      "clicks": 1,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "Protect Your License",
-      "impressions": 11,
-      "clicks": 1,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Traffic Tickets",
-      "ad_group": "traffic ticket lawyer",
-      "ad": "<ad 3>",
-      "type": "headline",
-      "text": "[Rating]",
-      "impressions": 10,
-      "clicks": 1,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "[Firm] - Criminal Defense",
-      "impressions": 10,
-      "clicks": 2,
-      "conversions": 1.0
-    },
-    {
-      "campaign": "DUI",
-      "ad_group": "DUI Lawyer Terms",
-      "ad": "<ad 4>",
-      "type": "headline",
-      "text": "[N]+Charges Resolved",
-      "impressions": 10,
-      "clicks": 0,
-      "conversions": 0.0
-    },
-    {
-      "campaign": "Out-of-State Traffic",
-      "ad_group": "[State] Traffic Lawyer",
-      "ad": "<ad 5>",
-      "type": "headline",
-      "text": "[Rating]",
-      "impressions": 2,
-      "clicks": 0,
-      "conversions": 0.0
+  "ads_not_serving": [],
+  "line_rows": [
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Example Home Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "BEST", "asset_id": "610000000001H01", "impressions": 1900, "clicks": 410, "conversions": 62},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Heating, Cooling & Plumbing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H02", "impressions": 1069, "clicks": 231, "conversions": 35},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Same-Day Service in Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000001H03", "impressions": 1379, "clicks": 351, "conversions": 53},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Licensed Local Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H04", "impressions": 880, "clicks": 190, "conversions": 29},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Upfront Pricing, No Surprises", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H05", "impressions": 809, "clicks": 175, "conversions": 26},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H06", "impressions": 748, "clicks": 161, "conversions": 24},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000001H07", "impressions": 994, "clicks": 253, "conversions": 38},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H08", "impressions": 651, "clicks": 140, "conversions": 21},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Call Now for a Free Quote", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H09", "impressions": 611, "clicks": 132, "conversions": 20},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Family Owned Since 2004", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H10", "impressions": 575, "clicks": 124, "conversions": 19},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H11", "impressions": 544, "clicks": 117, "conversions": 18},
+    {"ad_id": "610000000001", "field_type": "HEADLINE", "text": "Trusted by Your Neighbors", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001H12", "impressions": 516, "clicks": 111, "conversions": 17},
+    {"ad_id": "610000000001", "field_type": "DESCRIPTION", "text": "Heating, cooling and plumbing from one local team. Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001D01", "impressions": 1805, "clicks": 390, "conversions": 59},
+    {"ad_id": "610000000001", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001D02", "impressions": 1612, "clicks": 348, "conversions": 53},
+    {"ad_id": "610000000001", "field_type": "DESCRIPTION", "text": "Same-day appointments across the Denver metro, seven days a week.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001D03", "impressions": 1456, "clicks": 314, "conversions": 48},
+    {"ad_id": "610000000001", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000001D04", "impressions": 1327, "clicks": 286, "conversions": 43},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Furnace Repair in Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000002H01", "impressions": 2567, "clicks": 169, "conversions": 27},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Same-Day Furnace Repair", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000002H02", "impressions": 2292, "clicks": 160, "conversions": 26},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Furnace Not Working?", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H03", "impressions": 1449, "clicks": 86, "conversions": 14},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Upfront Furnace Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H04", "impressions": 1321, "clicks": 78, "conversions": 13},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H05", "impressions": 1214, "clicks": 72, "conversions": 11},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H06", "impressions": 1123, "clicks": 67, "conversions": 11},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H07", "impressions": 1045, "clicks": 62, "conversions": 10},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H08", "impressions": 977, "clicks": 58, "conversions": 9},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Most Repairs Done in One Visit", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000002H09", "impressions": 196, "clicks": 9, "conversions": 1},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "Call for Fast Heat Restoration", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H10", "impressions": 864, "clicks": 51, "conversions": 8},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "All Furnace Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H11", "impressions": 817, "clicks": 48, "conversions": 8},
+    {"ad_id": "610000000002", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002H12", "impressions": 774, "clicks": 46, "conversions": 7},
+    {"ad_id": "610000000002", "field_type": "DESCRIPTION", "text": "Furnace out? Our heating techs fix most problems in one visit. Book a same-day slot.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002D01", "impressions": 2709, "clicks": 161, "conversions": 26},
+    {"ad_id": "610000000002", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002D02", "impressions": 2419, "clicks": 143, "conversions": 23},
+    {"ad_id": "610000000002", "field_type": "DESCRIPTION", "text": "We repair every furnace brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002D03", "impressions": 2185, "clicks": 129, "conversions": 21},
+    {"ad_id": "610000000002", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000002D04", "impressions": 1992, "clicks": 118, "conversions": 19},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Example Home Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000003H01", "impressions": 1748, "clicks": 104, "conversions": 12},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Heating Experts Near You", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003H02", "impressions": 983, "clicks": 58, "conversions": 7},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Call Today", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003H03", "impressions": 888, "clicks": 53, "conversions": 6},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Licensed Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003H04", "impressions": 810, "clicks": 48, "conversions": 6},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003H05", "impressions": 744, "clicks": 44, "conversions": 5},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Book Online", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003H06", "impressions": 688, "clicks": 41, "conversions": 5},
+    {"ad_id": "610000000003", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000003H07", "impressions": 137, "clicks": 6, "conversions": 1},
+    {"ad_id": "610000000003", "field_type": "DESCRIPTION", "text": "Heating, cooling and plumbing from one local team.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003D01", "impressions": 1661, "clicks": 99, "conversions": 11},
+    {"ad_id": "610000000003", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003D02", "impressions": 1483, "clicks": 88, "conversions": 10},
+    {"ad_id": "610000000003", "field_type": "DESCRIPTION", "text": "Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000003D03", "impressions": 1339, "clicks": 80, "conversions": 9},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Furnace Blowing Cold Air?", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000004H01", "impressions": 1395, "clicks": 84, "conversions": 12},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Furnace Not Turning On?", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H02", "impressions": 872, "clicks": 47, "conversions": 7},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Same-Day Furnace Repair", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H03", "impressions": 788, "clicks": 43, "conversions": 6},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Upfront Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H04", "impressions": 718, "clicks": 39, "conversions": 6},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H05", "impressions": 660, "clicks": 36, "conversions": 5},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H06", "impressions": 610, "clicks": 33, "conversions": 5},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H07", "impressions": 568, "clicks": 31, "conversions": 4},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H08", "impressions": 531, "clicks": 29, "conversions": 4},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "All Furnace Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H09", "impressions": 498, "clicks": 27, "conversions": 4},
+    {"ad_id": "610000000004", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004H10", "impressions": 469, "clicks": 25, "conversions": 4},
+    {"ad_id": "610000000004", "field_type": "DESCRIPTION", "text": "Cold air or no heat at all? Book a same-day furnace visit with a licensed tech.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004D01", "impressions": 1472, "clicks": 80, "conversions": 11},
+    {"ad_id": "610000000004", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004D02", "impressions": 1315, "clicks": 71, "conversions": 10},
+    {"ad_id": "610000000004", "field_type": "DESCRIPTION", "text": "We repair every furnace brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000004D03", "impressions": 1188, "clicks": 64, "conversions": 9},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Emergency Furnace Repair", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000005H01", "impressions": 750, "clicks": 38, "conversions": 7},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "No Heat? We Come Tonight", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H02", "impressions": 422, "clicks": 21, "conversions": 4},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "24/7 Heating Repair", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H03", "impressions": 381, "clicks": 19, "conversions": 4},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H04", "impressions": 347, "clicks": 18, "conversions": 3},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Licensed Heating Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H05", "impressions": 319, "clicks": 16, "conversions": 3},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Call Now, Live Dispatcher", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H06", "impressions": 295, "clicks": 15, "conversions": 3},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H07", "impressions": 275, "clicks": 14, "conversions": 3},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H08", "impressions": 257, "clicks": 13, "conversions": 2},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Upfront Emergency Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H09", "impressions": 241, "clicks": 12, "conversions": 2},
+    {"ad_id": "610000000005", "field_type": "HEADLINE", "text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005H10", "impressions": 227, "clicks": 12, "conversions": 2},
+    {"ad_id": "610000000005", "field_type": "DESCRIPTION", "text": "No heat at night? A licensed tech can be at your door tonight, with no overtime fee.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005D01", "impressions": 712, "clicks": 36, "conversions": 7},
+    {"ad_id": "610000000005", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005D02", "impressions": 636, "clicks": 32, "conversions": 6},
+    {"ad_id": "610000000005", "field_type": "DESCRIPTION", "text": "Call and talk to a live dispatcher, day or night, across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005D03", "impressions": 575, "clicks": 29, "conversions": 5},
+    {"ad_id": "610000000005", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000005D04", "impressions": 524, "clicks": 27, "conversions": 5},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "AC Repair in Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000006H01", "impressions": 2709, "clicks": 136, "conversions": 16},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Same-Day AC Repair", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H02", "impressions": 1693, "clicks": 76, "conversions": 9},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "AC Not Cooling?", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H03", "impressions": 1529, "clicks": 69, "conversions": 8},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Upfront AC Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H04", "impressions": 1394, "clicks": 63, "conversions": 7},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H05", "impressions": 1281, "clicks": 58, "conversions": 7},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H06", "impressions": 1185, "clicks": 54, "conversions": 6},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H07", "impressions": 1102, "clicks": 50, "conversions": 6},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H08", "impressions": 1031, "clicks": 47, "conversions": 5},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "All AC Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H09", "impressions": 968, "clicks": 44, "conversions": 5},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000006H10", "impressions": 195, "clicks": 7, "conversions": 1},
+    {"ad_id": "610000000006", "field_type": "HEADLINE", "text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006H11", "impressions": 862, "clicks": 39, "conversions": 5},
+    {"ad_id": "610000000006", "field_type": "DESCRIPTION", "text": "AC down? Our cooling techs fix most problems in one visit. Book a same-day slot.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006D01", "impressions": 2860, "clicks": 129, "conversions": 15},
+    {"ad_id": "610000000006", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006D02", "impressions": 2553, "clicks": 115, "conversions": 14},
+    {"ad_id": "610000000006", "field_type": "DESCRIPTION", "text": "We repair every AC brand. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006D03", "impressions": 2306, "clicks": 104, "conversions": 12},
+    {"ad_id": "610000000006", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000006D04", "impressions": 2103, "clicks": 95, "conversions": 11},
+    {"ad_id": "610000000007", "field_type": "HEADLINE", "text": "Cooling Services", "pinned_field": "HEADLINE_1", "asset_performance_label": "LOW", "asset_id": "610000000007H01", "impressions": 1290, "clicks": 45, "conversions": 4},
+    {"ad_id": "610000000007", "field_type": "HEADLINE", "text": "Call Today", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007H02", "impressions": 726, "clicks": 33, "conversions": 3},
+    {"ad_id": "610000000007", "field_type": "HEADLINE", "text": "Licensed Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007H03", "impressions": 655, "clicks": 29, "conversions": 3},
+    {"ad_id": "610000000007", "field_type": "HEADLINE", "text": "Book Online", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007H04", "impressions": 598, "clicks": 27, "conversions": 2},
+    {"ad_id": "610000000007", "field_type": "HEADLINE", "text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007H05", "impressions": 549, "clicks": 25, "conversions": 2},
+    {"ad_id": "610000000007", "field_type": "DESCRIPTION", "text": "Cooling services from a local team.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007D01", "impressions": 1226, "clicks": 55, "conversions": 5},
+    {"ad_id": "610000000007", "field_type": "DESCRIPTION", "text": "Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000007D02", "impressions": 1094, "clicks": 49, "conversions": 4},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "AC Repair in Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000008H01", "impressions": 900, "clicks": 44, "conversions": 5},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Same-Day AC Repair", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H02", "impressions": 506, "clicks": 25, "conversions": 3},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Upfront AC Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H03", "impressions": 457, "clicks": 22, "conversions": 3},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H04", "impressions": 417, "clicks": 20, "conversions": 2},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H05", "impressions": 383, "clicks": 19, "conversions": 2},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H06", "impressions": 354, "clicks": 17, "conversions": 2},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H07", "impressions": 330, "clicks": 16, "conversions": 2},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "All AC Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008H08", "impressions": 308, "clicks": 15, "conversions": 2},
+    {"ad_id": "610000000008", "field_type": "HEADLINE", "text": "Furnace Tune-Up Special", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000008H09", "impressions": 62, "clicks": 2, "conversions": 0},
+    {"ad_id": "610000000008", "field_type": "DESCRIPTION", "text": "AC down? Our cooling techs fix most problems in one visit.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008D01", "impressions": 855, "clicks": 42, "conversions": 5},
+    {"ad_id": "610000000008", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008D02", "impressions": 763, "clicks": 37, "conversions": 4},
+    {"ad_id": "610000000008", "field_type": "DESCRIPTION", "text": "Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000008D03", "impressions": 690, "clicks": 34, "conversions": 4},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Water Heater Repair Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000009H01", "impressions": 1710, "clicks": 112, "conversions": 17},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "No Hot Water? Same-Day Fix", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000009H02", "impressions": 1527, "clicks": 106, "conversions": 16},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Water Heater Experts", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H03", "impressions": 965, "clicks": 57, "conversions": 9},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Upfront Repair Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H04", "impressions": 880, "clicks": 52, "conversions": 8},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H05", "impressions": 809, "clicks": 48, "conversions": 7},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H06", "impressions": 748, "clicks": 44, "conversions": 7},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H07", "impressions": 696, "clicks": 41, "conversions": 6},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H08", "impressions": 651, "clicks": 38, "conversions": 6},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Tank and Tankless Repair", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H09", "impressions": 611, "clicks": 36, "conversions": 5},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H10", "impressions": 575, "clicks": 34, "conversions": 5},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Most Repairs in One Visit", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H11", "impressions": 544, "clicks": 32, "conversions": 5},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "All Brands Repaired", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H12", "impressions": 516, "clicks": 30, "conversions": 5},
+    {"ad_id": "610000000009", "field_type": "HEADLINE", "text": "Free Replacement Quote", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009H13", "impressions": 491, "clicks": 29, "conversions": 4},
+    {"ad_id": "610000000009", "field_type": "DESCRIPTION", "text": "No hot water? Our plumbers repair tank and tankless heaters, most in one visit.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009D01", "impressions": 1805, "clicks": 106, "conversions": 16},
+    {"ad_id": "610000000009", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009D02", "impressions": 1612, "clicks": 95, "conversions": 14},
+    {"ad_id": "610000000009", "field_type": "DESCRIPTION", "text": "Same-day water heater service, seven days a week across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009D03", "impressions": 1456, "clicks": 86, "conversions": 13},
+    {"ad_id": "610000000009", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you, then book in under a minute.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000009D04", "impressions": 1327, "clicks": 78, "conversions": 12},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Tankless Water Heaters", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000010H01", "impressions": 1125, "clicks": 69, "conversions": 10},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Tankless Installation Quotes", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H02", "impressions": 703, "clicks": 39, "conversions": 6},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Endless Hot Water", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H03", "impressions": 635, "clicks": 35, "conversions": 5},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H04", "impressions": 579, "clicks": 32, "conversions": 5},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H05", "impressions": 532, "clicks": 29, "conversions": 4},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Book a Free In-Home Quote", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H06", "impressions": 492, "clicks": 27, "conversions": 4},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H07", "impressions": 458, "clicks": 25, "conversions": 4},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Financing Available", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000010H08", "impressions": 92, "clicks": 4, "conversions": 1},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H09", "impressions": 402, "clicks": 22, "conversions": 3},
+    {"ad_id": "610000000010", "field_type": "HEADLINE", "text": "Install in One Day", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010H10", "impressions": 379, "clicks": 21, "conversions": 3},
+    {"ad_id": "610000000010", "field_type": "DESCRIPTION", "text": "Switch to tankless: endless hot water and a lower energy bill. Book a free quote.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010D01", "impressions": 1188, "clicks": 66, "conversions": 10},
+    {"ad_id": "610000000010", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010D02", "impressions": 1060, "clicks": 59, "conversions": 8},
+    {"ad_id": "610000000010", "field_type": "DESCRIPTION", "text": "Most tankless installs take one day. Financing and rebate help available.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000010D03", "impressions": 958, "clicks": 53, "conversions": 8},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Water Heater Replacement", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H01", "impressions": 405, "clicks": 22, "conversions": 4},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "New Water Heater Today", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H02", "impressions": 362, "clicks": 19, "conversions": 3},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Upfront Replacement Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H03", "impressions": 327, "clicks": 17, "conversions": 3},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H04", "impressions": 298, "clicks": 16, "conversions": 3},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H05", "impressions": 274, "clicks": 15, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H06", "impressions": 253, "clicks": 13, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Haul Away Included", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H07", "impressions": 235, "clicks": 13, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Tank and Tankless Options", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H08", "impressions": 220, "clicks": 12, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Free Replacement Quote", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H09", "impressions": 207, "clicks": 11, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011H10", "impressions": 195, "clicks": 10, "conversions": 2},
+    {"ad_id": "610000000011", "field_type": "DESCRIPTION", "text": "Old heater failing? Get a new tank or tankless unit installed, often the same day.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011D01", "impressions": 428, "clicks": 23, "conversions": 4},
+    {"ad_id": "610000000011", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Haul away of the old unit included.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011D02", "impressions": 382, "clicks": 20, "conversions": 3},
+    {"ad_id": "610000000011", "field_type": "DESCRIPTION", "text": "Licensed plumbers across the Denver metro, seven days a week.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000011D03", "impressions": 345, "clicks": 18, "conversions": 3},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Emergency Plumber Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000012H01", "impressions": 2036, "clicks": 115, "conversions": 17},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "24/7 Emergency Plumbing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H02", "impressions": 1272, "clicks": 65, "conversions": 10},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Burst Pipe? Call Now", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000012H03", "impressions": 1642, "clicks": 99, "conversions": 15},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H04", "impressions": 1048, "clicks": 53, "conversions": 8},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H05", "impressions": 963, "clicks": 49, "conversions": 7},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Live Dispatcher, Day or Night", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H06", "impressions": 891, "clicks": 45, "conversions": 7},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H07", "impressions": 829, "clicks": 42, "conversions": 6},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H08", "impressions": 774, "clicks": 39, "conversions": 6},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "At Your Door in 60 Minutes", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000012H09", "impressions": 156, "clicks": 6, "conversions": 1},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Serving the Denver Metro", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H10", "impressions": 685, "clicks": 35, "conversions": 5},
+    {"ad_id": "610000000012", "field_type": "HEADLINE", "text": "Water Damage Stopped Fast", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012H11", "impressions": 648, "clicks": 33, "conversions": 5},
+    {"ad_id": "610000000012", "field_type": "DESCRIPTION", "text": "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012D01", "impressions": 2149, "clicks": 109, "conversions": 16},
+    {"ad_id": "610000000012", "field_type": "DESCRIPTION", "text": "No overtime charges, ever. Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012D02", "impressions": 1919, "clicks": 98, "conversions": 14},
+    {"ad_id": "610000000012", "field_type": "DESCRIPTION", "text": "Call and talk to a live dispatcher, day or night, across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012D03", "impressions": 1733, "clicks": 88, "conversions": 13},
+    {"ad_id": "610000000012", "field_type": "DESCRIPTION", "text": "Read 1,200 reviews from homeowners near you.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000012D04", "impressions": 1580, "clicks": 80, "conversions": 12},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "Emergency Plumber Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000013H01", "impressions": 1638, "clicks": 83, "conversions": 10},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "24/7 Emergency Plumbing", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000013H02", "impressions": 1638, "clicks": 83, "conversions": 10},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "Burst Pipe? Call Now", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H03", "impressions": 832, "clicks": 42, "conversions": 5},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H04", "impressions": 759, "clicks": 38, "conversions": 5},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H05", "impressions": 697, "clicks": 35, "conversions": 4},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "Live Dispatcher, Day or Night", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H06", "impressions": 645, "clicks": 33, "conversions": 4},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H07", "impressions": 600, "clicks": 30, "conversions": 4},
+    {"ad_id": "610000000013", "field_type": "HEADLINE", "text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013H08", "impressions": 561, "clicks": 28, "conversions": 3},
+    {"ad_id": "610000000013", "field_type": "DESCRIPTION", "text": "Burst pipe or flooding? A licensed plumber can be on the way in minutes, 24/7.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013D01", "impressions": 1556, "clicks": 79, "conversions": 9},
+    {"ad_id": "610000000013", "field_type": "DESCRIPTION", "text": "No overtime charges, ever. Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013D02", "impressions": 1389, "clicks": 70, "conversions": 8},
+    {"ad_id": "610000000013", "field_type": "DESCRIPTION", "text": "Call and talk to a live dispatcher, day or night.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000013D03", "impressions": 1255, "clicks": 64, "conversions": 8},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Drain Cleaning in Denver", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000014H01", "impressions": 1350, "clicks": 70, "conversions": 9},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Clogged Drain? Same Day", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H02", "impressions": 844, "clicks": 39, "conversions": 5},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Hydro Jetting Available", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H03", "impressions": 762, "clicks": 36, "conversions": 5},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Upfront Drain Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H04", "impressions": 695, "clicks": 32, "conversions": 4},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H05", "impressions": 639, "clicks": 30, "conversions": 4},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H06", "impressions": 591, "clicks": 28, "conversions": 4},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H07", "impressions": 549, "clicks": 26, "conversions": 3},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Camera Inspection Included", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H08", "impressions": 514, "clicks": 24, "conversions": 3},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H09", "impressions": 482, "clicks": 22, "conversions": 3},
+    {"ad_id": "610000000014", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014H10", "impressions": 454, "clicks": 21, "conversions": 3},
+    {"ad_id": "610000000014", "field_type": "DESCRIPTION", "text": "Slow or clogged drain? Same-day drain cleaning with a camera check included.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014D01", "impressions": 1425, "clicks": 66, "conversions": 9},
+    {"ad_id": "610000000014", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014D02", "impressions": 1272, "clicks": 59, "conversions": 8},
+    {"ad_id": "610000000014", "field_type": "DESCRIPTION", "text": "Hydro jetting for tough clogs. Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000014D03", "impressions": 1149, "clicks": 54, "conversions": 7},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Plumbing Repairs Denver", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H01", "impressions": 360, "clicks": 20, "conversions": 3},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Licensed Plumbers", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H02", "impressions": 321, "clicks": 18, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Upfront Pricing", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H03", "impressions": 290, "clicks": 16, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Book Online in 60 Seconds", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H04", "impressions": 265, "clicks": 15, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H05", "impressions": 243, "clicks": 13, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Open 7 Days a Week", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H06", "impressions": 225, "clicks": 12, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "No Overtime Charges", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H07", "impressions": 209, "clicks": 11, "conversions": 2},
+    {"ad_id": "610000000015", "field_type": "HEADLINE", "text": "Same-Day Appointments", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015H08", "impressions": 196, "clicks": 11, "conversions": 1},
+    {"ad_id": "610000000015", "field_type": "DESCRIPTION", "text": "Plumbing repairs from one local team. Book online or call today.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015D01", "impressions": 380, "clicks": 21, "conversions": 3},
+    {"ad_id": "610000000015", "field_type": "DESCRIPTION", "text": "Upfront prices before any work starts.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015D02", "impressions": 339, "clicks": 19, "conversions": 3},
+    {"ad_id": "610000000015", "field_type": "DESCRIPTION", "text": "Open 7 days across the Denver metro.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000015D03", "impressions": 306, "clicks": 17, "conversions": 2},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "AC Installation Denver", "pinned_field": "HEADLINE_1", "asset_performance_label": "GOOD", "asset_id": "610000000016H01", "impressions": 4800, "clicks": 179, "conversions": 6},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "New AC Units Installed", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H02", "impressions": 2700, "clicks": 101, "conversions": 3},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H03", "impressions": 2439, "clicks": 91, "conversions": 3},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "Financing Available", "pinned_field": null, "asset_performance_label": "LOW", "asset_id": "610000000016H04", "impressions": 476, "clicks": 14, "conversions": 0},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H05", "impressions": 2043, "clicks": 76, "conversions": 3},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H06", "impressions": 1890, "clicks": 70, "conversions": 2},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H07", "impressions": 1758, "clicks": 66, "conversions": 2},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H08", "impressions": 1643, "clicks": 61, "conversions": 2},
+    {"ad_id": "610000000016", "field_type": "HEADLINE", "text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016H09", "impressions": 1543, "clicks": 58, "conversions": 2},
+    {"ad_id": "610000000016", "field_type": "DESCRIPTION", "text": "Replace your old AC with a high-efficiency unit. Free in-home estimate.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016D01", "impressions": 4560, "clicks": 170, "conversions": 6},
+    {"ad_id": "610000000016", "field_type": "DESCRIPTION", "text": "Financing and rebate help available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016D02", "impressions": 4071, "clicks": 152, "conversions": 5},
+    {"ad_id": "610000000016", "field_type": "DESCRIPTION", "text": "Most installs take one day. 10-year parts warranty on new units.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000016D03", "impressions": 3677, "clicks": 137, "conversions": 5},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "New Central Air in One Day", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H01", "impressions": 1080, "clicks": 40, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "AC Install Quotes in 24h", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H02", "impressions": 964, "clicks": 36, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H03", "impressions": 871, "clicks": 33, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "Financing Available", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H04", "impressions": 794, "clicks": 30, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "Licensed Cooling Technicians", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H05", "impressions": 730, "clicks": 27, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H06", "impressions": 675, "clicks": 25, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H07", "impressions": 628, "clicks": 24, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "Upfront Install Prices", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H08", "impressions": 587, "clicks": 22, "conversions": 0},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H09", "impressions": 551, "clicks": 21, "conversions": 0},
+    {"ad_id": "610000000017", "field_type": "HEADLINE", "text": "High-Efficiency AC Units", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017H10", "impressions": 519, "clicks": 19, "conversions": 0},
+    {"ad_id": "610000000017", "field_type": "DESCRIPTION", "text": "Central air installed in one day, with a free quote within 24 hours.", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017D01", "impressions": 1140, "clicks": 43, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "DESCRIPTION", "text": "Financing and rebate help available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017D02", "impressions": 1018, "clicks": 38, "conversions": 1},
+    {"ad_id": "610000000017", "field_type": "DESCRIPTION", "text": "10-year parts warranty on every new unit across the Denver metro.", "pinned_field": null, "asset_performance_label": "PENDING", "asset_id": "610000000017D03", "impressions": 919, "clicks": 34, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Heat Pump Installation", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H01", "impressions": 1200, "clicks": 39, "conversions": 2},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Heat Pumps for Denver Homes", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H02", "impressions": 1071, "clicks": 35, "conversions": 2},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Free In-Home Estimate", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H03", "impressions": 967, "clicks": 32, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Rebate Help Included", "pinned_field": null, "asset_performance_label": "BEST", "asset_id": "610000000018H04", "impressions": 1260, "clicks": 46, "conversions": 2},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Licensed HVAC Technicians", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H05", "impressions": 810, "clicks": 27, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "4.9 Stars From 1,200 Reviews", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H06", "impressions": 750, "clicks": 25, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Financing Available", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H07", "impressions": 697, "clicks": 23, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "Heat and Cool With One Unit", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H08", "impressions": 652, "clicks": 21, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "HEADLINE", "text": "10-Year Parts Warranty", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018H09", "impressions": 612, "clicks": 20, "conversions": 1},
+    {"ad_id": "610000000018", "field_type": "DESCRIPTION", "text": "Heat and cool with one efficient unit. Free in-home estimate and rebate help.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018D01", "impressions": 1330, "clicks": 44, "conversions": 2},
+    {"ad_id": "610000000018", "field_type": "DESCRIPTION", "text": "Financing available. Licensed, insured and background checked.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018D02", "impressions": 1187, "clicks": 39, "conversions": 2},
+    {"ad_id": "610000000018", "field_type": "DESCRIPTION", "text": "10-year parts warranty on every heat pump we install.", "pinned_field": null, "asset_performance_label": "GOOD", "asset_id": "610000000018D03", "impressions": 1073, "clicks": 35, "conversions": 2}
+  ],
+  "top_combinations": [
+    {
+      "ad_id": "610000000016",
+      "combinations": [
+        {"served_assets": ["610000000016H01", "610000000016H02", "610000000016H03", "610000000016D01", "610000000016D02"], "impressions": 672},
+        {"served_assets": ["610000000016H01", "610000000016H02", "610000000016H05", "610000000016D01", "610000000016D03"], "impressions": 432},
+        {"served_assets": ["610000000016H02", "610000000016H01", "610000000016H03", "610000000016D02", "610000000016D01"], "impressions": 336},
+        {"served_assets": ["610000000016H01", "610000000016H03", "610000000016H06", "610000000016D01", "610000000016D02"], "impressions": 288},
+        {"served_assets": ["610000000016H01", "610000000016H05", "610000000016H02", "610000000016D03", "610000000016D01"], "impressions": 240},
+        {"served_assets": ["610000000016H02", "610000000016H03", "610000000016H01", "610000000016D01", "610000000016D02"], "impressions": 192},
+        {"served_assets": ["610000000016H01", "610000000016H06", "610000000016H03", "610000000016D02", "610000000016D03"], "impressions": 192},
+        {"served_assets": ["610000000016H03", "610000000016H01", "610000000016H02", "610000000016D01", "610000000016D02"], "impressions": 144},
+        {"served_assets": ["610000000016H01", "610000000016H02", "610000000016H07", "610000000016D03", "610000000016D02"], "impressions": 144},
+        {"served_assets": ["610000000016H05", "610000000016H01", "610000000016H02", "610000000016D01", "610000000016D03"], "impressions": 96}
+      ]
+    },
+    {
+      "ad_id": "610000000006",
+      "combinations": [
+        {"served_assets": ["610000000006H01", "610000000006H02", "610000000006H03", "610000000006D01", "610000000006D02"], "impressions": 421},
+        {"served_assets": ["610000000006H01", "610000000006H02", "610000000006H04", "610000000006D01", "610000000006D03"], "impressions": 271},
+        {"served_assets": ["610000000006H02", "610000000006H01", "610000000006H03", "610000000006D02", "610000000006D01"], "impressions": 211},
+        {"served_assets": ["610000000006H01", "610000000006H03", "610000000006H05", "610000000006D01", "610000000006D02"], "impressions": 181},
+        {"served_assets": ["610000000006H01", "610000000006H04", "610000000006H02", "610000000006D03", "610000000006D01"], "impressions": 150},
+        {"served_assets": ["610000000006H02", "610000000006H03", "610000000006H01", "610000000006D01", "610000000006D04"], "impressions": 120},
+        {"served_assets": ["610000000006H01", "610000000006H05", "610000000006H03", "610000000006D02", "610000000006D03"], "impressions": 120},
+        {"served_assets": ["610000000006H03", "610000000006H01", "610000000006H02", "610000000006D01", "610000000006D02"], "impressions": 90},
+        {"served_assets": ["610000000006H01", "610000000006H02", "610000000006H06", "610000000006D03", "610000000006D02"], "impressions": 90},
+        {"served_assets": ["610000000006H04", "610000000006H01", "610000000006H02", "610000000006D01", "610000000006D03"], "impressions": 60}
+      ]
+    },
+    {
+      "ad_id": "610000000002",
+      "combinations": [
+        {"served_assets": ["610000000002H01", "610000000002H02", "610000000002H03", "610000000002D01", "610000000002D02"], "impressions": 399},
+        {"served_assets": ["610000000002H01", "610000000002H02", "610000000002H04", "610000000002D01", "610000000002D03"], "impressions": 257},
+        {"served_assets": ["610000000002H02", "610000000002H01", "610000000002H03", "610000000002D02", "610000000002D01"], "impressions": 200},
+        {"served_assets": ["610000000002H01", "610000000002H03", "610000000002H05", "610000000002D01", "610000000002D02"], "impressions": 171},
+        {"served_assets": ["610000000002H01", "610000000002H04", "610000000002H02", "610000000002D03", "610000000002D01"], "impressions": 143},
+        {"served_assets": ["610000000002H02", "610000000002H03", "610000000002H01", "610000000002D01", "610000000002D04"], "impressions": 114},
+        {"served_assets": ["610000000002H01", "610000000002H05", "610000000002H03", "610000000002D02", "610000000002D03"], "impressions": 114},
+        {"served_assets": ["610000000002H03", "610000000002H01", "610000000002H02", "610000000002D01", "610000000002D02"], "impressions": 86},
+        {"served_assets": ["610000000002H01", "610000000002H02", "610000000002H06", "610000000002D03", "610000000002D02"], "impressions": 86},
+        {"served_assets": ["610000000002H04", "610000000002H01", "610000000002H02", "610000000002D01", "610000000002D03"], "impressions": 57}
+      ]
     }
   ]
 }

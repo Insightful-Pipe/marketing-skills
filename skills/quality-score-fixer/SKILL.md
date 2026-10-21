@@ -69,7 +69,7 @@ Run the ad query from area 3 and, for each keyword with ad relevance below avera
 
 - **Missing keyword.** A below-average keyword whose words appear in no headline is the clearest fix there is: write headlines that use the searcher's words. Report the spend on these keywords per ad group.
 - **Mixed themes.** When one ad group holds keywords for different services or different cities, and its ads speak to only one of them, the fix is a tighter ad group or location-specific ads, not one more headline. Say which keywords would move.
-- **Copied ads.** Flag headlines that name a different service than the ad group's keywords (for example a "drug crime" headline in a general criminal defense ad group). That usually means the ads were copied from another ad group.
+- **Copied ads.** Flag headlines that name a different service than the ad group's keywords (for example a "furnace tune-up" headline in an AC repair ad group). That usually means the ads were copied from another ad group.
 
 Fail when keywords with below-average ad relevance and no matching headline carry more than 20% of scored spend, warn above 10%.
 
