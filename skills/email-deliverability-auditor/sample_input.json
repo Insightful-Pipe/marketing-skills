@@ -1,0 +1,1196 @@
+{
+  "note": "Example data: an invented online tea store with invented accounts, not a real business. Every number in expected_output.json follows from this input. The DNS answers, headers and bounce messages are invented too; the Mailchimp reads show what the connector returns for such an account.",
+  "request": "Hey Claude, I just added the \"email-deliverability-auditor\" skill. Our newsletter is going to spam and Outlook addresses keep bouncing. Audit our deliverability and tell me what to fix first.",
+  "sender": {
+    "business": "Example Tea Company, an online store for loose-leaf tea (invented example)",
+    "from_address": "news@teashop.example",
+    "from_domain": "teashop.example",
+    "esp": "Mailchimp",
+    "staff_mail": "Google Workspace on the same domain"
+  },
+  "date_range": "2026-09-28 to 2026-10-27",
+  "run_date": "2026-10-28",
+  "answers": {
+    "symptom": "spam folder at Outlook and some Gmail, Outlook bounces, clicks down this month",
+    "recent_changes": "none in the ESP; the audience grew past 45,000 this summer",
+    "dedicated_ip": false,
+    "unsubscribe_processing": "Mailchimp's default: unsubscribes take effect at once",
+    "visible_unsubscribe_link": "yes, in the Mailchimp footer of every campaign",
+    "postmaster_tools": "domain added and verified; the dashboards say there is no data to display"
+  },
+  "dns_lookups": {
+    "tool": "dig +short, run by the skill in Claude Code",
+    "TXT teashop.example": [
+      "v=spf1 include:_spf.google.com ~all",
+      "v=spf1 include:servers.mcsv.net ?all",
+      "google-site-verification=abc123example"
+    ],
+    "SPF includes resolved": {
+      "_spf.google.com": "v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all",
+      "_netblocks.google.com": "v=spf1 ip4:192.0.2.0/24 ~all",
+      "_netblocks2.google.com": "v=spf1 ip6:2001:db8::/32 ~all",
+      "_netblocks3.google.com": "v=spf1 ip4:203.0.113.0/24 ~all",
+      "servers.mcsv.net": "v=spf1 ip4:198.51.100.0/24 ?all"
+    },
+    "TXT _dmarc.teashop.example": [],
+    "MX teashop.example": [
+      "1 smtp.google.com."
+    ],
+    "TXT k2._domainkey.teashop.example": [],
+    "TXT k3._domainkey.teashop.example": [],
+    "TXT default._bimi.teashop.example": []
+  },
+  "mailchimp_domains_page": {
+    "pasted_by_user": true,
+    "records_to_add": [
+      {
+        "type": "CNAME",
+        "name": "k2._domainkey.teashop.example",
+        "value": "dkim2.mcsv.net"
+      },
+      {
+        "type": "CNAME",
+        "name": "k3._domainkey.teashop.example",
+        "value": "dkim3.mcsv.net"
+      }
+    ]
+  },
+  "test_send_headers": {
+    "sent_to": "a Gmail test address",
+    "Return-Path": "<bounce-mc.us1_00000000.0000000-teashop=example@mail42.atl11.mcsv.net>",
+    "DKIM-Signature": "v=1; a=rsa-sha256; d=mail42.atl11.mcsv.net; s=k1; ...",
+    "Authentication-Results": "mx.google.com; dkim=pass header.i=@mail42.atl11.mcsv.net header.s=k1; spf=pass smtp.mailfrom=bounce-mc.us1_00000000.0000000-teashop=example@mail42.atl11.mcsv.net",
+    "From": "Example Tea Company <news@teashop.example>",
+    "List-Unsubscribe": "<https://us1.list-manage.com/unsubscribe?u=0000&id=0000>, <mailto:unsubscribe-mc@mail42.atl11.mcsv.net>",
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    "Received": "from mail42.atl11.mcsv.net (mail42.atl11.mcsv.net. [198.51.100.42]) by mx.google.com with ESMTPS (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256)"
+  },
+  "bounce_messages": [
+    {
+      "provider": "Microsoft",
+      "text": "550 5.7.515 Access denied, sending domain teashop.example doesn't meet the required authentication level."
+    },
+    {
+      "provider": "Gmail",
+      "text": "421 4.7.32 Your email has been rate limited because the From: header (RFC5322) in this message isn't aligned with either the authenticated SPF or DKIM organizational domain."
+    }
+  ],
+  "data_pulled": {
+    "list_verified_domains": [
+      {
+        "domain": "teashop.example",
+        "verified": true,
+        "authenticated": false,
+        "status": "VERIFIED",
+        "is_free_email_provider": false
+      }
+    ],
+    "list_campaigns": [
+      {
+        "id": "c01a7e0f",
+        "send_time": "2026-09-29T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 46419
+        },
+        "settings": {
+          "title": "New harvest: first flush Darjeeling",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c02a7e1f",
+        "send_time": "2026-10-01T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 46645
+        },
+        "settings": {
+          "title": "Tea of the month: Jasmine silver needle",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c03a7e2f",
+        "send_time": "2026-10-06T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 46681
+        },
+        "settings": {
+          "title": "How to brew oolong right",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c04a7e3f",
+        "send_time": "2026-10-08T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 46976
+        },
+        "settings": {
+          "title": "Autumn blends are here",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c05a7e4f",
+        "send_time": "2026-10-13T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 46935
+        },
+        "settings": {
+          "title": "Matcha restock and a whisk guide",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c06a7e5f",
+        "send_time": "2026-10-15T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 47187
+        },
+        "settings": {
+          "title": "Staff picks: five teas under $15",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c07a7e6f",
+        "send_time": "2026-10-20T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 47318
+        },
+        "settings": {
+          "title": "Chai season: our spiced blends",
+          "reply_to": "news@teashop.example"
+        }
+      },
+      {
+        "id": "c08a7e7f",
+        "send_time": "2026-10-22T14:00:00+00:00",
+        "recipients": {
+          "segment_text": "",
+          "recipient_count": 47483
+        },
+        "settings": {
+          "title": "Weekend: 15% off loose-leaf sampler",
+          "reply_to": "news@teashop.example"
+        }
+      }
+    ],
+    "list_reports": [
+      {
+        "id": "c01a7e0f",
+        "campaign_title": "New harvest: first flush Darjeeling",
+        "send_time": "2026-09-29T14:00:00+00:00",
+        "emails_sent": 46419,
+        "bounces": {
+          "hard_bounces": 570,
+          "soft_bounces": 311
+        },
+        "abuse_reports": 13
+      },
+      {
+        "id": "c02a7e1f",
+        "campaign_title": "Tea of the month: Jasmine silver needle",
+        "send_time": "2026-10-01T14:00:00+00:00",
+        "emails_sent": 46645,
+        "bounces": {
+          "hard_bounces": 563,
+          "soft_bounces": 326
+        },
+        "abuse_reports": 14
+      },
+      {
+        "id": "c03a7e2f",
+        "campaign_title": "How to brew oolong right",
+        "send_time": "2026-10-06T14:00:00+00:00",
+        "emails_sent": 46681,
+        "bounces": {
+          "hard_bounces": 567,
+          "soft_bounces": 317
+        },
+        "abuse_reports": 10
+      },
+      {
+        "id": "c04a7e3f",
+        "campaign_title": "Autumn blends are here",
+        "send_time": "2026-10-08T14:00:00+00:00",
+        "emails_sent": 46976,
+        "bounces": {
+          "hard_bounces": 567,
+          "soft_bounces": 319
+        },
+        "abuse_reports": 11
+      },
+      {
+        "id": "c05a7e4f",
+        "campaign_title": "Matcha restock and a whisk guide",
+        "send_time": "2026-10-13T14:00:00+00:00",
+        "emails_sent": 46935,
+        "bounces": {
+          "hard_bounces": 533,
+          "soft_bounces": 357
+        },
+        "abuse_reports": 17
+      },
+      {
+        "id": "c06a7e5f",
+        "campaign_title": "Staff picks: five teas under $15",
+        "send_time": "2026-10-15T14:00:00+00:00",
+        "emails_sent": 47187,
+        "bounces": {
+          "hard_bounces": 581,
+          "soft_bounces": 326
+        },
+        "abuse_reports": 15
+      },
+      {
+        "id": "c07a7e6f",
+        "campaign_title": "Chai season: our spiced blends",
+        "send_time": "2026-10-20T14:00:00+00:00",
+        "emails_sent": 47318,
+        "bounces": {
+          "hard_bounces": 569,
+          "soft_bounces": 372
+        },
+        "abuse_reports": 11
+      },
+      {
+        "id": "c08a7e7f",
+        "campaign_title": "Weekend: 15% off loose-leaf sampler",
+        "send_time": "2026-10-22T14:00:00+00:00",
+        "emails_sent": 47483,
+        "bounces": {
+          "hard_bounces": 572,
+          "soft_bounces": 377
+        },
+        "abuse_reports": 12
+      }
+    ],
+    "get_report_domain_performance": [
+      {
+        "campaign_id": "c01a7e0f",
+        "total_sent": 46419,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 19396,
+            "bounces": 260,
+            "delivered": 19136
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 460,
+            "bounces": 7,
+            "delivered": 453
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2770,
+            "bounces": 203,
+            "delivered": 2567
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3060,
+            "bounces": 172,
+            "delivered": 2888
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 697,
+            "bounces": 50,
+            "delivered": 647
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 284,
+            "bounces": 21,
+            "delivered": 263
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 187,
+            "bounces": 13,
+            "delivered": 174
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4310,
+            "bounces": 31,
+            "delivered": 4279
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1008,
+            "bounces": 6,
+            "delivered": 1002
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 136,
+            "bounces": 1,
+            "delivered": 135
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3514,
+            "bounces": 15,
+            "delivered": 3499
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 455,
+            "bounces": 2,
+            "delivered": 453
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 135,
+            "bounces": 1,
+            "delivered": 134
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1201,
+            "bounces": 12,
+            "delivered": 1189
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c02a7e1f",
+        "total_sent": 46645,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 20326,
+            "bounces": 279,
+            "delivered": 20047
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 463,
+            "bounces": 8,
+            "delivered": 455
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2814,
+            "bounces": 169,
+            "delivered": 2645
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3105,
+            "bounces": 203,
+            "delivered": 2902
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 689,
+            "bounces": 45,
+            "delivered": 644
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 273,
+            "bounces": 20,
+            "delivered": 253
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 189,
+            "bounces": 13,
+            "delivered": 176
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4545,
+            "bounces": 36,
+            "delivered": 4509
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1000,
+            "bounces": 8,
+            "delivered": 992
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 144,
+            "bounces": 1,
+            "delivered": 143
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3415,
+            "bounces": 12,
+            "delivered": 3403
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 465,
+            "bounces": 2,
+            "delivered": 463
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 138,
+            "bounces": 1,
+            "delivered": 137
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1089,
+            "bounces": 11,
+            "delivered": 1078
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c03a7e2f",
+        "total_sent": 46681,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 19402,
+            "bounces": 272,
+            "delivered": 19130
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 458,
+            "bounces": 6,
+            "delivered": 452
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2821,
+            "bounces": 162,
+            "delivered": 2659
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3061,
+            "bounces": 219,
+            "delivered": 2842
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 688,
+            "bounces": 51,
+            "delivered": 637
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 277,
+            "bounces": 19,
+            "delivered": 258
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 184,
+            "bounces": 12,
+            "delivered": 172
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4456,
+            "bounces": 29,
+            "delivered": 4427
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1007,
+            "bounces": 7,
+            "delivered": 1000
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 138,
+            "bounces": 1,
+            "delivered": 137
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3574,
+            "bounces": 13,
+            "delivered": 3561
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 480,
+            "bounces": 2,
+            "delivered": 478
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 142,
+            "bounces": 1,
+            "delivered": 141
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1199,
+            "bounces": 11,
+            "delivered": 1188
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c04a7e3f",
+        "total_sent": 46976,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 19843,
+            "bounces": 275,
+            "delivered": 19568
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 476,
+            "bounces": 8,
+            "delivered": 468
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2884,
+            "bounces": 212,
+            "delivered": 2672
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 2998,
+            "bounces": 182,
+            "delivered": 2816
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 708,
+            "bounces": 43,
+            "delivered": 665
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 277,
+            "bounces": 19,
+            "delivered": 258
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 191,
+            "bounces": 12,
+            "delivered": 179
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4562,
+            "bounces": 34,
+            "delivered": 4528
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1019,
+            "bounces": 8,
+            "delivered": 1011
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 144,
+            "bounces": 1,
+            "delivered": 143
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3604,
+            "bounces": 13,
+            "delivered": 3591
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 473,
+            "bounces": 2,
+            "delivered": 471
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 138,
+            "bounces": 0,
+            "delivered": 138
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1159,
+            "bounces": 9,
+            "delivered": 1150
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c05a7e4f",
+        "total_sent": 46935,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 19673,
+            "bounces": 325,
+            "delivered": 19348
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 456,
+            "bounces": 8,
+            "delivered": 448
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2866,
+            "bounces": 167,
+            "delivered": 2699
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 2975,
+            "bounces": 181,
+            "delivered": 2794
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 712,
+            "bounces": 48,
+            "delivered": 664
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 277,
+            "bounces": 18,
+            "delivered": 259
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 187,
+            "bounces": 11,
+            "delivered": 176
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4542,
+            "bounces": 27,
+            "delivered": 4515
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1024,
+            "bounces": 8,
+            "delivered": 1016
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 143,
+            "bounces": 1,
+            "delivered": 142
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3425,
+            "bounces": 14,
+            "delivered": 3411
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 459,
+            "bounces": 2,
+            "delivered": 457
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 140,
+            "bounces": 1,
+            "delivered": 139
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1207,
+            "bounces": 9,
+            "delivered": 1198
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c06a7e5f",
+        "total_sent": 47187,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 20503,
+            "bounces": 279,
+            "delivered": 20224
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 462,
+            "bounces": 6,
+            "delivered": 456
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2749,
+            "bounces": 168,
+            "delivered": 2581
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3042,
+            "bounces": 223,
+            "delivered": 2819
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 719,
+            "bounces": 48,
+            "delivered": 671
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 282,
+            "bounces": 19,
+            "delivered": 263
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 193,
+            "bounces": 12,
+            "delivered": 181
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4364,
+            "bounces": 35,
+            "delivered": 4329
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1064,
+            "bounces": 9,
+            "delivered": 1055
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 143,
+            "bounces": 1,
+            "delivered": 142
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3527,
+            "bounces": 14,
+            "delivered": 3513
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 480,
+            "bounces": 2,
+            "delivered": 478
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 143,
+            "bounces": 1,
+            "delivered": 142
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1142,
+            "bounces": 11,
+            "delivered": 1131
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c07a7e6f",
+        "total_sent": 47318,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 20062,
+            "bounces": 336,
+            "delivered": 19726
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 460,
+            "bounces": 6,
+            "delivered": 454
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2859,
+            "bounces": 166,
+            "delivered": 2693
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3167,
+            "bounces": 205,
+            "delivered": 2962
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 715,
+            "bounces": 49,
+            "delivered": 666
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 286,
+            "bounces": 16,
+            "delivered": 270
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 189,
+            "bounces": 12,
+            "delivered": 177
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4394,
+            "bounces": 26,
+            "delivered": 4368
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1044,
+            "bounces": 6,
+            "delivered": 1038
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 145,
+            "bounces": 1,
+            "delivered": 144
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3583,
+            "bounces": 15,
+            "delivered": 3568
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 465,
+            "bounces": 2,
+            "delivered": 463
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 138,
+            "bounces": 1,
+            "delivered": 137
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1177,
+            "bounces": 12,
+            "delivered": 1165
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      },
+      {
+        "campaign_id": "c08a7e7f",
+        "total_sent": 47483,
+        "domains": [
+          {
+            "domain": "gmail.com",
+            "emails_sent": 19673,
+            "bounces": 336,
+            "delivered": 19337
+          },
+          {
+            "domain": "googlemail.com",
+            "emails_sent": 488,
+            "bounces": 8,
+            "delivered": 480
+          },
+          {
+            "domain": "outlook.com",
+            "emails_sent": 2859,
+            "bounces": 178,
+            "delivered": 2681
+          },
+          {
+            "domain": "hotmail.com",
+            "emails_sent": 3174,
+            "bounces": 200,
+            "delivered": 2974
+          },
+          {
+            "domain": "live.com",
+            "emails_sent": 713,
+            "bounces": 43,
+            "delivered": 670
+          },
+          {
+            "domain": "hotmail.co.uk",
+            "emails_sent": 289,
+            "bounces": 16,
+            "delivered": 273
+          },
+          {
+            "domain": "msn.com",
+            "emails_sent": 191,
+            "bounces": 13,
+            "delivered": 178
+          },
+          {
+            "domain": "yahoo.com",
+            "emails_sent": 4451,
+            "bounces": 30,
+            "delivered": 4421
+          },
+          {
+            "domain": "aol.com",
+            "emails_sent": 1041,
+            "bounces": 8,
+            "delivered": 1033
+          },
+          {
+            "domain": "ymail.com",
+            "emails_sent": 144,
+            "bounces": 1,
+            "delivered": 143
+          },
+          {
+            "domain": "icloud.com",
+            "emails_sent": 3483,
+            "bounces": 15,
+            "delivered": 3468
+          },
+          {
+            "domain": "me.com",
+            "emails_sent": 465,
+            "bounces": 2,
+            "delivered": 463
+          },
+          {
+            "domain": "mac.com",
+            "emails_sent": 143,
+            "bounces": 1,
+            "delivered": 142
+          },
+          {
+            "domain": "comcast.net",
+            "emails_sent": 1244,
+            "bounces": 12,
+            "delivered": 1232
+          }
+        ],
+        "note": "Mailchimp lists the top domains only; total_sent covers every recipient"
+      }
+    ],
+    "get_report_abuse_reports": [
+      {
+        "campaign_id": "c01a7e0f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 1,
+          "hotmail.com": 2,
+          "yahoo.com": 8,
+          "aol.com": 1,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c02a7e1f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 2,
+          "hotmail.com": 1,
+          "yahoo.com": 8,
+          "aol.com": 2,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c03a7e2f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 1,
+          "hotmail.com": 2,
+          "yahoo.com": 5,
+          "aol.com": 1,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c04a7e3f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 1,
+          "hotmail.com": 2,
+          "yahoo.com": 5,
+          "aol.com": 2,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c05a7e4f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 2,
+          "hotmail.com": 2,
+          "yahoo.com": 10,
+          "aol.com": 2,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c06a7e5f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 1,
+          "hotmail.com": 2,
+          "yahoo.com": 9,
+          "aol.com": 2,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c07a7e6f",
+        "abuse_reports_by_recipient_domain": {
+          "gmail.com": 1,
+          "outlook.com": 2,
+          "hotmail.com": 2,
+          "yahoo.com": 4,
+          "aol.com": 1,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      },
+      {
+        "campaign_id": "c08a7e7f",
+        "abuse_reports_by_recipient_domain": {
+          "outlook.com": 1,
+          "hotmail.com": 2,
+          "yahoo.com": 7,
+          "aol.com": 1,
+          "domains outside the provider table": 1
+        },
+        "note": "counted from email_address domains; addresses not kept"
+      }
+    ],
+    "list_members_summary": {
+      "list": "Example Tea Company newsletter",
+      "status": "subscribed",
+      "grouped_from": "member_rating, stats.avg_click_rate (0 = never clicked), timestamp_opt",
+      "groups": [
+        {
+          "member_rating": 5,
+          "ever_clicked": true,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 2820
+        },
+        {
+          "member_rating": 5,
+          "ever_clicked": true,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 1610
+        },
+        {
+          "member_rating": 4,
+          "ever_clicked": true,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 4810
+        },
+        {
+          "member_rating": 4,
+          "ever_clicked": true,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 2690
+        },
+        {
+          "member_rating": 3,
+          "ever_clicked": true,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 6090
+        },
+        {
+          "member_rating": 3,
+          "ever_clicked": true,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 2850
+        },
+        {
+          "member_rating": 3,
+          "ever_clicked": false,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 2230
+        },
+        {
+          "member_rating": 2,
+          "ever_clicked": true,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 3070
+        },
+        {
+          "member_rating": 2,
+          "ever_clicked": true,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 1370
+        },
+        {
+          "member_rating": 2,
+          "ever_clicked": false,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 11950
+        },
+        {
+          "member_rating": 2,
+          "ever_clicked": false,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 3330
+        },
+        {
+          "member_rating": 1,
+          "ever_clicked": false,
+          "opted_in_before": "2026-05-01",
+          "opted_in_on_or_after": null,
+          "members": 3770
+        },
+        {
+          "member_rating": 1,
+          "ever_clicked": false,
+          "opted_in_before": null,
+          "opted_in_on_or_after": "2026-05-01",
+          "members": 960
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2066 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. BigQuery was not connected, so cycle times and product numbers are the user's own, pasted from the product database.",
+  "request": "Hey Claude, I just added the \"growth-loop-designer\" skill. Map the growth loops we could run, put numbers on each one, and tell me which loop to build first and what to track.",
+  "business": {
+    "name": "Example Booking Software",
+    "what_it_is": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+    "audience": "owners and front-desk managers of small service businesses with 1 to 20 staff, mostly in the US, UK and Canada",
+    "site": "https://www.example.com",
+    "how_it_reaches_non_users": {
+      "collaboration_invites": "exists: owners invite staff into their workspace",
+      "shareable_outputs": "exists: every account gets a public booking page that its clients open; a 'Powered by Example Booking Software' badge links back",
+      "public_pages": "exists: accounts can publish policies and forms to a community templates gallery at /templates/community/",
+      "content": "exists: the blog; some articles answer questions new customers send to support",
+      "paid": "exists: Google Ads and Meta Ads"
+    }
+  },
+  "windows": {
+    "ga4_ads_and_product": [
+      "2026-09-28",
+      "2026-10-27"
+    ],
+    "search_console": [
+      "2026-09-26",
+      "2026-10-25"
+    ]
+  },
+  "sources": {
+    "connected": [
+      "google-analytics",
+      "google-search-console",
+      "google-ads",
+      "facebook-ads"
+    ],
+    "not_connected": [
+      "bigquery"
+    ],
+    "from_user": [
+      "product database numbers",
+      "economics",
+      "build days"
+    ]
+  },
+  "economics": {
+    "paying_share": 0.18,
+    "revenue_per_paying_account_month": 41,
+    "gross_margin": 0.82,
+    "max_payback_months": 12,
+    "max_payback_source": "default (the user accepted it)",
+    "ad_conversions": "Google Ads and Meta both count the sign-up (the user confirmed)"
+  },
+  "build_days": {
+    "shareable_outputs": 10,
+    "public_pages": 5,
+    "content": 5,
+    "paid": 0,
+    "invites": 10
+  },
+  "product_numbers": {
+    "new_accounts": 1600,
+    "booking_pages": {
+      "by_plan": [
+        {
+          "plan": "Starter",
+          "live_pages": 700,
+          "badge_default": "on",
+          "badge_on": 644
+        },
+        {
+          "plan": "Growth",
+          "live_pages": 900,
+          "badge_default": "off",
+          "badge_on": 162
+        },
+        {
+          "plan": "Business",
+          "live_pages": 240,
+          "badge_default": "off",
+          "badge_on": 43
+        }
+      ],
+      "published_last_30_days": 992,
+      "share_of_new_accounts_publishing_within_30_days": 0.62,
+      "views_of_badged_pages": 412000,
+      "median_days_signup_to_publish": 3,
+      "median_days_publish_to_first_badge_signup": 38,
+      "badge_link": "https://www.example.com/?utm_source=booking-page&utm_medium=powered-by&utm_campaign=badge"
+    },
+    "invites": {
+      "sent": 1260,
+      "accepted": 880,
+      "accepted_into_existing_account_as_seat": 849,
+      "accepted_as_new_account": 31,
+      "median_days_signup_to_first_invite": 9,
+      "median_days_invite_to_join": 1
+    },
+    "community_templates": {
+      "live": {
+        "linked_from_gallery_hub": 180,
+        "not_linked": 240
+      },
+      "published_last_30_days": 48,
+      "share_of_new_accounts_publishing_within_30_days": 0.03,
+      "median_days_signup_to_publish": 12
+    },
+    "content": {
+      "articles_from_customer_questions_per_month_capacity": 6,
+      "median_days_question_to_published_article": 14
+    }
+  },
+  "data_pulled": {
+    "ga4_events": [
+      {
+        "eventName": "page_view",
+        "eventCount": 214000,
+        "totalUsers": 61800
+      },
+      {
+        "eventName": "session_start",
+        "eventCount": 72980,
+        "totalUsers": 61800
+      },
+      {
+        "eventName": "user_engagement",
+        "eventCount": 98400,
+        "totalUsers": 40200
+      },
+      {
+        "eventName": "first_visit",
+        "eventCount": 59920,
+        "totalUsers": 59920
+      },
+      {
+        "eventName": "scroll",
+        "eventCount": 51700,
+        "totalUsers": 29100
+      },
+      {
+        "eventName": "login",
+        "eventCount": 18300,
+        "totalUsers": 4100
+      },
+      {
+        "eventName": "sign_up",
+        "eventCount": 1600,
+        "totalUsers": 1600
+      },
+      {
+        "eventName": "generate_lead",
+        "eventCount": 140,
+        "totalUsers": 132
+      }
+    ],
+    "ga4_key_events": [
+      {
+        "eventName": "sign_up",
+        "countingMethod": "ONCE_PER_EVENT"
+      },
+      {
+        "eventName": "generate_lead",
+        "countingMethod": "ONCE_PER_EVENT"
+      }
+    ],
+    "ga4_custom_dimensions": [
+      {
+        "parameterName": "plan_name",
+        "displayName": "Plan name",
+        "scope": "EVENT"
+      }
+    ],
+    "ga4_source_medium": [
+      {
+        "sessionSource": "google",
+        "sessionMedium": "organic",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 41200,
+        "newUsers": 33800,
+        "keyEvents:sign_up": 788
+      },
+      {
+        "sessionSource": "(direct)",
+        "sessionMedium": "(none)",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 9800,
+        "newUsers": 7900,
+        "keyEvents:sign_up": 240
+      },
+      {
+        "sessionSource": "google",
+        "sessionMedium": "cpc",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 7600,
+        "newUsers": 6700,
+        "keyEvents:sign_up": 290
+      },
+      {
+        "sessionSource": "facebook",
+        "sessionMedium": "paid",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 5900,
+        "newUsers": 5400,
+        "keyEvents:sign_up": 70
+      },
+      {
+        "sessionSource": "booking-page",
+        "sessionMedium": "powered-by",
+        "sessionDefaultChannelGroup": "Unassigned",
+        "sessions": 3090,
+        "newUsers": 2870,
+        "keyEvents:sign_up": 87
+      },
+      {
+        "sessionSource": "(not set)",
+        "sessionMedium": "(not set)",
+        "sessionDefaultChannelGroup": "Unassigned",
+        "sessions": 210,
+        "newUsers": 120,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "sessionSource": "invite-email",
+        "sessionMedium": "email",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 1020,
+        "newUsers": 860,
+        "keyEvents:sign_up": 31
+      },
+      {
+        "sessionSource": "newsletter",
+        "sessionMedium": "email",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 1400,
+        "newUsers": 300,
+        "keyEvents:sign_up": 22
+      },
+      {
+        "sessionSource": "bing",
+        "sessionMedium": "organic",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 1700,
+        "newUsers": 1500,
+        "keyEvents:sign_up": 40
+      },
+      {
+        "sessionSource": "chatgpt.com",
+        "sessionMedium": "referral",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 640,
+        "newUsers": 590,
+        "keyEvents:sign_up": 18
+      },
+      {
+        "sessionSource": "salon-owners-directory.example",
+        "sessionMedium": "referral",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 420,
+        "newUsers": 400,
+        "keyEvents:sign_up": 12
+      }
+    ],
+    "ga4_landing_templates_total": {
+      "rows": 151,
+      "sessions": 3460,
+      "keyEvents:sign_up": 61
+    },
+    "ga4_landing_blog": [
+      {
+        "landingPage": "/blog/spa-booking-tips/",
+        "sessions": 109,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/spa-reminder-texts/",
+        "sessions": 209,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/physio-review-requests/",
+        "sessions": 143,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-review-requests/",
+        "sessions": 181,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/clinic-no-show-policy/",
+        "sessions": 185,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/clinic-front-desk-checklist/",
+        "sessions": 301,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/dental-waitlist-setup/",
+        "sessions": 256,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/barber-front-desk-checklist/",
+        "sessions": 218,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/clinic-waitlist-setup/",
+        "sessions": 182,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/dental-pricing-guide/",
+        "sessions": 111,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/physio-reminder-texts/",
+        "sessions": 166,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/studio-review-requests/",
+        "sessions": 208,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/dental-no-show-policy/",
+        "sessions": 185,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/barber-pricing-guide/",
+        "sessions": 253,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/tutor-deposit-rules/",
+        "sessions": 272,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/physio-booking-tips/",
+        "sessions": 106,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/spa-deposit-rules/",
+        "sessions": 204,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/studio-booking-tips/",
+        "sessions": 158,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/studio-pricing-guide/",
+        "sessions": 125,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/barber-waitlist-setup/",
+        "sessions": 150,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/spa-waitlist-setup/",
+        "sessions": 319,
+        "keyEvents:sign_up": 3
+      },
+      {
+        "landingPage": "/blog/salon-front-desk-checklist/",
+        "sessions": 238,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/tutor-no-show-policy/",
+        "sessions": 106,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/dental-front-desk-checklist/",
+        "sessions": 41,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/tutor-booking-tips/",
+        "sessions": 141,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/tutor-front-desk-checklist/",
+        "sessions": 130,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-deposit-rules/",
+        "sessions": 157,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/clinic-pricing-guide/",
+        "sessions": 156,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/tutor-waitlist-setup/",
+        "sessions": 178,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-waitlist-setup/",
+        "sessions": 153,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/studio-reminder-texts/",
+        "sessions": 250,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/studio-no-show-policy/",
+        "sessions": 221,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/barber-review-requests/",
+        "sessions": 104,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/spa-review-requests/",
+        "sessions": 209,
+        "keyEvents:sign_up": 3
+      },
+      {
+        "landingPage": "/blog/dental-booking-tips/",
+        "sessions": 220,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/spa-no-show-policy/",
+        "sessions": 349,
+        "keyEvents:sign_up": 5
+      },
+      {
+        "landingPage": "/blog/studio-waitlist-setup/",
+        "sessions": 124,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/clinic-review-requests/",
+        "sessions": 185,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/studio-deposit-rules/",
+        "sessions": 261,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/salon-booking-tips/",
+        "sessions": 177,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/physio-front-desk-checklist/",
+        "sessions": 202,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/spa-front-desk-checklist/",
+        "sessions": 154,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-reminder-texts/",
+        "sessions": 234,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/dental-deposit-rules/",
+        "sessions": 190,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-no-show-policy/",
+        "sessions": 139,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/dental-reminder-texts/",
+        "sessions": 97,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/tutor-pricing-guide/",
+        "sessions": 116,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/barber-no-show-policy/",
+        "sessions": 228,
+        "keyEvents:sign_up": 2
+      },
+      {
+        "landingPage": "/blog/studio-front-desk-checklist/",
+        "sessions": 218,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/tutor-reminder-texts/",
+        "sessions": 223,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/barber-booking-tips/",
+        "sessions": 65,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/clinic-reminder-texts/",
+        "sessions": 188,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/physio-pricing-guide/",
+        "sessions": 393,
+        "keyEvents:sign_up": 4
+      },
+      {
+        "landingPage": "/blog/barber-deposit-rules/",
+        "sessions": 195,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/clinic-booking-tips/",
+        "sessions": 6,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/tutor-review-requests/",
+        "sessions": 58,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/spa-pricing-guide/",
+        "sessions": 54,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/barber-reminder-texts/",
+        "sessions": 8,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/physio-no-show-policy/",
+        "sessions": 36,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/clinic-deposit-rules/",
+        "sessions": 37,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "landingPage": "/blog/salon-pricing-guide/",
+        "sessions": 19,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/physio-deposit-rules/",
+        "sessions": 46,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/physio-waitlist-setup/",
+        "sessions": 51,
+        "keyEvents:sign_up": 0
+      },
+      {
+        "landingPage": "/blog/dental-review-requests/",
+        "sessions": 20,
+        "keyEvents:sign_up": 0
+      }
+    ],
+    "blog_articles": [
+      {
+        "page": "/blog/spa-booking-tips/",
+        "published": "2024-05-01",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/spa-reminder-texts/",
+        "published": "2024-05-18",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-review-requests/",
+        "published": "2024-06-02",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-review-requests/",
+        "published": "2024-06-18",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/clinic-no-show-policy/",
+        "published": "2024-06-29",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-front-desk-checklist/",
+        "published": "2024-07-14",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/dental-waitlist-setup/",
+        "published": "2024-07-29",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-front-desk-checklist/",
+        "published": "2024-08-17",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-waitlist-setup/",
+        "published": "2024-08-31",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-pricing-guide/",
+        "published": "2024-09-13",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-reminder-texts/",
+        "published": "2024-09-28",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-review-requests/",
+        "published": "2024-10-09",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-no-show-policy/",
+        "published": "2024-10-24",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-pricing-guide/",
+        "published": "2024-11-11",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/tutor-deposit-rules/",
+        "published": "2024-11-21",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/physio-booking-tips/",
+        "published": "2024-12-12",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/spa-deposit-rules/",
+        "published": "2024-12-28",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-booking-tips/",
+        "published": "2025-01-11",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-pricing-guide/",
+        "published": "2025-01-19",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-waitlist-setup/",
+        "published": "2025-01-31",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/spa-waitlist-setup/",
+        "published": "2025-02-22",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/salon-front-desk-checklist/",
+        "published": "2025-03-02",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-no-show-policy/",
+        "published": "2025-03-18",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-front-desk-checklist/",
+        "published": "2025-04-01",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-booking-tips/",
+        "published": "2025-04-22",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-front-desk-checklist/",
+        "published": "2025-05-05",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-deposit-rules/",
+        "published": "2025-05-17",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-pricing-guide/",
+        "published": "2025-06-02",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-waitlist-setup/",
+        "published": "2025-06-15",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-waitlist-setup/",
+        "published": "2025-06-30",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-reminder-texts/",
+        "published": "2025-07-18",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-no-show-policy/",
+        "published": "2025-07-28",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-review-requests/",
+        "published": "2025-08-11",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/spa-review-requests/",
+        "published": "2025-08-30",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/dental-booking-tips/",
+        "published": "2025-09-06",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/spa-no-show-policy/",
+        "published": "2025-09-29",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/studio-waitlist-setup/",
+        "published": "2025-10-12",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-review-requests/",
+        "published": "2025-10-24",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/studio-deposit-rules/",
+        "published": "2025-11-04",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-booking-tips/",
+        "published": "2025-11-23",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-front-desk-checklist/",
+        "published": "2025-12-02",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/spa-front-desk-checklist/",
+        "published": "2025-12-22",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-reminder-texts/",
+        "published": "2026-01-06",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-deposit-rules/",
+        "published": "2026-01-21",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-no-show-policy/",
+        "published": "2026-01-29",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-reminder-texts/",
+        "published": "2026-02-18",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-pricing-guide/",
+        "published": "2026-02-28",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-no-show-policy/",
+        "published": "2026-03-21",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/studio-front-desk-checklist/",
+        "published": "2026-04-05",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-reminder-texts/",
+        "published": "2026-04-18",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/barber-booking-tips/",
+        "published": "2026-04-30",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-reminder-texts/",
+        "published": "2026-05-17",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-pricing-guide/",
+        "published": "2026-05-29",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/barber-deposit-rules/",
+        "published": "2026-06-15",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/clinic-booking-tips/",
+        "published": "2026-06-26",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/tutor-review-requests/",
+        "published": "2026-07-14",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/spa-pricing-guide/",
+        "published": "2026-07-30",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/barber-reminder-texts/",
+        "published": "2026-08-09",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-no-show-policy/",
+        "published": "2026-08-22",
+        "from_customer_question": true
+      },
+      {
+        "page": "/blog/clinic-deposit-rules/",
+        "published": "2026-09-08",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/salon-pricing-guide/",
+        "published": "2026-09-20",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-deposit-rules/",
+        "published": "2026-10-08",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/physio-waitlist-setup/",
+        "published": "2026-10-04",
+        "from_customer_question": false
+      },
+      {
+        "page": "/blog/dental-review-requests/",
+        "published": "2026-10-15",
+        "from_customer_question": false
+      }
+    ],
+    "gsc_template_pages": [
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 25,
+        "impressions": 650
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 22,
+        "impressions": 836
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 357
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 256
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 23,
+        "impressions": 851
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 25,
+        "impressions": 925
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 15,
+        "impressions": 345
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 152
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 5,
+        "impressions": 150
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 14,
+        "impressions": 378
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 26,
+        "impressions": 910
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-1/",
+        "linked_from_gallery_hub": true,
+        "clicks": 26,
+        "impressions": 858
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 19,
+        "impressions": 513
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 210
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 42,
+        "impressions": 1092
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 28,
+        "impressions": 840
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 4,
+        "impressions": 148
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 10,
+        "impressions": 200
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 15,
+        "impressions": 405
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 147
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 374
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 333
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 22,
+        "impressions": 880
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-2/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 304
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 19,
+        "impressions": 589
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 56,
+        "impressions": 1120
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 24,
+        "impressions": 744
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 32,
+        "impressions": 1280
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 297
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 47,
+        "impressions": 1880
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 360
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 240
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 24,
+        "impressions": 888
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 646
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 132
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-3/",
+        "linked_from_gallery_hub": true,
+        "clicks": 35,
+        "impressions": 840
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 35,
+        "impressions": 700
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 544
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 351
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 680
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 32,
+        "impressions": 864
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 228
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 279
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 168
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 264
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 240
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 14,
+        "impressions": 280
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-4/",
+        "linked_from_gallery_hub": true,
+        "clicks": 76,
+        "impressions": 3040
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 73,
+        "impressions": 2117
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 13,
+        "impressions": 234
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 240
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 152
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 476
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 175,
+        "impressions": 4900
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 15,
+        "impressions": 315
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 3,
+        "impressions": 75
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 73,
+        "impressions": 2920
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 348
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 12,
+        "impressions": 408
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-5/",
+        "linked_from_gallery_hub": true,
+        "clicks": 31,
+        "impressions": 961
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 15,
+        "impressions": 495
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 29,
+        "impressions": 986
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 14,
+        "impressions": 406
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 4,
+        "impressions": 100
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 29,
+        "impressions": 725
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 11,
+        "impressions": 242
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 224
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 23,
+        "impressions": 828
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 61,
+        "impressions": 1830
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 16,
+        "impressions": 448
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 43,
+        "impressions": 1032
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-6/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 114
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 24,
+        "impressions": 672
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 36,
+        "impressions": 684
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 21,
+        "impressions": 420
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 22,
+        "impressions": 836
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 19,
+        "impressions": 418
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 13,
+        "impressions": 468
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 11,
+        "impressions": 385
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 340
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 5,
+        "impressions": 185
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 20,
+        "impressions": 580
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 4,
+        "impressions": 84
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-7/",
+        "linked_from_gallery_hub": true,
+        "clicks": 18,
+        "impressions": 576
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 315
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 24,
+        "impressions": 840
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 13,
+        "impressions": 312
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 3,
+        "impressions": 75
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 240
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 245
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 25,
+        "impressions": 700
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 14,
+        "impressions": 546
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 16,
+        "impressions": 528
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 132
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 13,
+        "impressions": 286
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-8/",
+        "linked_from_gallery_hub": true,
+        "clicks": 6,
+        "impressions": 186
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 59,
+        "impressions": 2065
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 9,
+        "impressions": 261
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 25,
+        "impressions": 700
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 42,
+        "impressions": 882
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 16,
+        "impressions": 608
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 30,
+        "impressions": 660
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 256
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 22,
+        "impressions": 792
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 2,
+        "impressions": 56
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 32,
+        "impressions": 736
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 10,
+        "impressions": 250
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-9/",
+        "linked_from_gallery_hub": true,
+        "clicks": 71,
+        "impressions": 1562
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 10,
+        "impressions": 310
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 39,
+        "impressions": 936
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 29,
+        "impressions": 638
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 30,
+        "impressions": 720
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 13,
+        "impressions": 338
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 17,
+        "impressions": 646
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 168
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 280
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 41,
+        "impressions": 1148
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 29,
+        "impressions": 638
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 2,
+        "impressions": 50
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-10/",
+        "linked_from_gallery_hub": true,
+        "clicks": 8,
+        "impressions": 200
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 69,
+        "impressions": 1380
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 18,
+        "impressions": 594
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 10,
+        "impressions": 370
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 14,
+        "impressions": 476
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 7,
+        "impressions": 203
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 45,
+        "impressions": 1755
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 25,
+        "impressions": 1000
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-11/",
+        "linked_from_gallery_hub": true,
+        "clicks": 11,
+        "impressions": 407
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-11/",
+        "linked_from_gallery_hub": false,
+        "clicks": 10,
+        "impressions": 220
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-11/",
+        "linked_from_gallery_hub": false,
+        "clicks": 6,
+        "impressions": 108
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-11/",
+        "linked_from_gallery_hub": false,
+        "clicks": 14,
+        "impressions": 504
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-11/",
+        "linked_from_gallery_hub": false,
+        "clicks": 6,
+        "impressions": 108
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 8,
+        "impressions": 320
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 6,
+        "impressions": 192
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 38,
+        "impressions": 1216
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 2,
+        "impressions": 60
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 4,
+        "impressions": 108
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 17,
+        "impressions": 544
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 9,
+        "impressions": 342
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 10,
+        "impressions": 190
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 3,
+        "impressions": 54
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 8,
+        "impressions": 224
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 7,
+        "impressions": 189
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-12/",
+        "linked_from_gallery_hub": false,
+        "clicks": 2,
+        "impressions": 70
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 19,
+        "impressions": 342
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 24,
+        "impressions": 864
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 16,
+        "impressions": 464
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 12,
+        "impressions": 444
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 25,
+        "impressions": 775
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 4,
+        "impressions": 160
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-13/",
+        "linked_from_gallery_hub": false,
+        "clicks": 3,
+        "impressions": 111
+      }
+    ],
+    "gsc_template_first_impression": [
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-20/",
+        "published": "2026-05-04",
+        "first_impression": "2026-06-13"
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-21/",
+        "published": "2026-05-13",
+        "first_impression": "2026-06-11"
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-22/",
+        "published": "2026-05-22",
+        "first_impression": "2026-06-19"
+      },
+      {
+        "page": "https://www.example.com/templates/community/dental-reminder-text-23/",
+        "published": "2026-05-31",
+        "first_impression": "2026-06-17"
+      },
+      {
+        "page": "https://www.example.com/templates/community/nail-salon-deposit-policy-24/",
+        "published": "2026-06-09",
+        "first_impression": "2026-07-07"
+      },
+      {
+        "page": "https://www.example.com/templates/community/massage-intake-form-25/",
+        "published": "2026-06-18",
+        "first_impression": "2026-07-28"
+      },
+      {
+        "page": "https://www.example.com/templates/community/pet-grooming-consent-26/",
+        "published": "2026-06-27",
+        "first_impression": "2026-07-14"
+      },
+      {
+        "page": "https://www.example.com/templates/community/clinic-no-show-letter-27/",
+        "published": "2026-07-06",
+        "first_impression": "2026-08-11"
+      },
+      {
+        "page": "https://www.example.com/templates/community/barber-price-list-28/",
+        "published": "2026-07-15",
+        "first_impression": "2026-08-08"
+      },
+      {
+        "page": "https://www.example.com/templates/community/trainer-health-questionnaire-29/",
+        "published": "2026-07-24",
+        "first_impression": "2026-08-19"
+      },
+      {
+        "page": "https://www.example.com/templates/community/yoga-class-waiver-30/",
+        "published": "2026-08-02",
+        "first_impression": "2026-08-23"
+      },
+      {
+        "page": "https://www.example.com/templates/community/tutor-session-agreement-31/",
+        "published": "2026-08-11",
+        "first_impression": "2026-09-01"
+      },
+      {
+        "page": "https://www.example.com/templates/community/salon-cancellation-policy-32/",
+        "published": "2026-08-20",
+        "first_impression": "2026-09-15"
+      },
+      {
+        "page": "https://www.example.com/templates/community/physio-booking-policy-33/",
+        "published": "2026-08-29",
+        "first_impression": "2026-09-22"
+      },
+      {
+        "page": "https://www.example.com/templates/community/spa-gift-voucher-terms-34/",
+        "published": "2026-09-07",
+        "first_impression": "2026-10-13"
+      }
+    ],
+    "gsc_blog_ramp": [
+      {
+        "page": "/blog/dental-booking-tips/",
+        "published": "2025-09-06",
+        "first_impression": "2025-09-09",
+        "first_7_day_stretch_with_10_clicks_starts": "2025-12-10"
+      },
+      {
+        "page": "/blog/spa-no-show-policy/",
+        "published": "2025-09-29",
+        "first_impression": "2025-10-06",
+        "first_7_day_stretch_with_10_clicks_starts": "2025-12-22"
+      },
+      {
+        "page": "/blog/studio-waitlist-setup/",
+        "published": "2025-10-12",
+        "first_impression": "2025-10-19",
+        "first_7_day_stretch_with_10_clicks_starts": "2025-12-22"
+      },
+      {
+        "page": "/blog/clinic-review-requests/",
+        "published": "2025-10-24",
+        "first_impression": "2025-11-02",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-02-25"
+      },
+      {
+        "page": "/blog/studio-deposit-rules/",
+        "published": "2025-11-04",
+        "first_impression": "2025-11-08",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-03-08"
+      },
+      {
+        "page": "/blog/salon-booking-tips/",
+        "published": "2025-11-23",
+        "first_impression": "2025-11-28",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-02-26"
+      },
+      {
+        "page": "/blog/physio-front-desk-checklist/",
+        "published": "2025-12-02",
+        "first_impression": "2025-12-08",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-04-05"
+      },
+      {
+        "page": "/blog/spa-front-desk-checklist/",
+        "published": "2025-12-22",
+        "first_impression": "2025-12-28",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-03-27"
+      },
+      {
+        "page": "/blog/salon-reminder-texts/",
+        "published": "2026-01-06",
+        "first_impression": "2026-01-13",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-04-17"
+      },
+      {
+        "page": "/blog/dental-deposit-rules/",
+        "published": "2026-01-21",
+        "first_impression": "2026-01-26",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-04-23"
+      },
+      {
+        "page": "/blog/salon-no-show-policy/",
+        "published": "2026-01-29",
+        "first_impression": "2026-02-02",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-04-27"
+      },
+      {
+        "page": "/blog/dental-reminder-texts/",
+        "published": "2026-02-18",
+        "first_impression": "2026-02-25",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-05-24"
+      },
+      {
+        "page": "/blog/tutor-pricing-guide/",
+        "published": "2026-02-28",
+        "first_impression": "2026-03-04",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-05-27"
+      },
+      {
+        "page": "/blog/barber-no-show-policy/",
+        "published": "2026-03-21",
+        "first_impression": "2026-03-24",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-07-05"
+      },
+      {
+        "page": "/blog/studio-front-desk-checklist/",
+        "published": "2026-04-05",
+        "first_impression": "2026-04-11",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-07-20"
+      },
+      {
+        "page": "/blog/tutor-reminder-texts/",
+        "published": "2026-04-18",
+        "first_impression": "2026-04-24",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-07-24"
+      },
+      {
+        "page": "/blog/barber-booking-tips/",
+        "published": "2026-04-30",
+        "first_impression": "2026-05-06",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-08-09"
+      },
+      {
+        "page": "/blog/clinic-reminder-texts/",
+        "published": "2026-05-17",
+        "first_impression": "2026-05-20",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-09-18"
+      },
+      {
+        "page": "/blog/physio-pricing-guide/",
+        "published": "2026-05-29",
+        "first_impression": "2026-06-05",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-09-19"
+      },
+      {
+        "page": "/blog/barber-deposit-rules/",
+        "published": "2026-06-15",
+        "first_impression": "2026-06-20",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-10-06"
+      },
+      {
+        "page": "/blog/clinic-booking-tips/",
+        "published": "2026-06-26",
+        "first_impression": "2026-07-05",
+        "first_7_day_stretch_with_10_clicks_starts": "2026-10-01"
+      }
+    ],
+    "google_ads_campaigns": [
+      {
+        "campaign": "Search | Brand",
+        "type": "SEARCH",
+        "brand": true,
+        "cost": 900,
+        "conversions": 120,
+        "search_impression_share": 0.93,
+        "search_budget_lost_impression_share": 0.0
+      },
+      {
+        "campaign": "Search | Booking software",
+        "type": "SEARCH",
+        "brand": false,
+        "cost": 4100,
+        "conversions": 104,
+        "search_impression_share": 0.66,
+        "search_budget_lost_impression_share": 0.03
+      },
+      {
+        "campaign": "Search | Salon booking",
+        "type": "SEARCH",
+        "brand": false,
+        "cost": 2400,
+        "conversions": 66,
+        "search_impression_share": 0.58,
+        "search_budget_lost_impression_share": 0.14
+      }
+    ],
+    "meta_account": {
+      "account_currency": "USD",
+      "spend": 6900,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 8400
+        },
+        {
+          "action_type": "complete_registration",
+          "value": 70
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "sources": {
+      "connected": [
+        "google-analytics",
+        "google-search-console",
+        "google-ads",
+        "facebook-ads"
+      ],
+      "from_user": [
+        "product database numbers",
+        "economics",
+        "build days"
+      ],
+      "not_connected": [
+        "bigquery"
+      ]
+    },
+    "windows": {
+      "ga4_ads_and_product": "2026-09-28 to 2026-10-27",
+      "search_console": "2026-09-26 to 2026-10-25"
+    },
+    "new_accounts_per_month": 1600,
+    "pick": "Build the booking page badge loop first: turning the badge on by default adds about 86 sign-ups a month, 231 in the next 90 days."
+  },
+  "loop_map": [
+    {
+      "loop": "Collaboration invites",
+      "status": "expansion",
+      "output_per_cycle": "k = 0.019",
+      "cycle_days": 10,
+      "sign_ups_per_month": 31,
+      "weak_step": "invites that create a new account (no segment split to size a fix)",
+      "gate": "fails 'new accounts, not seats': 96.5% of accepted invites became seats"
+    },
+    {
+      "loop": "Shareable outputs (booking page badge)",
+      "status": "measured",
+      "output_per_cycle": "k = 0.054",
+      "cycle_days": 41,
+      "sign_ups_per_month": 87,
+      "weak_step": "pages showing the badge: 46.1% against 92.0% on Starter",
+      "gate": "passes"
+    },
+    {
+      "loop": "User-generated public pages (community templates)",
+      "status": "measured",
+      "output_per_cycle": "k = 0.038",
+      "cycle_days": 38,
+      "sign_ups_per_month": 61,
+      "weak_step": "templates visible in search: 36.0% against 71.1% for templates linked from the gallery hub",
+      "gate": "passes"
+    },
+    {
+      "loop": "Content in search (articles from customer questions)",
+      "status": "measured",
+      "output_per_cycle": "k = 0.018",
+      "cycle_days": 111,
+      "sign_ups_per_month": 29,
+      "weak_step": "supply: 14 of 64 blog articles (21.9%) come from customer questions, though each mature one brings 2.5455 sign-ups a month against 1.0233 for the other articles",
+      "gate": "passes"
+    },
+    {
+      "loop": "Blog articles not from customer questions",
+      "status": "channel",
+      "output_per_cycle": "none: a channel, not a loop",
+      "cycle_days": null,
+      "sign_ups_per_month": 45,
+      "weak_step": "not scored: topics come from the team, not from new accounts",
+      "gate": "not a loop, so not picked; its sign-ups are left out of every k"
+    },
+    {
+      "loop": "Paid reinvestment",
+      "status": "measured",
+      "output_per_cycle": "r = 1.899 on Google non-brand search, 0.737 on Meta",
+      "cycle_days": 190,
+      "sign_ups_per_month": 240,
+      "weak_step": "Meta payback 16.3 months against 6.3 on Google non-brand search",
+      "gate": "Google non-brand passes (6.3 months); Meta fails (16.3 months against a 12-month limit)"
+    }
+  ],
+  "loop_detail": {
+    "collaboration_invites": {
+      "k_measured": "31 new accounts from invites ÷ 1600 new accounts = 0.019",
+      "seat_share": "849 of 880 accepted invites joined an existing account = 96.5%",
+      "cycle": "9 days sign-up to first invite + 1 day invite to join = 10 days",
+      "long_run_lift": "1 ÷ (1 − 0.019) = 1.020",
+      "verdict": "Staff invites grow seats inside paying accounts, which helps revenue, but they bring almost no new businesses. Not scored for the pick. A reward for owners who invite another business is a referral program: hand it to referral-program."
+    },
+    "shareable_outputs": {
+      "chain": [
+        {
+          "step": "new accounts that publish a booking page within 30 days",
+          "value": "62.0%",
+          "source": "user (product database)"
+        },
+        {
+          "step": "live pages showing the badge",
+          "value": "849 of 1840 = 46.1%",
+          "source": "user (product database)"
+        },
+        {
+          "step": "sign-ups per badged page per month",
+          "value": "87 ÷ 849 = 0.1025",
+          "source": "GA4 booking-page / powered-by keyEvents:sign_up"
+        },
+        {
+          "step": "active months per page",
+          "value": "1840 live ÷ 992 published per month = 1.9",
+          "source": "steady-state rule"
+        }
+      ],
+      "k_chain": 0.054,
+      "k_measured": "87 ÷ 1600 = 0.054",
+      "check": "chain 0.054 matches measured 0.054",
+      "badge_funnel": "412000 views of badged pages, 3090 badge sessions (0.75% of views), 87 sign-ups (2.82% of sessions)",
+      "segments": [
+        {
+          "plan": "Starter",
+          "badge_default": "on",
+          "badge_on": "644 of 700 = 92.0%"
+        },
+        {
+          "plan": "Growth",
+          "badge_default": "off",
+          "badge_on": "162 of 900 = 18.0%"
+        },
+        {
+          "plan": "Business",
+          "badge_default": "off",
+          "badge_on": "43 of 240 = 17.9%"
+        }
+      ],
+      "weak_step": "badge share: best segment Starter 92.0% ÷ loop-wide 46.1% = 1.99x, the biggest gap in the chain (no other step has a segment split)",
+      "cycle": "3 days sign-up to publish + 38 days to the first badge sign-up = 41 days",
+      "long_run_lift": "1 ÷ (1 − 0.054) = 1.058 now; 1.122 with the badge on 92.0% of pages (k = 0.108)"
+    },
+    "public_pages": {
+      "chain": [
+        {
+          "step": "new accounts that publish a template within 30 days",
+          "value": "3.00%",
+          "source": "user (product database)"
+        },
+        {
+          "step": "live templates visible in search",
+          "value": "151 of 420 = 36.0%",
+          "source": "Search Console pages with impressions"
+        },
+        {
+          "step": "sign-ups per visible template per month",
+          "value": "61 ÷ 151 = 0.4040",
+          "source": "GA4 landing /templates/community/ keyEvents:sign_up"
+        },
+        {
+          "step": "active months per template",
+          "value": "420 live ÷ 48 published per month = 8.8",
+          "source": "steady-state rule"
+        }
+      ],
+      "k_chain": 0.038,
+      "k_measured": "61 ÷ 1600 = 0.038",
+      "check": "chain 0.038 matches measured 0.038",
+      "segments": [
+        {
+          "group": "linked from the gallery hub",
+          "visible": "128 of 180 = 71.1%"
+        },
+        {
+          "group": "not linked",
+          "visible": "23 of 240 = 9.6%"
+        }
+      ],
+      "weak_step": "visibility: linked 71.1% ÷ loop-wide 36.0% = 1.98x",
+      "clicks": "3003 Search Console clicks to 151 visible templates, median 14 per page; 61 sign-ups ÷ 3003 clicks = 2.03% per click",
+      "long_run_lift": "1 ÷ (1 − 0.038) = 1.040",
+      "cycle": "12 days sign-up to publish + 26 days to the first impression (median of 15 recent templates) = 38 days"
+    },
+    "content": {
+      "k_measured": "29 sign-ups from the 14 articles that came from customer questions ÷ 1600 = 0.018",
+      "split": "the blog brought 74 sign-ups: 29 from the 14 question articles (the loop) and 45 from the other 50 articles (a channel, left out of k)",
+      "articles": "64 live, 3 published in the window; 54 mature (live longer than the 97-day ramp)",
+      "segments": [
+        {
+          "group": "mature articles from customer questions (loop)",
+          "articles": 11,
+          "sign_ups_per_article_per_month": 2.5455
+        },
+        {
+          "group": "other mature articles (channel)",
+          "articles": 43,
+          "sign_ups_per_article_per_month": 1.0233
+        }
+      ],
+      "weak_step": "supply: only 14 of 64 articles (21.9%) come from customer questions, yet each mature one brings 2.5455 sign-ups a month against 1.0233 for the channel's articles = 2.49x",
+      "ramp": "median 97 days from publish to the first 7-day stretch with 10+ clicks, over 21 articles from the last 12 months",
+      "cycle": "14 days question to article + 97 days ramp = 111 days",
+      "long_run_lift": "1 ÷ (1 − 0.018) = 1.018",
+      "label": "loop: topics come from new customers' questions; the other articles are labelled channel"
+    },
+    "paid_reinvestment": {
+      "unit_economics": "monthly margin per paying account = $41 × 82.0% = $33.62; paying share 18.0%",
+      "channels": [
+        {
+          "channel": "Google Ads non-brand search",
+          "cost": 6500,
+          "sign_ups": 170,
+          "cost_per_sign_up": 38,
+          "cac": 212,
+          "payback_months": 6.3,
+          "r": 1.899,
+          "passes_payback": true
+        },
+        {
+          "channel": "Meta Ads",
+          "cost": 6900,
+          "sign_ups": 70,
+          "cost_per_sign_up": 99,
+          "cac": 548,
+          "payback_months": 16.3,
+          "r": 0.737,
+          "passes_payback": false
+        },
+        {
+          "channel": "Blended (both)",
+          "cost": 13400,
+          "sign_ups": 240,
+          "cost_per_sign_up": 56,
+          "cac": 310,
+          "payback_months": 9.2,
+          "r": 1.301,
+          "passes_payback": true
+        }
+      ],
+      "campaigns": [
+        {
+          "campaign": "Search | Booking software",
+          "cost": 4100,
+          "sign_ups": 104,
+          "cost_per_sign_up": 39,
+          "cac": 219,
+          "payback_months": 6.5,
+          "r": 1.842,
+          "passes_payback": true,
+          "impression_share": "66.0%",
+          "lost_to_budget": "3.00%"
+        },
+        {
+          "campaign": "Search | Salon booking",
+          "cost": 2400,
+          "sign_ups": 66,
+          "cost_per_sign_up": 36,
+          "cac": 202,
+          "payback_months": 6.0,
+          "r": 1.997,
+          "passes_payback": true,
+          "impression_share": "58.0%",
+          "lost_to_budget": "14.0%",
+          "extra_sign_ups_per_month_upper_bound": 16,
+          "extra_spend_per_month": 579
+        }
+      ],
+      "brand_left_out": "Search | Brand ($900, 120 sign-ups) is left out: buying the name back recycles demand the other loops made",
+      "finding": "Blended payback is 9.2 months and passes, which hides Meta at 16.3 months. Reinvest only in Google non-brand search."
+    }
+  },
+  "fix_sizing": [
+    {
+      "loop": "Shareable outputs (booking page badge)",
+      "fix": "Turn the badge on by default on every plan, with an opt-out, as on Starter",
+      "extra_sign_ups_per_month": 86,
+      "build_days": 10,
+      "lag_days": 0,
+      "gain_90_days": 231,
+      "gain_12_months": 1009,
+      "math": "(92.0% − 46.1%) × 1840 live pages × 0.1025 = 86.5 a month; × (90 − 10 − 0) ÷ 30 = 231; × (360 − 10) ÷ 30 = 1009"
+    },
+    {
+      "loop": "User-generated public pages (community templates)",
+      "fix": "Link every community template from the gallery hub and list them all in the sitemap",
+      "extra_sign_ups_per_month": 42,
+      "build_days": 5,
+      "lag_days": 26,
+      "gain_90_days": 83,
+      "gain_12_months": 461,
+      "math": "newly visible = 240 × 71.1% − 23 = 147.7; × 14 median clicks × 2.03% = 42.0 a month; × (90 − 5 − 26) ÷ 30 = 83; × (360 − 5 − 26) ÷ 30 = 461"
+    },
+    {
+      "loop": "Content in search (articles from customer questions)",
+      "fix": "Publish 6 articles a month from customer questions",
+      "extra_sign_ups_per_month": "15 for each month's batch once it has ramped (6 × 2.5455)",
+      "build_days": 5,
+      "lag_days": 97,
+      "gain_90_days": 0,
+      "gain_12_months": 632,
+      "math": "first batch on day 5 ramps until day 102, after the 90-day window, so 0; over 360 days 12 monthly batches publish, 9 of them ramp inside the window, live 41.4 batch-months in all × 6 × 2.5455 = 632"
+    },
+    {
+      "loop": "Paid reinvestment (Google Ads non-brand search)",
+      "fix": "Raise the Search | Salon booking budget, which loses 14.0% of impression share to budget and pays back in 6.0 months",
+      "extra_sign_ups_per_month": 16,
+      "extra_spend_per_month": 579,
+      "build_days": 0,
+      "lag_days": 0,
+      "gain_90_days": 48,
+      "gain_12_months": 191,
+      "math": "66 × (14.0% ÷ 58.0%) = 15.9 a month, an upper bound that assumes cost per sign-up holds; × 3 = 48; × 12 = 191"
+    },
+    {
+      "loop": "Collaboration invites",
+      "fix": "none sized: fails the new-accounts gate",
+      "gain_90_days": null,
+      "gain_12_months": null
+    }
+  ],
+  "pick": {
+    "build_first": "Shareable outputs (booking page badge)",
+    "why": "Highest 90-day gain (231 sign-ups) among loops that pass the gates; the next best is 83, not within 10%.",
+    "build_next": [
+      {
+        "loop": "Content in search (articles from customer questions)",
+        "gain_12_months": 632,
+        "gain_90_days": 0,
+        "flag": "start now, it pays later"
+      },
+      {
+        "loop": "User-generated public pages (community templates)",
+        "gain_12_months": 461,
+        "gain_90_days": 83
+      },
+      {
+        "loop": "Paid reinvestment (Google Ads non-brand search)",
+        "gain_12_months": 191,
+        "gain_90_days": 48
+      }
+    ],
+    "first_result_readable": "2026-12-07 (10 build days + 0 lag + 30 days of data)"
+  },
+  "tracking_plan": [
+    {
+      "loop": "Shareable outputs",
+      "change": "Retag the badge link with utm_medium=referral: https://www.example.com/?utm_source=booking-page&utm_medium=referral&utm_campaign=powered-by&utm_content=<plan>",
+      "why": "utm_medium=powered-by puts 3090 sessions a month in Unassigned (93.6% of all Unassigned sessions); referral files them under Referral, and utm_content splits them by plan"
+    },
+    {
+      "loop": "Shareable outputs and public pages",
+      "change": "Add output_published with output_type (booking_page, template) and public; add the recommended share event with method, content_type and item_id when an owner copies or sends a booking page link",
+      "why": "neither event fires today, so publish rates come from the product database"
+    },
+    {
+      "loop": "Collaboration invites",
+      "change": "Add invite_sent with invite_type (seat, new_account) and invite_id; send the same invite_id on the invitee's sign_up with method=invite",
+      "why": "seat and new-account invites can't be told apart in GA4; this also unlocks the BigQuery cycle-time query"
+    },
+    {
+      "loop": "Every loop",
+      "change": "Send method on sign_up and register it as an event-scoped custom dimension",
+      "why": "sign_up is already a key event, but only plan_name is registered, so sign-ups can't be split by loop"
+    },
+    {
+      "loop": "Content",
+      "change": "A content group for articles that came from customer questions",
+      "why": "separates the loop's articles from the channel's in GA4 without a hand-kept list"
+    },
+    {
+      "loop": "Paid",
+      "change": "Paying share by channel from billing",
+      "why": "every channel uses the overall 18.0% today"
+    }
+  ],
+  "findings": [
+    "The badge loop is half switched off: 46.1% of live booking pages show it because it is off by default on Growth and Business, while 92.0% of Starter pages keep it on.",
+    "Badge traffic hides in Unassigned: utm_medium=powered-by is not a medium GA4 maps to Referral, so 3090 sessions and 87 sign-ups a month look like unexplained traffic.",
+    "Blended paid payback (9.2 months) passes the 12-month limit only because Google non-brand search (6.3 months) carries Meta (16.3 months).",
+    "Staff invites are not an acquisition loop: 96.5% of accepted invites add a seat, and they bring 31 new accounts a month (k = 0.019).",
+    "Content has the second-largest 12-month gain (632) but nothing inside 90 days, because articles take a median 97 days to ramp: start it now alongside the badge."
+  ],
+  "unknowns": [
+    "Cycle times are the user's medians from the product database: BigQuery is not connected, so the GA4 export query was not run.",
+    "Paying share by channel: every channel uses the overall 18.0%, so channel paybacks are estimates.",
+    "Search Console clicks and GA4 sign-ups for templates come from windows 2 days apart, so sign-ups per click is approximate."
+  ],
+  "fixes_offered": [
+    {
+      "action": "create_custom_dimension",
+      "status": "not run, offered after confirmation",
+      "payload": {
+        "action": "create_custom_dimension",
+        "property_id": "properties/123456789",
+        "parameter_name": "method",
+        "display_name": "Sign-up method",
+        "scope": "EVENT"
+      },
+      "condition": "only after the site sends this parameter"
+    },
+    {
+      "action": "create_custom_dimension",
+      "status": "not run, offered after confirmation",
+      "payload": {
+        "action": "create_custom_dimension",
+        "property_id": "properties/123456789",
+        "parameter_name": "invite_type",
+        "display_name": "Invite type",
+        "scope": "EVENT"
+      },
+      "condition": "only after the site sends this parameter"
+    },
+    {
+      "action": "create_custom_dimension",
+      "status": "not run, offered after confirmation",
+      "payload": {
+        "action": "create_custom_dimension",
+        "property_id": "properties/123456789",
+        "parameter_name": "output_type",
+        "display_name": "Output type",
+        "scope": "EVENT"
+      },
+      "condition": "only after the site sends this parameter"
+    },
+    {
+      "action": "create_key_event",
+      "status": "not needed",
+      "reason": "sign_up is already a key event"
+    }
+  ],
+  "go_deeper": [
+    {
+      "need": "Rewards for owners who invite another business",
+      "skill": "referral-program"
+    },
+    {
+      "need": "Moving Meta spend that fails payback",
+      "skill": "cross-platform-budget-allocator"
+    },
+    {
+      "need": "Testing the badge default before rolling it out",
+      "skill": "ab-test-designer"
+    },
+    {
+      "need": "Retagging the badge link",
+      "skill": "utm-auditor"
+    },
+    {
+      "need": "Linking every template from the gallery hub",
+      "skill": "internal-linking-planner"
+    },
+    {
+      "need": "Briefs for articles from customer questions",
+      "skill": "content-brief-writer"
+    }
+  ]
+}

@@ -1,0 +1,1909 @@
+{
+  "request": "Plan our push and in-app messages: when to ask for permission, which moments get a push instead of an email, how many pushes a day and a week, the copy, and what to track. Owners say we send too many notifications.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "app": {
+    "name": "Example Booking for Business",
+    "users": "owners and front-desk staff of small service businesses",
+    "platforms": [
+      "iOS app",
+      "Android app (targets Android 15)",
+      "web app at app.example.com (not a Home Screen web app)"
+    ],
+    "app_store_id": 6400000001,
+    "google_play_package": "com.example.booking.business",
+    "push_provider": "a push provider, read from its CSV export (no connector)",
+    "email_platform": "Klaviyo",
+    "time_zone": "America/New_York"
+  },
+  "windows": {
+    "ga4": {
+      "start": "2026-09-30",
+      "end": "2026-10-27"
+    },
+    "reviews": {
+      "start": "2026-07-30",
+      "end": "2026-10-27"
+    },
+    "push_export": {
+      "start": "2026-08-03",
+      "end": "2026-10-25"
+    }
+  },
+  "account": {
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "name": "Example Booking Software"
+    },
+    "klaviyo": {
+      "account_id": "XyZ123",
+      "name": "Example Booking Software"
+    }
+  },
+  "data_pulled": {
+    "ga4_active_users_by_os": {
+      "call": "google-analytics get_report: dimensions streamName, operatingSystem, operatingSystemVersion; metric activeUsers",
+      "rows": [
+        {
+          "stream": "iOS app",
+          "operatingSystem": "iOS",
+          "operatingSystemVersion": "18",
+          "activeUsers": 3120
+        },
+        {
+          "stream": "iOS app",
+          "operatingSystem": "iOS",
+          "operatingSystemVersion": "17",
+          "activeUsers": 1640
+        },
+        {
+          "stream": "iOS app",
+          "operatingSystem": "iOS",
+          "operatingSystemVersion": "16",
+          "activeUsers": 520
+        },
+        {
+          "stream": "iOS app",
+          "operatingSystem": "iOS",
+          "operatingSystemVersion": "15",
+          "activeUsers": 120
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "15",
+          "activeUsers": 1310
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "14",
+          "activeUsers": 1140
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "13",
+          "activeUsers": 720
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "12",
+          "activeUsers": 460
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "11",
+          "activeUsers": 290
+        },
+        {
+          "stream": "Android app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "10",
+          "activeUsers": 180
+        },
+        {
+          "stream": "Web app",
+          "operatingSystem": "Windows",
+          "operatingSystemVersion": "(all)",
+          "activeUsers": 2620
+        },
+        {
+          "stream": "Web app",
+          "operatingSystem": "Macintosh",
+          "operatingSystemVersion": "(all)",
+          "activeUsers": 1880
+        },
+        {
+          "stream": "Web app",
+          "operatingSystem": "Android",
+          "operatingSystemVersion": "(all)",
+          "activeUsers": 410
+        },
+        {
+          "stream": "Web app",
+          "operatingSystem": "iOS",
+          "operatingSystemVersion": "(all)",
+          "activeUsers": 690
+        },
+        {
+          "stream": "Web app",
+          "operatingSystem": "Chrome OS",
+          "operatingSystemVersion": "(all)",
+          "activeUsers": 100
+        }
+      ]
+    },
+    "ga4_onboarding_events": {
+      "call": "google-analytics get_report: dimension eventName; metric totalUsers (app streams)",
+      "rows": [
+        {
+          "eventName": "first_open",
+          "totalUsers": 1240,
+          "push_payoff": null
+        },
+        {
+          "eventName": "sign_up",
+          "totalUsers": 1010,
+          "push_payoff": null
+        },
+        {
+          "eventName": "booking_page_published",
+          "totalUsers": 640,
+          "push_payoff": "new booking and cancellation alerts start from here"
+        },
+        {
+          "eventName": "calendar_connected",
+          "totalUsers": 410,
+          "push_payoff": "daily schedule push"
+        },
+        {
+          "eventName": "first_booking_received",
+          "totalUsers": 380,
+          "push_payoff": "new booking alert"
+        },
+        {
+          "eventName": "payment_setup_completed",
+          "totalUsers": 210,
+          "push_payoff": "payment received alert"
+        }
+      ]
+    },
+    "ga4_other_events": {
+      "call": "the same report, other event names",
+      "rows": [
+        {
+          "eventName": "booking_received",
+          "eventCount": 18400,
+          "totalUsers": 3900
+        },
+        {
+          "eventName": "booking_cancelled",
+          "eventCount": 2110,
+          "totalUsers": 1290
+        },
+        {
+          "eventName": "staff_limit_reached",
+          "eventCount": 260,
+          "totalUsers": 190
+        },
+        {
+          "eventName": "notification_open",
+          "eventCount": 6240,
+          "totalUsers": 2880
+        },
+        {
+          "eventName": "app_remove",
+          "eventCount": 69,
+          "totalUsers": 69,
+          "from_export_days": 66,
+          "days_after_export": {
+            "2026-10-26": 1,
+            "2026-10-27": 2
+          }
+        }
+      ]
+    },
+    "ga4_active_users_by_hour": {
+      "call": "google-analytics get_report: dimension hour; metric activeUsers",
+      "time_zone": "America/New_York",
+      "rows": [
+        {
+          "hour": "18",
+          "activeUsers": 1924
+        },
+        {
+          "hour": "23",
+          "activeUsers": 229
+        },
+        {
+          "hour": "15",
+          "activeUsers": 2636
+        },
+        {
+          "hour": "22",
+          "activeUsers": 439
+        },
+        {
+          "hour": "4",
+          "activeUsers": 78
+        },
+        {
+          "hour": "0",
+          "activeUsers": 102
+        },
+        {
+          "hour": "2",
+          "activeUsers": 43
+        },
+        {
+          "hour": "9",
+          "activeUsers": 3107
+        },
+        {
+          "hour": "10",
+          "activeUsers": 2996
+        },
+        {
+          "hour": "6",
+          "activeUsers": 936
+        },
+        {
+          "hour": "12",
+          "activeUsers": 2607
+        },
+        {
+          "hour": "14",
+          "activeUsers": 2746
+        },
+        {
+          "hour": "16",
+          "activeUsers": 2488
+        },
+        {
+          "hour": "8",
+          "activeUsers": 2960
+        },
+        {
+          "hour": "20",
+          "activeUsers": 1196
+        },
+        {
+          "hour": "17",
+          "activeUsers": 2239
+        },
+        {
+          "hour": "5",
+          "activeUsers": 249
+        },
+        {
+          "hour": "13",
+          "activeUsers": 2684
+        },
+        {
+          "hour": "1",
+          "activeUsers": 69
+        },
+        {
+          "hour": "3",
+          "activeUsers": 33
+        },
+        {
+          "hour": "7",
+          "activeUsers": 2177
+        },
+        {
+          "hour": "19",
+          "activeUsers": 1557
+        },
+        {
+          "hour": "11",
+          "activeUsers": 2795
+        },
+        {
+          "hour": "21",
+          "activeUsers": 821
+        }
+      ]
+    },
+    "store_reviews": {
+      "call": "apple-store reviews and google-play reviews, last 90 days",
+      "rows": [
+        {
+          "store": "App Store",
+          "date": "2026-08-01",
+          "rating": 4,
+          "text": "Easy to use, my front desk learned it in a day."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-06",
+          "rating": 5,
+          "text": "I like the new staff view."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-10",
+          "rating": 5,
+          "text": "Works fine on my iPad too."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-11",
+          "rating": 1,
+          "text": "Alerts are an upsell machine lately, upgrade upgrade upgrade."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-13",
+          "rating": 3,
+          "text": "Got an upgrade notification at 11pm on a Sunday night. Please stop."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-14",
+          "rating": 3,
+          "text": "The push alerts for new bookings are useful but I can't turn off the promo ones without losing everything."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-18",
+          "rating": 4,
+          "text": "Simple and reliable."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-20",
+          "rating": 5,
+          "text": "Payments setup took two minutes."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-23",
+          "rating": 1,
+          "text": "Great app for my salon, reminders cut our no-shows."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-23",
+          "rating": 4,
+          "text": "Clients like the reminder texts."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-24",
+          "rating": 1,
+          "text": "Solid app. Wish the reports were deeper."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-29",
+          "rating": 5,
+          "text": "Calendar sync works well with my phone calendar."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-30",
+          "rating": 1,
+          "text": "I keep getting tips notifications I never asked for, feels like marketing."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-08-31",
+          "rating": 1,
+          "text": "The app crashed once after an update, fixed now."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-04",
+          "rating": 2,
+          "text": "Too many notifications, I get a push for every single booking and it adds up on a busy Saturday."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-04",
+          "rating": 1,
+          "text": "Wish I could set my own hours for alerts."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-15",
+          "rating": 4,
+          "text": "Deposit feature is excellent."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-19",
+          "rating": 5,
+          "text": "Push for cancellations is great, saves me checking the app."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-21",
+          "rating": 5,
+          "text": "Love it."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-23",
+          "rating": 4,
+          "text": "Love the booking page, my clients find it easy."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-09-26",
+          "rating": 2,
+          "text": "Too many pings in the morning, I silenced the app."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-02",
+          "rating": 5,
+          "text": "Every time I open the app it asks for something."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-05",
+          "rating": 5,
+          "text": "Everything my clinic needed."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-08",
+          "rating": 4,
+          "text": "Would be five stars if the notifications let me choose which ones I want."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-09",
+          "rating": 4,
+          "text": "Booking page looks clean."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-10",
+          "rating": 5,
+          "text": "The daily schedule alert at 7am is the best part."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-12",
+          "rating": 1,
+          "text": "Notification woke me at 5 am with a weekly tip. Not okay."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-18",
+          "rating": 5,
+          "text": "Good value for a small studio."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-19",
+          "rating": 5,
+          "text": "Customer support answered fast."
+        },
+        {
+          "store": "App Store",
+          "date": "2026-10-22",
+          "rating": 4,
+          "text": "Fast and simple."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-07-31",
+          "rating": 5,
+          "text": "Clients love the booking page."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-05",
+          "rating": 4,
+          "text": "Easy setup."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-08",
+          "rating": 5,
+          "text": "The app is fast."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-09",
+          "rating": 5,
+          "text": "Payments are smooth."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-09",
+          "rating": 5,
+          "text": "Good for small teams."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-17",
+          "rating": 3,
+          "text": "Not receiving booking notifications since the last update."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-26",
+          "rating": 1,
+          "text": "Missed two bookings because the alert never came."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-28",
+          "rating": 3,
+          "text": "Upgrade prompts in notifications are annoying."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-08-31",
+          "rating": 5,
+          "text": "Fine app."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-01",
+          "rating": 5,
+          "text": "Good support."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-03",
+          "rating": 4,
+          "text": "Push reminders for my day are handy."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-03",
+          "rating": 2,
+          "text": "Alerts at midnight about features, please no."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-05",
+          "rating": 1,
+          "text": "Notifications arrive hours later on my Android phone."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-06",
+          "rating": 4,
+          "text": "Great app overall."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-09",
+          "rating": 1,
+          "text": "Too many notifications from tips and offers."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-09",
+          "rating": 5,
+          "text": "Helps my clinic stay organised."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-11",
+          "rating": 5,
+          "text": "Good for my barber shop."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-19",
+          "rating": 4,
+          "text": "Love the reports."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-26",
+          "rating": 3,
+          "text": "Didn't get the cancellation alert, double booked a slot."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-09-29",
+          "rating": 5,
+          "text": "Calendar sync is perfect."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-02",
+          "rating": 2,
+          "text": "Late notifications make it hard to confirm walk-ins."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-07",
+          "rating": 2,
+          "text": "Only on or off for notifications, I want booking alerts but not news."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-08",
+          "rating": 5,
+          "text": "Reliable for my studio."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-11",
+          "rating": 5,
+          "text": "Nice design."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-15",
+          "rating": 5,
+          "text": "Works well."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-15",
+          "rating": 1,
+          "text": "Spam notifications every day this month."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-17",
+          "rating": 5,
+          "text": "Would like dark mode."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-21",
+          "rating": 3,
+          "text": "Booking alerts are delayed, sometimes 30 minutes."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-23",
+          "rating": 3,
+          "text": "I never got the push for a new booking, found out when the client showed up."
+        },
+        {
+          "store": "Google Play",
+          "date": "2026-10-26",
+          "rating": 5,
+          "text": "Simple to learn."
+        }
+      ]
+    },
+    "klaviyo_flows": {
+      "call": "klaviyo get_flows and get_flow_report (last 90 days, recipients by flow and channel)",
+      "rows": [
+        {
+          "name": "Welcome series",
+          "status": "live",
+          "trigger_metric": "Signed Up",
+          "first_message_hours": 0,
+          "channel": "email",
+          "recipients_90d": 3050
+        },
+        {
+          "name": "Finish your booking page",
+          "status": "live",
+          "trigger_metric": "Signed Up",
+          "first_message_hours": 24,
+          "channel": "email",
+          "recipients_90d": 1420,
+          "condition": "booking page not published"
+        },
+        {
+          "name": "Connect your calendar",
+          "status": "live",
+          "trigger_metric": "Booking Page Published",
+          "first_message_hours": 48,
+          "channel": "email",
+          "recipients_90d": 980,
+          "condition": "calendar not connected"
+        },
+        {
+          "name": "Upgrade when the team grows",
+          "status": "live",
+          "trigger_metric": "Staff Limit Reached",
+          "first_message_hours": 2,
+          "channel": "email",
+          "recipients_90d": 520
+        },
+        {
+          "name": "We miss you",
+          "status": "draft",
+          "trigger_metric": "No Login 30 Days",
+          "first_message_hours": 0,
+          "channel": "email",
+          "recipients_90d": 0
+        }
+      ]
+    },
+    "push_export_opted_in_active_devices": {
+      "iOS": 2402,
+      "Android 13 and later": 1848,
+      "Android 12 and earlier": 862,
+      "Web (desktop and Android browsers)": 1047,
+      "Web on iPhone and iPad": 0
+    },
+    "push_export_prompts_28d": [
+      {
+        "platform": "iOS",
+        "placement": "first launch, before sign-up",
+        "shown": 900,
+        "accepted": 380
+      },
+      {
+        "platform": "Android 13 and later",
+        "placement": "first launch, before sign-up",
+        "shown": 640,
+        "accepted": 390
+      },
+      {
+        "platform": "Web (desktop and Android browsers)",
+        "placement": "dashboard page load",
+        "shown": 2100,
+        "accepted": 260
+      }
+    ],
+    "messages_now": [
+      {
+        "id": "P1",
+        "name": "New booking",
+        "kind": "push",
+        "type": "transactional",
+        "trigger": "booking_received",
+        "timing": "immediately",
+        "title": "New booking",
+        "body": "You have a new booking. Open the app to see the details.",
+        "delivered_28d": 15200,
+        "direct_opens_28d": 4100
+      },
+      {
+        "id": "P2",
+        "name": "Booking cancelled",
+        "kind": "push",
+        "type": "transactional",
+        "trigger": "booking_cancelled",
+        "timing": "immediately",
+        "title": "Cancellation",
+        "body": "A booking was cancelled.",
+        "delivered_28d": 1760,
+        "direct_opens_28d": 690
+      },
+      {
+        "id": "P3",
+        "name": "Daily schedule",
+        "kind": "push",
+        "type": "scheduled utility",
+        "trigger": "every day 07:00 (property time zone)",
+        "timing": "07:00",
+        "title": "Your day",
+        "body": "Here is your schedule for today.",
+        "delivered_28d": 41200,
+        "direct_opens_28d": 5400
+      },
+      {
+        "id": "P4",
+        "name": "Finish your booking page",
+        "kind": "push",
+        "type": "marketing",
+        "trigger": "sign_up",
+        "timing": "24 hours after sign-up if the page is not published",
+        "title": "Almost there!",
+        "body": "Finish setting up your booking page so clients can book you online.",
+        "delivered_28d": 260,
+        "direct_opens_28d": 21
+      },
+      {
+        "id": "P5",
+        "name": "Tip of the week",
+        "kind": "push",
+        "type": "marketing",
+        "trigger": "broadcast, Tuesdays and some Fridays",
+        "timing": "06:00 (property time zone)",
+        "title": "Weekly tip",
+        "body": "Did you know you can add a deposit to any service? Tap to learn how.",
+        "delivered_28d": 57872,
+        "direct_opens_28d": 1794
+      },
+      {
+        "id": "P6",
+        "name": "Upgrade offer",
+        "kind": "push",
+        "type": "marketing",
+        "trigger": "broadcast, about twice a month",
+        "timing": "20:00 (property time zone)",
+        "title": "Grow your team",
+        "body": "Upgrade to Growth and add up to 5 staff calendars.",
+        "delivered_28d": 28971,
+        "direct_opens_28d": 406
+      },
+      {
+        "id": "W1",
+        "name": "New booking (web)",
+        "kind": "web push",
+        "type": "transactional",
+        "trigger": "booking_received",
+        "timing": "immediately",
+        "title": "New booking",
+        "body": "You have a new booking.",
+        "delivered_28d": 5200,
+        "direct_opens_28d": 1250
+      },
+      {
+        "id": "I1",
+        "name": "Connect your calendar",
+        "kind": "in-app",
+        "type": "in-app",
+        "trigger": "dashboard open, calendar not connected",
+        "timing": "every dashboard open",
+        "title": "Connect your calendar",
+        "body": "Sync bookings with the calendar you already use.",
+        "impressions_28d": 9800,
+        "clicks_28d": 290,
+        "dismissals_28d": 7100
+      },
+      {
+        "id": "I2",
+        "name": "Rate the app",
+        "kind": "in-app",
+        "type": "in-app",
+        "trigger": "third session",
+        "timing": "third session start",
+        "title": "Enjoying the app?",
+        "body": "Rate us on the store.",
+        "impressions_28d": 1100,
+        "clicks_28d": 120,
+        "dismissals_28d": 860
+      }
+    ],
+    "push_export_daily": [
+      {
+        "date": "2026-08-03",
+        "opted_in_devices": 5903,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-04",
+        "opted_in_devices": 5905,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5663
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5663,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-05",
+        "opted_in_devices": 5914,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-06",
+        "opted_in_devices": 5916,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-07",
+        "opted_in_devices": 5918,
+        "marketing_sends": [
+          {
+            "message": "P6",
+            "delivered": 5683
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5683,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 3
+      },
+      {
+        "date": "2026-08-08",
+        "opted_in_devices": 5925,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-09",
+        "opted_in_devices": 5925,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-10",
+        "opted_in_devices": 5924,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-11",
+        "opted_in_devices": 5924,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5670
+          },
+          {
+            "message": "P6",
+            "delivered": 5557
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11227,
+        "opt_outs": 9,
+        "android_uninstalls_ga4_app_remove": 6
+      },
+      {
+        "date": "2026-08-12",
+        "opted_in_devices": 5931,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-13",
+        "opted_in_devices": 5939,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-14",
+        "opted_in_devices": 5944,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5580
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5580,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-15",
+        "opted_in_devices": 5945,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-16",
+        "opted_in_devices": 5950,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-17",
+        "opted_in_devices": 5950,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-18",
+        "opted_in_devices": 5959,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5611
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5611,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-19",
+        "opted_in_devices": 5960,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-20",
+        "opted_in_devices": 5962,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-21",
+        "opted_in_devices": 5966,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5768
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5768,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-22",
+        "opted_in_devices": 5970,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-23",
+        "opted_in_devices": 5967,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-24",
+        "opted_in_devices": 5973,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-08-25",
+        "opted_in_devices": 5978,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5571
+          },
+          {
+            "message": "P6",
+            "delivered": 5667
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11238,
+        "opt_outs": 10,
+        "android_uninstalls_ga4_app_remove": 4
+      },
+      {
+        "date": "2026-08-26",
+        "opted_in_devices": 5980,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-27",
+        "opted_in_devices": 5982,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-28",
+        "opted_in_devices": 5984,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5764
+          },
+          {
+            "message": "P6",
+            "delivered": 5714
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11478,
+        "opt_outs": 7,
+        "android_uninstalls_ga4_app_remove": 4
+      },
+      {
+        "date": "2026-08-29",
+        "opted_in_devices": 5983,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-30",
+        "opted_in_devices": 5984,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-08-31",
+        "opted_in_devices": 5981,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-01",
+        "opted_in_devices": 5990,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5720
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5720,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-02",
+        "opted_in_devices": 5999,
+        "marketing_sends": [
+          {
+            "message": "P6",
+            "delivered": 5813
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5813,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-03",
+        "opted_in_devices": 6000,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-04",
+        "opted_in_devices": 6001,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5744
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5744,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-05",
+        "opted_in_devices": 5998,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-06",
+        "opted_in_devices": 5997,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-07",
+        "opted_in_devices": 6002,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-08",
+        "opted_in_devices": 6009,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5716
+          },
+          {
+            "message": "P6",
+            "delivered": 5720
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11436,
+        "opt_outs": 7,
+        "android_uninstalls_ga4_app_remove": 6
+      },
+      {
+        "date": "2026-09-09",
+        "opted_in_devices": 6015,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-10",
+        "opted_in_devices": 6023,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5747
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5747,
+        "opt_outs": 5,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-11",
+        "opted_in_devices": 6021,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5719
+          },
+          {
+            "message": "P6",
+            "delivered": 5803
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11522,
+        "opt_outs": 9,
+        "android_uninstalls_ga4_app_remove": 5
+      },
+      {
+        "date": "2026-09-12",
+        "opted_in_devices": 6022,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-13",
+        "opted_in_devices": 6030,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-14",
+        "opted_in_devices": 6037,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-09-15",
+        "opted_in_devices": 6043,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5766
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5766,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-16",
+        "opted_in_devices": 6051,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-17",
+        "opted_in_devices": 6053,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-18",
+        "opted_in_devices": 6050,
+        "marketing_sends": [
+          {
+            "message": "P6",
+            "delivered": 5836
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5836,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-19",
+        "opted_in_devices": 6051,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-20",
+        "opted_in_devices": 6059,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-21",
+        "opted_in_devices": 6068,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-22",
+        "opted_in_devices": 6069,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5824
+          },
+          {
+            "message": "P6",
+            "delivered": 5675
+          }
+        ],
+        "marketing_pushes_sent": 2,
+        "marketing_delivered": 11499,
+        "opt_outs": 8,
+        "android_uninstalls_ga4_app_remove": 4
+      },
+      {
+        "date": "2026-09-23",
+        "opted_in_devices": 6072,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-24",
+        "opted_in_devices": 6076,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-09-25",
+        "opted_in_devices": 6083,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5814
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5814,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-26",
+        "opted_in_devices": 6083,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-27",
+        "opted_in_devices": 6080,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-28",
+        "opted_in_devices": 6079,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-09-29",
+        "opted_in_devices": 6077,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5830
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5830,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 3
+      },
+      {
+        "date": "2026-09-30",
+        "opted_in_devices": 6083,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-10-01",
+        "opted_in_devices": 6089,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-02",
+        "opted_in_devices": 6094,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5710
+          },
+          {
+            "message": "P6",
+            "delivered": 5856
+          },
+          {
+            "message": "P5",
+            "delivered": 5814
+          }
+        ],
+        "marketing_pushes_sent": 3,
+        "marketing_delivered": 17380,
+        "opt_outs": 15,
+        "android_uninstalls_ga4_app_remove": 7
+      },
+      {
+        "date": "2026-10-03",
+        "opted_in_devices": 6102,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-04",
+        "opted_in_devices": 6103,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-05",
+        "opted_in_devices": 6100,
+        "marketing_sends": [
+          {
+            "message": "P6",
+            "delivered": 5819
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5819,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-06",
+        "opted_in_devices": 6100,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5753
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5753,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-07",
+        "opted_in_devices": 6104,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-08",
+        "opted_in_devices": 6101,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-10-09",
+        "opted_in_devices": 6105,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5752
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5752,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-10",
+        "opted_in_devices": 6104,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-11",
+        "opted_in_devices": 6104,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-12",
+        "opted_in_devices": 6109,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-13",
+        "opted_in_devices": 6114,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5798
+          },
+          {
+            "message": "P6",
+            "delivered": 5739
+          },
+          {
+            "message": "P5",
+            "delivered": 5727
+          }
+        ],
+        "marketing_pushes_sent": 3,
+        "marketing_delivered": 17264,
+        "opt_outs": 13,
+        "android_uninstalls_ga4_app_remove": 9
+      },
+      {
+        "date": "2026-10-14",
+        "opted_in_devices": 6113,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 1
+      },
+      {
+        "date": "2026-10-15",
+        "opted_in_devices": 6115,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-16",
+        "opted_in_devices": 6119,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5709
+          },
+          {
+            "message": "P6",
+            "delivered": 5811
+          },
+          {
+            "message": "P5",
+            "delivered": 5854
+          }
+        ],
+        "marketing_pushes_sent": 3,
+        "marketing_delivered": 17374,
+        "opt_outs": 14,
+        "android_uninstalls_ga4_app_remove": 7
+      },
+      {
+        "date": "2026-10-17",
+        "opted_in_devices": 6122,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-18",
+        "opted_in_devices": 6127,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-19",
+        "opted_in_devices": 6133,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-20",
+        "opted_in_devices": 6136,
+        "marketing_sends": [
+          {
+            "message": "P5",
+            "delivered": 5925
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5925,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-21",
+        "opted_in_devices": 6140,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-22",
+        "opted_in_devices": 6147,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-23",
+        "opted_in_devices": 6148,
+        "marketing_sends": [
+          {
+            "message": "P6",
+            "delivered": 5746
+          }
+        ],
+        "marketing_pushes_sent": 1,
+        "marketing_delivered": 5746,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-24",
+        "opted_in_devices": 6153,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 3,
+        "android_uninstalls_ga4_app_remove": 2
+      },
+      {
+        "date": "2026-10-25",
+        "opted_in_devices": 6159,
+        "marketing_sends": [],
+        "marketing_pushes_sent": 0,
+        "marketing_delivered": 0,
+        "opt_outs": 4,
+        "android_uninstalls_ga4_app_remove": 2
+      }
+    ]
+  },
+  "moments_from_the_user": [
+    {
+      "moment": "Ask for notification permission",
+      "trigger_event": "booking_page_published",
+      "time_sensitive": false,
+      "needs_screen": true,
+      "long_or_kept": false,
+      "user_chosen": false
+    },
+    {
+      "moment": "New booking received",
+      "trigger_event": "booking_received",
+      "klaviyo_metric": null,
+      "time_sensitive": true,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": true,
+      "replaces": "P1, W1"
+    },
+    {
+      "moment": "Booking cancelled",
+      "trigger_event": "booking_cancelled",
+      "klaviyo_metric": null,
+      "time_sensitive": true,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": true,
+      "replaces": "P2"
+    },
+    {
+      "moment": "Today's schedule",
+      "trigger_event": "scheduled, each morning",
+      "klaviyo_metric": null,
+      "time_sensitive": true,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": true,
+      "replaces": "P3"
+    },
+    {
+      "moment": "Booking page not published 24 hours after sign-up",
+      "trigger_event": "sign_up",
+      "klaviyo_metric": "Signed Up",
+      "delay_hours": 24,
+      "time_sensitive": false,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": false,
+      "replaces": "P4"
+    },
+    {
+      "moment": "Calendar not connected after the page is live",
+      "trigger_event": "booking_page_published",
+      "klaviyo_metric": "Booking Page Published",
+      "delay_hours": 12,
+      "when": "the first dashboard open at least 12 hours after the page is published",
+      "time_sensitive": false,
+      "needs_screen": true,
+      "long_or_kept": false,
+      "user_chosen": false,
+      "replaces": "I1"
+    },
+    {
+      "moment": "Staff limit reached",
+      "trigger_event": "staff_limit_reached",
+      "klaviyo_metric": "Staff Limit Reached",
+      "delay_hours": 0,
+      "time_sensitive": false,
+      "needs_screen": true,
+      "long_or_kept": false,
+      "user_chosen": false,
+      "replaces": "P6"
+    },
+    {
+      "moment": "Weekly tip",
+      "trigger_event": "broadcast",
+      "klaviyo_metric": null,
+      "time_sensitive": false,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": false,
+      "replaces": "P5"
+    },
+    {
+      "moment": "Monthly report ready",
+      "trigger_event": "scheduled, first of the month",
+      "klaviyo_metric": null,
+      "time_sensitive": false,
+      "needs_screen": false,
+      "long_or_kept": true,
+      "user_chosen": false,
+      "replaces": null
+    },
+    {
+      "moment": "No login for 30 days",
+      "trigger_event": "no session 30 days",
+      "klaviyo_metric": "No Login 30 Days",
+      "delay_hours": 0,
+      "time_sensitive": false,
+      "needs_screen": false,
+      "long_or_kept": false,
+      "user_chosen": false,
+      "replaces": null
+    }
+  ],
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The push provider results come from an invented CSV export, as the skill expects, since no push provider has a connector."
+}

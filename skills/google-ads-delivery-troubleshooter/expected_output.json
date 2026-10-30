@@ -1,0 +1,318 @@
+{
+  "header": {
+    "account": "Example Booking Software",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "asked_about": "the whole account: spend dropped this week, and two campaigns say Eligible (limited)",
+    "windows": {
+      "last_7_days": "2026-10-21 to 2026-10-27",
+      "last_30_days": "2026-09-28 to 2026-10-27",
+      "change_history": "2026-10-14 to 2026-10-28"
+    },
+    "account_cost_7d": 1217.9,
+    "answer": "3 things stop delivery, 2 hold it back, and 1 campaign is simply at its demand ceiling. Raise the account budget first: everything stops in about 3.3 days."
+  },
+  "blockers_ranked": [
+    {
+      "item": "Account budget (monthly invoicing)",
+      "level": "account",
+      "verdict": "Can't serve",
+      "google_reason": "none yet: Google gives no status reason until the spending limit is reached",
+      "evidence": "account_budget query: 2 budget rows; the current one started 2026-07-01 with no end date, limit $36,000, served $35,420, so $580 is left. The account spent $1,217.90 in the last 7 days ($173.99 a day), so it runs out in 3.3 days, around 2026-10-31, and no later budget is queued. Every campaign stops then.",
+      "money_at_stake": 1217.9,
+      "money_basis": "the account's 7-day cost (everything stops)",
+      "fix": "Ask the billing admin to raise the spending limit or add the next account budget today, before it runs out.",
+      "who": "do this in Google Ads (Billing, then Account budgets)",
+      "changes_14d": [],
+      "rank": 1
+    },
+    {
+      "item": "Clinic Scheduling | Search",
+      "level": "campaign",
+      "verdict": "Can't serve",
+      "google_reason": "NOT_ELIGIBLE: HAS_ADS_DISAPPROVED, NO_AD_GROUP_ADS",
+      "evidence": "campaign query: primary status NOT_ELIGIBLE. ad query: all 4 enabled ads in its 2 ad groups are DISAPPROVED for DESTINATION_NOT_WORKING (PROHIBITED), so no ad group has an approved ad. All of them send people to https://www.example.com/clinics/. It had 11,900 impressions in 30 days and none in the last 7: it has stopped.",
+      "money_at_stake": 840.0,
+      "money_basis": "unused budget: $120 a day x 7 minus $0.00 spent",
+      "fix": "The landing page no longer loads at that address. The clinic page now lives at https://www.example.com/industries/clinics/. Point the ads there (after you confirm it loads), and Google reviews them again.",
+      "who": "I can do this now (update_responsive_search_ad, after you confirm)",
+      "changes_14d": [],
+      "changes_note": "No change in the account fits: the cause is outside the account (the page moved).",
+      "stopped": true,
+      "rank": 2
+    },
+    {
+      "item": "campaign negative \"app\" (broad) in Salon Booking | Search",
+      "level": "keyword",
+      "verdict": "Can't serve",
+      "google_reason": "CAMPAIGN_CRITERION_NEGATIVE on both keywords",
+      "evidence": "keyword and negative queries: the broad negative \"app\" blocks \"salon booking app\" (phrase, $520.00 in 30 days) and \"booking app for salons\" (exact, $270.00 in 30 days). Google's own reason on both keywords agrees. The negative was created on 2026-10-15.",
+      "blocked_keywords": [
+        {
+          "text": "salon booking app",
+          "match_type": "PHRASE",
+          "cost_30d": 520.0,
+          "ad_group": "Salon app"
+        },
+        {
+          "text": "booking app for salons",
+          "match_type": "EXACT",
+          "cost_30d": 270.0,
+          "ad_group": "Salon app"
+        }
+      ],
+      "money_at_stake": 184.33,
+      "money_basis": "30-day cost x 7 / 30 of the blocked keywords; a floor, since they were blocked part way through",
+      "fix": "Remove the broad negative \"app\" from Salon Booking | Search, or swap it for negatives that name the searches it was meant to stop, taken from your search terms. The \"Salon app\" ad group exists to sell the booking app, so these keywords are wanted.",
+      "who": "do this in Google Ads (Keywords, then Negative keywords); the remove_negative_keywords action is off by default",
+      "changes_14d": [
+        {
+          "when": "2026-10-23 14:05",
+          "what": "AD_GROUP_AD UPDATE (ad.responsive_search_ad.headlines)",
+          "likely_cause": false
+        },
+        {
+          "when": "2026-10-15 10:12",
+          "what": "CAMPAIGN_CRITERION CREATE (keyword.text,keyword.match_type,negative)",
+          "likely_cause": true
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "item": "Fitness Class Booking | Search",
+      "level": "campaign",
+      "verdict": "Serves with limits",
+      "google_reason": "LIMITED: BIDDING_STRATEGY_CONSTRAINED",
+      "evidence": "campaign queries: target CPA $35.00 against an achieved CPA of $65.77 over 30 days ($1,710.00 / 26 conversions), so the target is 53.2% of what conversions cost, under the 80% line. In the last 7 days it lost 69.0% of impression share to rank and 0.0% to budget, and used 34.0% of its budget.",
+      "money_at_stake": 461.9,
+      "money_basis": "unused budget: $100 a day x 7 minus $238.10 spent",
+      "fix": "Move the target toward the achieved CPA, for example to $65, and leave it alone while bidding relearns. If $65 a conversion is too much for the business, the campaign will stay small at the current target: that is a choice, not a fault.",
+      "who": "I can do this now (update_campaign with target_cpa, after you confirm)",
+      "changes_14d": [
+        {
+          "when": "2026-10-16 09:40",
+          "what": "CAMPAIGN UPDATE (maximize_conversions.target_cpa_micros)",
+          "likely_cause": true
+        }
+      ],
+      "conversions_30d": 26,
+      "rank": 4
+    },
+    {
+      "item": "Competitor Alternatives | Search",
+      "level": "campaign",
+      "verdict": "Serves with limits",
+      "google_reason": "ELIGIBLE (the schedule is a setting, so Google gives no reason)",
+      "evidence": "campaign criteria query: 5 ad schedule rows, Monday to Friday, 9:00 to 17:00 in America/New_York, 40 of 168 hours a week. You said ads should run all day, every day. It used 38.0% of its budget in the last 7 days.",
+      "money_at_stake": 260.4,
+      "money_basis": "unused budget: $60 a day x 7 minus $159.60 spent",
+      "fix": "Remove the ad schedule, or widen it, if the limit wasn't meant. Your UK and Canadian customers search outside New York office hours.",
+      "who": "do this in Google Ads (campaign, then Ad schedule)",
+      "changes_14d": [],
+      "rank": 5
+    }
+  ],
+  "campaign_table": [
+    {
+      "campaign": "Brand | Search",
+      "primary_status": "ELIGIBLE",
+      "reasons": [],
+      "daily_budget": 40.0,
+      "cost_7d": 126.4,
+      "utilisation": "45.1%",
+      "search_impression_share": "over 90%",
+      "lost_to_budget": "0.0%",
+      "lost_to_rank": "4.1%",
+      "class": "out of demand"
+    },
+    {
+      "campaign": "Salon Booking | Search",
+      "primary_status": "ELIGIBLE",
+      "reasons": [],
+      "daily_budget": 150.0,
+      "cost_7d": 693.8,
+      "utilisation": "66.1%",
+      "search_impression_share": "73.1%",
+      "lost_to_budget": "2.8%",
+      "lost_to_rank": "24.1%",
+      "class": "delivering"
+    },
+    {
+      "campaign": "Clinic Scheduling | Search",
+      "primary_status": "NOT_ELIGIBLE",
+      "reasons": [
+        "HAS_ADS_DISAPPROVED",
+        "NO_AD_GROUP_ADS"
+      ],
+      "daily_budget": 120.0,
+      "cost_7d": 0.0,
+      "utilisation": "0.0%",
+      "search_impression_share": null,
+      "lost_to_budget": null,
+      "lost_to_rank": null,
+      "class": "can't serve"
+    },
+    {
+      "campaign": "Fitness Class Booking | Search",
+      "primary_status": "LIMITED",
+      "reasons": [
+        "BIDDING_STRATEGY_CONSTRAINED"
+      ],
+      "daily_budget": 100.0,
+      "cost_7d": 238.1,
+      "utilisation": "34.0%",
+      "search_impression_share": "31.1%",
+      "lost_to_budget": "0.0%",
+      "lost_to_rank": "69.0%",
+      "class": "losing auctions",
+      "note": "the rank loss comes from the strict target CPA, so the finding is the target (serves with limits)"
+    },
+    {
+      "campaign": "Competitor Alternatives | Search",
+      "primary_status": "ELIGIBLE",
+      "reasons": [],
+      "daily_budget": 60.0,
+      "cost_7d": 159.6,
+      "utilisation": "38.0%",
+      "search_impression_share": "55.2%",
+      "lost_to_budget": "0.0%",
+      "lost_to_rank": "22.2%",
+      "class": "delivering"
+    }
+  ],
+  "out_of_demand": [
+    {
+      "item": "Brand | Search",
+      "level": "campaign",
+      "why": "wins over 90% of its searches, loses 4.1% to rank and nothing to budget, and uses 45.1% of its budget. There are only so many searches for the brand name.",
+      "fix": "No delivery fix needed. Don't raise this budget; it can't be spent."
+    },
+    {
+      "item": "\"hair salon scheduling system\" (phrase) in Salon Booking | Search",
+      "level": "keyword",
+      "why": "Google marks it rarely served (low search volume); 0 impressions in 30 days.",
+      "fix": "Leave it, or rely on \"salon scheduling software\", which already serves."
+    }
+  ],
+  "budget_held": "none: no campaign lost 10% or more of impression share to budget",
+  "eligible_never_shown": {
+    "count": 2,
+    "examples": [
+      "\"yoga studio class booking system\" (exact)",
+      "\"competitor c vs competitor a\" (exact)"
+    ],
+    "note": "Eligible, but no impressions in 30 days. Information only; other keywords catch these searches or demand is tiny."
+  },
+  "checked_and_fine": [
+    "Account status is ENABLED.",
+    "Billing setup is APPROVED (1 setup).",
+    "Every campaign targets the United States, Canada and the United Kingdom, as intended (3 locations each, presence or interest).",
+    "No device is excluded: no device bid adjustment of -100%.",
+    "Every campaign shows on Google Search; none runs on the Display Network.",
+    "No bid strategy is learning, misconfigured or limited by a CPC cap (every bid strategy status is ENABLED).",
+    "Brand | Search caps CPC at $2.50 against a 7-day average CPC of $0.36: the cap isn't holding it back.",
+    "No campaign has an end date or a future start date.",
+    "Outside Clinic Scheduling, all 10 enabled ads are APPROVED and reviewed.",
+    "The shared list \"Account negatives\" (4 negatives) and the ad group negative block no keyword."
+  ],
+  "unknowns": [
+    "Ad Preview and Diagnosis: no screenshot was sent. If you searched for your ads and didn't see them, send one for that search, location and device.",
+    "Card payment problems aren't readable through the API; this account pays by monthly invoice, so the account budget check covers billing."
+  ],
+  "fixes_offered": [
+    {
+      "for_rank": 2,
+      "action": "update_responsive_search_ad",
+      "run": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_responsive_search_ad",
+        "ad_id": "510000000007",
+        "final_urls": [
+          "https://www.example.com/industries/clinics/"
+        ]
+      }
+    },
+    {
+      "for_rank": 2,
+      "action": "update_responsive_search_ad",
+      "run": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_responsive_search_ad",
+        "ad_id": "510000000008",
+        "final_urls": [
+          "https://www.example.com/industries/clinics/"
+        ]
+      }
+    },
+    {
+      "for_rank": 2,
+      "action": "update_responsive_search_ad",
+      "run": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_responsive_search_ad",
+        "ad_id": "510000000009",
+        "final_urls": [
+          "https://www.example.com/industries/clinics/"
+        ]
+      }
+    },
+    {
+      "for_rank": 2,
+      "action": "update_responsive_search_ad",
+      "run": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_responsive_search_ad",
+        "ad_id": "510000000010",
+        "final_urls": [
+          "https://www.example.com/industries/clinics/"
+        ]
+      }
+    },
+    {
+      "for_rank": 4,
+      "action": "update_campaign",
+      "run": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_campaign",
+        "campaign_id": "21000000004",
+        "target_cpa": 65
+      }
+    }
+  ],
+  "go_deeper": [
+    {
+      "next_question": "Is Fitness Class Booking's new target paying off?",
+      "skill": "bid-strategy-auditor"
+    },
+    {
+      "next_question": "Which app-store searches should the new negatives name?",
+      "skill": "negative-keyword-implementer"
+    },
+    {
+      "next_question": "Where will the month land once the account budget is raised?",
+      "skill": "spend-pacing-monitor"
+    }
+  ]
+}

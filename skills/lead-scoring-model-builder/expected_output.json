@@ -1,0 +1,920 @@
+{
+  "header": {
+    "business": "Example Field Service Software (invented), field-service management software",
+    "source": "HubSpot leads export (CSV), no connector",
+    "export_date": "2026-10-28",
+    "leads_in_export": 600,
+    "decision_point": "MQL review date; only traits and actions on or before it count",
+    "outcome": "won within 90 days of the MQL review",
+    "horizon_days": 90,
+    "horizon_rule": "90th percentile of review-to-won days across 70 wins is 74, rounded up to 90",
+    "settled_leads": 472,
+    "not_yet_settled_leads": 128,
+    "development": {
+      "leads": 315,
+      "wins": 35,
+      "from": "2025-10-02",
+      "to": "2026-05-01",
+      "base_win_rate_pct": 11.1
+    },
+    "holdout": {
+      "leads": 157,
+      "wins": 28,
+      "from": "2026-05-01",
+      "to": "2026-07-30",
+      "base_win_rate_pct": 17.8
+    }
+  },
+  "summary": [
+    "Base win rate in development is 11.1% (35 of 315 leads). The biggest positives are Requested a demo (+10), Visited the pricing page (+10); the biggest negatives are Employees: 1-9 (-25), Email: Personal (-20).",
+    "The MQL threshold is 5: 10 was the highest score catching 80% of development wins, and lowering it to 5 added wins at no more than 16.0 sales hours on losers per win, the cost of working every lead; going down to 0 would cost 38.0 hours per extra win. It caught 88.6% of development wins and 78.6% of holdout wins, so the model holds on later leads.",
+    "On the holdout the current rules at 40 caught 17 wins and flagged 38 losers (76 sales hours); the new model caught 22 wins and flagged 46 losers (92 hours).",
+    "73 of 81 trials started after sales reviewed the lead. Counted at any date, a trial would look worth +20 points; before the review it is too rare to score."
+  ],
+  "data_checks": {
+    "actions_after_decision": [
+      {
+        "action": "Requested a demo",
+        "leads_with_action": 162,
+        "dropped_as_after_decision": 24,
+        "share_dropped_pct": 14.8,
+        "points_if_every_date_counted": 5
+      },
+      {
+        "action": "Visited the pricing page",
+        "leads_with_action": 251,
+        "dropped_as_after_decision": 48,
+        "share_dropped_pct": 19.1,
+        "points_if_every_date_counted": 10
+      },
+      {
+        "action": "Viewed a case study",
+        "leads_with_action": 138,
+        "dropped_as_after_decision": 36,
+        "share_dropped_pct": 26.1,
+        "points_if_every_date_counted": 10
+      },
+      {
+        "action": "Attended a webinar",
+        "leads_with_action": 48,
+        "dropped_as_after_decision": 19,
+        "share_dropped_pct": 39.6,
+        "points_if_every_date_counted": null
+      },
+      {
+        "action": "Downloaded an ebook",
+        "leads_with_action": 270,
+        "dropped_as_after_decision": 33,
+        "share_dropped_pct": 12.2,
+        "points_if_every_date_counted": 0
+      },
+      {
+        "action": "Clicked a marketing email",
+        "leads_with_action": 304,
+        "dropped_as_after_decision": 50,
+        "share_dropped_pct": 16.4,
+        "points_if_every_date_counted": 0
+      },
+      {
+        "action": "Started a trial",
+        "leads_with_action": 81,
+        "dropped_as_after_decision": 73,
+        "share_dropped_pct": 90.1,
+        "points_if_every_date_counted": 20
+      }
+    ],
+    "late_wins_counted_as_not_won": 3,
+    "not_yet_settled": "128 leads were reviewed after 2026-07-30, less than 90 days before the export. They are left out of fitting even when already won or lost, and the open ones are scored at the end.",
+    "action_dates": "first dates only, so the decay bands use the first time each action happened"
+  },
+  "points_rule": "points = 10 x log2(trait win rate / base win rate), rounded to the nearest 5, capped at +30 and -30",
+  "traits": [
+    {
+      "trait": "Industry: HVAC",
+      "type": "fit",
+      "leads": 85,
+      "wins": 10,
+      "win_rate_pct": 11.8,
+      "lift": 1.06,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Industry: Plumbing",
+      "type": "fit",
+      "leads": 68,
+      "wins": 9,
+      "win_rate_pct": 13.2,
+      "lift": 1.19,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Industry: Electrical",
+      "type": "fit",
+      "leads": 58,
+      "wins": 10,
+      "win_rate_pct": 17.2,
+      "lift": 1.55,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Industry: Landscaping",
+      "type": "fit",
+      "leads": 40,
+      "wins": 2,
+      "win_rate_pct": 5.0,
+      "lift": 0.45,
+      "points": -10,
+      "status": "scored"
+    },
+    {
+      "trait": "Industry: Cleaning",
+      "type": "fit",
+      "leads": 49,
+      "wins": 2,
+      "win_rate_pct": 4.1,
+      "lift": 0.37,
+      "points": -15,
+      "status": "scored"
+    },
+    {
+      "trait": "Industry: Other",
+      "type": "fit",
+      "leads": 15,
+      "wins": 2,
+      "win_rate_pct": 13.3,
+      "lift": 1.2,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Employees: 1-9",
+      "type": "fit",
+      "leads": 86,
+      "wins": 2,
+      "win_rate_pct": 2.3,
+      "lift": 0.21,
+      "points": -25,
+      "status": "scored"
+    },
+    {
+      "trait": "Employees: 10-49",
+      "type": "fit",
+      "leads": 129,
+      "wins": 20,
+      "win_rate_pct": 15.5,
+      "lift": 1.4,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Employees: 50-199",
+      "type": "fit",
+      "leads": 73,
+      "wins": 11,
+      "win_rate_pct": 15.1,
+      "lift": 1.36,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Employees: 200+",
+      "type": "fit",
+      "leads": 27,
+      "wins": 2,
+      "win_rate_pct": 7.4,
+      "lift": 0.67,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Role: Owner or executive",
+      "type": "fit",
+      "leads": 107,
+      "wins": 14,
+      "win_rate_pct": 13.1,
+      "lift": 1.18,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Role: Operations manager",
+      "type": "fit",
+      "leads": 111,
+      "wins": 18,
+      "win_rate_pct": 16.2,
+      "lift": 1.46,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Role: Office admin",
+      "type": "fit",
+      "leads": 60,
+      "wins": 3,
+      "win_rate_pct": 5.0,
+      "lift": 0.45,
+      "points": -10,
+      "status": "scored"
+    },
+    {
+      "trait": "Role: Technician",
+      "type": "fit",
+      "leads": 20,
+      "wins": 0,
+      "win_rate_pct": 0.0,
+      "lift": 0.0,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Role: Student or job seeker",
+      "type": "fit",
+      "leads": 17,
+      "wins": 0,
+      "win_rate_pct": 0.0,
+      "lift": 0.0,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Country: US",
+      "type": "fit",
+      "leads": 218,
+      "wins": 27,
+      "win_rate_pct": 12.4,
+      "lift": 1.11,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Country: Canada",
+      "type": "fit",
+      "leads": 53,
+      "wins": 5,
+      "win_rate_pct": 9.4,
+      "lift": 0.85,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Country: UK",
+      "type": "fit",
+      "leads": 25,
+      "wins": 3,
+      "win_rate_pct": 12.0,
+      "lift": 1.08,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Country: Other",
+      "type": "fit",
+      "leads": 19,
+      "wins": 0,
+      "win_rate_pct": 0.0,
+      "lift": 0.0,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Email: Business",
+      "type": "fit",
+      "leads": 237,
+      "wins": 33,
+      "win_rate_pct": 13.9,
+      "lift": 1.25,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Email: Personal",
+      "type": "fit",
+      "leads": 78,
+      "wins": 2,
+      "win_rate_pct": 2.6,
+      "lift": 0.23,
+      "points": -20,
+      "status": "scored"
+    },
+    {
+      "trait": "Lead source: Organic search",
+      "type": "fit",
+      "leads": 103,
+      "wins": 14,
+      "win_rate_pct": 13.6,
+      "lift": 1.22,
+      "points": 5,
+      "status": "scored"
+    },
+    {
+      "trait": "Lead source: Paid search",
+      "type": "fit",
+      "leads": 66,
+      "wins": 7,
+      "win_rate_pct": 10.6,
+      "lift": 0.95,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Lead source: Content syndication",
+      "type": "fit",
+      "leads": 68,
+      "wins": 3,
+      "win_rate_pct": 4.4,
+      "lift": 0.4,
+      "points": -15,
+      "status": "scored"
+    },
+    {
+      "trait": "Lead source: Referral",
+      "type": "fit",
+      "leads": 23,
+      "wins": 3,
+      "win_rate_pct": 13.0,
+      "lift": 1.17,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Lead source: Webinar",
+      "type": "fit",
+      "leads": 26,
+      "wins": 5,
+      "win_rate_pct": 19.2,
+      "lift": 1.73,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Lead source: Partner",
+      "type": "fit",
+      "leads": 29,
+      "wins": 3,
+      "win_rate_pct": 10.3,
+      "lift": 0.93,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Requested a demo",
+      "type": "behaviour",
+      "leads": 72,
+      "wins": 14,
+      "win_rate_pct": 19.4,
+      "lift": 1.75,
+      "points": 10,
+      "status": "scored"
+    },
+    {
+      "trait": "Visited the pricing page",
+      "type": "behaviour",
+      "leads": 107,
+      "wins": 21,
+      "win_rate_pct": 19.6,
+      "lift": 1.77,
+      "points": 10,
+      "status": "scored"
+    },
+    {
+      "trait": "Viewed a case study",
+      "type": "behaviour",
+      "leads": 54,
+      "wins": 12,
+      "win_rate_pct": 22.2,
+      "lift": 2.0,
+      "points": 0,
+      "status": "adds nothing on top of 'Visited the pricing page'"
+    },
+    {
+      "trait": "Attended a webinar",
+      "type": "behaviour",
+      "leads": 14,
+      "wins": 1,
+      "win_rate_pct": 7.1,
+      "lift": 0.64,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    },
+    {
+      "trait": "Downloaded an ebook",
+      "type": "behaviour",
+      "leads": 121,
+      "wins": 12,
+      "win_rate_pct": 9.9,
+      "lift": 0.89,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Clicked a marketing email",
+      "type": "behaviour",
+      "leads": 130,
+      "wins": 14,
+      "win_rate_pct": 10.8,
+      "lift": 0.97,
+      "points": 0,
+      "status": "no clear signal"
+    },
+    {
+      "trait": "Started a trial",
+      "type": "behaviour",
+      "leads": 6,
+      "wins": 1,
+      "win_rate_pct": 16.7,
+      "lift": 1.5,
+      "points": 0,
+      "status": "too few to score (under 30 leads)"
+    }
+  ],
+  "overlap": [
+    {
+      "action": "Viewed a case study",
+      "mostly_done_with": "Visited the pricing page",
+      "share_also_with_it_pct": 74.1,
+      "leads_with_both": 40,
+      "win_rate_with_both_pct": 22.5,
+      "win_rate_of_all_with_it_pct": 19.6,
+      "points_on_its_own": 10,
+      "points_on_top": 0
+    }
+  ],
+  "decay": {
+    "rule": "behaviour points are multiplied by the band of the newest scored action at scoring time",
+    "bands": [
+      {
+        "newest_action_age": "0-30 days",
+        "leads": 73,
+        "wins": 17,
+        "win_rate_pct": 23.3,
+        "points_from_lift": 10.7,
+        "multiplier": 1.0,
+        "why": "full points"
+      },
+      {
+        "newest_action_age": "31-90 days",
+        "leads": 46,
+        "wins": 6,
+        "win_rate_pct": 13.0,
+        "points_from_lift": 2.3,
+        "multiplier": 0.25,
+        "why": "band points / fresh band points, rounded to 0.25"
+      },
+      {
+        "newest_action_age": "91+ days",
+        "leads": 32,
+        "wins": 3,
+        "win_rate_pct": 9.4,
+        "points_from_lift": -2.5,
+        "multiplier": 0.0,
+        "why": "wins no more often than the base rate"
+      }
+    ]
+  },
+  "threshold": {
+    "rule": "start at the highest threshold that catches at least 80% of development wins, then lower it 5 points at a time while each step's extra wins cost no more sales hours on losers per win than working every lead would",
+    "hours_per_worked_lead": 2,
+    "loser_hours_per_win_if_every_lead_worked": 16.0,
+    "loser_hours_per_win_if_every_lead_worked_from": "280 development losers x 2 hours / 35 development wins",
+    "highest_threshold_catching_target_share": 10,
+    "steps_down_taken": [
+      5
+    ],
+    "step_not_taken": {
+      "threshold": 0,
+      "extra_wins": 1,
+      "extra_sales_hours_on_losers": 38,
+      "loser_hours_per_extra_win": 38.0
+    },
+    "candidates_around_choice": [
+      {
+        "threshold": -10,
+        "leads_flagged": 204,
+        "flagged_pct": 64.8,
+        "wins_caught": 35,
+        "wins_caught_pct": 100.0,
+        "win_rate_of_flagged_pct": 17.2,
+        "losers_flagged": 169,
+        "sales_hours_on_losers": 338,
+        "step_down_from_5_higher": {
+          "extra_wins": 1,
+          "extra_sales_hours_on_losers": 52,
+          "loser_hours_per_extra_win": 52.0
+        }
+      },
+      {
+        "threshold": -5,
+        "leads_flagged": 177,
+        "flagged_pct": 56.2,
+        "wins_caught": 34,
+        "wins_caught_pct": 97.1,
+        "win_rate_of_flagged_pct": 19.2,
+        "losers_flagged": 143,
+        "sales_hours_on_losers": 286,
+        "step_down_from_5_higher": {
+          "extra_wins": 2,
+          "extra_sales_hours_on_losers": 46,
+          "loser_hours_per_extra_win": 23.0
+        }
+      },
+      {
+        "threshold": 0,
+        "leads_flagged": 152,
+        "flagged_pct": 48.3,
+        "wins_caught": 32,
+        "wins_caught_pct": 91.4,
+        "win_rate_of_flagged_pct": 21.1,
+        "losers_flagged": 120,
+        "sales_hours_on_losers": 240,
+        "step_down_from_5_higher": {
+          "extra_wins": 1,
+          "extra_sales_hours_on_losers": 38,
+          "loser_hours_per_extra_win": 38.0
+        }
+      },
+      {
+        "threshold": 5,
+        "leads_flagged": 132,
+        "flagged_pct": 41.9,
+        "wins_caught": 31,
+        "wins_caught_pct": 88.6,
+        "win_rate_of_flagged_pct": 23.5,
+        "losers_flagged": 101,
+        "sales_hours_on_losers": 202,
+        "step_down_from_5_higher": {
+          "extra_wins": 3,
+          "extra_sales_hours_on_losers": 46,
+          "loser_hours_per_extra_win": 15.3
+        }
+      },
+      {
+        "threshold": 10,
+        "leads_flagged": 106,
+        "flagged_pct": 33.7,
+        "wins_caught": 28,
+        "wins_caught_pct": 80.0,
+        "win_rate_of_flagged_pct": 26.4,
+        "losers_flagged": 78,
+        "sales_hours_on_losers": 156,
+        "step_down_from_5_higher": {
+          "extra_wins": 4,
+          "extra_sales_hours_on_losers": 50,
+          "loser_hours_per_extra_win": 12.5
+        }
+      },
+      {
+        "threshold": 15,
+        "leads_flagged": 77,
+        "flagged_pct": 24.4,
+        "wins_caught": 24,
+        "wins_caught_pct": 68.6,
+        "win_rate_of_flagged_pct": 31.2,
+        "losers_flagged": 53,
+        "sales_hours_on_losers": 106,
+        "step_down_from_5_higher": {
+          "extra_wins": 4,
+          "extra_sales_hours_on_losers": 34,
+          "loser_hours_per_extra_win": 8.5
+        }
+      },
+      {
+        "threshold": 20,
+        "leads_flagged": 56,
+        "flagged_pct": 17.8,
+        "wins_caught": 20,
+        "wins_caught_pct": 57.1,
+        "win_rate_of_flagged_pct": 35.7,
+        "losers_flagged": 36,
+        "sales_hours_on_losers": 72,
+        "step_down_from_5_higher": {
+          "extra_wins": 7,
+          "extra_sales_hours_on_losers": 30,
+          "loser_hours_per_extra_win": 4.3
+        }
+      }
+    ],
+    "chosen": 5,
+    "leads_flagged_per_month_in_development": 18.9
+  },
+  "holdout_check": {
+    "development": {
+      "threshold": 5,
+      "leads_flagged": 132,
+      "flagged_pct": 41.9,
+      "wins_caught": 31,
+      "wins_caught_pct": 88.6,
+      "win_rate_of_flagged_pct": 23.5,
+      "losers_flagged": 101,
+      "sales_hours_on_losers": 202
+    },
+    "holdout": {
+      "threshold": 5,
+      "leads_flagged": 68,
+      "flagged_pct": 43.3,
+      "wins_caught": 22,
+      "wins_caught_pct": 78.6,
+      "win_rate_of_flagged_pct": 32.4,
+      "losers_flagged": 46,
+      "sales_hours_on_losers": 92
+    },
+    "verdict": "holds",
+    "rule": "holds when the holdout has at least 10 wins, its catch rate is within 15 points of development, and flagged leads win more often than the holdout base rate"
+  },
+  "current_model_audit": {
+    "rules": [
+      {
+        "rule": "Requested a demo",
+        "current_points": 25,
+        "leads": 72,
+        "wins": 14,
+        "lift": 1.75,
+        "supported_points": 10,
+        "verdict": "cut"
+      },
+      {
+        "rule": "Visited the pricing page",
+        "current_points": 10,
+        "leads": 107,
+        "wins": 21,
+        "lift": 1.77,
+        "supported_points": 10,
+        "verdict": "keep"
+      },
+      {
+        "rule": "Downloaded an ebook",
+        "current_points": 20,
+        "leads": 121,
+        "wins": 12,
+        "lift": 0.89,
+        "supported_points": 0,
+        "verdict": "remove"
+      },
+      {
+        "rule": "Attended a webinar",
+        "current_points": 15,
+        "leads": 14,
+        "wins": 1,
+        "lift": 0.64,
+        "supported_points": null,
+        "verdict": "can't check: under 30 leads"
+      },
+      {
+        "rule": "Clicked a marketing email",
+        "current_points": 10,
+        "leads": 130,
+        "wins": 14,
+        "lift": 0.97,
+        "supported_points": 0,
+        "verdict": "remove"
+      },
+      {
+        "rule": "Started a trial",
+        "current_points": 20,
+        "leads": 6,
+        "wins": 1,
+        "lift": 1.5,
+        "supported_points": null,
+        "verdict": "can't check: under 30 leads",
+        "note": "73 of 81 trials started after sales reviewed the lead, so they can't help decide which leads to work"
+      },
+      {
+        "rule": "Company has 50 or more employees",
+        "current_points": 10,
+        "leads": 100,
+        "wins": 13,
+        "lift": 1.17,
+        "supported_points": 0,
+        "verdict": "remove"
+      },
+      {
+        "rule": "Job title is owner or executive",
+        "current_points": 10,
+        "leads": 107,
+        "wins": 14,
+        "lift": 1.18,
+        "supported_points": 0,
+        "verdict": "remove"
+      }
+    ],
+    "missing_bad_fit_rules": [
+      {
+        "trait": "Industry: Landscaping",
+        "supported_points": -10
+      },
+      {
+        "trait": "Industry: Cleaning",
+        "supported_points": -15
+      },
+      {
+        "trait": "Employees: 1-9",
+        "supported_points": -25
+      },
+      {
+        "trait": "Role: Office admin",
+        "supported_points": -10
+      },
+      {
+        "trait": "Email: Personal",
+        "supported_points": -20
+      },
+      {
+        "trait": "Lead source: Content syndication",
+        "supported_points": -15
+      }
+    ],
+    "backtest_at_current_threshold": {
+      "threshold": 40,
+      "development": {
+        "threshold": 40,
+        "leads_flagged": 102,
+        "flagged_pct": 32.4,
+        "wins_caught": 16,
+        "wins_caught_pct": 45.7,
+        "win_rate_of_flagged_pct": 15.7,
+        "losers_flagged": 86,
+        "sales_hours_on_losers": 172
+      },
+      "holdout": {
+        "threshold": 40,
+        "leads_flagged": 55,
+        "flagged_pct": 35.0,
+        "wins_caught": 17,
+        "wins_caught_pct": 60.7,
+        "win_rate_of_flagged_pct": 30.9,
+        "losers_flagged": 38,
+        "sales_hours_on_losers": 76
+      }
+    },
+    "new_vs_current_on_holdout": {
+      "wins_caught": [
+        22,
+        17
+      ],
+      "losers_flagged": [
+        46,
+        38
+      ],
+      "sales_hours_on_losers": [
+        92,
+        76
+      ],
+      "order": [
+        "new model",
+        "current rules"
+      ]
+    }
+  },
+  "crm_rules": {
+    "rules": [
+      {
+        "type": "fit",
+        "criterion": "Industry: Plumbing",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Industry: Electrical",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Employees: 10-49",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Employees: 50-199",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Role: Operations manager",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Email: Business",
+        "points": 5
+      },
+      {
+        "type": "fit",
+        "criterion": "Lead source: Organic search",
+        "points": 5
+      },
+      {
+        "type": "behaviour",
+        "criterion": "Requested a demo",
+        "points": 10,
+        "time_window": "full points when the newest scored action is 0-30 days old; a quarter when the newest scored action is 31-90 days old; no points when the newest scored action is 91+ days old"
+      },
+      {
+        "type": "behaviour",
+        "criterion": "Visited the pricing page",
+        "points": 10,
+        "time_window": "full points when the newest scored action is 0-30 days old; a quarter when the newest scored action is 31-90 days old; no points when the newest scored action is 91+ days old"
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Employees: 1-9",
+        "points": -25
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Email: Personal",
+        "points": -20
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Industry: Cleaning",
+        "points": -15
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Lead source: Content syndication",
+        "points": -15
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Industry: Landscaping",
+        "points": -10
+      },
+      {
+        "type": "bad fit",
+        "criterion": "Role: Office admin",
+        "points": -10
+      }
+    ],
+    "mql_threshold": 5,
+    "setup": "Create one points rule per row in the CRM's scoring tool. For behaviour rules, use the tool's activity time window to apply the decay bands; if it has no window, score only actions in the last 30 days and accept a slightly stricter model."
+  },
+  "open_leads_above_threshold": {
+    "open_leads_scored": 89,
+    "above_threshold": 28,
+    "as_of": "2026-10-28",
+    "top": [
+      {
+        "lead_id": "L-1247",
+        "score": 35.0,
+        "mql_review_date": "2026-10-17"
+      },
+      {
+        "lead_id": "L-1257",
+        "score": 35.0,
+        "mql_review_date": "2026-10-06"
+      },
+      {
+        "lead_id": "L-1149",
+        "score": 25.0,
+        "mql_review_date": "2026-09-23"
+      },
+      {
+        "lead_id": "L-1151",
+        "score": 25.0,
+        "mql_review_date": "2026-10-22"
+      },
+      {
+        "lead_id": "L-1592",
+        "score": 25.0,
+        "mql_review_date": "2026-10-09"
+      },
+      {
+        "lead_id": "L-1167",
+        "score": 22.5,
+        "mql_review_date": "2026-09-27"
+      },
+      {
+        "lead_id": "L-1332",
+        "score": 22.5,
+        "mql_review_date": "2026-10-06"
+      },
+      {
+        "lead_id": "L-1065",
+        "score": 20.0,
+        "mql_review_date": "2026-09-19"
+      },
+      {
+        "lead_id": "L-1176",
+        "score": 20.0,
+        "mql_review_date": "2026-09-27"
+      },
+      {
+        "lead_id": "L-1224",
+        "score": 20.0,
+        "mql_review_date": "2026-08-02"
+      }
+    ]
+  },
+  "recheck": "Refit after the next 35 wins or in one quarter, whichever comes first, with the same 90-day horizon and a fresh holdout.",
+  "watch": "Past leads can only show what the score would have caught, not what it will add. Until the refit, track the share of MQLs sales accepts and the win rate of leads scoring 5 or more.",
+  "unknowns": [
+    "Product usage after a trial starts is not in the export, so PQL mode was not run.",
+    "Email clicks come from the CRM's own email tool; clicks in another email platform are missing."
+  ],
+  "go_deeper": [
+    "b2b-lead-enrichment, if installed, to fill industry and size on new leads before they are scored",
+    "email-sequence-builder, if installed, for a nurture sequence for leads under the threshold"
+  ]
+}

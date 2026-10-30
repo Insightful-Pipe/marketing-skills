@@ -1,0 +1,291 @@
+{
+  "note": "Example data: an invented online booking software company selling to an invented clinic group, not a real business. Every number in expected_output.json follows from this input. The public signals are invented too.",
+  "request": "Hey Claude, I just added the \"roi-business-case-builder\" skill. Build the business case for Tallowmere Physio moving their 4 clinics to our Business plan. Priya, their practice manager, needs to take it to their finance director. Use the numbers from my discovery notes below, show a range, and give me the spreadsheet.",
+  "seller": {
+    "company": "Example Booking Software",
+    "site": "https://www.example.com",
+    "product": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+    "what_changes_for_the_buyer": [
+      "patients book online 24/7 instead of calling",
+      "automatic SMS reminders 24 h and 2 h before each visit",
+      "the current scheduling tool is retired"
+    ],
+    "plan": {
+      "name": "Business",
+      "price_per_clinic_month": 99,
+      "staff_per_clinic": 20
+    }
+  },
+  "buyer": {
+    "company": "Tallowmere Physio",
+    "domain": "tallowmerephysio.example",
+    "type": "physiotherapy clinic group",
+    "contact": "Priya Raman",
+    "contact_role": "Practice manager",
+    "signs": "Finance director",
+    "currency": "USD"
+  },
+  "start": "November 2026",
+  "discovery_notes": [
+    "Front desk is stretched; the buyer is weighing a part-time front-desk hire in January.",
+    "Patients complain they can only book during opening hours."
+  ],
+  "horizon_months": 36,
+  "contract_months": 12,
+  "buyer_numbers": {
+    "source": "Priya Raman (Practice manager), discovery call on 2026-10-21; overtime and margin confirmed by email on 2026-10-23",
+    "values": [
+      {
+        "key": "clinics",
+        "input": "Clinics",
+        "value": 4,
+        "unit": "clinics"
+      },
+      {
+        "key": "appointments",
+        "input": "Appointments booked per month, all clinics",
+        "value": 2600,
+        "unit": "appointments"
+      },
+      {
+        "key": "phone_share",
+        "input": "Share of bookings made by phone",
+        "value": 0.62,
+        "unit": "share"
+      },
+      {
+        "key": "minutes_per_call",
+        "input": "Front-desk minutes per phone booking, callbacks included",
+        "value": 4.5,
+        "unit": "minutes"
+      },
+      {
+        "key": "desk_cost",
+        "input": "Front-desk loaded cost per hour",
+        "value": 27.0,
+        "unit": "USD"
+      },
+      {
+        "key": "overtime_hours",
+        "input": "Front-desk overtime hours paid per month",
+        "value": 35,
+        "unit": "hours"
+      },
+      {
+        "key": "overtime_rate",
+        "input": "Overtime rate per hour",
+        "value": 40.5,
+        "unit": "USD"
+      },
+      {
+        "key": "no_show_rate",
+        "input": "No-show rate",
+        "value": 0.09,
+        "unit": "share"
+      },
+      {
+        "key": "refilled_share",
+        "input": "No-show slots refilled today from the waitlist",
+        "value": 0.35,
+        "unit": "share"
+      },
+      {
+        "key": "visit_value",
+        "input": "Average visit value",
+        "value": 85.0,
+        "unit": "USD"
+      },
+      {
+        "key": "margin",
+        "input": "Contribution margin per visit, after clinician pay",
+        "value": 0.4,
+        "unit": "share"
+      },
+      {
+        "key": "after_hours_calls",
+        "input": "After-hours calls to voicemail per month",
+        "value": 140,
+        "unit": "calls"
+      },
+      {
+        "key": "old_tool",
+        "input": "Current scheduling tool per month",
+        "value": 210.0,
+        "unit": "USD"
+      },
+      {
+        "key": "old_tool_stop_month",
+        "input": "Month the current tool can stop (2-month notice)",
+        "value": 3,
+        "unit": "month"
+      },
+      {
+        "key": "staff_to_train",
+        "input": "Front-desk staff to train",
+        "value": 10,
+        "unit": "people"
+      },
+      {
+        "key": "training_hours",
+        "input": "Training hours per person",
+        "value": 3,
+        "unit": "hours"
+      },
+      {
+        "key": "discount_rate",
+        "input": "Discount rate finance uses (annual)",
+        "value": 0.1,
+        "unit": "share"
+      }
+    ]
+  },
+  "seller_numbers": [
+    {
+      "key": "plan_price",
+      "input": "Business plan per clinic per month",
+      "value": 99.0,
+      "unit": "USD",
+      "source": "price list"
+    },
+    {
+      "key": "sms_cost",
+      "input": "SMS cost per reminder (passed through at cost)",
+      "value": 0.03,
+      "unit": "USD",
+      "source": "price list"
+    },
+    {
+      "key": "reminders_per_appt",
+      "input": "Reminders sent per appointment (24 h and 2 h before)",
+      "value": 2,
+      "unit": "reminders",
+      "source": "default reminder setup"
+    },
+    {
+      "key": "setup_fee",
+      "input": "Setup and data import, one time",
+      "value": 750.0,
+      "unit": "USD",
+      "source": "quote Q-2026-118"
+    }
+  ],
+  "assumptions": [
+    {
+      "key": "online_shift",
+      "input": "Phone bookings that move to online booking",
+      "low": 0.25,
+      "expected": 0.4,
+      "high": 0.55,
+      "unit": "share",
+      "basis": "seller customer data",
+      "detail": "Clinic customers in their first 6 months (n = 46): 25th percentile 25%, median 40%, 75th percentile 55%.",
+      "confidence": "medium"
+    },
+    {
+      "key": "recoverable",
+      "input": "Share of saved front-desk time that is really freed",
+      "low": 0.5,
+      "expected": 0.7,
+      "high": 0.85,
+      "unit": "share",
+      "basis": "judgment",
+      "detail": "No data: part of the saved minutes disappears into gaps between calls. Wide range on purpose.",
+      "confidence": "low"
+    },
+    {
+      "key": "no_show_cut",
+      "input": "Relative cut in no-shows from automatic reminders",
+      "low": 0.2,
+      "expected": 0.3,
+      "high": 0.4,
+      "unit": "share",
+      "basis": "seller customer data",
+      "detail": "Clinic customers with no reminders before switching (n = 19), no-show rate 3 months before vs 3 months after: 25th percentile 20%, median 30%, 75th percentile 40%.",
+      "confidence": "medium"
+    },
+    {
+      "key": "after_hours_book",
+      "input": "After-hours voicemail callers who book online instead and would otherwise be lost",
+      "low": 0.1,
+      "expected": 0.2,
+      "high": 0.3,
+      "unit": "share",
+      "basis": "judgment",
+      "detail": "The buyer does not know how many voicemail callers never call back. Wide range; ask the buyer to count them for 2 weeks.",
+      "confidence": "low"
+    }
+  ],
+  "ramp": {
+    "key": "ramp",
+    "input": "Adoption ramp, months 1 to 3 (share of full use)",
+    "low": [
+      0.15,
+      0.35,
+      0.6
+    ],
+    "expected": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "high": [
+      0.4,
+      0.7,
+      0.9
+    ],
+    "month_4_on": 1.0,
+    "unit": "share of full use",
+    "basis": "seller customer data",
+    "detail": "Online-booking use in months 1 to 3 at the same 46 clinic customers: 25th percentile 15%, 35%, 60%; median 25%, 50%, 75%; 75th percentile 40%, 70%, 90%. All reached full use by month 4.",
+    "confidence": "medium"
+  },
+  "buyer_sees_spreadsheet": "yes: Priya will share the spreadsheet with the finance director",
+  "seller_internal_notes": [
+    "Discount authority up to 10% on the plan if signed by 2026-12-15 (internal, not offered yet)."
+  ],
+  "public_signals": [
+    {
+      "connector": "pagespeed-insights",
+      "action": "core-web-vitals",
+      "pulled": "2026-10-28",
+      "target": "https://www.tallowmerephysio.example/book/",
+      "strategy": "mobile",
+      "result": {
+        "performance_score": 0.41,
+        "lcp_s": 6.4,
+        "cls": 0.02,
+        "tbt_ms": 610
+      }
+    },
+    {
+      "connector": "ads-libraries",
+      "action": "facebook_search_companies + facebook_company_ads",
+      "pulled": "2026-10-28",
+      "target": "Tallowmere Physio (verified page, ads link to tallowmerephysio.example)",
+      "result": {
+        "active_ads": 12,
+        "cta_counts": {
+          "Call now": 9,
+          "Learn more": 3,
+          "Book now": 0
+        }
+      }
+    }
+  ],
+  "connectors": {
+    "pagespeed-insights": "connected",
+    "ads-libraries": "connected",
+    "dataforseo": "not used (the seller sells software, not marketing services)",
+    "google-sheets": {
+      "status": "connected",
+      "spreadsheet": "Tallowmere Physio business case",
+      "list_sheets": [
+        {
+          "sheet_id": 0,
+          "title": "Sheet1",
+          "index": 0
+        }
+      ]
+    }
+  }
+}

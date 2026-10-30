@@ -1,0 +1,912 @@
+{
+  "header": {
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "app": "Example Booking for Business",
+    "run_date": "2026-10-28",
+    "windows": {
+      "ga4": {
+        "start": "2026-09-30",
+        "end": "2026-10-27"
+      },
+      "reviews": {
+        "start": "2026-07-30",
+        "end": "2026-10-27"
+      },
+      "push_export": {
+        "start": "2026-08-03",
+        "end": "2026-10-25"
+      }
+    },
+    "time_zone": "America/New_York",
+    "sources": [
+      "GA4 (InsightfulPipe MCP)",
+      "App Store and Google Play reviews (InsightfulPipe MCP)",
+      "Klaviyo flows (InsightfulPipe MCP)",
+      "push provider CSV export (pasted)"
+    ]
+  },
+  "reach": {
+    "rows": [
+      {
+        "platform": "iOS",
+        "active_users_28d": 5400,
+        "permission": "asks: one system prompt, a denial can only be undone in Settings; provisional delivery (quiet, Notification Center only) needs no prompt",
+        "opted_in_active_devices": 2402,
+        "opt_in_share_pct": 44.5,
+        "reachable_by_push": 2402
+      },
+      {
+        "platform": "Android 13 and later",
+        "active_users_28d": 3170,
+        "permission": "asks: off by default for new installs until the user allows it; an app targeting Android 13 or later picks when to ask",
+        "opted_in_active_devices": 1848,
+        "opt_in_share_pct": 58.3,
+        "reachable_by_push": 1848
+      },
+      {
+        "platform": "Android 12 and earlier",
+        "active_users_28d": 930,
+        "permission": "on by default unless the user turns notifications off",
+        "opted_in_active_devices": 862,
+        "opt_in_share_pct": 92.7,
+        "reachable_by_push": 862
+      },
+      {
+        "platform": "Web (desktop and Android browsers)",
+        "active_users_28d": 5010,
+        "permission": "asks: browser prompt, best shown after a click",
+        "opted_in_active_devices": 1047,
+        "opt_in_share_pct": 20.9,
+        "reachable_by_push": 1047
+      },
+      {
+        "platform": "Web on iPhone and iPad",
+        "active_users_28d": 690,
+        "permission": "only for a web app added to the Home Screen (iOS and iPadOS 16.4 or later), asked after a tap; this web app is not one, so 0",
+        "opted_in_active_devices": 0,
+        "opt_in_share_pct": 0.0,
+        "reachable_by_push": 0
+      }
+    ],
+    "total": {
+      "active_users_28d": 15200,
+      "reachable_by_push": 6159,
+      "share_pct": 40.5
+    },
+    "android_13_plus_share_of_android_pct": 77.3,
+    "note": "Counts are devices and browsers, not people: an owner on the iOS app and the web app counts twice. Opt-in share = opted-in devices active in 28 days in the export ÷ GA4 active users.",
+    "prompt_results_28d": [
+      {
+        "platform": "iOS",
+        "placement": "first launch, before sign-up",
+        "shown": 900,
+        "accepted": 380,
+        "accept_rate_pct": 42.2
+      },
+      {
+        "platform": "Android 13 and later",
+        "placement": "first launch, before sign-up",
+        "shown": 640,
+        "accepted": 390,
+        "accept_rate_pct": 60.9
+      },
+      {
+        "platform": "Web (desktop and Android browsers)",
+        "placement": "dashboard page load",
+        "shown": 2100,
+        "accepted": 260,
+        "accept_rate_pct": 12.4
+      }
+    ]
+  },
+  "reviews": {
+    "by_store": [
+      {
+        "store": "App Store",
+        "reviews_90d": 30,
+        "about_notifications": 13,
+        "per_100_reviews": 43.3,
+        "themes": [
+          {
+            "theme": "too many",
+            "reviews": 2,
+            "example": "Too many notifications, I get a push for every single booking and it adds up on a busy Saturday."
+          },
+          {
+            "theme": "bad timing",
+            "reviews": 2,
+            "example": "Got an upgrade notification at 11pm on a Sunday night. Please stop."
+          },
+          {
+            "theme": "promotional",
+            "reviews": 4,
+            "example": "Alerts are an upsell machine lately, upgrade upgrade upgrade."
+          },
+          {
+            "theme": "no control",
+            "reviews": 2,
+            "example": "The push alerts for new bookings are useful but I can't turn off the promo ones without losing everything."
+          }
+        ]
+      },
+      {
+        "store": "Google Play",
+        "reviews_90d": 30,
+        "about_notifications": 13,
+        "per_100_reviews": 43.3,
+        "themes": [
+          {
+            "theme": "too many",
+            "reviews": 2,
+            "example": "Too many notifications from tips and offers."
+          },
+          {
+            "theme": "bad timing",
+            "reviews": 1,
+            "example": "Alerts at midnight about features, please no."
+          },
+          {
+            "theme": "promotional",
+            "reviews": 1,
+            "example": "Upgrade prompts in notifications are annoying."
+          },
+          {
+            "theme": "no control",
+            "reviews": 1,
+            "example": "Only on or off for notifications, I want booking alerts but not news."
+          },
+          {
+            "theme": "missing or late",
+            "reviews": 7,
+            "example": "Not receiving booking notifications since the last update."
+          }
+        ]
+      }
+    ],
+    "themes_ranked": [
+      {
+        "theme": "missing or late",
+        "reviews": 7,
+        "plan_rule": "Treat the new booking push as the top priority: send it as high priority and check delivery on Android."
+      },
+      {
+        "theme": "promotional",
+        "reviews": 5,
+        "plan_rule": "Move upgrade asks out of push into an in-app message at the moment the limit is hit."
+      },
+      {
+        "theme": "too many",
+        "reviews": 4,
+        "plan_rule": "Hold marketing pushes to the computed cap and let owners choose which booking alerts they get."
+      },
+      {
+        "theme": "bad timing",
+        "reviews": 3,
+        "plan_rule": "No marketing push in quiet hours; send scheduled pushes in the user's own time zone."
+      },
+      {
+        "theme": "no control",
+        "reviews": 3,
+        "plan_rule": "Add notification categories (Android channels and an in-app settings screen) so one type can be turned off alone."
+      }
+    ],
+    "method": "Reviews that mention notification, push, alert, ping, buzz or reminder, sorted into five themes by their words; one review can hit more than one theme."
+  },
+  "timing": {
+    "quiet_hours": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "22",
+      "23"
+    ],
+    "quiet_rule": "each holds under 1.5% of the day's active users",
+    "send_window": [
+      "08",
+      "09",
+      "10",
+      "11"
+    ],
+    "send_window_share_pct": 32.0,
+    "time_zone_note": "GA4 hours are in the property time zone (America/New_York). Send scheduled pushes by each user's local time in the push provider.",
+    "scheduled_now": [
+      {
+        "id": "P3",
+        "name": "Daily schedule",
+        "type": "scheduled utility",
+        "sends_at": "07:00",
+        "falls_in": "outside the send window",
+        "action": "keep; the user picks this time in the alerts screen"
+      },
+      {
+        "id": "P5",
+        "name": "Tip of the week",
+        "type": "marketing",
+        "sends_at": "06:00 (property time zone)",
+        "falls_in": "outside the send window",
+        "action": "move into the send window"
+      },
+      {
+        "id": "P6",
+        "name": "Upgrade offer",
+        "type": "marketing",
+        "sends_at": "20:00 (property time zone)",
+        "falls_in": "outside the send window",
+        "action": "move into the send window"
+      }
+    ]
+  },
+  "permission_prompt": {
+    "chain": [
+      {
+        "event": "first_open",
+        "users_28d": 1240,
+        "share_of_first_open_pct": 100.0,
+        "push_payoff": null
+      },
+      {
+        "event": "sign_up",
+        "users_28d": 1010,
+        "share_of_first_open_pct": 81.5,
+        "push_payoff": null
+      },
+      {
+        "event": "booking_page_published",
+        "users_28d": 640,
+        "share_of_first_open_pct": 51.6,
+        "push_payoff": "new booking and cancellation alerts start from here"
+      },
+      {
+        "event": "calendar_connected",
+        "users_28d": 410,
+        "share_of_first_open_pct": 33.1,
+        "push_payoff": "daily schedule push"
+      },
+      {
+        "event": "first_booking_received",
+        "users_28d": 380,
+        "share_of_first_open_pct": 30.6,
+        "push_payoff": "new booking alert"
+      },
+      {
+        "event": "payment_setup_completed",
+        "users_28d": 210,
+        "share_of_first_open_pct": 16.9,
+        "push_payoff": "payment received alert"
+      }
+    ],
+    "ask_after": "booking_page_published",
+    "reached_by_pct": 51.6,
+    "why": "The earliest step that a planned push directly serves (new booking and cancellation alerts start from here) and that at least 50% of new users reach.",
+    "now": "first launch, before sign-up (iOS and Android); dashboard page load (web)",
+    "soft_ask": {
+      "kind": "in-app",
+      "title": "Know the moment a client books",
+      "body": "Get an alert the moment a client books or cancels. Pick which alerts you want on the alerts screen.",
+      "buttons": [
+        "Turn on alerts",
+        "Not now"
+      ]
+    },
+    "flow": [
+      "Show the soft ask once the booking page is published; only a tap on Turn on alerts opens the system prompt. It is the only message at that moment: the calendar in-app waits for the first dashboard open at least 12 hours later.",
+      "On Not now: no system prompt. Offer the soft ask again after the first booking arrives, then no more than once every 30 days, at most twice.",
+      "iOS: the system prompt shows once; after a denial, the only way back is a Settings link on the alerts screen.",
+      "Android: the app targets Android 15, so it controls the timing; check that notifications are enabled before each send.",
+      "Web: ask only after a click on a bell icon on the bookings screen, never on page load."
+    ],
+    "option_ios_provisional": {
+      "offered": false,
+      "why": "Provisional authorization delivers every push quietly to Notification Center (no banner, no sound) until the owner allows full alerts. The first alert here is the new booking push, a time-sensitive alert the owner wants to see at once, and the top review complaint is 'missing or late', so a quiet first booking alert would make it worse. The soft ask after publishing asks for full alerts instead."
+    }
+  },
+  "caps": {
+    "method": "Load = marketing pushes delivered ÷ opted-in devices. Churn = opt-outs + Android uninstalls (GA4 app_remove) per 1,000 opted-in devices. A load passes while churn stays at or under 2x the quietest bucket (a starting point); daily buckets need 5 days, weekly buckets 2 weeks.",
+    "daily": [
+      {
+        "marketing_pushes_per_device": "0",
+        "days": 57,
+        "opt_outs": 187,
+        "android_uninstalls": 104,
+        "churn_per_1000_per_day": 0.85,
+        "times_baseline": 1.0,
+        "verdict": "baseline"
+      },
+      {
+        "marketing_pushes_per_device": "up to 1",
+        "days": 18,
+        "opt_outs": 68,
+        "android_uninstalls": 37,
+        "churn_per_1000_per_day": 0.97,
+        "times_baseline": 1.14,
+        "verdict": "passes"
+      },
+      {
+        "marketing_pushes_per_device": "1 to 2",
+        "days": 6,
+        "opt_outs": 50,
+        "android_uninstalls": 29,
+        "churn_per_1000_per_day": 2.2,
+        "times_baseline": 2.59,
+        "verdict": "fails"
+      },
+      {
+        "marketing_pushes_per_device": "over 2",
+        "days": 3,
+        "opt_outs": 42,
+        "android_uninstalls": 23,
+        "churn_per_1000_per_day": 3.55,
+        "times_baseline": 4.18,
+        "verdict": "too few days to judge"
+      }
+    ],
+    "daily_cap": 1,
+    "weekly": [
+      {
+        "week_start": "2026-08-03",
+        "pushes_per_device": 1.92,
+        "churn_per_1000": 6.26
+      },
+      {
+        "week_start": "2026-08-10",
+        "pushes_per_device": 2.83,
+        "churn_per_1000": 7.58
+      },
+      {
+        "week_start": "2026-08-17",
+        "pushes_per_device": 1.91,
+        "churn_per_1000": 6.04
+      },
+      {
+        "week_start": "2026-08-24",
+        "pushes_per_device": 3.8,
+        "churn_per_1000": 8.36
+      },
+      {
+        "week_start": "2026-08-31",
+        "pushes_per_device": 2.88,
+        "churn_per_1000": 6.34
+      },
+      {
+        "week_start": "2026-09-07",
+        "pushes_per_device": 4.77,
+        "churn_per_1000": 9.14
+      },
+      {
+        "week_start": "2026-09-14",
+        "pushes_per_device": 1.92,
+        "churn_per_1000": 6.12
+      },
+      {
+        "week_start": "2026-09-21",
+        "pushes_per_device": 2.85,
+        "churn_per_1000": 7.08
+      },
+      {
+        "week_start": "2026-09-28",
+        "pushes_per_device": 3.81,
+        "churn_per_1000": 8.7
+      },
+      {
+        "week_start": "2026-10-05",
+        "pushes_per_device": 2.84,
+        "churn_per_1000": 6.23
+      },
+      {
+        "week_start": "2026-10-12",
+        "pushes_per_device": 5.66,
+        "churn_per_1000": 11.44
+      },
+      {
+        "week_start": "2026-10-19",
+        "pushes_per_device": 1.9,
+        "churn_per_1000": 6.18
+      }
+    ],
+    "weekly_buckets": [
+      {
+        "pushes_per_device_per_week": 2,
+        "weeks": 4,
+        "avg_churn_per_1000_per_week": 6.15,
+        "times_baseline": 1.0,
+        "verdict": "baseline"
+      },
+      {
+        "pushes_per_device_per_week": 3,
+        "weeks": 4,
+        "avg_churn_per_1000_per_week": 6.81,
+        "times_baseline": 1.11,
+        "verdict": "passes"
+      },
+      {
+        "pushes_per_device_per_week": 4,
+        "weeks": 2,
+        "avg_churn_per_1000_per_week": 8.53,
+        "times_baseline": 1.39,
+        "verdict": "passes"
+      },
+      {
+        "pushes_per_device_per_week": 5,
+        "weeks": 1,
+        "avg_churn_per_1000_per_week": 9.14,
+        "times_baseline": 1.49,
+        "verdict": "too few weeks to judge"
+      },
+      {
+        "pushes_per_device_per_week": 6,
+        "weeks": 1,
+        "avg_churn_per_1000_per_week": 11.44,
+        "times_baseline": 1.86,
+        "verdict": "too few weeks to judge"
+      }
+    ],
+    "weekly_cap": 4,
+    "not_counted": "Pushes the user chose in the alerts screen (new booking, cancellation, today's schedule) don't count toward the marketing cap.",
+    "gap": "iOS uninstalls are not in the export (the provider has no uninstall tracking), so iOS churn is opt-outs only.",
+    "last_4_weeks_avg_pushes_per_device": 3.55,
+    "days_over_daily_cap_12_weeks": 9
+  },
+  "channel_plan": {
+    "rules": [
+      "Time-sensitive and the user is away from the app: push.",
+      "Needs the user on a screen to act: in-app, shown on that screen.",
+      "Long, kept for later or a record: email.",
+      "One primary channel per moment; a second channel only as a fallback after a wait, when the first was not acted on.",
+      "One moment, one message: the permission soft ask is alone at its trigger; another message on that trigger waits for a later session.",
+      "An email flow on the same trigger within 24 hours stacks with the push or in-app; move one."
+    ],
+    "moments": [
+      {
+        "moment": "New booking received",
+        "trigger": "booking_received",
+        "when": "on the trigger",
+        "primary": "push",
+        "fallback": "web push for owners on the web app; email only if neither is allowed",
+        "email_flow_on_same_trigger": null,
+        "stacking": null,
+        "counts_toward_cap": false,
+        "replaces": "P1, W1",
+        "why": null
+      },
+      {
+        "moment": "Booking cancelled",
+        "trigger": "booking_cancelled",
+        "when": "on the trigger",
+        "primary": "push",
+        "fallback": "web push for owners on the web app; email only if neither is allowed",
+        "email_flow_on_same_trigger": null,
+        "stacking": null,
+        "counts_toward_cap": false,
+        "replaces": "P2",
+        "why": null
+      },
+      {
+        "moment": "Today's schedule",
+        "trigger": "scheduled, each morning",
+        "when": "on the trigger",
+        "primary": "push",
+        "fallback": "web push for owners on the web app; email only if neither is allowed",
+        "email_flow_on_same_trigger": null,
+        "stacking": null,
+        "counts_toward_cap": false,
+        "replaces": "P3",
+        "why": null
+      },
+      {
+        "moment": "Booking page not published 24 hours after sign-up",
+        "trigger": "sign_up",
+        "when": "on the trigger",
+        "primary": "email",
+        "fallback": null,
+        "email_flow_on_same_trigger": {
+          "flow": "Finish your booking page",
+          "status": "live",
+          "first_message_hours": 24
+        },
+        "stacking": "Same trigger as the email flow 'Finish your booking page'; the email is the one message.",
+        "counts_toward_cap": false,
+        "replaces": "P4",
+        "why": "It fires before the permission ask (booking_page_published), so most users can't get a push yet."
+      },
+      {
+        "moment": "Calendar not connected after the page is live",
+        "trigger": "booking_page_published",
+        "when": "the first dashboard open at least 12 hours after the page is published",
+        "primary": "in-app",
+        "fallback": "email: 'Connect your calendar' at 48 hours, only if the in-app was not acted on",
+        "email_flow_on_same_trigger": {
+          "flow": "Connect your calendar",
+          "status": "live",
+          "first_message_hours": 48
+        },
+        "stacking": null,
+        "counts_toward_cap": false,
+        "replaces": "I1",
+        "why": "The permission soft ask is the one message at booking_page_published, so this in-app waits for the first dashboard open at least 12 hours after the page is published."
+      },
+      {
+        "moment": "Staff limit reached",
+        "trigger": "staff_limit_reached",
+        "when": "on the trigger",
+        "primary": "in-app",
+        "fallback": "email: hold the first message of 'Upgrade when the team grows' until 24 hours after the in-app, and send it only if the in-app was not acted on",
+        "email_flow_on_same_trigger": {
+          "flow": "Upgrade when the team grows",
+          "status": "live",
+          "first_message_hours": 2
+        },
+        "stacking": "The email flow 'Upgrade when the team grows' fires 2 hours from this in-app: they stack inside 24 hours.",
+        "counts_toward_cap": false,
+        "replaces": "P6",
+        "why": null
+      },
+      {
+        "moment": "Weekly tip",
+        "trigger": "broadcast",
+        "when": "on the trigger",
+        "primary": "push",
+        "fallback": "none: a tip is not worth a second channel",
+        "email_flow_on_same_trigger": null,
+        "stacking": null,
+        "counts_toward_cap": true,
+        "replaces": "P5",
+        "why": null
+      },
+      {
+        "moment": "Monthly report ready",
+        "trigger": "scheduled, first of the month",
+        "when": "on the trigger",
+        "primary": "email",
+        "fallback": null,
+        "email_flow_on_same_trigger": null,
+        "stacking": null,
+        "counts_toward_cap": false,
+        "replaces": null,
+        "why": null
+      },
+      {
+        "moment": "No login for 30 days",
+        "trigger": "no session 30 days",
+        "when": "on the trigger",
+        "primary": "push",
+        "fallback": "email: hold the first message of 'We miss you' until 24 hours after the push, and send it only if the push was not acted on (the flow is draft: turn it on first)",
+        "email_flow_on_same_trigger": {
+          "flow": "We miss you",
+          "status": "draft",
+          "first_message_hours": 0
+        },
+        "stacking": "The email flow 'We miss you' fires 0 hours from this push: they stack inside 24 hours.",
+        "counts_toward_cap": true,
+        "replaces": null,
+        "why": null
+      }
+    ]
+  },
+  "copy": {
+    "budgets": {
+      "push and web push": "title 40 characters, body 100, the first 40 characters of the body make sense alone",
+      "in-app": "headline 40 characters, body 140, at most 2 buttons of 20",
+      "hard_limit": "4 KB payload on APNs and FCM; visible length depends on the device, so these budgets are the skill's working limits"
+    },
+    "messages": [
+      {
+        "moment": "New booking received",
+        "kind": "push",
+        "title": "New booking: {client_first_name}, {service}",
+        "body": "{weekday} at {time} with {staff_name}. Tap to see the booking or message the client.",
+        "deep_link": "bookings/{booking_id}",
+        "sample_fill": {
+          "title": "New booking: Maya, Gel manicure",
+          "body": "Thursday at 2:30 PM with Lena. Tap to see the booking or message the client."
+        },
+        "checks": {
+          "title_chars": 31,
+          "title_ok": true,
+          "body_chars": 76,
+          "body_ok": true,
+          "first_40_chars": "Thursday at 2:30 PM with Lena. Tap to se"
+        }
+      },
+      {
+        "moment": "Booking cancelled",
+        "kind": "push",
+        "title": "Cancelled: {client_first_name}, {weekday} {time}",
+        "body": "The {time} slot is open again. Tap to offer it to your waitlist.",
+        "deep_link": "calendar/{date}",
+        "sample_fill": {
+          "title": "Cancelled: Omar, Friday 10:00 AM",
+          "body": "The 10:00 AM slot is open again. Tap to offer it to your waitlist."
+        },
+        "checks": {
+          "title_chars": 32,
+          "title_ok": true,
+          "body_chars": 66,
+          "body_ok": true,
+          "first_40_chars": "The 10:00 AM slot is open again. Tap to "
+        }
+      },
+      {
+        "moment": "Today's schedule",
+        "kind": "push",
+        "title": "Today: {booking_count} bookings, first at {first_time}",
+        "body": "{gap_count} open slots this afternoon. Tap to see your day.",
+        "deep_link": "calendar/today",
+        "sample_fill": {
+          "title": "Today: 7 bookings, first at 9:00 AM",
+          "body": "2 open slots this afternoon. Tap to see your day."
+        },
+        "checks": {
+          "title_chars": 35,
+          "title_ok": true,
+          "body_chars": 49,
+          "body_ok": true,
+          "first_40_chars": "2 open slots this afternoon. Tap to see "
+        }
+      },
+      {
+        "moment": "Weekly tip",
+        "kind": "push",
+        "title": "Cut no-shows with a deposit",
+        "body": "A deposit makes clients think twice before skipping. Add one to any service in 2 taps.",
+        "deep_link": "settings/services/deposits",
+        "sample_fill": null,
+        "checks": {
+          "title_chars": 27,
+          "title_ok": true,
+          "body_chars": 86,
+          "body_ok": true,
+          "first_40_chars": "A deposit makes clients think twice befo"
+        }
+      },
+      {
+        "moment": "Calendar not connected after the page is live",
+        "kind": "in-app",
+        "title": "Stop double bookings",
+        "body": "Connect the calendar you already use, and personal events block booking times automatically.",
+        "buttons": [
+          "Connect calendar",
+          "Later"
+        ],
+        "deep_link": "settings/calendar",
+        "sample_fill": null,
+        "checks": {
+          "title_chars": 20,
+          "title_ok": true,
+          "body_chars": 92,
+          "body_ok": true,
+          "buttons_ok": true
+        }
+      },
+      {
+        "moment": "Staff limit reached",
+        "kind": "in-app",
+        "title": "Your plan has room for 1 staff calendar",
+        "body": "Growth adds up to 5 calendars, so each team member gets their own booking link.",
+        "buttons": [
+          "See Growth",
+          "Not now"
+        ],
+        "deep_link": "billing/plans",
+        "sample_fill": null,
+        "checks": {
+          "title_chars": 39,
+          "title_ok": true,
+          "body_chars": 79,
+          "body_ok": true,
+          "buttons_ok": true
+        }
+      },
+      {
+        "moment": "No login for 30 days",
+        "kind": "push",
+        "title": "{booking_count_30d} bookings came in while you were away",
+        "body": "Your booking page kept working. Tap to see who booked and what is coming up.",
+        "deep_link": "bookings",
+        "sample_fill": {
+          "title": "18 bookings came in while you were away",
+          "body": "Your booking page kept working. Tap to see who booked and what is coming up."
+        },
+        "checks": {
+          "title_chars": 39,
+          "title_ok": true,
+          "body_chars": 76,
+          "body_ok": true,
+          "first_40_chars": "Your booking page kept working. Tap to s"
+        }
+      },
+      {
+        "moment": "Ask for notification permission",
+        "kind": "in-app",
+        "title": "Know the moment a client books",
+        "body": "Get an alert the moment a client books or cancels. Pick which alerts you want on the alerts screen.",
+        "buttons": [
+          "Turn on alerts",
+          "Not now"
+        ],
+        "deep_link": null,
+        "sample_fill": null,
+        "checks": {
+          "title_chars": 30,
+          "title_ok": true,
+          "body_chars": 99,
+          "body_ok": true,
+          "buttons_ok": true
+        }
+      }
+    ]
+  },
+  "messages_now": [
+    {
+      "id": "P1",
+      "name": "New booking",
+      "kind": "push",
+      "type": "transactional",
+      "delivered_28d": 15200,
+      "direct_open_rate_pct": 27.0
+    },
+    {
+      "id": "P2",
+      "name": "Booking cancelled",
+      "kind": "push",
+      "type": "transactional",
+      "delivered_28d": 1760,
+      "direct_open_rate_pct": 39.2
+    },
+    {
+      "id": "P3",
+      "name": "Daily schedule",
+      "kind": "push",
+      "type": "scheduled utility",
+      "delivered_28d": 41200,
+      "direct_open_rate_pct": 13.1
+    },
+    {
+      "id": "P4",
+      "name": "Finish your booking page",
+      "kind": "push",
+      "type": "marketing",
+      "delivered_28d": 260,
+      "direct_open_rate_pct": 8.1
+    },
+    {
+      "id": "P5",
+      "name": "Tip of the week",
+      "kind": "push",
+      "type": "marketing",
+      "delivered_28d": 57872,
+      "direct_open_rate_pct": 3.1
+    },
+    {
+      "id": "P6",
+      "name": "Upgrade offer",
+      "kind": "push",
+      "type": "marketing",
+      "delivered_28d": 28971,
+      "direct_open_rate_pct": 1.4
+    },
+    {
+      "id": "W1",
+      "name": "New booking (web)",
+      "kind": "web push",
+      "type": "transactional",
+      "delivered_28d": 5200,
+      "direct_open_rate_pct": 24.0
+    },
+    {
+      "id": "I1",
+      "name": "Connect your calendar",
+      "kind": "in-app",
+      "impressions_28d": 9800,
+      "click_rate_pct": 3.0,
+      "dismiss_rate_pct": 72.4
+    },
+    {
+      "id": "I2",
+      "name": "Rate the app",
+      "kind": "in-app",
+      "impressions_28d": 1100,
+      "click_rate_pct": 10.9,
+      "dismiss_rate_pct": 78.2
+    }
+  ],
+  "messages_now_summary": {
+    "transactional_direct_open_rate_pct": 27.3,
+    "marketing_direct_open_rate_pct": 2.5
+  },
+  "tracking": [
+    {
+      "number": "Prompt accept rate",
+      "how": "system prompts accepted ÷ shown, by platform, weekly",
+      "baseline_is": "today's system prompt with no soft ask: iOS at first launch, before sign-up; Android 13 and later at first launch, before sign-up; Web (desktop and Android browsers) at dashboard page load",
+      "baseline": {
+        "iOS": 42.2,
+        "Android 13 and later": 60.9,
+        "Web (desktop and Android browsers)": 12.4
+      },
+      "after_the_change": "once the soft ask ships, also track Turn on alerts taps ÷ soft asks shown; its first weeks become the new baseline"
+    },
+    {
+      "number": "Opt-in share of active devices",
+      "how": "opted-in active devices ÷ GA4 active users, by platform",
+      "baseline": {
+        "iOS": 44.5,
+        "Android 13 and later": 58.3,
+        "Android 12 and earlier": 92.7,
+        "Web (desktop and Android browsers)": 20.9,
+        "Web on iPhone and iPad": 0.0
+      }
+    },
+    {
+      "number": "Direct open rate",
+      "how": "direct opens ÷ delivered, per message, and transactional against marketing",
+      "baseline": {
+        "per_message": {
+          "P1 New booking": 27.0,
+          "P2 Booking cancelled": 39.2,
+          "P3 Daily schedule": 13.1,
+          "P4 Finish your booking page": 8.1,
+          "P5 Tip of the week": 3.1,
+          "P6 Upgrade offer": 1.4,
+          "W1 New booking (web)": 24.0
+        },
+        "transactional": 27.3,
+        "marketing": 2.5
+      }
+    },
+    {
+      "number": "Churn per 1,000 opted-in devices per day",
+      "how": "opt-outs + Android uninstalls, on days with and without a marketing push",
+      "baseline": {
+        "0": 0.85,
+        "up to 1": 0.97,
+        "1 to 2": 2.2,
+        "over 2": 3.55
+      }
+    },
+    {
+      "number": "In-app click and dismiss rates",
+      "how": "clicks ÷ impressions and dismissals ÷ impressions, per message",
+      "baseline": {
+        "I1 Connect your calendar": {
+          "click_rate_pct": 3.0,
+          "dismiss_rate_pct": 72.4
+        },
+        "I2 Rate the app": {
+          "click_rate_pct": 10.9,
+          "dismiss_rate_pct": 78.2
+        }
+      }
+    },
+    {
+      "number": "Review mentions of notifications",
+      "how": "per 100 reviews, per store, every 90 days",
+      "baseline": {
+        "App Store": 43.3,
+        "Google Play": 43.3
+      }
+    }
+  ],
+  "findings": [
+    "Only 44.5% of iOS devices and 58.3% of Android 13+ devices can get a push, because the prompt shows at first launch before sign-up. Move it to after booking_page_published (51.6% of new users get there) behind a soft ask.",
+    "Marketing pushes cost devices: churn is 2.59x the quiet-day level on days with 1 to 2 pushes per device. Cap marketing at 1 a day and 4 a week; 9 of the last 84 days went over the daily cap.",
+    "Store reviews: the top notification complaint is missing or late (7 reviews). Treat the new booking push as the top priority: send it as high priority and check delivery on Android.",
+    "Push P4 (Finish your booking page) fires 24 hours after sign-up, the same moment as the Klaviyo email, and reaches almost no one (260 delivered in 28 days). Stop it; the email carries that moment.",
+    "The upgrade push (P6) opens at 1.4% and draws promotional complaints; replace it with an in-app message when the staff limit is reached.",
+    "The calendar in-app (I1) shows on every dashboard open and gets 3.0% clicks with 72.4% dismissed; show it once, on the first dashboard open at least 12 hours after the page goes live (the soft ask has the publish moment), and again after a double booking, not on every open."
+  ],
+  "unknowns": [
+    "iOS uninstalls (not in the export).",
+    "Opt-outs per message (the export gives daily totals, so churn is matched to days, not to single pushes).",
+    "Users' local time zones (GA4 hours are in the property time zone)."
+  ],
+  "go_deeper": [
+    "onboarding-cro, if installed, for the steps before the booking page is published",
+    "email-lifecycle-strategy, if installed, for the email side of each stage",
+    "email-sequence-builder, if installed, to write the email fallbacks",
+    "klaviyo-flow-auditor, if installed, to check what each email flow earns"
+  ],
+  "changes_made": "None. The skill reads and plans; it sends nothing and changes no setting."
+}

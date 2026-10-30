@@ -1,0 +1,820 @@
+{
+  "header": {
+    "sop": "Paid campaign launch (Google Ads and Meta)",
+    "business": "Example Booking Software",
+    "version": "1.0",
+    "owner": "Leo Park",
+    "approver": "Dana Whitfield",
+    "effective": "2026-10-28",
+    "next_review": "2027-01-26",
+    "status": "Draft until the 2 blocking account issues are fixed",
+    "sources": [
+      "recording transcript (5 segments)",
+      "meeting notes (14 lines)"
+    ],
+    "accounts_checked": [
+      "Google Ads",
+      "Meta Ads",
+      "GA4",
+      "Google Tag Manager"
+    ],
+    "defaults_used": [
+      "next review = effective date + 90 days",
+      "Meta daily budgets read in cents",
+      "run-rate = enabled daily budgets x 30.4"
+    ]
+  },
+  "live_check_summary": {
+    "account issue": 4,
+    "SOP fixed": 1,
+    "open question": 1,
+    "match": 5,
+    "not checked": 0
+  },
+  "what_the_live_checks_changed": {
+    "account_issues": [
+      {
+        "check": "Meta budget headroom",
+        "steps": [
+          3
+        ],
+        "found": "Enabled daily budgets total $135.00, a run-rate of $4,104.00 a month against the $4,000 plan: headroom -$104.00. A $50/day test needs $1,520.00. Left out (budget on ad sets or lifetime): EBS | Meta | Demo | Clinics | 2026-10. It doesn't fit.",
+        "fix_owner": "Dana Whitfield",
+        "type": "blocks the launch"
+      },
+      {
+        "check": "GTM tag",
+        "steps": [
+          8
+        ],
+        "found": "'Meta Pixel - Lead' is in live version 37 but paused, so it doesn't fire.",
+        "fix_owner": "Maya Cohen",
+        "type": "blocks the launch"
+      },
+      {
+        "check": "Campaign naming (Google Ads)",
+        "steps": [
+          4
+        ],
+        "found": "6 of 8 non-removed campaigns fit (75.0%). Not fitting: Fitness studios test, EBS - Competitors - Q2.",
+        "fix_owner": "Leo Park",
+        "type": "cleanup"
+      },
+      {
+        "check": "Campaign naming (Meta)",
+        "steps": [
+          4
+        ],
+        "found": "4 of 5 non-removed campaigns fit (80.0%). Not fitting: Salon owners video - Oct.",
+        "fix_owner": "Leo Park",
+        "type": "cleanup"
+      }
+    ],
+    "sop_fixes": [
+      {
+        "check": "Google Ads conversion action",
+        "steps": [
+          7,
+          10
+        ],
+        "before": "Demo Request",
+        "after": "Demo booked",
+        "why": "No action is called 'Demo Request'. 'Demo Request (old form)' is enabled but primary=False and counted=False. The primary, counted demo action is 'Demo booked'."
+      }
+    ],
+    "open_questions": [
+      {
+        "check": "GA4 key event",
+        "steps": [
+          9
+        ],
+        "found": "'sign_up' is not among the property's 3 key events (close_convert_lead, demo_booked, generate_lead). Either the notes expect a key event nobody set, or sign-ups are tracked another way."
+      }
+    ]
+  },
+  "budget_headroom": {
+    "google-ads": {
+      "enabled_campaigns_in_run_rate": 6,
+      "daily_budgets_total_usd": 240.0,
+      "monthly_run_rate_usd": 7296.0,
+      "monthly_plan_usd": 9000,
+      "headroom_usd": 1704.0,
+      "new_campaign_monthly_usd": 1520.0,
+      "new_campaign_fits": true,
+      "left_out_of_run_rate": []
+    },
+    "facebook-ads": {
+      "enabled_campaigns_in_run_rate": 3,
+      "daily_budgets_total_usd": 135.0,
+      "monthly_run_rate_usd": 4104.0,
+      "monthly_plan_usd": 4000,
+      "headroom_usd": -104.0,
+      "new_campaign_monthly_usd": 1520.0,
+      "new_campaign_fits": false,
+      "left_out_of_run_rate": [
+        "EBS | Meta | Demo | Clinics | 2026-10"
+      ]
+    }
+  },
+  "naming_compliance": {
+    "google-ads": {
+      "campaigns": 8,
+      "fit": 6,
+      "compliance_pct": 75.0,
+      "names_that_dont_fit": [
+        "Fitness studios test",
+        "EBS - Competitors - Q2"
+      ]
+    },
+    "facebook-ads": {
+      "campaigns": 5,
+      "fit": 4,
+      "compliance_pct": 80.0,
+      "names_that_dont_fit": [
+        "Salon owners video - Oct"
+      ]
+    }
+  },
+  "sop": {
+    "purpose": "Launch a new paid campaign on Google Ads or Meta so it spends the approved budget, counts the right conversion and can be read after a week.",
+    "done_means": "Both campaigns are live, logged, tracking Demo booked and the Lead event, and the D+7 read is in the launch log.",
+    "trigger_and_frequency": "A launch brief is approved; about 18 launches a year. Launch day is D.",
+    "who_does_what": [
+      {
+        "person": "Leo Park",
+        "role": "Paid media specialist",
+        "does": [
+          1,
+          3,
+          4,
+          5,
+          10,
+          11,
+          12,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "person": "Maya Cohen",
+        "role": "Web and analytics",
+        "does": [
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "person": "Dana Whitfield",
+        "role": "Marketing lead",
+        "does": [
+          2,
+          13,
+          16
+        ],
+        "approves": [
+          2
+        ],
+        "checks": [
+          13
+        ]
+      }
+    ],
+    "tools_and_access": [
+      {
+        "tool": "Google Ads",
+        "access": "Standard access to build and publish; read access for the D+7 read",
+        "granted_by": "Dana Whitfield"
+      },
+      {
+        "tool": "Meta Ads Manager",
+        "access": "Advertiser role on the ad account, and the pixel shared with it",
+        "granted_by": "Dana Whitfield"
+      },
+      {
+        "tool": "Google Tag Manager",
+        "access": "Read to check tags; Publish only for Maya",
+        "granted_by": "Maya Cohen"
+      },
+      {
+        "tool": "GA4",
+        "access": "Viewer to check key events; Editor to mark one",
+        "granted_by": "Maya Cohen"
+      },
+      {
+        "tool": "UTM sheet and launch log",
+        "access": "Edit",
+        "granted_by": "Leo Park"
+      }
+    ],
+    "inputs": [
+      "approved launch brief",
+      "UTM sheet",
+      "monthly budget plan per platform",
+      "ad copy and creative from the brief"
+    ],
+    "steps": [
+      {
+        "n": 1,
+        "when": "D-5",
+        "owner": "Leo Park",
+        "step": "Fill the launch brief: goal, audience, offer, starting daily budget, dates and landing page.",
+        "done_when": "All six fields are filled and the brief is shared with Dana.",
+        "minutes": 20,
+        "minutes_source": "meeting notes",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 2,
+        "when": "D-4",
+        "owner": "Dana Whitfield",
+        "step": "Approve the brief and the starting daily budget, or send it back with comments.",
+        "done_when": "The brief shows Approved with Dana's name and the date.",
+        "minutes": 10,
+        "minutes_source": "meeting notes",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 3,
+        "when": "D-4",
+        "owner": "Leo Park",
+        "step": "Check budget headroom per platform; if the new budget doesn't fit, get Dana's approval to move budget first.",
+        "done_when": "Headroom for each platform is written in the brief.",
+        "minutes": 10,
+        "minutes_source": "meeting notes",
+        "automation": "Assist: spend-pacing-monitor for the Google Ads side (if installed)",
+        "live_checks": [
+          {
+            "check": "budget-google-ads",
+            "status": "match"
+          },
+          {
+            "check": "budget-facebook-ads",
+            "status": "account issue"
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "when": "D-3",
+        "owner": "Leo Park",
+        "step": "Name each new campaign EBS | Channel | Goal | Audience | YYYY-MM.",
+        "done_when": "Each name fits the convention exactly.",
+        "minutes": "ask the owner",
+        "minutes_source": "ask the owner",
+        "automation": "Manual",
+        "live_checks": [
+          {
+            "check": "naming-google-ads",
+            "status": "account issue"
+          },
+          {
+            "check": "naming-facebook-ads",
+            "status": "account issue"
+          }
+        ]
+      },
+      {
+        "n": 5,
+        "when": "D-3",
+        "owner": "Leo Park",
+        "step": "Build the UTM-tagged final URLs from the UTM sheet.",
+        "done_when": "Each URL opens the landing page with its utm_source, utm_medium and utm_campaign.",
+        "minutes": 10,
+        "minutes_source": "meeting notes",
+        "automation": "Assist: utm-auditor (if installed)",
+        "live_checks": []
+      },
+      {
+        "n": 6,
+        "when": "D-2",
+        "owner": "Maya Cohen",
+        "step": "Test the landing page on mobile and desktop and submit the demo form once.",
+        "done_when": "The page loads, the form submits and the thank-you page shows.",
+        "minutes": 15,
+        "minutes_source": "meeting notes",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 7,
+        "when": "D-2",
+        "owner": "Maya Cohen",
+        "step": "Confirm Google Ads counts Demo booked as a primary conversion action.",
+        "done_when": "Demo booked shows Primary and is included in Conversions.",
+        "minutes": 5,
+        "minutes_source": "meeting notes",
+        "automation": "Assist: conversion-tracking-auditor (if installed)",
+        "live_checks": [
+          {
+            "check": "gads-conversion",
+            "status": "SOP fixed"
+          }
+        ],
+        "source_said": "Google Ads goal should be Demo Request."
+      },
+      {
+        "n": 8,
+        "when": "D-2",
+        "owner": "Maya Cohen",
+        "step": "Confirm the live GTM tags Meta Pixel - Lead and GA4 - demo_booked fire on Thank you page - demo.",
+        "done_when": "Both tags fire once in GTM preview after a test form submission, and the Example Booking Pixel shows recent activity.",
+        "minutes": 5,
+        "minutes_source": "meeting notes",
+        "automation": "Assist: gtm-container-auditor (if installed)",
+        "live_checks": [
+          {
+            "check": "gtm-tag-meta-lead",
+            "status": "account issue"
+          },
+          {
+            "check": "gtm-tag-ga4-demo",
+            "status": "match"
+          },
+          {
+            "check": "gtm-trigger",
+            "status": "match"
+          },
+          {
+            "check": "meta-pixel",
+            "status": "match"
+          }
+        ]
+      },
+      {
+        "n": 9,
+        "when": "D-2",
+        "owner": "Maya Cohen",
+        "step": "Confirm demo_booked and sign_up are marked as key events in GA4.",
+        "done_when": "Both events show in Admin, Key events.",
+        "minutes": 5,
+        "minutes_source": "meeting notes",
+        "automation": "Assist: conversion-tracking-auditor (if installed)",
+        "live_checks": [
+          {
+            "check": "ga4-demo_booked",
+            "status": "match"
+          },
+          {
+            "check": "ga4-sign_up",
+            "status": "open question"
+          }
+        ]
+      },
+      {
+        "n": 10,
+        "when": "D",
+        "owner": "Leo Park",
+        "step": "Create the Google Ads campaign: name, goal Demo booked, the approved daily budget, Maximize conversions.",
+        "done_when": "The campaign is saved as a draft with these four settings.",
+        "minutes": 12,
+        "minutes_source": "recording 00:00 to 12:20",
+        "automation": "Assist: google-ads-campaign-builder (if installed)",
+        "live_checks": [
+          {
+            "check": "gads-conversion",
+            "status": "SOP fixed"
+          }
+        ],
+        "source_said": "set the goal to Demo Request"
+      },
+      {
+        "n": 11,
+        "when": "D",
+        "owner": "Leo Park",
+        "step": "Add one ad group per service type, phrase match keywords and two responsive search ads each.",
+        "done_when": "Each ad group has keywords, two ads and UTM-tagged final URLs.",
+        "minutes": 18,
+        "minutes_source": "recording 12:20 to 30:40",
+        "automation": "Assist: google-ads-campaign-builder (if installed)",
+        "live_checks": []
+      },
+      {
+        "n": 12,
+        "when": "D",
+        "owner": "Leo Park",
+        "step": "Build the Meta campaign: Leads objective, Example Booking Pixel Lead event, one ad set, ads from the brief.",
+        "done_when": "The campaign is saved unpublished with the pixel and Lead event selected.",
+        "minutes": 15,
+        "minutes_source": "recording 30:40 to 46:00",
+        "automation": "Assist: facebook-ads-launch-checklist (if installed)",
+        "live_checks": [
+          {
+            "check": "meta-pixel",
+            "status": "match"
+          }
+        ]
+      },
+      {
+        "n": 13,
+        "when": "D",
+        "owner": "Dana Whitfield",
+        "step": "Run the quality gate on both campaigns before anything is published.",
+        "done_when": "Every quality gate line is answered yes.",
+        "minutes": 15,
+        "minutes_source": "meeting notes",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 14,
+        "when": "D",
+        "owner": "Leo Park",
+        "step": "Publish both campaigns and add their names, links and budgets to the launch log.",
+        "done_when": "Both campaigns are live and in the launch log.",
+        "minutes": 4,
+        "minutes_source": "recording 46:00 to 49:40",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 15,
+        "when": "D+1",
+        "owner": "Leo Park",
+        "step": "Check every ad is approved and both campaigns are spending; a disapproved ad goes to When it breaks.",
+        "done_when": "No disapproved ads, and spend above zero on both platforms.",
+        "minutes": 10,
+        "minutes_source": "meeting notes",
+        "automation": "Manual",
+        "live_checks": []
+      },
+      {
+        "n": 16,
+        "when": "D+7",
+        "owner": "Dana Whitfield and Leo Park",
+        "step": "Read the first week: spend against plan and cost per demo against the $120 target.",
+        "done_when": "A short note in the launch log says keep, change or stop.",
+        "minutes": 20,
+        "minutes_source": "meeting notes",
+        "automation": "Schedule: google-ads-weekly-brief and meta-ads-performance-analyzer (if installed)",
+        "live_checks": []
+      }
+    ],
+    "timeline": {
+      "groups": [
+        {
+          "when": "D-5",
+          "steps": [
+            1
+          ],
+          "hands_on_minutes": 20,
+          "steps_without_a_time": []
+        },
+        {
+          "when": "D-4",
+          "steps": [
+            2,
+            3
+          ],
+          "hands_on_minutes": 20,
+          "steps_without_a_time": []
+        },
+        {
+          "when": "D-3",
+          "steps": [
+            4,
+            5
+          ],
+          "hands_on_minutes": 10,
+          "steps_without_a_time": [
+            4
+          ]
+        },
+        {
+          "when": "D-2",
+          "steps": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "hands_on_minutes": 30,
+          "steps_without_a_time": []
+        },
+        {
+          "when": "D",
+          "steps": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "hands_on_minutes": 64,
+          "steps_without_a_time": []
+        },
+        {
+          "when": "D+1",
+          "steps": [
+            15
+          ],
+          "hands_on_minutes": 10,
+          "steps_without_a_time": []
+        },
+        {
+          "when": "D+7",
+          "steps": [
+            16
+          ],
+          "hands_on_minutes": 20,
+          "steps_without_a_time": []
+        }
+      ],
+      "total_hands_on_minutes": 174,
+      "steps_without_a_time": [
+        4
+      ],
+      "waits": [
+        "platform ad review between step 14 and step 15: the notes say Google and Meta usually review new ads within a day"
+      ]
+    },
+    "quality_gate": [
+      "Does every campaign name fit EBS | Channel | Goal | Audience | YYYY-MM?",
+      "Is the Google Ads campaign's goal Demo booked, and nothing else?",
+      "Does the new daily budget match the approved brief and fit the headroom?",
+      "Do all final URLs carry UTM tags and open the right landing page?",
+      "Is the Meta ad set optimizing for the Example Booking Pixel Lead event?",
+      "Did a test submission fire both GTM tags on Thank you page - demo?",
+      "Are ads, headlines and offers the ones in the approved brief?"
+    ],
+    "when_it_breaks": [
+      {
+        "symptom": "An ad is disapproved",
+        "first_move": "Read the policy reason, edit the ad and resubmit the same day.",
+        "escalate_to": "Leo Park"
+      },
+      {
+        "symptom": "No demo_booked or Lead events after a test submission",
+        "first_move": "Open GTM preview on the thank-you page and check the trigger and whether the tag is paused.",
+        "escalate_to": "Maya Cohen"
+      },
+      {
+        "symptom": "A campaign isn't spending on D+1",
+        "first_move": "Check the campaign status, the budget and ad approval before touching bids.",
+        "escalate_to": "Leo Park"
+      },
+      {
+        "symptom": "The new budget doesn't fit the headroom",
+        "first_move": "Don't build at a lower budget silently; ask which live campaign gives up budget.",
+        "escalate_to": "Dana Whitfield"
+      }
+    ],
+    "common_mistakes": [
+      "Picking 'Demo Request (old form)' as the goal because the old notes say Demo Request; the counted action is 'Demo booked'.",
+      "Trusting a GTM tag because it exists: a paused tag is in the container and still doesn't fire.",
+      "Building the Meta test at $50/day when the Meta run-rate is already above plan.",
+      "Naming a test campaign freely ('Fitness studios test'), which then can't be grouped in reports."
+    ],
+    "automation": {
+      "counts": {
+        "Manual": 7,
+        "Assist": 8,
+        "Schedule": 1
+      },
+      "rule": "Steps that spend, publish or change an account are never more than Assist."
+    },
+    "open_questions": [
+      "Should 'sign_up' be marked as a key event, or should the step drop it?",
+      "How long does naming take (step 4)? The notes and recording don't say, so it has no time.",
+      "Who covers a launch that lands on a weekend? The notes leave it undecided."
+    ],
+    "change_log": [
+      {
+        "version": "1.0",
+        "date": "2026-10-28",
+        "by": "Leo Park (owner), drafted with Claude",
+        "change": "First version from the recording and notes. The recorded Google Ads build ran 31 minutes, so it is two steps (10 and 11). Goal renamed from Demo Request to Demo booked after the live check."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "n": 1,
+      "when": "D-5",
+      "check": "Launch brief filled, six fields",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 2,
+      "when": "D-4",
+      "check": "Brief and starting budget approved",
+      "owner": "Dana Whitfield"
+    },
+    {
+      "n": 3,
+      "when": "D-4",
+      "check": "Budget headroom checked per platform",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 4,
+      "when": "D-3",
+      "check": "Campaign names fit the convention",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 5,
+      "when": "D-3",
+      "check": "UTM final URLs built and opened",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 6,
+      "when": "D-2",
+      "check": "Landing page and demo form tested",
+      "owner": "Maya Cohen"
+    },
+    {
+      "n": 7,
+      "when": "D-2",
+      "check": "Demo booked is primary in Google Ads",
+      "owner": "Maya Cohen"
+    },
+    {
+      "n": 8,
+      "when": "D-2",
+      "check": "GTM Lead and demo_booked tags fire; pixel active",
+      "owner": "Maya Cohen"
+    },
+    {
+      "n": 9,
+      "when": "D-2",
+      "check": "GA4 key events demo_booked and sign_up set",
+      "owner": "Maya Cohen"
+    },
+    {
+      "n": 10,
+      "when": "D",
+      "check": "Google Ads campaign settings saved as draft",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 11,
+      "when": "D",
+      "check": "Ad groups, keywords and two ads each added",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 12,
+      "when": "D",
+      "check": "Meta campaign built with pixel Lead event",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 13,
+      "when": "D",
+      "check": "Quality gate passed by a second person",
+      "owner": "Dana Whitfield"
+    },
+    {
+      "n": 14,
+      "when": "D",
+      "check": "Published and logged",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 15,
+      "when": "D+1",
+      "check": "D+1: ads approved and spending",
+      "owner": "Leo Park"
+    },
+    {
+      "n": 16,
+      "when": "D+7",
+      "check": "D+7: first-week read logged",
+      "owner": "Dana Whitfield and Leo Park"
+    }
+  ],
+  "library": {
+    "ranked": [
+      {
+        "process": "Paid campaign launch",
+        "hours_per_year": 52.2,
+        "weight": 2,
+        "priority": 104.4,
+        "sop_state": "no SOP",
+        "sop_age_days": null,
+        "minutes_per_run": 174,
+        "runs_per_year": 18,
+        "trigger": "per event: a launch brief is approved",
+        "rank": 1
+      },
+      {
+        "process": "Blog post publishing",
+        "hours_per_year": 72.0,
+        "weight": 1,
+        "priority": 72.0,
+        "sop_state": "no SOP",
+        "sop_age_days": null,
+        "minutes_per_run": 90,
+        "runs_per_year": 48,
+        "trigger": "weekly on Thursday",
+        "rank": 2
+      },
+      {
+        "process": "Monthly performance report",
+        "hours_per_year": 36.0,
+        "weight": 1,
+        "priority": 36.0,
+        "sop_state": "stale",
+        "sop_age_days": 260,
+        "minutes_per_run": 180,
+        "runs_per_year": 12,
+        "trigger": "business day 3 of each month",
+        "rank": 3
+      },
+      {
+        "process": "Quarterly tracking audit",
+        "hours_per_year": 16.0,
+        "weight": 2,
+        "priority": 32.0,
+        "sop_state": "no SOP",
+        "sop_age_days": null,
+        "minutes_per_run": 240,
+        "runs_per_year": 4,
+        "trigger": "first Monday of each quarter",
+        "rank": 4
+      },
+      {
+        "process": "Weekly paid pacing check",
+        "hours_per_year": 26.0,
+        "weight": 2,
+        "priority": 52.0,
+        "sop_state": "current",
+        "sop_age_days": 57,
+        "minutes_per_run": 30,
+        "runs_per_year": 52,
+        "trigger": "every Monday",
+        "rank": 5
+      }
+    ],
+    "write_next": [
+      "Blog post publishing",
+      "Monthly performance report",
+      "Quarterly tracking audit"
+    ]
+  },
+  "operating_rhythm": [
+    {
+      "process": "Blog post publishing",
+      "trigger": "weekly on Thursday",
+      "next_run": "2026-10-29"
+    },
+    {
+      "process": "Weekly paid pacing check",
+      "trigger": "every Monday",
+      "next_run": "2026-11-02"
+    },
+    {
+      "process": "Monthly performance report",
+      "trigger": "business day 3 of each month",
+      "next_run": "2026-11-04"
+    },
+    {
+      "process": "Quarterly tracking audit",
+      "trigger": "first Monday of each quarter",
+      "next_run": "2027-01-04"
+    },
+    {
+      "process": "Paid campaign launch",
+      "trigger": "per event: a launch brief is approved",
+      "next_run": "per event"
+    }
+  ],
+  "operating_rhythm_note": "Business days skip weekends only; public holidays aren't known, so check business day 3 against your holiday calendar.",
+  "go_deeper": [
+    "Automating this process as an agent workflow: ai-marketing-workflow-planner, if installed.",
+    "The paused Meta Pixel - Lead tag and the rest of the container: gtm-container-auditor, if installed.",
+    "Whether sign_up should be a key event: conversion-tracking-auditor, if installed."
+  ],
+  "save_to_notion": {
+    "status": "offered, not run",
+    "payload": {
+      "platform": "notion",
+      "workspace_id": "<WORKSPACE_ID>",
+      "brand_id": "<BRAND_ID>",
+      "action": "create_page",
+      "parent": {
+        "page_id": "<PARENT_PAGE_ID>"
+      },
+      "properties": {
+        "title": {
+          "title": [
+            {
+              "text": {
+                "content": "SOP: Paid campaign launch v1.0"
+              }
+            }
+          ]
+        }
+      },
+      "children": "<62 blocks: section headings, one numbered item per step, one to-do per checklist line, and the gate, failure, mistake and question lines>"
+    },
+    "blocks": 62,
+    "calls_needed": 1
+  }
+}

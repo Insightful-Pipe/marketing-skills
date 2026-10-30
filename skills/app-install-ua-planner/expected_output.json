@@ -1,0 +1,482 @@
+{
+  "note": "Example data: an invented subscription meal-planning app called Dinnerwick, with invented ad accounts and an invented measurement partner export, not a real business. Every number in expected_output.json follows from this input.",
+  "header": {
+    "app": "Dinnerwick",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "currency": "USD",
+    "run_date": "2026-10-30",
+    "install_cohorts": "2026-09-26 to 2026-10-23",
+    "payback_day": 180,
+    "margin": 0.15,
+    "sources": {
+      "revenue_curve": "measurement partner export (from the user)",
+      "spend": "each network's reporting",
+      "installs_and_d7_revenue": "measurement partner export",
+      "store_listing": "App Store and Google Play listings"
+    }
+  },
+  "top_findings": [
+    "Meta Android is the best home for the next dollar: next-dollar ROAS 1.77 against a scale line of 1.29. It steps up 20% a week to 5391 in week 4.",
+    "Meta iOS: the extra 3600 spent in the late half bought 550 more installs at 6.55 each, above the iOS max CPI of 4.08. Trim it back to 4500 a week; its average still pays back.",
+    "TikTok iOS: projected payback ROAS 0.91, short of 1.18. Cut it to 770 a week, and refresh the creative: CPI rose 15.6% on only 4.8% more spend.",
+    "TikTok Android installs are worth 0.19 by day 7 against the Android average of 0.5; projected payback ROAS 0.7. Pause it.",
+    "Snapchat iOS can't be judged: it is not in the measurement partner. Integrate it in the next 2 weeks or it stops.",
+    "Open Google App campaigns on iOS next: a 6013 two-week test on trial starts at 42.95 each fits in the 29974 left under the cap."
+  ],
+  "what_an_install_is_worth": {
+    "iOS": {
+      "net_revenue_per_install_day_7": 1.12,
+      "net_revenue_per_install_day_30": 2.05,
+      "net_revenue_per_install_payback_day": 4.8,
+      "payback_value_basis": "measured at day 180",
+      "max_cpi": 4.08,
+      "curve_multiplier_day7_to_payback": 4.2857,
+      "target_d7_roas_pct": 27.5,
+      "checkpoint_d30_roas_pct": 50.2,
+      "max_cost_per_trial_start": 42.95,
+      "max_cost_per_subscribe": 99.51
+    },
+    "Android": {
+      "net_revenue_per_install_day_7": 0.5,
+      "net_revenue_per_install_day_30": 0.93,
+      "net_revenue_per_install_payback_day": 2.1,
+      "payback_value_basis": "measured at day 180",
+      "max_cpi": 1.78,
+      "curve_multiplier_day7_to_payback": 4.2,
+      "target_d7_roas_pct": 28.1,
+      "checkpoint_d30_roas_pct": 52.2,
+      "max_cost_per_trial_start": 34.23,
+      "max_cost_per_subscribe": 93.68
+    }
+  },
+  "hurdle": {
+    "payback_roas_needed": 1.18,
+    "scale_at_or_above": 1.29,
+    "hold_at_or_above": 1.06,
+    "pause_below": 0.82
+  },
+  "network_scorecard": [
+    {
+      "network": "Apple Ads",
+      "platform": "iOS",
+      "spend": 13600,
+      "installs": 5330,
+      "cpi": 2.55,
+      "cpi_early": 2.5,
+      "cpi_late": 2.6,
+      "spend_change_pct": 19.4,
+      "cpi_change_pct": 3.9,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": 51.2,
+      "d7_net_revenue_per_install": 1.31,
+      "projected_payback_roas": 2.19,
+      "marginal_cpi": 3.24,
+      "marginal_cpi_basis": "measured: extra spend over extra installs",
+      "next_dollar_roas": 1.72,
+      "verdict": "scale",
+      "why": "Next-dollar ROAS 1.72 clears the scale line of 1.29; the next installs cost about 3.24 each."
+    },
+    {
+      "network": "Meta",
+      "platform": "iOS",
+      "spend": 21600,
+      "installs": 6450,
+      "cpi": 3.35,
+      "cpi_early": 3.05,
+      "cpi_late": 3.6,
+      "spend_change_pct": 40.0,
+      "cpi_change_pct": 18.0,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": 31.3,
+      "d7_net_revenue_per_install": 1.05,
+      "projected_payback_roas": 1.34,
+      "marginal_cpi": 6.55,
+      "marginal_cpi_basis": "measured: extra spend over extra installs",
+      "next_dollar_roas": 0.69,
+      "verdict": "trim",
+      "why": "Average projected payback ROAS 1.34 is fine, but the extra late-half spend bought installs at 6.55 each, a next-dollar ROAS of 0.69, under 1.06."
+    },
+    {
+      "network": "Meta",
+      "platform": "Android",
+      "spend": 10200,
+      "installs": 8350,
+      "cpi": 1.22,
+      "cpi_early": 1.22,
+      "cpi_late": 1.22,
+      "spend_change_pct": 4.0,
+      "cpi_change_pct": 0.3,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": 42.2,
+      "d7_net_revenue_per_install": 0.51,
+      "projected_payback_roas": 1.77,
+      "marginal_cpi": 1.22,
+      "marginal_cpi_basis": "late-half CPI (spend did not rise 10%)",
+      "next_dollar_roas": 1.77,
+      "verdict": "scale",
+      "why": "Next-dollar ROAS 1.77 clears the scale line of 1.29; the next installs cost about 1.22 each."
+    },
+    {
+      "network": "Google App campaigns",
+      "platform": "Android",
+      "spend": 9900,
+      "installs": 7350,
+      "cpi": 1.35,
+      "cpi_early": 1.33,
+      "cpi_late": 1.36,
+      "spend_change_pct": 25.0,
+      "cpi_change_pct": 1.9,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": 41.2,
+      "d7_net_revenue_per_install": 0.56,
+      "projected_payback_roas": 1.73,
+      "marginal_cpi": 1.47,
+      "marginal_cpi_basis": "measured: extra spend over extra installs",
+      "next_dollar_roas": 1.59,
+      "verdict": "scale",
+      "why": "Next-dollar ROAS 1.59 clears the scale line of 1.29; the next installs cost about 1.47 each."
+    },
+    {
+      "network": "TikTok",
+      "platform": "iOS",
+      "spend": 4300,
+      "installs": 1220,
+      "cpi": 3.52,
+      "cpi_early": 3.28,
+      "cpi_late": 3.79,
+      "spend_change_pct": 4.8,
+      "cpi_change_pct": 15.6,
+      "creative_fatigue_signal": true,
+      "d7_roas_pct": 21.2,
+      "d7_net_revenue_per_install": 0.75,
+      "projected_payback_roas": 0.91,
+      "marginal_cpi": 3.79,
+      "marginal_cpi_basis": "late-half CPI (spend did not rise 10%)",
+      "next_dollar_roas": 0.84,
+      "verdict": "cut and fix",
+      "why": "Projected payback ROAS 0.91 is under 1.06 but not under 0.82: these cohorts will not pay back by day 180 at this CPI. CPI rose 15.6% on spend that moved only 4.8%: creative fatigue is likely, so refresh before judging the network."
+    },
+    {
+      "network": "TikTok",
+      "platform": "Android",
+      "spend": 1850,
+      "installs": 1660,
+      "cpi": 1.11,
+      "cpi_early": 1.1,
+      "cpi_late": 1.13,
+      "spend_change_pct": 5.6,
+      "cpi_change_pct": 3.0,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": 16.8,
+      "d7_net_revenue_per_install": 0.19,
+      "projected_payback_roas": 0.7,
+      "marginal_cpi": 1.13,
+      "marginal_cpi_basis": "late-half CPI (spend did not rise 10%)",
+      "next_dollar_roas": 0.69,
+      "verdict": "pause",
+      "why": "Projected payback ROAS 0.7 is under 0.82: these installs are worth 0.19 by day 7 against the Android average of 0.5."
+    },
+    {
+      "network": "Snapchat",
+      "platform": "iOS",
+      "spend": 1250,
+      "installs": 86,
+      "cpi": 14.53,
+      "cpi_early": 15.0,
+      "cpi_late": 14.13,
+      "spend_change_pct": 8.3,
+      "cpi_change_pct": -5.8,
+      "creative_fatigue_signal": false,
+      "d7_roas_pct": null,
+      "projected_payback_roas": null,
+      "marginal_cpi": null,
+      "next_dollar_roas": null,
+      "verdict": "unknown",
+      "why": "No day 7 revenue: Snapchat is not integrated with the measurement partner, and its 86 installs are under the 100 needed to judge CPI."
+    }
+  ],
+  "plan_next_4_weeks": {
+    "lines": [
+      {
+        "network": "Apple Ads",
+        "platform": "iOS",
+        "verdict": "scale",
+        "current_weekly_spend": 3700,
+        "weeks": [
+          4440,
+          5328,
+          6394,
+          7672
+        ],
+        "total": 23834
+      },
+      {
+        "network": "Meta",
+        "platform": "iOS",
+        "verdict": "trim",
+        "current_weekly_spend": 6300,
+        "weeks": [
+          4500,
+          4500,
+          4500,
+          4500
+        ],
+        "total": 18000
+      },
+      {
+        "network": "Meta",
+        "platform": "Android",
+        "verdict": "scale",
+        "current_weekly_spend": 2600,
+        "weeks": [
+          3120,
+          3744,
+          4493,
+          5391
+        ],
+        "total": 16748
+      },
+      {
+        "network": "Google App campaigns",
+        "platform": "Android",
+        "verdict": "scale",
+        "current_weekly_spend": 2750,
+        "weeks": [
+          3300,
+          3960,
+          4752,
+          5702
+        ],
+        "total": 17714
+      },
+      {
+        "network": "TikTok",
+        "platform": "iOS",
+        "verdict": "cut and fix",
+        "current_weekly_spend": 1100,
+        "weeks": [
+          770,
+          770,
+          770,
+          770
+        ],
+        "total": 3080
+      },
+      {
+        "network": "TikTok",
+        "platform": "Android",
+        "verdict": "pause",
+        "current_weekly_spend": 475,
+        "weeks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "total": 0
+      },
+      {
+        "network": "Snapchat",
+        "platform": "iOS",
+        "verdict": "unknown",
+        "current_weekly_spend": 325,
+        "weeks": [
+          325,
+          325,
+          0,
+          0
+        ],
+        "total": 650
+      }
+    ],
+    "planned_spend": 80026,
+    "budget_cap": 110000,
+    "new_network_test": 6013,
+    "unspent": 23961,
+    "unspent_why": "Held back until another line clears the scale line; spend it only on a line that qualifies at the weekly check.",
+    "weekly_check": "Each Monday, rerun the scorecard on the cohorts that have reached day 7. A scale step happens only if the line still clears the scale line."
+  },
+  "open_next": {
+    "platform": "iOS",
+    "network": "Google App campaigns",
+    "why": "iOS has the higher max CPI (4.08 against 1.78), and Google App campaigns is the first network in the iOS order that is not running yet.",
+    "optimize_for": "trial_start",
+    "target_cost_per_trial_start": 42.95,
+    "test_rule": "2 weeks at 70 trial starts a week at the max cost per trial start",
+    "test_budget": 6013,
+    "weekly_test_budget": 3006,
+    "budget_left_after_plan": 29974,
+    "fits_in_budget": true,
+    "before_launch": "Link the iOS app in Google Ads; the Android app is linked, the iOS app is not.",
+    "weeks": "weeks 1 and 2, then judge on the same scorecard once 100 installs have a day 7"
+  },
+  "optimization_events": [
+    {
+      "network": "Apple Ads",
+      "platform": "iOS",
+      "current": "install (keyword bids)",
+      "recommended": "install (keyword bids)",
+      "why": "Apple Ads bids on keywords and taps, not in-app events; judge it by cost per trial start in the measurement partner."
+    },
+    {
+      "network": "Meta",
+      "platform": "iOS",
+      "current": "trial_start",
+      "planned_week_1_spend": 4500,
+      "weekly_installs_at_plan": 1250,
+      "weekly_trial_starts": 118.8,
+      "weekly_subscribes": 51.2,
+      "events_needed_per_week": 50,
+      "recommended": "trial_start",
+      "why": "Already on the deepest event with enough weekly volume. subscribe has the volume, but it happens a median 170 hours after install, outside the 48-hour iOS postback window, so the network barely sees it."
+    },
+    {
+      "network": "Meta",
+      "platform": "Android",
+      "current": "install",
+      "planned_week_1_spend": 3120,
+      "weekly_installs_at_plan": 2557,
+      "weekly_trial_starts": 133.0,
+      "weekly_subscribes": 48.6,
+      "events_needed_per_week": 50,
+      "recommended": "trial_start",
+      "why": "trial_start reaches 50 a week at the planned spend; switch from install in a new campaign, not an edit."
+    },
+    {
+      "network": "Google App campaigns",
+      "platform": "Android",
+      "current": "install",
+      "planned_week_1_spend": 3300,
+      "weekly_installs_at_plan": 2426,
+      "weekly_trial_starts": 126.2,
+      "weekly_subscribes": 46.1,
+      "events_needed_per_week": 70,
+      "recommended": "trial_start",
+      "why": "trial_start reaches 70 a week at the planned spend; switch from install in a new campaign, not an edit."
+    },
+    {
+      "network": "TikTok",
+      "platform": "iOS",
+      "current": "install",
+      "planned_week_1_spend": 770,
+      "weekly_installs_at_plan": 203,
+      "weekly_trial_starts": 19.3,
+      "weekly_subscribes": 8.3,
+      "events_needed_per_week": 50,
+      "recommended": "install",
+      "why": "No in-app event reaches 50 a week at the planned spend, so stay on installs."
+    },
+    {
+      "network": "TikTok",
+      "platform": "Android",
+      "current": "install",
+      "recommended": "none (paused)",
+      "why": "The line is paused."
+    },
+    {
+      "network": "Snapchat",
+      "platform": "iOS",
+      "current": "install",
+      "planned_week_1_spend": 325,
+      "weekly_installs_at_plan": 23,
+      "weekly_trial_starts": 2.2,
+      "weekly_subscribes": 0.9,
+      "events_needed_per_week": 50,
+      "recommended": "install",
+      "why": "No in-app event reaches 50 a week at the planned spend, so stay on installs."
+    }
+  ],
+  "creative": [
+    {
+      "network": "Apple Ads",
+      "platform": "iOS",
+      "needs": "No uploads. Point each keyword group at a custom product page whose first screenshots match the search; the default App Store page has 6 screenshots.",
+      "now": "3 new concepts a month while the line scales."
+    },
+    {
+      "network": "Meta",
+      "platform": "iOS",
+      "needs": "Vertical 9:16 and 4:5 video plus square images."
+    },
+    {
+      "network": "Meta",
+      "platform": "Android",
+      "needs": "Vertical 9:16 and 4:5 video plus square images.",
+      "now": "3 new concepts a month while the line scales."
+    },
+    {
+      "network": "Google App campaigns",
+      "platform": "Android",
+      "needs": "Up to 5 headlines and 5 descriptions, landscape, square and portrait images, and videos in all three shapes. The Play listing has no promo video, so supply your own videos.",
+      "now": "3 new concepts a month while the line scales."
+    },
+    {
+      "network": "TikTok",
+      "platform": "iOS",
+      "needs": "9:16 video made for TikTok, with sound and a person on screen.",
+      "now": "Refresh now: CPI rose on flat spend. Launch 3 new concepts this week, alongside the cut."
+    },
+    {
+      "network": "Snapchat",
+      "platform": "iOS",
+      "needs": "Full-screen 9:16 video with the app on screen in the first seconds."
+    },
+    {
+      "network": "Google App campaigns",
+      "platform": "iOS (new)",
+      "needs": "The same set as the Android campaign: reuse its videos and images, and take the text from the App Store listing."
+    }
+  ],
+  "store_page_checks": [
+    {
+      "store": "App Store",
+      "finding": "Rating 4.6 on 18,240 ratings and 6 screenshots: no flag."
+    },
+    {
+      "store": "Google Play",
+      "finding": "Rating 4.2 on 9,310 ratings, 5 screenshots and no promo video: supply your own videos to Google App campaigns."
+    }
+  ],
+  "measurement": [
+    {
+      "network": "Apple Ads",
+      "status": "ok",
+      "detail": "AdServices token reaches the measurement partner."
+    },
+    {
+      "network": "Meta",
+      "status": "ok",
+      "detail": "Integrated; trial_start and subscribe sent."
+    },
+    {
+      "network": "Google App campaigns",
+      "status": "ok",
+      "detail": "Integrated; trial_start and subscribe sent. Link the iOS app before the new test."
+    },
+    {
+      "network": "TikTok",
+      "status": "fix",
+      "detail": "Integrated, but subscribe is not sent; send it so the line can move to it later."
+    },
+    {
+      "network": "Snapchat",
+      "status": "fix",
+      "detail": "Not integrated with the measurement partner and no in-app events sent, so its installs can't be tied to revenue. Integrate it within 2 weeks or the plan stops it."
+    },
+    {
+      "network": "iOS privacy postbacks",
+      "status": "ok",
+      "detail": "Conversion values cover install, trial_start and subscribe within 48 hours. Trial starts happen a median 2 hours after install, so they carry the iOS signal; subscribes come a median 170 hours after install and mostly miss the window."
+    }
+  ],
+  "unknowns": [
+    "Snapchat revenue: not in the measurement partner export.",
+    "Payback beyond day 180 is not projected; the curve is used only as far as it was measured.",
+    "Each network's cohorts are assumed to follow its platform's curve shape from day 7 on; the day 30 checkpoint tests that.",
+    "AppLovin is not running, so it is not scored; it is number 5 in the iOS order and number 4 in the Android order, behind networks that still have room."
+  ],
+  "changes_made": "None. This skill reads and plans; budget, bid and campaign changes are made by you or a campaign-building skill."
+}

@@ -1,0 +1,621 @@
+{
+  "header": {
+    "business": "Example Trail Supply, an online store for hiking and camping gear (invented example)",
+    "outcome": "weekly store revenue, net of refunds, all orders from every source (Shopify)",
+    "window": "2024-04-29 to 2026-10-25 (130 weeks, Monday to Sunday)",
+    "currency": "USD",
+    "revenue_last_52_weeks": 5281999,
+    "paid_spend_last_52_weeks": 1295193,
+    "channels_modeled": [
+      "Google Search (non-brand)",
+      "Google Performance Max",
+      "Meta (Facebook and Instagram)",
+      "TikTok"
+    ],
+    "verdict": "Model fitted and passed its holdout check. Read every return as a range. The window is 130 weeks, short of the three years Meridian advises for a national model, so trend and season rest on fewer yearly cycles and the ranges are wider for it."
+  },
+  "weekly_table": {
+    "first_row": {
+      "week": "2024-04-29",
+      "revenue": 94573,
+      "google_search_nonbrand": 5718,
+      "google_pmax": 5000,
+      "google_brand_search": 905,
+      "meta": 7600,
+      "tiktok": 0,
+      "pinterest": 995,
+      "google_search_nonbrand_impressions": 113614,
+      "google_pmax_impressions": 374790,
+      "google_brand_search_impressions": 35787,
+      "meta_impressions": 615450,
+      "tiktok_impressions": 0,
+      "pinterest_impressions": 175606,
+      "promo": 0
+    },
+    "last_row": {
+      "week": "2026-10-19",
+      "revenue": 107579,
+      "google_search_nonbrand": 5517,
+      "google_pmax": 7688,
+      "google_brand_search": 1102,
+      "meta": 7472,
+      "tiktok": 3114,
+      "pinterest": 951,
+      "google_search_nonbrand_impressions": 133559,
+      "google_pmax_impressions": 570227,
+      "google_brand_search_impressions": 46937,
+      "meta_impressions": 757519,
+      "tiktok_impressions": 486724,
+      "pinterest_impressions": 182515,
+      "promo": 0
+    },
+    "rows": 130,
+    "spend_totals_by_channel": {
+      "Google Search (non-brand)": 700272,
+      "Google Performance Max": 978024,
+      "Google Search (brand)": 142101,
+      "Meta (Facebook and Instagram)": 811794,
+      "TikTok": 173670,
+      "Pinterest": 123185
+    },
+    "revenue_total": 12817894,
+    "promo_weeks": 8,
+    "grouping_confirmed": "Google campaigns split into non-brand search, Performance Max and brand search (campaigns named 'brand'); one channel each for Meta, TikTok and Pinterest"
+  },
+  "readiness": {
+    "result": "ready, short of three years",
+    "checks": [
+      {
+        "check": "Weeks of data",
+        "result": "pass",
+        "detail": "130 weeks: short of the 156 (three years) Meridian advises for a national model, so the model runs and the header says so. 156 or more is a full model; 78 to 103 is directional; under 78 the skill stops."
+      },
+      {
+        "check": "Outcome is the whole business",
+        "result": "pass",
+        "detail": "Store revenue from every order, not platform-reported conversions."
+      },
+      {
+        "check": "Missing weeks",
+        "result": "pass",
+        "detail": "Pinterest's API keeps 90 days, so its 118 older weeks came from the user's export instead of being filled with zeros. TikTok's weeks before its first spend are true zeros: the account didn't run then."
+      },
+      {
+        "check": "Channels the weeks can separate",
+        "result": "pass",
+        "detail": "117 training weeks for 9 fitted terms is 13.0 weeks a term (10 or more needed)."
+      },
+      {
+        "check": "Channels moving together",
+        "result": "pass",
+        "detail": "Strongest correlation between modeled channels' weekly spend is -0.29 (Google Search (non-brand) and Google Performance Max); over 0.80 would mean merging them."
+      }
+    ],
+    "channels": [
+      {
+        "channel": "Google Search (non-brand)",
+        "share_of_paid_spend_52w_pct": 21.4,
+        "spend_variation_cv": 0.26,
+        "weeks_with_spend": 130,
+        "decision": "modeled",
+        "why": "21.4% of paid spend, variation 0.26, 130 weeks with spend"
+      },
+      {
+        "channel": "Google Performance Max",
+        "share_of_paid_spend_52w_pct": 34.7,
+        "spend_variation_cv": 0.27,
+        "weeks_with_spend": 130,
+        "decision": "modeled",
+        "why": "34.7% of paid spend, variation 0.27, 130 weeks with spend"
+      },
+      {
+        "channel": "Google Search (brand)",
+        "share_of_paid_spend_52w_pct": 4.4,
+        "spend_variation_cv": 0.13,
+        "weeks_with_spend": 130,
+        "decision": "left out of media (brand search)",
+        "why": "Brand search follows demand: its weekly spend moves with revenue (correlation 0.83). A model would credit it with sales other channels and the brand created. Left out by default."
+      },
+      {
+        "channel": "Meta (Facebook and Instagram)",
+        "share_of_paid_spend_52w_pct": 25.9,
+        "spend_variation_cv": 0.41,
+        "weeks_with_spend": 130,
+        "decision": "modeled",
+        "why": "25.9% of paid spend, variation 0.41, 130 weeks with spend"
+      },
+      {
+        "channel": "TikTok",
+        "share_of_paid_spend_52w_pct": 9.7,
+        "spend_variation_cv": 0.23,
+        "weeks_with_spend": 70,
+        "decision": "modeled",
+        "why": "9.7% of paid spend, variation 0.23, 70 weeks with spend"
+      },
+      {
+        "channel": "Pinterest",
+        "share_of_paid_spend_52w_pct": 3.8,
+        "spend_variation_cv": 0.03,
+        "weeks_with_spend": 130,
+        "decision": "control, not estimated",
+        "why": "Spend barely changes week to week (variation 0.03, under 0.20), so the model can't tell its effect from the baseline. Kept in as a control; no return reported."
+      }
+    ]
+  },
+  "model": {
+    "controls": [
+      "intercept",
+      "trend",
+      "one 52-week seasonal pair (sine and cosine)",
+      "promo weeks",
+      "Pinterest spend (control)"
+    ],
+    "media_transforms": "geometric carryover, then Hill saturation; media effects can't be negative",
+    "holdout_check": {
+      "training_weeks": "2024-04-29 to 2026-07-20 (117)",
+      "holdout_weeks": "2026-07-27 to 2026-10-25 (13)",
+      "holdout_error_mape_pct": 3.2,
+      "holdout_error_before_calibration_mape_pct": 2.9,
+      "holdout_check_counted": "the calibrated model's",
+      "controls_only_holdout_error_mape_pct": 5.5,
+      "in_sample_error_mape_pct": 2.7,
+      "result": "pass",
+      "rule": "pass when the holdout error is 15% or less and lower than a model with no media at all"
+    }
+  },
+  "calibration": [
+    {
+      "channel": "Meta (Facebook and Instagram)",
+      "lift_test": "geo holdout (Meta ads off in 30% of US regions), 2026-03-02 to 2026-04-12",
+      "lift_iroas": 1.69,
+      "lift_ci90": [
+        1.34,
+        2.04
+      ],
+      "model_roi_over_test_weeks_before": 3.06,
+      "result": "outside the test's range: the channel's effect was scaled to the test's return and the other channels refit",
+      "model_roi_over_test_weeks_after": 1.69,
+      "in_sample_error_before_after_pct": [
+        2.4,
+        2.7
+      ],
+      "holdout_error_before_after_pct": [
+        2.9,
+        3.2
+      ]
+    }
+  ],
+  "channel_results": [
+    {
+      "channel": "Google Search (non-brand)",
+      "spend_52w": 276877,
+      "revenue_from_channel_52w": 640134,
+      "share_of_revenue_52w_pct": 12.1,
+      "roi_range_p10_p90": [
+        1.78,
+        2.87
+      ],
+      "roi": 2.31,
+      "current_weekly_spend": 4789,
+      "marginal_roi_range_p10_p90": [
+        1.15,
+        1.85
+      ],
+      "marginal_roi_at_current_spend": 1.49,
+      "carryover_theta": 0.0,
+      "carryover_half_life": "under 1 week",
+      "saturation_alpha": 1.0,
+      "half_saturation_weekly_adstocked_spend": 8080,
+      "share_of_ceiling_reached_pct": 37.2,
+      "saturation_status": "room to grow",
+      "saturation_seen_in_data": true,
+      "calibrated_with_lift_test": false,
+      "confidence": "usable"
+    },
+    {
+      "channel": "TikTok",
+      "spend_52w": 125997,
+      "revenue_from_channel_52w": 221783,
+      "share_of_revenue_52w_pct": 4.2,
+      "roi_range_p10_p90": [
+        1.07,
+        2.53
+      ],
+      "roi": 1.76,
+      "current_weekly_spend": 2503,
+      "marginal_roi_range_p10_p90": [
+        0.78,
+        1.84
+      ],
+      "marginal_roi_at_current_spend": 1.28,
+      "carryover_theta": 0.4,
+      "carryover_half_life": "0.8 weeks",
+      "saturation_alpha": 1.0,
+      "half_saturation_weekly_adstocked_spend": 12254,
+      "share_of_ceiling_reached_pct": 25.4,
+      "saturation_status": "room to grow",
+      "saturation_seen_in_data": false,
+      "calibrated_with_lift_test": false,
+      "confidence": "usable"
+    },
+    {
+      "channel": "Meta (Facebook and Instagram)",
+      "spend_52w": 336020,
+      "revenue_from_channel_52w": 632011,
+      "share_of_revenue_52w_pct": 12.0,
+      "roi_range_p10_p90": [
+        1.57,
+        2.19
+      ],
+      "roi": 1.88,
+      "current_weekly_spend": 6199,
+      "marginal_roi_range_p10_p90": [
+        0.53,
+        0.74
+      ],
+      "marginal_roi_at_current_spend": 0.63,
+      "carryover_theta": 0.3,
+      "carryover_half_life": "0.6 weeks",
+      "saturation_alpha": 1.0,
+      "half_saturation_weekly_adstocked_spend": 4442,
+      "share_of_ceiling_reached_pct": 66.6,
+      "saturation_status": "bending",
+      "saturation_seen_in_data": true,
+      "calibrated_with_lift_test": true,
+      "confidence": "usable"
+    },
+    {
+      "channel": "Google Performance Max",
+      "spend_52w": 449528,
+      "revenue_from_channel_52w": 275017,
+      "share_of_revenue_52w_pct": 5.2,
+      "roi_range_p10_p90": [
+        0.06,
+        1.19
+      ],
+      "roi": 0.61,
+      "current_weekly_spend": 7339,
+      "marginal_roi_range_p10_p90": [
+        0.04,
+        0.92
+      ],
+      "marginal_roi_at_current_spend": 0.47,
+      "carryover_theta": 0.2,
+      "carryover_half_life": "0.4 weeks",
+      "saturation_alpha": 1.0,
+      "half_saturation_weekly_adstocked_spend": 28157,
+      "share_of_ceiling_reached_pct": 24.6,
+      "saturation_status": "room to grow",
+      "saturation_seen_in_data": false,
+      "calibrated_with_lift_test": false,
+      "confidence": "low"
+    }
+  ],
+  "not_estimated": [
+    {
+      "channel": "Google Search (brand)",
+      "decision": "left out of media (brand search)",
+      "why": "Brand search follows demand: its weekly spend moves with revenue (correlation 0.83). A model would credit it with sales other channels and the brand created. Left out by default."
+    },
+    {
+      "channel": "Pinterest",
+      "decision": "control, not estimated",
+      "why": "Spend barely changes week to week (variation 0.03, under 0.20), so the model can't tell its effect from the baseline. Kept in as a control; no return reported."
+    }
+  ],
+  "response_curves": [
+    {
+      "channel": "Google Search (non-brand)",
+      "highest_weekly_spend_seen": 8485,
+      "points": [
+        {
+          "weekly_spend": 0,
+          "weekly_revenue_from_channel": 0,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 2395,
+          "weekly_revenue_from_channel": 7248,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 3592,
+          "weekly_revenue_from_channel": 9756,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 4789,
+          "weekly_revenue_from_channel": 11798,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 5987,
+          "weekly_revenue_from_channel": 13492,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 7184,
+          "weekly_revenue_from_channel": 14921,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 9579,
+          "weekly_revenue_from_channel": 17197,
+          "beyond_spend_seen": true
+        }
+      ]
+    },
+    {
+      "channel": "Google Performance Max",
+      "highest_weekly_spend_seen": 11004,
+      "points": [
+        {
+          "weekly_spend": 0,
+          "weekly_revenue_from_channel": 0,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 3670,
+          "weekly_revenue_from_channel": 2684,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 5504,
+          "weekly_revenue_from_channel": 3762,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 7339,
+          "weekly_revenue_from_channel": 4708,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 9174,
+          "weekly_revenue_from_channel": 5545,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 11009,
+          "weekly_revenue_from_channel": 6290,
+          "beyond_spend_seen": true
+        },
+        {
+          "weekly_spend": 14678,
+          "weekly_revenue_from_channel": 7559,
+          "beyond_spend_seen": true
+        }
+      ]
+    },
+    {
+      "channel": "Meta (Facebook and Instagram)",
+      "highest_weekly_spend_seen": 12072,
+      "points": [
+        {
+          "weekly_spend": 0,
+          "weekly_revenue_from_channel": 0,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 3100,
+          "weekly_revenue_from_channel": 9394,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 4649,
+          "weekly_revenue_from_channel": 11277,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 6199,
+          "weekly_revenue_from_channel": 12532,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 7749,
+          "weekly_revenue_from_channel": 13429,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 9299,
+          "weekly_revenue_from_channel": 14102,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 12398,
+          "weekly_revenue_from_channel": 15045,
+          "beyond_spend_seen": true
+        }
+      ]
+    },
+    {
+      "channel": "TikTok",
+      "highest_weekly_spend_seen": 3572,
+      "points": [
+        {
+          "weekly_spend": 0,
+          "weekly_revenue_from_channel": 0,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 1252,
+          "weekly_revenue_from_channel": 2523,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 1877,
+          "weekly_revenue_from_channel": 3529,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 2503,
+          "weekly_revenue_from_channel": 4406,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 3129,
+          "weekly_revenue_from_channel": 5179,
+          "beyond_spend_seen": false
+        },
+        {
+          "weekly_spend": 3755,
+          "weekly_revenue_from_channel": 5864,
+          "beyond_spend_seen": true
+        },
+        {
+          "weekly_spend": 5006,
+          "weekly_revenue_from_channel": 7027,
+          "beyond_spend_seen": true
+        }
+      ]
+    }
+  ],
+  "budget_split": {
+    "total_weekly_budget": 20831,
+    "basis": "average weekly spend of the modeled channels over the last 13 weeks, kept the same",
+    "limits": "each channel between 70% and 130% of its current spend, and never above 1.2 times the highest weekly spend it has had; a low-confidence channel stays at its current spend",
+    "unchanged": [
+      "Google Search (brand)",
+      "Pinterest"
+    ],
+    "rows": [
+      {
+        "channel": "Google Search (non-brand)",
+        "current_weekly": 4789,
+        "recommended_weekly": 6039,
+        "change_pct": 26.1,
+        "limit_low": 3353,
+        "limit_high": 6226,
+        "at_a_limit": "high",
+        "marginal_roi_after_range_p10_p90": [
+          0.95,
+          1.53
+        ],
+        "marginal_roi_after": 1.23,
+        "held_low_confidence": false
+      },
+      {
+        "channel": "TikTok",
+        "current_weekly": 2503,
+        "recommended_weekly": 2920,
+        "change_pct": 16.6,
+        "limit_low": 1752,
+        "limit_high": 3254,
+        "at_a_limit": "no gain left",
+        "marginal_roi_after_range_p10_p90": [
+          0.71,
+          1.69
+        ],
+        "marginal_roi_after": 1.18,
+        "held_low_confidence": false
+      },
+      {
+        "channel": "Google Performance Max",
+        "current_weekly": 7339,
+        "recommended_weekly": 7339,
+        "change_pct": 0.0,
+        "limit_low": 7339,
+        "limit_high": 7339,
+        "at_a_limit": "held",
+        "marginal_roi_after_range_p10_p90": [
+          0.04,
+          0.92
+        ],
+        "marginal_roi_after": 0.47,
+        "held_low_confidence": true
+      },
+      {
+        "channel": "Meta (Facebook and Instagram)",
+        "current_weekly": 6199,
+        "recommended_weekly": 4533,
+        "change_pct": -26.9,
+        "limit_low": 4339,
+        "limit_high": 8059,
+        "at_a_limit": "low",
+        "marginal_roi_after_range_p10_p90": [
+          0.79,
+          1.1
+        ],
+        "marginal_roi_after": 0.95,
+        "held_low_confidence": false
+      }
+    ],
+    "extra_weekly_revenue": 916,
+    "extra_weekly_revenue_range_p10_p90": [
+      408,
+      1454
+    ],
+    "extra_revenue_per_13_weeks": 11910,
+    "rollout": "Move it in two steps two weeks apart, and check the outcome against the model's weekly forecast before the second step."
+  },
+  "next_steps": [
+    "Run a lift test on Google Performance Max: its range is the widest relative to its size, so a test would narrow the model most (incrementality-test-designer, if installed).",
+    "Refit every quarter with the new weeks, and after any big change to tracking, pricing or channel mix.",
+    "Vary Pinterest spend on purpose (a few weeks well above and below its usual level) so the next fit can estimate it: at a variation of 0.03 it stays a control."
+  ],
+  "exports": {
+    "meridian_csv": {
+      "columns": [
+        "time",
+        "revenue",
+        "google_search_nonbrand_spend",
+        "google_pmax_spend",
+        "meta_spend",
+        "tiktok_spend",
+        "google_search_nonbrand_media",
+        "google_pmax_media",
+        "meta_media",
+        "tiktok_media",
+        "promo",
+        "pinterest_spend_control"
+      ],
+      "kpi_type": "revenue",
+      "controls": [
+        "promo",
+        "pinterest_spend_control"
+      ],
+      "note": "national model, so geo and population are left out; media columns hold the weekly impressions pulled with spend; Meridian models trend and seasonality itself"
+    },
+    "robyn_csv": {
+      "columns": [
+        "DATE",
+        "revenue",
+        "google_search_nonbrand_S",
+        "google_pmax_S",
+        "meta_S",
+        "tiktok_S",
+        "promo",
+        "pinterest_S"
+      ],
+      "date_var": "DATE",
+      "dep_var": "revenue",
+      "dep_var_type": "revenue",
+      "paid_media_spends": [
+        "google_search_nonbrand_S",
+        "google_pmax_S",
+        "meta_S",
+        "tiktok_S"
+      ],
+      "context_vars": [
+        "promo",
+        "pinterest_S"
+      ],
+      "prophet_vars": [
+        "trend",
+        "season"
+      ]
+    },
+    "robyn_calibration_input": [
+      {
+        "channel": "meta_S",
+        "liftStartDate": "2026-03-02",
+        "liftEndDate": "2026-04-12",
+        "liftAbs": 80368,
+        "spend": 47555,
+        "confidence": 0.9,
+        "metric": "revenue",
+        "calibration_scope": "immediate"
+      }
+    ],
+    "rows": 130
+  }
+}

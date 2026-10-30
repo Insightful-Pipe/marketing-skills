@@ -1,0 +1,519 @@
+{
+  "header": {
+    "brand": "Example Booking Software",
+    "accounts": [
+      "Example Booking Software (Facebook Page)",
+      "Example Booking Software (TikTok)"
+    ],
+    "window": "2026-11-02 to 2026-11-08",
+    "time_zone": "America/New_York (UTC-05:00 in the window; history converted at the offset of each post's date)",
+    "weekly_targets": {
+      "Example Booking Software (Facebook Page)": 2,
+      "Example Booking Software (TikTok)": 3
+    },
+    "weekly_target_basis": "not given, so each account's own 90-day rate, rounded up, minimum 2",
+    "queue_size": 56,
+    "queue_status_counts": {
+      "canceled": 1,
+      "draft": 3,
+      "failed": 1,
+      "pending_approval": 1,
+      "published": 46,
+      "scheduled": 4
+    }
+  },
+  "queue_health": [
+    {
+      "check": "Coverage",
+      "result": "fail",
+      "count": 2,
+      "shortfall_by_account": {
+        "Example Booking Software (Facebook Page)": 1,
+        "Example Booking Software (TikTok)": 1
+      },
+      "detail": "Target 2 on the Facebook Page with 1 scheduled in the window, so short by 1. Target 3 on TikTok with 2 scheduled, short by 1."
+    },
+    {
+      "check": "Gaps",
+      "result": "pass",
+      "count": 0,
+      "detail": "No stretch in the window is longer than twice an account's median gap (3.4 days on the Facebook Page, 2.4 on TikTok); the empty days are filled by the shortfall slots below."
+    },
+    {
+      "check": "Clashes",
+      "result": "warn",
+      "count": 1,
+      "detail": "Posts 2048 and 2049 on TikTok are 90 minutes apart on Wed 2026-11-04. The calendar moves 2049 to Fri.",
+      "posts": [
+        {
+          "post_id": 2048,
+          "network": "tiktok",
+          "account": "Example Booking Software (TikTok)",
+          "scheduled_for": "2026-11-04T18:30:00-05:00",
+          "content": "Owner tip: waitlists that fill your class"
+        },
+        {
+          "post_id": 2049,
+          "network": "tiktok",
+          "account": "Example Booking Software (TikTok)",
+          "scheduled_for": "2026-11-04T20:00:00-05:00",
+          "content": "Try this: reminder texts clients actually answer"
+        }
+      ]
+    },
+    {
+      "check": "Failed",
+      "result": "warn",
+      "count": 1,
+      "detail": "A permission refusal on Instagram: reconnect the account in the scheduler app, don't retry.",
+      "posts": [
+        {
+          "post_id": 2051,
+          "network": "instagram",
+          "account": "Example Booking Software (Instagram)",
+          "scheduled_for": "2026-10-22T11:00:00-04:00",
+          "content": "Five reminder templates, one swipe each",
+          "failure_reason": "Instagram denied permission for this request: the account needs to be reconnected"
+        }
+      ]
+    },
+    {
+      "check": "Stale",
+      "result": "warn",
+      "count": 2,
+      "detail": "A Facebook draft dated in the past, and a LinkedIn post waiting for approval for more than 2 days.",
+      "posts": [
+        {
+          "post_id": 2053,
+          "network": "linkedin",
+          "account": "Example Booking Software (LinkedIn Page)",
+          "scheduled_for": "2026-11-10T09:00:00-05:00",
+          "content": "How clinics cut no-shows with two reminders",
+          "status": "pending_approval"
+        },
+        {
+          "post_id": 2052,
+          "network": "facebook",
+          "account": "Example Booking Software (Facebook Page)",
+          "scheduled_for": "2026-10-20T12:00:00-04:00",
+          "content": "Last chance to set up holiday booking hours",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "check": "Clutter",
+      "result": "warn",
+      "count": 2,
+      "detail": "Test drafts. Listed only: they are already drafts, so nothing will post, and cancel_scheduled_post would not remove them. The MCP has no delete action; delete them in the scheduler app.",
+      "posts": [
+        {
+          "post_id": 2054,
+          "network": "facebook",
+          "account": "Example Booking Software (Facebook Page)",
+          "scheduled_for": "2027-01-04T09:00:00-05:00",
+          "content": "test"
+        },
+        {
+          "post_id": 2055,
+          "network": "tiktok",
+          "account": "Example Booking Software (TikTok)",
+          "scheduled_for": "2027-01-04T09:00:00-05:00",
+          "content": "[TEST] safe to delete"
+        }
+      ]
+    },
+    {
+      "check": "Can't publish",
+      "result": "pass",
+      "count": 0,
+      "detail": "All 4 scheduler profiles are active and the Facebook Page can publish."
+    },
+    {
+      "check": "Posted outside the scheduler",
+      "result": "info",
+      "count": 11,
+      "detail": "5 Facebook and 6 TikTok posts in the last 90 days are not in the queue: someone posted them by hand. The calendar counts them in cadence; check nobody posts by hand on a planned day."
+    }
+  ],
+  "history": [
+    {
+      "account": "Example Booking Software (Facebook Page)",
+      "cadence": {
+        "posts_90_days": 23,
+        "posts_per_week_90_days": 1.8,
+        "posts_last_4_weeks": 7,
+        "posts_per_week_last_4_weeks": 1.8,
+        "median_gap_days": 3.4,
+        "longest_gap_days": 9.1,
+        "weeks_with_no_post": 0,
+        "of_seven_day_stretches": 13
+      },
+      "weekly_target": 2,
+      "target_basis": "90-day rate 1.8/week rounded up, minimum 2; the last 4 weeks ran at the same pace",
+      "timing_metric": "post_media_view (Facebook views) from get_post_insights",
+      "timing_posts_used": 97,
+      "timing_span": [
+        "2025-10",
+        "2026-10"
+      ],
+      "timing_target_met": true,
+      "timing_note": "every post of the last 12 months, less test posts and posts younger than 7 days; each post scored against the median of its calendar month; times in America/New_York; 1 post had no post_media_view and was left out",
+      "by_weekday": [
+        {
+          "weekday": "Mon",
+          "posts": 13,
+          "median_score": 0.62,
+          "raw_median": 260,
+          "verdict": "worse"
+        },
+        {
+          "weekday": "Tue",
+          "posts": 20,
+          "median_score": 1.31,
+          "raw_median": 758,
+          "verdict": "better"
+        },
+        {
+          "weekday": "Wed",
+          "posts": 19,
+          "median_score": 0.87,
+          "raw_median": 384,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Thu",
+          "posts": 17,
+          "median_score": 1.31,
+          "raw_median": 778,
+          "verdict": "better"
+        },
+        {
+          "weekday": "Fri",
+          "posts": 8,
+          "median_score": 0.98,
+          "raw_median": 462,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Sat",
+          "posts": 8,
+          "median_score": 1.1,
+          "raw_median": 598,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Sun",
+          "posts": 12,
+          "median_score": 0.93,
+          "raw_median": 382,
+          "verdict": "no difference shown"
+        }
+      ],
+      "by_3_hour_block": [
+        {
+          "block": "06:00-09:00",
+          "posts": 6,
+          "median_score": 1.01,
+          "raw_median": 460,
+          "verdict": "no difference shown"
+        },
+        {
+          "block": "09:00-12:00",
+          "posts": 28,
+          "median_score": 0.86,
+          "raw_median": 366,
+          "verdict": "no difference shown"
+        },
+        {
+          "block": "12:00-15:00",
+          "posts": 45,
+          "median_score": 1.31,
+          "raw_median": 778,
+          "verdict": "better"
+        },
+        {
+          "block": "15:00-18:00",
+          "posts": 18,
+          "median_score": 0.87,
+          "raw_median": 358,
+          "verdict": "no difference shown"
+        }
+      ],
+      "better": {
+        "weekdays": [
+          "Tue",
+          "Thu"
+        ],
+        "blocks": [
+          "12:00-15:00"
+        ]
+      },
+      "worse": {
+        "weekdays": [
+          "Mon"
+        ]
+      },
+      "evergreen_top_fifth_score_cutoff": 1.51,
+      "evergreen_left_out": [
+        {
+          "posted": "2026-05-19",
+          "first_line": "Join our free webinar on deposit policies clients accept.",
+          "month_score": 5.26,
+          "dated_by": [
+            "webinar"
+          ]
+        },
+        {
+          "posted": "2026-03-10",
+          "first_line": "Starter plan: $19 a month for unlimited bookings and reminders.",
+          "month_score": 4.18,
+          "dated_by": [
+            "$19"
+          ]
+        },
+        {
+          "posted": "2026-01-14",
+          "first_line": "Introducing two-way calendar sync: every booking lands in your phone's calendar.",
+          "month_score": 2.46,
+          "dated_by": [
+            "Introducing"
+          ]
+        }
+      ]
+    },
+    {
+      "account": "Example Booking Software (TikTok)",
+      "cadence": {
+        "posts_90_days": 34,
+        "posts_per_week_90_days": 2.6,
+        "posts_last_4_weeks": 11,
+        "posts_per_week_last_4_weeks": 2.8,
+        "median_gap_days": 2.4,
+        "longest_gap_days": 6.0,
+        "weeks_with_no_post": 0,
+        "of_seven_day_stretches": 13
+      },
+      "weekly_target": 3,
+      "target_basis": "90-day rate 2.6/week rounded up, minimum 2; the last 4 weeks ran at the same pace",
+      "timing_metric": "video views",
+      "timing_posts_used": 138,
+      "timing_span": [
+        "2025-10",
+        "2026-10"
+      ],
+      "timing_target_met": true,
+      "timing_note": "every post of the last 12 months, less test posts and posts younger than 7 days; each post scored against the median of its calendar month; times in America/New_York",
+      "by_weekday": [
+        {
+          "weekday": "Mon",
+          "posts": 23,
+          "median_score": 0.94,
+          "raw_median": 3640,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Tue",
+          "posts": 19,
+          "median_score": 0.87,
+          "raw_median": 3011,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Wed",
+          "posts": 26,
+          "median_score": 1.22,
+          "raw_median": 4770,
+          "verdict": "better"
+        },
+        {
+          "weekday": "Thu",
+          "posts": 19,
+          "median_score": 0.86,
+          "raw_median": 3524,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Fri",
+          "posts": 26,
+          "median_score": 1.44,
+          "raw_median": 5806,
+          "verdict": "better"
+        },
+        {
+          "weekday": "Sat",
+          "posts": 13,
+          "median_score": 0.95,
+          "raw_median": 3407,
+          "verdict": "no difference shown"
+        },
+        {
+          "weekday": "Sun",
+          "posts": 12,
+          "median_score": 0.49,
+          "raw_median": 1890,
+          "verdict": "worse"
+        }
+      ],
+      "by_3_hour_block": [
+        {
+          "block": "06:00-09:00",
+          "posts": 18,
+          "median_score": 0.89,
+          "raw_median": 3318,
+          "verdict": "no difference shown"
+        },
+        {
+          "block": "09:00-12:00",
+          "posts": 10,
+          "median_score": 1.01,
+          "raw_median": 3887,
+          "verdict": "no difference shown"
+        },
+        {
+          "block": "12:00-15:00",
+          "posts": 20,
+          "median_score": 0.8,
+          "raw_median": 3002,
+          "verdict": "worse"
+        },
+        {
+          "block": "15:00-18:00",
+          "posts": 30,
+          "median_score": 0.88,
+          "raw_median": 3280,
+          "verdict": "no difference shown"
+        },
+        {
+          "block": "18:00-21:00",
+          "posts": 51,
+          "median_score": 1.42,
+          "raw_median": 5447,
+          "verdict": "better"
+        },
+        {
+          "block": "21:00-24:00",
+          "posts": 9,
+          "median_score": 0.82,
+          "raw_median": 3480,
+          "verdict": "no difference shown"
+        }
+      ],
+      "better": {
+        "weekdays": [
+          "Wed",
+          "Fri"
+        ],
+        "blocks": [
+          "18:00-21:00"
+        ]
+      },
+      "worse": {
+        "weekdays": [
+          "Sun"
+        ]
+      },
+      "evergreen_top_fifth_score_cutoff": 1.58,
+      "evergreen_left_out": [
+        {
+          "posted": "2026-02-06",
+          "first_line": "We just launched online payments for salons",
+          "month_score": 5.94,
+          "dated_by": [
+            "just launched"
+          ]
+        },
+        {
+          "posted": "2026-06-19",
+          "first_line": "20% off your first 3 months",
+          "month_score": 4.76,
+          "dated_by": [
+            "20% off"
+          ]
+        }
+      ]
+    }
+  ],
+  "calendar": [
+    {
+      "when": "2026-11-02T19:00:00-05:00",
+      "day": "Mon",
+      "account": "Example Booking Software (TikTok)",
+      "action": "schedule_tiktok_post",
+      "format": "short video",
+      "source": "recycled top post",
+      "recycles": {
+        "posted": "2026-08-07",
+        "first_line": "In 30 seconds: bookings while you sleep",
+        "metric": 12842,
+        "month_score": 3.48
+      },
+      "why_this_time": "Mon showed no difference; 19:00 is the most-used hour inside the better block 18:00-21:00",
+      "brief": "Phone at 11pm: a client books, the calendar fills.",
+      "caption": "They booked at 11pm. You were asleep. That's the point.",
+      "status": "needs a new video in the Media Library"
+    },
+    {
+      "when": "2026-11-03T12:00:00-05:00",
+      "day": "Tue",
+      "account": "Example Booking Software (Facebook Page)",
+      "action": "schedule_facebook_post",
+      "format": "link post",
+      "source": "recycled top post",
+      "recycles": {
+        "posted": "2026-08-27",
+        "first_line": "Owners ask us: a reminder 24 hours out and another 2 hours out: the simplest fix for no-shows.",
+        "metric": 1197,
+        "month_score": 3.3
+      },
+      "why_this_time": "Tue is a better weekday; 12:00 is the most-used hour inside the better block 12:00-15:00",
+      "content": "Most no-shows aren't rude, they're forgetful. Send one reminder the day before and one two hours out, and watch the empty chairs disappear. Our 3-step reminder plan:",
+      "link": "https://www.example.com/blog/reduce-no-shows/",
+      "status": "ready"
+    },
+    {
+      "when": "2026-11-06T19:00:00-05:00",
+      "day": "Fri",
+      "account": "Example Booking Software (TikTok)",
+      "action": "reschedule_scheduled_post",
+      "post_id": 2049,
+      "content": "Try this: reminder texts clients actually answer",
+      "from": "2026-11-04T20:00:00-05:00",
+      "why_this_time": "Fri is a better weekday and 19:00 the most-used hour in 18:00-21:00; it ends the clash with post 2048 at 18:30 on Wed",
+      "status": "ready (a move, offered after confirmation)"
+    }
+  ],
+  "ready_to_schedule": {
+    "count": 2,
+    "why": "1 new slot is ready and goes in as a draft; the clash move is ready too. 1 TikTok slot still needs a new video: the Media Library has 3 videos and none matches that idea.",
+    "payloads": [
+      {
+        "action": "schedule_facebook_post",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account": 101,
+        "content": "Most no-shows aren't rude, they're forgetful. Send one reminder the day before and one two hours out, and watch the empty chairs disappear. Our 3-step reminder plan:",
+        "link": "https://www.example.com/blog/reduce-no-shows/",
+        "scheduled_at": "2026-11-03T12:00:00-05:00",
+        "status": "draft",
+        "idempotency_key": "cal-2026-11-03-facebook-1"
+      },
+      {
+        "action": "reschedule_scheduled_post",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "post_id": 2049,
+        "scheduled_at": "2026-11-06T19:00:00-05:00"
+      }
+    ]
+  },
+  "unknowns": [
+    "Instagram and the LinkedIn Page were not planned: you named the Facebook Page and TikTok for this calendar."
+  ],
+  "actions_offered_after_confirmation": [
+    "schedule_facebook_post as a draft for the ready Facebook slot",
+    "reschedule_scheduled_post to move post 2049 out of the TikTok clash",
+    "schedule_tiktok_post as a draft once the new video is in the Media Library",
+    "update_scheduled_post to switch those drafts to scheduled"
+  ]
+}

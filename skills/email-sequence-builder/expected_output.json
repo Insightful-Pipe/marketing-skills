@@ -1,0 +1,433 @@
+{
+  "header": {
+    "account": "Example Booking Software (Klaviyo)",
+    "platform": "Klaviyo",
+    "job": "Onboarding (product sign-up), as a rewrite of the live Trial onboarding flow",
+    "trigger": "Metric: Started Trial (the app sends it when a trial starts)",
+    "goal": "the first booking through the booking page during the 14-day trial",
+    "data_read": "2026-10-28"
+  },
+  "fix_first": [
+    {
+      "check": "Consent for the region",
+      "action": "Record marketing consent at trial sign-up (a consent box stored as Klaviyo email consent), and give email 7 the flow filter 'can receive email marketing'. Emails 1 to 6 are service emails about the trial and can go to everyone."
+    }
+  ],
+  "account_readiness": [
+    {
+      "item": "Sender and address",
+      "source": "get_account_details",
+      "found": "Sender Example Booking Software <hello@example.com>, reply-to support@example.com. Postal address set. Time zone America/New_York, currency USD, industry Software / SaaS.",
+      "means": "The footer can print the saved address, and replies to the PS lines reach a support mailbox."
+    },
+    {
+      "item": "Triggers tracked",
+      "source": "get_metrics",
+      "found": "16 metrics. Started Trial: yes (API). Product events: Connected Calendar, Published Booking Page, Received First Booking. Placed Order: yes (API). Started Checkout, Viewed Product, Added to Cart: no. Test-named metrics: 0.",
+      "means": "The flow can start on Started Trial, skip people who already connected a calendar or published their page, and stop the activation emails once Received First Booking fires. There is no event for reminders or deposits, so emails 4 and 5 go to everyone still in the flow."
+    },
+    {
+      "item": "Existing flows",
+      "source": "get_flows",
+      "found": "5 flows, 4 live. Trial onboarding is live on Started Trial.",
+      "means": "A live flow already does this job, so this is a rewrite of Trial onboarding, not a second flow: two onboarding flows on one trigger would email every trial twice."
+    },
+    {
+      "item": "How the live flow performs",
+      "source": "get_flow_report (90 days, conversion metric Received First Booking)",
+      "found": "email 1 Welcome to your trial: 2,301 delivered, click 9.8%, first booking 13.5%, unsubscribe 0.2%; email 2 Connect your calendar: 2,233 delivered, click 7.1%, first booking 9.2%, unsubscribe 0.3%; email 3 Turn on reminders: 0 delivered, click 0.0%, first booking 0.0%, unsubscribe 0.0%; email 4 Take deposits: 2,044 delivered, click 2.9%, first booking 3.0%, unsubscribe 1.3%; email 5 Your trial ends in 3 days: 1,954 delivered, click 6.4%, first booking 2.2%, unsubscribe 0.5%",
+      "means": "Rewrite first Take deposits (lowest click rate, 2.9%, and unsubscribes 1.3%, above 1%). Turn on reminders reached 0 people in 90 days: the flow skips it today."
+    },
+    {
+      "item": "Baseline from past campaigns",
+      "source": "get_campaigns, get_campaign_report (365 days)",
+      "found": "21 email campaigns, 21 with 500 or more delivered; average click rate 3.1%. Top 3 by click rate: Reminder text templates you can copy (4.7%, Thursday 15:00 America/New_York); 9 ways to cut no-shows before the holidays (4.5%, Tuesday 10:00 America/New_York); How a clinic filled its cancellation gaps (4.4%, Tuesday 10:00 America/New_York).",
+      "means": "The winners teach a practical how-to with something to copy or use, kept short, sent on a Tuesday morning (2 of the top 3). Klaviyo reports carry no subject lines, so ask for the winners' subjects to compare angles."
+    },
+    {
+      "item": "Entry and consent",
+      "source": "get_lists, get_segments",
+      "found": "6 lists (5 real, 1 QA list); Trial sign-ups is single_opt_in. 4 segments, including Active customers (Placed Order at least once, no cancellation since).",
+      "means": "The flow starts on the Started Trial metric. People who have paid leave through the flow filter; no extra exclusion segment is needed."
+    },
+    {
+      "item": "Reusable template",
+      "source": "get_email_templates",
+      "found": "3 templates; House template 2026 has the unsubscribe tag and the address tag. 1 test-named template, not used.",
+      "means": "Every draft below uses House template 2026, so the footer is already right."
+    },
+    {
+      "item": "Incentives",
+      "source": "get_coupons",
+      "found": "1 real coupon (ANNUAL15: 15% off the first year of an annual plan).",
+      "means": "Not used: the user said no discounts."
+    }
+  ],
+  "sequence_map": [
+    {
+      "email": 1,
+      "day": 0,
+      "name": "Welcome: connect your calendar first",
+      "purpose": "Connect a calendar, the one step everything else needs.",
+      "filter": "Everyone who starts a trial. Skip if Connected Calendar has happened since starting this flow."
+    },
+    {
+      "email": 2,
+      "day": 1,
+      "name": "Quick win: publish your booking page",
+      "purpose": "Publish the booking page.",
+      "filter": "Everyone still in the flow. Skip if Published Booking Page has happened since starting this flow."
+    },
+    {
+      "email": 3,
+      "day": 3,
+      "name": "Core feature: put your link where clients ask",
+      "purpose": "Share the booking link where clients already look.",
+      "filter": "Everyone still in the flow. Skip if Received First Booking has happened since starting this flow."
+    },
+    {
+      "email": 4,
+      "day": 5,
+      "name": "Use case: reminders that cut no-shows",
+      "purpose": "Turn on reminders.",
+      "filter": "Everyone still in the flow. No skip rule: the app sends no event when reminders are switched on."
+    },
+    {
+      "email": 5,
+      "day": 7,
+      "name": "Advanced feature: deposits, so a no-show still pays",
+      "purpose": "Switch on deposits.",
+      "filter": "Everyone still in the flow. No skip rule: no event for deposits switched on."
+    },
+    {
+      "email": 6,
+      "day": 10,
+      "name": "Progress check: no booking yet?",
+      "purpose": "Get the first booking in, or a reply saying what's in the way.",
+      "filter": "Everyone still in the flow. Only for people with Received First Booking zero times since starting this flow."
+    },
+    {
+      "email": 7,
+      "day": 12,
+      "name": "Plan-end reminder: keep your booking page live",
+      "purpose": "Choose a plan before the trial ends.",
+      "filter": "Everyone still in the flow. Flow exit covers it: anyone who has paid has left the flow."
+    }
+  ],
+  "calendar": [
+    {
+      "week": 1,
+      "days": "0-6",
+      "emails": [
+        "1 (day 0)",
+        "2 (day 1)",
+        "3 (day 3)",
+        "4 (day 5)"
+      ]
+    },
+    {
+      "week": 2,
+      "days": "7-13",
+      "emails": [
+        "5 (day 7)",
+        "6 (day 10)",
+        "7 (day 12)"
+      ]
+    }
+  ],
+  "exit_rule": "Flow filter: Placed Order zero times since starting this flow, so anyone who pays leaves at once. Emails 1 and 2 skip people who already connected a calendar or published their page; emails 3 and 6 go only to people with no Received First Booking yet.",
+  "left_out": "No win-back email at the end: the Win-back: cancelled accounts flow (draft) is the place for it once trials that don't pay are added to its trigger.",
+  "emails": [
+    {
+      "email": 1,
+      "name": "Welcome: connect your calendar first",
+      "send": "immediately after Started Trial",
+      "goal": "Connect a calendar, the one step everything else needs.",
+      "filter": "Everyone who starts a trial.",
+      "skip": "Skip if Connected Calendar has happened since starting this flow.",
+      "subject_options": {
+        "benefit": "No double bookings from day one",
+        "question": "Which calendar runs your day?",
+        "specific": "Step 1 of 3: connect your calendar"
+      },
+      "preview": "Connect it once and clients only see the times you can take.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nYour trial is ready. Three steps get your first booking in: connect your calendar, publish your booking page, and share the link.\n\nStart with the calendar. With two-way sync, busy times in Google Calendar block bookings, and every new booking lands in your calendar, so nobody books you on top of something else.",
+      "cta": {
+        "button": "Connect my calendar",
+        "to": "the calendar settings page in the app"
+      },
+      "ps": "Stuck on any step? Reply to this email and tell us where.",
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "three steps to a first booking": "the user's goal, with the steps from https://www.example.com/features/online-booking/",
+        "two-way sync blocks busy times": "https://www.example.com/features/calendar-sync/: 'Two-way sync with Google Calendar: busy times block bookings, and every new booking lands in your calendar.'"
+      },
+      "notes": "Replies go to support@example.com, the account's reply-to address."
+    },
+    {
+      "email": 2,
+      "name": "Quick win: publish your booking page",
+      "send": "day 1 after Started Trial",
+      "goal": "Publish the booking page.",
+      "filter": "Everyone still in the flow.",
+      "skip": "Skip if Published Booking Page has happened since starting this flow.",
+      "subject_options": {
+        "benefit": "Your booking page, live in minutes",
+        "question": "What should clients book first?",
+        "specific": "Add your services and hours, then publish"
+      },
+      "preview": "Pick your services, set your hours and press publish.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nYour booking page is where clients pick a service and a time without calling you. Setting it up takes minutes:\n\n1. Add the services you offer and how long each takes.\n2. Set your opening hours.\n3. Press publish.\n\nOnce it's live, clients can book online at any hour, even while you're with someone else.",
+      "cta": {
+        "button": "Publish my booking page",
+        "to": "the booking page editor in the app"
+      },
+      "ps": null,
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "ready in minutes: services, hours, link": "https://www.example.com/features/online-booking/: 'Your booking page is ready in minutes: pick your services, set your hours and share the link.'",
+        "clients book at any hour": "https://www.example.com/: 'Clients book online 24/7, so you stop answering the phone to fill the diary.'"
+      },
+      "notes": null
+    },
+    {
+      "email": 3,
+      "name": "Core feature: put your link where clients ask",
+      "send": "day 3 after Started Trial",
+      "goal": "Share the booking link where clients already look.",
+      "filter": "Everyone still in the flow.",
+      "skip": "Skip if Received First Booking has happened since starting this flow.",
+      "subject_options": {
+        "benefit": "Let clients book while you work",
+        "question": "Where do clients ask to book?",
+        "specific": "Add a Book now button to your site"
+      },
+      "preview": "One line of code on your website, or the link in your Instagram bio.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nA booking page only works once clients can find it. Put your link where they already ask you for a time:\n\n- a Book now button on your website (one line of code)\n- your Instagram bio\n- your replies to anyone who messages you for an appointment\n\nMore than 4,200 salons, clinics and studios take their bookings this way.",
+      "cta": {
+        "button": "Get my booking link",
+        "to": "the share settings in the app"
+      },
+      "ps": "Your first booking shows up in your calendar the moment it's made.",
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "Book now button, one line of code, Instagram bio": "https://www.example.com/features/online-booking/: 'Add a Book now button to your website with one line of code, or put the link in your Instagram bio.'",
+        "4,200 salons, clinics and studios": "https://www.example.com/: 'Used by 4,200 salons, clinics and studios.'",
+        "bookings land in the calendar": "https://www.example.com/features/calendar-sync/: 'Two-way sync with Google Calendar: busy times block bookings, and every new booking lands in your calendar.'"
+      },
+      "notes": "Replaces old email 3, which sent to no one in 90 days; check the delay or split that blocked it before the new flow goes live."
+    },
+    {
+      "email": 4,
+      "name": "Use case: reminders that cut no-shows",
+      "send": "day 5 after Started Trial",
+      "goal": "Turn on reminders.",
+      "filter": "Everyone still in the flow.",
+      "skip": "No skip rule: the app sends no event when reminders are switched on.",
+      "subject_options": {
+        "benefit": "Fewer empty slots, no extra work",
+        "question": "How many clients forgot last week?",
+        "specific": "Reminders 24 hours and 2 hours before"
+      },
+      "preview": "Text and email reminders go out on their own, and clients can confirm in one tap.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nA booked slot only pays if the client turns up. Reminders go out by text and email 24 hours and 2 hours before each appointment, and clients can confirm or reschedule straight from the message.\n\nSwitch them on once and they run for every booking after.",
+      "cta": {
+        "button": "Turn on reminders",
+        "to": "the reminders settings in the app"
+      },
+      "ps": "Our guide to reducing no-shows has 9 more tactics: https://www.example.com/blog/reduce-no-shows/",
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "text and email, 24 h and 2 h before": "https://www.example.com/features/reminders/: 'Reminders go out by text and email 24 hours and 2 hours before each appointment.'",
+        "confirm or reschedule from the reminder": "https://www.example.com/features/reminders/: 'Clients can confirm or reschedule straight from the reminder.'",
+        "the 9-tactic guide": "https://www.example.com/blog/reduce-no-shows/ (page title)"
+      },
+      "notes": "Ask the app team for a Turned On Reminders event; with it, this email can skip people who already did it."
+    },
+    {
+      "email": 5,
+      "name": "Advanced feature: deposits, so a no-show still pays",
+      "send": "day 7 after Started Trial",
+      "goal": "Switch on deposits.",
+      "filter": "Everyone still in the flow.",
+      "skip": "No skip rule: no event for deposits switched on.",
+      "subject_options": {
+        "benefit": "Keep the deposit when clients skip",
+        "question": "What does a no-show cost you?",
+        "specific": "Ask for a deposit at booking"
+      },
+      "preview": "Set a deposit and a cancellation window in a few clicks.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nReminders bring most clients in. For the rest, ask for a deposit or the full price when they book, and set a cancellation window: a late cancellation keeps the deposit.\n\nNot sure what to write? Start from our cancellation policy template and change it to fit your business.",
+      "cta": {
+        "button": "Set up deposits",
+        "to": "the payments settings in the app"
+      },
+      "ps": null,
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "deposit or full price at booking": "https://www.example.com/features/payments/: 'Ask for a deposit or the full price when clients book.'",
+        "cancellation window keeps the deposit": "https://www.example.com/features/payments/: 'Set a cancellation window; a late cancellation keeps the deposit.'",
+        "cancellation policy template": "https://www.example.com/templates/cancellation-policy/ (page title)"
+      },
+      "notes": "Rewrite of old email 4 (Take deposits), the weakest message in the live flow; it now follows reminders and leads with the reason."
+    },
+    {
+      "email": 6,
+      "name": "Progress check: no booking yet?",
+      "send": "day 10 after Started Trial",
+      "goal": "Get the first booking in, or a reply saying what's in the way.",
+      "filter": "Everyone still in the flow.",
+      "skip": "Only for people with Received First Booking zero times since starting this flow.",
+      "subject_options": {
+        "benefit": "Your first booking is one link away",
+        "question": "Anything stopping your first booking?",
+        "specific": "Day 10: three steps, one link"
+      },
+      "preview": "If something got in the way, reply and tell us what it was.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nYou're ten days into your trial and your first booking hasn't come in yet. The shortest path is still the same three steps:\n1. Connect your calendar.\n2. Publish your booking page.\n3. Put the link where clients ask.\n\nIf something stopped you, reply to this email and a person will help.",
+      "cta": {
+        "button": "Finish my setup",
+        "to": "the setup checklist in the app"
+      },
+      "ps": null,
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "the three steps": "the same steps as emails 1 to 3",
+        "booking page steps": "https://www.example.com/features/online-booking/"
+      },
+      "notes": "A behaviour split: people who already have a booking skip it, so it never nags someone who is done."
+    },
+    {
+      "email": 7,
+      "name": "Plan-end reminder: keep your booking page live",
+      "send": "day 12 after Started Trial",
+      "goal": "Choose a plan before the trial ends.",
+      "filter": "Everyone still in the flow.",
+      "skip": "Flow exit covers it: anyone who has paid has left the flow.",
+      "subject_options": {
+        "benefit": "Keep your booking page live",
+        "question": "Ready to pick your plan?",
+        "specific": "Two days left in your trial"
+      },
+      "preview": "Every plan includes unlimited bookings, and your page stays live when you choose.",
+      "body": "Hi {{ first_name|default:'there' }},\n\nYour trial ends in two days. Choose a plan and your booking page, reminders and calendar sync keep running with nothing to set up again.\n\n- Starter: for one person\n- Growth: for teams of up to 5\n- Business: for up to 20 staff\n\nEvery plan includes unlimited bookings.",
+      "cta": {
+        "button": "Choose my plan",
+        "to": "https://www.example.com/pricing/"
+      },
+      "ps": "Questions about which plan fits? Reply and we'll help you pick.",
+      "footer": "Footer (house template): {{ organization.name }}, {{ organization.full_address }} | {% manage_preferences %} | {% unsubscribe %}",
+      "sources": {
+        "14-day trial, page stays live": "https://www.example.com/pricing/: 'Try any plan for 14 days. Your booking page stays live when you choose a plan.'",
+        "plan sizes": "https://www.example.com/pricing/: 'Starter for one person, Growth for teams of up to 5, Business for up to 20 staff.'",
+        "unlimited bookings": "https://www.example.com/pricing/: 'Every plan includes unlimited bookings.'"
+      },
+      "notes": "No prices and no discount: the user asked for none. Send only to profiles that can receive email marketing (see the consent fix)."
+    }
+  ],
+  "compliance_check": [
+    {
+      "check": "Postal address in every commercial email",
+      "result": "pass",
+      "evidence": "The account address is set and House template 2026 prints it with {{ organization.full_address }}.",
+      "action": null
+    },
+    {
+      "check": "Working unsubscribe",
+      "result": "pass",
+      "evidence": "House template 2026 has {% unsubscribe %} next to {% manage_preferences %}; every draft uses it.",
+      "action": null
+    },
+    {
+      "check": "Honest sender and subject",
+      "result": "pass",
+      "evidence": "From Example Booking Software <hello@example.com>, replies to support@example.com; every subject describes its email.",
+      "action": null
+    },
+    {
+      "check": "Marked as an ad",
+      "result": "pass",
+      "evidence": "Emails 1 to 6 are setup help for the trial the person started. Email 7 is a plan reminder about the same product, sent only to people who can receive marketing.",
+      "action": null
+    },
+    {
+      "check": "Consent for the region",
+      "result": "fix",
+      "evidence": "Trials come from the US, UK and Canada (the user). The flow starts on a metric, not a list, and the Trial sign-ups list is single_opt_in, so UK and Canadian trials have no recorded marketing consent in Klaviyo.",
+      "action": "Record marketing consent at trial sign-up (a consent box stored as Klaviyo email consent), and give email 7 the flow filter 'can receive email marketing'. Emails 1 to 6 are service emails about the trial and can go to everyone."
+    },
+    {
+      "check": "Opt-outs honoured",
+      "result": "unknown",
+      "evidence": "Not readable through the API.",
+      "action": "Confirm in Klaviyo that unsubscribes are suppressed at once."
+    },
+    {
+      "check": "Spam-style content",
+      "result": "pass",
+      "evidence": "21 subject lines and 7 preview lines: 0 with spam-style wording ('free', 'act now', '!!', money claims) and 0 fake 'Re:' or 'Fwd:' subjects. Subjects, previews and bodies: 0 ALL-CAPS words. Longest subject 41 characters. The drafts are text with one button each and no images.",
+      "action": null
+    },
+    {
+      "check": "Bulk-sender rules",
+      "result": "unknown",
+      "evidence": "Domain authentication (SPF, DKIM, DMARC) isn't readable through the API.",
+      "action": "Check in Klaviyo that example.com is an authenticated sending domain; the flow sends to about 770 new trials a month."
+    }
+  ],
+  "build_steps": [
+    "Leave Trial onboarding running for now. In Klaviyo, clone it as 'Trial onboarding v2' in draft, with the trigger 'Metric: Started Trial'.",
+    "Add the flow filter 'Placed Order zero times since starting this flow'.",
+    "Add the 7 emails in order with time delays of 1 day, 2 days, 2 days, 2 days, 3 days, 2 days between them (email 1 sends at once).",
+    "Add the skip filters: email 1 'Connected Calendar zero times since starting this flow', email 2 'Published Booking Page zero times since starting this flow', emails 3 and 6 'Received First Booking zero times since starting this flow', email 7 'can receive email marketing'.",
+    "Pick House template 2026 for every email, or paste the copy into it.",
+    "Preview every email, send yourself a test from Klaviyo, then set v2 live and set Trial onboarding to manual on the same day, so no trial gets both."
+  ],
+  "measurement": {
+    "per_email": "click rate, conversion rate to Received First Booking, unsubscribe rate and spam complaints; opens are context only",
+    "baseline": {
+      "old_flow_click_rate_pct": 6.7,
+      "old_flow_first_booking_conversion_pct": 7.3,
+      "old_email_1_click_rate_pct": 9.8,
+      "trials_per_month": 770,
+      "source": "get_flow_report on the live Trial onboarding flow, last 90 days, delivered-weighted"
+    },
+    "target": "beat the old flow on its own numbers: a delivered-weighted click rate above 6.7% and a first-booking conversion rate above 7.3%, with no email above 1% unsubscribes",
+    "judge_after": "500 delivered per email or 2 weeks, whichever is later",
+    "first_test": "email 1, subject A (benefit) against subject C (specific step), split 50/50",
+    "winner_rule": "the subject with the higher click rate once each side has at least 500 delivered and at least 2 weeks have passed; until both are true, no winner is called and both subjects keep sending",
+    "time_to_judge": "at about 770 trials a month split two ways, each side passes 500 delivered in about 39 days, so the 500-delivered rule decides, not the 2 weeks"
+  },
+  "unknowns": [
+    "Whether unsubscribes are suppressed at once and whether the sending domain is authenticated: not readable through the API.",
+    "Why Turn on reminders in the live flow sends to no one: the report shows 0 recipients, not the cause.",
+    "The subject lines of the top 3 campaigns: Klaviyo reports don't carry them."
+  ],
+  "actions_offered": [
+    {
+      "action": "create_email_template",
+      "status": "not run (needs your yes)",
+      "body": {
+        "data": {
+          "type": "template",
+          "attributes": {
+            "name": "Trial onboarding v2 1 - Welcome: connect your calendar first",
+            "editor_type": "CODE",
+            "html": "<html><body><p>Hi {{ first_name|default:'there' }},</p><p>Your trial is ready. Three steps get your first booking in: ...</p><p><a href=\"<CALENDAR_SETTINGS_URL>\">Connect my calendar</a></p><p style=\"font-size:12px\">{{ organization.name }}, {{ organization.full_address }}<br>{% manage_preferences %} | {% unsubscribe %}</p></body></html>"
+          }
+        }
+      },
+      "note": "One such call per email (7 in total), each with that email's full html. Shown for email 1; the body is shortened here."
+    },
+    {
+      "action": "create_campaign",
+      "status": "not offered",
+      "note": "This is a flow, not a one-off campaign, so no draft campaign is needed."
+    }
+  ],
+  "go_deeper": [
+    "klaviyo-flow-auditor: the Win-back flow is still a draft and old email 3 sends to no one; audit the rest of the flows",
+    "onboarding-cro: the in-app steps the emails point to (calendar, booking page, share link)",
+    "email-campaign-analyst: once v2 has sent, judge it on clicks, first bookings and unsubscribes"
+  ]
+}

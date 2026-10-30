@@ -1,0 +1,4928 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "currency": "USD",
+    "week": "2026-10-19 to 2026-10-25",
+    "compared_with": "2026-10-12 to 2026-10-18",
+    "budget_period": "October 2026 to date (27 of 31 days)",
+    "daily_log": "2026-10-01 to 2026-10-27"
+  },
+  "spec": {
+    "reader_and_decision": "The founder and the marketing lead, every Monday: move budget between Google Ads, Meta, LinkedIn and TikTok or not.",
+    "questions": [
+      "What did we spend last week and how many sign-ups did it bring?",
+      "What does one sign-up cost across all paid spend?",
+      "Which campaigns moved, and why?",
+      "Is each platform on its October budget?",
+      "Does what is live match the Q4 plan?"
+    ],
+    "kpis": [
+      {
+        "kpi": "Spend",
+        "formula": "sum of cost",
+        "source": "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads",
+        "grain": "day, week, campaign"
+      },
+      {
+        "kpi": "Clicks",
+        "formula": "sum of clicks",
+        "source": "the four ad platforms",
+        "grain": "day, week, campaign"
+      },
+      {
+        "kpi": "CTR",
+        "formula": "clicks / impressions, from the week's totals",
+        "source": "the four ad platforms",
+        "grain": "week"
+      },
+      {
+        "kpi": "Conversions",
+        "formula": "each platform's own count, side by side, never added up",
+        "source": "each ad platform",
+        "grain": "week, campaign"
+      },
+      {
+        "kpi": "Sessions",
+        "formula": "GA4 sessions",
+        "source": "GA4",
+        "grain": "week"
+      },
+      {
+        "kpi": "Key events",
+        "formula": "GA4 key events (sign_up is the only key event)",
+        "source": "GA4",
+        "grain": "week"
+      },
+      {
+        "kpi": "Cost per key event",
+        "formula": "spend / GA4 key events",
+        "source": "ad platforms and GA4",
+        "grain": "week"
+      },
+      {
+        "kpi": "Organic clicks",
+        "formula": "Search Console clicks + Bing clicks",
+        "source": "Search Console, Bing",
+        "grain": "week"
+      }
+    ],
+    "target": "none given",
+    "layout": {
+      "Dashboard": "KPI table (this week, last week, change) and a 14-day spend line",
+      "Daily": "spend log, one row per day and ad account",
+      "Weekly": "one row per Monday-to-Sunday week, platform conversions side by side",
+      "Campaigns": "last complete week by campaign",
+      "Budget": "October budget vs actual by platform"
+    },
+    "refresh": "Weekly on Monday, when asked; the skill does not schedule itself.",
+    "not_included": "ROAS: no conversion values are set on any of the four ad accounts. Airtable: not connected."
+  },
+  "source_list": [
+    {
+      "source": "Google Ads",
+      "status": "active",
+      "detail": "27 of 27 days, 2 campaigns spent"
+    },
+    {
+      "source": "Meta Ads",
+      "status": "active",
+      "detail": "27 of 27 days, 2 campaigns spent"
+    },
+    {
+      "source": "LinkedIn Ads",
+      "status": "active",
+      "detail": "27 of 27 days, account level"
+    },
+    {
+      "source": "TikTok Ads",
+      "status": "active",
+      "detail": "25 of 27 days, account level; 2026-10-18 and 2026-10-19 returned an empty list (no delivery)"
+    },
+    {
+      "source": "GA4",
+      "status": "active",
+      "detail": "27 of 27 days; 2026-10-26 and 2026-10-27 are provisional (less than two days old)"
+    },
+    {
+      "source": "Search Console",
+      "status": "active",
+      "detail": "25 days, last day 2026-10-25 (it lags 2 to 3 days)"
+    },
+    {
+      "source": "Bing Webmaster",
+      "status": "active",
+      "detail": "26 days inside the window, last day 2026-10-26"
+    },
+    {
+      "source": "Google Sheets (\"Example Booking marketing data\")",
+      "status": "destination: ready",
+      "detail": "tabs Sheet1 (empty) and Q4 plan (the plan); the five dashboard tabs are new"
+    },
+    {
+      "source": "Notion",
+      "status": "destination: ready",
+      "detail": "search lists 2 pages; the report goes under Marketing, the page the user picked"
+    },
+    {
+      "source": "Slack",
+      "status": "destination: blocked",
+      "detail": "#marketing exists but the app is not a member (is_member false); it is a member of #general only"
+    },
+    {
+      "source": "Airtable",
+      "status": "not connected",
+      "detail": "the Airtable path is untested until a base is connected"
+    }
+  ],
+  "data_checks": [
+    {
+      "check": "Complete days",
+      "result": "pass",
+      "detail": "Google Ads, Meta Ads, LinkedIn Ads and GA4 returned all 27 days. TikTok Ads returned 25: 2026-10-18 and 2026-10-19 came back as an empty list, which means no delivery, not a gap. Search Console ends on 2026-10-25 and Bing on 2026-10-26, so both cover the last complete week."
+    },
+    {
+      "check": "One currency",
+      "result": "pass",
+      "detail": "All four ad accounts report in USD."
+    },
+    {
+      "check": "Totals match",
+      "result": "pass",
+      "detail": "The Daily rows for 2026-10-19 to 2026-10-25 add up to 6434.72 USD, the Weekly tab's spend for that week; all 106 Daily rows add up to 24555.63 USD, the Budget tab's total actual."
+    }
+  ],
+  "destination_check": {
+    "sheet_tabs_found": [
+      "Sheet1",
+      "Q4 plan"
+    ],
+    "Sheet1": "no headers, no rows (get_sheet_peak returned no columns; the Date read returned no values): left as it is",
+    "Q4 plan": "the user's plan, 4 rows with headers Campaign, Platform, Status, Daily budget, Start date: read only",
+    "decision": "create Dashboard, Daily, Weekly, Campaigns and Budget as new tabs"
+  },
+  "layout_preview": {
+    "Daily": {
+      "header": [
+        "Date",
+        "Platform",
+        "Account",
+        "Spend",
+        "Impressions",
+        "Clicks",
+        "Conversions",
+        "Conversion value"
+      ],
+      "first_rows": [
+        [
+          "2026-10-01",
+          "Google Ads",
+          "Example Booking Software",
+          407.75,
+          2125,
+          127,
+          13.7,
+          0.0
+        ],
+        [
+          "2026-10-01",
+          "Meta Ads",
+          "Example Booking Software (Meta ad account)",
+          317.48,
+          17477,
+          219,
+          11,
+          0.0
+        ],
+        [
+          "2026-10-01",
+          "LinkedIn Ads",
+          "Example Booking Software (LinkedIn ad account)",
+          126.17,
+          2447,
+          15,
+          1,
+          0.0
+        ],
+        [
+          "2026-10-01",
+          "TikTok Ads",
+          "Example Booking Software (TikTok ad account)",
+          90.55,
+          10588,
+          109,
+          3,
+          0.0
+        ]
+      ],
+      "rows_total": 106,
+      "note": "no TikTok row on 2026-10-18 and 2026-10-19: the call returned no delivery"
+    },
+    "Weekly": {
+      "header": [
+        "Week start",
+        "Week end",
+        "Spend",
+        "Impressions",
+        "Clicks",
+        "CTR",
+        "Conversions Google Ads",
+        "Conversions Meta Ads",
+        "Conversions LinkedIn Ads",
+        "Conversions TikTok Ads",
+        "Sessions",
+        "Key events",
+        "Organic clicks",
+        "Cost per key event"
+      ],
+      "rows": [
+        [
+          "2026-10-12",
+          "2026-10-18",
+          6362.61,
+          247335,
+          2971,
+          "=IFERROR(E2/D2,\"\")",
+          66.3,
+          68,
+          7,
+          5,
+          7346,
+          107,
+          1405,
+          "=IFERROR(C2/L2,\"\")"
+        ],
+        [
+          "2026-10-19",
+          "2026-10-25",
+          6434.72,
+          243627,
+          2817,
+          "=IFERROR(E3/D3,\"\")",
+          65.6,
+          57,
+          7,
+          8,
+          7181,
+          95,
+          1477,
+          "=IFERROR(C3/L3,\"\")"
+        ]
+      ]
+    },
+    "Campaigns": {
+      "header": [
+        "Campaign",
+        "Platform",
+        "Status",
+        "Spend",
+        "Clicks",
+        "Conversions",
+        "Cost per result"
+      ],
+      "rows": [
+        [
+          "Online Booking Search",
+          "Google Ads",
+          "enabled",
+          2370.15,
+          408,
+          21.0,
+          "=IFERROR(D2/F2,\"\")"
+        ],
+        [
+          "Prospecting, salon owners",
+          "Meta Ads",
+          "delivering",
+          1616.83,
+          978,
+          30,
+          "=IFERROR(D3/F3,\"\")"
+        ],
+        [
+          "(account total)",
+          "LinkedIn Ads",
+          "delivering",
+          924.32,
+          131,
+          7,
+          "=IFERROR(D4/F4,\"\")"
+        ],
+        [
+          "Brand Search",
+          "Google Ads",
+          "enabled",
+          539.13,
+          283,
+          44.6,
+          "=IFERROR(D5/F5,\"\")"
+        ],
+        [
+          "(account total)",
+          "TikTok Ads",
+          "delivering",
+          512.01,
+          583,
+          8,
+          "=IFERROR(D6/F6,\"\")"
+        ],
+        [
+          "Retargeting, site visitors 30 days",
+          "Meta Ads",
+          "delivering",
+          472.28,
+          434,
+          27,
+          "=IFERROR(D7/F7,\"\")"
+        ]
+      ],
+      "note": "Google Ads status comes from the budget query; Meta, LinkedIn and TikTok calls return no status, so 'delivering' means spend in the week"
+    },
+    "Budget": {
+      "header": [
+        "Campaign",
+        "Platform",
+        "Budget source",
+        "Period budget",
+        "Expected by today",
+        "Actual",
+        "Pace",
+        "Status"
+      ],
+      "rows": [
+        [
+          "(all campaigns)",
+          "Google Ads",
+          "October budget given in chat",
+          12000.0,
+          "=D2*27/31",
+          10806.05,
+          "=IFERROR(F2/E2,\"\")",
+          "=IF(G2=\"\",\"no budget\",IF(G2<0.8,\"underspending\",IF(G2>1.1,\"overspending\",\"on pace\")))"
+        ],
+        [
+          "(all campaigns)",
+          "Meta Ads",
+          "October budget given in chat",
+          6000.0,
+          "=D3*27/31",
+          8116.96,
+          "=IFERROR(F3/E3,\"\")",
+          "=IF(G3=\"\",\"no budget\",IF(G3<0.8,\"underspending\",IF(G3>1.1,\"overspending\",\"on pace\")))"
+        ],
+        [
+          "(all campaigns)",
+          "LinkedIn Ads",
+          "October budget given in chat",
+          4000.0,
+          "=D4*27/31",
+          3530.57,
+          "=IFERROR(F4/E4,\"\")",
+          "=IF(G4=\"\",\"no budget\",IF(G4<0.8,\"underspending\",IF(G4>1.1,\"overspending\",\"on pace\")))"
+        ],
+        [
+          "(all campaigns)",
+          "TikTok Ads",
+          "October budget given in chat",
+          2500.0,
+          "=D5*27/31",
+          2102.05,
+          "=IFERROR(F5/E5,\"\")",
+          "=IF(G5=\"\",\"no budget\",IF(G5<0.8,\"underspending\",IF(G5>1.1,\"overspending\",\"on pace\")))"
+        ],
+        [
+          "Total",
+          "all",
+          "",
+          "=SUM(D2:D5)",
+          "=SUM(E2:E5)",
+          "=SUM(F2:F5)",
+          "=IFERROR(F6/E6,\"\")",
+          ""
+        ]
+      ]
+    },
+    "Dashboard": {
+      "cells": {
+        "A1:A3": [
+          [
+            "Example Booking Software: marketing dashboard"
+          ],
+          [
+            "=\"Week \"&TEXT(INDEX(Weekly!A:A,COUNTA(Weekly!A:A)),\"yyyy-mm-dd\")&\" to \"&TEXT(INDEX(Weekly!B:B,COUNTA(Weekly!A:A)),\"yyyy-mm-dd\")&\", against the week before\""
+          ],
+          [
+            "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, GA4, Search Console and Bing. Currency: USD. Weeks run Monday to Sunday. Each platform's conversions are in the Weekly and Campaigns tabs, side by side; the one total result is GA4 key events (sign_up)."
+          ]
+        ],
+        "A4:D11": [
+          [
+            "KPI",
+            "This week",
+            "Last week",
+            "Change"
+          ],
+          [
+            "Spend",
+            "=INDEX(Weekly!C:C,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!C:C,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B5,C5)<100,\"too small to call\",B5/C5-1)"
+          ],
+          [
+            "Clicks",
+            "=INDEX(Weekly!E:E,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!E:E,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B6,C6)<100,\"too small to call\",B6/C6-1)"
+          ],
+          [
+            "CTR",
+            "=INDEX(Weekly!F:F,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!F:F,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B6,C6)<100,\"too small to call\",B7/C7-1)"
+          ],
+          [
+            "Sessions",
+            "=INDEX(Weekly!K:K,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!K:K,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B8,C8)<100,\"too small to call\",B8/C8-1)"
+          ],
+          [
+            "Key events",
+            "=INDEX(Weekly!L:L,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!L:L,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B9,C9)<10,\"too small to call\",B9/C9-1)"
+          ],
+          [
+            "Cost per key event",
+            "=INDEX(Weekly!N:N,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!N:N,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B9,C9)<10,\"too small to call\",B10/C10-1)"
+          ],
+          [
+            "Organic clicks",
+            "=INDEX(Weekly!M:M,COUNTA(Weekly!A:A))",
+            "=INDEX(Weekly!M:M,COUNTA(Weekly!A:A)-1)",
+            "=IF(MIN(B11,C11)<100,\"too small to call\",B11/C11-1)"
+          ]
+        ],
+        "A13:C13": [
+          [
+            "Date",
+            "Spend",
+            "Clicks"
+          ]
+        ],
+        "A14:C27": [
+          [
+            "=MAX(Daily!A2:A)-13",
+            "=SUMIF(Daily!A:A,A14,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A14,Daily!F:F)"
+          ],
+          [
+            "=A14+1",
+            "=SUMIF(Daily!A:A,A15,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A15,Daily!F:F)"
+          ],
+          [
+            "=A15+1",
+            "=SUMIF(Daily!A:A,A16,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A16,Daily!F:F)"
+          ],
+          [
+            "=A16+1",
+            "=SUMIF(Daily!A:A,A17,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A17,Daily!F:F)"
+          ],
+          [
+            "=A17+1",
+            "=SUMIF(Daily!A:A,A18,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A18,Daily!F:F)"
+          ],
+          [
+            "=A18+1",
+            "=SUMIF(Daily!A:A,A19,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A19,Daily!F:F)"
+          ],
+          [
+            "=A19+1",
+            "=SUMIF(Daily!A:A,A20,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A20,Daily!F:F)"
+          ],
+          [
+            "=A20+1",
+            "=SUMIF(Daily!A:A,A21,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A21,Daily!F:F)"
+          ],
+          [
+            "=A21+1",
+            "=SUMIF(Daily!A:A,A22,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A22,Daily!F:F)"
+          ],
+          [
+            "=A22+1",
+            "=SUMIF(Daily!A:A,A23,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A23,Daily!F:F)"
+          ],
+          [
+            "=A23+1",
+            "=SUMIF(Daily!A:A,A24,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A24,Daily!F:F)"
+          ],
+          [
+            "=A24+1",
+            "=SUMIF(Daily!A:A,A25,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A25,Daily!F:F)"
+          ],
+          [
+            "=A25+1",
+            "=SUMIF(Daily!A:A,A26,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A26,Daily!F:F)"
+          ],
+          [
+            "=A26+1",
+            "=SUMIF(Daily!A:A,A27,Daily!D:D)",
+            "=SUMIF(Daily!A:A,A27,Daily!F:F)"
+          ]
+        ]
+      },
+      "date_line_shows": "Week 2026-10-19 to 2026-10-25, against the week before",
+      "chart": "LINE on A13:B27, title \"Spend, last 14 days\""
+    }
+  },
+  "this_week": {
+    "kpi_table": [
+      {
+        "kpi": "Spend",
+        "this_week": 6434.72,
+        "last_week": 6362.61,
+        "change": "+1.1%",
+        "unit": "USD"
+      },
+      {
+        "kpi": "Clicks",
+        "this_week": 2817,
+        "last_week": 2971,
+        "change": "-5.2%"
+      },
+      {
+        "kpi": "CTR",
+        "this_week": 1.16,
+        "last_week": 1.2,
+        "change": "-3.7%",
+        "unit": "percent"
+      },
+      {
+        "kpi": "Sessions",
+        "this_week": 7181,
+        "last_week": 7346,
+        "change": "-2.2%"
+      },
+      {
+        "kpi": "Key events",
+        "this_week": 95,
+        "last_week": 107,
+        "change": "-11.2%"
+      },
+      {
+        "kpi": "Cost per key event",
+        "this_week": 67.73,
+        "last_week": 59.46,
+        "change": "+13.9%",
+        "unit": "USD"
+      },
+      {
+        "kpi": "Organic clicks",
+        "this_week": 1477,
+        "last_week": 1405,
+        "change": "+5.1%"
+      }
+    ],
+    "platform_conversions": {
+      "this_week": {
+        "Google Ads": 65.6,
+        "Meta Ads": 57,
+        "LinkedIn Ads": 7,
+        "TikTok Ads": 8
+      },
+      "last_week": {
+        "Google Ads": 66.3,
+        "Meta Ads": 68,
+        "LinkedIn Ads": 7,
+        "TikTok Ads": 5
+      },
+      "note": "each platform's own count, shown side by side and never added up"
+    },
+    "what_moved": {
+      "account": [
+        "No account total moved 20% or more above the floor."
+      ],
+      "campaigns": [
+        {
+          "campaign": "Online Booking Search",
+          "platform": "Google Ads",
+          "moved": [
+            "impressions 12267 -> 9327 (-24.0%)",
+            "clicks 555 -> 408 (-26.5%)",
+            "conversions 28.1 -> 21.0 (-25.3%)"
+          ],
+          "evidence": "spend 2284.91 -> 2370.15 (+3.7%), clicks 555 -> 408 (-26.5%), cost per click 4.12 -> 5.81, conversions per click 5.1% -> 5.1%",
+          "cause": "the pull shows fewer clicks for the same spend because each click cost 41% more; why the cost per click rose is not visible in this data: auction insights or impression share (not pulled for a dashboard) would show whether a competitor or a bid change caused it"
+        },
+        {
+          "campaign": "Retargeting, site visitors 30 days",
+          "platform": "Meta Ads",
+          "moved": [
+            "conversions 35 -> 27 (-22.9%)"
+          ],
+          "evidence": "spend 478.59 -> 472.28 (-1.3%), clicks 427 -> 434 (+1.6%), cost per click 1.12 -> 1.09, conversions per click 8.2% -> 6.2%",
+          "cause": "clicks held, so the change is in conversions per click; cause not visible in this data"
+        }
+      ],
+      "too_small_to_call": []
+    },
+    "last_14_days": {
+      "2026-10-14": {
+        "spend": 928.67,
+        "clicks": 441
+      },
+      "2026-10-15": {
+        "spend": 931.16,
+        "clicks": 438
+      },
+      "2026-10-16": {
+        "spend": 953.83,
+        "clicks": 447
+      },
+      "2026-10-17": {
+        "spend": 905.84,
+        "clicks": 440
+      },
+      "2026-10-18": {
+        "spend": 815.25,
+        "clicks": 331
+      },
+      "2026-10-19": {
+        "spend": 798.72,
+        "clicks": 296
+      },
+      "2026-10-20": {
+        "spend": 944.32,
+        "clicks": 433
+      },
+      "2026-10-21": {
+        "spend": 893.96,
+        "clicks": 380
+      },
+      "2026-10-22": {
+        "spend": 904.08,
+        "clicks": 419
+      },
+      "2026-10-23": {
+        "spend": 982.87,
+        "clicks": 428
+      },
+      "2026-10-24": {
+        "spend": 938.71,
+        "clicks": 414
+      },
+      "2026-10-25": {
+        "spend": 972.06,
+        "clicks": 447
+      },
+      "2026-10-26": {
+        "spend": 939.98,
+        "clicks": 432
+      },
+      "2026-10-27": {
+        "spend": 903.72,
+        "clicks": 424
+      }
+    },
+    "budget_vs_actual": {
+      "period": "October 2026, 27 of 31 days elapsed, so expected = budget x 27 / 31",
+      "budget_source": "the October budgets given in chat, one per platform",
+      "rows": [
+        {
+          "platform": "Google Ads",
+          "period_budget": 12000.0,
+          "expected_by_today": 10451.61,
+          "actual": 10806.05,
+          "pace": 1.03,
+          "status": "on pace",
+          "month_end_at_this_rate": 12406.95
+        },
+        {
+          "platform": "Meta Ads",
+          "period_budget": 6000.0,
+          "expected_by_today": 5225.81,
+          "actual": 8116.96,
+          "pace": 1.55,
+          "status": "overspending",
+          "month_end_at_this_rate": 9319.47
+        },
+        {
+          "platform": "LinkedIn Ads",
+          "period_budget": 4000.0,
+          "expected_by_today": 3483.87,
+          "actual": 3530.57,
+          "pace": 1.01,
+          "status": "on pace",
+          "month_end_at_this_rate": 4053.62
+        },
+        {
+          "platform": "TikTok Ads",
+          "period_budget": 2500.0,
+          "expected_by_today": 2177.42,
+          "actual": 2102.05,
+          "pace": 0.97,
+          "status": "on pace",
+          "month_end_at_this_rate": 2413.46
+        }
+      ],
+      "total": {
+        "period_budget": 24500.0,
+        "expected_by_today": 21338.71,
+        "actual": 24555.63,
+        "pace": 1.15
+      }
+    },
+    "plan_vs_live": {
+      "plan_tab": "Q4 plan",
+      "google_ads_campaigns_kept": [
+        "Brand Search",
+        "Online Booking Search"
+      ],
+      "google_ads_campaigns_dropped": "Spring Promo 2026: paused and no spend in October",
+      "findings": [
+        {
+          "finding": "Budget differs",
+          "campaign": "Online Booking Search",
+          "platform": "Google Ads",
+          "detail": "live daily budget 350.00 against 300.00 in the plan (+16.7%)"
+        },
+        {
+          "finding": "Missing",
+          "campaign": "Competitor Search",
+          "platform": "Google Ads",
+          "detail": "planned live from 2026-10-14; no live campaign with this name spent between 2026-10-01 and 2026-10-27"
+        },
+        {
+          "finding": "Not in plan",
+          "campaign": "Retargeting, site visitors 30 days",
+          "platform": "Meta Ads",
+          "detail": "spent 1861.26 between 2026-10-01 and 2026-10-27 and has no plan row"
+        }
+      ],
+      "note": "LinkedIn Ads and TikTok Ads are pulled at account level, so their campaigns are not matched against the plan."
+    }
+  },
+  "payloads": [
+    {
+      "step": 1,
+      "status": "not run",
+      "why": "new tab Dashboard; returns the sheet_id the next calls use",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Dashboard",
+        "index": 0
+      }
+    },
+    {
+      "step": 2,
+      "status": "not run",
+      "why": "new tab Daily; returns the sheet_id the next calls use",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Daily",
+        "index": 1
+      }
+    },
+    {
+      "step": 3,
+      "status": "not run",
+      "why": "new tab Weekly; returns the sheet_id the next calls use",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Weekly",
+        "index": 2
+      }
+    },
+    {
+      "step": 4,
+      "status": "not run",
+      "why": "new tab Campaigns; returns the sheet_id the next calls use",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Campaigns",
+        "index": 3
+      }
+    },
+    {
+      "step": 5,
+      "status": "not run",
+      "why": "new tab Budget; returns the sheet_id the next calls use",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Budget",
+        "index": 4
+      }
+    },
+    {
+      "step": 6,
+      "status": "not run",
+      "why": "Daily: header + 106 rows, 2026-10-01 to 2026-10-27, one per date and ad account",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "batch_update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DAILY>",
+        "value_input_option": "USER_ENTERED",
+        "ranges": {
+          "A1:H107": [
+            [
+              "Date",
+              "Platform",
+              "Account",
+              "Spend",
+              "Impressions",
+              "Clicks",
+              "Conversions",
+              "Conversion value"
+            ],
+            [
+              "2026-10-01",
+              "Google Ads",
+              "Example Booking Software",
+              407.75,
+              2125,
+              127,
+              13.7,
+              0.0
+            ],
+            [
+              "2026-10-01",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              317.48,
+              17477,
+              219,
+              11,
+              0.0
+            ],
+            [
+              "2026-10-01",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              126.17,
+              2447,
+              15,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-01",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              90.55,
+              10588,
+              109,
+              3,
+              0.0
+            ],
+            [
+              "2026-10-02",
+              "Google Ads",
+              "Example Booking Software",
+              374.12,
+              1824,
+              106,
+              6.5,
+              0.0
+            ],
+            [
+              "2026-10-02",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              302.94,
+              17101,
+              217,
+              6,
+              0.0
+            ],
+            [
+              "2026-10-02",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              115.77,
+              2746,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-02",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              80.24,
+              6109,
+              87,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-03",
+              "Google Ads",
+              "Example Booking Software",
+              391.58,
+              2117,
+              110,
+              11.4,
+              0.0
+            ],
+            [
+              "2026-10-03",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              284.45,
+              17405,
+              202,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-03",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              131.69,
+              3166,
+              18,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-03",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              75.92,
+              13697,
+              91,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-04",
+              "Google Ads",
+              "Example Booking Software",
+              389.53,
+              2192,
+              123,
+              11.3,
+              0.0
+            ],
+            [
+              "2026-10-04",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              317.24,
+              18656,
+              221,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-04",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              134.16,
+              2985,
+              17,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-04",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              83.14,
+              6648,
+              94,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-05",
+              "Google Ads",
+              "Example Booking Software",
+              375.32,
+              2202,
+              118,
+              10.1,
+              0.0
+            ],
+            [
+              "2026-10-05",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              270.53,
+              15389,
+              197,
+              10,
+              0.0
+            ],
+            [
+              "2026-10-05",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              123.66,
+              2775,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-05",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              81.32,
+              7127,
+              85,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-06",
+              "Google Ads",
+              "Example Booking Software",
+              395.0,
+              1968,
+              122,
+              9.2,
+              0.0
+            ],
+            [
+              "2026-10-06",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              292.06,
+              15685,
+              193,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-06",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              143.85,
+              3520,
+              20,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-06",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              79.2,
+              7055,
+              82,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-07",
+              "Google Ads",
+              "Example Booking Software",
+              415.99,
+              2233,
+              131,
+              10.8,
+              0.0
+            ],
+            [
+              "2026-10-07",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              280.93,
+              17102,
+              195,
+              5,
+              0.0
+            ],
+            [
+              "2026-10-07",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              133.03,
+              2456,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-07",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              83.45,
+              7327,
+              95,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-08",
+              "Google Ads",
+              "Example Booking Software",
+              381.63,
+              2001,
+              113,
+              11.4,
+              0.0
+            ],
+            [
+              "2026-10-08",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              276.91,
+              16730,
+              197,
+              11,
+              0.0
+            ],
+            [
+              "2026-10-08",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              142.87,
+              2920,
+              19,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-08",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              82.0,
+              7376,
+              97,
+              3,
+              0.0
+            ],
+            [
+              "2026-10-09",
+              "Google Ads",
+              "Example Booking Software",
+              373.47,
+              2062,
+              116,
+              10.7,
+              0.0
+            ],
+            [
+              "2026-10-09",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              278.89,
+              14305,
+              180,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-09",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              134.55,
+              2863,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-09",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              92.23,
+              7107,
+              99,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-10",
+              "Google Ads",
+              "Example Booking Software",
+              431.58,
+              2344,
+              126,
+              13.9,
+              0.0
+            ],
+            [
+              "2026-10-10",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              311.14,
+              17370,
+              215,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-10",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              138.98,
+              3008,
+              18,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-10",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              90.54,
+              13982,
+              94,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-11",
+              "Google Ads",
+              "Example Booking Software",
+              373.03,
+              1778,
+              111,
+              9.5,
+              0.0
+            ],
+            [
+              "2026-10-11",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              290.83,
+              15266,
+              194,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-11",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              143.1,
+              3482,
+              21,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-11",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              75.78,
+              16607,
+              93,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-12",
+              "Google Ads",
+              "Example Booking Software",
+              431.43,
+              2330,
+              122,
+              6.1,
+              0.0
+            ],
+            [
+              "2026-10-12",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              280.49,
+              18186,
+              207,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-12",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              119.75,
+              2827,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-12",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              75.5,
+              20070,
+              82,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-13",
+              "Google Ads",
+              "Example Booking Software",
+              382.09,
+              2023,
+              113,
+              9.9,
+              0.0
+            ],
+            [
+              "2026-10-13",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              322.05,
+              19023,
+              216,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-13",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              122.12,
+              3062,
+              17,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-13",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              94.43,
+              6428,
+              101,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-14",
+              "Google Ads",
+              "Example Booking Software",
+              412.94,
+              2341,
+              125,
+              11.1,
+              0.0
+            ],
+            [
+              "2026-10-14",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              315.06,
+              18323,
+              207,
+              13,
+              0.0
+            ],
+            [
+              "2026-10-14",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              121.94,
+              2662,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-14",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              78.73,
+              18509,
+              93,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-15",
+              "Google Ads",
+              "Example Booking Software",
+              389.88,
+              2088,
+              118,
+              11.3,
+              0.0
+            ],
+            [
+              "2026-10-15",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              315.86,
+              16872,
+              203,
+              12,
+              0.0
+            ],
+            [
+              "2026-10-15",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              131.6,
+              2428,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-15",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              93.82,
+              12171,
+              101,
+              0,
+              0.0
+            ],
+            [
+              "2026-10-16",
+              "Google Ads",
+              "Example Booking Software",
+              431.08,
+              2240,
+              131,
+              7.8,
+              0.0
+            ],
+            [
+              "2026-10-16",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              306.12,
+              15681,
+              204,
+              11,
+              0.0
+            ],
+            [
+              "2026-10-16",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              132.26,
+              3150,
+              19,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-16",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              84.37,
+              14342,
+              93,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-17",
+              "Google Ads",
+              "Example Booking Software",
+              389.2,
+              1820,
+              111,
+              12.5,
+              0.0
+            ],
+            [
+              "2026-10-17",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              317.03,
+              18393,
+              223,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-17",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              114.66,
+              2545,
+              15,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-17",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              84.95,
+              17713,
+              91,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-18",
+              "Google Ads",
+              "Example Booking Software",
+              382.83,
+              1968,
+              112,
+              7.6,
+              0.0
+            ],
+            [
+              "2026-10-18",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              305.89,
+              17348,
+              201,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-18",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              126.53,
+              2792,
+              18,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-19",
+              "Google Ads",
+              "Example Booking Software",
+              389.51,
+              1589,
+              97,
+              8.5,
+              0.0
+            ],
+            [
+              "2026-10-19",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              290.21,
+              16527,
+              184,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-19",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              119.0,
+              2343,
+              15,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-20",
+              "Google Ads",
+              "Example Booking Software",
+              426.73,
+              1712,
+              99,
+              9.1,
+              0.0
+            ],
+            [
+              "2026-10-20",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              308.3,
+              17600,
+              204,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-20",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              117.81,
+              2900,
+              17,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-20",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              91.48,
+              26295,
+              113,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-21",
+              "Google Ads",
+              "Example Booking Software",
+              388.55,
+              1464,
+              90,
+              9.8,
+              0.0
+            ],
+            [
+              "2026-10-21",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              284.65,
+              15449,
+              192,
+              10,
+              0.0
+            ],
+            [
+              "2026-10-21",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              143.83,
+              2976,
+              19,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-21",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              76.93,
+              5918,
+              79,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-22",
+              "Google Ads",
+              "Example Booking Software",
+              406.96,
+              1643,
+              91,
+              8.9,
+              0.0
+            ],
+            [
+              "2026-10-22",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              281.05,
+              16583,
+              209,
+              8,
+              0.0
+            ],
+            [
+              "2026-10-22",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              127.81,
+              2968,
+              19,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-22",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              88.26,
+              9405,
+              100,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-23",
+              "Google Ads",
+              "Example Booking Software",
+              437.93,
+              1667,
+              102,
+              10.8,
+              0.0
+            ],
+            [
+              "2026-10-23",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              319.75,
+              17969,
+              207,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-23",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              133.94,
+              3347,
+              20,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-23",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              91.25,
+              22778,
+              99,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-24",
+              "Google Ads",
+              "Example Booking Software",
+              424.56,
+              1936,
+              107,
+              10.1,
+              0.0
+            ],
+            [
+              "2026-10-24",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              290.68,
+              15731,
+              196,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-24",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              144.64,
+              3323,
+              21,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-24",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              78.83,
+              17147,
+              90,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-25",
+              "Google Ads",
+              "Example Booking Software",
+              435.04,
+              1817,
+              105,
+              8.4,
+              0.0
+            ],
+            [
+              "2026-10-25",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              314.47,
+              17587,
+              220,
+              7,
+              0.0
+            ],
+            [
+              "2026-10-25",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              137.29,
+              3216,
+              20,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-25",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              85.26,
+              11737,
+              102,
+              0,
+              0.0
+            ],
+            [
+              "2026-10-26",
+              "Google Ads",
+              "Example Booking Software",
+              380.13,
+              1772,
+              97,
+              8.1,
+              0.0
+            ],
+            [
+              "2026-10-26",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              334.81,
+              18463,
+              223,
+              9,
+              0.0
+            ],
+            [
+              "2026-10-26",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              141.13,
+              3301,
+              19,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-26",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              83.91,
+              9951,
+              93,
+              2,
+              0.0
+            ],
+            [
+              "2026-10-27",
+              "Google Ads",
+              "Example Booking Software",
+              388.19,
+              1492,
+              96,
+              8.5,
+              0.0
+            ],
+            [
+              "2026-10-27",
+              "Meta Ads",
+              "Example Booking Software (Meta ad account)",
+              307.14,
+              19073,
+              224,
+              10,
+              0.0
+            ],
+            [
+              "2026-10-27",
+              "LinkedIn Ads",
+              "Example Booking Software (LinkedIn ad account)",
+              128.43,
+              2901,
+              16,
+              1,
+              0.0
+            ],
+            [
+              "2026-10-27",
+              "TikTok Ads",
+              "Example Booking Software (TikTok ad account)",
+              79.96,
+              6152,
+              88,
+              2,
+              0.0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "step": 7,
+      "status": "not run",
+      "why": "Weekly: header + the last complete week and the week before",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "batch_update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "value_input_option": "USER_ENTERED",
+        "ranges": {
+          "A1:N3": [
+            [
+              "Week start",
+              "Week end",
+              "Spend",
+              "Impressions",
+              "Clicks",
+              "CTR",
+              "Conversions Google Ads",
+              "Conversions Meta Ads",
+              "Conversions LinkedIn Ads",
+              "Conversions TikTok Ads",
+              "Sessions",
+              "Key events",
+              "Organic clicks",
+              "Cost per key event"
+            ],
+            [
+              "2026-10-12",
+              "2026-10-18",
+              6362.61,
+              247335,
+              2971,
+              "=IFERROR(E2/D2,\"\")",
+              66.3,
+              68,
+              7,
+              5,
+              7346,
+              107,
+              1405,
+              "=IFERROR(C2/L2,\"\")"
+            ],
+            [
+              "2026-10-19",
+              "2026-10-25",
+              6434.72,
+              243627,
+              2817,
+              "=IFERROR(E3/D3,\"\")",
+              65.6,
+              57,
+              7,
+              8,
+              7181,
+              95,
+              1477,
+              "=IFERROR(C3/L3,\"\")"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "step": 8,
+      "status": "not run",
+      "why": "Campaigns: week 2026-10-19 to 2026-10-25, by spend",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "batch_update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_CAMPAIGNS>",
+        "value_input_option": "USER_ENTERED",
+        "ranges": {
+          "A1:G7": [
+            [
+              "Campaign",
+              "Platform",
+              "Status",
+              "Spend",
+              "Clicks",
+              "Conversions",
+              "Cost per result"
+            ],
+            [
+              "Online Booking Search",
+              "Google Ads",
+              "enabled",
+              2370.15,
+              408,
+              21.0,
+              "=IFERROR(D2/F2,\"\")"
+            ],
+            [
+              "Prospecting, salon owners",
+              "Meta Ads",
+              "delivering",
+              1616.83,
+              978,
+              30,
+              "=IFERROR(D3/F3,\"\")"
+            ],
+            [
+              "(account total)",
+              "LinkedIn Ads",
+              "delivering",
+              924.32,
+              131,
+              7,
+              "=IFERROR(D4/F4,\"\")"
+            ],
+            [
+              "Brand Search",
+              "Google Ads",
+              "enabled",
+              539.13,
+              283,
+              44.6,
+              "=IFERROR(D5/F5,\"\")"
+            ],
+            [
+              "(account total)",
+              "TikTok Ads",
+              "delivering",
+              512.01,
+              583,
+              8,
+              "=IFERROR(D6/F6,\"\")"
+            ],
+            [
+              "Retargeting, site visitors 30 days",
+              "Meta Ads",
+              "delivering",
+              472.28,
+              434,
+              27,
+              "=IFERROR(D7/F7,\"\")"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "step": 9,
+      "status": "not run",
+      "why": "Budget: October to date, each platform + total",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "batch_update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "value_input_option": "USER_ENTERED",
+        "ranges": {
+          "A1:H6": [
+            [
+              "Campaign",
+              "Platform",
+              "Budget source",
+              "Period budget",
+              "Expected by today",
+              "Actual",
+              "Pace",
+              "Status"
+            ],
+            [
+              "(all campaigns)",
+              "Google Ads",
+              "October budget given in chat",
+              12000.0,
+              "=D2*27/31",
+              10806.05,
+              "=IFERROR(F2/E2,\"\")",
+              "=IF(G2=\"\",\"no budget\",IF(G2<0.8,\"underspending\",IF(G2>1.1,\"overspending\",\"on pace\")))"
+            ],
+            [
+              "(all campaigns)",
+              "Meta Ads",
+              "October budget given in chat",
+              6000.0,
+              "=D3*27/31",
+              8116.96,
+              "=IFERROR(F3/E3,\"\")",
+              "=IF(G3=\"\",\"no budget\",IF(G3<0.8,\"underspending\",IF(G3>1.1,\"overspending\",\"on pace\")))"
+            ],
+            [
+              "(all campaigns)",
+              "LinkedIn Ads",
+              "October budget given in chat",
+              4000.0,
+              "=D4*27/31",
+              3530.57,
+              "=IFERROR(F4/E4,\"\")",
+              "=IF(G4=\"\",\"no budget\",IF(G4<0.8,\"underspending\",IF(G4>1.1,\"overspending\",\"on pace\")))"
+            ],
+            [
+              "(all campaigns)",
+              "TikTok Ads",
+              "October budget given in chat",
+              2500.0,
+              "=D5*27/31",
+              2102.05,
+              "=IFERROR(F5/E5,\"\")",
+              "=IF(G5=\"\",\"no budget\",IF(G5<0.8,\"underspending\",IF(G5>1.1,\"overspending\",\"on pace\")))"
+            ],
+            [
+              "Total",
+              "all",
+              "",
+              "=SUM(D2:D5)",
+              "=SUM(E2:E5)",
+              "=SUM(F2:F5)",
+              "=IFERROR(F6/E6,\"\")",
+              ""
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "step": 10,
+      "status": "not run",
+      "why": "Dashboard: title, date line, KPI table and last-14-days block, formulas only",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "batch_update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "value_input_option": "USER_ENTERED",
+        "ranges": {
+          "A1:A3": [
+            [
+              "Example Booking Software: marketing dashboard"
+            ],
+            [
+              "=\"Week \"&TEXT(INDEX(Weekly!A:A,COUNTA(Weekly!A:A)),\"yyyy-mm-dd\")&\" to \"&TEXT(INDEX(Weekly!B:B,COUNTA(Weekly!A:A)),\"yyyy-mm-dd\")&\", against the week before\""
+            ],
+            [
+              "Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, GA4, Search Console and Bing. Currency: USD. Weeks run Monday to Sunday. Each platform's conversions are in the Weekly and Campaigns tabs, side by side; the one total result is GA4 key events (sign_up)."
+            ]
+          ],
+          "A4:D11": [
+            [
+              "KPI",
+              "This week",
+              "Last week",
+              "Change"
+            ],
+            [
+              "Spend",
+              "=INDEX(Weekly!C:C,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!C:C,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B5,C5)<100,\"too small to call\",B5/C5-1)"
+            ],
+            [
+              "Clicks",
+              "=INDEX(Weekly!E:E,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!E:E,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B6,C6)<100,\"too small to call\",B6/C6-1)"
+            ],
+            [
+              "CTR",
+              "=INDEX(Weekly!F:F,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!F:F,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B6,C6)<100,\"too small to call\",B7/C7-1)"
+            ],
+            [
+              "Sessions",
+              "=INDEX(Weekly!K:K,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!K:K,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B8,C8)<100,\"too small to call\",B8/C8-1)"
+            ],
+            [
+              "Key events",
+              "=INDEX(Weekly!L:L,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!L:L,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B9,C9)<10,\"too small to call\",B9/C9-1)"
+            ],
+            [
+              "Cost per key event",
+              "=INDEX(Weekly!N:N,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!N:N,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B9,C9)<10,\"too small to call\",B10/C10-1)"
+            ],
+            [
+              "Organic clicks",
+              "=INDEX(Weekly!M:M,COUNTA(Weekly!A:A))",
+              "=INDEX(Weekly!M:M,COUNTA(Weekly!A:A)-1)",
+              "=IF(MIN(B11,C11)<100,\"too small to call\",B11/C11-1)"
+            ]
+          ],
+          "A13:C13": [
+            [
+              "Date",
+              "Spend",
+              "Clicks"
+            ]
+          ],
+          "A14:C27": [
+            [
+              "=MAX(Daily!A2:A)-13",
+              "=SUMIF(Daily!A:A,A14,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A14,Daily!F:F)"
+            ],
+            [
+              "=A14+1",
+              "=SUMIF(Daily!A:A,A15,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A15,Daily!F:F)"
+            ],
+            [
+              "=A15+1",
+              "=SUMIF(Daily!A:A,A16,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A16,Daily!F:F)"
+            ],
+            [
+              "=A16+1",
+              "=SUMIF(Daily!A:A,A17,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A17,Daily!F:F)"
+            ],
+            [
+              "=A17+1",
+              "=SUMIF(Daily!A:A,A18,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A18,Daily!F:F)"
+            ],
+            [
+              "=A18+1",
+              "=SUMIF(Daily!A:A,A19,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A19,Daily!F:F)"
+            ],
+            [
+              "=A19+1",
+              "=SUMIF(Daily!A:A,A20,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A20,Daily!F:F)"
+            ],
+            [
+              "=A20+1",
+              "=SUMIF(Daily!A:A,A21,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A21,Daily!F:F)"
+            ],
+            [
+              "=A21+1",
+              "=SUMIF(Daily!A:A,A22,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A22,Daily!F:F)"
+            ],
+            [
+              "=A22+1",
+              "=SUMIF(Daily!A:A,A23,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A23,Daily!F:F)"
+            ],
+            [
+              "=A23+1",
+              "=SUMIF(Daily!A:A,A24,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A24,Daily!F:F)"
+            ],
+            [
+              "=A24+1",
+              "=SUMIF(Daily!A:A,A25,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A25,Daily!F:F)"
+            ],
+            [
+              "=A25+1",
+              "=SUMIF(Daily!A:A,A26,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A26,Daily!F:F)"
+            ],
+            [
+              "=A26+1",
+              "=SUMIF(Daily!A:A,A27,Daily!D:D)",
+              "=SUMIF(Daily!A:A,A27,Daily!F:F)"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "step": 11,
+      "status": "not run",
+      "why": "Daily: bold header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DAILY>",
+        "range": "A1:H1",
+        "bold": true,
+        "background_color": "#E8EEF7"
+      }
+    },
+    {
+      "step": 12,
+      "status": "not run",
+      "why": "Daily: freeze header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "update_sheet_properties",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DAILY>",
+        "frozen_row_count": 1
+      }
+    },
+    {
+      "step": 13,
+      "status": "not run",
+      "why": "Weekly: bold header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "range": "A1:N1",
+        "bold": true,
+        "background_color": "#E8EEF7"
+      }
+    },
+    {
+      "step": 14,
+      "status": "not run",
+      "why": "Weekly: freeze header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "update_sheet_properties",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "frozen_row_count": 1
+      }
+    },
+    {
+      "step": 15,
+      "status": "not run",
+      "why": "Campaigns: bold header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_CAMPAIGNS>",
+        "range": "A1:G1",
+        "bold": true,
+        "background_color": "#E8EEF7"
+      }
+    },
+    {
+      "step": 16,
+      "status": "not run",
+      "why": "Campaigns: freeze header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "update_sheet_properties",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_CAMPAIGNS>",
+        "frozen_row_count": 1
+      }
+    },
+    {
+      "step": 17,
+      "status": "not run",
+      "why": "Budget: bold header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "range": "A1:H1",
+        "bold": true,
+        "background_color": "#E8EEF7"
+      }
+    },
+    {
+      "step": 18,
+      "status": "not run",
+      "why": "Budget: freeze header row",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "update_sheet_properties",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "frozen_row_count": 1
+      }
+    },
+    {
+      "step": 19,
+      "status": "not run",
+      "why": "Dashboard: bold KPI header",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "A4:D4",
+        "bold": true,
+        "background_color": "#E8EEF7"
+      }
+    },
+    {
+      "step": 20,
+      "status": "not run",
+      "why": "Daily: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DAILY>",
+        "range": "D2:D",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 21,
+      "status": "not run",
+      "why": "Daily: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DAILY>",
+        "range": "H2:H",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 22,
+      "status": "not run",
+      "why": "Weekly: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "range": "C2:C",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 23,
+      "status": "not run",
+      "why": "Weekly: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "range": "N2:N",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 24,
+      "status": "not run",
+      "why": "Campaigns: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_CAMPAIGNS>",
+        "range": "D2:D",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 25,
+      "status": "not run",
+      "why": "Campaigns: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_CAMPAIGNS>",
+        "range": "G2:G",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 26,
+      "status": "not run",
+      "why": "Budget: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "range": "D2:F",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 27,
+      "status": "not run",
+      "why": "Dashboard: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "B5:C5",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 28,
+      "status": "not run",
+      "why": "Dashboard: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "B10:C10",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 29,
+      "status": "not run",
+      "why": "Dashboard: money cells to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "B14:B27",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 30,
+      "status": "not run",
+      "why": "Weekly: rates as percentages",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_WEEKLY>",
+        "range": "F2:F",
+        "number_format": "0.0%",
+        "number_format_type": "PERCENT"
+      }
+    },
+    {
+      "step": 31,
+      "status": "not run",
+      "why": "Dashboard: rates as percentages",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "B7:C7",
+        "number_format": "0.0%",
+        "number_format_type": "PERCENT"
+      }
+    },
+    {
+      "step": 32,
+      "status": "not run",
+      "why": "Dashboard: rates as percentages",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "range": "D5:D11",
+        "number_format": "0.0%",
+        "number_format_type": "PERCENT"
+      }
+    },
+    {
+      "step": 33,
+      "status": "not run",
+      "why": "Budget: pace to 2 decimals",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "format_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "range": "G2:G",
+        "number_format": "0.00",
+        "number_format_type": "NUMBER"
+      }
+    },
+    {
+      "step": 34,
+      "status": "not run",
+      "why": "Budget: pace under 0.8 in amber",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "add_conditional_format",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "range": "G2:G5",
+        "rule_type": "BOOLEAN",
+        "condition_type": "NUMBER_LESS",
+        "condition_values": [
+          "0.8"
+        ],
+        "background_color": "#FCE8B2"
+      }
+    },
+    {
+      "step": 35,
+      "status": "not run",
+      "why": "Budget: pace over 1.1 in red",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "add_conditional_format",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_BUDGET>",
+        "range": "G2:G5",
+        "rule_type": "BOOLEAN",
+        "condition_type": "NUMBER_GREATER",
+        "condition_values": [
+          "1.1"
+        ],
+        "background_color": "#F4C7C3"
+      }
+    },
+    {
+      "step": 36,
+      "status": "not run",
+      "why": "Dashboard: line chart on the last-14-days block",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_chart",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<SHEET_ID_DASHBOARD>",
+        "chart_type": "LINE",
+        "title": "Spend, last 14 days",
+        "data_range": "A13:B27",
+        "position": {
+          "offset_x": 0,
+          "offset_y": 0,
+          "width": 600,
+          "height": 300
+        }
+      }
+    },
+    {
+      "step": 37,
+      "status": "not run",
+      "why": "the weekly report page, under Marketing",
+      "body": {
+        "platform": "notion",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_page",
+        "parent": {
+          "page_id": "<PAGE_ID_MARKETING>"
+        },
+        "properties": {
+          "title": {
+            "title": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "Weekly marketing report: 2026-10-19 to 2026-10-25"
+                }
+              }
+            ]
+          }
+        },
+        "children": [
+          {
+            "object": "block",
+            "type": "paragraph",
+            "paragraph": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Week 2026-10-19 to 2026-10-25: spend 6434.72 USD against 6362.61 the week before, 95 sign-ups (GA4 key events) against 107, so a cost per sign-up of 67.73 against 59.46 USD."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "heading_2",
+            "heading_2": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "KPIs"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Spend: 6434.72 USD vs 6362.61 USD (+1.1%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Clicks: 2817 vs 2971 (-5.2%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "CTR: 1.16% vs 1.20% (-3.7%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Sessions: 7181 vs 7346 (-2.2%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Key events: 95 vs 107 (-11.2%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Cost per key event: 67.73 USD vs 59.46 USD (+13.9%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Organic clicks: 1477 vs 1405 (+5.1%)"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Platform conversions this week (each platform's own count, not added up): Google Ads 65.6, Meta Ads 57, LinkedIn Ads 7, TikTok Ads 8."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "heading_2",
+            "heading_2": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "What moved"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Online Booking Search (Google Ads): impressions 12267 -> 9327 (-24.0%), clicks 555 -> 408 (-26.5%), conversions 28.1 -> 21.0 (-25.3%). The pull shows fewer clicks for the same spend because each click cost 41% more; why the cost per click rose is not visible in this data: auction insights or impression share (not pulled for a dashboard) would show whether a competitor or a bid change caused it."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Retargeting, site visitors 30 days (Meta Ads): conversions 35 -> 27 (-22.9%). Clicks held, so the change is in conversions per click; cause not visible in this data."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "heading_2",
+            "heading_2": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Budget and plan"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "paragraph": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "October pacing after 27 of 31 days: Google Ads 1.03 (on pace); Meta Ads 1.55 (overspending); LinkedIn Ads 1.01 (on pace); TikTok Ads 0.97 (on pace)."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "paragraph": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Plan vs live: Budget differs, Online Booking Search: live daily budget 350.00 against 300.00 in the plan (+16.7%); Missing, Competitor Search: planned live from 2026-10-14; no live campaign with this name spent between 2026-10-01 and 2026-10-27; Not in plan, Retargeting, site visitors 30 days: spent 1861.26 between 2026-10-01 and 2026-10-27 and has no plan row. LinkedIn Ads and TikTok Ads are pulled at account level, so their campaigns are not matched against the plan."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "heading_2",
+            "heading_2": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Next week"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Meta Ads is at pace 1.55: at this rate October ends near 9319.47 USD against a budget of 6000.00. Lower its daily budgets or agree a higher October budget."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Online Booking Search: check auction insights and the bid strategy's change history for 2026-10-19 onward, when its cost per click stepped up."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Plan: launch Competitor Search or take it out of the plan, set Online Booking Search's daily budget back to the plan or update the plan, and add the Meta retargeting campaign to the plan."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "paragraph": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "Dashboard (tabs Dashboard, Daily, Weekly, Campaigns and Budget): https://docs.google.com/spreadsheets/d/<SPREADSHEET_ID>/edit"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "step": 38,
+      "status": "not run: blocked, the app is not a member of #marketing (is_member false); invite it to the channel first",
+      "why": "the weekly summary in #marketing",
+      "body": {
+        "platform": "slack",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "post_message",
+        "body": {
+          "channel": "<CHANNEL_ID_MARKETING>",
+          "text": "*Weekly marketing report, 2026-10-19 to 2026-10-25*\n- Spend: 6434.72 USD vs 6362.61 USD (+1.1%)\n- Clicks: 2817 vs 2971 (-5.2%)\n- CTR: 1.16% vs 1.20% (-3.7%)\n- Sessions: 7181 vs 7346 (-2.2%)\n- Key events: 95 vs 107 (-11.2%)\n- Cost per key event: 67.73 USD vs 59.46 USD (+13.9%)\n- Organic clicks: 1477 vs 1405 (+5.1%)\n- Online Booking Search (Google Ads): impressions 12267 -> 9327 (-24.0%), clicks 555 -> 408 (-26.5%), conversions 28.1 -> 21.0 (-25.3%)\n- Retargeting, site visitors 30 days (Meta Ads): conversions 35 -> 27 (-22.9%)\n- October pacing after 27 of 31 days: Google Ads 1.03 (on pace); Meta Ads 1.55 (overspending); LinkedIn Ads 1.01 (on pace); TikTok Ads 0.97 (on pace).\nReport: <Notion page url from step 37>"
+        }
+      }
+    }
+  ],
+  "after_writing": [
+    "get_sheet_peak on Daily, Weekly, Campaigns and Budget: headers and first rows match this preview",
+    "query_sheet_data on Daily, select Date: 106 rows",
+    "Notion: the create_page result url, which the Slack message then links to",
+    "Slack: the message ts, once the app is in #marketing"
+  ],
+  "go_deeper": [
+    "cross-platform-budget-allocator for moving budget between the four platforms",
+    "spend-pacing-monitor for daily pacing inside Google Ads",
+    "marketing-performance-report for a full narrative report"
+  ],
+  "mode_examples": {
+    "looker_studio_dashboard": {
+      "honesty_line": "Looker Studio has no public API that builds pages or charts, so the layout comes as build steps. The data, calculated fields and blend are ready to use, and a Linking API URL opens a report already connected to the staged tab.",
+      "spec": {
+        "reader_and_decision": "The founder and the marketing lead, Monday: move budget between the four ad platforms or not.",
+        "questions": [
+          "What did we spend and how many sign-ups did we get last week, against the week before?",
+          "Which platform and campaign bring sign-ups at the lowest cost?",
+          "What does one sign-up cost across all paid spend?"
+        ],
+        "kpis": [
+          {
+            "name": "Spend",
+            "formula": "SUM(Spend)",
+            "source": "LS_Daily"
+          },
+          {
+            "name": "Platform conversions",
+            "formula": "SUM(Conversions), shown per platform, never added across platforms",
+            "source": "LS_Daily"
+          },
+          {
+            "name": "CTR",
+            "formula": "SUM(Clicks) / SUM(Impressions)",
+            "source": "LS_Daily"
+          },
+          {
+            "name": "CPA",
+            "formula": "SUM(Spend) / SUM(Conversions)",
+            "source": "LS_Daily"
+          },
+          {
+            "name": "Sign-ups",
+            "formula": "GA4 key event sign_up",
+            "source": "GA4 (Google's own connector)"
+          },
+          {
+            "name": "Blended cost per sign-up",
+            "formula": "SUM(Spend) / SUM(sign_up), blend on Date",
+            "source": "LS_Daily + GA4"
+          }
+        ],
+        "pages": [
+          "Overview",
+          "Campaigns",
+          "Website and search"
+        ],
+        "refresh": "LS_Daily is a snapshot: it gains days when this skill is asked to append them. Looker Studio re-reads the sheet every 15 minutes (its default).",
+        "not_included": [
+          "ROAS: no conversion values are set on any of the four ad accounts (Conversion value is 0 on every row)",
+          "Search Console: connected through Google's own connector by the user, not staged"
+        ]
+      },
+      "source_plan": [
+        {
+          "source": "Google Ads",
+          "route": "LS_Daily (staged), so all paid spend sits in one table"
+        },
+        {
+          "source": "Meta Ads",
+          "route": "LS_Daily (staged)"
+        },
+        {
+          "source": "LinkedIn Ads",
+          "route": "LS_Daily (staged), account level, Campaign '(account total)'"
+        },
+        {
+          "source": "TikTok Ads",
+          "route": "LS_Daily (staged)"
+        },
+        {
+          "source": "GA4",
+          "route": "Google's own connector, blended with LS_Daily on Date"
+        },
+        {
+          "source": "Search Console",
+          "route": "Google's own connector"
+        }
+      ],
+      "staged_tab": {
+        "name": "LS_Daily",
+        "header": [
+          "Date",
+          "Platform",
+          "Account",
+          "Campaign",
+          "Currency",
+          "Spend",
+          "Impressions",
+          "Clicks",
+          "Conversions",
+          "Conversion value"
+        ],
+        "row_count": 82,
+        "first_rows": [
+          [
+            "2026-10-12",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.46,
+            362,
+            38,
+            3.3,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            352.97,
+            1968,
+            84,
+            2.8,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            217.58,
+            14464,
+            146,
+            3,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            62.91,
+            3722,
+            61,
+            4,
+            0
+          ],
+          [
+            "2026-10-12",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            119.75,
+            2827,
+            16,
+            1,
+            0
+          ],
+          [
+            "2026-10-12",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            75.5,
+            20070,
+            82,
+            1,
+            0
+          ]
+        ],
+        "data_through": "2026-10-25",
+        "reporting_currency_column": "not needed: every account bills in USD"
+      },
+      "data_checks": [
+        "Complete days: Google Ads, Meta Ads and LinkedIn Ads returned all 14 days; TikTok Ads returned 12, and 2026-10-18 and 2026-10-19 came back as an empty list (no delivery), not a gap.",
+        "One currency: all four accounts report in USD.",
+        "Reporting day: Google Ads, Meta and TikTok days are in America/New_York; the LinkedIn call returns days without a time zone, noted in the spec.",
+        "Totals match: the 82 staged rows add up to 12797.33 USD, the sum of the four platform totals below."
+      ],
+      "totals_by_platform": [
+        {
+          "platform": "Google Ads",
+          "rows": 28,
+          "days_with_rows": 14,
+          "spend": 5728.73,
+          "impressions": 26638,
+          "clicks": 1523,
+          "conversions": 131.9,
+          "ctr_pct": 5.72,
+          "cpc": 3.76,
+          "cpa": 43.43
+        },
+        {
+          "platform": "Meta Ads",
+          "rows": 28,
+          "days_with_rows": 14,
+          "spend": 4251.61,
+          "impressions": 241272,
+          "clicks": 2873,
+          "conversions": 125,
+          "ctr_pct": 1.19,
+          "cpc": 1.48,
+          "cpa": 34.01
+        },
+        {
+          "platform": "LinkedIn Ads",
+          "rows": 14,
+          "days_with_rows": 14,
+          "spend": 1793.18,
+          "impressions": 40539,
+          "clicks": 248,
+          "conversions": 14,
+          "ctr_pct": 0.61,
+          "cpc": 7.23,
+          "cpa": 128.08
+        },
+        {
+          "platform": "TikTok Ads",
+          "rows": 12,
+          "days_with_rows": 12,
+          "spend": 1023.81,
+          "impressions": 182513,
+          "clicks": 1144,
+          "conversions": 13,
+          "ctr_pct": 0.63,
+          "cpc": 0.89,
+          "cpa": 78.75
+        }
+      ],
+      "ratio_of_sums_check": {
+        "platform": "TikTok Ads",
+        "cpa_ratio_of_sums": 78.75,
+        "average_of_daily_cpas": 71.54,
+        "days_left_out_of_the_average": 2,
+        "why_it_matters": "A stored daily CPA column averaged in Looker Studio gives 71.54; the true cost per conversion for the period is 78.75. The average also drops the 2 days with spend and no conversions, where a daily CPA can't be computed."
+      },
+      "calculated_fields": [
+        {
+          "field": "CTR",
+          "formula": "SUM(Clicks) / SUM(Impressions)",
+          "type": "Percent"
+        },
+        {
+          "field": "CPC",
+          "formula": "SUM(Spend) / SUM(Clicks)",
+          "type": "Currency (USD)"
+        },
+        {
+          "field": "Conversion rate",
+          "formula": "SUM(Conversions) / SUM(Clicks)",
+          "type": "Percent"
+        },
+        {
+          "field": "CPA",
+          "formula": "SUM(Spend) / SUM(Conversions)",
+          "type": "Currency (USD)"
+        },
+        {
+          "field": "Spend share",
+          "formula": "Spend with the chart's Percent of total comparison calculation",
+          "type": "Percent"
+        }
+      ],
+      "blend": {
+        "tables": [
+          "LS_Daily",
+          "GA4 (sign_up key event, sessions)"
+        ],
+        "join": "full outer",
+        "key": "Date",
+        "field": "Blended cost per sign-up = SUM(Spend) / SUM(sign_up)",
+        "this_window": {
+          "paid_spend": 12797.33,
+          "ga4_sign_ups": 202,
+          "blended_cost_per_sign_up": 63.35,
+          "platform_conversions_added_together": 283.9
+        },
+        "why_not_platform_conversions": "The four platforms claim 283.9 conversions together while GA4 recorded 202 sign-ups from every channel. Platforms credit some of the same sign-ups, so the KPI divides by GA4's count."
+      },
+      "build_sheet": [
+        "Open https://datastudio.google.com/reporting/create?ds.connector=googleSheets&ds.spreadsheetId=<SPREADSHEET_ID>&ds.worksheetId=<LS_DAILY_SHEET_ID> while signed in with an account that can open the spreadsheet.",
+        "Data source: Date as Date (YYYYMMDD); Spend and Conversion value as Currency (USD); add the 5 calculated fields above; data freshness 15 minutes.",
+        "Add GA4 and Search Console with Google's own connectors, then blend LS_Daily with GA4 on Date (full outer) and add Blended cost per sign-up to the blend.",
+        "Overview page: scorecards for Spend, Sign-ups, Blended cost per sign-up and CPA with previous period comparison; a time series of Spend and Sign-ups; a table by Platform with Spend, Conversions, CTR and CPA.",
+        "Campaigns page: a table by Platform and Campaign with Spend, Clicks, Conversions, Conversion rate and CPA, sorted by Spend.",
+        "Website and search page: GA4 sessions and sign-ups by day, Search Console clicks by day.",
+        "Controls on every page: a date range control with comparison to the previous period, drop-down filters for Platform and Account, and a 'Data through' scorecard of MAX(Date) from LS_Daily.",
+        "Sharing: data source credentials set to the owner's, report shared as view only, scheduled email delivery every Monday at 08:00 to the two readers."
+      ],
+      "review_of_current_report": [
+        {
+          "check": "Rate stored as a column and averaged",
+          "what_is_wrong": "The TikTok CTR scorecard averages the export's daily CTR column.",
+          "why_it_misleads": "It shows 0.74%; clicks over impressions for the same rows is 0.63%.",
+          "fix": "Delete the CTR column from the export and add CTR = SUM(Clicks) / SUM(Impressions) on the data source."
+        },
+        {
+          "check": "Platform conversions added into one total",
+          "what_is_wrong": "'Total conversions' adds Google Ads and TikTok conversions (131.9 + 5).",
+          "why_it_misleads": "Both platforms can claim the same sign-up, so the total counts some sign-ups twice.",
+          "fix": "Show conversions per platform, and use GA4 sign-ups for the one total."
+        },
+        {
+          "check": "Blend on Date with an inner join",
+          "what_is_wrong": "The Spend by day chart joins Google Ads and the TikTok export with an inner join.",
+          "why_it_misleads": "Only the 6 days that have a TikTok row survive: 8 of the 14 days in the range drop out, with 3292.11 USD of the 5728.73 USD Google Ads spend.",
+          "fix": "Use a full outer join on Date, or move both platforms into LS_Daily and drop the blend."
+        },
+        {
+          "check": "Staged source with no 'data through' date",
+          "what_is_wrong": "The TikTok export ends on 2026-10-17 while the report shows 2026-10-12 to 2026-10-25.",
+          "why_it_misleads": "The last 8 days show no TikTok activity, which reads as a pause rather than a missing paste.",
+          "fix": "Replace the hand-pasted export with LS_Daily and add a MAX(Date) scorecard."
+        },
+        {
+          "check": "Scorecard with no period or comparison",
+          "what_is_wrong": "'Total conversions' shows no period label and no comparison.",
+          "why_it_misleads": "The reader can't tell which dates the number covers or whether it went up.",
+          "fix": "Turn on the previous period comparison and label the date range in the scorecard's title."
+        },
+        {
+          "check": "A filter that applies to one side of a blend",
+          "what_is_wrong": "not visible in what was shared",
+          "why_it_misleads": null,
+          "fix": null
+        }
+      ],
+      "payloads": [
+        {
+          "n": 1,
+          "status": "not run",
+          "body": {
+            "platform": "google-sheets",
+            "action": "create_sheet",
+            "spreadsheet_id": "<SPREADSHEET_ID>",
+            "title": "LS_Daily"
+          }
+        },
+        {
+          "n": 2,
+          "status": "not run",
+          "body": {
+            "platform": "google-sheets",
+            "action": "batch_update_cells",
+            "spreadsheet_id": "<SPREADSHEET_ID>",
+            "sheet_id": "<LS_DAILY_SHEET_ID from payload 1>",
+            "value_input_option": "USER_ENTERED",
+            "ranges": {
+              "A1:J83": [
+                [
+                  "Date",
+                  "Platform",
+                  "Account",
+                  "Campaign",
+                  "Currency",
+                  "Spend",
+                  "Impressions",
+                  "Clicks",
+                  "Conversions",
+                  "Conversion value"
+                ],
+                [
+                  "2026-10-12",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  78.46,
+                  362,
+                  38,
+                  3.3,
+                  0
+                ],
+                [
+                  "2026-10-12",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  352.97,
+                  1968,
+                  84,
+                  2.8,
+                  0
+                ],
+                [
+                  "2026-10-12",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  217.58,
+                  14464,
+                  146,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-12",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  62.91,
+                  3722,
+                  61,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-12",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  119.75,
+                  2827,
+                  16,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-12",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  75.5,
+                  20070,
+                  82,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  76.04,
+                  322,
+                  37,
+                  6.4,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  306.05,
+                  1701,
+                  76,
+                  3.5,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  253.36,
+                  15378,
+                  158,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  68.69,
+                  3645,
+                  58,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  122.12,
+                  3062,
+                  17,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-13",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  94.43,
+                  6428,
+                  101,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  72.0,
+                  354,
+                  39,
+                  5.3,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  340.94,
+                  1987,
+                  86,
+                  5.8,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  238.58,
+                  13582,
+                  137,
+                  6,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  76.48,
+                  4741,
+                  70,
+                  7,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  121.94,
+                  2662,
+                  16,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-14",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  78.73,
+                  18509,
+                  93,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  76.21,
+                  338,
+                  37,
+                  6.3,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  313.67,
+                  1750,
+                  81,
+                  5.0,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  245.46,
+                  12879,
+                  142,
+                  6,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  70.4,
+                  3993,
+                  61,
+                  6,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  131.6,
+                  2428,
+                  16,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-15",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  93.82,
+                  12171,
+                  101,
+                  0,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  73.89,
+                  346,
+                  39,
+                  4.4,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  357.19,
+                  1894,
+                  92,
+                  3.4,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  236.74,
+                  11819,
+                  138,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  69.38,
+                  3862,
+                  66,
+                  6,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  132.26,
+                  3150,
+                  19,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-16",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  84.37,
+                  14342,
+                  93,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  79.61,
+                  391,
+                  44,
+                  8.1,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  309.59,
+                  1429,
+                  67,
+                  4.4,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  250.01,
+                  15187,
+                  167,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  67.02,
+                  3206,
+                  56,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  114.66,
+                  2545,
+                  15,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-17",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  84.95,
+                  17713,
+                  91,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-18",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  78.33,
+                  430,
+                  43,
+                  4.4,
+                  0
+                ],
+                [
+                  "2026-10-18",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  304.5,
+                  1538,
+                  69,
+                  3.2,
+                  0
+                ],
+                [
+                  "2026-10-18",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  242.18,
+                  14083,
+                  146,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-18",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  63.71,
+                  3265,
+                  55,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-18",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  126.53,
+                  2792,
+                  18,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-19",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  69.93,
+                  324,
+                  36,
+                  5.2,
+                  0
+                ],
+                [
+                  "2026-10-19",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  319.58,
+                  1265,
+                  61,
+                  3.3,
+                  0
+                ],
+                [
+                  "2026-10-19",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  222.37,
+                  12741,
+                  128,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-19",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  67.84,
+                  3786,
+                  56,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-19",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  119.0,
+                  2343,
+                  15,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  82.53,
+                  367,
+                  44,
+                  7.3,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  344.2,
+                  1345,
+                  55,
+                  1.8,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  242.92,
+                  13958,
+                  146,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  65.38,
+                  3642,
+                  58,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  117.81,
+                  2900,
+                  17,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-20",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  91.48,
+                  26295,
+                  113,
+                  2,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  78.61,
+                  323,
+                  39,
+                  6.2,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  309.94,
+                  1141,
+                  51,
+                  3.6,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  217.03,
+                  11688,
+                  129,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  67.62,
+                  3761,
+                  63,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  143.83,
+                  2976,
+                  19,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-21",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  76.93,
+                  5918,
+                  79,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  76.78,
+                  382,
+                  38,
+                  6.9,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  330.18,
+                  1261,
+                  53,
+                  2.0,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  207.05,
+                  12007,
+                  134,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  74.0,
+                  4576,
+                  75,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  127.81,
+                  2968,
+                  19,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-22",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  88.26,
+                  9405,
+                  100,
+                  2,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  78.45,
+                  366,
+                  43,
+                  7.8,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  359.48,
+                  1301,
+                  59,
+                  3.0,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  250.37,
+                  14223,
+                  142,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  69.38,
+                  3746,
+                  65,
+                  5,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  133.94,
+                  3347,
+                  20,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-23",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  91.25,
+                  22778,
+                  99,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  78.37,
+                  349,
+                  42,
+                  7.1,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  346.19,
+                  1587,
+                  65,
+                  3.0,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  225.39,
+                  12401,
+                  141,
+                  6,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  65.29,
+                  3330,
+                  55,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  144.64,
+                  3323,
+                  21,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-24",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  78.83,
+                  17147,
+                  90,
+                  2,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Brand Search",
+                  "USD",
+                  74.46,
+                  390,
+                  41,
+                  4.1,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "Google Ads",
+                  "Example Booking Software",
+                  "Online Booking Search",
+                  "USD",
+                  360.58,
+                  1427,
+                  64,
+                  4.3,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Prospecting, salon owners",
+                  "USD",
+                  251.7,
+                  13782,
+                  158,
+                  4,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "Meta Ads",
+                  "Example Booking Software (Meta ad account)",
+                  "Retargeting, site visitors 30 days",
+                  "USD",
+                  62.77,
+                  3805,
+                  62,
+                  3,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "LinkedIn Ads",
+                  "Example Booking Software (LinkedIn ad account)",
+                  "(account total)",
+                  "USD",
+                  137.29,
+                  3216,
+                  20,
+                  1,
+                  0
+                ],
+                [
+                  "2026-10-25",
+                  "TikTok Ads",
+                  "Example Booking Software (TikTok ad account)",
+                  "(account total)",
+                  "USD",
+                  85.26,
+                  11737,
+                  102,
+                  0,
+                  0
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "n": 3,
+          "status": "not run",
+          "body": {
+            "platform": "google-sheets",
+            "action": "format_cells",
+            "spreadsheet_id": "<SPREADSHEET_ID>",
+            "sheet_id": "<LS_DAILY_SHEET_ID from payload 1>",
+            "range": "A1:J1",
+            "bold": true
+          }
+        }
+      ],
+      "after_writing": "get_sheet_peak on LS_Daily (header and first rows match), then query_sheet_data on Date: 82 rows."
+    },
+    "month_close": {
+      "summary": "September 2026: actual 33382.11 USD against a plan of 34100.00 USD (-2.1%). 5 of 9 lines flagged; accruals 1500.00 USD; every media gap beyond tolerance has a named cause.",
+      "platform_spend_lines": [
+        {
+          "platform": "Google Ads",
+          "currency": "USD",
+          "reporting_day": "America/New_York",
+          "month": "2026-09",
+          "spend": 11583.49
+        },
+        {
+          "platform": "Meta Ads",
+          "currency": "USD",
+          "reporting_day": "America/New_York",
+          "month": "2026-09",
+          "spend": 7000.74
+        },
+        {
+          "platform": "LinkedIn Ads",
+          "currency": "USD",
+          "reporting_day": "not returned by the call",
+          "month": "2026-09",
+          "spend": 3893.26
+        },
+        {
+          "platform": "TikTok Ads",
+          "currency": "USD",
+          "reporting_day": "America/New_York",
+          "month": "2026-09",
+          "spend": 1758.42
+        }
+      ],
+      "close_table": [
+        {
+          "month": "2026-09",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0,
+          "actual": 11583.49,
+          "variance": -416.51,
+          "variance_pct": -3.5,
+          "flag": null,
+          "reason": null,
+          "invoiced": "see reconciliation",
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0,
+          "actual": 7000.74,
+          "variance": 1000.74,
+          "variance_pct": 16.7,
+          "flag": "over",
+          "reason": "Daily spend rose from 146.54 a day (Sep 1 to 14) to 309.33 a day (Sep 15 to 30); a budget change on or near Sep 15 fits this, check the change history.",
+          "invoiced": "see reconciliation",
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0,
+          "actual": 3893.26,
+          "variance": -106.74,
+          "variance_pct": -2.7,
+          "flag": null,
+          "reason": null,
+          "invoiced": "see reconciliation",
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 2500.0,
+          "actual": 1758.42,
+          "variance": -741.58,
+          "variance_pct": -29.7,
+          "flag": "under",
+          "reason": "Launched late: first spend on 2026-09-11, so 10 of 30 days had no spend.",
+          "invoiced": "see reconciliation",
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0,
+          "actual": 3500.0,
+          "variance": 0.0,
+          "variance_pct": 0.0,
+          "flag": null,
+          "reason": null,
+          "invoiced": 3500.0,
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0,
+          "actual": 1500.0,
+          "variance": 0.0,
+          "variance_pct": 0.0,
+          "flag": null,
+          "reason": null,
+          "invoiced": 0.0,
+          "accrual": 1500.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0,
+          "actual": 1046.2,
+          "variance": 146.2,
+          "variance_pct": 16.2,
+          "flag": "over",
+          "reason": "Invoice note: 2 seats added from 2026-09-12, prorated.",
+          "invoiced": 1046.2,
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 2500.0,
+          "actual": 3100.0,
+          "variance": 600.0,
+          "variance_pct": 24.0,
+          "flag": "over",
+          "reason": "Invoice note: booth upgraded to a corner stand.",
+          "invoiced": 3100.0,
+          "accrual": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1200.0,
+          "actual": 0.0,
+          "variance": -1200.0,
+          "variance_pct": -100.0,
+          "flag": "not spent",
+          "reason": "reason needed from Content lead",
+          "invoiced": 0.0,
+          "accrual": 0.0
+        }
+      ],
+      "close_total": {
+        "budget": 34100.0,
+        "actual": 33382.11,
+        "variance": -717.89,
+        "variance_pct": -2.1
+      },
+      "accruals": [
+        {
+          "line": "SEO freelancer",
+          "amount": 1500.0,
+          "clears_with": "SEO freelancer's September invoice, expected mid-October"
+        }
+      ],
+      "reconciliation": [
+        {
+          "account": "Google Ads",
+          "currency": "USD",
+          "platform_spend": 11583.49,
+          "invoiced_net": 11545.09,
+          "gap": 38.4,
+          "tolerance": 115.83,
+          "within_tolerance": true,
+          "cause": "Invalid activity credit for August (38.40) on the September invoice."
+        },
+        {
+          "account": "Meta Ads",
+          "currency": "USD",
+          "platform_spend": 7000.74,
+          "invoiced_net": 7313.14,
+          "gap": -312.4,
+          "tolerance": 70.01,
+          "within_tolerance": false,
+          "cause": "Billing period: the 2026-10-02 charge covers 2026-09-28 to 2026-10-01; 312.40 of it is October spend (the charge minus the platform's Sep 28 to 30 spend). The 2026-09-01 charge covers August and is left out.",
+          "gap_after_allocation": 0.0
+        },
+        {
+          "account": "LinkedIn Ads",
+          "currency": "USD",
+          "platform_spend": 3893.26,
+          "invoiced_net": 3893.26,
+          "gap": 0.0,
+          "tolerance": 38.93,
+          "within_tolerance": true,
+          "cause": "Tax: the invoice's gross 4204.72 includes 311.46 tax, so the net figure is compared."
+        },
+        {
+          "account": "TikTok Ads",
+          "currency": "USD",
+          "platform_spend": 1758.42,
+          "invoiced_net": 1458.42,
+          "gap": 300.0,
+          "tolerance": 17.58,
+          "within_tolerance": false,
+          "cause": "Credits: voucher_spend 300.00 was paid with ad credits, which no charge shows; cash_spend matches the charges.",
+          "gap_after_allocation": 0.0
+        }
+      ],
+      "rebilling": "not used: in-house team",
+      "reforecast": [
+        {
+          "line": "Google Ads",
+          "annual_budget": 144000.0,
+          "ytd_actual_jan_to_sep": 106881.85,
+          "view_a_rest_at_plan": 142881.85,
+          "gap_a": -1118.15,
+          "view_b_rest_at_run_rate": 141731.37,
+          "gap_b": -2268.63,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "Meta Ads",
+          "annual_budget": 72000.0,
+          "ytd_actual_jan_to_sep": 53297.03,
+          "view_a_rest_at_plan": 71297.03,
+          "gap_a": -702.97,
+          "view_b_rest_at_run_rate": 71480.54,
+          "gap_b": -519.46,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "LinkedIn Ads",
+          "annual_budget": 48000.0,
+          "ytd_actual_jan_to_sep": 34704.75,
+          "view_a_rest_at_plan": 46704.75,
+          "gap_a": -1295.25,
+          "view_b_rest_at_run_rate": 46288.77,
+          "gap_b": -1711.23,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "TikTok Ads",
+          "annual_budget": 10000.0,
+          "ytd_actual_jan_to_sep": 1758.42,
+          "view_a_rest_at_plan": 9258.42,
+          "gap_a": -741.58,
+          "view_b_rest_at_run_rate": 7033.68,
+          "gap_b": -2966.32,
+          "run_rate_basis": "average of the 1 month(s) it ran"
+        },
+        {
+          "line": "Agency retainer",
+          "annual_budget": 42000.0,
+          "ytd_actual_jan_to_sep": 31500.0,
+          "view_a_rest_at_plan": 42000.0,
+          "gap_a": 0.0,
+          "view_b_rest_at_run_rate": 42000.0,
+          "gap_b": 0.0,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "SEO freelancer",
+          "annual_budget": 18000.0,
+          "ytd_actual_jan_to_sep": 13500.0,
+          "view_a_rest_at_plan": 18000.0,
+          "gap_a": 0.0,
+          "view_b_rest_at_run_rate": 18000.0,
+          "gap_b": 0.0,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "Software tools",
+          "annual_budget": 10800.0,
+          "ytd_actual_jan_to_sep": 8143.62,
+          "view_a_rest_at_plan": 10843.62,
+          "gap_a": 43.62,
+          "view_b_rest_at_run_rate": 10937.59,
+          "gap_b": 137.59,
+          "run_rate_basis": "average of Jul to Sep"
+        },
+        {
+          "line": "Trade show",
+          "annual_budget": 2500.0,
+          "ytd_actual_jan_to_sep": 3100.0,
+          "view_a_rest_at_plan": 3100.0,
+          "gap_a": 600.0,
+          "view_b_rest_at_run_rate": 3100.0,
+          "gap_b": 600.0,
+          "run_rate_basis": "one-off line: stays at plan"
+        },
+        {
+          "line": "Video production",
+          "annual_budget": 4800.0,
+          "ytd_actual_jan_to_sep": 2400.0,
+          "view_a_rest_at_plan": 3600.0,
+          "gap_a": -1200.0,
+          "view_b_rest_at_run_rate": 3600.0,
+          "gap_b": -1200.0,
+          "run_rate_basis": "quarterly line: stays at plan"
+        }
+      ],
+      "reforecast_total": {
+        "annual_budget": 352100.0,
+        "ytd_actual_jan_to_sep": 255285.67,
+        "view_a_rest_at_plan": 347685.67,
+        "gap_a": -4414.33,
+        "view_b_rest_at_run_rate": 344171.95,
+        "gap_b": -7928.05
+      },
+      "payloads": [
+        {
+          "n": 1,
+          "status": "not run",
+          "body": {
+            "platform": "google-sheets",
+            "action": "create_sheet",
+            "spreadsheet_id": "<SPREADSHEET_ID>",
+            "title": "Close 2026-09"
+          }
+        },
+        {
+          "n": 2,
+          "status": "not run",
+          "body": {
+            "platform": "google-sheets",
+            "action": "batch_update_cells",
+            "spreadsheet_id": "<SPREADSHEET_ID>",
+            "sheet_id": "<CLOSE_SHEET_ID from payload 1>",
+            "value_input_option": "USER_ENTERED",
+            "ranges": {
+              "A1:K10": [
+                [
+                  "Month",
+                  "Line",
+                  "Type",
+                  "Owner",
+                  "Budget",
+                  "Actual",
+                  "Variance",
+                  "Variance %",
+                  "Flag",
+                  "Reason",
+                  "Accrual"
+                ],
+                [
+                  "2026-09",
+                  "Google Ads",
+                  "media",
+                  "Paid search lead",
+                  12000.0,
+                  11583.49,
+                  -416.51,
+                  -3.5,
+                  "",
+                  "",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "Meta Ads",
+                  "media",
+                  "Paid social lead",
+                  6000.0,
+                  7000.74,
+                  1000.74,
+                  16.7,
+                  "over",
+                  "Daily spend rose from 146.54 a day (Sep 1 to 14) to 309.33 a day (Sep 15 to 30); a budget change on or near Sep 15 fits this, check the change history.",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "LinkedIn Ads",
+                  "media",
+                  "Paid social lead",
+                  4000.0,
+                  3893.26,
+                  -106.74,
+                  -2.7,
+                  "",
+                  "",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "TikTok Ads",
+                  "media",
+                  "Paid social lead",
+                  2500.0,
+                  1758.42,
+                  -741.58,
+                  -29.7,
+                  "under",
+                  "Launched late: first spend on 2026-09-11, so 10 of 30 days had no spend.",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "Agency retainer",
+                  "non-media",
+                  "Head of marketing",
+                  3500.0,
+                  3500.0,
+                  0.0,
+                  0.0,
+                  "",
+                  "",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "SEO freelancer",
+                  "non-media",
+                  "Content lead",
+                  1500.0,
+                  1500.0,
+                  0.0,
+                  0.0,
+                  "",
+                  "",
+                  1500.0
+                ],
+                [
+                  "2026-09",
+                  "Software tools",
+                  "non-media",
+                  "Marketing ops",
+                  900.0,
+                  1046.2,
+                  146.2,
+                  16.2,
+                  "over",
+                  "Invoice note: 2 seats added from 2026-09-12, prorated.",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "Trade show",
+                  "non-media",
+                  "Head of marketing",
+                  2500.0,
+                  3100.0,
+                  600.0,
+                  24.0,
+                  "over",
+                  "Invoice note: booth upgraded to a corner stand.",
+                  0.0
+                ],
+                [
+                  "2026-09",
+                  "Video production",
+                  "non-media",
+                  "Content lead",
+                  1200.0,
+                  0.0,
+                  -1200.0,
+                  -100.0,
+                  "not spent",
+                  "reason needed from Content lead",
+                  0.0
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

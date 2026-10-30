@@ -1,0 +1,391 @@
+{
+  "request": "Write our paid campaign launch SOP from Leo's screen recording and the planning call notes. Leo owns the SOP and Dana approves it. Check it against our Google Ads, Meta, GA4 and GTM accounts, mark what can be automated, and give us an SOP library for our five recurring processes with an operating rhythm.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "mode": "one SOP in full, plus the library and rhythm",
+  "team": [
+    {
+      "name": "Dana Whitfield",
+      "role": "Marketing lead"
+    },
+    {
+      "name": "Leo Park",
+      "role": "Paid media specialist"
+    },
+    {
+      "name": "Maya Cohen",
+      "role": "Web and analytics"
+    }
+  ],
+  "naming_convention": "EBS | {Channel} | {Goal} | {Audience} | {YYYY-MM}",
+  "budget_plan_monthly_usd": {
+    "google-ads": 9000,
+    "facebook-ads": 4000
+  },
+  "new_campaign_daily_budget_usd": 50,
+  "sources": {
+    "recording_transcript": {
+      "title": "Launch build walkthrough (screen recording)",
+      "segments": [
+        {
+          "t": "00:00",
+          "speaker": "Leo Park",
+          "text": "Recording the launch build. New search campaign in Google Ads. I name it with our convention, set the goal to Demo Request, the daily budget and Maximize conversions."
+        },
+        {
+          "t": "12:20",
+          "speaker": "Leo Park",
+          "text": "Settings done. Now the ad groups: one per service type, phrase match keywords, two responsive search ads each with the UTM final URLs from the sheet."
+        },
+        {
+          "t": "30:40",
+          "speaker": "Leo Park",
+          "text": "Over to Meta. Leads objective, the Example Booking Pixel with the Lead event, one ad set, three ads from the brief."
+        },
+        {
+          "t": "46:00",
+          "speaker": "Leo Park",
+          "text": "Both built. Dana checked them earlier. Publishing both and pasting the names and links into the launch log."
+        },
+        {
+          "t": "49:40",
+          "speaker": "Leo Park",
+          "text": "That's it, stopping the recording."
+        }
+      ]
+    },
+    "meeting_notes": [
+      "Launch planning call, 2026-10-21. Dana, Leo, Maya.",
+      "Leo fills the launch brief in the shared doc: goal, audience, offer, budget, dates, landing page. About 20 min, five working days before launch.",
+      "Dana approves the brief and the starting budget, 10 min, the day after.",
+      "Budget room: monthly plan is $9,000 on Google Ads and $4,000 on Meta. New tests start at $50/day. Leo checks room before building, 10 min.",
+      "Naming: EBS | Channel | Goal | Audience | YYYY-MM. Leo names the campaign before the build.",
+      "UTMs: Leo builds the final URLs from the UTM sheet, 10 min.",
+      "Maya tests the landing page and submits the demo form once, 15 min, two days before.",
+      "Tracking, Maya, two days before: Google Ads goal should be Demo Request (5 min). In GTM, Meta Pixel - Lead and GA4 - demo_booked fire on the trigger Thank you page - demo, and the Example Booking Pixel is firing (5 min). GA4 key events demo_booked and sign_up are set (5 min).",
+      "Launch day: Dana does the second-person check before Leo publishes, about 15 min.",
+      "Google and Meta usually review new ads within a day.",
+      "Next day Leo checks every ad is approved and spending, 10 min. If an ad is disapproved Leo fixes and resubmits. If a tag isn't firing, Maya.",
+      "One week after launch Dana and Leo read the first week, 20 min: spend against plan, cost per demo against the $120 target.",
+      "Access: Dana is admin on Google Ads and Meta and grants access there. Maya owns GTM and GA4. Leo keeps the UTM sheet and the launch log.",
+      "Not decided: who covers a launch that lands on a weekend."
+    ]
+  },
+  "accounts": {
+    "google-ads": {
+      "customer_id": "1234567890",
+      "name": "Example Booking Software"
+    },
+    "facebook-ads": {
+      "ad_account_id": "act_1000000000000001",
+      "name": "Example Booking Software (Meta ad account)"
+    },
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "name": "Example Booking Software"
+    },
+    "google-tag-manager": {
+      "account_id": "6000000001",
+      "container_public_id": "GTM-EXMPL01",
+      "domain": "www.example.com"
+    }
+  },
+  "data_pulled": {
+    "google-ads": {
+      "conversion_actions": {
+        "call": "gaql on conversion_action, enabled only",
+        "rows": [
+          {
+            "name": "Demo booked",
+            "status": "ENABLED",
+            "category": "BOOK_APPOINTMENT",
+            "primary_for_goal": true,
+            "include_in_conversions_metric": true
+          },
+          {
+            "name": "Sign-up completed",
+            "status": "ENABLED",
+            "category": "SIGNUP",
+            "primary_for_goal": true,
+            "include_in_conversions_metric": true
+          },
+          {
+            "name": "Demo Request (old form)",
+            "status": "ENABLED",
+            "category": "SUBMIT_LEAD_FORM",
+            "primary_for_goal": false,
+            "include_in_conversions_metric": false
+          },
+          {
+            "name": "Calls from ads",
+            "status": "ENABLED",
+            "category": "PHONE_CALL_LEAD",
+            "primary_for_goal": false,
+            "include_in_conversions_metric": false
+          }
+        ]
+      },
+      "campaigns": {
+        "call": "gaql on campaign with campaign_budget, status != REMOVED",
+        "rows": [
+          {
+            "name": "EBS | Search | Demo | Salons | 2026-07",
+            "status": "ENABLED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "60000000"
+          },
+          {
+            "name": "EBS | Search | Demo | Clinics | 2026-08",
+            "status": "ENABLED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "55000000"
+          },
+          {
+            "name": "EBS | Search | Signup | Brand | 2026-01",
+            "status": "ENABLED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "25000000"
+          },
+          {
+            "name": "EBS | PMax | Signup | All | 2026-05",
+            "status": "ENABLED",
+            "advertising_channel_type": "PERFORMANCE_MAX",
+            "campaign_budget_amount_micros": "45000000"
+          },
+          {
+            "name": "EBS | Search | Demo | Fitness | 2026-09",
+            "status": "ENABLED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "30000000"
+          },
+          {
+            "name": "EBS | Search | Signup | Reminders | 2026-10",
+            "status": "ENABLED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "25000000"
+          },
+          {
+            "name": "Fitness studios test",
+            "status": "PAUSED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "30000000"
+          },
+          {
+            "name": "EBS - Competitors - Q2",
+            "status": "PAUSED",
+            "advertising_channel_type": "SEARCH",
+            "campaign_budget_amount_micros": "25000000"
+          }
+        ]
+      }
+    },
+    "facebook-ads": {
+      "campaigns": {
+        "call": "get_campaigns",
+        "rows": [
+          {
+            "id": "120000000000000101",
+            "name": "EBS | Meta | Signup | Lookalike | 2026-08",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "objective": "OUTCOME_LEADS",
+            "daily_budget": "6000"
+          },
+          {
+            "id": "120000000000000102",
+            "name": "EBS | Meta | Demo | Retargeting | 2026-09",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "objective": "OUTCOME_LEADS",
+            "daily_budget": "3500"
+          },
+          {
+            "id": "120000000000000103",
+            "name": "Salon owners video - Oct",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "objective": "OUTCOME_ENGAGEMENT",
+            "daily_budget": "4000"
+          },
+          {
+            "id": "120000000000000104",
+            "name": "EBS | Meta | Signup | Broad | 2026-06",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "objective": "OUTCOME_LEADS",
+            "daily_budget": "2500"
+          },
+          {
+            "id": "120000000000000105",
+            "name": "EBS | Meta | Demo | Clinics | 2026-10",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "objective": "OUTCOME_LEADS"
+          }
+        ]
+      },
+      "pixels": {
+        "call": "get_pixels",
+        "pulled_at": "2026-10-28T09:00:00+0000",
+        "rows": [
+          {
+            "id": "900000000000001",
+            "name": "Example Booking Pixel",
+            "last_fired_time": "2026-10-28T08:14:00+0000"
+          }
+        ]
+      }
+    },
+    "google-analytics": {
+      "key_events": {
+        "call": "list_key_events",
+        "rows": [
+          {
+            "eventName": "demo_booked",
+            "countingMethod": "ONCE_PER_EVENT"
+          },
+          {
+            "eventName": "generate_lead",
+            "countingMethod": "ONCE_PER_EVENT"
+          },
+          {
+            "eventName": "close_convert_lead",
+            "countingMethod": "ONCE_PER_EVENT"
+          }
+        ]
+      }
+    },
+    "google-tag-manager": {
+      "container": {
+        "call": "get_containers",
+        "publicId": "GTM-EXMPL01",
+        "domainName": "www.example.com",
+        "containerId": "20000001"
+      },
+      "live_version": {
+        "call": "get_live_version",
+        "containerVersionId": "37",
+        "tag": [
+          {
+            "tagId": "1",
+            "name": "GA4 - Config",
+            "type": "gaawc",
+            "firingTriggerId": [
+              "2147479553"
+            ]
+          },
+          {
+            "tagId": "4",
+            "name": "GA4 - demo_booked",
+            "type": "gaawe",
+            "firingTriggerId": [
+              "12"
+            ]
+          },
+          {
+            "tagId": "5",
+            "name": "Meta Pixel - Base",
+            "type": "html",
+            "firingTriggerId": [
+              "2147479553"
+            ]
+          },
+          {
+            "tagId": "6",
+            "name": "Meta Pixel - Lead",
+            "type": "html",
+            "firingTriggerId": [
+              "12"
+            ],
+            "paused": true
+          },
+          {
+            "tagId": "7",
+            "name": "Google Ads - Demo booked conversion",
+            "type": "awct",
+            "firingTriggerId": [
+              "12"
+            ]
+          }
+        ],
+        "trigger": [
+          {
+            "triggerId": "12",
+            "name": "Thank you page - demo",
+            "type": "pageview"
+          },
+          {
+            "triggerId": "14",
+            "name": "Signup complete",
+            "type": "customEvent"
+          }
+        ]
+      }
+    }
+  },
+  "library_processes": [
+    {
+      "process": "Paid campaign launch",
+      "trigger": "per event: a launch brief is approved",
+      "runs_per_year": 18,
+      "minutes_per_run": "from this SOP",
+      "people": [
+        "Leo Park",
+        "Dana Whitfield",
+        "Maya Cohen"
+      ],
+      "sop": null,
+      "touches_spend_or_tracking": true
+    },
+    {
+      "process": "Blog post publishing",
+      "trigger": "weekly on Thursday",
+      "runs_per_year": 48,
+      "minutes_per_run": 90,
+      "people": [
+        "Dana Whitfield"
+      ],
+      "sop": null,
+      "touches_spend_or_tracking": false
+    },
+    {
+      "process": "Monthly performance report",
+      "trigger": "business day 3 of each month",
+      "runs_per_year": 12,
+      "minutes_per_run": 180,
+      "people": [
+        "Dana Whitfield",
+        "Leo Park"
+      ],
+      "sop": {
+        "last_reviewed": "2026-02-10"
+      },
+      "touches_spend_or_tracking": false
+    },
+    {
+      "process": "Weekly paid pacing check",
+      "trigger": "every Monday",
+      "runs_per_year": 52,
+      "minutes_per_run": 30,
+      "people": [
+        "Leo Park"
+      ],
+      "sop": {
+        "last_reviewed": "2026-09-01"
+      },
+      "touches_spend_or_tracking": true
+    },
+    {
+      "process": "Quarterly tracking audit",
+      "trigger": "first Monday of each quarter",
+      "runs_per_year": 4,
+      "minutes_per_run": 240,
+      "people": [
+        "Maya Cohen"
+      ],
+      "sop": null,
+      "touches_spend_or_tracking": true
+    }
+  ],
+  "note": "Example data: an invented online booking software company and its marketing team with invented accounts, not a real business. Every number in expected_output.json follows from this input. The recording, notes and account data are invented; nothing was pulled from a real account."
+}

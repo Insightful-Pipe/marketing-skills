@@ -1,0 +1,555 @@
+{
+  "note": "Example data: an invented Amazon seller, Quillmoss Home, not a real business. The ASINs, IDs and competitor ASINs are invented. Every number in expected_output.json follows from this input.",
+  "request": "Set my Sponsored Products bids for the week. Keep candle TACOS at 10%, the diffuser at 25% ACOS, and let the new wax melts run up to 45% ACOS while they launch. Also plan Black Friday to Cyber Monday. Give me a bulk file I can upload.",
+  "seller": {
+    "brand": "Quillmoss Home",
+    "site": "quillmoss.example",
+    "marketplace": "amazon.com",
+    "account_type": "seller",
+    "currency": "USD",
+    "ad_types": [
+      "Sponsored Products"
+    ]
+  },
+  "export_date": "2026-10-28",
+  "window": {
+    "start": "2026-09-21",
+    "end": "2026-10-20",
+    "days": 30,
+    "note": "ends 7 days before the export date"
+  },
+  "rules": {
+    "attribution_days_left_out": 7,
+    "step_up_max_pct": 20,
+    "step_down_max_pct": 30,
+    "ignore_change_under_pct": 5,
+    "min_bid": 0.02,
+    "clicks_gate_floor": 10,
+    "expected_orders_for_gate": 2,
+    "starved_impressions_under": 100,
+    "pause_at_gate_multiple": 2,
+    "placement_step_max_points": 50,
+    "placement_range": [
+      0,
+      900
+    ],
+    "peak_bid_raise_cap_pct": 30
+  },
+  "products": [
+    {
+      "asin": "B0XQMC0301",
+      "sku": "QM-CAN-3PK",
+      "title": "Soy Candle Gift Set, 3 Pack",
+      "price": 32.0,
+      "cost_of_goods": 7.4,
+      "referral_fee_pct": 15,
+      "fba_fee": 6.85,
+      "other_per_unit": 1.1,
+      "goal": "tacos",
+      "target_tacos_pct": 10
+    },
+    {
+      "asin": "B0XQMD0201",
+      "sku": "QM-DIF-200",
+      "title": "Reed Diffuser, 200 ml",
+      "price": 24.0,
+      "cost_of_goods": 5.2,
+      "referral_fee_pct": 15,
+      "fba_fee": 5.4,
+      "other_per_unit": 0.9,
+      "goal": "acos",
+      "target_acos_pct": 25
+    },
+    {
+      "asin": "B0XQMW1201",
+      "sku": "QM-WAX-12",
+      "title": "Soy Wax Melts Sampler, 12 Scents",
+      "price": 18.0,
+      "cost_of_goods": 3.1,
+      "referral_fee_pct": 15,
+      "fba_fee": 4.2,
+      "other_per_unit": 0.6,
+      "goal": "launch",
+      "launch_acos_cap_pct": 45
+    }
+  ],
+  "business_report": [
+    {
+      "asin": "B0XQMC0301",
+      "units_ordered": 690,
+      "ordered_product_sales": 22080.0
+    },
+    {
+      "asin": "B0XQMD0201",
+      "units_ordered": 402,
+      "ordered_product_sales": 9648.0
+    },
+    {
+      "asin": "B0XQMW1201",
+      "units_ordered": 233,
+      "ordered_product_sales": 4194.0
+    }
+  ],
+  "campaigns": [
+    {
+      "campaign_id": "410000000001",
+      "name": "QM | Candles | SP Exact",
+      "asin": "B0XQMC0301",
+      "targeting": "manual",
+      "bidding_strategy": "Dynamic bids - down only",
+      "daily_budget": 120.0,
+      "placement_adjustments_pct": {
+        "Top of search": 40,
+        "Rest of search": 0,
+        "Product pages": 0
+      },
+      "_m_old": 1.1998326359832636,
+      "_m_new": 1.5697907949790795,
+      "_gate": 17
+    },
+    {
+      "campaign_id": "410000000002",
+      "name": "QM | Candles | SP Auto",
+      "asin": "B0XQMC0301",
+      "targeting": "auto",
+      "bidding_strategy": "Dynamic bids - down only",
+      "daily_budget": 60.0,
+      "placement_adjustments_pct": {
+        "Top of search": 0,
+        "Rest of search": 0,
+        "Product pages": 0
+      },
+      "_m_old": 1.0,
+      "_m_new": 1.1404197530864197,
+      "_gate": 25
+    },
+    {
+      "campaign_id": "410000000003",
+      "name": "QM | Diffuser | SP Phrase and ASIN",
+      "asin": "B0XQMD0201",
+      "targeting": "manual",
+      "bidding_strategy": "Dynamic bids - down only",
+      "daily_budget": 50.0,
+      "placement_adjustments_pct": {
+        "Top of search": 20,
+        "Rest of search": 0,
+        "Product pages": 30
+      },
+      "_m_old": 1.1948126801152739,
+      "_m_new": 1.281527377521614,
+      "_gate": 21
+    },
+    {
+      "campaign_id": "410000000004",
+      "name": "QM | Wax Melts | SP Launch Broad",
+      "asin": "B0XQMW1201",
+      "targeting": "manual",
+      "bidding_strategy": "Dynamic bids - down only",
+      "daily_budget": 40.0,
+      "placement_adjustments_pct": {
+        "Top of search": 0,
+        "Rest of search": 0,
+        "Product pages": 0
+      },
+      "_m_old": 1.0,
+      "_m_new": 1.168069306930693,
+      "_gate": 20
+    }
+  ],
+  "targeting_report": [
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000101",
+      "entity": "Keyword",
+      "target": "soy candles",
+      "match_type": "exact",
+      "bid": 1.45,
+      "impressions": 41200,
+      "clicks": 620,
+      "spend": 881.27,
+      "orders": 67,
+      "sales": 2251.2
+    },
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000102",
+      "entity": "Keyword",
+      "target": "candle gift set",
+      "match_type": "exact",
+      "bid": 1.2,
+      "impressions": 18600,
+      "clicks": 340,
+      "spend": 378.22,
+      "orders": 53,
+      "sales": 1812.6
+    },
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000103",
+      "entity": "Keyword",
+      "target": "scented candles for home",
+      "match_type": "exact",
+      "bid": 1.1,
+      "impressions": 9800,
+      "clicks": 180,
+      "spend": 189.11,
+      "orders": 23,
+      "sales": 754.4
+    },
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000104",
+      "entity": "Keyword",
+      "target": "wood wick candle",
+      "match_type": "exact",
+      "bid": 1.35,
+      "impressions": 5200,
+      "clicks": 46,
+      "spend": 59.73,
+      "orders": 0,
+      "sales": 0.0
+    },
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000105",
+      "entity": "Keyword",
+      "target": "lavender candle",
+      "match_type": "exact",
+      "bid": 0.95,
+      "impressions": 1400,
+      "clicks": 9,
+      "spend": 7.96,
+      "orders": 2,
+      "sales": 64.0
+    },
+    {
+      "campaign_id": "410000000001",
+      "ad_group_id": "420000000011",
+      "ad_group": "Candles exact",
+      "target_id": "430000000106",
+      "entity": "Keyword",
+      "target": "candles for women gift",
+      "match_type": "exact",
+      "bid": 0.7,
+      "impressions": 60,
+      "clicks": 0,
+      "spend": 0.0,
+      "orders": 0,
+      "sales": 0.0
+    },
+    {
+      "campaign_id": "410000000002",
+      "ad_group_id": "420000000021",
+      "ad_group": "Candles auto",
+      "target_id": "430000000201",
+      "entity": "Product Targeting",
+      "target": "close-match",
+      "match_type": "",
+      "bid": 0.9,
+      "impressions": 22400,
+      "clicks": 410,
+      "spend": 293.48,
+      "orders": 50,
+      "sales": 1655.0
+    },
+    {
+      "campaign_id": "410000000002",
+      "ad_group_id": "420000000021",
+      "ad_group": "Candles auto",
+      "target_id": "430000000202",
+      "entity": "Product Targeting",
+      "target": "loose-match",
+      "match_type": "",
+      "bid": 0.75,
+      "impressions": 30100,
+      "clicks": 300,
+      "spend": 191.57,
+      "orders": 15,
+      "sales": 486.0
+    },
+    {
+      "campaign_id": "410000000002",
+      "ad_group_id": "420000000021",
+      "ad_group": "Candles auto",
+      "target_id": "430000000203",
+      "entity": "Product Targeting",
+      "target": "substitutes",
+      "match_type": "",
+      "bid": 0.6,
+      "impressions": 26800,
+      "clicks": 88,
+      "spend": 44.27,
+      "orders": 0,
+      "sales": 0.0
+    },
+    {
+      "campaign_id": "410000000002",
+      "ad_group_id": "420000000021",
+      "ad_group": "Candles auto",
+      "target_id": "430000000204",
+      "entity": "Product Targeting",
+      "target": "complements",
+      "match_type": "",
+      "bid": 0.45,
+      "impressions": 3900,
+      "clicks": 12,
+      "spend": 4.76,
+      "orders": 0,
+      "sales": 0.0
+    },
+    {
+      "campaign_id": "410000000003",
+      "ad_group_id": "420000000031",
+      "ad_group": "Diffuser phrase",
+      "target_id": "430000000301",
+      "entity": "Keyword",
+      "target": "reed diffuser",
+      "match_type": "phrase",
+      "bid": 1.3,
+      "impressions": 21500,
+      "clicks": 360,
+      "spend": 459.56,
+      "orders": 34,
+      "sales": 836.4
+    },
+    {
+      "campaign_id": "410000000003",
+      "ad_group_id": "420000000031",
+      "ad_group": "Diffuser phrase",
+      "target_id": "430000000302",
+      "entity": "Keyword",
+      "target": "oil diffuser sticks",
+      "match_type": "phrase",
+      "bid": 0.85,
+      "impressions": 7300,
+      "clicks": 150,
+      "spend": 123.4,
+      "orders": 19,
+      "sales": 463.6
+    },
+    {
+      "campaign_id": "410000000003",
+      "ad_group_id": "420000000032",
+      "ad_group": "Diffuser ASIN",
+      "target_id": "430000000303",
+      "entity": "Product Targeting",
+      "target": "asin=\"B0XRV10001\"",
+      "match_type": "",
+      "bid": 0.95,
+      "impressions": 12800,
+      "clicks": 140,
+      "spend": 127.03,
+      "orders": 14,
+      "sales": 336.0
+    },
+    {
+      "campaign_id": "410000000003",
+      "ad_group_id": "420000000032",
+      "ad_group": "Diffuser ASIN",
+      "target_id": "430000000304",
+      "entity": "Product Targeting",
+      "target": "asin=\"B0XRV20002\"",
+      "match_type": "",
+      "bid": 0.8,
+      "impressions": 9100,
+      "clicks": 44,
+      "spend": 34.33,
+      "orders": 0,
+      "sales": 0.0
+    },
+    {
+      "campaign_id": "410000000004",
+      "ad_group_id": "420000000041",
+      "ad_group": "Wax melts broad",
+      "target_id": "430000000401",
+      "entity": "Keyword",
+      "target": "wax melts",
+      "match_type": "broad",
+      "bid": 1.1,
+      "impressions": 19800,
+      "clicks": 260,
+      "spend": 269.73,
+      "orders": 22,
+      "sales": 426.8
+    },
+    {
+      "campaign_id": "410000000004",
+      "ad_group_id": "420000000041",
+      "ad_group": "Wax melts broad",
+      "target_id": "430000000402",
+      "entity": "Keyword",
+      "target": "soy wax melts",
+      "match_type": "broad",
+      "bid": 0.9,
+      "impressions": 8900,
+      "clicks": 130,
+      "spend": 101.17,
+      "orders": 18,
+      "sales": 340.2
+    },
+    {
+      "campaign_id": "410000000004",
+      "ad_group_id": "420000000041",
+      "ad_group": "Wax melts broad",
+      "target_id": "430000000403",
+      "entity": "Keyword",
+      "target": "wax warmer melts",
+      "match_type": "broad",
+      "bid": 0.65,
+      "impressions": 2100,
+      "clicks": 14,
+      "spend": 8.43,
+      "orders": 2,
+      "sales": 36.0
+    }
+  ],
+  "placement_report": [
+    {
+      "campaign_id": "410000000001",
+      "campaign": "QM | Candles | SP Exact",
+      "placement": "Top of search",
+      "clicks": 597,
+      "spend": 919.63,
+      "orders": 101,
+      "sales": 3401.4
+    },
+    {
+      "campaign_id": "410000000001",
+      "campaign": "QM | Candles | SP Exact",
+      "placement": "Rest of search",
+      "clicks": 359,
+      "spend": 375.87,
+      "orders": 31,
+      "sales": 1042.6
+    },
+    {
+      "campaign_id": "410000000001",
+      "campaign": "QM | Candles | SP Exact",
+      "placement": "Product pages",
+      "clicks": 239,
+      "spend": 220.79,
+      "orders": 13,
+      "sales": 438.2
+    },
+    {
+      "campaign_id": "410000000002",
+      "campaign": "QM | Candles | SP Auto",
+      "placement": "Top of search",
+      "clicks": 202,
+      "spend": 151.41,
+      "orders": 21,
+      "sales": 691.6
+    },
+    {
+      "campaign_id": "410000000002",
+      "campaign": "QM | Candles | SP Auto",
+      "placement": "Rest of search",
+      "clicks": 284,
+      "spend": 183.94,
+      "orders": 23,
+      "sales": 757.8
+    },
+    {
+      "campaign_id": "410000000002",
+      "campaign": "QM | Candles | SP Auto",
+      "placement": "Product pages",
+      "clicks": 324,
+      "spend": 198.73,
+      "orders": 21,
+      "sales": 691.6
+    },
+    {
+      "campaign_id": "410000000003",
+      "campaign": "QM | Diffuser | SP Phrase and ASIN",
+      "placement": "Top of search",
+      "clicks": 208,
+      "spend": 243.25,
+      "orders": 28,
+      "sales": 683.6
+    },
+    {
+      "campaign_id": "410000000003",
+      "campaign": "QM | Diffuser | SP Phrase and ASIN",
+      "placement": "Rest of search",
+      "clicks": 174,
+      "spend": 167.95,
+      "orders": 18,
+      "sales": 439.4
+    },
+    {
+      "campaign_id": "410000000003",
+      "campaign": "QM | Diffuser | SP Phrase and ASIN",
+      "placement": "Product pages",
+      "clicks": 312,
+      "spend": 333.12,
+      "orders": 21,
+      "sales": 513.0
+    },
+    {
+      "campaign_id": "410000000004",
+      "campaign": "QM | Wax Melts | SP Launch Broad",
+      "placement": "Top of search",
+      "clicks": 162,
+      "spend": 167.56,
+      "orders": 19,
+      "sales": 363.2
+    },
+    {
+      "campaign_id": "410000000004",
+      "campaign": "QM | Wax Melts | SP Launch Broad",
+      "placement": "Rest of search",
+      "clicks": 142,
+      "spend": 126.85,
+      "orders": 15,
+      "sales": 286.6
+    },
+    {
+      "campaign_id": "410000000004",
+      "campaign": "QM | Wax Melts | SP Launch Broad",
+      "placement": "Product pages",
+      "clicks": 100,
+      "spend": 84.92,
+      "orders": 8,
+      "sales": 153.2
+    }
+  ],
+  "peak": {
+    "event": "Black Friday to Cyber Monday",
+    "last_year": {
+      "baseline_dates": [
+        "2025-10-29",
+        "2025-11-27"
+      ],
+      "baseline_days": 30,
+      "baseline_clicks": 7020,
+      "baseline_orders": 742,
+      "baseline_spend": 6950.0,
+      "event_dates": [
+        "2025-11-28",
+        "2025-12-01"
+      ],
+      "event_days": 4,
+      "event_clicks": 1985,
+      "event_orders": 281,
+      "event_spend": 2410.0
+    },
+    "this_year": {
+      "event_dates": [
+        "2026-11-27",
+        "2026-11-30"
+      ],
+      "raise_upload_date": "2026-11-26",
+      "revert_upload_date": "2026-12-01"
+    }
+  }
+}

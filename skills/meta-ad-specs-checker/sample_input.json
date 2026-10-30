@@ -1,0 +1,413 @@
+{
+  "note": "Example data: an invented online booking software company and its Meta ad account with invented accounts, not a real business. Every number in expected_output.json follows from this input. The frame's element boxes stand for what Claude reads from an uploaded screenshot.",
+  "request": "Hey Claude, I just added the \"meta-ad-specs-checker\" skill. Check my active Meta ads against every placement they run in and tell me what to crop, shorten or switch off. I uploaded a frame from the front desk Reel.",
+  "account": {
+    "name": "Example Booking Software (Meta ad account)",
+    "ad_account_id": "act_100000000000001",
+    "currency": "USD",
+    "timezone": "America/New_York"
+  },
+  "today": "2026-10-30",
+  "specs": "Meta Ads Guide, checked 2026-10-30",
+  "scope": "every ad with effective_status ACTIVE",
+  "data_pulled": [
+    "get_ads: 6 active ads",
+    "get_adsets: 2 ad sets with targeting",
+    "get_ad_creatives: the 6 creatives (5 single image or video, 1 dynamic creative with placement rules)",
+    "get_ad_images: 5 images with width and height",
+    "get_ad_videos: 2 videos with length and the native format",
+    "one uploaded frame of the front desk Reel at 0:04"
+  ],
+  "ads": [
+    {
+      "id": "120000000000200001",
+      "name": "Static | No-shows stat | square",
+      "adset_id": "120000000000100001",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003001"
+      }
+    },
+    {
+      "id": "120000000000200002",
+      "name": "Video | Demo walkthrough | 16:9",
+      "adset_id": "120000000000100001",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003002"
+      }
+    },
+    {
+      "id": "120000000000200003",
+      "name": "Reel | Front desk in 20 seconds",
+      "adset_id": "120000000000100001",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003003"
+      }
+    },
+    {
+      "id": "120000000000200004",
+      "name": "Dynamic | Reminders | 4:5 + 9:16",
+      "adset_id": "120000000000100001",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003004"
+      }
+    },
+    {
+      "id": "120000000000200005",
+      "name": "Static | Testimonial card | old upload",
+      "adset_id": "120000000000100002",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003005"
+      }
+    },
+    {
+      "id": "120000000000200006",
+      "name": "Static | Growth plan | 4:5",
+      "adset_id": "120000000000100002",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1200000000003006"
+      }
+    }
+  ],
+  "adsets": [
+    {
+      "id": "120000000000100001",
+      "name": "Prospecting | Salons and clinics | US",
+      "effective_status": "ACTIVE",
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "targeting": {
+        "geo_locations": {
+          "countries": [
+            "US"
+          ]
+        },
+        "age_min": 25,
+        "age_max": 65,
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      }
+    },
+    {
+      "id": "120000000000100002",
+      "name": "Retargeting | Site visitors 30d",
+      "effective_status": "ACTIVE",
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "targeting": {
+        "geo_locations": {
+          "countries": [
+            "US"
+          ]
+        },
+        "age_min": 25,
+        "age_max": 65,
+        "custom_audiences": [
+          {
+            "id": "23800000000000101",
+            "name": "Website visitors 30d"
+          }
+        ],
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed"
+        ],
+        "instagram_positions": [
+          "stream"
+        ]
+      }
+    }
+  ],
+  "creatives": [
+    {
+      "id": "1200000000003001",
+      "name": "No-shows stat square",
+      "call_to_action_type": "SIGN_UP",
+      "object_story_spec": {
+        "page_id": "100000000000001",
+        "link_data": {
+          "link": "https://www.example.com/features/reminders/",
+          "image_hash": "img01",
+          "message": "Salons using automatic reminders see fewer empty chairs. Set yours up in ten minutes.",
+          "name": "Cut no-shows with SMS reminders"
+        }
+      }
+    },
+    {
+      "id": "1200000000003002",
+      "name": "Demo walkthrough 16:9",
+      "call_to_action_type": "LEARN_MORE",
+      "object_story_spec": {
+        "page_id": "100000000000001",
+        "video_data": {
+          "video_id": "vid01",
+          "message": "See a full booking day in under a minute: clients book online, get reminders and pay a deposit.",
+          "title": "Watch the 1-minute demo"
+        }
+      }
+    },
+    {
+      "id": "1200000000003003",
+      "name": "Front desk reel",
+      "call_to_action_type": "SIGN_UP",
+      "object_story_spec": {
+        "page_id": "100000000000001",
+        "video_data": {
+          "video_id": "vid02",
+          "message": "Your front desk answers the phone all day. Let clients book themselves at 2 a.m. instead, with reminders sent for you and deposits taken up front.",
+          "title": "Online booking in 20 seconds"
+        }
+      }
+    },
+    {
+      "id": "1200000000003004",
+      "name": "Reminders dynamic",
+      "call_to_action_type": "SIGN_UP",
+      "asset_feed_spec": {
+        "images": [
+          {
+            "hash": "img02",
+            "adlabels": [
+              {
+                "name": "feed_4x5"
+              }
+            ]
+          },
+          {
+            "hash": "img03",
+            "adlabels": [
+              {
+                "name": "vertical_9x16"
+              }
+            ]
+          }
+        ],
+        "bodies": [
+          {
+            "text": "Reminders go out by text and email, so clients turn up."
+          },
+          {
+            "text": "Fewer no-shows, a fuller calendar: reminders, deposits and online booking in one app."
+          }
+        ],
+        "titles": [
+          {
+            "text": "Automatic SMS reminders"
+          },
+          {
+            "text": "Reminders that fill your calendar"
+          }
+        ],
+        "link_urls": [
+          {
+            "website_url": "https://www.example.com/features/reminders/"
+          }
+        ],
+        "ad_formats": [
+          "SINGLE_IMAGE"
+        ],
+        "asset_customization_rules": [
+          {
+            "customization_spec": {
+              "publisher_platforms": [
+                "facebook",
+                "instagram"
+              ],
+              "facebook_positions": [
+                "feed"
+              ],
+              "instagram_positions": [
+                "stream"
+              ]
+            },
+            "image_label": {
+              "name": "feed_4x5"
+            }
+          },
+          {
+            "customization_spec": {
+              "publisher_platforms": [
+                "facebook",
+                "instagram"
+              ],
+              "facebook_positions": [
+                "story",
+                "facebook_reels"
+              ],
+              "instagram_positions": [
+                "story",
+                "reels"
+              ]
+            },
+            "image_label": {
+              "name": "vertical_9x16"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "1200000000003005",
+      "name": "Testimonial card",
+      "call_to_action_type": "SIGN_UP",
+      "object_story_spec": {
+        "page_id": "100000000000001",
+        "link_data": {
+          "link": "https://www.example.com/pricing/",
+          "image_hash": "img04",
+          "message": "\"We stopped chasing clients for deposits.\" Jordan, salon owner",
+          "name": "Start booking online"
+        }
+      }
+    },
+    {
+      "id": "1200000000003006",
+      "name": "Growth plan 4:5",
+      "call_to_action_type": "SIGN_UP",
+      "object_story_spec": {
+        "page_id": "100000000000001",
+        "link_data": {
+          "link": "https://www.example.com/pricing/",
+          "image_hash": "img05",
+          "message": "Come back and finish setting up. Your booking page is one step away.",
+          "name": "Finish your booking page"
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "hash": "img01",
+      "name": "no-shows-square.png",
+      "width": 1080,
+      "height": 1080,
+      "status": "ACTIVE"
+    },
+    {
+      "hash": "img02",
+      "name": "reminders-4x5.png",
+      "width": 1440,
+      "height": 1800,
+      "status": "ACTIVE"
+    },
+    {
+      "hash": "img03",
+      "name": "reminders-9x16.png",
+      "width": 1440,
+      "height": 2560,
+      "status": "ACTIVE"
+    },
+    {
+      "hash": "img04",
+      "name": "testimonial-card-old.jpg",
+      "width": 480,
+      "height": 600,
+      "status": "ACTIVE"
+    },
+    {
+      "hash": "img05",
+      "name": "growth-plan-4x5.png",
+      "width": 1080,
+      "height": 1350,
+      "status": "ACTIVE"
+    }
+  ],
+  "videos": [
+    {
+      "id": "vid01",
+      "title": "demo-walkthrough-16x9.mp4",
+      "length": 42.0,
+      "status": {
+        "video_status": "ready"
+      },
+      "format": [
+        {
+          "filter": "130x130",
+          "width": 130,
+          "height": 73
+        },
+        {
+          "filter": "native",
+          "width": 1920,
+          "height": 1080
+        }
+      ]
+    },
+    {
+      "id": "vid02",
+      "title": "front-desk-reel.mp4",
+      "length": 22.5,
+      "status": {
+        "video_status": "ready"
+      },
+      "format": [
+        {
+          "filter": "130x130",
+          "width": 73,
+          "height": 130
+        },
+        {
+          "filter": "native",
+          "width": 1080,
+          "height": 1920
+        }
+      ]
+    }
+  ],
+  "uploaded_frames": [
+    {
+      "ad_id": "120000000000200003",
+      "file": "front-desk-reel-0m04s.png",
+      "at": "0:04",
+      "width": 1080,
+      "height": 1920,
+      "elements_read_from_frame": [
+        {
+          "type": "logo",
+          "box": [
+            40,
+            60,
+            220,
+            90
+          ]
+        },
+        {
+          "type": "on-screen headline",
+          "text": "Fewer no-shows",
+          "box": [
+            140,
+            520,
+            800,
+            200
+          ]
+        },
+        {
+          "type": "face",
+          "box": [
+            300,
+            760,
+            480,
+            520
+          ]
+        },
+        {
+          "type": "caption",
+          "text": "Clients book themselves, even at 2 a.m.",
+          "box": [
+            90,
+            1380,
+            900,
+            160
+          ]
+        }
+      ]
+    }
+  ]
+}

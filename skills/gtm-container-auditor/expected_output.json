@@ -1,0 +1,1210 @@
+{
+  "header": {
+    "account": "6000000001",
+    "container": "GTM-EX4MPL3 (www.example.com, web)",
+    "website": "https://www.example.com",
+    "run_date": "2026-10-28",
+    "live_version": {
+      "id": 9,
+      "name": "Ads conversion update",
+      "published_about": "2026-10-21"
+    },
+    "workspaces": 2,
+    "grade": 61,
+    "rating": "at risk",
+    "eea_or_uk_visitors": "yes (UK)"
+  },
+  "scorecard": [
+    {
+      "area": "Installation and live state",
+      "result": "pass",
+      "key_number": "GTM-EX4MPL3 in the page, 11 live tags",
+      "why": "The home page loads this container, the live version has tags, and no tracking id is hard-coded around it."
+    },
+    {
+      "area": "Inventory and cleanup",
+      "result": "warn",
+      "key_number": "2 dead tags of 11 (18.2%), 2 unused triggers, 1 unused variable",
+      "why": "2 of 11 live tags are dead (18.2%, under the 20% fail line), and 3 triggers and variables are unused."
+    },
+    {
+      "area": "Trigger logic",
+      "result": "fail",
+      "key_number": "1 fail, 1 warn",
+      "why": "The Google Ads sign-up conversion fires on All Pages, and the GA4 contact form event fires on every form."
+    },
+    {
+      "area": "Consent Mode",
+      "result": "fail",
+      "key_number": "2 non-Google tags with no consent setting",
+      "why": "The cookie banner loads first on Consent Initialization, but with UK visitors two Custom HTML tags have no consent setting."
+    },
+    {
+      "area": "Naming and organisation",
+      "result": "pass",
+      "key_number": "90.9% of tags follow the house pattern; 6 of 11 in folders",
+      "why": "The house pattern is three parts split by ' - ' (10 of 11 tags); no default names."
+    },
+    {
+      "area": "Version history",
+      "result": "warn",
+      "key_number": "3 of 9 versions unnamed; 1 tag rebuilt in version 9",
+      "why": "Version 9 removed 'Ads - Conversion - Sign-up' (id 98) and added a new one (id 104): it was rebuilt, and its trigger did not survive."
+    },
+    {
+      "area": "Workspaces and conflicts",
+      "result": "warn",
+      "key_number": "2 workspaces, 0 conflicts, 1 stale",
+      "why": "No merge conflicts or overlap; 'Q3 promo banner' has unpublished changes from 76 days ago."
+    }
+  ],
+  "grade_math": [
+    "Installation and live state: pass, -0",
+    "Inventory and cleanup: warn, -5",
+    "Trigger logic: fail, -12",
+    "Consent Mode: fail, -12",
+    "Naming and organisation: pass, -0",
+    "Version history: warn, -5",
+    "Workspaces and conflicts: warn, -5",
+    "total: 100 - 39 = 61 (at risk)"
+  ],
+  "top_fixes": [
+    {
+      "rank": 1,
+      "area": "Consent Mode",
+      "result": "fail",
+      "tags_affected": 2,
+      "fix": "Add a consent check to the Meta pixel; the old chat widget never fires (no trigger), so delete it with the cleanup list",
+      "evidence": "get_live_version: Meta - Pixel - Base (id 106, html); Old chat widget (id 109, html): consentSettings missing, and the site has UK visitors",
+      "who": "I can do this now (update_tag with consentSettings ad_storage for the Meta pixel)"
+    },
+    {
+      "rank": 2,
+      "area": "Trigger logic",
+      "result": "fail",
+      "tags_affected": 1,
+      "fix": "Point 'Ads - Conversion - Sign-up' back at 'PV - Thank You' (13) instead of All Pages",
+      "evidence": "get_live_version: Ads - Conversion - Sign-up (id 104, awct) fires on All Pages (2147479553); get_version 8: the old tag (id 98) fired on 'PV - Thank You' (13)",
+      "who": "I can do this now (update_tag with firingTriggerId 13, in a workspace you pick; then you preview and publish)"
+    },
+    {
+      "rank": 3,
+      "area": "Inventory and cleanup",
+      "result": "warn",
+      "tags_affected": 2,
+      "fix": "Delete the dead tags and unused entities in the cleanup list",
+      "evidence": "2 dead tags, 3 unused triggers and variables",
+      "who": "do this in Tag Manager (this skill never deletes)"
+    },
+    {
+      "rank": 4,
+      "area": "Trigger logic",
+      "result": "warn",
+      "tags_affected": 1,
+      "fix": "Filter 'Form - All Forms' to the contact form, or replace contact_form with generate_lead fired on confirmed success",
+      "evidence": "GA4 - Event - contact_form (id 103) fires on Form - All Forms (12, formSubmission, no filter)",
+      "who": "do this in Tag Manager once you know the contact form's Form ID, or ask me to draft it"
+    },
+    {
+      "rank": 5,
+      "area": "Workspaces and conflicts",
+      "result": "warn",
+      "tags_affected": 1,
+      "fix": "Publish or delete 'Q3 promo banner'",
+      "evidence": "'Q3 promo banner': 2 changes, last saved about 2026-08-12 (76 days ago)",
+      "who": "do this in Tag Manager"
+    }
+  ],
+  "installation_checks": [
+    {
+      "check": "The site loads this container",
+      "result": "pass",
+      "evidence": "home page: GTM-EX4MPL3; container publicId GTM-EX4MPL3"
+    },
+    {
+      "check": "Something is published",
+      "result": "pass",
+      "evidence": "get_live_version: version 9, 11 tags, 4 triggers, 5 variables"
+    },
+    {
+      "check": "Tags outside the container",
+      "result": "pass",
+      "evidence": "no G-, AW- or UA- id hard-coded in the page"
+    },
+    {
+      "check": "Retired tracking",
+      "result": "pass",
+      "evidence": "no UA- id in the page and no ua tag in the live version"
+    },
+    {
+      "check": "Unpublished version",
+      "result": "information",
+      "evidence": "get_latest_version_header: version 9; live is version 9; nothing waiting"
+    }
+  ],
+  "trigger_findings": [
+    {
+      "check": "Conversion tags on every page",
+      "result": "fail",
+      "tag": "Ads - Conversion - Sign-up (id 104, awct)",
+      "trigger": "All Pages (2147479553)",
+      "evidence": "get_live_version: firingTriggerId 2147479553; it counts a sign-up conversion on every page view"
+    },
+    {
+      "check": "Unfiltered click or form triggers",
+      "result": "warn",
+      "tag": "GA4 - Event - contact_form (id 103)",
+      "trigger": "Form - All Forms (12, formSubmission, no filter)",
+      "evidence": "the tag fires on every form submit on the site, including newsletter and search forms"
+    }
+  ],
+  "consent_findings": [
+    {
+      "check": "Consent defaults load first",
+      "result": "pass",
+      "evidence": "Consent - Template - Cookie Banner (cvt_20000001_7) fires on Consent Initialization"
+    },
+    {
+      "check": "Non-Google tags with no consent setting",
+      "result": "fail",
+      "tags": [
+        "Meta - Pixel - Base (id 106, html)",
+        "Old chat widget (id 109, html)"
+      ]
+    },
+    {
+      "check": "Marked \"not needed\"",
+      "result": "information",
+      "tags": [
+        "none"
+      ]
+    }
+  ],
+  "naming": {
+    "house_pattern": "split on ' - ', 3 parts",
+    "share_following": 90.9,
+    "default_names": [],
+    "tags_in_folders": 6,
+    "proposed_names": [
+      {
+        "now": "Old chat widget",
+        "proposed": "Chat - HTML - Old Widget"
+      }
+    ]
+  },
+  "cleanup_list": [
+    {
+      "kind": "tag",
+      "id": "108",
+      "name": "Hotjar - Pixel - Base",
+      "type": "html",
+      "reason": "paused",
+      "dead_tag": true
+    },
+    {
+      "kind": "tag",
+      "id": "109",
+      "name": "Old chat widget",
+      "type": "html",
+      "reason": "no firing trigger",
+      "dead_tag": true
+    },
+    {
+      "kind": "trigger",
+      "id": "13",
+      "name": "PV - Thank You",
+      "type": "pageview",
+      "reason": "no tag fires or blocks on it",
+      "dead_tag": false
+    },
+    {
+      "kind": "trigger",
+      "id": "14",
+      "name": "Click - Old Banner",
+      "type": "click",
+      "reason": "no tag fires or blocks on it",
+      "dead_tag": false
+    },
+    {
+      "kind": "variable",
+      "id": "6",
+      "name": "DLV - plan",
+      "type": "v",
+      "reason": "its {{name}} appears in no live tag, trigger or variable",
+      "dead_tag": false
+    }
+  ],
+  "change_log": {
+    "versions": [
+      {
+        "version": 1,
+        "name": "Initial setup",
+        "tags": 3,
+        "triggers": 1,
+        "variables": 2,
+        "live": false
+      },
+      {
+        "version": 2,
+        "name": "(no name)",
+        "tags": 4,
+        "triggers": 2,
+        "variables": 2,
+        "live": false
+      },
+      {
+        "version": 3,
+        "name": "GA4 sign_up event",
+        "tags": 5,
+        "triggers": 3,
+        "variables": 3,
+        "live": false
+      },
+      {
+        "version": 4,
+        "name": "(no name)",
+        "tags": 6,
+        "triggers": 3,
+        "variables": 3,
+        "live": false
+      },
+      {
+        "version": 5,
+        "name": "Consent banner",
+        "tags": 8,
+        "triggers": 3,
+        "variables": 4,
+        "live": false
+      },
+      {
+        "version": 6,
+        "name": "LinkedIn and TikTok pixels",
+        "tags": 10,
+        "triggers": 4,
+        "variables": 4,
+        "live": false
+      },
+      {
+        "version": 7,
+        "name": "(no name)",
+        "tags": 11,
+        "triggers": 4,
+        "variables": 4,
+        "live": false
+      },
+      {
+        "version": 8,
+        "name": "Hotjar paused",
+        "tags": 11,
+        "triggers": 4,
+        "variables": 4,
+        "live": false
+      },
+      {
+        "version": 9,
+        "name": "Ads conversion update",
+        "tags": 11,
+        "triggers": 4,
+        "variables": 5,
+        "live": true
+      }
+    ],
+    "live_vs_previous": [
+      {
+        "entity": "tag",
+        "id": "104",
+        "name": "Ads - Conversion - Sign-up",
+        "change": "added"
+      },
+      {
+        "entity": "tag",
+        "id": "98",
+        "name": "Ads - Conversion - Sign-up",
+        "change": "removed"
+      },
+      {
+        "entity": "variable",
+        "id": "6",
+        "name": "DLV - plan",
+        "change": "added"
+      }
+    ],
+    "rebuilt": [
+      {
+        "name": "Ads - Conversion - Sign-up",
+        "old_id": "98",
+        "new_id": "104",
+        "old_trigger": "PV - Thank You",
+        "new_trigger": "All Pages"
+      }
+    ]
+  },
+  "workspaces": [
+    {
+      "name": "Default Workspace",
+      "last_saved_about": "2026-10-21",
+      "changes": 0,
+      "conflicts": 0
+    },
+    {
+      "name": "Q3 promo banner",
+      "last_saved_about": "2026-08-12",
+      "changes": 2,
+      "conflicts": 0
+    }
+  ],
+  "server_side_readiness": {
+    "summary": "not started",
+    "steps": [
+      {
+        "step": "A server container exists",
+        "status": "missing",
+        "evidence": "get_containers: 1 container, usage context web"
+      },
+      {
+        "step": "It has a tagging URL",
+        "status": "missing",
+        "evidence": "no server container"
+      },
+      {
+        "step": "It can receive GA4 data",
+        "status": "missing",
+        "evidence": "no server container"
+      },
+      {
+        "step": "The web container sends to it",
+        "status": "missing",
+        "evidence": "Google Tag - Config - GA4 has no server_container_url setting"
+      },
+      {
+        "step": "What would move",
+        "status": "information",
+        "evidence": "1 cvt_20000001_9, 4 html (non-Google tags by type)"
+      }
+    ],
+    "out_of_scope": "hosting, cost and data-protection review"
+  },
+  "build_mode": {
+    "inventory": {
+      "google_tag": "Google Tag - Config - GA4 (id 101, googtag) on Initialization - All Pages, measurement id from {{Const - GA4 ID}} = G-AB12CD34EF, which matches the GA4 web stream for https://www.example.com",
+      "ga4_events_in_container": [
+        "contact_form",
+        "sign_up"
+      ],
+      "enhanced_measurement_on": [
+        "scrolls",
+        "outboundClicks",
+        "siteSearch",
+        "videoEngagement",
+        "fileDownloads",
+        "pageChanges"
+      ],
+      "enhanced_measurement_off": [
+        "formInteractions"
+      ],
+      "house_names": "tags '<Tool> - <Type> - <Detail>', triggers '<Type> - <Detail>', variables '<Type> - <name>'",
+      "custom_dimensions_registered": [
+        "industry",
+        "plan"
+      ],
+      "key_events": [
+        "sign_up",
+        "purchase"
+      ]
+    },
+    "plan": [
+      {
+        "item": "Clicks on the 'Book a demo' button in the header",
+        "status": "new",
+        "event": "cta_click",
+        "method": "Link Click trigger filtered on Click URL contains /demo/; the button is a plain link, so no site code"
+      },
+      {
+        "item": "Demo bookings made in the embedded scheduling widget on /demo/",
+        "status": "new",
+        "event": "generate_lead",
+        "method": "the widget is an iframe from another domain, so Tag Manager can't see inside it. A listener tag on /demo/ waits for the widget's 'examplecal.booking_confirmed' message from https://examplecal.example and pushes generate_lead to the data layer. It fires on the confirmed booking, not on a click in the widget."
+      },
+      {
+        "item": "Downloads of the pricing guide PDF",
+        "status": "already tracked",
+        "event": "file_download",
+        "method": "GA4 enhanced measurement (file downloads: on) already sends file_download for .pdf links; building a tag would count each download twice"
+      },
+      {
+        "item": "Plays of the product tour video on the home page",
+        "status": "already tracked",
+        "event": "video_start, video_progress, video_complete",
+        "method": "GA4 enhanced measurement (video engagement: on) sends these for YouTube embeds with JavaScript API support; no tag. The preview check confirms it, and the fix if it fails is enablejsapi=1 on the embed URL"
+      },
+      {
+        "item": "How far people scroll on blog posts (25, 50 and 75 percent)",
+        "status": "new",
+        "event": "scroll",
+        "method": "enhanced measurement already sends scroll at 90%, so only 25, 50, 75 are built: a Scroll Depth trigger limited to /blog/ pages sends the same scroll event with percent_scrolled"
+      },
+      {
+        "item": "The jump from the pricing page to checkout on the app domain",
+        "status": "new, outside Tag Manager",
+        "event": "none (a setting, not an event)",
+        "method": "add example.com and app.example.net under GA4 Admin > Data streams > www.example.com > Configure tag settings > Configure your domains. The connector has no action for this setting, so it is yours to do. For Google Ads, turn on linking across domains in 'Ads - Conversion - Linker' (id 105) with app.example.net."
+      },
+      {
+        "item": "Paid plan purchases on the app's order confirmation page",
+        "status": "new",
+        "event": "purchase",
+        "method": "a data layer push from the app when the payment is confirmed, then a Custom Event trigger and a GA4 event tag that reads the ecommerce object. The app domain loads the same container."
+      }
+    ],
+    "ga4_limits": [
+      {
+        "event": "cta_click",
+        "name_length": 9,
+        "parameters": 2,
+        "longest_parameter_name": 8,
+        "result": "pass",
+        "problems": [],
+        "note": "cta_text comes from Click Text; GA4 cuts a text value at 100 characters, which a header button never reaches"
+      },
+      {
+        "event": "generate_lead",
+        "name_length": 13,
+        "parameters": 1,
+        "longest_parameter_name": 11,
+        "result": "pass",
+        "problems": []
+      },
+      {
+        "event": "scroll",
+        "name_length": 6,
+        "parameters": 1,
+        "longest_parameter_name": 16,
+        "result": "pass",
+        "problems": []
+      },
+      {
+        "event": "purchase",
+        "name_length": 8,
+        "parameters": 4,
+        "longest_parameter_name": 14,
+        "result": "pass",
+        "problems": []
+      }
+    ],
+    "payloads": [
+      {
+        "step": 1,
+        "what": "New workspace for the build",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "action": "create_workspace",
+          "name": "Tracking build 2026-10-28",
+          "description": "cta_click, generate_lead, scroll, purchase"
+        },
+        "why": "keeps the build apart from 'Q3 promo banner', which has unpublished changes. It makes 3 workspaces, the most a standard container allows."
+      },
+      {
+        "step": 2,
+        "what": "Turn on the built-in variables the new triggers read",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "enable_built_in_variable",
+          "type": [
+            "clickText",
+            "scrollDepthThreshold"
+          ]
+        },
+        "why": "get_built_in_variables: clickUrl, pagePath are on; clickText, scrollDepthThreshold are not"
+      },
+      {
+        "step": 3,
+        "what": "Data layer variable for lead_source",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_variable",
+          "name": "DLV - lead_source",
+          "type": "v",
+          "parameter": [
+            {
+              "type": "integer",
+              "key": "dataLayerVersion",
+              "value": "2"
+            },
+            {
+              "type": "template",
+              "key": "name",
+              "value": "lead_source"
+            }
+          ]
+        },
+        "why": "get_variables: no variable reads 'lead_source'. The purchase tag reads the ecommerce object directly, so it needs none."
+      },
+      {
+        "step": 4,
+        "what": "Trigger: clicks on links to /demo/",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_trigger",
+          "name": "Link - Book a demo",
+          "type": "linkClick",
+          "filter": [
+            {
+              "type": "contains",
+              "parameter": [
+                {
+                  "type": "template",
+                  "key": "arg0",
+                  "value": "{{Click URL}}"
+                },
+                {
+                  "type": "template",
+                  "key": "arg1",
+                  "value": "/demo/"
+                }
+              ]
+            }
+          ],
+          "waitForTags": {
+            "type": "boolean",
+            "value": "false"
+          },
+          "checkValidation": {
+            "type": "boolean",
+            "value": "false"
+          }
+        },
+        "why": "filtered, so it never fires on every link (area 3 would flag it)"
+      },
+      {
+        "step": 5,
+        "what": "Trigger: the demo page loads",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_trigger",
+          "name": "PV - Demo page",
+          "type": "pageview",
+          "filter": [
+            {
+              "type": "equals",
+              "parameter": [
+                {
+                  "type": "template",
+                  "key": "arg0",
+                  "value": "{{Page Path}}"
+                },
+                {
+                  "type": "template",
+                  "key": "arg1",
+                  "value": "/demo/"
+                }
+              ]
+            }
+          ]
+        },
+        "why": "the listener only needs to run where the widget is"
+      },
+      {
+        "step": 6,
+        "what": "Trigger: generate_lead pushed by the listener",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_trigger",
+          "name": "CE - generate_lead",
+          "type": "customEvent",
+          "customEventFilter": [
+            {
+              "type": "equals",
+              "parameter": [
+                {
+                  "type": "template",
+                  "key": "arg0",
+                  "value": "{{_event}}"
+                },
+                {
+                  "type": "template",
+                  "key": "arg1",
+                  "value": "generate_lead"
+                }
+              ]
+            }
+          ]
+        },
+        "why": "matches the container's 'CE - <event>' trigger names"
+      },
+      {
+        "step": 7,
+        "what": "Trigger: scroll depth on blog posts",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_trigger",
+          "name": "Scroll - Blog 25 50 75",
+          "type": "scrollDepth",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "verticalThresholdUnits",
+              "value": "PERCENT"
+            },
+            {
+              "type": "template",
+              "key": "verticalThresholdsPercent",
+              "value": "25,50,75"
+            },
+            {
+              "type": "boolean",
+              "key": "verticalThresholdOn",
+              "value": "true"
+            },
+            {
+              "type": "boolean",
+              "key": "horizontalThresholdOn",
+              "value": "false"
+            },
+            {
+              "type": "template",
+              "key": "triggerStartOption",
+              "value": "WINDOW_LOAD"
+            }
+          ],
+          "filter": [
+            {
+              "type": "startsWith",
+              "parameter": [
+                {
+                  "type": "template",
+                  "key": "arg0",
+                  "value": "{{Page Path}}"
+                },
+                {
+                  "type": "template",
+                  "key": "arg1",
+                  "value": "/blog/"
+                }
+              ]
+            }
+          ]
+        },
+        "why": "90 is left to enhanced measurement, so no threshold is counted twice. Check the saved trigger in Tag Manager before Preview: the scroll settings are trigger parameters this run could not test with a write."
+      },
+      {
+        "step": 8,
+        "what": "Trigger: purchase pushed by the app",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_trigger",
+          "name": "CE - purchase",
+          "type": "customEvent",
+          "customEventFilter": [
+            {
+              "type": "equals",
+              "parameter": [
+                {
+                  "type": "template",
+                  "key": "arg0",
+                  "value": "{{_event}}"
+                },
+                {
+                  "type": "template",
+                  "key": "arg1",
+                  "value": "purchase"
+                }
+              ]
+            }
+          ]
+        },
+        "why": "one trigger per pushed event"
+      },
+      {
+        "step": 9,
+        "what": "Listener tag for the scheduling widget",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_tag",
+          "name": "Booking - HTML - Widget Listener",
+          "type": "html",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "html",
+              "value": "<script>\nwindow.addEventListener('message', function (e) {\n  if (e.origin !== 'https://examplecal.example') return;\n  if (!e.data || e.data.event !== 'examplecal.booking_confirmed') return;\n  window.dataLayer = window.dataLayer || [];\n  window.dataLayer.push({event: 'generate_lead', lead_source: 'demo_widget'});\n});\n</script>"
+            },
+            {
+              "type": "boolean",
+              "key": "supportDocumentWrite",
+              "value": "false"
+            }
+          ],
+          "firingTriggerId": [
+            "<trigger id from step 5>"
+          ],
+          "consentSettings": {
+            "consentStatus": "notNeeded"
+          }
+        },
+        "why": "it sets no cookies and sends nothing, so its consent setting is 'not needed'; the consent area will list it for you to confirm. It checks the message's origin, so no other frame can fake a lead."
+      },
+      {
+        "step": 10,
+        "what": "GA4 event tag: cta_click",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_tag",
+          "name": "GA4 - Event - cta_click",
+          "type": "gaawe",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "eventName",
+              "value": "cta_click"
+            },
+            {
+              "type": "template",
+              "key": "measurementIdOverride",
+              "value": "{{Const - GA4 ID}}"
+            },
+            {
+              "type": "list",
+              "key": "eventSettingsTable",
+              "list": [
+                {
+                  "type": "map",
+                  "map": [
+                    {
+                      "type": "template",
+                      "key": "parameter",
+                      "value": "cta_text"
+                    },
+                    {
+                      "type": "template",
+                      "key": "parameterValue",
+                      "value": "{{Click Text}}"
+                    }
+                  ]
+                },
+                {
+                  "type": "map",
+                  "map": [
+                    {
+                      "type": "template",
+                      "key": "parameter",
+                      "value": "link_url"
+                    },
+                    {
+                      "type": "template",
+                      "key": "parameterValue",
+                      "value": "{{Click URL}}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "firingTriggerId": [
+            "<trigger id from step 4>"
+          ]
+        },
+        "why": "measurement id from {{Const - GA4 ID}}, the variable the Google tag (id 101) already uses: no second configuration tag"
+      },
+      {
+        "step": 11,
+        "what": "GA4 event tag: generate_lead",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_tag",
+          "name": "GA4 - Event - generate_lead",
+          "type": "gaawe",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "eventName",
+              "value": "generate_lead"
+            },
+            {
+              "type": "template",
+              "key": "measurementIdOverride",
+              "value": "{{Const - GA4 ID}}"
+            },
+            {
+              "type": "list",
+              "key": "eventSettingsTable",
+              "list": [
+                {
+                  "type": "map",
+                  "map": [
+                    {
+                      "type": "template",
+                      "key": "parameter",
+                      "value": "lead_source"
+                    },
+                    {
+                      "type": "template",
+                      "key": "parameterValue",
+                      "value": "{{DLV - lead_source}}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "firingTriggerId": [
+            "<trigger id from step 6>"
+          ]
+        },
+        "why": "GA4's recommended lead event name, so it can become a key event without mapping"
+      },
+      {
+        "step": 12,
+        "what": "GA4 event tag: scroll",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_tag",
+          "name": "GA4 - Event - scroll",
+          "type": "gaawe",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "eventName",
+              "value": "scroll"
+            },
+            {
+              "type": "template",
+              "key": "measurementIdOverride",
+              "value": "{{Const - GA4 ID}}"
+            },
+            {
+              "type": "list",
+              "key": "eventSettingsTable",
+              "list": [
+                {
+                  "type": "map",
+                  "map": [
+                    {
+                      "type": "template",
+                      "key": "parameter",
+                      "value": "percent_scrolled"
+                    },
+                    {
+                      "type": "template",
+                      "key": "parameterValue",
+                      "value": "{{Scroll Depth Threshold}}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "firingTriggerId": [
+            "<trigger id from step 7>"
+          ]
+        },
+        "why": "same event name and parameter as enhanced measurement's 90% scroll, so one GA4 report shows 25, 50, 75 and 90"
+      },
+      {
+        "step": 13,
+        "what": "GA4 event tag: purchase",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "create_tag",
+          "name": "GA4 - Event - purchase",
+          "type": "gaawe",
+          "parameter": [
+            {
+              "type": "template",
+              "key": "eventName",
+              "value": "purchase"
+            },
+            {
+              "type": "template",
+              "key": "measurementIdOverride",
+              "value": "{{Const - GA4 ID}}"
+            },
+            {
+              "type": "boolean",
+              "key": "sendEcommerceData",
+              "value": "true"
+            },
+            {
+              "type": "template",
+              "key": "getEcommerceDataFrom",
+              "value": "dataLayer"
+            }
+          ],
+          "firingTriggerId": [
+            "<trigger id from step 8>"
+          ]
+        },
+        "why": "reads transaction_id, value, currency and items from the ecommerce object, so no data layer variables are needed"
+      },
+      {
+        "step": 14,
+        "what": "File the new entities in the existing GA4 folder",
+        "status": "not run",
+        "payload": {
+          "platform": "google-tag-manager",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "account_id": "6000000001",
+          "container_id": "20000001",
+          "gtm_workspace_id": "<gtm_workspace_id returned by step 1>",
+          "action": "move_entities_to_folder",
+          "folder_id": "301",
+          "tagId": [
+            "<tag ids from steps 10 to 13>"
+          ],
+          "triggerId": [
+            "<trigger ids from steps 4, 6, 7 and 8>"
+          ],
+          "variableId": [
+            "<variable id from step 3>"
+          ]
+        },
+        "why": "get_folders: 'GA4' (id 301) already holds the GA4 tags; the listener and its page view trigger stay outside it. Check the id field names in actions_details before running."
+      }
+    ],
+    "ga4_payloads": [
+      {
+        "what": "Custom dimension for cta_text",
+        "status": "not run",
+        "payload": {
+          "platform": "google-analytics",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "property_id": "properties/123456789",
+          "action": "create_custom_dimension",
+          "parameter_name": "cta_text",
+          "display_name": "CTA text",
+          "scope": "EVENT"
+        },
+        "why": "list_custom_dimensions: cta_text isn't registered, so GA4 reports wouldn't show it"
+      },
+      {
+        "what": "Custom dimension for lead_source",
+        "status": "not run",
+        "payload": {
+          "platform": "google-analytics",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "property_id": "properties/123456789",
+          "action": "create_custom_dimension",
+          "parameter_name": "lead_source",
+          "display_name": "Lead source",
+          "scope": "EVENT"
+        },
+        "why": "list_custom_dimensions: lead_source isn't registered, so GA4 reports wouldn't show it"
+      },
+      {
+        "what": "Key event: generate_lead",
+        "status": "not run",
+        "payload": {
+          "platform": "google-analytics",
+          "workspace_id": "<workspace_id>",
+          "brand_id": "<brand_id>",
+          "property_id": "properties/123456789",
+          "action": "create_key_event",
+          "event_name": "generate_lead",
+          "counting_method": "ONCE_PER_EVENT"
+        },
+        "why": "list_key_events: sign_up, purchase; generate_lead is not one yet. Counted once per event: each booking is a separate lead"
+      }
+    ],
+    "for_the_developer": [
+      {
+        "event": "purchase",
+        "where": "https://app.example.net/checkout/success, in the code that runs once the payment is confirmed",
+        "when": "once per order: set a flag on the order so a reload of the confirmation page doesn't push it again",
+        "code": "window.dataLayer = window.dataLayer || [];\nwindow.dataLayer.push({ecommerce: null});  // clear the previous ecommerce object\nwindow.dataLayer.push({\n  event: 'purchase',\n  ecommerce: {\n    transaction_id: order.id,       // the app's order id, e.g. 'ord_10482'\n    value: order.total,             // e.g. 49.00 for the Growth plan\n    currency: order.currency,       // e.g. 'USD'\n    items: [{item_id: order.planId, item_name: order.planName, price: order.total, quantity: 1}]\n  }\n});",
+        "keys_the_tag_reads": [
+          "ecommerce.transaction_id",
+          "ecommerce.value",
+          "ecommerce.currency",
+          "ecommerce.items"
+        ]
+      },
+      {
+        "event": "generate_lead",
+        "where": "no site code: the listener tag in step 9 makes this push",
+        "when": "when the widget confirms a booking",
+        "code": "window.dataLayer.push({event: 'generate_lead', lead_source: 'demo_widget'});",
+        "keys_the_tag_reads": [
+          "lead_source"
+        ]
+      }
+    ],
+    "preview_checks": [
+      {
+        "item": "Book a demo clicks",
+        "event": "cta_click",
+        "steps": [
+          "In Tag Manager, open the 'Tracking build' workspace and click Preview; connect https://www.example.com/",
+          "Click 'Book a demo' in the header"
+        ],
+        "expect": "Tag Assistant's left pane shows a Link Click; 'GA4 - Event - cta_click' is under Tags Fired once; Variables shows Click Text 'Book a demo' and Click URL ending in /demo/. GA4 DebugView shows cta_click with cta_text and link_url.",
+        "if_it_fails": "no Link Click event: the button is not a link, so switch the trigger to Click - All Elements on its Click ID; tag not fired: compare Click URL with the filter"
+      },
+      {
+        "item": "Demo bookings in the widget",
+        "event": "generate_lead",
+        "steps": [
+          "In the same Preview session, go to /demo/ and check 'Booking - HTML - Widget Listener' fired on the page view",
+          "Book a test slot in the widget with an email you can find and cancel later"
+        ],
+        "expect": "a generate_lead event in the left pane after the confirmation screen, not before; 'GA4 - Event - generate_lead' fired once; DLV - lead_source is 'demo_widget'",
+        "if_it_fails": "no event: in the browser console, run window.addEventListener('message', e => console.log(e.origin, e.data)) and book again; use the origin and message the widget really sends"
+      },
+      {
+        "item": "Pricing guide downloads",
+        "event": "file_download",
+        "steps": [
+          "On /pricing/, click the pricing guide PDF link"
+        ],
+        "expect": "no Tag Manager tag fires for it (correct); GA4 DebugView shows file_download with file_extension pdf",
+        "if_it_fails": "no file_download in DebugView: check that file downloads is still on in the stream's enhanced measurement"
+      },
+      {
+        "item": "Product tour video",
+        "event": "video_start",
+        "steps": [
+          "On the home page, play the product tour video for a few seconds"
+        ],
+        "expect": "GA4 DebugView shows video_start with video_title",
+        "if_it_fails": "add enablejsapi=1 to the YouTube embed URL, or ask me to build a YouTube Video trigger instead"
+      },
+      {
+        "item": "Blog scroll depth",
+        "event": "scroll",
+        "steps": [
+          "Open any /blog/ post and scroll slowly to the bottom"
+        ],
+        "expect": "Scroll Depth events at 25%, 50%, 75%, each firing 'GA4 - Event - scroll' once; DebugView shows scroll with percent_scrolled 25, 50, 75 and then 90 from enhanced measurement",
+        "if_it_fails": "a threshold missing on a short post is normal when the page is shorter than the screen"
+      },
+      {
+        "item": "Pricing to checkout",
+        "event": "none",
+        "steps": [
+          "On /pricing/, click a plan's button to app.example.net"
+        ],
+        "expect": "the app.example.net address carries a _gl= parameter; DebugView keeps the same session across both domains",
+        "if_it_fails": "no _gl=: the domains are not saved under Configure your domains yet, or the app domain doesn't load the Google tag"
+      },
+      {
+        "item": "Purchases",
+        "event": "purchase",
+        "steps": [
+          "Connect Preview to https://app.example.net/ and buy a plan with the app's test payment method",
+          "Reload the confirmation page once"
+        ],
+        "expect": "one purchase event in the left pane with ecommerce.transaction_id, value and currency; 'GA4 - Event - purchase' fired once; after the reload, no second purchase",
+        "if_it_fails": "two purchases: the once-per-order flag is missing; value empty: the push ran before the order object was ready"
+      }
+    ],
+    "after_you_publish": [
+      "Submit the workspace in Tag Manager with a version name such as 'Tracking build 2026-10-28' (this skill never publishes)",
+      "Do the cross-domain setting in GA4 Admin before or with the publish",
+      "The next day, ask me to check: get_report for yesterday by eventName shows cta_click, generate_lead, scroll and purchase with counts"
+    ]
+  },
+  "unknowns": [
+    "Whether the widget really posts 'examplecal.booking_confirmed': the preview check for demo bookings settles it"
+  ],
+  "go_deeper": [
+    "conversion-tracking-auditor: after publishing, check that the Google Ads sign-up conversion counts again only on the thank-you page (if installed)",
+    "ga4-property-audit: check the GA4 property the new events send to (if installed)"
+  ],
+  "offered_actions": [
+    "create_workspace: New workspace for the build, not run",
+    "enable_built_in_variable: Turn on the built-in variables the new triggers read, not run",
+    "create_variable: Data layer variable for lead_source, not run",
+    "create_trigger: Trigger: clicks on links to /demo/, not run",
+    "create_trigger: Trigger: the demo page loads, not run",
+    "create_trigger: Trigger: generate_lead pushed by the listener, not run",
+    "create_trigger: Trigger: scroll depth on blog posts, not run",
+    "create_trigger: Trigger: purchase pushed by the app, not run",
+    "create_tag: Listener tag for the scheduling widget, not run",
+    "create_tag: GA4 event tag: cta_click, not run",
+    "create_tag: GA4 event tag: generate_lead, not run",
+    "create_tag: GA4 event tag: scroll, not run",
+    "create_tag: GA4 event tag: purchase, not run",
+    "move_entities_to_folder: File the new entities in the existing GA4 folder, not run",
+    "create_custom_dimension: Custom dimension for cta_text, not run",
+    "create_custom_dimension: Custom dimension for lead_source, not run",
+    "create_key_event: Key event: generate_lead, not run"
+  ]
+}

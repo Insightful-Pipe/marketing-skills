@@ -1,0 +1,799 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The Tag Manager container, its versions and workspaces, the GA4 settings and the scheduling widget are invented too.",
+  "request": "Hey Claude, I just added the \"gtm-container-auditor\" skill. Audit our Tag Manager container (we have UK visitors), then set up tracking for the seven things below. Show me everything before you change anything.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "website": "https://www.example.com",
+  "eea_or_uk_visitors": "yes (UK)",
+  "developer_available": "yes, for the app's checkout pages; the marketing site is edited in Tag Manager only",
+  "container": {
+    "publicId": "GTM-EX4MPL3",
+    "name": "www.example.com",
+    "usageContext": [
+      "web"
+    ],
+    "containerId": "20000001",
+    "accountId": "6000000001",
+    "domainName": [
+      "example.com"
+    ]
+  },
+  "home_page_tag_ids": [
+    "GTM-EX4MPL3"
+  ],
+  "live_version": {
+    "containerVersionId": "9",
+    "name": "Ads conversion update",
+    "fingerprint": "1792594800000",
+    "tag": [
+      {
+        "tagId": "101",
+        "name": "Google Tag - Config - GA4",
+        "type": "googtag",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "tagId",
+            "value": "{{Const - GA4 ID}}"
+          }
+        ],
+        "firingTriggerId": [
+          "2147479573"
+        ],
+        "parentFolderId": "301",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "102",
+        "name": "GA4 - Event - sign_up",
+        "type": "gaawe",
+        "parentFolderId": "301",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "eventName",
+            "value": "sign_up"
+          },
+          {
+            "type": "template",
+            "key": "measurementIdOverride",
+            "value": "{{Const - GA4 ID}}"
+          },
+          {
+            "type": "list",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "map",
+                "map": [
+                  {
+                    "type": "template",
+                    "key": "parameter",
+                    "value": "method"
+                  },
+                  {
+                    "type": "template",
+                    "key": "parameterValue",
+                    "value": "{{DLV - method}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "11"
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "103",
+        "name": "GA4 - Event - contact_form",
+        "type": "gaawe",
+        "parentFolderId": "301",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "eventName",
+            "value": "contact_form"
+          },
+          {
+            "type": "template",
+            "key": "measurementIdOverride",
+            "value": "{{Const - GA4 ID}}"
+          }
+        ],
+        "firingTriggerId": [
+          "12"
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "104",
+        "name": "Ads - Conversion - Sign-up",
+        "type": "awct",
+        "parentFolderId": "302",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "conversionId",
+            "value": "{{Const - Google Ads ID}}"
+          },
+          {
+            "type": "template",
+            "key": "conversionLabel",
+            "value": "AbCdEfGhIjK"
+          }
+        ],
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "fingerprint": "1792594800000"
+      },
+      {
+        "tagId": "105",
+        "name": "Ads - Conversion - Linker",
+        "type": "gclidw",
+        "parentFolderId": "302",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "106",
+        "name": "Meta - Pixel - Base",
+        "type": "html",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "<script>/* Meta Pixel base code, pixel {{Const - Meta Pixel ID}} */</script>"
+          }
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "107",
+        "name": "LinkedIn - Pixel - Insight Tag",
+        "type": "html",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "<script>/* LinkedIn Insight Tag */</script>"
+          }
+        ],
+        "consentSettings": {
+          "consentStatus": "needed",
+          "consentType": {
+            "type": "list",
+            "list": [
+              {
+                "type": "template",
+                "value": "ad_storage"
+              }
+            ]
+          }
+        },
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "108",
+        "name": "Hotjar - Pixel - Base",
+        "type": "html",
+        "paused": true,
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "<script>/* Hotjar */</script>"
+          }
+        ],
+        "consentSettings": {
+          "consentStatus": "needed",
+          "consentType": {
+            "type": "list",
+            "list": [
+              {
+                "type": "template",
+                "value": "analytics_storage"
+              }
+            ]
+          }
+        },
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "109",
+        "name": "Old chat widget",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "html",
+            "value": "<script>/* chat widget loader */</script>"
+          }
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "110",
+        "name": "Consent - Template - Cookie Banner",
+        "type": "cvt_20000001_7",
+        "firingTriggerId": [
+          "2147479572"
+        ],
+        "parentFolderId": "303",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "111",
+        "name": "TikTok - Pixel - Base",
+        "type": "cvt_20000001_9",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "consentSettings": {
+          "consentStatus": "needed",
+          "consentType": {
+            "type": "list",
+            "list": [
+              {
+                "type": "template",
+                "value": "ad_storage"
+              }
+            ]
+          }
+        },
+        "fingerprint": "1780412400000"
+      }
+    ],
+    "trigger": [
+      {
+        "triggerId": "11",
+        "name": "CE - sign_up",
+        "type": "customEvent",
+        "customEventFilter": [
+          {
+            "type": "equals",
+            "parameter": [
+              {
+                "type": "template",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "template",
+                "key": "arg1",
+                "value": "sign_up"
+              }
+            ]
+          }
+        ],
+        "parentFolderId": "301",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "12",
+        "name": "Form - All Forms",
+        "type": "formSubmission",
+        "waitForTags": {
+          "type": "boolean",
+          "value": "false"
+        },
+        "checkValidation": {
+          "type": "boolean",
+          "value": "false"
+        },
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "13",
+        "name": "PV - Thank You",
+        "type": "pageview",
+        "filter": [
+          {
+            "type": "contains",
+            "parameter": [
+              {
+                "type": "template",
+                "key": "arg0",
+                "value": "{{Page Path}}"
+              },
+              {
+                "type": "template",
+                "key": "arg1",
+                "value": "/thank-you/"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "14",
+        "name": "Click - Old Banner",
+        "type": "click",
+        "filter": [
+          {
+            "type": "equals",
+            "parameter": [
+              {
+                "type": "template",
+                "key": "arg0",
+                "value": "{{Click ID}}"
+              },
+              {
+                "type": "template",
+                "key": "arg1",
+                "value": "promo-banner"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "1780412400000"
+      }
+    ],
+    "variable": [
+      {
+        "variableId": "1",
+        "name": "Const - GA4 ID",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "value",
+            "value": "G-AB12CD34EF"
+          }
+        ],
+        "parentFolderId": "301",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "2",
+        "name": "Const - Google Ads ID",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "value",
+            "value": "123456789"
+          }
+        ],
+        "parentFolderId": "302",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "3",
+        "name": "DLV - method",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "integer",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "template",
+            "key": "name",
+            "value": "method"
+          }
+        ],
+        "parentFolderId": "301",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "4",
+        "name": "Const - Meta Pixel ID",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "template",
+            "key": "value",
+            "value": "100000000000001"
+          }
+        ],
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "6",
+        "name": "DLV - plan",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "integer",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "template",
+            "key": "name",
+            "value": "plan"
+          }
+        ],
+        "fingerprint": "1792594800000"
+      }
+    ],
+    "folder": [
+      {
+        "folderId": "301",
+        "name": "GA4"
+      },
+      {
+        "folderId": "302",
+        "name": "Google Ads"
+      },
+      {
+        "folderId": "303",
+        "name": "Consent"
+      }
+    ],
+    "customTemplate": [
+      {
+        "templateId": "7",
+        "name": "Cookie banner (gallery)",
+        "galleryReference": {
+          "owner": "example-cmp",
+          "repository": "consent-banner"
+        }
+      },
+      {
+        "templateId": "9",
+        "name": "TikTok Pixel (gallery)",
+        "galleryReference": {
+          "owner": "example-vendor",
+          "repository": "tiktok-pixel"
+        }
+      }
+    ]
+  },
+  "previous_version": {
+    "containerVersionId": "8",
+    "name": "Hotjar paused",
+    "fingerprint": "1790780400000",
+    "tag": [
+      {
+        "tagId": "101",
+        "name": "Google Tag - Config - GA4",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479573"
+        ]
+      },
+      {
+        "tagId": "102",
+        "name": "GA4 - Event - sign_up",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "11"
+        ]
+      },
+      {
+        "tagId": "103",
+        "name": "GA4 - Event - contact_form",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "12"
+        ]
+      },
+      {
+        "tagId": "105",
+        "name": "Ads - Conversion - Linker",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479553"
+        ]
+      },
+      {
+        "tagId": "106",
+        "name": "Meta - Pixel - Base",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479553"
+        ]
+      },
+      {
+        "tagId": "107",
+        "name": "LinkedIn - Pixel - Insight Tag",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479553"
+        ]
+      },
+      {
+        "tagId": "108",
+        "name": "Hotjar - Pixel - Base",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479553"
+        ]
+      },
+      {
+        "tagId": "109",
+        "name": "Old chat widget",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "tagId": "110",
+        "name": "Consent - Template - Cookie Banner",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479572"
+        ]
+      },
+      {
+        "tagId": "111",
+        "name": "TikTok - Pixel - Base",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "2147479553"
+        ]
+      },
+      {
+        "tagId": "98",
+        "name": "Ads - Conversion - Sign-up",
+        "fingerprint": "1780412400000",
+        "firingTriggerId": [
+          "13"
+        ]
+      }
+    ],
+    "trigger": [
+      {
+        "triggerId": "11",
+        "name": "CE - sign_up",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "12",
+        "name": "Form - All Forms",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "13",
+        "name": "PV - Thank You",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "triggerId": "14",
+        "name": "Click - Old Banner",
+        "fingerprint": "1780412400000"
+      }
+    ],
+    "variable": [
+      {
+        "variableId": "1",
+        "name": "Const - GA4 ID",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "2",
+        "name": "Const - Google Ads ID",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "3",
+        "name": "DLV - method",
+        "fingerprint": "1780412400000"
+      },
+      {
+        "variableId": "4",
+        "name": "Const - Meta Pixel ID",
+        "fingerprint": "1780412400000"
+      }
+    ]
+  },
+  "version_headers": [
+    {
+      "containerVersionId": "1",
+      "name": "Initial setup",
+      "numTags": 3,
+      "numTriggers": 1,
+      "numVariables": 2
+    },
+    {
+      "containerVersionId": "2",
+      "numTags": 4,
+      "numTriggers": 2,
+      "numVariables": 2
+    },
+    {
+      "containerVersionId": "3",
+      "name": "GA4 sign_up event",
+      "numTags": 5,
+      "numTriggers": 3,
+      "numVariables": 3
+    },
+    {
+      "containerVersionId": "4",
+      "numTags": 6,
+      "numTriggers": 3,
+      "numVariables": 3
+    },
+    {
+      "containerVersionId": "5",
+      "name": "Consent banner",
+      "numTags": 8,
+      "numTriggers": 3,
+      "numVariables": 4
+    },
+    {
+      "containerVersionId": "6",
+      "name": "LinkedIn and TikTok pixels",
+      "numTags": 10,
+      "numTriggers": 4,
+      "numVariables": 4
+    },
+    {
+      "containerVersionId": "7",
+      "numTags": 11,
+      "numTriggers": 4,
+      "numVariables": 4
+    },
+    {
+      "containerVersionId": "8",
+      "name": "Hotjar paused",
+      "numTags": 11,
+      "numTriggers": 4,
+      "numVariables": 4
+    },
+    {
+      "containerVersionId": "9",
+      "name": "Ads conversion update",
+      "numTags": 11,
+      "numTriggers": 4,
+      "numVariables": 5
+    }
+  ],
+  "workspaces": [
+    {
+      "workspaceId": "1",
+      "name": "Default Workspace",
+      "fingerprint": "1792594800000",
+      "status": {}
+    },
+    {
+      "workspaceId": "4",
+      "name": "Q3 promo banner",
+      "fingerprint": "1786546800000",
+      "status": {
+        "workspaceChange": [
+          {
+            "changeStatus": "added",
+            "tag": {
+              "tagId": "112",
+              "name": "Promo - HTML - Q3 Banner"
+            }
+          },
+          {
+            "changeStatus": "added",
+            "trigger": {
+              "triggerId": "15",
+              "name": "PV - Pricing"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "server_containers": [],
+  "built_in_variables_enabled": [
+    "pageUrl",
+    "pageHostname",
+    "pagePath",
+    "referrer",
+    "event",
+    "clickElement",
+    "clickClasses",
+    "clickId",
+    "clickUrl",
+    "formId",
+    "formClasses"
+  ],
+  "ga4": {
+    "web_stream": {
+      "name": "www.example.com",
+      "defaultUri": "https://www.example.com",
+      "measurementId": "G-AB12CD34EF"
+    },
+    "enhanced_measurement": {
+      "streamEnabled": true,
+      "scrollsEnabled": true,
+      "outboundClicksEnabled": true,
+      "siteSearchEnabled": true,
+      "videoEngagementEnabled": true,
+      "fileDownloadsEnabled": true,
+      "formInteractionsEnabled": false,
+      "pageChangesEnabled": true
+    },
+    "custom_dimensions": [
+      {
+        "parameterName": "industry",
+        "displayName": "Industry",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "plan",
+        "displayName": "Plan",
+        "scope": "EVENT"
+      }
+    ],
+    "key_events": [
+      "sign_up",
+      "purchase"
+    ]
+  },
+  "to_track": [
+    {
+      "id": "cta",
+      "what": "Clicks on the 'Book a demo' button in the header",
+      "page": "/ (every page header)",
+      "kind": "link click"
+    },
+    {
+      "id": "widget",
+      "what": "Demo bookings made in the embedded scheduling widget on /demo/",
+      "page": "/demo/",
+      "kind": "embedded widget",
+      "widget": {
+        "vendor": "ExampleCal (an invented scheduling tool)",
+        "origin": "https://examplecal.example",
+        "success_message": "examplecal.booking_confirmed",
+        "frame": "iframe from another domain"
+      }
+    },
+    {
+      "id": "pdf",
+      "what": "Downloads of the pricing guide PDF",
+      "page": "/pricing/",
+      "kind": "file download",
+      "link": "/files/pricing-guide.pdf"
+    },
+    {
+      "id": "video",
+      "what": "Plays of the product tour video on the home page",
+      "page": "/",
+      "kind": "video",
+      "player": "YouTube embed"
+    },
+    {
+      "id": "scroll",
+      "what": "How far people scroll on blog posts (25, 50 and 75 percent)",
+      "page": "/blog/ posts",
+      "kind": "scroll",
+      "thresholds": [
+        25,
+        50,
+        75
+      ]
+    },
+    {
+      "id": "xdomain",
+      "what": "The jump from the pricing page to checkout on the app domain",
+      "page": "/pricing/ to app.example.net",
+      "kind": "cross-domain",
+      "other_domain": "app.example.net"
+    },
+    {
+      "id": "purchase",
+      "what": "Paid plan purchases on the app's order confirmation page",
+      "page": "https://app.example.net/checkout/success",
+      "kind": "purchase",
+      "loads_same_container": true
+    }
+  ],
+  "data_pulled": [
+    "google-tag-manager: get_containers, get_container_snippet, get_live_version, get_latest_version_header, get_version_headers, get_version (versions 9 and 8), get_workspaces, get_workspace_status (2 workspaces), get_tags, get_triggers, get_variables, get_built_in_variables, get_folders, get_templates",
+    "google-analytics: list_data_streams, get_enhanced_measurement_settings, list_custom_dimensions, list_key_events",
+    "home page fetch: tag ids in the page"
+  ]
+}

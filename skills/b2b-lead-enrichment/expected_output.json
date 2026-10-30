@@ -1,0 +1,1755 @@
+{
+  "header": {
+    "source": "Google Sheet \"Inbound leads\", tab \"Inbound\" (12 lead rows)",
+    "date": "2026-10-28",
+    "icp": "Core: third-party logistics and fulfillment or warehousing and distribution. Adjacent: freight and parcel carriers. 200-2,000 employees. HQ in the United States or Canada. Technologies: warehouse management system, labor management system, RF barcode scanning, pick-to-light, timekeeping system. Excluded: shift-software.example.",
+    "calls": "26 made against a budget of 35 plus retries (14 stage A, 10 stage B, 1 stage C, 1 retry after a server error)"
+  },
+  "cleaning_summary": {
+    "rows_in": 12,
+    "invalid": 1,
+    "duplicates": 1,
+    "personal": 1,
+    "excluded": 1,
+    "leads_kept": 8,
+    "unique_companies": 7,
+    "removed_rows": [
+      {
+        "row": 3,
+        "email": "  Ops@Larkmoor-Fulfillment.example ",
+        "result": "duplicate",
+        "why": "same address as row 2 after trimming and lowercasing; merged into row 2"
+      },
+      {
+        "row": 11,
+        "email": "ops@pellham-warehousing",
+        "result": "invalid",
+        "why": "not a name@domain.tld address"
+      },
+      {
+        "row": 12,
+        "email": "night.shift.lead.example@gmail.com",
+        "result": "personal",
+        "why": "gmail.com is a free mail provider, so there is no company to enrich"
+      },
+      {
+        "row": 13,
+        "email": "hello@shift-software.example",
+        "result": "excluded",
+        "why": "own domain, on the excluded list"
+      }
+    ],
+    "grouped": [
+      {
+        "company": "Larkmoor Fulfillment",
+        "leads": [
+          "ops@larkmoor-fulfillment.example",
+          "people@larkmoor-fulfillment.example"
+        ],
+        "note": "one account, enriched once"
+      }
+    ]
+  },
+  "ranked_accounts": [
+    {
+      "rank": 1,
+      "company": "Larkmoor Fulfillment",
+      "domain": "larkmoor-fulfillment.example",
+      "leads": [
+        "ops@larkmoor-fulfillment.example",
+        "people@larkmoor-fulfillment.example"
+      ],
+      "tier": "A",
+      "score": 90,
+      "confidence": "5/5",
+      "key_fact": "Third-party logistics (3PL) and e-commerce fulfillment (core); 501-1,000 employees (LinkedIn); Series B $28M on 2026-05-19; warehouse management system named; open roles listed on the careers page (14)"
+    },
+    {
+      "rank": 2,
+      "company": "Pellham Warehousing",
+      "domain": "pellham-warehousing.example",
+      "leads": [
+        "sales@pellham-warehousing.example"
+      ],
+      "tier": "B",
+      "score": 65,
+      "confidence": "5/5",
+      "key_fact": "Contract warehousing and distribution (core); 150 employees (third-party estimate); pick-to-light named; opened a 220,000 sq ft distribution center in Bethlehem, Pennsylvania"
+    },
+    {
+      "rank": 3,
+      "company": "Vantorra Freight",
+      "domain": "vantorra-freight.example",
+      "leads": [
+        "dispatch@vantorra-freight.example"
+      ],
+      "tier": "B",
+      "score": 50,
+      "confidence": "5/5",
+      "key_fact": "Regional LTL freight carrier (adjacent); 2,600 employees (own site); RF barcode scanning named; opened a cross-dock terminal in Salt Lake City"
+    },
+    {
+      "rank": 4,
+      "company": "Thistlegate Distribution",
+      "domain": "thistlegate-distribution.example",
+      "leads": [
+        "info@thistlegate-distribution.example"
+      ],
+      "tier": "C",
+      "score": 40,
+      "confidence": "2/5 (low confidence)",
+      "key_fact": "Warehousing and distribution of industrial parts (core); headcount not published in the pages read"
+    },
+    {
+      "rank": 5,
+      "company": "Fennick Parcel",
+      "domain": "fennick-parcel.example",
+      "leads": [
+        "hello@fennick-parcel.example"
+      ],
+      "tier": "C",
+      "score": 35,
+      "confidence": "5/5",
+      "key_fact": "Regional parcel carrier (adjacent); 1,001-5,000 employees (LinkedIn); Series A $12M on 2025-02-03"
+    },
+    {
+      "rank": 6,
+      "company": "Maasbrug Logistics",
+      "domain": "maasbrug-logistics.example",
+      "leads": [
+        "hello@maasbrug-logistics.example"
+      ],
+      "tier": "D",
+      "score": 55,
+      "confidence": "3/5",
+      "key_fact": "Contract logistics and cross-border fulfillment; headquartered in Rotterdam, the Netherlands, outside the target regions"
+    },
+    {
+      "rank": 7,
+      "company": "Oaklune Living",
+      "domain": "oaklune-living.example",
+      "leads": [
+        "info@oaklune-living.example"
+      ],
+      "tier": "D",
+      "score": 0,
+      "confidence": "1/5 (low confidence)",
+      "key_fact": "Furniture and home decor retail, outside the ICP industries"
+    }
+  ],
+  "score_math": [
+    {
+      "company": "Larkmoor Fulfillment",
+      "math": "Industry 30 + Size 25 + Tech 10 + Growth 15 + Region 10 = 90",
+      "tier": "A",
+      "confidence": "5/5"
+    },
+    {
+      "company": "Pellham Warehousing",
+      "math": "Industry 30 + Size 10 + Tech 10 + Growth 5 + Region 10 = 65",
+      "tier": "B",
+      "confidence": "5/5"
+    },
+    {
+      "company": "Vantorra Freight",
+      "math": "Industry 15 + Size 10 + Tech 10 + Growth 5 + Region 10 = 50",
+      "tier": "B",
+      "confidence": "5/5"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "math": "Industry 30 + Size 0 + Tech 0 + Growth 0 + Region 10 = 40",
+      "tier": "C",
+      "confidence": "2/5 (low confidence)"
+    },
+    {
+      "company": "Fennick Parcel",
+      "math": "Industry 15 + Size 0 + Tech 0 + Growth 10 + Region 10 = 35",
+      "tier": "C",
+      "confidence": "5/5"
+    },
+    {
+      "company": "Maasbrug Logistics",
+      "math": "Industry 30 + Size 25 + Tech 0 + Growth 0 + Region 0 = 55 (ruled out after stage A: headquarters is in Rotterdam, the Netherlands, outside the target regions; Tech and Growth not checked)",
+      "tier": "D",
+      "confidence": "3/5"
+    },
+    {
+      "company": "Oaklune Living",
+      "math": "Industry 0 + Size 0 + Tech 0 + Growth 0 + Region 0 = 0 (ruled out after stage A: industry is furniture and home decor retail, outside both the core and adjacent lists; Tech and Growth not checked)",
+      "tier": "D",
+      "confidence": "1/5 (low confidence)"
+    }
+  ],
+  "account_cards": [
+    {
+      "company": "Larkmoor Fulfillment",
+      "domain": "larkmoor-fulfillment.example",
+      "tier": "A",
+      "score": 90,
+      "description": {
+        "value": "e-commerce fulfillment and 3PL warehousing for growing brands",
+        "source": "https://larkmoor-fulfillment.example/",
+        "source_kind": "own site",
+        "quote": "E-commerce fulfillment and 3PL warehousing for growing brands"
+      },
+      "industry": {
+        "value": "third-party logistics (3PL) and e-commerce fulfillment",
+        "icp_match": "core",
+        "source": "https://larkmoor-fulfillment.example/",
+        "source_kind": "own site",
+        "quote": "E-commerce fulfillment and 3PL warehousing for growing brands"
+      },
+      "headquarters": {
+        "value": "Louisville, Kentucky",
+        "source": "https://larkmoor-fulfillment.example/about/",
+        "source_kind": "own site",
+        "quote": "headquartered in Louisville, Kentucky"
+      },
+      "employees": {
+        "value": "501-1,000",
+        "size_points": 25,
+        "source": "https://www.linkedin.com/company/larkmoor-fulfillment/",
+        "source_kind": "LinkedIn",
+        "quote": "501-1,000 employees",
+        "also_seen": [
+          {
+            "value": "640",
+            "source": "https://company-data.example/larkmoor-fulfillment",
+            "source_kind": "third-party estimate",
+            "quote": "an estimated 640 employees"
+          }
+        ]
+      },
+      "founded": {
+        "value": "2012 (own site, preferred); conflicts with 2011",
+        "sources": [
+          {
+            "source": "https://larkmoor-fulfillment.example/about/",
+            "source_kind": "own site",
+            "quote": "Founded in 2012",
+            "says": "2012"
+          },
+          {
+            "source": "https://company-data.example/larkmoor-fulfillment",
+            "source_kind": "third-party estimate",
+            "quote": "was founded in 2011",
+            "says": "2011"
+          }
+        ]
+      },
+      "technologies": {
+        "icp_matches": [
+          "warehouse management system"
+        ],
+        "all_named": [
+          {
+            "value": "warehouse management system",
+            "source": "https://larkmoor-fulfillment.example/careers/inventory-control-lead/",
+            "source_kind": "own site",
+            "quote": "cycle counts in our warehouse management system (WMS)"
+          }
+        ],
+        "not_mentioned": [
+          "labor management system",
+          "RF barcode scanning",
+          "pick-to-light",
+          "timekeeping system"
+        ],
+        "note": "not mentioned in the pages read, which is not the same as not used"
+      },
+      "funding": {
+        "latest_dated_round": "Series B, $28M, 2026-05-19",
+        "source": "https://news-wire.example/2026/05/19/larkmoor-fulfillment-series-b",
+        "source_kind": "third-party estimate",
+        "quote": "Larkmoor Fulfillment closes $28 million Series B to add two fulfillment centers. LOUISVILLE, May 19, 2026.",
+        "within_24_months": true
+      },
+      "growth_signals": [
+        {
+          "value": "open roles listed on the careers page (14)",
+          "source": "https://larkmoor-fulfillment.example/careers/",
+          "source_kind": "own site",
+          "quote": "14 open roles across our four fulfillment centers"
+        }
+      ]
+    },
+    {
+      "company": "Pellham Warehousing",
+      "domain": "pellham-warehousing.example",
+      "tier": "B",
+      "score": 65,
+      "description": {
+        "value": "contract warehousing and distribution for food and beverage brands",
+        "source": "https://pellham-warehousing.example/",
+        "source_kind": "own site",
+        "quote": "Contract warehousing and distribution for food and beverage brands"
+      },
+      "industry": {
+        "value": "contract warehousing and distribution",
+        "icp_match": "core",
+        "source": "https://pellham-warehousing.example/",
+        "source_kind": "own site",
+        "quote": "Contract warehousing and distribution for food and beverage brands"
+      },
+      "headquarters": {
+        "value": "Allentown, Pennsylvania",
+        "source": "https://www.linkedin.com/company/pellham-warehousing/",
+        "source_kind": "LinkedIn",
+        "quote": "Headquarters: Allentown, Pennsylvania"
+      },
+      "employees": {
+        "value": "150",
+        "size_points": 10,
+        "source": "https://company-data.example/pellham-warehousing",
+        "source_kind": "third-party estimate",
+        "quote": "an estimated 150 employees"
+      },
+      "founded": {
+        "value": "2004",
+        "sources": [
+          {
+            "source": "https://company-data.example/pellham-warehousing",
+            "source_kind": "third-party estimate",
+            "quote": "was founded in 2004",
+            "says": "2004"
+          }
+        ]
+      },
+      "technologies": {
+        "icp_matches": [
+          "pick-to-light"
+        ],
+        "all_named": [
+          {
+            "value": "pick-to-light",
+            "source": "https://pellham-warehousing.example/careers/order-selector-second-shift/",
+            "source_kind": "own site",
+            "quote": "Pick cases to pick-to-light displays"
+          }
+        ],
+        "not_mentioned": [
+          "warehouse management system",
+          "labor management system",
+          "RF barcode scanning",
+          "timekeeping system"
+        ],
+        "note": "not mentioned in the pages read, which is not the same as not used"
+      },
+      "funding": {
+        "value": "unknown",
+        "why": "the funding call found no dated round, IPO or acquisition"
+      },
+      "growth_signals": [
+        {
+          "value": "opened a 220,000 sq ft distribution center in Bethlehem, Pennsylvania",
+          "date": "2026-07-08",
+          "source": "https://pellham-warehousing.example/news/2026/07/08/bethlehem-distribution-center/",
+          "source_kind": "own site",
+          "quote": "Pellham Warehousing opens a 220,000 square foot distribution center"
+        }
+      ]
+    },
+    {
+      "company": "Vantorra Freight",
+      "domain": "vantorra-freight.example",
+      "tier": "B",
+      "score": 50,
+      "description": {
+        "value": "regional LTL freight and final-mile delivery across the Mountain West",
+        "source": "https://vantorra-freight.example/",
+        "source_kind": "own site",
+        "quote": "Regional LTL freight and final-mile delivery across the Mountain West"
+      },
+      "industry": {
+        "value": "regional LTL freight carrier",
+        "icp_match": "adjacent",
+        "source": "https://vantorra-freight.example/",
+        "source_kind": "own site",
+        "quote": "Regional LTL freight and final-mile delivery"
+      },
+      "headquarters": {
+        "value": "Denver, Colorado",
+        "source": "https://vantorra-freight.example/about/",
+        "source_kind": "own site",
+        "quote": "based in Denver, Colorado"
+      },
+      "employees": {
+        "value": "2,600",
+        "size_points": 10,
+        "source": "https://vantorra-freight.example/about/",
+        "source_kind": "own site",
+        "quote": "Our 2,600 drivers, dock workers and staff",
+        "also_seen": [
+          {
+            "value": "1,900",
+            "source": "https://company-data.example/vantorra-freight",
+            "source_kind": "third-party estimate",
+            "quote": "an estimated 1,900 employees"
+          }
+        ]
+      },
+      "founded": {
+        "value": "1998",
+        "sources": [
+          {
+            "source": "https://vantorra-freight.example/about/",
+            "source_kind": "own site",
+            "quote": "Founded in 1998",
+            "says": "1998"
+          }
+        ]
+      },
+      "technologies": {
+        "icp_matches": [
+          "RF barcode scanning"
+        ],
+        "all_named": [
+          {
+            "value": "RF barcode scanning",
+            "source": "https://stack-directory.example/vantorra-freight",
+            "source_kind": "third-party estimate",
+            "quote": "RF barcode scanning"
+          },
+          {
+            "value": "route optimization software",
+            "source": "https://stack-directory.example/vantorra-freight",
+            "source_kind": "third-party estimate",
+            "quote": "route optimization software"
+          }
+        ],
+        "not_mentioned": [
+          "warehouse management system",
+          "labor management system",
+          "pick-to-light",
+          "timekeeping system"
+        ],
+        "note": "not mentioned in the pages read, which is not the same as not used"
+      },
+      "funding": {
+        "value": "unknown",
+        "why": "no dated round: on https://freight-news.example/vantorra-freight-raises-210-million, the headline \"Vantorra Freight raises $210 million\" has no date, and the page itself says \"total funding to $210 million across four rounds\", so the amount is a total, not a round"
+      },
+      "growth_signals": [
+        {
+          "value": "opened a cross-dock terminal in Salt Lake City",
+          "date": "2026-09-15",
+          "source": "https://vantorra-freight.example/news/2026/09/15/salt-lake-city-cross-dock/",
+          "source_kind": "own site",
+          "quote": "Vantorra Freight opens a cross-dock terminal in Salt Lake City"
+        }
+      ]
+    }
+  ],
+  "decision_maker_map": [
+    {
+      "company": "Larkmoor Fulfillment",
+      "leadership_call": "read https://larkmoor-fulfillment.example/about/leadership/ (own site), which lists 3 executives with their titles",
+      "roles": [
+        {
+          "buying_role": "Economic buyer",
+          "people": [
+            {
+              "name": "Imelda Strand",
+              "title": "Chief Executive Officer",
+              "source": "https://larkmoor-fulfillment.example/about/leadership/",
+              "source_kind": "own site"
+            },
+            {
+              "name": "Tobias Renwick",
+              "title": "Chief Operating Officer",
+              "source": "https://larkmoor-fulfillment.example/about/leadership/",
+              "source_kind": "own site"
+            }
+          ]
+        },
+        {
+          "buying_role": "Champion",
+          "people": [],
+          "note": "not published; find in LinkedIn Sales Navigator or ask the inbound contact (for a scheduling product, look for the head of warehouse operations or fulfillment)"
+        },
+        {
+          "buying_role": "Technical evaluator",
+          "people": [
+            {
+              "name": "Anjali Desmond",
+              "title": "Chief Technology Officer",
+              "source": "https://larkmoor-fulfillment.example/about/leadership/",
+              "source_kind": "own site"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outreach_drafts": [
+    {
+      "company": "Larkmoor Fulfillment",
+      "to": "ops@larkmoor-fulfillment.example, people@larkmoor-fulfillment.example are role addresses, so the drafts address the role; the first goes to ops@larkmoor-fulfillment.example (demo request)",
+      "built_on": [
+        "Series B $28M on 2026-05-19 to add two fulfillment centers (third-party estimate)",
+        "third-party logistics (3PL) and e-commerce fulfillment from four fulfillment centers (own site)",
+        "headquartered in Louisville, Kentucky (own site: not quoted in the email)"
+      ],
+      "emails": [
+        {
+          "day": 0,
+          "subject": "Larkmoor's Series B and two new centers",
+          "body": "Hi there,\n\nI saw Larkmoor closed a $28 million Series B in May to add two fulfillment centers. New sites mean new shift schedules, usually built while the existing centers are busy.\n\nExample Shift Software builds warehouse shift schedules from forecast order volume, for every site in one place.\n\nWho owns scheduling for the new centers?\n\n[Your name], Example Shift Software\n\nIf this isn't relevant, reply \"no\" and I won't follow up.",
+          "fact": "Series B $28M, 2026-05-19, to add two fulfillment centers (news-wire.example)",
+          "words": 72
+        },
+        {
+          "day": 3,
+          "subject": "Re: Larkmoor's Series B and two new centers",
+          "body": "Hi there,\n\nIn e-commerce fulfillment, order volume can swing hour to hour. Teams use our app to match staff to demand per hour, which cuts overtime, and floor staff swap or pick up shifts on their phones instead of calling the office.\n\nHow do your four centers build next week's schedule today?\n\n[Your name], Example Shift Software\n\nReply \"no\" to stop these emails.",
+          "fact": "e-commerce fulfillment from four fulfillment centers (larkmoor-fulfillment.example homepage)",
+          "words": 63
+        },
+        {
+          "day": 8,
+          "subject": "Close the loop?",
+          "body": "Hi there,\n\nI don't want to crowd your inbox. If scheduling for the new centers isn't a priority this quarter, no problem; I'll close this out.\n\nIf it is, 20 minutes is enough to build a sample week from your own volumes. Should I close the loop, or is that worth a look?\n\n[Your name], Example Shift Software\n\nReply \"no\" to stop these emails.",
+          "fact": "none: close-the-loop email",
+          "words": 64
+        }
+      ],
+      "compliance": "Drafts only, never sent. Keep the opt-out line and follow the anti-spam rules where you send (for example CAN-SPAM in the US, where this account is headquartered according to its own site)."
+    }
+  ],
+  "unknowns_and_conflicts": [
+    {
+      "company": "Pellham Warehousing",
+      "field": "funding",
+      "why": "the funding call found no dated round, IPO or acquisition"
+    },
+    {
+      "company": "Vantorra Freight",
+      "field": "funding",
+      "why": "no dated round: on https://freight-news.example/vantorra-freight-raises-210-million, the headline \"Vantorra Freight raises $210 million\" has no date, and the page itself says \"total funding to $210 million across four rounds\", so the amount is a total, not a round"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "field": "employees",
+      "why": "no headcount for this company in the pages read; the only figure came from a page about another business (https://business-directory.example/thistlegate-farm-supply), so it was discarded"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "field": "technologies",
+      "why": "no technology named: https://thistlegate-distribution.example/engineering/ returned a 404 page and the other results were about other businesses"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "field": "funding",
+      "why": "the funding call found no dated round, IPO or acquisition (the funding call reached only the bot-checked About page and unrelated results)"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "field": "growth signal",
+      "why": "no open-roles page, stated headcount growth or dated launch in the pages read"
+    },
+    {
+      "company": "Fennick Parcel",
+      "field": "growth signal",
+      "why": "no open-roles page, stated headcount growth or dated launch in the pages read"
+    },
+    {
+      "company": "Oaklune Living",
+      "field": "headquarters",
+      "why": "no page read states a headquarters (not needed: ruled out on industry)"
+    },
+    {
+      "company": "Oaklune Living",
+      "field": "employees",
+      "why": "no headcount for this company in the pages read; the only figure came from a page about another business (https://recipes.example/oat-lemon-cake), so it was discarded (not needed: ruled out on industry)"
+    },
+    {
+      "company": "Larkmoor Fulfillment",
+      "field": "founded (conflict)",
+      "why": "https://larkmoor-fulfillment.example/about/ (own site) says 2012; https://company-data.example/larkmoor-fulfillment (third-party estimate) says 2011. Prefer the own site value."
+    },
+    {
+      "company": "Vantorra Freight",
+      "field": "employees (conflict)",
+      "why": "https://vantorra-freight.example/about/ (own site) says 2,600; https://company-data.example/vantorra-freight (third-party estimate) says 1,900. Prefer the own site value."
+    }
+  ],
+  "discarded_sources": [
+    {
+      "company": "Larkmoor Fulfillment",
+      "source": "2 unrelated pages discarded",
+      "why": "the profile-crawler search returned pages about other businesses; not used"
+    },
+    {
+      "company": "Larkmoor Fulfillment",
+      "source": "1 unrelated page discarded",
+      "why": "the funding-crawler search returned pages about other businesses; not used"
+    },
+    {
+      "company": "Pellham Warehousing",
+      "source": "https://property-listings.example/warehouse-for-lease-pelham",
+      "why": "does not name Pellham Warehousing or its domain: \"Warehouse space for lease in Pelham, with dock doors and trailer parking\" is about another business or topic, so its figures are not evidence"
+    },
+    {
+      "company": "Vantorra Freight",
+      "source": "https://freight-news.example/vantorra-freight-raises-210-million",
+      "why": "the headline \"Vantorra Freight raises $210 million\" has no date, and the page itself says \"total funding to $210 million across four rounds\", so the amount is a total, not a round; only the headline claim is discarded, since the rest of the page names the company"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "source": "https://thistlegate-distribution.example/about/",
+      "why": "own page returned a bot check (\"Just a moment...\"), no data"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "source": "https://business-directory.example/thistlegate-farm-supply",
+      "why": "does not name Thistlegate Distribution or its domain: \"Thistlegate Farm Supply, a family farm store with 12 employees\" is about another business or topic, so its figures are not evidence"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "source": "https://thistlegate-distribution.example/engineering/",
+      "why": "404 page, no data"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "source": "2 unrelated pages discarded",
+      "why": "the tech-stack-crawler search returned pages about other businesses; not used"
+    },
+    {
+      "company": "Thistlegate Distribution",
+      "source": "3 unrelated pages discarded",
+      "why": "the funding-crawler search returned pages about other businesses; not used"
+    },
+    {
+      "company": "Oaklune Living",
+      "source": "https://recipes.example/oat-lemon-cake",
+      "why": "does not name Oaklune Living or its domain: \"Lemon cake with an oat crumble, ready in an hour\" is about another business or topic, so its figures are not evidence"
+    }
+  ],
+  "next_steps": [
+    "Larkmoor Fulfillment: no champion is published. Find the head of warehouse operations or fulfillment in LinkedIn Sales Navigator, or ask the ops@larkmoor-fulfillment.example contact who runs scheduling, before email 1.",
+    "Larkmoor Fulfillment: only warehouse management system is named. Ask in the first call whether they use a labor management system or timekeeping system; not mentioned is not the same as not used.",
+    "Pellham Warehousing: headcount (150) is a third-party estimate. Check LinkedIn before scoring it final: at 200 to 2,000 it gains 15 points.",
+    "Vantorra Freight: the only funding figure is a total. Look for a dated round on its newsroom before quoting any funding to them.",
+    "Thistlegate Distribution is low confidence (2 of 5 groups): find its headcount and stack before dismissing it. It is a core-industry account in a target region.",
+    "Ask the row 12 lead (a gmail.com address) which company they work for, if it matters.",
+    "Say yes to write the enriched list to a new tab in the Google Sheet (payloads below, not run)."
+  ],
+  "write_back_offer": [
+    {
+      "step": 1,
+      "status": "not run (needs your yes)",
+      "platform": "google-sheets",
+      "action": "create_sheet",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_sheet",
+        "spreadsheet_id": "1ExAmPlEInboundLeadsSheet0000000000000000000",
+        "title": "Enriched leads 2026-10-28"
+      }
+    },
+    {
+      "step": 2,
+      "status": "not run (needs your yes)",
+      "platform": "google-sheets",
+      "action": "update_cells",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_cells",
+        "spreadsheet_id": "1ExAmPlEInboundLeadsSheet0000000000000000000",
+        "sheet_id": "<sheet_id returned by step 1>",
+        "range": "A1:S8",
+        "values": [
+          [
+            "Company",
+            "Domain",
+            "Leads",
+            "Tier",
+            "Score",
+            "Confidence",
+            "Industry",
+            "Industry source",
+            "HQ",
+            "HQ source",
+            "Employees",
+            "Employees source",
+            "Latest round",
+            "Round source",
+            "ICP technologies",
+            "Tech source",
+            "Growth signal",
+            "Growth source",
+            "Enriched on"
+          ],
+          [
+            "Larkmoor Fulfillment",
+            "larkmoor-fulfillment.example",
+            "ops@larkmoor-fulfillment.example, people@larkmoor-fulfillment.example",
+            "A",
+            90,
+            "5/5",
+            "third-party logistics (3PL) and e-commerce fulfillment",
+            "https://larkmoor-fulfillment.example/ (own site)",
+            "Louisville, Kentucky",
+            "https://larkmoor-fulfillment.example/about/ (own site)",
+            "501-1,000",
+            "https://www.linkedin.com/company/larkmoor-fulfillment/ (LinkedIn)",
+            "Series B 2026-05-19",
+            "https://news-wire.example/2026/05/19/larkmoor-fulfillment-series-b (third-party estimate)",
+            "warehouse management system",
+            "https://larkmoor-fulfillment.example/careers/inventory-control-lead/ (own site)",
+            "open roles listed on the careers page (14)",
+            "https://larkmoor-fulfillment.example/careers/ (own site)",
+            "2026-10-28"
+          ],
+          [
+            "Pellham Warehousing",
+            "pellham-warehousing.example",
+            "sales@pellham-warehousing.example",
+            "B",
+            65,
+            "5/5",
+            "contract warehousing and distribution",
+            "https://pellham-warehousing.example/ (own site)",
+            "Allentown, Pennsylvania",
+            "https://www.linkedin.com/company/pellham-warehousing/ (LinkedIn)",
+            "150",
+            "https://company-data.example/pellham-warehousing (third-party estimate)",
+            "unknown",
+            "",
+            "pick-to-light",
+            "https://pellham-warehousing.example/careers/order-selector-second-shift/ (own site)",
+            "opened a 220,000 sq ft distribution center in Bethlehem, Pennsylvania",
+            "https://pellham-warehousing.example/news/2026/07/08/bethlehem-distribution-center/ (own site)",
+            "2026-10-28"
+          ],
+          [
+            "Vantorra Freight",
+            "vantorra-freight.example",
+            "dispatch@vantorra-freight.example",
+            "B",
+            50,
+            "5/5",
+            "regional LTL freight carrier",
+            "https://vantorra-freight.example/ (own site)",
+            "Denver, Colorado",
+            "https://vantorra-freight.example/about/ (own site)",
+            "2,600",
+            "https://vantorra-freight.example/about/ (own site)",
+            "unknown",
+            "",
+            "RF barcode scanning",
+            "https://stack-directory.example/vantorra-freight (third-party estimate)",
+            "opened a cross-dock terminal in Salt Lake City",
+            "https://vantorra-freight.example/news/2026/09/15/salt-lake-city-cross-dock/ (own site)",
+            "2026-10-28"
+          ],
+          [
+            "Thistlegate Distribution",
+            "thistlegate-distribution.example",
+            "info@thistlegate-distribution.example",
+            "C",
+            40,
+            "2/5 (low confidence)",
+            "warehousing and distribution of industrial parts",
+            "https://thistlegate-distribution.example/ (own site)",
+            "Hamilton, Ontario",
+            "https://thistlegate-distribution.example/contact/ (own site)",
+            "unknown",
+            "",
+            "unknown",
+            "",
+            "none named",
+            "",
+            "none found",
+            "",
+            "2026-10-28"
+          ],
+          [
+            "Fennick Parcel",
+            "fennick-parcel.example",
+            "hello@fennick-parcel.example",
+            "C",
+            35,
+            "5/5",
+            "regional parcel carrier",
+            "https://fennick-parcel.example/ (own site)",
+            "Boise, Idaho",
+            "https://www.linkedin.com/company/fennick-parcel/ (LinkedIn)",
+            "1,001-5,000",
+            "https://www.linkedin.com/company/fennick-parcel/ (LinkedIn)",
+            "Series A 2025-02-03",
+            "https://news-wire.example/2025/02/03/fennick-parcel-series-a (third-party estimate)",
+            "none named",
+            "",
+            "none found",
+            "",
+            "2026-10-28"
+          ],
+          [
+            "Maasbrug Logistics",
+            "maasbrug-logistics.example",
+            "hello@maasbrug-logistics.example",
+            "D",
+            55,
+            "3/5",
+            "contract logistics and cross-border fulfillment",
+            "https://maasbrug-logistics.example/ (own site)",
+            "Rotterdam, the Netherlands",
+            "https://maasbrug-logistics.example/about/ (own site)",
+            "201-500",
+            "https://www.linkedin.com/company/maasbrug-logistics/ (LinkedIn)",
+            "not checked",
+            "",
+            "not checked",
+            "",
+            "not checked",
+            "",
+            "2026-10-28"
+          ],
+          [
+            "Oaklune Living",
+            "oaklune-living.example",
+            "info@oaklune-living.example",
+            "D",
+            0,
+            "1/5 (low confidence)",
+            "furniture and home decor retail",
+            "https://oaklune-living.example/ (own site)",
+            "unknown",
+            "",
+            "unknown",
+            "",
+            "not checked",
+            "",
+            "not checked",
+            "",
+            "not checked",
+            "",
+            "2026-10-28"
+          ]
+        ],
+        "value_input_option": "RAW"
+      }
+    }
+  ],
+  "mode_examples": {
+    "weekly_buying_signal_watch": {
+      "header": {
+        "run_date": "2026-10-30",
+        "window": "2026-10-23 to 2026-10-29",
+        "accounts_checked": 7,
+        "left_out_open_deals": 1,
+        "calls": "40 made: ad libraries 16 (2 per account, plus 2 for the 1 account on its first run), crawler 13, App Store 1, Google Play 1, DataForSEO news 7 (paid, opted in), LinkedIn Ads 2",
+        "sources_not_reached": [
+          "Summit Parcel: homepage links"
+        ]
+      },
+      "this_weeks_list": [
+        {
+          "rank": 1,
+          "company": "Northwind Logistics",
+          "domain": "northwind-logistics.example",
+          "priority": 94,
+          "math": "Fit 34 + Strength 40 + Recency 20 = 94",
+          "fit_from": "ICP score 85 x 0.4",
+          "signals": [
+            {
+              "type": "Hiring in the team served",
+              "date": "2026-10-30",
+              "date_kind": "first seen",
+              "age_days": 0,
+              "source": "https://jobs.ats-board.example/northwind-logistics",
+              "evidence": "4 job links that name the team (up from 1 last week): warehouse-operations-manager-columbus, shift-supervisor-night, workforce-planning-analyst, warehouse-operations-lead",
+              "points": 20.0,
+              "state": "new"
+            },
+            {
+              "type": "Announced leadership hire",
+              "date": "2026-10-21",
+              "date_kind": "published",
+              "age_days": 9,
+              "source": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations",
+              "evidence": "Northwind Logistics names new VP of Warehouse Operations",
+              "points": 20.0,
+              "state": "new"
+            },
+            {
+              "type": "New product, pricing or location page",
+              "date": "2026-10-30",
+              "date_kind": "first seen",
+              "age_days": 0,
+              "source": "https://northwind-logistics.example/solutions/cold-chain/",
+              "evidence": "new page /solutions/cold-chain/ linked from the homepage",
+              "points": 15.0,
+              "state": "new"
+            },
+            {
+              "type": "First ads or an ad jump",
+              "date": "2026-10-29",
+              "date_kind": "window end",
+              "age_days": 1,
+              "source": "Google Ads Transparency Center, domain northwind-logistics.example, 2026-10-23 to 2026-10-29",
+              "evidence": "14 Google ads in the last 7 days, up from 2 last week",
+              "points": 15.0,
+              "state": "new"
+            }
+          ],
+          "joined_this_week": false,
+          "suggested_first_line": "Noticed the open warehouse operations, shift and workforce planning roles. Is scheduling being rebuilt along with the team?"
+        },
+        {
+          "rank": 2,
+          "company": "Bluefield Freight",
+          "domain": "bluefield-freight.example",
+          "priority": 86,
+          "math": "Fit 26 + Strength 40 + Recency 20 = 86",
+          "fit_from": "tier B",
+          "signals": [
+            {
+              "type": "High-intent visit",
+              "date": "2026-10-28",
+              "date_kind": "export date",
+              "age_days": 2,
+              "source": "your website-visitor export",
+              "evidence": "visit to /pricing/",
+              "points": 25.0,
+              "state": "new"
+            },
+            {
+              "type": "LinkedIn ad engagement",
+              "date": "2026-10-29",
+              "date_kind": "window end",
+              "age_days": 1,
+              "source": "your LinkedIn Ads, company 1000002, 2026-10-23 to 2026-10-29",
+              "evidence": "212 impressions, 3 clicks, 5 engagements",
+              "points": 15.0,
+              "state": "new"
+            },
+            {
+              "type": "Other visit",
+              "date": "2026-10-28",
+              "date_kind": "export date",
+              "age_days": 2,
+              "source": "your website-visitor export",
+              "evidence": "visit to /blog/overtime-costs/",
+              "points": 10.0,
+              "state": "new"
+            },
+            {
+              "type": "Hiring in the team served",
+              "date": "2026-09-24",
+              "date_kind": "first seen",
+              "age_days": 36,
+              "source": "https://jobs.ats-board.example/bluefield-freight",
+              "evidence": "job board went from 0 to 4 job links, roles not named in the links (from last week's table)",
+              "points": 5.0,
+              "state": "fading"
+            }
+          ],
+          "joined_this_week": false,
+          "suggested_first_line": "No public signal from the last 30 days, so the line opens on the problem: \"How are next month's shifts built at your sites, from forecast order volume or from last year's roster?\""
+        },
+        {
+          "rank": 3,
+          "company": "Harbor Cold Storage",
+          "domain": "harbor-cold.example",
+          "priority": 85,
+          "math": "Fit 40 + Strength 25 + Recency 20 = 85",
+          "fit_from": "tier A",
+          "signals": [
+            {
+              "type": "New app version with features",
+              "date": "2026-10-27",
+              "date_kind": "published",
+              "age_days": 3,
+              "source": "https://apps.apple.com/app/id6400000001",
+              "evidence": "version 4.0.0 (was 3.4.0): New: drivers can now book a dock slot from the app and see live door assignments. Bug fixes.",
+              "points": 10.0,
+              "state": "new"
+            },
+            {
+              "type": "Other visit",
+              "date": "2026-10-09",
+              "date_kind": "export date",
+              "age_days": 21,
+              "source": "your website-visitor export",
+              "evidence": "visit to /blog/cold-storage-staffing/",
+              "points": 10.0,
+              "state": "new"
+            },
+            {
+              "type": "LinkedIn ad engagement",
+              "date": "2026-10-29",
+              "date_kind": "window end",
+              "age_days": 1,
+              "source": "your LinkedIn Ads, company 1000003, 2026-10-23 to 2026-10-29",
+              "evidence": "96 impressions, no clicks or engagements",
+              "points": 5.0,
+              "state": "new"
+            }
+          ],
+          "joined_this_week": true,
+          "suggested_first_line": "Saw drivers can now book dock slots in your app. Are floor shifts planned from the same bookings yet?"
+        },
+        {
+          "rank": 4,
+          "company": "Summit Parcel",
+          "domain": "summit-parcel.example",
+          "priority": 84,
+          "math": "Fit 29 + Strength 35 + Recency 20 = 84",
+          "fit_from": "ICP score 72 x 0.4",
+          "signals": [
+            {
+              "type": "Funding or acquisition",
+              "date": "2026-10-14",
+              "date_kind": "published",
+              "age_days": 16,
+              "source": "https://news-wire.example/2026/10/14/summit-parcel-series-c",
+              "evidence": "Summit Parcel closes Series C to expand regional sort centers",
+              "points": 20.0,
+              "state": "new"
+            },
+            {
+              "type": "First ads or an ad jump",
+              "date": "2026-10-29",
+              "date_kind": "window end",
+              "age_days": 1,
+              "source": "Google Ads Transparency Center, domain summit-parcel.example, 2026-10-23 to 2026-10-29",
+              "evidence": "40 or more Google ads in the last 7 days, up from 4 last week",
+              "points": 15.0,
+              "state": "new"
+            }
+          ],
+          "joined_this_week": true,
+          "suggested_first_line": "Saw the news that Summit Parcel closes Series C to expand regional sort centers. How will the new sites' shifts be staffed in the first months?"
+        },
+        {
+          "rank": 5,
+          "company": "Pinecrest Supply",
+          "domain": "pinecrest-supply.example",
+          "priority": 55,
+          "math": "Fit 20 + Strength 15 + Recency 20 = 55",
+          "fit_from": "fit unknown",
+          "signals": [
+            {
+              "type": "First ads or an ad jump",
+              "date": "2026-10-29",
+              "date_kind": "window end",
+              "age_days": 1,
+              "source": "Google Ads Transparency Center, domain pinecrest-supply.example, 2026-10-23 to 2026-10-29",
+              "evidence": "5 Google ads in the last 7 days after none in the 90 days before",
+              "points": 15.0,
+              "state": "new"
+            }
+          ],
+          "joined_this_week": true,
+          "suggested_first_line": "Saw Google ads from you this week, the first in 90 days. If order volume follows, how will you add shifts without paying for overtime?"
+        }
+      ],
+      "not_on_the_list": [
+        {
+          "company": "Granite 3PL",
+          "priority": 55,
+          "math": "Fit 40 + Strength 10 + Recency 5 = 55",
+          "why": "no signal 30 days old or newer"
+        },
+        {
+          "company": "Redwood Fulfillment",
+          "priority": 24,
+          "math": "Fit 16 + Strength 3 + Recency 5 = 24",
+          "why": "priority under 50"
+        }
+      ],
+      "what_changed_since_last_week": {
+        "new_signals": [
+          {
+            "company": "Bluefield Freight",
+            "type": "High-intent visit",
+            "date": "2026-10-28",
+            "source": "your website-visitor export"
+          },
+          {
+            "company": "Bluefield Freight",
+            "type": "Other visit",
+            "date": "2026-10-28",
+            "source": "your website-visitor export"
+          },
+          {
+            "company": "Bluefield Freight",
+            "type": "LinkedIn ad engagement",
+            "date": "2026-10-29",
+            "source": "your LinkedIn Ads, company 1000002, 2026-10-23 to 2026-10-29"
+          },
+          {
+            "company": "Harbor Cold Storage",
+            "type": "Other visit",
+            "date": "2026-10-09",
+            "source": "your website-visitor export"
+          },
+          {
+            "company": "Harbor Cold Storage",
+            "type": "New app version with features",
+            "date": "2026-10-27",
+            "source": "https://apps.apple.com/app/id6400000001"
+          },
+          {
+            "company": "Harbor Cold Storage",
+            "type": "LinkedIn ad engagement",
+            "date": "2026-10-29",
+            "source": "your LinkedIn Ads, company 1000003, 2026-10-23 to 2026-10-29"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "Announced leadership hire",
+            "date": "2026-10-20",
+            "source": "https://northwind-logistics.example/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "Announced leadership hire",
+            "date": "2026-10-21",
+            "source": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "First ads or an ad jump",
+            "date": "2026-10-29",
+            "source": "Google Ads Transparency Center, domain northwind-logistics.example, 2026-10-23 to 2026-10-29"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "New product, pricing or location page",
+            "date": "2026-10-30",
+            "source": "https://northwind-logistics.example/solutions/cold-chain/"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "New product, pricing or location page",
+            "date": "2026-10-30",
+            "source": "https://northwind-logistics.example/locations/columbus-east/"
+          },
+          {
+            "company": "Northwind Logistics",
+            "type": "Hiring in the team served",
+            "date": "2026-10-30",
+            "source": "https://jobs.ats-board.example/northwind-logistics"
+          },
+          {
+            "company": "Pinecrest Supply",
+            "type": "First ads or an ad jump",
+            "date": "2026-10-29",
+            "source": "Google Ads Transparency Center, domain pinecrest-supply.example, 2026-10-23 to 2026-10-29"
+          },
+          {
+            "company": "Pinecrest Supply",
+            "type": "First ads or an ad jump",
+            "date": "2026-10-29",
+            "source": "LinkedIn Ad Library, company Pinecrest Supply, 2026-10-23 to 2026-10-29"
+          },
+          {
+            "company": "Summit Parcel",
+            "type": "Funding or acquisition",
+            "date": "2026-10-14",
+            "source": "https://news-wire.example/2026/10/14/summit-parcel-series-c"
+          },
+          {
+            "company": "Summit Parcel",
+            "type": "First ads or an ad jump",
+            "date": "2026-10-29",
+            "source": "Google Ads Transparency Center, domain summit-parcel.example, 2026-10-23 to 2026-10-29"
+          }
+        ],
+        "fading": [
+          {
+            "company": "Bluefield Freight",
+            "type": "Hiring in the team served",
+            "date": "2026-09-24",
+            "age_days": 36
+          }
+        ],
+        "dropped": [
+          {
+            "company": "Granite 3PL",
+            "type": "New product, pricing or location page",
+            "date": "2026-07-28",
+            "age_days": 94
+          }
+        ],
+        "still_active_count": 3,
+        "joined": [
+          "Harbor Cold Storage",
+          "Summit Parcel",
+          "Pinecrest Supply"
+        ],
+        "left": [
+          "Granite 3PL"
+        ]
+      },
+      "not_checked": [
+        {
+          "account": "Summit Parcel",
+          "source": "homepage links",
+          "why": "link-extractor returned an empty list, so the page could not be read; careers and newsroom were not found either"
+        }
+      ],
+      "discarded_results": [
+        {
+          "account": "Summit Parcel",
+          "title": "Summit Ridge ski resort opens early",
+          "why": "does not name the company; a different business with a similar name"
+        }
+      ],
+      "unmatched_linkedin_companies": {
+        "engaged_but_not_in_your_list": [
+          "linkedin.com/company/2999999"
+        ],
+        "note": "Organization ids from LinkedIn, not names. Open the link to see the company; add it to the list if it fits."
+      },
+      "open_deals_left_out": [
+        "Lakeshore Distribution"
+      ],
+      "watch_table_to_keep": {
+        "columns": [
+          "id",
+          "account",
+          "type",
+          "date",
+          "date_kind",
+          "source",
+          "points_now",
+          "first_seen",
+          "last_seen"
+        ],
+        "rows": [
+          {
+            "id": "bluefield-freight.example | hiring | https://jobs.ats-board.example/bluefield-freight",
+            "account": "Bluefield Freight",
+            "type": "hiring",
+            "date": "2026-09-24",
+            "date_kind": "first seen",
+            "source": "https://jobs.ats-board.example/bluefield-freight",
+            "points_now": 5.0,
+            "first_seen": "2026-09-24",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "bluefield-freight.example | intent_high | your website-visitor export",
+            "account": "Bluefield Freight",
+            "type": "intent_high",
+            "date": "2026-10-28",
+            "date_kind": "export date",
+            "source": "your website-visitor export",
+            "points_now": 25.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "bluefield-freight.example | intent_other | your website-visitor export",
+            "account": "Bluefield Freight",
+            "type": "intent_other",
+            "date": "2026-10-28",
+            "date_kind": "export date",
+            "source": "your website-visitor export",
+            "points_now": 10.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "bluefield-freight.example | linkedin | your LinkedIn Ads, company 1000002, 2026-10-23 to 2026-10-29",
+            "account": "Bluefield Freight",
+            "type": "linkedin",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "your LinkedIn Ads, company 1000002, 2026-10-23 to 2026-10-29",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "granite-3pl.example | funding | https://news-wire.example/2026/08/05/granite-3pl-raises-growth-round",
+            "account": "Granite 3PL",
+            "type": "funding",
+            "date": "2026-08-05",
+            "date_kind": "published",
+            "source": "https://news-wire.example/2026/08/05/granite-3pl-raises-growth-round",
+            "points_now": 10.0,
+            "first_seen": "2026-08-07",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "harbor-cold.example | intent_other | your website-visitor export",
+            "account": "Harbor Cold Storage",
+            "type": "intent_other",
+            "date": "2026-10-09",
+            "date_kind": "export date",
+            "source": "your website-visitor export",
+            "points_now": 10.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "harbor-cold.example | app | https://apps.apple.com/app/id6400000001",
+            "account": "Harbor Cold Storage",
+            "type": "app",
+            "date": "2026-10-27",
+            "date_kind": "published",
+            "source": "https://apps.apple.com/app/id6400000001",
+            "points_now": 10.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "harbor-cold.example | linkedin | your LinkedIn Ads, company 1000003, 2026-10-23 to 2026-10-29",
+            "account": "Harbor Cold Storage",
+            "type": "linkedin",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "your LinkedIn Ads, company 1000003, 2026-10-23 to 2026-10-29",
+            "points_now": 5.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | new_page | https://northwind-logistics.example/solutions/peak-season/",
+            "account": "Northwind Logistics",
+            "type": "new_page",
+            "date": "2026-10-16",
+            "date_kind": "first seen",
+            "source": "https://northwind-logistics.example/solutions/peak-season/",
+            "points_now": 15.0,
+            "first_seen": "2026-10-16",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | leadership | https://northwind-logistics.example/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/",
+            "account": "Northwind Logistics",
+            "type": "leadership",
+            "date": "2026-10-20",
+            "date_kind": "published",
+            "source": "https://northwind-logistics.example/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/",
+            "points_now": 20.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | leadership | https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations",
+            "account": "Northwind Logistics",
+            "type": "leadership",
+            "date": "2026-10-21",
+            "date_kind": "published",
+            "source": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations",
+            "points_now": 20.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | ads | Google Ads Transparency Center, domain northwind-logistics.example, 2026-10-23 to 2026-10-29",
+            "account": "Northwind Logistics",
+            "type": "ads",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "Google Ads Transparency Center, domain northwind-logistics.example, 2026-10-23 to 2026-10-29",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | new_page | https://northwind-logistics.example/solutions/cold-chain/",
+            "account": "Northwind Logistics",
+            "type": "new_page",
+            "date": "2026-10-30",
+            "date_kind": "first seen",
+            "source": "https://northwind-logistics.example/solutions/cold-chain/",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | new_page | https://northwind-logistics.example/locations/columbus-east/",
+            "account": "Northwind Logistics",
+            "type": "new_page",
+            "date": "2026-10-30",
+            "date_kind": "first seen",
+            "source": "https://northwind-logistics.example/locations/columbus-east/",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "northwind-logistics.example | hiring | https://jobs.ats-board.example/northwind-logistics",
+            "account": "Northwind Logistics",
+            "type": "hiring",
+            "date": "2026-10-30",
+            "date_kind": "first seen",
+            "source": "https://jobs.ats-board.example/northwind-logistics",
+            "points_now": 20.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "pinecrest-supply.example | ads | Google Ads Transparency Center, domain pinecrest-supply.example, 2026-10-23 to 2026-10-29",
+            "account": "Pinecrest Supply",
+            "type": "ads",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "Google Ads Transparency Center, domain pinecrest-supply.example, 2026-10-23 to 2026-10-29",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "pinecrest-supply.example | ads | LinkedIn Ad Library, company Pinecrest Supply, 2026-10-23 to 2026-10-29",
+            "account": "Pinecrest Supply",
+            "type": "ads",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "LinkedIn Ad Library, company Pinecrest Supply, 2026-10-23 to 2026-10-29",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "redwood-fulfillment.example | news | https://trade-weekly.example/2026/09/10/redwood-fulfillment-opens-dock-expansion",
+            "account": "Redwood Fulfillment",
+            "type": "news",
+            "date": "2026-09-10",
+            "date_kind": "published",
+            "source": "https://trade-weekly.example/2026/09/10/redwood-fulfillment-opens-dock-expansion",
+            "points_now": 2.5,
+            "first_seen": "2026-09-11",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "summit-parcel.example | funding | https://news-wire.example/2026/10/14/summit-parcel-series-c",
+            "account": "Summit Parcel",
+            "type": "funding",
+            "date": "2026-10-14",
+            "date_kind": "published",
+            "source": "https://news-wire.example/2026/10/14/summit-parcel-series-c",
+            "points_now": 20.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          },
+          {
+            "id": "summit-parcel.example | ads | Google Ads Transparency Center, domain summit-parcel.example, 2026-10-23 to 2026-10-29",
+            "account": "Summit Parcel",
+            "type": "ads",
+            "date": "2026-10-29",
+            "date_kind": "window end",
+            "source": "Google Ads Transparency Center, domain summit-parcel.example, 2026-10-23 to 2026-10-29",
+            "points_now": 15.0,
+            "first_seen": "2026-10-30",
+            "last_seen": "2026-10-30"
+          }
+        ],
+        "state_for_next_week": {
+          "northwind-logistics.example": {
+            "google_ads": 14,
+            "linkedin_ads": 0
+          },
+          "bluefield-freight.example": {
+            "google_ads": 7,
+            "linkedin_ads": 3
+          },
+          "harbor-cold.example": {
+            "google_ads": 0,
+            "linkedin_ads": 0,
+            "app_version": "4.0.0"
+          },
+          "summit-parcel.example": {
+            "google_ads": 40,
+            "linkedin_ads": 0
+          },
+          "redwood-fulfillment.example": {
+            "google_ads": 0,
+            "linkedin_ads": 0
+          },
+          "granite-3pl.example": {
+            "google_ads": 8,
+            "linkedin_ads": 2
+          },
+          "pinecrest-supply.example": {
+            "google_ads": 5,
+            "linkedin_ads": 2
+          }
+        },
+        "save_offer": "Saved to a new tab named Signal watch 2026-10-30 only after you confirm (create_sheet, then update_cells). Last week's tab is not changed."
+      }
+    },
+    "pre_call_account_brief": {
+      "company": "Northwind Logistics",
+      "domain": "northwind-logistics.example",
+      "meeting_date": "2026-11-05",
+      "calls": "12 made, 2 paid (DataForSEO)",
+      "first_minute": {
+        "text": "You have a new Columbus East site, a new VP of Warehouse Operations and ads promising peak capacity, all this month. Most teams in that spot find the schedule is where it strains first; is that true for you?",
+        "fact": 5,
+        "also_uses_facts": [
+          6,
+          9
+        ],
+        "your_problem": "one schedule across several sites"
+      },
+      "facts": [
+        {
+          "n": 1,
+          "fact": "Third-party logistics: warehousing, pick and pack and returns for consumer brands",
+          "source": "https://northwind-logistics.example/",
+          "date": "2026-10-30"
+        },
+        {
+          "n": 2,
+          "fact": "501-1,000 employees (LinkedIn); 6 sites listed",
+          "source": "https://www.linkedin.com/company/1000001 ; https://northwind-logistics.example/locations/",
+          "date": "2026-10-30"
+        },
+        {
+          "n": 3,
+          "fact": "Headquarters Columbus, Ohio",
+          "source": "https://northwind-logistics.example/about/",
+          "date": "2026-10-30"
+        },
+        {
+          "n": 4,
+          "fact": "Series B, USD 40 million (third-party)",
+          "source": "https://news-wire.example/2025/03/12/northwind-logistics-series-b",
+          "date": "2025-03-12"
+        },
+        {
+          "n": 5,
+          "fact": "New location page: Columbus East (first seen)",
+          "source": "https://northwind-logistics.example/locations/columbus-east/",
+          "date": "2026-10-30"
+        },
+        {
+          "n": 6,
+          "fact": "Northwind Logistics names new VP of Warehouse Operations",
+          "source": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations",
+          "date": "2026-10-21"
+        },
+        {
+          "n": 7,
+          "fact": "Northwind earns warehouse safety award",
+          "source": "https://northwind-logistics.example/news/2026/09/02/northwind-earns-safety-award/",
+          "date": "2026-09-02"
+        },
+        {
+          "n": 8,
+          "fact": "Northwind opens a fifth site in Indianapolis",
+          "source": "https://trade-weekly.example/2025/11/18/northwind-indianapolis",
+          "date": "2025-11-18"
+        },
+        {
+          "n": 9,
+          "fact": "31 Google ads in the last 30 days (24 text, 7 image); offer: Peak-season capacity, book a warehouse tour; landing page https://northwind-logistics.example/solutions/peak-season/",
+          "source": "Google Ads Transparency Center",
+          "date": "2026-09-30 to 2026-10-29"
+        },
+        {
+          "n": 10,
+          "fact": "4 LinkedIn ads in the last 30 days; offer: Hiring: warehouse operations roles in Columbus",
+          "source": "LinkedIn Ad Library",
+          "date": "2026-09-30 to 2026-10-29"
+        },
+        {
+          "n": 11,
+          "fact": "1,240 ranking keywords, 35 in positions 1 to 3 and 160 in 4 to 10, about 5,400 estimated monthly visits (third-party estimate)",
+          "source": "DataForSEO Labs domain rank overview, United States, English",
+          "date": "2026-10-30"
+        },
+        {
+          "n": 12,
+          "fact": "Mobile homepage LCP 3.4 s (over the 2.5 s good line), CLS 0.02 (good), TBT 420 ms (lab)",
+          "source": "PageSpeed Insights, mobile",
+          "date": "2026-10-30"
+        }
+      ],
+      "snapshot": [
+        "Fact 1: sells third-party logistics: warehousing, pick and pack and returns for consumer brands.",
+        "Fact 2: 501-1,000 employees, 6 sites.",
+        "Fact 3: headquarters in Columbus, Ohio.",
+        "Fact 4: latest funding Series B, USD 40 million on 2025-03-12 (third-party source)."
+      ],
+      "dated_changes": [
+        {
+          "date": "2026-10-30",
+          "change": "New location page: Columbus East",
+          "fact": 5,
+          "source": "https://northwind-logistics.example/locations/columbus-east/"
+        },
+        {
+          "date": "2026-10-21",
+          "change": "Northwind Logistics names new VP of Warehouse Operations",
+          "fact": 6,
+          "source": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations"
+        },
+        {
+          "date": "2026-09-02",
+          "change": "Northwind earns warehouse safety award",
+          "fact": 7,
+          "source": "https://northwind-logistics.example/news/2026/09/02/northwind-earns-safety-award/"
+        },
+        {
+          "date": "2025-11-18",
+          "change": "Northwind opens a fifth site in Indianapolis",
+          "fact": 8,
+          "source": "https://trade-weekly.example/2025/11/18/northwind-indianapolis"
+        }
+      ],
+      "how_it_markets_itself": {
+        "ads": [
+          "Fact 9",
+          "Fact 10"
+        ],
+        "search": "Fact 11",
+        "mobile_speed": "Fact 12",
+        "apps": "No app from this company in either store (one App Store search and one Google Play search by company name)."
+      },
+      "leaders_it_publishes": [
+        {
+          "name": "Dana Whitfield",
+          "title": "Chief Executive Officer",
+          "buying_role": "Economic buyer",
+          "source": "https://northwind-logistics.example/about/leadership/",
+          "date": "2026-10-30",
+          "date_kind": "read on"
+        },
+        {
+          "name": "Marcus Lee",
+          "title": "VP of Warehouse Operations",
+          "buying_role": "Champion",
+          "source": "https://northwind-logistics.example/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/",
+          "date": "2026-10-20",
+          "date_kind": "published"
+        },
+        {
+          "name": "Priya Nair",
+          "title": "Chief Financial Officer",
+          "buying_role": "Economic buyer",
+          "source": "https://northwind-logistics.example/about/leadership/",
+          "date": "2026-10-30",
+          "date_kind": "read on"
+        }
+      ],
+      "likely_priorities": [
+        {
+          "priority": "Staffing the sites for peak season without runaway overtime",
+          "label": "inference",
+          "from_facts": [
+            9,
+            10,
+            5
+          ]
+        },
+        {
+          "priority": "A new operations leader setting up how sites are run",
+          "label": "inference",
+          "from_facts": [
+            6,
+            10
+          ]
+        },
+        {
+          "priority": "Running more sites the same way as the network grows",
+          "label": "inference",
+          "from_facts": [
+            2,
+            8,
+            5
+          ]
+        }
+      ],
+      "problems_worth_testing": [
+        {
+          "hypothesis": "Peak-season shifts are planned from last year's roster, not from forecast order volume",
+          "your_problem": "build shift schedules from forecast order volume",
+          "fact": 9,
+          "rules_it_out": "They already schedule from a volume forecast per site and day."
+        },
+        {
+          "hypothesis": "Overtime rises in peak because staff are not matched to demand per hour",
+          "your_problem": "cut overtime by matching staff to demand per hour",
+          "fact": 10,
+          "rules_it_out": "Overtime stays flat in peak, or is a deliberate choice."
+        },
+        {
+          "hypothesis": "Each of the sites keeps its own schedule, so the new VP cannot see one view",
+          "your_problem": "one schedule across several sites",
+          "fact": 5,
+          "rules_it_out": "One system already holds every site's schedule."
+        }
+      ],
+      "discovery_questions": [
+        {
+          "q": "You now list 6 sites, including the new Columbus East page. How is a week's schedule built at each one today?",
+          "facts": [
+            2,
+            5
+          ],
+          "stage": "situation"
+        },
+        {
+          "q": "When the Indianapolis site opened, how were its first schedules set up?",
+          "facts": [
+            8
+          ],
+          "stage": "situation"
+        },
+        {
+          "q": "Your ads this month push peak-season capacity. What changes in staffing when that capacity fills?",
+          "facts": [
+            9
+          ],
+          "stage": "change"
+        },
+        {
+          "q": "You are hiring for warehouse operations roles in Columbus. Which of those hires is meant to fix a scheduling problem, if any?",
+          "facts": [
+            10
+          ],
+          "stage": "change"
+        },
+        {
+          "q": "What did overtime look like last peak, and who owns that number?",
+          "facts": [
+            9
+          ],
+          "stage": "impact"
+        },
+        {
+          "q": "With a new VP of Warehouse Operations in October, what is on the first 90 days list?",
+          "facts": [
+            6
+          ],
+          "stage": "impact"
+        },
+        {
+          "q": "If you changed how shifts are planned, who besides operations would need to agree, and by when?",
+          "facts": [
+            6
+          ],
+          "stage": "how they decide"
+        }
+      ],
+      "unknowns": [
+        {
+          "field": "revenue",
+          "where_to_look": "ask, or a data site (label it an estimate)"
+        },
+        {
+          "field": "the scheduling or workforce tool in use today",
+          "where_to_look": "job posts that name tools, or ask in the call"
+        },
+        {
+          "field": "overtime or labour cost figures",
+          "where_to_look": "ask in the call"
+        }
+      ]
+    }
+  }
+}

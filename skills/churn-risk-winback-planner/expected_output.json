@@ -1,0 +1,574 @@
+{
+  "header": {
+    "store": "Example Coffee Roasters",
+    "as_of": "2026-10-28",
+    "order_window": "2024-10-28 to 2026-10-27",
+    "history_note": "The store's whole history (730 days). That is under four times the lapse point of brewing gear and gift boxes, so see Unknowns.",
+    "order_lines_read": 712,
+    "orders": 591,
+    "rows_dropped": 0,
+    "rows_dropped_why": "every order pulled was paid and uncancelled, with a customer id",
+    "customers": 194,
+    "currency": "USD",
+    "sources": "Shopify orders (unit cost from Shopify) and the Klaviyo win-back flow",
+    "settings": "lapse point = 80th percentile of repeat gaps, stop point = 95th percentile of comeback gaps, incentive cap = 50% of the comeback order's gross margin, $5 minimum offer"
+  },
+  "lapse_points": [
+    {
+      "line": "coffee beans",
+      "repeat_gaps": 214,
+      "median_gap_days": 30,
+      "lapse_point_days": 49,
+      "stop_point_days": 165,
+      "evidence": "solid",
+      "source": "repeat gaps; stop point: 95th percentile of 42 comeback gaps"
+    },
+    {
+      "line": "tea",
+      "repeat_gaps": 99,
+      "median_gap_days": 42,
+      "lapse_point_days": 73,
+      "stop_point_days": 262,
+      "evidence": "solid",
+      "source": "repeat gaps; stop point: 95th percentile of 19 comeback gaps"
+    },
+    {
+      "line": "brewing gear",
+      "repeat_gaps": 39,
+      "median_gap_days": 252,
+      "lapse_point_days": 364,
+      "stop_point_days": 1092,
+      "evidence": "solid",
+      "source": "repeat gaps; stop point: 3 x the lapse point (6 comeback gaps, too few to measure)",
+      "history_note": "730 days of history is under 4 x the lapse point (1456 days); long gaps are under-counted, so these points may be early"
+    },
+    {
+      "line": "gift boxes",
+      "repeat_gaps": 4,
+      "median_gap_days": 365,
+      "lapse_point_days": 456,
+      "stop_point_days": 730,
+      "evidence": "from the owner",
+      "source": "owner's answer: about every 365 days",
+      "history_note": "730 days of history is under 4 x the lapse point (1824 days); the owner's cycle is used, so this only limits checking it"
+    }
+  ],
+  "personal_pace_note": "68 customers with 3 or more orders in their main line get a personal lapse point scaled to their own pace.",
+  "status_by_line": [
+    {
+      "line": "coffee beans",
+      "active": 14,
+      "close to lapsing": 1,
+      "lapsed": 14,
+      "let go": 42,
+      "customers": 71
+    },
+    {
+      "line": "tea",
+      "active": 11,
+      "close to lapsing": 2,
+      "lapsed": 16,
+      "let go": 17,
+      "customers": 46
+    },
+    {
+      "line": "brewing gear",
+      "active": 29,
+      "close to lapsing": 4,
+      "lapsed": 4,
+      "let go": 0,
+      "customers": 37
+    },
+    {
+      "line": "gift boxes",
+      "active": 24,
+      "close to lapsing": 2,
+      "lapsed": 14,
+      "let go": 0,
+      "customers": 40
+    },
+    {
+      "line": "all lines",
+      "active": 78,
+      "close to lapsing": 9,
+      "lapsed": 48,
+      "let go": 59,
+      "customers": 194
+    }
+  ],
+  "top_findings": [
+    {
+      "rank": 1,
+      "finding": "One 60-day clock fits none of the four lines. Coffee buyers lapse at day 49, so the win-back flow reaches them 11 days late; brewing gear buyers lapse at day 364, so it reaches them 304 days early.",
+      "evidence": "Lapse points are the 80th percentile of 214 coffee and 39 brewing gear repeat gaps; the flow's delay is 60 days for everyone.",
+      "action": "Split the existing flow by the line of the last order and set each branch's delay to that line's lapse point, instead of adding a second win-back flow."
+    },
+    {
+      "rank": 2,
+      "finding": "23 of the flow's 37 recipients in the last 90 days were not lapsed yet by their own pace, and 2 of them used the 15% code on an order placed before their own lapse point.",
+      "evidence": "Flow recipients rebuilt from the order history; the code cost about $20.64 on those orders.",
+      "action": "Move the code out of the second email; offer the margin-capped amount only to lapsed customers from the second touch."
+    },
+    {
+      "rank": 3,
+      "finding": "48 customers are past their lapse point and still inside the stop point. The 18 repeat buyers among them spent about $6,823 a year at their old pace; the other 30 bought once, so they have no pace to price.",
+      "evidence": "All 48 have $6,732 in lifetime revenue and $3,358 in lifetime gross margin; the yearly figure is the plan rows' yearly value at the old pace, repeat buyers only.",
+      "action": "Run the lapsed plan below, repeat buyers first; they have bought the line more than once."
+    },
+    {
+      "rank": 4,
+      "finding": "Brewing gear buyers who come back buy coffee beans, not more gear: 29 of the 34 returning first-time gear buyers (85%).",
+      "evidence": "Second orders of customers whose first order was brewing gear, from the order table.",
+      "action": "Lead the gear win-back with beans for the machine they own; another machine is the wrong reason to return."
+    }
+  ],
+  "existing_winback_flow": {
+    "flow": "Winback: 60 days after last order (live; from the owner: 3 emails at days 60, 67, 74, 15% code in email 2)",
+    "last_90_days": {
+      "recipients": 37,
+      "conversions": 5,
+      "conversion_value": 341.44
+    },
+    "by_line": [
+      {
+        "line": "tea",
+        "recipients": 14,
+        "reached_before_own_lapse_point": 12,
+        "line_lapse_point_days": 73,
+        "flow_timing": "13 days before the line's lapse point"
+      },
+      {
+        "line": "coffee beans",
+        "recipients": 14,
+        "reached_before_own_lapse_point": 2,
+        "line_lapse_point_days": 49,
+        "flow_timing": "11 days after the line's lapse point"
+      },
+      {
+        "line": "brewing gear",
+        "recipients": 9,
+        "reached_before_own_lapse_point": 9,
+        "line_lapse_point_days": 364,
+        "flow_timing": "304 days before the line's lapse point"
+      }
+    ],
+    "early_discount_orders": 2,
+    "early_discount_cost": 20.64,
+    "verdict": "Fix this flow rather than add a second one: branch it by the line of the last order, set each branch's delay to that line's lapse point, and move the offer to the margin-capped amount for lapsed customers only."
+  },
+  "plan": [
+    {
+      "group": "close to lapsing",
+      "line": "coffee beans",
+      "customers": 1,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 108,
+      "lifetime_gross_margin": 62,
+      "yearly_value_at_old_pace": 341,
+      "median_incentive_cap": null,
+      "reason_to_return": "their usual roast is due again; lead with this month's roasts next to the one they bought",
+      "incentive": "none: not lapsed yet, a reminder is enough",
+      "offer_amount": 0,
+      "offer_eligible": 0,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        37
+      ],
+      "stop_rule": "stop at day 49; anyone still quiet moves to the lapsed plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan"
+    },
+    {
+      "group": "close to lapsing",
+      "line": "tea",
+      "customers": 2,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 103,
+      "lifetime_gross_margin": 65,
+      "yearly_value_at_old_pace": 470,
+      "median_incentive_cap": null,
+      "reason_to_return": "a restock of the tea they bought, plus one seasonal blend",
+      "incentive": "none: not lapsed yet, a reminder is enough",
+      "offer_amount": 0,
+      "offer_eligible": 0,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        55
+      ],
+      "stop_rule": "stop at day 73; anyone still quiet moves to the lapsed plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan"
+    },
+    {
+      "group": "close to lapsing",
+      "line": "brewing gear",
+      "customers": 4,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 813,
+      "lifetime_gross_margin": 298,
+      "yearly_value_at_old_pace": 523,
+      "median_incentive_cap": null,
+      "reason_to_return": "the matching beans, filters or parts for the gear they own, never another machine",
+      "incentive": "none: not lapsed yet, a reminder is enough",
+      "offer_amount": 0,
+      "offer_eligible": 0,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        273
+      ],
+      "stop_rule": "stop at day 364; anyone still quiet moves to the lapsed plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan"
+    },
+    {
+      "group": "close to lapsing",
+      "line": "gift boxes",
+      "customers": 2,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 139,
+      "lifetime_gross_margin": 63,
+      "yearly_value_at_old_pace": "not estimated: one order each, no pace",
+      "median_incentive_cap": null,
+      "reason_to_return": "this year's holiday boxes, shown before the gifting rush, with last year's order as the reminder",
+      "incentive": "none: not lapsed yet, a reminder is enough",
+      "offer_amount": 0,
+      "offer_eligible": 0,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        342
+      ],
+      "stop_rule": "stop at day 456; anyone still quiet moves to the lapsed plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan"
+    },
+    {
+      "group": "lapsed repeat buyers",
+      "line": "coffee beans",
+      "customers": 6,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 2448,
+      "lifetime_gross_margin": 1320,
+      "yearly_value_at_old_pace": 3368,
+      "median_incentive_cap": 11.83,
+      "reason_to_return": "their usual roast is due again; lead with this month's roasts next to the one they bought",
+      "incentive": "$10 off, from the second touch, to the 5 whose own cap covers it",
+      "offer_amount": 10,
+      "offer_eligible": 5,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        49,
+        88,
+        127
+      ],
+      "stop_rule": "stop at day 165 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 0,
+        "start at touch 2": 5,
+        "last touch only": 1
+      }
+    },
+    {
+      "group": "lapsed repeat buyers",
+      "line": "tea",
+      "customers": 11,
+      "buying_elsewhere": 1,
+      "lifetime_revenue": 1478,
+      "lifetime_gross_margin": 852,
+      "yearly_value_at_old_pace": 3176,
+      "median_incentive_cap": 8.68,
+      "reason_to_return": "a restock of the tea they bought, plus one seasonal blend",
+      "incentive": "$5 off, from the second touch, to the 10 whose own cap covers it",
+      "offer_amount": 5,
+      "offer_eligible": 10,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        73,
+        136,
+        199
+      ],
+      "stop_rule": "stop at day 262 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 5,
+        "start at touch 2": 6,
+        "last touch only": 0
+      }
+    },
+    {
+      "group": "lapsed repeat buyers",
+      "line": "brewing gear",
+      "customers": 1,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 334,
+      "lifetime_gross_margin": 136,
+      "yearly_value_at_old_pace": 280,
+      "median_incentive_cap": 26.7,
+      "reason_to_return": "the matching beans, filters or parts for the gear they own, never another machine",
+      "incentive": "$25 off, from the second touch, to the 1 whose own cap covers it",
+      "offer_amount": 25,
+      "offer_eligible": 1,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        364,
+        607,
+        850
+      ],
+      "stop_rule": "stop at day 1092 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 1,
+        "start at touch 2": 0,
+        "last touch only": 0
+      }
+    },
+    {
+      "group": "lapsed one-time buyers",
+      "line": "coffee beans",
+      "customers": 8,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 1057,
+      "lifetime_gross_margin": 413,
+      "yearly_value_at_old_pace": "not estimated: one order each, no pace",
+      "median_incentive_cap": 10.34,
+      "reason_to_return": "a second order from the same line: 98% of returning first-time coffee beans buyers bought coffee beans again (44 of 45); lead with the item they bought",
+      "incentive": "$10 off, from the second touch, to the 4 whose own cap covers it",
+      "offer_amount": 10,
+      "offer_eligible": 4,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        49,
+        88,
+        127
+      ],
+      "stop_rule": "stop at day 165 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 2,
+        "start at touch 2": 4,
+        "last touch only": 2
+      }
+    },
+    {
+      "group": "lapsed one-time buyers",
+      "line": "tea",
+      "customers": 5,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 177,
+      "lifetime_gross_margin": 103,
+      "yearly_value_at_old_pace": "not estimated: one order each, no pace",
+      "median_incentive_cap": 8.9,
+      "reason_to_return": "a second order from the same line: 97% of returning first-time tea buyers bought tea again (29 of 30); lead with the item they bought",
+      "incentive": "$5 off, from the second touch, to the 5 whose own cap covers it",
+      "offer_amount": 5,
+      "offer_eligible": 5,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        73,
+        136,
+        199
+      ],
+      "stop_rule": "stop at day 262 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 3,
+        "start at touch 2": 2,
+        "last touch only": 0
+      }
+    },
+    {
+      "group": "lapsed one-time buyers",
+      "line": "brewing gear",
+      "customers": 3,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 383,
+      "lifetime_gross_margin": 134,
+      "yearly_value_at_old_pace": "not estimated: one order each, no pace",
+      "median_incentive_cap": 22.61,
+      "reason_to_return": "the coffee beans that 85% of returning first-time brewing gear buyers bought second (29 of 34)",
+      "incentive": "$20 off, from the second touch, to the 2 whose own cap covers it",
+      "offer_amount": 20,
+      "offer_eligible": 2,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        364,
+        607,
+        850
+      ],
+      "stop_rule": "stop at day 1092 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 2,
+        "start at touch 2": 1,
+        "last touch only": 0
+      }
+    },
+    {
+      "group": "lapsed one-time buyers",
+      "line": "gift boxes",
+      "customers": 14,
+      "buying_elsewhere": 0,
+      "lifetime_revenue": 857,
+      "lifetime_gross_margin": 400,
+      "yearly_value_at_old_pace": "not estimated: one order each, no pace",
+      "median_incentive_cap": 14.17,
+      "reason_to_return": "this year's holiday boxes, shown before the gifting rush, with last year's order as the reminder (only 4 returning first-time buyers, too few to name a next product)",
+      "incentive": "$10 off, from the second touch, to the 14 whose own cap covers it",
+      "offer_amount": 10,
+      "offer_eligible": 14,
+      "channel": "email only (under 100 people is too small a customer list for paid ads)",
+      "touch_days_since_last_order": [
+        456,
+        547,
+        638
+      ],
+      "stop_rule": "stop at day 730 (the line's stop point), then send nothing more from this plan",
+      "measure": "under 100 people, too few for a holdout: compare with this row's own order rate before the plan",
+      "backlog_today": {
+        "start at touch 1": 0,
+        "start at touch 2": 0,
+        "last touch only": 14
+      }
+    }
+  ],
+  "let_go": {
+    "group": "let go",
+    "customers": 59,
+    "lifetime_revenue": 8886,
+    "plan": "one plain last note with no offer, then remove them from win-back sends; keep them on the newsletter only if they still click"
+  },
+  "lists": {
+    "close_to_lapsing": 9,
+    "lapsed": 48,
+    "top_10_lapsed_by_lifetime_gross_margin": [
+      {
+        "customer": "C-1039",
+        "line": "coffee beans",
+        "days_since_last_order": 119,
+        "lapse_point_days": 36,
+        "lifetime_gross_margin": 369.72,
+        "incentive_cap": 11.73
+      },
+      {
+        "customer": "C-1005",
+        "line": "coffee beans",
+        "days_since_last_order": 165,
+        "lapse_point_days": 38,
+        "lifetime_gross_margin": 320.5,
+        "incentive_cap": 11.93
+      },
+      {
+        "customer": "C-1082",
+        "line": "tea",
+        "days_since_last_order": 97,
+        "lapse_point_days": 42,
+        "lifetime_gross_margin": 256.0,
+        "incentive_cap": 15.81
+      },
+      {
+        "customer": "C-1016",
+        "line": "coffee beans",
+        "days_since_last_order": 114,
+        "lapse_point_days": 41,
+        "lifetime_gross_margin": 240.37,
+        "incentive_cap": 12.38
+      },
+      {
+        "customer": "C-1049",
+        "line": "coffee beans",
+        "days_since_last_order": 92,
+        "lapse_point_days": 83,
+        "lifetime_gross_margin": 156.19,
+        "incentive_cap": 12.13
+      },
+      {
+        "customer": "C-1037",
+        "line": "coffee beans",
+        "days_since_last_order": 100,
+        "lapse_point_days": 39,
+        "lifetime_gross_margin": 141.85,
+        "incentive_cap": 11.1
+      },
+      {
+        "customer": "C-1115",
+        "line": "brewing gear",
+        "days_since_last_order": 454,
+        "lapse_point_days": 364,
+        "lifetime_gross_margin": 135.62,
+        "incentive_cap": 26.7
+      },
+      {
+        "customer": "C-1011",
+        "line": "coffee beans",
+        "days_since_last_order": 88,
+        "lapse_point_days": 56,
+        "lifetime_gross_margin": 91.33,
+        "incentive_cap": 9.98
+      },
+      {
+        "customer": "C-1084",
+        "line": "tea",
+        "days_since_last_order": 75,
+        "lapse_point_days": 73,
+        "lifetime_gross_margin": 90.33,
+        "incentive_cap": 7.67
+      },
+      {
+        "customer": "C-1081",
+        "line": "tea",
+        "days_since_last_order": 172,
+        "lapse_point_days": 94,
+        "lifetime_gross_margin": 86.74,
+        "incentive_cap": 14.2
+      }
+    ]
+  },
+  "handoffs": [
+    {
+      "to": "email-sequence-builder",
+      "what": "the copy for each plan row: reason to return, offer and touch days"
+    },
+    {
+      "to": "retargeting-sequence-designer",
+      "what": "none this time: no plan row reaches 100 people"
+    },
+    {
+      "to": "klaviyo-flow-auditor",
+      "what": "the rest of the Klaviyo account once the win-back flow is fixed"
+    },
+    {
+      "to": "ltv-cac-ratio-optimizer",
+      "what": "the lapsed customers' lost yearly value next to what a new customer costs to acquire"
+    }
+  ],
+  "offered_writes_not_run": [
+    {
+      "action": "create_list",
+      "platform": "klaviyo",
+      "plan_row": "lapsed repeat buyers, coffee beans",
+      "body": {
+        "data": {
+          "type": "list",
+          "attributes": {
+            "name": "Win-back: lapsed repeat buyers coffee beans (2026-10-28)"
+          }
+        }
+      }
+    },
+    {
+      "action": "add_profiles_to_list",
+      "platform": "klaviyo",
+      "note": "list_id from create_list; profile ids from get_profiles with the lapsed customers' emails",
+      "list_id": "<LIST_ID>",
+      "body": {
+        "data": [
+          {
+            "type": "profile",
+            "id": "<PROFILE_ID>"
+          }
+        ]
+      }
+    }
+  ],
+  "unknowns": [
+    "Brewing gear: 730 days of history is under 4 x the lapse point (1456 days); long gaps are under-counted, so these points may be early.",
+    "Gift boxes: 730 days of history is under 4 x the lapse point (1824 days); the owner's cycle is used, so this only limits checking it.",
+    "Email engagement was not read: the plan keeps let-go customers on the newsletter only if they still click, which the user checks in Klaviyo."
+  ]
+}

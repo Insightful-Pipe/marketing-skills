@@ -1,0 +1,507 @@
+{
+  "header": {
+    "account": "Example home services company",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "time_zone": "America/Denver",
+    "read_date": "2026-10-21",
+    "queries_tested": "every query inside the scripts ran through the connector before handover; row counts below"
+  },
+  "account_numbers": {
+    "cost_last_30_days": 14040,
+    "conversions_last_30_days": 258,
+    "account_cpa": 54.42,
+    "target_cpa_used": 65.0,
+    "target_cpa_source": "the user",
+    "average_daily_spend_30_days": 468.0
+  },
+  "dry_runs": [
+    {
+      "query": "customer (name, currency, time zone)",
+      "rows": 1
+    },
+    {
+      "query": "campaigns, last 30 days",
+      "rows": 7
+    },
+    {
+      "query": "campaign_label (labels in use)",
+      "rows": 0
+    },
+    {
+      "query": "customer, THIS_MONTH by day",
+      "rows": 20
+    },
+    {
+      "query": "campaign_label WHERE label.name = 'Budget cap: pause'",
+      "rows": 0,
+      "why": "the label does not exist yet; after add_label and apply_label it returns the campaigns in scope"
+    },
+    {
+      "query": "budget cap script: customer, THIS_MONTH (one total)",
+      "rows": 1
+    },
+    {
+      "query": "budget cap script: campaign_label WHERE label.name = 'Paused by budget cap' AND status PAUSED",
+      "rows": 0,
+      "why": "nothing has been paused by the script yet"
+    },
+    {
+      "query": "keyword_view, cost over the alert bar and no conversions",
+      "rows": 1
+    },
+    {
+      "query": "ad_group_ad final URLs (enabled)",
+      "rows": 18
+    },
+    {
+      "query": "asset_group final URLs (enabled)",
+      "rows": 2
+    },
+    {
+      "query": "search_term_view, LAST_30_DAYS, clicks > 0",
+      "rows": 71
+    },
+    {
+      "query": "campaign by day, BETWEEN '2026-07-25' AND '2026-10-20' (backtest)",
+      "rows": 616
+    },
+    {
+      "query": "spend jump script: campaign by day, BETWEEN '2026-09-22' AND '2026-10-20'",
+      "rows": 203
+    },
+    {
+      "query": "fixed pasted script, BETWEEN '2026-07-23' AND '2026-10-20'",
+      "rows": 7
+    }
+  ],
+  "jobs": [
+    {
+      "job": "Monthly budget cap",
+      "tool": "script",
+      "why": "the cap is a total across campaigns, which a rule cannot add up",
+      "scope": [
+        {
+          "name": "Furnace Repair | Search",
+          "id": "210000000002",
+          "type": "SEARCH"
+        },
+        {
+          "name": "AC Repair | Search",
+          "id": "210000000003",
+          "type": "SEARCH"
+        },
+        {
+          "name": "Water Heaters | Search",
+          "id": "210000000004",
+          "type": "SEARCH"
+        },
+        {
+          "name": "Plumbing | Search",
+          "id": "210000000005",
+          "type": "SEARCH"
+        },
+        {
+          "name": "AC Installation | Search",
+          "id": "210000000006",
+          "type": "SEARCH"
+        },
+        {
+          "name": "PMax | All services",
+          "id": "210000000007",
+          "type": "PERFORMANCE_MAX"
+        }
+      ],
+      "protected": [
+        "Brand | Search"
+      ],
+      "numbers": {
+        "monthly_cap": 14000.0,
+        "month_to_date_cost": 9273,
+        "days_so_far": 20,
+        "daily_average": 463.65,
+        "projected_month": 14373.15,
+        "cap_reached_on": "2026-10-31",
+        "sum_of_daily_budgets_times_31": 16740,
+        "max_changes": 6,
+        "max_changes_math": "6 campaigns in scope"
+      },
+      "finding": "At $463.65 a day, October ends near $14,373, over the $14,000 cap; the cap bites on 2026-10-31. The daily budgets alone allow $16,740, so the cap is the real limit.",
+      "script": "// Monthly budget cap for Example home services company. Built 2026-10-21 from a live read of the account.\n// Undo: in Campaigns, filter on the label \"Paused by budget cap\", enable those campaigns and remove the label.\n// The script also does this itself on its first run under the cap (a new month or a raised cap).\nconst CONFIG = {\n  LIVE: false,                          // false logs only. Set true after a clean Preview.\n  MONTHLY_CAP: 14000,                    // USD, the account's whole spend this month\n  SCOPE_LABEL: 'Budget cap: pause',      // the 6 non-brand campaigns; Brand never carries it\n  PAUSED_LABEL: 'Paused by budget cap',\n  MAX_CHANGES: 6,                       // the number of campaigns in scope\n  EMAIL: 'ops@example.com',\n};\n\nfunction main() {\n  const preview = AdsApp.getExecutionInfo().isPreview();\n  const canChange = CONFIG.LIVE && !preview;\n  const spend = monthToDateSpend();\n  const lines = [];\n  Logger.log('Month to date: ' + spend.toFixed(2) + ' of ' + CONFIG.MONTHLY_CAP + ' cap');\n  let changes = 0;                      // pauses and re-enables both count against MAX_CHANGES\n  if (spend >= CONFIG.MONTHLY_CAP) {\n    if (canChange) ensureLabel(CONFIG.PAUSED_LABEL);\n    forEachCampaign(campaignIds(CONFIG.SCOPE_LABEL, 'ENABLED'), function (c) {\n      if (changes >= CONFIG.MAX_CHANGES) { Logger.log('Change cap reached, left running: ' + c.getName()); return; }\n      lines.push((canChange ? 'PAUSED: ' : 'WOULD PAUSE: ') + c.getName() + ' (' + c.getId() + ')');\n      if (canChange) { c.pause(); c.applyLabel(CONFIG.PAUSED_LABEL); }\n      changes++;\n    });\n  } else {\n    forEachCampaign(campaignIds(CONFIG.PAUSED_LABEL, 'PAUSED'), function (c) {\n      if (changes >= CONFIG.MAX_CHANGES) { Logger.log('Change cap reached, left paused: ' + c.getName()); return; }\n      lines.push((canChange ? 'ENABLED: ' : 'WOULD ENABLE: ') + c.getName() + ' (' + c.getId() + ')');\n      if (canChange) { c.enable(); c.removeLabel(CONFIG.PAUSED_LABEL); }\n      changes++;\n    });\n  }\n  lines.forEach(function (l) { Logger.log(l); });\n  notify('Budget cap: ' + lines.length + ' change(s)', lines, preview);\n}\n\nfunction monthToDateSpend() {\n  const rows = AdsApp.search('SELECT metrics.cost_micros FROM customer WHERE segments.date DURING THIS_MONTH');\n  let micros = 0;\n  while (rows.hasNext()) micros += Number(rows.next().metrics.costMicros);\n  return micros / 1e6;\n}\n\nfunction campaignIds(label, status) {\n  const rows = AdsApp.search('SELECT campaign.id, campaign.name, campaign.status, label.name FROM campaign_label ' +\n    \"WHERE label.name = '\" + label + \"' AND campaign.status = '\" + status + \"'\");\n  const ids = [];\n  while (rows.hasNext()) ids.push(Number(rows.next().campaign.id));\n  return ids;\n}\n\n// AdsApp.campaigns() returns Search and Display only; Performance Max has its own selector.\nfunction forEachCampaign(ids, fn) {\n  if (!ids.length) return;\n  [AdsApp.campaigns(), AdsApp.performanceMaxCampaigns()].forEach(function (selector) {\n    const it = selector.withIds(ids).get();\n    while (it.hasNext()) fn(it.next());\n  });\n}\n\nfunction ensureLabel(name) {\n  const it = AdsApp.labels().get();\n  while (it.hasNext()) if (it.next().getName() === name) return;\n  AdsApp.createLabel(name);\n}\n\nfunction notify(subject, lines, preview) {\n  if (!CONFIG.EMAIL || !lines.length) return;\n  MailApp.sendEmail(CONFIG.EMAIL, (preview ? '[PREVIEW] ' : '') + subject, lines.join('\\n'));\n}\n",
+      "preview_log_today": [
+        "Month to date: 9273.00 of 14000 cap"
+      ],
+      "preview_note": "Under the cap and no campaign carries the paused label, so the preview changes nothing and sends no email.",
+      "label_actions_offered": [
+        {
+          "action": "add_label",
+          "payload": {
+            "name": "Budget cap: pause"
+          },
+          "status": "not run"
+        },
+        {
+          "action": "apply_label",
+          "payload": {
+            "label_id": "<label_id returned by add_label>",
+            "target_type": "campaign",
+            "target_ids": [
+              "210000000002",
+              "210000000003",
+              "210000000004",
+              "210000000005",
+              "210000000006",
+              "210000000007"
+            ]
+          },
+          "status": "not run"
+        }
+      ],
+      "change_cap": 6,
+      "undo": "filter Campaigns on \"Paused by budget cap\", enable them and remove the label; the script does the same itself when spend is under the cap",
+      "where": "Tools, Bulk actions, Scripts; Preview, then set LIVE to true and schedule hourly",
+      "caution": "cost data can lag by a few hours and a campaign can spend up to twice its daily budget on one day; set the cap a little under the true limit"
+    },
+    {
+      "job": "Broken final URL check",
+      "tool": "script",
+      "why": "fetching pages needs UrlFetchApp, which rules cannot do",
+      "numbers": {
+        "distinct_final_urls": 11,
+        "max_urls": 50,
+        "max_urls_math": "11 rounded up to the next 50",
+        "urls_only_in_performance_max": [
+          "https://example.com/plumbing"
+        ]
+      },
+      "urls": [
+        {
+          "url": "https://example.com/",
+          "used_by": [
+            "Brand | Search",
+            "Furnace Repair | Search",
+            "PMax | All services",
+            "Plumbing | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/ac-installation",
+          "used_by": [
+            "AC Installation | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/ac-repair",
+          "used_by": [
+            "AC Repair | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/drain-cleaning",
+          "used_by": [
+            "Plumbing | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/emergency-heating",
+          "used_by": [
+            "Furnace Repair | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/emergency-plumber",
+          "used_by": [
+            "Plumbing | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/furnace-repair",
+          "used_by": [
+            "Furnace Repair | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/heat-pumps",
+          "used_by": [
+            "AC Installation | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/plumbing",
+          "used_by": [
+            "PMax | All services"
+          ]
+        },
+        {
+          "url": "https://example.com/tankless-water-heaters",
+          "used_by": [
+            "Water Heaters | Search"
+          ]
+        },
+        {
+          "url": "https://example.com/water-heaters",
+          "used_by": [
+            "Water Heaters | Search"
+          ]
+        }
+      ],
+      "script": "// Broken final URL check for Example home services company. Built 2026-10-21 from a live read of the account.\n// Alert only: this script changes nothing in the account, so there is nothing to undo.\nconst CONFIG = {\n  MAX_URLS: 50,       // 11 distinct final URLs today, with room to grow\n  EMAIL: 'ops@example.com',\n};\n\nfunction main() {\n  const preview = AdsApp.getExecutionInfo().isPreview();\n  const urls = {};\n  collect(\"SELECT ad_group_ad.ad.id, ad_group_ad.ad.final_urls, ad_group.name, campaign.name FROM ad_group_ad \" +\n    \"WHERE ad_group_ad.status = 'ENABLED' AND ad_group.status = 'ENABLED' AND campaign.status = 'ENABLED'\",\n    function (r) { return r.adGroupAd.ad.finalUrls; }, urls);\n  // Performance Max sends traffic to asset group URLs, which the ad query does not return\n  collect(\"SELECT asset_group.id, asset_group.final_urls, campaign.name FROM asset_group \" +\n    \"WHERE asset_group.status = 'ENABLED' AND campaign.status = 'ENABLED'\",\n    function (r) { return r.assetGroup.finalUrls; }, urls);\n  const all = Object.keys(urls);\n  const broken = [];\n  let checked = 0;\n  for (const url of all.slice(0, CONFIG.MAX_URLS)) {\n    if (AdsApp.getExecutionInfo().getRemainingTime() < 60) break;\n    let code = 0;\n    try { code = UrlFetchApp.fetch(url, {muteHttpExceptions: true, followRedirects: true}).getResponseCode(); } catch (e) { code = 0; }\n    checked++;\n    if (code === 0 || code >= 400) broken.push((code || 'no answer') + ': ' + url + ' (used by ' + Object.keys(urls[url]).join(', ') + ')');\n  }\n  Logger.log('Checked ' + checked + ' of ' + all.length + ' URLs, ' + broken.length + ' broken');\n  broken.forEach(function (l) { Logger.log(l); });\n  notify('Broken final URLs: ' + broken.length, broken, preview);\n}\n\nfunction collect(query, getUrls, urls) {\n  const rows = AdsApp.search(query);\n  while (rows.hasNext()) {\n    const r = rows.next();\n    (getUrls(r) || []).forEach(function (u) { (urls[u] = urls[u] || {})[r.campaign.name] = true; });\n  }\n}\n\nfunction notify(subject, lines, preview) {\n  if (!CONFIG.EMAIL || !lines.length) return;\n  MailApp.sendEmail(CONFIG.EMAIL, (preview ? '[PREVIEW] ' : '') + subject, lines.join('\\n'));\n}\n",
+      "preview_log_today": "Checked 11 of 11 URLs, then one line per URL that answers 400 or above",
+      "preview_note": "This handover did not fetch the pages; the preview does. Emails from a preview start with [PREVIEW].",
+      "change_cap": "none needed: alert only",
+      "undo": "nothing to undo",
+      "where": "Tools, Bulk actions, Scripts; schedule daily"
+    },
+    {
+      "job": "Keywords that spend with no conversions",
+      "tool": "automated rule",
+      "why": "one entity type, stats Google Ads already holds and one action, so no code is needed",
+      "numbers": {
+        "alert_bar": 130.0,
+        "alert_bar_math": "2 x target CPA $65",
+        "pause_bar": 195.0,
+        "pause_bar_math": "3 x target CPA $65",
+        "chance_of_zero_by_luck_at_alert_bar": 13.5
+      },
+      "matches_today": [
+        {
+          "keyword": "new ac unit cost",
+          "match_type": "BROAD",
+          "campaign": "AC Installation | Search",
+          "ad_group": "AC installation",
+          "cost": 520,
+          "conversions": 0,
+          "over_pause_bar": true
+        }
+      ],
+      "watch_list_under_bar": [
+        {
+          "keyword": "heat pump rebate colorado",
+          "campaign": "AC Installation | Search",
+          "cost": 60
+        },
+        {
+          "keyword": "pilot light out furnace",
+          "campaign": "Furnace Repair | Search",
+          "cost": 30
+        }
+      ],
+      "rule_settings": {
+        "rule_type": "Keyword rules",
+        "apply_to": "enabled keywords in all enabled campaigns except Brand | Search",
+        "action": "Add label \"Zero conv review\"",
+        "conditions": [
+          "Cost > 130.00",
+          "Conversions < 1"
+        ],
+        "frequency": "One time first; then weekly, Monday 07:00",
+        "using_data_from": "Previous 30 days",
+        "email_results": "Only if there are changes or errors",
+        "before_saving": "Preview; it should list 1 keyword(s): new ac unit cost"
+      },
+      "change_cap": "labels only; the rule pauses nothing",
+      "undo": "remove the label \"Zero conv review\" from the keywords",
+      "where": "Tools, Bulk actions, Rules",
+      "note": "Deciding when to pause across all ad platforms belongs to ad-stop-loss-rules, if installed."
+    },
+    {
+      "job": "Search terms to Google Sheets",
+      "tool": "script",
+      "why": "rules cannot write to a sheet",
+      "numbers": {
+        "rows_in_dry_run": 71,
+        "date_range": "LAST_30_DAYS"
+      },
+      "first_rows": [
+        {
+          "search_term": "furnace repair",
+          "campaign": "Furnace Repair | Search",
+          "clicks": 70,
+          "cost": 640,
+          "conversions": 12
+        },
+        {
+          "search_term": "ac repair",
+          "campaign": "AC Repair | Search",
+          "clicks": 62,
+          "cost": 520,
+          "conversions": 7
+        },
+        {
+          "search_term": "emergency plumber",
+          "campaign": "Plumbing | Search",
+          "clicks": 62,
+          "cost": 520,
+          "conversions": 10
+        },
+        {
+          "search_term": "furnace repair near me",
+          "campaign": "Furnace Repair | Search",
+          "clicks": 47,
+          "cost": 420,
+          "conversions": 8
+        },
+        {
+          "search_term": "water heater repair",
+          "campaign": "Water Heaters | Search",
+          "clicks": 51,
+          "cost": 420,
+          "conversions": 9
+        }
+      ],
+      "script": "// Search terms to Google Sheets for Example home services company. Built 2026-10-21 from a live read of the account.\n// Writes one tab only. Undo: delete the tab \"Search terms (30 days)\"; nothing in the account changes.\nconst CONFIG = {\n  SHEET_URL: 'https://docs.google.com/spreadsheets/d/EXAMPLE-SHEET-ID/edit',\n  TAB: 'Search terms (30 days)',\n};\n\nfunction main() {\n  const tz = AdsApp.currentAccount().getTimeZone();\n  const today = Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd');\n  const rows = AdsApp.search('SELECT search_term_view.search_term, search_term_view.status, campaign.name, ad_group.name, ' +\n    'metrics.clicks, metrics.cost_micros, metrics.conversions FROM search_term_view ' +\n    'WHERE segments.date DURING LAST_30_DAYS AND metrics.clicks > 0 ORDER BY metrics.cost_micros DESC');\n  const out = [['Search term', 'Status', 'Campaign', 'Ad group', 'Clicks', 'Cost', 'Conversions', 'Run date']];\n  while (rows.hasNext()) {\n    const r = rows.next();\n    out.push([r.searchTermView.searchTerm, r.searchTermView.status, r.campaign.name, r.adGroup.name,\n      Number(r.metrics.clicks), Number(r.metrics.costMicros) / 1e6, Number(r.metrics.conversions), today]);\n  }\n  const ss = SpreadsheetApp.openByUrl(CONFIG.SHEET_URL);\n  const sheet = ss.getSheetByName(CONFIG.TAB) || ss.insertSheet(CONFIG.TAB);\n  sheet.clearContents();\n  sheet.getRange(1, 1, out.length, out[0].length).setValues(out);\n  Logger.log('Wrote ' + (out.length - 1) + ' search terms to ' + CONFIG.TAB);\n}\n",
+      "preview_log_today": "Wrote 71 search terms to Search terms (30 days)",
+      "after_preview_check": "A preview writes the sheet. With Google Sheets connected, list_sheets should show the tab \"Search terms (30 days)\" next to \"Notes\", get_sheet_peak should show the 8 headers (Search term, Status, Campaign, Ad group, Clicks, Cost, Conversions, Run date), and query_sheet_data with select \"Search term\" should return 71 search terms, the dry run's count, not counting a header row if one comes back. Pass sheet_id as text (\"0\" for the first tab).",
+      "coverage_note": "search_term_view covers Search campaigns only; the Performance Max campaign's terms are not in the export",
+      "change_cap": "none needed: writes one tab, never the account",
+      "undo": "delete the tab \"Search terms (30 days)\"",
+      "where": "Tools, Bulk actions, Scripts; authorise the sheet once, schedule weekly"
+    },
+    {
+      "job": "Spend jump alert",
+      "tool": "script",
+      "why": "comparing yesterday with past weekdays needs history math a rule cannot do",
+      "numbers": {
+        "jump_ratio": 1.75,
+        "min_spend": 47,
+        "min_spend_math": "10% of $468.00 average daily spend",
+        "backtest_days": 60,
+        "backtest": [
+          {
+            "jump_ratio": 1.3,
+            "alerts_in_60_days": 22,
+            "worst_campaign_alerts": 22,
+            "by_campaign": {
+              "Furnace Repair | Search": 22
+            }
+          },
+          {
+            "jump_ratio": 1.5,
+            "alerts_in_60_days": 14,
+            "worst_campaign_alerts": 14,
+            "by_campaign": {
+              "Furnace Repair | Search": 14
+            }
+          },
+          {
+            "jump_ratio": 1.75,
+            "alerts_in_60_days": 0,
+            "worst_campaign_alerts": 0,
+            "by_campaign": {}
+          },
+          {
+            "jump_ratio": 2.0,
+            "alerts_in_60_days": 0,
+            "worst_campaign_alerts": 0,
+            "by_campaign": {}
+          }
+        ],
+        "largest_ratio_in_backtest": {
+          "campaign": "Furnace Repair | Search",
+          "date": "2026-08-28",
+          "ratio": 1.72
+        }
+      },
+      "yesterday": [
+        {
+          "campaign": "Brand | Search",
+          "yesterday": 20,
+          "same_weekday_avg": 20.0,
+          "ratio": 1.0,
+          "alert": false
+        },
+        {
+          "campaign": "Furnace Repair | Search",
+          "yesterday": 146,
+          "same_weekday_avg": 122.5,
+          "ratio": 1.19,
+          "alert": false
+        },
+        {
+          "campaign": "AC Repair | Search",
+          "yesterday": 64,
+          "same_weekday_avg": 75.0,
+          "ratio": 0.85,
+          "alert": false
+        },
+        {
+          "campaign": "Water Heaters | Search",
+          "yesterday": 63,
+          "same_weekday_avg": 63.0,
+          "ratio": 1.0,
+          "alert": false
+        },
+        {
+          "campaign": "Plumbing | Search",
+          "yesterday": 85,
+          "same_weekday_avg": 85.0,
+          "ratio": 1.0,
+          "alert": false
+        },
+        {
+          "campaign": "AC Installation | Search",
+          "yesterday": 52,
+          "same_weekday_avg": 61.75,
+          "ratio": 0.84,
+          "alert": false
+        },
+        {
+          "campaign": "PMax | All services",
+          "yesterday": 83,
+          "same_weekday_avg": 83.0,
+          "ratio": 1.0,
+          "alert": false
+        }
+      ],
+      "script": "// Spend jump alert for Example home services company. Built 2026-10-21 from a live read of the account.\n// Alert only: this script changes nothing in the account, so there is nothing to undo.\nconst CONFIG = {\n  JUMP_RATIO: 1.75,        // backtest: 0 alert(s) in the last 60 days at this ratio\n  MIN_SPEND: 47,          // USD, 10% of the account's average daily spend\n  EMAIL: 'ops@example.com',\n};\n\nfunction main() {\n  const preview = AdsApp.getExecutionInfo().isPreview();\n  const tz = AdsApp.currentAccount().getTimeZone();\n  const DAY = 24 * 3600 * 1000, now = new Date();\n  const fmt = function (t) { return Utilities.formatDate(new Date(t), tz, 'yyyy-MM-dd'); };\n  const yesterday = fmt(now.getTime() - DAY);\n  const start = fmt(now.getTime() - 29 * DAY);\n  const rows = AdsApp.search('SELECT campaign.id, campaign.name, segments.date, metrics.cost_micros FROM campaign ' +\n    \"WHERE segments.date BETWEEN '\" + start + \"' AND '\" + yesterday + \"' AND metrics.cost_micros > 0\");\n  const cost = {};\n  while (rows.hasNext()) {\n    const r = rows.next();\n    (cost[r.campaign.name] = cost[r.campaign.name] || {})[r.segments.date] = Number(r.metrics.costMicros) / 1e6;\n  }\n  const lines = [];\n  Object.keys(cost).forEach(function (name) {\n    const y = cost[name][yesterday] || 0;\n    let sum = 0;\n    for (let w = 1; w <= 4; w++) sum += cost[name][fmt(now.getTime() - (1 + 7 * w) * DAY)] || 0;\n    const usual = sum / 4;\n    if (y < CONFIG.MIN_SPEND) return;\n    if (usual === 0) lines.push(name + ': ' + y.toFixed(2) + ' yesterday with no spend on the same weekday in 4 weeks (new spend)');\n    else if (y / usual >= CONFIG.JUMP_RATIO) lines.push(name + ': ' + y.toFixed(2) + ' yesterday, usual ' + usual.toFixed(2) + ' (' + (y / usual).toFixed(2) + 'x)');\n  });\n  Logger.log(lines.length ? lines.join('\\n') : 'No spend jumps on ' + yesterday);\n  notify('Spend jump: ' + lines.length + ' campaign(s)', lines, preview);\n}\n\nfunction notify(subject, lines, preview) {\n  if (!CONFIG.EMAIL || !lines.length) return;\n  MailApp.sendEmail(CONFIG.EMAIL, (preview ? '[PREVIEW] ' : '') + subject, lines.join('\\n'));\n}\n",
+      "preview_log_today": "No spend jumps on 2026-10-20",
+      "change_cap": "none needed: alert only",
+      "undo": "nothing to undo",
+      "where": "Tools, Bulk actions, Scripts; schedule daily at 06:00 account time"
+    }
+  ],
+  "pasted_script_fix": {
+    "what_it_does": "Logs the cost of every campaign with more than 90 clicks over the last 90 days (line 7 adds 10 to the clicks and compares with 100). It reads only.",
+    "problems": [
+      {
+        "line": 3,
+        "problem": "DURING LAST_90_DAYS is not a named range, so the query is refused",
+        "fix": "compute the dates in the account's time zone and use BETWEEN"
+      },
+      {
+        "line": 6,
+        "problem": "row fields are camelCase, so r.metrics.cost_micros is undefined and cost becomes NaN",
+        "fix": "Number(r.metrics.costMicros) / 1e6"
+      },
+      {
+        "line": 7,
+        "problem": "clicks arrives as a string, so clicks + 10 joins text: a campaign with 5 clicks gives \"510\", which is over 100, so it is logged although 5 + 10 is only 15",
+        "fix": "Number(r.metrics.clicks) > 90, the same threshold as clicks + 10 > 100"
+      }
+    ],
+    "fixed_script": "// Your campaign click report, fixed. Reads only; changes nothing.\nfunction main() {\n  const tz = AdsApp.currentAccount().getTimeZone();\n  const DAY = 24 * 3600 * 1000, now = new Date();\n  const fmt = function (t) { return Utilities.formatDate(new Date(t), tz, 'yyyy-MM-dd'); };\n  // DURING has no LAST_90_DAYS; compute the 90 complete days and use BETWEEN\n  const rows = AdsApp.search('SELECT campaign.name, metrics.clicks, metrics.cost_micros FROM campaign ' +\n    \"WHERE segments.date BETWEEN '\" + fmt(now.getTime() - 90 * DAY) + \"' AND '\" + fmt(now.getTime() - DAY) + \"'\");\n  while (rows.hasNext()) {\n    const r = rows.next();\n    const cost = Number(r.metrics.costMicros) / 1e6;   // row fields are camelCase; cost_micros reads as undefined\n    const clicks = Number(r.metrics.clicks);            // 64-bit numbers arrive as strings\n    if (clicks > 90) Logger.log(r.campaign.name + ' ' + cost.toFixed(2));   // your clicks + 10 > 100, as a number\n  }\n}\n",
+    "tested": "the fixed query ran through the connector for 2026-07-23 to 2026-10-20 and returned 7 rows"
+  },
+  "go_deeper": [
+    {
+      "need": "check pacing before you cap it",
+      "skill": "spend-pacing-monitor"
+    },
+    {
+      "need": "turn the exported search terms into negatives",
+      "skill": "search-term-gold-miner, then negative-keyword-implementer"
+    },
+    {
+      "need": "set the pause bar across all ad platforms",
+      "skill": "ad-stop-loss-rules"
+    }
+  ],
+  "summary": [
+    "Budget cap: script, 6 campaigns in scope, cap reached on 2026-10-31 at this pace; off until you preview it.",
+    "Zero-conversion keywords: rule at $130; 1 keyword(s) match today.",
+    "Search terms: script, 71 rows to \"Search terms (30 days)\" weekly.",
+    "Broken URLs: script, 11 URLs daily, alert only.",
+    "Spend jumps: script at 1.75x with a $47 floor; 0 alert(s) in the last 60 days.",
+    "Your pasted script: 3 faults fixed, query tested."
+  ]
+}

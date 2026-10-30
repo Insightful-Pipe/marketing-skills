@@ -1,0 +1,602 @@
+{
+  "header": {
+    "app": "Example Pilates Coach",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "partner": "AppsFlyer",
+    "window": "2026-08-21 to 2026-09-17 (28 install days; every third postback has arrived)",
+    "run_date": "2026-10-30",
+    "currency": "USD",
+    "time_zones": {
+      "ad networks and AppsFlyer": "America/New_York",
+      "store consoles": "as stated on each console export; the user checked both cover the same 28 dates"
+    },
+    "from_connectors": [
+      "google-ads",
+      "facebook-ads",
+      "tiktok-ads",
+      "snapchat-ads",
+      "google-analytics"
+    ],
+    "from_exports": [
+      "AppsFlyer integration settings (pasted)",
+      "AppsFlyer aggregate installs by network and platform",
+      "AppsFlyer cohort by days 0 to 2 state",
+      "AppsFlyer SKAdNetwork postback report",
+      "AppsFlyer conversion value schema",
+      "App Store Connect first-time downloads",
+      "Play Console users acquired",
+      "Apple Ads campaign report",
+      "Snapchat attribution setting (pasted)"
+    ],
+    "spend_in_window": 54050.0,
+    "cut_offs_note": "Every pass, warn and fail cut-off here is this skill's own starting point, not a rule from Apple or any network."
+  },
+  "scorecard": [
+    {
+      "area": "1. Partner wiring",
+      "result": "fail",
+      "key_number": "1 of 12 campaigns optimize on an event their network never receives",
+      "why": "AND | Subscribe | Broad optimizes on SUBSCRIBE; AppsFlyer does not send af_subscribe to TikTok."
+    },
+    {
+      "area": "2. Platform counting",
+      "result": "fail",
+      "key_number": "2 counted Android install actions in Google Ads",
+      "why": "Firebase and AppsFlyer first opens are both primary and counted, and the Android App campaign has no selected action, so it bids on both."
+    },
+    {
+      "area": "3. Conversion value schema",
+      "result": "fail",
+      "key_number": "73.1% of 35-day revenue arrives in days 3 to 7, outside every fine value",
+      "why": "Postback 2 maps only workouts, and 2 fine values rank below a less valuable one."
+    },
+    {
+      "area": "4. Privacy thresholds",
+      "result": "fail",
+      "key_number": "3 iOS campaigns below threshold, spend 2,250.00",
+      "why": "Most of their first postbacks arrive with no value at all."
+    },
+    {
+      "area": "5. Install reconciliation",
+      "result": "fail",
+      "key_number": "networks claim 50.8% more Android and 34.3% more iOS installs than AppsFlyer records as paid",
+      "why": "Store, AppsFlyer and GA4 agree on both platforms; 3 network claims fail and 1 warns."
+    }
+  ],
+  "ranked_fixes": [
+    {
+      "fix": "Rebuild the iOS conversion value schema: re-order the fine values by 35-day revenue and map postback 2 high to the paid subscription",
+      "area": "3. Conversion value schema",
+      "spend_affected": 21650.0,
+      "how_counted": "spend of every iOS campaign measured by postbacks in the window (Apple Ads excluded)",
+      "evidence": "73.1% of 35-day revenue is earned in days 3 to 7, when the trial converts, but postback 2's coarse mapping names only workouts. Value 4 (3 or more workouts, no trial) averages 3.00 against 21.00 for value 3 (trial started); value 10 (purchase revenue 0.01 to 9.99) averages 19.98 against 33.57 for value 5.",
+      "who": "do this in AppsFlyer (the conversion value schema page); expect a few days of unsettled iOS delivery while the networks adjust",
+      "rank": 1
+    },
+    {
+      "fix": "Stop counting the Firebase Android first open in Google Ads Conversions",
+      "area": "2. Platform counting",
+      "spend_affected": 9800.0,
+      "how_counted": "spend of AND | Installs | US, the Android App campaign that bids on both first-open actions",
+      "evidence": "actions 1001 (Firebase) and 1002 (AppsFlyer) both count Android installs; the campaign shows 7,800 installs against 3,850 in AppsFlyer (2.03 times), so its cost per install reads half of what it is",
+      "who": "I can do this now, after you confirm (payload below). Target install cost bidding will see fewer installs and may slow for a few days.",
+      "rank": 2
+    },
+    {
+      "fix": "Judge Meta iOS on AppsFlyer installs, not on Meta's default figure",
+      "area": "5. Install reconciliation",
+      "spend_affected": 8200.0,
+      "how_counted": "spend of iOS | Trial | SKAN",
+      "evidence": "Meta claims 2,950 iOS installs, AppsFlyer gives it 1,750 (1.69 times); Meta's own SKAdNetwork count is 1,620",
+      "who": "a reporting decision: use the partner column in every iOS budget review",
+      "rank": 3
+    },
+    {
+      "fix": "Send af_subscribe to TikTok, or move the TikTok Android ad group to START_TRIAL",
+      "area": "1. Partner wiring",
+      "spend_affected": 6400.0,
+      "how_counted": "spend of AND | Subscribe | Broad",
+      "evidence": "the ad group optimizes on SUBSCRIBE, and AppsFlyer sends TikTok install, af_complete_registration and af_start_trial only, so TikTok bids on an event it never receives",
+      "who": "do this in AppsFlyer (TikTok integration, in-app events), or in TikTok Ads Manager with a new ad group so learning restarts cleanly",
+      "rank": 4
+    },
+    {
+      "fix": "Judge Snapchat on AppsFlyer installs, and align the windows",
+      "area": "5. Install reconciliation",
+      "spend_affected": 3600.0,
+      "how_counted": "spend of iOS | Installs",
+      "evidence": "Snapchat claims 1,480 iOS installs against 640 in AppsFlyer (2.31 times); its SKAdNetwork count is 610. Snapchat credits 28-day swipe and 1-day view; AppsFlyer uses 7-day click.",
+      "who": "do this in Snapchat Ads Manager (attribution setting) and in budget reviews",
+      "rank": 5
+    },
+    {
+      "fix": "Merge the three small TikTok iOS campaigns into the broad one",
+      "area": "4. Privacy thresholds",
+      "spend_affected": 2250.0,
+      "how_counted": "spend of the iOS campaigns below threshold",
+      "evidence": "iOS | Trial | Lookalike 1%: 77.8% of first postbacks with no value; iOS | Trial | Yoga interests: 73.6% of first postbacks with no value; iOS | Trial | Pilates interests: 68.6% of first postbacks with no value",
+      "who": "do this in TikTok Ads Manager",
+      "rank": 6
+    }
+  ],
+  "fix_payloads_not_run": [
+    {
+      "fix_rank": 2,
+      "status": "not run; waits for your yes",
+      "payload": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "5550101234",
+        "action": "update_conversion_action",
+        "conversion_action_id": "1001",
+        "primary_for_goal": false
+      },
+      "check_after": "re-run the conversion action query; 1001 should show primary_for_goal false"
+    },
+    {
+      "fix_rank": 2,
+      "status": "alternative, not run; changes only this campaign",
+      "payload": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "5550101234",
+        "action": "attach_conversion_actions_to_campaign",
+        "campaign_id": "21001",
+        "conversion_action_ids": [
+          "1002"
+        ]
+      }
+    }
+  ],
+  "schema_test": {
+    "first_window_revenue_pct": 13.1,
+    "days_3_to_7_revenue_pct": 73.1,
+    "days_8_to_35_revenue_pct": 13.8,
+    "revenue_range_values": 5,
+    "checks": {
+      "3a_first_window_revenue": {
+        "result": "warn",
+        "detail": "13.1% of 35-day revenue is earned in days 0 to 2, yet 5 fine values are revenue ranges"
+      },
+      "3b_order": {
+        "result": "fail",
+        "inversions": [
+          {
+            "value": 4,
+            "avg": 3.0,
+            "below_value": 3,
+            "below_avg": 21.0
+          },
+          {
+            "value": 10,
+            "avg": 19.98,
+            "below_value": 5,
+            "below_avg": 33.57
+          }
+        ]
+      },
+      "3c_unused_values": {
+        "result": "warn",
+        "values": [
+          11,
+          13,
+          14
+        ],
+        "detail": "3 defined values never fired; 53 of 64 values are not defined at all"
+      },
+      "3d_later_windows": {
+        "postback_2": {
+          "revenue_share_pct": 73.1,
+          "mapping_names_revenue_event": false,
+          "result": "fail"
+        },
+        "postback_3": {
+          "revenue_share_pct": 13.8,
+          "mapping_names_revenue_event": true,
+          "result": "pass"
+        }
+      },
+      "3e_first_postback_coarse": {
+        "result": "pass",
+        "detail": "value 12, the highest average revenue, is in high"
+      }
+    },
+    "values": [
+      {
+        "fine_value": 0,
+        "rule": "installed, nothing else in days 0 to 2",
+        "cohort_users": 9000,
+        "first_postbacks_with_this_value": 1382,
+        "revenue_35d": 180.0,
+        "avg_revenue_35d": 0.02,
+        "d7_retention_pct": 6.0,
+        "order_check": "pass"
+      },
+      {
+        "fine_value": 1,
+        "rule": "onboarding completed",
+        "cohort_users": 4200,
+        "first_postbacks_with_this_value": 642,
+        "revenue_35d": 420.0,
+        "avg_revenue_35d": 0.1,
+        "d7_retention_pct": 14.0,
+        "order_check": "pass"
+      },
+      {
+        "fine_value": 2,
+        "rule": "1 or 2 workouts completed",
+        "cohort_users": 3100,
+        "first_postbacks_with_this_value": 474,
+        "revenue_35d": 930.0,
+        "avg_revenue_35d": 0.3,
+        "d7_retention_pct": 31.0,
+        "order_check": "pass"
+      },
+      {
+        "fine_value": 3,
+        "rule": "trial started",
+        "cohort_users": 1600,
+        "first_postbacks_with_this_value": 244,
+        "revenue_35d": 33600.0,
+        "avg_revenue_35d": 21.0,
+        "d7_retention_pct": 52.0,
+        "order_check": "pass"
+      },
+      {
+        "fine_value": 4,
+        "rule": "3 or more workouts, no trial",
+        "cohort_users": 1300,
+        "first_postbacks_with_this_value": 198,
+        "revenue_35d": 3900.0,
+        "avg_revenue_35d": 3.0,
+        "d7_retention_pct": 58.0,
+        "order_check": "inversion: below value 3 (21.00)"
+      },
+      {
+        "fine_value": 5,
+        "rule": "trial started and 3 or more workouts",
+        "cohort_users": 700,
+        "first_postbacks_with_this_value": 107,
+        "revenue_35d": 23500.0,
+        "avg_revenue_35d": 33.57,
+        "d7_retention_pct": 71.0,
+        "order_check": "pass"
+      },
+      {
+        "fine_value": 10,
+        "rule": "purchase revenue 0.01 to 9.99",
+        "cohort_users": 120,
+        "first_postbacks_with_this_value": 18,
+        "revenue_35d": 2397.6,
+        "avg_revenue_35d": 19.98,
+        "d7_retention_pct": 62.0,
+        "order_check": "inversion: below value 5 (33.57)"
+      },
+      {
+        "fine_value": 12,
+        "rule": "purchase revenue 30.00 to 59.99",
+        "cohort_users": 140,
+        "first_postbacks_with_this_value": 21,
+        "revenue_35d": 8398.6,
+        "avg_revenue_35d": 59.99,
+        "d7_retention_pct": 74.0,
+        "order_check": "pass"
+      }
+    ],
+    "postback_2_high_pct": 11.7,
+    "proposed_fine_order": [
+      {
+        "new_value": 0,
+        "rule": "installed, nothing else in days 0 to 2",
+        "was_value": 0,
+        "avg_revenue_35d": 0.02
+      },
+      {
+        "new_value": 1,
+        "rule": "onboarding completed",
+        "was_value": 1,
+        "avg_revenue_35d": 0.1
+      },
+      {
+        "new_value": 2,
+        "rule": "1 or 2 workouts completed",
+        "was_value": 2,
+        "avg_revenue_35d": 0.3
+      },
+      {
+        "new_value": 3,
+        "rule": "3 or more workouts, no trial",
+        "was_value": 4,
+        "avg_revenue_35d": 3.0
+      },
+      {
+        "new_value": 4,
+        "rule": "purchase revenue 0.01 to 9.99",
+        "was_value": 10,
+        "avg_revenue_35d": 19.98
+      },
+      {
+        "new_value": 5,
+        "rule": "trial started",
+        "was_value": 3,
+        "avg_revenue_35d": 21.0
+      },
+      {
+        "new_value": 6,
+        "rule": "trial started and 3 or more workouts",
+        "was_value": 5,
+        "avg_revenue_35d": 33.57
+      },
+      {
+        "new_value": 7,
+        "rule": "purchase revenue 30.00 to 59.99",
+        "was_value": 12,
+        "avg_revenue_35d": 59.99
+      }
+    ],
+    "proposed_coarse_postback_2": {
+      "low": "any session",
+      "medium": "trial still active on day 3",
+      "high": "af_subscribe (trial converted or paid subscription started)"
+    },
+    "note": "Proposals only. Set them in AppsFlyer; this skill never edits a schema."
+  },
+  "privacy_thresholds": [
+    {
+      "campaign": "iOS | Trial | Lookalike 1%",
+      "network": "tiktok",
+      "spend": 600.0,
+      "first_postbacks": 90,
+      "no_value_pct": 77.8,
+      "coarse_pct": 16.7,
+      "fine_pct": 5.6,
+      "result": "fail"
+    },
+    {
+      "campaign": "iOS | Trial | Yoga interests",
+      "network": "tiktok",
+      "spend": 750.0,
+      "first_postbacks": 110,
+      "no_value_pct": 73.6,
+      "coarse_pct": 20.0,
+      "fine_pct": 6.4,
+      "result": "fail"
+    },
+    {
+      "campaign": "iOS | Trial | Pilates interests",
+      "network": "tiktok",
+      "spend": 900.0,
+      "first_postbacks": 140,
+      "no_value_pct": 68.6,
+      "coarse_pct": 21.4,
+      "fine_pct": 10.0,
+      "result": "fail"
+    },
+    {
+      "campaign": "iOS | Installs",
+      "network": "snapchat",
+      "spend": 3600.0,
+      "first_postbacks": 600,
+      "no_value_pct": 20.0,
+      "coarse_pct": 25.0,
+      "fine_pct": 55.0,
+      "result": "pass"
+    },
+    {
+      "campaign": "iOS | Trial | Broad",
+      "network": "tiktok",
+      "spend": 3400.0,
+      "first_postbacks": 820,
+      "no_value_pct": 11.0,
+      "coarse_pct": 19.5,
+      "fine_pct": 69.5,
+      "result": "pass"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "network": "google-ads",
+      "spend": 4200.0,
+      "first_postbacks": 960,
+      "no_value_pct": 6.2,
+      "coarse_pct": 14.6,
+      "fine_pct": 79.2,
+      "result": "pass"
+    },
+    {
+      "campaign": "iOS | Trial | SKAN",
+      "network": "meta",
+      "spend": 8200.0,
+      "first_postbacks": 1700,
+      "no_value_pct": 4.1,
+      "coarse_pct": 13.5,
+      "fine_pct": 82.4,
+      "result": "pass"
+    }
+  ],
+  "reconciliation": {
+    "android": {
+      "store_console": 19400,
+      "partner_total": 18750,
+      "partner_paid": 9850,
+      "partner_organic": 8900,
+      "partner_vs_store": 0.966,
+      "partner_vs_store_result": "pass",
+      "ga4_first_open": 18400,
+      "ga4_vs_partner": 0.981,
+      "ga4_vs_partner_result": "pass",
+      "networks": [
+        {
+          "network": "google-ads",
+          "network_claims": 7800,
+          "partner_installs": 3850,
+          "ratio": 2.03,
+          "result": "fail",
+          "network_attribution": "30-day click on first-open actions",
+          "likely_reason": "two counted first-open actions (Firebase and AppsFlyer) report every install twice"
+        },
+        {
+          "network": "meta",
+          "network_claims": 4600,
+          "partner_installs": 3700,
+          "ratio": 1.24,
+          "result": "warn",
+          "network_attribution": "7-day click and 1-day view",
+          "likely_reason": "Meta credits 1-day view installs; AppsFlyer has view-through off for Meta"
+        },
+        {
+          "network": "tiktok",
+          "network_claims": 2450,
+          "partner_installs": 2300,
+          "ratio": 1.07,
+          "result": "pass",
+          "network_attribution": "7-day click and 1-day view"
+        }
+      ],
+      "networks_claim_together": 14850,
+      "claims_over_partner_paid_pct": 50.8
+    },
+    "ios": {
+      "store_console": 14200,
+      "partner_total": 12615,
+      "partner_paid": 6515,
+      "partner_organic": 6100,
+      "partner_vs_store": 0.888,
+      "partner_vs_store_result": "pass",
+      "ga4_first_open": 12050,
+      "ga4_vs_partner": 0.955,
+      "ga4_vs_partner_result": "pass",
+      "networks": [
+        {
+          "network": "google-ads",
+          "network_claims": 1020,
+          "partner_installs": 980,
+          "ratio": 1.04,
+          "result": "pass",
+          "network_attribution": "30-day click on first-open actions"
+        },
+        {
+          "network": "meta",
+          "network_claims": 2950,
+          "partner_installs": 1750,
+          "ratio": 1.69,
+          "result": "fail",
+          "network_attribution": "7-day click and 1-day view",
+          "likely_reason": "Meta's default iOS figure includes modeled installs; its SKAdNetwork count is lower"
+        },
+        {
+          "network": "tiktok",
+          "network_claims": 1290,
+          "partner_installs": 1225,
+          "ratio": 1.05,
+          "result": "pass",
+          "network_attribution": "7-day click and 1-day view"
+        },
+        {
+          "network": "snapchat",
+          "network_claims": 1480,
+          "partner_installs": 640,
+          "ratio": 2.31,
+          "result": "fail",
+          "network_attribution": "28-day swipe and 1-day view",
+          "likely_reason": "Snapchat credits 28-day swipe and 1-day view installs; AppsFlyer uses 7-day click and no view-through"
+        },
+        {
+          "network": "apple-ads",
+          "network_claims": 2010,
+          "partner_installs": 1920,
+          "ratio": 1.05,
+          "result": "pass",
+          "network_attribution": "tap-through, 30 days"
+        }
+      ],
+      "networks_claim_together": 8750,
+      "claims_over_partner_paid_pct": 34.3
+    }
+  },
+  "budget_readiness": [
+    {
+      "network": "google-ads",
+      "platform": "android",
+      "verdict": "Fix first",
+      "why": "area 2: installs counted twice"
+    },
+    {
+      "network": "meta",
+      "platform": "android",
+      "verdict": "Use partner numbers only",
+      "why": "claims 1.24 times the installs AppsFlyer gives it"
+    },
+    {
+      "network": "tiktok",
+      "platform": "android",
+      "verdict": "Fix first",
+      "why": "area 1: a campaign optimizes on an event the partner does not send"
+    },
+    {
+      "network": "google-ads",
+      "platform": "ios",
+      "verdict": "Ready",
+      "why": "claims within 15% of AppsFlyer (1.04)"
+    },
+    {
+      "network": "meta",
+      "platform": "ios",
+      "verdict": "Use partner numbers only",
+      "why": "claims 1.69 times the installs AppsFlyer gives it"
+    },
+    {
+      "network": "tiktok",
+      "platform": "ios",
+      "verdict": "Too small to read on iOS",
+      "why": "3 of 4 campaigns below threshold, spend 2,250.00 of 5,650.00"
+    },
+    {
+      "network": "snapchat",
+      "platform": "ios",
+      "verdict": "Use partner numbers only",
+      "why": "claims 2.31 times the installs AppsFlyer gives it"
+    },
+    {
+      "network": "apple-ads",
+      "platform": "ios",
+      "verdict": "Ready",
+      "why": "claims within 15% of AppsFlyer (1.05)"
+    }
+  ],
+  "everything_else": [
+    {
+      "area": "3. Conversion value schema",
+      "result": "warn",
+      "finding": "5 of 11 defined values are revenue ranges, but only 13.1% of 35-day revenue is earned in days 0 to 2."
+    },
+    {
+      "area": "3. Conversion value schema",
+      "result": "warn",
+      "finding": "Values 11, 13, 14 never fired in the window; fold them into one purchase value."
+    },
+    {
+      "area": "2. Platform counting",
+      "result": "warn",
+      "finding": "The Android App campaign has no selected conversion action while two Android install actions count; fix 2's alternative payload binds it to the AppsFlyer action only."
+    },
+    {
+      "area": "5. Install reconciliation",
+      "result": "warn",
+      "finding": "Meta claims 1.24 times the Android installs AppsFlyer gives it; Meta credits 1-day view installs and AppsFlyer has view-through off for Meta. Use the AppsFlyer column."
+    }
+  ],
+  "unknowns_note": "Nothing in the five areas was unknown in this run; the items below sit outside them.",
+  "unknowns": [
+    "AdAttributionKit postbacks: the export holds SKAdNetwork postbacks only, so any AdAttributionKit postbacks the app also receives were not checked.",
+    "Re-engagement attribution: not in this audit's inputs."
+  ],
+  "go_deeper": [
+    "app-install-ua-planner (if installed): plan the Q4 budget on the AppsFlyer numbers once fixes 1, 2 and 4 are done",
+    "incrementality-test-designer (if installed): test whether Snapchat adds installs at all, given its 28-day swipe credit"
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "note": "Example data: an invented subscription meal-planning app called Dinnerwick, with invented ad accounts and an invented measurement partner export, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Plan our paid user acquisition for the next 4 weeks. We want each install cohort to pay back within 180 days with a 15% margin, and we can spend up to $110,000 in the 4 weeks. Tell us where the next dollar should go and whether to open a new network.",
+  "app": {
+    "name": "Dinnerwick",
+    "category": "Food and Drink",
+    "business_model": "subscription with a 7-day trial",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "site": "https://dinnerwick.example",
+    "currency": "USD"
+  },
+  "run_date": "2026-10-30",
+  "targets": {
+    "payback_day": 180,
+    "margin": 0.15,
+    "budget_cap_next_4_weeks": 110000
+  },
+  "revenue_curve_source": "measurement partner cohort export, cumulative revenue per install after the store fee and refunds (net)",
+  "revenue_curve": {
+    "iOS": {
+      "days": {
+        "0": 0.42,
+        "1": 0.61,
+        "3": 0.83,
+        "7": 1.12,
+        "14": 1.46,
+        "30": 2.05,
+        "60": 2.88,
+        "90": 3.52,
+        "180": 4.8
+      },
+      "retention_pct": {
+        "d1": 38,
+        "d7": 19,
+        "d30": 11
+      },
+      "event_rate_7d_pct": {
+        "trial_start": 9.5,
+        "subscribe": 4.1
+      },
+      "cohorts_used": "install cohorts January to April 2026, all at least 180 days old"
+    },
+    "Android": {
+      "days": {
+        "0": 0.18,
+        "1": 0.27,
+        "3": 0.37,
+        "7": 0.5,
+        "14": 0.66,
+        "30": 0.93,
+        "60": 1.3,
+        "90": 1.58,
+        "180": 2.1
+      },
+      "retention_pct": {
+        "d1": 31,
+        "d7": 14,
+        "d30": 7
+      },
+      "event_rate_7d_pct": {
+        "trial_start": 5.2,
+        "subscribe": 1.9
+      },
+      "cohorts_used": "install cohorts January to April 2026, all at least 180 days old"
+    }
+  },
+  "event_timing": {
+    "trial_start": {
+      "median_hours_after_install": 2
+    },
+    "subscribe": {
+      "median_hours_after_install": 170
+    }
+  },
+  "results_window": {
+    "install_cohorts": [
+      "2026-09-26",
+      "2026-10-23"
+    ],
+    "early_half": [
+      "2026-09-26",
+      "2026-10-09"
+    ],
+    "late_half": [
+      "2026-10-10",
+      "2026-10-23"
+    ],
+    "why": "28 days of install cohorts ending 7 days before the run date, so every cohort has its day 7 revenue"
+  },
+  "results": [
+    {
+      "network": "Apple Ads",
+      "platform": "iOS",
+      "campaigns": 1,
+      "optimizing_for": "install (keyword bids)",
+      "early": {
+        "spend": 6200,
+        "installs": 2480,
+        "d7_net_revenue": 3224.0
+      },
+      "late": {
+        "spend": 7400,
+        "installs": 2850,
+        "d7_net_revenue": 3733.5
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "Meta",
+      "platform": "iOS",
+      "campaigns": 1,
+      "optimizing_for": "trial_start",
+      "early": {
+        "spend": 9000,
+        "installs": 2950,
+        "d7_net_revenue": 3127.0
+      },
+      "late": {
+        "spend": 12600,
+        "installs": 3500,
+        "d7_net_revenue": 3640.0
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "Meta",
+      "platform": "Android",
+      "campaigns": 1,
+      "optimizing_for": "install",
+      "early": {
+        "spend": 5000,
+        "installs": 4100,
+        "d7_net_revenue": 2132.0
+      },
+      "late": {
+        "spend": 5200,
+        "installs": 4250,
+        "d7_net_revenue": 2167.5
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "Google App campaigns",
+      "platform": "Android",
+      "campaigns": 1,
+      "optimizing_for": "install",
+      "early": {
+        "spend": 4400,
+        "installs": 3300,
+        "d7_net_revenue": 1815.0
+      },
+      "late": {
+        "spend": 5500,
+        "installs": 4050,
+        "d7_net_revenue": 2268.0
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "TikTok",
+      "platform": "iOS",
+      "campaigns": 1,
+      "optimizing_for": "install",
+      "early": {
+        "spend": 2100,
+        "installs": 640,
+        "d7_net_revenue": 480.0
+      },
+      "late": {
+        "spend": 2200,
+        "installs": 580,
+        "d7_net_revenue": 430.0
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "TikTok",
+      "platform": "Android",
+      "campaigns": 1,
+      "optimizing_for": "install",
+      "early": {
+        "spend": 900,
+        "installs": 820,
+        "d7_net_revenue": 150.0
+      },
+      "late": {
+        "spend": 950,
+        "installs": 840,
+        "d7_net_revenue": 160.0
+      },
+      "sources": "spend from the network; installs and day 7 net revenue from the measurement partner export"
+    },
+    {
+      "network": "Snapchat",
+      "platform": "iOS",
+      "campaigns": 1,
+      "optimizing_for": "install",
+      "early": {
+        "spend": 600,
+        "installs": 40,
+        "d7_net_revenue": null
+      },
+      "late": {
+        "spend": 650,
+        "installs": 46,
+        "d7_net_revenue": null
+      },
+      "sources": "spend and installs from Snapchat's own reporting; not in the measurement partner export"
+    }
+  ],
+  "store_listing": {
+    "apple_store": {
+      "title": "Dinnerwick: Weekly Meal Planner",
+      "score": 4.6,
+      "ratings": 18240,
+      "screenshots": 6,
+      "offers_in_app_purchases": true,
+      "updated": "2026-10-14"
+    },
+    "google_play": {
+      "package": "com.dinnerwick.example",
+      "title": "Dinnerwick: Weekly Meal Planner",
+      "score": 4.2,
+      "ratings": 9310,
+      "screenshots": 5,
+      "video": null,
+      "offers_iap": true,
+      "ad_supported": false,
+      "updated": "2026-10-09"
+    }
+  },
+  "measurement": {
+    "mmp": "AppsFlyer",
+    "networks_integrated_in_mmp": [
+      "Apple Ads",
+      "Meta",
+      "Google App campaigns",
+      "TikTok"
+    ],
+    "ios_privacy_postbacks": {
+      "source": "SKAdNetwork postbacks received by the measurement partner",
+      "conversion_window_hours": 48,
+      "events_in_conversion_values": [
+        "install",
+        "trial_start",
+        "subscribe"
+      ]
+    },
+    "apple_ads_attribution": "AdServices token passed to the measurement partner",
+    "google_ads_ios_app_linked": false,
+    "in_app_events_sent_to_networks": {
+      "Meta": [
+        "trial_start",
+        "subscribe"
+      ],
+      "Google App campaigns": [
+        "trial_start",
+        "subscribe"
+      ],
+      "TikTok": [
+        "trial_start"
+      ],
+      "Snapchat": []
+    }
+  }
+}

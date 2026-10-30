@@ -1,0 +1,614 @@
+{
+  "header": {
+    "draft": "What missed appointments cost a small business, and how to cut them",
+    "planned_url": "https://www.example.com/blog/missed-appointment-costs/",
+    "read_from": "WordPress post 4182 (status future)",
+    "planned_publish_date": "2026-11-04",
+    "checked_on": "2026-10-28",
+    "paragraphs": 10,
+    "calls": {
+      "wordpress": [
+        "get_post",
+        "get_current_user"
+      ],
+      "crawler status-code-checker": 12,
+      "google-search-console search_analytics": 1
+    }
+  },
+  "verdict": {
+    "result": "Hold",
+    "blockers": 7,
+    "fixes": 7,
+    "summary": "Hold: 7 blockers and 7 fixes. A statistic and a quote do not match their sources, one sentence has no source, the Growth plan price is out of date, a commission link has no disclosure, one link lands on the home page, and the byline is a default account."
+  },
+  "fix_list": [
+    {
+      "id": "F1",
+      "severity": "Blocker",
+      "where": "Byline",
+      "check": "Byline and dates",
+      "before": "Author: admin (WordPress user 1)",
+      "after": "Author: [WRITER'S NAME] (the WordPress user of the person who wrote it, with a one-line bio)",
+      "why": "The post's author is the account this connection signs in with, named \"admin\". Readers would see a default account, not a writer.",
+      "evidence": "get_post: author 1; get_current_user: id 1, name \"admin\"."
+    },
+    {
+      "id": "F2",
+      "severity": "Blocker",
+      "where": "P1",
+      "check": "Claims",
+      "before": "[Industry surveys](https://example-salon-survey.example/2025-appointments-report) put the average salon no-show rate at 23%, so almost one in four bookings never turns up.",
+      "after": "[Industry surveys](https://example-salon-survey.example/2025-appointments-report) put the average salon no-show rate at 12%, and another 11% of bookings are canceled with less than 24 hours' notice, so almost one in four bookings never turns up.",
+      "why": "The source puts no-shows at 12%. The draft's 23% is no-shows plus late cancellations (12 + 11).",
+      "evidence": "Example Salon Survey, published 2025-03-10: \"Across 1,140 salons, 12% of booked appointments were no-shows in 2024, and a further 11% were cancelled with less than 24 hours' notice.\""
+    },
+    {
+      "id": "F3",
+      "severity": "Blocker",
+      "where": "P3",
+      "check": "Claims",
+      "before": "Most clinics lose more than $150,000 a year to no-shows, and the number keeps growing.",
+      "after": "Most clinics lose more than $150,000 a year to no-shows, and the number keeps growing. [ADD SOURCE: link the study behind $150,000 and the growth claim, or cut this sentence]",
+      "why": "Two claims with no source: a money figure for most clinics, and a trend. The skill does not supply a source it has not read.",
+      "evidence": "No link in P3 or the sentences next to it."
+    },
+    {
+      "id": "F4",
+      "severity": "Blocker",
+      "where": "P4",
+      "check": "Quotes",
+      "before": "As the practice manager at Quillmoor Physio told us, \"Reminders cut our no-shows in half within a month.\"",
+      "after": "As the practice manager at Quillmoor Physio told us, \"After we switched on text reminders, our no-shows dropped by about a third over the first two months.\"",
+      "why": "The quote does not match the approved call notes: the notes say about a third over two months, not half within a month.",
+      "evidence": "Practice manager, Quillmoor Physio, 2026-10-14, call notes approved by the clinic: \"After we switched on text reminders, our no-shows dropped by about a third over the first two months.\""
+    },
+    {
+      "id": "F5",
+      "severity": "Blocker",
+      "where": "P7",
+      "check": "Claims",
+      "before": "On the Growth plan ($39 a month) you can take deposits at booking with [ExampleBooking payments](https://www.example.com/features/payments/).",
+      "after": "On the Growth plan ($49 a month) you can take deposits at booking with [ExampleBooking payments](https://www.example.com/features/payments/).",
+      "why": "The pricing page says the Growth plan is $49 a month.",
+      "evidence": "Business facts, pricing page as of 2026-10-28: $49 a month."
+    },
+    {
+      "id": "F6",
+      "severity": "Blocker",
+      "where": "P8",
+      "check": "Disclosures",
+      "before": "If you also want to send marketing texts, we use [Pellbrook SMS](https://pellbrook.example/?ref=examplebooking) ourselves and recommend it.",
+      "after": "Disclosure: we earn a commission if you sign up for Pellbrook SMS through the link below.\n\nIf you also want to send marketing texts, we use [Pellbrook SMS](https://pellbrook.example/?ref=examplebooking) ourselves and recommend it.",
+      "why": "The Pellbrook SMS link carries a referral code and pellbrook.example is on the commission partner list, but the draft has no disclosure. House policy: say so in plain words before the first such link.",
+      "evidence": "https://pellbrook.example/?ref=examplebooking (ref= parameter); disclosure policy: say so in plain words before the first such link."
+    },
+    {
+      "id": "F7",
+      "severity": "Blocker",
+      "where": "P9",
+      "check": "Links",
+      "before": "Read our [cancellation policy guide](https://www.example.com/blog/cancellation-policy-guide/) for wording you can copy.",
+      "after": "Read our [cancellation policy template](https://www.example.com/templates/cancellation-policy/) for wording you can copy.",
+      "why": "The guide was removed and its URL now redirects to the home page. The site's live page on this topic is https://www.example.com/templates/cancellation-policy/, which earns 109 Search Console clicks in 28 days on \"cancellation policy\" searches and returns 200.",
+      "evidence": "status-code-checker: 301 > 200, final URL https://www.example.com/"
+    },
+    {
+      "id": "F8",
+      "severity": "Fix",
+      "where": "P2",
+      "check": "Claims",
+      "before": "[A 2019 study](http://example-physio-study.example/missed-visits-2019) of physiotherapy clinics found that missed appointments cost each clinic $42,000 a year.",
+      "after": "[A 2019 study](http://example-physio-study.example/missed-visits-2019) of physiotherapy clinics found that missed visits cost each clinic an estimated $42,000 in 2018.",
+      "why": "The number matches, but the source is 7.4 years older than the publish date and measured 2018. Say the year, or replace it with a study from the last 3 years if you have one.",
+      "evidence": "Example Physio Study, published 2019-06-01: \"The average clinic in our sample lost an estimated $42,000 in revenue to missed visits in 2018.\""
+    },
+    {
+      "id": "F9",
+      "severity": "Fix",
+      "where": "P2",
+      "check": "Links",
+      "before": "[A 2019 study](http://example-physio-study.example/missed-visits-2019) of physiotherapy clinics found that missed appointments cost each clinic $42,000 a year.",
+      "after": "[A 2019 study](https://example-physio-study.example/articles/missed-visits-2019) of physiotherapy clinics found that missed appointments cost each clinic $42,000 a year.",
+      "why": "The link works through a redirect. Link the final URL so the page does not depend on the redirect staying in place.",
+      "evidence": "status-code-checker: 301 > 200, final URL https://example-physio-study.example/articles/missed-visits-2019"
+    },
+    {
+      "id": "F10",
+      "severity": "Fix",
+      "where": "P5",
+      "check": "Time-sensitive wording",
+      "before": "Automatic reminders are the simplest fix. Our [reminder feature](https://www.example.com/features/reminders/) sends a text 24 hours and again 2 hours before each visit, and this year we added WhatsApp reminders too.",
+      "after": "Automatic reminders are the simplest fix. Our [reminder feature](https://www.example.com/features/reminders/) sends a text 24 hours and again 2 hours before each visit, and since March 2026 they can go out on WhatsApp too.",
+      "why": "\"This year\" goes stale in January. The changelog date makes it exact.",
+      "evidence": "Product changelog: WhatsApp reminders launched 2026-03-17."
+    },
+    {
+      "id": "F11",
+      "severity": "Fix",
+      "where": "P6",
+      "check": "Claims",
+      "before": "Deposits work too. Clinics that took a deposit at booking saw 40 per cent fewer no-shows, according to [a payments provider's report](https://payments-insights.example/deposits-study).",
+      "after": null,
+      "why": "The 40% figure could not be checked: the report needs a sign-in. Ask the writer for the report or a copy of the page. Until then it is not verified.",
+      "evidence": "https://payments-insights.example/deposits-study: The page loads (status 200) but the report sits behind a sign-in form, so its text could not be read."
+    },
+    {
+      "id": "F12",
+      "severity": "Fix",
+      "where": "P6",
+      "check": "Style",
+      "before": "Deposits work too. Clinics that took a deposit at booking saw 40 per cent fewer no-shows, according to [a payments provider's report](https://payments-insights.example/deposits-study).",
+      "after": "Deposits work too. Clinics that took a deposit at booking saw 40% fewer no-shows, according to [a payments provider's report](https://payments-insights.example/deposits-study).",
+      "why": "Style rule R3: Write percentages with the % sign, not 'per cent' or 'percent'.",
+      "evidence": "P6 has \"40 per cent\"."
+    },
+    {
+      "id": "F13",
+      "severity": "Fix",
+      "where": "P7",
+      "check": "Style",
+      "before": "On the Growth plan ($39 a month) you can take deposits at booking with [ExampleBooking payments](https://www.example.com/features/payments/).",
+      "after": "On the Growth plan ($39 a month) you can take deposits at booking with [Example Booking Software payments](https://www.example.com/features/payments/).",
+      "why": "Style rule R1: Write the product name as Example Booking Software, never ExampleBooking.",
+      "evidence": "P7 has \"ExampleBooking\"."
+    },
+    {
+      "id": "F14",
+      "severity": "Fix",
+      "where": "Reader path",
+      "check": "Related reading",
+      "before": null,
+      "after": "after P1: Related: [How to reduce no-shows](https://www.example.com/blog/reduce-no-shows/)\nafter P5: Related: [Appointment reminder text templates](https://www.example.com/blog/appointment-reminder-templates/)\nafter P6: Related: [How to write a deposit policy clients accept](https://www.example.com/blog/deposit-policy/)",
+      "why": "The draft has 1 related-reading link (the cancellation policy link, once fixed). Add at least one more; the 3 pages below already earn clicks on this topic in Search Console.",
+      "evidence": "search_analytics 2026-09-30 to 2026-10-27, page and query, queries containing: no show, missed appointment, reminder, deposit."
+    }
+  ],
+  "claims_ledger": {
+    "claims": [
+      {
+        "id": "C1",
+        "paragraph": "P1",
+        "claim": "average salon no-show rate 23%",
+        "source": "Example Salon Survey",
+        "source_date": "2025-03-10",
+        "years_before_publish": 1.7,
+        "status": "Differs",
+        "detail": "source: 12% no-shows, plus 11% late cancellations"
+      },
+      {
+        "id": "C2",
+        "paragraph": "P2",
+        "claim": "$42,000 per clinic a year",
+        "source": "Example Physio Study",
+        "source_date": "2019-06-01",
+        "years_before_publish": 7.4,
+        "status": "Matches, dated",
+        "detail": "the figure is for 2018"
+      },
+      {
+        "id": "C3",
+        "paragraph": "P3",
+        "claim": "most clinics lose more than $150,000 a year",
+        "source": null,
+        "source_date": null,
+        "years_before_publish": null,
+        "status": "No source",
+        "detail": "no link in or next to the sentence"
+      },
+      {
+        "id": "C4",
+        "paragraph": "P3",
+        "claim": "the number keeps growing",
+        "source": null,
+        "source_date": null,
+        "years_before_publish": null,
+        "status": "No source",
+        "detail": "a trend claim with no data"
+      },
+      {
+        "id": "C5",
+        "paragraph": "P5",
+        "claim": "a text 24 hours and again 2 hours before each visit",
+        "source": "business facts: help center",
+        "source_date": "2026-09-15",
+        "years_before_publish": 0.1,
+        "status": "Matches",
+        "detail": "a text 24 hours and again 2 hours before each visit"
+      },
+      {
+        "id": "C6",
+        "paragraph": "P5",
+        "claim": "WhatsApp reminders added this year",
+        "source": "business facts: changelog",
+        "source_date": "2026-03-17",
+        "years_before_publish": 0.6,
+        "status": "Matches",
+        "detail": "launched 2026-03-17; the wording is relative, see the time-sensitive fix"
+      },
+      {
+        "id": "C7",
+        "paragraph": "P6",
+        "claim": "40% fewer no-shows with a deposit",
+        "source": "https://payments-insights.example/deposits-study",
+        "source_date": null,
+        "years_before_publish": null,
+        "status": "Could not open",
+        "detail": "The page loads (status 200) but the report sits behind a sign-in form, so its text could not be read."
+      },
+      {
+        "id": "C8",
+        "paragraph": "P7",
+        "claim": "Growth plan $39 a month",
+        "source": "business facts: pricing page",
+        "source_date": "2026-10-28",
+        "years_before_publish": 0.0,
+        "status": "Differs",
+        "detail": "pricing page: $49 a month"
+      },
+      {
+        "id": "C9",
+        "paragraph": "P7",
+        "claim": "deposits on the Growth plan",
+        "source": "business facts: pricing page",
+        "source_date": "2026-10-28",
+        "years_before_publish": 0.0,
+        "status": "Matches",
+        "detail": "Growth and Business"
+      },
+      {
+        "id": "C10",
+        "paragraph": "P10",
+        "claim": "switch on reminders in five minutes",
+        "source": "business facts: onboarding guide",
+        "source_date": "2026-08-01",
+        "years_before_publish": 0.3,
+        "status": "Matches",
+        "detail": "about five minutes"
+      }
+    ],
+    "counts": {
+      "Differs": 2,
+      "Matches, dated": 1,
+      "No source": 2,
+      "Matches": 4,
+      "Could not open": 1
+    }
+  },
+  "quotes": [
+    {
+      "paragraph": "P4",
+      "attributed_to": "the practice manager at Quillmoor Physio",
+      "in_draft": "Reminders cut our no-shows in half within a month.",
+      "in_source": "After we switched on text reminders, our no-shows dropped by about a third over the first two months.",
+      "status": "Differs"
+    }
+  ],
+  "links": {
+    "unique_urls_in_draft": 8,
+    "table": [
+      {
+        "paragraph": "P1",
+        "anchor": "Industry surveys",
+        "url": "https://example-salon-survey.example/2025-appointments-report",
+        "status_chain": "200",
+        "final_url": "https://example-salon-survey.example/2025-appointments-report",
+        "internal": false,
+        "commission_link": false,
+        "result": "OK",
+        "severity": null
+      },
+      {
+        "paragraph": "P2",
+        "anchor": "A 2019 study",
+        "url": "http://example-physio-study.example/missed-visits-2019",
+        "status_chain": "301 > 200",
+        "final_url": "https://example-physio-study.example/articles/missed-visits-2019",
+        "internal": false,
+        "commission_link": false,
+        "result": "Redirects; link the final URL",
+        "severity": "Fix"
+      },
+      {
+        "paragraph": "P5",
+        "anchor": "reminder feature",
+        "url": "https://www.example.com/features/reminders/",
+        "status_chain": "200",
+        "final_url": "https://www.example.com/features/reminders/",
+        "internal": true,
+        "commission_link": false,
+        "result": "OK",
+        "severity": null
+      },
+      {
+        "paragraph": "P6",
+        "anchor": "a payments provider's report",
+        "url": "https://payments-insights.example/deposits-study",
+        "status_chain": "200",
+        "final_url": "https://payments-insights.example/deposits-study",
+        "internal": false,
+        "commission_link": false,
+        "result": "OK",
+        "severity": null
+      },
+      {
+        "paragraph": "P7",
+        "anchor": "ExampleBooking payments",
+        "url": "https://www.example.com/features/payments/",
+        "status_chain": "200",
+        "final_url": "https://www.example.com/features/payments/",
+        "internal": true,
+        "commission_link": false,
+        "result": "OK",
+        "severity": null
+      },
+      {
+        "paragraph": "P8",
+        "anchor": "Pellbrook SMS",
+        "url": "https://pellbrook.example/?ref=examplebooking",
+        "status_chain": "200",
+        "final_url": "https://pellbrook.example/?ref=examplebooking",
+        "internal": false,
+        "commission_link": true,
+        "result": "OK",
+        "severity": null
+      },
+      {
+        "paragraph": "P9",
+        "anchor": "cancellation policy guide",
+        "url": "https://www.example.com/blog/cancellation-policy-guide/",
+        "status_chain": "301 > 200",
+        "final_url": "https://www.example.com/",
+        "internal": true,
+        "commission_link": false,
+        "result": "Redirects to the home page (the page is gone)",
+        "severity": "Blocker"
+      },
+      {
+        "paragraph": "P10",
+        "anchor": "Start your account",
+        "url": "https://www.example.com/signup/",
+        "status_chain": "200",
+        "final_url": "https://www.example.com/signup/",
+        "internal": true,
+        "commission_link": false,
+        "result": "OK",
+        "severity": null
+      }
+    ],
+    "counts": {
+      "OK": 6,
+      "Redirects to the home page (the page is gone)": 1,
+      "Redirects; link the final URL": 1
+    }
+  },
+  "byline_dates_disclosures": [
+    {
+      "item": "Named author",
+      "result": "Fail",
+      "detail": "author is the connection's own account \"admin\""
+    },
+    {
+      "item": "Author bio",
+      "result": "Not checked",
+      "detail": "depends on who the author is; check it once the byline is fixed"
+    },
+    {
+      "item": "Publish date",
+      "result": "Pass",
+      "detail": "scheduled 2026-11-04T09:00:00, matches the planned date"
+    },
+    {
+      "item": "Updated date",
+      "result": "Not needed",
+      "detail": "a new post, not a refresh"
+    },
+    {
+      "item": "Commission disclosure",
+      "result": "Fail",
+      "detail": "Pellbrook SMS link (ref= code), no disclosure"
+    },
+    {
+      "item": "Sponsored label",
+      "result": "Not needed",
+      "detail": "no sponsored content declared"
+    },
+    {
+      "item": "AI-assisted label",
+      "result": "Not needed",
+      "detail": "house policy requires none"
+    },
+    {
+      "item": "Health, money or legal advice note",
+      "result": "Not needed",
+      "detail": "business operations topic, no medical or financial advice"
+    },
+    {
+      "item": "Image credits",
+      "result": "Not needed",
+      "detail": "the draft lists no images"
+    }
+  ],
+  "reader_path": {
+    "cta": {
+      "paragraph": "P10",
+      "anchor": "Start your account",
+      "url": "https://www.example.com/signup/",
+      "result": "Pass",
+      "detail": "one next step that fits a product blog post, and the sign-up page returns 200"
+    },
+    "related_reading": {
+      "links_in_draft_after_fixes": 1,
+      "target": "2 to 4",
+      "suggestions": [
+        {
+          "page": "https://www.example.com/blog/reduce-no-shows/",
+          "topic_clicks_28d": 209,
+          "top_query": "how to reduce no shows",
+          "place_after": "P1",
+          "shared_words_with_top_query": 2,
+          "suggested_line": "Related: [How to reduce no-shows](https://www.example.com/blog/reduce-no-shows/)",
+          "status": "200"
+        },
+        {
+          "page": "https://www.example.com/blog/appointment-reminder-templates/",
+          "topic_clicks_28d": 172,
+          "top_query": "appointment reminder text",
+          "place_after": "P5",
+          "shared_words_with_top_query": 2,
+          "suggested_line": "Related: [Appointment reminder text templates](https://www.example.com/blog/appointment-reminder-templates/)",
+          "status": "200"
+        },
+        {
+          "page": "https://www.example.com/blog/deposit-policy/",
+          "topic_clicks_28d": 64,
+          "top_query": "booking deposit policy",
+          "place_after": "P6",
+          "shared_words_with_top_query": 2,
+          "suggested_line": "Related: [How to write a deposit policy clients accept](https://www.example.com/blog/deposit-policy/)",
+          "status": "200"
+        }
+      ],
+      "left_out": [
+        {
+          "page": "https://www.example.com/features/reminders/",
+          "topic_clicks_28d": 55,
+          "why": "already linked in the draft"
+        },
+        {
+          "page": "https://www.example.com/templates/cancellation-policy/",
+          "topic_clicks_28d": 27,
+          "why": "already linked in the draft"
+        },
+        {
+          "page": "https://www.example.com/blog/salon-booking-tips/",
+          "topic_clicks_28d": 6,
+          "why": "fewer than 10 clicks on topic queries"
+        }
+      ]
+    }
+  },
+  "style": [
+    {
+      "rule": "R1",
+      "text": "Write the product name as Example Booking Software, never ExampleBooking.",
+      "result": "Fail",
+      "hits": [
+        {
+          "paragraph": "P7",
+          "found": "ExampleBooking",
+          "use": "Example Booking Software"
+        }
+      ]
+    },
+    {
+      "rule": "R2",
+      "text": "Use US spelling.",
+      "result": "Pass",
+      "hits": []
+    },
+    {
+      "rule": "R3",
+      "text": "Write percentages with the % sign, not 'per cent' or 'percent'.",
+      "result": "Fail",
+      "hits": [
+        {
+          "paragraph": "P6",
+          "found": "40 per cent",
+          "use": "40%"
+        }
+      ]
+    }
+  ],
+  "not_checked": [
+    {
+      "item": "C7, 40% fewer no-shows with a deposit",
+      "why": "the report needs a sign-in; ask the writer for a copy"
+    },
+    {
+      "item": "Title, meta description, headings and image alt text",
+      "why": "out of scope; an SEO on-page check covers them"
+    }
+  ],
+  "corrected_draft": [
+    {
+      "id": "P1",
+      "text": "[Industry surveys](https://example-salon-survey.example/2025-appointments-report) put the average salon no-show rate at 12%, and another 11% of bookings are canceled with less than 24 hours' notice, so almost one in four bookings never turns up.",
+      "changed": true
+    },
+    {
+      "id": "P1r",
+      "text": "Related: [How to reduce no-shows](https://www.example.com/blog/reduce-no-shows/)",
+      "new": true
+    },
+    {
+      "id": "P2",
+      "text": "[A 2019 study](https://example-physio-study.example/articles/missed-visits-2019) of physiotherapy clinics found that missed visits cost each clinic an estimated $42,000 in 2018.",
+      "changed": true
+    },
+    {
+      "id": "P3",
+      "text": "Most clinics lose more than $150,000 a year to no-shows, and the number keeps growing. [ADD SOURCE: link the study behind $150,000 and the growth claim, or cut this sentence]",
+      "changed": true
+    },
+    {
+      "id": "P4",
+      "text": "As the practice manager at Quillmoor Physio told us, \"After we switched on text reminders, our no-shows dropped by about a third over the first two months.\"",
+      "changed": true
+    },
+    {
+      "id": "P5",
+      "text": "Automatic reminders are the simplest fix. Our [reminder feature](https://www.example.com/features/reminders/) sends a text 24 hours and again 2 hours before each visit, and since March 2026 they can go out on WhatsApp too.",
+      "changed": true
+    },
+    {
+      "id": "P5r",
+      "text": "Related: [Appointment reminder text templates](https://www.example.com/blog/appointment-reminder-templates/)",
+      "new": true
+    },
+    {
+      "id": "P6",
+      "text": "Deposits work too. Clinics that took a deposit at booking saw 40% fewer no-shows, according to [a payments provider's report](https://payments-insights.example/deposits-study).",
+      "changed": true
+    },
+    {
+      "id": "P6r",
+      "text": "Related: [How to write a deposit policy clients accept](https://www.example.com/blog/deposit-policy/)",
+      "new": true
+    },
+    {
+      "id": "P7",
+      "text": "On the Growth plan ($49 a month) you can take deposits at booking with [Example Booking Software payments](https://www.example.com/features/payments/).",
+      "changed": true
+    },
+    {
+      "id": "P8a",
+      "text": "Disclosure: we earn a commission if you sign up for Pellbrook SMS through the link below.",
+      "new": true
+    },
+    {
+      "id": "P8",
+      "text": "If you also want to send marketing texts, we use [Pellbrook SMS](https://pellbrook.example/?ref=examplebooking) ourselves and recommend it.",
+      "changed": false
+    },
+    {
+      "id": "P9",
+      "text": "Read our [cancellation policy template](https://www.example.com/templates/cancellation-policy/) for wording you can copy.",
+      "changed": true
+    },
+    {
+      "id": "P10",
+      "text": "Ready to cut no-shows? [Start your account](https://www.example.com/signup/) and switch on reminders in five minutes.",
+      "changed": false
+    }
+  ],
+  "wordpress_update": {
+    "action": "update_post",
+    "post_id": 4182,
+    "fields": [
+      "content"
+    ],
+    "status": "not run: waits for your yes on the corrected text",
+    "keeps": "status stays future; the author changes only when you name the WordPress user to use",
+    "note": "The [ADD SOURCE] marker in P3 is sent only if you say so. The 40% figure in P6 stays as the writer wrote it until its source is confirmed."
+  }
+}

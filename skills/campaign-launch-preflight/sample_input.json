@@ -1,0 +1,255 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The responses block holds the fields of each call that the checks read.",
+  "run": "Launch mode on 2026-10-28. The plan was given in chat, so Notion was not read.",
+  "request": "Hey Claude, I just added the \"campaign-launch-preflight\" skill. We launch our new LinkedIn campaign \"Clinic scheduling - Sponsored Content\" on Monday 2026-11-02 at $60 a day, sending clinic managers to https://www.example.com/industries/clinics?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4. We judge it on GA4 sign-ups. Is it ready?",
+  "mode": "launch",
+  "account": {
+    "platform": "linkedin-ads",
+    "name": "Example Booking Software (LinkedIn ad account)",
+    "id": 500000001,
+    "currency": "USD"
+  },
+  "campaign": {
+    "id": 640000107,
+    "name": "Clinic scheduling - Sponsored Content",
+    "objective": "WEBSITE_CONVERSION",
+    "status": "PAUSED"
+  },
+  "plan": {
+    "campaign": "Clinic scheduling - Sponsored Content",
+    "daily_budget_usd": 60,
+    "start_date": "2026-11-02",
+    "landing_url": "https://www.example.com/industries/clinics?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4",
+    "judged_on": "GA4 key event sign_up",
+    "target_cost_per_result": "not given"
+  },
+  "date_windows": {
+    "T": "2026-10-11 to 2026-10-24 (14 days ending 4 days before today)",
+    "H": "2025-10-28 to 2026-10-27 (365 days ending yesterday)"
+  },
+  "data_pulled": [
+    "linkedin-ads get_accounts (filtered to this account; other accounts not shown)",
+    "linkedin-ads get_campaigns (filtered to this campaign and the 2 that ran in the last year)",
+    "linkedin-ads get_campaign_groups (filtered to this campaign's group)",
+    "linkedin-ads get_creatives (2 for this campaign)",
+    "linkedin-ads get_conversions (2 conversions)",
+    "linkedin-ads get_campaign_analytics, ALL, campaigns 640000101, 640000102 (2 rows)",
+    "google-analytics get_report date x hostName x channel, host www.example.com (14 days)",
+    "google-analytics list_key_events (4 key events)",
+    "google-analytics get_report date x eventName, sign_up (14 days)",
+    "google-search-console search_analytics by date (14 days)",
+    "crawler status-code-checker on the tagged landing URL",
+    "pagespeed-insights core-web-vitals, mobile"
+  ],
+  "responses": {
+    "account": {
+      "id": 500000001,
+      "status": "ACTIVE",
+      "servingStatuses": [
+        "RUNNABLE"
+      ],
+      "currency": "USD"
+    },
+    "campaign": {
+      "id": 640000107,
+      "name": "Clinic scheduling - Sponsored Content",
+      "campaignGroup": 740000103,
+      "objective": "WEBSITE_CONVERSION",
+      "status": "PAUSED",
+      "costType": "CPC",
+      "unitCost": "9.50",
+      "dailyBudget": "40.00",
+      "totalBudget": null,
+      "runSchedule": {
+        "start": "2026-11-02",
+        "end": null
+      },
+      "targeting": {
+        "locations": [
+          "United States",
+          "United Kingdom",
+          "Canada"
+        ],
+        "jobFunctions": [
+          "Healthcare Services",
+          "Administrative"
+        ],
+        "industries": [
+          "Hospitals and Health Care",
+          "Medical Practices"
+        ],
+        "companySizes": [
+          "2-10",
+          "11-50"
+        ]
+      }
+    },
+    "campaign_group": {
+      "id": 740000103,
+      "name": "Clinics Q4",
+      "status": "ACTIVE",
+      "totalBudget": null
+    },
+    "creatives": [
+      {
+        "id": 840000215,
+        "campaign": 640000107,
+        "intendedStatus": "PAUSED",
+        "review": "APPROVED",
+        "content": "reuses a company page post (clinic no-show video)"
+      },
+      {
+        "id": 840000216,
+        "campaign": 640000107,
+        "intendedStatus": "PAUSED",
+        "review": "APPROVED",
+        "content": "reuses a company page post (deposit policy carousel)"
+      }
+    ],
+    "conversions": [
+      {
+        "id": 940000021,
+        "name": "Account created",
+        "enabled": true,
+        "type": "SIGN_UP",
+        "campaigns": [
+          640000101,
+          640000102
+        ]
+      },
+      {
+        "id": 940000022,
+        "name": "Demo booked",
+        "enabled": false,
+        "type": "BOOK_APPOINTMENT",
+        "campaigns": []
+      }
+    ],
+    "past_campaign_analytics": [
+      {
+        "campaign": 640000101,
+        "impressions": 412000,
+        "clicks": 1420,
+        "landingPageClicks": 1180,
+        "costInUsd": "10620.00",
+        "externalWebsiteConversions": 61
+      },
+      {
+        "campaign": 640000102,
+        "impressions": 238000,
+        "clicks": 790,
+        "landingPageClicks": 660,
+        "costInUsd": "5940.00",
+        "externalWebsiteConversions": 31
+      }
+    ],
+    "ga4_key_events": [
+      "sign_up",
+      "demo_booked",
+      "subscription_started",
+      "booking_page_published"
+    ],
+    "daily": {
+      "dates": [
+        "2026-10-11",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24"
+      ],
+      "gsc_clicks": [
+        209,
+        337,
+        309,
+        338,
+        337,
+        322,
+        175,
+        172,
+        341,
+        348,
+        351,
+        324,
+        350,
+        201
+      ],
+      "ga4_organic_sessions": [
+        184,
+        299,
+        277,
+        304,
+        303,
+        286,
+        154,
+        153,
+        309,
+        296,
+        301,
+        287,
+        298,
+        179
+      ],
+      "ga4_sessions_all_channels": [
+        404,
+        615,
+        568,
+        659,
+        634,
+        598,
+        343,
+        320,
+        655,
+        650,
+        627,
+        606,
+        631,
+        394
+      ],
+      "ga4_sign_up": [
+        14,
+        51,
+        41,
+        35,
+        47,
+        48,
+        17,
+        14,
+        38,
+        39,
+        43,
+        45,
+        44,
+        15
+      ]
+    },
+    "status_code_checker": {
+      "url": "https://www.example.com/industries/clinics?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4",
+      "status_code": 200,
+      "redirect_count": 1,
+      "redirects": [
+        {
+          "from": "https://www.example.com/industries/clinics?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4",
+          "status": 301,
+          "to": "https://www.example.com/industries/clinics/"
+        }
+      ],
+      "final_url": "https://www.example.com/industries/clinics/"
+    },
+    "pagespeed_mobile": {
+      "strategy": "mobile",
+      "performance_score": 84,
+      "lcp_s": 3.1,
+      "cls": 0.02,
+      "fcp_s": 1.6
+    }
+  }
+}

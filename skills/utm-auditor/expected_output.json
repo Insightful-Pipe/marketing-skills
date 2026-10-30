@@ -1,0 +1,170 @@
+{
+  "header": {
+    "ga4_property": "Example Booking Software",
+    "site_host": "www.example.com",
+    "date_range": "2026-09-27 to 2026-10-26",
+    "sessions": 21880,
+    "grade": 66,
+    "rating": "needs work",
+    "accounts_checked": [
+      "GA4",
+      "Google Ads",
+      "Meta",
+      "LinkedIn"
+    ]
+  },
+  "scorecard": [
+    {
+      "area": "Naming hygiene",
+      "result": "warn",
+      "key_number": "2 case splits on 5.7% of tagged sessions, 180 sessions with a partner id but no source",
+      "why": "'LinkedIn' sits beside 'linkedin' as a source and 'Welcome_Series' beside 'welcome-series' as a campaign: 430 of 7,500 tagged sessions use the less common spelling. 180 sessions land on pages carrying ?ref=booking-directory but arrive as (direct) / (none). Every paid row has a campaign."
+    },
+    {
+      "area": "Channel mapping",
+      "result": "fail",
+      "key_number": "1,200 sessions from Meta sources in Organic Social, 4.2% of sessions on unknown mediums",
+      "why": "Meta spent $3,680 in the window, yet 1,070 sessions from facebook referrers, 130 from instagram / social and 150 from l.instagram.com landed in Organic Social. 3 mediums GA4 doesn't recognise (klaviyo / newsletter 520, app-marketplace.example / marketplace 260, salon-podcast.example / podcast 140) put 920 sessions in Unassigned, 4.2% of the total. No (not set) or Cross-network rows inside the window."
+    },
+    {
+      "area": "Google Ads",
+      "result": "warn",
+      "key_number": "24.7% of spend sets the same keys twice",
+      "why": "Auto-tagging is on and the account URL suffix tags 100% of spend. 2 campaigns (Search | Brand, Search | Appointment reminders) add their own tracking template with utm_campaign, utm_medium, utm_source, which the suffix already sets, so their landing URLs carry each key twice. No ad group, keyword, ad or sitelink sets its own tags."
+    },
+    {
+      "area": "Meta",
+      "result": "fail",
+      "key_number": "28.5% of spend untagged, 1 paid ad tagged utm_medium=social",
+      "why": "'Retargeting - pricing visitors static' ($1,050) has no URL tags and its link has no utm_. 'Instagram reel - no-shows' ($330) sends utm_medium=social, an unpaid medium. 'Clinic managers - reminders carousel' types its campaign name into the tag instead of {{campaign.name}}."
+    },
+    {
+      "area": "LinkedIn",
+      "result": "pass",
+      "key_number": "3 of 3 active campaigns tagged",
+      "why": "Every campaign that spent ($4,170 in all) has UTM tracking parameters with utm_medium=paid_social. One of them spells the source 'LinkedIn' (see naming hygiene)."
+    }
+  ],
+  "grade_math": "100 - 12 x 2 fails - 5 x 2 warns = 66",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Meta: tag the retargeting ad and give the Instagram reel a paid medium",
+      "affected": "$1,380 of spend; 1,200 sessions from Meta sources in Organic Social while Meta spent $3,680",
+      "evidence": "get_ad_creatives: 'Retargeting - pricing visitors static' url_tags empty, link https://www.example.com/pricing/; 'Instagram reel - no-shows' url_tags 'utm_source=instagram&utm_medium=social&utm_campaign=no-shows'. GA4: m.facebook.com, l.facebook.com and facebook.com / referral 1,070 sessions, instagram / social 130, l.instagram.com / referral 150 (some of these may be organic posts). Meta sent 2,450 link clicks and GA4 counted 1,180 paid social sessions (48.2%)",
+      "who": "I can do this now: create_ad_creative with the same content and the convention's url_tags, then update_ad for each ad. Each new creative goes through review again and can reset delivery learning."
+    },
+    {
+      "rank": 2,
+      "fix": "Replace the three mediums GA4 doesn't recognise",
+      "affected": "920 Unassigned sessions (4.2%) and 18 key events",
+      "evidence": "get_report source / medium: klaviyo / newsletter 520, app-marketplace.example / marketplace 260, salon-podcast.example / podcast 140, all in Unassigned",
+      "who": "do this in Klaviyo (utm_medium=email on the newsletter template) and with the podcast sponsor (utm_medium=audio). The marketplace listing can't be re-tagged by you: I can add a rule to a custom channel group that maps medium marketplace to Referral, after you confirm."
+    },
+    {
+      "rank": 3,
+      "fix": "Google Ads: drop the campaign templates that repeat the account suffix",
+      "affected": "$1,590 of spend (24.7%) across 2 campaigns",
+      "evidence": "customer.final_url_suffix 'utm_source=google&utm_medium=cpc&utm_campaign={campaignid}'; campaign.tracking_url_template on Search | Brand and Search | Appointment reminders sets utm_campaign, utm_medium, utm_source again",
+      "who": "I can do this now with update_campaign: clear tracking_url_template on both campaigns, so the account suffix applies alone. Auto-tagging keeps the source and campaign in GA4 either way."
+    },
+    {
+      "rank": 4,
+      "fix": "Use one spelling for the LinkedIn source and the welcome series",
+      "affected": "430 sessions reported under a second spelling",
+      "evidence": "get_report: linkedin / paid_social and LinkedIn / paid_social; klaviyo / email / welcome-series and Welcome_Series",
+      "who": "do this in LinkedIn Campaign Manager (utm_source=linkedin on 'Free trial | Studio owners') and in the Klaviyo welcome flow (utm_campaign=welcome-series)"
+    },
+    {
+      "rank": 5,
+      "fix": "Ask the booking directory to tag its links",
+      "affected": "180 sessions counted as Direct",
+      "evidence": "get_report landingPagePlusQueryString: /pricing/?ref=booking-directory and /?ref=booking-directory, both (direct) / (none)",
+      "who": "the directory: links with utm_source=booking-directory&utm_medium=referral"
+    }
+  ],
+  "click_to_session_check": [
+    {
+      "platform": "Google Ads",
+      "paid_clicks": 3430,
+      "ga4_paid_sessions": 2920,
+      "sessions_per_click_pct": 85.1,
+      "result": "ok"
+    },
+    {
+      "platform": "Meta",
+      "paid_clicks": 2450,
+      "ga4_paid_sessions": 1180,
+      "sessions_per_click_pct": 48.2,
+      "result": "tags lost"
+    },
+    {
+      "platform": "LinkedIn",
+      "paid_clicks": 1020,
+      "ga4_paid_sessions": 780,
+      "sessions_per_click_pct": 76.5,
+      "result": "ok"
+    }
+  ],
+  "other_findings": [
+    "Left out: 2026-10-27 to 2026-10-28, which GA4 may still be processing (1,190 sessions). Those days already show 102 (not set) sessions in Unassigned and 21 Cross-network sessions; re-run once both days are 2 days old.",
+    "Campaign names with capitals or spaces reach GA4 as they are: Free Trial | Salon Owners, Search | Appointment reminders, Search | Brand, Search | Online booking software, Search | Salon booking, Welcome_Series. The convention below fixes them for new campaigns.",
+    "Google Ads: 0 of 24 ads and 0 of 8 sitelinks put utm_ in the final URL; 0 of 12 ad groups and 0 of 140 keywords set their own template.",
+    "Meta inventory: 17 of the 42 creatives no live ad uses have no URL tags. Not scored; tag them if you reuse them.",
+    "The property uses only GA4's default channel group, so no custom rule maps the unknown mediums today.",
+    "TikTok: GA4 shows tiktok / paid_social on 520 sessions with a campaign that follows the convention. TikTok Ads isn't one of the platforms this skill reads, so its own settings weren't checked."
+  ],
+  "convention": {
+    "rules": {
+      "utm_source": "platform or partner, lowercase, one spelling: google, facebook, instagram, linkedin, tiktok, klaviyo, the partner's domain",
+      "utm_medium": "cpc for search ads, paid_social for Meta, LinkedIn and TikTok ads, email for Klaviyo, referral for partners and directories, audio for podcasts",
+      "utm_campaign": "<goal>_<offer-or-theme>_<yyyymm>: lowercase, - between words, _ between parts, as the LinkedIn and TikTok campaigns already do (demo_clinic-managers_202609)",
+      "utm_content": "the ad: {{ad.name}} in Meta"
+    },
+    "templates": {
+      "meta_url_tags": "utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&utm_term={{adset.name}} (rename new Meta campaigns to the campaign pattern first, for example free-trial_salon-owners_202611)",
+      "linkedin_tracking_parameters": "utm_source=linkedin&utm_medium=paid_social&utm_campaign=<goal>_<audience>_<yyyymm>",
+      "klaviyo": "utm_source=klaviyo&utm_medium=email&utm_campaign=<flow-or-campaign-name>",
+      "google_ads": "keep auto-tagging and the account suffix utm_source=google&utm_medium=cpc&utm_campaign={campaignid}; no campaign templates"
+    },
+    "old_to_new": [
+      {
+        "old": "utm_source=LinkedIn",
+        "new": "utm_source=linkedin"
+      },
+      {
+        "old": "utm_campaign=Welcome_Series",
+        "new": "utm_campaign=welcome-series"
+      },
+      {
+        "old": "utm_medium=newsletter",
+        "new": "utm_medium=email"
+      },
+      {
+        "old": "utm_medium=marketplace",
+        "new": "utm_medium=referral"
+      },
+      {
+        "old": "utm_medium=podcast",
+        "new": "utm_medium=audio"
+      },
+      {
+        "old": "utm_source=instagram&utm_medium=social (on a paid ad)",
+        "new": "utm_source=instagram&utm_medium=paid_social"
+      },
+      {
+        "old": "utm_campaign=free-trial_clinics_202609 (typed into the Meta tag)",
+        "new": "utm_campaign={{campaign.name}}"
+      }
+    ]
+  },
+  "not_checked": [
+    "2026-10-27 to 2026-10-28: still inside GA4's processing time",
+    "TikTok Ads settings: not one of the platforms this skill reads"
+  ],
+  "go_deeper": [
+    "ga4-property-audit (if installed) for tag coverage and the rest of the property's setup; otherwise compare GA4 Google organic sessions with Search Console clicks",
+    "conversion-tracking-auditor (if installed) for conversion setup; otherwise check in GA4 Admin which events are marked as key events",
+    "attribution-model-auditor (if installed); otherwise compare last-click and data-driven conversions in GA4 Advertising"
+  ]
+}

@@ -1,0 +1,901 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The contact file, the Klaviyo lookup and the mail-server answers are all part of the invented input: every person and business in the file is made up, and the .example domains don't exist in real DNS. The few gmail.com and googlemail.com addresses (needed to show the Gmail dot, plus and googlemail rules) contain an underscore, which Gmail never allows in a username, so none of them can be a real mailbox.",
+  "request": "Hey Claude, I just added the \"email-list-cleaner\" skill. Clean this contact file before I import it into Klaviyo. Use a 365-day quiet window.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "environment": "Claude Code (a shell is available, so the mail-server lookup runs with dig)",
+  "settings": {
+    "quiet_window_days": 365,
+    "import_to": "Klaviyo",
+    "consent_lives": "in the file (opt-in date and opt-in method columns), and in Klaviyo for contacts already there",
+    "write_to_sheets": "the user's \"Contact imports\" spreadsheet, after confirmation"
+  },
+  "file": {
+    "name": "contacts-to-import-2026-10.csv",
+    "rows": 45,
+    "columns": [
+      "email",
+      "first_name",
+      "last_name",
+      "business",
+      "source",
+      "opt_in_date",
+      "opt_in_method",
+      "last_click"
+    ],
+    "column_mapping": {
+      "email": "email",
+      "name": "first_name + last_name",
+      "source": "source",
+      "consent date": "opt_in_date",
+      "consent method": "opt_in_method",
+      "last activity": "last_click",
+      "signup date": "opt_in_date (no separate column)"
+    },
+    "data": [
+      {
+        "row": 2,
+        "email": "jordan@northsidehair.example",
+        "first_name": "Jordan",
+        "last_name": "Lee",
+        "business": "Northside Hair Studio",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 3,
+        "email": "  Priya.Raman@LakeviewPhysio.example ",
+        "first_name": "Priya",
+        "last_name": "Raman",
+        "business": "Lakeview Physio",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 4,
+        "email": "info@ironworksfitness.example",
+        "first_name": "Sam",
+        "last_name": "Ortega",
+        "business": "Ironworks Fitness",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 5,
+        "email": "hello@brightsmiledental.example",
+        "first_name": "Dana",
+        "last_name": "Whitfield",
+        "business": "Bright Smile Dental",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 6,
+        "email": "maria_gomez_demo@gmial.com",
+        "first_name": "Maria",
+        "last_name": "Gomez",
+        "business": "Gomez Brows",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 7,
+        "email": "tom_becker_demo@gnail.com",
+        "first_name": "Tom",
+        "last_name": "Becker",
+        "business": "Becker Personal Training",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 8,
+        "email": "Lena Fox <lena@foxyoga.example>",
+        "first_name": "Lena",
+        "last_name": "Fox",
+        "business": "Fox Yoga",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 9,
+        "email": "bookings@glowspa.example",
+        "first_name": "Hana",
+        "last_name": "Sato",
+        "business": "Glow Day Spa",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 10,
+        "email": "alex@brightsmiledental.example",
+        "first_name": "Alex",
+        "last_name": "Morgan",
+        "business": "Bright Smile Dental",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 11,
+        "email": "alex+expo@brightsmiledental.example",
+        "first_name": "Alex",
+        "last_name": "Morgan",
+        "business": "Bright Smile Dental",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 12,
+        "email": "test.demo@mailinator.com",
+        "first_name": "Test",
+        "last_name": "User",
+        "business": "",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 13,
+        "email": "nina@corepilates",
+        "first_name": "Nina",
+        "last_name": "Park",
+        "business": "Core Pilates",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 14,
+        "email": "ken@harborclinic.example",
+        "first_name": "Ken",
+        "last_name": "Adams",
+        "business": "Harbor Clinic",
+        "source": "Salon Pro Expo 2026 badge scan",
+        "opt_in_date": "2026-09-18",
+        "opt_in_method": "Badge scan, opt-in box ticked at the stand",
+        "last_click": ""
+      },
+      {
+        "row": 15,
+        "email": "meichen_demo42@gmail.com",
+        "first_name": "Mei",
+        "last_name": "Chen",
+        "business": "Chen Acupuncture",
+        "source": "Website demo form",
+        "opt_in_date": "2026-04-09",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-10-02"
+      },
+      {
+        "row": 16,
+        "email": "mei.chen_demo42@gmail.com",
+        "first_name": "Mei",
+        "last_name": "Chen",
+        "business": "Chen Acupuncture",
+        "source": "Website demo form",
+        "opt_in_date": "2026-06-15",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 17,
+        "email": "MeiChen_Demo42+expo@googlemail.com",
+        "first_name": "Mei",
+        "last_name": "Chen",
+        "business": "Chen Acupuncture",
+        "source": "Website demo form",
+        "opt_in_date": "2026-08-30",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-09-12"
+      },
+      {
+        "row": 18,
+        "email": "rosa_diaz_demo@gmail.con",
+        "first_name": "Rosa",
+        "last_name": "Diaz",
+        "business": "Diaz Massage",
+        "source": "Website demo form",
+        "opt_in_date": "2026-07-21",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 19,
+        "email": "owen@pawsgrooming.example",
+        "first_name": "Owen",
+        "last_name": "Hart",
+        "business": "Paws Grooming",
+        "source": "Website demo form",
+        "opt_in_date": "2026-05-03",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-09-28"
+      },
+      {
+        "row": 20,
+        "email": "noreply@citycuts.example",
+        "first_name": "",
+        "last_name": "",
+        "business": "City Cuts",
+        "source": "Website demo form",
+        "opt_in_date": "2026-06-01",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 21,
+        "email": "grace@willowmassage.example",
+        "first_name": "Grace",
+        "last_name": "Kim",
+        "business": "Willow Massage",
+        "source": "Website demo form",
+        "opt_in_date": "2026-02-14",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-03-02"
+      },
+      {
+        "row": 22,
+        "email": "dev@pixeltattoo.example",
+        "first_name": "Dev",
+        "last_name": "Patel",
+        "business": "Pixel Tattoo",
+        "source": "Website demo form",
+        "opt_in_date": "2026-01-20",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 23,
+        "email": "lucas@summitchiro.example",
+        "first_name": "Lucas",
+        "last_name": "Brown",
+        "business": "Summit Chiropractic",
+        "source": "Website demo form",
+        "opt_in_date": "2026-03-11",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-04-01"
+      },
+      {
+        "row": 24,
+        "email": "mailto:ella@bloombarbers.example;",
+        "first_name": "Ella",
+        "last_name": "Novak",
+        "business": "Bloom Barbers",
+        "source": "Website demo form",
+        "opt_in_date": "2026-08-08",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-10-14"
+      },
+      {
+        "row": 25,
+        "email": "ivan@stonemedspa.example",
+        "first_name": "Ivan",
+        "last_name": "Petrov",
+        "business": "Stone Med Spa",
+        "source": "Website demo form",
+        "opt_in_date": "2026-09-02",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 26,
+        "email": "zoe@quickfixnails.example",
+        "first_name": "Zoe",
+        "last_name": "Clark",
+        "business": "Quick Fix Nails",
+        "source": "Website demo form",
+        "opt_in_date": "2026-07-07",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-08-19"
+      },
+      {
+        "row": 27,
+        "email": "ben@alifitness.example",
+        "first_name": "Ben",
+        "last_name": "Ali",
+        "business": "Ali Fitness Coaching",
+        "source": "Website demo form",
+        "opt_in_date": "2026-05-26",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-10-20"
+      },
+      {
+        "row": 28,
+        "email": "carla@@sunsetsalon.example",
+        "first_name": "Carla",
+        "last_name": "Reyes",
+        "business": "Sunset Salon",
+        "source": "Website demo form",
+        "opt_in_date": "2026-06-30",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 29,
+        "email": "omar@ridgephysio.example",
+        "first_name": "Omar",
+        "last_name": "Haddad",
+        "business": "Ridge Physio",
+        "source": "Website demo form",
+        "opt_in_date": "2026-04-22",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 30,
+        "email": "priya.raman@lakeviewphysio.example",
+        "first_name": "Priya",
+        "last_name": "Raman",
+        "business": "Lakeview Physio",
+        "source": "Website demo form",
+        "opt_in_date": "2026-03-05",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": "2026-10-10"
+      },
+      {
+        "row": 31,
+        "email": "frank.demo@yopmail.com",
+        "first_name": "Frank",
+        "last_name": "Doe",
+        "business": "",
+        "source": "Website demo form",
+        "opt_in_date": "2026-10-01",
+        "opt_in_method": "Demo form, newsletter box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 32,
+        "email": "hannah@elmwoodsalon.example",
+        "first_name": "Hannah",
+        "last_name": "Wright",
+        "business": "Elmwood Salon",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-03-14",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": "2025-05-14"
+      },
+      {
+        "row": 33,
+        "email": "leo@northgatedental.example",
+        "first_name": "Leo",
+        "last_name": "Grant",
+        "business": "Northgate Dental",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-03-14",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": "2026-06-02"
+      },
+      {
+        "row": 34,
+        "email": "sofia@crestfitness.example",
+        "first_name": "Sofia",
+        "last_name": "Rossi",
+        "business": "Crest Fitness",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-04-11",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 35,
+        "email": "support@harborclinic.example",
+        "first_name": "",
+        "last_name": "",
+        "business": "Harbor Clinic",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-04-11",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": ""
+      },
+      {
+        "row": 36,
+        "email": "jack@morrisphysio.example",
+        "first_name": "Jack",
+        "last_name": "Morris",
+        "business": "Morris Physio",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-05-09",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": "2024-08-01"
+      },
+      {
+        "row": 37,
+        "email": "amy@lotusspa.example",
+        "first_name": "Amy",
+        "last_name": "Nguyen",
+        "business": "Lotus Spa",
+        "source": "CRM export 2023 (webinar sign-ups)",
+        "opt_in_date": "2023-05-09",
+        "opt_in_method": "Webinar registration, opt-in box ticked",
+        "last_click": "2026-09-24"
+      },
+      {
+        "row": 38,
+        "email": "ruth@meadowvet.example",
+        "first_name": "Ruth",
+        "last_name": "Long",
+        "business": "Meadow Vet",
+        "source": "CRM export (no source recorded)",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 39,
+        "email": "paul@oakbarbers.example",
+        "first_name": "Paul",
+        "last_name": "Stone",
+        "business": "Oak Barbers",
+        "source": "CRM export (no source recorded)",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": "2026-08-20"
+      },
+      {
+        "row": 40,
+        "email": "postmaster@cedarclinic.example",
+        "first_name": "",
+        "last_name": "",
+        "business": "Cedar Clinic",
+        "source": "CRM export (no source recorded)",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 41,
+        "email": "owner@luxenails.example",
+        "first_name": "",
+        "last_name": "",
+        "business": "Luxe Nails",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 42,
+        "email": "contact@primebarber.example",
+        "first_name": "",
+        "last_name": "",
+        "business": "Prime Barber",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 43,
+        "email": "jess_demo@gmail.com",
+        "first_name": "Jess",
+        "last_name": "",
+        "business": "",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 44,
+        "email": "mark@zenithspa.example",
+        "first_name": "Mark",
+        "last_name": "",
+        "business": "Zenith Spa",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 45,
+        "email": "olga@olgabrows.example",
+        "first_name": "Olga",
+        "last_name": "",
+        "business": "Olga Brows",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      },
+      {
+        "row": 46,
+        "email": "dr.kim@seasideclinic.example",
+        "first_name": "",
+        "last_name": "Kim",
+        "business": "Seaside Clinic",
+        "source": "Bought list, salon and spa leads vendor, 2023",
+        "opt_in_date": "",
+        "opt_in_method": "",
+        "last_click": ""
+      }
+    ]
+  },
+  "data_pulled": {
+    "klaviyo_accounts": {
+      "call": {
+        "request": "accounts",
+        "platform": "klaviyo"
+      },
+      "result": {
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "XyZ123",
+        "company_name": "Example Booking Software"
+      }
+    },
+    "klaviyo_get_profiles": {
+      "calls": 1,
+      "addresses_looked_up": 42,
+      "body": {
+        "platform": "klaviyo",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "get_profiles",
+        "filter": "any(email,[\"jordan@northsidehair.example\",\"priya.raman@lakeviewphysio.example\",\"info@ironworksfitness.example\",\"hello@brightsmiledental.example\",\"maria_gomez_demo@gmial.com\",\"tom_becker_demo@gnail.com\",\"lena@foxyoga.example\",\"bookings@glowspa.example\",\"alex@brightsmiledental.example\",\"alex+expo@brightsmiledental.example\",\"test.demo@mailinator.com\",\"ken@harborclinic.example\",\"meichen_demo42@gmail.com\",\"mei.chen_demo42@gmail.com\",\"meichen_demo42+expo@googlemail.com\",\"rosa_diaz_demo@gmail.con\",\"owen@pawsgrooming.example\",\"noreply@citycuts.example\",\"grace@willowmassage.example\",\"dev@pixeltattoo.example\",\"lucas@summitchiro.example\",\"ella@bloombarbers.example\",\"ivan@stonemedspa.example\",\"zoe@quickfixnails.example\",\"ben@alifitness.example\",\"omar@ridgephysio.example\",\"frank.demo@yopmail.com\",\"hannah@elmwoodsalon.example\",\"leo@northgatedental.example\",\"sofia@crestfitness.example\",\"support@harborclinic.example\",\"jack@morrisphysio.example\",\"amy@lotusspa.example\",\"ruth@meadowvet.example\",\"paul@oakbarbers.example\",\"postmaster@cedarclinic.example\",\"owner@luxenails.example\",\"contact@primebarber.example\",\"jess_demo@gmail.com\",\"mark@zenithspa.example\",\"olga@olgabrows.example\",\"dr.kim@seasideclinic.example\"])",
+        "fields[profile]": "email,subscriptions",
+        "additional-fields[profile]": "subscriptions",
+        "page[size]": 100
+      },
+      "profiles_found": [
+        {
+          "id": "01EXAMPLEPROFILE0000000001",
+          "email": "test.demo@mailinator.com",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": true,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2026-02-03T00:00:00+00:00",
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000002",
+          "email": "grace@willowmassage.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": false,
+                "consent": "UNSUBSCRIBED",
+                "consent_timestamp": "2026-02-14T00:00:00+00:00",
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000003",
+          "email": "dev@pixeltattoo.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": false,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2026-01-20T00:00:00+00:00",
+                "suppression": [
+                  {
+                    "reason": "HARD_BOUNCE",
+                    "timestamp": "2026-05-18T00:00:00+00:00"
+                  }
+                ],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000004",
+          "email": "lucas@summitchiro.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": false,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2026-03-11T00:00:00+00:00",
+                "suppression": [
+                  {
+                    "reason": "SPAM_COMPLAINT",
+                    "timestamp": "2026-04-02T00:00:00+00:00"
+                  }
+                ],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000005",
+          "email": "amy@lotusspa.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": true,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2023-05-09T00:00:00+00:00",
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000006",
+          "email": "paul@oakbarbers.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": true,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2025-11-18T00:00:00+00:00",
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000007",
+          "email": "olga@olgabrows.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": true,
+                "consent": "SUBSCRIBED",
+                "consent_timestamp": "2024-02-27T00:00:00+00:00",
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        },
+        {
+          "id": "01EXAMPLEPROFILE0000000008",
+          "email": "leo@northgatedental.example",
+          "subscriptions": {
+            "email": {
+              "marketing": {
+                "can_receive_email_marketing": true,
+                "consent": "NEVER_SUBSCRIBED",
+                "consent_timestamp": null,
+                "suppression": [],
+                "list_suppressions": []
+              }
+            }
+          }
+        }
+      ]
+    },
+    "mail_server_lookups": {
+      "tool": "dig +short MX <domain>, then dig +short A <domain> when there is no MX",
+      "unique_domains": 37,
+      "results": [
+        {
+          "domain": "northsidehair.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "lakeviewphysio.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "ironworksfitness.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "brightsmiledental.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "gmial.com",
+          "result": "a_only",
+          "meaning": "no MX, but an A record"
+        },
+        {
+          "domain": "gnail.com",
+          "result": "a_only",
+          "meaning": "no MX, but an A record"
+        },
+        {
+          "domain": "foxyoga.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "glowspa.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "mailinator.com",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "harborclinic.example",
+          "result": "null_mx",
+          "meaning": "MX of 0 . (null MX)"
+        },
+        {
+          "domain": "gmail.com",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "googlemail.com",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "gmail.con",
+          "result": "nxdomain",
+          "meaning": "the domain doesn't exist"
+        },
+        {
+          "domain": "pawsgrooming.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "citycuts.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "willowmassage.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "pixeltattoo.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "summitchiro.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "bloombarbers.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "stonemedspa.example",
+          "result": "timeout",
+          "meaning": "lookup timed out"
+        },
+        {
+          "domain": "quickfixnails.example",
+          "result": "a_only",
+          "meaning": "no MX, but an A record"
+        },
+        {
+          "domain": "alifitness.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "ridgephysio.example",
+          "result": "nxdomain",
+          "meaning": "the domain doesn't exist"
+        },
+        {
+          "domain": "yopmail.com",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "elmwoodsalon.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "northgatedental.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "crestfitness.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "morrisphysio.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "lotusspa.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "meadowvet.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "oakbarbers.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "cedarclinic.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "luxenails.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "primebarber.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "zenithspa.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "olgabrows.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        },
+        {
+          "domain": "seasideclinic.example",
+          "result": "mx",
+          "meaning": "one or more MX records"
+        }
+      ]
+    },
+    "throwaway_list": {
+      "source": "the seed list in SKILL.md",
+      "domains": [
+        "mailinator.com",
+        "guerrillamail.com",
+        "sharklasers.com",
+        "10minutemail.com",
+        "yopmail.com",
+        "temp-mail.org",
+        "trashmail.com",
+        "maildrop.cc",
+        "dispostable.com",
+        "getnada.com",
+        "throwawaymail.com",
+        "fakeinbox.com"
+      ]
+    }
+  }
+}

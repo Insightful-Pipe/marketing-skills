@@ -1,0 +1,2309 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Tool names are real products; every cost, seat count, id and date is invented, and the costs are this business's own, not vendor prices.",
+  "request": "Hey Claude, I just added the \"marketing-ops-stack-audit\" skill. Here is our tool list with costs, seats and owners. Audit our martech stack, check what really loads on our site, and tell me what to cut, fix and connect. We're also choosing a product analytics tool: score the two candidates below against our stack.",
+  "business": {
+    "name": "Example Booking Software",
+    "model": "self-serve software with a demo form",
+    "site": "https://www.example.com",
+    "run_date": "2026-10-28"
+  },
+  "key_pages": [
+    "https://www.example.com/",
+    "https://www.example.com/pricing/",
+    "https://www.example.com/signup/",
+    "https://www.example.com/demo/"
+  ],
+  "ad_platforms": [
+    {
+      "platform": "Google Ads",
+      "status": "live"
+    },
+    {
+      "platform": "Meta Ads",
+      "status": "live"
+    },
+    {
+      "platform": "LinkedIn Ads",
+      "status": "live"
+    },
+    {
+      "platform": "TikTok Ads",
+      "status": "stopped",
+      "since": "2026-06-15"
+    },
+    {
+      "platform": "Pinterest Ads",
+      "status": "never used"
+    }
+  ],
+  "process_answers": {
+    "One person approves every new tool before anyone pays for it": "yes",
+    "There is a written list of tools with an owner for each": "no",
+    "Access is removed from every tool within a week when someone leaves": "no",
+    "One person or team owns changes to tags and tracking": "yes",
+    "There is a naming and UTM convention that people follow": "yes",
+    "Someone reviewed the stack as a whole in the last 12 months": "don't know"
+  },
+  "ledger_as_pasted": [
+    {
+      "tool": "Google Tag Manager",
+      "job": "tag management",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Google Analytics 4",
+      "job": "web analytics",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Google Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": "media spend not counted"
+    },
+    {
+      "tool": "Meta Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": "media spend not counted"
+    },
+    {
+      "tool": "LinkedIn Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": "media spend not counted"
+    },
+    {
+      "tool": "TikTok Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "paused",
+      "notes": "ads stopped 2026-06-15"
+    },
+    {
+      "tool": "HubSpot",
+      "job": "CRM",
+      "monthly_cost_usd": 800,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": 5,
+      "seats_used": 4,
+      "owner": "Lee Chen (sales ops)",
+      "renewal": "2027-03-01",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": "demo form on /demo/; marks a contact Customer when Zapier moves a paid Stripe invoice to a won deal; sends Customer to Google Ads as an offline conversion"
+    },
+    {
+      "tool": "Klaviyo",
+      "job": "email marketing",
+      "monthly_cost_usd": 400,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Maya Brooks (lifecycle)",
+      "renewal": "2027-02-01",
+      "notice_days": 0,
+      "believed_status": "active",
+      "notes": "gets Started Trial from the app's API and Subscription Paid from a Zapier zap"
+    },
+    {
+      "tool": "Stripe",
+      "job": "billing",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Finance",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": "fees are not a tool cost"
+    },
+    {
+      "tool": "Zapier",
+      "job": "integration and automation",
+      "monthly_cost_usd": 70,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": null,
+      "renewal": "2027-01-05",
+      "notice_days": 0,
+      "believed_status": "active",
+      "notes": "zaps: Stripe paid invoice to Klaviyo Subscription Paid; Stripe paid invoice to a HubSpot won deal"
+    },
+    {
+      "tool": "Hotjar",
+      "job": "session replay and heatmaps",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "cancelled",
+      "notes": "cancelled 2026-07-01"
+    },
+    {
+      "tool": "Microsoft Clarity",
+      "job": "session replay and heatmaps",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Intercom",
+      "job": "live chat",
+      "monthly_cost_usd": 360,
+      "pricing": "per seat",
+      "seat_price_usd": 60,
+      "seats_paid": 6,
+      "seats_used": 5,
+      "owner": "Ravi Shah (support)",
+      "renewal": "2027-04-01",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Drift",
+      "job": "live chat",
+      "monthly_cost_usd": 500,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": 3,
+      "seats_used": 0,
+      "owner": "Lee Chen (sales ops)",
+      "renewal": "2026-11-30",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": "bought for demo chat in 2025"
+    },
+    {
+      "tool": "Calendly",
+      "job": "scheduling",
+      "monthly_cost_usd": 48,
+      "pricing": "per seat",
+      "seat_price_usd": 12,
+      "seats_paid": 4,
+      "seats_used": 2,
+      "owner": "Lee Chen (sales ops)",
+      "renewal": "2026-11-15",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": "demo booking widget on /demo/"
+    },
+    {
+      "tool": "Semrush",
+      "job": "SEO",
+      "monthly_cost_usd": 250,
+      "pricing": "per seat",
+      "seat_price_usd": 125,
+      "seats_paid": 2,
+      "seats_used": 2,
+      "owner": "Nora Kim (content)",
+      "renewal": "2027-02-15",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Ahrefs",
+      "job": "SEO",
+      "monthly_cost_usd": 200,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": 1,
+      "seats_used": 1,
+      "owner": "Nora Kim (content)",
+      "renewal": "2026-12-15",
+      "notice_days": 14,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Canva",
+      "job": "design",
+      "monthly_cost_usd": 120,
+      "pricing": "per seat",
+      "seat_price_usd": 12,
+      "seats_paid": 10,
+      "seats_used": 4,
+      "owner": "Nora Kim (content)",
+      "renewal": "2027-01-10",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Notion",
+      "job": "docs and project management",
+      "monthly_cost_usd": 96,
+      "pricing": "per seat",
+      "seat_price_usd": 8,
+      "seats_paid": 12,
+      "seats_used": 11,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": "2027-06-01",
+      "notice_days": 30,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Cookiebot",
+      "job": "consent",
+      "monthly_cost_usd": 40,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": null,
+      "renewal": "2027-01-20",
+      "notice_days": 0,
+      "believed_status": "active",
+      "notes": "banner shown to EEA and UK visitors"
+    },
+    {
+      "tool": "Buffer",
+      "job": "social scheduling",
+      "monthly_cost_usd": 60,
+      "pricing": "per seat",
+      "seat_price_usd": 20,
+      "seats_paid": 3,
+      "seats_used": 1,
+      "owner": "Nora Kim (content)",
+      "renewal": "2026-12-01",
+      "notice_days": 0,
+      "believed_status": "active",
+      "notes": ""
+    },
+    {
+      "tool": "Looker Studio",
+      "job": "attribution and reporting",
+      "monthly_cost_usd": 0,
+      "pricing": "flat",
+      "seat_price_usd": null,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "renewal": null,
+      "notice_days": null,
+      "believed_status": "active",
+      "notes": ""
+    }
+  ],
+  "dataforseo": {
+    "domain_technologies": {
+      "target": "example.com",
+      "technologies": {
+        "analytics": [
+          "Google Analytics",
+          "Hotjar",
+          "Microsoft Clarity"
+        ],
+        "tag managers": [
+          "Google Tag Manager"
+        ],
+        "marketing automation": [
+          "HubSpot",
+          "Klaviyo"
+        ],
+        "live chat": [
+          "Intercom",
+          "Drift"
+        ],
+        "advertising": [
+          "Facebook Pixel",
+          "LinkedIn Insight Tag"
+        ],
+        "cookie compliance": [
+          "Cookiebot"
+        ]
+      }
+    },
+    "page_reads": {
+      "https://www.example.com/": {
+        "src": {
+          "https://analytics.tiktok.com/i18n/pixel/events.js": 1,
+          "https://connect.facebook.net/en_US/fbevents.js": 1,
+          "https://connect.facebook.net/signals/config/100000000000002": 1,
+          "https://consent.cookiebot.com/uc.js": 1,
+          "https://js.hs-scripts.com/4440001.js": 1,
+          "https://s.pinimg.com/ct/core.js": 1,
+          "https://script.hotjar.com/modules.js": 1,
+          "https://scripts.clarity.ms/clarity.js": 1,
+          "https://snap.licdn.com/li.lms-analytics/insight.min.js": 2,
+          "https://static.hotjar.com/c/hotjar-3330001.js": 1,
+          "https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XyZ123": 1,
+          "https://widget.intercom.io/widget/abcd1234": 1,
+          "https://www.clarity.ms/tag/exmpl01": 1,
+          "https://www.example.com/assets/app.js": 1,
+          "https://www.example.com/assets/vendor.js": 1,
+          "https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE01": 1,
+          "https://www.googletagmanager.com/gtm.js?id=GTM-EXMPL12": 1
+        },
+        "ids": {
+          "GTM-EXMPL12": 1,
+          "clarity:exmpl01": 1,
+          "hotjar:3330001": 1,
+          "linkedin:5550001": 2,
+          "meta:100000000000002": 1,
+          "pinterest:2610000000001": 1,
+          "tiktok:C0EXAMPLE0TT": 1
+        },
+        "n": 29
+      },
+      "https://www.example.com/pricing/": {
+        "src": {
+          "https://analytics.tiktok.com/i18n/pixel/events.js": 1,
+          "https://connect.facebook.net/en_US/fbevents.js": 1,
+          "https://connect.facebook.net/signals/config/100000000000002": 1,
+          "https://consent.cookiebot.com/uc.js": 1,
+          "https://js.hs-scripts.com/4440001.js": 1,
+          "https://s.pinimg.com/ct/core.js": 1,
+          "https://script.hotjar.com/modules.js": 1,
+          "https://scripts.clarity.ms/clarity.js": 1,
+          "https://snap.licdn.com/li.lms-analytics/insight.min.js": 2,
+          "https://static.hotjar.com/c/hotjar-3330001.js": 1,
+          "https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XyZ123": 1,
+          "https://widget.intercom.io/widget/abcd1234": 1,
+          "https://www.clarity.ms/tag/exmpl01": 1,
+          "https://www.example.com/assets/app.js": 1,
+          "https://www.example.com/assets/vendor.js": 1,
+          "https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE01": 2,
+          "https://www.googletagmanager.com/gtm.js?id=GTM-EXMPL12": 1
+        },
+        "ids": {
+          "G-EXAMPLE01": 1,
+          "GTM-EXMPL12": 1,
+          "clarity:exmpl01": 1,
+          "hotjar:3330001": 1,
+          "linkedin:5550001": 2,
+          "meta:100000000000002": 1,
+          "pinterest:2610000000001": 1,
+          "tiktok:C0EXAMPLE0TT": 1
+        },
+        "n": 31
+      },
+      "https://www.example.com/signup/": {
+        "src": {
+          "https://analytics.tiktok.com/i18n/pixel/events.js": 1,
+          "https://connect.facebook.net/en_US/fbevents.js": 1,
+          "https://connect.facebook.net/signals/config/100000000000002": 1,
+          "https://consent.cookiebot.com/uc.js": 1,
+          "https://js.hs-scripts.com/4440001.js": 1,
+          "https://js.stripe.com/v3/": 1,
+          "https://s.pinimg.com/ct/core.js": 1,
+          "https://script.hotjar.com/modules.js": 1,
+          "https://scripts.clarity.ms/clarity.js": 1,
+          "https://snap.licdn.com/li.lms-analytics/insight.min.js": 2,
+          "https://static.hotjar.com/c/hotjar-3330001.js": 1,
+          "https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XyZ123": 1,
+          "https://widget.intercom.io/widget/abcd1234": 1,
+          "https://www.clarity.ms/tag/exmpl01": 1,
+          "https://www.example.com/assets/app.js": 1,
+          "https://www.example.com/assets/vendor.js": 1,
+          "https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE01": 1,
+          "https://www.googletagmanager.com/gtm.js?id=GTM-EXMPL12": 1
+        },
+        "ids": {
+          "GTM-EXMPL12": 1,
+          "clarity:exmpl01": 1,
+          "hotjar:3330001": 1,
+          "linkedin:5550001": 2,
+          "meta:100000000000002": 1,
+          "pinterest:2610000000001": 1,
+          "tiktok:C0EXAMPLE0TT": 1
+        },
+        "n": 30
+      },
+      "https://www.example.com/demo/": {
+        "src": {
+          "https://analytics.tiktok.com/i18n/pixel/events.js": 1,
+          "https://assets.calendly.com/assets/external/widget.js": 1,
+          "https://connect.facebook.net/en_US/fbevents.js": 1,
+          "https://connect.facebook.net/signals/config/100000000000002": 1,
+          "https://consent.cookiebot.com/uc.js": 1,
+          "https://js.hs-scripts.com/4440001.js": 1,
+          "https://js.hsforms.net/forms/embed/v2.js": 1,
+          "https://s.pinimg.com/ct/core.js": 1,
+          "https://script.hotjar.com/modules.js": 1,
+          "https://scripts.clarity.ms/clarity.js": 1,
+          "https://snap.licdn.com/li.lms-analytics/insight.min.js": 2,
+          "https://static.hotjar.com/c/hotjar-3330001.js": 1,
+          "https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XyZ123": 1,
+          "https://widget.intercom.io/widget/abcd1234": 1,
+          "https://www.clarity.ms/tag/exmpl01": 1,
+          "https://www.example.com/assets/app.js": 1,
+          "https://www.example.com/assets/vendor.js": 1,
+          "https://www.googletagmanager.com/gtag/js?id=G-EXAMPLE01": 1,
+          "https://www.googletagmanager.com/gtm.js?id=GTM-EXMPL12": 1
+        },
+        "ids": {
+          "GTM-EXMPL12": 1,
+          "clarity:exmpl01": 1,
+          "hotjar:3330001": 1,
+          "linkedin:5550001": 2,
+          "meta:100000000000002": 1,
+          "pinterest:2610000000001": 1,
+          "tiktok:C0EXAMPLE0TT": 1
+        },
+        "n": 31
+      }
+    },
+    "renderer_ran_gtm": "gtm.js loaded on every page read"
+  },
+  "google_tag_manager": {
+    "account_id": "6000000001",
+    "container_id": "20000001",
+    "public_id": "GTM-EXMPL12",
+    "container": "example.com web",
+    "live_version_tags": [
+      {
+        "tag_id": "3",
+        "name": "Google tag - G-EXAMPLE01",
+        "type": "googtag",
+        "vendor_id": "G-EXAMPLE01",
+        "paused": false,
+        "trigger": "Initialization - All Pages"
+      },
+      {
+        "tag_id": "4",
+        "name": "GA4 event - sign_up",
+        "type": "gaawe",
+        "vendor_id": "G-EXAMPLE01",
+        "paused": false,
+        "trigger": "sign_up event"
+      },
+      {
+        "tag_id": "5",
+        "name": "Google Ads - Trial start",
+        "type": "awct",
+        "vendor_id": "1112223334",
+        "paused": false,
+        "trigger": "sign_up event"
+      },
+      {
+        "tag_id": "6",
+        "name": "Conversion Linker",
+        "type": "gclidw",
+        "vendor_id": null,
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "7",
+        "name": "Meta Pixel - base",
+        "type": "html",
+        "vendor_id": "meta:100000000000002",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "8",
+        "name": "LinkedIn Insight",
+        "type": "bzi",
+        "vendor_id": "linkedin:5550001",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "9",
+        "name": "TikTok Pixel - base",
+        "type": "html",
+        "vendor_id": "tiktok:C0EXAMPLE0TT",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "10",
+        "name": "Pinterest Tag - spring test",
+        "type": "html",
+        "vendor_id": "pinterest:2610000000001",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "11",
+        "name": "Hotjar",
+        "type": "hjtc",
+        "vendor_id": "hotjar:3330001",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "12",
+        "name": "Clarity",
+        "type": "html",
+        "vendor_id": "clarity:exmpl01",
+        "paused": false,
+        "trigger": "All Pages"
+      },
+      {
+        "tag_id": "13",
+        "name": "Drift widget",
+        "type": "html",
+        "vendor_id": "drift",
+        "paused": true,
+        "trigger": "All Pages"
+      }
+    ]
+  },
+  "google_analytics": {
+    "property_id": "properties/123456789",
+    "web_streams": [
+      {
+        "measurement_id": "G-EXAMPLE01",
+        "default_uri": "https://www.example.com"
+      }
+    ]
+  },
+  "google_ads": {
+    "customer_id": "1234567890",
+    "conversion_actions": [
+      {
+        "id": "701",
+        "name": "Trial start (GTM)",
+        "type": "WEBPAGE",
+        "category": "SIGNUP",
+        "primary_for_goal": true,
+        "status": "ENABLED"
+      },
+      {
+        "id": "702",
+        "name": "Demo booked (GTM)",
+        "type": "WEBPAGE",
+        "category": "BOOK_APPOINTMENT",
+        "primary_for_goal": true,
+        "status": "ENABLED"
+      },
+      {
+        "id": "703",
+        "name": "GA4 sign_up (import)",
+        "type": "GOOGLE_ANALYTICS_4_CUSTOM",
+        "category": "SIGNUP",
+        "primary_for_goal": false,
+        "status": "ENABLED"
+      },
+      {
+        "id": "704",
+        "name": "Paid customer (HubSpot import)",
+        "type": "UPLOAD_CLICKS",
+        "category": "PURCHASE",
+        "primary_for_goal": false,
+        "status": "ENABLED"
+      }
+    ],
+    "window": [
+      "2026-07-30",
+      "2026-10-27"
+    ],
+    "rows_by_conversion_date": [
+      [
+        "Trial start (GTM)",
+        "2026-07-30",
+        4
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-07-30",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-07-30",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-07-30",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-07-31",
+        8
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-07-31",
+        6
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-07-31",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-01",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-01",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-01",
+        8
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-01",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-02",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-02",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-02",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-03",
+        4
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-03",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-03",
+        3
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-03",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-04",
+        4
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-04",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-04",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-05",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-05",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-05",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-06",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-06",
+        6
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-06",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-07",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-07",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-07",
+        6
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-07",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-08",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-08",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-08",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-09",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-09",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-09",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-10",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-10",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-10",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-11",
+        7
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-11",
+        14
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-11",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-12",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-12",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-12",
+        6
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-12",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-13",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-13",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-13",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-14",
+        9
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-14",
+        8
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-14",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-15",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-15",
+        4
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-15",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-16",
+        13
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-16",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-16",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-17",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-17",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-17",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-17",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-18",
+        9
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-18",
+        4
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-18",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-19",
+        13
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-19",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-19",
+        5
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-19",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-20",
+        6
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-20",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-20",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-21",
+        11
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-21",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-21",
+        3
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-21",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-22",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-22",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-22",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-22",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-23",
+        13
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-23",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-23",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-24",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-24",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-24",
+        6
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-24",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-25",
+        3
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-25",
+        5
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-25",
+        12
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-26",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-26",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-26",
+        8
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-26",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-27",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-27",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-27",
+        5
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-27",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-28",
+        11
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-28",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-28",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-28",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-29",
+        5
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-29",
+        9
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-29",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-30",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-30",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-30",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-08-31",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-08-31",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-08-31",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-08-31",
+        2
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-01",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-01",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-01",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-02",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-02",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-02",
+        7
+      ],
+      [
+        "Paid customer (HubSpot import)",
+        "2026-09-02",
+        1
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-03",
+        10
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-03",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-04",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-04",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-04",
+        11
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-05",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-05",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-05",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-06",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-06",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-06",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-07",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-07",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-07",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-08",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-08",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-09",
+        11
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-09",
+        4
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-09",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-10",
+        2
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-10",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-10",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-11",
+        10
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-11",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-11",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-12",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-12",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-12",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-13",
+        3
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-13",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-13",
+        10
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-14",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-14",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-14",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-15",
+        7
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-15",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-16",
+        10
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-16",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-17",
+        12
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-17",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-17",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-18",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-18",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-18",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-19",
+        10
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-19",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-19",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-20",
+        3
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-20",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-21",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-21",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-21",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-22",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-22",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-22",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-23",
+        4
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-23",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-23",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-24",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-24",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-24",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-25",
+        10
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-25",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-25",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-26",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-26",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-26",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-27",
+        7
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-27",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-28",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-28",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-28",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-29",
+        3
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-29",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-29",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-09-30",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-09-30",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-09-30",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-01",
+        8
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-01",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-02",
+        13
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-02",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-02",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-03",
+        5
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-03",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-04",
+        8
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-04",
+        4
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-05",
+        15
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-05",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-06",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-06",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-06",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-07",
+        12
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-07",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-07",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-08",
+        12
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-08",
+        10
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-09",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-09",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-09",
+        11
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-10",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-10",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-10",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-11",
+        9
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-11",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-11",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-12",
+        12
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-12",
+        2
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-12",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-13",
+        2
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-13",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-13",
+        8
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-14",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-14",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-14",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-15",
+        2
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-15",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-15",
+        9
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-16",
+        2
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-16",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-16",
+        5
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-17",
+        8
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-17",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-18",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-18",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-18",
+        7
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-19",
+        5
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-19",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-19",
+        3
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-20",
+        9
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-20",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-21",
+        6
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-21",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-22",
+        7
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-22",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-22",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-23",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-23",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-23",
+        10
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-24",
+        6
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-24",
+        3
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-24",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-25",
+        7
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-25",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-26",
+        10
+      ],
+      [
+        "Demo booked (GTM)",
+        "2026-10-26",
+        1
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-26",
+        6
+      ],
+      [
+        "Trial start (GTM)",
+        "2026-10-27",
+        9
+      ],
+      [
+        "GA4 sign_up (import)",
+        "2026-10-27",
+        9
+      ]
+    ]
+  },
+  "klaviyo": {
+    "metrics": [
+      {
+        "id": "Km01",
+        "name": "Received Email",
+        "integration": {
+          "name": "Klaviyo",
+          "category": "Internal"
+        }
+      },
+      {
+        "id": "Km02",
+        "name": "Opened Email",
+        "integration": {
+          "name": "Klaviyo",
+          "category": "Internal"
+        }
+      },
+      {
+        "id": "Km03",
+        "name": "Clicked Email",
+        "integration": {
+          "name": "Klaviyo",
+          "category": "Internal"
+        }
+      },
+      {
+        "id": "Km04",
+        "name": "Subscribed to List",
+        "integration": {
+          "name": "Klaviyo",
+          "category": "Internal"
+        }
+      },
+      {
+        "id": "Km05",
+        "name": "Active on Site",
+        "integration": {
+          "name": "API",
+          "category": "API"
+        }
+      },
+      {
+        "id": "Km06",
+        "name": "Started Trial",
+        "integration": {
+          "name": "API",
+          "category": "API"
+        }
+      },
+      {
+        "id": "Km07",
+        "name": "Subscription Paid",
+        "integration": {
+          "name": "API",
+          "category": "API"
+        }
+      }
+    ],
+    "latest_event": {
+      "Km06": "2026-10-27T21:14:09+00:00",
+      "Km07": "2026-08-19T16:02:41+00:00"
+    }
+  },
+  "pagespeed": {
+    "url": "https://www.example.com/",
+    "strategy": "mobile",
+    "third_parties_insight": [
+      {
+        "entity": "Google Tag Manager",
+        "transferSize": 412310,
+        "mainThreadTime": 420.4
+      },
+      {
+        "entity": "Facebook",
+        "transferSize": 118402,
+        "mainThreadTime": 110.2
+      },
+      {
+        "entity": "LinkedIn Ads",
+        "transferSize": 19870,
+        "mainThreadTime": 45.1
+      },
+      {
+        "entity": "TikTok",
+        "transferSize": 60123,
+        "mainThreadTime": 95.3
+      },
+      {
+        "entity": "Pinterest",
+        "transferSize": 21544,
+        "mainThreadTime": 30.6
+      },
+      {
+        "entity": "Hotjar",
+        "transferSize": 79310,
+        "mainThreadTime": 120.8
+      },
+      {
+        "entity": "Clarity",
+        "transferSize": 28950,
+        "mainThreadTime": 70.2
+      },
+      {
+        "entity": "Intercom",
+        "transferSize": 200712,
+        "mainThreadTime": 160.5
+      },
+      {
+        "entity": "HubSpot",
+        "transferSize": 90377,
+        "mainThreadTime": 80.1
+      },
+      {
+        "entity": "Klaviyo",
+        "transferSize": 114980,
+        "mainThreadTime": 55.4
+      },
+      {
+        "entity": "Cookiebot",
+        "transferSize": 45190,
+        "mainThreadTime": 25.3
+      }
+    ]
+  },
+  "shopify": "not used (no store)",
+  "links_needed": [
+    {
+      "link": "site to web analytics",
+      "from": "website",
+      "to": "Google Analytics 4",
+      "event": "page views (G-EXAMPLE01)",
+      "via": [
+        "Google Tag Manager"
+      ]
+    },
+    {
+      "link": "site to Google Ads",
+      "from": "website",
+      "to": "Google Ads",
+      "event": "Trial start (GTM)",
+      "via": [
+        "Google Tag Manager"
+      ]
+    },
+    {
+      "link": "site to Meta Ads",
+      "from": "website",
+      "to": "Meta Ads",
+      "event": "Meta Pixel",
+      "via": [
+        "Google Tag Manager"
+      ]
+    },
+    {
+      "link": "site to LinkedIn Ads",
+      "from": "website",
+      "to": "LinkedIn Ads",
+      "event": "LinkedIn Insight Tag",
+      "via": [
+        "Google Tag Manager"
+      ]
+    },
+    {
+      "link": "GA4 to Google Ads",
+      "from": "Google Analytics 4",
+      "to": "Google Ads",
+      "event": "GA4 sign_up (import)",
+      "via": []
+    },
+    {
+      "link": "sign-up to email",
+      "from": "app",
+      "to": "Klaviyo",
+      "event": "Started Trial",
+      "via": []
+    },
+    {
+      "link": "billing to email",
+      "from": "Stripe",
+      "to": "Klaviyo",
+      "event": "Subscription Paid",
+      "via": [
+        "Zapier"
+      ]
+    },
+    {
+      "link": "billing and CRM to Google Ads",
+      "from": "Stripe and HubSpot",
+      "to": "Google Ads",
+      "event": "Paid customer (HubSpot import)",
+      "via": [
+        "Zapier",
+        "HubSpot"
+      ]
+    },
+    {
+      "link": "demo form to CRM",
+      "from": "/demo/ form",
+      "to": "HubSpot",
+      "event": "new contact",
+      "via": [],
+      "user_answer": "flowing"
+    },
+    {
+      "link": "demo bookings to CRM",
+      "from": "Calendly",
+      "to": "HubSpot",
+      "event": "meeting booked",
+      "via": [
+        "Calendly"
+      ],
+      "user_answer": null
+    }
+  ],
+  "tool_choice": {
+    "job": "product analytics",
+    "must_haves": [
+      "funnels from sign-up to paid",
+      "cohort retention",
+      "events from the app",
+      "user-level export"
+    ],
+    "budget_month_usd": 400,
+    "seats": 5,
+    "required_links": [
+      "HubSpot",
+      "Klaviyo",
+      "Stripe"
+    ],
+    "weights": {
+      "Must-haves met": 30,
+      "Connects to this stack": 25,
+      "Cost against budget": 15,
+      "Data access": 10,
+      "Admin and security": 10,
+      "Effect on the stack": 10
+    },
+    "candidates": [
+      {
+        "name": "Product analytics tool A (analytics-a.example)",
+        "must_haves_met": [
+          "funnels from sign-up to paid",
+          "cohort retention",
+          "events from the app",
+          "user-level export"
+        ],
+        "native_links": [
+          "HubSpot",
+          "Stripe"
+        ],
+        "cost_month_usd": 300,
+        "full_export": true,
+        "api": true,
+        "sso": false,
+        "dpa": true,
+        "data_region_ok": true,
+        "unconfirmed": [
+          "data_region_ok"
+        ],
+        "lets_you_cancel": [],
+        "also_does": []
+      },
+      {
+        "name": "Product analytics tool B (analytics-b.example)",
+        "must_haves_met": [
+          "funnels from sign-up to paid",
+          "cohort retention",
+          "events from the app"
+        ],
+        "native_links": [
+          "HubSpot",
+          "Klaviyo",
+          "Stripe"
+        ],
+        "cost_month_usd": 450,
+        "full_export": false,
+        "api": true,
+        "sso": true,
+        "dpa": true,
+        "data_region_ok": true,
+        "unconfirmed": [],
+        "lets_you_cancel": [],
+        "also_does": [
+          "session replay and heatmaps"
+        ]
+      }
+    ]
+  },
+  "data_pulled": [
+    "DataForSEO domain_technologies (1 call)",
+    "DataForSEO onpage_instant_pages with the stack snippet on 4 key pages (4 calls)",
+    "Google Tag Manager get_containers, get_live_version",
+    "Google Analytics list_data_streams",
+    "Google Ads gaql: enabled conversion actions; conversions by conversion date over 90 days",
+    "Klaviyo get_metrics; get_events (latest event) for Started Trial and Subscription Paid",
+    "PageSpeed analyze.full, home page, mobile, performance"
+  ]
+}

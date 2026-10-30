@@ -1,0 +1,264 @@
+{
+  "note": "Example data: an invented online coffee equipment store with an invented GA4 property, BigQuery project and Google Ads account, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"ga4-bigquery-query-writer\" skill. For October 1 to 26, what does each Google Ads campaign cost per purchase in GA4, and do the BigQuery numbers match GA4?",
+  "business": "Example coffee equipment store, an online shop selling grinders, espresso machines and brewing gear (invented)",
+  "run_date": "2026-10-30",
+  "date_range": {
+    "start": "2026-10-01",
+    "end": "2026-10-26"
+  },
+  "ga4_property": {
+    "property_id": "400000001",
+    "name": "Example coffee equipment store (web)",
+    "time_zone": "America/Chicago",
+    "currency": "USD",
+    "service_level": "GOOGLE_ANALYTICS_STANDARD",
+    "key_events": [
+      "purchase",
+      "generate_lead"
+    ],
+    "bigquery_link": {
+      "project": "projects/100000000001",
+      "dataset_location": "US"
+    }
+  },
+  "bigquery": {
+    "project": "example-coffee-analytics",
+    "datasets": [
+      "analytics_400000001",
+      "google_ads"
+    ],
+    "export_tables": {
+      "first_daily_table": "events_20260701",
+      "last_daily_table": "events_20261029",
+      "intraday_tables": [
+        "events_intraday_20261030"
+      ]
+    },
+    "schema_check": {
+      "table": "events_20261029",
+      "session_traffic_source_last_click": true,
+      "collected_traffic_source": true,
+      "is_active_user": true,
+      "note": "The export began on 2026-07-01, after these fields were added, so every day in range has them."
+    },
+    "table_sizes_in_range": [
+      {
+        "table_id": "events_20261001",
+        "row_count": 45976,
+        "size_bytes": 1145859848
+      },
+      {
+        "table_id": "events_20261002",
+        "row_count": 45914,
+        "size_bytes": 1091559436
+      },
+      {
+        "table_id": "events_20261003",
+        "row_count": 50146,
+        "size_bytes": 1215789770
+      },
+      {
+        "table_id": "events_20261004",
+        "row_count": 57802,
+        "size_bytes": 1371930470
+      },
+      {
+        "table_id": "events_20261005",
+        "row_count": 46692,
+        "size_bytes": 1166366160
+      },
+      {
+        "table_id": "events_20261006",
+        "row_count": 45253,
+        "size_bytes": 1095484624
+      },
+      {
+        "table_id": "events_20261007",
+        "row_count": 45980,
+        "size_bytes": 1121038380
+      },
+      {
+        "table_id": "events_20261008",
+        "row_count": 56674,
+        "size_bytes": 1343003778
+      },
+      {
+        "table_id": "events_20261009",
+        "row_count": 53910,
+        "size_bytes": 1373357250
+      },
+      {
+        "table_id": "events_20261010",
+        "row_count": 52133,
+        "size_bytes": 1291647208
+      },
+      {
+        "table_id": "events_20261011",
+        "row_count": 52871,
+        "size_bytes": 1337742042
+      },
+      {
+        "table_id": "events_20261012",
+        "row_count": 48745,
+        "size_bytes": 1197567160
+      },
+      {
+        "table_id": "events_20261013",
+        "row_count": 45271,
+        "size_bytes": 1107555015
+      },
+      {
+        "table_id": "events_20261014",
+        "row_count": 44201,
+        "size_bytes": 1103345362
+      },
+      {
+        "table_id": "events_20261015",
+        "row_count": 53706,
+        "size_bytes": 1330566150
+      },
+      {
+        "table_id": "events_20261016",
+        "row_count": 53388,
+        "size_bytes": 1269192924
+      },
+      {
+        "table_id": "events_20261017",
+        "row_count": 47560,
+        "size_bytes": 1147194760
+      },
+      {
+        "table_id": "events_20261018",
+        "row_count": 45376,
+        "size_bytes": 1106856768
+      },
+      {
+        "table_id": "events_20261019",
+        "row_count": 51546,
+        "size_bytes": 1255248192
+      },
+      {
+        "table_id": "events_20261020",
+        "row_count": 49368,
+        "size_bytes": 1244814120
+      },
+      {
+        "table_id": "events_20261021",
+        "row_count": 57521,
+        "size_bytes": 1411507819
+      },
+      {
+        "table_id": "events_20261022",
+        "row_count": 52481,
+        "size_bytes": 1295808371
+      },
+      {
+        "table_id": "events_20261023",
+        "row_count": 52951,
+        "size_bytes": 1332617817
+      },
+      {
+        "table_id": "events_20261024",
+        "row_count": 48225,
+        "size_bytes": 1161354450
+      },
+      {
+        "table_id": "events_20261025",
+        "row_count": 52206,
+        "size_bytes": 1305097794
+      },
+      {
+        "table_id": "events_20261026",
+        "row_count": 47842,
+        "size_bytes": 1196384894
+      }
+    ],
+    "google_ads_transfer": {
+      "table": "p_ads_CampaignBasicStats_1112223333",
+      "partition_column": "_DATA_DATE",
+      "size_bytes_in_range": 1835008,
+      "campaign_names_table": "p_ads_Campaign_1112223333"
+    }
+  },
+  "dry_runs": {
+    "campaign_cost_query": {
+      "totalBytesProcessed": 7344981504
+    },
+    "ga4_check_query": {
+      "totalBytesProcessed": 3350200320
+    }
+  },
+  "user_approval": "Yes to both queries, after seeing the SQL and the two estimates.",
+  "campaign_cost_query_result": [
+    {
+      "campaign_id": "111",
+      "cost": 1840.2,
+      "clicks": 2310,
+      "sessions": 2402,
+      "buying_sessions": 151,
+      "purchases": 158,
+      "revenue": 13904.0
+    },
+    {
+      "campaign_id": "222",
+      "cost": 6120.75,
+      "clicks": 4980,
+      "sessions": 5104,
+      "buying_sessions": 97,
+      "purchases": 99,
+      "revenue": 16236.0
+    },
+    {
+      "campaign_id": "333",
+      "cost": 9455.1,
+      "clicks": 11872,
+      "sessions": 12040,
+      "buying_sessions": 214,
+      "purchases": 221,
+      "revenue": 28951.0
+    },
+    {
+      "campaign_id": "444",
+      "cost": 4388.0,
+      "clicks": 2145,
+      "sessions": 2190,
+      "buying_sessions": 19,
+      "purchases": 19,
+      "revenue": 7410.0
+    },
+    {
+      "campaign_id": "555",
+      "cost": 1210.0,
+      "clicks": 96,
+      "sessions": 0,
+      "buying_sessions": 0,
+      "purchases": 0,
+      "revenue": 0.0
+    }
+  ],
+  "campaign_names": {
+    "111": "Search - Brand",
+    "222": "Search - Grinders",
+    "333": "Shopping - All products",
+    "444": "Search - Espresso machines",
+    "555": "Video - Brew guides"
+  },
+  "ga4_check_query_result": {
+    "events": 1303738,
+    "purchase_events": 1047,
+    "distinct_transactions": 1032,
+    "sessions_exact": 61240,
+    "sessions_estimated": 61958,
+    "users_exact": 44310,
+    "users_estimated": 44105,
+    "users_by_user_id": 42770,
+    "events_without_user": 0
+  },
+  "ga4_report_totals": {
+    "eventCount": 1303738,
+    "sessions": 61902,
+    "totalUsers": 42910,
+    "eventCount_purchase": 1047
+  }
+}

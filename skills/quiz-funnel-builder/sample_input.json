@@ -1,0 +1,494 @@
+{
+  "request": "Hey Claude, I just added the \"quiz-funnel-builder\" skill. Build a coffee finder quiz for our Shopify store that grows our email list. Use what people actually buy, write the follow-up emails for each result, and tell me what to track. We never go above 10% off.",
+  "note": "Example data: an invented online coffee store, not a real business. Every number in expected_output.json follows from this input.",
+  "business": {
+    "name": "Larkmoor Coffee Roasters",
+    "site": "https://www.larkmoorcoffee.example",
+    "type": "online specialty coffee store",
+    "store_platform": "Shopify",
+    "email_platform": "Klaviyo",
+    "analytics": "GA4",
+    "currency": "USD"
+  },
+  "brief": {
+    "goal": "list growth",
+    "what_is_sold": "whole bean and ground coffee, cold brew packs, decaf, samplers and brewing gear",
+    "quiz_tool": "nothing yet",
+    "discount_cap_pct": 10,
+    "takers_live": "US and Canada",
+    "lines_left_out": [
+      "gift cards",
+      "shipping protection"
+    ]
+  },
+  "settings": {
+    "as_of": "2026-10-28",
+    "window": {
+      "start": "2025-10-01",
+      "end": "2026-09-30",
+      "months": 12
+    },
+    "group_by": "Shopify product_type"
+  },
+  "data_pulled": {
+    "shopify_get_orders": {
+      "body": {
+        "action": "get_orders",
+        "status": "any",
+        "created_at_min": "2025-10-01T00:00:00Z",
+        "created_at_max": "2026-09-30T23:59:59Z",
+        "fields": "id,created_at,financial_status,cancelled_at,test,line_items",
+        "auto_paginate": true,
+        "max_pages": 200
+      },
+      "orders_read": 9412,
+      "dropped": {
+        "cancelled": 61,
+        "test": 4
+      },
+      "excluded_lines": {
+        "gift_cards": {
+          "lines": 212,
+          "revenue": 8798.0
+        },
+        "shipping_protection": {
+          "lines": 3874,
+          "revenue": 11428.3
+        }
+      },
+      "line_revenue_rule": "price x quantity minus the sum of the line's discount_allocations amounts (codes, automatic and order-wide discounts); refunds not netted per line",
+      "per_product": [
+        {
+          "id": 8101,
+          "units": 2417,
+          "discount_allocations": 1690.3,
+          "line_revenue": 44232.7,
+          "orders": 1556
+        },
+        {
+          "id": 8102,
+          "units": 1944,
+          "discount_allocations": 1447.43,
+          "line_revenue": 31600.57,
+          "orders": 1334
+        },
+        {
+          "id": 8103,
+          "units": 1442,
+          "discount_allocations": 850.96,
+          "line_revenue": 29431.04,
+          "orders": 1053
+        },
+        {
+          "id": 8104,
+          "units": 1676,
+          "discount_allocations": 1407.13,
+          "line_revenue": 27084.87,
+          "orders": 1287
+        },
+        {
+          "id": 8105,
+          "units": 1213,
+          "discount_allocations": 622.83,
+          "line_revenue": 21211.17,
+          "orders": 816
+        },
+        {
+          "id": 8201,
+          "units": 2454,
+          "discount_allocations": 1305.0,
+          "line_revenue": 37959.0,
+          "orders": 1758
+        },
+        {
+          "id": 8202,
+          "units": 1457,
+          "discount_allocations": 1221.37,
+          "line_revenue": 23547.63,
+          "orders": 1026
+        },
+        {
+          "id": 8203,
+          "units": 1081,
+          "discount_allocations": 841.5,
+          "line_revenue": 18616.5,
+          "orders": 822
+        },
+        {
+          "id": 8204,
+          "units": 1018,
+          "discount_allocations": 474.14,
+          "line_revenue": 15813.86,
+          "orders": 649
+        },
+        {
+          "id": 8301,
+          "units": 1078,
+          "discount_allocations": 617.78,
+          "line_revenue": 15552.22,
+          "orders": 690
+        },
+        {
+          "id": 8302,
+          "units": 970,
+          "discount_allocations": 429.95,
+          "line_revenue": 20910.05,
+          "orders": 617
+        },
+        {
+          "id": 8303,
+          "units": 664,
+          "discount_allocations": 445.22,
+          "line_revenue": 15490.78,
+          "orders": 458
+        },
+        {
+          "id": 8401,
+          "units": 857,
+          "discount_allocations": 368.42,
+          "line_revenue": 15057.58,
+          "orders": 572
+        },
+        {
+          "id": 8402,
+          "units": 748,
+          "discount_allocations": 411.94,
+          "line_revenue": 11556.06,
+          "orders": 586
+        },
+        {
+          "id": 8403,
+          "units": 693,
+          "discount_allocations": 374.97,
+          "line_revenue": 11406.03,
+          "orders": 475
+        },
+        {
+          "id": 8501,
+          "units": 276,
+          "discount_allocations": 283.67,
+          "line_revenue": 10204.33,
+          "orders": 215
+        },
+        {
+          "id": 8502,
+          "units": 124,
+          "discount_allocations": 528.22,
+          "line_revenue": 10507.78,
+          "orders": 97
+        },
+        {
+          "id": 8503,
+          "units": 194,
+          "discount_allocations": 130.09,
+          "line_revenue": 5495.91,
+          "orders": 138
+        },
+        {
+          "id": 8601,
+          "units": 539,
+          "discount_allocations": 402.52,
+          "line_revenue": 14689.48,
+          "orders": 396
+        },
+        {
+          "id": 8602,
+          "units": 443,
+          "discount_allocations": 435.09,
+          "line_revenue": 11082.91,
+          "orders": 330
+        }
+      ],
+      "distinct_orders_per_product_type": {
+        "Brewing Gear": 417,
+        "Cold Brew Packs": 1591,
+        "Decaf": 1430,
+        "Espresso Blends": 3842,
+        "Samplers": 639,
+        "Single Origin": 5652
+      }
+    },
+    "shopify_get_products": {
+      "body": {
+        "action": "get_products",
+        "status": "active",
+        "fields": "id,title,handle,product_type,tags,status,variants,body_html",
+        "auto_paginate": true
+      },
+      "note": "read with status active, then archived and draft, so past sales map to a group; only active products are recommended. page_facts is the body_html product page text, cut to its facts.",
+      "products": [
+        {
+          "id": 8101,
+          "title": "Ethiopia Yirgacheffe",
+          "product_type": "Single Origin",
+          "status": "active",
+          "price": 19.0,
+          "page_facts": [
+            "Light roast",
+            "notes of bergamot, lemon and jasmine"
+          ]
+        },
+        {
+          "id": 8102,
+          "title": "Colombia Huila",
+          "product_type": "Single Origin",
+          "status": "active",
+          "price": 17.0,
+          "page_facts": [
+            "Medium roast",
+            "notes of red apple, caramel and cocoa"
+          ]
+        },
+        {
+          "id": 8103,
+          "title": "Kenya Nyeri",
+          "product_type": "Single Origin",
+          "status": "active",
+          "price": 21.0,
+          "page_facts": [
+            "Light roast",
+            "notes of blackcurrant and grapefruit"
+          ]
+        },
+        {
+          "id": 8104,
+          "title": "Guatemala Antigua",
+          "product_type": "Single Origin",
+          "status": "active",
+          "price": 17.0,
+          "page_facts": [
+            "Medium roast",
+            "notes of milk chocolate and orange"
+          ]
+        },
+        {
+          "id": 8105,
+          "title": "Costa Rica Tarrazu",
+          "product_type": "Single Origin",
+          "status": "active",
+          "price": 18.0,
+          "page_facts": [
+            "Medium roast",
+            "notes of brown sugar and peach"
+          ]
+        },
+        {
+          "id": 8201,
+          "title": "Larkmoor House Espresso",
+          "product_type": "Espresso Blends",
+          "status": "active",
+          "price": 16.0,
+          "page_facts": [
+            "Medium-dark roast",
+            "notes of dark chocolate and hazelnut",
+            "start at 18 g in, 36 g out, 26 to 30 seconds"
+          ]
+        },
+        {
+          "id": 8202,
+          "title": "Dark Roast Espresso",
+          "product_type": "Espresso Blends",
+          "status": "active",
+          "price": 17.0,
+          "page_facts": [
+            "Dark roast",
+            "notes of cocoa and molasses",
+            "start at 18 g in, 36 g out, 28 to 32 seconds"
+          ]
+        },
+        {
+          "id": 8203,
+          "title": "Holiday Espresso Blend",
+          "product_type": "Espresso Blends",
+          "status": "archived",
+          "price": 18.0,
+          "page_facts": [
+            "Seasonal blend",
+            "notes of spice and dark cherry"
+          ]
+        },
+        {
+          "id": 8204,
+          "title": "Medium Roast Espresso",
+          "product_type": "Espresso Blends",
+          "status": "active",
+          "price": 16.0,
+          "page_facts": [
+            "Medium roast",
+            "notes of caramel and almond",
+            "start at 18 g in, 38 g out, 27 to 30 seconds"
+          ]
+        },
+        {
+          "id": 8301,
+          "title": "Cold Brew Coarse Grind",
+          "product_type": "Cold Brew Packs",
+          "status": "active",
+          "price": 15.0,
+          "page_facts": [
+            "Coarse-ground medium roast",
+            "steep 100 g in 1 litre of cold water for 14 to 18 hours"
+          ]
+        },
+        {
+          "id": 8302,
+          "title": "Cold Brew Pitcher Packs",
+          "product_type": "Cold Brew Packs",
+          "status": "active",
+          "price": 22.0,
+          "page_facts": [
+            "Four filter packs",
+            "steep one pack in a 2-litre pitcher in the fridge for 16 hours",
+            "keeps 7 days in the fridge"
+          ]
+        },
+        {
+          "id": 8303,
+          "title": "Cold Brew Concentrate",
+          "product_type": "Cold Brew Packs",
+          "status": "active",
+          "price": 24.0,
+          "page_facts": [
+            "Ready to pour",
+            "mix 1 part concentrate with 2 parts water or milk",
+            "keeps 10 days in the fridge once opened"
+          ]
+        },
+        {
+          "id": 8401,
+          "title": "Swiss Water Decaf Colombia",
+          "product_type": "Decaf",
+          "status": "active",
+          "price": 18.0,
+          "page_facts": [
+            "Decaffeinated by the Swiss Water Process, with water instead of chemical solvents",
+            "notes of milk chocolate and red apple"
+          ]
+        },
+        {
+          "id": 8402,
+          "title": "Decaf House Blend",
+          "product_type": "Decaf",
+          "status": "active",
+          "price": 16.0,
+          "page_facts": [
+            "Decaffeinated with sugarcane ethyl acetate",
+            "notes of caramel and walnut"
+          ]
+        },
+        {
+          "id": 8403,
+          "title": "Half-Caff Blend",
+          "product_type": "Decaf",
+          "status": "active",
+          "price": 17.0,
+          "page_facts": [
+            "Half regular coffee, half Swiss Water decaf",
+            "notes of cocoa and toffee"
+          ]
+        },
+        {
+          "id": 8501,
+          "title": "Pour-Over Starter Kit",
+          "product_type": "Brewing Gear",
+          "status": "active",
+          "price": 38.0,
+          "page_facts": [
+            "Dripper, 100 paper filters and a 600 ml glass server"
+          ]
+        },
+        {
+          "id": 8502,
+          "title": "Hand Burr Grinder",
+          "product_type": "Brewing Gear",
+          "status": "active",
+          "price": 89.0,
+          "page_facts": [
+            "Ceramic burrs with 30 grind settings"
+          ]
+        },
+        {
+          "id": 8503,
+          "title": "Glass Carafe",
+          "product_type": "Brewing Gear",
+          "status": "active",
+          "price": 29.0,
+          "page_facts": [
+            "600 ml borosilicate glass"
+          ]
+        },
+        {
+          "id": 8601,
+          "title": "Origin Sampler 4-Pack",
+          "product_type": "Samplers",
+          "status": "active",
+          "price": 28.0,
+          "page_facts": [
+            "Four 100 g bags of single origins"
+          ]
+        },
+        {
+          "id": 8602,
+          "title": "Espresso Sampler 3-Pack",
+          "product_type": "Samplers",
+          "status": "active",
+          "price": 26.0,
+          "page_facts": [
+            "Three 100 g bags of espresso blends"
+          ]
+        }
+      ]
+    },
+    "klaviyo": {
+      "get_lists": [
+        {
+          "id": "Lx1aB2",
+          "name": "Newsletter"
+        },
+        {
+          "id": "Lx3cD4",
+          "name": "Wholesale enquiries"
+        }
+      ],
+      "get_segments": [
+        {
+          "id": "Sg1",
+          "name": "Engaged 90 days"
+        },
+        {
+          "id": "Sg2",
+          "name": "Repeat buyers"
+        },
+        {
+          "id": "Sg3",
+          "name": "Unengaged 180 days"
+        }
+      ],
+      "get_metrics": [
+        "Placed Order",
+        "Started Checkout",
+        "Viewed Product",
+        "Active on Site",
+        "Subscribed to List",
+        "Received Email",
+        "Opened Email",
+        "Clicked Email"
+      ]
+    },
+    "google_analytics": {
+      "property_id": "properties/345678901",
+      "list_custom_dimensions": [
+        {
+          "parameterName": "page_template",
+          "scope": "EVENT"
+        }
+      ],
+      "list_key_events": [
+        {
+          "eventName": "purchase",
+          "countingMethod": "ONCE_PER_EVENT"
+        }
+      ]
+    }
+  }
+}

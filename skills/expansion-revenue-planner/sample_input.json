@@ -1,0 +1,2244 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Work out our net and gross revenue retention for the last 12 months, find the accounts most likely to upgrade, add staff or buy add-ons, and plan the upgrade moments. We launch on 2026-11-02. No account-manager threshold set.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "currency": "USD",
+  "run_date": "2026-10-28",
+  "retention_window": {
+    "start_month": "2025-09",
+    "end_month": "2026-09",
+    "mrr_is": "monthly recurring revenue on the last day of the month, all plans billed monthly"
+  },
+  "price_list": {
+    "plans": {
+      "Starter": {
+        "price_month": 19,
+        "staff_included": 1,
+        "sms_per_month": 100,
+        "features": []
+      },
+      "Growth": {
+        "price_month": 49,
+        "staff_included": 5,
+        "sms_per_month": 300,
+        "features": [
+          "Deposits and online payments",
+          "Multi-location"
+        ]
+      },
+      "Business": {
+        "price_month": 99,
+        "staff_included": 20,
+        "sms_per_month": 1000,
+        "features": [
+          "Deposits and online payments",
+          "Multi-location",
+          "Advanced reports"
+        ]
+      }
+    },
+    "add_ons": {
+      "extra_staff": {
+        "price_month": 8,
+        "plans": [
+          "Growth"
+        ],
+        "max_extra": 5
+      },
+      "sms_pack": {
+        "price_month": 15,
+        "sms": 500,
+        "plans": [
+          "Starter",
+          "Growth",
+          "Business"
+        ]
+      },
+      "extra_location": {
+        "price_month": 29,
+        "plans": [
+          "Growth",
+          "Business"
+        ]
+      }
+    }
+  },
+  "billing_export": [
+    {
+      "account_id": "A-1001",
+      "signup_month": "2023-01",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      }
+    },
+    {
+      "account_id": "A-1002",
+      "signup_month": "2024-05",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      }
+    },
+    {
+      "account_id": "A-1003",
+      "signup_month": "2023-06",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1004",
+      "signup_month": "2023-07",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      }
+    },
+    {
+      "account_id": "A-1005",
+      "signup_month": "2025-08",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 80
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 80
+      }
+    },
+    {
+      "account_id": "A-1006",
+      "signup_month": "2023-10",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1007",
+      "signup_month": "2025-03",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 34
+      }
+    },
+    {
+      "account_id": "A-1008",
+      "signup_month": "2024-12",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1009",
+      "signup_month": "2025-04",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1010",
+      "signup_month": "2023-07",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": null,
+        "mrr": 0
+      }
+    },
+    {
+      "account_id": "A-1011",
+      "signup_month": "2024-06",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": null,
+        "mrr": 0
+      }
+    },
+    {
+      "account_id": "A-1012",
+      "signup_month": "2024-05",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 3,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 73
+      }
+    },
+    {
+      "account_id": "A-1013",
+      "signup_month": "2024-05",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1014",
+      "signup_month": "2024-11",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1015",
+      "signup_month": "2024-12",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1016",
+      "signup_month": "2025-07",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 4,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 81
+      }
+    },
+    {
+      "account_id": "A-1017",
+      "signup_month": "2023-01",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 64
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 72
+      }
+    },
+    {
+      "account_id": "A-1018",
+      "signup_month": "2024-12",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 2,
+        "extra_locations": 1,
+        "mrr": 158
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 2,
+        "extra_locations": 1,
+        "mrr": 158
+      }
+    },
+    {
+      "account_id": "A-1019",
+      "signup_month": "2023-06",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1020",
+      "signup_month": "2024-12",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      }
+    },
+    {
+      "account_id": "A-1021",
+      "signup_month": "2025-01",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1022",
+      "signup_month": "2023-06",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": null,
+        "mrr": 0
+      }
+    },
+    {
+      "account_id": "A-1023",
+      "signup_month": "2024-07",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 2,
+        "extra_locations": 1,
+        "mrr": 158
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 1,
+        "mrr": 143
+      }
+    },
+    {
+      "account_id": "A-1024",
+      "signup_month": "2025-03",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": null,
+        "mrr": 0
+      }
+    },
+    {
+      "account_id": "A-1025",
+      "signup_month": "2023-12",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 1,
+        "mrr": 143
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 1,
+        "mrr": 143
+      }
+    },
+    {
+      "account_id": "A-1026",
+      "signup_month": "2024-04",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 1,
+        "mrr": 143
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 1,
+        "mrr": 143
+      }
+    },
+    {
+      "account_id": "A-1027",
+      "signup_month": "2024-07",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1028",
+      "signup_month": "2024-05",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": null,
+        "mrr": 0
+      }
+    },
+    {
+      "account_id": "A-1029",
+      "signup_month": "2023-08",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 1,
+        "extra_locations": 0,
+        "mrr": 34
+      }
+    },
+    {
+      "account_id": "A-1030",
+      "signup_month": "2023-12",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1031",
+      "signup_month": "2024-04",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1032",
+      "signup_month": "2024-10",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1033",
+      "signup_month": "2023-09",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 2,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 65
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 99
+      }
+    },
+    {
+      "account_id": "A-1034",
+      "signup_month": "2023-10",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 1,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 57
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 99
+      }
+    },
+    {
+      "account_id": "A-1035",
+      "signup_month": "2023-04",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1036",
+      "signup_month": "2025-02",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1037",
+      "signup_month": "2024-07",
+      "mrr_2025-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 99
+      }
+    },
+    {
+      "account_id": "A-1038",
+      "signup_month": "2023-09",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 99
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 1,
+        "mrr": 128
+      }
+    },
+    {
+      "account_id": "A-1039",
+      "signup_month": "2023-08",
+      "mrr_2025-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      },
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1040",
+      "signup_month": "2023-11",
+      "mrr_2025-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 2,
+        "extra_locations": 0,
+        "mrr": 129
+      },
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 2,
+        "extra_locations": 1,
+        "mrr": 158
+      }
+    },
+    {
+      "account_id": "A-1041",
+      "signup_month": "2026-09",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1042",
+      "signup_month": "2026-09",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1043",
+      "signup_month": "2026-05",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1044",
+      "signup_month": "2026-03",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1045",
+      "signup_month": "2025-10",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1046",
+      "signup_month": "2025-11",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Starter",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 19
+      }
+    },
+    {
+      "account_id": "A-1047",
+      "signup_month": "2025-10",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1048",
+      "signup_month": "2025-10",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1049",
+      "signup_month": "2025-10",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1050",
+      "signup_month": "2025-10",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1051",
+      "signup_month": "2025-11",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Growth",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 49
+      }
+    },
+    {
+      "account_id": "A-1052",
+      "signup_month": "2026-06",
+      "mrr_2025-09": null,
+      "mrr_2026-09": {
+        "plan": "Business",
+        "extra_staff": 0,
+        "sms_packs": 0,
+        "extra_locations": 0,
+        "mrr": 99
+      }
+    }
+  ],
+  "usage_export": {
+    "months": [
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ],
+    "fields": {
+      "bookings": "bookings taken per month",
+      "active_staff": "staff with at least one booking",
+      "invites_blocked": "people the account tried to add as staff past its allowance, last 3 months",
+      "sms_sent": "reminder texts attempted per month, including any held at the allowance",
+      "locked_feature_clicks": "clicks on a feature the plan does not include, last 3 months"
+    },
+    "rows": [
+      {
+        "account_id": "A-1001",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          276,
+          295,
+          292
+        ],
+        "active_staff": [
+          4,
+          4,
+          4
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          160,
+          155,
+          165
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1002",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          291,
+          289,
+          313
+        ],
+        "active_staff": [
+          4,
+          4,
+          4
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          166,
+          127,
+          91
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1003",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          121,
+          125,
+          116
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          35,
+          28,
+          50
+        ],
+        "locked_feature_clicks": {
+          "deposits": 4
+        }
+      },
+      {
+        "account_id": "A-1004",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          225,
+          237,
+          241
+        ],
+        "active_staff": [
+          4,
+          4,
+          4
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          175,
+          93,
+          106
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1005",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          180,
+          188,
+          172
+        ],
+        "active_staff": [
+          4,
+          4,
+          4
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          244,
+          325,
+          394
+        ],
+        "locked_feature_clicks": {
+          "multi_location": 3
+        }
+      },
+      {
+        "account_id": "A-1006",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          321,
+          338,
+          337
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          132,
+          166,
+          91
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1007",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          62,
+          60,
+          66
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          282,
+          156,
+          341
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1008",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          186,
+          198,
+          194
+        ],
+        "active_staff": [
+          2,
+          2,
+          2
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          156,
+          146,
+          95
+        ],
+        "locked_feature_clicks": {
+          "multi_location": 5
+        }
+      },
+      {
+        "account_id": "A-1009",
+        "plan": "Growth",
+        "payment_status": "past_due",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          264,
+          258,
+          272
+        ],
+        "active_staff": [
+          2,
+          2,
+          2
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          174,
+          134,
+          171
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1012",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          399,
+          386,
+          393
+        ],
+        "active_staff": [
+          7,
+          8,
+          8
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          80,
+          161,
+          122
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1013",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          123,
+          132,
+          135
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          51,
+          33,
+          56
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1014",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          327,
+          314,
+          319
+        ],
+        "active_staff": [
+          4,
+          5,
+          5
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          75,
+          104,
+          123
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1015",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          84,
+          85,
+          83
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 2,
+        "sms_sent": [
+          58,
+          50,
+          28
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1016",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          336,
+          346,
+          426
+        ],
+        "active_staff": [
+          4,
+          4,
+          4
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          88,
+          132,
+          164
+        ],
+        "locked_feature_clicks": {
+          "advanced_reports": 4
+        }
+      },
+      {
+        "account_id": "A-1017",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          384,
+          375,
+          368
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          455,
+          272,
+          293
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1018",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          474,
+          498,
+          508
+        ],
+        "active_staff": [
+          13,
+          13,
+          13
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          1149,
+          1059,
+          1046
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1019",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          122,
+          116,
+          121
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          43,
+          25,
+          25
+        ],
+        "locked_feature_clicks": {
+          "deposits": 4
+        }
+      },
+      {
+        "account_id": "A-1020",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          204,
+          202,
+          206
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          210,
+          240,
+          252
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1021",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          201,
+          203,
+          192
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          210,
+          240,
+          264
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1023",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          504,
+          515,
+          552
+        ],
+        "active_staff": [
+          10,
+          10,
+          10
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          769,
+          664,
+          520
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1025",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          702,
+          680,
+          704
+        ],
+        "active_staff": [
+          10,
+          10,
+          10
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          540,
+          556,
+          754
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1026",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          450,
+          467,
+          492
+        ],
+        "active_staff": [
+          8,
+          8,
+          8
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          394,
+          580,
+          878
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1027",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          89,
+          94,
+          95
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          47,
+          44,
+          56
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1029",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          77,
+          76,
+          78
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          300,
+          220,
+          228
+        ],
+        "locked_feature_clicks": {
+          "deposits": 6
+        }
+      },
+      {
+        "account_id": "A-1030",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          97,
+          101,
+          92
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          54,
+          37,
+          30
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1031",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          72,
+          77,
+          70
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          33,
+          41,
+          48
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1032",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          276,
+          279,
+          292
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          89,
+          83,
+          79
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1033",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          492,
+          497,
+          504
+        ],
+        "active_staff": [
+          7,
+          7,
+          7
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          474,
+          588,
+          495
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1034",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          462,
+          448,
+          484
+        ],
+        "active_staff": [
+          6,
+          6,
+          6
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          542,
+          286,
+          434
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1035",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          228,
+          241,
+          250
+        ],
+        "active_staff": [
+          2,
+          2,
+          2
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          91,
+          113,
+          110
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1036",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          234,
+          251,
+          223
+        ],
+        "active_staff": [
+          2,
+          2,
+          2
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          164,
+          85,
+          169
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1037",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          564,
+          588,
+          546
+        ],
+        "active_staff": [
+          8,
+          8,
+          8
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          543,
+          445,
+          439
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1038",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          702,
+          731,
+          712
+        ],
+        "active_staff": [
+          13,
+          13,
+          13
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          372,
+          425,
+          476
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1039",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          63,
+          65,
+          62
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          30,
+          41,
+          46
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1040",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          474,
+          472,
+          461
+        ],
+        "active_staff": [
+          11,
+          11,
+          11
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          549,
+          1002,
+          675
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1041",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          68,
+          65,
+          70
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 2,
+        "sms_sent": [
+          45,
+          52,
+          30
+        ],
+        "locked_feature_clicks": {
+          "deposits": 5
+        }
+      },
+      {
+        "account_id": "A-1042",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          85,
+          82,
+          88
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 2,
+        "sms_sent": [
+          27,
+          29,
+          43
+        ],
+        "locked_feature_clicks": {
+          "deposits": 6
+        }
+      },
+      {
+        "account_id": "A-1043",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          88,
+          91,
+          116
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          33,
+          46,
+          30
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1044",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          132,
+          134,
+          135
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          33,
+          30,
+          39
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1045",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          135,
+          133,
+          133
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          56,
+          28,
+          46
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1046",
+        "plan": "Starter",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          129,
+          124,
+          75
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 1,
+        "sms_sent": [
+          43,
+          37,
+          27
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1047",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          336,
+          352,
+          331
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          156,
+          170,
+          173
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1048",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          336,
+          334,
+          368
+        ],
+        "active_staff": [
+          2,
+          2,
+          2
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          210,
+          240,
+          315
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1049",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          318,
+          325,
+          344
+        ],
+        "active_staff": [
+          1,
+          1,
+          1
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          210,
+          240,
+          354
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1050",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          261,
+          264,
+          273
+        ],
+        "active_staff": [
+          3,
+          3,
+          3
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          124,
+          129,
+          84
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1051",
+        "plan": "Growth",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          240,
+          233,
+          241
+        ],
+        "active_staff": [
+          4,
+          5,
+          5
+        ],
+        "invites_blocked": 2,
+        "sms_sent": [
+          117,
+          85,
+          136
+        ],
+        "locked_feature_clicks": {}
+      },
+      {
+        "account_id": "A-1052",
+        "plan": "Business",
+        "payment_status": "active",
+        "months": [
+          "2026-07",
+          "2026-08",
+          "2026-09"
+        ],
+        "bookings": [
+          510,
+          544,
+          512
+        ],
+        "active_staff": [
+          10,
+          10,
+          10
+        ],
+        "invites_blocked": 0,
+        "sms_sent": [
+          259,
+          547,
+          398
+        ],
+        "locked_feature_clicks": {}
+      }
+    ]
+  },
+  "klaviyo_flows": {
+    "source": "Klaviyo get_flows",
+    "rows": [
+      {
+        "name": "Welcome series",
+        "status": "live",
+        "trigger_type": "Added to List"
+      },
+      {
+        "name": "Trial ending reminder",
+        "status": "live",
+        "trigger_type": "Metric"
+      },
+      {
+        "name": "Starter upgrade nudge",
+        "status": "draft",
+        "trigger_type": "Metric"
+      },
+      {
+        "name": "Card failed",
+        "status": "live",
+        "trigger_type": "Metric"
+      }
+    ]
+  },
+  "ga4_upgrade_events": null
+}

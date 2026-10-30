@@ -1,0 +1,1083 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The account budget, disapproved ads, blocking negative, strict target and ad schedule were built in so the run shows each kind of blocker.",
+  "request": "Hey Claude, I just added the \"google-ads-delivery-troubleshooter\" skill. Our Google Ads spend dropped this week and two campaigns say Eligible (limited). Find out why our ads aren't showing and what to fix first. We sell online to the US, Canada and the UK, so ads should run all day, every day.",
+  "account": {
+    "name": "Example Booking Software",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "run_date": "2026-10-28",
+  "windows": {
+    "last_7_days": [
+      "2026-10-21",
+      "2026-10-27"
+    ],
+    "last_30_days": [
+      "2026-09-28",
+      "2026-10-27"
+    ],
+    "change_history": [
+      "2026-10-14",
+      "2026-10-28"
+    ]
+  },
+  "intended": {
+    "locations": [
+      "United States",
+      "Canada",
+      "United Kingdom"
+    ],
+    "hours": "all day, every day"
+  },
+  "ad_preview_screenshot": null,
+  "data_pulled": {
+    "customer": {
+      "id": "1234567890",
+      "descriptive_name": "Example Booking Software",
+      "status": "ENABLED",
+      "currency_code": "USD",
+      "time_zone": "America/New_York",
+      "manager": false
+    },
+    "billing_setups": [
+      {
+        "id": "300000001",
+        "status": "APPROVED",
+        "start_date_time": "2025-11-03 09:00:00"
+      }
+    ],
+    "account_budgets": [
+      {
+        "id": "400000001",
+        "status": "APPROVED",
+        "approved_spending_limit_type": null,
+        "approved_spending_limit_micros": 30000000000,
+        "amount_served_micros": 29910000000,
+        "approved_start_date_time": "2026-01-01 00:00:00",
+        "approved_end_date_time": "2026-07-01 00:00:00"
+      },
+      {
+        "id": "400000002",
+        "status": "APPROVED",
+        "approved_spending_limit_type": null,
+        "approved_spending_limit_micros": 36000000000,
+        "amount_served_micros": 35420000000,
+        "approved_start_date_time": "2026-07-01 00:00:00",
+        "approved_end_date_time": null
+      }
+    ],
+    "campaigns": [
+      {
+        "id": "21000000001",
+        "name": "Brand | Search",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "channel": "SEARCH",
+        "bidding_strategy_type": "TARGET_IMPRESSION_SHARE",
+        "bidding_strategy_system_status": "ENABLED",
+        "budget_micros": 40000000,
+        "target_cpa_micros": null,
+        "cpc_bid_ceiling_micros": 2500000,
+        "target_google_search": true,
+        "target_search_network": true,
+        "target_content_network": false,
+        "positive_geo_target_type": "PRESENCE_OR_INTEREST",
+        "start_date_time": "2025-11-03 09:00:00",
+        "end_date_time": null
+      },
+      {
+        "id": "21000000002",
+        "name": "Salon Booking | Search",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "channel": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "bidding_strategy_system_status": "ENABLED",
+        "budget_micros": 150000000,
+        "target_cpa_micros": null,
+        "cpc_bid_ceiling_micros": null,
+        "target_google_search": true,
+        "target_search_network": true,
+        "target_content_network": false,
+        "positive_geo_target_type": "PRESENCE_OR_INTEREST",
+        "start_date_time": "2025-11-03 09:00:00",
+        "end_date_time": null
+      },
+      {
+        "id": "21000000003",
+        "name": "Clinic Scheduling | Search",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "HAS_ADS_DISAPPROVED",
+          "NO_AD_GROUP_ADS"
+        ],
+        "channel": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "bidding_strategy_system_status": "ENABLED",
+        "budget_micros": 120000000,
+        "target_cpa_micros": null,
+        "cpc_bid_ceiling_micros": null,
+        "target_google_search": true,
+        "target_search_network": true,
+        "target_content_network": false,
+        "positive_geo_target_type": "PRESENCE_OR_INTEREST",
+        "start_date_time": "2026-02-09 09:00:00",
+        "end_date_time": null
+      },
+      {
+        "id": "21000000004",
+        "name": "Fitness Class Booking | Search",
+        "status": "ENABLED",
+        "primary_status": "LIMITED",
+        "primary_status_reasons": [
+          "BIDDING_STRATEGY_CONSTRAINED"
+        ],
+        "channel": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "bidding_strategy_system_status": "ENABLED",
+        "budget_micros": 100000000,
+        "target_cpa_micros": 35000000,
+        "cpc_bid_ceiling_micros": null,
+        "target_google_search": true,
+        "target_search_network": true,
+        "target_content_network": false,
+        "positive_geo_target_type": "PRESENCE_OR_INTEREST",
+        "start_date_time": "2026-03-16 09:00:00",
+        "end_date_time": null
+      },
+      {
+        "id": "21000000005",
+        "name": "Competitor Alternatives | Search",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "channel": "SEARCH",
+        "bidding_strategy_type": "TARGET_SPEND",
+        "bidding_strategy_system_status": "ENABLED",
+        "budget_micros": 60000000,
+        "target_cpa_micros": null,
+        "cpc_bid_ceiling_micros": null,
+        "target_google_search": true,
+        "target_search_network": true,
+        "target_content_network": false,
+        "positive_geo_target_type": "PRESENCE_OR_INTEREST",
+        "start_date_time": "2026-05-04 09:00:00",
+        "end_date_time": null
+      }
+    ],
+    "campaign_metrics_7d": {
+      "21000000001": {
+        "impressions": 1180,
+        "clicks": 352,
+        "cost_micros": 126400000.0,
+        "conversions": 41,
+        "search_impression_share": 0.9001,
+        "search_budget_lost_impression_share": 0.0,
+        "search_rank_lost_impression_share": 0.0412
+      },
+      "21000000002": {
+        "impressions": 7420,
+        "clicks": 401,
+        "cost_micros": 693800000.0,
+        "conversions": 19,
+        "search_impression_share": 0.731,
+        "search_budget_lost_impression_share": 0.0284,
+        "search_rank_lost_impression_share": 0.2406
+      },
+      "21000000003": {
+        "impressions": 0,
+        "clicks": 0,
+        "cost_micros": 0,
+        "conversions": 0,
+        "search_impression_share": null,
+        "search_budget_lost_impression_share": null,
+        "search_rank_lost_impression_share": null
+      },
+      "21000000004": {
+        "impressions": 2210,
+        "clicks": 96,
+        "cost_micros": 238100000.0,
+        "conversions": 4,
+        "search_impression_share": 0.3105,
+        "search_budget_lost_impression_share": 0.0,
+        "search_rank_lost_impression_share": 0.6895
+      },
+      "21000000005": {
+        "impressions": 1630,
+        "clicks": 88,
+        "cost_micros": 159600000.0,
+        "conversions": 3,
+        "search_impression_share": 0.552,
+        "search_budget_lost_impression_share": 0.0,
+        "search_rank_lost_impression_share": 0.2215
+      }
+    },
+    "campaign_metrics_30d": {
+      "21000000001": {
+        "impressions": 5010,
+        "clicks": 1490,
+        "cost_micros": 538200000.0,
+        "conversions": 171
+      },
+      "21000000002": {
+        "impressions": 33800,
+        "clicks": 1860,
+        "cost_micros": 3254600000.0,
+        "conversions": 88
+      },
+      "21000000003": {
+        "impressions": 11900,
+        "clicks": 690,
+        "cost_micros": 1950400000.0,
+        "conversions": 24
+      },
+      "21000000004": {
+        "impressions": 12400,
+        "clicks": 520,
+        "cost_micros": 1710000000.0,
+        "conversions": 26
+      },
+      "21000000005": {
+        "impressions": 6900,
+        "clicks": 372,
+        "cost_micros": 674900000.0,
+        "conversions": 13
+      }
+    },
+    "ad_groups": [
+      {
+        "campaign_id": "21000000001",
+        "id": "310000000001",
+        "name": "Brand terms",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": []
+      },
+      {
+        "campaign_id": "21000000002",
+        "id": "310000000002",
+        "name": "Salon software",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": []
+      },
+      {
+        "campaign_id": "21000000002",
+        "id": "310000000003",
+        "name": "Salon app",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": []
+      },
+      {
+        "campaign_id": "21000000003",
+        "id": "310000000004",
+        "name": "Clinic scheduling",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "HAS_ADS_DISAPPROVED"
+        ]
+      },
+      {
+        "campaign_id": "21000000003",
+        "id": "310000000005",
+        "name": "Physio booking",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "HAS_ADS_DISAPPROVED"
+        ]
+      },
+      {
+        "campaign_id": "21000000004",
+        "id": "310000000006",
+        "name": "Class booking",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": []
+      },
+      {
+        "campaign_id": "21000000005",
+        "id": "310000000007",
+        "name": "Alternatives",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": []
+      }
+    ],
+    "ads": [
+      {
+        "ad_group_id": "310000000001",
+        "ad_id": "510000000001",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000001",
+        "ad_id": "510000000002",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000002",
+        "ad_id": "510000000003",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/industries/salons/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000002",
+        "ad_id": "510000000004",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/industries/salons/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000003",
+        "ad_id": "510000000005",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/features/online-booking/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000003",
+        "ad_id": "510000000006",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/features/online-booking/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000004",
+        "ad_id": "510000000007",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "AD_GROUP_AD_DISAPPROVED"
+        ],
+        "approval_status": "DISAPPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [
+          {
+            "topic": "DESTINATION_NOT_WORKING",
+            "type": "PROHIBITED"
+          }
+        ],
+        "final_urls": [
+          "https://www.example.com/clinics/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000004",
+        "ad_id": "510000000008",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "AD_GROUP_AD_DISAPPROVED"
+        ],
+        "approval_status": "DISAPPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [
+          {
+            "topic": "DESTINATION_NOT_WORKING",
+            "type": "PROHIBITED"
+          }
+        ],
+        "final_urls": [
+          "https://www.example.com/clinics/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000005",
+        "ad_id": "510000000009",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "AD_GROUP_AD_DISAPPROVED"
+        ],
+        "approval_status": "DISAPPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [
+          {
+            "topic": "DESTINATION_NOT_WORKING",
+            "type": "PROHIBITED"
+          }
+        ],
+        "final_urls": [
+          "https://www.example.com/clinics/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000005",
+        "ad_id": "510000000010",
+        "status": "ENABLED",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "AD_GROUP_AD_DISAPPROVED"
+        ],
+        "approval_status": "DISAPPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [
+          {
+            "topic": "DESTINATION_NOT_WORKING",
+            "type": "PROHIBITED"
+          }
+        ],
+        "final_urls": [
+          "https://www.example.com/clinics/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000006",
+        "ad_id": "510000000011",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/industries/fitness/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000006",
+        "ad_id": "510000000012",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/industries/fitness/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000007",
+        "ad_id": "510000000013",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/"
+        ]
+      },
+      {
+        "ad_group_id": "310000000007",
+        "ad_id": "510000000014",
+        "status": "ENABLED",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "approval_status": "APPROVED",
+        "review_status": "REVIEWED",
+        "policy_topic_entries": [],
+        "final_urls": [
+          "https://www.example.com/pricing/"
+        ]
+      }
+    ],
+    "keywords": [
+      {
+        "campaign_id": "21000000001",
+        "ad_group_id": "310000000001",
+        "criterion_id": "71001",
+        "text": "example booking software",
+        "match_type": "EXACT",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 10,
+        "metrics_30d": {
+          "impressions": 4100,
+          "clicks": 1240,
+          "cost_micros": 448300000
+        }
+      },
+      {
+        "campaign_id": "21000000001",
+        "ad_group_id": "310000000001",
+        "criterion_id": "71002",
+        "text": "example booking login",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 9,
+        "metrics_30d": {
+          "impressions": 910,
+          "clicks": 250,
+          "cost_micros": 89900000
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000002",
+        "criterion_id": "71003",
+        "text": "salon booking software",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 7,
+        "metrics_30d": {
+          "impressions": 15600,
+          "clicks": 840,
+          "cost_micros": 1480200000
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000002",
+        "criterion_id": "71004",
+        "text": "salon scheduling software",
+        "match_type": "EXACT",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 8,
+        "metrics_30d": {
+          "impressions": 6900,
+          "clicks": 390,
+          "cost_micros": 690100000
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000002",
+        "criterion_id": "71005",
+        "text": "online booking for salons",
+        "match_type": "BROAD",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 6,
+        "metrics_30d": {
+          "impressions": 9950,
+          "clicks": 505,
+          "cost_micros": 294300000
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000002",
+        "criterion_id": "71006",
+        "text": "hair salon scheduling system",
+        "match_type": "PHRASE",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "AD_GROUP_CRITERION_RARELY_SERVED"
+        ],
+        "quality_score": null,
+        "metrics_30d": {
+          "impressions": 0,
+          "clicks": 0,
+          "cost_micros": 0
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000003",
+        "criterion_id": "71007",
+        "text": "salon booking app",
+        "match_type": "PHRASE",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "CAMPAIGN_CRITERION_NEGATIVE"
+        ],
+        "quality_score": 7,
+        "metrics_30d": {
+          "impressions": 1350,
+          "clicks": 84,
+          "cost_micros": 520000000
+        }
+      },
+      {
+        "campaign_id": "21000000002",
+        "ad_group_id": "310000000003",
+        "criterion_id": "71008",
+        "text": "booking app for salons",
+        "match_type": "EXACT",
+        "primary_status": "NOT_ELIGIBLE",
+        "primary_status_reasons": [
+          "CAMPAIGN_CRITERION_NEGATIVE"
+        ],
+        "quality_score": 6,
+        "metrics_30d": {
+          "impressions": 610,
+          "clicks": 41,
+          "cost_micros": 270000000
+        }
+      },
+      {
+        "campaign_id": "21000000003",
+        "ad_group_id": "310000000004",
+        "criterion_id": "71009",
+        "text": "clinic scheduling software",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 7,
+        "metrics_30d": {
+          "impressions": 7300,
+          "clicks": 420,
+          "cost_micros": 1190400000
+        }
+      },
+      {
+        "campaign_id": "21000000003",
+        "ad_group_id": "310000000004",
+        "criterion_id": "71010",
+        "text": "patient appointment scheduling",
+        "match_type": "BROAD",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 6,
+        "metrics_30d": {
+          "impressions": 3100,
+          "clicks": 170,
+          "cost_micros": 480000000
+        }
+      },
+      {
+        "campaign_id": "21000000003",
+        "ad_group_id": "310000000005",
+        "criterion_id": "71011",
+        "text": "physio booking system",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 7,
+        "metrics_30d": {
+          "impressions": 1500,
+          "clicks": 100,
+          "cost_micros": 280000000
+        }
+      },
+      {
+        "campaign_id": "21000000004",
+        "ad_group_id": "310000000006",
+        "criterion_id": "71012",
+        "text": "fitness class booking software",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 7,
+        "metrics_30d": {
+          "impressions": 8800,
+          "clicks": 360,
+          "cost_micros": 1210000000
+        }
+      },
+      {
+        "campaign_id": "21000000004",
+        "ad_group_id": "310000000006",
+        "criterion_id": "71013",
+        "text": "gym class scheduling",
+        "match_type": "BROAD",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 6,
+        "metrics_30d": {
+          "impressions": 3600,
+          "clicks": 160,
+          "cost_micros": 500000000
+        }
+      },
+      {
+        "campaign_id": "21000000004",
+        "ad_group_id": "310000000006",
+        "criterion_id": "71014",
+        "text": "yoga studio class booking system",
+        "match_type": "EXACT",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": null,
+        "metrics_30d": {
+          "impressions": 0,
+          "clicks": 0,
+          "cost_micros": 0
+        }
+      },
+      {
+        "campaign_id": "21000000005",
+        "ad_group_id": "310000000007",
+        "criterion_id": "71015",
+        "text": "competitor a alternative",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 6,
+        "metrics_30d": {
+          "impressions": 4100,
+          "clicks": 230,
+          "cost_micros": 418400000
+        }
+      },
+      {
+        "campaign_id": "21000000005",
+        "ad_group_id": "310000000007",
+        "criterion_id": "71016",
+        "text": "competitor b alternatives",
+        "match_type": "PHRASE",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": 5,
+        "metrics_30d": {
+          "impressions": 2800,
+          "clicks": 142,
+          "cost_micros": 256500000
+        }
+      },
+      {
+        "campaign_id": "21000000005",
+        "ad_group_id": "310000000007",
+        "criterion_id": "71017",
+        "text": "competitor c vs competitor a",
+        "match_type": "EXACT",
+        "primary_status": "ELIGIBLE",
+        "primary_status_reasons": [],
+        "quality_score": null,
+        "metrics_30d": {
+          "impressions": 0,
+          "clicks": 0,
+          "cost_micros": 0
+        }
+      }
+    ],
+    "ad_group_negatives": [
+      {
+        "ad_group_id": "310000000002",
+        "criterion_id": "72001",
+        "text": "free download",
+        "match_type": "PHRASE"
+      }
+    ],
+    "campaign_criteria": {
+      "negative_keywords": [
+        {
+          "campaign_id": "21000000002",
+          "criterion_id": "73001",
+          "text": "jobs",
+          "match_type": "PHRASE"
+        },
+        {
+          "campaign_id": "21000000002",
+          "criterion_id": "73002",
+          "text": "app",
+          "match_type": "BROAD"
+        },
+        {
+          "campaign_id": "21000000003",
+          "criterion_id": "73003",
+          "text": "jobs",
+          "match_type": "PHRASE"
+        },
+        {
+          "campaign_id": "21000000004",
+          "criterion_id": "73004",
+          "text": "instructor jobs",
+          "match_type": "PHRASE"
+        },
+        {
+          "campaign_id": "21000000005",
+          "criterion_id": "73005",
+          "text": "login",
+          "match_type": "BROAD"
+        }
+      ],
+      "locations": [
+        {
+          "campaign_id": "21000000001",
+          "geo_target_constant": "geoTargetConstants/2840",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000001",
+          "geo_target_constant": "geoTargetConstants/2124",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000001",
+          "geo_target_constant": "geoTargetConstants/2826",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000002",
+          "geo_target_constant": "geoTargetConstants/2840",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000002",
+          "geo_target_constant": "geoTargetConstants/2124",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000002",
+          "geo_target_constant": "geoTargetConstants/2826",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000003",
+          "geo_target_constant": "geoTargetConstants/2840",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000003",
+          "geo_target_constant": "geoTargetConstants/2124",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000003",
+          "geo_target_constant": "geoTargetConstants/2826",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000004",
+          "geo_target_constant": "geoTargetConstants/2840",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000004",
+          "geo_target_constant": "geoTargetConstants/2124",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000004",
+          "geo_target_constant": "geoTargetConstants/2826",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000005",
+          "geo_target_constant": "geoTargetConstants/2840",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000005",
+          "geo_target_constant": "geoTargetConstants/2124",
+          "negative": false
+        },
+        {
+          "campaign_id": "21000000005",
+          "geo_target_constant": "geoTargetConstants/2826",
+          "negative": false
+        }
+      ],
+      "ad_schedules": [
+        {
+          "campaign_id": "21000000005",
+          "day_of_week": "MONDAY",
+          "start_hour": 9,
+          "start_minute": "ZERO",
+          "end_hour": 17,
+          "end_minute": "ZERO"
+        },
+        {
+          "campaign_id": "21000000005",
+          "day_of_week": "TUESDAY",
+          "start_hour": 9,
+          "start_minute": "ZERO",
+          "end_hour": 17,
+          "end_minute": "ZERO"
+        },
+        {
+          "campaign_id": "21000000005",
+          "day_of_week": "WEDNESDAY",
+          "start_hour": 9,
+          "start_minute": "ZERO",
+          "end_hour": 17,
+          "end_minute": "ZERO"
+        },
+        {
+          "campaign_id": "21000000005",
+          "day_of_week": "THURSDAY",
+          "start_hour": 9,
+          "start_minute": "ZERO",
+          "end_hour": 17,
+          "end_minute": "ZERO"
+        },
+        {
+          "campaign_id": "21000000005",
+          "day_of_week": "FRIDAY",
+          "start_hour": 9,
+          "start_minute": "ZERO",
+          "end_hour": 17,
+          "end_minute": "ZERO"
+        }
+      ],
+      "devices": [
+        {
+          "campaign_id": "21000000001",
+          "device": "DESKTOP",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000001",
+          "device": "MOBILE",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000001",
+          "device": "TABLET",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000002",
+          "device": "DESKTOP",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000002",
+          "device": "MOBILE",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000002",
+          "device": "TABLET",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000003",
+          "device": "DESKTOP",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000003",
+          "device": "MOBILE",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000003",
+          "device": "TABLET",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000004",
+          "device": "DESKTOP",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000004",
+          "device": "MOBILE",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000004",
+          "device": "TABLET",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000005",
+          "device": "DESKTOP",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000005",
+          "device": "MOBILE",
+          "bid_modifier": null
+        },
+        {
+          "campaign_id": "21000000005",
+          "device": "TABLET",
+          "bid_modifier": null
+        }
+      ]
+    },
+    "shared_negative_lists": [
+      {
+        "id": "600000001",
+        "name": "Account negatives",
+        "type": "NEGATIVE_KEYWORDS",
+        "campaign_ids": [
+          "21000000001",
+          "21000000002",
+          "21000000003",
+          "21000000004",
+          "21000000005"
+        ],
+        "keywords": [
+          {
+            "text": "salary",
+            "match_type": "BROAD"
+          },
+          {
+            "text": "careers",
+            "match_type": "BROAD"
+          },
+          {
+            "text": "tutorial",
+            "match_type": "PHRASE"
+          },
+          {
+            "text": "how to cancel",
+            "match_type": "PHRASE"
+          }
+        ]
+      }
+    ],
+    "change_events": [
+      {
+        "change_date_time": "2026-10-23 14:05:12",
+        "change_resource_type": "AD_GROUP_AD",
+        "resource_change_operation": "UPDATE",
+        "changed_fields": "ad.responsive_search_ad.headlines",
+        "campaign_id": "21000000002"
+      },
+      {
+        "change_date_time": "2026-10-16 09:40:31",
+        "change_resource_type": "CAMPAIGN",
+        "resource_change_operation": "UPDATE",
+        "changed_fields": "maximize_conversions.target_cpa_micros",
+        "campaign_id": "21000000004"
+      },
+      {
+        "change_date_time": "2026-10-15 10:12:48",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "keyword.text,keyword.match_type,negative",
+        "campaign_id": "21000000002"
+      }
+    ]
+  },
+  "queries_run": 14
+}

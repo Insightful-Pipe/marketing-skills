@@ -1,0 +1,871 @@
+{
+  "study_card": {
+    "report": "The 2026 No-Show Report",
+    "question": "How often do clients miss booked appointments, and what goes with fewer misses?",
+    "question_scoring": [
+      {
+        "question": "How often do clients miss booked appointments, and what goes with fewer misses?",
+        "data_fit": 2,
+        "freshness": 2,
+        "demand": 2,
+        "gsc_impressions_on_stat_queries": 3510,
+        "score": 6
+      },
+      {
+        "question": "How far ahead do clients book appointments?",
+        "data_fit": 2,
+        "freshness": 1,
+        "demand": 1,
+        "gsc_impressions_on_stat_queries": 420,
+        "score": 4
+      },
+      {
+        "question": "What do small service businesses pay for software each month?",
+        "data_fit": 1,
+        "freshness": 2,
+        "demand": 1,
+        "gsc_impressions_on_stat_queries": 900,
+        "score": 4
+      }
+    ],
+    "sub_questions": [
+      "How often do clients miss appointments, overall and by industry?",
+      "Do businesses with reminders or deposits see fewer misses?",
+      "What do owners say no-shows cost them, and why do clients say they miss?",
+      "Do owners plan to add deposits?"
+    ],
+    "sources": [
+      "Product data: 4,180 accounts, 5,938,687 bookings, 2025-10-01 to 2026-09-30 (aggregate SELECT, dry run 1.84 GB)",
+      "Survey: 612 clean answers, 2026-09-08 to 2026-09-29"
+    ],
+    "unit_of_analysis": "the account for product data, the respondent for the survey",
+    "planned_comparisons": 5,
+    "adjusted_threshold": 0.01,
+    "privacy": {
+      "cell_floor": 10,
+      "held_back": [
+        {
+          "cell": "Other / Deposit required",
+          "accounts": 7,
+          "why": "under the 10-account floor, so the query never returned it"
+        },
+        {
+          "cell": "Other / No deposit",
+          "accounts": 223,
+          "why": "returned, but the Other total minus this group would reveal the held-back group, so it is not published"
+        }
+      ],
+      "groups_failing_top_account_share": []
+    }
+  },
+  "findings_ledger": [
+    {
+      "id": "F1",
+      "finding": "Average account no-show rate",
+      "source": "product",
+      "value_pct": 6.3,
+      "n": 4180,
+      "range_pct": [
+        6.23,
+        6.43
+      ],
+      "relative_halfwidth": 0.016,
+      "pooled_rate_pct": 6.4,
+      "comparison": null,
+      "novelty": "contradicts",
+      "novelty_evidence": "the top 10 says 30% (2019), 18% (2020); our 95% range is 6.23% to 6.43%",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F2",
+      "finding": "Accounts sending SMS and email reminders vs accounts sending none",
+      "source": "product",
+      "groups": {
+        "SMS and email": {
+          "value_pct": 4.9,
+          "n": 2261,
+          "range_pct": [
+            4.85,
+            5.03
+          ],
+          "relative_halfwidth": 0.018,
+          "pooled_rate_pct": 4.9
+        },
+        "Email only": {
+          "value_pct": 6.9,
+          "n": 1276,
+          "range_pct": [
+            6.77,
+            7.11
+          ],
+          "relative_halfwidth": 0.025,
+          "pooled_rate_pct": 7.0
+        },
+        "No reminders": {
+          "value_pct": 10.0,
+          "n": 643,
+          "range_pct": [
+            9.68,
+            10.35
+          ],
+          "relative_halfwidth": 0.033,
+          "pooled_rate_pct": 10.0
+        }
+      },
+      "comparison": {
+        "id": "C1",
+        "what": "mean account no-show rate",
+        "a": "SMS and email",
+        "b": "No reminders",
+        "test": "Welch z-test on account means",
+        "difference_points": -5.08,
+        "z": -28.68,
+        "p": "< 0.0001",
+        "threshold": 0.01,
+        "passes": true,
+        "precision_tier": "headline"
+      },
+      "novelty": "new",
+      "novelty_evidence": "no page in the top 10 gives a figure for this measure",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F3",
+      "finding": "Accounts that take a deposit vs accounts that don't",
+      "source": "product",
+      "groups": {
+        "Deposit required": {
+          "value_pct": 3.8,
+          "n": 860,
+          "range_pct": [
+            3.7,
+            3.97
+          ],
+          "relative_halfwidth": 0.035,
+          "pooled_rate_pct": 3.8
+        },
+        "No deposit": {
+          "value_pct": 7.0,
+          "n": 3320,
+          "range_pct": [
+            6.86,
+            7.09
+          ],
+          "relative_halfwidth": 0.017,
+          "pooled_rate_pct": 7.1
+        }
+      },
+      "comparison": {
+        "id": "C2",
+        "what": "mean account no-show rate",
+        "a": "Deposit required",
+        "b": "No deposit",
+        "test": "Welch z-test on account means",
+        "difference_points": -3.14,
+        "z": -34.89,
+        "p": "< 0.0001",
+        "threshold": 0.01,
+        "passes": true,
+        "precision_tier": "headline"
+      },
+      "novelty": "new",
+      "novelty_evidence": "no page in the top 10 gives a figure for this measure",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F4",
+      "finding": "Average account no-show rate by industry (fitness studios vs salons tested)",
+      "source": "product",
+      "groups": {
+        "Clinics": {
+          "value_pct": 5.7,
+          "n": 1150,
+          "range_pct": [
+            5.55,
+            5.9
+          ],
+          "relative_halfwidth": 0.031,
+          "pooled_rate_pct": 5.9
+        },
+        "Fitness studios": {
+          "value_pct": 7.8,
+          "n": 1080,
+          "range_pct": [
+            7.59,
+            8.05
+          ],
+          "relative_halfwidth": 0.03,
+          "pooled_rate_pct": 7.8
+        },
+        "Other": {
+          "value_pct": 6.8,
+          "n": 230,
+          "range_pct": [
+            6.36,
+            7.24
+          ],
+          "relative_halfwidth": 0.065,
+          "pooled_rate_pct": 6.8
+        },
+        "Salons": {
+          "value_pct": 5.7,
+          "n": 1720,
+          "range_pct": [
+            5.6,
+            5.89
+          ],
+          "relative_halfwidth": 0.025,
+          "pooled_rate_pct": 5.8
+        }
+      },
+      "comparison": {
+        "id": "C3",
+        "what": "mean account no-show rate",
+        "a": "Fitness studios",
+        "b": "Salons",
+        "test": "Welch z-test on account means",
+        "difference_points": 2.08,
+        "z": 14.9,
+        "p": "< 0.0001",
+        "threshold": 0.01,
+        "passes": true,
+        "precision_tier": "headline"
+      },
+      "novelty": "new",
+      "novelty_evidence": "no page in the top 10 gives a figure for this measure",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F5",
+      "finding": "Owners saying no-shows cost them more than 5% of revenue",
+      "source": "survey",
+      "value_pct": 46.9,
+      "n": 612,
+      "range_pct": [
+        42.9,
+        50.8
+      ],
+      "moe_points": 4.0,
+      "interval": "normal",
+      "comparison": null,
+      "novelty": "new",
+      "novelty_evidence": "no page in the top 10 gives a figure for this measure",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F6",
+      "finding": "Owners with no deposit who plan to start taking one within 12 months",
+      "source": "survey",
+      "value_pct": 38.2,
+      "n": 455,
+      "range_pct": [
+        33.8,
+        42.7
+      ],
+      "moe_points": 4.5,
+      "interval": "normal",
+      "comparison": null,
+      "novelty": "new",
+      "novelty_evidence": "no page in the top 10 gives a figure for this measure",
+      "precision_tier": "headline",
+      "status": "headline",
+      "why": "clears every gate"
+    },
+    {
+      "id": "F7",
+      "finding": "Owners naming forgetting as the reason clients most often give",
+      "source": "survey",
+      "value_pct": 41.0,
+      "n": 612,
+      "range_pct": [
+        37.1,
+        44.9
+      ],
+      "moe_points": 3.9,
+      "interval": "normal",
+      "comparison": null,
+      "novelty": "repeats",
+      "novelty_evidence": "https://competitor-c.example/research/why-clients-miss gives 40% from 2025 data, inside our range",
+      "precision_tier": "headline",
+      "status": "supporting",
+      "why": "repeats a recent published figure, so it supports but does not lead"
+    },
+    {
+      "id": "F8",
+      "finding": "Fitness studio owners vs salon owners saying no-shows cost over 5% of revenue",
+      "source": "survey",
+      "groups": {
+        "Fitness studios": {
+          "value_pct": 56.4,
+          "n": 163,
+          "range_pct": [
+            48.8,
+            64.1
+          ],
+          "moe_points": 7.6,
+          "interval": "normal"
+        },
+        "Salons": {
+          "value_pct": 43.5,
+          "n": 301,
+          "range_pct": [
+            37.9,
+            49.1
+          ],
+          "moe_points": 5.6,
+          "interval": "normal"
+        }
+      },
+      "comparison": {
+        "id": "C4",
+        "what": "share saying no-shows cost over 5% of revenue",
+        "a": "Fitness studios",
+        "b": "Salons",
+        "test": "two-proportion z-test",
+        "difference_points": 12.9,
+        "z": 2.66,
+        "p": 0.0078,
+        "threshold": 0.01,
+        "passes": true,
+        "precision_tier": "supporting"
+      },
+      "novelty": "not checked",
+      "novelty_evidence": "only findings still at headline grade after the precision and significance gates are checked",
+      "precision_tier": "supporting",
+      "status": "supporting",
+      "why": "precision clears the supporting limit but not the headline limit"
+    },
+    {
+      "id": "F9",
+      "finding": "Clinic owners saying no-shows cost over 5% of revenue",
+      "source": "survey",
+      "value_pct": 58.0,
+      "n": 88,
+      "range_pct": [
+        47.6,
+        68.3
+      ],
+      "moe_points": 10.3,
+      "interval": "normal",
+      "comparison": null,
+      "novelty": "not checked",
+      "novelty_evidence": "only findings still at headline grade after the precision and significance gates are checked",
+      "precision_tier": "dropped",
+      "status": "dropped",
+      "why": "its range is wider than the supporting limit"
+    },
+    {
+      "id": "F10",
+      "finding": "Owners who charge a no-show fee vs owners who don't, on the cost question",
+      "source": "survey",
+      "groups": {
+        "Charge a no-show fee": {
+          "value_pct": 47.6,
+          "n": 147,
+          "range_pct": [
+            39.5,
+            55.7
+          ],
+          "moe_points": 8.1,
+          "interval": "normal"
+        },
+        "No fee": {
+          "value_pct": 46.7,
+          "n": 465,
+          "range_pct": [
+            42.1,
+            51.2
+          ],
+          "moe_points": 4.5,
+          "interval": "normal"
+        }
+      },
+      "comparison": {
+        "id": "C5",
+        "what": "share saying no-shows cost over 5% of revenue",
+        "a": "Charge a no-show fee",
+        "b": "No fee",
+        "test": "two-proportion z-test",
+        "difference_points": 1.0,
+        "z": 0.2,
+        "p": 0.8402,
+        "threshold": 0.01,
+        "passes": false,
+        "precision_tier": "supporting"
+      },
+      "novelty": "not checked",
+      "novelty_evidence": "only findings still at headline grade after the precision and significance gates are checked",
+      "precision_tier": "supporting",
+      "status": "dropped",
+      "why": "p = 0.8402 is not under the adjusted threshold 0.01, so the difference is not proven"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "C1",
+      "what": "mean account no-show rate",
+      "a": "SMS and email",
+      "b": "No reminders",
+      "test": "Welch z-test on account means",
+      "difference_points": -5.08,
+      "z": -28.68,
+      "p": "< 0.0001",
+      "threshold": 0.01,
+      "passes": true,
+      "precision_tier": "headline"
+    },
+    {
+      "id": "C2",
+      "what": "mean account no-show rate",
+      "a": "Deposit required",
+      "b": "No deposit",
+      "test": "Welch z-test on account means",
+      "difference_points": -3.14,
+      "z": -34.89,
+      "p": "< 0.0001",
+      "threshold": 0.01,
+      "passes": true,
+      "precision_tier": "headline"
+    },
+    {
+      "id": "C3",
+      "what": "mean account no-show rate",
+      "a": "Fitness studios",
+      "b": "Salons",
+      "test": "Welch z-test on account means",
+      "difference_points": 2.08,
+      "z": 14.9,
+      "p": "< 0.0001",
+      "threshold": 0.01,
+      "passes": true,
+      "precision_tier": "headline"
+    },
+    {
+      "id": "C4",
+      "what": "share saying no-shows cost over 5% of revenue",
+      "a": "Fitness studios",
+      "b": "Salons",
+      "test": "two-proportion z-test",
+      "difference_points": 12.9,
+      "z": 2.66,
+      "p": 0.0078,
+      "threshold": 0.01,
+      "passes": true,
+      "precision_tier": "supporting"
+    },
+    {
+      "id": "C5",
+      "what": "share saying no-shows cost over 5% of revenue",
+      "a": "Charge a no-show fee",
+      "b": "No fee",
+      "test": "two-proportion z-test",
+      "difference_points": 1.0,
+      "z": 0.2,
+      "p": 0.8402,
+      "threshold": 0.01,
+      "passes": false,
+      "precision_tier": "supporting"
+    }
+  ],
+  "headline_findings": [
+    {
+      "id": "F1",
+      "quote_safe": "The average small service business lost 6.3% of booked appointments to no-shows (among 4,180 small service businesses using Example Booking Software, Oct 2025 to Sep 2026). That is far below the 18% to 30% figures still quoted from 2019 and 2020.",
+      "novelty": "contradicts",
+      "base": 4180
+    },
+    {
+      "id": "F2",
+      "quote_safe": "Businesses that sent both SMS and email reminders had an average no-show rate of 4.9%, against 10.0% for those that sent none (among 4,180 small service businesses using Example Booking Software).",
+      "novelty": "new",
+      "base": {
+        "SMS and email": 2261,
+        "Email only": 1276,
+        "No reminders": 643
+      }
+    },
+    {
+      "id": "F3",
+      "quote_safe": "Businesses that took a deposit averaged 3.8% no-shows, against 7.0% for those that didn't (among 4,180 small service businesses using Example Booking Software).",
+      "novelty": "new",
+      "base": {
+        "Deposit required": 860,
+        "No deposit": 3320
+      }
+    },
+    {
+      "id": "F4",
+      "quote_safe": "Fitness studios had the highest average no-show rate of the four industries, at 7.8%, against 5.7% for salons (among 4,180 small service businesses using Example Booking Software).",
+      "novelty": "new",
+      "base": {
+        "Clinics": 1150,
+        "Fitness studios": 1080,
+        "Other": 230,
+        "Salons": 1720
+      }
+    },
+    {
+      "id": "F5",
+      "quote_safe": "About 47% of owners said no-shows and late cancellations cost them more than 5% of revenue in the last 12 months (among 612 owners who answered).",
+      "novelty": "new",
+      "base": 612
+    },
+    {
+      "id": "F6",
+      "quote_safe": "About 38% of owners who take no deposit today plan to start taking one in the next 12 months (455 owners who answered).",
+      "novelty": "new",
+      "base": 455
+    }
+  ],
+  "supporting_findings": [
+    {
+      "id": "F7",
+      "finding": "Owners naming forgetting as the reason clients most often give",
+      "why_not_headline": "repeats a recent published figure, so it supports but does not lead"
+    },
+    {
+      "id": "F8",
+      "finding": "Fitness studio owners vs salon owners saying no-shows cost over 5% of revenue",
+      "why_not_headline": "precision clears the supporting limit but not the headline limit"
+    }
+  ],
+  "what_we_could_not_say": [
+    {
+      "id": "F9",
+      "finding": "Clinic owners saying no-shows cost over 5% of revenue",
+      "why": "its range is wider than the supporting limit"
+    },
+    {
+      "id": "F10",
+      "finding": "Owners who charge a no-show fee vs owners who don't, on the cost question",
+      "why": "p = 0.8402 is not under the adjusted threshold 0.01, so the difference is not proven"
+    },
+    {
+      "id": "privacy",
+      "finding": "Other / Deposit required",
+      "why": "7 accounts, under the 10-account floor, so the query never returned it"
+    },
+    {
+      "id": "privacy",
+      "finding": "Other / No deposit",
+      "why": "223 accounts, returned, but the Other total minus this group would reveal the held-back group, so it is not published"
+    }
+  ],
+  "next_wave": [
+    {
+      "what": "Does the deposit gap hold inside each industry?",
+      "status": "exploratory, not planned and not tested, so not a finding",
+      "seen": [
+        {
+          "industry": "Clinics",
+          "deposit_pct": 3.4,
+          "no_deposit_pct": 6.3,
+          "accounts": [
+            240,
+            910
+          ]
+        },
+        {
+          "industry": "Fitness studios",
+          "deposit_pct": 5.0,
+          "no_deposit_pct": 8.6,
+          "accounts": [
+            233,
+            847
+          ]
+        },
+        {
+          "industry": "Salons",
+          "deposit_pct": 3.4,
+          "no_deposit_pct": 6.4,
+          "accounts": [
+            380,
+            1340
+          ]
+        }
+      ],
+      "next_step": "plan it as a comparison per industry in next year's report"
+    },
+    {
+      "what": "Clinic owners on the cost question (F9)",
+      "status": "dropped for precision",
+      "next_step": "88 clinic answers give a margin of 10.3 points; about 97 are needed to show it and about 385 to lead with it"
+    }
+  ],
+  "charts": [
+    {
+      "finding": "F1",
+      "type": "big number",
+      "title": "6.3% of booked appointments were no-shows",
+      "subtitle": "Average account no-show rate, Oct 2025 to Sep 2026",
+      "value": 6.3,
+      "base_note": "n = 4,180 businesses; 95% range 6.23% to 6.43%",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F2",
+      "type": "horizontal bar, sorted, with 95% range bars",
+      "title": "Businesses that sent no reminders missed 10.0% of bookings",
+      "data": [
+        {
+          "label": "No reminders",
+          "value": 10.0,
+          "low": 9.68,
+          "high": 10.35,
+          "n": 643
+        },
+        {
+          "label": "Email only",
+          "value": 6.9,
+          "low": 6.77,
+          "high": 7.11,
+          "n": 1276
+        },
+        {
+          "label": "SMS and email",
+          "value": 4.9,
+          "low": 4.85,
+          "high": 5.03,
+          "n": 2261
+        }
+      ],
+      "x_axis": "Average account no-show rate (%), starts at 0",
+      "highlight": "No reminders",
+      "base_note": "n = accounts in each group",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F3",
+      "type": "horizontal bar, sorted, with 95% range bars",
+      "title": "Deposit-takers averaged 3.8% no-shows",
+      "data": [
+        {
+          "label": "No deposit",
+          "value": 7.0,
+          "low": 6.86,
+          "high": 7.09,
+          "n": 3320
+        },
+        {
+          "label": "Deposit required",
+          "value": 3.8,
+          "low": 3.7,
+          "high": 3.97,
+          "n": 860
+        }
+      ],
+      "x_axis": "Average account no-show rate (%), starts at 0",
+      "highlight": "Deposit required",
+      "base_note": "n = accounts in each group",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F4",
+      "type": "horizontal bar, sorted, with 95% range bars",
+      "title": "Fitness studios had the most no-shows of the four industries",
+      "data": [
+        {
+          "label": "Fitness studios",
+          "value": 7.8,
+          "low": 7.59,
+          "high": 8.05,
+          "n": 1080
+        },
+        {
+          "label": "Other",
+          "value": 6.8,
+          "low": 6.36,
+          "high": 7.24,
+          "n": 230
+        },
+        {
+          "label": "Clinics",
+          "value": 5.7,
+          "low": 5.55,
+          "high": 5.9,
+          "n": 1150
+        },
+        {
+          "label": "Salons",
+          "value": 5.7,
+          "low": 5.6,
+          "high": 5.89,
+          "n": 1720
+        }
+      ],
+      "x_axis": "Average account no-show rate (%), starts at 0",
+      "highlight": "Fitness studios",
+      "base_note": "n = accounts in each group",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F5",
+      "type": "big number",
+      "title": "About 47% of owners lost more than 5% of revenue to no-shows",
+      "value": 46.9,
+      "base_note": "n = 612 owners; 95% range 42.9% to 50.8%",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F6",
+      "type": "big number",
+      "title": "About 38% of owners without a deposit plan to add one",
+      "value": 38.2,
+      "base_note": "n = 455 owners who take no deposit; 95% range 33.8% to 42.7%",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    },
+    {
+      "finding": "F7",
+      "type": "horizontal bar, sorted (shares of one question, sum to 100%)",
+      "title": "Forgetting tops the reasons clients give",
+      "data": [
+        {
+          "label": "Forgot",
+          "value": 41.0
+        },
+        {
+          "label": "Schedule changed",
+          "value": 26.0
+        },
+        {
+          "label": "Felt unwell",
+          "value": 16.0
+        },
+        {
+          "label": "Other",
+          "value": 10.9
+        },
+        {
+          "label": "Cost or price",
+          "value": 6.0
+        }
+      ],
+      "base_note": "n = 612 owners",
+      "source": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026)."
+    }
+  ],
+  "report_outline": [
+    "Title: The 2026 No-Show Report: what 4,180 small service businesses tell us about missed appointments",
+    "Key findings (one page): the headline findings in quote-safe wording, each with its base",
+    "1. How often clients miss appointments (F1, F4)",
+    "2. What goes with fewer misses: reminders and deposits (F2, F3)",
+    "3. What owners say no-shows cost them and why clients miss (F5, F6, F7, F8)",
+    "What we could not say (F9, F10 and the held-back group)",
+    "Methods",
+    "About the data and how to cite it"
+  ],
+  "methods_section": [
+    "What we measured. The share of booked appointments marked as a no-show, for each business, from 2025-10-01 to 2026-09-30. A business counts once, whatever its size: we computed each account's own rate and averaged the accounts, so a few very large accounts can't set the result. The pooled rate (all no-shows over all bookings) was 6.4%.",
+    "Who is in it. 4,180 businesses using Example Booking Software with at least 150 bookings in the period (5,938,687 bookings in all): 1,150 clinics, 1,080 fitness studios, 230 other businesses, 1,720 salons. These are our customers, not every small business, so every figure describes businesses like them.",
+    "The survey. 655 owners answered between 2026-09-08 and 2026-09-29, recruited through an invitation in the company's monthly newsletter (customers and non-customers) and two posts in its own social channels. We removed 43 answers (29 incomplete, 6 duplicates, 8 completed in under a third of the median time), leaving 612; 251 of them are customers. Answers are not weighted.",
+    "Precision. Every figure has a 95% range. Survey shares use the normal interval, or the Wilson interval when a group has fewer than 30 answers or a share is under 10% or over 90%. Account averages use 1.96 standard errors across accounts. A survey figure leads the report only when its margin is 5 points or less (about 385 answers), and is shown at all only when it is 10 points or less (about 97 answers); account averages need a range within 10% of the value to lead and 20% to be shown.",
+    "Comparisons. We planned 5 comparisons before looking at the results and tested each at 0.05 / 5 = 0.01 (Bonferroni): Welch z-tests for account averages, two-proportion z-tests for survey shares. Differences are associations, not causes: businesses that take deposits or send reminders may differ in other ways.",
+    "Privacy. No figure comes from fewer than 10 businesses, and no business holds more than 30% of the bookings in any group shown. One group (other businesses that take a deposit) was too small to publish, so it and the group that would reveal it by subtraction are left out. We publish no customer names, and the data never left our warehouse in row form.",
+    "Conflict of interest. Example Booking Software sells booking software with reminders and deposits, the features this report compares."
+  ],
+  "stat_sheet": {
+    "title": "The 2026 No-Show Report: the numbers",
+    "cite_as": "Source: The 2026 No-Show Report, Example Booking Software, 4,180 businesses and 5.9 million bookings (Oct 2025 to Sep 2026) and a survey of 612 owners (Sep 2026).",
+    "stats": [
+      "The average small service business lost 6.3% of booked appointments to no-shows (among 4,180 small service businesses using Example Booking Software, Oct 2025 to Sep 2026). That is far below the 18% to 30% figures still quoted from 2019 and 2020.",
+      "Businesses that sent both SMS and email reminders had an average no-show rate of 4.9%, against 10.0% for those that sent none (among 4,180 small service businesses using Example Booking Software).",
+      "Businesses that took a deposit averaged 3.8% no-shows, against 7.0% for those that didn't (among 4,180 small service businesses using Example Booking Software).",
+      "Fitness studios had the highest average no-show rate of the four industries, at 7.8%, against 5.7% for salons (among 4,180 small service businesses using Example Booking Software).",
+      "About 47% of owners said no-shows and late cancellations cost them more than 5% of revenue in the last 12 months (among 612 owners who answered).",
+      "About 38% of owners who take no deposit today plan to start taking one in the next 12 months (455 owners who answered)."
+    ],
+    "press_angle": "The no-show figures quoted most often online come from 2019 and 2020 and run from 18% to 30%. Measured across 4,180 businesses, the average was 6.3%, and the gap between businesses with and without reminders or deposits is where the story is.",
+    "social_posts": [
+      "Small service businesses lost 6.3% of bookings to no-shows in the 12 months to September 2026, not the 30% you keep reading. Data from 4,180 businesses in the 2026 No-Show Report.",
+      "No reminders: 10.0% no-shows. SMS and email reminders: 4.9%. Same year, 2,261 vs 643 businesses. More in the 2026 No-Show Report.",
+      "About 47% of owners say no-shows cost them more than 5% of revenue. About 38% of those without a deposit plan to add one. Survey of 612 owners."
+    ],
+    "sales_line": "Across 4,180 businesses on our platform, the ones sending SMS and email reminders averaged 4.9% no-shows against 10.0% for the ones sending none. That is an association across businesses, not a promise for yours, so we show the full method in the report."
+  },
+  "sheets_chart_tab": {
+    "offered_after_confirmation": true,
+    "payloads": [
+      {
+        "step": 1,
+        "action": "create_sheet",
+        "status": "not run",
+        "body": {
+          "platform": "google-sheets",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "action": "create_sheet",
+          "spreadsheet_id": "<report workbook id>",
+          "title": "The 2026 No-Show Report chart data"
+        }
+      },
+      {
+        "step": 2,
+        "action": "update_cells",
+        "status": "not run",
+        "body": {
+          "platform": "google-sheets",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "action": "update_cells",
+          "spreadsheet_id": "<report workbook id>",
+          "sheet_id": "<sheet_id returned by step 1>",
+          "range": "A1:C4",
+          "values": [
+            [
+              "Reminders",
+              "Average no-show rate (%)",
+              "Accounts"
+            ],
+            [
+              "No reminders",
+              10.0,
+              643
+            ],
+            [
+              "Email only",
+              6.9,
+              1276
+            ],
+            [
+              "SMS and email",
+              4.9,
+              2261
+            ]
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "action": "create_chart",
+        "status": "not run",
+        "body": {
+          "platform": "google-sheets",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "action": "create_chart",
+          "spreadsheet_id": "<report workbook id>",
+          "sheet_id": "<sheet_id returned by step 1>",
+          "chart_type": "BAR",
+          "title": "Businesses that sent no reminders missed 10.0% of bookings",
+          "data_range": "A1:B4",
+          "position": {
+            "offset_x": 0,
+            "offset_y": 0,
+            "width": 600,
+            "height": 400
+          }
+        }
+      }
+    ]
+  }
+}

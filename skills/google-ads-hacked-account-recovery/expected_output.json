@@ -1,0 +1,411 @@
+{
+  "header": {
+    "account": "Example Booking Software",
+    "customer_id": "1234567890",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "window": "2026-09-28 to 2026-10-27",
+    "run_date": "2026-10-28",
+    "verdict": "Taken over",
+    "critical": 7,
+    "high": 2,
+    "watch": 2
+  },
+  "what_was_compared": {
+    "users_on_your_list": [
+      "dana.reyes@example.com (ADMIN)",
+      "marco.liu@example.com (STANDARD)",
+      "reports@example.com (READ_ONLY)"
+    ],
+    "manager_accounts_on_your_list": [
+      "5550001111"
+    ],
+    "landing_page_domains": [
+      "example.com"
+    ],
+    "countries": [
+      "United States",
+      "United Kingdom",
+      "Canada"
+    ],
+    "payments_profile": "1111-2222-3333",
+    "normal_daily_spend": 249.16,
+    "normal_daily_spend_source": "default: median daily spend of the window (you didn't give one)"
+  },
+  "checks": [
+    {
+      "check": "1. Users",
+      "result": "5 users; 2 not on your list with write access; 1 with a higher role than your list"
+    },
+    {
+      "check": "2. Invitations",
+      "result": "1 pending, not on your list"
+    },
+    {
+      "check": "3. Manager links",
+      "result": "3 links: 1 on your list, 1 active unknown, 1 refused attempt. The API gives no link dates."
+    },
+    {
+      "check": "4. Billing",
+      "result": "clear: 1 billing setup since 2023-03-14 on your payments profile, and 1 unlimited account budget from 2023-03-14"
+    },
+    {
+      "check": "5. Change history",
+      "result": "15 changes by 3 people; 11 by 1 email not on your list; 0 takeover-type changes by people on your list; 0 campaigns added 31 to 90 days ago"
+    },
+    {
+      "check": "6. Campaigns and URLs",
+      "result": "3 URLs or templates point to a domain not on your list, all written by the unknown editor and reported under change history; account-level tracking template and suffix are empty",
+      "items": [
+        {
+          "where": "campaign 'Search | Booking software' tracking template",
+          "value": "https://go.redirect-hop-91.example/r?to={lpurl}",
+          "covered_by": "Change history"
+        },
+        {
+          "where": "ad 3501 in 'Search | Global offers'",
+          "value": "https://deal-landing-552.example/offer",
+          "covered_by": "Change history"
+        },
+        {
+          "where": "ad 3502 in 'Search | Global offers'",
+          "value": "https://deal-landing-552.example/win",
+          "covered_by": "Change history"
+        }
+      ]
+    },
+    {
+      "check": "7. Spend",
+      "result": "4 spike days; 1 amount in a country not on your list, outside the intruder's campaign"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "critical",
+      "check": "Users",
+      "what": "jamie.park@contractor-mail-302.example has STANDARD access and is not on your list. Added long before the window; it may be a former contractor, but it still has write access.",
+      "when": "2025-02-03 13:25:09",
+      "who": "dana.reyes@example.com",
+      "evidence": "customer_user_access: jamie.park@contractor-mail-302.example, STANDARD, added 2025-02-03 13:25:09, invited by dana.reyes@example.com"
+    },
+    {
+      "id": "F2",
+      "severity": "critical",
+      "check": "Users",
+      "what": "growth.partner@inbox-relay-447.example has ADMIN access and is not on your list. Added inside the window. The inviter, dana.reyes@example.com, is on your list, so that Google login was probably used.",
+      "when": "2026-10-23 21:52:36",
+      "who": "dana.reyes@example.com",
+      "evidence": "customer_user_access: growth.partner@inbox-relay-447.example, ADMIN, added 2026-10-23 21:52:36, invited by dana.reyes@example.com"
+    },
+    {
+      "id": "F3",
+      "severity": "critical",
+      "check": "Change history",
+      "what": "growth.partner@inbox-relay-447.example created 'Search | Global offers' with a $1,500 daily budget, targeted India, Brazil, Vietnam, Philippines, and added 2 ads sending people to deal-landing-552.example. It spent $5,190.30 in the window, all outside the countries you sell to.",
+      "when": "2026-10-24 02:12:08",
+      "who": "growth.partner@inbox-relay-447.example",
+      "evidence": "change_event: 9 changes on campaign 105 from 2026-10-24 02:12:08 to 2026-10-24 02:22:58 by growth.partner@inbox-relay-447.example (also in Users)"
+    },
+    {
+      "id": "F4",
+      "severity": "critical",
+      "check": "Change history",
+      "what": "growth.partner@inbox-relay-447.example raised the daily budget of 'Search | Booking software' from $150 to $900.",
+      "when": "2026-10-24 02:26:11",
+      "who": "growth.partner@inbox-relay-447.example",
+      "evidence": "change_event: CAMPAIGN_BUDGET UPDATE amount_micros 150000000 to 900000000"
+    },
+    {
+      "id": "F5",
+      "severity": "critical",
+      "check": "Change history",
+      "what": "growth.partner@inbox-relay-447.example changed the tracking template of 'Search | Booking software' so every click now passes through go.redirect-hop-91.example, a domain not on your list (also check 6).",
+      "when": "2026-10-24 02:27:45",
+      "who": "growth.partner@inbox-relay-447.example",
+      "evidence": "change_event: CAMPAIGN UPDATE tracking_url_template '{lpurl}?src=gads' to 'https://go.redirect-hop-91.example/r?to={lpurl}'"
+    },
+    {
+      "id": "F6",
+      "severity": "critical",
+      "check": "Invitations",
+      "what": "A pending ADMIN invitation to billing.help@inbox-relay-447.example, not on your list. It can be accepted after the current intruder is removed.",
+      "when": "2026-10-24 02:31:04",
+      "who": "not recorded by the API",
+      "evidence": "customer_user_access_invitation: billing.help@inbox-relay-447.example, ADMIN, PENDING, created 2026-10-24 02:31:04"
+    },
+    {
+      "id": "F7",
+      "severity": "critical",
+      "check": "Manager links",
+      "what": "Manager account 9876543210 is linked (ACTIVE) and is not on your list. Its own users can run this account and never show up under Users.",
+      "when": "no date in the API",
+      "who": "not recorded by the API",
+      "evidence": "customer_manager_link: manager 9876543210, status ACTIVE"
+    },
+    {
+      "id": "F8",
+      "severity": "high",
+      "check": "Spend",
+      "what": "'Search | Salon software' spent $18.40 on people in or interested in Mexico, which is not on your list. Location type AREA_OF_INTEREST: likely setting leakage, so confirm rather than call it hacked.",
+      "when": "2026-09-28 to 2026-10-27",
+      "who": "not applicable",
+      "evidence": "geographic_view: campaign 103, Mexico, AREA_OF_INTEREST, $18.40"
+    },
+    {
+      "id": "F9",
+      "severity": "high",
+      "check": "Spend",
+      "what": "4 days at or above 2 times normal daily spend ($249.16, the median of the window): 2026-10-24 $2,217.24, 2026-10-25 $1,966.06, 2026-10-26 $2,046.58, 2026-10-27 $2,242.62.",
+      "when": "2026-10-24 to 2026-10-27",
+      "who": "not applicable",
+      "evidence": "customer daily cost_micros"
+    },
+    {
+      "id": "F10",
+      "severity": "watch",
+      "check": "Users",
+      "what": "marco.liu@example.com has ADMIN access; your list says STANDARD.",
+      "when": "2024-01-09 15:40:27",
+      "who": "dana.reyes@example.com",
+      "evidence": "customer_user_access: marco.liu@example.com, ADMIN, added 2024-01-09 15:40:27, invited by dana.reyes@example.com"
+    },
+    {
+      "id": "F11",
+      "severity": "watch",
+      "check": "Manager links",
+      "what": "Manager account 4443332222 tried to link and the request is REFUSED. Keep it with the evidence for Google: someone outside your list asked for control.",
+      "when": "no date in the API",
+      "who": "not recorded by the API",
+      "evidence": "customer_manager_link: manager 4443332222, status REFUSED"
+    }
+  ],
+  "unauthorised_spend": {
+    "part_1_campaigns_created_by_unknown_user": [
+      {
+        "campaign": "Search | Global offers",
+        "campaign_id": "105",
+        "spend": 5190.3,
+        "dates": "2026-10-24 to 2026-10-27"
+      }
+    ],
+    "part_2_campaigns_edited_by_unknown_user": [
+      {
+        "campaign": "Search | Booking software",
+        "campaign_id": "102",
+        "first_change": "2026-10-24 02:26:11",
+        "spend_since": 2826.67,
+        "days": 4,
+        "median_daily_before": 136.48,
+        "expected_at_normal_pace": 545.92,
+        "excess": 2280.75,
+        "dates": "2026-10-24 to 2026-10-27",
+        "estimate": true
+      }
+    ],
+    "part_3_off_target_countries_in_other_campaigns": [
+      {
+        "campaign": "Search | Salon software",
+        "campaign_id": "103",
+        "country": "Mexico",
+        "spend": 18.4,
+        "confirm": true
+      }
+    ],
+    "total_to_report": 7471.05,
+    "total_including_confirm_items": 7489.45,
+    "note": "Part 2 is an estimate: spend since the first change minus the campaign's median daily spend before it, times the same number of days. Google decides what it credits."
+  },
+  "lock_down_plan": [
+    {
+      "step": 1,
+      "do": "Save the evidence: download Tools > Change history for 2026-09-28 to 2026-10-28 before anything is cleaned up. Pause, never remove, the intruder's campaign.",
+      "findings": [
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "who": "do this in Google Ads"
+    },
+    {
+      "step": 2,
+      "do": "Stop the spend: pause the campaign the intruder created, and put back the budget and tracking template the intruder changed (payloads below).",
+      "findings": [
+        "F3",
+        "F4",
+        "F5"
+      ],
+      "who": "I can do this now after you confirm"
+    },
+    {
+      "step": 3,
+      "do": "Cut access in Admin > Access and security: remove jamie.park@contractor-mail-302.example and growth.partner@inbox-relay-447.example; cancel the invitation to billing.help@inbox-relay-447.example; on the Managers tab unlink 9876543210. Check the date the Managers tab shows for that link.",
+      "findings": [
+        "F1",
+        "F2",
+        "F6",
+        "F7"
+      ],
+      "who": "do this in Google Ads"
+    },
+    {
+      "step": 4,
+      "do": "Secure the login that was used: dana.reyes@example.com invited the intruder. Change that Google account's password, sign out of other sessions, turn on 2-Step Verification, and scan the devices used for the account for malware.",
+      "findings": [
+        "F2"
+      ],
+      "who": "do this in your Google account"
+    },
+    {
+      "step": 5,
+      "do": "Report it to Google through the compromised-account form in Google Ads Help with the evidence below. When the admins get the change log, choose to clean up the account; restoring it as is makes the spend ineligible for reimbursement.",
+      "findings": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "who": "do this in Google Ads Help"
+    },
+    {
+      "step": 6,
+      "do": "Claim the spend: after recovery is finished and 2-Step Verification is on, request reimbursement for $7,471.05 (2026-10-24 to 2026-10-27). Google's help says billing investigations take 10 to 15 business days and a credit shows as a Service Adjustment. Google decides what it credits.",
+      "findings": [
+        "F3",
+        "F4",
+        "F9"
+      ],
+      "who": "do this in Google Ads"
+    },
+    {
+      "step": 7,
+      "do": "Harden: set marco.liu@example.com to STANDARD; 2-Step Verification for every user; allowed email domains set to example.com; consider multi-party approval for sensitive changes.",
+      "findings": [
+        "F10"
+      ],
+      "who": "do this in Google Ads"
+    }
+  ],
+  "payloads_offered": [
+    {
+      "fix": "Pause 'Search | Global offers'",
+      "closes": [
+        "F3"
+      ],
+      "action": "update_campaign",
+      "body": {
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_campaign",
+        "campaign_id": "105",
+        "status": "PAUSED"
+      },
+      "run": "not run, waiting for your yes"
+    },
+    {
+      "fix": "Put back the daily budget of 'Search | Booking software' to $150",
+      "closes": [
+        "F4"
+      ],
+      "action": "update_campaign",
+      "body": {
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_campaign",
+        "campaign_id": "102",
+        "budget_amount": 150
+      },
+      "note": "Check Tools > Shared library > Budgets first: a shared budget changes for every campaign using it.",
+      "run": "not run, waiting for your yes"
+    },
+    {
+      "fix": "Put back the tracking template of 'Search | Booking software'",
+      "closes": [
+        "F5"
+      ],
+      "action": "update_campaign",
+      "body": {
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "update_campaign",
+        "campaign_id": "102",
+        "tracking_url_template": "{lpurl}?src=gads"
+      },
+      "note": "The old value from change_event; confirm it is the one you want.",
+      "run": "not run, waiting for your yes"
+    }
+  ],
+  "evidence_for_google": {
+    "first_unauthorised_timestamp": "2026-10-23 21:52:36",
+    "last_unauthorised_timestamp": "2026-10-24 02:31:04",
+    "time_zone": "America/New_York",
+    "unknown_emails": [
+      "growth.partner@inbox-relay-447.example",
+      "billing.help@inbox-relay-447.example"
+    ],
+    "also_not_on_your_list": [
+      "jamie.park@contractor-mail-302.example"
+    ],
+    "unknown_manager_ids": [
+      "9876543210"
+    ],
+    "budget_raises": [
+      {
+        "campaign": "Search | Booking software",
+        "old": 150.0,
+        "new": 900.0,
+        "when": "2026-10-24 02:26:11"
+      }
+    ],
+    "edited_urls": [
+      {
+        "campaign": "Search | Booking software",
+        "old": "{lpurl}?src=gads",
+        "new": "https://go.redirect-hop-91.example/r?to={lpurl}",
+        "when": "2026-10-24 02:27:45"
+      }
+    ],
+    "campaigns_created": [
+      {
+        "campaign": "Search | Global offers",
+        "when": "2026-10-24 02:12:08"
+      }
+    ],
+    "unauthorised_spend": 7471.05
+  },
+  "not_visible": [
+    "last sign-in for any user",
+    "2-Step Verification status",
+    "payment methods added or removed",
+    "the payments profile's own users",
+    "who linked manager account 9876543210 and when"
+  ],
+  "watch_plan": {
+    "rerun_checks": [
+      1,
+      2,
+      3,
+      5,
+      7
+    ],
+    "dates": [
+      "2026-10-29",
+      "2026-11-04",
+      "2026-11-11",
+      "2026-11-27"
+    ],
+    "look_for": [
+      "a new user or invitation",
+      "a manager link that came back",
+      "a change by any email outside your list",
+      "a day at or above $498.32",
+      "spend in a new country"
+    ]
+  }
+}

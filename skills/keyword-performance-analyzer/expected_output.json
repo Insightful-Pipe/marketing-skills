@@ -1,0 +1,280 @@
+{
+  "header": {
+    "account": "Example home services company",
+    "date_range": "2026-09-21 to 2026-10-20",
+    "currency": "USD",
+    "keyword_spend": 11760,
+    "keywords_with_spend": 33,
+    "live_keywords": 38,
+    "health": "yellow",
+    "health_math": "0 fails and 3 warns across the 6 scored areas",
+    "spend_weighted_quality_score": 6.1,
+    "roas_targets": "No campaign has a target ROAS or uses value bidding, no ROAS target was given, and every conversion value is 0, so all campaigns are judged on CPA.",
+    "targets": [
+      {"campaign": "Brand | Search", "bidding": "TARGET_IMPRESSION_SHARE", "judged_on": "CPA", "target_cpa": 8.71, "source": "campaign's own 30-day CPA"},
+      {"campaign": "Furnace Repair | Search", "bidding": "MAXIMIZE_CONVERSIONS", "judged_on": "CPA", "target_cpa": 60.0, "source": "campaign's own 30-day CPA"},
+      {"campaign": "AC Repair | Search", "bidding": "TARGET_CPA", "judged_on": "CPA", "target_cpa": 70.0, "source": "campaign target CPA setting"},
+      {"campaign": "Water Heaters | Search", "bidding": "MAXIMIZE_CONVERSIONS", "judged_on": "CPA", "target_cpa": 56.13, "source": "campaign's own 30-day CPA"},
+      {"campaign": "Plumbing | Search", "bidding": "TARGET_CPA", "judged_on": "CPA", "target_cpa": 55.0, "source": "campaign target CPA setting"},
+      {"campaign": "AC Installation | Search", "bidding": "MAXIMIZE_CLICKS", "judged_on": "CPA", "target_cpa": 183.33, "source": "campaign's own 30-day CPA"}
+    ]
+  },
+  "scorecard": [
+    {"area": "1. Keyword tiers and waste", "result": "pass", "key_number": "4.4% of keyword spend on bleeders", "why": "1 keywords spent at least their target with no conversion ($520). 1 meet the pause rule and 1 go to review."},
+    {"area": "2. Profitability", "result": "unknown", "key_number": "no conversion values", "why": "The counted actions record no value and no value per lead was given."},
+    {"area": "3. Quality Score", "result": "warn", "key_number": "32.5% of scored spend on Quality Score 1-5", "why": "Spend-weighted Quality Score 6.1. The weakest part across the top 20 is expected CTR (9 below average)."},
+    {"area": "4. Match types and cannibalisation", "result": "warn", "key_number": "11.5% of visible search-term spend split across ad groups", "why": "3 terms spent in two ad groups and 1 identical-exact term was won by another ad group."},
+    {"area": "5. Duplicate keywords", "result": "warn", "key_number": "1 duplicate across ad groups", "why": "1 redundant variant within one ad group."},
+    {"area": "6. Ad group theme drift", "result": "pass", "key_number": "0.0% of visible search-term spend off theme", "why": "0 ad groups caught off-theme terms."},
+    {"area": "7. Low volume and dead keywords", "result": "pass", "key_number": "5 of 38 live keywords rarely served (13.2%)", "why": "1 are covered by a serving phrase keyword; 2 eligible keywords had 0 impressions."}
+  ],
+  "top_actions": [
+    {"rank": 1, "action": "Add exact versions of the steady phrase converters", "spend_touched": 7680, "keywords": 15, "what": "The exact copy takes each keyword's own searches; the phrase keeps the variants.", "evidence": "keyword_view: 5+ conversions at or under 1.3 x target", "who": "do this in Google Ads"},
+    {
+      "rank": 2,
+      "action": "Fix Quality Score on converting keywords first",
+      "spend_touched": 3270,
+      "keywords": 10,
+      "what": "10 converting keywords have Quality Score 1-5. Across the top 20 scored keywords, expected CTR is below average on 9, landing page on 6, ad relevance on 2.",
+      "evidence": "keyword_view: 32.5% of scored spend sits on Quality Score 1-5",
+      "who": "do this in Google Ads (quality-score-fixer can help, if installed)"
+    },
+    {"rank": 3, "action": "Route split search terms to one ad group", "spend_touched": 1273, "keywords": 3, "what": "Add each as an exact negative in the ad group that shouldn't catch it.", "evidence": "search_term_view: 3 terms spent in two ad groups", "who": "I can do this now: add_negative_keywords (EXACT)"},
+    {"rank": 4, "action": "Pause the keywords on the pause list", "spend_touched": 520, "keywords": 1, "what": "'new ac unit cost' spent at least twice their target.", "evidence": "keyword_view, 30 days", "who": "I can do this now: update_keywords (payload below, not run)"},
+    {"rank": 5, "action": "Review the high-CPA converters before pausing", "spend_touched": 390, "keywords": 1, "what": "Their target is a fallback, so a high CPA may still pay.", "evidence": "keyword_view", "who": "you decide; then I can pause any you choose"},
+    {"rank": 6, "action": "Clean up duplicate and rarely served keywords", "spend_touched": 0, "keywords": 6, "what": "1 duplicate across ad groups, 5 rarely served.", "evidence": "ad_group_criterion: serving status and normalised text", "who": "do this in Google Ads"}
+  ],
+  "tier_summary": [
+    {"tier": "Star", "keywords": 8, "spend": 4040},
+    {"tier": "Solid", "keywords": 11, "spend": 3670},
+    {"tier": "Quality Score victim", "keywords": 10, "spend": 3270},
+    {"tier": "Over target", "keywords": 1, "spend": 170},
+    {"tier": "Potential", "keywords": 2, "spend": 90},
+    {"tier": "Bleeder", "keywords": 1, "spend": 520},
+    {"tier": "Zombie", "keywords": 5, "spend": 0}
+  ],
+  "stars": [
+    {"campaign": "Brand | Search", "ad_group": "Brand", "keyword": "example home services", "match_type": "EXACT", "spend": 340, "conversions": 41, "cpa": 8.29, "target_cpa": 8.71, "quality_score": 10},
+    {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "furnace repair", "match_type": "PHRASE", "spend": 1010, "conversions": 20, "cpa": 50.5, "target_cpa": 60.0, "quality_score": 7},
+    {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "furnace repair denver", "match_type": "EXACT", "spend": 330, "conversions": 6, "cpa": 55.0, "target_cpa": 60.0, "quality_score": 8},
+    {"campaign": "Furnace Repair | Search", "ad_group": "Heating emergency", "keyword": "emergency furnace repair", "match_type": "PHRASE", "spend": 230, "conversions": 5, "cpa": 46.0, "target_cpa": 60.0, "quality_score": 7},
+    {"campaign": "Water Heaters | Search", "ad_group": "Water heater repair", "keyword": "water heater repair", "match_type": "PHRASE", "spend": 690, "conversions": 14, "cpa": 49.29, "target_cpa": 56.13, "quality_score": 8},
+    {"campaign": "Water Heaters | Search", "ad_group": "Water heater replacement", "keyword": "water heater replacement", "match_type": "PHRASE", "spend": 200, "conversions": 4, "cpa": 50.0, "target_cpa": 56.13, "quality_score": 7},
+    {"campaign": "Plumbing | Search", "ad_group": "Emergency plumber", "keyword": "emergency plumber", "match_type": "PHRASE", "spend": 910, "conversions": 17, "cpa": 53.53, "target_cpa": 55.0, "quality_score": 7},
+    {"campaign": "Plumbing | Search", "ad_group": "Drain cleaning", "keyword": "drain cleaning", "match_type": "PHRASE", "spend": 330, "conversions": 7, "cpa": 47.14, "target_cpa": 55.0, "quality_score": 7}
+  ],
+  "bleeders": [
+    {"campaign": "AC Installation | Search", "ad_group": "AC installation", "keyword": "new ac unit cost", "match_type": "BROAD", "spend": 520, "conversions": 0, "cpa": null, "target_cpa": 183.33, "quality_score": 3, "spend_to_target": 2.8, "brand": false}
+  ],
+  "quality_score_victims": [
+    {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "heating repair", "match_type": "BROAD", "spend": 390, "conversions": 1, "cpa": 390.0, "target_cpa": 60.0, "quality_score": 4, "below_average": ["expected CTR", "ad relevance"]},
+    {"campaign": "Furnace Repair | Search", "ad_group": "Furnace not working", "keyword": "furnace not working", "match_type": "PHRASE", "spend": 420, "conversions": 7, "cpa": 60.0, "target_cpa": 60.0, "quality_score": 5, "below_average": ["expected CTR"]},
+    {"campaign": "Furnace Repair | Search", "ad_group": "Heating emergency", "keyword": "24 hour heating repair", "match_type": "PHRASE", "spend": 100, "conversions": 2, "cpa": 50.0, "target_cpa": 60.0, "quality_score": 5, "below_average": ["expected CTR"]},
+    {"campaign": "AC Repair | Search", "ad_group": "AC repair", "keyword": "ac repair near me", "match_type": "PHRASE", "spend": 560, "conversions": 7, "cpa": 80.0, "target_cpa": 70.0, "quality_score": 5, "below_average": ["expected CTR", "landing page"]},
+    {"campaign": "AC Repair | Search", "ad_group": "AC repair", "keyword": "air conditioner repair", "match_type": "BROAD", "spend": 250, "conversions": 3, "cpa": 83.33, "target_cpa": 70.0, "quality_score": 4, "below_average": ["expected CTR", "landing page"]},
+    {"campaign": "AC Repair | Search", "ad_group": "AC not cooling", "keyword": "ac blowing warm air", "match_type": "PHRASE", "spend": 120, "conversions": 2, "cpa": 60.0, "target_cpa": 70.0, "quality_score": 5, "below_average": ["expected CTR", "landing page"]},
+    {"campaign": "Water Heaters | Search", "ad_group": "Water heater repair", "keyword": "no hot water", "match_type": "BROAD", "spend": 230, "conversions": 3, "cpa": 76.67, "target_cpa": 56.13, "quality_score": 5, "below_average": ["ad relevance"]},
+    {"campaign": "Plumbing | Search", "ad_group": "Emergency plumber", "keyword": "plumber near me", "match_type": "BROAD", "spend": 370, "conversions": 4, "cpa": 92.5, "target_cpa": 55.0, "quality_score": 4, "below_average": ["expected CTR"]},
+    {"campaign": "Plumbing | Search", "ad_group": "Drain cleaning", "keyword": "clogged drain", "match_type": "BROAD", "spend": 140, "conversions": 2, "cpa": 70.0, "target_cpa": 55.0, "quality_score": 5, "below_average": ["expected CTR"]},
+    {"campaign": "AC Installation | Search", "ad_group": "AC installation", "keyword": "ac installation", "match_type": "PHRASE", "spend": 690, "conversions": 6, "cpa": 115.0, "target_cpa": 183.33, "quality_score": 5, "below_average": ["expected CTR", "landing page"]}
+  ],
+  "quality_score_by_band": [
+    {"band": "1-5", "spend": 3790, "avg_cpc": 7.46},
+    {"band": "6", "spend": 3190, "avg_cpc": 8.18},
+    {"band": "7-10", "spend": 4690, "avg_cpc": 5.26}
+  ],
+  "pause_list": [
+    {"campaign": "AC Installation | Search", "ad_group": "AC installation", "keyword": "new ac unit cost", "match_type": "BROAD", "spend": 520, "conversions": 0, "cpa": null, "target_cpa": 183.33, "quality_score": 3, "spend_to_target": 2.8, "also_quality_score_victim": false, "reason": "0 conversions on at least 2 x target", "target_source": "campaign's own 30-day CPA"}
+  ],
+  "pause_payload": {
+    "platform": "google-ads",
+    "workspace_id": 1,
+    "brand_id": 1,
+    "account_id": "1234567890",
+    "action": "update_keywords",
+    "keyword_updates": [
+      {"ad_group_id": "410000000013", "keyword_id": "510001302", "status": "PAUSED"}
+    ],
+    "_status": "not run"
+  },
+  "review_list": [
+    {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "heating repair", "match_type": "BROAD", "spend": 390, "conversions": 1, "cpa": 390.0, "target_cpa": 60.0, "quality_score": 4, "spend_to_target": 6.5, "also_quality_score_victim": true, "why_review_not_pause": "the target is a fallback (campaign's own 30-day CPA), and a high CPA may still be a good deal"}
+  ],
+  "profitability": {"result": "unknown", "counted_conversion_actions": ["Phone call from ads (60s+)", "Booking form submit", "Calls from website (60s+)"], "total_conversion_value": 0, "next_step": "add a value to the counted conversion actions, or tell me what a lead is worth, and I can rank keywords by profit"},
+  "match_types": {
+    "by_keyword_match_type": [
+      {"match_type": "EXACT", "keywords_with_spend": 2, "live_keywords": 5, "spend": 670, "conversions": 47, "cpa": 14.26},
+      {"match_type": "PHRASE", "keywords_with_spend": 23, "live_keywords": 25, "spend": 9100, "conversions": 165, "cpa": 55.15},
+      {"match_type": "BROAD", "keywords_with_spend": 8, "live_keywords": 8, "spend": 1990, "conversions": 13, "cpa": 153.08}
+    ],
+    "by_search_term_match_type": [
+      {"search_term_match_type": "EXACT", "spend": 580, "share": "5.2%", "conversions": 43},
+      {"search_term_match_type": "PHRASE", "spend": 8173, "share": "73.6%", "conversions": 154},
+      {"search_term_match_type": "BROAD", "spend": 2350, "share": "21.2%", "conversions": 17}
+    ],
+    "visible_search_term_share_of_keyword_spend": "94.4%",
+    "health": [
+      {"match_type": "EXACT", "ideal_use": "proven, high-intent searches", "red_flag_test": "over 25% of live exact keywords rarely served or with 0 impressions (too narrow)", "value": "3 of 5 live exact keywords (60%)", "red_flag": true},
+      {"match_type": "PHRASE", "ideal_use": "reach with control", "red_flag_test": "over 25% of phrase spend on bleeders and over-target keywords", "value": "1.9% of phrase spend ($170 of $9100)", "red_flag": false},
+      {"match_type": "BROAD", "ideal_use": "discovery, only with Smart Bidding", "red_flag_test": "a broad keyword in a campaign without Smart Bidding, or over 25% of broad keywords' visible search-term spend off theme", "value": "2 broad keyword(s) in a campaign without Smart Bidding: new ac unit cost, heat pump rebate colorado", "red_flag": true}
+    ],
+    "migration": {
+      "migrate_to_exact": [
+        {"campaign": "Brand | Search", "ad_group": "Brand", "keyword": "example home services denver", "match_type": "PHRASE", "conversions": 16, "cpa": 9.38, "target_cpa": 8.71, "quality_score": 9, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Brand | Search", "ad_group": "Brand", "keyword": "example heating and plumbing", "match_type": "PHRASE", "conversions": 5, "cpa": 10.0, "target_cpa": 8.71, "quality_score": 8, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "furnace repair", "match_type": "PHRASE", "conversions": 20, "cpa": 50.5, "target_cpa": 60.0, "quality_score": 7, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Furnace Repair | Search", "ad_group": "Furnace repair", "keyword": "furnace repair near me", "match_type": "PHRASE", "conversions": 12, "cpa": 60.0, "target_cpa": 60.0, "quality_score": 6, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Furnace Repair | Search", "ad_group": "Furnace not working", "keyword": "furnace not working", "match_type": "PHRASE", "conversions": 7, "cpa": 60.0, "target_cpa": 60.0, "quality_score": 5, "do": "add the exact version in the same ad group and keep the phrase running; fix its Quality Score too (it is a Quality Score victim)"},
+        {"campaign": "Furnace Repair | Search", "ad_group": "Furnace not working", "keyword": "furnace blowing cold air", "match_type": "PHRASE", "conversions": 5, "cpa": 50.0, "target_cpa": 60.0, "quality_score": 6, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Furnace Repair | Search", "ad_group": "Heating emergency", "keyword": "emergency furnace repair", "match_type": "PHRASE", "conversions": 5, "cpa": 46.0, "target_cpa": 60.0, "quality_score": 7, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "AC Repair | Search", "ad_group": "AC repair", "keyword": "ac repair", "match_type": "PHRASE", "conversions": 11, "cpa": 76.36, "target_cpa": 70.0, "quality_score": 6, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "AC Repair | Search", "ad_group": "AC repair", "keyword": "ac repair near me", "match_type": "PHRASE", "conversions": 7, "cpa": 80.0, "target_cpa": 70.0, "quality_score": 5, "do": "add the exact version in the same ad group and keep the phrase running; fix its Quality Score too (it is a Quality Score victim)"},
+        {"campaign": "Water Heaters | Search", "ad_group": "Water heater repair", "keyword": "water heater repair", "match_type": "PHRASE", "conversions": 14, "cpa": 49.29, "target_cpa": 56.13, "quality_score": 8, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Water Heaters | Search", "ad_group": "Tankless water heater", "keyword": "tankless water heater installation", "match_type": "PHRASE", "conversions": 8, "cpa": 56.25, "target_cpa": 56.13, "quality_score": 7, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Plumbing | Search", "ad_group": "Emergency plumber", "keyword": "emergency plumber", "match_type": "PHRASE", "conversions": 17, "cpa": 53.53, "target_cpa": 55.0, "quality_score": 7, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Plumbing | Search", "ad_group": "Emergency plumber", "keyword": "24 hour plumber", "match_type": "PHRASE", "conversions": 6, "cpa": 63.33, "target_cpa": 55.0, "quality_score": 6, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "Plumbing | Search", "ad_group": "Drain cleaning", "keyword": "drain cleaning", "match_type": "PHRASE", "conversions": 7, "cpa": 47.14, "target_cpa": 55.0, "quality_score": 7, "do": "add the exact version in the same ad group and keep the phrase running"},
+        {"campaign": "AC Installation | Search", "ad_group": "AC installation", "keyword": "ac installation", "match_type": "PHRASE", "conversions": 6, "cpa": 115.0, "target_cpa": 183.33, "quality_score": 5, "do": "add the exact version in the same ad group and keep the phrase running; fix its Quality Score too (it is a Quality Score victim)"}
+      ],
+      "broad_to_phrase": [],
+      "exact_to_pause_or_loosen": ["furnace repair englewood", "tankless water heater flush", "mini split installation"],
+      "over_target_phrase_or_broad": ["tankless water heater cost"]
+    }
+  },
+  "cannibalised_search_terms": [
+    {
+      "search_term": "furnace repair near me",
+      "spend": 435,
+      "conversions": 8,
+      "split": [
+        {"ad_group": "Furnace repair", "spend": 420},
+        {"ad_group": "Heating emergency", "spend": 15}
+      ]
+    },
+    {
+      "search_term": "furnace repair denver",
+      "spend": 298,
+      "conversions": 5,
+      "split": [
+        {"ad_group": "Furnace repair", "spend": 280},
+        {"ad_group": "Furnace not working", "spend": 18}
+      ]
+    },
+    {
+      "search_term": "ac repair",
+      "spend": 540,
+      "conversions": 7,
+      "split": [
+        {"ad_group": "AC repair", "spend": 520},
+        {"ad_group": "AC not cooling", "spend": 20}
+      ]
+    }
+  ],
+  "routing_misses": [
+    {"search_term": "furnace repair denver", "spend": 18, "won_by": "Furnace not working", "identical_exact_keyword": "furnace repair denver in Furnace repair"}
+  ],
+  "duplicates": {
+    "across_ad_groups": [
+      {
+        "keyword": "furnace repair",
+        "match_type": "PHRASE",
+        "copies": [
+          {"ad_group": "Furnace repair", "conversions": 20, "spend": 1010},
+          {"ad_group": "Furnace not working", "conversions": 0, "spend": 0}
+        ],
+        "owner": "Furnace repair",
+        "do": "keep the owner and pause the other copies"
+      }
+    ],
+    "geo_split_copies": [],
+    "redundant_within_one_ad_group": 1
+  },
+  "theme_drift": [],
+  "theme_drift_ad_groups_over_25_percent": [],
+  "low_search_volume": {
+    "by_campaign": [
+      {"campaign": "Furnace Repair | Search", "keyword": "pilot light out furnace", "match_type": "BROAD", "covered_by": null, "monthly_searches": 90, "do": "keep it; it has some volume but rarely triggers"},
+      {"campaign": "AC Installation | Search", "keyword": "heat pump rebate colorado", "match_type": "BROAD", "covered_by": null, "monthly_searches": 50, "do": "keep it; it has some volume but rarely triggers"},
+      {"campaign": "Furnace Repair | Search", "keyword": "furnace repair englewood", "match_type": "EXACT", "covered_by": "furnace repair", "monthly_searches": null, "do": "remove it; the phrase keyword already covers it"},
+      {"campaign": "Water Heaters | Search", "keyword": "tankless water heater flush", "match_type": "EXACT", "covered_by": null, "monthly_searches": 20, "do": "keep it; it has some volume but rarely triggers"},
+      {"campaign": "AC Installation | Search", "keyword": "mini split installation", "match_type": "EXACT", "covered_by": null, "monthly_searches": 170, "do": "keep it; it has some volume but rarely triggers"}
+    ],
+    "keyword_planner_check": "generate_keyword_ideas, location 21138, for the uncovered keywords",
+    "live_eligible_keywords_with_0_impressions": [
+      {"keyword": "furnace repair", "ad_group": "Furnace not working"},
+      {"keyword": "emergency plumbers", "ad_group": "Emergency plumber"}
+    ]
+  },
+  "broad_match_readiness": [
+    {
+      "campaign": "Furnace Repair | Search",
+      "bidding": "MAXIMIZE_CONVERSIONS",
+      "conversions": 58,
+      "cpa": 60.0,
+      "target_cpa": null,
+      "budget_lost_is": "21%",
+      "rank_lost_is": "31%",
+      "checks": {"smart_bidding": true, "enough_data": true, "on_target": null, "room_to_spend": false, "not_held_by_rank": false},
+      "verdict": "not ready"
+    },
+    {
+      "campaign": "AC Repair | Search",
+      "bidding": "TARGET_CPA",
+      "conversions": 26,
+      "cpa": 77.31,
+      "target_cpa": 70.0,
+      "budget_lost_is": "5%",
+      "rank_lost_is": "40%",
+      "checks": {"smart_bidding": true, "enough_data": false, "on_target": false, "room_to_spend": true, "not_held_by_rank": false},
+      "verdict": "not ready"
+    },
+    {
+      "campaign": "Water Heaters | Search",
+      "bidding": "MAXIMIZE_CONVERSIONS",
+      "conversions": 31,
+      "cpa": 56.13,
+      "target_cpa": null,
+      "budget_lost_is": "8%",
+      "rank_lost_is": "30%",
+      "checks": {"smart_bidding": true, "enough_data": true, "on_target": null, "room_to_spend": true, "not_held_by_rank": false},
+      "verdict": "close"
+    },
+    {
+      "campaign": "Plumbing | Search",
+      "bidding": "TARGET_CPA",
+      "conversions": 39,
+      "cpa": 60.0,
+      "target_cpa": 55.0,
+      "budget_lost_is": "3%",
+      "rank_lost_is": "46%",
+      "checks": {"smart_bidding": true, "enough_data": true, "on_target": true, "room_to_spend": true, "not_held_by_rank": false},
+      "verdict": "close"
+    },
+    {
+      "campaign": "AC Installation | Search",
+      "bidding": "MAXIMIZE_CLICKS",
+      "conversions": 9,
+      "cpa": 183.33,
+      "target_cpa": null,
+      "budget_lost_is": "4%",
+      "rank_lost_is": "58%",
+      "checks": {"smart_bidding": false, "enough_data": false, "on_target": null, "room_to_spend": true, "not_held_by_rank": false},
+      "verdict": "not ready"
+    }
+  ],
+  "bids": "No campaign uses Manual CPC, so keyword bids are ignored here; target and budget advice belongs to the campaign targets.",
+  "unknowns": [
+    "search terms cover 94.4% of keyword spend; drift, cannibalisation and routing findings cover only that part",
+    "profit per keyword: no conversion values"
+  ],
+  "offered_actions": [
+    "update_keywords: pause the pause list (payload above, not run)",
+    "add_negative_keywords: exact negatives for the split search terms in the ad groups that shouldn't catch them (not run)"
+  ],
+  "go_deeper": [
+    "quality-score-fixer for the Quality Score victims",
+    "search-term-gold-miner and negative-keyword-implementer for the search terms",
+    "impression-share-analyst for Furnace Repair's budget-lost share",
+    "bid-strategy-auditor for the fallback targets"
+  ]
+}

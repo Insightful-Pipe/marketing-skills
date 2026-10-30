@@ -1,0 +1,783 @@
+{
+  "header": {
+    "account": "Example home services company (123-456-7890)",
+    "currency": "USD",
+    "run_date": "2026-10-28",
+    "change_list": [
+      "text: $89 to $99",
+      "url: https://example.com/furnace-repair to https://example.com/heating/furnace-repair/",
+      "url: https://example.com/emergency-heating to https://example.com/heating/emergency-repair/",
+      "url: https://example.com/ac-repair to https://example.com/cooling/ac-repair/",
+      "phone: (303) 555-0142 to (303) 555-0187"
+    ],
+    "statuses_searched": "everything not removed (paused items marked)",
+    "campaigns": "all",
+    "items_read": {
+      "responsive_search_ads": 19,
+      "responsive_search_ads_paused": 1,
+      "keywords": 33,
+      "keywords_with_own_urls": 3,
+      "sitelinks": 6,
+      "callouts": 3,
+      "structured_snippets": 1,
+      "price_assets": 1,
+      "promotions": 1,
+      "call_assets": 1,
+      "url_options": {
+        "account": 1,
+        "campaigns": 7,
+        "ad_groups": 14
+      },
+      "pmax_asset_groups": 1,
+      "pmax_text_assets": 5
+    }
+  },
+  "summary": "23 edits found across ads, keyword URLs, sitelinks, a callout, the price asset, the promotion, the call asset and a Performance Max headline. 7 go by connector, 10 by Editor import, 1 in Google Ads, and 5 are held because https://example.com/cooling/ac-repair/ returns 404. That page is also urgent: since the site move, live AC ads land on it.",
+  "urgent": [
+    {
+      "url": "https://example.com/ac-repair",
+      "what_happens": "redirects to https://example.com/cooling/ac-repair/, which returns 404",
+      "since": "the site move on 2026-10-26",
+      "live_items": [
+        "ad 610000000006 in AC Repair | Search / AC repair",
+        "ad 610000000007 in AC Repair | Search / AC repair",
+        "ad 610000000008 in AC Repair | Search / AC not cooling",
+        "keyword ac repair near me in AC Repair | Search / AC repair",
+        "sitelink 8100000003 (AC Repair) (account)"
+      ],
+      "fix": "Publish https://example.com/cooling/ac-repair/ (or point the redirect at a working page), then run this skill again to swap the held rows."
+    }
+  ],
+  "url_check": [
+    {
+      "url": "https://example.com/heating/furnace-repair/",
+      "role": "new",
+      "first_status": 200,
+      "end_status": 200,
+      "chain": "200 https://example.com/heating/furnace-repair/",
+      "verdict": "pass"
+    },
+    {
+      "url": "https://example.com/furnace-repair",
+      "role": "old",
+      "first_status": 301,
+      "end_status": 200,
+      "chain": "301 https://example.com/furnace-repair > 200 https://example.com/heating/furnace-repair/",
+      "verdict": "ok: still lands on a working page"
+    },
+    {
+      "url": "https://example.com/heating/emergency-repair/",
+      "role": "new",
+      "first_status": 301,
+      "end_status": 200,
+      "chain": "301 https://example.com/heating/emergency-repair/ > 200 https://example.com/heating/emergency/",
+      "verdict": "redirects on the same site: propose the end URL, confirm"
+    },
+    {
+      "url": "https://example.com/emergency-heating",
+      "role": "old",
+      "first_status": 301,
+      "end_status": 200,
+      "chain": "301 https://example.com/emergency-heating > 200 https://example.com/heating/emergency/",
+      "verdict": "ok: still lands on a working page"
+    },
+    {
+      "url": "https://example.com/cooling/ac-repair/",
+      "role": "new",
+      "first_status": 404,
+      "end_status": 404,
+      "chain": "404 https://example.com/cooling/ac-repair/",
+      "verdict": "held"
+    },
+    {
+      "url": "https://example.com/ac-repair",
+      "role": "old",
+      "first_status": 301,
+      "end_status": 404,
+      "chain": "301 https://example.com/ac-repair > 404 https://example.com/cooling/ac-repair/",
+      "verdict": "urgent: live items land on an error now"
+    }
+  ],
+  "sheet": [
+    {
+      "#": 1,
+      "place": "ad",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "item": "610000000006",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/ac-repair",
+      "after": "https://example.com/cooling/ac-repair/",
+      "length": "",
+      "checks": "held: https://example.com/cooling/ac-repair/ returns 404",
+      "route": "held",
+      "review_and_history": "Nothing changes."
+    },
+    {
+      "#": 2,
+      "place": "ad",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "item": "610000000007",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/ac-repair",
+      "after": "https://example.com/cooling/ac-repair/",
+      "length": "",
+      "checks": "held: https://example.com/cooling/ac-repair/ returns 404",
+      "route": "held",
+      "review_and_history": "Nothing changes."
+    },
+    {
+      "#": 3,
+      "place": "ad",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC not cooling",
+      "item": "610000000008",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/ac-repair",
+      "after": "https://example.com/cooling/ac-repair/",
+      "length": "",
+      "checks": "held: https://example.com/cooling/ac-repair/ returns 404",
+      "route": "held",
+      "review_and_history": "Nothing changes."
+    },
+    {
+      "#": 4,
+      "place": "keyword",
+      "campaign": "AC Repair | Search",
+      "ad_group": "AC repair",
+      "item": "ac repair near me (phrase)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/ac-repair",
+      "after": "https://example.com/cooling/ac-repair/",
+      "length": "",
+      "checks": "held: https://example.com/cooling/ac-repair/ returns 404",
+      "route": "held",
+      "review_and_history": "Nothing changes."
+    },
+    {
+      "#": 5,
+      "place": "sitelink",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8100000003 (AC Repair)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/ac-repair",
+      "after": "https://example.com/cooling/ac-repair/",
+      "length": "",
+      "checks": "held: https://example.com/cooling/ac-repair/ returns 404",
+      "route": "held",
+      "review_and_history": "Nothing changes."
+    },
+    {
+      "#": 6,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "610000000002",
+      "status": "enabled",
+      "field": "Headline 13",
+      "before": "Furnace Tune-Up, Just $89",
+      "after": "Furnace Tune-Up, Just $99",
+      "length": "25/30",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 7,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "610000000002",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 8,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace not working",
+      "item": "610000000004",
+      "status": "enabled",
+      "field": "Description 4",
+      "before": "Book an $89 furnace tune-up before the cold hits. Licensed techs, upfront prices.",
+      "after": "Book a $99 furnace tune-up before the cold hits. Licensed techs, upfront prices.",
+      "length": "80/90",
+      "checks": "grammar fixed: \"an $99\" becomes \"a $99\"",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 9,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace not working",
+      "item": "610000000004",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 10,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Heating emergency",
+      "item": "610000000005",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/emergency-heating",
+      "after": "https://example.com/heating/emergency/",
+      "length": "",
+      "checks": "https://example.com/heating/emergency-repair/ redirects to https://example.com/heating/emergency/: end URL proposed, confirm",
+      "route": "Editor sheet",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 11,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "610000000019",
+      "status": "paused",
+      "field": "Headline 1",
+      "before": "Fall Furnace Tune-Up, $89",
+      "after": "Fall Furnace Tune-Up, $99",
+      "length": "25/30",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 12,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "610000000019",
+      "status": "paused",
+      "field": "Description 1",
+      "before": "Our fall tune-up is $89: a full safety check and filter change by a licensed tech.",
+      "after": "Our fall tune-up is $99: a full safety check and filter change by a licensed tech.",
+      "length": "82/90",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 13,
+      "place": "ad",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "610000000019",
+      "status": "paused",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "connector",
+      "review_and_history": "Same ad, saved as a new version; its history stays. Goes back to review, up to one business day."
+    },
+    {
+      "#": 14,
+      "place": "keyword",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "Furnace repair",
+      "item": "furnace repair denver (exact)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair?area=denver",
+      "after": "https://example.com/heating/furnace-repair/?area=denver",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "The keyword keeps its history."
+    },
+    {
+      "#": 15,
+      "place": "sitelink",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8100000001 (Furnace Repair)",
+      "status": "enabled",
+      "field": "Description line 2",
+      "before": "Tune-ups from $89",
+      "after": "Tune-ups from $99",
+      "length": "17/35",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing sitelink: Google keeps its statistics. Reviewed again."
+    },
+    {
+      "#": 16,
+      "place": "sitelink",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8100000001 (Furnace Repair)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing sitelink: Google keeps its statistics. Reviewed again."
+    },
+    {
+      "#": 17,
+      "place": "sitelink",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8100000002 (Emergency Heating)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/emergency-heating",
+      "after": "https://example.com/heating/emergency/",
+      "length": "",
+      "checks": "https://example.com/heating/emergency-repair/ redirects to https://example.com/heating/emergency/: end URL proposed, confirm",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing sitelink: Google keeps its statistics. Reviewed again."
+    },
+    {
+      "#": 18,
+      "place": "callout",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "",
+      "item": "8200000001 ($89 Furnace Tune-Up)",
+      "status": "enabled",
+      "field": "Callout text",
+      "before": "$89 Furnace Tune-Up",
+      "after": "$99 Furnace Tune-Up",
+      "length": "19/25",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing asset; if Editor shows a new asset ID after posting, its numbers start from zero. Reviewed again."
+    },
+    {
+      "#": 19,
+      "place": "price",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8400000001 (Services price list)",
+      "status": "enabled",
+      "field": "Offering 1 price",
+      "before": "89.00 USD",
+      "after": "99.00 USD",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing asset; if Editor shows a new asset ID after posting, its numbers start from zero. Reviewed again."
+    },
+    {
+      "#": 20,
+      "place": "price",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8400000001 (Services price list)",
+      "status": "enabled",
+      "field": "Offering 1 final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing asset; if Editor shows a new asset ID after posting, its numbers start from zero. Reviewed again."
+    },
+    {
+      "#": 21,
+      "place": "promotion",
+      "campaign": "Furnace Repair | Search",
+      "ad_group": "",
+      "item": "8500000001 (Furnace tune-up)",
+      "status": "enabled",
+      "field": "Final URL",
+      "before": "https://example.com/furnace-repair",
+      "after": "https://example.com/heating/furnace-repair/",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing asset; if Editor shows a new asset ID after posting, its numbers start from zero. Reviewed again."
+    },
+    {
+      "#": 22,
+      "place": "call",
+      "campaign": "account",
+      "ad_group": "",
+      "item": "8600000001 (main line)",
+      "status": "enabled",
+      "field": "Phone number",
+      "before": "(303) 555-0142",
+      "after": "(303) 555-0187",
+      "length": "",
+      "checks": "pass",
+      "route": "Editor sheet",
+      "review_and_history": "Edit the existing asset; if Editor shows a new asset ID after posting, its numbers start from zero. Reviewed again."
+    },
+    {
+      "#": 23,
+      "place": "PMax",
+      "campaign": "PMax | All services",
+      "ad_group": "All services",
+      "item": "8700000002 (text asset)",
+      "status": "enabled",
+      "field": "Headline",
+      "before": "Furnace Tune-Up Just $89",
+      "after": "Furnace Tune-Up Just $99",
+      "length": "24/30",
+      "checks": "pass",
+      "route": "Google Ads",
+      "review_and_history": "The text is the asset: the new headline starts from zero. New text is reviewed."
+    }
+  ],
+  "near_misses": [
+    {
+      "place": "sitelink",
+      "item": "8100000004",
+      "field": "Description line 1",
+      "text": "Installs from $899",
+      "rule": "$89 to $99",
+      "found": "$899"
+    }
+  ],
+  "not_linked": [
+    {
+      "place": "sitelink",
+      "item": "8100000006",
+      "text": "Fall Tune-Up Deal",
+      "matches_if_linked": 2,
+      "why": "No enabled account, campaign or ad group link: it serves nowhere, so it is skipped."
+    }
+  ],
+  "listed_only": [],
+  "url_options": {
+    "tracking_rule_in_list": false,
+    "matches": 0,
+    "note": "No tracking rule in this change list. The price and URL rules were still run over the account suffix, 7 campaigns and 14 ad groups: no matches."
+  },
+  "counts": {
+    "matches": 23,
+    "near_misses": 1,
+    "not_linked": 1,
+    "listed_only_keyword_text": 0,
+    "url_options_matches": 0,
+    "not_searched": []
+  },
+  "route_summary": {
+    "edits": 23,
+    "connector": 7,
+    "Editor sheet": 10,
+    "Google Ads": 1,
+    "held": 5,
+    "ads_back_to_review": 4,
+    "assets_edited": 6,
+    "ads_with_pins_sent_to_the_sheet": [
+      "610000000005"
+    ]
+  },
+  "payloads": {
+    "connector": [
+      {
+        "status": "not run",
+        "ad_status": "enabled",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "610000000002",
+          "headlines": [
+            "Furnace Repair in Denver",
+            "Same-Day Furnace Repair",
+            "Furnace Not Working?",
+            "Upfront Furnace Repair Prices",
+            "Licensed Heating Technicians",
+            "Book Online in 60 Seconds",
+            "4.9 Stars From 1,200 Reviews",
+            "Open 7 Days a Week",
+            "Most Repairs Done in One Visit",
+            "Call for Fast Heat Restoration",
+            "All Furnace Brands Repaired",
+            "No Overtime Charges",
+            "Furnace Tune-Up, Just $99"
+          ],
+          "final_urls": [
+            "https://example.com/heating/furnace-repair/"
+          ]
+        }
+      },
+      {
+        "status": "not run",
+        "ad_status": "enabled",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "610000000004",
+          "descriptions": [
+            "Cold air or no heat at all? Book a same-day furnace visit with a licensed tech.",
+            "Upfront prices before any work starts. Licensed, insured and background checked.",
+            "We repair every furnace brand. Open 7 days across the Denver metro.",
+            "Book a $99 furnace tune-up before the cold hits. Licensed techs, upfront prices."
+          ],
+          "final_urls": [
+            "https://example.com/heating/furnace-repair/"
+          ]
+        }
+      },
+      {
+        "status": "not run",
+        "ad_status": "paused",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "610000000019",
+          "headlines": [
+            "Fall Furnace Tune-Up, $99",
+            "Furnace Repair in Denver",
+            "Licensed Heating Technicians",
+            "Book Online in 60 Seconds",
+            "Upfront Furnace Repair Prices"
+          ],
+          "descriptions": [
+            "Our fall tune-up is $99: a full safety check and filter change by a licensed tech.",
+            "Upfront prices before any work starts. Licensed, insured and background checked."
+          ],
+          "final_urls": [
+            "https://example.com/heating/furnace-repair/"
+          ]
+        }
+      }
+    ],
+    "editor_import": [
+      {
+        "type": "Responsive search ad",
+        "identify": {
+          "Campaign": "Furnace Repair | Search",
+          "Ad group": "Heating emergency",
+          "Headline 1": "Emergency Furnace Repair",
+          "Description 1": "No heat at night? A licensed tech can be at your door tonight, with no overtime fee."
+        },
+        "changes": [
+          {
+            "column": "Final URL",
+            "original": "https://example.com/emergency-heating",
+            "new": "https://example.com/heating/emergency/"
+          }
+        ],
+        "confirm": [
+          "https://example.com/heating/emergency-repair/ redirects to https://example.com/heating/emergency/: end URL proposed, confirm"
+        ],
+        "import_columns": [
+          "Final URL#Original",
+          "Final URL"
+        ]
+      },
+      {
+        "type": "Keyword",
+        "identify": {
+          "Campaign": "Furnace Repair | Search",
+          "Ad group": "Furnace repair",
+          "Keyword": "furnace repair denver",
+          "Match type": "exact"
+        },
+        "changes": [
+          {
+            "column": "Final URL",
+            "original": "https://example.com/furnace-repair?area=denver",
+            "new": "https://example.com/heating/furnace-repair/?area=denver"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Final URL#Original",
+          "Final URL"
+        ]
+      },
+      {
+        "type": "Sitelink asset",
+        "identify": {
+          "Asset ID": "8100000001",
+          "Level": "account",
+          "Asset": "Furnace Repair"
+        },
+        "changes": [
+          {
+            "column": "Description line 2",
+            "original": "Tune-ups from $89",
+            "new": "Tune-ups from $99"
+          },
+          {
+            "column": "Final URL",
+            "original": "https://example.com/furnace-repair",
+            "new": "https://example.com/heating/furnace-repair/"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Description line 2#Original",
+          "Description line 2",
+          "Final URL#Original",
+          "Final URL"
+        ]
+      },
+      {
+        "type": "Sitelink asset",
+        "identify": {
+          "Asset ID": "8100000002",
+          "Level": "account",
+          "Asset": "Emergency Heating"
+        },
+        "changes": [
+          {
+            "column": "Final URL",
+            "original": "https://example.com/emergency-heating",
+            "new": "https://example.com/heating/emergency/"
+          }
+        ],
+        "confirm": [
+          "https://example.com/heating/emergency-repair/ redirects to https://example.com/heating/emergency/: end URL proposed, confirm"
+        ],
+        "import_columns": [
+          "Final URL#Original",
+          "Final URL"
+        ]
+      },
+      {
+        "type": "Callout asset",
+        "identify": {
+          "Asset ID": "8200000001",
+          "Level": "Furnace Repair | Search",
+          "Asset": "$89 Furnace Tune-Up"
+        },
+        "changes": [
+          {
+            "column": "Callout text",
+            "original": "$89 Furnace Tune-Up",
+            "new": "$99 Furnace Tune-Up"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Callout text#Original",
+          "Callout text"
+        ]
+      },
+      {
+        "type": "Price asset",
+        "identify": {
+          "Asset ID": "8400000001",
+          "Level": "account",
+          "Asset": "Services price list"
+        },
+        "changes": [
+          {
+            "column": "Offering 1 price",
+            "original": "89.00 USD",
+            "new": "99.00 USD"
+          },
+          {
+            "column": "Offering 1 final URL",
+            "original": "https://example.com/furnace-repair",
+            "new": "https://example.com/heating/furnace-repair/"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Offering 1 price#Original",
+          "Offering 1 price",
+          "Offering 1 final URL#Original",
+          "Offering 1 final URL"
+        ]
+      },
+      {
+        "type": "Promotion asset",
+        "identify": {
+          "Asset ID": "8500000001",
+          "Level": "Furnace Repair | Search",
+          "Asset": "Furnace tune-up"
+        },
+        "changes": [
+          {
+            "column": "Final URL",
+            "original": "https://example.com/furnace-repair",
+            "new": "https://example.com/heating/furnace-repair/"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Final URL#Original",
+          "Final URL"
+        ]
+      },
+      {
+        "type": "Call asset",
+        "identify": {
+          "Asset ID": "8600000001",
+          "Level": "account",
+          "Asset": "main line"
+        },
+        "changes": [
+          {
+            "column": "Phone number",
+            "original": "(303) 555-0142",
+            "new": "(303) 555-0187"
+          }
+        ],
+        "confirm": [],
+        "import_columns": [
+          "Phone number#Original",
+          "Phone number"
+        ]
+      }
+    ],
+    "editor_change_count": 10,
+    "google_ads_steps": [
+      "In PMax | All services, asset group All services: add the headline \"Furnace Tune-Up Just $99\", then remove \"Furnace Tune-Up Just $89\"."
+    ],
+    "google_sheets": {
+      "status": "not run, offered",
+      "steps": [
+        {
+          "action": "create_sheet",
+          "title": "Bulk update 2026-10-28"
+        },
+        {
+          "action": "update_cells",
+          "range": "A1:M24",
+          "rows": 24,
+          "note": "header row plus one row per edit"
+        }
+      ]
+    }
+  },
+  "before_you_apply": [
+    "Confirm https://example.com/heating/furnace-repair/ shows the $99 tune-up price before the price edits go live; the crawler only checked that the page loads.",
+    "Confirm https://example.com/heating/emergency/ is the right page for emergency heating: the URL in your map redirects there.",
+    "Read the grammar fix in row 8.",
+    "Fix the AC repair page first: the held rows stay as they are until it answers 200.",
+    "In Google Ads Editor, check that the import shows 10 changes before you post."
+  ],
+  "after_apply": "Re-run the responsive search ad, keyword and asset queries and show each edited field before, after and as read back."
+}

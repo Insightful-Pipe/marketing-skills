@@ -1,0 +1,223 @@
+{
+  "note": "Example data: an invented meal planning app, Pantrybell, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"web-to-app-funnel\" skill. We ran a two-week web quiz pilot on Meta next to our app-install campaign. Should we move budget to the web funnel, and what do we have to fix first?",
+  "run_date": "2026-10-28",
+  "pilot_window": {
+    "start": "2026-10-06",
+    "end": "2026-10-19"
+  },
+  "app": {
+    "name": "Pantrybell",
+    "what_it_does": "weekly meal plans built from what is already in the kitchen, with a shared grocery list",
+    "site": "https://pantrybell.example",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "payer_share": {
+      "iOS": 0.64,
+      "Android": 0.36
+    },
+    "main_storefronts": [
+      "United States"
+    ],
+    "accounts": "email login and Sign in with Apple already exist in the app",
+    "currency": "USD"
+  },
+  "plans": [
+    {
+      "plan": "Yearly",
+      "price": 59.99,
+      "trial_days": 7,
+      "mix": 0.7,
+      "payments_first_year": 1
+    },
+    {
+      "plan": "Monthly",
+      "price": 9.99,
+      "trial_days": 7,
+      "mix": 0.3,
+      "payments_first_year": 4.2
+    }
+  ],
+  "store_fees": {
+    "iOS": {
+      "rate": 0.3,
+      "why": "proceeds above the small business threshold, first-year subscription rate"
+    },
+    "Android": {
+      "rate": 0.15,
+      "why": "Google Play subscription rate the user pays"
+    }
+  },
+  "store_refund_rate": 0.02,
+  "app_path_rates": {
+    "click_to_install": 0.31,
+    "install_to_trial": 0.27,
+    "trial_to_paid": 0.39
+  },
+  "processor": {
+    "percent": 0.034,
+    "fixed_per_charge": 0.3,
+    "source": "the rate the user says they pay"
+  },
+  "link_out_stress_rate": 0.15,
+  "login_target": "none given; the skill default of 90% applies",
+  "user_pasted": {
+    "web_trials_turned_paid": 136,
+    "web_payers_logged_into_app_within_7_days": 110,
+    "server_side_events": "browser pixel only; no Conversions API",
+    "web_refund_and_chargeback_rate": null
+  },
+  "store_rules_read": {
+    "date_read": "2026-10-28",
+    "rules": [
+      {
+        "rule": "United States storefront apps may include buttons and links to purchase methods other than in-app purchase; elsewhere links need an entitlement in specific storefronts",
+        "source": "https://developer.apple.com/app-store/review/guidelines/ (3.1.1(a), 3.1.3)",
+        "path": "in-app link-out (iOS, US)"
+      },
+      {
+        "rule": "A subscription bought on the web can be unlocked in the app only if the same subscription is also offered as an in-app purchase",
+        "source": "https://developer.apple.com/app-store/review/guidelines/ (3.1.3(b))",
+        "path": "web-first funnel"
+      },
+      {
+        "rule": "Apple may seek a commission tied to its costs on purchases made through links in the app (Ninth Circuit, 11 December 2025); the district court is setting the rate, none is final",
+        "source": "https://www.fenwick.com/insights/publications/ninth-circuit-largely-upholds-ruling-in-epic-v-apple (summary of the Ninth Circuit opinion in Epic Games v. Apple)",
+        "path": "in-app link-out (iOS, US)"
+      },
+      {
+        "rule": "Linking US users out of an Android app needs enrolment in the external content links program; transactions are reported and fees apply from 1 October 2026",
+        "source": "https://support.google.com/googleplay/android-developer/answer/16470497",
+        "path": "in-app link-out (Android, US)"
+      },
+      {
+        "rule": "The pages read set terms for purchases reached through a link in the app; none sets a fee on a web purchase made before the install with no link from the app",
+        "source": "both pages above",
+        "path": "web-first funnel"
+      }
+    ]
+  },
+  "connector_pulls": {
+    "facebook-ads": {
+      "get_insights_campaign": {
+        "window": [
+          "2026-10-06",
+          "2026-10-19"
+        ],
+        "rows": [
+          {
+            "campaign_name": "PB | App installs | US",
+            "objective": "App promotion",
+            "clicks": 9640,
+            "spend": 8193.98
+          },
+          {
+            "campaign_name": "PB | Web quiz pilot | US",
+            "objective": "Sales (website)",
+            "clicks": 4820,
+            "spend": 4434.4
+          }
+        ]
+      },
+      "get_adsets": [
+        {
+          "adset_name": "Web quiz pilot | Broad US 25-54",
+          "optimization_goal": "OFFSITE_CONVERSIONS",
+          "promoted_object": {
+            "pixel_id": "100000000000001",
+            "custom_event_type": "LEAD"
+          }
+        }
+      ],
+      "get_pixels": [
+        {
+          "id": "100000000000001",
+          "name": "Pantrybell web",
+          "last_fired_time": "2026-10-27T22:41:09+0000"
+        }
+      ],
+      "get_custom_conversions": []
+    },
+    "google-analytics": {
+      "list_key_events": [
+        "purchase",
+        "generate_lead"
+      ],
+      "get_report": {
+        "window": [
+          "2026-10-06",
+          "2026-10-19"
+        ],
+        "dimensions": [
+          "eventName"
+        ],
+        "metrics": [
+          "sessions"
+        ],
+        "rows": [
+          {
+            "eventName": "page_view",
+            "sessions": 4388
+          },
+          {
+            "eventName": "quiz_start",
+            "sessions": 2721
+          },
+          {
+            "eventName": "quiz_complete",
+            "sessions": 1932
+          },
+          {
+            "eventName": "generate_lead",
+            "sessions": 1623
+          },
+          {
+            "eventName": "view_item",
+            "sessions": 1571
+          },
+          {
+            "eventName": "begin_checkout",
+            "sessions": 377
+          },
+          {
+            "eventName": "trial_start",
+            "sessions": 290
+          }
+        ],
+        "requested_but_no_rows": [
+          "quiz_step"
+        ]
+      }
+    },
+    "google-ads": {
+      "list_conversion_actions": [
+        {
+          "name": "Pantrybell (iOS) first_open",
+          "type": "FIREBASE_IOS_FIRST_OPEN",
+          "category": "DOWNLOAD",
+          "status": "ENABLED"
+        },
+        {
+          "name": "Pantrybell (Android) first_open",
+          "type": "GOOGLE_PLAY_DOWNLOAD",
+          "category": "DOWNLOAD",
+          "status": "ENABLED"
+        },
+        {
+          "name": "Pantrybell (iOS) subscribe",
+          "type": "FIREBASE_IOS_CUSTOM",
+          "category": "SUBSCRIBE_PAID",
+          "status": "ENABLED"
+        }
+      ]
+    },
+    "tiktok-ads": "not used: Pantrybell runs no TikTok ads",
+    "stripe": "not connected: trial and payment counts pasted by the user"
+  },
+  "ids": {
+    "workspace_id": 1,
+    "brand_id": 1
+  }
+}

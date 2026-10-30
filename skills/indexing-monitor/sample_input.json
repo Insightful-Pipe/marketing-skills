@@ -1,0 +1,48 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The site, its sitemap and every API response behind this run are invented.",
+  "request": "Hey Claude, I just added the \"indexing-monitor\" skill. Check which of my pages Google and Bing have indexed, tell me why the rest aren't, and say what to submit.",
+  "site": "https://www.example.com/",
+  "sitemap": "https://www.example.com/sitemap.xml",
+  "run_date": "2026-10-28",
+  "new_pages_source": "the user's answer to the new-pages question: 6 pages published since 9 October, with their publish dates",
+  "new_pages": [
+    {
+      "url": "https://www.example.com/features/waitlist/",
+      "published": "2026-10-09"
+    },
+    {
+      "url": "https://www.example.com/blog/client-rebooking-emails/",
+      "published": "2026-10-14"
+    },
+    {
+      "url": "https://www.example.com/blog/holiday-booking-rush/",
+      "published": "2026-10-16"
+    },
+    {
+      "url": "https://www.example.com/blog/no-show-fee-guide/",
+      "published": "2026-10-22"
+    },
+    {
+      "url": "https://www.example.com/industries/barbershops/",
+      "published": "2026-10-25"
+    },
+    {
+      "url": "https://www.example.com/industries/yoga-studios/",
+      "published": "2026-10-25"
+    }
+  ],
+  "must_index_pages": "none given (the top-pages check covers the 20 pages with the most impressions)",
+  "impressions_window": "2026-09-29 to 2026-10-26",
+  "connections": "google-search-console and bing-webmaster, both Read & Write",
+  "data_pulled": [
+    "live sitemap (195 URLs, one file, every URL with a lastmod)",
+    "sitemaps_list and sitemap_info (google-search-console)",
+    "search_analytics by page, 28 days (240 rows)",
+    "batch_url_inspection on 34 sitemap URLs (6 new pages, then 28 with no impressions), in 4 batches of up to 10",
+    "check_indexing_issues on the top 20 pages",
+    "robots-txt-checker (crawler)",
+    "status-code-checker on 5 not-indexed URLs and 12 URLs with impressions that are not in the sitemap",
+    "get_feeds, get_crawl_stats (181 daily rows), get_crawl_issues, get_url_submission_quota (bing-webmaster)",
+    "get_url_info for the 6 new pages (bing-webmaster)"
+  ]
+}

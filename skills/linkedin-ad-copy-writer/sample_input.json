@@ -1,0 +1,650 @@
+{
+  "note": "Example data: an invented B2B finance software company with an invented LinkedIn ad account and company page, not a real business. Every number in expected_output.json follows from this input. The ad text of each creative is shown as read from its post through LinkedIn Pages.",
+  "request": "Hey Claude, I just added the \"linkedin-ad-copy-writer\" skill. Look at our LinkedIn ads from the last year and write the next round for the Month-End Close Checklist: single image and document ads, a carousel, a Conversation Ad that offers the demo or the checklist, and the lead form intro. Target cost per lead is $120. Use only the facts below.",
+  "account": {
+    "name": "Example Close Software (LinkedIn ad account)",
+    "ad_account_id": "500000077",
+    "organization_id": "10000077",
+    "currency": "USD"
+  },
+  "date_range": "2025-10-28 to 2026-10-27 (365 complete days before 2026-10-28)",
+  "brief": {
+    "offer": "The Month-End Close Checklist (lead gen form) and a 30-minute demo",
+    "audience": "Finance and accounting staff, Senior to CXO, at US companies with 201 to 2,000 employees",
+    "formats": [
+      "single image",
+      "document",
+      "carousel",
+      "Conversation Ad",
+      "lead form"
+    ],
+    "result_that_counts": "leads on the LinkedIn lead form (oneClickLeads)",
+    "target_cost_per_lead": 120.0,
+    "facts_given": [
+      "Finance teams on Example Close Software close the books in 5 working days on average, down from 9 (2026 customer survey of 212 teams).",
+      "It matches bank and card transactions to the ledger automatically, so the team reviews only the exceptions.",
+      "Reconciliation sign-offs and the audit trail sit in one place.",
+      "SOC 2 Type II report available on request.",
+      "The Month-End Close Checklist: a 14-page PDF with 42 checks across cash, revenue, payables and reporting.",
+      "The checks are ordered by close day: day 1 cash and bank, day 2 revenue, day 3 payables, day 4 accruals and sign-offs, day 5 reporting.",
+      "The checklist works with any accounting system; no software needed.",
+      "The PDF is emailed right after the lead form is sent.",
+      "The demo is 30 minutes with a finance specialist, on the prospect's own close process.",
+      "A quote we may use: \"We stopped living in spreadsheets the last week of the month.\" (a controller at a 600-person logistics company)"
+    ],
+    "landing_pages": {
+      "checklist": "https://www.closesoftware.example/checklist/",
+      "demo": "https://www.closesoftware.example/demo/",
+      "article": "https://www.closesoftware.example/blog/five-day-close/"
+    },
+    "lead_form": "urn:li:adForm:700000011",
+    "conversation_ad_sender": "Morgan Hale, Head of Customer Finance at Example Close Software (invented)"
+  },
+  "data_pulled": [
+    "linkedin-ads get_accounts (kept the one row for this account)",
+    "linkedin-ads get_campaigns, auto_paginate (6 campaigns)",
+    "linkedin-ads get_creatives, auto_paginate (15 creatives)",
+    "linkedin-ads get_creative_analytics, 2025-10-28 to 2026-10-27, ALL, all creative ids",
+    "linkedin-pages fetch_post_by_urn for each creative's post (intro text and headline)",
+    "linkedin-ads get_demographic_analytics, pivots MEMBER_SENIORITY and MEMBER_JOB_FUNCTION, campaigns + creatives filter, one call per winner per pivot (6 calls)",
+    "linkedin-pages fetch_organization_posts (count 50) and fetch_share_statistics_per_post for the page's last 6 posts"
+  ],
+  "data": {
+    "campaigns": [
+      {
+        "id": "600000101",
+        "name": "Close Checklist | Lead gen | Finance US | 2026-03",
+        "type": "SPONSORED_UPDATES",
+        "objectiveType": "LEAD_GENERATION",
+        "format": "UNSUPPORTED",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "600000102",
+        "name": "Close Checklist | Document | Finance US | 2026-06",
+        "type": "SPONSORED_UPDATES",
+        "objectiveType": "LEAD_GENERATION",
+        "format": "UNSUPPORTED",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "600000103",
+        "name": "Demo | Lead gen | Controllers US | 2026-01",
+        "type": "SPONSORED_UPDATES",
+        "objectiveType": "LEAD_GENERATION",
+        "format": "STANDARD_UPDATE",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "600000104",
+        "name": "Demo | Conversation | Finance leaders US | 2026-05",
+        "type": "SPONSORED_INMAILS",
+        "objectiveType": "LEAD_GENERATION",
+        "format": "UNSUPPORTED",
+        "status": "PAUSED"
+      },
+      {
+        "id": "600000105",
+        "name": "Brand | Awareness | Finance US | 2026-02",
+        "type": "SPONSORED_UPDATES",
+        "objectiveType": "BRAND_AWARENESS",
+        "format": "SINGLE_VIDEO",
+        "status": "PAUSED"
+      },
+      {
+        "id": "600000106",
+        "name": "ZZ test campaign",
+        "type": "SPONSORED_UPDATES",
+        "objectiveType": "WEBSITE_VISIT",
+        "format": "UNSUPPORTED",
+        "status": "PAUSED"
+      }
+    ],
+    "creatives": [
+      {
+        "id": "900000201",
+        "name": "Checklist - 42 checks (image)",
+        "campaign": "600000101",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001407",
+        "intro_text": "42 checks that keep month-end from sliding into week two. The Month-End Close Checklist covers cash, revenue, payables and reporting. Get the PDF.",
+        "headline": "The Month-End Close Checklist: 42 checks",
+        "cta": "DOWNLOAD",
+        "impressions": 48200,
+        "clicks": 610,
+        "costInUsd": "5140.00",
+        "oneClickLeadFormOpens": 402,
+        "oneClickLeads": 61,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000202",
+        "name": "Checklist - controller quote (image)",
+        "campaign": "600000101",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001414",
+        "intro_text": "\"We stopped living in spreadsheets the last week of the month.\" A controller at a 600-person logistics company on what changed. Get the checklist to start your own.",
+        "headline": "How one controller took back the last week",
+        "cta": "DOWNLOAD",
+        "impressions": 39500,
+        "clicks": 455,
+        "costInUsd": "4310.00",
+        "oneClickLeadFormOpens": 300,
+        "oneClickLeads": 41,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000203",
+        "name": "Checklist - spreadsheet pain (image)",
+        "campaign": "600000101",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001421",
+        "intro_text": "Still reconciling bank lines by hand in a spreadsheet? There's a faster way. Download our checklist and see how finance teams close faster.",
+        "headline": "Stop reconciling by hand",
+        "cta": "DOWNLOAD",
+        "impressions": 31000,
+        "clicks": 290,
+        "costInUsd": "3620.00",
+        "oneClickLeadFormOpens": 190,
+        "oneClickLeads": 22,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000204",
+        "name": "Checklist - new year close (image)",
+        "campaign": "600000101",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001428",
+        "intro_text": "New year, new close. Start the year with a better month-end process. Download the checklist today and make this the year your team closes on time without the stress and the late nights.",
+        "headline": "A better close starts here",
+        "cta": "DOWNLOAD",
+        "impressions": 6100,
+        "clicks": 41,
+        "costInUsd": "610.00",
+        "oneClickLeadFormOpens": 22,
+        "oneClickLeads": 3,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000205",
+        "name": "Doc - checklist preview (document)",
+        "campaign": "600000102",
+        "format": "document",
+        "post_reference": "urn:li:share:6300001435",
+        "intro_text": "Preview the first 4 pages of the Month-End Close Checklist: the cash and bank checks finance teams run on day one. Unlock all 14 pages in one click.",
+        "headline": "Month-End Close Checklist (14 pages)",
+        "cta": "UNLOCK_FULL_DOCUMENT",
+        "impressions": 52800,
+        "clicks": 720,
+        "costInUsd": "6020.00",
+        "oneClickLeadFormOpens": 520,
+        "oneClickLeads": 74,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 1940,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000206",
+        "name": "Doc - close calendar teaser (document)",
+        "campaign": "600000102",
+        "format": "document",
+        "post_reference": "urn:li:share:6300001442",
+        "intro_text": "A day-by-day close calendar for finance teams. See which tasks move to day 1 and which can wait. Inside the full checklist.",
+        "headline": "The close, day by day",
+        "cta": "UNLOCK_FULL_DOCUMENT",
+        "impressions": 22400,
+        "clicks": 260,
+        "costInUsd": "2640.00",
+        "oneClickLeadFormOpens": 170,
+        "oneClickLeads": 21,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 610,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000207",
+        "name": "Doc - audit-ready close (document)",
+        "campaign": "600000102",
+        "format": "document",
+        "post_reference": "urn:li:share:6300001449",
+        "intro_text": "Audit season is easier when every sign-off has a trail. Preview the checklist.",
+        "headline": "An audit-ready close",
+        "cta": "UNLOCK_FULL_DOCUMENT",
+        "impressions": 900,
+        "clicks": 6,
+        "costInUsd": "95.00",
+        "oneClickLeadFormOpens": 4,
+        "oneClickLeads": 1,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 20,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000208",
+        "name": "Demo - 5 days not 9 (image)",
+        "campaign": "600000103",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001456",
+        "intro_text": "Finance teams on Example Close Software close the books in 5 working days on average, down from 9. See how in a 30-minute demo.",
+        "headline": "Close in 5 days, not 9",
+        "cta": "REQUEST_DEMO",
+        "impressions": 27300,
+        "clicks": 330,
+        "costInUsd": "4050.00",
+        "oneClickLeadFormOpens": 210,
+        "oneClickLeads": 35,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000209",
+        "name": "Demo - 30 min walkthrough (image)",
+        "campaign": "600000103",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001463",
+        "intro_text": "Book a 30-minute walkthrough of Example Close Software with a finance specialist and see the platform in action.",
+        "headline": "Book your walkthrough",
+        "cta": "REQUEST_DEMO",
+        "impressions": 18900,
+        "clicks": 150,
+        "costInUsd": "3150.00",
+        "oneClickLeadFormOpens": 95,
+        "oneClickLeads": 9,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000210",
+        "name": "Demo - exceptions only (image)",
+        "campaign": "600000103",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001470",
+        "intro_text": "Review only the exceptions. Example Close Software matches bank and card transactions to the ledger automatically.",
+        "headline": "Review only the exceptions",
+        "cta": "REQUEST_DEMO",
+        "impressions": 12600,
+        "clicks": 140,
+        "costInUsd": "1980.00",
+        "oneClickLeadFormOpens": 80,
+        "oneClickLeads": 0,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000211",
+        "name": "Conversation - demo or checklist",
+        "campaign": "600000104",
+        "format": "Conversation Ad",
+        "post_reference": "urn:li:share:6300001477",
+        "intro_text": "Hi [First name], finance teams on Example Close Software close in 5 working days on average. Want the demo or the checklist?",
+        "headline": null,
+        "cta": null,
+        "impressions": 4200,
+        "clicks": 0,
+        "costInUsd": "2940.00",
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 28,
+        "sends": 4200,
+        "opens": 2310,
+        "actionClicks": 640,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000212",
+        "name": "Conversation - demo only",
+        "campaign": "600000104",
+        "format": "Conversation Ad",
+        "post_reference": "urn:li:share:6300001484",
+        "intro_text": "Hi [First name], can I show you Example Close Software in a 30-minute demo?",
+        "headline": null,
+        "cta": null,
+        "impressions": 2900,
+        "clicks": 0,
+        "costInUsd": "2030.00",
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 9,
+        "sends": 2900,
+        "opens": 1280,
+        "actionClicks": 190,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      },
+      {
+        "id": "900000213",
+        "name": "Brand video - the last week of the month",
+        "campaign": "600000105",
+        "format": "video",
+        "post_reference": "urn:li:share:6300001491",
+        "intro_text": "What does the last week of the month look like for your finance team?",
+        "headline": "Example Close Software",
+        "cta": "LEARN_MORE",
+        "impressions": 88000,
+        "clicks": 420,
+        "costInUsd": "2650.00",
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 0,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 9100
+      },
+      {
+        "id": "900000214",
+        "name": "Brand video - one place for sign-offs",
+        "campaign": "600000105",
+        "format": "video",
+        "post_reference": "urn:li:share:6300001498",
+        "intro_text": "Sign-offs and the audit trail in one place.",
+        "headline": "Example Close Software",
+        "cta": "LEARN_MORE",
+        "impressions": 61000,
+        "clicks": 230,
+        "costInUsd": "1840.00",
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 0,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 5200
+      },
+      {
+        "id": "900000215",
+        "name": "ZZ test - do not run",
+        "campaign": "600000106",
+        "format": "single image",
+        "post_reference": "urn:li:share:6300001505",
+        "intro_text": "test",
+        "headline": "test",
+        "cta": "LEARN_MORE",
+        "impressions": 40,
+        "clicks": 0,
+        "costInUsd": "1.00",
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 0,
+        "sends": 0,
+        "opens": 0,
+        "actionClicks": 0,
+        "documentCompletions": 0,
+        "videoCompletions": 0
+      }
+    ],
+    "demographics": {
+      "900000205": {
+        "MEMBER_SENIORITY": [
+          {
+            "pivotValue": "urn:li:seniority:4",
+            "impressions": 11800,
+            "clicks": 150,
+            "costInUsd": "1330",
+            "oneClickLeads": 14
+          },
+          {
+            "pivotValue": "urn:li:seniority:5",
+            "impressions": 17100,
+            "clicks": 230,
+            "costInUsd": "2150",
+            "oneClickLeads": 24
+          },
+          {
+            "pivotValue": "urn:li:seniority:6",
+            "impressions": 13200,
+            "clicks": 210,
+            "costInUsd": "1700",
+            "oneClickLeads": 26
+          },
+          {
+            "pivotValue": "urn:li:seniority:7",
+            "impressions": 5400,
+            "clicks": 75,
+            "costInUsd": "610",
+            "oneClickLeads": 7
+          },
+          {
+            "pivotValue": "urn:li:seniority:8",
+            "impressions": 3100,
+            "clicks": 40,
+            "costInUsd": "330",
+            "oneClickLeads": 3
+          }
+        ],
+        "MEMBER_JOB_FUNCTION": [
+          {
+            "pivotValue": "urn:li:function:10",
+            "impressions": 30100,
+            "clicks": 430,
+            "costInUsd": "3520",
+            "oneClickLeads": 47
+          },
+          {
+            "pivotValue": "urn:li:function:1",
+            "impressions": 15900,
+            "clicks": 210,
+            "costInUsd": "1720",
+            "oneClickLeads": 22
+          },
+          {
+            "pivotValue": "urn:li:function:18",
+            "impressions": 4300,
+            "clicks": 45,
+            "costInUsd": "480",
+            "oneClickLeads": 3
+          }
+        ]
+      },
+      "900000201": {
+        "MEMBER_SENIORITY": [
+          {
+            "pivotValue": "urn:li:seniority:4",
+            "impressions": 12900,
+            "clicks": 180,
+            "costInUsd": "1310",
+            "oneClickLeads": 18
+          },
+          {
+            "pivotValue": "urn:li:seniority:5",
+            "impressions": 17600,
+            "clicks": 240,
+            "costInUsd": "1890",
+            "oneClickLeads": 27
+          },
+          {
+            "pivotValue": "urn:li:seniority:6",
+            "impressions": 9800,
+            "clicks": 110,
+            "costInUsd": "1190",
+            "oneClickLeads": 11
+          },
+          {
+            "pivotValue": "urn:li:seniority:7",
+            "impressions": 4300,
+            "clicks": 45,
+            "costInUsd": "520",
+            "oneClickLeads": 4
+          },
+          {
+            "pivotValue": "urn:li:seniority:8",
+            "impressions": 2700,
+            "clicks": 25,
+            "costInUsd": "260",
+            "oneClickLeads": 2
+          }
+        ],
+        "MEMBER_JOB_FUNCTION": [
+          {
+            "pivotValue": "urn:li:function:10",
+            "impressions": 25200,
+            "clicks": 340,
+            "costInUsd": "2820",
+            "oneClickLeads": 36
+          },
+          {
+            "pivotValue": "urn:li:function:1",
+            "impressions": 16400,
+            "clicks": 210,
+            "costInUsd": "1690",
+            "oneClickLeads": 22
+          },
+          {
+            "pivotValue": "urn:li:function:18",
+            "impressions": 4100,
+            "clicks": 40,
+            "costInUsd": "450",
+            "oneClickLeads": 2
+          }
+        ]
+      },
+      "900000202": {
+        "MEMBER_SENIORITY": [
+          {
+            "pivotValue": "urn:li:seniority:4",
+            "impressions": 7200,
+            "clicks": 70,
+            "costInUsd": "820",
+            "oneClickLeads": 6
+          },
+          {
+            "pivotValue": "urn:li:seniority:5",
+            "impressions": 11300,
+            "clicks": 120,
+            "costInUsd": "1240",
+            "oneClickLeads": 10
+          },
+          {
+            "pivotValue": "urn:li:seniority:6",
+            "impressions": 10200,
+            "clicks": 125,
+            "costInUsd": "1180",
+            "oneClickLeads": 12
+          },
+          {
+            "pivotValue": "urn:li:seniority:7",
+            "impressions": 5600,
+            "clicks": 80,
+            "costInUsd": "610",
+            "oneClickLeads": 9
+          },
+          {
+            "pivotValue": "urn:li:seniority:8",
+            "impressions": 3800,
+            "clicks": 45,
+            "costInUsd": "420",
+            "oneClickLeads": 4
+          }
+        ],
+        "MEMBER_JOB_FUNCTION": [
+          {
+            "pivotValue": "urn:li:function:10",
+            "impressions": 23800,
+            "clicks": 290,
+            "costInUsd": "2650",
+            "oneClickLeads": 27
+          },
+          {
+            "pivotValue": "urn:li:function:1",
+            "impressions": 11100,
+            "clicks": 120,
+            "costInUsd": "1250",
+            "oneClickLeads": 11
+          },
+          {
+            "pivotValue": "urn:li:function:18",
+            "impressions": 3600,
+            "clicks": 30,
+            "costInUsd": "400",
+            "oneClickLeads": 2
+          }
+        ]
+      }
+    },
+    "organic_posts": [
+      {
+        "post_urn": "urn:li:share:7300000000000000001",
+        "first_line": "Day 1 of the close: what do you check before anything else?",
+        "impressions": 6200,
+        "clicks": 140,
+        "reactions": 96,
+        "comments": 31,
+        "shares": 8
+      },
+      {
+        "post_urn": "urn:li:share:7300000000000000002",
+        "first_line": "Our customers close in 5 working days on average. Here is what changed for them.",
+        "impressions": 8400,
+        "clicks": 160,
+        "reactions": 88,
+        "comments": 12,
+        "shares": 6
+      },
+      {
+        "post_urn": "urn:li:share:7300000000000000003",
+        "first_line": "We are hiring a senior product designer.",
+        "impressions": 3100,
+        "clicks": 45,
+        "reactions": 30,
+        "comments": 2,
+        "shares": 4
+      },
+      {
+        "post_urn": "urn:li:share:7300000000000000004",
+        "first_line": "The last week of the month should not belong to spreadsheets.",
+        "impressions": 5100,
+        "clicks": 95,
+        "reactions": 70,
+        "comments": 18,
+        "shares": 5
+      },
+      {
+        "post_urn": "urn:li:share:7300000000000000005",
+        "first_line": "Product update: new bank feed settings.",
+        "impressions": 2600,
+        "clicks": 20,
+        "reactions": 14,
+        "comments": 1,
+        "shares": 0
+      },
+      {
+        "post_urn": "urn:li:share:7300000000000000006",
+        "first_line": "Join us at our office open house next week.",
+        "impressions": 320,
+        "clicks": 12,
+        "reactions": 20,
+        "comments": 6,
+        "shares": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "note": "Example data: an invented home services company and Google Ads account, not a real business or account. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"cross-platform-budget-allocator\" skill. We only run Google Ads. Rebalance our budget across campaigns with the same total, tell me where more money would work if we raised it, and which channel we should test next.",
+  "business": {"description": "A home services company (heating, cooling and plumbing)", "buyer": "a homeowner with a broken furnace, a leak or a failing AC, searching at the moment of need", "value_per_result": "not given"},
+  "account": {"platform": "Google Ads", "name": "Example home services company", "customer_id": "123-456-7890", "currency": "USD", "time_zone": "America/Denver"},
+  "mode": "rebalance the current total (default)",
+  "windows": {"decision": "2026-09-21 to 2026-10-20", "trend": "2026-07-23 to 2026-09-20", "change": "2026-10-08 to 2026-10-21"},
+  "goal": "most results within the total (no target given)",
+  "limits": "none given; brand search left alone (default)",
+  "connected_for_this_business": ["google-ads"],
+  "data_pulled": {
+    "campaigns_decision_window": [
+      {
+        "campaign_id": "210000000001",
+        "campaign": "Brand | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "TARGET_IMPRESSION_SHARE",
+        "daily_budget": 40,
+        "explicitly_shared": false,
+        "cost": 540,
+        "impressions": 1900,
+        "clicks": 410,
+        "conversions": 62,
+        "conversions_value": 0,
+        "search_impression_share": 0.92,
+        "search_budget_lost_impression_share": 0.02,
+        "search_rank_lost_impression_share": 0.06
+      },
+      {
+        "campaign_id": "210000000002",
+        "campaign": "Furnace Repair | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "daily_budget": 120,
+        "explicitly_shared": false,
+        "cost": 3480,
+        "impressions": 6900,
+        "clicks": 395,
+        "conversions": 58,
+        "conversions_value": 0,
+        "search_impression_share": 0.48,
+        "search_budget_lost_impression_share": 0.21,
+        "search_rank_lost_impression_share": 0.31
+      },
+      {
+        "campaign_id": "210000000003",
+        "campaign": "AC Repair | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "TARGET_CPA",
+        "daily_budget": 90,
+        "explicitly_shared": false,
+        "cost": 2010,
+        "impressions": 5200,
+        "clicks": 238,
+        "conversions": 26,
+        "conversions_value": 0,
+        "search_impression_share": 0.55,
+        "search_budget_lost_impression_share": 0.05,
+        "search_rank_lost_impression_share": 0.4
+      },
+      {
+        "campaign_id": "210000000004",
+        "campaign": "Water Heaters | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "daily_budget": 60,
+        "explicitly_shared": false,
+        "cost": 1740,
+        "impressions": 3600,
+        "clicks": 205,
+        "conversions": 31,
+        "conversions_value": 0,
+        "search_impression_share": 0.62,
+        "search_budget_lost_impression_share": 0.08,
+        "search_rank_lost_impression_share": 0.3
+      },
+      {
+        "campaign_id": "210000000005",
+        "campaign": "Plumbing | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "TARGET_CPA",
+        "daily_budget": 80,
+        "explicitly_shared": false,
+        "cost": 2340,
+        "impressions": 5800,
+        "clicks": 290,
+        "conversions": 39,
+        "conversions_value": 0,
+        "search_impression_share": 0.51,
+        "search_budget_lost_impression_share": 0.03,
+        "search_rank_lost_impression_share": 0.46
+      },
+      {
+        "campaign_id": "210000000006",
+        "campaign": "AC Installation | Search",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "bidding_strategy_type": "MAXIMIZE_CLICKS",
+        "daily_budget": 70,
+        "explicitly_shared": false,
+        "cost": 1650,
+        "impressions": 7400,
+        "clicks": 270,
+        "conversions": 9,
+        "conversions_value": 0,
+        "search_impression_share": 0.38,
+        "search_budget_lost_impression_share": 0.04,
+        "search_rank_lost_impression_share": 0.58
+      },
+      {
+        "campaign_id": "210000000007",
+        "campaign": "PMax | All services",
+        "status": "ENABLED",
+        "advertising_channel_type": "PERFORMANCE_MAX",
+        "bidding_strategy_type": "MAXIMIZE_CONVERSIONS",
+        "daily_budget": 80,
+        "explicitly_shared": false,
+        "cost": 2280,
+        "impressions": 48000,
+        "clicks": 640,
+        "conversions": 33,
+        "conversions_value": 0,
+        "search_impression_share": null,
+        "search_budget_lost_impression_share": null,
+        "search_rank_lost_impression_share": null
+      }
+    ],
+    "campaigns_trend_window": [
+      {"campaign": "Brand | Search", "cost": 1050, "conversions": 118},
+      {"campaign": "Furnace Repair | Search", "cost": 3510, "conversions": 54},
+      {"campaign": "AC Repair | Search", "cost": 5150, "conversions": 75},
+      {"campaign": "Water Heaters | Search", "cost": 3350, "conversions": 59},
+      {"campaign": "Plumbing | Search", "cost": 4580, "conversions": 78},
+      {"campaign": "AC Installation | Search", "cost": 3900, "conversions": 24},
+      {"campaign": "PMax | All services", "cost": 4390, "conversions": 60}
+    ],
+    "change_events_14_days": [
+      {"change_date_time": "2026-10-16 10:17:00", "change_resource_type": "CAMPAIGN", "campaign": "AC Repair | Search", "change": "target CPA $75 -> $70"}
+    ],
+    "budget_simulations": [
+      {
+        "campaign_id": "210000000002",
+        "campaign": "Furnace Repair | Search",
+        "type": "BUDGET",
+        "start_date": "2026-10-14",
+        "end_date": "2026-10-20",
+        "points": [
+          {"budget_amount": 100, "cost": 690, "biddable_conversions": 11.2},
+          {"budget_amount": 120, "cost": 812, "biddable_conversions": 13.4},
+          {"budget_amount": 140, "cost": 930, "biddable_conversions": 15.3},
+          {"budget_amount": 160, "cost": 1040, "biddable_conversions": 16.9},
+          {"budget_amount": 180, "cost": 1140, "biddable_conversions": 18.2}
+        ]
+      },
+      {
+        "campaign_id": "210000000004",
+        "campaign": "Water Heaters | Search",
+        "type": "BUDGET",
+        "start_date": "2026-10-14",
+        "end_date": "2026-10-20",
+        "points": [
+          {"budget_amount": 50, "cost": 352, "biddable_conversions": 6.5},
+          {"budget_amount": 60, "cost": 410, "biddable_conversions": 7.4},
+          {"budget_amount": 70, "cost": 470, "biddable_conversions": 8.3},
+          {"budget_amount": 80, "cost": 525, "biddable_conversions": 9.0}
+        ]
+      }
+    ]
+  },
+  "mode_examples": {
+    "marketing_budget_plan": {
+      "request": "Hey Claude, I just added the \"cross-platform-budget-allocator\" skill. How much should we spend on marketing in 2027? We want $4.2M in revenue. Build the whole marketing budget plan by line and month, with a contingency and rules for moving money during the year. Our CRM export and last year's costs are attached.",
+      "note": "Example data: the same invented home services company, not a real business. The CRM export, costs and commitments are invented; the benchmark is a published survey figure, quoted with its source. Every number in mode_examples.marketing_budget_plan follows from this input and the rebalance above.",
+      "mode": "marketing budget plan",
+      "period": "2027-01 to 2027-12",
+      "goal": {"revenue_target": 4200000},
+      "revenue_needing_no_new_marketing": {"amount": 1250000, "what": "service plan renewals and repeat customers (the user's figure)"},
+      "first_year_value_per_new_customer": 720,
+      "gross_margin": 0.48,
+      "crm_export_by_month": [
+        {"month": "2024-10", "leads_paid": 196, "leads_unpaid": 231, "jobs_paid": 98, "jobs_unpaid": 142, "new_customer_revenue": 171450},
+        {"month": "2024-11", "leads_paid": 239, "leads_unpaid": 253, "jobs_paid": 121, "jobs_unpaid": 158, "new_customer_revenue": 197140},
+        {"month": "2024-12", "leads_paid": 299, "leads_unpaid": 319, "jobs_paid": 157, "jobs_unpaid": 195, "new_customer_revenue": 248260},
+        {"month": "2025-01", "leads_paid": 340, "leads_unpaid": 393, "jobs_paid": 182, "jobs_unpaid": 242, "new_customer_revenue": 298370},
+        {"month": "2025-02", "leads_paid": 287, "leads_unpaid": 314, "jobs_paid": 147, "jobs_unpaid": 191, "new_customer_revenue": 242420},
+        {"month": "2025-03", "leads_paid": 209, "leads_unpaid": 254, "jobs_paid": 108, "jobs_unpaid": 160, "new_customer_revenue": 189990},
+        {"month": "2025-04", "leads_paid": 198, "leads_unpaid": 223, "jobs_paid": 106, "jobs_unpaid": 141, "new_customer_revenue": 171350},
+        {"month": "2025-05", "leads_paid": 216, "leads_unpaid": 247, "jobs_paid": 110, "jobs_unpaid": 158, "new_customer_revenue": 191580},
+        {"month": "2025-06", "leads_paid": 282, "leads_unpaid": 327, "jobs_paid": 144, "jobs_unpaid": 197, "new_customer_revenue": 251720},
+        {"month": "2025-07", "leads_paid": 486, "leads_unpaid": 560, "jobs_paid": 253, "jobs_unpaid": 338, "new_customer_revenue": 415940},
+        {"month": "2025-08", "leads_paid": 292, "leads_unpaid": 341, "jobs_paid": 153, "jobs_unpaid": 212, "new_customer_revenue": 253820},
+        {"month": "2025-09", "leads_paid": 207, "leads_unpaid": 250, "jobs_paid": 109, "jobs_unpaid": 153, "new_customer_revenue": 181000},
+        {"month": "2025-10", "leads_paid": 206, "leads_unpaid": 249, "jobs_paid": 108, "jobs_unpaid": 155, "new_customer_revenue": 189380},
+        {"month": "2025-11", "leads_paid": 251, "leads_unpaid": 276, "jobs_paid": 134, "jobs_unpaid": 170, "new_customer_revenue": 213140},
+        {"month": "2025-12", "leads_paid": 310, "leads_unpaid": 344, "jobs_paid": 155, "jobs_unpaid": 216, "new_customer_revenue": 261770},
+        {"month": "2026-01", "leads_paid": 356, "leads_unpaid": 403, "jobs_paid": 180, "jobs_unpaid": 248, "new_customer_revenue": 312280},
+        {"month": "2026-02", "leads_paid": 289, "leads_unpaid": 348, "jobs_paid": 148, "jobs_unpaid": 215, "new_customer_revenue": 265010},
+        {"month": "2026-03", "leads_paid": 228, "leads_unpaid": 274, "jobs_paid": 123, "jobs_unpaid": 172, "new_customer_revenue": 211130},
+        {"month": "2026-04", "leads_paid": 212, "leads_unpaid": 225, "jobs_paid": 111, "jobs_unpaid": 139, "new_customer_revenue": 182300},
+        {"month": "2026-05", "leads_paid": 238, "leads_unpaid": 268, "jobs_paid": 123, "jobs_unpaid": 168, "new_customer_revenue": 215360},
+        {"month": "2026-06", "leads_paid": 308, "leads_unpaid": 326, "jobs_paid": 161, "jobs_unpaid": 198, "new_customer_revenue": 255420},
+        {"month": "2026-07", "leads_paid": 354, "leads_unpaid": 404, "jobs_paid": 181, "jobs_unpaid": 247, "new_customer_revenue": 302260},
+        {"month": "2026-08", "leads_paid": 335, "leads_unpaid": 354, "jobs_paid": 171, "jobs_unpaid": 214, "new_customer_revenue": 276420},
+        {"month": "2026-09", "leads_paid": 236, "leads_unpaid": 252, "jobs_paid": 122, "jobs_unpaid": 157, "new_customer_revenue": 197700}
+      ],
+      "costs_last_12_months": {
+        "people": 168000,
+        "agencies_and_freelancers": 36000,
+        "tools_and_software": 9600,
+        "content_and_creative": 14400,
+        "events_and_sponsorships": 18000,
+        "paid_media_by_month_google_ads": {"2025-10": 12440, "2025-11": 12930, "2025-12": 14260, "2026-01": 15120, "2026-02": 14660, "2026-03": 12350, "2026-04": 11470, "2026-05": 12310, "2026-06": 14170, "2026-07": 15570, "2026-08": 15030, "2026-09": 12270}
+      },
+      "commitments_2027": {
+        "people": {"amount": 174000, "what": "marketing manager and coordinator, approved raises"},
+        "agencies_and_freelancers": {"amount": 36000, "what": "Google Ads management retainer, $3,000 a month, renews in January"},
+        "tools_and_software": {"amount": 10800, "what": "CRM, call tracking and website hosting after the price rise"},
+        "content_and_creative": {"amount": 18000, "what": "the user's plan: one video shoot and monthly blog posts"},
+        "events_and_sponsorships": {
+          "amount": 19500,
+          "by_month": {"2027-03": 9000, "2027-09": 10500},
+          "what": "spring and fall home shows, booked"
+        }
+      },
+      "benchmark": {"share_of_revenue": 0.077, "source": "Gartner 2025 CMO Spend Survey (press release, May 2025)", "who_was_surveyed": "402 CMOs and marketing leaders in North America, the UK and Europe, most at companies with more than $1 billion in revenue"},
+      "paid_plan_from_this_run": "the rebalance in this sample (recommended split, projection and 'if the total can grow'), run on the same Google Ads account",
+      "connected_for_this_plan": ["google-ads"],
+      "not_connected": ["Search Console", "DataForSEO", "GA4", "Google Sheets"]
+    }
+  }
+}

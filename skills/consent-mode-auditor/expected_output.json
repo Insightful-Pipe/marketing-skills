@@ -1,0 +1,836 @@
+{
+  "header": {
+    "site": "https://www.example.com",
+    "business": "Example Booking Software",
+    "consent_countries": [
+      "GB",
+      "IE",
+      "DE",
+      "NL",
+      "FR",
+      "CH"
+    ],
+    "baseline_countries": [
+      "US",
+      "CA",
+      "AU"
+    ],
+    "windows": {
+      "search_console_and_ga4": {
+        "start": "2026-09-28",
+        "end": "2026-10-25"
+      },
+      "google_ads_7_days": {
+        "start": "2026-10-21",
+        "end": "2026-10-27"
+      },
+      "google_ads_30_days": {
+        "start": "2026-09-28",
+        "end": "2026-10-27"
+      }
+    },
+    "inputs_used": [
+      "HAR recordings (pasted)",
+      "consent platform report (pasted)",
+      "google-tag-manager",
+      "google-search-console",
+      "google-analytics",
+      "google-ads"
+    ],
+    "mode": "advanced",
+    "overall_result": "fail",
+    "currency": "USD",
+    "note": "Technical check against Google's consent mode rules, not legal advice. Decline shares, unseen sessions, unseen conversions and GA4 modelling are estimates."
+  },
+  "scorecard": [
+    {
+      "area": "1. Before a choice",
+      "result": "fail",
+      "key_number": "2 tracker hits and 5 cookies before a click",
+      "why": "The Meta pixel fires on a fresh load in Germany and the UK, and the UK load also sets _ga and _gcl_au."
+    },
+    {
+      "area": "2. Default and update signals",
+      "result": "fail",
+      "key_number": "2 of 4 signals never granted on Accept all",
+      "why": "Accept all grants ad_storage and analytics_storage only; returning visitors' first hit goes out denied."
+    },
+    {
+      "area": "3. Regions",
+      "result": "fail",
+      "key_number": "1 consent country granted by default",
+      "why": "GB is missing from the consent tag's denied-by-default list."
+    },
+    {
+      "area": "4. Tag Manager cause",
+      "result": "fail",
+      "key_number": "1 ungated non-Google tag",
+      "why": "The banner fires on Consent Initialization, but the Meta pixel is custom HTML with no consent setting."
+    },
+    {
+      "area": "5. What declines cost",
+      "result": "warn",
+      "key_number": "about 115 unseen Ads conversions a month in countries below modelling",
+      "why": "91 observed conversions in IE, DE, NL, FR, CH on $7,130 of spend, with no modelling to fill the rest."
+    },
+    {
+      "area": "6. Modelling eligibility",
+      "result": "warn",
+      "key_number": "5 consent countries under 700 clicks in 7 days; GA4 5 of 7 days",
+      "why": "Only GB clears the Google Ads threshold; GA4 behavioural modelling is borderline on weekends."
+    },
+    {
+      "area": "7. Personal data in URLs",
+      "result": "fail",
+      "key_number": "2 URL patterns, 12 page views",
+      "why": "The signup welcome page carries the email; the demo thank-you page carries name and phone."
+    }
+  ],
+  "signal_table": [
+    {
+      "recording": "A",
+      "country": "DE",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 610,
+      "gcs": "G100",
+      "gcd_letters": "pppp",
+      "decoded": {
+        "ad_storage": "denied by default, no update",
+        "analytics_storage": "denied by default, no update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "A",
+      "country": "DE",
+      "hit": "googleads.g.doubleclick.net/pagead/viewthroughconversion/123456789/",
+      "event": "conversion ping",
+      "t_ms": 640,
+      "gcs": "G100",
+      "gcd_letters": "pppp",
+      "decoded": {
+        "ad_storage": "denied by default, no update",
+        "analytics_storage": "denied by default, no update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "B",
+      "country": "DE",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 600,
+      "gcs": "G100",
+      "gcd_letters": "qqqq",
+      "decoded": {
+        "ad_storage": "denied by default, denied by the update",
+        "analytics_storage": "denied by default, denied by the update",
+        "ad_user_data": "denied by default, denied by the update",
+        "ad_personalization": "denied by default, denied by the update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "C",
+      "country": "DE",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 620,
+      "gcs": "G111",
+      "gcd_letters": "rrpp",
+      "decoded": {
+        "ad_storage": "denied by default, granted by the update",
+        "analytics_storage": "denied by default, granted by the update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "LinkedIn Insight tag (px.ads.linkedin.com/collect)",
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "C",
+      "country": "DE",
+      "hit": "googleads.g.doubleclick.net/pagead/viewthroughconversion/123456789/",
+      "event": "conversion ping",
+      "t_ms": 650,
+      "gcs": "G111",
+      "gcd_letters": "rrpp",
+      "decoded": {
+        "ad_storage": "denied by default, granted by the update",
+        "analytics_storage": "denied by default, granted by the update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "LinkedIn Insight tag (px.ads.linkedin.com/collect)",
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "D",
+      "country": "DE",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 420,
+      "gcs": "G100",
+      "gcd_letters": "pppp",
+      "decoded": {
+        "ad_storage": "denied by default, no update",
+        "analytics_storage": "denied by default, no update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "D",
+      "country": "DE",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "user_engagement",
+      "t_ms": 2600,
+      "gcs": "G111",
+      "gcd_letters": "rrpp",
+      "decoded": {
+        "ad_storage": "denied by default, granted by the update",
+        "analytics_storage": "denied by default, granted by the update",
+        "ad_user_data": "denied by default, no update",
+        "ad_personalization": "denied by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "A-GB",
+      "country": "GB",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 600,
+      "gcs": "G111",
+      "gcd_letters": "tttt",
+      "decoded": {
+        "ad_storage": "granted by default, no update",
+        "analytics_storage": "granted by default, no update",
+        "ad_user_data": "granted by default, no update",
+        "ad_personalization": "granted by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "A-GB",
+      "country": "GB",
+      "hit": "googleads.g.doubleclick.net/pagead/viewthroughconversion/123456789/",
+      "event": "conversion ping",
+      "t_ms": 630,
+      "gcs": "G111",
+      "gcd_letters": "tttt",
+      "decoded": {
+        "ad_storage": "granted by default, no update",
+        "analytics_storage": "granted by default, no update",
+        "ad_user_data": "granted by default, no update",
+        "ad_personalization": "granted by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    },
+    {
+      "recording": "E",
+      "country": "US",
+      "hit": "region1.google-analytics.com/g/collect",
+      "event": "page_view",
+      "t_ms": 560,
+      "gcs": "G111",
+      "gcd_letters": "tttt",
+      "decoded": {
+        "ad_storage": "granted by default, no update",
+        "analytics_storage": "granted by default, no update",
+        "ad_user_data": "granted by default, no update",
+        "ad_personalization": "granted by default, no update"
+      },
+      "other_trackers_in_recording": [
+        "Meta pixel PageView (www.facebook.com/tr/)"
+      ]
+    }
+  ],
+  "area_details": {
+    "1_before_a_choice": [
+      {
+        "recording": "A",
+        "country": "DE",
+        "other_trackers_before_choice": [
+          "Meta pixel PageView (www.facebook.com/tr/)"
+        ],
+        "result_trackers": "fail",
+        "ad_or_analytics_cookies_before_choice": [
+          "_fbp"
+        ],
+        "result_cookies": "fail",
+        "google_hits": [
+          {
+            "host": "region1.google-analytics.com",
+            "gcs": "G100",
+            "gcd_letters": "pppp"
+          },
+          {
+            "host": "googleads.g.doubleclick.net",
+            "gcs": "G100",
+            "gcd_letters": "pppp"
+          }
+        ]
+      },
+      {
+        "recording": "A-GB",
+        "country": "GB",
+        "other_trackers_before_choice": [
+          "Meta pixel PageView (www.facebook.com/tr/)"
+        ],
+        "result_trackers": "fail",
+        "ad_or_analytics_cookies_before_choice": [
+          "_fbp",
+          "_ga",
+          "_ga_EXAMPLE01",
+          "_gcl_au"
+        ],
+        "result_cookies": "fail",
+        "google_hits": [
+          {
+            "host": "region1.google-analytics.com",
+            "gcs": "G111",
+            "gcd_letters": "tttt"
+          },
+          {
+            "host": "googleads.g.doubleclick.net",
+            "gcs": "G111",
+            "gcd_letters": "tttt"
+          }
+        ]
+      }
+    ],
+    "2_signals": [
+      {
+        "check": "All four signals set",
+        "result": "pass",
+        "evidence": "every Google hit in A to E carries a letter for all four signals; none is 'l'"
+      },
+      {
+        "check": "Default before the first hit",
+        "result": "pass",
+        "evidence": "the first Google hits in A carry gcs and gcd with default letters"
+      },
+      {
+        "check": "Accept all grants everything",
+        "result": "fail",
+        "evidence": "after Accept all (C) the hits read gcd letters rrpp: ad_personalization, ad_user_data stay 'p' (denied by default, never updated) while ad_storage and analytics_storage turn 'r'"
+      },
+      {
+        "check": "Reject all is sent",
+        "result": "pass",
+        "evidence": "after Reject all (B) the letters are qqqq ('q', denied by the update)"
+      },
+      {
+        "check": "Return visit",
+        "result": "warn",
+        "evidence": "in D the first hit at 420 ms is G100 (pppp); the next at 2600 ms is G111 (rrpp): the stored choice arrives after the first hit"
+      },
+      {
+        "check": "Other trackers after Reject all",
+        "result": "fail",
+        "evidence": "Meta pixel PageView (www.facebook.com/tr/)"
+      }
+    ],
+    "3_regions": {
+      "consent_countries_granted_by_default": [
+        "GB"
+      ],
+      "region_list_in_consent_tag": {
+        "tag": "Consent - Banner",
+        "parameter": "default_denied_regions",
+        "codes": 31,
+        "consent_countries_missing": [
+          "GB"
+        ]
+      },
+      "non_consent_country": "recording E (US): first Google hit G111, letters tttt: granted by default with no banner, the business's choice"
+    },
+    "4_tag_manager": [
+      {
+        "check": "Container matches the site",
+        "result": "pass",
+        "evidence": "GTM-EXMPL12 is the gtm.js id in every recording"
+      },
+      {
+        "check": "Consent setup fires first",
+        "result": "pass",
+        "evidence": "'Consent - Banner' fires on Consent Initialization (2147479572)"
+      },
+      {
+        "check": "Non-Google tags gated",
+        "result": "fail",
+        "evidence": "'Meta - Pixel base' (tag 8, html, All Pages) has no consentSettings and carries the pixel id seen in A, B and A-GB"
+      },
+      {
+        "check": "Region list",
+        "result": "information (graded in area 3)",
+        "evidence": "default_denied_regions lists 31 codes; missing: GB"
+      }
+    ],
+    "5_what_declines_cost": {
+      "baseline": {
+        "countries": [
+          "US",
+          "CA",
+          "AU"
+        ],
+        "ga4_google_organic_sessions": 13170,
+        "search_console_clicks": 12200,
+        "ratio": 1.08
+      },
+      "by_country": [
+        {
+          "country": "GB",
+          "search_console_clicks": 3900,
+          "ga4_google_organic_sessions": 4080,
+          "coverage": 0.969,
+          "decline_share_estimate_pct": 3.1,
+          "decline_share_consent_platform_analytics_pct": 42.7,
+          "decline_share_consent_platform_marketing_pct": 44.8,
+          "gap_points": 39.6,
+          "gap_reading": "coverage far above the banner's acceptance: Google hits are granted before a choice (area 3)",
+          "ga4_sessions_all_sources": 11995,
+          "unseen_ga4_sessions_estimate": 382,
+          "ads_spend_30_days": 9800,
+          "ads_conversions_30_days": 210.0,
+          "unseen_ads_conversions_estimate": "not estimated",
+          "unseen_conversions_note": "not estimated: granted by default, so tags see people before they choose. Fixing the region will hide about 45% of observed conversions here; with 910 clicks in 7 days modelling will fill part of them",
+          "ads_clicks_last_7_days": 910,
+          "meets_700_click_threshold": true
+        },
+        {
+          "country": "IE",
+          "search_console_clicks": 620,
+          "ga4_google_organic_sessions": 400,
+          "coverage": 0.598,
+          "decline_share_estimate_pct": 40.2,
+          "decline_share_consent_platform_analytics_pct": 45.3,
+          "decline_share_consent_platform_marketing_pct": 47.4,
+          "gap_points": 5.1,
+          "gap_reading": "within 10 points",
+          "ga4_sessions_all_sources": 1176,
+          "unseen_ga4_sessions_estimate": 792,
+          "ads_spend_30_days": 1700,
+          "ads_conversions_30_days": 26.0,
+          "unseen_ads_conversions_estimate": 23.5,
+          "unseen_conversions_note": "missing from bidding (below the 7-day threshold)",
+          "ads_clicks_last_7_days": 150,
+          "meets_700_click_threshold": false
+        },
+        {
+          "country": "DE",
+          "search_console_clicks": 1450,
+          "ga4_google_organic_sessions": 780,
+          "coverage": 0.498,
+          "decline_share_estimate_pct": 50.2,
+          "decline_share_consent_platform_analytics_pct": 58.5,
+          "decline_share_consent_platform_marketing_pct": 60.7,
+          "gap_points": 8.4,
+          "gap_reading": "within 10 points",
+          "ga4_sessions_all_sources": 2293,
+          "unseen_ga4_sessions_estimate": 2309,
+          "ads_spend_30_days": 3100,
+          "ads_conversions_30_days": 38.0,
+          "unseen_ads_conversions_estimate": 58.8,
+          "unseen_conversions_note": "missing from bidding (below the 7-day threshold)",
+          "ads_clicks_last_7_days": 270,
+          "meets_700_click_threshold": false
+        },
+        {
+          "country": "NL",
+          "search_console_clicks": 540,
+          "ga4_google_organic_sessions": 330,
+          "coverage": 0.566,
+          "decline_share_estimate_pct": 43.4,
+          "decline_share_consent_platform_analytics_pct": 48.9,
+          "decline_share_consent_platform_marketing_pct": 51.3,
+          "gap_points": 5.6,
+          "gap_reading": "within 10 points",
+          "ga4_sessions_all_sources": 970,
+          "unseen_ga4_sessions_estimate": 743,
+          "ads_spend_30_days": 1250,
+          "ads_conversions_30_days": 17.0,
+          "unseen_ads_conversions_estimate": 17.9,
+          "unseen_conversions_note": "missing from bidding (below the 7-day threshold)",
+          "ads_clicks_last_7_days": 110,
+          "meets_700_click_threshold": false
+        },
+        {
+          "country": "FR",
+          "search_console_clicks": 310,
+          "ga4_google_organic_sessions": 140,
+          "coverage": 0.418,
+          "decline_share_estimate_pct": 58.2,
+          "decline_share_consent_platform_analytics_pct": 59.6,
+          "decline_share_consent_platform_marketing_pct": 61.5,
+          "gap_points": 1.4,
+          "gap_reading": "within 10 points",
+          "ga4_sessions_all_sources": 411,
+          "unseen_ga4_sessions_estimate": 571,
+          "ads_spend_30_days": 820,
+          "ads_conversions_30_days": 8.0,
+          "unseen_ads_conversions_estimate": 12.8,
+          "unseen_conversions_note": "missing from bidding (below the 7-day threshold)",
+          "ads_clicks_last_7_days": 70,
+          "meets_700_click_threshold": false
+        },
+        {
+          "country": "CH",
+          "search_console_clicks": 60,
+          "ga4_google_organic_sessions": 35,
+          "coverage": "not graded",
+          "decline_share_estimate_pct": "not graded",
+          "decline_share_consent_platform_analytics_pct": 52.2,
+          "decline_share_consent_platform_marketing_pct": 54.4,
+          "gap_points": null,
+          "gap_reading": "not graded (under 100 clicks)",
+          "ga4_sessions_all_sources": 104,
+          "unseen_ga4_sessions_estimate": "not graded",
+          "ads_spend_30_days": 260,
+          "ads_conversions_30_days": 2.0,
+          "unseen_ads_conversions_estimate": 2.4,
+          "unseen_conversions_note": "missing from bidding (below the 7-day threshold)",
+          "ads_clicks_last_7_days": 12,
+          "meets_700_click_threshold": false
+        }
+      ],
+      "below_modelling": {
+        "countries": [
+          "IE",
+          "DE",
+          "NL",
+          "FR",
+          "CH"
+        ],
+        "ads_spend_30_days": 7130,
+        "observed_conversions": 91.0,
+        "unseen_conversions_estimate": 115.4,
+        "unseen_share_of_observed_pct": 126.8,
+        "result": "warn"
+      },
+      "assumption": "People who decline browse and convert like people who accept."
+    },
+    "6_modelling": {
+      "google_ads": {
+        "threshold": "700 clicks in 7 days per country",
+        "result": "warn",
+        "by_country": [
+          {
+            "country": "GB",
+            "clicks_last_7_days": 910,
+            "ads_spend_30_days": 9800,
+            "meets": true
+          },
+          {
+            "country": "IE",
+            "clicks_last_7_days": 150,
+            "ads_spend_30_days": 1700,
+            "meets": false
+          },
+          {
+            "country": "DE",
+            "clicks_last_7_days": 270,
+            "ads_spend_30_days": 3100,
+            "meets": false
+          },
+          {
+            "country": "NL",
+            "clicks_last_7_days": 110,
+            "ads_spend_30_days": 1250,
+            "meets": false
+          },
+          {
+            "country": "FR",
+            "clicks_last_7_days": 70,
+            "ads_spend_30_days": 820,
+            "meets": false
+          },
+          {
+            "country": "CH",
+            "clicks_last_7_days": 12,
+            "ads_spend_30_days": 260,
+            "meets": false
+          }
+        ]
+      },
+      "ga4_behavioural": {
+        "result": "warn",
+        "mode": "advanced",
+        "deny_by_default_countries": [
+          "IE",
+          "DE",
+          "NL",
+          "FR",
+          "CH"
+        ],
+        "group_decline_share_pct": 47.7,
+        "group_share_from": "coverage check on IE, DE, NL, FR (CH under 100 clicks, so not graded, but its events count)",
+        "granted_user_days_of_28": 28,
+        "last_7_days": [
+          {
+            "date": "2026-10-19",
+            "observed_events_deny_by_default_countries": 1246,
+            "estimated_denied_events": 1134,
+            "meets_1000": true
+          },
+          {
+            "date": "2026-10-20",
+            "observed_events_deny_by_default_countries": 1316,
+            "estimated_denied_events": 1198,
+            "meets_1000": true
+          },
+          {
+            "date": "2026-10-21",
+            "observed_events_deny_by_default_countries": 1238,
+            "estimated_denied_events": 1127,
+            "meets_1000": true
+          },
+          {
+            "date": "2026-10-22",
+            "observed_events_deny_by_default_countries": 1310,
+            "estimated_denied_events": 1193,
+            "meets_1000": true
+          },
+          {
+            "date": "2026-10-23",
+            "observed_events_deny_by_default_countries": 1275,
+            "estimated_denied_events": 1161,
+            "meets_1000": true
+          },
+          {
+            "date": "2026-10-24",
+            "observed_events_deny_by_default_countries": 734,
+            "estimated_denied_events": 668,
+            "meets_1000": false
+          },
+          {
+            "date": "2026-10-25",
+            "observed_events_deny_by_default_countries": 766,
+            "estimated_denied_events": 697,
+            "meets_1000": false
+          }
+        ],
+        "days_meeting_1000": 5,
+        "confirm_in": "GA4 Admin, Reporting identity"
+      }
+    },
+    "7_personal_data_in_urls": {
+      "result": "fail",
+      "patterns": [
+        {
+          "path": "/signup/welcome/",
+          "parameters": [
+            "email"
+          ],
+          "at_sign_in_value": true,
+          "rows": 6,
+          "page_views": 9,
+          "example": "/signup/welcome/?email=[redacted]"
+        },
+        {
+          "path": "/demo/thanks/",
+          "parameters": [
+            "name",
+            "phone"
+          ],
+          "at_sign_in_value": false,
+          "rows": 3,
+          "page_views": 3,
+          "example": "/demo/thanks/?name=[redacted]&phone=[redacted]"
+        }
+      ],
+      "har_dl_params_flagged": 0
+    }
+  },
+  "top_fixes": [
+    {
+      "rank": 1,
+      "tier": 1,
+      "result": "fail",
+      "fix": "Gate the Meta pixel behind marketing consent",
+      "what_to_do": "Add a consent requirement (ad_storage) to the GTM tag 'Meta - Pixel base' so it waits for a marketing yes, then preview and publish the container.",
+      "evidence": "Meta pixel PageView sent before any click in A (DE) and A-GB, and again after Reject all in B; _fbp cookie set before a choice. GTM tag 8 is custom HTML on All Pages with no consentSettings.",
+      "ads_spend_30_days_affected": 16930,
+      "page_views_affected": 0,
+      "who": "I can do this now (GTM consent setting, after your yes; you publish)"
+    },
+    {
+      "rank": 2,
+      "tier": 1,
+      "result": "fail",
+      "fix": "Deny by default in the UK",
+      "what_to_do": "Add GB to the default_denied_regions setting of the GTM tag 'Consent - Banner' (or the matching region setting in the consent platform), so UK visitors start denied like the EEA, then preview and publish the container.",
+      "evidence": "A-GB first hit is G111 with letters 13t3t3t3t5 and _ga, _gcl_au and _fbp are set before a choice; the region list has 31 codes and no GB. UK coverage 0.969 against a banner that 57.3% of UK visitors accept for analytics.",
+      "ads_spend_30_days_affected": 9800,
+      "page_views_affected": 0,
+      "who": "do this in GTM (the consent tag's settings) or the consent platform"
+    },
+    {
+      "rank": 3,
+      "tier": 1,
+      "result": "fail",
+      "fix": "Keep personal data out of page URLs",
+      "what_to_do": "Stop the signup and demo forms from putting the email, name and phone in the redirect URL (post them or keep them server side), and turn on data redaction for email and these query parameters in the GA4 web stream.",
+      "evidence": "/signup/welcome/?email=[redacted]: 6 rows, 9 page views; /demo/thanks/?name=[redacted]&phone=[redacted]: 3 rows, 3 page views",
+      "ads_spend_30_days_affected": 0,
+      "page_views_affected": 12,
+      "who": "do this in the site code and GA4"
+    },
+    {
+      "rank": 4,
+      "tier": 2,
+      "result": "fail",
+      "fix": "Send ad_user_data and ad_personalization on Accept all",
+      "what_to_do": "Switch on the consent mode v2 signals in the consent platform (or add them to its update call) so Accept all grants all four types.",
+      "evidence": "after Accept all (C) the hits read gcd letters rrpp: ad_personalization, ad_user_data stay 'p' (denied by default, never updated) while ad_storage and analytics_storage turn 'r'",
+      "ads_spend_30_days_affected": 16930,
+      "page_views_affected": 0,
+      "who": "do this in the consent platform"
+    },
+    {
+      "rank": 5,
+      "tier": 2,
+      "result": "warn",
+      "fix": "Wait for the stored choice",
+      "what_to_do": "Add wait_for_update: 500 to the consent default so a returning visitor's first hit carries their stored choice.",
+      "evidence": "in D the first hit at 420 ms is G100 (pppp); the next at 2600 ms is G111 (rrpp): the stored choice arrives after the first hit",
+      "ads_spend_30_days_affected": 16930,
+      "page_views_affected": 0,
+      "who": "do this in the consent platform or GTM consent tag"
+    }
+  ],
+  "other_fixes": [
+    {
+      "rank": 6,
+      "tier": 3,
+      "result": "warn",
+      "fix": "Plan for countries below Google Ads modelling",
+      "what_to_do": "Judge IE, DE, NL, FR, CH on the estimated conversions, not the observed ones, and fix Accept all first: accepted visitors are the only data these countries get.",
+      "evidence": "IE 150, DE 270, NL 110, FR 70, CH 12 clicks in 7 days (threshold 700); 91 observed conversions in 30 days, about 115 more estimated unseen",
+      "ads_spend_30_days_affected": 7130,
+      "page_views_affected": 0,
+      "who": "do this in Google Ads reporting"
+    },
+    {
+      "rank": 7,
+      "tier": 3,
+      "result": "warn",
+      "fix": "Watch GA4 behavioural modelling",
+      "what_to_do": "Estimated denied events reach 1,000 on weekdays but not weekends; confirm in GA4 Admin, Reporting identity, whether blended data is available before relying on modelled GA4 numbers.",
+      "evidence": "5 of the last 7 days at 1,000 or more estimated denied events; granted users at 1,000 or more on 28 of 28 days",
+      "ads_spend_30_days_affected": 0,
+      "page_views_affected": 0,
+      "who": "check in GA4"
+    }
+  ],
+  "banner_suggestions": {
+    "suggestions": [
+      {
+        "signal": "Banner shown only in English; analytics acceptance DE 41.5%, FR 40.4% against the consent countries' overall acceptance of 52.2%",
+        "suggestion": "Translate the banner into de, fr and show it in the visitor's browser language.",
+        "countries": [
+          {
+            "country": "DE",
+            "languages": [
+              "de"
+            ],
+            "analytics_acceptance_pct": 41.5,
+            "points_below_average": 10.7
+          },
+          {
+            "country": "FR",
+            "languages": [
+              "fr"
+            ],
+            "analytics_acceptance_pct": 40.4,
+            "points_below_average": 11.8
+          }
+        ]
+      },
+      {
+        "signal": "Mobile and tablet analytics acceptance 46.3% against desktop 60.4% (14.1 points lower)",
+        "suggestion": "Check the banner on a phone: Accept all and Reject all both visible without scrolling, and nothing covering the Book a demo or Start buttons."
+      },
+      {
+        "signal": "Always",
+        "suggestion": "Say in plain words what is measured and why (booking-page analytics and ad measurement), and ask again only after the stored choice expires."
+      }
+    ],
+    "no_choice": {
+      "no_choice_share_pct": 18.5,
+      "threshold_pct": 25,
+      "reading": "below the threshold, no change suggested"
+    },
+    "never": "No hidden or smaller Reject all, no pre-ticked boxes, no scrolling as consent, no cookie wall, no colours that push Accept."
+  },
+  "fix_offered": {
+    "action": "google-tag-manager update_tag",
+    "status": "not run, waiting for your yes",
+    "body": {
+      "account_id": "1000000001",
+      "container_id": "20000001",
+      "gtm_workspace_id": "<from get_workspaces>",
+      "tag_id": "8",
+      "name": "Meta - Pixel base",
+      "type": "html",
+      "parameter": [
+        {
+          "type": "template",
+          "key": "html",
+          "value": "<script>/* Meta pixel base code, fbq('init', '1000000000000002'); fbq('track', 'PageView'); */</script>"
+        }
+      ],
+      "firingTriggerId": [
+        "2147479553"
+      ],
+      "consentSettings": {
+        "consentStatus": "needed",
+        "consentType": {
+          "type": "list",
+          "list": [
+            {
+              "type": "template",
+              "value": "ad_storage"
+            }
+          ]
+        }
+      }
+    },
+    "after": "The change lands in the workspace draft; preview and publish the container in Tag Manager."
+  },
+  "unknowns_and_skipped": [
+    "CH: 60 Search Console clicks, under 100, so its coverage is not graded; the consent platform's shares are used for it.",
+    "No recording was made from CH, IE, NL or FR; their region state comes from the consent tag's region list."
+  ],
+  "go_deeper": [
+    "gtm-container-auditor for the full tag review (if installed)",
+    "conversion-tracking-auditor for what Google Ads counts (if installed)",
+    "ga4-property-audit for the GA4 setup (if installed)",
+    "privacy-first-targeting-strategist for a plan with less tracking (if installed)"
+  ]
+}

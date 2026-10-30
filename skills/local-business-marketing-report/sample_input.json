@@ -1,0 +1,795 @@
+{
+  "note": "Example data: an invented pizza restaurant in an invented Ohio town, not a real business. The name, address, phone (555-01xx), domain (.example), ids, reviews and every number are made up. Every number in expected_output.json follows from this input. Reviewer names are left out, as the skill never prints them.",
+  "request": "Hey Claude, I just added the \"local-business-marketing-report\" skill. Build the local report for Brindle Oak Pizza from our Business Profile and Search Console, then a 90-day marketing plan on top of it. We're a pizza place in Fernhollow, Ohio (zip 43999, and we deliver to 43998 too). Large pizzas, the family meal deal and wings bring in most of the money; the average order is $32 and about 68% of it is left after food cost. Mondays and Tuesdays are slow, December is our best month and January and February are dead, and we could take about 40 more orders a week without hiring. I have 4 hours a week and my shift manager has 1, and $250 a month for November, December and January. There's a gym two doors down, the high school is on our street and there's an office park on Route 9. The town's Winter Lights festival is Saturday December 12, and the booster club wants a fundraiser night on Thursday December 10. We boosted Facebook posts last spring and handed out flyers once, but couldn't tell what either brought in. Goal: 25 more orders a week on Mondays and Tuesdays. No Google Ads for this business; GA4 is connected. We're closed on Christmas Day.",
+  "business": {
+    "name": "Brindle Oak Pizza",
+    "city": "Fernhollow, OH, US",
+    "primary_category": "Pizza restaurant",
+    "how_customers_buy": "storefront: dine-in and pickup, plus delivery to 43999 and 43998 (stated by the user)"
+  },
+  "sources": {
+    "google_business_profile": "Brindle Oak Pizza (one location)",
+    "search_console": "https://www.brindleoakpizza.example/",
+    "google_analytics": "properties/<property_id>",
+    "google_ads": "none for this business",
+    "callrail": "not connected",
+    "dataforseo": "not connected",
+    "google_sheets": "not connected"
+  },
+  "run_date": "2026-10-30",
+  "brand_terms": "brindle ?oak ?pizza",
+  "local_terms": "near me|nearby|open now|\\bfernhollow\\b|ohio|43999",
+  "brief_described_by_owner": {
+    "money_items": [
+      "large pizzas",
+      "family meal deal",
+      "wings"
+    ],
+    "average_ticket": 32.0,
+    "gross_margin": 0.68,
+    "how_customers_buy": "come to us, and we deliver",
+    "area": "Fernhollow, postal codes 43999 and 43998; a gym two doors down, the high school on our street, an office park on Route 9",
+    "slow_times": "Mondays and Tuesdays; January and February",
+    "busy_times": "December",
+    "spare_capacity": "about 40 more orders a week without hiring",
+    "hours_a_week": { "owner": 4.0, "shift manager": 1.0 },
+    "cash_a_month": { "2026-11": 250, "2026-12": 250, "2027-01": 250 },
+    "tried": "boosted Facebook posts last spring and one flyer drop; neither could be counted",
+    "goal": "25 more orders a week on Mondays and Tuesdays",
+    "dated_moments": {
+      "Thanksgiving Eve": "2026-11-25",
+      "booster club fundraiser night (asked for)": "2026-12-10",
+      "Winter Lights festival": "2026-12-12",
+      "school winter break": "2026-12-21 to 2027-01-01",
+      "closed": "2026-12-25"
+    }
+  },
+  "data_pulled": {
+    "get_location_details": {
+      "title": "Brindle Oak Pizza",
+      "storefrontAddress": {
+        "regionCode": "US",
+        "postalCode": "43999",
+        "administrativeArea": "OH",
+        "locality": "Fernhollow",
+        "addressLines": [
+          "212 Brindle Oak Road"
+        ]
+      },
+      "phoneNumbers": { "primaryPhone": "(740) 555-0142" },
+      "websiteUri": "https://www.brindleoakpizza.example/",
+      "categories": {
+        "primaryCategory": { "displayName": "Pizza restaurant" },
+        "additionalCategories": [
+          { "displayName": "Pizza delivery" },
+          { "displayName": "Italian restaurant" },
+          { "displayName": "Takeout restaurant" }
+        ]
+      },
+      "regularHours": {
+        "periods": [
+          {
+            "openDay": "MONDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "MONDAY",
+            "closeTime": { "hours": 22 }
+          },
+          {
+            "openDay": "TUESDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "TUESDAY",
+            "closeTime": { "hours": 22 }
+          },
+          {
+            "openDay": "WEDNESDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "WEDNESDAY",
+            "closeTime": { "hours": 22 }
+          },
+          {
+            "openDay": "THURSDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "THURSDAY",
+            "closeTime": { "hours": 22 }
+          },
+          {
+            "openDay": "FRIDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "FRIDAY",
+            "closeTime": { "hours": 23 }
+          },
+          {
+            "openDay": "SATURDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "SATURDAY",
+            "closeTime": { "hours": 23 }
+          },
+          {
+            "openDay": "SUNDAY",
+            "openTime": { "hours": 11 },
+            "closeDay": "SUNDAY",
+            "closeTime": { "hours": 22 }
+          }
+        ]
+      },
+      "profile": {
+        "description": "Hand-stretched pizza, wings and salads made fresh in Fernhollow since 2016. Dine in, pick up or order delivery. Catering trays for parties and offices."
+      },
+      "openInfo": { "status": "OPEN" },
+      "metadata": {
+        "placeId": "PLACE-0001",
+        "mapsUri": "https://maps.google.com/?cid=1000000000000000001",
+        "newReviewUri": "https://search.google.com/local/writereview?placeid=PLACE-0001",
+        "canHaveFoodMenus": true
+      }
+    },
+    "get_location_attributes": {
+      "attributes": [
+        { "name": "attributes/serves_dine_in" },
+        { "name": "attributes/has_takeout" },
+        { "name": "attributes/has_delivery" },
+        { "name": "attributes/has_seating_outdoors" },
+        { "name": "attributes/pay_credit_card_types_accepted" },
+        { "name": "attributes/has_wheelchair_accessible_entrance" },
+        { "name": "attributes/url_facebook" },
+        { "name": "attributes/url_instagram" },
+        { "name": "attributes/url_order_ahead" }
+      ]
+    },
+    "get_services": {
+      "serviceItems": [
+        {
+          "freeFormServiceItem": {
+            "label": { "displayName": "Catering trays" }
+          }
+        },
+        {
+          "freeFormServiceItem": {
+            "label": { "displayName": "Party orders" }
+          }
+        },
+        {
+          "freeFormServiceItem": {
+            "label": { "displayName": "Gluten-free crust" }
+          }
+        }
+      ]
+    },
+    "get_verifications": {
+      "verifications": [
+        { "method": "ADDRESS", "state": "COMPLETED", "createTime": "2016-05-10T15:02:00Z" }
+      ]
+    },
+    "get_media": {
+      "totalMediaItemCount": 46,
+      "mediaItems": [
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2026-10-03" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2026-04-07" },
+        { "category": "EXTERIOR", "mediaFormat": "PHOTO", "createTime": "2026-03-14" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2026-03-01" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2025-12-23" },
+        { "category": "EXTERIOR", "mediaFormat": "PHOTO", "createTime": "2025-11-28" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2025-09-23" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2025-05-25" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2025-05-07" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2025-02-08" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2024-09-30" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2024-07-13" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2024-02-29" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2024-02-05" },
+        { "category": "TEAMS", "mediaFormat": "PHOTO", "createTime": "2023-12-29" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2023-12-07" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2023-05-10" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2023-04-21" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2023-04-10" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2023-03-23" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2023-03-11" },
+        { "category": "EXTERIOR", "mediaFormat": "PHOTO", "createTime": "2023-01-03" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2022-12-15" },
+        { "category": "ADDITIONAL", "mediaFormat": "PHOTO", "createTime": "2022-11-22" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2022-10-31" },
+        { "category": "TEAMS", "mediaFormat": "PHOTO", "createTime": "2022-09-10" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2022-04-15" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2022-01-28" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2021-12-01" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2021-11-25" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2021-09-28" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2021-09-25" },
+        { "category": "MENU", "mediaFormat": "PHOTO", "createTime": "2021-08-22" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2020-12-19" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2020-11-07" },
+        { "category": "INTERIOR", "mediaFormat": "PHOTO", "createTime": "2020-09-24" },
+        { "category": "COVER", "mediaFormat": "PHOTO", "createTime": "2020-08-06" },
+        { "category": "MENU", "mediaFormat": "PHOTO", "createTime": "2019-12-27" },
+        { "category": "TEAMS", "mediaFormat": "PHOTO", "createTime": "2019-11-03" },
+        { "category": "EXTERIOR", "mediaFormat": "PHOTO", "createTime": "2019-10-31" },
+        { "category": "LOGO", "mediaFormat": "PHOTO", "createTime": "2019-10-18" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2019-09-06" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2019-06-20" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2019-05-28" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2019-04-07" },
+        { "category": "FOOD_AND_DRINK", "mediaFormat": "PHOTO", "createTime": "2019-03-14" }
+      ]
+    },
+    "get_local_posts": {
+      "localPosts": [
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-09-12" },
+        { "state": "LIVE", "topicType": "OFFER", "createTime": "2026-08-21" },
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-07-30" },
+        { "state": "LIVE", "topicType": "EVENT", "createTime": "2026-07-02" },
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-06-11" },
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-05-19" },
+        { "state": "LIVE", "topicType": "OFFER", "createTime": "2026-04-27" },
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-03-30" },
+        { "state": "LIVE", "topicType": "STANDARD", "createTime": "2026-02-26" }
+      ]
+    },
+    "get_reviews": {
+      "totalReviewCount": 84,
+      "averageRating": 4.4,
+      "note": "first page of 50, newest first",
+      "reviews": [
+        { "reviewId": "review-01", "starRating": "FIVE", "createTime": "2026-10-21T19:00:00Z", "updateTime": "2026-10-21T19:00:00Z" },
+        {
+          "reviewId": "review-02",
+          "starRating": "TWO",
+          "createTime": "2026-10-09T19:00:00Z",
+          "updateTime": "2026-10-09T19:00:00Z",
+          "comment": "Waited almost an hour for a Friday delivery and the pizza was cold when it got here."
+        },
+        {
+          "reviewId": "review-03",
+          "starRating": "FIVE",
+          "createTime": "2026-09-27T19:00:00Z",
+          "updateTime": "2026-09-27T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-09-29T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-04",
+          "starRating": "FOUR",
+          "createTime": "2026-09-14T19:00:00Z",
+          "updateTime": "2026-09-14T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-09-16T10:00:00Z" }
+        },
+        { "reviewId": "review-05", "starRating": "FIVE", "createTime": "2026-08-30T19:00:00Z", "updateTime": "2026-08-30T19:00:00Z" },
+        {
+          "reviewId": "review-06",
+          "starRating": "FIVE",
+          "createTime": "2026-08-18T19:00:00Z",
+          "updateTime": "2026-08-18T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-08-20T10:00:00Z" }
+        },
+        { "reviewId": "review-07", "starRating": "FOUR", "createTime": "2026-08-05T19:00:00Z", "updateTime": "2026-08-05T19:00:00Z" },
+        {
+          "reviewId": "review-08",
+          "starRating": "FIVE",
+          "createTime": "2026-07-22T19:00:00Z",
+          "updateTime": "2026-07-22T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-07-24T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-09",
+          "starRating": "FIVE",
+          "createTime": "2026-07-09T19:00:00Z",
+          "updateTime": "2026-07-09T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-07-11T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-10",
+          "starRating": "THREE",
+          "createTime": "2026-06-28T19:00:00Z",
+          "updateTime": "2026-06-28T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-06-30T10:00:00Z" }
+        },
+        { "reviewId": "review-11", "starRating": "FIVE", "createTime": "2026-06-14T19:00:00Z", "updateTime": "2026-06-14T19:00:00Z" },
+        {
+          "reviewId": "review-12",
+          "starRating": "FIVE",
+          "createTime": "2026-06-02T19:00:00Z",
+          "updateTime": "2026-06-02T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-06-04T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-13",
+          "starRating": "FOUR",
+          "createTime": "2026-05-21T19:00:00Z",
+          "updateTime": "2026-05-21T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-05-23T10:00:00Z" }
+        },
+        { "reviewId": "review-14", "starRating": "FIVE", "createTime": "2026-05-06T19:00:00Z", "updateTime": "2026-05-06T19:00:00Z" },
+        {
+          "reviewId": "review-15",
+          "starRating": "FIVE",
+          "createTime": "2026-04-24T19:00:00Z",
+          "updateTime": "2026-04-24T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-04-26T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-16",
+          "starRating": "ONE",
+          "createTime": "2026-04-11T19:00:00Z",
+          "updateTime": "2026-04-11T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-04-13T10:00:00Z" }
+        },
+        { "reviewId": "review-17", "starRating": "FIVE", "createTime": "2026-03-29T19:00:00Z", "updateTime": "2026-03-29T19:00:00Z" },
+        {
+          "reviewId": "review-18",
+          "starRating": "FOUR",
+          "createTime": "2026-03-15T19:00:00Z",
+          "updateTime": "2026-03-15T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-03-17T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-19",
+          "starRating": "FIVE",
+          "createTime": "2026-03-02T19:00:00Z",
+          "updateTime": "2026-03-02T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-03-04T10:00:00Z" }
+        },
+        { "reviewId": "review-20", "starRating": "FIVE", "createTime": "2026-02-16T19:00:00Z", "updateTime": "2026-02-16T19:00:00Z" },
+        {
+          "reviewId": "review-21",
+          "starRating": "FIVE",
+          "createTime": "2026-02-01T19:00:00Z",
+          "updateTime": "2026-02-01T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-02-03T10:00:00Z" }
+        },
+        { "reviewId": "review-22", "starRating": "FOUR", "createTime": "2026-01-19T19:00:00Z", "updateTime": "2026-01-19T19:00:00Z" },
+        {
+          "reviewId": "review-23",
+          "starRating": "FIVE",
+          "createTime": "2026-01-05T19:00:00Z",
+          "updateTime": "2026-01-05T19:00:00Z",
+          "reviewReply": { "updateTime": "2026-01-07T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-24",
+          "starRating": "FIVE",
+          "createTime": "2025-12-20T19:00:00Z",
+          "updateTime": "2025-12-20T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-12-22T10:00:00Z" }
+        },
+        { "reviewId": "review-25", "starRating": "FIVE", "createTime": "2025-12-12T19:00:00Z", "updateTime": "2025-12-12T19:00:00Z" },
+        {
+          "reviewId": "review-26",
+          "starRating": "FOUR",
+          "createTime": "2025-12-03T19:00:00Z",
+          "updateTime": "2025-12-03T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-12-05T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-27",
+          "starRating": "FIVE",
+          "createTime": "2025-11-25T19:00:00Z",
+          "updateTime": "2025-11-25T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-11-27T10:00:00Z" }
+        },
+        { "reviewId": "review-28", "starRating": "THREE", "createTime": "2025-11-16T19:00:00Z", "updateTime": "2025-11-16T19:00:00Z" },
+        {
+          "reviewId": "review-29",
+          "starRating": "FIVE",
+          "createTime": "2025-11-08T19:00:00Z",
+          "updateTime": "2025-11-08T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-11-10T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-30",
+          "starRating": "FIVE",
+          "createTime": "2025-11-02T19:00:00Z",
+          "updateTime": "2025-11-02T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-11-04T10:00:00Z" }
+        },
+        { "reviewId": "review-31", "starRating": "FOUR", "createTime": "2025-10-31T19:00:00Z", "updateTime": "2025-10-31T19:00:00Z" },
+        { "reviewId": "review-32", "starRating": "FIVE", "createTime": "2025-10-17T19:00:00Z", "updateTime": "2025-10-17T19:00:00Z" },
+        { "reviewId": "review-33", "starRating": "FOUR", "createTime": "2025-09-30T19:00:00Z", "updateTime": "2025-09-30T19:00:00Z" },
+        { "reviewId": "review-34", "starRating": "FIVE", "createTime": "2025-09-09T19:00:00Z", "updateTime": "2025-09-09T19:00:00Z" },
+        {
+          "reviewId": "review-35",
+          "starRating": "FIVE",
+          "createTime": "2025-08-28T19:00:00Z",
+          "updateTime": "2025-08-28T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-08-30T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-36",
+          "starRating": "TWO",
+          "createTime": "2025-08-05T19:00:00Z",
+          "updateTime": "2025-08-05T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-08-07T10:00:00Z" }
+        },
+        { "reviewId": "review-37", "starRating": "FIVE", "createTime": "2025-07-26T19:00:00Z", "updateTime": "2025-07-26T19:00:00Z" },
+        { "reviewId": "review-38", "starRating": "FOUR", "createTime": "2025-07-08T19:00:00Z", "updateTime": "2025-07-08T19:00:00Z" },
+        { "reviewId": "review-39", "starRating": "FOUR", "createTime": "2025-06-14T19:00:00Z", "updateTime": "2025-06-14T19:00:00Z" },
+        { "reviewId": "review-40", "starRating": "FIVE", "createTime": "2025-06-02T19:00:00Z", "updateTime": "2025-06-02T19:00:00Z" },
+        { "reviewId": "review-41", "starRating": "FOUR", "createTime": "2025-05-19T19:00:00Z", "updateTime": "2025-05-19T19:00:00Z" },
+        { "reviewId": "review-42", "starRating": "TWO", "createTime": "2025-04-25T19:00:00Z", "updateTime": "2025-04-25T19:00:00Z" },
+        { "reviewId": "review-43", "starRating": "FOUR", "createTime": "2025-04-12T19:00:00Z", "updateTime": "2025-04-12T19:00:00Z" },
+        { "reviewId": "review-44", "starRating": "THREE", "createTime": "2025-03-28T19:00:00Z", "updateTime": "2025-03-28T19:00:00Z" },
+        {
+          "reviewId": "review-45",
+          "starRating": "THREE",
+          "createTime": "2025-03-06T19:00:00Z",
+          "updateTime": "2025-03-06T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-03-08T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-46",
+          "starRating": "FOUR",
+          "createTime": "2025-02-22T19:00:00Z",
+          "updateTime": "2025-02-22T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-02-24T10:00:00Z" }
+        },
+        { "reviewId": "review-47", "starRating": "FIVE", "createTime": "2025-02-03T19:00:00Z", "updateTime": "2025-02-03T19:00:00Z" },
+        {
+          "reviewId": "review-48",
+          "starRating": "FIVE",
+          "createTime": "2025-01-20T19:00:00Z",
+          "updateTime": "2025-01-20T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-01-22T10:00:00Z" }
+        },
+        {
+          "reviewId": "review-49",
+          "starRating": "FIVE",
+          "createTime": "2024-12-30T19:00:00Z",
+          "updateTime": "2024-12-30T19:00:00Z",
+          "reviewReply": { "updateTime": "2025-01-01T10:00:00Z" }
+        },
+        { "reviewId": "review-50", "starRating": "FIVE", "createTime": "2024-12-17T19:00:00Z", "updateTime": "2024-12-17T19:00:00Z" }
+      ]
+    },
+    "get_food_menus": {
+      "menus": [
+        {
+          "labels": [
+            { "displayName": "Main menu" }
+          ],
+          "sections": 6,
+          "items": 48
+        }
+      ]
+    },
+    "get_multi_daily_metrics (63 days)": {
+      "range": [
+        "2026-08-29",
+        "2026-10-30"
+      ],
+      "dates": [
+        "2026-08-29",
+        "2026-08-30",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-12",
+        "2026-09-13",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-19",
+        "2026-09-20",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-10",
+        "2026-10-11",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30"
+      ],
+      "note": "null = the day came back with no value key (count as 0)",
+      "BUSINESS_IMPRESSIONS_DESKTOP_MAPS": [23, 18, 13, 15, 17, 21, 18, 21, 15, 16, 13, 21, 18, 20, 21, 17, 18, 17, 18, 20, 22, 21, 17, 16, 16, 20, 18, 21, 21, 18, 17, 16, 16, 20, 22, 20, 17, 17, 17, 18, 16, 17, 24, 18, 12, 16, 17, 16, 20, 21, 17, 17, 15, 18, 16, 21, 22, 19, 13, null, null, null, null],
+      "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH": [57, 50, 43, 40, 42, 49, 66, 52, 48, 42, 44, 44, 43, 56, 56, 48, 40, 41, 47, 53, 58, 53, 56, 43, 42, 46, 49, 60, 62, 42, 46, 35, 44, 51, 62, 50, 45, 45, 45, 41, 43, 53, 49, 52, 40, 49, 53, 59, 53, 55, 50, 38, 42, 40, 43, 61, 50, 55, 44, null, null, null, null],
+      "BUSINESS_IMPRESSIONS_MOBILE_MAPS": [100, 70, 85, 80, 95, 86, 90, 102, 80, 66, 87, 89, 93, 110, 94, 91, 80, 65, 94, 82, 109, 127, 88, 90, 80, 75, 89, 130, 131, 77, 84, 77, 80, 83, 100, 94, 88, 72, 64, 84, 103, 104, 102, 103, 63, 92, 80, 73, 123, 105, 87, 80, 81, 73, 84, 88, 103, 92, 73, null, null, null, null],
+      "BUSINESS_IMPRESSIONS_MOBILE_SEARCH": [254, 201, 161, 179, 185, 170, 274, 213, 226, 167, 176, 186, 160, 217, 246, 185, 137, 155, 208, 178, 208, 275, 205, 192, 178, 198, 190, 230, 231, 199, 152, 175, 209, 181, 185, 249, 195, 188, 172, 183, 187, 225, 231, 179, 147, 189, 190, 209, 229, 224, 158, 141, 186, 182, 207, 249, 232, 187, 171, null, null, null, null],
+      "BUSINESS_CONVERSATIONS": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+      "BUSINESS_DIRECTION_REQUESTS": [34, 23, 12, 16, 14, 20, 29, 30, 22, 12, 12, 18, 19, 29, 28, 16, 12, 12, 16, 18, 20, 24, 16, 14, 14, 23, 21, 27, 28, 14, 9, 8, 22, 20, 28, 25, 16, 15, 17, 15, 20, 21, 25, 16, 13, 14, 15, 19, 24, 39, 15, 9, 15, 19, 19, 40, 25, 18, 17, null, null, null, null],
+      "CALL_CLICKS": [14, 9, 9, 7, 9, 11, 16, 16, 12, 8, 8, 11, 11, 15, 15, 12, 9, 9, 12, 16, 21, 17, 8, 10, 7, 12, 11, 15, 15, 9, 9, 8, 9, 14, 14, 16, 10, 8, 8, 10, 12, 14, 15, 12, 9, 9, 10, 10, 14, 15, 11, 8, 7, 7, 11, 14, 16, 12, 9, null, null, null, null],
+      "WEBSITE_CLICKS": [12, 7, 4, 7, 6, 9, 12, 13, 8, 7, 6, 10, 10, 13, 14, 9, 6, 7, 5, 7, 12, 16, 9, 8, 6, 12, 8, 16, 12, 10, 6, 6, 10, 7, 15, 15, 8, 6, 7, 7, 10, 14, 15, 8, 6, 6, 9, 5, 9, 12, 10, 7, 5, 6, 8, 13, 13, 8, 7, null, null, null, null],
+      "BUSINESS_BOOKINGS": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+      "BUSINESS_FOOD_ORDERS": [6, 4, 3, 3, 4, 4, 7, 7, 6, 2, 3, 3, 6, 3, 7, 5, 3, 3, 4, 4, 6, 6, 4, 3, 4, 5, 4, 5, 5, 4, 3, 4, 4, 4, 5, 5, 3, 2, 3, 4, 4, 5, 5, 4, 3, 3, 4, 5, 4, 5, 4, 2, 3, 5, 4, 6, 5, 4, 3, null, null, null, null]
+    },
+    "get_search_keywords": {
+      "months": [
+        "2026-07",
+        "2026-09"
+      ],
+      "rows": [
+        {
+          "searchKeyword": "brindle oak pizza",
+          "insightsValue": { "value": "1240" }
+        },
+        {
+          "searchKeyword": "pizza near me",
+          "insightsValue": { "value": "980" }
+        },
+        {
+          "searchKeyword": "pizza",
+          "insightsValue": { "value": "760" }
+        },
+        {
+          "searchKeyword": "pizza fernhollow",
+          "insightsValue": { "value": "410" }
+        },
+        {
+          "searchKeyword": "pizza delivery",
+          "insightsValue": { "value": "190" }
+        },
+        {
+          "searchKeyword": "restaurants near me",
+          "insightsValue": { "value": "160" }
+        },
+        {
+          "searchKeyword": "wings near me",
+          "insightsValue": { "value": "120" }
+        },
+        {
+          "searchKeyword": "brindle oak pizza menu",
+          "insightsValue": { "value": "95" }
+        },
+        {
+          "searchKeyword": "italian restaurant",
+          "insightsValue": { "value": "64" }
+        },
+        {
+          "searchKeyword": "pizza places near me",
+          "insightsValue": { "value": "58" }
+        },
+        {
+          "searchKeyword": "food near me",
+          "insightsValue": { "value": "41" }
+        },
+        {
+          "searchKeyword": "calzone",
+          "insightsValue": { "threshold": "15" }
+        },
+        {
+          "searchKeyword": "garlic knots",
+          "insightsValue": { "threshold": "15" }
+        }
+      ]
+    },
+    "search_analytics date": {
+      "range": [
+        "2026-08-29",
+        "2026-10-30"
+      ],
+      "rows": [
+        { "date": "2026-08-29", "clicks": 50, "impressions": 1101 },
+        { "date": "2026-08-30", "clicks": 44, "impressions": 930 },
+        { "date": "2026-08-31", "clicks": 36, "impressions": 773 },
+        { "date": "2026-09-01", "clicks": 40, "impressions": 891 },
+        { "date": "2026-09-02", "clicks": 41, "impressions": 945 },
+        { "date": "2026-09-03", "clicks": 45, "impressions": 1022 },
+        { "date": "2026-09-04", "clicks": 44, "impressions": 1010 },
+        { "date": "2026-09-05", "clicks": 50, "impressions": 1160 },
+        { "date": "2026-09-06", "clicks": 42, "impressions": 962 },
+        { "date": "2026-09-07", "clicks": 41, "impressions": 940 },
+        { "date": "2026-09-08", "clicks": 36, "impressions": 906 },
+        { "date": "2026-09-09", "clicks": 44, "impressions": 989 },
+        { "date": "2026-09-10", "clicks": 41, "impressions": 1005 },
+        { "date": "2026-09-11", "clicks": 45, "impressions": 1067 },
+        { "date": "2026-09-12", "clicks": 50, "impressions": 1193 },
+        { "date": "2026-09-13", "clicks": 45, "impressions": 973 },
+        { "date": "2026-09-14", "clicks": 41, "impressions": 899 },
+        { "date": "2026-09-15", "clicks": 40, "impressions": 922 },
+        { "date": "2026-09-16", "clicks": 43, "impressions": 893 },
+        { "date": "2026-09-17", "clicks": 42, "impressions": 910 },
+        { "date": "2026-09-18", "clicks": 46, "impressions": 1087 },
+        { "date": "2026-09-19", "clicks": 47, "impressions": 1217 },
+        { "date": "2026-09-20", "clicks": 40, "impressions": 984 },
+        { "date": "2026-09-21", "clicks": 40, "impressions": 898 },
+        { "date": "2026-09-22", "clicks": 36, "impressions": 817 },
+        { "date": "2026-09-23", "clicks": 42, "impressions": 877 },
+        { "date": "2026-09-24", "clicks": 42, "impressions": 930 },
+        { "date": "2026-09-25", "clicks": 51, "impressions": 1078 },
+        { "date": "2026-09-26", "clicks": 48, "impressions": 1057 },
+        { "date": "2026-09-27", "clicks": 42, "impressions": 1055 },
+        { "date": "2026-09-28", "clicks": 39, "impressions": 840 },
+        { "date": "2026-09-29", "clicks": 40, "impressions": 800 },
+        { "date": "2026-09-30", "clicks": 37, "impressions": 857 },
+        { "date": "2026-10-01", "clicks": 40, "impressions": 976 },
+        { "date": "2026-10-02", "clicks": 45, "impressions": 1098 },
+        { "date": "2026-10-03", "clicks": 47, "impressions": 1014 },
+        { "date": "2026-10-04", "clicks": 42, "impressions": 957 },
+        { "date": "2026-10-05", "clicks": 40, "impressions": 886 },
+        { "date": "2026-10-06", "clicks": 40, "impressions": 785 },
+        { "date": "2026-10-07", "clicks": 38, "impressions": 941 },
+        { "date": "2026-10-08", "clicks": 43, "impressions": 912 },
+        { "date": "2026-10-09", "clicks": 46, "impressions": 1111 },
+        { "date": "2026-10-10", "clicks": 51, "impressions": 1009 },
+        { "date": "2026-10-11", "clicks": 40, "impressions": 943 },
+        { "date": "2026-10-12", "clicks": 40, "impressions": 770 },
+        { "date": "2026-10-13", "clicks": 36, "impressions": 869 },
+        { "date": "2026-10-14", "clicks": 40, "impressions": 946 },
+        { "date": "2026-10-15", "clicks": 43, "impressions": 851 },
+        { "date": "2026-10-16", "clicks": 45, "impressions": 1086 },
+        { "date": "2026-10-17", "clicks": 44, "impressions": 1015 },
+        { "date": "2026-10-18", "clicks": 39, "impressions": 850 },
+        { "date": "2026-10-19", "clicks": 34, "impressions": 877 },
+        { "date": "2026-10-20", "clicks": 35, "impressions": 796 },
+        { "date": "2026-10-21", "clicks": 38, "impressions": 895 },
+        { "date": "2026-10-22", "clicks": 43, "impressions": 884 },
+        { "date": "2026-10-23", "clicks": 43, "impressions": 944 },
+        { "date": "2026-10-24", "clicks": 45, "impressions": 1074 },
+        { "date": "2026-10-25", "clicks": 38, "impressions": 856 },
+        { "date": "2026-10-26", "clicks": 36, "impressions": 824 },
+        { "date": "2026-10-27", "clicks": 35, "impressions": 779 }
+      ]
+    },
+    "search_analytics query C": [
+      { "query": "brindle oak pizza", "clicks": 412, "impressions": 1020 },
+      { "query": "brindle oak pizza menu", "clicks": 158, "impressions": 430 },
+      { "query": "brindle oak pizza fernhollow", "clicks": 66, "impressions": 170 },
+      { "query": "brindle oak pizza hours", "clicks": 19, "impressions": 60 },
+      { "query": "brindleoak pizza", "clicks": 11, "impressions": 40 },
+      { "query": "brindle oak menu", "clicks": 25, "impressions": 90 },
+      { "query": "brindle oak hours", "clicks": 14, "impressions": 55 },
+      { "query": "brindle pizza", "clicks": 8, "impressions": 70 },
+      { "query": "pizza fernhollow", "clicks": 46, "impressions": 1120 },
+      { "query": "pizza near me", "clicks": 38, "impressions": 2950 },
+      { "query": "pizza delivery fernhollow ohio", "clicks": 9, "impressions": 240 },
+      { "query": "best pizza in fernhollow", "clicks": 7, "impressions": 310 },
+      { "query": "pizza places nearby", "clicks": 4, "impressions": 520 },
+      { "query": "wings near me", "clicks": 3, "impressions": 640 },
+      { "query": "restaurants open now", "clicks": 2, "impressions": 470 },
+      { "query": "how to reheat pizza", "clicks": 11, "impressions": 3150 },
+      { "query": "pizza dough recipe", "clicks": 6, "impressions": 2420 },
+      { "query": "calzone vs stromboli", "clicks": 5, "impressions": 1880 },
+      { "query": "detroit style pizza", "clicks": 4, "impressions": 1490 },
+      { "query": "garlic knots", "clicks": 3, "impressions": 720 },
+      { "query": "catering for 50 people", "clicks": 2, "impressions": 380 }
+    ],
+    "search_analytics query P": [
+      { "query": "brindle oak pizza", "clicks": 440, "impressions": 1090 },
+      { "query": "brindle oak pizza menu", "clicks": 170, "impressions": 450 },
+      { "query": "brindle oak pizza fernhollow", "clicks": 70, "impressions": 180 },
+      { "query": "brindle oak pizza hours", "clicks": 18, "impressions": 60 },
+      { "query": "brindleoak pizza", "clicks": 12, "impressions": 40 },
+      { "query": "brindle oak menu", "clicks": 26, "impressions": 95 },
+      { "query": "brindle oak hours", "clicks": 16, "impressions": 55 },
+      { "query": "brindle pizza", "clicks": 8, "impressions": 72 },
+      { "query": "pizza fernhollow", "clicks": 44, "impressions": 1253 },
+      { "query": "pizza near me", "clicks": 36, "impressions": 2927 },
+      { "query": "pizza delivery fernhollow ohio", "clicks": 9, "impressions": 236 },
+      { "query": "best pizza in fernhollow", "clicks": 7, "impressions": 309 },
+      { "query": "pizza places nearby", "clicks": 4, "impressions": 560 },
+      { "query": "wings near me", "clicks": 3, "impressions": 668 },
+      { "query": "restaurants open now", "clicks": 2, "impressions": 463 },
+      { "query": "how to reheat pizza", "clicks": 12, "impressions": 3436 },
+      { "query": "pizza dough recipe", "clicks": 6, "impressions": 2691 },
+      { "query": "calzone vs stromboli", "clicks": 6, "impressions": 2025 },
+      { "query": "detroit style pizza", "clicks": 4, "impressions": 1536 },
+      { "query": "garlic knots", "clicks": 3, "impressions": 762 },
+      { "query": "catering for 50 people", "clicks": 2, "impressions": 374 }
+    ],
+    "search_analytics page C": [
+      { "page": "https://www.brindleoakpizza.example/", "clicks": 610, "impressions": 2400 },
+      { "page": "https://www.brindleoakpizza.example/menu", "clicks": 260, "impressions": 1900 },
+      { "page": "https://www.brindleoakpizza.example/order", "clicks": 88, "impressions": 600 },
+      { "page": "https://www.brindleoakpizza.example/blog/how-to-reheat-pizza", "clicks": 62, "impressions": 4800 },
+      { "page": "https://www.brindleoakpizza.example/catering", "clicks": 31, "impressions": 1100 },
+      { "page": "https://www.brindleoakpizza.example/blog/pizza-dough-recipe", "clicks": 21, "impressions": 3300 },
+      { "page": "https://www.brindleoakpizza.example/blog/calzone-vs-stromboli", "clicks": 14, "impressions": 2200 },
+      { "page": "https://www.brindleoakpizza.example/about", "clicks": 9, "impressions": 300 }
+    ],
+    "search_analytics country C": [
+      { "country": "usa", "clicks": 1102, "impressions": 24100 },
+      { "country": "can", "clicks": 18, "impressions": 700 },
+      { "country": "gbr", "clicks": 9, "impressions": 500 },
+      { "country": "ind", "clicks": 6, "impressions": 400 }
+    ],
+    "search_analytics device C": [
+      { "device": "MOBILE", "clicks": 893, "impressions": 17800 },
+      { "device": "DESKTOP", "clicks": 238, "impressions": 7600 },
+      { "device": "TABLET", "clicks": 17, "impressions": 560 }
+    ],
+    "plan: get_multi_daily_metrics (365 days)": {
+      "range": [
+        "2025-10-31",
+        "2026-10-30"
+      ],
+      "note": "the same 10 metrics; the restaurant lens's main action is shown day by day per month (null = no value key), views are summed by month to keep the file small. Bookings had no value on any day.",
+      "BUSINESS_DIRECTION_REQUESTS": {
+        "2025-10": [28],
+        "2025-11": [30, 16, 10, 14, 13, 21, 29, 37, 21, 13, 15, 18, 20, 32, 28, 20, 15, 12, 16, 23, 32, 24, 22, 13, 15, 18, 18, 27, 40, 14],
+        "2025-12": [18, 12, 25, 24, 31, 40, 21, 16, 14, 22, 21, 39, 37, 26, 15, 14, 22, 25, 33, 36, 22, 20, 14, 26, 17, 30, 33, 20, 17, 15, 24],
+        "2026-01": [15, 17, 21, 11, 10, 11, 13, 12, 18, 16, 16, 8, 11, 13, 15, 24, 22, 14, 10, 11, 13, 13, 24, 17, 12, 11, 14, 13, 11, 19, 24],
+        "2026-02": [14, 10, 15, 12, 14, 13, 21, 18, 12, 10, 18, 15, 22, 25, 15, 13, 10, 16, 10, 20, 21, 15, 11, 12, 14, 17, 16, 21],
+        "2026-03": [12, 12, 12, 18, 19, 28, 27, 16, 9, 13, 20, 17, 25, 32, 16, 14, 9, 17, 20, 31, 22, 17, 15, 13, 15, 17, 26, 25, 16, 12, 14],
+        "2026-04": [20, 20, 29, 35, 19, 15, 13, 16, 23, 24, 31, 15, 15, 16, 17, 22, 30, 29, 25, 12, 10, 17, 20, 28, 35, 16, 16, 14, 15, 13],
+        "2026-05": [21, 26, 22, 13, 16, 15, 25, 25, 30, 27, 17, 13, 25, 17, 30, 26, 20, 14, 17, 17, 21, 34, 24, 20, 14, 13, 20, 26, 28, 25, 18],
+        "2026-06": [13, 14, 20, 18, 26, 25, 18, 13, 8, 17, 19, 30, 23, 15, 12, 19, 17, 21, 24, 27, 19, 15, 15, 18, 26, 24, 32, 27, 7, 16],
+        "2026-07": [16, 19, 32, 23, 20, 13, 20, 17, 18, 19, 22, 17, 13, 11, 15, 18, 22, 28, 15, 17, 15, 22, 20, 25, 25, 18, 15, 11, 16, 24, 26],
+        "2026-08": [27, 15, 10, 15, 17, 22, 30, 33, 20, 12, 13, 20, 19, 27, 32, 19, 14, 16, 13, 19, 19, 28, 17, 17, 16, 22, 22, 25, 34, 23, 12],
+        "2026-09": [16, 14, 20, 29, 30, 22, 12, 12, 18, 19, 29, 28, 16, 12, 12, 16, 18, 20, 24, 16, 14, 14, 23, 21, 27, 28, 14, 9, 8, 22],
+        "2026-10": [20, 28, 25, 16, 15, 17, 15, 20, 21, 25, 16, 13, 14, 15, 19, 24, 39, 15, 9, 15, 19, 19, 40, 25, 18, 17, null, null, null, null]
+      },
+      "BUSINESS_FOOD_ORDERS": {
+        "2025-10": [6],
+        "2025-11": [4, 4, 3, 3, 4, 5, 7, 4, 5, 3, 4, 4, 5, 6, 4, 3, 3, 3, 5, 4, 5, 6, 3, 3, 3, 4, 5, 5, 5, 5],
+        "2025-12": [4, 4, 4, 5, 7, 7, 6, 4, 4, 4, 5, 7, 7, 6, 4, 3, 4, 6, 7, 6, 6, 3, 3, 5, 6, 7, 6, 5, 4, 4, 5],
+        "2026-01": [3, 5, 5, 3, 2, 3, 3, 3, 4, 4, 3, 2, 3, 3, 4, 4, 4, 4, 2, 2, 3, 3, 5, 4, 3, 3, 2, 3, 3, 5, 5],
+        "2026-02": [4, 2, 2, 3, 4, 4, 5, 3, 2, 2, 4, 2, 5, 4, 4, 2, 2, 3, 4, 5, 4, 4, 2, 1, 4, 3, 6, 3],
+        "2026-03": [4, 3, 3, 4, 4, 7, 5, 4, 3, 3, 5, 5, 5, 6, 4, 3, 4, 3, 4, 5, 6, 3, 3, 3, 3, 3, 5, 5, 5, 3, 3],
+        "2026-04": [4, 4, 5, 8, 3, 3, 3, 3, 4, 6, 5, 3, 2, 3, 5, 5, 5, 7, 5, 3, 3, 4, 5, 5, 6, 4, 3, 3, 4, 5],
+        "2026-05": [5, 6, 3, 3, 4, 5, 4, 4, 5, 3, 3, 2, 4, 5, 8, 7, 3, 3, 3, 5, 4, 5, 6, 4, 3, 3, 3, 5, 5, 5, 5],
+        "2026-06": [3, 3, 4, 4, 7, 7, 4, 4, 3, 3, 5, 7, 6, 4, 3, 4, 4, 4, 7, 7, 4, 2, 3, 4, 5, 6, 5, 4, 3, 3],
+        "2026-07": [4, 4, 6, 5, 4, 3, 3, 3, 4, 5, 5, 5, 3, 2, 5, 4, 6, 7, 4, 3, 3, 3, 5, 6, 6, 4, 3, 2, 4, 4, 5],
+        "2026-08": [5, 4, 2, 4, 4, 4, 6, 6, 4, 3, 2, 4, 4, 6, 7, 4, 3, 2, 4, 4, 7, 7, 4, 3, 3, 5, 3, 6, 6, 4, 3],
+        "2026-09": [3, 4, 4, 7, 7, 6, 2, 3, 3, 6, 3, 7, 5, 3, 3, 4, 4, 6, 6, 4, 3, 4, 5, 4, 5, 5, 4, 3, 4, 4],
+        "2026-10": [4, 5, 5, 3, 2, 3, 4, 4, 5, 5, 4, 3, 3, 4, 5, 4, 5, 4, 2, 3, 5, 4, 6, 5, 4, 3, null, null, null, null]
+      },
+      "views_by_month": {
+        "2025-10": 388,
+        "2025-11": 10555,
+        "2025-12": 11975,
+        "2026-01": 9254,
+        "2026-02": 8531,
+        "2026-03": 10340,
+        "2026-04": 10376,
+        "2026-05": 11150,
+        "2026-06": 10453,
+        "2026-07": 10833,
+        "2026-08": 10726,
+        "2026-09": 10617,
+        "2026-10": 9104
+      }
+    },
+    "plan: GA4 get_report (sessionSource, sessionMedium, sessionCampaignName; last 90 days)": {
+      "range": [
+        "2026-08-01",
+        "2026-10-29"
+      ],
+      "rows": [
+        { "sessionSource": "google", "sessionMedium": "organic", "sessionCampaignName": "(organic)", "sessions": 3910, "keyEvents": 612 },
+        { "sessionSource": "(direct)", "sessionMedium": "(none)", "sessionCampaignName": "(direct)", "sessions": 2085, "keyEvents": 377 },
+        { "sessionSource": "facebook.com", "sessionMedium": "referral", "sessionCampaignName": "(referral)", "sessions": 238, "keyEvents": 21 },
+        { "sessionSource": "bing", "sessionMedium": "organic", "sessionCampaignName": "(organic)", "sessions": 121, "keyEvents": 14 },
+        { "sessionSource": "l.instagram.com", "sessionMedium": "referral", "sessionCampaignName": "(referral)", "sessions": 88, "keyEvents": 6 },
+        { "sessionSource": "yelp.com", "sessionMedium": "referral", "sessionCampaignName": "(referral)", "sessions": 64, "keyEvents": 9 }
+      ]
+    }
+  }
+}

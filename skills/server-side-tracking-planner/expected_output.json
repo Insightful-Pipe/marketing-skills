@@ -1,0 +1,413 @@
+{
+  "header": {
+    "site": "https://www.campkitchen.example",
+    "container": "GTM-CAMPEX1",
+    "dates": "2026-09-28 to 2026-10-27",
+    "currency": "USD",
+    "platforms_read": [
+      "Google Tag Manager",
+      "GA4",
+      "WooCommerce",
+      "Google Ads",
+      "Meta",
+      "Microsoft Ads",
+      "crawler"
+    ],
+    "verdict": "build"
+  },
+  "sizing": {
+    "store_orders": 1912,
+    "non_web_orders": 72,
+    "web_orders": 1840,
+    "ga4_purchases": 1452,
+    "gap": 388,
+    "gap_pct": 21.1,
+    "consent_share_orders": 121.4,
+    "consent_share_math": "1840 x 30% x (1 minus 78%)",
+    "recoverable_gap": 266.6,
+    "recoverable_gap_pct": 14.5,
+    "recoverable_note": "An upper bound: some of it is cross-device journeys that a server won't recover either.",
+    "exposure": {
+      "sessions": 97800,
+      "safari_pct": 34.2,
+      "firefox_pct": 4.0,
+      "ios_pct": 30.3
+    },
+    "ad_platforms": [
+      {
+        "platform": "Google Ads",
+        "conversions": 611,
+        "counted_as": "Purchase (website), browser tag",
+        "spend": 21400.0,
+        "share_of_web_orders_pct": 33.2,
+        "counts_more_than_web_orders": false
+      },
+      {
+        "platform": "Meta",
+        "conversions": 702,
+        "counted_as": "purchases, 7-day click",
+        "spend": 18900.0,
+        "share_of_web_orders_pct": 38.2,
+        "counts_more_than_web_orders": false
+      },
+      {
+        "platform": "Microsoft Ads",
+        "conversions": 88,
+        "counted_as": "Purchase goal",
+        "spend": 2300.0,
+        "share_of_web_orders_pct": 4.8,
+        "counts_more_than_web_orders": false
+      }
+    ],
+    "double_counting": false
+  },
+  "cost": {
+    "busiest_hour_events": 9840,
+    "peak_requests_per_second": 2.73,
+    "servers": 2,
+    "servers_math": "larger of 2 and 2.73 x 2 / 17.5, rounded up",
+    "preview_servers": 1,
+    "price_per_instance": 45.0,
+    "price_source": "Google's Cloud Run guide for server-side tagging (about $45 a month for 1 vCPU, 0.5 GB); no host quote given; counting the preview server as a full instance is an assumption",
+    "hosting_monthly": 135.0,
+    "upkeep_monthly": 360.0,
+    "build_one_off": 2880.0,
+    "build_spread_monthly": 240.0,
+    "total_monthly": 735.0,
+    "ad_spend_30d": 42600.0,
+    "cost_share_of_spend_pct": 1.73
+  },
+  "verdict": {
+    "result": "build",
+    "rule": "recoverable gap 14.5% is 10% or more of web orders, and the monthly cost is 1.73% of ad spend, 5% or less"
+  },
+  "fix_first_and_browser_side": [
+    {
+      "fix": "Keep the query string on the /go/autumn-sale/ redirect (a 302 to /collections/sale/)",
+      "evidence": "status-code-checker: final_url https://www.campkitchen.example/collections/sale/ has none of gclid, gbraid, wbraid, fbclid, msclkid",
+      "share_of_paid_sessions_pct": 21.0,
+      "who": "the agency, in the redirect rule"
+    },
+    {
+      "fix": "Turn on enhanced conversions for the Google Ads purchase tag (user-provided data from the order page)",
+      "evidence": "Live tag 'Google Ads - Purchase' (awct) has no enableEnhancedConversion setting; customer data terms are accepted",
+      "share_of_paid_sessions_pct": null,
+      "who": "the agency in Tag Manager now; the server tag carries it after the switch"
+    }
+  ],
+  "checks_that_passed": [
+    "Google Ads auto-tagging is on",
+    "Google Ads customer data terms are accepted",
+    "No platform counts more than the 1840 web orders, so no double counting shows",
+    "3 of 4 paid landing pages keep every click id"
+  ],
+  "build_plan": {
+    "1_where": {
+      "server_container": "none exists (no container with usageContext server); create one in the same Tag Manager account",
+      "host": "Google Cloud Run, in a US region (most sessions come from the US, per the business details)",
+      "instances": "2 production instances, autoscaling up to 10, plus 1 preview server",
+      "address": "https://www.campkitchen.example/metrics",
+      "why": "Safari is 34.2% of sessions (25% or more) and the team controls the CDN, so a same-origin path on the site's own address avoids Safari's 7-day limit on cookies from a server whose IP doesn't match the site's"
+    },
+    "2_tag_moves": [
+      {
+        "tag": "Google tag - GA4 (googtag)",
+        "plan": "stays in the browser; gets server_container_url so GA4 is sent once, from the server, by a GA4 tag in the server container",
+        "where": "browser to server"
+      },
+      {
+        "tag": "GA4 - Event - view_item, add_to_cart, begin_checkout, purchase (gaawe)",
+        "plan": "unchanged; they travel through the Google tag to the server",
+        "where": "browser to server"
+      },
+      {
+        "tag": "Google Ads - Purchase (awct)",
+        "plan": "moves to a Google Ads conversion tag in the server container, transaction_id = order id, with hashed user-provided data; a server Conversion Linker tag is added",
+        "where": "server"
+      },
+      {
+        "tag": "Google Ads - Conversion Linker (gclidw)",
+        "plan": "stays; it keeps the click id cookie on the site",
+        "where": "browser"
+      },
+      {
+        "tag": "Google Ads - Remarketing (sp)",
+        "plan": "moves to the server's remarketing tag",
+        "where": "server"
+      },
+      {
+        "tag": "Microsoft - UET base and purchase (html)",
+        "plan": "stays in the browser with event_id added; a server tag for the UET Conversions API sends purchase with the same eventId, if the account has access to the beta (check first; otherwise browser only)",
+        "where": "both"
+      },
+      {
+        "tag": "Meta pixel (WooCommerce Meta plugin, not in the container)",
+        "plan": "unchanged; the plugin already sends Conversions API events, so no server Meta tag (one sender per platform)",
+        "where": "browser and partner"
+      },
+      {
+        "tag": "Heatmap - Clarity (html)",
+        "plan": "stays; no server option",
+        "where": "browser"
+      },
+      {
+        "tag": "Chat widget (html)",
+        "plan": "stays; no server option",
+        "where": "browser"
+      }
+    ],
+    "3_event_map": [
+      {
+        "event": "view_item",
+        "ga4": "view_item (server)",
+        "google_ads": "remarketing only (server)",
+        "meta": "ViewContent (plugin)",
+        "microsoft_ads": "view_item, browser only"
+      },
+      {
+        "event": "add_to_cart",
+        "ga4": "add_to_cart (server)",
+        "google_ads": "remarketing only (server)",
+        "meta": "AddToCart (plugin, browser and server)",
+        "microsoft_ads": "add_to_cart, browser only"
+      },
+      {
+        "event": "begin_checkout",
+        "ga4": "begin_checkout (server)",
+        "google_ads": "remarketing only (server)",
+        "meta": "InitiateCheckout (plugin, browser)",
+        "microsoft_ads": "begin_checkout, browser only"
+      },
+      {
+        "event": "purchase",
+        "ga4": "purchase (server)",
+        "google_ads": "Purchase conversion (server), transaction_id",
+        "meta": "Purchase (plugin, browser and server)",
+        "microsoft_ads": "purchase, browser and server with eventId"
+      }
+    ],
+    "4_event_id": {
+      "rule": "the developer adds event_id to every ecommerce dataLayer push",
+      "purchase": "order_<WooCommerce order id>, also sent to Google Ads as transaction_id",
+      "other_events": "<event name>_<timestamp in ms>_<6 random characters>, made once per push",
+      "fields": [
+        {
+          "platform": "GA4",
+          "field": "event_id as an event parameter (for debugging; GA4 receives each event once, from the server)"
+        },
+        {
+          "platform": "Google Ads",
+          "field": "transaction_id"
+        },
+        {
+          "platform": "Microsoft Ads",
+          "field": "eventId on the UET tag and on the UET Conversions API event"
+        },
+        {
+          "platform": "Meta",
+          "field": "handled by the WooCommerce Meta plugin; confirm deduplication in Events Manager"
+        }
+      ]
+    },
+    "5_hashing": [
+      {
+        "platform": "Google Ads (server)",
+        "fields": [
+          "email",
+          "phone",
+          "first name",
+          "last name",
+          "street"
+        ],
+        "hashed": "SHA-256 after normalising"
+      },
+      {
+        "platform": "Google Ads (server)",
+        "fields": [
+          "city",
+          "region",
+          "postal code",
+          "country"
+        ],
+        "hashed": "sent as they are, as Google asks"
+      },
+      {
+        "platform": "Microsoft Ads (server)",
+        "fields": [
+          "email",
+          "phone"
+        ],
+        "hashed": "SHA-256 after normalising"
+      },
+      {
+        "platform": "GA4",
+        "fields": [],
+        "hashed": "no personal data is sent to GA4"
+      },
+      {
+        "platform": "all",
+        "fields": [
+          "gclid",
+          "gbraid",
+          "wbraid",
+          "msclkid",
+          "IP address",
+          "user agent"
+        ],
+        "hashed": "sent as they are"
+      }
+    ],
+    "6_consent": [
+      {
+        "tag": "GA4 (server)",
+        "needs": [
+          "analytics_storage"
+        ],
+        "how": "Google tag passes the consent state; Google's server tag respects it"
+      },
+      {
+        "tag": "Google Ads conversion (server)",
+        "needs": [
+          "ad_storage",
+          "ad_user_data"
+        ],
+        "how": "same"
+      },
+      {
+        "tag": "Google Ads remarketing (server)",
+        "needs": [
+          "ad_storage",
+          "ad_user_data",
+          "ad_personalization"
+        ],
+        "how": "same"
+      },
+      {
+        "tag": "Microsoft UET Conversions API (server)",
+        "needs": [
+          "ad_storage"
+        ],
+        "how": "trigger condition reads the consent state from the event; fires only when granted"
+      }
+    ],
+    "7_monthly_cost": "see cost",
+    "8_test_sequence": [
+      {
+        "step": 1,
+        "do": "Deploy, route https://www.campkitchen.example/metrics, open https://www.campkitchen.example/metrics/healthy",
+        "pass": "returns ok"
+      },
+      {
+        "step": 2,
+        "do": "Tag Manager Preview on the web and server containers; place a test order",
+        "pass": "purchase arrives once with event_id, the consent state, hashed user fields and gclid"
+      },
+      {
+        "step": 3,
+        "do": "GA4 DebugView, Google Ads tag diagnostics, Microsoft's UET checks",
+        "pass": "each shows the server event"
+      },
+      {
+        "step": 4,
+        "do": "Parallel run for 14 days: new server Google Ads purchase action as secondary beside the browser one",
+        "pass": "daily counts line up and neither exceeds the web orders"
+      },
+      {
+        "step": 5,
+        "do": "Make the server action primary, retire the browser purchase tag, publish the web container change",
+        "pass": "one purchase conversion per order id"
+      },
+      {
+        "step": 6,
+        "do": "Weekly for 4 weeks: web orders vs GA4 purchases, measured as in the sizing",
+        "pass": "the 21.1% gap narrows; rollback is removing server_container_url and republishing the previous version"
+      }
+    ]
+  },
+  "tag_manager_drafts_not_run": [
+    {
+      "action": "create_workspace",
+      "body": {
+        "account_id": "<GTM account id>",
+        "container_id": "<web container id>",
+        "name": "Server-side tagging",
+        "description": "Send the Google tag to the server container"
+      },
+      "status": "not run"
+    },
+    {
+      "action": "create_variable",
+      "body": {
+        "gtm_workspace_id": "<from create_workspace>",
+        "name": "DLV - event_id",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "integer",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "template",
+            "key": "name",
+            "value": "event_id"
+          }
+        ]
+      },
+      "status": "not run"
+    },
+    {
+      "action": "update_tag",
+      "body": {
+        "gtm_workspace_id": "<from create_workspace>",
+        "tag_id": "1",
+        "name": "Google tag - GA4",
+        "type": "googtag",
+        "firingTriggerId": [
+          "2147479573"
+        ],
+        "parameter": [
+          {
+            "type": "template",
+            "key": "tagId",
+            "value": "G-EXAMPLE01"
+          },
+          {
+            "type": "list",
+            "key": "configSettingsTable",
+            "list": [
+              {
+                "type": "map",
+                "map": [
+                  {
+                    "type": "template",
+                    "key": "parameter",
+                    "value": "server_container_url"
+                  },
+                  {
+                    "type": "template",
+                    "key": "parameterValue",
+                    "value": "https://www.campkitchen.example/metrics"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "status": "not run; only after /healthy returns ok"
+    },
+    {
+      "action": "quick_preview_workspace",
+      "body": {
+        "gtm_workspace_id": "<from create_workspace>"
+      },
+      "status": "not run"
+    }
+  ],
+  "unknowns": [
+    "Meta match quality and deduplication: not readable through the connector; share an Events Manager screenshot",
+    "Whether the Microsoft Ads account has the UET Conversions API beta",
+    "JavaScript redirects: the crawler follows server redirects only"
+  ]
+}

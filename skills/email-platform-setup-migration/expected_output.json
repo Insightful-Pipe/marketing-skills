@@ -1,0 +1,636 @@
+{
+  "header": {
+    "mode": "migration",
+    "from": "Mailchimp",
+    "to": "Klaviyo",
+    "store": "Shopify",
+    "business": "Thimbleroot Yarn Co.",
+    "run_date": "2026-10-28",
+    "cut_over_date": "2026-11-16",
+    "verdict": "Not ready: 2 blocking gates fail (Viewed Product events, sending domain). Fix both by 2026-11-07 (D-9) or move the cut-over date."
+  },
+  "inventory": {
+    "audience": {
+      "name": "Thimbleroot Customers",
+      "double_optin": false,
+      "contacts": 29073,
+      "by_status": {
+        "subscribed": 18420,
+        "unsubscribed": 3115,
+        "cleaned": 942,
+        "pending": 386,
+        "transactional": 6210,
+        "archived": 0
+      },
+      "source": "list_members by status"
+    },
+    "segments": 6,
+    "automations": 6,
+    "templates": 10,
+    "forms": 2,
+    "custom_fields": 8,
+    "interest_categories": 1,
+    "tags": 2,
+    "scheduled_campaigns": 2,
+    "customer_journeys": "none, per the user",
+    "new_side": {
+      "lists": [
+        "Preview List"
+      ],
+      "store_metrics": [
+        "Fulfilled Order",
+        "Ordered Product",
+        "Placed Order",
+        "Started Checkout"
+      ]
+    }
+  },
+  "flows": [
+    {
+      "name": "Welcome new subscribers",
+      "status": "sending",
+      "trigger_old": "signup to audience",
+      "emails": 3,
+      "delay_span_days": 7,
+      "emails_sent_lifetime": 24310,
+      "decision": "rebuild",
+      "reason": "sending, lifetime sends, the user confirms it still runs, not tied to a past event",
+      "new_trigger": "Added to List: Newsletter",
+      "needs": "the Newsletter list and the new forms",
+      "switch": "leave on until 2026-11-23 (D+7): no new people join once the old forms are gone, so it drains its 7-day span, then pause"
+    },
+    {
+      "name": "Abandoned cart",
+      "status": "sending",
+      "trigger_old": "abandoned cart (store)",
+      "emails": 1,
+      "delay_span_days": 0,
+      "emails_sent_lifetime": 9842,
+      "decision": "rebuild",
+      "reason": "sending, lifetime sends, the user confirms it still runs, not tied to a past event",
+      "new_trigger": "Metric: Started Checkout",
+      "needs": "Started Checkout",
+      "switch": "pause in Mailchimp and set the Klaviyo flow live in the same hour on D"
+    },
+    {
+      "name": "Product retargeting",
+      "status": "sending",
+      "trigger_old": "viewed product (store)",
+      "emails": 1,
+      "delay_span_days": 1,
+      "emails_sent_lifetime": 6117,
+      "decision": "rebuild, blocked",
+      "reason": "sending, lifetime sends, the user confirms it still runs, not tied to a past event; Viewed Product fails the event check",
+      "new_trigger": "Metric: Viewed Product",
+      "needs": "Viewed Product",
+      "switch": "blocked: the Mailchimp version keeps running until Viewed Product passes, then pause it and set the Klaviyo flow live in the same hour"
+    },
+    {
+      "name": "Birthday",
+      "status": "sending",
+      "trigger_old": "date field BIRTHDAY",
+      "emails": 1,
+      "delay_span_days": 0,
+      "emails_sent_lifetime": 3402,
+      "decision": "rebuild",
+      "reason": "sending, lifetime sends, the user confirms it still runs, not tied to a past event",
+      "new_trigger": "Date property: birthday",
+      "needs": "the birthday field, transformed",
+      "switch": "pause in Mailchimp and set the Klaviyo flow live in the same hour on D"
+    },
+    {
+      "name": "Order follow-up",
+      "status": "paused",
+      "trigger_old": "first purchase (store)",
+      "emails": 1,
+      "delay_span_days": 3,
+      "emails_sent_lifetime": 1205,
+      "decision": "retire",
+      "reason": "paused in Mailchimp; build a post-purchase flow new later if wanted (Placed Order passes)"
+    },
+    {
+      "name": "Workshop reminder 2025",
+      "status": "sending",
+      "trigger_old": "date",
+      "emails": 1,
+      "delay_span_days": 0,
+      "emails_sent_lifetime": 188,
+      "decision": "retire",
+      "reason": "tied to an event on 2025-09-14, which has passed"
+    }
+  ],
+  "segments": [
+    {
+      "name": "Bought in last 90 days",
+      "type": "saved",
+      "members": 4212,
+      "decision": "rebuild",
+      "how": "segment from its definition: purchased in the last 90 days"
+    },
+    {
+      "name": "Knitters",
+      "type": "saved",
+      "members": 7904,
+      "decision": "rebuild",
+      "how": "segment from its definition: interest Craft is Knitting"
+    },
+    {
+      "name": "Clicked in last 6 months",
+      "type": "saved",
+      "members": 6904,
+      "decision": "rebuild",
+      "how": "segment from its definition: clicked any campaign in the last 6 months"
+    },
+    {
+      "name": "Workshop 2025 attendees",
+      "type": "static",
+      "members": 146,
+      "decision": "carry as a field",
+      "how": "static segment: becomes a yes or no profile field on import"
+    },
+    {
+      "name": "UK customers",
+      "type": "saved",
+      "members": 1388,
+      "decision": "rebuild",
+      "how": "segment from its definition: country is United Kingdom and purchased at least once"
+    },
+    {
+      "name": "Test segment old",
+      "type": "saved",
+      "members": 0,
+      "decision": "retire",
+      "how": "0 members"
+    }
+  ],
+  "templates": [
+    {
+      "name": "Welcome 1",
+      "last_edited": "2026-04-02",
+      "decision": "rebuild",
+      "why": "used by Welcome new subscribers"
+    },
+    {
+      "name": "Welcome 2",
+      "last_edited": "2026-04-02",
+      "decision": "rebuild",
+      "why": "used by Welcome new subscribers"
+    },
+    {
+      "name": "Welcome 3",
+      "last_edited": "2026-04-03",
+      "decision": "rebuild",
+      "why": "used by Welcome new subscribers"
+    },
+    {
+      "name": "Cart reminder",
+      "last_edited": "2026-02-18",
+      "decision": "rebuild",
+      "why": "used by Abandoned cart"
+    },
+    {
+      "name": "Back in your basket",
+      "last_edited": "2026-02-18",
+      "decision": "rebuild",
+      "why": "used by Product retargeting"
+    },
+    {
+      "name": "Birthday treat",
+      "last_edited": "2025-11-30",
+      "decision": "rebuild",
+      "why": "used by Birthday"
+    },
+    {
+      "name": "Order thanks",
+      "last_edited": "2025-06-12",
+      "decision": "archive and retire",
+      "why": "used only by Order follow-up, which is retired"
+    },
+    {
+      "name": "Workshop reminder",
+      "last_edited": "2025-08-20",
+      "decision": "archive and retire",
+      "why": "used only by Workshop reminder 2025, which is retired"
+    },
+    {
+      "name": "Campaign base 2026",
+      "last_edited": "2026-10-09",
+      "decision": "rebuild",
+      "why": "most recently edited campaign template"
+    },
+    {
+      "name": "Campaign base 2024",
+      "last_edited": "2024-12-01",
+      "decision": "archive and retire",
+      "why": "older campaign template"
+    }
+  ],
+  "forms": [
+    {
+      "name": "Footer embed",
+      "decision": "rebuild in Klaviyo, pointed at Newsletter, publish on D"
+    },
+    {
+      "name": "Newsletter pop-up",
+      "decision": "rebuild in Klaviyo, pointed at Newsletter, publish on D"
+    }
+  ],
+  "scheduled_campaigns": [
+    {
+      "title": "Sock club reminder",
+      "send_date": "2026-11-12",
+      "recipients": 2310,
+      "decision": "stays in Mailchimp (before D)"
+    },
+    {
+      "title": "Holiday yarn drop",
+      "send_date": "2026-11-20",
+      "recipients": 18102,
+      "decision": "move to Klaviyo: unschedule in Mailchimp on D-1"
+    }
+  ],
+  "consent_and_suppressions": {
+    "status_map_used": [
+      {
+        "mailchimp": "subscribed",
+        "klaviyo": "subscribed to Newsletter"
+      },
+      {
+        "mailchimp": "unsubscribed",
+        "klaviyo": "suppressed (unsubscribe)"
+      },
+      {
+        "mailchimp": "cleaned",
+        "klaviyo": "suppressed (bounce)"
+      },
+      {
+        "mailchimp": "pending",
+        "klaviyo": "left out: never confirmed"
+      },
+      {
+        "mailchimp": "transactional",
+        "klaviyo": "not imported to a marketing list; arrives through the Shopify integration with no marketing consent"
+      }
+    ],
+    "mailchimp_total": 29073,
+    "buckets": [
+      {
+        "order": 1,
+        "bucket": "Suppress first",
+        "count": 4057,
+        "detail": "3,115 unsubscribed + 942 cleaned",
+        "when": "2026-11-06"
+      },
+      {
+        "order": 2,
+        "bucket": "Import as subscribed",
+        "count": 18838,
+        "detail": "18,420 Mailchimp subscribed + 418 subscribed in Shopify only (consent source: Shopify)",
+        "when": "2026-11-09"
+      },
+      {
+        "order": 3,
+        "bucket": "No marketing consent",
+        "count": 6210,
+        "detail": "Mailchimp transactional; they reach Klaviyo as Shopify customers, not on the Newsletter list",
+        "when": "with the store sync"
+      },
+      {
+        "order": 4,
+        "bucket": "Left out",
+        "count": 386,
+        "detail": "Mailchimp pending; they can sign up again on the new forms",
+        "when": "never imported"
+      }
+    ],
+    "conflicts": {
+      "count": 1276,
+      "detail": "1,034 unsubscribed and 242 cleaned in Mailchimp are still marked subscribed in Shopify",
+      "rule": "They stay suppressed. Keep Klaviyo's Shopify subscriber sync off until the 4,057 suppressions are in and counted, then read 5 of these profiles with get_profiles (subscriptions) after the first sync to confirm they are still suppressed."
+    },
+    "check_sum": "18,420 + 4,057 + 6,210 + 386 = 29,073 Mailchimp contacts"
+  },
+  "field_map": [
+    {
+      "old": "FNAME (First name)",
+      "type": "text",
+      "filled": 17104,
+      "fill_pct": 92.9,
+      "decision": "keep",
+      "new": "first_name",
+      "new_type": "built-in",
+      "transform": "none"
+    },
+    {
+      "old": "LNAME (Last name)",
+      "type": "text",
+      "filled": 15388,
+      "fill_pct": 83.5,
+      "decision": "keep",
+      "new": "last_name",
+      "new_type": "built-in",
+      "transform": "none"
+    },
+    {
+      "old": "ADDRESS (Address)",
+      "type": "address",
+      "filled": 11920,
+      "fill_pct": 64.7,
+      "decision": "keep",
+      "new": "location (address1, city, region, zip, country)",
+      "new_type": "built-in",
+      "transform": "split the address into its parts"
+    },
+    {
+      "old": "PHONE (Phone)",
+      "type": "phone",
+      "filled": 2940,
+      "fill_pct": 16.0,
+      "decision": "keep",
+      "new": "phone_number",
+      "new_type": "built-in",
+      "transform": "1,128 of 2,940 numbers need a country code added for E.164; no SMS consent comes with them"
+    },
+    {
+      "old": "BIRTHDAY (Birthday)",
+      "type": "birthday (MM/DD)",
+      "filled": 5233,
+      "fill_pct": 28.4,
+      "decision": "keep",
+      "new": "birthday",
+      "new_type": "custom date",
+      "transform": "Mailchimp holds MM/DD only; confirm the format Klaviyo's date-triggered flow accepts before import"
+    },
+    {
+      "old": "MMERGE6 (Favorite fiber)",
+      "type": "dropdown (wool, cotton, alpaca, blends)",
+      "filled": 6012,
+      "fill_pct": 32.6,
+      "decision": "keep",
+      "new": "favorite_fiber",
+      "new_type": "custom text",
+      "transform": "rename from MMERGE6"
+    },
+    {
+      "old": "MMERGE7 (Signup source)",
+      "type": "text",
+      "filled": 9771,
+      "fill_pct": 53.0,
+      "decision": "keep",
+      "new": "signup_source",
+      "new_type": "custom text",
+      "transform": "rename from MMERGE7"
+    },
+    {
+      "old": "MMERGE8 (Old loyalty ID)",
+      "type": "text",
+      "filled": 37,
+      "fill_pct": 0.2,
+      "decision": "retire",
+      "why": "filled on 0.2% of subscribed contacts (under 1%) and used by no kept segment"
+    },
+    {
+      "old": "Interest group Craft (Knitting, Crochet, Weaving)",
+      "filled": 10422,
+      "fill_pct": 56.6,
+      "decision": "keep",
+      "new": "craft_interests",
+      "new_type": "custom list",
+      "transform": "group names become list values; the Knitters segment is rebuilt on this field"
+    },
+    {
+      "old": "Tags (wholesale, vip)",
+      "filled": 869,
+      "fill_pct": 4.7,
+      "decision": "keep",
+      "new": "mailchimp_tags",
+      "new_type": "custom list",
+      "transform": "Klaviyo has no profile tags; carry as a list field"
+    },
+    {
+      "old": "Static segment Workshop 2025 attendees",
+      "filled": 146,
+      "fill_pct": 0.8,
+      "decision": "keep",
+      "new": "workshop_2025_attendee",
+      "new_type": "custom yes or no",
+      "transform": "true for the 146 members"
+    },
+    {
+      "old": "timestamp_opt",
+      "decision": "keep",
+      "new": "original_opt_in_at",
+      "new_type": "custom date",
+      "transform": "consent proof"
+    },
+    {
+      "old": "ip_opt",
+      "decision": "keep",
+      "new": "original_opt_in_ip",
+      "new_type": "custom text",
+      "transform": "consent proof"
+    },
+    {
+      "old": "source",
+      "decision": "keep",
+      "new": "original_signup_method",
+      "new_type": "custom text",
+      "transform": "consent proof"
+    },
+    {
+      "old": "member_rating",
+      "decision": "keep",
+      "new": "mailchimp_rating",
+      "new_type": "custom number",
+      "transform": "used only to pick the first ramp audience; not a live score"
+    }
+  ],
+  "event_check": {
+    "window": "2026-10-21 to 2026-10-27",
+    "checks": [
+      {
+        "check": "Placed Order arrives",
+        "needed": "always, for a store",
+        "new_platform": 412,
+        "store": 431,
+        "ratio_pct": 95.6,
+        "source": "Shopify integration",
+        "result": "pass"
+      },
+      {
+        "check": "Order value on Placed Order",
+        "needed": "always, for a store",
+        "new_platform": "50 of 50 sampled events carry $value",
+        "store": null,
+        "result": "pass"
+      },
+      {
+        "check": "Started Checkout arrives",
+        "needed": "Abandoned cart is rebuilt",
+        "new_platform": 1018,
+        "store": 604,
+        "store_label": "abandoned checkouts",
+        "source": "Shopify integration",
+        "result": "pass"
+      },
+      {
+        "check": "Viewed Product arrives",
+        "needed": "Product retargeting is rebuilt as a browse flow",
+        "new_platform": 0,
+        "store": null,
+        "source": "missing",
+        "result": "fail",
+        "why": "The metric is missing. Active on Site arrived 3,904 times, so the site script loads; product page tracking is the missing piece."
+      },
+      {
+        "check": "Added to Cart arrives",
+        "needed": "no kept flow uses it",
+        "new_platform": null,
+        "store": null,
+        "result": "not required"
+      },
+      {
+        "check": "Catalog synced",
+        "needed": "browse flow and product blocks",
+        "new_platform": 1184,
+        "store": 1240,
+        "ratio_pct": 95.5,
+        "result": "pass"
+      }
+    ]
+  },
+  "gates": [
+    {
+      "gate": "Events every rebuilt flow needs",
+      "blocking": true,
+      "result": "fail",
+      "detail": "Placed Order arrives: pass; Order value on Placed Order: pass; Started Checkout arrives: pass; Viewed Product arrives: fail; Catalog synced: pass"
+    },
+    {
+      "gate": "Sending domain authenticated on Klaviyo",
+      "blocking": true,
+      "result": "fail",
+      "detail": "not set up yet (user); hand domain setup and the warm-up schedule to email-deliverability-auditor"
+    },
+    {
+      "gate": "Suppressions imported and counted before the subscribed import",
+      "blocking": true,
+      "result": "planned",
+      "detail": "4,057 on 2026-11-06"
+    },
+    {
+      "gate": "Shopify subscriber sync off until suppressions are counted; conflicts checked",
+      "blocking": true,
+      "result": "planned",
+      "detail": "1,276 conflicts"
+    },
+    {
+      "gate": "Order value on Placed Order and catalog synced",
+      "blocking": false,
+      "result": "pass",
+      "detail": "$value on 50 of 50; catalog 95.5%"
+    },
+    {
+      "gate": "Old campaigns scheduled after D moved",
+      "blocking": false,
+      "result": "warn",
+      "detail": "1 campaign to move"
+    }
+  ],
+  "cut_over_plan": [
+    {
+      "date": "2026-11-02",
+      "step": "Authenticate the sending domain in Klaviyo (email-deliverability-auditor). Turn on Klaviyo product page tracking so Viewed Product arrives. Shopify is already connected.",
+      "proof": "domain verified; Viewed Product events arriving"
+    },
+    {
+      "date": "2026-11-06",
+      "step": "Pull the Mailchimp export (export date). Import the 4,057 suppressions into Klaviyo with its suppressed-profiles importer.",
+      "proof": "Klaviyo suppressed count includes all 4,057"
+    },
+    {
+      "date": "2026-11-07",
+      "step": "Rerun the event check on 2026-10-31 to 2026-11-06. Go or no-go: if Viewed Product or the domain still fails, move D.",
+      "proof": "gate table"
+    },
+    {
+      "date": "2026-11-09",
+      "step": "Create the Newsletter list (fix below). Import the 18,838 subscribed contacts with the mapped fields; no flow is live on the list yet. Turn on the Shopify subscriber sync after the import, then check 5 conflict profiles. Ramp campaigns start on Klaviyo to the 6,904 in Clicked in last 6 months, volumes from email-deliverability-auditor; each campaign goes out from one platform only.",
+      "proof": "Newsletter subscribed count 18,838"
+    },
+    {
+      "date": "2026-11-09 to 2026-11-15",
+      "step": "Build 4 segments, 7 templates, 2 forms (unpublished) and 4 flows (draft).",
+      "proof": "each item ticked"
+    },
+    {
+      "date": "2026-11-15",
+      "step": "Unschedule Holiday yarn drop in Mailchimp and schedule it in Klaviyo for 2026-11-20.",
+      "proof": "no Mailchimp campaign scheduled after D"
+    },
+    {
+      "date": "2026-11-16",
+      "step": "In one hour: publish the Klaviyo footer form and pop-up and remove the Mailchimp form code; pause Mailchimp Abandoned cart, Product retargeting and Birthday and set the Klaviyo flows live; set the Klaviyo welcome live. Pull members changed to unsubscribed or cleaned since the export date and suppress them in Klaviyo.",
+      "proof": "both platforms checked"
+    },
+    {
+      "date": "2026-11-23",
+      "step": "Pause Mailchimp Welcome new subscribers after its 7-day drain. Second delta suppression pull.",
+      "proof": "welcome queue empty"
+    },
+    {
+      "date": "2026-12-16",
+      "step": "Export Mailchimp reports, final delta suppression pull, disconnect Shopify from Mailchimp, close the Mailchimp account.",
+      "proof": "last pull imported"
+    }
+  ],
+  "fixes_offered": [
+    {
+      "fix": "Create the Newsletter list in Klaviyo",
+      "action": "create_list",
+      "status": "not run",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "Newsletter"
+            }
+          }
+        }
+      }
+    },
+    {
+      "fix": "Suppress delta opt-outs on D",
+      "action": "suppress_profiles",
+      "status": "not run",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "suppress_profiles",
+        "body": {
+          "data": {
+            "type": "profile-suppression-bulk-create-job",
+            "attributes": {
+              "profiles": {
+                "data": [
+                  {
+                    "type": "profile",
+                    "attributes": {
+                      "email": "<each email from the delta pull>"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "unknowns": [
+    "90-day sends per Mailchimp automation: the API gives lifetime counts; keep or retire used status and lifetime sends, and the user confirmed the four sending automations still run.",
+    "Mailchimp Customer Journeys: none, per the user; the API doesn't list them."
+  ]
+}

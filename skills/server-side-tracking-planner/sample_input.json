@@ -1,0 +1,259 @@
+{
+  "note": "Example data: an invented online store, Example Camp Kitchen, with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"server-side-tracking-planner\" skill. Do we need server-side tracking? GA4 shows fewer sales than WooCommerce. If it's worth it, plan the build.",
+  "business": {
+    "name": "Example Camp Kitchen (invented)",
+    "what_it_sells": "camping stoves, cookware and coffee gear, sold online",
+    "site": "https://www.campkitchen.example",
+    "stack": "WooCommerce on a managed WordPress host, with a CDN in front of the site that the team controls",
+    "partner_integrations": [
+      "The WooCommerce Meta plugin sends Meta Conversions API events for purchases and add to cart"
+    ],
+    "currency": "USD",
+    "visitors": "most sessions come from the US; about a third of orders ship to the EU and UK"
+  },
+  "date_range": {
+    "start": "2026-09-28",
+    "end": "2026-10-27"
+  },
+  "user_answers": {
+    "what_counts": "orders",
+    "non_web_orders": {
+      "phone orders entered by staff": 38,
+      "test orders": 9,
+      "wholesale orders entered by hand": 25
+    },
+    "consent": {
+      "share_of_orders_from_consent_regions_pct": 30.0,
+      "banner_accept_rate_pct": 78.0,
+      "source": "the consent tool dashboard and WooCommerce orders by billing country"
+    },
+    "owner": {
+      "who": "the store's agency",
+      "hourly_rate": 90.0,
+      "upkeep_hours_per_month": 4,
+      "build_hours": 32
+    },
+    "host_quote_per_instance": null
+  },
+  "data_pulled": {
+    "woocommerce_get_sales_report": {
+      "total_orders": 1912
+    },
+    "ga4": {
+      "property": "Example Camp Kitchen web",
+      "list_data_streams": [
+        {
+          "type": "WEB_DATA_STREAM",
+          "measurementId": "G-EXAMPLE01",
+          "defaultUri": "https://www.campkitchen.example/"
+        }
+      ],
+      "transactions": 1452,
+      "sessions_by_browser": {
+        "Chrome": 52800,
+        "Safari": 33400,
+        "Edge": 6100,
+        "Firefox": 3900,
+        "Samsung Internet": 1300,
+        "Other": 300
+      },
+      "sessions_by_operating_system": {
+        "iOS": 29600,
+        "Android": 21400,
+        "Windows": 26800,
+        "Macintosh": 17900,
+        "Other": 2100
+      },
+      "busiest_hour": {
+        "dateHour": "2026102119",
+        "eventCount": 9840
+      },
+      "paid_landing_pages": [
+        {
+          "landingPage": "/collections/stoves/",
+          "paid_sessions": 8100
+        },
+        {
+          "landingPage": "/products/two-burner-camp-stove/",
+          "paid_sessions": 5200
+        },
+        {
+          "landingPage": "/go/autumn-sale/",
+          "paid_sessions": 3900
+        },
+        {
+          "landingPage": "/pages/gift-guide/",
+          "paid_sessions": 1400
+        }
+      ]
+    },
+    "google_ads": {
+      "customer": {
+        "auto_tagging_enabled": true,
+        "accepted_customer_data_terms": true,
+        "enhanced_conversions_for_leads_enabled": false
+      },
+      "conversion_actions": [
+        {
+          "name": "Purchase (website)",
+          "type_": "WEBPAGE",
+          "include_in_conversions_metric": true
+        },
+        {
+          "name": "Add to cart",
+          "type_": "WEBPAGE",
+          "include_in_conversions_metric": false
+        }
+      ],
+      "conversions_by_action": {
+        "Purchase (website)": 611,
+        "Add to cart": 2840
+      },
+      "cost": 21400.0
+    },
+    "facebook_ads": {
+      "pixels": [
+        {
+          "name": "Camp Kitchen pixel",
+          "last_fired_time": "2026-10-27T23:51:12+0000",
+          "first_party_cookie_status": "FIRST_PARTY_COOKIE_ENABLED"
+        }
+      ],
+      "purchases_7d_click": 702,
+      "spend": 18900.0,
+      "match_quality_and_dedup": "not readable through the connector; no screenshot given"
+    },
+    "microsoft_ads": {
+      "uet_tags": [
+        {
+          "Name": "Camp Kitchen UET",
+          "Status": "Active"
+        }
+      ],
+      "conversion_goals": [
+        {
+          "Name": "Purchase",
+          "Type": "Event",
+          "Status": "Active"
+        }
+      ],
+      "conversions": 88,
+      "spend": 2300.0
+    },
+    "linkedin_ads": "not connected; the store doesn't advertise there",
+    "openai_ads": "not connected; the store doesn't advertise there",
+    "google_tag_manager": {
+      "containers": [
+        {
+          "publicId": "GTM-CAMPEX1",
+          "name": "campkitchen.example",
+          "usageContext": [
+            "web"
+          ],
+          "taggingServerUrls": null
+        }
+      ],
+      "live_version_tags": [
+        {
+          "tagId": "1",
+          "name": "Google tag - GA4",
+          "type": "googtag",
+          "settings": {
+            "tagId": "G-EXAMPLE01"
+          },
+          "firingTriggerId": [
+            "2147479573"
+          ]
+        },
+        {
+          "tagId": "2",
+          "name": "GA4 - Event - view_item",
+          "type": "gaawe"
+        },
+        {
+          "tagId": "3",
+          "name": "GA4 - Event - add_to_cart",
+          "type": "gaawe"
+        },
+        {
+          "tagId": "4",
+          "name": "GA4 - Event - begin_checkout",
+          "type": "gaawe"
+        },
+        {
+          "tagId": "5",
+          "name": "GA4 - Event - purchase",
+          "type": "gaawe"
+        },
+        {
+          "tagId": "6",
+          "name": "Google Ads - Purchase",
+          "type": "awct",
+          "settings": {
+            "enableEnhancedConversion": null
+          }
+        },
+        {
+          "tagId": "7",
+          "name": "Google Ads - Conversion Linker",
+          "type": "gclidw"
+        },
+        {
+          "tagId": "8",
+          "name": "Google Ads - Remarketing",
+          "type": "sp"
+        },
+        {
+          "tagId": "9",
+          "name": "Microsoft - UET base and purchase",
+          "type": "html",
+          "vendor": "Microsoft Ads UET"
+        },
+        {
+          "tagId": "10",
+          "name": "Heatmap - Clarity",
+          "type": "html",
+          "vendor": "Microsoft Clarity"
+        },
+        {
+          "tagId": "11",
+          "name": "Chat widget",
+          "type": "html",
+          "vendor": "live chat"
+        }
+      ],
+      "note": "The Meta pixel is loaded by the WooCommerce Meta plugin, not by the container."
+    },
+    "crawler_status_code_checker": [
+      {
+        "url": "https://www.campkitchen.example/collections/stoves/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5",
+        "redirect_count": 0,
+        "final_url": "https://www.campkitchen.example/collections/stoves/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5"
+      },
+      {
+        "url": "https://www.campkitchen.example/products/two-burner-camp-stove/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5",
+        "redirect_count": 0,
+        "final_url": "https://www.campkitchen.example/products/two-burner-camp-stove/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5"
+      },
+      {
+        "url": "https://www.campkitchen.example/go/autumn-sale/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5",
+        "redirect_count": 1,
+        "redirect_chain": [
+          {
+            "status_code": 302
+          },
+          {
+            "status_code": 200
+          }
+        ],
+        "final_url": "https://www.campkitchen.example/collections/sale/"
+      },
+      {
+        "url": "https://www.campkitchen.example/pages/gift-guide/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5",
+        "redirect_count": 0,
+        "final_url": "https://www.campkitchen.example/pages/gift-guide/?gclid=TEST1&gbraid=TEST2&wbraid=TEST3&fbclid=TEST4&msclkid=TEST5"
+      }
+    ]
+  }
+}

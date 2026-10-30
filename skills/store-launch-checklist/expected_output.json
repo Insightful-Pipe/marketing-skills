@@ -1,0 +1,398 @@
+{
+  "store": "Quillbrook Tea Co.",
+  "platform": "Shopify",
+  "domain": "www.quillbrook.example",
+  "run_date": "2026-10-29",
+  "launch_date": "2026-11-09",
+  "sells_to": [
+    "US",
+    "CA"
+  ],
+  "sources_read": [
+    "Shopify (get_shop, get_policies, get_shipping_zones, get_products, get_orders)",
+    "site crawler (6 checkers)",
+    "PageSpeed core-web-vitals (3 pages, mobile)",
+    "GA4 (list_data_streams, events, list_key_events)",
+    "Klaviyo (get_lists, get_flows)",
+    "Merchant Center (get_business_info, list_account_issues, get_shipping_settings, list_return_policies)",
+    "your answers (countries, tax registrations, tools)"
+  ],
+  "verdict": "Hold: fix before taking orders",
+  "verdict_reason": "2 items that block orders fail (M2, S1), 5 that block promotion fail (P3, C3, T2, E2, MC4), and 1 item that blocks orders is unconfirmed (T5). The store is already open with the password off, so a buyer in Canada can reach checkout today and find no shipping rate.",
+  "counts": {
+    "pass": 22,
+    "fail": 7,
+    "unknown": 1,
+    "n/a": 2
+  },
+  "fix_first": [
+    {
+      "severity": "orders",
+      "items": [
+        {
+          "id": "M2",
+          "check": "A real payment was captured and refunded",
+          "evidence": "get_orders: 0 live orders refunded; 1 of 1 orders are test-mode orders on the bogus gateway",
+          "fix": "Place one real order with a real card for a low-priced item, check it reaches your payouts, then refund it from the order page."
+        },
+        {
+          "id": "S1",
+          "check": "Every country you sell to can check out",
+          "evidence": "you sell to US, CA; get_shipping_zones: 1 zone (United States) covering US",
+          "fix": "Add a Canada zone with at least one rate in Settings > Shipping and delivery, or take Canada off your list of countries sold to until it has one. Merchant Center already advertises Canada shipping."
+        }
+      ]
+    },
+    {
+      "severity": "promotion",
+      "items": [
+        {
+          "id": "P3",
+          "check": "The return window says the same thing everywhere",
+          "evidence": "refund policy: \"within 30 days of delivery\"; Merchant Center return policy: US 14 days",
+          "fix": "Decide which window is true. If it is 30 days, change the Merchant Center return policy for US from 14 to 30 days; if it is shorter, change the refund policy text instead."
+        },
+        {
+          "id": "C3",
+          "check": "Product identifiers are filled in",
+          "evidence": "get_products: 4 of 44 variants have no barcode: Ginger Lemon Warmer (50 g); Ginger Lemon Warmer (100 g); Hibiscus Berry (50 g); Tasting Set of Four",
+          "fix": "Add the GTIN from the packaging or your supplier to each one. If a product has no GTIN (your own blend, for example), confirm it and send it with identifier_exists set to no."
+        },
+        {
+          "id": "T2",
+          "check": "Shop events arrive in GA4",
+          "evidence": "events 2026-10-26 to 2026-10-28: view_item 133, add_to_cart 21, begin_checkout 6, purchase 0; test order #1001 placed 2026-10-26",
+          "fix": "No purchase event arrived for the test order, while the earlier steps did. Check the purchase event in the Google & YouTube app (or your GA4 setup) and its customer privacy settings. Some setups don't send test-mode orders, so the live order from M2 settles it: place it, wait a day, and run this check again."
+        },
+        {
+          "id": "E2",
+          "check": "A welcome flow is live",
+          "evidence": "get_flows: Welcome Series (Added to List) status draft",
+          "fix": "Read the emails in Welcome Series, then set it live. Until then the first sign-ups from launch day get no welcome email."
+        },
+        {
+          "id": "MC4",
+          "check": "A return policy exists for every country you sell to",
+          "evidence": "list_return_policies: covers US; no policy for CA",
+          "fix": "Add a return policy for CA with the window from your refund policy (30 days). I can do this once you confirm (see the drafted payload)."
+        }
+      ]
+    }
+  ],
+  "confirm_before": [
+    {
+      "id": "T5",
+      "check": "The consent banner works where it's needed",
+      "severity": "orders",
+      "how_to_settle": "Tell me whether a cookie banner shows, in which countries, and whether GA4 waits for consent. Check Settings > Customer privacy, and ask your privacy adviser whether you need one for Canada."
+    }
+  ],
+  "checklist": [
+    {
+      "id": "D1",
+      "area": "Domain and access",
+      "check": "The custom domain is the primary address",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_shop: domain www.quillbrook.example, myshopify_domain quillbrook-tea.myshopify.com"
+    },
+    {
+      "id": "D2",
+      "area": "Domain and access",
+      "check": "HTTPS certificate is valid",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "ssl-certificate-checker: valid true, self_signed false, expires in 81 days"
+    },
+    {
+      "id": "D3",
+      "area": "Domain and access",
+      "check": "One address for every version",
+      "severity": "week one",
+      "status": "pass",
+      "evidence": "status-code-checker: http://quillbrook.example ends at https://www.quillbrook.example/ (200); http://www.quillbrook.example ends at https://www.quillbrook.example/ (200)"
+    },
+    {
+      "id": "D4",
+      "area": "Domain and access",
+      "check": "Shoppers can reach the store",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_shop: password_enabled false"
+    },
+    {
+      "id": "P1",
+      "area": "Policies",
+      "check": "Refund, privacy, terms of service, shipping and contact policies are published",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_policies: 5 of 5 published with text"
+    },
+    {
+      "id": "P2",
+      "area": "Policies",
+      "check": "No template text is left in them",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_policies: no placeholder text found"
+    },
+    {
+      "id": "P3",
+      "area": "Policies",
+      "check": "The return window says the same thing everywhere",
+      "severity": "promotion",
+      "status": "fail",
+      "evidence": "refund policy: \"within 30 days of delivery\"; Merchant Center return policy: US 14 days"
+    },
+    {
+      "id": "M1",
+      "area": "Payments and taxes",
+      "check": "A test order went through checkout",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_orders: 1 orders in the last 30 days, #1001 on 2026-10-26 (test true, gateway bogus)"
+    },
+    {
+      "id": "M2",
+      "area": "Payments and taxes",
+      "check": "A real payment was captured and refunded",
+      "severity": "orders",
+      "status": "fail",
+      "evidence": "get_orders: 0 live orders refunded; 1 of 1 orders are test-mode orders on the bogus gateway"
+    },
+    {
+      "id": "M3",
+      "area": "Payments and taxes",
+      "check": "Tax is collected where you're registered",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "you are registered in US-NY; get_shipping_zones: New York rate 4%; your settings paste: collecting in New York"
+    },
+    {
+      "id": "S1",
+      "area": "Shipping",
+      "check": "Every country you sell to can check out",
+      "severity": "orders",
+      "status": "fail",
+      "evidence": "you sell to US, CA; get_shipping_zones: 1 zone (United States) covering US"
+    },
+    {
+      "id": "S2",
+      "area": "Shipping",
+      "check": "Weight-based rates have weights to work with",
+      "severity": "week one",
+      "status": "n/a",
+      "evidence": "get_shipping_zones: no zone uses weight-based rates (price-based only)"
+    },
+    {
+      "id": "C1",
+      "area": "Products",
+      "check": "Every variant has a price",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_products: 24 active products, 44 variants, 0 priced at 0"
+    },
+    {
+      "id": "C2",
+      "area": "Products",
+      "check": "Every product has an image and a description",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_products: 24 of 24 active products have an image and a description"
+    },
+    {
+      "id": "C3",
+      "area": "Products",
+      "check": "Product identifiers are filled in",
+      "severity": "promotion",
+      "status": "fail",
+      "evidence": "get_products: 4 of 44 variants have no barcode: Ginger Lemon Warmer (50 g); Ginger Lemon Warmer (100 g); Hibiscus Berry (50 g); Tasting Set of Four"
+    },
+    {
+      "id": "C4",
+      "area": "Products",
+      "check": "Active products are on the storefront",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "get_products: 24 of 24 active products have a published_at date"
+    },
+    {
+      "id": "T1",
+      "area": "Tracking and consent",
+      "check": "GA4 has a web stream for the store domain",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "list_data_streams: web stream G-EXAMPLE01 for https://www.quillbrook.example"
+    },
+    {
+      "id": "T2",
+      "area": "Tracking and consent",
+      "check": "Shop events arrive in GA4",
+      "severity": "promotion",
+      "status": "fail",
+      "evidence": "events 2026-10-26 to 2026-10-28: view_item 133, add_to_cart 21, begin_checkout 6, purchase 0; test order #1001 placed 2026-10-26"
+    },
+    {
+      "id": "T3",
+      "area": "Tracking and consent",
+      "check": "purchase is a key event",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "list_key_events: purchase is a key event"
+    },
+    {
+      "id": "T4",
+      "area": "Tracking and consent",
+      "check": "The Tag Manager container is published",
+      "severity": "promotion",
+      "status": "n/a",
+      "evidence": "you said the store doesn't use Google Tag Manager (GA4 runs through the Google & YouTube app)"
+    },
+    {
+      "id": "T5",
+      "area": "Tracking and consent",
+      "check": "The consent banner works where it's needed",
+      "severity": "orders",
+      "status": "unknown",
+      "evidence": "banner settings can't be read through the connectors, and you haven't said whether one is on"
+    },
+    {
+      "id": "G1",
+      "area": "Search basics",
+      "check": "The home page and a product page can be indexed",
+      "severity": "orders",
+      "status": "pass",
+      "evidence": "indexability-checker: / indexable true; /products/cloud-ridge-oolong indexable true"
+    },
+    {
+      "id": "G2",
+      "area": "Search basics",
+      "check": "robots.txt points to a sitemap",
+      "severity": "week one",
+      "status": "pass",
+      "evidence": "robots-txt-checker: sitemap https://www.quillbrook.example/sitemap.xml"
+    },
+    {
+      "id": "G3",
+      "area": "Search basics",
+      "check": "The home page has a title and a meta description",
+      "severity": "week one",
+      "status": "pass",
+      "evidence": "meta-tags-checker: title 47 characters, description 123 characters"
+    },
+    {
+      "id": "G4",
+      "area": "Search basics",
+      "check": "Product pages carry Product structured data",
+      "severity": "week one",
+      "status": "pass",
+      "evidence": "structured-data-checker on the product page: Product, BreadcrumbList, Organization"
+    },
+    {
+      "id": "V1",
+      "area": "Mobile speed",
+      "check": "Key pages load fast on a phone",
+      "severity": "week one",
+      "status": "pass",
+      "evidence": "core-web-vitals mobile: home LCP 2,310 ms, CLS 0.02, TBT 180 ms; collection LCP 2,140 ms, CLS 0.04, TBT 150 ms; product LCP 2,470 ms, CLS 0.08, TBT 210 ms"
+    },
+    {
+      "id": "E1",
+      "area": "Email capture",
+      "check": "There is a list for new subscribers",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "get_lists: 1 list (Newsletter)"
+    },
+    {
+      "id": "E2",
+      "area": "Email capture",
+      "check": "A welcome flow is live",
+      "severity": "promotion",
+      "status": "fail",
+      "evidence": "get_flows: Welcome Series (Added to List) status draft"
+    },
+    {
+      "id": "MC1",
+      "area": "Google Merchant Center",
+      "check": "Business details are complete",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "get_business_info: address and a customer service email are set"
+    },
+    {
+      "id": "MC2",
+      "area": "Google Merchant Center",
+      "check": "No account issues that stop products serving",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "list_account_issues: 0 issues"
+    },
+    {
+      "id": "MC3",
+      "area": "Google Merchant Center",
+      "check": "Shipping is set for every country you sell to",
+      "severity": "promotion",
+      "status": "pass",
+      "evidence": "get_shipping_settings: services deliver to CA, US"
+    },
+    {
+      "id": "MC4",
+      "area": "Google Merchant Center",
+      "check": "A return policy exists for every country you sell to",
+      "severity": "promotion",
+      "status": "fail",
+      "evidence": "list_return_policies: covers US; no policy for CA"
+    }
+  ],
+  "opening_day_switches": "None left: the password has been off since 2026-10-20, so the URL checks ran on the open store.",
+  "fixes_offered": [
+    {
+      "fix": "Turn the Welcome Series flow live, after you read its emails",
+      "status": "not run",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "update_flow_status",
+        "flow_id": "FLOW01",
+        "body": {
+          "data": {
+            "type": "flow",
+            "id": "FLOW01",
+            "attributes": {
+              "status": "live"
+            }
+          }
+        }
+      }
+    },
+    {
+      "fix": "Add a Merchant Center return policy for Canada with your 30-day window",
+      "status": "not run",
+      "payload": {
+        "platform": "google-merchant-center",
+        "action": "create_return_policy",
+        "merchant_id": "<MERCHANT_ID>",
+        "label": "Canada returns",
+        "country": "CA",
+        "return_policy_uri": "https://www.quillbrook.example/policies/refund-policy",
+        "policy_type": "NUMBER_OF_DAYS_AFTER_DELIVERY",
+        "return_window_days": "30",
+        "return_shipping_fee_type": "<FROM YOU>",
+        "return_label_source": "<FROM YOU>",
+        "item_conditions": "NEW",
+        "return_methods": "BY_MAIL"
+      },
+      "needs_first": "Confirm that 30 days is the true window, and how return shipping is paid. Do this after the Canada shipping zone exists (S1)."
+    }
+  ],
+  "changed_by_you": [
+    "The US return window in Merchant Center (P3): there is no update action, so edit it in Merchant Center or change the refund policy text.",
+    "The Canada shipping zone (S1), the live test payment (M2) and the 4 missing barcodes (C3)."
+  ],
+  "go_deeper": [
+    "launch-strategy for the November 9 launch plan",
+    "conversion-tracking-auditor once real orders arrive, to confirm purchase values",
+    "shopping-feed-optimizer before Shopping ads start",
+    "klaviyo-flow-auditor after the welcome flow has a few weeks of sends"
+  ]
+}

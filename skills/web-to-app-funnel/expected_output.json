@@ -1,0 +1,413 @@
+{
+  "header": {
+    "app": "Pantrybell",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "main_storefronts": [
+      "United States"
+    ],
+    "window": "web pilot 2026-10-06 to 2026-10-19 (14 days), trials resolved by 2026-10-26",
+    "currency": "USD",
+    "store_rules_read_on": "2026-10-28"
+  },
+  "store_rules_today": [
+    {
+      "rule": "United States storefront apps may include buttons and links to purchase methods other than in-app purchase; elsewhere links need an entitlement in specific storefronts",
+      "source": "https://developer.apple.com/app-store/review/guidelines/ (3.1.1(a), 3.1.3)",
+      "path": "in-app link-out (iOS, US)",
+      "date_read": "2026-10-28"
+    },
+    {
+      "rule": "A subscription bought on the web can be unlocked in the app only if the same subscription is also offered as an in-app purchase",
+      "source": "https://developer.apple.com/app-store/review/guidelines/ (3.1.3(b))",
+      "path": "web-first funnel",
+      "date_read": "2026-10-28"
+    },
+    {
+      "rule": "Apple may seek a commission tied to its costs on purchases made through links in the app (Ninth Circuit, 11 December 2025); the district court is setting the rate, none is final",
+      "source": "https://www.fenwick.com/insights/publications/ninth-circuit-largely-upholds-ruling-in-epic-v-apple (summary of the Ninth Circuit opinion in Epic Games v. Apple)",
+      "path": "in-app link-out (iOS, US)",
+      "date_read": "2026-10-28"
+    },
+    {
+      "rule": "Linking US users out of an Android app needs enrolment in the external content links program; transactions are reported and fees apply from 1 October 2026",
+      "source": "https://support.google.com/googleplay/android-developer/answer/16470497",
+      "path": "in-app link-out (Android, US)",
+      "date_read": "2026-10-28"
+    },
+    {
+      "rule": "The pages read set terms for purchases reached through a link in the app; none sets a fee on a web purchase made before the install with no link from the app",
+      "source": "both pages above",
+      "path": "web-first funnel",
+      "date_read": "2026-10-28"
+    }
+  ],
+  "store_rules_unchecked": [],
+  "economics": {
+    "inputs": {
+      "first_year_revenue_per_payer": 54.58,
+      "how": "0.70 x 59.99 (yearly) + 0.30 x 9.99 x 4.2 payments (monthly)",
+      "payments_per_payer_first_year": 1.96,
+      "blended_store_fee": "24.6%",
+      "how_fee": "0.64 iOS payers x 30% + 0.36 Android payers x 15%",
+      "store_refund_rate": "2.0%",
+      "web_refund_and_chargeback_rate": "4.0% (assumption: twice the store rate)",
+      "processor": "3.4% + 0.30 per charge",
+      "app_cost_per_click": 0.85,
+      "web_cost_per_click": 0.92,
+      "app_click_to_paid": "3.264% (0.31 x 0.27 x 0.39, pasted)",
+      "web_click_to_paid": "2.822% (measured: 136 payers from 4,820 clicks)"
+    },
+    "per_1000_clicks": {
+      "app_path": {
+        "payers": 32.64,
+        "net_revenue": 1316.51,
+        "ad_cost": 850.0,
+        "profit": 466.51,
+        "net_per_payer": 40.33
+      },
+      "web_path": {
+        "payers": 28.22,
+        "net_revenue": 1412.23,
+        "ad_cost": 920.0,
+        "profit": 492.23,
+        "net_per_payer": 50.05
+      }
+    },
+    "fee_saved_per_payer": 9.72,
+    "break_even_web_click_to_paid": "2.77%",
+    "break_even_how": "(app profit per 1,000 clicks 466.51 + 1,000 x web cost per click 0.92) / (1,000 x web net per payer 50.05)",
+    "dropoff_how": "1 - 2.77% / app click to paid 3.264%",
+    "dropoff_the_saving_pays_for": "15.1%",
+    "gap_vs_break_even": "0.05 percentage points above",
+    "profit_difference_per_1000_clicks": 25.72,
+    "link_out_sensitivity_ios_us": {
+      "store_net_per_payer_ios": 37.44,
+      "link_out_net_per_payer_at_0": 50.05,
+      "link_out_net_per_payer_at_stress_15": 42.19,
+      "conversion": "not modelled: Pantrybell has no link-out test data; the in-app paywall's link would need its own test"
+    }
+  },
+  "recommendation": {
+    "decision": "Build the web path, but fix the app login handoff before adding budget",
+    "deciding_number": "measured web click to paid 2.822% clears the break-even 2.77% on 136 web payers",
+    "override": "only 80.9% of web payers (110 of 136) logged into the app within 7 days, below the 90.0% default target",
+    "margin_note": "the web path wins by 25.72 per 1,000 clicks; a drop of 0.05 points in web click to paid would erase it"
+  },
+  "web_funnel_measured": [
+    {
+      "step": "Ad click (Meta)",
+      "event": "clicks (get_insights_campaign)",
+      "count": 4820,
+      "rate_from_previous": null
+    },
+    {
+      "step": "Landing view",
+      "event": "page_view",
+      "count": 4388,
+      "rate_from_previous": "91.0%"
+    },
+    {
+      "step": "Quiz start",
+      "event": "quiz_start",
+      "count": 2721,
+      "rate_from_previous": "62.0%"
+    },
+    {
+      "step": "Quiz complete",
+      "event": "quiz_complete",
+      "count": 1932,
+      "rate_from_previous": "71.0%"
+    },
+    {
+      "step": "Email given",
+      "event": "generate_lead",
+      "count": 1623,
+      "rate_from_previous": "84.0%"
+    },
+    {
+      "step": "Paywall view",
+      "event": "view_item",
+      "count": 1571,
+      "rate_from_previous": "96.8%"
+    },
+    {
+      "step": "Checkout start",
+      "event": "begin_checkout",
+      "count": 377,
+      "rate_from_previous": "24.0%"
+    },
+    {
+      "step": "Free trial starts",
+      "event": "trial_start",
+      "count": 290,
+      "rate_from_previous": "76.9%"
+    },
+    {
+      "step": "Trial to paid",
+      "event": "pasted from the user's subscription data",
+      "count": 136,
+      "rate_from_previous": "46.9%"
+    }
+  ],
+  "biggest_on_site_loss": {
+    "from": "Paywall view",
+    "to": "Checkout start",
+    "lost_share": "76.0%",
+    "lost_sessions": 1194,
+    "note": "the paywall-to-checkout step; test plan and price display before anything earlier in the quiz"
+  },
+  "funnel_blueprint": [
+    {
+      "step": "Ad",
+      "job": "one promise: a week of dinners from what is already in your kitchen",
+      "ships_when": "the landing page repeats the same promise",
+      "event": "click"
+    },
+    {
+      "step": "Landing page",
+      "job": "repeat the promise and start the quiz on the first screen",
+      "ships_when": "one action only",
+      "event": "page_view"
+    },
+    {
+      "step": "Quiz",
+      "job": "household size, diet, cooking time, what is in the kitchen; each answer changes the plan",
+      "ships_when": "quiz_step fires with the question number",
+      "event": "quiz_start, quiz_step, quiz_complete"
+    },
+    {
+      "step": "Email capture",
+      "job": "save the plan to the email before showing it",
+      "ships_when": "privacy policy linked",
+      "event": "generate_lead"
+    },
+    {
+      "step": "Result",
+      "job": "the first week of dinners and the grocery list built from the answers",
+      "ships_when": "built from the answers, not a fixed page",
+      "event": "none"
+    },
+    {
+      "step": "Web paywall",
+      "job": "yearly 59.99 and monthly 9.99, both with a 7-day trial, same prices as in the app",
+      "ships_when": "trial end date, renewal terms and how to cancel shown before payment",
+      "event": "view_item"
+    },
+    {
+      "step": "Checkout",
+      "job": "card and wallets on the same page, email prefilled",
+      "ships_when": "no account wall before payment",
+      "event": "begin_checkout, trial_start"
+    },
+    {
+      "step": "Account",
+      "job": "account from the checkout email, or Sign in with Apple",
+      "ships_when": "user_id set on the web stream",
+      "event": "sign_up"
+    },
+    {
+      "step": "Download and login handoff",
+      "job": "one store button for the device, plus a one-time login link to the checkout email",
+      "ships_when": "the fallback line 'sign in with the email you paid with' is on the page and in the email",
+      "event": "login (app stream)"
+    },
+    {
+      "step": "Entitlement in the app",
+      "job": "the app asks Pantrybell's server whether the account is subscribed and skips the in-app paywall",
+      "ships_when": "the in-app purchase stays on sale (3.1.3(b))",
+      "event": "none"
+    }
+  ],
+  "tracking_plan": [
+    {
+      "step": "Landing view",
+      "ga4": "page_view",
+      "meta": "PageView",
+      "google_ads": "none"
+    },
+    {
+      "step": "Quiz start",
+      "ga4": "quiz_start",
+      "meta": "QuizStart (custom)",
+      "google_ads": "none"
+    },
+    {
+      "step": "Each question answered",
+      "ga4": "quiz_step with step",
+      "meta": "none",
+      "google_ads": "none"
+    },
+    {
+      "step": "Quiz complete",
+      "ga4": "quiz_complete",
+      "meta": "QuizComplete (custom)",
+      "google_ads": "none"
+    },
+    {
+      "step": "Email given",
+      "ga4": "generate_lead",
+      "meta": "Lead",
+      "google_ads": "Website conversion, Sign-up, secondary"
+    },
+    {
+      "step": "Paywall view",
+      "ga4": "view_item",
+      "meta": "ViewContent",
+      "google_ads": "none"
+    },
+    {
+      "step": "Checkout start",
+      "ga4": "begin_checkout",
+      "meta": "InitiateCheckout",
+      "google_ads": "Website conversion, Begin checkout, secondary"
+    },
+    {
+      "step": "Free trial starts",
+      "ga4": "trial_start with value",
+      "meta": "StartTrial with value and currency (optimisation event)",
+      "google_ads": "Web trial start, Subscribe paid, primary"
+    },
+    {
+      "step": "Account created",
+      "ga4": "sign_up, user_id set",
+      "meta": "CompleteRegistration",
+      "google_ads": "none"
+    },
+    {
+      "step": "App login",
+      "ga4": "login in the app stream, same user_id",
+      "meta": "none",
+      "google_ads": "none"
+    },
+    {
+      "step": "Trial to paid",
+      "ga4": "purchase via Measurement Protocol with stored client id and user_id",
+      "meta": "Subscribe via Conversions API, event_id shared",
+      "google_ads": "UPLOAD_CLICKS action against the stored gclid, secondary while the trial action is primary"
+    }
+  ],
+  "tracking_plan_status": [
+    {
+      "item": "GA4 key events",
+      "found": "purchase, generate_lead",
+      "missing": "trial_start is not a key event",
+      "fix": "create_key_event for trial_start (offered)"
+    },
+    {
+      "item": "GA4 quiz questions",
+      "found": "no rows for quiz_step in the pilot",
+      "missing": "per-question drop-off cannot be measured",
+      "fix": "add quiz_step with the question number to the quiz"
+    },
+    {
+      "item": "Meta optimisation event",
+      "found": "the pilot ad set optimises for LEAD on the web pixel",
+      "missing": "145 trial starts a week, above the about 50 a week Meta needs",
+      "fix": "switch the ad set to StartTrial (in Ads Manager; this skill does not edit ad sets)"
+    },
+    {
+      "item": "Meta server events",
+      "found": "browser pixel only",
+      "missing": "trial-to-paid never reaches Meta",
+      "fix": "Conversions API with event_id shared with the pixel, and Subscribe sent when a trial turns paid"
+    },
+    {
+      "item": "Meta custom conversions",
+      "found": "none",
+      "missing": "nothing needed while StartTrial is a standard event",
+      "fix": "none"
+    },
+    {
+      "item": "Google Ads",
+      "found": "first_open (iOS, Android) and an iOS in-app subscribe action only",
+      "missing": "no website conversion for the web path",
+      "fix": "create_conversion_action WEBPAGE / SUBSCRIBE_PAID (offered) before any Google budget goes to the web funnel"
+    }
+  ],
+  "findings": [
+    {
+      "rank": 1,
+      "finding": "26 of 136 web payers (19.1%) never logged into the app within 7 days",
+      "money": "1301.30 of first-year net revenue at risk of refund or no renewal (estimate: 26 x 50.05)",
+      "do": "send the one-time login link in the receipt email and show the sign-in fallback on the download page; re-measure before scaling"
+    },
+    {
+      "rank": 2,
+      "finding": "the web path beats the app path on profit per click, but narrowly",
+      "money": "25.72 more profit per 1,000 clicks; the saving pays for up to 15.1% fewer payers than the app path",
+      "do": "scale in steps and watch web click to paid against the break-even line"
+    },
+    {
+      "rank": 3,
+      "finding": "the pilot optimised for email leads although trial volume is enough to optimise on trials",
+      "money": "not estimated: depends on how Meta's delivery shifts",
+      "do": "switch the optimisation event to StartTrial"
+    },
+    {
+      "rank": 4,
+      "finding": "the biggest on-site loss is paywall view to checkout start (76.0% of sessions lost)",
+      "money": "not estimated without a test",
+      "do": "test showing the yearly price per week and the trial end date on the paywall"
+    },
+    {
+      "rank": 5,
+      "finding": "Google Ads has no website conversion, so web traffic from Google would bid blind",
+      "money": "not estimated",
+      "do": "add the conversion action before moving any Google budget"
+    }
+  ],
+  "test_plan": "not needed: the pilot is measured on 136 web payers, above the 100 the rule waits for. Re-check web click to paid against 2.77% after the handoff fix.",
+  "fixes_offered_after_confirmation": [
+    {
+      "action": "create_key_event",
+      "platform": "google-analytics",
+      "payload": {
+        "property_id": "properties/100000001",
+        "event_name": "trial_start",
+        "counting_method": "ONCE_PER_EVENT"
+      },
+      "status": "not run"
+    },
+    {
+      "action": "create_conversion_action",
+      "platform": "google-ads",
+      "payload": {
+        "account_id": "1000000001",
+        "name": "Web trial start",
+        "type": "WEBPAGE",
+        "category": "SUBSCRIBE_PAID",
+        "status": "ENABLED",
+        "default_value": 25.6,
+        "click_through_lookback_window_days": 30
+      },
+      "note": "default value = first-year revenue per payer 54.58 x web trial to paid 46.9%",
+      "status": "not run"
+    }
+  ],
+  "assumptions": [
+    {
+      "assumption": "web refund and chargeback rate 4.0% (twice the store rate)",
+      "moves": "web net per payer and the break-even"
+    },
+    {
+      "assumption": "login target 90.0% (skill default)",
+      "moves": "whether the handoff override applies"
+    },
+    {
+      "assumption": "monthly payers make 4.2 payments in the first year (user's figure)",
+      "moves": "first-year revenue per payer on both paths"
+    },
+    {
+      "assumption": "first year only; renewals after year one are not modelled",
+      "moves": "if a store charges less on renewing subscribers, the web saving shrinks after year one"
+    }
+  ],
+  "go_deeper": [
+    "onboarding-cro for the quiz",
+    "conversion-tracking-auditor after the Conversions API and Google Ads action are live",
+    "ab-test-designer for the paywall test"
+  ]
+}

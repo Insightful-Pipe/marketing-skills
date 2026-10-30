@@ -1,0 +1,1980 @@
+{
+  "note": "Example data: an invented home services company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The scripts and rule were never pasted into a real account.",
+  "request": "Hey Claude, I just added the \"google-ads-scripts-rules-writer\" skill. Set up guards on my Google Ads account: stop spend at $14,000 a month without touching Brand, flag keywords that spend with no conversions, send the search terms to my Google Sheet every week, check our ad pages for broken links and warn me about overnight spend jumps. Also, this old script of mine fails; fix it.",
+  "account": {
+    "name": "Example home services company",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "time_zone": "America/Denver"
+  },
+  "read_date": "2026-10-21",
+  "user_answers": {
+    "monthly_cap": 14000.0,
+    "target_cpa": 65.0,
+    "protected_campaigns": [
+      "Brand | Search"
+    ],
+    "alert_email": "ops@example.com",
+    "sheet_url": "https://docs.google.com/spreadsheets/d/EXAMPLE-SHEET-ID/edit",
+    "sheet_tab": "Search terms (30 days)"
+  },
+  "pasted_script": "function main() {\n  var rows = AdsApp.search(\"SELECT campaign.name, metrics.clicks, metrics.cost_micros FROM campaign \" +\n    \"WHERE segments.date DURING LAST_90_DAYS\");\n  while (rows.hasNext()) {\n    var r = rows.next();\n    var cost = r.metrics.cost_micros / 1000000;\n    if (r.metrics.clicks + 10 > 100) Logger.log(r.campaign.name + ' ' + cost);\n  }\n}",
+  "data_pulled": {
+    "campaigns_last_30_days": {
+      "window": [
+        "2026-09-21",
+        "2026-10-20"
+      ],
+      "rows": [
+        {
+          "id": "210000000001",
+          "name": "Brand | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 40,
+          "cost_30d": 540,
+          "conversions_30d": 62
+        },
+        {
+          "id": "210000000002",
+          "name": "Furnace Repair | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 120,
+          "cost_30d": 3480,
+          "conversions_30d": 58
+        },
+        {
+          "id": "210000000003",
+          "name": "AC Repair | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 90,
+          "cost_30d": 2010,
+          "conversions_30d": 26
+        },
+        {
+          "id": "210000000004",
+          "name": "Water Heaters | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 60,
+          "cost_30d": 1740,
+          "conversions_30d": 31
+        },
+        {
+          "id": "210000000005",
+          "name": "Plumbing | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 80,
+          "cost_30d": 2340,
+          "conversions_30d": 39
+        },
+        {
+          "id": "210000000006",
+          "name": "AC Installation | Search",
+          "type": "SEARCH",
+          "status": "ENABLED",
+          "daily_budget": 70,
+          "cost_30d": 1650,
+          "conversions_30d": 9
+        },
+        {
+          "id": "210000000007",
+          "name": "PMax | All services",
+          "type": "PERFORMANCE_MAX",
+          "status": "ENABLED",
+          "daily_budget": 80,
+          "cost_30d": 2280,
+          "conversions_30d": 33
+        }
+      ]
+    },
+    "labels_in_account": [],
+    "month_to_date_cost_by_day": [
+      {
+        "date": "2026-10-01",
+        "cost": 482
+      },
+      {
+        "date": "2026-10-02",
+        "cost": 454
+      },
+      {
+        "date": "2026-10-03",
+        "cost": 371
+      },
+      {
+        "date": "2026-10-04",
+        "cost": 419
+      },
+      {
+        "date": "2026-10-05",
+        "cost": 521
+      },
+      {
+        "date": "2026-10-06",
+        "cost": 511
+      },
+      {
+        "date": "2026-10-07",
+        "cost": 493
+      },
+      {
+        "date": "2026-10-08",
+        "cost": 483
+      },
+      {
+        "date": "2026-10-09",
+        "cost": 455
+      },
+      {
+        "date": "2026-10-10",
+        "cost": 371
+      },
+      {
+        "date": "2026-10-11",
+        "cost": 420
+      },
+      {
+        "date": "2026-10-12",
+        "cost": 522
+      },
+      {
+        "date": "2026-10-13",
+        "cost": 511
+      },
+      {
+        "date": "2026-10-14",
+        "cost": 493
+      },
+      {
+        "date": "2026-10-15",
+        "cost": 484
+      },
+      {
+        "date": "2026-10-16",
+        "cost": 455
+      },
+      {
+        "date": "2026-10-17",
+        "cost": 372
+      },
+      {
+        "date": "2026-10-18",
+        "cost": 420
+      },
+      {
+        "date": "2026-10-19",
+        "cost": 523
+      },
+      {
+        "date": "2026-10-20",
+        "cost": 513
+      }
+    ],
+    "keywords_last_30_days": [
+      {
+        "ad_group_id": "410000000001",
+        "keyword_id": "510000101",
+        "text": "example home services",
+        "match_type": "EXACT",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "cost": 340,
+        "conversions": 41
+      },
+      {
+        "ad_group_id": "410000000001",
+        "keyword_id": "510000102",
+        "text": "example home services denver",
+        "match_type": "PHRASE",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "cost": 150,
+        "conversions": 16
+      },
+      {
+        "ad_group_id": "410000000001",
+        "keyword_id": "510000103",
+        "text": "example heating and plumbing",
+        "match_type": "PHRASE",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "cost": 50,
+        "conversions": 5
+      },
+      {
+        "ad_group_id": "410000000002",
+        "keyword_id": "510000201",
+        "text": "furnace repair",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "cost": 1010,
+        "conversions": 20
+      },
+      {
+        "ad_group_id": "410000000002",
+        "keyword_id": "510000202",
+        "text": "furnace repair near me",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "cost": 720,
+        "conversions": 12
+      },
+      {
+        "ad_group_id": "410000000002",
+        "keyword_id": "510000203",
+        "text": "furnace repair denver",
+        "match_type": "EXACT",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "cost": 330,
+        "conversions": 6
+      },
+      {
+        "ad_group_id": "410000000002",
+        "keyword_id": "510000204",
+        "text": "heating repair",
+        "match_type": "BROAD",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "cost": 390,
+        "conversions": 1
+      },
+      {
+        "ad_group_id": "410000000003",
+        "keyword_id": "510000301",
+        "text": "furnace not working",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "cost": 420,
+        "conversions": 7
+      },
+      {
+        "ad_group_id": "410000000003",
+        "keyword_id": "510000302",
+        "text": "furnace blowing cold air",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "cost": 250,
+        "conversions": 5
+      },
+      {
+        "ad_group_id": "410000000003",
+        "keyword_id": "510000303",
+        "text": "pilot light out furnace",
+        "match_type": "BROAD",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "cost": 30,
+        "conversions": 0
+      },
+      {
+        "ad_group_id": "410000000004",
+        "keyword_id": "510000401",
+        "text": "emergency furnace repair",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "cost": 230,
+        "conversions": 5
+      },
+      {
+        "ad_group_id": "410000000004",
+        "keyword_id": "510000402",
+        "text": "24 hour heating repair",
+        "match_type": "PHRASE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "cost": 100,
+        "conversions": 2
+      },
+      {
+        "ad_group_id": "410000000005",
+        "keyword_id": "510000501",
+        "text": "ac repair",
+        "match_type": "PHRASE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "cost": 840,
+        "conversions": 11
+      },
+      {
+        "ad_group_id": "410000000005",
+        "keyword_id": "510000502",
+        "text": "ac repair near me",
+        "match_type": "PHRASE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "cost": 560,
+        "conversions": 7
+      },
+      {
+        "ad_group_id": "410000000005",
+        "keyword_id": "510000503",
+        "text": "air conditioner repair",
+        "match_type": "BROAD",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "cost": 250,
+        "conversions": 3
+      },
+      {
+        "ad_group_id": "410000000006",
+        "keyword_id": "510000601",
+        "text": "ac not cooling",
+        "match_type": "PHRASE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "cost": 240,
+        "conversions": 3
+      },
+      {
+        "ad_group_id": "410000000006",
+        "keyword_id": "510000602",
+        "text": "ac blowing warm air",
+        "match_type": "PHRASE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "cost": 120,
+        "conversions": 2
+      },
+      {
+        "ad_group_id": "410000000007",
+        "keyword_id": "510000701",
+        "text": "water heater repair",
+        "match_type": "PHRASE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "cost": 690,
+        "conversions": 14
+      },
+      {
+        "ad_group_id": "410000000007",
+        "keyword_id": "510000702",
+        "text": "no hot water",
+        "match_type": "BROAD",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "cost": 230,
+        "conversions": 3
+      },
+      {
+        "ad_group_id": "410000000008",
+        "keyword_id": "510000801",
+        "text": "tankless water heater installation",
+        "match_type": "PHRASE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "cost": 450,
+        "conversions": 8
+      },
+      {
+        "ad_group_id": "410000000008",
+        "keyword_id": "510000802",
+        "text": "tankless water heater cost",
+        "match_type": "PHRASE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "cost": 170,
+        "conversions": 2
+      },
+      {
+        "ad_group_id": "410000000009",
+        "keyword_id": "510000901",
+        "text": "water heater replacement",
+        "match_type": "PHRASE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater replacement",
+        "cost": 200,
+        "conversions": 4
+      },
+      {
+        "ad_group_id": "410000000010",
+        "keyword_id": "510001001",
+        "text": "emergency plumber",
+        "match_type": "PHRASE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "cost": 910,
+        "conversions": 17
+      },
+      {
+        "ad_group_id": "410000000010",
+        "keyword_id": "510001002",
+        "text": "24 hour plumber",
+        "match_type": "PHRASE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "cost": 380,
+        "conversions": 6
+      },
+      {
+        "ad_group_id": "410000000010",
+        "keyword_id": "510001003",
+        "text": "plumber near me",
+        "match_type": "BROAD",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "cost": 370,
+        "conversions": 4
+      },
+      {
+        "ad_group_id": "410000000011",
+        "keyword_id": "510001101",
+        "text": "drain cleaning",
+        "match_type": "PHRASE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "cost": 330,
+        "conversions": 7
+      },
+      {
+        "ad_group_id": "410000000011",
+        "keyword_id": "510001102",
+        "text": "clogged drain",
+        "match_type": "BROAD",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "cost": 140,
+        "conversions": 2
+      },
+      {
+        "ad_group_id": "410000000012",
+        "keyword_id": "510001201",
+        "text": "water leak repair",
+        "match_type": "PHRASE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Leak repair",
+        "cost": 210,
+        "conversions": 3
+      },
+      {
+        "ad_group_id": "410000000013",
+        "keyword_id": "510001301",
+        "text": "ac installation",
+        "match_type": "PHRASE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "cost": 690,
+        "conversions": 6
+      },
+      {
+        "ad_group_id": "410000000013",
+        "keyword_id": "510001302",
+        "text": "new ac unit cost",
+        "match_type": "BROAD",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "cost": 520,
+        "conversions": 0
+      },
+      {
+        "ad_group_id": "410000000013",
+        "keyword_id": "510001303",
+        "text": "central air installation",
+        "match_type": "PHRASE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "cost": 180,
+        "conversions": 1
+      },
+      {
+        "ad_group_id": "410000000014",
+        "keyword_id": "510001401",
+        "text": "heat pump installation",
+        "match_type": "PHRASE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "Heat pump installation",
+        "cost": 200,
+        "conversions": 2
+      },
+      {
+        "ad_group_id": "410000000014",
+        "keyword_id": "510001402",
+        "text": "heat pump rebate colorado",
+        "match_type": "BROAD",
+        "campaign": "AC Installation | Search",
+        "ad_group": "Heat pump installation",
+        "cost": 60,
+        "conversions": 0
+      }
+    ],
+    "search_terms_last_30_days_with_clicks": [
+      {
+        "search_term": "example home services",
+        "status": "ADDED",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "clicks": 235,
+        "cost": 300,
+        "conversions": 38
+      },
+      {
+        "search_term": "example home services denver",
+        "status": "ADDED",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "clicks": 88,
+        "cost": 120,
+        "conversions": 14
+      },
+      {
+        "search_term": "example home services reviews",
+        "status": "NONE",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "clicks": 30,
+        "cost": 40,
+        "conversions": 3
+      },
+      {
+        "search_term": "example heating and plumbing",
+        "status": "ADDED",
+        "campaign": "Brand | Search",
+        "ad_group": "Brand",
+        "clicks": 32,
+        "cost": 45,
+        "conversions": 4
+      },
+      {
+        "search_term": "furnace repair",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 70,
+        "cost": 640,
+        "conversions": 12
+      },
+      {
+        "search_term": "furnace repair near me",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 47,
+        "cost": 420,
+        "conversions": 8
+      },
+      {
+        "search_term": "furnace repair denver",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 32,
+        "cost": 280,
+        "conversions": 5
+      },
+      {
+        "search_term": "furnace repair cost",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 21,
+        "cost": 190,
+        "conversions": 3
+      },
+      {
+        "search_term": "furnace repair aurora",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 17,
+        "cost": 150,
+        "conversions": 3
+      },
+      {
+        "search_term": "heating repair",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 13,
+        "cost": 120,
+        "conversions": 1
+      },
+      {
+        "search_term": "furnace repair jobs",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 9,
+        "cost": 85,
+        "conversions": 0
+      },
+      {
+        "search_term": "how to fix furnace igniter",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 8,
+        "cost": 70,
+        "conversions": 0
+      },
+      {
+        "search_term": "furnace repair colorado springs",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 14,
+        "cost": 130,
+        "conversions": 2
+      },
+      {
+        "search_term": "lennox furnace repair",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 11,
+        "cost": 95,
+        "conversions": 2
+      },
+      {
+        "search_term": "same day furnace repair",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 10,
+        "cost": 90,
+        "conversions": 2
+      },
+      {
+        "search_term": "furnace repair phoenix",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace repair",
+        "clicks": 8,
+        "cost": 75,
+        "conversions": 0
+      },
+      {
+        "search_term": "furnace not working",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 31,
+        "cost": 260,
+        "conversions": 5
+      },
+      {
+        "search_term": "furnace blowing cold air",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 22,
+        "cost": 180,
+        "conversions": 4
+      },
+      {
+        "search_term": "furnace not turning on",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 14,
+        "cost": 120,
+        "conversions": 2
+      },
+      {
+        "search_term": "furnace making loud noise",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 7,
+        "cost": 60,
+        "conversions": 0
+      },
+      {
+        "search_term": "pilot light out furnace how to relight",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 5,
+        "cost": 40,
+        "conversions": 0
+      },
+      {
+        "search_term": "furnace repair denver",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Furnace not working",
+        "clicks": 2,
+        "cost": 18,
+        "conversions": 0
+      },
+      {
+        "search_term": "emergency furnace repair",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "clicks": 18,
+        "cost": 160,
+        "conversions": 4
+      },
+      {
+        "search_term": "24 hour heating repair",
+        "status": "ADDED",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "clicks": 8,
+        "cost": 70,
+        "conversions": 1
+      },
+      {
+        "search_term": "emergency furnace repair near me",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "clicks": 9,
+        "cost": 80,
+        "conversions": 2
+      },
+      {
+        "search_term": "furnace repair near me",
+        "status": "NONE",
+        "campaign": "Furnace Repair | Search",
+        "ad_group": "Heating emergency",
+        "clicks": 2,
+        "cost": 15,
+        "conversions": 0
+      },
+      {
+        "search_term": "ac repair",
+        "status": "ADDED",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 62,
+        "cost": 520,
+        "conversions": 7
+      },
+      {
+        "search_term": "ac repair near me",
+        "status": "ADDED",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 45,
+        "cost": 380,
+        "conversions": 5
+      },
+      {
+        "search_term": "air conditioner repair",
+        "status": "ADDED",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 19,
+        "cost": 160,
+        "conversions": 2
+      },
+      {
+        "search_term": "ac repair denver",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 16,
+        "cost": 140,
+        "conversions": 3
+      },
+      {
+        "search_term": "ac repair cost",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 13,
+        "cost": 110,
+        "conversions": 1
+      },
+      {
+        "search_term": "ac repair technician salary",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 10,
+        "cost": 90,
+        "conversions": 0
+      },
+      {
+        "search_term": "car ac repair",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC repair",
+        "clicks": 15,
+        "cost": 130,
+        "conversions": 0
+      },
+      {
+        "search_term": "ac not cooling",
+        "status": "ADDED",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "clicks": 18,
+        "cost": 150,
+        "conversions": 3
+      },
+      {
+        "search_term": "ac blowing warm air",
+        "status": "ADDED",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "clicks": 11,
+        "cost": 90,
+        "conversions": 1
+      },
+      {
+        "search_term": "why is my ac not cooling",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "clicks": 9,
+        "cost": 70,
+        "conversions": 0
+      },
+      {
+        "search_term": "ac repair",
+        "status": "NONE",
+        "campaign": "AC Repair | Search",
+        "ad_group": "AC not cooling",
+        "clicks": 2,
+        "cost": 20,
+        "conversions": 0
+      },
+      {
+        "search_term": "water heater repair",
+        "status": "ADDED",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "clicks": 51,
+        "cost": 420,
+        "conversions": 9
+      },
+      {
+        "search_term": "no hot water",
+        "status": "ADDED",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "clicks": 19,
+        "cost": 160,
+        "conversions": 2
+      },
+      {
+        "search_term": "water heater repair near me",
+        "status": "NONE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "clicks": 22,
+        "cost": 180,
+        "conversions": 4
+      },
+      {
+        "search_term": "water heater leaking",
+        "status": "NONE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater repair",
+        "clicks": 11,
+        "cost": 90,
+        "conversions": 2
+      },
+      {
+        "search_term": "tankless water heater installation",
+        "status": "ADDED",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "clicks": 31,
+        "cost": 280,
+        "conversions": 6
+      },
+      {
+        "search_term": "tankless water heater cost",
+        "status": "ADDED",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "clicks": 13,
+        "cost": 120,
+        "conversions": 1
+      },
+      {
+        "search_term": "rinnai tankless water heater",
+        "status": "NONE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "clicks": 9,
+        "cost": 85,
+        "conversions": 1
+      },
+      {
+        "search_term": "tankless water heater installation cost",
+        "status": "NONE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Tankless water heater",
+        "clicks": 10,
+        "cost": 90,
+        "conversions": 2
+      },
+      {
+        "search_term": "water heater replacement",
+        "status": "ADDED",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater replacement",
+        "clicks": 16,
+        "cost": 130,
+        "conversions": 3
+      },
+      {
+        "search_term": "water heater replacement cost",
+        "status": "NONE",
+        "campaign": "Water Heaters | Search",
+        "ad_group": "Water heater replacement",
+        "clicks": 6,
+        "cost": 50,
+        "conversions": 1
+      },
+      {
+        "search_term": "emergency plumber",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 62,
+        "cost": 520,
+        "conversions": 10
+      },
+      {
+        "search_term": "emergency plumber near me",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 41,
+        "cost": 340,
+        "conversions": 6
+      },
+      {
+        "search_term": "24 hour plumber",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 27,
+        "cost": 230,
+        "conversions": 4
+      },
+      {
+        "search_term": "plumber near me",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 31,
+        "cost": 260,
+        "conversions": 3
+      },
+      {
+        "search_term": "emergency plumber denver",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 13,
+        "cost": 110,
+        "conversions": 3
+      },
+      {
+        "search_term": "same day plumber",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 9,
+        "cost": 80,
+        "conversions": 1
+      },
+      {
+        "search_term": "plumber jobs denver",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 8,
+        "cost": 70,
+        "conversions": 0
+      },
+      {
+        "search_term": "free plumbing estimate",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Emergency plumber",
+        "clicks": 5,
+        "cost": 40,
+        "conversions": 0
+      },
+      {
+        "search_term": "drain cleaning",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "clicks": 30,
+        "cost": 200,
+        "conversions": 5
+      },
+      {
+        "search_term": "clogged drain",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "clicks": 13,
+        "cost": 90,
+        "conversions": 2
+      },
+      {
+        "search_term": "drain cleaning near me",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "clicks": 16,
+        "cost": 110,
+        "conversions": 2
+      },
+      {
+        "search_term": "how to unclog a drain",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Drain cleaning",
+        "clicks": 7,
+        "cost": 45,
+        "conversions": 0
+      },
+      {
+        "search_term": "water leak repair",
+        "status": "ADDED",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Leak repair",
+        "clicks": 13,
+        "cost": 120,
+        "conversions": 2
+      },
+      {
+        "search_term": "slab leak repair",
+        "status": "NONE",
+        "campaign": "Plumbing | Search",
+        "ad_group": "Leak repair",
+        "clicks": 7,
+        "cost": 70,
+        "conversions": 1
+      },
+      {
+        "search_term": "ac installation",
+        "status": "ADDED",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 62,
+        "cost": 380,
+        "conversions": 3
+      },
+      {
+        "search_term": "new ac unit cost",
+        "status": "ADDED",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 48,
+        "cost": 300,
+        "conversions": 0
+      },
+      {
+        "search_term": "central air installation",
+        "status": "ADDED",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 24,
+        "cost": 150,
+        "conversions": 1
+      },
+      {
+        "search_term": "ac installation cost",
+        "status": "NONE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 26,
+        "cost": 160,
+        "conversions": 1
+      },
+      {
+        "search_term": "home depot ac installation",
+        "status": "NONE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 19,
+        "cost": 120,
+        "conversions": 0
+      },
+      {
+        "search_term": "ac installation jobs",
+        "status": "NONE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 11,
+        "cost": 70,
+        "conversions": 0
+      },
+      {
+        "search_term": "how much is a new ac unit",
+        "status": "NONE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "AC installation",
+        "clicks": 15,
+        "cost": 90,
+        "conversions": 0
+      },
+      {
+        "search_term": "heat pump installation",
+        "status": "ADDED",
+        "campaign": "AC Installation | Search",
+        "ad_group": "Heat pump installation",
+        "clicks": 23,
+        "cost": 130,
+        "conversions": 2
+      },
+      {
+        "search_term": "heat pump rebate colorado",
+        "status": "ADDED",
+        "campaign": "AC Installation | Search",
+        "ad_group": "Heat pump installation",
+        "clicks": 11,
+        "cost": 60,
+        "conversions": 0
+      },
+      {
+        "search_term": "heat pump installation jobs",
+        "status": "NONE",
+        "campaign": "AC Installation | Search",
+        "ad_group": "Heat pump installation",
+        "clicks": 7,
+        "cost": 40,
+        "conversions": 0
+      }
+    ],
+    "enabled_ads_final_urls": [
+      {
+        "ad_id": "710000000001",
+        "ad_group": "Brand",
+        "campaign": "Brand | Search",
+        "final_urls": [
+          "https://example.com/"
+        ]
+      },
+      {
+        "ad_id": "710000000002",
+        "ad_group": "Furnace repair",
+        "campaign": "Furnace Repair | Search",
+        "final_urls": [
+          "https://example.com/furnace-repair"
+        ]
+      },
+      {
+        "ad_id": "710000000003",
+        "ad_group": "Furnace repair",
+        "campaign": "Furnace Repair | Search",
+        "final_urls": [
+          "https://example.com/"
+        ]
+      },
+      {
+        "ad_id": "710000000004",
+        "ad_group": "Furnace not working",
+        "campaign": "Furnace Repair | Search",
+        "final_urls": [
+          "https://example.com/furnace-repair"
+        ]
+      },
+      {
+        "ad_id": "710000000005",
+        "ad_group": "Heating emergency",
+        "campaign": "Furnace Repair | Search",
+        "final_urls": [
+          "https://example.com/emergency-heating"
+        ]
+      },
+      {
+        "ad_id": "710000000006",
+        "ad_group": "AC repair",
+        "campaign": "AC Repair | Search",
+        "final_urls": [
+          "https://example.com/ac-repair"
+        ]
+      },
+      {
+        "ad_id": "710000000007",
+        "ad_group": "AC repair",
+        "campaign": "AC Repair | Search",
+        "final_urls": [
+          "https://example.com/ac-repair"
+        ]
+      },
+      {
+        "ad_id": "710000000008",
+        "ad_group": "AC not cooling",
+        "campaign": "AC Repair | Search",
+        "final_urls": [
+          "https://example.com/ac-repair"
+        ]
+      },
+      {
+        "ad_id": "710000000009",
+        "ad_group": "Water heater repair",
+        "campaign": "Water Heaters | Search",
+        "final_urls": [
+          "https://example.com/water-heaters"
+        ]
+      },
+      {
+        "ad_id": "710000000010",
+        "ad_group": "Tankless water heater",
+        "campaign": "Water Heaters | Search",
+        "final_urls": [
+          "https://example.com/tankless-water-heaters"
+        ]
+      },
+      {
+        "ad_id": "710000000011",
+        "ad_group": "Water heater replacement",
+        "campaign": "Water Heaters | Search",
+        "final_urls": [
+          "https://example.com/water-heaters"
+        ]
+      },
+      {
+        "ad_id": "710000000012",
+        "ad_group": "Emergency plumber",
+        "campaign": "Plumbing | Search",
+        "final_urls": [
+          "https://example.com/emergency-plumber"
+        ]
+      },
+      {
+        "ad_id": "710000000013",
+        "ad_group": "Emergency plumber",
+        "campaign": "Plumbing | Search",
+        "final_urls": [
+          "https://example.com/emergency-plumber"
+        ]
+      },
+      {
+        "ad_id": "710000000014",
+        "ad_group": "Drain cleaning",
+        "campaign": "Plumbing | Search",
+        "final_urls": [
+          "https://example.com/drain-cleaning"
+        ]
+      },
+      {
+        "ad_id": "710000000015",
+        "ad_group": "Leak repair",
+        "campaign": "Plumbing | Search",
+        "final_urls": [
+          "https://example.com/"
+        ]
+      },
+      {
+        "ad_id": "710000000016",
+        "ad_group": "AC installation",
+        "campaign": "AC Installation | Search",
+        "final_urls": [
+          "https://example.com/ac-installation"
+        ]
+      },
+      {
+        "ad_id": "710000000017",
+        "ad_group": "AC installation",
+        "campaign": "AC Installation | Search",
+        "final_urls": [
+          "https://example.com/ac-installation"
+        ]
+      },
+      {
+        "ad_id": "710000000018",
+        "ad_group": "Heat pump installation",
+        "campaign": "AC Installation | Search",
+        "final_urls": [
+          "https://example.com/heat-pumps"
+        ]
+      }
+    ],
+    "asset_groups_final_urls": [
+      {
+        "id": "610000000001",
+        "name": "Heating and cooling",
+        "campaign": "PMax | All services",
+        "final_urls": [
+          "https://example.com/"
+        ]
+      },
+      {
+        "id": "610000000002",
+        "name": "Plumbing",
+        "campaign": "PMax | All services",
+        "final_urls": [
+          "https://example.com/plumbing"
+        ]
+      }
+    ],
+    "daily_cost_by_campaign_88_days": {
+      "Brand | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          14,
+          16,
+          20,
+          19,
+          18,
+          18,
+          17,
+          14,
+          16,
+          19,
+          19,
+          18,
+          18,
+          17,
+          14,
+          16,
+          19,
+          19,
+          18,
+          18,
+          17,
+          14,
+          16,
+          19,
+          19,
+          18,
+          18,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20,
+          19,
+          19,
+          17,
+          14,
+          16,
+          20,
+          20
+        ]
+      },
+      "Furnace Repair | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          28,
+          32,
+          40,
+          40,
+          39,
+          38,
+          37,
+          30,
+          34,
+          43,
+          43,
+          42,
+          41,
+          39,
+          32,
+          37,
+          46,
+          46,
+          45,
+          44,
+          42,
+          35,
+          39,
+          50,
+          49,
+          48,
+          47,
+          45,
+          53,
+          60,
+          76,
+          76,
+          74,
+          73,
+          70,
+          57,
+          65,
+          82,
+          82,
+          80,
+          79,
+          75,
+          62,
+          70,
+          89,
+          88,
+          85,
+          85,
+          81,
+          66,
+          75,
+          95,
+          94,
+          91,
+          90,
+          86,
+          71,
+          80,
+          110,
+          109,
+          107,
+          106,
+          101,
+          83,
+          95,
+          119,
+          118,
+          115,
+          114,
+          109,
+          90,
+          102,
+          128,
+          127,
+          124,
+          123,
+          117,
+          96,
+          110,
+          138,
+          136,
+          133,
+          132,
+          125,
+          103,
+          117,
+          147,
+          146
+        ]
+      },
+      "AC Repair | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          80,
+          89,
+          110,
+          107,
+          102,
+          100,
+          93,
+          75,
+          84,
+          104,
+          101,
+          96,
+          94,
+          87,
+          71,
+          79,
+          97,
+          95,
+          90,
+          88,
+          82,
+          66,
+          74,
+          91,
+          88,
+          84,
+          82,
+          76,
+          75,
+          84,
+          103,
+          101,
+          96,
+          94,
+          87,
+          71,
+          79,
+          97,
+          95,
+          91,
+          88,
+          82,
+          67,
+          74,
+          91,
+          89,
+          85,
+          83,
+          77,
+          62,
+          69,
+          86,
+          83,
+          79,
+          77,
+          72,
+          58,
+          65,
+          84,
+          82,
+          78,
+          76,
+          71,
+          58,
+          64,
+          80,
+          77,
+          74,
+          72,
+          67,
+          54,
+          61,
+          75,
+          73,
+          70,
+          68,
+          63,
+          51,
+          57,
+          70,
+          68,
+          65,
+          63,
+          59,
+          48,
+          53,
+          65,
+          64
+        ]
+      },
+      "Water Heaters | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          44,
+          50,
+          62,
+          60,
+          58,
+          57,
+          54,
+          44,
+          50,
+          62,
+          60,
+          58,
+          57,
+          54,
+          44,
+          50,
+          62,
+          60,
+          58,
+          57,
+          54,
+          44,
+          49,
+          62,
+          60,
+          58,
+          57,
+          54,
+          46,
+          51,
+          64,
+          63,
+          61,
+          60,
+          56,
+          46,
+          51,
+          64,
+          63,
+          61,
+          60,
+          56,
+          46,
+          51,
+          64,
+          63,
+          61,
+          60,
+          56,
+          46,
+          51,
+          64,
+          63,
+          61,
+          59,
+          56,
+          46,
+          51,
+          65,
+          63,
+          61,
+          60,
+          56,
+          46,
+          52,
+          65,
+          63,
+          61,
+          60,
+          56,
+          46,
+          52,
+          65,
+          63,
+          61,
+          60,
+          56,
+          46,
+          52,
+          65,
+          63,
+          61,
+          60,
+          56,
+          46,
+          52,
+          65,
+          63
+        ]
+      },
+      "Plumbing | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          61,
+          68,
+          85,
+          84,
+          81,
+          79,
+          74,
+          61,
+          68,
+          85,
+          84,
+          81,
+          79,
+          74,
+          61,
+          68,
+          85,
+          84,
+          81,
+          79,
+          74,
+          61,
+          68,
+          85,
+          84,
+          80,
+          79,
+          74,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85,
+          82,
+          80,
+          76,
+          62,
+          70,
+          87,
+          85
+        ]
+      },
+      "AC Installation | Search": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          60,
+          67,
+          82,
+          80,
+          76,
+          74,
+          70,
+          56,
+          63,
+          77,
+          75,
+          72,
+          70,
+          65,
+          53,
+          59,
+          73,
+          71,
+          68,
+          66,
+          61,
+          49,
+          55,
+          68,
+          66,
+          63,
+          61,
+          57,
+          58,
+          64,
+          79,
+          77,
+          74,
+          72,
+          67,
+          54,
+          61,
+          75,
+          73,
+          70,
+          68,
+          63,
+          51,
+          57,
+          70,
+          68,
+          65,
+          64,
+          59,
+          48,
+          53,
+          66,
+          64,
+          61,
+          59,
+          55,
+          45,
+          50,
+          69,
+          67,
+          64,
+          63,
+          59,
+          47,
+          53,
+          65,
+          64,
+          61,
+          59,
+          55,
+          45,
+          50,
+          61,
+          60,
+          57,
+          55,
+          52,
+          42,
+          47,
+          57,
+          56,
+          53,
+          52,
+          48,
+          39,
+          44,
+          54,
+          52
+        ]
+      },
+      "PMax | All services": {
+        "from": "2026-07-25",
+        "to": "2026-10-20",
+        "cost": [
+          57,
+          65,
+          80,
+          79,
+          76,
+          75,
+          70,
+          57,
+          64,
+          80,
+          79,
+          76,
+          75,
+          70,
+          57,
+          64,
+          80,
+          79,
+          76,
+          75,
+          70,
+          57,
+          64,
+          80,
+          79,
+          76,
+          75,
+          70,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83,
+          80,
+          78,
+          74,
+          60,
+          68,
+          85,
+          83
+        ]
+      }
+    },
+    "google_sheets": {
+      "tabs": [
+        "Notes"
+      ]
+    }
+  }
+}

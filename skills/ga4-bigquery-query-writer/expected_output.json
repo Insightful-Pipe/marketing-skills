@@ -1,0 +1,165 @@
+{
+  "question": "Cost per GA4 purchase by Google Ads campaign, 2026-10-01 to 2026-10-26, property time zone America/Chicago, USD.",
+  "data_used": {
+    "dataset": "example-coffee-analytics.analytics_400000001",
+    "tables": "events_20261001 to events_20261026 (26 daily tables, every day settled by the run date 2026-10-30; the streaming table for 2026-10-30 left out)",
+    "cost": "google_ads.p_ads_CampaignBasicStats_1112223333, filtered on _DATA_DATE",
+    "attribution": "GA4's last-click session source (session_traffic_source_last_click.google_ads_campaign); purchases are GA4 purchases, not Google Ads conversions"
+  },
+  "scan": {
+    "table_sum_gib": 29.82,
+    "queries": [
+      {
+        "query": "Cost per purchase by Google Ads campaign",
+        "estimated_scan_gib": 6.84,
+        "share_of_monthly_1_tib_pct": 0.67,
+        "ask_again": false
+      },
+      {
+        "query": "Check against GA4",
+        "estimated_scan_gib": 3.12,
+        "share_of_monthly_1_tib_pct": 0.3,
+        "ask_again": false
+      }
+    ],
+    "total_estimated_gib": 9.96,
+    "share_of_monthly_1_tib_pct": 0.97,
+    "approved": true
+  },
+  "answer": {
+    "campaigns": [
+      {
+        "campaign": "Shopping - All products",
+        "campaign_id": "333",
+        "cost": 9455.1,
+        "clicks": 11872,
+        "sessions": 12040,
+        "buying_sessions": 214,
+        "purchases": 221,
+        "revenue": 28951.0,
+        "cost_per_purchase": 42.78,
+        "revenue_per_cost": 3.06
+      },
+      {
+        "campaign": "Search - Grinders",
+        "campaign_id": "222",
+        "cost": 6120.75,
+        "clicks": 4980,
+        "sessions": 5104,
+        "buying_sessions": 97,
+        "purchases": 99,
+        "revenue": 16236.0,
+        "cost_per_purchase": 61.83,
+        "revenue_per_cost": 2.65
+      },
+      {
+        "campaign": "Search - Espresso machines",
+        "campaign_id": "444",
+        "cost": 4388.0,
+        "clicks": 2145,
+        "sessions": 2190,
+        "buying_sessions": 19,
+        "purchases": 19,
+        "revenue": 7410.0,
+        "cost_per_purchase": 230.95,
+        "revenue_per_cost": 1.69
+      },
+      {
+        "campaign": "Search - Brand",
+        "campaign_id": "111",
+        "cost": 1840.2,
+        "clicks": 2310,
+        "sessions": 2402,
+        "buying_sessions": 151,
+        "purchases": 158,
+        "revenue": 13904.0,
+        "cost_per_purchase": 11.65,
+        "revenue_per_cost": 7.56
+      },
+      {
+        "campaign": "Video - Brew guides",
+        "campaign_id": "555",
+        "cost": 1210.0,
+        "clicks": 96,
+        "sessions": 0,
+        "buying_sessions": 0,
+        "purchases": 0,
+        "revenue": 0.0,
+        "cost_per_purchase": null,
+        "revenue_per_cost": null
+      }
+    ],
+    "totals": {
+      "cost": 23014.05,
+      "purchases": 497,
+      "revenue": 66501.0,
+      "cost_per_purchase": 46.31,
+      "revenue_per_cost": 2.89
+    }
+  },
+  "findings": [
+    "Search - Espresso machines costs $230.95 per purchase, 3.7 times Search - Grinders at $61.83. Its orders are larger ($390.00 on average), but it still returns 1.69 in revenue per 1.00 of cost, the lowest of the campaigns with purchases.",
+    "Video - Brew guides spent $1,210.00 for 96 clicks and has 0 sessions in GA4. The other 4 campaigns in the same account do get sessions, so auto-tagging and the GA4 link work; a video campaign is mostly watched, and its few clicks can go to the video or channel instead of the site. Judge it on views or a lift test, not on GA4 purchases.",
+    "Search - Brand returns 7.56 per 1.00 of cost, the highest, but people searching for the store by name were likely to buy anyway, so don't read its return as sales the ads created.",
+    "There are 15 more purchase events than distinct transaction ids (1,047 purchase events, 1,032 transactions): the site sends some purchases twice or without an id. GA4's purchase count includes the extras; the campaign table counts each transaction once."
+  ],
+  "ga4_check": {
+    "rows": [
+      {
+        "metric": "Events",
+        "ga4": 1303738,
+        "export": 1303738,
+        "gap_pct": 0.0,
+        "explained": true,
+        "why": "Exact count on both sides, and the last day in range is more than 3 days before the run date."
+      },
+      {
+        "metric": "Purchase events",
+        "ga4": 1047,
+        "export": 1047,
+        "gap_pct": 0.0,
+        "explained": true,
+        "why": "Exact count on both sides."
+      },
+      {
+        "metric": "Sessions",
+        "ga4": 61902,
+        "export_exact": 61240,
+        "export_estimated": 61958,
+        "gap_pct": 1.07,
+        "band_pct": 3.3,
+        "explained": true,
+        "why": "GA4 estimates sessions. The gap to the exact count is 1.07%, inside the 3.3% band, and GA4's own method run on the export (61,958) lands 56 sessions from GA4, against 662 for the exact count."
+      },
+      {
+        "metric": "Total users",
+        "ga4": 42910,
+        "export_exact": 44310,
+        "export_estimated": 44105,
+        "export_by_user_id": 42770,
+        "gap_pct": -3.26,
+        "gap_to_user_id_count_pct": 0.33,
+        "band_pct": 1.6,
+        "explained": true,
+        "why": "GA4 is 3.26% below the browser count, outside the 1.6% band, and 0.33% from the export's count by user id. Shoppers who sign in on more than one device are one user in GA4 and several browsers in the export."
+      }
+    ],
+    "all_explained": true,
+    "extra_purchase_events": 15
+  },
+  "caveats": [
+    "GA4 credits each session to its last non-direct click, so these purchase counts won't match the Google Ads conversion column; the two are never added.",
+    "A shopper who clicked an ad on one device and bought on another without signing in is counted under the second device's source.",
+    "Revenue is purchase revenue as sent with each transaction, before refunds."
+  ],
+  "sql_handed_back": [
+    {
+      "query": "Cost per purchase by Google Ads campaign",
+      "sql": "WITH ev AS (\n  SELECT\n    PARSE_DATE('%Y%m%d', event_date) AS day,\n    user_pseudo_id,\n    (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS session_id,\n    CAST(session_traffic_source_last_click.google_ads_campaign.campaign_id AS STRING) AS campaign_id,\n    event_name,\n    ecommerce.transaction_id,\n    ecommerce.purchase_revenue\n  FROM `example-coffee-analytics.analytics_400000001.events_*`\n  WHERE _TABLE_SUFFIX BETWEEN '20261001' AND '20261026'\n),\nga AS (\n  SELECT campaign_id,\n    COUNT(DISTINCT CONCAT(user_pseudo_id, '.', CAST(session_id AS STRING))) AS sessions,\n    COUNT(DISTINCT IF(event_name = 'purchase', CONCAT(user_pseudo_id, '.', CAST(session_id AS STRING)), NULL)) AS buying_sessions,\n    COUNT(DISTINCT IF(event_name = 'purchase', transaction_id, NULL)) AS purchases\n  FROM ev\n  WHERE campaign_id IS NOT NULL\n  GROUP BY campaign_id\n),\nrevenue AS (\n  SELECT campaign_id, SUM(revenue) AS revenue FROM (\n    SELECT transaction_id, ANY_VALUE(campaign_id) AS campaign_id, ANY_VALUE(purchase_revenue) AS revenue\n    FROM ev WHERE event_name = 'purchase' AND transaction_id IS NOT NULL AND campaign_id IS NOT NULL\n    GROUP BY transaction_id)\n  GROUP BY campaign_id\n),\ncost AS (\n  SELECT CAST(campaign_id AS STRING) AS campaign_id, SUM(metrics_cost_micros) / 1e6 AS cost, SUM(metrics_clicks) AS clicks\n  FROM `example-coffee-analytics.google_ads.p_ads_CampaignBasicStats_1112223333`\n  WHERE _DATA_DATE BETWEEN '2026-10-01' AND '2026-10-26'\n    AND segments_date BETWEEN '2026-10-01' AND '2026-10-26'\n  GROUP BY 1\n)\nSELECT COALESCE(cost.campaign_id, ga.campaign_id) AS campaign_id,\n  ROUND(IFNULL(cost.cost, 0), 2) AS cost, IFNULL(cost.clicks, 0) AS clicks,\n  IFNULL(ga.sessions, 0) AS sessions, IFNULL(ga.buying_sessions, 0) AS buying_sessions,\n  IFNULL(ga.purchases, 0) AS purchases, ROUND(IFNULL(revenue.revenue, 0), 2) AS revenue,\n  ROUND(SAFE_DIVIDE(cost.cost, ga.purchases), 2) AS cost_per_purchase,\n  ROUND(SAFE_DIVIDE(revenue.revenue, cost.cost), 2) AS revenue_per_cost\nFROM cost\nFULL OUTER JOIN ga ON ga.campaign_id = cost.campaign_id\nLEFT JOIN revenue ON revenue.campaign_id = COALESCE(cost.campaign_id, ga.campaign_id)\nORDER BY cost DESC"
+    },
+    {
+      "query": "Check against GA4",
+      "sql": "SELECT\n  COUNT(*) AS events,\n  COUNTIF(event_name = 'purchase') AS purchase_events,\n  COUNT(DISTINCT IF(event_name = 'purchase', ecommerce.transaction_id, NULL)) AS distinct_transactions,\n  COUNT(DISTINCT CONCAT(user_pseudo_id, '.', CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING))) AS sessions_exact,\n  HLL_COUNT.EXTRACT(HLL_COUNT.INIT(CONCAT(user_pseudo_id, '.', CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id') AS STRING)), 12)) AS sessions_estimated,\n  COUNT(DISTINCT user_pseudo_id) AS users_exact,\n  HLL_COUNT.EXTRACT(HLL_COUNT.INIT(user_pseudo_id, 14)) AS users_estimated,\n  COUNT(DISTINCT IFNULL(user_id, user_pseudo_id)) AS users_by_user_id,\n  COUNTIF(user_pseudo_id IS NULL) AS events_without_user\nFROM `example-coffee-analytics.analytics_400000001.events_*`\nWHERE _TABLE_SUFFIX BETWEEN '20261001' AND '20261026'"
+    }
+  ]
+}

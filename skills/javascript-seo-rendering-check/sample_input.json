@@ -1,0 +1,556 @@
+{
+  "request": "Our help center articles never show up in Google, and ChatGPT gets our prices wrong. Check whether Google and AI crawlers can read our JavaScript pages, one URL per template, and tell us what to change.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "site": "https://www.example.com/",
+  "check_date": "2026-10-28",
+  "framework_as_stated": "Next.js for the marketing site; the help center is a separate React app on Vite under /help/",
+  "framework_signals_in_raw_html": {
+    "Marketing site (Next.js App Router)": "/_next/static/ script paths and self.__next_f payload scripts",
+    "Help center (React single-page app on Vite)": "an empty <div id=\"root\"> with one module script from /help/assets/"
+  },
+  "sources": {
+    "raw_html": "curl with a Googlebot user agent and again with a desktop browser user agent; the two were identical on every template",
+    "rendered_html": "headless Chrome --dump-dom after load, no clicks or scrolls",
+    "interaction_checks": "tabs, accordions and Load more controls opened by hand in a browser",
+    "fresh_session": "each template URL loaded again in a private window: logged out, no cookies, no saved storage, location permission denied",
+    "google-search-console": "batch_url_inspection, 1 call for the 7 template URLs",
+    "pagespeed-insights": "accessibility-seo, 1 mobile call per template (7 calls)",
+    "crawler": "status-code-checker on the 7 template URLs and 4 soft-404 probes; indexability-checker on the 7 template URLs (no X-Robots-Tag header found, nothing blocked by robots.txt)",
+    "dataforseo": "not used: the raw and rendered HTML came from curl and headless Chrome"
+  },
+  "layout_shared_per_template": {
+    "asked": "Does every URL on a template use the same layout?",
+    "user_answer": "Yes, each template is one layout in the codebase"
+  },
+  "templates": [
+    {
+      "template": "Home",
+      "url": "https://www.example.com/",
+      "urls_served": 1,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "weekly",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "online booking software",
+        "SMS and email reminders"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Online booking software for small businesses | Example Booking Software",
+        "meta_description": "Online booking software for small businesses. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 812,
+        "internal_links": 46,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization",
+          "WebSite"
+        ],
+        "key_facts_found": [
+          "online booking software",
+          "SMS and email reminders"
+        ]
+      },
+      "rendered": {
+        "status": 200,
+        "title": "Online booking software for small businesses | Example Booking Software",
+        "meta_description": "Online booking software for small businesses. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 846,
+        "internal_links": 48,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization",
+          "WebSite"
+        ],
+        "key_facts_found": [
+          "online booking software",
+          "SMS and email reminders"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": {
+        "url": "https://www.example.com/zz-not-a-real-page-7f3/",
+        "status": 404
+      },
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Blog post",
+      "url": "https://www.example.com/blog/reduce-no-shows/",
+      "urls_served": 140,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "rarely",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "reduce no-shows",
+        "deposit"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "How to reduce no-shows: 9 tactics that work | Example Booking Software",
+        "meta_description": "How to reduce no-shows: 9 tactics that work. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/blog/reduce-no-shows/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 1764,
+        "internal_links": 58,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Article",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "reduce no-shows",
+          "deposit"
+        ]
+      },
+      "rendered": {
+        "status": 200,
+        "title": "How to reduce no-shows: 9 tactics that work | Example Booking Software",
+        "meta_description": "How to reduce no-shows: 9 tactics that work. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/blog/reduce-no-shows/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 1790,
+        "internal_links": 61,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Article",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "reduce no-shows",
+          "deposit"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": {
+        "url": "https://www.example.com/blog/zz-not-a-real-page-7f3/",
+        "status": 404
+      },
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Pricing",
+      "url": "https://www.example.com/pricing/",
+      "urls_served": 1,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "rarely",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "$19 per month",
+        "$49 per month",
+        "$99 per month"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Pricing | Example Booking Software",
+        "meta_description": "Pricing. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/pricing/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 286,
+        "internal_links": 38,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization"
+        ],
+        "key_facts_found": []
+      },
+      "rendered": {
+        "status": 200,
+        "title": "Pricing | Example Booking Software",
+        "meta_description": "Pricing. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/pricing/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 912,
+        "internal_links": 44,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization",
+          "Product"
+        ],
+        "key_facts_found": [
+          "$19 per month",
+          "$49 per month",
+          "$99 per month"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": null,
+      "observed": "The plan cards are fetched from /api/plans inside a useEffect hook in a client component; the server sends an empty plans grid.",
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Feature page",
+      "url": "https://www.example.com/features/online-booking/",
+      "urls_served": 4,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "rarely",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "online booking page",
+        "deposits"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Online booking page | Example Booking Software",
+        "meta_description": "Online booking page. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 1104,
+        "internal_links": 52,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization",
+          "SoftwareApplication"
+        ],
+        "key_facts_found": [
+          "online booking page",
+          "deposits"
+        ]
+      },
+      "rendered": {
+        "status": 200,
+        "title": "Online booking page | Example Booking Software",
+        "meta_description": "Online booking page. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/features/online-booking/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 1128,
+        "internal_links": 52,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "Organization",
+          "SoftwareApplication"
+        ],
+        "key_facts_found": [
+          "online booking page",
+          "deposits"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": null,
+      "observed": "The root layout sets alternates.canonical to the home page; a client component replaces the link tag with the page URL after load.",
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Integrations hub",
+      "url": "https://www.example.com/integrations/",
+      "urls_served": 1,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "weekly",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "Google Calendar",
+        "Outlook Calendar"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Integrations | Example Booking Software",
+        "meta_description": "Integrations. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/integrations/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 920,
+        "internal_links": 52,
+        "non_link_navigation": [
+          {
+            "element": "button",
+            "label": "Load more integrations",
+            "reaches_urls": 36,
+            "urls_linked_elsewhere": false
+          }
+        ],
+        "jsonld_types": [
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "Google Calendar"
+        ]
+      },
+      "rendered": {
+        "status": 200,
+        "title": "Integrations | Example Booking Software",
+        "meta_description": "Integrations. Online booking, reminders and payments for small service businesses.",
+        "canonical": "https://www.example.com/integrations/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 934,
+        "internal_links": 52,
+        "non_link_navigation": [
+          {
+            "element": "button",
+            "label": "Load more integrations",
+            "reaches_urls": 36,
+            "urls_linked_elsewhere": false
+          }
+        ],
+        "jsonld_types": [
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "Google Calendar"
+        ]
+      },
+      "interaction_only": [
+        {
+          "what": "36 of 60 integration cards load only after the Load more button is clicked",
+          "key_facts": [
+            "Outlook Calendar"
+          ],
+          "urls_hidden": 36
+        }
+      ],
+      "soft_404_probe": null,
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Integration detail",
+      "url": "https://www.example.com/integrations/outlook-calendar/",
+      "urls_served": 60,
+      "site_part": "Marketing site (Next.js App Router)",
+      "content_changes": "rarely",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "two-way sync"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Outlook Calendar integration | Example Booking Software",
+        "meta_description": "Two-way sync between Outlook Calendar and your booking page.",
+        "canonical": "https://www.example.com/integrations/outlook-calendar/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 640,
+        "internal_links": 41,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "SoftwareApplication",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "two-way sync"
+        ]
+      },
+      "rendered": {
+        "status": 200,
+        "title": "Outlook Calendar integration | Example Booking Software",
+        "meta_description": "Two-way sync between Outlook Calendar and your booking page.",
+        "canonical": "https://www.example.com/integrations/outlook-calendar/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 655,
+        "internal_links": 41,
+        "non_link_navigation": [],
+        "jsonld_types": [
+          "SoftwareApplication",
+          "BreadcrumbList"
+        ],
+        "key_facts_found": [
+          "two-way sync"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": {
+        "url": "https://www.example.com/integrations/zz-not-a-real-page-7f3/",
+        "status": 200,
+        "rendered_text": "Integration not found"
+      },
+      "observed": "Unknown slugs render an 'Integration not found' message with a 200 status instead of calling notFound().",
+      "fresh_session_missing": []
+    },
+    {
+      "template": "Help article",
+      "url": "https://www.example.com/help/set-up-deposits/",
+      "urls_served": 85,
+      "site_part": "Help center (React single-page app on Vite)",
+      "content_changes": "weekly",
+      "meant_to_be_indexed": true,
+      "key_facts": [
+        "set up deposits",
+        "deposit policy"
+      ],
+      "raw": {
+        "status": 200,
+        "title": "Help Center",
+        "meta_description": null,
+        "canonical": null,
+        "meta_robots": "noindex",
+        "x_robots_tag": null,
+        "visible_words": 2,
+        "internal_links": 0,
+        "non_link_navigation": [],
+        "jsonld_types": [],
+        "key_facts_found": []
+      },
+      "rendered": {
+        "status": 200,
+        "title": "How to set up deposits | Example Booking Software Help",
+        "meta_description": "Turn on deposits for new clients and set the deposit policy they see when they book.",
+        "canonical": "https://www.example.com/help/set-up-deposits/",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "visible_words": 968,
+        "internal_links": 22,
+        "non_link_navigation": [
+          {
+            "element": "a with onclick and no href",
+            "label": "sidebar article list",
+            "reaches_urls": 14,
+            "urls_linked_elsewhere": true
+          }
+        ],
+        "jsonld_types": [
+          "Article"
+        ],
+        "key_facts_found": [
+          "set up deposits",
+          "deposit policy"
+        ]
+      },
+      "interaction_only": [],
+      "soft_404_probe": {
+        "url": "https://www.example.com/help/zz-not-a-real-page-7f3/",
+        "status": 200,
+        "rendered_text": "Article not found"
+      },
+      "observed": "index.html still carries the staging noindex tag; a head manager in the app replaces it with index, follow after load. The host serves index.html for every /help/ path.",
+      "fresh_session_missing": []
+    }
+  ],
+  "robots_txt": {
+    "url": "https://www.example.com/robots.txt",
+    "disallow": [
+      "/account/",
+      "/api/private/"
+    ],
+    "paths_pages_load": [
+      "/_next/static/",
+      "/api/plans",
+      "/help/assets/",
+      "/api/help/articles"
+    ]
+  },
+  "url_inspection": [
+    {
+      "inspection_url": "https://www.example.com/",
+      "coverage_state": "Submitted and indexed",
+      "verdict": "PASS",
+      "google_canonical": "https://www.example.com/",
+      "user_canonical": "https://www.example.com/",
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl_time": "2026-10-24T06:40:11Z"
+    },
+    {
+      "inspection_url": "https://www.example.com/blog/reduce-no-shows/",
+      "coverage_state": "Submitted and indexed",
+      "verdict": "PASS",
+      "google_canonical": "https://www.example.com/blog/reduce-no-shows/",
+      "user_canonical": "https://www.example.com/blog/reduce-no-shows/",
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl_time": "2026-10-19T14:02:55Z"
+    },
+    {
+      "inspection_url": "https://www.example.com/pricing/",
+      "coverage_state": "Submitted and indexed",
+      "verdict": "PASS",
+      "google_canonical": "https://www.example.com/pricing/",
+      "user_canonical": "https://www.example.com/pricing/",
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl_time": "2026-10-22T03:18:09Z"
+    },
+    {
+      "inspection_url": "https://www.example.com/features/online-booking/",
+      "coverage_state": "Alternate page with proper canonical tag",
+      "verdict": "NEUTRAL",
+      "google_canonical": "https://www.example.com/",
+      "user_canonical": "https://www.example.com/",
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl_time": "2026-10-20T11:47:30Z"
+    },
+    {
+      "inspection_url": "https://www.example.com/integrations/",
+      "coverage_state": "Submitted and indexed",
+      "verdict": "PASS",
+      "google_canonical": "https://www.example.com/integrations/",
+      "user_canonical": "https://www.example.com/integrations/",
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl_time": "2026-10-23T17:05:44Z"
+    },
+    {
+      "inspection_url": "https://www.example.com/integrations/outlook-calendar/",
+      "coverage_state": "Discovered - currently not indexed",
+      "verdict": "NEUTRAL",
+      "google_canonical": null,
+      "user_canonical": null,
+      "page_fetch_state": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+      "last_crawl_time": null
+    },
+    {
+      "inspection_url": "https://www.example.com/help/set-up-deposits/",
+      "coverage_state": "Excluded by 'noindex' tag",
+      "verdict": "NEUTRAL",
+      "google_canonical": null,
+      "user_canonical": null,
+      "page_fetch_state": "SUCCESSFUL",
+      "indexing_state": "BLOCKED_BY_META_TAG",
+      "last_crawl_time": "2026-10-21T09:12:40Z"
+    }
+  ],
+  "pagespeed_accessibility_seo": [
+    {
+      "url": "https://www.example.com/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/blog/reduce-no-shows/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/pricing/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/features/online-booking/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/integrations/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/integrations/outlook-calendar/",
+      "strategy": "mobile",
+      "failing_seo_audits": []
+    },
+    {
+      "url": "https://www.example.com/help/set-up-deposits/",
+      "strategy": "mobile",
+      "failing_seo_audits": [
+        "crawlable-anchors"
+      ]
+    }
+  ],
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Page facts are what the skill reads from each version of the HTML; the HTML itself is not reproduced."
+}

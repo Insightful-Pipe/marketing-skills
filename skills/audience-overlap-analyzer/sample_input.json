@@ -1,0 +1,403 @@
+{
+  "note": "Example data: an invented store with invented Meta and Google Ads accounts, not real accounts. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"audience-overlap-analyzer\" skill. Check whether my Meta ad sets and Google Ads campaigns are reaching the same people, and tell me what to exclude or merge.",
+  "accounts": {
+    "meta": {
+      "ad_account_id": "act_123456789",
+      "name": "Example DTC skincare store",
+      "currency": "USD",
+      "timezone": "America/Los_Angeles",
+      "status": "active"
+    },
+    "google_ads": {
+      "name": "Example DTC skincare store (Google Ads)",
+      "customer_id": "123-456-7890",
+      "currency": "USD"
+    }
+  },
+  "date_range": "last 30 days (2026-09-21 to 2026-10-20); trends: last 90 days in weekly rows",
+  "answers_to_the_three_questions": {
+    "result_and_target": "purchases, $45 target",
+    "converter_and_warm_audiences": "Purchasers 180d are converters; Website visitors 30d and Add to cart 14d are warm",
+    "brand_terms": [
+      "example skincare"
+    ]
+  },
+  "data_pulled": {
+    "meta": {
+      "get_adsets": [
+        {
+          "id": "120000000000100001",
+          "name": "Broad 25-54 | US",
+          "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 65,
+            "targeting_automation": {
+              "advantage_audience": 1
+            },
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000001"
+              },
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          },
+          "spend_30d": 2700
+        },
+        {
+          "id": "120000000000100002",
+          "name": "Interest - skincare",
+          "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 54,
+            "flexible_spec": [
+              {
+                "interests": [
+                  {
+                    "id": "6003000000000001"
+                  }
+                ]
+              }
+            ],
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          },
+          "spend_30d": 1200
+        },
+        {
+          "id": "120000000000100003",
+          "name": "LAL 1% purchasers 180d",
+          "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 54,
+            "custom_audiences": [
+              {
+                "id": "23800000000000004"
+              }
+            ],
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          },
+          "spend_30d": 1200
+        },
+        {
+          "id": "120000000000100004",
+          "name": "broad serum",
+          "campaign": "PROSP_Broad_Serum",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 65,
+            "targeting_automation": {
+              "advantage_audience": 1
+            },
+            "excluded_custom_audiences": []
+          },
+          "spend_30d": 1800
+        },
+        {
+          "id": "120000000000100005",
+          "name": "Site visitors 30d + ATC 14d",
+          "campaign": "Retargeting | Sales | All Products | US | 2026-07",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 18,
+            "age_max": 65,
+            "custom_audiences": [
+              {
+                "id": "23800000000000001"
+              },
+              {
+                "id": "23800000000000002"
+              }
+            ],
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          },
+          "spend_30d": 2100
+        },
+        {
+          "id": "120000000000100006",
+          "name": "New Sales Ad Set",
+          "campaign": "New Sales Campaign",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 54,
+            "excluded_custom_audiences": []
+          },
+          "spend_30d": 1500
+        },
+        {
+          "id": "120000000000100007",
+          "name": "Blog readers | US",
+          "campaign": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 18,
+            "age_max": 24,
+            "excluded_custom_audiences": []
+          },
+          "spend_30d": 900
+        }
+      ],
+      "get_custom_audiences": [
+        {
+          "id": "23800000000000001",
+          "name": "Website visitors 30d",
+          "subtype": "WEBSITE",
+          "approximate_count_lower_bound": 41000,
+          "approximate_count_upper_bound": 48000,
+          "delivery_status": 200,
+          "retention_days": 30
+        },
+        {
+          "id": "23800000000000002",
+          "name": "Add to cart 14d",
+          "subtype": "WEBSITE",
+          "approximate_count_lower_bound": 6200,
+          "approximate_count_upper_bound": 7300,
+          "delivery_status": 200,
+          "retention_days": 14
+        },
+        {
+          "id": "23800000000000003",
+          "name": "Purchasers 180d",
+          "subtype": "WEBSITE",
+          "approximate_count_lower_bound": 9800,
+          "approximate_count_upper_bound": 11500,
+          "delivery_status": 200,
+          "retention_days": 180
+        },
+        {
+          "id": "23800000000000004",
+          "name": "LAL 1% US - Purchasers 180d",
+          "subtype": "LOOKALIKE",
+          "approximate_count_lower_bound": 2100000,
+          "approximate_count_upper_bound": 2500000,
+          "delivery_status": 200,
+          "lookalike_spec": {
+            "origin": "Purchasers 180d",
+            "ratio": 0.01,
+            "country": "US"
+          }
+        }
+      ],
+      "get_saved_audiences": [],
+      "insights_adset_30d": {
+        "Broad 25-54 | US": {
+          "spend": 2700,
+          "impressions": 193000,
+          "reach": 71000
+        },
+        "Interest - skincare": {
+          "spend": 1200,
+          "impressions": 75000,
+          "reach": 34000
+        },
+        "LAL 1% purchasers 180d": {
+          "spend": 1200,
+          "impressions": 80000,
+          "reach": 33000
+        },
+        "broad serum": {
+          "spend": 1800,
+          "impressions": 132000,
+          "reach": 53000
+        },
+        "Site visitors 30d + ATC 14d": {
+          "spend": 2100,
+          "impressions": 96000,
+          "reach": 17000
+        },
+        "New Sales Ad Set": {
+          "spend": 1500,
+          "impressions": 94000,
+          "reach": 50000
+        },
+        "Blog readers | US": {
+          "spend": 900,
+          "impressions": 96000,
+          "reach": 56000
+        }
+      },
+      "insights_campaign_30d_reach": {
+        "Prospecting | Sales | Hydra Serum | US | 2026-08": 117000,
+        "PROSP_Broad_Serum": 53000,
+        "Retargeting | Sales | All Products | US | 2026-07": 17000,
+        "New Sales Campaign": 50000,
+        "Prospecting | Traffic | Blog | US | 2026-09 - Copy": 56000
+      },
+      "insights_account_30d_reach": 210000,
+      "insights_adset_weekly_trend": {
+        "Broad 25-54 | US": {
+          "cpm_change_pct": 22,
+          "ctr_change_pct": -18
+        },
+        "Interest - skincare": {
+          "cpm_change_pct": 23,
+          "ctr_change_pct": -11
+        },
+        "LAL 1% purchasers 180d": {
+          "cpm_change_pct": 3,
+          "ctr_change_pct": -2
+        },
+        "broad serum": {
+          "cpm_change_pct": 6,
+          "ctr_change_pct": -4
+        },
+        "Site visitors 30d + ATC 14d": {
+          "cpm_change_pct": 5,
+          "ctr_change_pct": -3
+        },
+        "New Sales Ad Set": {
+          "cpm_change_pct": 3,
+          "ctr_change_pct": -1
+        },
+        "Blog readers | US": {
+          "cpm_change_pct": 2,
+          "ctr_change_pct": 1
+        }
+      },
+      "insights_adset_7d_frequency": {
+        "Broad 25-54 | US": 2.3,
+        "Interest - skincare": 1.5,
+        "LAL 1% purchasers 180d": 1.6,
+        "broad serum": 1.8,
+        "Site visitors 30d + ATC 14d": 4.3,
+        "New Sales Ad Set": 1.2,
+        "Blog readers | US": 1.4
+      },
+      "estimate_audience_size": {
+        "LAL 1% US 25-54": 2300000,
+        "Skin care interest US 25-54": 18500000,
+        "both": 1050000,
+        "Broad 25-54 | US targeting": 128000000,
+        "Interest - skincare targeting": 18500000,
+        "LAL 1% purchasers 180d targeting": 2300000,
+        "broad serum targeting": 128000000,
+        "New Sales Ad Set targeting": 128000000,
+        "Blog readers | US targeting": 30000000,
+        "Interest - skincare with the new exclusions": 18420000,
+        "LAL 1% purchasers 180d with the new exclusions": 2255000,
+        "broad serum with the new exclusions": 127940000,
+        "New Sales Ad Set with the new exclusions": 127940000,
+        "Blog readers | US with the new exclusions": 29960000
+      }
+    },
+    "google_ads": {
+      "campaign_spend_30d": {
+        "Brand | Search": 600,
+        "Generic | Search | Serum": 2100,
+        "Generic | Search | Moisturizer": 1300
+      },
+      "visible_search_term_spend_30d": {
+        "Brand | Search": 520,
+        "Generic | Search | Serum": 1310,
+        "Generic | Search | Moisturizer": 770
+      },
+      "terms_in_two_or_more_campaigns": [
+        {
+          "term": "example skincare serum",
+          "campaign": "Brand | Search",
+          "cost": 40,
+          "conversions": 9
+        },
+        {
+          "term": "example skincare serum",
+          "campaign": "Generic | Search | Serum",
+          "cost": 22,
+          "conversions": 1
+        },
+        {
+          "term": "hyaluronic acid serum",
+          "campaign": "Generic | Search | Serum",
+          "cost": 150,
+          "conversions": 6
+        },
+        {
+          "term": "hyaluronic acid serum",
+          "campaign": "Generic | Search | Moisturizer",
+          "cost": 25,
+          "conversions": 1
+        },
+        {
+          "term": "serum for dry skin",
+          "campaign": "Generic | Search | Serum",
+          "cost": 90,
+          "conversions": 4
+        },
+        {
+          "term": "serum for dry skin",
+          "campaign": "Generic | Search | Moisturizer",
+          "cost": 18,
+          "conversions": 0
+        }
+      ],
+      "locations": "all three campaigns target the United States with PRESENCE",
+      "duplicate_keywords": [
+        {
+          "text": "hyaluronic acid serum",
+          "match_type": "PHRASE",
+          "campaigns": [
+            "Generic | Search | Serum",
+            "Generic | Search | Moisturizer"
+          ]
+        }
+      ],
+      "audience_criteria": [
+        {
+          "campaign": "Generic | Search | Serum",
+          "user_list": "All visitors 30d",
+          "mode": "observation"
+        }
+      ],
+      "customer_match_lists": []
+    }
+  }
+}

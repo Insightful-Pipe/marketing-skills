@@ -1,0 +1,1314 @@
+{
+  "request": "Hey Claude, I just added the \"email-campaign-analyst\" skill. How are my Klaviyo email campaigns doing over the last 90 days? Include deliverability, list growth and the best send time.",
+  "platform": "klaviyo",
+  "account": {
+    "workspace_id": 1,
+    "brand_id": 1,
+    "company_name": "Example Booking Software",
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "klaviyo_account_id": "XyZ123",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "window": {
+    "key": "last_90_days",
+    "start": "2026-07-30",
+    "end": "2026-10-27"
+  },
+  "revenue": "not given, so the default: Placed Order, which the billing system sends with each first plan payment",
+  "data_pulled": [
+    {
+      "call": "get_account_details",
+      "rows": 1
+    },
+    {
+      "call": "get_metrics",
+      "rows": 16
+    },
+    {
+      "call": "get_campaigns email, Sent or Variations Sent (with send_strategy)",
+      "rows": 18
+    },
+    {
+      "call": "get_campaigns sms, Sent or Variations Sent",
+      "rows": 3
+    },
+    {
+      "call": "get_campaign_report last_90_days, by campaign message and send_channel",
+      "rows": 21
+    },
+    {
+      "call": "get_campaign_report last_90_days, variations",
+      "rows": 2
+    },
+    {
+      "call": "get_flow_report last_90_days",
+      "rows": 4
+    },
+    {
+      "call": "get_events (6 metrics, window), counted by month and list",
+      "rows": 27
+    },
+    {
+      "call": "get_lists",
+      "rows": 7
+    }
+  ],
+  "data": {
+    "metrics": [
+      {
+        "id": "XmRcv1",
+        "name": "Received Email"
+      },
+      {
+        "id": "XmOpn1",
+        "name": "Opened Email"
+      },
+      {
+        "id": "XmClk1",
+        "name": "Clicked Email"
+      },
+      {
+        "id": "XmBnc1",
+        "name": "Bounced Email"
+      },
+      {
+        "id": "XmDrp1",
+        "name": "Dropped Email"
+      },
+      {
+        "id": "XmSpm1",
+        "name": "Marked Email as Spam"
+      },
+      {
+        "id": "XmSub1",
+        "name": "Subscribed to List"
+      },
+      {
+        "id": "XmUnl1",
+        "name": "Unsubscribed from List"
+      },
+      {
+        "id": "XmUne1",
+        "name": "Unsubscribed from Email Marketing"
+      },
+      {
+        "id": "XmSms1",
+        "name": "Received SMS"
+      },
+      {
+        "id": "XmSmc1",
+        "name": "Clicked SMS"
+      },
+      {
+        "id": "XmPlc1",
+        "name": "Placed Order"
+      },
+      {
+        "id": "XmTri1",
+        "name": "Started Trial"
+      },
+      {
+        "id": "XmDem1",
+        "name": "Requested Demo"
+      },
+      {
+        "id": "XmCan1",
+        "name": "Cancelled Subscription"
+      },
+      {
+        "id": "XmAct1",
+        "name": "Active on Site"
+      }
+    ],
+    "kept_metrics": [
+      "Subscribed to List",
+      "Unsubscribed from List",
+      "Unsubscribed from Email Marketing",
+      "Bounced Email",
+      "Dropped Email",
+      "Marked Email as Spam"
+    ],
+    "lists": [
+      {
+        "id": "LsNws1",
+        "name": "Newsletter"
+      },
+      {
+        "id": "LsTri1",
+        "name": "Trial sign-ups"
+      },
+      {
+        "id": "LsCus1",
+        "name": "Customers"
+      },
+      {
+        "id": "LsWeb1",
+        "name": "Webinar registrants 2026"
+      },
+      {
+        "id": "LsTsl1",
+        "name": "Trade show leads (imported March 2026)"
+      },
+      {
+        "id": "LsSms1",
+        "name": "SMS subscribers"
+      },
+      {
+        "id": "LsQa01",
+        "name": "QA seed list"
+      }
+    ],
+    "email_campaigns": [
+      {
+        "id": "01KEXAMPLECMPE001",
+        "name": "9 ways to cut no-shows this autumn",
+        "status": "Sent",
+        "send_time": "2026-08-04T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-04T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE002",
+        "name": "New: two-way calendar sync is here",
+        "status": "Sent",
+        "send_time": "2026-08-06T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-06T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsCus1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE003",
+        "name": "Are reminders costing you clients?",
+        "status": "Sent",
+        "send_time": "2026-08-11T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-11T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE004",
+        "name": "{{ first_name }}, your booking page can take deposits now",
+        "status": "Sent",
+        "send_time": "2026-08-13T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-13T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsTri1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE005",
+        "name": "Reminder text templates you can copy",
+        "status": "Sent",
+        "send_time": "2026-08-15T13:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-15T09:00:00",
+          "options": {
+            "is_local": true
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE006",
+        "name": "How one clinic filled 40 cancellation gaps",
+        "status": "Sent",
+        "send_time": "2026-08-18T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-18T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE007",
+        "name": "Last chance: 20% off annual plans ends today",
+        "status": "Variations Sent",
+        "send_time": "2026-08-27T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-27T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE008",
+        "name": "September product update",
+        "status": "Sent",
+        "send_time": "2026-09-03T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-03T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsCus1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE009",
+        "name": "Following up from the trade show",
+        "status": "Sent",
+        "send_time": "2026-09-09T15:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-09T15:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsTsl1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE010",
+        "name": "Is your front desk ready for Monday?",
+        "status": "Sent",
+        "send_time": "2026-09-15T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-15T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE011",
+        "name": "5 deposit policies clients accept",
+        "status": "Sent",
+        "send_time": "2026-09-22T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-22T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE012",
+        "name": "Webinar replay: fewer no-shows in 30 days",
+        "status": "Sent",
+        "send_time": "2026-09-24T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-24T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsWeb1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE013",
+        "name": "What do studios ask for most?",
+        "status": "Sent",
+        "send_time": "2026-09-26T13:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-26T09:00:00",
+          "options": {
+            "is_local": true
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE014",
+        "name": "October product update",
+        "status": "Sent",
+        "send_time": "2026-10-01T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-01T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsCus1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE015",
+        "name": "3 steps to more online reviews 📅",
+        "status": "Sent",
+        "send_time": "2026-10-06T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-06T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE016",
+        "name": "Ready for the holiday booking rush?",
+        "status": "Sent",
+        "send_time": "2026-10-13T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-13T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE017",
+        "name": "{{ first_name }}, 15% off Growth when you upgrade today",
+        "status": "Sent",
+        "send_time": "2026-10-15T18:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-15T18:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsTri1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPE018",
+        "name": "Did you see our new class booking?",
+        "status": "Sent",
+        "send_time": "2026-10-20T14:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-20T14:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsNws1"
+          ]
+        }
+      }
+    ],
+    "sms_campaigns": [
+      {
+        "id": "01KEXAMPLECMPS001",
+        "name": "Flash offer: 15% off Growth today only",
+        "status": "Sent",
+        "send_time": "2026-08-20T16:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-08-20T16:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsSms1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPS002",
+        "name": "Reminder: webinar starts in 1 hour",
+        "status": "Sent",
+        "send_time": "2026-09-17T17:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-09-17T17:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsSms1"
+          ]
+        }
+      },
+      {
+        "id": "01KEXAMPLECMPS003",
+        "name": "Holiday rush: turn on deposits now",
+        "status": "Sent",
+        "send_time": "2026-10-08T16:00:00+00:00",
+        "send_strategy": {
+          "method": "static",
+          "datetime": "2026-10-08T16:00:00+00:00",
+          "options": {
+            "is_local": false
+          }
+        },
+        "audiences": {
+          "included": [
+            "LsSms1"
+          ]
+        }
+      }
+    ],
+    "campaign_report_rows": [
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE001",
+          "campaign_message_id": "01KEXAMPLECMPE001-M1",
+          "campaign_message_name": "9 ways to cut no-shows this autumn",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 9820,
+          "delivered": 9782,
+          "opens_unique": 3910,
+          "open_rate": 0.3997,
+          "clicks_unique": 262,
+          "click_rate": 0.0268,
+          "click_to_open_rate": 0.067,
+          "conversions": 4,
+          "conversion_value": 186.0,
+          "revenue_per_recipient": 0.0189,
+          "unsubscribes": 18,
+          "unsubscribe_rate": 0.0018,
+          "bounced": 38,
+          "bounce_rate": 0.0039,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE002",
+          "campaign_message_id": "01KEXAMPLECMPE002-M1",
+          "campaign_message_name": "New: two-way calendar sync is here",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 1544,
+          "delivered": 1541,
+          "opens_unique": 911,
+          "open_rate": 0.5912,
+          "clicks_unique": 61,
+          "click_rate": 0.0396,
+          "click_to_open_rate": 0.067,
+          "conversions": 2,
+          "conversion_value": 198.0,
+          "revenue_per_recipient": 0.1282,
+          "unsubscribes": 1,
+          "unsubscribe_rate": 0.0006,
+          "bounced": 3,
+          "bounce_rate": 0.0019,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE003",
+          "campaign_message_id": "01KEXAMPLECMPE003-M1",
+          "campaign_message_name": "Are reminders costing you clients?",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 9874,
+          "delivered": 9833,
+          "opens_unique": 3790,
+          "open_rate": 0.3854,
+          "clicks_unique": 221,
+          "click_rate": 0.0225,
+          "click_to_open_rate": 0.0583,
+          "conversions": 3,
+          "conversion_value": 197.0,
+          "revenue_per_recipient": 0.02,
+          "unsubscribes": 21,
+          "unsubscribe_rate": 0.0021,
+          "bounced": 41,
+          "bounce_rate": 0.0042,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE004",
+          "campaign_message_id": "01KEXAMPLECMPE004-M1",
+          "campaign_message_name": "{{ first_name }}, your booking page can take deposits now",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 2310,
+          "delivered": 2301,
+          "opens_unique": 1150,
+          "open_rate": 0.4998,
+          "clicks_unique": 46,
+          "click_rate": 0.02,
+          "click_to_open_rate": 0.04,
+          "conversions": 6,
+          "conversion_value": 304.0,
+          "revenue_per_recipient": 0.1316,
+          "unsubscribes": 6,
+          "unsubscribe_rate": 0.0026,
+          "bounced": 9,
+          "bounce_rate": 0.0039,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE005",
+          "campaign_message_id": "01KEXAMPLECMPE005-M1",
+          "campaign_message_name": "Reminder text templates you can copy",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 9901,
+          "delivered": 9861,
+          "opens_unique": 3610,
+          "open_rate": 0.3661,
+          "clicks_unique": 129,
+          "click_rate": 0.0131,
+          "click_to_open_rate": 0.0357,
+          "conversions": 1,
+          "conversion_value": 19.0,
+          "revenue_per_recipient": 0.0019,
+          "unsubscribes": 24,
+          "unsubscribe_rate": 0.0024,
+          "bounced": 40,
+          "bounce_rate": 0.004,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE006",
+          "campaign_message_id": "01KEXAMPLECMPE006-M1",
+          "campaign_message_name": "How one clinic filled 40 cancellation gaps",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 9940,
+          "delivered": 9903,
+          "opens_unique": 4020,
+          "open_rate": 0.4059,
+          "clicks_unique": 268,
+          "click_rate": 0.0271,
+          "click_to_open_rate": 0.0667,
+          "conversions": 5,
+          "conversion_value": 235.0,
+          "revenue_per_recipient": 0.0236,
+          "unsubscribes": 19,
+          "unsubscribe_rate": 0.0019,
+          "bounced": 37,
+          "bounce_rate": 0.0037,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE007",
+          "campaign_message_id": "01KEXAMPLECMPE007-M1",
+          "campaign_message_name": "Last chance: 20% off annual plans ends today",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 9968,
+          "delivered": 9924,
+          "opens_unique": 3880,
+          "open_rate": 0.391,
+          "clicks_unique": 176,
+          "click_rate": 0.0177,
+          "click_to_open_rate": 0.0454,
+          "conversions": 9,
+          "conversion_value": 641.0,
+          "revenue_per_recipient": 0.0643,
+          "unsubscribes": 28,
+          "unsubscribe_rate": 0.0028,
+          "bounced": 44,
+          "bounce_rate": 0.0044,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE008",
+          "campaign_message_id": "01KEXAMPLECMPE008-M1",
+          "campaign_message_name": "September product update",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 1561,
+          "delivered": 1557,
+          "opens_unique": 870,
+          "open_rate": 0.5588,
+          "clicks_unique": 37,
+          "click_rate": 0.0238,
+          "click_to_open_rate": 0.0425,
+          "conversions": 1,
+          "conversion_value": 49.0,
+          "revenue_per_recipient": 0.0314,
+          "unsubscribes": 2,
+          "unsubscribe_rate": 0.0013,
+          "bounced": 4,
+          "bounce_rate": 0.0026,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE009",
+          "campaign_message_id": "01KEXAMPLECMPE009-M1",
+          "campaign_message_name": "Following up from the trade show",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 6240,
+          "delivered": 6003,
+          "opens_unique": 1330,
+          "open_rate": 0.2216,
+          "clicks_unique": 29,
+          "click_rate": 0.0048,
+          "click_to_open_rate": 0.0218,
+          "conversions": 0,
+          "conversion_value": 0.0,
+          "revenue_per_recipient": 0.0,
+          "unsubscribes": 98,
+          "unsubscribe_rate": 0.0163,
+          "bounced": 237,
+          "bounce_rate": 0.038,
+          "spam_complaints": 12,
+          "spam_complaint_rate": 0.001999
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE010",
+          "campaign_message_id": "01KEXAMPLECMPE010-M1",
+          "campaign_message_name": "Is your front desk ready for Monday?",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10012,
+          "delivered": 9973,
+          "opens_unique": 3930,
+          "open_rate": 0.3941,
+          "clicks_unique": 237,
+          "click_rate": 0.0238,
+          "click_to_open_rate": 0.0603,
+          "conversions": 3,
+          "conversion_value": 167.0,
+          "revenue_per_recipient": 0.0167,
+          "unsubscribes": 20,
+          "unsubscribe_rate": 0.002,
+          "bounced": 39,
+          "bounce_rate": 0.0039,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE011",
+          "campaign_message_id": "01KEXAMPLECMPE011-M1",
+          "campaign_message_name": "5 deposit policies clients accept",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10066,
+          "delivered": 10024,
+          "opens_unique": 4060,
+          "open_rate": 0.405,
+          "clicks_unique": 258,
+          "click_rate": 0.0257,
+          "click_to_open_rate": 0.0635,
+          "conversions": 4,
+          "conversion_value": 246.0,
+          "revenue_per_recipient": 0.0244,
+          "unsubscribes": 22,
+          "unsubscribe_rate": 0.0022,
+          "bounced": 42,
+          "bounce_rate": 0.0042,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE012",
+          "campaign_message_id": "01KEXAMPLECMPE012-M1",
+          "campaign_message_name": "Webinar replay: fewer no-shows in 30 days",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 1870,
+          "delivered": 1859,
+          "opens_unique": 860,
+          "open_rate": 0.4626,
+          "clicks_unique": 48,
+          "click_rate": 0.0258,
+          "click_to_open_rate": 0.0558,
+          "conversions": 2,
+          "conversion_value": 98.0,
+          "revenue_per_recipient": 0.0524,
+          "unsubscribes": 6,
+          "unsubscribe_rate": 0.0032,
+          "bounced": 11,
+          "bounce_rate": 0.0059,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE013",
+          "campaign_message_id": "01KEXAMPLECMPE013-M1",
+          "campaign_message_name": "What do studios ask for most?",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10090,
+          "delivered": 10049,
+          "opens_unique": 3620,
+          "open_rate": 0.3602,
+          "clicks_unique": 131,
+          "click_rate": 0.013,
+          "click_to_open_rate": 0.0362,
+          "conversions": 1,
+          "conversion_value": 19.0,
+          "revenue_per_recipient": 0.0019,
+          "unsubscribes": 25,
+          "unsubscribe_rate": 0.0025,
+          "bounced": 41,
+          "bounce_rate": 0.0041,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE014",
+          "campaign_message_id": "01KEXAMPLECMPE014-M1",
+          "campaign_message_name": "October product update",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 1580,
+          "delivered": 1576,
+          "opens_unique": 902,
+          "open_rate": 0.5723,
+          "clicks_unique": 40,
+          "click_rate": 0.0254,
+          "click_to_open_rate": 0.0443,
+          "conversions": 1,
+          "conversion_value": 99.0,
+          "revenue_per_recipient": 0.0627,
+          "unsubscribes": 1,
+          "unsubscribe_rate": 0.0006,
+          "bounced": 4,
+          "bounce_rate": 0.0025,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE015",
+          "campaign_message_id": "01KEXAMPLECMPE015-M1",
+          "campaign_message_name": "3 steps to more online reviews 📅",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10120,
+          "delivered": 10080,
+          "opens_unique": 4110,
+          "open_rate": 0.4077,
+          "clicks_unique": 271,
+          "click_rate": 0.0269,
+          "click_to_open_rate": 0.0659,
+          "conversions": 4,
+          "conversion_value": 186.0,
+          "revenue_per_recipient": 0.0184,
+          "unsubscribes": 19,
+          "unsubscribe_rate": 0.0019,
+          "bounced": 40,
+          "bounce_rate": 0.004,
+          "spam_complaints": 1,
+          "spam_complaint_rate": 9.9e-05
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE016",
+          "campaign_message_id": "01KEXAMPLECMPE016-M1",
+          "campaign_message_name": "Ready for the holiday booking rush?",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10158,
+          "delivered": 10115,
+          "opens_unique": 3990,
+          "open_rate": 0.3945,
+          "clicks_unique": 233,
+          "click_rate": 0.023,
+          "click_to_open_rate": 0.0584,
+          "conversions": 3,
+          "conversion_value": 297.0,
+          "revenue_per_recipient": 0.0292,
+          "unsubscribes": 23,
+          "unsubscribe_rate": 0.0023,
+          "bounced": 43,
+          "bounce_rate": 0.0042,
+          "spam_complaints": 1,
+          "spam_complaint_rate": 9.9e-05
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE017",
+          "campaign_message_id": "01KEXAMPLECMPE017-M1",
+          "campaign_message_name": "{{ first_name }}, 15% off Growth when you upgrade today",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 2390,
+          "delivered": 2380,
+          "opens_unique": 1180,
+          "open_rate": 0.4958,
+          "clicks_unique": 55,
+          "click_rate": 0.0231,
+          "click_to_open_rate": 0.0466,
+          "conversions": 8,
+          "conversion_value": 462.0,
+          "revenue_per_recipient": 0.1933,
+          "unsubscribes": 9,
+          "unsubscribe_rate": 0.0038,
+          "bounced": 10,
+          "bounce_rate": 0.0042,
+          "spam_complaints": 0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPE018",
+          "campaign_message_id": "01KEXAMPLECMPE018-M1",
+          "campaign_message_name": "Did you see our new class booking?",
+          "send_channel": "email"
+        },
+        "statistics": {
+          "recipients": 10190,
+          "delivered": 10148,
+          "opens_unique": 3950,
+          "open_rate": 0.3892,
+          "clicks_unique": 214,
+          "click_rate": 0.0211,
+          "click_to_open_rate": 0.0542,
+          "conversions": 2,
+          "conversion_value": 118.0,
+          "revenue_per_recipient": 0.0116,
+          "unsubscribes": 21,
+          "unsubscribe_rate": 0.0021,
+          "bounced": 42,
+          "bounce_rate": 0.0041,
+          "spam_complaints": 1,
+          "spam_complaint_rate": 9.9e-05
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPS001",
+          "campaign_message_id": "01KEXAMPLECMPS001-M1",
+          "campaign_message_name": "Flash offer: 15% off Growth today only",
+          "send_channel": "sms"
+        },
+        "statistics": {
+          "recipients": 1210,
+          "delivered": 1188,
+          "clicks_unique": 101,
+          "click_rate": 0.085,
+          "conversions": 4,
+          "conversion_value": 246.0,
+          "revenue_per_recipient": 0.2033,
+          "unsubscribes": 9,
+          "unsubscribe_rate": 0.0076,
+          "text_message_spend": 18.75,
+          "text_message_roi": 13.12
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPS002",
+          "campaign_message_id": "01KEXAMPLECMPS002-M1",
+          "campaign_message_name": "Reminder: webinar starts in 1 hour",
+          "send_channel": "sms"
+        },
+        "statistics": {
+          "recipients": 1236,
+          "delivered": 1219,
+          "clicks_unique": 88,
+          "click_rate": 0.0722,
+          "conversions": 1,
+          "conversion_value": 99.0,
+          "revenue_per_recipient": 0.0801,
+          "unsubscribes": 6,
+          "unsubscribe_rate": 0.0049,
+          "text_message_spend": 19.16,
+          "text_message_roi": 5.17
+        }
+      },
+      {
+        "groupings": {
+          "campaign_id": "01KEXAMPLECMPS003",
+          "campaign_message_id": "01KEXAMPLECMPS003-M1",
+          "campaign_message_name": "Holiday rush: turn on deposits now",
+          "send_channel": "sms"
+        },
+        "statistics": {
+          "recipients": 1262,
+          "delivered": 1244,
+          "clicks_unique": 94,
+          "click_rate": 0.0756,
+          "conversions": 3,
+          "conversion_value": 197.0,
+          "revenue_per_recipient": 0.1561,
+          "unsubscribes": 11,
+          "unsubscribe_rate": 0.0088,
+          "text_message_spend": 19.56,
+          "text_message_roi": 10.07
+        }
+      }
+    ],
+    "variation_report_rows": [
+      {
+        "campaign_id": "01KEXAMPLECMPE007",
+        "campaign_message_id": "01KEXAMPLECMPE007-M1",
+        "variation": "A",
+        "variation_name": "Last chance: 20% off annual plans ends today",
+        "statistics": {
+          "recipients": 4984,
+          "delivered": 4962,
+          "clicks_unique": 72,
+          "click_rate": 0.0145,
+          "conversion_value": 197.0,
+          "revenue_per_recipient": 0.0395
+        }
+      },
+      {
+        "campaign_id": "01KEXAMPLECMPE007",
+        "campaign_message_id": "01KEXAMPLECMPE007-M1",
+        "variation": "B",
+        "variation_name": "20% off annual plans until midnight",
+        "statistics": {
+          "recipients": 4984,
+          "delivered": 4962,
+          "clicks_unique": 104,
+          "click_rate": 0.021,
+          "conversion_value": 444.0,
+          "revenue_per_recipient": 0.0891
+        }
+      }
+    ],
+    "flow_report_rows": [
+      {
+        "groupings": {
+          "flow_name": "Newsletter welcome"
+        },
+        "statistics": {
+          "recipients": 3120,
+          "delivered": 3071,
+          "click_rate": 0.0817,
+          "conversion_value": 1372.0,
+          "revenue_per_recipient": 0.4397
+        }
+      },
+      {
+        "groupings": {
+          "flow_name": "Trial onboarding"
+        },
+        "statistics": {
+          "recipients": 7840,
+          "delivered": 7812,
+          "click_rate": 0.0888,
+          "conversion_value": 9604.0,
+          "revenue_per_recipient": 1.225
+        }
+      },
+      {
+        "groupings": {
+          "flow_name": "Demo follow-up"
+        },
+        "statistics": {
+          "recipients": 1460,
+          "delivered": 1452,
+          "click_rate": 0.1116,
+          "conversion_value": 2842.0,
+          "revenue_per_recipient": 1.9466
+        }
+      },
+      {
+        "groupings": {
+          "flow_name": "New customer: first 30 days"
+        },
+        "statistics": {
+          "recipients": 2390,
+          "delivered": 2385,
+          "click_rate": 0.0998,
+          "conversion_value": 1666.0,
+          "revenue_per_recipient": 0.6971
+        }
+      }
+    ],
+    "audience_events_by_month_and_list": [
+      {
+        "month": "2026-07",
+        "list_id": "LsNws1",
+        "Subscribed to List": 9,
+        "Unsubscribed from List": 1
+      },
+      {
+        "month": "2026-08",
+        "list_id": "LsNws1",
+        "Subscribed to List": 142,
+        "Unsubscribed from List": 36
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsNws1",
+        "Subscribed to List": 131,
+        "Unsubscribed from List": 38
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsNws1",
+        "Subscribed to List": 118,
+        "Unsubscribed from List": 33
+      },
+      {
+        "month": "2026-07",
+        "list_id": "LsTri1",
+        "Subscribed to List": 5,
+        "Unsubscribed from List": 0
+      },
+      {
+        "month": "2026-08",
+        "list_id": "LsTri1",
+        "Subscribed to List": 88,
+        "Unsubscribed from List": 6
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsTri1",
+        "Subscribed to List": 81,
+        "Unsubscribed from List": 7
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsTri1",
+        "Subscribed to List": 79,
+        "Unsubscribed from List": 6
+      },
+      {
+        "month": "2026-07",
+        "list_id": "LsCus1",
+        "Subscribed to List": 1,
+        "Unsubscribed from List": 0
+      },
+      {
+        "month": "2026-08",
+        "list_id": "LsCus1",
+        "Subscribed to List": 17,
+        "Unsubscribed from List": 1
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsCus1",
+        "Subscribed to List": 19,
+        "Unsubscribed from List": 2
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsCus1",
+        "Subscribed to List": 16,
+        "Unsubscribed from List": 1
+      },
+      {
+        "month": "2026-08",
+        "list_id": "LsWeb1",
+        "Subscribed to List": 12,
+        "Unsubscribed from List": 3
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsWeb1",
+        "Subscribed to List": 64,
+        "Unsubscribed from List": 4
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsWeb1",
+        "Subscribed to List": 6,
+        "Unsubscribed from List": 1
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsTsl1",
+        "Subscribed to List": 0,
+        "Unsubscribed from List": 98
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsTsl1",
+        "Subscribed to List": 0,
+        "Unsubscribed from List": 4
+      },
+      {
+        "month": "2026-08",
+        "list_id": "LsSms1",
+        "Subscribed to List": 24,
+        "Unsubscribed from List": 9
+      },
+      {
+        "month": "2026-09",
+        "list_id": "LsSms1",
+        "Subscribed to List": 22,
+        "Unsubscribed from List": 6
+      },
+      {
+        "month": "2026-10",
+        "list_id": "LsSms1",
+        "Subscribed to List": 27,
+        "Unsubscribed from List": 11
+      }
+    ],
+    "unsubscribed_from_email_marketing_by_month": [
+      {
+        "month": "2026-07",
+        "Unsubscribed from Email Marketing": 0
+      },
+      {
+        "month": "2026-08",
+        "Unsubscribed from Email Marketing": 126
+      },
+      {
+        "month": "2026-09",
+        "Unsubscribed from Email Marketing": 184
+      },
+      {
+        "month": "2026-10",
+        "Unsubscribed from Email Marketing": 81
+      }
+    ],
+    "deliverability_events_in_window": {
+      "Bounced Email": {
+        "events": 815,
+        "by_bounce_type": {
+          "hard": 295,
+          "soft": 520
+        }
+      },
+      "Dropped Email": {
+        "events": 412
+      },
+      "Marked Email as Spam": {
+        "events": 17
+      }
+    }
+  },
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. No email address or profile id appears in either file."
+}

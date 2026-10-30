@@ -1,0 +1,1196 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The account's owner had their Google login phished; the intruder, emails, domains and manager ids are invented too.",
+  "request": "Hey Claude, I just added the \"google-ads-hacked-account-recovery\" skill. I think our Google Ads account was hacked: spend jumped over the weekend and there's a campaign I didn't make. Check it and tell me how to lock it down.",
+  "account": {
+    "name": "Example Booking Software",
+    "customer_id": "1234567890",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "run_date": "2026-10-28",
+  "window": {
+    "start": "2026-09-28",
+    "end": "2026-10-27",
+    "why": "change_event keeps 30 days"
+  },
+  "user_inputs": {
+    "who_should_have_access": [
+      {
+        "email": "dana.reyes@example.com",
+        "role": "ADMIN"
+      },
+      {
+        "email": "marco.liu@example.com",
+        "role": "STANDARD"
+      },
+      {
+        "email": "reports@example.com",
+        "role": "READ_ONLY"
+      }
+    ],
+    "manager_accounts_that_belong": [
+      {
+        "id": "5550001111",
+        "who": "our agency's manager account"
+      }
+    ],
+    "landing_page_domains": [
+      "example.com"
+    ],
+    "countries_we_sell_to": [
+      "United States",
+      "United Kingdom",
+      "Canada"
+    ],
+    "payments_profile_id": "1111-2222-3333",
+    "normal_daily_spend": null,
+    "last_looked_normal": null
+  },
+  "data_pulled": {
+    "customer": {
+      "descriptive_name": "Example Booking Software",
+      "currency_code": "USD",
+      "time_zone": "America/New_York",
+      "tracking_url_template": null,
+      "final_url_suffix": null
+    },
+    "customer_user_access": [
+      {
+        "email_address": "dana.reyes@example.com",
+        "access_role": "ADMIN",
+        "access_creation_date_time": "2023-03-14 09:02:11",
+        "user_id": "410000"
+      },
+      {
+        "email_address": "marco.liu@example.com",
+        "access_role": "ADMIN",
+        "access_creation_date_time": "2024-01-09 15:40:27",
+        "inviter_user_email_address": "dana.reyes@example.com",
+        "user_id": "410007"
+      },
+      {
+        "email_address": "reports@example.com",
+        "access_role": "READ_ONLY",
+        "access_creation_date_time": "2024-06-02 10:11:45",
+        "inviter_user_email_address": "dana.reyes@example.com",
+        "user_id": "410014"
+      },
+      {
+        "email_address": "jamie.park@contractor-mail-302.example",
+        "access_role": "STANDARD",
+        "access_creation_date_time": "2025-02-03 13:25:09",
+        "inviter_user_email_address": "dana.reyes@example.com",
+        "user_id": "410021"
+      },
+      {
+        "email_address": "growth.partner@inbox-relay-447.example",
+        "access_role": "ADMIN",
+        "access_creation_date_time": "2026-10-23 21:52:36",
+        "inviter_user_email_address": "dana.reyes@example.com",
+        "user_id": "410028"
+      }
+    ],
+    "customer_user_access_invitation": [
+      {
+        "invitation_id": "880001",
+        "email_address": "billing.help@inbox-relay-447.example",
+        "access_role": "ADMIN",
+        "invitation_status": "PENDING",
+        "creation_date_time": "2026-10-24 02:31:04"
+      }
+    ],
+    "customer_manager_link": [
+      {
+        "manager_customer": "customers/5550001111",
+        "manager_link_id": "1",
+        "status": "ACTIVE"
+      },
+      {
+        "manager_customer": "customers/9876543210",
+        "manager_link_id": "2",
+        "status": "ACTIVE"
+      },
+      {
+        "manager_customer": "customers/4443332222",
+        "manager_link_id": "3",
+        "status": "REFUSED"
+      }
+    ],
+    "billing_setup": [
+      {
+        "id": "7000001",
+        "status": "APPROVED",
+        "payments_account_name": "Example Booking Software Inc",
+        "payments_profile_id": "1111-2222-3333",
+        "start_date_time": "2023-03-14 09:30:00"
+      }
+    ],
+    "account_budget": [
+      {
+        "id": "7100001",
+        "status": "APPROVED",
+        "billing_setup": "7000001",
+        "approved_spending_limit_type": "INFINITE",
+        "approved_start_date_time": "2023-03-14 09:30:00"
+      }
+    ],
+    "change_event": [
+      {
+        "change_date_time": "2026-10-02 10:15:42",
+        "change_resource_type": "AD_GROUP_CRITERION",
+        "resource_change_operation": "UPDATE",
+        "changed_fields": "status",
+        "user_email": "marco.liu@example.com",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "103",
+        "old_resource": null,
+        "new_resource": null
+      },
+      {
+        "change_date_time": "2026-10-06 16:03:19",
+        "change_resource_type": "AD_GROUP_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "keyword.text,keyword.match_type",
+        "user_email": "dana.reyes@example.com",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "101",
+        "old_resource": null,
+        "new_resource": null
+      },
+      {
+        "change_date_time": "2026-10-09 14:40:05",
+        "change_resource_type": "AD_GROUP_AD",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "ad.final_urls,ad.responsive_search_ad",
+        "user_email": "marco.liu@example.com",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "103",
+        "old_resource": null,
+        "new_resource": {
+          "final_urls": [
+            "https://www.example.com/industries/salons/"
+          ]
+        }
+      },
+      {
+        "change_date_time": "2026-10-15 11:22:51",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "keyword.text,negative",
+        "user_email": "marco.liu@example.com",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "102",
+        "old_resource": null,
+        "new_resource": {
+          "keyword": "booking software jobs",
+          "negative": true
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:12:08",
+        "change_resource_type": "CAMPAIGN",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "name,status,advertising_channel_type",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "name": "Search | Global offers",
+          "status": "ENABLED"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:12:40",
+        "change_resource_type": "CAMPAIGN_BUDGET",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "amount_micros",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "amount_micros": "1500000000"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:14:10",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "location.geo_target_constant",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "location": "geoTargetConstants/2356"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:14:11",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "location.geo_target_constant",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "location": "geoTargetConstants/2076"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:14:12",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "location.geo_target_constant",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "location": "geoTargetConstants/2704"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:14:13",
+        "change_resource_type": "CAMPAIGN_CRITERION",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "location.geo_target_constant",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "location": "geoTargetConstants/2608"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:20:33",
+        "change_resource_type": "AD_GROUP",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "name,status",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "name": "Offers 1"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:22:17",
+        "change_resource_type": "AD_GROUP_AD",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "ad.final_urls,ad.responsive_search_ad",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "final_urls": [
+            "https://deal-landing-552.example/offer"
+          ]
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:22:58",
+        "change_resource_type": "AD_GROUP_AD",
+        "resource_change_operation": "CREATE",
+        "changed_fields": "ad.final_urls,ad.responsive_search_ad",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "105",
+        "old_resource": null,
+        "new_resource": {
+          "final_urls": [
+            "https://deal-landing-552.example/win"
+          ]
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:26:11",
+        "change_resource_type": "CAMPAIGN_BUDGET",
+        "resource_change_operation": "UPDATE",
+        "changed_fields": "amount_micros",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "102",
+        "old_resource": {
+          "amount_micros": "150000000"
+        },
+        "new_resource": {
+          "amount_micros": "900000000"
+        }
+      },
+      {
+        "change_date_time": "2026-10-24 02:27:45",
+        "change_resource_type": "CAMPAIGN",
+        "resource_change_operation": "UPDATE",
+        "changed_fields": "tracking_url_template",
+        "user_email": "growth.partner@inbox-relay-447.example",
+        "client_type": "GOOGLE_ADS_WEB_CLIENT",
+        "campaign": "102",
+        "old_resource": {
+          "tracking_url_template": "{lpurl}?src=gads"
+        },
+        "new_resource": {
+          "tracking_url_template": "https://go.redirect-hop-91.example/r?to={lpurl}"
+        }
+      }
+    ],
+    "change_status_2026-07-30_to_2026-09-27": [
+      {
+        "resource_type": "CAMPAIGN",
+        "resource_status": "CHANGED",
+        "last_change_date_time": "2026-08-12 09:41:00",
+        "campaign": "101"
+      },
+      {
+        "resource_type": "CAMPAIGN",
+        "resource_status": "CHANGED",
+        "last_change_date_time": "2026-09-03 15:20:00",
+        "campaign": "104"
+      },
+      {
+        "resource_type": "CAMPAIGN",
+        "resource_status": "CHANGED",
+        "last_change_date_time": "2026-09-19 11:05:00",
+        "campaign": "103"
+      }
+    ],
+    "campaigns": [
+      {
+        "id": "101",
+        "name": "Search | Brand",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "start_date_time": "2023-03-20 00:00:00",
+        "tracking_url_template": "{lpurl}?src=gads",
+        "final_url_suffix": null,
+        "budget_amount": 40
+      },
+      {
+        "id": "102",
+        "name": "Search | Booking software",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "start_date_time": "2023-04-02 00:00:00",
+        "tracking_url_template": "https://go.redirect-hop-91.example/r?to={lpurl}",
+        "final_url_suffix": null,
+        "budget_amount": 900
+      },
+      {
+        "id": "103",
+        "name": "Search | Salon software",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "start_date_time": "2024-02-12 00:00:00",
+        "tracking_url_template": "{lpurl}?src=gads",
+        "final_url_suffix": null,
+        "budget_amount": 90
+      },
+      {
+        "id": "104",
+        "name": "Search | Competitors",
+        "status": "PAUSED",
+        "advertising_channel_type": "SEARCH",
+        "start_date_time": "2024-09-01 00:00:00",
+        "tracking_url_template": "{lpurl}?src=gads",
+        "final_url_suffix": null,
+        "budget_amount": 50
+      },
+      {
+        "id": "105",
+        "name": "Search | Global offers",
+        "status": "ENABLED",
+        "advertising_channel_type": "SEARCH",
+        "start_date_time": "2026-10-24 00:00:00",
+        "tracking_url_template": null,
+        "final_url_suffix": null,
+        "budget_amount": 1500
+      }
+    ],
+    "enabled_ads": [
+      {
+        "campaign_id": "101",
+        "ad_group_id": "2101",
+        "ad_id": "3101",
+        "final_urls": [
+          "https://www.example.com/"
+        ]
+      },
+      {
+        "campaign_id": "101",
+        "ad_group_id": "2101",
+        "ad_id": "3102",
+        "final_urls": [
+          "https://www.example.com/"
+        ]
+      },
+      {
+        "campaign_id": "102",
+        "ad_group_id": "2201",
+        "ad_id": "3201",
+        "final_urls": [
+          "https://www.example.com/features/online-booking/"
+        ]
+      },
+      {
+        "campaign_id": "102",
+        "ad_group_id": "2202",
+        "ad_id": "3202",
+        "final_urls": [
+          "https://www.example.com/pricing/"
+        ]
+      },
+      {
+        "campaign_id": "103",
+        "ad_group_id": "2301",
+        "ad_id": "3301",
+        "final_urls": [
+          "https://www.example.com/industries/salons/"
+        ]
+      },
+      {
+        "campaign_id": "105",
+        "ad_group_id": "2501",
+        "ad_id": "3501",
+        "final_urls": [
+          "https://deal-landing-552.example/offer"
+        ]
+      },
+      {
+        "campaign_id": "105",
+        "ad_group_id": "2501",
+        "ad_id": "3502",
+        "final_urls": [
+          "https://deal-landing-552.example/win"
+        ]
+      }
+    ],
+    "asset_groups": [],
+    "account_daily_spend": [
+      {
+        "date": "2026-09-28",
+        "cost": 242.05
+      },
+      {
+        "date": "2026-09-29",
+        "cost": 237.03
+      },
+      {
+        "date": "2026-09-30",
+        "cost": 256.78
+      },
+      {
+        "date": "2026-10-01",
+        "cost": 248.37
+      },
+      {
+        "date": "2026-10-02",
+        "cost": 230.75
+      },
+      {
+        "date": "2026-10-03",
+        "cost": 238.74
+      },
+      {
+        "date": "2026-10-04",
+        "cost": 232.08
+      },
+      {
+        "date": "2026-10-05",
+        "cost": 223.68
+      },
+      {
+        "date": "2026-10-06",
+        "cost": 252.18
+      },
+      {
+        "date": "2026-10-07",
+        "cost": 254.55
+      },
+      {
+        "date": "2026-10-08",
+        "cost": 235.4
+      },
+      {
+        "date": "2026-10-09",
+        "cost": 238.16
+      },
+      {
+        "date": "2026-10-10",
+        "cost": 253.55
+      },
+      {
+        "date": "2026-10-11",
+        "cost": 247.96
+      },
+      {
+        "date": "2026-10-12",
+        "cost": 255.09
+      },
+      {
+        "date": "2026-10-13",
+        "cost": 265.76
+      },
+      {
+        "date": "2026-10-14",
+        "cost": 251.86
+      },
+      {
+        "date": "2026-10-15",
+        "cost": 267.02
+      },
+      {
+        "date": "2026-10-16",
+        "cost": 247.39
+      },
+      {
+        "date": "2026-10-17",
+        "cost": 253.51
+      },
+      {
+        "date": "2026-10-18",
+        "cost": 238.97
+      },
+      {
+        "date": "2026-10-19",
+        "cost": 249.94
+      },
+      {
+        "date": "2026-10-20",
+        "cost": 247.58
+      },
+      {
+        "date": "2026-10-21",
+        "cost": 255.09
+      },
+      {
+        "date": "2026-10-22",
+        "cost": 237.89
+      },
+      {
+        "date": "2026-10-23",
+        "cost": 232.33
+      },
+      {
+        "date": "2026-10-24",
+        "cost": 2217.24
+      },
+      {
+        "date": "2026-10-25",
+        "cost": 1966.06
+      },
+      {
+        "date": "2026-10-26",
+        "cost": 2046.58
+      },
+      {
+        "date": "2026-10-27",
+        "cost": 2242.62
+      }
+    ],
+    "campaign_daily_spend": [
+      {
+        "campaign_id": "101",
+        "date": "2026-09-28",
+        "cost": 31.58
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-09-29",
+        "cost": 29.41
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-09-30",
+        "cost": 33.51
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-01",
+        "cost": 34.66
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-02",
+        "cost": 28.76
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-03",
+        "cost": 28.95
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-04",
+        "cost": 32.74
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-05",
+        "cost": 26.84
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-06",
+        "cost": 27.44
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-07",
+        "cost": 35.43
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-08",
+        "cost": 30.26
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-09",
+        "cost": 36.0
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-10",
+        "cost": 29.45
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-11",
+        "cost": 33.93
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-12",
+        "cost": 35.05
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-13",
+        "cost": 29.1
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-14",
+        "cost": 35.08
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-15",
+        "cost": 32.21
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-16",
+        "cost": 27.57
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-17",
+        "cost": 26.05
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-18",
+        "cost": 26.75
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-19",
+        "cost": 28.7
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-20",
+        "cost": 34.46
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-21",
+        "cost": 27.32
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-22",
+        "cost": 26.87
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-23",
+        "cost": 30.92
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-24",
+        "cost": 34.2
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-25",
+        "cost": 32.03
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-26",
+        "cost": 28.4
+      },
+      {
+        "campaign_id": "101",
+        "date": "2026-10-27",
+        "cost": 33.55
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-09-28",
+        "cost": 129.0
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-09-29",
+        "cost": 136.86
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-09-30",
+        "cost": 141.17
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-01",
+        "cost": 130.72
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-02",
+        "cost": 125.05
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-03",
+        "cost": 136.89
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-04",
+        "cost": 126.06
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-05",
+        "cost": 121.02
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-06",
+        "cost": 147.57
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-07",
+        "cost": 138.07
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-08",
+        "cost": 133.27
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-09",
+        "cost": 122.25
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-10",
+        "cost": 136.09
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-11",
+        "cost": 140.26
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-12",
+        "cost": 145.12
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-13",
+        "cost": 148.08
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-14",
+        "cost": 135.41
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-15",
+        "cost": 146.66
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-16",
+        "cost": 145.99
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-17",
+        "cost": 138.73
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-18",
+        "cost": 127.39
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-19",
+        "cost": 139.58
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-20",
+        "cost": 128.27
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-21",
+        "cost": 143.37
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-22",
+        "cost": 124.12
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-23",
+        "cost": 129.92
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-24",
+        "cost": 762.73
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-25",
+        "cost": 615.57
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-26",
+        "cost": 630.48
+      },
+      {
+        "campaign_id": "102",
+        "date": "2026-10-27",
+        "cost": 817.89
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-09-28",
+        "cost": 81.47
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-09-29",
+        "cost": 70.76
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-09-30",
+        "cost": 82.1
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-01",
+        "cost": 82.99
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-02",
+        "cost": 76.94
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-03",
+        "cost": 72.9
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-04",
+        "cost": 73.28
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-05",
+        "cost": 75.82
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-06",
+        "cost": 77.17
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-07",
+        "cost": 81.05
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-08",
+        "cost": 71.87
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-09",
+        "cost": 79.91
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-10",
+        "cost": 88.01
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-11",
+        "cost": 73.77
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-12",
+        "cost": 74.92
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-13",
+        "cost": 88.58
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-14",
+        "cost": 81.37
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-15",
+        "cost": 88.15
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-16",
+        "cost": 73.83
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-17",
+        "cost": 88.73
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-18",
+        "cost": 84.83
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-19",
+        "cost": 81.66
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-20",
+        "cost": 84.85
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-21",
+        "cost": 84.4
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-22",
+        "cost": 86.9
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-23",
+        "cost": 71.49
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-24",
+        "cost": 78.07
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-25",
+        "cost": 88.51
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-26",
+        "cost": 71.75
+      },
+      {
+        "campaign_id": "103",
+        "date": "2026-10-27",
+        "cost": 89.02
+      },
+      {
+        "campaign_id": "105",
+        "date": "2026-10-24",
+        "cost": 1342.24
+      },
+      {
+        "campaign_id": "105",
+        "date": "2026-10-25",
+        "cost": 1229.95
+      },
+      {
+        "campaign_id": "105",
+        "date": "2026-10-26",
+        "cost": 1315.95
+      },
+      {
+        "campaign_id": "105",
+        "date": "2026-10-27",
+        "cost": 1302.16
+      }
+    ],
+    "country_spend": [
+      {
+        "campaign_id": "101",
+        "country_criterion_id": "2840",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 649.06
+      },
+      {
+        "campaign_id": "101",
+        "country_criterion_id": "2826",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 185.44
+      },
+      {
+        "campaign_id": "101",
+        "country_criterion_id": "2124",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 92.72
+      },
+      {
+        "campaign_id": "102",
+        "country_criterion_id": "2840",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 4313.64
+      },
+      {
+        "campaign_id": "102",
+        "country_criterion_id": "2826",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 1268.72
+      },
+      {
+        "campaign_id": "102",
+        "country_criterion_id": "2124",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 761.23
+      },
+      {
+        "campaign_id": "105",
+        "country_criterion_id": "2356",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 2076.12
+      },
+      {
+        "campaign_id": "105",
+        "country_criterion_id": "2076",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 1297.58
+      },
+      {
+        "campaign_id": "105",
+        "country_criterion_id": "2704",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 1038.06
+      },
+      {
+        "campaign_id": "105",
+        "country_criterion_id": "2608",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 778.54
+      },
+      {
+        "campaign_id": "103",
+        "country_criterion_id": "2840",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 1718.42
+      },
+      {
+        "campaign_id": "103",
+        "country_criterion_id": "2826",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 429.61
+      },
+      {
+        "campaign_id": "103",
+        "country_criterion_id": "2124",
+        "location_type": "LOCATION_OF_PRESENCE",
+        "cost": 238.67
+      },
+      {
+        "campaign_id": "103",
+        "country_criterion_id": "2484",
+        "location_type": "AREA_OF_INTEREST",
+        "cost": 18.4
+      }
+    ],
+    "geo_target_constants": [
+      {
+        "id": "2840",
+        "name": "United States",
+        "country_code": "US"
+      },
+      {
+        "id": "2826",
+        "name": "United Kingdom",
+        "country_code": "GB"
+      },
+      {
+        "id": "2124",
+        "name": "Canada",
+        "country_code": "CA"
+      },
+      {
+        "id": "2484",
+        "name": "Mexico",
+        "country_code": "MX"
+      },
+      {
+        "id": "2356",
+        "name": "India",
+        "country_code": "IN"
+      },
+      {
+        "id": "2076",
+        "name": "Brazil",
+        "country_code": "BR"
+      },
+      {
+        "id": "2704",
+        "name": "Vietnam",
+        "country_code": "VN"
+      },
+      {
+        "id": "2608",
+        "name": "Philippines",
+        "country_code": "PH"
+      }
+    ]
+  }
+}

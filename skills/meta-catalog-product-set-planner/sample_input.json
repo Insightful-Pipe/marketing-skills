@@ -1,0 +1,730 @@
+{
+  "note": "Example data: an invented online outdoor gear store, not a real business. Products, SKUs, ids and every number are made up, and every number in expected_output.json follows from this input. One unit per Meta purchase is assumed for purchase value.",
+  "request": "Hey Claude, I just added the \"meta-catalog-product-set-planner\" skill. Plan my Meta catalog ads: which products should get spend, which product sets to build for prospecting and retargeting, and the ad text. Payment fees, shipping and returns are about 10% of the price. I don't have a target ROAS.",
+  "store": {
+    "name": "Example Outdoor Supply",
+    "site": "https://www.example.com",
+    "currency": "USD",
+    "platform": "Shopify (exports pasted, store not connected)"
+  },
+  "window": {
+    "since": "2026-09-28",
+    "until": "2026-10-27",
+    "days": 30
+  },
+  "variable_cost_share": 0.1,
+  "target_roas": null,
+  "retargeting_events": "Pixel and Conversions API send ViewContent, AddToCart and Purchase with content_ids that match the catalog retailer ids (user confirmed)",
+  "sources": {
+    "catalog": "Meta Ads MCP: get_catalogs, get_product_sets, get_catalog_products",
+    "catalog_ad_spend": "Meta Ads MCP: get_insights_adaccount, level ad, breakdowns product_id, rows summed by product",
+    "sales_and_first_published": "pasted Shopify 'Sales by product variant SKU' export plus a product list with published dates",
+    "unit_cost": "pasted cost sheet (2 SKUs have no cost yet)"
+  },
+  "data_pulled": {
+    "ad_account_id": "act_1234567890",
+    "catalogs": [
+      {
+        "id": "100000000000001",
+        "name": "Example Outdoor Supply catalog",
+        "product_count": 24,
+        "vertical": "commerce"
+      }
+    ],
+    "product_sets": [
+      {
+        "id": "300000000000001",
+        "name": "All products",
+        "product_count": 24,
+        "filter": null,
+        "used_by": "the store's only catalog ad set (prospecting and retargeting in one, user confirmed)"
+      }
+    ],
+    "catalog_products": [
+      {
+        "id": "200000000000001",
+        "retailer_id": "EOS-DP22",
+        "name": "Trail Daypack 22L",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Bags",
+        "price": "$79.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 140,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-dp22.jpg"
+      },
+      {
+        "id": "200000000000002",
+        "retailer_id": "EOS-DP32",
+        "name": "Trail Daypack 32L",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Bags",
+        "price": "$99.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 85,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-dp32.jpg"
+      },
+      {
+        "id": "200000000000003",
+        "retailer_id": "EOS-RS-W",
+        "name": "Rain Shell Jacket Women",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$149.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 60,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-rs-w.jpg"
+      },
+      {
+        "id": "200000000000004",
+        "retailer_id": "EOS-RS-M",
+        "name": "Rain Shell Jacket Men",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$149.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 3,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-rs-m.jpg"
+      },
+      {
+        "id": "200000000000005",
+        "retailer_id": "EOS-FL-1",
+        "name": "Fleece Pullover",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$69.00",
+        "sale_price": "$49.00",
+        "availability": "in stock",
+        "inventory": 220,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-fl-1.jpg"
+      },
+      {
+        "id": "200000000000006",
+        "retailer_id": "EOS-BT-L",
+        "name": "Insulated Bottle 1L",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Hydration",
+        "price": "$34.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 400,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-bt-l.jpg"
+      },
+      {
+        "id": "200000000000007",
+        "retailer_id": "EOS-BT-S",
+        "name": "Insulated Bottle 500ml",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Hydration",
+        "price": "$26.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 350,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-bt-s.jpg"
+      },
+      {
+        "id": "200000000000008",
+        "retailer_id": "EOS-HL-200",
+        "name": "Headlamp 200",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Lighting",
+        "price": "$39.00",
+        "sale_price": null,
+        "availability": "out of stock",
+        "inventory": 0,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-hl-200.jpg"
+      },
+      {
+        "id": "200000000000009",
+        "retailer_id": "EOS-HL-400",
+        "name": "Headlamp 400",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Lighting",
+        "price": "$59.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 75,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-hl-400.jpg"
+      },
+      {
+        "id": "200000000000010",
+        "retailer_id": "EOS-TP-2",
+        "name": "Backpacking Tent 2P",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Shelter",
+        "price": "$349.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 40,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-tp-2.jpg"
+      },
+      {
+        "id": "200000000000011",
+        "retailer_id": "EOS-TP-1",
+        "name": "Ultralight Tent 1P",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Shelter",
+        "price": "$299.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 25,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-tp-1.jpg"
+      },
+      {
+        "id": "200000000000012",
+        "retailer_id": "EOS-SB-20",
+        "name": "Sleeping Bag 20F",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Sleep",
+        "price": "$189.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 30,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-sb-20.jpg"
+      },
+      {
+        "id": "200000000000013",
+        "retailer_id": "EOS-SP-UL",
+        "name": "Sleeping Pad",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Sleep",
+        "price": "$119.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 90,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-sp-ul.jpg"
+      },
+      {
+        "id": "200000000000014",
+        "retailer_id": "EOS-CK-SET",
+        "name": "Camp Cook Set",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Camp kitchen",
+        "price": "$64.00",
+        "sale_price": "$49.00",
+        "availability": "in stock",
+        "inventory": 160,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-ck-set.jpg"
+      },
+      {
+        "id": "200000000000015",
+        "retailer_id": "EOS-STV",
+        "name": "Compact Stove",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Camp kitchen",
+        "price": "$45.00",
+        "sale_price": "$36.00",
+        "availability": "in stock",
+        "inventory": 130,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-stv.jpg"
+      },
+      {
+        "id": "200000000000016",
+        "retailer_id": "EOS-CH-LT",
+        "name": "Camp Chair Lite",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Furniture",
+        "price": "$89.00",
+        "sale_price": "$69.00",
+        "availability": "in stock",
+        "inventory": 210,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-ch-lt.jpg"
+      },
+      {
+        "id": "200000000000017",
+        "retailer_id": "EOS-TR-PL",
+        "name": "Trekking Poles Pair",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Accessories",
+        "price": "$79.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 55,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-tr-pl.jpg"
+      },
+      {
+        "id": "200000000000018",
+        "retailer_id": "EOS-GLV",
+        "name": "Merino Liner Gloves",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$29.00",
+        "sale_price": "$19.00",
+        "availability": "in stock",
+        "inventory": 300,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-glv.jpg"
+      },
+      {
+        "id": "200000000000019",
+        "retailer_id": "EOS-SOCK-3",
+        "name": "Hiking Socks 3 Pack",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$36.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 180,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-sock-3.jpg"
+      },
+      {
+        "id": "200000000000020",
+        "retailer_id": "EOS-MAPC",
+        "name": "Map Case",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Accessories",
+        "price": "$22.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 70,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-mapc.jpg"
+      },
+      {
+        "id": "200000000000021",
+        "retailer_id": "EOS-DP18-K",
+        "name": "Kids Daypack 18L",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Bags",
+        "price": "$55.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 60,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-dp18-k.jpg"
+      },
+      {
+        "id": "200000000000022",
+        "retailer_id": "EOS-HJ-INS",
+        "name": "Insulated Hooded Jacket",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Apparel",
+        "price": "$229.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 45,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-hj-ins.jpg"
+      },
+      {
+        "id": "200000000000023",
+        "retailer_id": "EOS-BT-FLT",
+        "name": "Filter Bottle",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Hydration",
+        "price": "$49.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 120,
+        "review_status": "approved",
+        "image_url": "https://www.example.com/images/eos-bt-flt.jpg"
+      },
+      {
+        "id": "200000000000024",
+        "retailer_id": "EOS-LT-USB",
+        "name": "Rechargeable Lantern",
+        "brand": "Example Outdoor Supply",
+        "product_type": "Lighting",
+        "price": "$44.00",
+        "sale_price": null,
+        "availability": "in stock",
+        "inventory": 80,
+        "review_status": "rejected",
+        "image_url": "https://www.example.com/images/eos-lt-usb.jpg"
+      }
+    ],
+    "catalog_ad_spend_by_product": [
+      {
+        "product_id": "EOS-DP22",
+        "spend": "410.00",
+        "omni_purchase": 21,
+        "omni_purchase_value": "1659.00"
+      },
+      {
+        "product_id": "EOS-DP32",
+        "spend": "360.00",
+        "omni_purchase": 15,
+        "omni_purchase_value": "1485.00"
+      },
+      {
+        "product_id": "EOS-RS-W",
+        "spend": "520.00",
+        "omni_purchase": 14,
+        "omni_purchase_value": "2086.00"
+      },
+      {
+        "product_id": "EOS-RS-M",
+        "spend": "480.00",
+        "omni_purchase": 12,
+        "omni_purchase_value": "1788.00"
+      },
+      {
+        "product_id": "EOS-FL-1",
+        "spend": "190.00",
+        "omni_purchase": 9,
+        "omni_purchase_value": "441.00"
+      },
+      {
+        "product_id": "EOS-BT-L",
+        "spend": "300.00",
+        "omni_purchase": 36,
+        "omni_purchase_value": "1224.00"
+      },
+      {
+        "product_id": "EOS-BT-S",
+        "spend": "150.00",
+        "omni_purchase": 18,
+        "omni_purchase_value": "468.00"
+      },
+      {
+        "product_id": "EOS-HL-200",
+        "spend": "140.00",
+        "omni_purchase": 6,
+        "omni_purchase_value": "234.00"
+      },
+      {
+        "product_id": "EOS-HL-400",
+        "spend": "120.00",
+        "omni_purchase": 6,
+        "omni_purchase_value": "354.00"
+      },
+      {
+        "product_id": "EOS-TP-2",
+        "spend": "600.00",
+        "omni_purchase": 5,
+        "omni_purchase_value": "1745.00"
+      },
+      {
+        "product_id": "EOS-TP-1",
+        "spend": "280.00",
+        "omni_purchase": 2,
+        "omni_purchase_value": "598.00"
+      },
+      {
+        "product_id": "EOS-SB-20",
+        "spend": "260.00",
+        "omni_purchase": 4,
+        "omni_purchase_value": "756.00"
+      },
+      {
+        "product_id": "EOS-SP-UL",
+        "spend": "60.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "119.00"
+      },
+      {
+        "product_id": "EOS-CK-SET",
+        "spend": "70.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "49.00"
+      },
+      {
+        "product_id": "EOS-STV",
+        "spend": "50.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "36.00"
+      },
+      {
+        "product_id": "EOS-CH-LT",
+        "spend": "90.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "69.00"
+      },
+      {
+        "product_id": "EOS-TR-PL",
+        "spend": "110.00",
+        "omni_purchase": 4,
+        "omni_purchase_value": "316.00"
+      },
+      {
+        "product_id": "EOS-GLV",
+        "spend": "80.00",
+        "omni_purchase": 3,
+        "omni_purchase_value": "57.00"
+      },
+      {
+        "product_id": "EOS-SOCK-3",
+        "spend": "130.00",
+        "omni_purchase": 9,
+        "omni_purchase_value": "324.00"
+      },
+      {
+        "product_id": "EOS-DP18-K",
+        "spend": "40.00",
+        "omni_purchase": 0,
+        "omni_purchase_value": "0.00"
+      },
+      {
+        "product_id": "EOS-HJ-INS",
+        "spend": "90.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "229.00"
+      },
+      {
+        "product_id": "EOS-BT-FLT",
+        "spend": "35.00",
+        "omni_purchase": 1,
+        "omni_purchase_value": "49.00"
+      }
+    ]
+  },
+  "pasted": {
+    "sales_by_sku": [
+      {
+        "sku": "EOS-DP22",
+        "units_sold": 62,
+        "net_sales": 4898.0,
+        "first_published": "2025-03-10"
+      },
+      {
+        "sku": "EOS-DP32",
+        "units_sold": 41,
+        "net_sales": 4059.0,
+        "first_published": "2025-03-10"
+      },
+      {
+        "sku": "EOS-RS-W",
+        "units_sold": 38,
+        "net_sales": 5662.0,
+        "first_published": "2025-08-01"
+      },
+      {
+        "sku": "EOS-RS-M",
+        "units_sold": 35,
+        "net_sales": 5215.0,
+        "first_published": "2025-08-01"
+      },
+      {
+        "sku": "EOS-FL-1",
+        "units_sold": 30,
+        "net_sales": 1470.0,
+        "first_published": "2024-10-01"
+      },
+      {
+        "sku": "EOS-BT-L",
+        "units_sold": 120,
+        "net_sales": 4080.0,
+        "first_published": "2024-05-01"
+      },
+      {
+        "sku": "EOS-BT-S",
+        "units_sold": 95,
+        "net_sales": 2470.0,
+        "first_published": "2024-05-01"
+      },
+      {
+        "sku": "EOS-HL-200",
+        "units_sold": 44,
+        "net_sales": 1716.0,
+        "first_published": "2025-01-15"
+      },
+      {
+        "sku": "EOS-HL-400",
+        "units_sold": 33,
+        "net_sales": 1947.0,
+        "first_published": "2025-01-15"
+      },
+      {
+        "sku": "EOS-TP-2",
+        "units_sold": 12,
+        "net_sales": 4188.0,
+        "first_published": "2025-04-01"
+      },
+      {
+        "sku": "EOS-TP-1",
+        "units_sold": 6,
+        "net_sales": 1794.0,
+        "first_published": "2025-04-01"
+      },
+      {
+        "sku": "EOS-SB-20",
+        "units_sold": 14,
+        "net_sales": 2646.0,
+        "first_published": "2025-02-01"
+      },
+      {
+        "sku": "EOS-SP-UL",
+        "units_sold": 4,
+        "net_sales": 476.0,
+        "first_published": "2024-09-01"
+      },
+      {
+        "sku": "EOS-CK-SET",
+        "units_sold": 9,
+        "net_sales": 441.0,
+        "first_published": "2024-06-01"
+      },
+      {
+        "sku": "EOS-STV",
+        "units_sold": 11,
+        "net_sales": 396.0,
+        "first_published": "2024-06-01"
+      },
+      {
+        "sku": "EOS-CH-LT",
+        "units_sold": 8,
+        "net_sales": 552.0,
+        "first_published": "2024-04-01"
+      },
+      {
+        "sku": "EOS-TR-PL",
+        "units_sold": 26,
+        "net_sales": 2054.0,
+        "first_published": "2025-05-01"
+      },
+      {
+        "sku": "EOS-GLV",
+        "units_sold": 22,
+        "net_sales": 418.0,
+        "first_published": "2024-11-01"
+      },
+      {
+        "sku": "EOS-SOCK-3",
+        "units_sold": 58,
+        "net_sales": 2088.0,
+        "first_published": "2024-11-01"
+      },
+      {
+        "sku": "EOS-MAPC",
+        "units_sold": 7,
+        "net_sales": 154.0,
+        "first_published": "2024-02-01"
+      },
+      {
+        "sku": "EOS-DP18-K",
+        "units_sold": 0,
+        "net_sales": 0.0,
+        "first_published": "2026-10-06"
+      },
+      {
+        "sku": "EOS-HJ-INS",
+        "units_sold": 5,
+        "net_sales": 1145.0,
+        "first_published": "2026-10-12"
+      },
+      {
+        "sku": "EOS-BT-FLT",
+        "units_sold": 7,
+        "net_sales": 343.0,
+        "first_published": "2026-10-01"
+      },
+      {
+        "sku": "EOS-LT-USB",
+        "units_sold": 3,
+        "net_sales": 132.0,
+        "first_published": "2026-10-15"
+      }
+    ],
+    "cost_sheet": [
+      {
+        "sku": "EOS-DP22",
+        "unit_cost": 28
+      },
+      {
+        "sku": "EOS-DP32",
+        "unit_cost": 36
+      },
+      {
+        "sku": "EOS-RS-W",
+        "unit_cost": 52
+      },
+      {
+        "sku": "EOS-RS-M",
+        "unit_cost": 52
+      },
+      {
+        "sku": "EOS-FL-1",
+        "unit_cost": 31
+      },
+      {
+        "sku": "EOS-BT-L",
+        "unit_cost": 9
+      },
+      {
+        "sku": "EOS-BT-S",
+        "unit_cost": 7
+      },
+      {
+        "sku": "EOS-HL-200",
+        "unit_cost": 13
+      },
+      {
+        "sku": "EOS-HL-400",
+        "unit_cost": 21
+      },
+      {
+        "sku": "EOS-TP-2",
+        "unit_cost": 140
+      },
+      {
+        "sku": "EOS-TP-1",
+        "unit_cost": 125
+      },
+      {
+        "sku": "EOS-SB-20",
+        "unit_cost": 74
+      },
+      {
+        "sku": "EOS-SP-UL",
+        "unit_cost": 46
+      },
+      {
+        "sku": "EOS-CK-SET",
+        "unit_cost": 22
+      },
+      {
+        "sku": "EOS-STV",
+        "unit_cost": 15
+      },
+      {
+        "sku": "EOS-CH-LT",
+        "unit_cost": 30
+      },
+      {
+        "sku": "EOS-TR-PL",
+        "unit_cost": 27
+      },
+      {
+        "sku": "EOS-GLV",
+        "unit_cost": 12
+      },
+      {
+        "sku": "EOS-DP18-K",
+        "unit_cost": 20
+      },
+      {
+        "sku": "EOS-HJ-INS",
+        "unit_cost": 88
+      },
+      {
+        "sku": "EOS-BT-FLT",
+        "unit_cost": 16
+      },
+      {
+        "sku": "EOS-LT-USB",
+        "unit_cost": 15
+      }
+    ]
+  }
+}

@@ -1,0 +1,451 @@
+{
+  "header": {
+    "account": "Example Cookware Store",
+    "account_id": "act_555000111",
+    "currency": "USD",
+    "time_zone": "America/Chicago",
+    "date_range": "2026-09-28 to 2026-10-27",
+    "window_source": "last 30 complete days (default)",
+    "main_event": "omni_purchase",
+    "target_cpa": 38.0,
+    "spend": 9400,
+    "impressions": 725000,
+    "grade": 80,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "Advantage+ setup",
+      "result": "warn",
+      "deduction": 5,
+      "key_number": "1 of 4 in-scope campaigns in Advantage+, 1 one lever short",
+      "why": "Sales | Knife sets | US has campaign budget and automatic placements, but its ad set targets interests with advantage_audience 0, so the audience lever is off. ASC | All products | US has all three levers on. The other 2 sales campaigns are manual on purpose."
+    },
+    {
+      "area": "Advantage+ results and audience mix",
+      "result": "warn",
+      "deduction": 5,
+      "key_number": "existing customers take 35.9% of Advantage+ spend",
+      "why": "Existing customers took $1,580 of $4,400 in ASC | All products | US (35.9%), above the 30% line. Audience Network is 5.0% of its spend."
+    },
+    {
+      "area": "Creative enhancements",
+      "result": "warn",
+      "deduction": 5,
+      "key_number": "2 of 9 ads with spend have a generated-content feature on",
+      "why": "Static - knife set gift has image_background_gen on, Static - sheet pan set has text_generation on. Enhanced ads still cost 15.7% less per purchase than ads with nothing opted in."
+    },
+    {
+      "area": "Catalog health",
+      "result": "pass",
+      "deduction": 0,
+      "key_number": "40 products: 3 out of stock, 1 rejected, 0 missing images",
+      "why": "get_catalog_products was refused on try 1 and returned all 40 products on try 2. 7.5% out of stock and 2.5% rejected are under the 20% and 5% lines; every product has an image and the catalog has a scheduled feed."
+    },
+    {
+      "area": "Catalog ads",
+      "result": "warn",
+      "deduction": 5,
+      "key_number": "3 products spent over $76.00 with 0 purchases",
+      "why": "$291 of $1,500 catalog spend went to 3 products with no purchase. The top 10 products hold 77.1% of catalog spend."
+    }
+  ],
+  "grade_math": "100 - 5 x 4 warns - 12 x 0 fails = 80 (needs work)",
+  "advantage_plus_table": {
+    "in_scope_campaigns": [
+      {
+        "campaign": "ASC | All products | US",
+        "campaign_id": "9100000000000001",
+        "objective": "OUTCOME_SALES",
+        "spend": 4400,
+        "purchases": 142,
+        "cpa": 30.99,
+        "cpa_vs_target_pct": -18.4,
+        "roas": 3.09,
+        "budget": "on",
+        "audience": "on",
+        "placement": "on",
+        "result": "Advantage+"
+      },
+      {
+        "campaign": "Sales | Knife sets | US",
+        "campaign_id": "9100000000000002",
+        "objective": "OUTCOME_SALES",
+        "spend": 1750,
+        "purchases": 41,
+        "cpa": 42.68,
+        "cpa_vs_target_pct": 12.3,
+        "roas": 2.36,
+        "budget": "on",
+        "audience": "off",
+        "placement": "on",
+        "result": "one lever short"
+      },
+      {
+        "campaign": "Retargeting | Catalog | Viewed 14d | US",
+        "campaign_id": "9100000000000003",
+        "objective": "OUTCOME_SALES",
+        "spend": 1500,
+        "purchases": 63,
+        "cpa": 23.81,
+        "cpa_vs_target_pct": -37.3,
+        "roas": 3.65,
+        "budget": "off",
+        "audience": "off",
+        "placement": "off",
+        "result": "manual"
+      },
+      {
+        "campaign": "Prospecting | Bakeware | Interests | US",
+        "campaign_id": "9100000000000004",
+        "objective": "OUTCOME_SALES",
+        "spend": 1350,
+        "purchases": 31,
+        "cpa": 43.55,
+        "cpa_vs_target_pct": 14.6,
+        "roas": 1.9,
+        "budget": "off",
+        "audience": "off",
+        "placement": "on",
+        "result": "manual"
+      }
+    ],
+    "out_of_scope": [
+      {
+        "campaign": "Traffic | Recipe blog | US",
+        "objective": "OUTCOME_TRAFFIC",
+        "spend": 400,
+        "why": "traffic campaign: Advantage+ status doesn't apply"
+      }
+    ]
+  },
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Check the generated content in Static - knife set gift (image_background_gen) and Static - sheet pan set (text_generation)",
+      "spend_at_stake": "$2,200 in the window",
+      "evidence": "get_ad_creatives_by_ad for ad 9100000000002002: image_background_gen = OPT_IN, $1,400 spend; get_ad_creatives_by_ad for ad 9100000000002007: text_generation = OPT_IN, $800 spend. image_background_gen makes a new background behind the product; text_generation writes new ad text.",
+      "who": "do this in Ads Manager",
+      "how": "Open each ad's preview in every placement and read the generated variations. If one makes a claim you don't make or shows the product wrongly, build a new creative with that feature set to opt out; an existing creative can only be renamed."
+    },
+    {
+      "rank": 2,
+      "fix": "Turn on Advantage+ audience in Sales | Knife sets | US",
+      "spend_at_stake": "$1,750 in the window",
+      "evidence": "get_campaigns: daily_budget 6000 cents on the campaign (budget on); get_adsets: Knife sets | Cooking interests has no placement keys (placement on) but targets the interests Cooking and Kitchen knives with advantage_audience 0 (audience off). CPA $42.68 against the $38.00 target.",
+      "who": "I can do this now",
+      "how": "Say yes and I send update_adset with the full targeting below, changing only advantage_audience to 1. The interests become suggestions, so Meta can reach past them. Watch the CPA for two weeks before judging it."
+    },
+    {
+      "rank": 3,
+      "fix": "Cap existing-customer spend in ASC | All products | US",
+      "spend_at_stake": "$1,580 in the window",
+      "evidence": "get_insights_adaccount by user_segment_key: Existing customers $1,580 of $4,400 (35.9%), 74 purchases at $21.35; New audience $2,420, 50 purchases at $48.40.",
+      "who": "do this in Ads Manager",
+      "how": "The campaign's $30.99 blended CPA leans on buyers who already know the store; new customers cost $48.40, above the $38.00 target. Split it into two ad sets with daily_spend_cap so existing customers take a set share, and judge prospecting on the new-audience CPA."
+    },
+    {
+      "rank": 4,
+      "fix": "Stop catalog spend on the 3 products that spent without a sale",
+      "spend_at_stake": "$291 in the window",
+      "evidence": "get_insights_adaccount by product_id for Catalog - viewed products 14d: Knife set 6 piece with block (product 9300000000000005) $118, 0 purchases; Carbon steel wok 14 inch (product 9300000000000007) $92.00, 0 purchases; Copper saucepan 2 qt (product 9300000000000011) $81.00, 0 purchases. Each is above 2 x the $38.00 target.",
+      "who": "do this in Commerce Manager",
+      "how": "Check the product pages first (price, stock, reviews). If they stay, make a product set that leaves these out and point the catalog ad at it."
+    }
+  ],
+  "everything_else": [
+    {
+      "area": "Advantage+ setup",
+      "type": "information",
+      "finding": "Retargeting | Catalog | Viewed 14d | US, Prospecting | Bakeware | Interests | US have two or more levers off (Retargeting | Catalog | Viewed 14d | US: budget, audience, placement off; Prospecting | Bakeware | Interests | US: budget, audience off). They are manual on purpose, not faults."
+    },
+    {
+      "area": "Advantage+ setup",
+      "type": "pass",
+      "finding": "No fragmentation: 1 Advantage+ campaign, so there is nothing to merge. The user says no campaign carries the legacy Advantage+ shopping or app label."
+    },
+    {
+      "area": "Advantage+ results and audience mix",
+      "type": "information",
+      "finding": "Advantage+ CPA $30.99 (142 purchases) against $34.07 for the other in-scope campaigns (135 purchases): 9.0% lower, inside the 20% band. ROAS 3.09 against 2.65. These are different campaigns, not a test, and 52.1% of the Advantage+ purchases (74 of 142) came from existing customers.",
+      "segments": [
+        {
+          "segment": "New audience",
+          "spend": 2420,
+          "share_of_spend_pct": 55.0,
+          "purchases": 50,
+          "cpa": 48.4
+        },
+        {
+          "segment": "Engaged audience",
+          "spend": 400,
+          "share_of_spend_pct": 9.1,
+          "purchases": 18,
+          "cpa": 22.22
+        },
+        {
+          "segment": "Existing customers",
+          "spend": 1580,
+          "share_of_spend_pct": 35.9,
+          "purchases": 74,
+          "cpa": 21.35
+        }
+      ]
+    },
+    {
+      "area": "Advantage+ results and audience mix",
+      "type": "pass",
+      "finding": "Audience Network takes 5.0% of Advantage+ spend, under the 40% line.",
+      "rows": [
+        {
+          "campaign": "ASC | All products | US",
+          "audience_network_spend": 220,
+          "spend": 4400,
+          "share_pct": 5.0,
+          "result": "pass"
+        }
+      ]
+    },
+    {
+      "area": "Creative enhancements",
+      "type": "information",
+      "finding": "All 9 ads with spend were checked (fewer than 25). Enhanced ads take $7,000 of $9,400 (74.5%).",
+      "ads": [
+        {
+          "ad": "UGC video - skillet sear",
+          "ad_id": "9100000000002001",
+          "campaign": "ASC | All products | US",
+          "spend": 1900,
+          "creative_id": "9100000000003001",
+          "opted_in": [
+            "image_touchups",
+            "text_optimizations",
+            "video_auto_crop"
+          ]
+        },
+        {
+          "ad": "Catalog - viewed products 14d",
+          "ad_id": "9100000000002006",
+          "campaign": "Retargeting | Catalog | Viewed 14d | US",
+          "spend": 1500,
+          "creative_id": "9100000000003006",
+          "opted_in": [
+            "image_touchups",
+            "standard_enhancements"
+          ]
+        },
+        {
+          "ad": "Static - knife set gift",
+          "ad_id": "9100000000002002",
+          "campaign": "ASC | All products | US",
+          "spend": 1400,
+          "creative_id": "9100000000003002",
+          "opted_in": [
+            "image_background_gen",
+            "text_optimizations"
+          ]
+        },
+        {
+          "ad": "Carousel - bestsellers",
+          "ad_id": "9100000000002003",
+          "campaign": "ASC | All products | US",
+          "spend": 1100,
+          "creative_id": "9100000000003003",
+          "opted_in": []
+        },
+        {
+          "ad": "Static - chef knife close-up",
+          "ad_id": "9100000000002004",
+          "campaign": "Sales | Knife sets | US",
+          "spend": 1000,
+          "creative_id": "9100000000003004",
+          "opted_in": [
+            "image_brightness_and_contrast",
+            "text_optimizations"
+          ]
+        },
+        {
+          "ad": "Static - sheet pan set",
+          "ad_id": "9100000000002007",
+          "campaign": "Prospecting | Bakeware | Interests | US",
+          "spend": 800,
+          "creative_id": "9100000000003007",
+          "opted_in": [
+            "inline_comment",
+            "text_generation"
+          ]
+        },
+        {
+          "ad": "Video - knife sharpening tip",
+          "ad_id": "9100000000002005",
+          "campaign": "Sales | Knife sets | US",
+          "spend": 750,
+          "creative_id": "9100000000003005",
+          "opted_in": []
+        },
+        {
+          "ad": "Carousel - bakeware set",
+          "ad_id": "9100000000002008",
+          "campaign": "Prospecting | Bakeware | Interests | US",
+          "spend": 550,
+          "creative_id": "9100000000003008",
+          "opted_in": []
+        },
+        {
+          "ad": "Blog - 5 skillet myths",
+          "ad_id": "9100000000002009",
+          "campaign": "Traffic | Recipe blog | US",
+          "spend": 400,
+          "creative_id": "9100000000003009",
+          "opted_in": [
+            "text_optimizations"
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Creative enhancements",
+      "type": "information",
+      "finding": "Catalog - viewed products 14d still carries standard_enhancements = OPT_IN, the bundle Meta deprecated in API v22.0. It is judged by its individual features."
+    },
+    {
+      "area": "Creative enhancements",
+      "type": "information",
+      "finding": "Sales ads, enhanced against nothing opted in: CPA $31.13 against $36.92 (15.7% lower), CTR 1.38% against 1.11%, CPC $1.01 against $1.11. This compares different ads, not a test; run an A/B test (same creative, feature on and off) before switching features off across the account.",
+      "groups": {
+        "enhanced": {
+          "ads": 5,
+          "spend": 6600,
+          "impressions": 477000,
+          "link_clicks": 6560,
+          "purchases": 212,
+          "ctr_pct": 1.38,
+          "cpc": 1.01,
+          "cpa": 31.13
+        },
+        "not_enhanced": {
+          "ads": 3,
+          "spend": 2400,
+          "impressions": 196000,
+          "link_clicks": 2170,
+          "purchases": 65,
+          "ctr_pct": 1.11,
+          "cpc": 1.11,
+          "cpa": 36.92
+        }
+      }
+    },
+    {
+      "area": "Catalog health",
+      "type": "pass",
+      "finding": "Example Cookware Store products: every check passed.",
+      "checks": [
+        {
+          "check": "catalog has products",
+          "result": "pass",
+          "value": "40 products"
+        },
+        {
+          "check": "scheduled data feed",
+          "result": "pass",
+          "value": "feed_count 1"
+        },
+        {
+          "check": "empty product sets",
+          "result": "pass",
+          "value": "0 of 3 product sets empty"
+        },
+        {
+          "check": "rejected in review",
+          "result": "pass",
+          "value": "1 of 40 (2.5%): CW-1035 Tart pan 9 inch"
+        },
+        {
+          "check": "out of stock",
+          "result": "pass",
+          "value": "3 of 40 (7.5%): CW-1027 Muffin pan 12 cup, CW-1033 Garlic press, CW-1039 Bundt pan 10 cup"
+        },
+        {
+          "check": "missing image_url",
+          "result": "pass",
+          "value": "0 of 40"
+        }
+      ]
+    },
+    {
+      "area": "Catalog ads",
+      "type": "information",
+      "finding": "Concentration: the top 10 of 22 products with spend hold 77.1% of catalog spend, under the 80% line."
+    },
+    {
+      "area": "Catalog ads",
+      "type": "information",
+      "finding": "Catalog ads CPA $23.81 (63 purchases) against $35.05 for the other sales ads (214 purchases). The catalog ad retargets people who viewed a product, so a lower CPA is expected; it is not a reason to move prospecting budget."
+    }
+  ],
+  "unknown_and_not_graded": [
+    {
+      "item": "Creative enhancement impact, traffic ads",
+      "status": "not graded",
+      "reason": "The only traffic ad with spend is enhanced, so no ad in this objective has nothing opted in. Every area was graded."
+    }
+  ],
+  "fixes_offered": [
+    {
+      "fix": "Turn on Advantage+ audience for Knife sets | Cooking interests",
+      "status": "waiting for your yes",
+      "payload": {
+        "action": "update_adset",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "ad_account_id": "act_555000111",
+        "adset_id": "9100000000001002",
+        "targeting": {
+          "geo_locations": {
+            "countries": [
+              "US"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "age_min": 25,
+          "age_max": 65,
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003000000101",
+                  "name": "Cooking"
+                },
+                {
+                  "id": "6003000000102",
+                  "name": "Kitchen knives"
+                }
+              ]
+            }
+          ],
+          "targeting_automation": {
+            "advantage_audience": 1
+          }
+        }
+      },
+      "note": "The full targeting from get_adsets, with only advantage_audience changed to 1. Needs a Read & Write connection."
+    }
+  ],
+  "go_deeper": [
+    {
+      "need": "Full Meta account performance",
+      "skill": "meta-ads-performance-analyzer"
+    },
+    {
+      "need": "Which creatives win, before switching enhancements off",
+      "skill": "meta-ads-creative-ranker"
+    },
+    {
+      "need": "Ecommerce plan across channels",
+      "skill": "ecommerce-ads-playbook"
+    }
+  ]
+}

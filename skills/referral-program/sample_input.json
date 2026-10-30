@@ -1,0 +1,1451 @@
+{
+  "request": "Hey Claude, I just added the \"referral-program\" skill. Design a referral or affiliate program for us from our own data. First payments are what we'd pay on. A customer brings in about $600 in the first year and our gross margin is about 85%.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "inputs": {
+    "program_type_wanted": "not sure",
+    "business_model": "SaaS",
+    "reward_conversion": "purchase (the first payment)",
+    "first_year_revenue_per_customer_usd": 600,
+    "gross_margin_pct": 85,
+    "current_cac": "not given",
+    "brand_terms": [
+      "example booking",
+      "examplebooking"
+    ],
+    "rewards_budget": "not given"
+  },
+  "run_date": "2026-10-28",
+  "accounts": {
+    "workspace_id": 1,
+    "brand_id": 1,
+    "ga4_property": "properties/123456789",
+    "search_console": "https://www.example.com/",
+    "klaviyo": "connected",
+    "google_ads": "1234567890 (the same business)"
+  },
+  "date_ranges": {
+    "ga4_and_klaviyo": "2026-07-30 to 2026-10-27 (last 90 days)",
+    "search_console": "2026-07-28 to 2026-09-10 and 2026-09-11 to 2026-10-25 (two 45-day halves ending 3 days ago)"
+  },
+  "data_pulled": [
+    "GA4 get_report: sessions, new users, engaged sessions, key events by sessionSource and sessionMedium (24 rows)",
+    "GA4 get_report: users, sessions, engaged sessions, key events by firstUserDefaultChannelGroup (8 rows)",
+    "GA4 get_report: landingPagePlusQueryString filtered to referral parameters (3 rows)",
+    "GA4 get_report: eventName counts (14 events); list_key_events (3); list_custom_dimensions (3)",
+    "GA4 get_report: orderCoupon transactions and revenue (0 rows)",
+    "Search Console search_analytics by query for each 45-day half, row_limit 25000",
+    "Klaviyo get_flows (5), get_flow_report (last_90_days), get_lists (6), get_segments (4), get_coupons (1)",
+    "Google Ads gaql: customer cost and conversions, last 90 days"
+  ],
+  "data": {
+    "ga4_source_medium": [
+      {
+        "sessionSource": "google",
+        "sessionMedium": "organic",
+        "channel": "Organic Search",
+        "sessions": 19800,
+        "newUsers": 14700,
+        "engagedSessions": 12750,
+        "keyEvents": 1180
+      },
+      {
+        "sessionSource": "bing",
+        "sessionMedium": "organic",
+        "channel": "Organic Search",
+        "sessions": 1600,
+        "newUsers": 1200,
+        "engagedSessions": 950,
+        "keyEvents": 92
+      },
+      {
+        "sessionSource": "(direct)",
+        "sessionMedium": "(none)",
+        "channel": "Direct",
+        "sessions": 9800,
+        "newUsers": 6100,
+        "engagedSessions": 5000,
+        "keyEvents": 520
+      },
+      {
+        "sessionSource": "google",
+        "sessionMedium": "cpc",
+        "channel": "Paid Search",
+        "sessions": 7600,
+        "newUsers": 5800,
+        "engagedSessions": 4500,
+        "keyEvents": 610
+      },
+      {
+        "sessionSource": "linkedin",
+        "sessionMedium": "cpc",
+        "channel": "Paid Social",
+        "sessions": 1150,
+        "newUsers": 980,
+        "engagedSessions": 520,
+        "keyEvents": 64
+      },
+      {
+        "sessionSource": "tiktok",
+        "sessionMedium": "cpc",
+        "channel": "Paid Social",
+        "sessions": 1550,
+        "newUsers": 1320,
+        "engagedSessions": 530,
+        "keyEvents": 56
+      },
+      {
+        "sessionSource": "newsletter",
+        "sessionMedium": "email",
+        "channel": "Email",
+        "sessions": 1450,
+        "newUsers": 180,
+        "engagedSessions": 1080,
+        "keyEvents": 92
+      },
+      {
+        "sessionSource": "flows",
+        "sessionMedium": "email",
+        "channel": "Email",
+        "sessions": 850,
+        "newUsers": 120,
+        "engagedSessions": 620,
+        "keyEvents": 68
+      },
+      {
+        "sessionSource": "facebook",
+        "sessionMedium": "social",
+        "channel": "Organic Social",
+        "sessions": 1100,
+        "newUsers": 860,
+        "engagedSessions": 560,
+        "keyEvents": 34,
+        "sessionCampaignName": "page-post"
+      },
+      {
+        "sessionSource": "instagram",
+        "sessionMedium": "social",
+        "channel": "Organic Social",
+        "sessions": 600,
+        "newUsers": 470,
+        "engagedSessions": 290,
+        "keyEvents": 20,
+        "sessionCampaignName": "page-post"
+      },
+      {
+        "sessionSource": "linkedin",
+        "sessionMedium": "social",
+        "channel": "Organic Social",
+        "sessions": 200,
+        "newUsers": 160,
+        "engagedSessions": 100,
+        "keyEvents": 6,
+        "sessionCampaignName": "page-post"
+      },
+      {
+        "sessionSource": "salonowners-forum.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 820,
+        "newUsers": 640,
+        "engagedSessions": 590,
+        "keyEvents": 74
+      },
+      {
+        "sessionSource": "physio-practice-news.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 610,
+        "newUsers": 470,
+        "engagedSessions": 390,
+        "keyEvents": 41
+      },
+      {
+        "sessionSource": "bookingtools-directory.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 410,
+        "newUsers": 330,
+        "engagedSessions": 168,
+        "keyEvents": 12
+      },
+      {
+        "sessionSource": "pos-partner.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 330,
+        "newUsers": 250,
+        "engagedSessions": 231,
+        "keyEvents": 29
+      },
+      {
+        "sessionSource": "studio-owners-group.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 260,
+        "newUsers": 200,
+        "engagedSessions": 172,
+        "keyEvents": 18
+      },
+      {
+        "sessionSource": "software-listings.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 230,
+        "newUsers": 228,
+        "engagedSessions": 0,
+        "keyEvents": 0
+      },
+      {
+        "sessionSource": "beautypro-blog.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 190,
+        "newUsers": 150,
+        "engagedSessions": 116,
+        "keyEvents": 11
+      },
+      {
+        "sessionSource": "clinic-it-consulting.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 48,
+        "newUsers": 37,
+        "engagedSessions": 36,
+        "keyEvents": 6
+      },
+      {
+        "sessionSource": "trainer-coach-hub.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 7,
+        "newUsers": 6,
+        "engagedSessions": 4,
+        "keyEvents": 0
+      },
+      {
+        "sessionSource": "sso.identity-provider.example",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 290,
+        "newUsers": 20,
+        "engagedSessions": 260,
+        "keyEvents": 14
+      },
+      {
+        "sessionSource": "billing.example.com",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 150,
+        "newUsers": 5,
+        "engagedSessions": 70,
+        "keyEvents": 2
+      },
+      {
+        "sessionSource": "help.example.com",
+        "sessionMedium": "referral",
+        "channel": "Referral",
+        "sessions": 65,
+        "newUsers": 10,
+        "engagedSessions": 23,
+        "keyEvents": 0
+      },
+      {
+        "sessionSource": "(not set)",
+        "sessionMedium": "(not set)",
+        "channel": "Unassigned",
+        "sessions": 260,
+        "newUsers": 200,
+        "engagedSessions": 20,
+        "keyEvents": 2
+      }
+    ],
+    "ga4_first_user_channel": [
+      {
+        "firstUserDefaultChannelGroup": "Organic Search",
+        "totalUsers": 16100,
+        "sessions": 22900,
+        "engagedSessions": 14865,
+        "keyEvents": 1374
+      },
+      {
+        "firstUserDefaultChannelGroup": "Direct",
+        "totalUsers": 6900,
+        "sessions": 9100,
+        "engagedSessions": 4700,
+        "keyEvents": 470
+      },
+      {
+        "firstUserDefaultChannelGroup": "Paid Search",
+        "totalUsers": 5900,
+        "sessions": 7700,
+        "engagedSessions": 4450,
+        "keyEvents": 590
+      },
+      {
+        "firstUserDefaultChannelGroup": "Paid Social",
+        "totalUsers": 2400,
+        "sessions": 2950,
+        "engagedSessions": 1180,
+        "keyEvents": 150
+      },
+      {
+        "firstUserDefaultChannelGroup": "Email",
+        "totalUsers": 310,
+        "sessions": 650,
+        "engagedSessions": 480,
+        "keyEvents": 40
+      },
+      {
+        "firstUserDefaultChannelGroup": "Referral",
+        "totalUsers": 2520,
+        "sessions": 3880,
+        "engagedSessions": 2330,
+        "keyEvents": 262
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Social",
+        "totalUsers": 1480,
+        "sessions": 1950,
+        "engagedSessions": 960,
+        "keyEvents": 62
+      },
+      {
+        "firstUserDefaultChannelGroup": "Unassigned",
+        "totalUsers": 290,
+        "sessions": 240,
+        "engagedSessions": 15,
+        "keyEvents": 3
+      }
+    ],
+    "ga4_referral_parameter_landings": [
+      {
+        "landingPagePlusQueryString": "/?ref=bookingtools-directory.example",
+        "sessionSource": "bookingtools-directory.example",
+        "sessionMedium": "referral",
+        "sessions": 380,
+        "newUsers": 305,
+        "keyEvents": 11
+      },
+      {
+        "landingPagePlusQueryString": "/pricing/?ref=software-listings.example",
+        "sessionSource": "software-listings.example",
+        "sessionMedium": "referral",
+        "sessions": 230,
+        "newUsers": 228,
+        "keyEvents": 0
+      },
+      {
+        "landingPagePlusQueryString": "/integrations/?via=pos-partner",
+        "sessionSource": "pos-partner.example",
+        "sessionMedium": "referral",
+        "sessions": 290,
+        "newUsers": 220,
+        "keyEvents": 26
+      }
+    ],
+    "ga4_events": [
+      {
+        "eventName": "page_view",
+        "eventCount": 142000,
+        "totalUsers": 36100
+      },
+      {
+        "eventName": "session_start",
+        "eventCount": 49370,
+        "totalUsers": 36100
+      },
+      {
+        "eventName": "first_visit",
+        "eventCount": 30200,
+        "totalUsers": 30200
+      },
+      {
+        "eventName": "user_engagement",
+        "eventCount": 98400,
+        "totalUsers": 29800
+      },
+      {
+        "eventName": "sign_up",
+        "eventCount": 2450,
+        "totalUsers": 2420
+      },
+      {
+        "eventName": "purchase",
+        "eventCount": 417,
+        "totalUsers": 417
+      },
+      {
+        "eventName": "generate_lead",
+        "eventCount": 210,
+        "totalUsers": 205
+      },
+      {
+        "eventName": "connect_calendar",
+        "eventCount": 1720,
+        "totalUsers": 1690
+      },
+      {
+        "eventName": "publish_booking_page",
+        "eventCount": 1350,
+        "totalUsers": 1330
+      },
+      {
+        "eventName": "first_booking_received",
+        "eventCount": 1010,
+        "totalUsers": 1010
+      },
+      {
+        "eventName": "booking_milestone_100",
+        "eventCount": 280,
+        "totalUsers": 280
+      },
+      {
+        "eventName": "upgrade_plan",
+        "eventCount": 66,
+        "totalUsers": 66
+      },
+      {
+        "eventName": "invite_staff",
+        "eventCount": 640,
+        "totalUsers": 520
+      },
+      {
+        "eventName": "share_booking_link",
+        "eventCount": 1240,
+        "totalUsers": 1050
+      }
+    ],
+    "ga4_key_events": [
+      "sign_up",
+      "purchase",
+      "generate_lead"
+    ],
+    "ga4_custom_dimensions": [
+      {
+        "parameter_name": "plan_name",
+        "scope": "EVENT"
+      },
+      {
+        "parameter_name": "business_type",
+        "scope": "USER"
+      },
+      {
+        "parameter_name": "staff_count",
+        "scope": "USER"
+      }
+    ],
+    "ga4_order_coupon_rows": [],
+    "outside_sender_types": {
+      "salonowners-forum.example": "community or forum",
+      "physio-practice-news.example": "blog or newsletter",
+      "bookingtools-directory.example": "directory or listing",
+      "pos-partner.example": "partner tool",
+      "studio-owners-group.example": "community or forum",
+      "software-listings.example": "directory or listing",
+      "beautypro-blog.example": "blog or newsletter",
+      "clinic-it-consulting.example": "freelancer or agency site",
+      "trainer-coach-hub.example": "community or forum"
+    },
+    "search_console_brand_queries": {
+      "first_half_clicks": {
+        "example booking": 2610,
+        "example booking login": 980,
+        "examplebooking": 210,
+        "example booking software": 150,
+        "example booking pricing": 120,
+        "example booking promo code": 18
+      },
+      "second_half_clicks": {
+        "example booking": 3150,
+        "example booking login": 1130,
+        "examplebooking": 240,
+        "example booking software": 190,
+        "example booking pricing": 150,
+        "example booking promo code": 41,
+        "example booking discount code": 12,
+        "example booking affiliate program": 9,
+        "example booking referral": 6
+      },
+      "non_brand_query_clicks": {
+        "h1": 14800,
+        "h2": 15600
+      },
+      "rows_returned": {
+        "h1": 11840,
+        "h2": 12920
+      }
+    },
+    "klaviyo": {
+      "flows": [
+        {
+          "id": "WqT4nA",
+          "name": "Newsletter welcome",
+          "status": "live",
+          "trigger_type": "Added to List",
+          "trigger": "Newsletter"
+        },
+        {
+          "id": "Hk2PzR",
+          "name": "Trial onboarding",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Started Trial"
+        },
+        {
+          "id": "Bv8LmC",
+          "name": "Demo follow-up",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Requested Demo"
+        },
+        {
+          "id": "Jp5XcE",
+          "name": "New customer: first 30 days",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Placed Order"
+        },
+        {
+          "id": "Ry3QsD",
+          "name": "Win-back: cancelled accounts",
+          "status": "draft",
+          "trigger_type": "Metric",
+          "trigger": "Cancelled Subscription"
+        }
+      ],
+      "new_customer_flow_messages": [
+        {
+          "message": "You're live: what happens next",
+          "delivered": 1238,
+          "click_rate": 0.118
+        },
+        {
+          "message": "Add your team",
+          "delivered": 1188,
+          "click_rate": 0.0867
+        },
+        {
+          "message": "Your first month in numbers",
+          "delivered": 1118,
+          "click_rate": 0.1038
+        },
+        {
+          "message": "Save with annual billing",
+          "delivered": 1058,
+          "click_rate": 0.052
+        }
+      ],
+      "lists": [
+        "Newsletter",
+        "Trial sign-ups",
+        "Demo requests",
+        "Customers",
+        "Webinar registrants 2026",
+        "QA seed list"
+      ],
+      "segments": [
+        "Engaged 90 days",
+        "Active customers",
+        "Trials in progress",
+        "UK and Canada"
+      ],
+      "coupons": [
+        {
+          "external_id": "ANNUAL15",
+          "description": "15% off the first year of an annual plan"
+        }
+      ]
+    },
+    "google_ads": {
+      "customer_id": "1234567890",
+      "currency_code": "USD",
+      "cost_micros": 13050000000,
+      "conversions": 87.0,
+      "primary_conversion_action": "First payment (imported from the GA4 purchase key event)"
+    }
+  },
+  "calls": 15,
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Every referring site is an invented .example domain. First-year revenue and margin are the request's input, not account data.",
+  "mode_examples": {
+    "note": "Inputs for the three other modes. Recruit and B2B use the same invented booking software company; the audit uses an invented online outdoor gear store, Example Trail Goods, because a coupon-code partner audit needs a store. Every domain and channel name is invented. Every number in expected_output.json mode_examples follows from these inputs.",
+    "recruit_partners": {
+      "request": "Hey Claude, I just added the \"referral-program\" skill. Our partner program is live with 3 partners. Find more partners: our competitors are RivalBook and Example Slot Planner. Score them and write the outreach.",
+      "program_terms": {
+        "commission": "25% of each payment in the customer's first 12 months",
+        "cookie_days": 30,
+        "payout": "monthly after a 30-day refund hold, $50 minimum"
+      },
+      "current_partners": [
+        "salonowners-forum.example",
+        "physio-practice-news.example",
+        "pos-partner.example"
+      ],
+      "category_phrase": "online booking software",
+      "competitors": [
+        {
+          "name": "RivalBook",
+          "domain": "rivalbook.example"
+        },
+        {
+          "name": "Example Slot Planner",
+          "domain": "slotplanner.example"
+        }
+      ],
+      "ideal_customer": "owners and managers of small salons, studios and clinics",
+      "approved_claims": [
+        "online booking, reminders and payments in one app",
+        "set up in an afternoon",
+        "for salons, studios and clinics"
+      ],
+      "not_for": "businesses that need on-site booking kiosks",
+      "onboarding_capacity_per_month": 5,
+      "data": {
+        "ga4_outside_senders": "the default run's source rows (sample_input data.ga4_source_medium)",
+        "dataforseo_serp_google_organic": {
+          "best online booking software": [
+            {
+              "domain": "rivalbook.example",
+              "position": 1,
+              "title": "RivalBook: online booking for any business"
+            },
+            {
+              "domain": "smallbiz-software-reviews.example",
+              "position": 2,
+              "title": "The 9 best online booking software tools, tested"
+            },
+            {
+              "domain": "salon-tech-guide.example",
+              "position": 4,
+              "title": "Best booking software for salons and spas in 2026"
+            },
+            {
+              "domain": "bookingtools-directory.example",
+              "position": 5,
+              "title": "Booking software: compare 120 tools"
+            },
+            {
+              "domain": "smallbiz-forum.example",
+              "position": 6,
+              "title": "Which booking app do you use? (thread)"
+            },
+            {
+              "domain": "apps.marketplace.example",
+              "position": 8,
+              "title": "Booking apps for your website"
+            },
+            {
+              "domain": "physio-practice-news.example",
+              "position": 12,
+              "title": "Choosing booking software for a physio practice"
+            }
+          ],
+          "RivalBook review": [
+            {
+              "domain": "rivalbook.example",
+              "position": 1,
+              "title": "RivalBook reviews"
+            },
+            {
+              "domain": "smallbiz-software-reviews.example",
+              "position": 3,
+              "title": "RivalBook review: pricing, pros and cons"
+            },
+            {
+              "domain": "booking-buyer-guide.example",
+              "position": 5,
+              "title": "RivalBook review after 6 months"
+            },
+            {
+              "domain": "fitness-studio-biz.example",
+              "position": 9,
+              "title": "RivalBook for a fitness studio: our review"
+            }
+          ],
+          "RivalBook alternatives": [
+            {
+              "domain": "booking-buyer-guide.example",
+              "position": 1,
+              "title": "7 RivalBook alternatives worth a look"
+            },
+            {
+              "domain": "saas-alternatives-hub.example",
+              "position": 4,
+              "title": "RivalBook alternatives and competitors"
+            },
+            {
+              "domain": "salon-tech-guide.example",
+              "position": 6,
+              "title": "Leaving RivalBook? Salon booking apps compared"
+            },
+            {
+              "domain": "smallbiz-software-reviews.example",
+              "position": 8,
+              "title": "RivalBook alternatives for 2026"
+            }
+          ],
+          "Example Slot Planner review": [
+            {
+              "domain": "slotplanner.example",
+              "position": 1,
+              "title": "Example Slot Planner customer stories"
+            },
+            {
+              "domain": "wellness-pro-tools.example",
+              "position": 2,
+              "title": "Example Slot Planner review for spa and wellness practices"
+            },
+            {
+              "domain": "smallbiz-software-reviews.example",
+              "position": 4,
+              "title": "Example Slot Planner review: is it worth it?"
+            }
+          ],
+          "Example Slot Planner alternatives": [
+            {
+              "domain": "saas-alternatives-hub.example",
+              "position": 2,
+              "title": "Example Slot Planner alternatives"
+            },
+            {
+              "domain": "booking-buyer-guide.example",
+              "position": 3,
+              "title": "The best Example Slot Planner alternatives"
+            },
+            {
+              "domain": "studio-owners-group.example",
+              "position": 14,
+              "title": "Moving off Example Slot Planner, what did your studio pick?"
+            }
+          ]
+        },
+        "dataforseo_serp_types": {
+          "smallbiz-software-reviews.example": "review or comparison site",
+          "salon-tech-guide.example": "blog or newsletter",
+          "bookingtools-directory.example": "directory or listing",
+          "smallbiz-forum.example": "community or forum",
+          "physio-practice-news.example": "blog or newsletter",
+          "booking-buyer-guide.example": "review or comparison site",
+          "fitness-studio-biz.example": "blog or newsletter",
+          "saas-alternatives-hub.example": "review or comparison site",
+          "wellness-pro-tools.example": "blog or newsletter",
+          "studio-owners-group.example": "community or forum"
+        },
+        "dataforseo_backlinks_with_tracking": {
+          "rivalbook.example": [
+            {
+              "referring_domain": "booking-buyer-guide.example",
+              "parameter": "ref="
+            },
+            {
+              "referring_domain": "salon-tech-guide.example",
+              "parameter": "via="
+            },
+            {
+              "referring_domain": "saas-alternatives-hub.example",
+              "parameter": "fpr="
+            },
+            {
+              "referring_domain": "coupon-deals-hub.example",
+              "parameter": "aff"
+            },
+            {
+              "referring_domain": "wellness-pro-tools.example",
+              "parameter": "ref="
+            }
+          ],
+          "slotplanner.example": [
+            {
+              "referring_domain": "saas-alternatives-hub.example",
+              "parameter": "ref="
+            },
+            {
+              "referring_domain": "fitness-studio-biz.example",
+              "parameter": "via="
+            }
+          ]
+        },
+        "dataforseo_serp_youtube_organic": [
+          {
+            "channel": "Example Salon Talk",
+            "video": "RivalBook review for salon owners",
+            "published": "2026-08-14",
+            "views": 18000
+          },
+          {
+            "channel": "Example Salon Talk",
+            "video": "Booking software for salons: 3 tools compared",
+            "published": "2026-03-02",
+            "views": 9500
+          },
+          {
+            "channel": "Example Salon Talk",
+            "video": "Example Slot Planner review: the good and the bad",
+            "published": "2026-06-20",
+            "views": 12000
+          },
+          {
+            "channel": "Studio Owner Tech",
+            "video": "RivalBook review: running a yoga studio on it",
+            "published": "2026-05-11",
+            "views": 4200
+          },
+          {
+            "channel": "Studio Owner Tech",
+            "video": "Example Slot Planner review for small studios",
+            "published": "2026-09-03",
+            "views": 6100
+          },
+          {
+            "channel": "SaaS Reviews Weekly",
+            "video": "RivalBook review 2026",
+            "published": "2026-07-08",
+            "views": 41000
+          },
+          {
+            "channel": "Clinic Admin Hub",
+            "video": "RivalBook review for a physio clinic",
+            "published": "2025-05-19",
+            "views": 7300
+          }
+        ]
+      },
+      "calls": {
+        "dataforseo": 9,
+        "ga4": "reused from the default run"
+      }
+    },
+    "audit_partners": {
+      "request": "Hey Claude, I just added the \"referral-program\" skill. Audit our affiliate program partner by partner. The network export is attached, our gross margin is 45%, and coupon sites need our approval.",
+      "business": "Example Trail Goods, an online outdoor gear store (invented example)",
+      "window": "2026-07-30 to 2026-10-27",
+      "gross_margin_pct": 45,
+      "tiers": [
+        {
+          "tier": "Standard",
+          "rate": 0.1,
+          "from_revenue_90_days": 0
+        },
+        {
+          "tier": "Plus",
+          "rate": 0.12,
+          "from_revenue_90_days": 15000
+        }
+      ],
+      "approved_code_sites": [
+        "cashback-portal.example"
+      ],
+      "brand_terms": [
+        "example trail goods"
+      ],
+      "network_export": [
+        {
+          "partner": "Trail Gear Reviews",
+          "domain": "trailgear-reviews.example",
+          "type": "content site",
+          "tier": "Plus",
+          "joined": "2025-11-04",
+          "clicks": 6400,
+          "orders": 212,
+          "revenue_usd": 24380,
+          "commission_usd": 2925.6
+        },
+        {
+          "partner": "Hiking Weekly",
+          "domain": "hikingnewsletter.example",
+          "type": "newsletter",
+          "tier": "Standard",
+          "joined": "2026-01-20",
+          "clicks": 3100,
+          "orders": 96,
+          "revenue_usd": 9120,
+          "commission_usd": 912.0
+        },
+        {
+          "partner": "Deal Coupons Daily",
+          "domain": "deal-coupons-daily.example",
+          "type": "coupon site",
+          "tier": "Standard",
+          "joined": "2025-09-15",
+          "clicks": 2900,
+          "orders": 188,
+          "revenue_usd": 15040,
+          "commission_usd": 1504.0
+        },
+        {
+          "partner": "Cashback Portal",
+          "domain": "cashback-portal.example",
+          "type": "cashback site",
+          "tier": "Plus",
+          "joined": "2025-08-01",
+          "clicks": 1700,
+          "orders": 181,
+          "revenue_usd": 17710,
+          "commission_usd": 2125.2
+        },
+        {
+          "partner": "Outdoor Family Blog",
+          "domain": "outdoor-family-blog.example",
+          "type": "content site",
+          "tier": "Standard",
+          "joined": "2026-02-10",
+          "clicks": 2600,
+          "orders": 84,
+          "revenue_usd": 8820,
+          "commission_usd": 882.0
+        },
+        {
+          "partner": "Example Gear Testers",
+          "domain": "geartesters-video.example",
+          "type": "video creator site",
+          "tier": "Standard",
+          "joined": "2026-04-02",
+          "clicks": 3900,
+          "orders": 121,
+          "revenue_usd": 16940,
+          "commission_usd": 1694.0
+        },
+        {
+          "partner": "Campsite Guides",
+          "domain": "campsite-guides.example",
+          "type": "content site",
+          "tier": "Standard",
+          "joined": "2026-03-18",
+          "clicks": 0,
+          "orders": 0,
+          "revenue_usd": 0,
+          "commission_usd": 0.0
+        },
+        {
+          "partner": "Trail Promo Codes",
+          "domain": "trail-promo-codes.example",
+          "type": "coupon site",
+          "tier": "Standard",
+          "joined": "2026-05-06",
+          "clicks": 1500,
+          "orders": 142,
+          "revenue_usd": 11360,
+          "commission_usd": 1136.0
+        }
+      ],
+      "store_totals_window": {
+        "orders": 4200,
+        "first_time_customer_orders": 2310,
+        "revenue": 352800
+      },
+      "shopify_orders_by_partner": {
+        "trailgear-reviews.example": {
+          "orders": 208,
+          "first_time": 141,
+          "first_time_revenue": 16210,
+          "code_orders": 40,
+          "code_only": 6,
+          "refunded": 9
+        },
+        "hikingnewsletter.example": {
+          "orders": 95,
+          "first_time": 49,
+          "first_time_revenue": 4700,
+          "code_orders": 30,
+          "code_only": 4,
+          "refunded": 3
+        },
+        "deal-coupons-daily.example": {
+          "orders": 186,
+          "first_time": 39,
+          "first_time_revenue": 3110,
+          "code_orders": 186,
+          "code_only": 151,
+          "refunded": 8
+        },
+        "cashback-portal.example": {
+          "orders": 160,
+          "first_time": 42,
+          "first_time_revenue": 4650,
+          "code_orders": 0,
+          "code_only": 0,
+          "refunded": 5
+        },
+        "outdoor-family-blog.example": {
+          "orders": 83,
+          "first_time": 51,
+          "first_time_revenue": 5350,
+          "code_orders": 22,
+          "code_only": 3,
+          "refunded": 2
+        },
+        "geartesters-video.example": {
+          "orders": 103,
+          "first_time": 70,
+          "first_time_revenue": 11520,
+          "code_orders": 60,
+          "code_only": 9,
+          "refunded": 4
+        },
+        "campsite-guides.example": {
+          "orders": 0,
+          "first_time": 0,
+          "first_time_revenue": 0,
+          "code_orders": 0,
+          "code_only": 0,
+          "refunded": 0
+        },
+        "trail-promo-codes.example": {
+          "orders": 140,
+          "first_time": 25,
+          "first_time_revenue": 2010,
+          "code_orders": 140,
+          "code_only": 119,
+          "refunded": 6
+        }
+      },
+      "ga4_affiliate_sessions": {
+        "trailgear-reviews.example": {
+          "sessions": 6050,
+          "engagedSessions": 4110,
+          "new_visitor_sessions": 4480
+        },
+        "hikingnewsletter.example": {
+          "sessions": 2950,
+          "engagedSessions": 2010,
+          "new_visitor_sessions": 1530
+        },
+        "deal-coupons-daily.example": {
+          "sessions": 610,
+          "engagedSessions": 230,
+          "new_visitor_sessions": 120
+        },
+        "cashback-portal.example": {
+          "sessions": 1620,
+          "engagedSessions": 1050,
+          "new_visitor_sessions": 410
+        },
+        "outdoor-family-blog.example": {
+          "sessions": 2480,
+          "engagedSessions": 1610,
+          "new_visitor_sessions": 1640
+        },
+        "geartesters-video.example": {
+          "sessions": 3700,
+          "engagedSessions": 2440,
+          "new_visitor_sessions": 2700
+        },
+        "campsite-guides.example": {
+          "sessions": 0,
+          "engagedSessions": 0,
+          "new_visitor_sessions": 0
+        },
+        "trail-promo-codes.example": {
+          "sessions": 420,
+          "engagedSessions": 150,
+          "new_visitor_sessions": 70
+        }
+      },
+      "ga4_site_engagement_rate_pct": 61.0,
+      "dataforseo_brand_serp": {
+        "example trail goods": {
+          "paid": [
+            {
+              "domain": "exampletrailgoods.example",
+              "position": 1
+            },
+            {
+              "domain": "trail-promo-codes.example",
+              "position": 2
+            }
+          ],
+          "organic_coupon_sites": []
+        },
+        "example trail goods coupon": {
+          "paid": [
+            {
+              "domain": "trail-promo-codes.example",
+              "position": 1
+            }
+          ],
+          "organic_coupon_sites": [
+            {
+              "domain": "trail-promo-codes.example",
+              "position": 1
+            },
+            {
+              "domain": "deal-coupons-daily.example",
+              "position": 2
+            },
+            {
+              "domain": "savings-finder.example",
+              "position": 4
+            }
+          ]
+        }
+      },
+      "meta_ad_library": [
+        {
+          "page": "Outdoor Family Blog",
+          "domain": "outdoor-family-blog.example",
+          "text": "Our favourite trail packs from Example Trail Goods, 20% off with code FAMILY20"
+        }
+      ],
+      "microsoft_ad_library": [],
+      "auction_insights_pasted": [
+        {
+          "domain": "trail-promo-codes.example",
+          "overlap_rate_pct": 18.0
+        }
+      ],
+      "current_partner_offers": {
+        "outdoor-family-blog.example": "FAMILY10, 10% off"
+      },
+      "partner_page_checks": {
+        "trailgear-reviews.example": {
+          "tracking_link": true,
+          "is_nofollow": true,
+          "disclosure": "We earn a commission if you buy through our links",
+          "offer": null
+        },
+        "cashback-portal.example": {
+          "tracking_link": true,
+          "is_nofollow": true,
+          "disclosure": "Cashback is paid from the retailer's commission",
+          "offer": null
+        },
+        "geartesters-video.example": {
+          "tracking_link": true,
+          "is_nofollow": false,
+          "disclosure": "Paid partnership with Example Trail Goods",
+          "offer": null
+        },
+        "deal-coupons-daily.example": {
+          "tracking_link": true,
+          "is_nofollow": true,
+          "disclosure": "We may earn when you use these codes",
+          "offer": "10% off sitewide"
+        },
+        "trail-promo-codes.example": {
+          "tracking_link": true,
+          "is_nofollow": false,
+          "disclosure": null,
+          "offer": "15% off everything"
+        }
+      },
+      "calls": {
+        "shopify": 1,
+        "ga4": 1,
+        "dataforseo": 7,
+        "ads_libraries": 2,
+        "crawler": 10
+      }
+    },
+    "b2b_channel_program": {
+      "request": "Hey Claude, I just added the \"referral-program\" skill. We want a partner program for agencies and consultants who set up booking for clinics and salon groups, plus our POS integration partner. Our deal export is attached; margin is 85% and a direct deal costs us about $2,400 to win.",
+      "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+      "gross_margin_pct": 85,
+      "direct_cost_per_won_deal_usd": 2400,
+      "sales_motion": "self-serve for single locations, sales-led for groups of 3 or more locations",
+      "partner_types_wanted": [
+        "agency or services",
+        "referral",
+        "technology"
+      ],
+      "regions": [
+        "US",
+        "Canada"
+      ],
+      "expected_volume_user_estimate": {
+        "lowest": {
+          "partners": 10,
+          "won_deals_per_partner_a_year": 2
+        },
+        "middle": {
+          "partners": 4,
+          "won_deals_per_partner_a_year": 4
+        },
+        "top": {
+          "partners": 2,
+          "won_deals_per_partner_a_year": 8
+        }
+      },
+      "deal_export": [
+        {
+          "deal": "D-101",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2025-11-03",
+          "closed": "2026-01-12",
+          "status": "won"
+        },
+        {
+          "deal": "D-102",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 9600,
+          "created": "2025-11-20",
+          "closed": "2026-02-27",
+          "status": "won"
+        },
+        {
+          "deal": "D-103",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 4800,
+          "created": "2025-12-01",
+          "closed": "2026-01-30",
+          "status": "lost"
+        },
+        {
+          "deal": "D-104",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 7200,
+          "created": "2026-01-08",
+          "closed": "2026-03-20",
+          "status": "won"
+        },
+        {
+          "deal": "D-105",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 12000,
+          "created": "2026-01-15",
+          "closed": "2026-04-28",
+          "status": "lost"
+        },
+        {
+          "deal": "D-106",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2026-02-02",
+          "closed": "2026-03-31",
+          "status": "won"
+        },
+        {
+          "deal": "D-107",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 4800,
+          "created": "2026-02-10",
+          "closed": "2026-04-02",
+          "status": "lost"
+        },
+        {
+          "deal": "D-108",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 8400,
+          "created": "2026-02-25",
+          "closed": "2026-05-15",
+          "status": "won"
+        },
+        {
+          "deal": "D-109",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2026-03-04",
+          "closed": "2026-04-29",
+          "status": "lost"
+        },
+        {
+          "deal": "D-110",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 7200,
+          "created": "2026-03-19",
+          "closed": "2026-06-02",
+          "status": "won"
+        },
+        {
+          "deal": "D-111",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 9600,
+          "created": "2026-04-01",
+          "closed": "2026-06-24",
+          "status": "lost"
+        },
+        {
+          "deal": "D-112",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2026-04-14",
+          "closed": "2026-06-10",
+          "status": "won"
+        },
+        {
+          "deal": "D-113",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 4800,
+          "created": "2026-05-05",
+          "closed": "2026-06-30",
+          "status": "lost"
+        },
+        {
+          "deal": "D-114",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 7200,
+          "created": "2026-05-20",
+          "closed": "2026-08-04",
+          "status": "won"
+        },
+        {
+          "deal": "D-115",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2026-06-02",
+          "closed": "2026-07-21",
+          "status": "lost"
+        },
+        {
+          "deal": "D-116",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 8400,
+          "created": "2026-06-16",
+          "closed": "2026-09-01",
+          "status": "lost"
+        },
+        {
+          "deal": "D-117",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 6000,
+          "created": "2026-07-01",
+          "closed": "2026-08-25",
+          "status": "won"
+        },
+        {
+          "deal": "D-118",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 9600,
+          "created": "2026-07-15",
+          "closed": "2026-10-06",
+          "status": "lost"
+        },
+        {
+          "deal": "D-119",
+          "source": "direct",
+          "partner": null,
+          "first_year_value_usd": 7200,
+          "created": "2026-08-03",
+          "closed": null,
+          "status": "open"
+        },
+        {
+          "deal": "D-201",
+          "source": "partner",
+          "partner": "Clinic IT Consulting (agency)",
+          "first_year_value_usd": 9600,
+          "created": "2025-12-02",
+          "closed": "2026-02-10",
+          "status": "won"
+        },
+        {
+          "deal": "D-202",
+          "source": "partner",
+          "partner": "Clinic IT Consulting (agency)",
+          "first_year_value_usd": 7200,
+          "created": "2026-01-21",
+          "closed": "2026-03-24",
+          "status": "won"
+        },
+        {
+          "deal": "D-203",
+          "source": "partner",
+          "partner": "Clinic IT Consulting (agency)",
+          "first_year_value_usd": 8400,
+          "created": "2026-03-10",
+          "closed": "2026-05-05",
+          "status": "won"
+        },
+        {
+          "deal": "D-204",
+          "source": "partner",
+          "partner": "Clinic IT Consulting (agency)",
+          "first_year_value_usd": 6000,
+          "created": "2026-05-12",
+          "closed": "2026-07-08",
+          "status": "lost"
+        },
+        {
+          "deal": "D-205",
+          "source": "partner",
+          "partner": "Salon Systems Co (agency)",
+          "first_year_value_usd": 7200,
+          "created": "2026-02-03",
+          "closed": "2026-03-30",
+          "status": "won"
+        },
+        {
+          "deal": "D-206",
+          "source": "partner",
+          "partner": "Salon Systems Co (agency)",
+          "first_year_value_usd": 9600,
+          "created": "2026-04-20",
+          "closed": "2026-06-12",
+          "status": "won"
+        },
+        {
+          "deal": "D-207",
+          "source": "partner",
+          "partner": "Salon Systems Co (agency)",
+          "first_year_value_usd": 6000,
+          "created": "2026-06-01",
+          "closed": "2026-07-20",
+          "status": "lost"
+        },
+        {
+          "deal": "D-208",
+          "source": "partner",
+          "partner": "POS Partner (technology)",
+          "first_year_value_usd": 6000,
+          "created": "2026-02-17",
+          "closed": "2026-04-07",
+          "status": "won"
+        },
+        {
+          "deal": "D-209",
+          "source": "partner",
+          "partner": "POS Partner (technology)",
+          "first_year_value_usd": 7200,
+          "created": "2026-05-04",
+          "closed": "2026-06-23",
+          "status": "won"
+        },
+        {
+          "deal": "D-210",
+          "source": "partner",
+          "partner": "Physio Practice News (referral)",
+          "first_year_value_usd": 4800,
+          "created": "2026-03-02",
+          "closed": "2026-04-27",
+          "status": "lost"
+        },
+        {
+          "deal": "D-211",
+          "source": "partner",
+          "partner": "Physio Practice News (referral)",
+          "first_year_value_usd": 6000,
+          "created": "2026-06-08",
+          "closed": "2026-08-03",
+          "status": "won"
+        },
+        {
+          "deal": "D-212",
+          "source": "partner",
+          "partner": "Salon Systems Co (agency)",
+          "first_year_value_usd": 8400,
+          "created": "2026-08-11",
+          "closed": null,
+          "status": "open"
+        }
+      ],
+      "ga4_partner_senders": "the default run's source rows (sample_input data.ga4_source_medium)"
+    }
+  }
+}

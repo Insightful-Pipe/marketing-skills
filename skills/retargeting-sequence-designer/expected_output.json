@@ -1,0 +1,956 @@
+{
+  "header": {
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example), sold on monthly plans with self-serve sign-up and an optional demo",
+    "performance_range": "2026-09-28 to 2026-10-27",
+    "pool_windows": "7, 30 and 90 days ending 2026-10-27",
+    "sources": [
+      "GA4",
+      "Meta",
+      "Google Ads",
+      "Klaviyo"
+    ],
+    "conversion": "sign_up and demo_booked (GA4 key events that fired); subscription_started marks customers",
+    "buying_cycle_days": 30,
+    "offer": "a free setup call on the Growth plan (we import the client list with them) (confirmed by you); no deadline"
+  },
+  "readiness": [
+    {
+      "check": "Google Ads lists",
+      "result": "fail",
+      "number": "GA4: Demo page visitors 7d: 80 members for Display, used by the enabled campaign Display | Remarketing | Demo visitors",
+      "why": "A list under 100 members doesn't serve on Display, so that campaign barely delivers. Swap it for the 30-day pricing list (GA4: Pricing visitors 30d, 1,400 members), which the demo page also belongs to once the Hot GA4 audience below is built."
+    },
+    {
+      "check": "Meta pixel",
+      "result": "pass",
+      "number": "last fired 2026-10-28",
+      "why": "Website audiences fill normally."
+    },
+    {
+      "check": "GA4 audiences reach Google Ads",
+      "result": "pass",
+      "number": "1 link, personalised ads on",
+      "why": "GA4 audiences can be used for remarketing."
+    },
+    {
+      "check": "Converter event fires",
+      "result": "pass",
+      "number": "3 of 4 key events fired in 90 days; generate_lead is silent",
+      "why": "sign_up (2,140) and demo_booked (310) can feed converter exclusions; generate_lead belongs to a retired contact form."
+    },
+    {
+      "check": "Tracking steady",
+      "result": "pass",
+      "number": "last 7 days hold 23.8% of the 30-day users",
+      "why": "No recent change, so the pools are counts, not projections."
+    },
+    {
+      "check": "Email triggers",
+      "result": "pass",
+      "number": "1 of 3 browse and cart metrics tracked (Started Checkout)",
+      "why": "Started Checkout fires when someone starts the sign-up form, so the abandoned sign-up flow can trigger; there is no Viewed Product, which a booking app doesn't need."
+    },
+    {
+      "check": "GA4 audiences already built",
+      "result": "info",
+      "number": "5 audiences",
+      "why": "All users (540 days); Purchasers (540 days); Pricing visitors 30d (30 days); Demo page visitors 7d (7 days); Blog readers 90d (90 days). Pricing visitors 30d covers part of the Hot tier; none covers the sign-up and demo pages together."
+    },
+    {
+      "check": "Similar segments",
+      "result": "info",
+      "number": "1 SIMILAR list still shows (Similar to all visitors)",
+      "why": "Google retired similar segments; it is never planned with."
+    }
+  ],
+  "funnel_now": {
+    "result": "fail",
+    "table": [
+      {
+        "stage": "TOF",
+        "ad_sets": 2,
+        "spend": 4430.0,
+        "share_of_spend_pct": 51.5,
+        "reach": 209000,
+        "frequency": 1.9,
+        "cpm": 11.39,
+        "ctr_pct": 1.04,
+        "sign_ups": 93,
+        "cost_per_sign_up": 47.63
+      },
+      {
+        "stage": "MOF",
+        "ad_sets": 1,
+        "spend": 1020.0,
+        "share_of_spend_pct": 11.9,
+        "reach": 15600,
+        "frequency": 4.7,
+        "cpm": 13.78,
+        "ctr_pct": 1.41,
+        "sign_ups": 37,
+        "cost_per_sign_up": 27.57
+      },
+      {
+        "stage": "BOF",
+        "ad_sets": 1,
+        "spend": 3150.0,
+        "share_of_spend_pct": 36.6,
+        "reach": 12600,
+        "frequency": 10.4,
+        "cpm": 24.05,
+        "ctr_pct": 1.5,
+        "sign_ups": 82,
+        "cost_per_sign_up": 38.41
+      },
+      {
+        "stage": "Customers",
+        "ad_sets": 0
+      }
+    ],
+    "checks": [
+      {
+        "check": "A stage is missing",
+        "result": "pass",
+        "evidence": "TOF, MOF and BOF all run; no customer ad set (the customer list is only used as an exclusion)"
+      },
+      {
+        "check": "BOF frequency (30 days)",
+        "result": "warn",
+        "evidence": "10.4 on Retargeting | Pricing and sign-up page 14d"
+      },
+      {
+        "check": "MOF frequency (30 days)",
+        "result": "pass",
+        "evidence": "4.7 on Retargeting | All visitors 30d"
+      },
+      {
+        "check": "BOF budget against its pool",
+        "result": "fail",
+        "evidence": "BOF takes 36.6% of funnel spend for 8.6% of the retargeting pools (4.3 times); its $110.00 a day is $3,300.00 a month against a spend ceiling of $2,142.82 for the Hot tier (Step 6)"
+      },
+      {
+        "check": "Converters excluded",
+        "result": "warn",
+        "evidence": "Retargeting | All visitors 30d has no excluded_custom_audiences, so it pays to show sign-up ads to people who signed up and to customers"
+      },
+      {
+        "check": "Prospecting excludes retargeting",
+        "result": "warn",
+        "evidence": "Prospecting | Broad | Salon and studio owners doesn't exclude Site visitors 30d"
+      },
+      {
+        "check": "Audience health",
+        "result": "warn",
+        "evidence": "Demo page 7d: delivery_status 300 (too small); All visitors 180d: 180-day retention, longer than any tier's window; neither is used by an ad set"
+      }
+    ],
+    "ad_sets_by_stage": {
+      "Prospecting | Broad | Salon and studio owners": "TOF",
+      "Prospecting | LAL 1% paying customers": "TOF",
+      "Retargeting | All visitors 30d": "MOF",
+      "Retargeting | Pricing and sign-up page 14d": "BOF"
+    },
+    "reading": "Retargeting beats prospecting on cost: $38.41 a sign-up on BOF and $27.57 on MOF, against $47.63 on TOF. The problem is shape, not value: BOF is overfunded for its pool, so each person sees it 10.4 times a month."
+  },
+  "google_ads_now": [
+    {
+      "campaign": "Display | Remarketing | Demo visitors",
+      "status": "ENABLED",
+      "list": "GA4: Demo page visitors 7d",
+      "list_size_display": 80,
+      "negative": false,
+      "bid_modifier": null,
+      "impressions": 9100,
+      "clicks": 31,
+      "cost": 52.0,
+      "conversions": 1
+    },
+    {
+      "campaign": "Search | Brand",
+      "status": "ENABLED",
+      "list": "All visitors 30d (tag)",
+      "list_size_display": 14000,
+      "negative": false,
+      "bid_modifier": 1.2,
+      "impressions": 4800,
+      "clicks": 610,
+      "cost": 980.0,
+      "conversions": 64
+    },
+    {
+      "campaign": "Search | Brand",
+      "status": "ENABLED",
+      "list": "Customer Match: paying customers",
+      "list_size_display": 1900,
+      "negative": true,
+      "bid_modifier": null,
+      "impressions": 0,
+      "clicks": 0,
+      "cost": 0.0,
+      "conversions": 0
+    },
+    {
+      "campaign": "Display | Remarketing | Old visitors",
+      "status": "PAUSED",
+      "list": "Old site visitors 2025",
+      "list_size_display": 3200,
+      "negative": false,
+      "bid_modifier": null,
+      "impressions": 0,
+      "clicks": 0,
+      "cost": 0.0,
+      "conversions": 0
+    }
+  ],
+  "email_and_paid_overlap": {
+    "result": "graded",
+    "pairs": [
+      {
+        "pair": "Abandoned sign-up flow and the BOF ad set (pricing and sign-up page 14d)",
+        "result": "timing clash",
+        "evidence": "the flow's first email goes 1 hour after Started Checkout, and the BOF ad set can serve from the same visit; 960 people entered the flow in 30 days",
+        "fix": "email first: hold paid until day 2 by excluding people who clicked an abandoned sign-up email in the last 24 hours, or set the BOF audience to start a day later"
+      },
+      {
+        "pair": "Onboarding flow and the MOF ad set (all visitors 30d)",
+        "result": "paying twice for converters",
+        "evidence": "the onboarding flow mails everyone who signed up (2,050 in 30 days), and the MOF ad set excludes nobody, so new sign-ups keep seeing sign-up ads",
+        "fix": "exclude Signed up 30d and Paying customers (list) from the MOF ad set (payload below)"
+      },
+      {
+        "pair": "Demo page visitors",
+        "result": "gap",
+        "evidence": "560 people saw the demo page in 30 days; no flow can reach them (they haven't given an email), the BOF rule covers only /pricing and /signup, and the Google demo list is too small to serve",
+        "fix": "add /demo to the Hot audiences on Meta and Google"
+      },
+      {
+        "pair": "Win-back flow and paid",
+        "result": "gap",
+        "evidence": "140 lapsed customers entered win-back in 30 days; no ad set targets them after the last email",
+        "fix": "a small customers tier on Meta and Google from the cancelled list, after the flow ends"
+      }
+    ],
+    "note": "This overlap is structural: the same trigger in the same days. Neither platform reports how many of the same people both reached.",
+    "flows": [
+      {
+        "flow": "Welcome series",
+        "trigger": "list: Newsletter",
+        "first_message_after": "0 hours",
+        "recipients_30d": 1840,
+        "click_rate_pct": 6.1,
+        "conversions": 22
+      },
+      {
+        "flow": "Abandoned sign-up",
+        "trigger": "metric: Started Checkout (sign-up form started, not finished)",
+        "first_message_after": "1 hour",
+        "recipients_30d": 960,
+        "click_rate_pct": 11.8,
+        "conversions": 71
+      },
+      {
+        "flow": "Onboarding",
+        "trigger": "metric: Signed Up",
+        "first_message_after": "0 hours",
+        "recipients_30d": 2050,
+        "click_rate_pct": 14.2,
+        "conversions": 168
+      },
+      {
+        "flow": "Win-back lapsed customers",
+        "trigger": "metric: Subscription Cancelled",
+        "first_message_after": "3 days",
+        "recipients_30d": 140,
+        "click_rate_pct": 7.2,
+        "conversions": 6
+      }
+    ],
+    "order_to_use": "email goes first from day 0; paid starts on day 2 and excludes people who clicked the flow's email"
+  },
+  "pools_by_page_group": [
+    {
+      "page_group": "pricing page",
+      "tier": "hot",
+      "people_30d": 1830
+    },
+    {
+      "page_group": "sign-up page",
+      "tier": "hot",
+      "people_30d": 1120
+    },
+    {
+      "page_group": "demo page",
+      "tier": "hot",
+      "people_30d": 560
+    },
+    {
+      "page_group": "feature pages",
+      "tier": "warm",
+      "people_30d": 3010
+    },
+    {
+      "page_group": "industry pages",
+      "tier": "warm",
+      "people_30d": 2470
+    },
+    {
+      "page_group": "integrations page",
+      "tier": "warm",
+      "people_30d": 400
+    },
+    {
+      "page_group": "blog",
+      "tier": "cool",
+      "people_30d": 13900
+    },
+    {
+      "page_group": "templates",
+      "tier": "cool",
+      "people_30d": 1500
+    }
+  ],
+  "tiers": [
+    {
+      "tier": "Hot: pricing, sign-up and demo page visitors",
+      "page_prefixes": [
+        "/pricing",
+        "/signup",
+        "/demo"
+      ],
+      "people_7d": 720,
+      "people_30d": 2450,
+      "people_90d": 6100,
+      "google_ads": "viable",
+      "meta": "viable: over about 1,000 a month"
+    },
+    {
+      "tier": "Warm: feature, industry and integration pages",
+      "page_prefixes": [
+        "/features",
+        "/industries",
+        "/integrations"
+      ],
+      "people_7d": 1520,
+      "people_30d": 4900,
+      "people_90d": 12100,
+      "google_ads": "viable",
+      "meta": "viable: over about 1,000 a month"
+    },
+    {
+      "tier": "Cool: blog and templates",
+      "page_prefixes": [
+        "/blog",
+        "/templates"
+      ],
+      "people_7d": 5600,
+      "people_30d": 21000,
+      "people_90d": 52300,
+      "google_ads": "viable",
+      "meta": "viable: over about 1,000 a month"
+    },
+    {
+      "tier": "Customers: paying accounts",
+      "source": "Meta customer list and Google Customer Match",
+      "people": "2,200 to 2,600 matched on Meta",
+      "google_ads": "viable",
+      "meta": "viable"
+    }
+  ],
+  "tier_notes": [
+    "Pools are unique people before exclusions; a person can sit in several page groups, and each belongs to the hottest tier they reached. All visitors: 26,100 in 30 days.",
+    "Every tier clears Google's 100-member floor and Meta's guide of about 1,000 a month, so none is merged."
+  ],
+  "sequence_maps": [
+    {
+      "tier": "Hot: pricing, sign-up and demo page visitors",
+      "window_days": 30,
+      "angle": "plan fit and value, and that sign-up is quick",
+      "stages": [
+        {
+          "days": "1-3",
+          "stage": "Reminder",
+          "message": "pick up where you left off: the plan or the form they saw",
+          "creative": "single image of the pricing table",
+          "cta": "See plans",
+          "offer": "none"
+        },
+        {
+          "days": "4-7",
+          "stage": "Value",
+          "message": "what the Growth plan does in week one: bookings, reminders, deposits",
+          "creative": "short product video",
+          "cta": "Start now",
+          "offer": "none"
+        },
+        {
+          "days": "8-14",
+          "stage": "Proof",
+          "message": "a salon or clinic owner on their first month",
+          "creative": "customer clip",
+          "cta": "Watch the story",
+          "offer": "none"
+        },
+        {
+          "days": "15-21",
+          "stage": "Offer",
+          "message": "the free setup call: we import your client list with you",
+          "creative": "single image built around the offer",
+          "cta": "Book your setup call",
+          "offer": "a free setup call on the Growth plan (we import the client list with them)"
+        },
+        {
+          "days": "22-30",
+          "stage": "Last call",
+          "message": "a low-pressure reminder with the demo option",
+          "creative": "single image",
+          "cta": "Book a demo",
+          "offer": "no real deadline, so none"
+        }
+      ],
+      "frequency": {
+        "per_day": 2,
+        "per_week": "7-10",
+        "whole_sequence": 20
+      },
+      "exclude": [
+        "Signed up 30d",
+        "Paying customers (list)"
+      ],
+      "platforms": [
+        "Meta",
+        "Google Ads (Display, from the Hot GA4 audience)"
+      ]
+    },
+    {
+      "tier": "Warm: feature, industry and integration pages",
+      "window_days": 30,
+      "angle": "benefits and proof for their kind of business",
+      "stages": [
+        {
+          "days": "1-3",
+          "stage": "Reminder",
+          "message": "the feature or industry page they read, in one line",
+          "creative": "carousel of the features they viewed",
+          "cta": "See how it works",
+          "offer": "none"
+        },
+        {
+          "days": "4-7",
+          "stage": "Value",
+          "message": "the main reason to switch: clients book themselves in three taps",
+          "creative": "short product video",
+          "cta": "Try it",
+          "offer": "none"
+        },
+        {
+          "days": "8-14",
+          "stage": "Proof",
+          "message": "proof from the same industry: salons, clinics or studios",
+          "creative": "testimonial",
+          "cta": "Read the story",
+          "offer": "none"
+        },
+        {
+          "days": "15-21",
+          "stage": "Offer",
+          "message": "the free setup call",
+          "creative": "single image",
+          "cta": "Book your setup call",
+          "offer": "a free setup call on the Growth plan (we import the client list with them)"
+        },
+        {
+          "days": "22-30",
+          "stage": "Last call",
+          "message": "a final reminder: see plans when you're ready",
+          "creative": "single image",
+          "cta": "See plans",
+          "offer": "no real deadline, so none"
+        }
+      ],
+      "frequency": {
+        "per_day": 2,
+        "per_week": "7-10",
+        "whole_sequence": 20
+      },
+      "exclude": [
+        "Signed up 30d",
+        "Paying customers (list)",
+        "the Hot tier"
+      ],
+      "platforms": [
+        "Meta",
+        "Google Ads (Display)"
+      ]
+    },
+    {
+      "tier": "Cool: blog and templates",
+      "window_days": 30,
+      "angle": "a next step that takes little effort",
+      "stages": [
+        {
+          "days": "1-3",
+          "stage": "Reminder",
+          "message": "the article they read, and the template that goes with it",
+          "creative": "single image",
+          "cta": "Get the template",
+          "offer": "none"
+        },
+        {
+          "days": "4-7",
+          "stage": "Value",
+          "message": "how booking software solves the problem the article covered",
+          "creative": "short video",
+          "cta": "See how",
+          "offer": "none"
+        },
+        {
+          "days": "8-14",
+          "stage": "Proof",
+          "message": "an owner's result",
+          "creative": "customer clip",
+          "cta": "Read the story",
+          "offer": "none"
+        },
+        {
+          "days": "15-21",
+          "stage": "Offer",
+          "message": "the free setup call",
+          "creative": "single image",
+          "cta": "Book your setup call",
+          "offer": "a free setup call on the Growth plan (we import the client list with them)"
+        },
+        {
+          "days": "22-30",
+          "stage": "Last call",
+          "message": "a final, light reminder",
+          "creative": "single image",
+          "cta": "Take a look",
+          "offer": "no real deadline, so none"
+        }
+      ],
+      "frequency": {
+        "per_day": "1-2",
+        "per_week": "5-7",
+        "whole_sequence": 15
+      },
+      "exclude": [
+        "Signed up 30d",
+        "Paying customers (list)",
+        "the Hot and Warm tiers"
+      ],
+      "platforms": [
+        "Meta",
+        "Google Ads (Display)"
+      ]
+    },
+    {
+      "tier": "Customers: upsell and win-back",
+      "window_days": 90,
+      "angle": "what pairs with what they use: more staff seats on Business, deposits for those who don't take them",
+      "stages": [
+        {
+          "days": "1-30",
+          "stage": "Upsell",
+          "message": "add staff and locations on Business",
+          "creative": "single image",
+          "cta": "See Business",
+          "offer": "none"
+        },
+        {
+          "days": "after the win-back flow ends",
+          "stage": "Win-back",
+          "message": "what's new since they left",
+          "creative": "short video",
+          "cta": "Come back",
+          "offer": "none"
+        }
+      ],
+      "frequency": {
+        "per_day": 1,
+        "per_week": "3-5",
+        "whole_sequence": 10
+      },
+      "exclude": [
+        "buyers in the last 7 days"
+      ],
+      "platforms": [
+        "Meta (customer list)",
+        "Google Ads (Customer Match)"
+      ]
+    }
+  ],
+  "creative_briefs_hot_tier": [
+    {
+      "stage": "Reminder (days 1-3)",
+      "goal": "pick up where you left off: the plan or the form they saw",
+      "audience": "Hot: pricing, sign-up and demo page visitors",
+      "format": "single image of the pricing table",
+      "headline_direction": "name the plan they looked at",
+      "body_direction": "one line on what the plan includes",
+      "visual": "the pricing table",
+      "landing_page": "https://www.example.com/pricing/",
+      "cta": "See plans"
+    },
+    {
+      "stage": "Value (days 4-7)",
+      "goal": "what the Growth plan does in week one: bookings, reminders, deposits",
+      "audience": "Hot: pricing, sign-up and demo page visitors",
+      "format": "short product video",
+      "headline_direction": "one job done in week one",
+      "body_direction": "bookings, reminders and deposits, set up once",
+      "visual": "the booking page on a phone",
+      "landing_page": "https://www.example.com/features/online-booking/",
+      "cta": "Start now"
+    },
+    {
+      "stage": "Proof (days 8-14)",
+      "goal": "a salon or clinic owner on their first month",
+      "audience": "Hot: pricing, sign-up and demo page visitors",
+      "format": "customer clip",
+      "headline_direction": "the owner's result in their words",
+      "body_direction": "who they are and what changed",
+      "visual": "the owner at work",
+      "landing_page": "https://www.example.com/industries/salons/",
+      "cta": "Watch the story"
+    },
+    {
+      "stage": "Offer (days 15-21)",
+      "goal": "the free setup call: we import your client list with you",
+      "audience": "Hot: pricing, sign-up and demo page visitors",
+      "format": "single image built around the offer",
+      "headline_direction": "the setup call, said plainly",
+      "body_direction": "what happens on the call and how long it takes",
+      "visual": "the setup call screen",
+      "landing_page": "https://www.example.com/signup/",
+      "cta": "Book your setup call"
+    },
+    {
+      "stage": "Last call (days 22-30)",
+      "goal": "a low-pressure reminder with the demo option",
+      "audience": "Hot: pricing, sign-up and demo page visitors",
+      "format": "single image",
+      "headline_direction": "still deciding? see it live",
+      "body_direction": "the demo, and the plans page",
+      "visual": "the demo page",
+      "landing_page": "https://www.example.com/demo/",
+      "cta": "Book a demo"
+    }
+  ],
+  "platform_setup": {
+    "meta": {
+      "objective": "Leads, optimised for CompleteRegistration (sign-up)",
+      "attribution": "the default 7-day click, 1-day view",
+      "audience_rules": "website audiences: URL contains the tier's paths; retention 30 days (Hot also gets /demo)",
+      "exclusions": "Signed up 30d and Paying customers (list) on every retargeting tier, plus each hotter tier; prospecting excludes Site visitors 30d",
+      "frequency": "held by budget and audience size; Meta caps frequency only on reach-optimised ad sets"
+    },
+    "google_ads": {
+      "campaign_type": "Display, with the GA4 tier audiences as targeting",
+      "list_source": "GA4 audiences (the link has personalised ads on)",
+      "membership_days": 30,
+      "frequency": "set the Display frequency cap to each tier's per-day figure"
+    }
+  },
+  "budget": {
+    "basis": "the $4,170.00 your Meta retargeting ad sets spent in the last 30 days, split by tier",
+    "by_tier": [
+      {
+        "tier": "Hot",
+        "share": "40-50%",
+        "monthly": "$1,668.00 to $2,085.00",
+        "spend_ceiling": 2142.82,
+        "fits_under_ceiling": true
+      },
+      {
+        "tier": "Warm",
+        "share": "30-35%",
+        "monthly": "$1,251.00 to $1,459.50",
+        "spend_ceiling": 4285.64,
+        "fits_under_ceiling": true
+      },
+      {
+        "tier": "Cool",
+        "share": "10-15%",
+        "monthly": "$417.00 to $625.50",
+        "spend_ceiling": 12856.91,
+        "fits_under_ceiling": true
+      },
+      {
+        "tier": "Customers",
+        "share": "10-15%",
+        "monthly": "$417.00 to $625.50"
+      }
+    ],
+    "by_phase": "about 50% in days 1-7, 30% in days 8-14, 20% in days 15-30",
+    "ceiling_math": "pool x weekly cap x 4.3 x CPM / 1,000, at the retargeting ad sets' 30-day CPM of $20.34 (205,000 impressions)",
+    "finding": "The Hot ceiling is $2,142.82 a month, and BOF's $110.00 daily budget is $3,300.00 a month. Cut it to the Hot share, at most $2,085.00 (50% of today's retargeting spend); the shares then put $1,251.00 to $1,459.50 on Warm, well under its $4,285.64 ceiling."
+  },
+  "kpis": {
+    "basis": "from your own history: retargeting should beat prospecting's $47.63 a sign-up",
+    "current": {
+      "Retargeting | All visitors 30d": 27.57,
+      "Retargeting | Pricing and sign-up page 14d": 38.41
+    },
+    "targets": [
+      {
+        "tier": "Hot",
+        "ctr": "1-3%",
+        "cost_per_sign_up": "under $47.63"
+      },
+      {
+        "tier": "Warm",
+        "ctr": "0.5-1.5%",
+        "cost_per_sign_up": "under $47.63"
+      },
+      {
+        "tier": "Cool",
+        "ctr": "0.2-0.8%",
+        "cost_per_sign_up": "under $47.63"
+      }
+    ],
+    "monitor": [
+      "frequency daily: above 4 a week on Cool, refresh the creative",
+      "CTR weekly: below 0.2%, change the message or the creative",
+      "conversion rate weekly: if it falls, check the sign-up page",
+      "CPM weekly: rising on a flat audience means fatigue",
+      "cost per sign-up weekly: above $47.63, cut the tier back or pause it"
+    ]
+  },
+  "launch_checklist": [
+    "Swap the Google Display list for the 30-day pricing list (the readiness fail)",
+    "Build the Hot and Warm GA4 audiences and the matching Meta website audiences, with /demo in Hot",
+    "Add the converter exclusions to the MOF ad set and the site-visitor exclusion to broad prospecting",
+    "Lower the BOF budget to the Hot ceiling and move the rest to Warm",
+    "Hold paid for a day after the abandoned sign-up email",
+    "Launch Hot first, then Warm and Cool after 3 to 7 days",
+    "Check the exclusions after the first week; refresh creative every 2 to 3 weeks"
+  ],
+  "unknowns": [
+    "How many people the email flows and the ads both reached: neither platform reports it, so the overlap is structural.",
+    "Meta audience overlap between MOF and BOF: not in the API; check Audience Overlap in Ads Manager."
+  ],
+  "go_deeper": [
+    "facebook-ads-audience-builder: to build the Meta website audiences",
+    "email-sequence-builder: to write the abandoned sign-up and win-back emails",
+    "ad-creative-brief-generator: full briefs for the Hot tier's five stages",
+    "audience-overlap-analyzer: to measure MOF and BOF overlap"
+  ],
+  "fixes_offered": [
+    {
+      "action": "google-analytics create_audience",
+      "status": "not run: waiting for your yes",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_audience",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "display_name": "Retargeting - Hot - pricing, sign-up, demo - 30d",
+        "description": "Visited the pricing, sign-up or demo page in the last 30 days",
+        "membership_duration_days": 30,
+        "filter_clauses": [
+          {
+            "clauseType": "INCLUDE",
+            "simpleFilter": {
+              "scope": "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS",
+              "filterExpression": {
+                "andGroup": {
+                  "filterExpressions": [
+                    {
+                      "orGroup": {
+                        "filterExpressions": [
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/pricing"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/signup"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/demo"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "google-analytics create_audience",
+      "status": "not run: waiting for your yes",
+      "body": {
+        "platform": "google-analytics",
+        "action": "create_audience",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/123456789",
+        "display_name": "Retargeting - Warm - features, industries, integrations - 30d",
+        "description": "Visited feature, industry or integration pages in the last 30 days",
+        "membership_duration_days": 30,
+        "filter_clauses": [
+          {
+            "clauseType": "INCLUDE",
+            "simpleFilter": {
+              "scope": "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS",
+              "filterExpression": {
+                "andGroup": {
+                  "filterExpressions": [
+                    {
+                      "orGroup": {
+                        "filterExpressions": [
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/features"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/industries"
+                              }
+                            }
+                          },
+                          {
+                            "dimensionOrMetricFilter": {
+                              "fieldName": "pagePath",
+                              "stringFilter": {
+                                "matchType": "BEGINS_WITH",
+                                "value": "/integrations"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "facebook-ads update_adset",
+      "status": "not run: waiting for your yes",
+      "note": "the full current targeting with the two exclusions added",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_adset",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000603",
+        "targeting": {
+          "geo_locations": {
+            "countries": [
+              "US",
+              "GB",
+              "CA"
+            ]
+          },
+          "age_min": 25,
+          "age_max": 60,
+          "custom_audiences": [
+            {
+              "id": "23810000000000001",
+              "name": "Site visitors 30d"
+            }
+          ],
+          "excluded_custom_audiences": [
+            {
+              "id": "23810000000000003",
+              "name": "Signed up 30d"
+            },
+            {
+              "id": "23810000000000004",
+              "name": "Paying customers (list)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "action": "facebook-ads update_adset",
+      "status": "not run: waiting for your yes",
+      "note": "the full current targeting with Site visitors 30d added to the exclusions",
+      "body": {
+        "platform": "facebook-ads",
+        "action": "update_adset",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000601",
+        "targeting": {
+          "geo_locations": {
+            "countries": [
+              "US",
+              "GB",
+              "CA"
+            ]
+          },
+          "age_min": 25,
+          "age_max": 60,
+          "custom_audiences": [],
+          "excluded_custom_audiences": [
+            {
+              "id": "23810000000000004",
+              "name": "Paying customers (list)"
+            },
+            {
+              "id": "23810000000000001",
+              "name": "Site visitors 30d"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "action": "google-ads add_audience_targeting",
+      "status": "not run: waiting for your yes",
+      "note": "replaces the 80-member demo list with the 1,400-member pricing list until the Hot GA4 audience fills",
+      "body": {
+        "platform": "google-ads",
+        "action": "add_audience_targeting",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "customer_id": "1234567890",
+        "ad_group_id": "150000000000021",
+        "user_list_id": "7100001"
+      }
+    }
+  ],
+  "not_possible_here": [
+    "create Meta custom audiences (Ads Manager, using the rules above)",
+    "change the Klaviyo flows' timing",
+    "set a Meta frequency cap"
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "header": {
+    "app": "Larkstep (invented example app)",
+    "stores": [
+      "App Store",
+      "Google Play"
+    ],
+    "locales": {
+      "App Store": [
+        "en-US",
+        "en-GB",
+        "de-DE"
+      ],
+      "Google Play": [
+        "en-US",
+        "es-419",
+        "de-DE"
+      ]
+    },
+    "traffic_window": "2026-09-30 to 2026-10-27 (28 days)",
+    "campaign_window": "2026-09-28 to 2026-10-27 (30 days)",
+    "smallest_lift_worth_it": 0.06,
+    "longest_wait_days": 42,
+    "confidence": 0.9,
+    "power": 0.8,
+    "store_rules_checked": "2026-10-30: Apple up to 3 treatments for up to 90 days; Google Play up to 2 variants, stops after 6 months"
+  },
+  "mode_1_test_plan": {
+    "tests": [
+      {
+        "test": "T1",
+        "store": "App Store",
+        "type": "product page optimization",
+        "asset": "screenshots",
+        "change": "first three screenshots lead with a race-day plan instead of the app tour",
+        "arms": 1,
+        "traffic_share": 0.5,
+        "locales": [
+          "en-US",
+          "en-GB"
+        ],
+        "daily_traffic": 8000,
+        "baseline_conversion": 0.0327,
+        "n_per_arm": 104616,
+        "days": 28,
+        "verdict": "Run"
+      },
+      {
+        "test": "T2",
+        "store": "App Store",
+        "type": "product page optimization",
+        "asset": "icon",
+        "change": "three new icons: shoe, track lane, coach whistle",
+        "arms": 3,
+        "traffic_share": 0.3,
+        "locales": [
+          "en-US",
+          "en-GB",
+          "de-DE"
+        ],
+        "daily_traffic": 8800,
+        "baseline_conversion": 0.0322,
+        "n_per_arm": 151602,
+        "days": 175,
+        "verdict": "Run with changes"
+      },
+      {
+        "test": "T3",
+        "store": "Google Play",
+        "type": "localized experiment",
+        "asset": "short description",
+        "change": "two German short descriptions: plan-first and community-first",
+        "arms": 2,
+        "traffic_share": 0.5,
+        "locales": [
+          "de-DE"
+        ],
+        "daily_traffic": 140,
+        "baseline_conversion": 0.2602,
+        "n_per_arm": 12634,
+        "days": 364,
+        "verdict": "Don't run"
+      },
+      {
+        "test": "T4",
+        "store": "Google Play",
+        "type": "default graphics experiment",
+        "asset": "feature graphic",
+        "change": "feature graphic shows a finish line and the 8-week plan instead of the logo",
+        "arms": 1,
+        "traffic_share": 0.5,
+        "locales": [
+          "en-US",
+          "es-419"
+        ],
+        "daily_traffic": 4050,
+        "baseline_conversion": 0.2672,
+        "n_per_arm": 9596,
+        "days": 7,
+        "verdict": "Run"
+      }
+    ],
+    "verdicts": [
+      {
+        "test": "T1",
+        "verdict": "Run",
+        "why": "104,616 impressions per arm at 4,000 a day in the slowest arm takes 26.2 days, so 28 days in whole weeks, inside the 42-day wait and Apple's 90 days."
+      },
+      {
+        "test": "T2",
+        "verdict": "Run with changes",
+        "why": "As planned, 3 icons at 30% give each icon 10% of 8,800 daily impressions, and splitting the 10% false-win risk three ways needs 151,602 per arm: 175 days, past Apple's 90. One treatment at the same 30% needs 106,282 per arm and 42 days, just inside the wait. Pick the strongest icon first; alternate icons must ship in the app binary before the test is submitted."
+      },
+      {
+        "test": "T3",
+        "verdict": "Don't run",
+        "why": "German is 140 visitors a day. Two variants at 50% need 364 days; one variant at 50% still needs 147. In 6 weeks it could only read a lift of 11.1% or more, 1.9 times the 6% you care about, so only a much bolder line could read, and only if you agree to aim for that lift. A short description is per language, so more locales don't help, and App Store tests can't change text. Ship the stronger line on judgement and watch German conversion for 28 days, or test the same idea in English, where the traffic is."
+      },
+      {
+        "test": "T4",
+        "verdict": "Run",
+        "why": "Default graphics reach en-US, es-419 (German has its own graphics, so it is left out): 4,050 visitors a day. 9,596 per arm takes 4.7 days, so 7 days."
+      }
+    ],
+    "power_math": [
+      {
+        "test": "T1",
+        "inputs": {
+          "p1": 0.0327,
+          "mde": 0.06,
+          "p2": 0.0346,
+          "p_bar": 0.0337,
+          "confidence": 0.9,
+          "power": 0.8,
+          "alpha_per_comparison": 0.1,
+          "z_alpha": 1.645,
+          "z_power": 0.842
+        },
+        "n_per_arm": 104616,
+        "traffic": {
+          "daily_in_scope": 8000,
+          "share_per_treatment_or_variant": 0.5,
+          "control_share": 0.5,
+          "slowest_arm_daily": 4000
+        },
+        "days": {
+          "raw": 26.2,
+          "rounded_to_whole_weeks": 28,
+          "limit": 42
+        },
+        "smallest_lift_readable_in_6_weeks": 0.047
+      },
+      {
+        "test": "T2",
+        "inputs": {
+          "p1": 0.0322,
+          "mde": 0.06,
+          "p2": 0.0341,
+          "p_bar": 0.0331,
+          "confidence": 0.9,
+          "power": 0.8,
+          "alpha_per_comparison": 0.0333,
+          "z_alpha": 2.128,
+          "z_power": 0.842
+        },
+        "n_per_arm": 151602,
+        "traffic": {
+          "daily_in_scope": 8800,
+          "share_per_treatment_or_variant": 0.1,
+          "control_share": 0.7,
+          "slowest_arm_daily": 880
+        },
+        "days": {
+          "raw": 172.3,
+          "rounded_to_whole_weeks": 175,
+          "limit": 42
+        },
+        "smallest_lift_readable_in_6_weeks": 0.123
+      },
+      {
+        "test": "T3",
+        "inputs": {
+          "p1": 0.2602,
+          "mde": 0.06,
+          "p2": 0.2758,
+          "p_bar": 0.268,
+          "confidence": 0.9,
+          "power": 0.8,
+          "alpha_per_comparison": 0.05,
+          "z_alpha": 1.96,
+          "z_power": 0.842
+        },
+        "n_per_arm": 12634,
+        "traffic": {
+          "daily_in_scope": 140,
+          "share_per_treatment_or_variant": 0.25,
+          "control_share": 0.5,
+          "slowest_arm_daily": 35
+        },
+        "days": {
+          "raw": 361.0,
+          "rounded_to_whole_weeks": 364,
+          "limit": 42
+        },
+        "smallest_lift_readable_in_6_weeks": 0.179
+      },
+      {
+        "test": "T4",
+        "inputs": {
+          "p1": 0.2672,
+          "mde": 0.06,
+          "p2": 0.2832,
+          "p_bar": 0.2752,
+          "confidence": 0.9,
+          "power": 0.8,
+          "alpha_per_comparison": 0.1,
+          "z_alpha": 1.645,
+          "z_power": 0.842
+        },
+        "n_per_arm": 9596,
+        "traffic": {
+          "daily_in_scope": 4050,
+          "share_per_treatment_or_variant": 0.5,
+          "control_share": 0.5,
+          "slowest_arm_daily": 2025
+        },
+        "days": {
+          "raw": 4.7,
+          "rounded_to_whole_weeks": 7,
+          "limit": 42
+        },
+        "smallest_lift_readable_in_6_weeks": 0.02
+      }
+    ],
+    "rescue_steps": [
+      {
+        "test": "T2",
+        "steps": [
+          {
+            "change": "Test one treatment, not 3",
+            "n_per_arm": 106282,
+            "slowest_arm_daily": 2640,
+            "days": 42,
+            "fits": true
+          }
+        ]
+      },
+      {
+        "test": "T3",
+        "steps": [
+          {
+            "change": "Test one variant, not 2",
+            "n_per_arm": 9952,
+            "slowest_arm_daily": 70,
+            "days": 147,
+            "fits": false
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      {
+        "item": "T1 screenshots",
+        "store": "App Store",
+        "start": "2026-11-02",
+        "end": "2026-11-29",
+        "days": 28,
+        "flags": [
+          "Apple runs one test at a time, so T2 waits for T1.",
+          "Crosses US Thanksgiving and Black Friday week: that week's visitors may convert differently, so read the result with care or move the start."
+        ]
+      },
+      {
+        "item": "T2 icon, one treatment",
+        "store": "App Store",
+        "start": "2026-11-30",
+        "end": "2027-01-10",
+        "days": 42,
+        "flags": [
+          "Alternate icons must ship in the app binary before the test is submitted.",
+          "Crosses New Year resolution week: that week's visitors may convert differently, so read the result with care or move the start."
+        ]
+      },
+      {
+        "item": "T4 feature graphic",
+        "store": "Google Play",
+        "start": "2026-11-02",
+        "end": "2026-11-08",
+        "days": 7,
+        "flags": [
+          "Play runs one default graphics experiment at a time, so the icon rerun waits for T4."
+        ]
+      },
+      {
+        "item": "R2 icon rerun",
+        "store": "Google Play",
+        "start": "2026-11-09",
+        "end": "2026-11-29",
+        "days": 21,
+        "flags": [
+          "Crosses US Thanksgiving and Black Friday week: that week's visitors may convert differently, so read the result with care or move the start."
+        ]
+      }
+    ],
+    "one_change_per_arm_check": [
+      {
+        "test": "T1",
+        "one_change_per_arm": true
+      },
+      {
+        "test": "T2",
+        "one_change_per_arm": true
+      },
+      {
+        "test": "T3",
+        "one_change_per_arm": true
+      },
+      {
+        "test": "T4",
+        "one_change_per_arm": true
+      }
+    ],
+    "collisions": [
+      "Apple runs one test at a time: T1 first (28 days), then T2 with its changes (42 days).",
+      "Google Play runs one default graphics experiment at a time: T4 first, then the R2 icon rerun."
+    ]
+  },
+  "mode_2_result_read": {
+    "arms": [
+      {
+        "test": "R1",
+        "store": "App Store",
+        "asset": "app preview video",
+        "arm": "Treatment A: runner's-view demo",
+        "traffic": 67200,
+        "conversions": 2346,
+        "conversion": 0.0349,
+        "control_conversion": 0.032,
+        "lift": 0.091,
+        "interval": [
+          0.042,
+          0.141
+        ],
+        "interval_confidence": 0.95,
+        "interval_source": "computed from the export: 95% per treatment, so 90% across both treatments",
+        "n_needed_per_arm": 49786,
+        "sample_reached": true,
+        "days": 42,
+        "whole_weeks": true,
+        "console_verdict": "+9% at 99% confidence",
+        "decision": "Apply"
+      },
+      {
+        "test": "R1",
+        "store": "App Store",
+        "asset": "app preview video",
+        "arm": "Treatment B: coach voice-over",
+        "traffic": 67200,
+        "conversions": 2195,
+        "conversion": 0.0327,
+        "control_conversion": 0.032,
+        "lift": 0.021,
+        "interval": [
+          -0.027,
+          0.069
+        ],
+        "interval_confidence": 0.95,
+        "interval_source": "computed from the export: 95% per treatment, so 90% across both treatments",
+        "n_needed_per_arm": 49786,
+        "sample_reached": true,
+        "days": 42,
+        "whole_weeks": true,
+        "console_verdict": "+2% at 66% confidence",
+        "decision": "Draw"
+      },
+      {
+        "test": "R2",
+        "store": "Google Play",
+        "asset": "icon",
+        "arm": "Variant: orange shoe icon",
+        "traffic": "about 7,290 visitors in the variant (estimated: 4,050 a day in scope x 20% x 9 days; Play does not export visitors per arm)",
+        "scaled_installers": 10830,
+        "control_scaled_installers": 10400,
+        "scaled_installers_note": "Play Console scales each arm to 100% of the audience, so these are not conversions out of the visitors above",
+        "lift": 0.041,
+        "interval": [
+          -0.021,
+          0.098
+        ],
+        "interval_confidence": 0.9,
+        "interval_source": "Play Console's performance range at the 90% confidence set in the console",
+        "n_needed_per_arm": 13777,
+        "sample_reached": false,
+        "days": 9,
+        "whole_weeks": false,
+        "console_verdict": "More data needed",
+        "decision": "More data needed"
+      }
+    ],
+    "findings": [
+      "Treatment A lifted downloads per impression 9.1% (interval 4.2% to 14.1% at 95% per treatment, 90% across both), each arm passed the 49,786 impressions a 10% lift needed, the test ran 42 days (6 whole weeks), and App Store Connect agrees at 99% confidence. Apply it; a video needs no new app version.",
+      "Treatment B's 2.1% sits inside an interval that crosses zero (-2.7% to 6.9%). It is a draw, not a second winner.",
+      "The Play icon test was stopped after 9 days while the console said 'More data needed'. At a 20% audience the variant saw about 7,290 visitors of the 13,777 a 5% lift needs, and 9 days is not whole weeks. The +4.1% scaled-installer gap is a peek: don't apply the orange icon. Rerun it for 21 days at the same settings, or 7 days at 50%."
+    ]
+  },
+  "mode_3_custom_page_plan": {
+    "themes": [
+      {
+        "theme": "Beginner 5K",
+        "spend_30d": 9570,
+        "share_of_app_spend": 0.425,
+        "ad_groups": 4,
+        "own_page": true
+      },
+      {
+        "theme": "No clear theme (default page)",
+        "spend_30d": 4650,
+        "share_of_app_spend": 0.207,
+        "ad_groups": 3,
+        "own_page": false
+      },
+      {
+        "theme": "Walking for weight loss",
+        "spend_30d": 3930,
+        "share_of_app_spend": 0.175,
+        "ad_groups": 3,
+        "own_page": true
+      },
+      {
+        "theme": "Marathon training",
+        "spend_30d": 3730,
+        "share_of_app_spend": 0.166,
+        "ad_groups": 3,
+        "own_page": true
+      },
+      {
+        "theme": "Trail running",
+        "spend_30d": 620,
+        "share_of_app_spend": 0.028,
+        "ad_groups": 1,
+        "own_page": false
+      }
+    ],
+    "pages": [
+      {
+        "theme": "Beginner 5K",
+        "store": "App Store custom product page",
+        "name": "Larkstep: Beginner 5K",
+        "message": "Run your first 5K in 8 weeks",
+        "message_from": "Google Ads: Larkstep | iOS | Installs > Couch to 5K, first headline",
+        "screenshot_captions_first_three": [
+          "Run your first 5K in 8 weeks",
+          "Start on the couch, finish a 5K",
+          "A coach in your ear every run"
+        ],
+        "ad_groups_to_point_here": [
+          "Google Ads: Larkstep | iOS | Installs > Couch to 5K ($3,240)",
+          "Meta Ads: App installs | iOS > Beginner runners 25-44 ($2,750)",
+          "TikTok Ads: App promotion | iOS > 5K challenge creators ($1,520)"
+        ],
+        "spend_30d_on_this_store": 7510,
+        "promotional_text": "Run your first 5K in 8 weeks. Start on the couch, finish a 5K. A coach in your ear every run. Plans that adjust as you go.",
+        "promotional_text_characters": 122,
+        "link": "https://apps.apple.com/us/app/larkstep/id6400000001?ppid=<id App Store Connect gives the page>",
+        "keywords_assigned": [
+          "couch to 5k",
+          "5k training plan",
+          "beginner running plan",
+          "running plan"
+        ],
+        "competitor_angle": {
+          "keyword": "couch to 5k",
+          "top_apps_lead_with": [
+            "Competitor A: Tallowrun 5K: Go from walking to running 5K in 9 weeks.",
+            "Competitor B: Quarrystart: Interval timer for new runners."
+          ],
+          "ours_leads_with": "Run your first 5K in 8 weeks"
+        }
+      },
+      {
+        "theme": "Beginner 5K",
+        "store": "Google Play custom store listing",
+        "name": "Larkstep: Beginner 5K",
+        "message": "Run your first 5K in 8 weeks",
+        "message_from": "Google Ads: Larkstep | iOS | Installs > Couch to 5K, first headline",
+        "screenshot_captions_first_three": [
+          "Run your first 5K in 8 weeks",
+          "Start on the couch, finish a 5K",
+          "A coach in your ear every run"
+        ],
+        "ad_groups_to_point_here": [
+          "Google Ads: Larkstep | Android | Installs > Couch to 5K ($2,060)"
+        ],
+        "spend_30d_on_this_store": 2060,
+        "short_description": "Run your first 5K in 8 weeks with a coach in your ear",
+        "short_description_characters": 53,
+        "link": "https://play.google.com/store/apps/details?id=com.larkstep.example&listing=beginner-5k",
+        "targeting": [
+          "Ads traffic (pick it as the landing page in Google Ads; Google says these show on AdMob only, not Play search ads)",
+          "Search keywords: couch to 5k, 5k training plan, beginner running plan, running plan"
+        ],
+        "competitor_angle": {
+          "keyword": "couch to 5k",
+          "top_apps_lead_with": [
+            "Competitor A: Tallowrun 5K: Walk to 5K in 9 weeks with audio cues"
+          ],
+          "ours_leads_with": "Run your first 5K in 8 weeks"
+        }
+      },
+      {
+        "theme": "Walking for weight loss",
+        "store": "App Store custom product page",
+        "name": "Larkstep: Walking for weight loss",
+        "message": "Walk off the weight, one day at a time",
+        "message_from": "Google Ads: Larkstep | Android | Installs > Walking for weight loss, first headline",
+        "screenshot_captions_first_three": [
+          "Walk off the weight, one day at a time",
+          "Daily walks with a coach",
+          "Walking plans that fit your day"
+        ],
+        "ad_groups_to_point_here": [
+          "none on this store yet; the page serves search keywords and links you control"
+        ],
+        "spend_30d_on_this_store": 0,
+        "promotional_text": "Walk off the weight, one day at a time. Daily walks with a coach. Walking plans that fit your day. Plans that adjust as you go.",
+        "promotional_text_characters": 127,
+        "link": "https://apps.apple.com/us/app/larkstep/id6400000001?ppid=<id App Store Connect gives the page>",
+        "keywords_assigned": [
+          "walking for weight loss",
+          "walking app",
+          "daily step goal"
+        ],
+        "competitor_angle": {
+          "keyword": "walking for weight loss",
+          "top_apps_lead_with": [
+            "Competitor D: Brindle Walk: Lose weight walking with a step counter."
+          ],
+          "ours_leads_with": "Walk off the weight, one day at a time"
+        }
+      },
+      {
+        "theme": "Walking for weight loss",
+        "store": "Google Play custom store listing",
+        "name": "Larkstep: Walking for weight loss",
+        "message": "Walk off the weight, one day at a time",
+        "message_from": "Google Ads: Larkstep | Android | Installs > Walking for weight loss, first headline",
+        "screenshot_captions_first_three": [
+          "Walk off the weight, one day at a time",
+          "Daily walks with a coach",
+          "Walking plans that fit your day"
+        ],
+        "ad_groups_to_point_here": [
+          "Meta Ads: App installs | Android > Walkers, weight loss ($1,610)",
+          "Google Ads: Larkstep | Android | Installs > Walking for weight loss ($1,380)",
+          "TikTok Ads: App promotion | Android > Walk off weight ($940)"
+        ],
+        "spend_30d_on_this_store": 3930,
+        "short_description": "Walk off the weight, one day at a time with a coach in your ear",
+        "short_description_characters": 63,
+        "link": "https://play.google.com/store/apps/details?id=com.larkstep.example&listing=walking-for-weight-loss",
+        "targeting": [
+          "Ads traffic (pick it as the landing page in Google Ads; Google says these show on AdMob only, not Play search ads)",
+          "Search keywords: walking for weight loss, walking app, daily step goal"
+        ],
+        "competitor_angle": {
+          "keyword": "walking for weight loss",
+          "top_apps_lead_with": [
+            "Competitor D: Brindle Walk: Step counter and walking plans for weight loss",
+            "Competitor E: Stepwren: Count steps and calories all day"
+          ],
+          "ours_leads_with": "Walk off the weight, one day at a time"
+        }
+      },
+      {
+        "theme": "Marathon training",
+        "store": "App Store custom product page",
+        "name": "Larkstep: Marathon training",
+        "message": "Marathon plans that fit your week",
+        "message_from": "Google Ads: Larkstep | iOS | Installs > Marathon training, first headline",
+        "screenshot_captions_first_three": [
+          "Marathon plans that fit your week",
+          "Train for 26.2 with a real coach",
+          "Pace targets for every long run"
+        ],
+        "ad_groups_to_point_here": [
+          "Google Ads: Larkstep | iOS | Installs > Marathon training ($2,180)",
+          "Meta Ads: App installs | iOS > Marathon interests ($1,240)",
+          "TikTok Ads: App promotion | iOS > Half marathon ($310)"
+        ],
+        "spend_30d_on_this_store": 3730,
+        "promotional_text": "Marathon plans that fit your week. Train for 26.2 with a real coach. Pace targets for every long run. Plans that adjust as you go.",
+        "promotional_text_characters": 130,
+        "link": "https://apps.apple.com/us/app/larkstep/id6400000001?ppid=<id App Store Connect gives the page>",
+        "keywords_assigned": [
+          "marathon training plan",
+          "half marathon plan"
+        ],
+        "competitor_angle": {
+          "keyword": "marathon training plan",
+          "top_apps_lead_with": [
+            "Competitor C: Longvane Marathon: Elite marathon plans built by Olympians.",
+            "Competitor B: Quarrystart: Interval timer for new runners."
+          ],
+          "ours_leads_with": "Marathon plans that fit your week"
+        }
+      },
+      {
+        "theme": "Marathon training",
+        "store": "Google Play custom store listing",
+        "name": "Larkstep: Marathon training",
+        "message": "Marathon plans that fit your week",
+        "message_from": "Google Ads: Larkstep | iOS | Installs > Marathon training, first headline",
+        "screenshot_captions_first_three": [
+          "Marathon plans that fit your week",
+          "Train for 26.2 with a real coach",
+          "Pace targets for every long run"
+        ],
+        "ad_groups_to_point_here": [
+          "none on this store yet; the page serves search keywords and links you control"
+        ],
+        "spend_30d_on_this_store": 0,
+        "short_description": "Marathon plans that fit your week with a coach in your ear",
+        "short_description_characters": 58,
+        "link": "https://play.google.com/store/apps/details?id=com.larkstep.example&listing=marathon-training",
+        "targeting": [
+          "Search keywords: marathon training plan, half marathon plan"
+        ],
+        "competitor_angle": {
+          "keyword": "marathon training plan",
+          "top_apps_lead_with": [
+            "Competitor C: Longvane Marathon: Elite marathon plans and race-day pacing"
+          ],
+          "ours_leads_with": "Marathon plans that fit your week"
+        }
+      }
+    ],
+    "keyword_conflicts": [
+      {
+        "keyword": "running plan",
+        "given_to": "Beginner 5K",
+        "also_claimed_by": "Marathon training",
+        "why": "Beginner 5K spends $9,570 in 30 days against $3,730"
+      }
+    ],
+    "left_on_default_page": [
+      "No clear theme (default page)",
+      "Trail running"
+    ],
+    "support_check": [
+      {
+        "platform": "Google Ads",
+        "what_to_check": "whether an App campaign ad group can send iOS traffic to an Apple custom product page, and how an \"Ads traffic\" Play listing is picked",
+        "status": "not confirmed in this example: check the help pages on the day you run it",
+        "fallback": "the pages still serve their assigned keywords and every link you control"
+      },
+      {
+        "platform": "Meta Ads",
+        "what_to_check": "whether an app promotion ad can point to an Apple custom product page or a Play custom store listing",
+        "status": "not confirmed in this example: check the help pages on the day you run it",
+        "fallback": "the same"
+      },
+      {
+        "platform": "TikTok Ads",
+        "what_to_check": "whether an app promotion ad group can point to an Apple custom product page or a Play custom store listing",
+        "status": "not confirmed in this example: check the help pages on the day you run it",
+        "fallback": "the same"
+      }
+    ],
+    "how_to_measure": "After 28 days, compare each page with the default page in App Analytics or the default listing in Play Console, on its own traffic. Keep pages that convert above the default; fold the rest back.",
+    "findings": [
+      "3 themes pass the 10% spend bar out of $22,500 in 30-day app-campaign spend: Beginner 5K 42.5%, Walking for weight loss 17.5%, Marathon training 16.6%.",
+      "'running plan' is claimed by Beginner 5K and Marathon training; Apple lets one page own a keyword, so it goes to Beginner 5K (Beginner 5K spends $9,570 in 30 days against $3,730).",
+      "Trail running is 2.8% of spend, under the bar: it stays on the default page until it grows."
+    ]
+  },
+  "order_of_work": [
+    "Apply R1 Treatment A (runner's-view preview video) to the App Store page now.",
+    "Start T1 on the App Store (28 days), then T2 as one icon at 30% (42 days) once the icons ship in a release.",
+    "Start T4 on Google Play (7 days), then rerun the R2 icon test (21 days at 20%).",
+    "Build the 6 custom pages in parallel: they don't touch the tests, which run on the default pages.",
+    "Don't run T3; ship the stronger German line on judgement."
+  ],
+  "go_deeper": [
+    "ab-test-designer (if installed): general test design and guardrails",
+    "app-screenshot-video-brief (if installed): designing the screenshots, icon and video these tests need",
+    "apple-ads-manager (if installed): using these custom product pages as Apple Ads ad variations"
+  ]
+}

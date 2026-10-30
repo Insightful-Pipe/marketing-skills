@@ -1,0 +1,808 @@
+{
+  "header": {
+    "property": "Cindervale Coffee Supply (properties/456789123)",
+    "time_zone": "America/Chicago",
+    "currency": "USD",
+    "window": "2026-09-01 to 2026-09-30",
+    "comparison_window": "2026-08-02 to 2026-08-31",
+    "trend_window": "2025-09-01 to 2026-09-30",
+    "readiness_status": "graded",
+    "calls_run": 14,
+    "purchases_in_window": 813
+  },
+  "readiness": {
+    "ecommerce_events": [
+      {
+        "event": "view_item_list",
+        "event_count": 52300,
+        "status": "fires"
+      },
+      {
+        "event": "select_item",
+        "event_count": 24600,
+        "status": "fires"
+      },
+      {
+        "event": "view_item",
+        "event_count": 31500,
+        "status": "fires"
+      },
+      {
+        "event": "add_to_cart",
+        "event_count": 5380,
+        "status": "fires"
+      },
+      {
+        "event": "view_cart",
+        "event_count": 6120,
+        "status": "fires"
+      },
+      {
+        "event": "begin_checkout",
+        "event_count": 1985,
+        "status": "fires"
+      },
+      {
+        "event": "add_shipping_info",
+        "event_count": 1060,
+        "status": "fires"
+      },
+      {
+        "event": "add_payment_info",
+        "event_count": 958,
+        "status": "fires"
+      },
+      {
+        "event": "purchase",
+        "event_count": 813,
+        "status": "fires"
+      },
+      {
+        "event": "refund",
+        "event_count": 31,
+        "status": "fires"
+      }
+    ],
+    "why": "purchase fires with 813 ecommerce purchases and $60,517.00 revenue, and 3 of view_item, add_to_cart and begin_checkout fire, so every step runs.",
+    "key_events": {
+      "purchase_is_key_event": false,
+      "purchase_like_key_events": [],
+      "key_events_found": [
+        "newsletter_signup",
+        "contact_form_submit"
+      ],
+      "finding": "purchase fires but is not a key event, so GA4 conversions and Google Ads imports count newsletter sign-ups and contact forms, not orders. This skill can mark it as one with your yes."
+    },
+    "site_totals": {
+      "sessions": 41800,
+      "users": 33950,
+      "engaged_sessions": 27100
+    }
+  },
+  "top_3_leaks": [
+    {
+      "rank": 1,
+      "leak": "Mobile began checkout to added shipping info",
+      "kind": "device gap",
+      "revenue_at_stake_per_month": 22074,
+      "estimate": "upper-bound estimate: (78.5% desktop - 38.1% mobile) x 840 mobile sessions entering x 86.7% site rate from add_shipping_info to purchase x $75.08 AOV",
+      "assumption": "the rest of the funnel holds at the site's current rates",
+      "what_to_do": "Test the mobile shipping step first: show the shipping cost and the amount left to free shipping in the cart, keep the address form short on mobile, and check the shipping options load on a phone.",
+      "evidence": "call 10 (events by device)"
+    },
+    {
+      "rank": 2,
+      "leak": "Began checkout to purchased",
+      "kind": "funnel step",
+      "revenue_at_stake_per_month": 16944,
+      "estimate": "estimate: (63.3% - 49.3%) x 1,610 sessions entering (purchase is the last step) x $75.08 AOV",
+      "assumption": "the rest of the funnel holds at its current rates",
+      "what_to_do": "Check what changed at checkout since the threshold rose: a shipping charge that appears only after the address is the usual cause.",
+      "evidence": "calls 3, 4, 5 and 8 (events and totals, both windows)"
+    },
+    {
+      "rank": 3,
+      "leak": "Added to cart to began checkout",
+      "kind": "funnel step",
+      "revenue_at_stake_per_month": 13916,
+      "estimate": "estimate: (58.1% - 47.1%) x 3,420 sessions entering x 49.3% from this step to purchase x $75.08 AOV",
+      "assumption": "the rest of the funnel holds at its current rates",
+      "what_to_do": "Show the free-shipping progress in the cart and on product pages, so a $50 to $75 cart sees what to add instead of leaving.",
+      "evidence": "calls 3, 4, 5 and 8 (events and totals, both windows)"
+    }
+  ],
+  "top_3_leaks_note": "The three overlap and do not add up: the mobile shipping gap sits inside the drop from began checkout to purchased. Showing the shipping cost and the gap to free shipping early is the first test for all three. Revenue fell from $70,502.40 in the comparison window to $60,517.00 (-14.2%). The threshold change on 2026-09-01 is the user's note, used to explain the timing, not as evidence.",
+  "data_quality": [
+    {
+      "check": "Purchase events vs transactions",
+      "result": "pass",
+      "value": "813 purchase events, 806 transactions: 0.9% apart (warn above 5%)"
+    },
+    {
+      "check": "Duplicate orders",
+      "result": "warn",
+      "value": "7 transaction ids recorded twice (7 extra purchase events), holding $964.80 or 1.6% of revenue, counted twice. Usually an order confirmation page that sends purchase again on reload."
+    },
+    {
+      "check": "Missing order ids",
+      "result": "pass",
+      "value": "no (not set) or empty transactionId row with purchases"
+    },
+    {
+      "check": "Currency",
+      "result": "pass",
+      "value": "813 purchases in USD"
+    },
+    {
+      "check": "Zero-value orders",
+      "result": "pass",
+      "value": "purchase revenue $60,517.00"
+    }
+  ],
+  "data_quality_reading": "No fail, so the revenue below can be used. Fix the duplicate purchase on reload.",
+  "funnel": {
+    "steps": [
+      {
+        "step": "All sessions",
+        "event": "(all sessions)",
+        "sessions": 41800,
+        "comparison_sessions": 40200
+      },
+      {
+        "step": "Viewed a product",
+        "event": "view_item",
+        "sessions": 16300,
+        "comparison_sessions": 15500,
+        "step_rate_pct": 39.0,
+        "comparison_rate_pct": 38.6,
+        "change_points": 0.4
+      },
+      {
+        "step": "Added to cart",
+        "event": "add_to_cart",
+        "sessions": 3420,
+        "comparison_sessions": 3100,
+        "step_rate_pct": 21.0,
+        "comparison_rate_pct": 20.0,
+        "change_points": 1.0
+      },
+      {
+        "step": "Began checkout",
+        "event": "begin_checkout",
+        "sessions": 1610,
+        "comparison_sessions": 1800,
+        "step_rate_pct": 47.1,
+        "comparison_rate_pct": 58.1,
+        "change_points": -11.0,
+        "revenue_at_stake_estimate": 13916
+      },
+      {
+        "step": "Purchased",
+        "event": "purchase",
+        "sessions": 794,
+        "comparison_sessions": 1140,
+        "step_rate_pct": 49.3,
+        "comparison_rate_pct": 63.3,
+        "change_points": -14.0,
+        "revenue_at_stake_estimate": 16944
+      }
+    ],
+    "overall_conversion_pct": 1.9,
+    "comparison_overall_conversion_pct": 2.8,
+    "change_points": -0.9,
+    "aov": 75.08,
+    "comparison_aov": 61.2,
+    "sample_size": "813 purchases, above the 30 needed to call a leak",
+    "comparison_sessions_note": "The comparison window's all-sessions count is the session_start sessions from call 8; in this window session_start sessions equal the no-dimension total from call 4.",
+    "reading": "Shoppers view and add products at the same or better rates than in August. The funnel breaks after the cart: fewer carts reach checkout and fewer checkouts finish.",
+    "open_funnel_note": "An open, session-based funnel: a session can enter at any step. GA4's closed funnels exist only in Explorations, which the API does not return."
+  },
+  "checkout": {
+    "site": [
+      {
+        "step": "Added shipping info (of began checkout)",
+        "entering": 1610,
+        "reached": 916,
+        "rate_pct": 56.9
+      },
+      {
+        "step": "Added payment info (of added shipping info)",
+        "entering": 916,
+        "reached": 844,
+        "rate_pct": 92.1
+      },
+      {
+        "step": "Purchased (of added payment info)",
+        "entering": 844,
+        "reached": 794,
+        "rate_pct": 94.1
+      }
+    ],
+    "breaking_step": "Added shipping info: 56.9% of sessions that began checkout",
+    "breaking_step_reading": "Shipping info loses the most, which usually means shipping cost or delivery time. The data shows where shoppers leave, not why.",
+    "by_device": [
+      {
+        "device": "desktop",
+        "begin_checkout_sessions": 720,
+        "add_shipping_info_rate_pct": 78.5,
+        "add_payment_info_rate_pct": 92.0,
+        "purchase_rate_pct": 94.6,
+        "begin_checkout_to_purchase_pct": 68.3
+      },
+      {
+        "device": "mobile",
+        "begin_checkout_sessions": 840,
+        "add_shipping_info_rate_pct": 38.1,
+        "add_payment_info_rate_pct": 92.5,
+        "purchase_rate_pct": 93.2,
+        "begin_checkout_to_purchase_pct": 32.9
+      },
+      {
+        "device": "tablet",
+        "begin_checkout_sessions": 50,
+        "add_shipping_info_rate_pct": 62.0,
+        "add_payment_info_rate_pct": 90.3,
+        "purchase_rate_pct": 92.9,
+        "begin_checkout_to_purchase_pct": 52.0
+      }
+    ],
+    "device_gaps": [
+      {
+        "device": "mobile",
+        "step": "Added shipping info",
+        "device_rate_pct": 38.1,
+        "desktop_rate_pct": 78.5,
+        "entering": 840,
+        "revenue_at_stake_upper_bound": 22074
+      }
+    ],
+    "device_gap_rule": "flag a device under half the desktop rate at a step it entered with 30 or more sessions",
+    "not_flagged": [
+      {
+        "device": "tablet",
+        "note": "50 sessions began checkout; every tablet rate is above half the desktop rate, so no flag"
+      }
+    ]
+  },
+  "cart_abandonment": {
+    "window": {
+      "cart_abandonment_pct": 76.8,
+      "checkout_abandonment_pct": 50.7,
+      "cart_to_checkout_pct": 47.1
+    },
+    "comparison": {
+      "cart_abandonment_pct": 63.2,
+      "checkout_abandonment_pct": 36.7,
+      "cart_to_checkout_pct": 58.1
+    },
+    "change_points": {
+      "cart_abandonment_pct": 13.6,
+      "checkout_abandonment_pct": 14.0,
+      "cart_to_checkout_pct": -11.0
+    },
+    "reading": "More full carts are left behind (76.8% against 63.2%). Both halves moved: fewer carts reach checkout (47.1% against 58.1%) and more checkouts are left (50.7% against 36.7%). Judged against this store's own August, not an industry average."
+  },
+  "products": {
+    "item_revenue_total": 54653.0,
+    "item_revenue_note": "Item revenue leaves out shipping, so it is below purchase revenue.",
+    "top_10_by_revenue": [
+      {
+        "item": "House Espresso Beans 1 kg",
+        "item_id": "CV-105",
+        "views": 2000,
+        "add_to_cart_rate_pct": 26.0,
+        "cart_to_purchase_rate_pct": 50.4,
+        "units": 262,
+        "revenue": 9432.0,
+        "share_of_item_revenue_pct": 17.3
+      },
+      {
+        "item": "Burr Hand Grinder",
+        "item_id": "CV-101",
+        "views": 2400,
+        "add_to_cart_rate_pct": 12.5,
+        "cart_to_purchase_rate_pct": 26.7,
+        "units": 80,
+        "revenue": 7120.0,
+        "share_of_item_revenue_pct": 13.0
+      },
+      {
+        "item": "Gooseneck Kettle 1 L",
+        "item_id": "CV-102",
+        "views": 2100,
+        "add_to_cart_rate_pct": 15.7,
+        "cart_to_purchase_rate_pct": 30.3,
+        "units": 100,
+        "revenue": 6900.0,
+        "share_of_item_revenue_pct": 12.6
+      },
+      {
+        "item": "Brew Starter Bundle",
+        "item_id": "CV-111",
+        "views": 1100,
+        "add_to_cart_rate_pct": 16.4,
+        "cart_to_purchase_rate_pct": 27.8,
+        "units": 50,
+        "revenue": 6450.0,
+        "share_of_item_revenue_pct": 11.8
+      },
+      {
+        "item": "Ceramic Pour-Over Dripper",
+        "item_id": "CV-103",
+        "views": 1900,
+        "add_to_cart_rate_pct": 22.1,
+        "cart_to_purchase_rate_pct": 54.3,
+        "units": 228,
+        "revenue": 6384.0,
+        "share_of_item_revenue_pct": 11.7
+      },
+      {
+        "item": "Single Origin Beans 250 g",
+        "item_id": "CV-106",
+        "views": 1700,
+        "add_to_cart_rate_pct": 26.5,
+        "cart_to_purchase_rate_pct": 66.7,
+        "units": 300,
+        "revenue": 5400.0,
+        "share_of_item_revenue_pct": 9.9
+      },
+      {
+        "item": "Paper Filters, 100 pack",
+        "item_id": "CV-104",
+        "views": 1300,
+        "add_to_cart_rate_pct": 46.9,
+        "cart_to_purchase_rate_pct": 95.1,
+        "units": 580,
+        "revenue": 4640.0,
+        "share_of_item_revenue_pct": 8.5
+      },
+      {
+        "item": "Glass Carafe 600 ml",
+        "item_id": "CV-108",
+        "views": 900,
+        "add_to_cart_rate_pct": 15.6,
+        "cart_to_purchase_rate_pct": 47.1,
+        "units": 66,
+        "revenue": 2112.0,
+        "share_of_item_revenue_pct": 3.9
+      },
+      {
+        "item": "Cold Brew Jar 1.5 L",
+        "item_id": "CV-109",
+        "views": 800,
+        "add_to_cart_rate_pct": 15.0,
+        "cart_to_purchase_rate_pct": 43.3,
+        "units": 52,
+        "revenue": 2028.0,
+        "share_of_item_revenue_pct": 3.7
+      },
+      {
+        "item": "Digital Coffee Scale",
+        "item_id": "CV-107",
+        "views": 1500,
+        "add_to_cart_rate_pct": 4.7,
+        "cart_to_purchase_rate_pct": 54.3,
+        "units": 38,
+        "revenue": 1710.0,
+        "share_of_item_revenue_pct": 3.1
+      }
+    ],
+    "viewed_but_not_added": [
+      {
+        "item": "Digital Coffee Scale",
+        "views": 1500,
+        "add_to_cart_rate_pct": 4.7,
+        "median_pct": 15.6
+      }
+    ],
+    "viewed_but_not_added_rule": "50+ views and an add-to-cart rate under half the median (15.6%) of 12 such items",
+    "viewed_but_not_added_reading": "Usually the page, the price or stock.",
+    "added_but_not_bought": [
+      {
+        "item": "Espresso Tamping Station",
+        "cart_adds": 95,
+        "units_bought": 11,
+        "cart_to_purchase_rate_pct": 11.6,
+        "median_pct": 45.2
+      }
+    ],
+    "added_but_not_bought_rule": "10+ cart adds and a cart-to-purchase rate under half the median (45.2%) of 12 such items",
+    "added_but_not_bought_reading": "Usually shipping cost, delivery date or a price shown late. At $119 it clears the $75 free-shipping threshold on its own, so check the delivery date and stock shown in the cart first.",
+    "missing_product_data": {
+      "result": "pass",
+      "value": "(not set) items hold $154.00, 0.3% of item revenue (warn above 5%)"
+    }
+  },
+  "revenue_by_source": {
+    "channels": [
+      {
+        "channel": "Organic Search",
+        "sessions": 14600,
+        "share_of_sessions_pct": 34.9,
+        "transactions": 296,
+        "conversion_rate_pct": 2.03,
+        "revenue": 21876.0,
+        "share_of_revenue_pct": 36.1,
+        "revenue_per_session": 1.5,
+        "aov": 73.91
+      },
+      {
+        "channel": "Direct",
+        "sessions": 7900,
+        "share_of_sessions_pct": 18.9,
+        "transactions": 168,
+        "conversion_rate_pct": 2.13,
+        "revenue": 12852.0,
+        "share_of_revenue_pct": 21.2,
+        "revenue_per_session": 1.63,
+        "aov": 76.5
+      },
+      {
+        "channel": "Paid Search",
+        "sessions": 6300,
+        "share_of_sessions_pct": 15.1,
+        "transactions": 151,
+        "conversion_rate_pct": 2.4,
+        "revenue": 11023.0,
+        "share_of_revenue_pct": 18.2,
+        "revenue_per_session": 1.75,
+        "aov": 73.0
+      },
+      {
+        "channel": "Paid Social",
+        "sessions": 5200,
+        "share_of_sessions_pct": 12.4,
+        "transactions": 31,
+        "conversion_rate_pct": 0.6,
+        "revenue": 1810.0,
+        "share_of_revenue_pct": 3.0,
+        "revenue_per_session": 0.35,
+        "aov": 58.39
+      },
+      {
+        "channel": "Email",
+        "sessions": 2600,
+        "share_of_sessions_pct": 6.2,
+        "transactions": 104,
+        "conversion_rate_pct": 4.0,
+        "revenue": 8840.0,
+        "share_of_revenue_pct": 14.6,
+        "revenue_per_session": 3.4,
+        "aov": 85.0
+      },
+      {
+        "channel": "Organic Social",
+        "sessions": 2400,
+        "share_of_sessions_pct": 5.7,
+        "transactions": 22,
+        "conversion_rate_pct": 0.92,
+        "revenue": 1494.0,
+        "share_of_revenue_pct": 2.5,
+        "revenue_per_session": 0.62,
+        "aov": 67.91
+      },
+      {
+        "channel": "Referral",
+        "sessions": 1700,
+        "share_of_sessions_pct": 4.1,
+        "transactions": 26,
+        "conversion_rate_pct": 1.53,
+        "revenue": 2110.0,
+        "share_of_revenue_pct": 3.5,
+        "revenue_per_session": 1.24,
+        "aov": 81.15
+      },
+      {
+        "channel": "Unassigned",
+        "sessions": 1100,
+        "share_of_sessions_pct": 2.6,
+        "transactions": 8,
+        "conversion_rate_pct": 0.73,
+        "revenue": 512.0,
+        "share_of_revenue_pct": 0.8,
+        "revenue_per_session": 0.47,
+        "aov": 64.0
+      }
+    ],
+    "under_converting": [
+      {
+        "channel": "Paid Social",
+        "share_of_sessions_pct": 12.4,
+        "conversion_rate_pct": 0.6,
+        "site_conversion_rate_pct": 1.93
+      }
+    ],
+    "under_converting_reading": "Paid Social brings 12.4% of sessions and 3.0% of revenue. Check where those ads land before adding budget.",
+    "under_converting_rule": "10%+ of sessions and a conversion rate under half the site's 1.93%",
+    "unattributed": {
+      "result": "pass",
+      "value": "Unassigned holds $512.00, 0.8% of revenue (warn above 5%)"
+    },
+    "self_referral": {
+      "result": "pass",
+      "value": "no payment provider or own-domain source with revenue"
+    },
+    "top_source_medium_by_revenue": [
+      {
+        "source_medium": "google / organic",
+        "sessions": 13100,
+        "transactions": 268,
+        "revenue": 19832.0,
+        "conversion_rate_pct": 2.05
+      },
+      {
+        "source_medium": "(direct) / (none)",
+        "sessions": 7900,
+        "transactions": 168,
+        "revenue": 12852.0,
+        "conversion_rate_pct": 2.13
+      },
+      {
+        "source_medium": "google / cpc",
+        "sessions": 6300,
+        "transactions": 151,
+        "revenue": 11023.0,
+        "conversion_rate_pct": 2.4
+      },
+      {
+        "source_medium": "newsletter / email",
+        "sessions": 2600,
+        "transactions": 104,
+        "revenue": 8840.0,
+        "conversion_rate_pct": 4.0
+      },
+      {
+        "source_medium": "bing / organic",
+        "sessions": 1500,
+        "transactions": 28,
+        "revenue": 2044.0,
+        "conversion_rate_pct": 1.87
+      },
+      {
+        "source_medium": "brewjournal.example / referral",
+        "sessions": 900,
+        "transactions": 18,
+        "revenue": 1494.0,
+        "conversion_rate_pct": 2.0
+      },
+      {
+        "source_medium": "facebook / paid",
+        "sessions": 3400,
+        "transactions": 19,
+        "revenue": 1102.0,
+        "conversion_rate_pct": 0.56
+      },
+      {
+        "source_medium": "l.instagram.com / referral",
+        "sessions": 1400,
+        "transactions": 14,
+        "revenue": 966.0,
+        "conversion_rate_pct": 1.0
+      },
+      {
+        "source_medium": "instagram / paid",
+        "sessions": 1800,
+        "transactions": 12,
+        "revenue": 708.0,
+        "conversion_rate_pct": 0.67
+      },
+      {
+        "source_medium": "beanforum.example / referral",
+        "sessions": 800,
+        "transactions": 8,
+        "revenue": 616.0,
+        "conversion_rate_pct": 1.0
+      }
+    ],
+    "key_events_note": "keyEvents here are newsletter sign-ups and contact forms only, because purchase is not a key event. That is why Paid Social shows 64 key events and 31 orders.",
+    "attribution_note": "Session-scoped: each order is credited to the source of the session it happened in. It won't match GA4's data-driven key-event attribution or the ad platforms' own numbers. Current window only, so no channel change is stated."
+  },
+  "aov_trend": {
+    "monthly": [
+      {
+        "month": "2025-09",
+        "revenue": 52940.0,
+        "orders": 905,
+        "aov": 58.5,
+        "items_per_order": 1.83,
+        "revenue_per_item": 31.89,
+        "conversion_rate_pct": 2.73,
+        "refunds_pct_of_revenue": 3.7,
+        "partial": false
+      },
+      {
+        "month": "2025-10",
+        "revenue": 56310.0,
+        "orders": 948,
+        "aov": 59.4,
+        "items_per_order": 1.84,
+        "revenue_per_item": 32.27,
+        "conversion_rate_pct": 2.72,
+        "refunds_pct_of_revenue": 3.8,
+        "partial": false
+      },
+      {
+        "month": "2025-11",
+        "revenue": 98040.0,
+        "orders": 1520,
+        "aov": 64.5,
+        "items_per_order": 1.93,
+        "revenue_per_item": 33.46,
+        "conversion_rate_pct": 3.24,
+        "refunds_pct_of_revenue": 4.5,
+        "partial": false
+      },
+      {
+        "month": "2025-12",
+        "revenue": 118650.0,
+        "orders": 1760,
+        "aov": 67.41,
+        "items_per_order": 1.97,
+        "revenue_per_item": 34.29,
+        "conversion_rate_pct": 3.37,
+        "refunds_pct_of_revenue": 5.8,
+        "partial": false
+      },
+      {
+        "month": "2026-01",
+        "revenue": 51330.0,
+        "orders": 870,
+        "aov": 59.0,
+        "items_per_order": 1.83,
+        "revenue_per_item": 32.28,
+        "conversion_rate_pct": 2.46,
+        "refunds_pct_of_revenue": 11.4,
+        "partial": false
+      },
+      {
+        "month": "2026-02",
+        "revenue": 54120.0,
+        "orders": 902,
+        "aov": 60.0,
+        "items_per_order": 1.82,
+        "revenue_per_item": 33.0,
+        "conversion_rate_pct": 2.68,
+        "refunds_pct_of_revenue": 4.0,
+        "partial": false
+      },
+      {
+        "month": "2026-03",
+        "revenue": 59590.0,
+        "orders": 985,
+        "aov": 60.5,
+        "items_per_order": 1.83,
+        "revenue_per_item": 33.11,
+        "conversion_rate_pct": 2.72,
+        "refunds_pct_of_revenue": 3.9,
+        "partial": false
+      },
+      {
+        "month": "2026-04",
+        "revenue": 61610.0,
+        "orders": 1010,
+        "aov": 61.0,
+        "items_per_order": 1.82,
+        "revenue_per_item": 33.48,
+        "conversion_rate_pct": 2.74,
+        "refunds_pct_of_revenue": 3.9,
+        "partial": false
+      },
+      {
+        "month": "2026-05",
+        "revenue": 64970.0,
+        "orders": 1065,
+        "aov": 61.0,
+        "items_per_order": 1.82,
+        "revenue_per_item": 33.58,
+        "conversion_rate_pct": 2.78,
+        "refunds_pct_of_revenue": 3.8,
+        "partial": false
+      },
+      {
+        "month": "2026-06",
+        "revenue": 63240.0,
+        "orders": 1040,
+        "aov": 60.81,
+        "items_per_order": 1.83,
+        "revenue_per_item": 33.28,
+        "conversion_rate_pct": 2.75,
+        "refunds_pct_of_revenue": 3.7,
+        "partial": false
+      },
+      {
+        "month": "2026-07",
+        "revenue": 68320.0,
+        "orders": 1120,
+        "aov": 61.0,
+        "items_per_order": 1.82,
+        "revenue_per_item": 33.49,
+        "conversion_rate_pct": 2.84,
+        "refunds_pct_of_revenue": 3.8,
+        "partial": false
+      },
+      {
+        "month": "2026-08",
+        "revenue": 72830.0,
+        "orders": 1190,
+        "aov": 61.2,
+        "items_per_order": 1.84,
+        "revenue_per_item": 33.26,
+        "conversion_rate_pct": 2.87,
+        "refunds_pct_of_revenue": 3.9,
+        "partial": false
+      },
+      {
+        "month": "2026-09",
+        "revenue": 60517.0,
+        "orders": 806,
+        "aov": 75.08,
+        "items_per_order": 2.25,
+        "revenue_per_item": 33.38,
+        "conversion_rate_pct": 1.93,
+        "refunds_pct_of_revenue": 3.8,
+        "partial": false
+      }
+    ],
+    "partial_months": "none: the property was created in 2023-05 and END is the last day of 2026-09",
+    "latest_full_month": "2026-09",
+    "vs_month_before": {
+      "against": "2026-08",
+      "aov": 75.08,
+      "aov_before": 61.2,
+      "change_pct": 22.7,
+      "flagged": true,
+      "items_per_order_change_pct": 22.2,
+      "revenue_per_item_change_pct": 0.4,
+      "driver": "items per order (cart size)",
+      "orders_change_pct": -32.3,
+      "revenue_change_pct": -16.9
+    },
+    "vs_same_month_last_year": {
+      "against": "2025-09",
+      "aov": 75.08,
+      "aov_before": 58.5,
+      "change_pct": 28.4,
+      "flagged": true,
+      "items_per_order_change_pct": 22.6,
+      "revenue_per_item_change_pct": 4.7,
+      "driver": "items per order (cart size)",
+      "orders_change_pct": -10.9,
+      "revenue_change_pct": 14.3
+    },
+    "reading": "AOV rose 22.7% against August and 28.4% against September 2025, driven by items per order (+22.2% against August) while revenue per item barely moved (+0.4%): bigger carts, likely built to reach free shipping. But orders fell 32.3%, so revenue fell 16.9%: the higher order value does not cover the lost orders.",
+    "refunds": [
+      {
+        "month": "2026-01",
+        "refunds_pct_of_revenue": 11.4
+      }
+    ],
+    "refunds_reading": "2026-01 refunds were 11.4% of revenue, likely returns from the holiday peak; that month's AOV overstates what the store kept."
+  },
+  "fixes_offered": [
+    {
+      "fix": "Count purchases as a key event",
+      "action": "create_key_event",
+      "payload": {
+        "action": "create_key_event",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "property_id": "properties/456789123",
+        "event_name": "purchase",
+        "counting_method": "ONCE_PER_EVENT"
+      },
+      "condition": "Runs only after you say yes. Needs a Read & Write connection; confirmed afterwards with list_key_events."
+    }
+  ],
+  "fixes_note": "Everything else is yours to change: the cart and checkout in the store, the duplicate purchase tag in the site or Tag Manager.",
+  "unknowns": [
+    "Why mobile shoppers leave at shipping info: the data shows the step, not the reason.",
+    "How each channel changed: the traffic source calls cover this window only.",
+    "Closed funnels: GA4 builds them only in Explorations, which the API does not return.",
+    "Checkout steps by device in the comparison window: step 4 runs on this window only."
+  ],
+  "go_deeper": [
+    "The mobile shipping step that loses shoppers: funnel-dropoff-diagnostician or landing-page-auditor, if installed.",
+    "Where Paid Social visitors land and leave: ga4-landing-page-analyst, if installed.",
+    "The duplicate purchase on reload: ga4-property-audit or conversion-tracking-auditor, if installed."
+  ]
+}

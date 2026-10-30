@@ -1,0 +1,3495 @@
+{
+  "note": "Example data: an invented family dental practice with invented accounts, not a real business. Every number in expected_output.json follows from this input. The call log, Clarity export, practice management counts, owners and quotes are what the user pasted; the rest has the shape the InsightfulPipe MCP returns.",
+  "request": "Hey Claude, I just added the \"customer-journey-map\" skill. Map how new patients find us and book, from first hearing of us to coming back and leaving a review, and tell me the five touchpoints to fix first. Our booking page used to convert about 30% of visits before we changed the booking widget in August.",
+  "business": {
+    "name": "Example Family Dental",
+    "site": "https://www.familydental.example",
+    "what_it_sells": "family dentistry: checkups, cleanings, fillings, emergency visits and Invisalign",
+    "brand_terms": [
+      "example family dental",
+      "familydental"
+    ],
+    "time_zone": "America/Chicago"
+  },
+  "journey": {
+    "customer": "new patients looking for a family dentist",
+    "buying_event": "book_appointment",
+    "stages": [
+      "Notices a need",
+      "Looks for answers",
+      "Compares options",
+      "Books or buys",
+      "First experience",
+      "Comes back",
+      "Recommends"
+    ],
+    "targets": {
+      "booking_page_completion_rate": 0.3
+    }
+  },
+  "windows": {
+    "ga4_and_search_console": [
+      "2026-07-29",
+      "2026-10-26"
+    ],
+    "email": "last_90_days",
+    "calls": [
+      "2026-07-29",
+      "2026-10-26"
+    ],
+    "reviews": [
+      "2025-10-27",
+      "2026-10-26"
+    ],
+    "clarity": "last 30 days"
+  },
+  "sources": {
+    "google-analytics": "connected",
+    "google-search-console": "connected",
+    "klaviyo": "connected",
+    "google-my-business": "connected",
+    "calls": "pasted (phone system export)",
+    "clarity": "pasted (dashboard export)",
+    "practice_management": "pasted (monthly counts)",
+    "google-sheets": "connected (for writing the map)"
+  },
+  "pasted": {
+    "owners": {
+      "website and booking page": "Office manager (the website vendor makes changes)",
+      "blog and search": "Marketing contractor",
+      "paid search": "Marketing contractor",
+      "email flows": "Marketing contractor",
+      "phones": "Front desk lead",
+      "Google Business Profile and reviews": "Office manager",
+      "first visit": "Hygiene team lead",
+      "recall and rebooking": "Front desk lead"
+    },
+    "quotes": [
+      {
+        "source": "new patient form, 'how did you hear about us'",
+        "text": "My old dentist retired and a neighbour mentioned you."
+      },
+      {
+        "source": "new patient form",
+        "text": "I googled why my tooth hurt at night and your article came up."
+      },
+      {
+        "source": "front desk note",
+        "text": "I just wanted to know if you take my insurance before I called."
+      },
+      {
+        "source": "front desk note",
+        "text": "I tried booking on my phone and the calendar kept jumping back to today."
+      },
+      {
+        "source": "front desk note",
+        "text": "Called at lunch twice and nobody picked up."
+      }
+    ],
+    "team_touchpoints": [
+      {
+        "stage": 1,
+        "touchpoint": "Word of mouth from existing patients",
+        "said_by": "office manager"
+      },
+      {
+        "stage": 4,
+        "touchpoint": "Confirmation text the day before the visit",
+        "said_by": "front desk lead"
+      },
+      {
+        "stage": 6,
+        "touchpoint": "Rebooking at checkout, before the patient leaves",
+        "said_by": "front desk lead",
+        "main_way_this_stage_works": true
+      }
+    ],
+    "team_views": {
+      "Comes back": "Busy, means to rebook and forgets",
+      "Recommends": "Happy, but nobody asks for a review"
+    },
+    "call_log": [
+      {
+        "block": "Weekdays 8am to 12pm",
+        "staffed": true,
+        "calls": 700,
+        "answered": 672,
+        "booked": 300
+      },
+      {
+        "block": "Weekdays 12pm to 2pm",
+        "staffed": true,
+        "calls": 380,
+        "answered": 281,
+        "booked": 128
+      },
+      {
+        "block": "Weekdays 2pm to 5pm",
+        "staffed": true,
+        "calls": 520,
+        "answered": 494,
+        "booked": 220
+      },
+      {
+        "block": "Tue and Thu 5pm to 7pm",
+        "staffed": true,
+        "calls": 160,
+        "answered": 150,
+        "booked": 66
+      },
+      {
+        "block": "Saturdays 9am to 1pm",
+        "staffed": true,
+        "calls": 140,
+        "answered": 131,
+        "booked": 58
+      },
+      {
+        "block": "Closed hours (voicemail)",
+        "staffed": false,
+        "calls": 230,
+        "answered": 0,
+        "booked": 0
+      }
+    ],
+    "clarity_export": {
+      "window": "last 30 days",
+      "site_average": {
+        "rage_click_sessions_pct": 2.4,
+        "dead_click_sessions_pct": 4.0
+      },
+      "pages": [
+        {
+          "page": "/book-online/",
+          "sessions": 1050,
+          "rage_click_sessions_pct": 12.0,
+          "dead_click_sessions_pct": 6.1,
+          "note": "rage clicks on the date picker, mostly on mobile"
+        },
+        {
+          "page": "/insurance-and-pricing/",
+          "sessions": 480,
+          "rage_click_sessions_pct": 3.1,
+          "dead_click_sessions_pct": 21.0,
+          "note": "dead clicks on the insurance logos, which are not links"
+        },
+        {
+          "page": "/",
+          "sessions": 1600,
+          "rage_click_sessions_pct": 1.5,
+          "dead_click_sessions_pct": 3.2,
+          "note": ""
+        }
+      ]
+    },
+    "practice_management": {
+      "source": "practice management export, pasted",
+      "new_patients_by_month": {
+        "2026-08": 121,
+        "2026-09": 130,
+        "2026-10": 133
+      },
+      "recalls_due_in_window": 1900,
+      "recalls_booked_in_window": 1045,
+      "first_visits_in_window": 384,
+      "first_visit_no_shows_in_window": 35
+    }
+  },
+  "page_stage_confirmed_by_user": {
+    "/": "Compares options",
+    "/services/emergency-dentist/": "Compares options",
+    "/services/teeth-cleaning/": "Compares options",
+    "/services/invisalign/": "Compares options",
+    "/insurance-and-pricing/": "Compares options",
+    "/reviews/": "Compares options",
+    "/blog/tooth-pain-at-night/": "Looks for answers",
+    "/blog/how-much-does-a-filling-cost/": "Looks for answers",
+    "/blog/whitening-strips-vs-professional/": "Looks for answers",
+    "/blog/what-to-do-chipped-tooth/": "Looks for answers",
+    "/book-online/": "Books or buys",
+    "/new-patients/": "First experience",
+    "/patient-portal/": "Comes back"
+  },
+  "data_pulled": {
+    "1_list_key_events": [
+      {
+        "eventName": "book_appointment",
+        "countingMethod": "ONCE_PER_SESSION",
+        "custom": true
+      },
+      {
+        "eventName": "click_to_call",
+        "countingMethod": "ONCE_PER_EVENT",
+        "custom": true
+      }
+    ],
+    "2_first_touch_vs_booking_session": [
+      {
+        "firstUserDefaultChannelGroup": "Organic Search",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 5200,
+        "keyEvents:book_appointment": 150
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Search",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 1400,
+        "keyEvents:book_appointment": 120
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Search",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 260,
+        "keyEvents:book_appointment": 18
+      },
+      {
+        "firstUserDefaultChannelGroup": "Paid Search",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 2100,
+        "keyEvents:book_appointment": 84
+      },
+      {
+        "firstUserDefaultChannelGroup": "Paid Search",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 520,
+        "keyEvents:book_appointment": 46
+      },
+      {
+        "firstUserDefaultChannelGroup": "Direct",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 2600,
+        "keyEvents:book_appointment": 95
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Social",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 900,
+        "keyEvents:book_appointment": 6
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Social",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 300,
+        "keyEvents:book_appointment": 22
+      },
+      {
+        "firstUserDefaultChannelGroup": "Organic Social",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 240,
+        "keyEvents:book_appointment": 19
+      },
+      {
+        "firstUserDefaultChannelGroup": "Referral",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 380,
+        "keyEvents:book_appointment": 21
+      },
+      {
+        "firstUserDefaultChannelGroup": "Referral",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 150,
+        "keyEvents:book_appointment": 12
+      }
+    ],
+    "3_days_from_first_visit": [
+      {
+        "firstSessionDate": "20260527",
+        "date": "20260805",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260529",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260602",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260610",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260612",
+        "date": "20260819",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260617",
+        "date": "20260826",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260618",
+        "date": "20260817",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260618",
+        "date": "20260828",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260619",
+        "date": "20260831",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260622",
+        "date": "20260817",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260624",
+        "date": "20260905",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260625",
+        "date": "20260807",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260627",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260628",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260629",
+        "date": "20260807",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260629",
+        "date": "20260820",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260629",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260701",
+        "date": "20260906",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260702",
+        "date": "20260808",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260702",
+        "date": "20260821",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260705",
+        "date": "20260729",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260705",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260705",
+        "date": "20260817",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260705",
+        "date": "20260917",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260706",
+        "date": "20260730",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260707",
+        "date": "20260810",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260709",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260709",
+        "date": "20260803",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260709",
+        "date": "20260921",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260711",
+        "date": "20260806",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260712",
+        "date": "20260810",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260712",
+        "date": "20260919",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260713",
+        "date": "20260808",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260713",
+        "date": "20260822",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260714",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260714",
+        "date": "20260807",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260714",
+        "date": "20260920",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260715",
+        "date": "20260802",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260715",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260715",
+        "date": "20260915",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260716",
+        "date": "20260806",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260716",
+        "date": "20260809",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260716",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260717",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260717",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260717",
+        "date": "20260816",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260717",
+        "date": "20260924",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260718",
+        "date": "20260808",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260718",
+        "date": "20260822",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260719",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260720",
+        "date": "20260806",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260720",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260721",
+        "date": "20260802",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260722",
+        "date": "20260821",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260722",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260723",
+        "date": "20260816",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260724",
+        "date": "20260819",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260725",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260725",
+        "date": "20260815",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260725",
+        "date": "20260903",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260726",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260726",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260726",
+        "date": "20260824",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260726",
+        "date": "20260904",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260727",
+        "date": "20260729",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260727",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260727",
+        "date": "20260802",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260727",
+        "date": "20260821",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260728",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260728",
+        "date": "20260802",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260728",
+        "date": "20260803",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260729",
+        "date": "20260729",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260729",
+        "date": "20260731",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260729",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260729",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260729",
+        "date": "20261011",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260730",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260801",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260802",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260821",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260829",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260730",
+        "date": "20260830",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260731",
+        "date": "20260731",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260731",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260731",
+        "date": "20260830",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260801",
+        "date": "20260801",
+        "keyEvents:book_appointment": 6
+      },
+      {
+        "firstSessionDate": "20260801",
+        "date": "20260803",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260801",
+        "date": "20260808",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260801",
+        "date": "20260820",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260801",
+        "date": "20260823",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260802",
+        "date": "20260802",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260802",
+        "date": "20260804",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260802",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260802",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260803",
+        "date": "20260803",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260803",
+        "date": "20260807",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260803",
+        "date": "20260808",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260803",
+        "date": "20260824",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260803",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260804",
+        "date": "20260804",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260804",
+        "date": "20260809",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260804",
+        "date": "20260810",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260804",
+        "date": "20260811",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260804",
+        "date": "20260822",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260805",
+        "date": "20260805",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260805",
+        "date": "20260812",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260806",
+        "date": "20260806",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260806",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260806",
+        "date": "20260829",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260806",
+        "date": "20260908",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260807",
+        "date": "20260807",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260807",
+        "date": "20260810",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260807",
+        "date": "20260814",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260808",
+        "date": "20260808",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260808",
+        "date": "20260814",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260808",
+        "date": "20260815",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260808",
+        "date": "20260906",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260808",
+        "date": "20260910",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260809",
+        "date": "20260809",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260809",
+        "date": "20260824",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260809",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260809",
+        "date": "20260831",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260809",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260810",
+        "date": "20260810",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260810",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260811",
+        "date": "20260811",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260811",
+        "date": "20260812",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260811",
+        "date": "20260817",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260811",
+        "date": "20260818",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260811",
+        "date": "20260909",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260812",
+        "date": "20260812",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260812",
+        "date": "20260818",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260812",
+        "date": "20260907",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260813",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260815",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260817",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260819",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20260828",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20261001",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260813",
+        "date": "20261005",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260814",
+        "keyEvents:book_appointment": 7
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260815",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260816",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260818",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260906",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260908",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20260928",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260814",
+        "date": "20261013",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260815",
+        "date": "20260815",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260815",
+        "date": "20260829",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260815",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260816",
+        "date": "20260816",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260816",
+        "date": "20260818",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260816",
+        "date": "20260828",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260816",
+        "date": "20260907",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260817",
+        "keyEvents:book_appointment": 8
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260819",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260820",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260831",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260908",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20260925",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260817",
+        "date": "20261005",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260818",
+        "date": "20260818",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260818",
+        "date": "20260820",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260818",
+        "date": "20260821",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260819",
+        "date": "20260819",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260819",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260819",
+        "date": "20260826",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260819",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260819",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260820",
+        "date": "20260820",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260820",
+        "date": "20260825",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260820",
+        "date": "20260905",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260820",
+        "date": "20260918",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260821",
+        "date": "20260821",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260821",
+        "date": "20260825",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260821",
+        "date": "20260901",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260821",
+        "date": "20260914",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260821",
+        "date": "20260918",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260822",
+        "date": "20260822",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260822",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260822",
+        "date": "20260829",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260822",
+        "date": "20260903",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260822",
+        "date": "20261019",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260823",
+        "date": "20260823",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260823",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260823",
+        "date": "20260905",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260823",
+        "date": "20260920",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260824",
+        "date": "20260824",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260824",
+        "date": "20260826",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260824",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260824",
+        "date": "20260828",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260824",
+        "date": "20260916",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260825",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260825",
+        "date": "20260901",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260826",
+        "date": "20260826",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260826",
+        "date": "20260905",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260826",
+        "date": "20260913",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260826",
+        "date": "20260915",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260827",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260829",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260830",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260901",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260902",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260903",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260905",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20260923",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260827",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260828",
+        "date": "20260828",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260828",
+        "date": "20260830",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260828",
+        "date": "20260907",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260828",
+        "date": "20260909",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260829",
+        "date": "20260829",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260829",
+        "date": "20260917",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260829",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260830",
+        "date": "20260831",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260830",
+        "date": "20260902",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260830",
+        "date": "20260906",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260830",
+        "date": "20260918",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260831",
+        "date": "20260831",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260831",
+        "date": "20260902",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260831",
+        "date": "20260915",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260831",
+        "date": "20260924",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20260901",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20260903",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20260907",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20260926",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260901",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260902",
+        "date": "20260902",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260902",
+        "date": "20260909",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260902",
+        "date": "20260917",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260902",
+        "date": "20261017",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260903",
+        "date": "20260903",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260903",
+        "date": "20260911",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260903",
+        "date": "20260929",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260904",
+        "date": "20260904",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260904",
+        "date": "20260913",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260904",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260904",
+        "date": "20260925",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260905",
+        "date": "20260905",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260906",
+        "date": "20260906",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260906",
+        "date": "20260908",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260906",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260907",
+        "date": "20260907",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260907",
+        "date": "20260909",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260907",
+        "date": "20260914",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20260908",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20260911",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20260914",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20260924",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20261003",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260908",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260909",
+        "date": "20260909",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260909",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260910",
+        "date": "20260910",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260910",
+        "date": "20260911",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260910",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260910",
+        "date": "20260915",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260910",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20260911",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20260913",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20260916",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20260918",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20260921",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260911",
+        "date": "20261004",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260912",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260913",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260914",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260916",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260918",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260912",
+        "date": "20260928",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20260913",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20260914",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20260915",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20260916",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260913",
+        "date": "20261021",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260914",
+        "date": "20260914",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260914",
+        "date": "20260916",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260914",
+        "date": "20260921",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260914",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260915",
+        "date": "20260915",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260915",
+        "date": "20260921",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260915",
+        "date": "20260925",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260915",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260915",
+        "date": "20261015",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260916",
+        "date": "20260919",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260916",
+        "date": "20260922",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260916",
+        "date": "20260923",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260916",
+        "date": "20260924",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260916",
+        "date": "20261008",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260917",
+        "date": "20260917",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260917",
+        "date": "20260919",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260917",
+        "date": "20260920",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260917",
+        "date": "20261005",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20260918",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20260925",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20260929",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20261009",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260918",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260919",
+        "date": "20260919",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260919",
+        "date": "20260920",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260920",
+        "date": "20260920",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260920",
+        "date": "20260928",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260921",
+        "date": "20260921",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260922",
+        "date": "20260922",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260922",
+        "date": "20260924",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20260923",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20260924",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20260927",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20260928",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20260929",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20261002",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20261003",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260923",
+        "date": "20261021",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260924",
+        "date": "20260924",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20260924",
+        "date": "20261008",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260925",
+        "date": "20260925",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260925",
+        "date": "20260926",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260925",
+        "date": "20260929",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260925",
+        "date": "20261002",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260925",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260926",
+        "date": "20260926",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260926",
+        "date": "20261019",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260927",
+        "date": "20260927",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260927",
+        "date": "20260928",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260927",
+        "date": "20261002",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20260928",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20261001",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20261002",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20261010",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260928",
+        "date": "20261017",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260929",
+        "date": "20260929",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20260929",
+        "date": "20261005",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260929",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260929",
+        "date": "20261026",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20260930",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261003",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261004",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261005",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20260930",
+        "date": "20261014",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261001",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261002",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261003",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261006",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261007",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261008",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261001",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261002",
+        "date": "20261002",
+        "keyEvents:book_appointment": 6
+      },
+      {
+        "firstSessionDate": "20261002",
+        "date": "20261011",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261003",
+        "date": "20261003",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20261003",
+        "date": "20261008",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261003",
+        "date": "20261014",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261004",
+        "date": "20261004",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20261004",
+        "date": "20261008",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261004",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261005",
+        "date": "20261005",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261005",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261006",
+        "date": "20261006",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20261006",
+        "date": "20261011",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261007",
+        "date": "20261007",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20261007",
+        "date": "20261010",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261007",
+        "date": "20261011",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261007",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261007",
+        "date": "20261014",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261008",
+        "date": "20261008",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261008",
+        "date": "20261012",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261008",
+        "date": "20261015",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261009",
+        "date": "20261009",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20261009",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261009",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261010",
+        "date": "20261010",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20261010",
+        "date": "20261012",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261010",
+        "date": "20261013",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261010",
+        "date": "20261015",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261010",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261011",
+        "date": "20261011",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261011",
+        "date": "20261017",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261011",
+        "date": "20261018",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261012",
+        "date": "20261012",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20261012",
+        "date": "20261017",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261013",
+        "date": "20261026",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261014",
+        "date": "20261014",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261015",
+        "date": "20261015",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20261015",
+        "date": "20261017",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261015",
+        "date": "20261021",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261015",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261016",
+        "date": "20261016",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261017",
+        "date": "20261017",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261017",
+        "date": "20261024",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261017",
+        "date": "20261026",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261018",
+        "date": "20261018",
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "firstSessionDate": "20261019",
+        "date": "20261019",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20261019",
+        "date": "20261021",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261019",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261020",
+        "date": "20261020",
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "firstSessionDate": "20261020",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261021",
+        "date": "20261021",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261021",
+        "date": "20261024",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261022",
+        "date": "20261022",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261023",
+        "date": "20261023",
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "firstSessionDate": "20261024",
+        "date": "20261024",
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "firstSessionDate": "20261025",
+        "date": "20261025",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261025",
+        "date": "20261026",
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "firstSessionDate": "20261026",
+        "date": "20261026",
+        "keyEvents:book_appointment": 1
+      }
+    ],
+    "4_landing_pages": [
+      {
+        "landingPage": "/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 1400,
+        "engagedSessions": 910,
+        "keyEvents:book_appointment": 77
+      },
+      {
+        "landingPage": "/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 1750,
+        "engagedSessions": 1138,
+        "keyEvents:book_appointment": 96
+      },
+      {
+        "landingPage": "/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 350,
+        "engagedSessions": 228,
+        "keyEvents:book_appointment": 19
+      },
+      {
+        "landingPage": "/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 350,
+        "engagedSessions": 227,
+        "keyEvents:book_appointment": 19
+      },
+      {
+        "landingPage": "/",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 350,
+        "engagedSessions": 227,
+        "keyEvents:book_appointment": 19
+      },
+      {
+        "landingPage": "/services/emergency-dentist/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 563,
+        "engagedSessions": 349,
+        "keyEvents:book_appointment": 33
+      },
+      {
+        "landingPage": "/services/emergency-dentist/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 187,
+        "engagedSessions": 116,
+        "keyEvents:book_appointment": 11
+      },
+      {
+        "landingPage": "/services/emergency-dentist/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 750,
+        "engagedSessions": 465,
+        "keyEvents:book_appointment": 44
+      },
+      {
+        "landingPage": "/services/teeth-cleaning/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 629,
+        "engagedSessions": 403,
+        "keyEvents:book_appointment": 30
+      },
+      {
+        "landingPage": "/services/teeth-cleaning/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 157,
+        "engagedSessions": 100,
+        "keyEvents:book_appointment": 7
+      },
+      {
+        "landingPage": "/services/teeth-cleaning/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 314,
+        "engagedSessions": 201,
+        "keyEvents:book_appointment": 15
+      },
+      {
+        "landingPage": "/services/invisalign/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 225,
+        "engagedSessions": 137,
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "landingPage": "/services/invisalign/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 113,
+        "engagedSessions": 69,
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "landingPage": "/services/invisalign/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 337,
+        "engagedSessions": 206,
+        "keyEvents:book_appointment": 8
+      },
+      {
+        "landingPage": "/services/invisalign/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 225,
+        "engagedSessions": 137,
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "landingPage": "/insurance-and-pricing/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 488,
+        "engagedSessions": 171,
+        "keyEvents:book_appointment": 16
+      },
+      {
+        "landingPage": "/insurance-and-pricing/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 488,
+        "engagedSessions": 171,
+        "keyEvents:book_appointment": 15
+      },
+      {
+        "landingPage": "/insurance-and-pricing/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 162,
+        "engagedSessions": 57,
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "landingPage": "/insurance-and-pricing/",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 162,
+        "engagedSessions": 56,
+        "keyEvents:book_appointment": 5
+      },
+      {
+        "landingPage": "/reviews/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 88,
+        "engagedSessions": 60,
+        "keyEvents:book_appointment": 4
+      },
+      {
+        "landingPage": "/reviews/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 175,
+        "engagedSessions": 119,
+        "keyEvents:book_appointment": 7
+      },
+      {
+        "landingPage": "/reviews/",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 87,
+        "engagedSessions": 59,
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "landingPage": "/blog/tooth-pain-at-night/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 1260,
+        "engagedSessions": 504,
+        "keyEvents:book_appointment": 8
+      },
+      {
+        "landingPage": "/blog/tooth-pain-at-night/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 140,
+        "engagedSessions": 56,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/blog/how-much-does-a-filling-cost/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 720,
+        "engagedSessions": 403,
+        "keyEvents:book_appointment": 11
+      },
+      {
+        "landingPage": "/blog/how-much-does-a-filling-cost/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 80,
+        "engagedSessions": 45,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/blog/whitening-strips-vs-professional/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 375,
+        "engagedSessions": 199,
+        "keyEvents:book_appointment": 3
+      },
+      {
+        "landingPage": "/blog/whitening-strips-vs-professional/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 225,
+        "engagedSessions": 119,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/blog/what-to-do-chipped-tooth/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 400,
+        "engagedSessions": 232,
+        "keyEvents:book_appointment": 7
+      },
+      {
+        "landingPage": "/blog/what-to-do-chipped-tooth/",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 50,
+        "engagedSessions": 29,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/book-online/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 164,
+        "engagedSessions": 131,
+        "keyEvents:book_appointment": 20
+      },
+      {
+        "landingPage": "/book-online/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 327,
+        "engagedSessions": 262,
+        "keyEvents:book_appointment": 40
+      },
+      {
+        "landingPage": "/book-online/",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 82,
+        "engagedSessions": 66,
+        "keyEvents:book_appointment": 10
+      },
+      {
+        "landingPage": "/book-online/",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 82,
+        "engagedSessions": 65,
+        "keyEvents:book_appointment": 10
+      },
+      {
+        "landingPage": "/book-online/",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 245,
+        "engagedSessions": 196,
+        "keyEvents:book_appointment": 30
+      },
+      {
+        "landingPage": "/new-patients/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 60,
+        "engagedSessions": 42,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/new-patients/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 120,
+        "engagedSessions": 84,
+        "keyEvents:book_appointment": 2
+      },
+      {
+        "landingPage": "/new-patients/",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 120,
+        "engagedSessions": 84,
+        "keyEvents:book_appointment": 1
+      },
+      {
+        "landingPage": "/patient-portal/",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 42,
+        "engagedSessions": 34,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "landingPage": "/patient-portal/",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 166,
+        "engagedSessions": 133,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "landingPage": "/patient-portal/",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 42,
+        "engagedSessions": 33,
+        "keyEvents:book_appointment": 0
+      }
+    ],
+    "5_pages_by_device": [
+      {
+        "pagePath": "/book-online/",
+        "deviceCategory": "mobile",
+        "sessions": 1900,
+        "keyEvents:book_appointment": 310
+      },
+      {
+        "pagePath": "/book-online/",
+        "deviceCategory": "desktop",
+        "sessions": 820,
+        "keyEvents:book_appointment": 271
+      },
+      {
+        "pagePath": "/book-online/",
+        "deviceCategory": "tablet",
+        "sessions": 80,
+        "keyEvents:book_appointment": 12
+      },
+      {
+        "pagePath": "/",
+        "deviceCategory": "mobile",
+        "sessions": 3900,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "pagePath": "/",
+        "deviceCategory": "desktop",
+        "sessions": 1700,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "pagePath": "/insurance-and-pricing/",
+        "deviceCategory": "mobile",
+        "sessions": 1500,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "pagePath": "/insurance-and-pricing/",
+        "deviceCategory": "desktop",
+        "sessions": 700,
+        "keyEvents:book_appointment": 0
+      },
+      {
+        "pagePath": "/services/emergency-dentist/",
+        "deviceCategory": "mobile",
+        "sessions": 1400,
+        "keyEvents:book_appointment": 0
+      }
+    ],
+    "6_search_console_queries": {
+      "row_limit": 25000,
+      "rows": [
+        {
+          "query": "dentist near me",
+          "clicks": 210,
+          "impressions": 14000,
+          "ctr": 0.015,
+          "position": 8.4
+        },
+        {
+          "query": "emergency dentist near me",
+          "clicks": 98,
+          "impressions": 9800,
+          "ctr": 0.01,
+          "position": 6.2
+        },
+        {
+          "query": "tooth pain at night",
+          "clicks": 370,
+          "impressions": 7400,
+          "ctr": 0.05,
+          "position": 3.8
+        },
+        {
+          "query": "family dentist near me",
+          "clicks": 182,
+          "impressions": 5200,
+          "ctr": 0.035,
+          "position": 5.1
+        },
+        {
+          "query": "wisdom tooth pain",
+          "clicks": 12,
+          "impressions": 3900,
+          "ctr": 0.0031,
+          "position": 11.5
+        },
+        {
+          "query": "invisalign cost",
+          "clicks": 40,
+          "impressions": 3300,
+          "ctr": 0.0121,
+          "position": 9.2
+        },
+        {
+          "query": "example family dental",
+          "clicks": 1450,
+          "impressions": 3100,
+          "ctr": 0.4677,
+          "position": 1.1
+        },
+        {
+          "query": "how much does a filling cost",
+          "clicks": 290,
+          "impressions": 2900,
+          "ctr": 0.1,
+          "position": 2.1
+        },
+        {
+          "query": "teeth cleaning cost without insurance",
+          "clicks": 104,
+          "impressions": 2600,
+          "ctr": 0.04,
+          "position": 4.6
+        },
+        {
+          "query": "tooth sensitivity to cold",
+          "clicks": 15,
+          "impressions": 2200,
+          "ctr": 0.0068,
+          "position": 4.4
+        },
+        {
+          "query": "dentists accepting new patients",
+          "clicks": 63,
+          "impressions": 2100,
+          "ctr": 0.03,
+          "position": 7.1
+        },
+        {
+          "query": "pediatric dentist near me",
+          "clicks": 133,
+          "impressions": 1900,
+          "ctr": 0.07,
+          "position": 3.2
+        },
+        {
+          "query": "chipped tooth what to do",
+          "clicks": 160,
+          "impressions": 1800,
+          "ctr": 0.0889,
+          "position": 2.8
+        },
+        {
+          "query": "why does my tooth hurt when i bite",
+          "clicks": 30,
+          "impressions": 1600,
+          "ctr": 0.0187,
+          "position": 6.9
+        },
+        {
+          "query": "invisalign vs braces",
+          "clicks": 8,
+          "impressions": 1500,
+          "ctr": 0.0053,
+          "position": 12.3
+        },
+        {
+          "query": "best dentist exampleville",
+          "clicks": 190,
+          "impressions": 1300,
+          "ctr": 0.1462,
+          "position": 2.4
+        },
+        {
+          "query": "whitening strips vs professional whitening",
+          "clicks": 54,
+          "impressions": 1200,
+          "ctr": 0.045,
+          "position": 5.5
+        },
+        {
+          "query": "how long does a crown last",
+          "clicks": 22,
+          "impressions": 1100,
+          "ctr": 0.02,
+          "position": 8.8
+        },
+        {
+          "query": "gum bleeding when brushing",
+          "clicks": 26,
+          "impressions": 950,
+          "ctr": 0.0274,
+          "position": 7.4
+        },
+        {
+          "query": "example family dental reviews",
+          "clicks": 160,
+          "impressions": 420,
+          "ctr": 0.381,
+          "position": 1.4
+        },
+        {
+          "query": "example family dental phone number",
+          "clicks": 190,
+          "impressions": 380,
+          "ctr": 0.5,
+          "position": 1.2
+        },
+        {
+          "query": "example family dental hours",
+          "clicks": 120,
+          "impressions": 260,
+          "ctr": 0.4615,
+          "position": 1.3
+        },
+        {
+          "query": "example family dental patient portal",
+          "clicks": 130,
+          "impressions": 210,
+          "ctr": 0.619,
+          "position": 1.1
+        },
+        {
+          "query": "tooth extraction aftercare",
+          "clicks": 7,
+          "impressions": 187,
+          "ctr": 0.0374,
+          "position": 6.6
+        },
+        {
+          "query": "can a cavity heal",
+          "clicks": 6,
+          "impressions": 181,
+          "ctr": 0.0331,
+          "position": 15.7
+        },
+        {
+          "query": "swollen gums around one tooth",
+          "clicks": 1,
+          "impressions": 176,
+          "ctr": 0.0057,
+          "position": 13.6
+        },
+        {
+          "query": "how often should you get a cleaning",
+          "clicks": 7,
+          "impressions": 175,
+          "ctr": 0.04,
+          "position": 15.4
+        },
+        {
+          "query": "dentist open saturday exampleville",
+          "clicks": 3,
+          "impressions": 169,
+          "ctr": 0.0178,
+          "position": 6.3
+        },
+        {
+          "query": "root canal cost exampleville",
+          "clicks": 7,
+          "impressions": 153,
+          "ctr": 0.0458,
+          "position": 6.6
+        },
+        {
+          "query": "example family dental book appointment",
+          "clicks": 82,
+          "impressions": 150,
+          "ctr": 0.5467,
+          "position": 1.2
+        },
+        {
+          "query": "dentist exampleville reviews",
+          "clicks": 7,
+          "impressions": 142,
+          "ctr": 0.0493,
+          "position": 11.1
+        },
+        {
+          "query": "cracked filling hurts",
+          "clicks": 6,
+          "impressions": 135,
+          "ctr": 0.0444,
+          "position": 3.6
+        },
+        {
+          "query": "kids first dentist visit age",
+          "clicks": 3,
+          "impressions": 130,
+          "ctr": 0.0231,
+          "position": 16.2
+        },
+        {
+          "query": "night guard for grinding",
+          "clicks": 4,
+          "impressions": 126,
+          "ctr": 0.0317,
+          "position": 11.3
+        },
+        {
+          "query": "familydental exampleville",
+          "clicks": 70,
+          "impressions": 120,
+          "ctr": 0.5833,
+          "position": 1.2
+        },
+        {
+          "query": "example family dental pay bill",
+          "clicks": 48,
+          "impressions": 90,
+          "ctr": 0.5333,
+          "position": 1.3
+        },
+        {
+          "query": "best electric toothbrush dentist",
+          "clicks": 0,
+          "impressions": 69,
+          "ctr": 0.0,
+          "position": 12.5
+        },
+        {
+          "query": "deep cleaning teeth price",
+          "clicks": 0,
+          "impressions": 67,
+          "ctr": 0.0,
+          "position": 5.4
+        },
+        {
+          "query": "what helps a toothache",
+          "clicks": 3,
+          "impressions": 66,
+          "ctr": 0.0455,
+          "position": 13.1
+        },
+        {
+          "query": "dental crown cost",
+          "clicks": 1,
+          "impressions": 61,
+          "ctr": 0.0164,
+          "position": 8.1
+        },
+        {
+          "query": "is teeth whitening safe",
+          "clicks": 1,
+          "impressions": 53,
+          "ctr": 0.0189,
+          "position": 17.7
+        },
+        {
+          "query": "veneers vs bonding",
+          "clicks": 0,
+          "impressions": 48,
+          "ctr": 0.0,
+          "position": 5.7
+        }
+      ]
+    },
+    "7_klaviyo_flows": [
+      {
+        "id": "FlwWelc01",
+        "name": "New patient welcome",
+        "status": "live",
+        "trigger_type": "Added to List"
+      },
+      {
+        "id": "FlwRecall",
+        "name": "Six-month recall",
+        "status": "live",
+        "trigger_type": "Metric"
+      },
+      {
+        "id": "FlwReview",
+        "name": "Review request after visit",
+        "status": "draft",
+        "trigger_type": "Metric"
+      }
+    ],
+    "7_klaviyo_flow_report": {
+      "conversion_metric": "Booked Appointment",
+      "timeframe": "last_90_days",
+      "results": [
+        {
+          "groupings": {
+            "flow_id": "FlwWelc01",
+            "flow_message_id": "MsgW1",
+            "send_channel": "email",
+            "flow_name": "New patient welcome",
+            "flow_message_name": "Welcome and what to expect"
+          },
+          "statistics": {
+            "delivered": 610,
+            "clicks_unique": 220,
+            "conversions": 12,
+            "unsubscribes": 2
+          }
+        },
+        {
+          "groupings": {
+            "flow_id": "FlwWelc01",
+            "flow_message_id": "MsgW2",
+            "send_channel": "email",
+            "flow_name": "New patient welcome",
+            "flow_message_name": "Your forms take 2 minutes"
+          },
+          "statistics": {
+            "delivered": 590,
+            "clicks_unique": 260,
+            "conversions": 9,
+            "unsubscribes": 1
+          }
+        },
+        {
+          "groupings": {
+            "flow_id": "FlwRecall",
+            "flow_message_id": "MsgR1",
+            "send_channel": "email",
+            "flow_name": "Six-month recall",
+            "flow_message_name": "Recall 1: time for your checkup"
+          },
+          "statistics": {
+            "delivered": 1850,
+            "clicks_unique": 241,
+            "conversions": 120,
+            "unsubscribes": 6
+          }
+        },
+        {
+          "groupings": {
+            "flow_id": "FlwRecall",
+            "flow_message_id": "MsgR2",
+            "send_channel": "email",
+            "flow_name": "Six-month recall",
+            "flow_message_name": "Recall 2: we saved you a time"
+          },
+          "statistics": {
+            "delivered": 1520,
+            "clicks_unique": 167,
+            "conversions": 70,
+            "unsubscribes": 5
+          }
+        },
+        {
+          "groupings": {
+            "flow_id": "FlwRecall",
+            "flow_message_id": "MsgR3",
+            "send_channel": "email",
+            "flow_name": "Six-month recall",
+            "flow_message_name": "Recall 3: last reminder"
+          },
+          "statistics": {
+            "delivered": 1240,
+            "clicks_unique": 37,
+            "conversions": 10,
+            "unsubscribes": 9
+          }
+        }
+      ]
+    },
+    "11_google_reviews": [
+      {
+        "reviewId": "rev-040",
+        "starRating": "FOUR",
+        "comment": "Friendly team, they explained everything.",
+        "createTime": "2026-10-10T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-014",
+        "starRating": "FIVE",
+        "comment": "Best checkup I have had, gentle and clear.",
+        "createTime": "2026-09-27T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-038",
+        "starRating": "FOUR",
+        "comment": "Gentle care, but I waited 20 minutes past my time.",
+        "createTime": "2026-09-21T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-09-23T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-032",
+        "starRating": "FIVE",
+        "comment": "My son was nervous and they were so kind.",
+        "createTime": "2026-09-16T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-09-18T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-030",
+        "starRating": "FIVE",
+        "comment": "Best checkup I have had, gentle and clear.",
+        "createTime": "2026-09-14T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-021",
+        "starRating": "FIVE",
+        "comment": "Friendly front desk and easy online booking on my laptop.",
+        "createTime": "2026-09-13T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-09-15T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-001",
+        "starRating": "FIVE",
+        "comment": "Gentle with my kids and explained every step.",
+        "createTime": "2026-09-03T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-09-05T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-033",
+        "starRating": "FIVE",
+        "comment": "Gentle with my kids and explained every step.",
+        "createTime": "2026-08-26T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-013",
+        "starRating": "FIVE",
+        "comment": "Friendly front desk and easy online booking on my laptop.",
+        "createTime": "2026-08-11T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-020",
+        "starRating": "FIVE",
+        "comment": "Kind hygienist, gentle and quick.",
+        "createTime": "2026-07-16T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-018",
+        "starRating": "FIVE",
+        "comment": "Very gentle cleaning, friendly team.",
+        "createTime": "2026-07-05T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-07-07T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-024",
+        "starRating": "FIVE",
+        "comment": "My son was nervous and they were so kind.",
+        "createTime": "2026-07-02T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-07-04T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-034",
+        "starRating": "FIVE",
+        "comment": "Very gentle cleaning, friendly team.",
+        "createTime": "2026-07-02T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-028",
+        "starRating": "FIVE",
+        "comment": "Kind hygienist, gentle and quick.",
+        "createTime": "2026-06-19T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-06-21T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-046",
+        "starRating": "ONE",
+        "comment": "Charged me for something I was told insurance covers. Billing was a mess.",
+        "createTime": "2026-06-17T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-017",
+        "starRating": "FIVE",
+        "comment": "Gentle with my kids and explained every step.",
+        "createTime": "2026-06-07T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-06-09T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-002",
+        "starRating": "FIVE",
+        "comment": "Very gentle cleaning, friendly team.",
+        "createTime": "2026-05-29T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-025",
+        "starRating": "FIVE",
+        "comment": "Gentle with my kids and explained every step.",
+        "createTime": "2026-05-20T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-05-22T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-023",
+        "starRating": "FIVE",
+        "comment": "Explained my options without any pressure.",
+        "createTime": "2026-05-17T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-05-19T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-026",
+        "starRating": "FIVE",
+        "comment": "Very gentle cleaning, friendly team.",
+        "createTime": "2026-05-06T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-05-08T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-006",
+        "starRating": "FIVE",
+        "comment": "Best checkup I have had, gentle and clear.",
+        "createTime": "2026-04-26T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-04-28T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-012",
+        "starRating": "FIVE",
+        "comment": "Kind hygienist, gentle and quick.",
+        "createTime": "2026-04-24T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-005",
+        "starRating": "FIVE",
+        "comment": "Friendly front desk and easy online booking on my laptop.",
+        "createTime": "2026-04-17T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-04-19T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-010",
+        "starRating": "FIVE",
+        "comment": "Very gentle cleaning, friendly team.",
+        "createTime": "2026-04-12T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-011",
+        "starRating": "FIVE",
+        "comment": "They explained the treatment plan clearly and the price matched.",
+        "createTime": "2026-04-02T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-04-04T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-042",
+        "starRating": "THREE",
+        "comment": "Waited a long time in the lobby.",
+        "createTime": "2026-04-02T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-04-04T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-043",
+        "starRating": "THREE",
+        "comment": "Good care but the bill was higher than the estimate.",
+        "createTime": "2026-03-22T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-03-24T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-007",
+        "starRating": "FIVE",
+        "comment": "Explained my options without any pressure.",
+        "createTime": "2026-02-16T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-039",
+        "starRating": "FOUR",
+        "comment": "Great dentist, parking is tight.",
+        "createTime": "2026-02-12T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-02-14T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-022",
+        "starRating": "FIVE",
+        "comment": "Best checkup I have had, gentle and clear.",
+        "createTime": "2026-02-07T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-047",
+        "starRating": "ONE",
+        "comment": "Waited 40 minutes, then rushed.",
+        "createTime": "2026-02-05T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-048",
+        "starRating": "ONE",
+        "comment": "Called three times at lunch, no answer, booked elsewhere.",
+        "createTime": "2026-02-03T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-008",
+        "starRating": "FIVE",
+        "comment": "My son was nervous and they were so kind.",
+        "createTime": "2026-01-24T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-036",
+        "starRating": "FOUR",
+        "comment": "Great dentist, parking is tight.",
+        "createTime": "2026-01-22T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-24T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-027",
+        "starRating": "FIVE",
+        "comment": "They explained the treatment plan clearly and the price matched.",
+        "createTime": "2026-01-20T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-22T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-041",
+        "starRating": "THREE",
+        "comment": "Good care but the bill was higher than the estimate.",
+        "createTime": "2026-01-19T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-21T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-035",
+        "starRating": "FOUR",
+        "comment": "Gentle care, but I waited 20 minutes past my time.",
+        "createTime": "2026-01-17T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-19T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-009",
+        "starRating": "FIVE",
+        "comment": "Gentle with my kids and explained every step.",
+        "createTime": "2026-01-14T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-16T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-003",
+        "starRating": "FIVE",
+        "comment": "They explained the treatment plan clearly and the price matched.",
+        "createTime": "2026-01-11T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2026-01-13T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-019",
+        "starRating": "FIVE",
+        "comment": "They explained the treatment plan clearly and the price matched.",
+        "createTime": "2026-01-09T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-016",
+        "starRating": "FIVE",
+        "comment": "My son was nervous and they were so kind.",
+        "createTime": "2025-12-20T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-044",
+        "starRating": "TWO",
+        "comment": "Insurance did not cover what the front desk said it would, surprise bill.",
+        "createTime": "2025-12-19T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-029",
+        "starRating": "FIVE",
+        "comment": "Friendly front desk and easy online booking on my laptop.",
+        "createTime": "2025-12-16T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2025-12-18T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-045",
+        "starRating": "TWO",
+        "comment": "Could never get through on the phone at lunch.",
+        "createTime": "2025-12-06T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-015",
+        "starRating": "FIVE",
+        "comment": "Explained my options without any pressure.",
+        "createTime": "2025-11-26T15:00:00Z"
+      },
+      {
+        "reviewId": "rev-037",
+        "starRating": "FOUR",
+        "comment": "Friendly team, they explained everything.",
+        "createTime": "2025-11-26T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2025-11-28T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-031",
+        "starRating": "FIVE",
+        "comment": "Explained my options without any pressure.",
+        "createTime": "2025-11-02T15:00:00Z",
+        "reviewReply": {
+          "comment": "Thank you for your review.",
+          "updateTime": "2025-11-04T10:00:00Z"
+        }
+      },
+      {
+        "reviewId": "rev-004",
+        "starRating": "FIVE",
+        "comment": "Kind hygienist, gentle and quick.",
+        "createTime": "2025-10-27T15:00:00Z"
+      }
+    ]
+  }
+}

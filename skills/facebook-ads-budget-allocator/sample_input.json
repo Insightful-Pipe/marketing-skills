@@ -1,0 +1,394 @@
+{
+  "note": "Example data: an invented store, not a real account. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"facebook-ads-budget-allocator\" skill. Look at my Meta ad account and tell me where to move budget, and how fast.",
+  "account": {
+    "ad_account_id": "act_123456789",
+    "name": "Example DTC skincare store",
+    "currency": "USD",
+    "timezone": "America/Los_Angeles",
+    "status": "active"
+  },
+  "inputs_from_user": {
+    "target_cost_per_result": {
+      "purchase": 45.0,
+      "link_click": "not given; default is the account's own 0.60"
+    },
+    "budget_plan": "hold the total",
+    "must_run_campaigns": "none",
+    "customer_audiences": "none of the custom audiences is a customer list"
+  },
+  "windows": {
+    "current": "2026-09-21 to 2026-10-20",
+    "previous": "2026-08-22 to 2026-09-20",
+    "budget_edits": "2026-10-07 to 2026-10-21"
+  },
+  "data_pulled": {
+    "get_campaigns": [
+      {
+        "id": "120000000000000001",
+        "name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120000000000000002",
+        "name": "PROSP_Broad_Serum",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120000000000000003",
+        "name": "Retargeting | Sales | All Products | US | 2026-07",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120000000000000004",
+        "name": "New Sales Campaign",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120000000000000005",
+        "name": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+        "objective": "OUTCOME_TRAFFIC",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120000000000000006",
+        "name": "Prospecting | Sales | Night Cream | US | 2026-06",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "PAUSED"
+      }
+    ],
+    "get_adsets": [
+      {
+        "id": "120000000000100001",
+        "campaign_id": "120000000000000001",
+        "name": "Broad 25-54 | US",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "9000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [
+            "Website visitors 30d",
+            "Purchasers 180d"
+          ],
+          "advantage_audience": 1
+        }
+      },
+      {
+        "id": "120000000000100002",
+        "campaign_id": "120000000000000001",
+        "name": "Interest - skincare",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "4000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [
+            "Purchasers 180d"
+          ],
+          "advantage_audience": 0
+        }
+      },
+      {
+        "id": "120000000000100003",
+        "campaign_id": "120000000000000001",
+        "name": "LAL 1% purchasers 180d",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "4000",
+        "targeting": {
+          "custom_audiences": [
+            "LAL 1% US - Purchasers 180d"
+          ],
+          "excluded_custom_audiences": [
+            "Purchasers 180d"
+          ],
+          "advantage_audience": 0
+        }
+      },
+      {
+        "id": "120000000000100004",
+        "campaign_id": "120000000000000002",
+        "name": "broad serum",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "6000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [],
+          "advantage_audience": 1
+        }
+      },
+      {
+        "id": "120000000000100005",
+        "campaign_id": "120000000000000003",
+        "name": "Site visitors 30d + ATC 14d",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "7000",
+        "targeting": {
+          "custom_audiences": [
+            "Website visitors 30d",
+            "Add to cart 14d"
+          ],
+          "excluded_custom_audiences": [
+            "Purchasers 180d"
+          ],
+          "advantage_audience": 0
+        }
+      },
+      {
+        "id": "120000000000100006",
+        "campaign_id": "120000000000000004",
+        "name": "New Sales Ad Set",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "5000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [],
+          "advantage_audience": 0
+        }
+      },
+      {
+        "id": "120000000000100007",
+        "campaign_id": "120000000000000005",
+        "name": "Blog readers | US",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "LINK_CLICKS",
+        "promoted_object": null,
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "3000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [],
+          "advantage_audience": 0
+        }
+      },
+      {
+        "id": "120000000000100008",
+        "campaign_id": "120000000000000006",
+        "name": "Night cream launch | US",
+        "effective_status": "PAUSED",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "billing_event": "IMPRESSIONS",
+        "daily_budget": "4000",
+        "targeting": {
+          "custom_audiences": [],
+          "excluded_custom_audiences": [],
+          "advantage_audience": 0
+        }
+      }
+    ],
+    "get_minimum_budgets": {
+      "currency": "USD",
+      "min_daily_budget_imp": 100,
+      "min_daily_budget_video_views": 100,
+      "min_daily_budget_high_freq": 500,
+      "min_daily_budget_low_freq": 4000
+    },
+    "get_insights_adaccount_current": [
+      {
+        "adset_id": "120000000000100001",
+        "spend": "2700",
+        "results": 66,
+        "result_event": "purchase",
+        "frequency": 2.7,
+        "cpm": 14.0,
+        "reach": 71000
+      },
+      {
+        "adset_id": "120000000000100002",
+        "spend": "1200",
+        "results": 21,
+        "result_event": "purchase",
+        "frequency": 2.2,
+        "cpm": 16.0,
+        "reach": 34000
+      },
+      {
+        "adset_id": "120000000000100003",
+        "spend": "1200",
+        "results": 24,
+        "result_event": "purchase",
+        "frequency": 2.4,
+        "cpm": 15.0,
+        "reach": 33000
+      },
+      {
+        "adset_id": "120000000000100004",
+        "spend": "1800",
+        "results": 45,
+        "result_event": "purchase",
+        "frequency": 2.5,
+        "cpm": 13.6,
+        "reach": 53000
+      },
+      {
+        "adset_id": "120000000000100005",
+        "spend": "2100",
+        "results": 70,
+        "result_event": "purchase",
+        "frequency": 5.6,
+        "cpm": 21.9,
+        "reach": 17000
+      },
+      {
+        "adset_id": "120000000000100006",
+        "spend": "1500",
+        "results": 18,
+        "result_event": "purchase",
+        "frequency": 1.9,
+        "cpm": 15.9,
+        "reach": 50000
+      },
+      {
+        "adset_id": "120000000000100007",
+        "spend": "900",
+        "results": 1500,
+        "result_event": "link_click",
+        "frequency": 1.7,
+        "cpm": 9.4,
+        "reach": 56000
+      }
+    ],
+    "get_insights_adaccount_previous": [
+      {
+        "adset_id": "120000000000100001",
+        "spend": "2400",
+        "results": 64,
+        "frequency": 2.6,
+        "cpm": 13.6
+      },
+      {
+        "adset_id": "120000000000100002",
+        "spend": "1250",
+        "results": 25,
+        "frequency": 1.9,
+        "cpm": 13.0
+      },
+      {
+        "adset_id": "120000000000100003",
+        "spend": "900",
+        "results": 22,
+        "frequency": 2.3,
+        "cpm": 14.5
+      },
+      {
+        "adset_id": "120000000000100004",
+        "spend": "1800",
+        "results": 50,
+        "frequency": 2.4,
+        "cpm": 13.2
+      },
+      {
+        "adset_id": "120000000000100005",
+        "spend": "1650",
+        "results": 62,
+        "frequency": 5.2,
+        "cpm": 21.0
+      },
+      {
+        "adset_id": "120000000000100006",
+        "spend": "600",
+        "results": 9,
+        "frequency": 1.8,
+        "cpm": 15.5
+      },
+      {
+        "adset_id": "120000000000100007",
+        "spend": "900",
+        "results": 1550,
+        "frequency": 1.7,
+        "cpm": 9.2
+      }
+    ],
+    "get_custom_audiences": [
+      {
+        "id": "23800000000000001",
+        "name": "Website visitors 30d",
+        "subtype": "WEBSITE",
+        "approximate_count_lower_bound": 41000,
+        "approximate_count_upper_bound": 48000
+      },
+      {
+        "id": "23800000000000002",
+        "name": "Add to cart 14d",
+        "subtype": "WEBSITE",
+        "approximate_count_lower_bound": 6200,
+        "approximate_count_upper_bound": 7300
+      },
+      {
+        "id": "23800000000000003",
+        "name": "Purchasers 180d",
+        "subtype": "WEBSITE",
+        "approximate_count_lower_bound": 9800,
+        "approximate_count_upper_bound": 11500
+      },
+      {
+        "id": "23800000000000004",
+        "name": "LAL 1% US - Purchasers 180d",
+        "subtype": "LOOKALIKE",
+        "approximate_count_lower_bound": 2100000,
+        "approximate_count_upper_bound": 2500000
+      }
+    ],
+    "get_activities_adaccount": [
+      {
+        "event_time": "2026-10-17T09:12:00-0700",
+        "event_type": "update_ad_set_budget",
+        "object_type": "CAMPAIGN",
+        "object_id": "120000000000100001",
+        "object_name": "Broad 25-54 | US",
+        "extra_data": {
+          "old_value": 7500,
+          "new_value": 9000
+        }
+      },
+      {
+        "event_time": "2026-10-14T16:40:00-0700",
+        "event_type": "update_ad_run_status",
+        "object_type": "ADGROUP",
+        "object_name": "Static - before/after"
+      },
+      {
+        "event_time": "2026-10-09T10:20:00-0700",
+        "event_type": "update_campaign_name",
+        "object_type": "CAMPAIGN_GROUP",
+        "object_name": "Prospecting | Traffic | Blog | US | 2026-09 - Copy"
+      }
+    ]
+  },
+  "calls": 9
+}

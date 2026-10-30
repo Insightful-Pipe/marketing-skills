@@ -1,0 +1,658 @@
+{
+  "note": "Example data: an invented online booking software company with an invented portfolio (a payments add-on, an acquired scheduling app and two planned products) and invented accounts, not a real business. Every number in expected_output.json follows from this input. Meta Ads is not connected in this example, so the audience cross-check is not run.",
+  "request": "Hey Claude, I just added the \"brand-architecture\" skill. We sell Example Booking, plus TapDeposit payments, Shiftnest (the scheduling app we bought last year) and two products we're planning: Clinic Suite and a consumer app called Glowfinder. Tell me how these brands should relate, what to name things, and what it means for our site, ads and social.",
+  "run_date": "2026-10-28",
+  "windows": {
+    "search_console": [
+      "2026-07-28",
+      "2026-10-25"
+    ],
+    "ga4": [
+      "2026-07-30",
+      "2026-10-27"
+    ],
+    "google_ads": [
+      "2026-07-30",
+      "2026-10-27"
+    ],
+    "dataforseo": "average monthly US searches, location_code 2840, language_code en"
+  },
+  "connected": {
+    "google-search-console": [
+      "https://www.example.com/",
+      "https://shiftnest.example/"
+    ],
+    "dataforseo": true,
+    "google-analytics": "properties/123456789",
+    "google-ads": "1234567890",
+    "facebook-ads": null
+  },
+  "pasted": {
+    "parent": {
+      "name": "Example Booking",
+      "company": "Example Booking Software",
+      "site": "https://www.example.com",
+      "what": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+      "customers_by_segment": {
+        "salons": 420,
+        "clinics": 280,
+        "fitness studios and trainers": 220,
+        "other services": 80
+      },
+      "plan_mix": {
+        "Starter": 0.4,
+        "Growth": 0.45,
+        "Business": 0.15
+      },
+      "plans": [
+        {
+          "name": "Starter",
+          "price_month_usd": 19,
+          "staff": 1
+        },
+        {
+          "name": "Growth",
+          "price_month_usd": 49,
+          "staff": 5
+        },
+        {
+          "name": "Business",
+          "price_month_usd": 99,
+          "staff": 20
+        }
+      ]
+    },
+    "products": [
+      {
+        "name": "TapDeposit",
+        "status": "live",
+        "what": "card deposits and online payments taken at booking, sold as an add-on",
+        "lives": "https://www.example.com/tapdeposit/",
+        "current_relationship": "its own coined name, sold inside the Example Booking site and app",
+        "segments": {
+          "salons": 590,
+          "clinics": 320,
+          "fitness studios and trainers": 250,
+          "other services": 80
+        },
+        "spend": {
+          "basis": "1.9% plus $0.30 per payment, on a typical $2,600 a month across 52 payments"
+        },
+        "risk": {
+          "rates_or_competes_with_parent_customers": {
+            "answer": "no",
+            "why": "it only processes the customer's own payments"
+          },
+          "regulated_category_parent_is_not_in": {
+            "answer": "no",
+            "why": "payments run through the parent's existing payment processor"
+          },
+          "known_problem_could_spread": {
+            "answer": "no",
+            "why": "no incidents or complaints on record"
+          }
+        },
+        "tiers": null
+      },
+      {
+        "name": "Shiftnest",
+        "status": "live",
+        "what": "staff shift scheduling and rotas, acquired in June 2025, on its own domain",
+        "lives": "https://shiftnest.example",
+        "current_relationship": "run as a separate brand; its site and app do not mention Example Booking",
+        "segments": {
+          "cafes": 340,
+          "retail stores": 290,
+          "salons": 160,
+          "clinics": 110,
+          "fitness studios and trainers": 100
+        },
+        "spend": {
+          "basis": "$4 per staff member a month on Team, typical 11 staff"
+        },
+        "risk": {
+          "rates_or_competes_with_parent_customers": {
+            "answer": "no",
+            "why": "it schedules the customer's own staff"
+          },
+          "regulated_category_parent_is_not_in": {
+            "answer": "no",
+            "why": "no regulated data beyond what the parent already holds"
+          },
+          "known_problem_could_spread": {
+            "answer": "no",
+            "why": "app store rating steady, no incidents on record"
+          }
+        },
+        "tiers": [
+          {
+            "name": "Basic",
+            "price_per_staff_month_usd": 3
+          },
+          {
+            "name": "Team",
+            "price_per_staff_month_usd": 4
+          },
+          {
+            "name": "Pro",
+            "price_per_staff_month_usd": 6
+          }
+        ]
+      },
+      {
+        "name": "Clinic Suite",
+        "status": "planned",
+        "what": "multi-location scheduling, intake forms and reporting for clinic groups",
+        "lives": "not built yet",
+        "current_relationship": "planned",
+        "segments": {
+          "clinics": 100
+        },
+        "spend": {
+          "basis": "$349 per location a month, typical 3 locations"
+        },
+        "risk": {
+          "rates_or_competes_with_parent_customers": {
+            "answer": "no",
+            "why": "it serves clinics, who are already customers"
+          },
+          "regulated_category_parent_is_not_in": {
+            "answer": "no",
+            "why": "health data, but the parent already serves clinics (28% of customers)"
+          },
+          "known_problem_could_spread": {
+            "answer": "no",
+            "why": "new product"
+          }
+        },
+        "tiers": null
+      },
+      {
+        "name": "Glowfinder",
+        "status": "planned",
+        "what": "a consumer app to find, compare and book salons nearby, with ratings",
+        "lives": "not built yet",
+        "current_relationship": "planned",
+        "segments": {
+          "consumers booking a salon": 100
+        },
+        "spend": {
+          "basis": "consumers pay nothing; salons are billed through their existing plan"
+        },
+        "risk": {
+          "rates_or_competes_with_parent_customers": {
+            "answer": "yes",
+            "why": "it rates salons and lists rival salons next to the parent's own salon customers"
+          },
+          "regulated_category_parent_is_not_in": {
+            "answer": "no",
+            "why": "no"
+          },
+          "known_problem_could_spread": {
+            "answer": "no",
+            "why": "new product"
+          }
+        },
+        "tiers": null
+      }
+    ],
+    "features": [
+      {
+        "name": "Refill",
+        "what": "fills a cancelled slot from the waitlist automatically",
+        "sold_on_its_own": false,
+        "own_price": null,
+        "own_page": false
+      },
+      {
+        "name": "Automatic reminders",
+        "what": "SMS and email reminders",
+        "sold_on_its_own": false,
+        "own_price": null,
+        "own_page": true
+      },
+      {
+        "name": "Deposits",
+        "what": "take a deposit at booking",
+        "sold_on_its_own": false,
+        "own_price": null,
+        "own_page": true
+      }
+    ],
+    "funding_for_a_separate_brand": {
+      "Glowfinder": {
+        "second_site": true,
+        "separate_ad_budget": true,
+        "separate_social_accounts": true,
+        "said": "Yes: Glowfinder gets its own team, app listing, ad budget and social accounts."
+      }
+    }
+  },
+  "data_pulled": {
+    "dataforseo_kw_google_ads_search_volume": [
+      {
+        "keyword": "example booking",
+        "search_volume": 2900
+      },
+      {
+        "keyword": "examplebooking",
+        "search_volume": 170
+      },
+      {
+        "keyword": "tapdeposit",
+        "search_volume": 10
+      },
+      {
+        "keyword": "tap deposit",
+        "search_volume": 20
+      },
+      {
+        "keyword": "shiftnest",
+        "search_volume": 1300
+      },
+      {
+        "keyword": "shift nest",
+        "search_volume": 70
+      },
+      {
+        "keyword": "glowfinder",
+        "search_volume": 0
+      },
+      {
+        "keyword": "glow finder",
+        "search_volume": 10
+      },
+      {
+        "keyword": "clinic suite",
+        "search_volume": 210
+      },
+      {
+        "keyword": "refill",
+        "search_volume": 60500
+      },
+      {
+        "keyword": "example booking tapdeposit",
+        "search_volume": 10
+      },
+      {
+        "keyword": "example booking shiftnest",
+        "search_volume": 20
+      },
+      {
+        "keyword": "example booking clinic suite",
+        "search_volume": 0
+      },
+      {
+        "keyword": "example booking glowfinder",
+        "search_volume": 0
+      },
+      {
+        "keyword": "example booking refill",
+        "search_volume": 10
+      },
+      {
+        "keyword": "example booking clinic",
+        "search_volume": 40
+      },
+      {
+        "keyword": "example booking payments",
+        "search_volume": 30
+      }
+    ],
+    "search_console_search_analytics": {
+      "https://www.example.com/": [
+        {
+          "query": "example booking",
+          "impressions": 24800,
+          "clicks": 9900
+        },
+        {
+          "query": "example booking login",
+          "impressions": 17600,
+          "clicks": 8400
+        },
+        {
+          "query": "examplebooking",
+          "impressions": 2100,
+          "clicks": 780
+        },
+        {
+          "query": "example booking app",
+          "impressions": 3300,
+          "clicks": 1200
+        },
+        {
+          "query": "example booking pricing",
+          "impressions": 2900,
+          "clicks": 1150
+        },
+        {
+          "query": "example booking reviews",
+          "impressions": 1100,
+          "clicks": 310
+        },
+        {
+          "query": "example booking for clinics",
+          "impressions": 1500,
+          "clicks": 410
+        },
+        {
+          "query": "example booking clinic",
+          "impressions": 700,
+          "clicks": 190
+        },
+        {
+          "query": "example booking deposits",
+          "impressions": 900,
+          "clicks": 260
+        },
+        {
+          "query": "example booking tapdeposit",
+          "impressions": 380,
+          "clicks": 150
+        },
+        {
+          "query": "tapdeposit",
+          "impressions": 40,
+          "clicks": 12
+        },
+        {
+          "query": "tap deposit fees",
+          "impressions": 30,
+          "clicks": 4
+        },
+        {
+          "query": "example booking shiftnest",
+          "impressions": 150,
+          "clicks": 40
+        },
+        {
+          "query": "example booking refill",
+          "impressions": 60,
+          "clicks": 21
+        },
+        {
+          "query": "refill",
+          "impressions": 1200,
+          "clicks": 0
+        },
+        {
+          "query": "refill waitlist app",
+          "impressions": 90,
+          "clicks": 3
+        }
+      ],
+      "https://shiftnest.example/": [
+        {
+          "query": "shiftnest",
+          "impressions": 10400,
+          "clicks": 3300
+        },
+        {
+          "query": "shiftnest login",
+          "impressions": 6900,
+          "clicks": 3600
+        },
+        {
+          "query": "shift nest",
+          "impressions": 600,
+          "clicks": 180
+        },
+        {
+          "query": "shiftnest pricing",
+          "impressions": 1200,
+          "clicks": 520
+        },
+        {
+          "query": "shiftnest app",
+          "impressions": 900,
+          "clicks": 330
+        },
+        {
+          "query": "shiftnest example booking",
+          "impressions": 210,
+          "clicks": 70
+        },
+        {
+          "query": "example booking shiftnest",
+          "impressions": 160,
+          "clicks": 55
+        }
+      ]
+    },
+    "ga4_get_report_host_landing_page": [
+      {
+        "hostName": "example.com",
+        "landingPage": "/",
+        "sessions": 59644,
+        "keyEvents": 1349
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/pricing/",
+        "sessions": 23088,
+        "keyEvents": 992
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/signup/",
+        "sessions": 9620,
+        "keyEvents": 653
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/features/online-booking/",
+        "sessions": 13468,
+        "keyEvents": 305
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/features/reminders/",
+        "sessions": 9620,
+        "keyEvents": 218
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/industries/salons/",
+        "sessions": 11544,
+        "keyEvents": 261
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/industries/clinics/",
+        "sessions": 7696,
+        "keyEvents": 174
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/blog/reduce-no-shows/",
+        "sessions": 21164,
+        "keyEvents": 239
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/blog/salon-booking-tips/",
+        "sessions": 15392,
+        "keyEvents": 174
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/tapdeposit/",
+        "sessions": 2309,
+        "keyEvents": 29
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/tapdeposit/fees/",
+        "sessions": 770,
+        "keyEvents": 7
+      },
+      {
+        "hostName": "example.com",
+        "landingPage": "/integrations/",
+        "sessions": 18085,
+        "keyEvents": 409
+      },
+      {
+        "hostName": "shiftnest.example",
+        "landingPage": "/",
+        "sessions": 25116,
+        "keyEvents": 565
+      },
+      {
+        "hostName": "shiftnest.example",
+        "landingPage": "/pricing/",
+        "sessions": 9282,
+        "keyEvents": 396
+      },
+      {
+        "hostName": "shiftnest.example",
+        "landingPage": "/login/",
+        "sessions": 13104,
+        "keyEvents": 59
+      },
+      {
+        "hostName": "shiftnest.example",
+        "landingPage": "/features/",
+        "sessions": 7098,
+        "keyEvents": 160
+      }
+    ],
+    "ga4_get_report_host_source": [
+      {
+        "hostName": "example.com",
+        "sessionSource": "google",
+        "sessions": 111592,
+        "keyEvents": 2790
+      },
+      {
+        "hostName": "example.com",
+        "sessionSource": "(direct)",
+        "sessions": 51948,
+        "keyEvents": 1299
+      },
+      {
+        "hostName": "example.com",
+        "sessionSource": "bing",
+        "sessions": 7696,
+        "keyEvents": 192
+      },
+      {
+        "hostName": "example.com",
+        "sessionSource": "shiftnest.example",
+        "sessions": 1347,
+        "keyEvents": 34
+      },
+      {
+        "hostName": "example.com",
+        "sessionSource": "newsletter",
+        "sessions": 19817,
+        "keyEvents": 495
+      },
+      {
+        "hostName": "shiftnest.example",
+        "sessionSource": "google",
+        "sessions": 28392,
+        "keyEvents": 614
+      },
+      {
+        "hostName": "shiftnest.example",
+        "sessionSource": "(direct)",
+        "sessions": 19656,
+        "keyEvents": 425
+      },
+      {
+        "hostName": "shiftnest.example",
+        "sessionSource": "example.com",
+        "sessions": 2621,
+        "keyEvents": 57
+      },
+      {
+        "hostName": "shiftnest.example",
+        "sessionSource": "apps.apple.com",
+        "sessions": 3931,
+        "keyEvents": 84
+      }
+    ],
+    "google_ads_gaql_search_term_view": [
+      {
+        "search_term": "example booking",
+        "clicks": 1210,
+        "cost_usd": 1820.0,
+        "conversions": 231
+      },
+      {
+        "search_term": "example booking login",
+        "clicks": 310,
+        "cost_usd": 250.0,
+        "conversions": 6
+      },
+      {
+        "search_term": "example booking pricing",
+        "clicks": 260,
+        "cost_usd": 410.0,
+        "conversions": 64
+      },
+      {
+        "search_term": "examplebooking",
+        "clicks": 90,
+        "cost_usd": 120.0,
+        "conversions": 17
+      },
+      {
+        "search_term": "shiftnest",
+        "clicks": 280,
+        "cost_usd": 610.0,
+        "conversions": 46
+      },
+      {
+        "search_term": "shiftnest pricing",
+        "clicks": 95,
+        "cost_usd": 230.0,
+        "conversions": 19
+      },
+      {
+        "search_term": "shift nest app",
+        "clicks": 41,
+        "cost_usd": 90.0,
+        "conversions": 6
+      },
+      {
+        "search_term": "tapdeposit",
+        "clicks": 6,
+        "cost_usd": 14.0,
+        "conversions": 0
+      },
+      {
+        "search_term": "online booking software",
+        "clicks": 2300,
+        "cost_usd": 9800.0,
+        "conversions": 97
+      },
+      {
+        "search_term": "salon booking app",
+        "clicks": 1650,
+        "cost_usd": 5900.0,
+        "conversions": 78
+      },
+      {
+        "search_term": "appointment scheduling software",
+        "clicks": 1400,
+        "cost_usd": 7300.0,
+        "conversions": 44
+      },
+      {
+        "search_term": "clinic scheduling software",
+        "clicks": 610,
+        "cost_usd": 3900.0,
+        "conversions": 21
+      },
+      {
+        "search_term": "staff rota app",
+        "clicks": 520,
+        "cost_usd": 1700.0,
+        "conversions": 16
+      }
+    ]
+  }
+}

@@ -1,0 +1,7499 @@
+{
+  "note": "Example data: an invented online tea store (Larkfen Tea, larkfen-tea.example) and an invented Meta ad account, not a real business or account. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"meta-automated-rules-builder\" skill. Build the automated rules our Meta account should run: stop ads that spend without purchases, raise budgets on steady prospecting ad sets, and warn us about frequency, CPM and overspend. Our target is $30 a purchase. Check the two rules we already have, too.",
+  "business": "Larkfen Tea, an online store selling loose-leaf tea, matcha kits and gift tins in the US (invented example)",
+  "account": {
+    "name": "Larkfen Tea",
+    "ad_account_id": "act_000000000000",
+    "currency": "USD",
+    "time_zone": "America/Chicago"
+  },
+  "inputs": {
+    "target_cost_per_purchase": 30.0,
+    "result": "purchases (omni_purchase)",
+    "budget_level": "ad set budgets",
+    "conversion_lag_days": 1,
+    "raise_step": "20% at most, once a week",
+    "audience_groups": {
+      "prospecting": [
+        "1101",
+        "1102",
+        "1103"
+      ],
+      "retargeting": [
+        "1104"
+      ]
+    },
+    "max_daily_budget": {
+      "Prospecting | Broad": 200.0,
+      "Prospecting | Tea interests": 200.0,
+      "Prospecting | Lookalike 1% buyers": 200.0,
+      "Retargeting | Site visitors 30 days": 40.0
+    }
+  },
+  "window": {
+    "since": "2026-07-30",
+    "until": "2026-10-28",
+    "days": 91
+  },
+  "existing_rules_pasted": [
+    {
+      "name": "Pause high CPA ads",
+      "apply_to": "all active ads",
+      "action": "Turn off ads",
+      "conditions": "Cost per result is greater than $35",
+      "time_range": "Last 3 days",
+      "schedule": "Continuously"
+    },
+    {
+      "name": "Scale winners",
+      "apply_to": "all active ad sets",
+      "action": "Increase daily budget by 30%",
+      "conditions": "Cost per result is smaller than $25",
+      "time_range": "Today",
+      "schedule": "Daily",
+      "maximum_daily_budget": null
+    }
+  ],
+  "data_pulled": {
+    "ad_sets": [
+      {
+        "id": "1101",
+        "name": "Prospecting | Broad",
+        "campaign_id": "1001",
+        "campaign": "Prospecting | Purchases",
+        "effective_status": "ACTIVE",
+        "daily_budget": 10000,
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      },
+      {
+        "id": "1102",
+        "name": "Prospecting | Tea interests",
+        "campaign_id": "1001",
+        "campaign": "Prospecting | Purchases",
+        "effective_status": "ACTIVE",
+        "daily_budget": 8000,
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      },
+      {
+        "id": "1103",
+        "name": "Prospecting | Lookalike 1% buyers",
+        "campaign_id": "1001",
+        "campaign": "Prospecting | Purchases",
+        "effective_status": "ACTIVE",
+        "daily_budget": 9000,
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      },
+      {
+        "id": "1104",
+        "name": "Retargeting | Site visitors 30 days",
+        "campaign_id": "1002",
+        "campaign": "Retargeting | Purchases",
+        "effective_status": "ACTIVE",
+        "daily_budget": 4000,
+        "optimization_goal": "OFFSITE_CONVERSIONS"
+      }
+    ],
+    "ads": [
+      {
+        "id": "2101",
+        "name": "Matcha starter kit | UGC video",
+        "adset_id": "1101",
+        "created_time": "2026-06-20T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2102",
+        "name": "Cold brew pitcher | static",
+        "adset_id": "1101",
+        "created_time": "2026-08-05T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2103",
+        "name": "Sampler tin | carousel",
+        "adset_id": "1101",
+        "created_time": "2026-08-05T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2104",
+        "name": "Gift box | video",
+        "adset_id": "1101",
+        "created_time": "2026-09-02T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2105",
+        "name": "Chai blend | static",
+        "adset_id": "1101",
+        "created_time": "2026-10-12T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2201",
+        "name": "Oolong discovery | carousel",
+        "adset_id": "1102",
+        "created_time": "2026-08-01T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2202",
+        "name": "Loose leaf vs bags | video",
+        "adset_id": "1102",
+        "created_time": "2026-08-01T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2203",
+        "name": "Earl grey refill | static",
+        "adset_id": "1102",
+        "created_time": "2026-08-20T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2204",
+        "name": "Herbal sleep blend | UGC video",
+        "adset_id": "1102",
+        "created_time": "2026-10-01T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2301",
+        "name": "Matcha starter kit | UGC video",
+        "adset_id": "1103",
+        "created_time": "2026-07-10T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2302",
+        "name": "Tea tasting flight | carousel",
+        "adset_id": "1103",
+        "created_time": "2026-08-12T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2303",
+        "name": "Iced tea bundle | static",
+        "adset_id": "1103",
+        "created_time": "2026-08-12T10:00:00-0500",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "2304",
+        "name": "Pumpkin chai | video",
+        "adset_id": "1103",
+        "created_time": "2026-10-15T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2401",
+        "name": "Come back for 10% off | static",
+        "adset_id": "1104",
+        "created_time": "2026-07-01T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "2402",
+        "name": "Customer reviews | carousel",
+        "adset_id": "1104",
+        "created_time": "2026-09-05T10:00:00-0500",
+        "effective_status": "ACTIVE"
+      }
+    ],
+    "daily_ad_rows": [
+      {
+        "date": "2026-07-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.67,
+        "impressions": 2793,
+        "purchases": 1
+      },
+      {
+        "date": "2026-07-30",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 61.76,
+        "impressions": 4724,
+        "purchases": 2
+      },
+      {
+        "date": "2026-07-30",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.01,
+        "impressions": 898,
+        "purchases": 1
+      },
+      {
+        "date": "2026-07-31",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 49.6,
+        "impressions": 3505,
+        "purchases": 2
+      },
+      {
+        "date": "2026-07-31",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.68,
+        "impressions": 2955,
+        "purchases": 2
+      },
+      {
+        "date": "2026-07-31",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.02,
+        "impressions": 908,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.48,
+        "impressions": 3264,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.01,
+        "impressions": 1811,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 24.2,
+        "impressions": 1531,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-01",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 60.02,
+        "impressions": 4361,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-01",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.8,
+        "impressions": 885,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.6,
+        "impressions": 2521,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 25.53,
+        "impressions": 1601,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 16.22,
+        "impressions": 957,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-02",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.19,
+        "impressions": 3337,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-02",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.3,
+        "impressions": 1226,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 49.1,
+        "impressions": 3328,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.59,
+        "impressions": 2336,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.02,
+        "impressions": 1384,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-03",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 49.35,
+        "impressions": 3755,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-03",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.46,
+        "impressions": 1184,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.86,
+        "impressions": 3630,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.11,
+        "impressions": 1447,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.36,
+        "impressions": 1359,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-04",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.4,
+        "impressions": 4443,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-04",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.86,
+        "impressions": 944,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 42.82,
+        "impressions": 3160,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 20.86,
+        "impressions": 1518,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.35,
+        "impressions": 671,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.89,
+        "impressions": 1597,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 17.59,
+        "impressions": 1095,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.92,
+        "impressions": 4339,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-05",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 26.74,
+        "impressions": 1185,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.16,
+        "impressions": 2736,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 27.27,
+        "impressions": 1929,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.75,
+        "impressions": 838,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 27.61,
+        "impressions": 1641,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 25.0,
+        "impressions": 1664,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 43.38,
+        "impressions": 3478,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-06",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.09,
+        "impressions": 1180,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.05,
+        "impressions": 3492,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 21.77,
+        "impressions": 1517,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.36,
+        "impressions": 759,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 28.16,
+        "impressions": 1723,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.68,
+        "impressions": 1273,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 60.18,
+        "impressions": 4711,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-07",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.04,
+        "impressions": 817,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 33.92,
+        "impressions": 2547,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 26.52,
+        "impressions": 1785,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.15,
+        "impressions": 657,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 32.19,
+        "impressions": 2065,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 23.86,
+        "impressions": 1448,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 41.03,
+        "impressions": 3061,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-08",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.24,
+        "impressions": 1154,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.92,
+        "impressions": 2700,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.97,
+        "impressions": 1885,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.66,
+        "impressions": 777,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 31.23,
+        "impressions": 1826,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.74,
+        "impressions": 1038,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.91,
+        "impressions": 4585,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-09",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.64,
+        "impressions": 995,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.13,
+        "impressions": 3421,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.53,
+        "impressions": 1648,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.54,
+        "impressions": 534,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.58,
+        "impressions": 2275,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.73,
+        "impressions": 1349,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 51.52,
+        "impressions": 3750,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-10",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.03,
+        "impressions": 1146,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.95,
+        "impressions": 2806,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 20.05,
+        "impressions": 1456,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.89,
+        "impressions": 594,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 29.38,
+        "impressions": 1784,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 19.93,
+        "impressions": 1182,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 50.59,
+        "impressions": 4001,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-11",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.97,
+        "impressions": 1222,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 42.8,
+        "impressions": 2920,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 23.93,
+        "impressions": 1635,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.34,
+        "impressions": 612,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 34.37,
+        "impressions": 2139,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.54,
+        "impressions": 947,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 38.91,
+        "impressions": 3201,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 18.68,
+        "impressions": 1447,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.75,
+        "impressions": 948,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-12",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.73,
+        "impressions": 771,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 42.81,
+        "impressions": 3145,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 27.32,
+        "impressions": 1920,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.7,
+        "impressions": 528,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 36.23,
+        "impressions": 2131,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 16.12,
+        "impressions": 1066,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.66,
+        "impressions": 4742,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 17.35,
+        "impressions": 1252,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.36,
+        "impressions": 992,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-13",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.54,
+        "impressions": 1167,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.52,
+        "impressions": 2046,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 30.13,
+        "impressions": 2017,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.15,
+        "impressions": 660,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 36.14,
+        "impressions": 2276,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.65,
+        "impressions": 1433,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 59.27,
+        "impressions": 4813,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 12.0,
+        "impressions": 969,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.22,
+        "impressions": 835,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-14",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.54,
+        "impressions": 887,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.33,
+        "impressions": 3016,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 20.87,
+        "impressions": 1433,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.54,
+        "impressions": 817,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.88,
+        "impressions": 2032,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.65,
+        "impressions": 1406,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.66,
+        "impressions": 3740,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 15.34,
+        "impressions": 1123,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 10.95,
+        "impressions": 853,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-15",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 20.09,
+        "impressions": 823,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 46.94,
+        "impressions": 3523,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.2,
+        "impressions": 1703,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.54,
+        "impressions": 594,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.55,
+        "impressions": 2239,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 24.56,
+        "impressions": 1549,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 38.43,
+        "impressions": 2983,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 15.72,
+        "impressions": 1170,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.75,
+        "impressions": 1155,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-16",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.5,
+        "impressions": 829,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.43,
+        "impressions": 2182,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 30.7,
+        "impressions": 2282,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.53,
+        "impressions": 738,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 28.81,
+        "impressions": 1768,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 24.95,
+        "impressions": 1558,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 57.07,
+        "impressions": 4225,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 17.15,
+        "impressions": 1316,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.96,
+        "impressions": 1132,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-17",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.39,
+        "impressions": 1274,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 45.42,
+        "impressions": 3168,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 25.35,
+        "impressions": 1882,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.41,
+        "impressions": 635,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.8,
+        "impressions": 2376,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.31,
+        "impressions": 1253,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 59.76,
+        "impressions": 4792,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 15.15,
+        "impressions": 1096,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.74,
+        "impressions": 928,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-18",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.53,
+        "impressions": 884,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 32.56,
+        "impressions": 2265,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 21.65,
+        "impressions": 1618,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.47,
+        "impressions": 940,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 31.13,
+        "impressions": 2076,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 17.47,
+        "impressions": 1077,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 53.41,
+        "impressions": 4332,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 16.39,
+        "impressions": 1250,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.76,
+        "impressions": 879,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-19",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.26,
+        "impressions": 1224,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.03,
+        "impressions": 2927,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.4,
+        "impressions": 1697,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.55,
+        "impressions": 633,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 26.68,
+        "impressions": 1569,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 17.84,
+        "impressions": 1114,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 6.84,
+        "impressions": 456,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 52.64,
+        "impressions": 4230,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 12.37,
+        "impressions": 950,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.19,
+        "impressions": 895,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-20",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.17,
+        "impressions": 1175,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 39.77,
+        "impressions": 2729,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 30.42,
+        "impressions": 2305,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.41,
+        "impressions": 853,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 31.29,
+        "impressions": 1904,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.73,
+        "impressions": 949,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.84,
+        "impressions": 584,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.87,
+        "impressions": 3988,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 15.8,
+        "impressions": 1193,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.99,
+        "impressions": 1251,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-21",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 25.77,
+        "impressions": 999,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.84,
+        "impressions": 2320,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 27.42,
+        "impressions": 1914,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.6,
+        "impressions": 835,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.33,
+        "impressions": 1492,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 22.24,
+        "impressions": 1351,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.94,
+        "impressions": 689,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.79,
+        "impressions": 3714,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 14.42,
+        "impressions": 1032,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.13,
+        "impressions": 1300,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-22",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 24.48,
+        "impressions": 963,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.12,
+        "impressions": 3511,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.29,
+        "impressions": 1735,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.75,
+        "impressions": 670,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.91,
+        "impressions": 1890,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 24.84,
+        "impressions": 1608,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.15,
+        "impressions": 585,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.88,
+        "impressions": 3584,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 17.27,
+        "impressions": 1358,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.31,
+        "impressions": 1164,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-23",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 25.52,
+        "impressions": 1042,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.93,
+        "impressions": 2486,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 23.92,
+        "impressions": 1608,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.21,
+        "impressions": 763,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 28.42,
+        "impressions": 1698,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 22.22,
+        "impressions": 1440,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.6,
+        "impressions": 684,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.88,
+        "impressions": 3094,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 15.26,
+        "impressions": 1180,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.33,
+        "impressions": 1104,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-24",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.28,
+        "impressions": 1164,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.42,
+        "impressions": 2433,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 27.84,
+        "impressions": 1964,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.11,
+        "impressions": 922,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 36.35,
+        "impressions": 2377,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 18.6,
+        "impressions": 1100,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.01,
+        "impressions": 621,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 46.54,
+        "impressions": 3643,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2302",
+        "spend": 18.27,
+        "impressions": 1315,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.23,
+        "impressions": 1086,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-25",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.78,
+        "impressions": 1298,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.19,
+        "impressions": 2435,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 22.8,
+        "impressions": 1597,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.16,
+        "impressions": 795,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 33.16,
+        "impressions": 1973,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 17.57,
+        "impressions": 1082,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 11.13,
+        "impressions": 650,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 54.78,
+        "impressions": 4117,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 12.41,
+        "impressions": 942,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-26",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 26.14,
+        "impressions": 1133,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 44.81,
+        "impressions": 3343,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 28.87,
+        "impressions": 1977,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.31,
+        "impressions": 940,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.57,
+        "impressions": 1894,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.19,
+        "impressions": 1309,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.94,
+        "impressions": 606,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 43.53,
+        "impressions": 3533,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.85,
+        "impressions": 1104,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-27",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.94,
+        "impressions": 1299,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 45.56,
+        "impressions": 3149,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 28.24,
+        "impressions": 2149,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.15,
+        "impressions": 573,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.23,
+        "impressions": 1865,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.63,
+        "impressions": 1404,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.98,
+        "impressions": 618,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 61.83,
+        "impressions": 4598,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.74,
+        "impressions": 1105,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-28",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.46,
+        "impressions": 1138,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.39,
+        "impressions": 3088,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 22.89,
+        "impressions": 1531,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.48,
+        "impressions": 676,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 30.66,
+        "impressions": 2050,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.65,
+        "impressions": 1288,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.65,
+        "impressions": 448,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.32,
+        "impressions": 3850,
+        "purchases": 3
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.48,
+        "impressions": 913,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-29",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.06,
+        "impressions": 1137,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.59,
+        "impressions": 3382,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 24.94,
+        "impressions": 1780,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.39,
+        "impressions": 901,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 31.39,
+        "impressions": 1961,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 16.5,
+        "impressions": 1096,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.72,
+        "impressions": 450,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 42.95,
+        "impressions": 3225,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.87,
+        "impressions": 1239,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-30",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.76,
+        "impressions": 1332,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 33.19,
+        "impressions": 2312,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 21.64,
+        "impressions": 1471,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.56,
+        "impressions": 571,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 36.55,
+        "impressions": 2318,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.95,
+        "impressions": 1308,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.76,
+        "impressions": 622,
+        "purchases": 0
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 50.76,
+        "impressions": 3831,
+        "purchases": 2
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.05,
+        "impressions": 1065,
+        "purchases": 1
+      },
+      {
+        "date": "2026-08-31",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.64,
+        "impressions": 1228,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.35,
+        "impressions": 3161,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 21.78,
+        "impressions": 1651,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.1,
+        "impressions": 565,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.97,
+        "impressions": 1414,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 23.33,
+        "impressions": 1506,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.77,
+        "impressions": 699,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 53.68,
+        "impressions": 3856,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.1,
+        "impressions": 1202,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-01",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 18.79,
+        "impressions": 778,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.55,
+        "impressions": 2859,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 19.49,
+        "impressions": 1343,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.86,
+        "impressions": 620,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 26.49,
+        "impressions": 1922,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 37.09,
+        "impressions": 2446,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.05,
+        "impressions": 982,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.23,
+        "impressions": 570,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 52.93,
+        "impressions": 3796,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.55,
+        "impressions": 1031,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-02",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.84,
+        "impressions": 1007,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 38.2,
+        "impressions": 2808,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 25.92,
+        "impressions": 1896,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.69,
+        "impressions": 569,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 19.22,
+        "impressions": 1435,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 33.3,
+        "impressions": 2095,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 22.86,
+        "impressions": 1505,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.37,
+        "impressions": 571,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.98,
+        "impressions": 4808,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.15,
+        "impressions": 1234,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-03",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.19,
+        "impressions": 1172,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 34.24,
+        "impressions": 2436,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2102",
+        "spend": 22.6,
+        "impressions": 1611,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.61,
+        "impressions": 697,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 22.55,
+        "impressions": 1522,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 24.95,
+        "impressions": 1550,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 19.5,
+        "impressions": 1197,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.23,
+        "impressions": 610,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 37.62,
+        "impressions": 3067,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.85,
+        "impressions": 917,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-04",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.5,
+        "impressions": 776,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.38,
+        "impressions": 2613,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.33,
+        "impressions": 742,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 23.74,
+        "impressions": 1596,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 25.04,
+        "impressions": 1586,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.02,
+        "impressions": 1167,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.02,
+        "impressions": 422,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.07,
+        "impressions": 4028,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.49,
+        "impressions": 1215,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.96,
+        "impressions": 1023,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-05",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.49,
+        "impressions": 543,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 43.69,
+        "impressions": 2958,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.62,
+        "impressions": 610,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 27.18,
+        "impressions": 1865,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.27,
+        "impressions": 1478,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.89,
+        "impressions": 1301,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.33,
+        "impressions": 484,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.41,
+        "impressions": 4589,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 10.87,
+        "impressions": 779,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 20.32,
+        "impressions": 792,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-06",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.89,
+        "impressions": 384,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 33.41,
+        "impressions": 2415,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.71,
+        "impressions": 662,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 17.3,
+        "impressions": 1166,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 33.18,
+        "impressions": 2073,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 16.41,
+        "impressions": 1034,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.03,
+        "impressions": 619,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.76,
+        "impressions": 4502,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.4,
+        "impressions": 1156,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.41,
+        "impressions": 884,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-07",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 11.84,
+        "impressions": 505,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 43.45,
+        "impressions": 3151,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.13,
+        "impressions": 608,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 26.6,
+        "impressions": 2019,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 26.87,
+        "impressions": 1651,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.55,
+        "impressions": 1352,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.79,
+        "impressions": 579,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 38.91,
+        "impressions": 2842,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 12.0,
+        "impressions": 874,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.78,
+        "impressions": 778,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-08",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.03,
+        "impressions": 489,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.97,
+        "impressions": 2570,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.09,
+        "impressions": 749,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 20.06,
+        "impressions": 1421,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.68,
+        "impressions": 2190,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 21.24,
+        "impressions": 1343,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.43,
+        "impressions": 455,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.04,
+        "impressions": 4532,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.36,
+        "impressions": 1159,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.81,
+        "impressions": 1232,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-09",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.79,
+        "impressions": 568,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.16,
+        "impressions": 3554,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.73,
+        "impressions": 810,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 17.23,
+        "impressions": 1257,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.91,
+        "impressions": 1417,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 24.17,
+        "impressions": 1448,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.04,
+        "impressions": 538,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 51.86,
+        "impressions": 3899,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.82,
+        "impressions": 1362,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.69,
+        "impressions": 1326,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-10",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.42,
+        "impressions": 578,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 33.38,
+        "impressions": 2340,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.73,
+        "impressions": 692,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 19.87,
+        "impressions": 1395,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 35.08,
+        "impressions": 2316,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.82,
+        "impressions": 922,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 11.2,
+        "impressions": 687,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 62.32,
+        "impressions": 5085,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.33,
+        "impressions": 870,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 24.65,
+        "impressions": 1040,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-11",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.91,
+        "impressions": 486,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.39,
+        "impressions": 2527,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.73,
+        "impressions": 552,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 25.4,
+        "impressions": 1732,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 24.93,
+        "impressions": 1514,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 17.89,
+        "impressions": 1152,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.43,
+        "impressions": 614,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.66,
+        "impressions": 3329,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 12.69,
+        "impressions": 1006,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.67,
+        "impressions": 933,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-12",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.82,
+        "impressions": 546,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 43.52,
+        "impressions": 3259,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.53,
+        "impressions": 713,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 21.2,
+        "impressions": 1499,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 22.99,
+        "impressions": 1371,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.2,
+        "impressions": 1248,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.53,
+        "impressions": 465,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 50.72,
+        "impressions": 3919,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.91,
+        "impressions": 1309,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.31,
+        "impressions": 1187,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-13",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.1,
+        "impressions": 599,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.73,
+        "impressions": 3278,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.61,
+        "impressions": 722,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 22.2,
+        "impressions": 1642,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 33.12,
+        "impressions": 2117,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 20.89,
+        "impressions": 1222,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.76,
+        "impressions": 532,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 37.6,
+        "impressions": 3033,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.01,
+        "impressions": 1010,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.09,
+        "impressions": 949,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-14",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.03,
+        "impressions": 559,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.86,
+        "impressions": 3433,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.18,
+        "impressions": 814,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 22.23,
+        "impressions": 1506,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 26.32,
+        "impressions": 1655,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2202",
+        "spend": 15.38,
+        "impressions": 964,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 11.01,
+        "impressions": 736,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 50.6,
+        "impressions": 3863,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.72,
+        "impressions": 1276,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 31.17,
+        "impressions": 1375,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-15",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.99,
+        "impressions": 545,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 33.18,
+        "impressions": 2292,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.74,
+        "impressions": 539,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 22.41,
+        "impressions": 1541,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 25.49,
+        "impressions": 1672,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.7,
+        "impressions": 587,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 53.68,
+        "impressions": 4236,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.63,
+        "impressions": 1100,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.0,
+        "impressions": 901,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-16",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.65,
+        "impressions": 386,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.02,
+        "impressions": 2792,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.54,
+        "impressions": 769,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 27.31,
+        "impressions": 1987,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 270.0,
+        "impressions": 16614,
+        "purchases": 10
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 142.0,
+        "impressions": 9122,
+        "purchases": 6
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 49.8,
+        "impressions": 3674,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.27,
+        "impressions": 1212,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.68,
+        "impressions": 1080,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-17",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.5,
+        "impressions": 450,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 43.1,
+        "impressions": 3186,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.87,
+        "impressions": 535,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 17.23,
+        "impressions": 1305,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 25.26,
+        "impressions": 1656,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.51,
+        "impressions": 530,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.07,
+        "impressions": 4716,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 16.62,
+        "impressions": 1195,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 31.17,
+        "impressions": 1278,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-18",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.37,
+        "impressions": 391,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 37.67,
+        "impressions": 2809,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.73,
+        "impressions": 863,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 20.21,
+        "impressions": 1358,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 26.14,
+        "impressions": 1535,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.9,
+        "impressions": 581,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 60.9,
+        "impressions": 4837,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.54,
+        "impressions": 1187,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.28,
+        "impressions": 1185,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-19",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.13,
+        "impressions": 369,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.15,
+        "impressions": 2011,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.68,
+        "impressions": 554,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2104",
+        "spend": 25.74,
+        "impressions": 1765,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 24.47,
+        "impressions": 1445,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.41,
+        "impressions": 544,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 54.18,
+        "impressions": 3918,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.21,
+        "impressions": 1251,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 20.17,
+        "impressions": 832,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-20",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 11.13,
+        "impressions": 443,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 39.04,
+        "impressions": 2842,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.65,
+        "impressions": 697,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.59,
+        "impressions": 1524,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.99,
+        "impressions": 547,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 56.17,
+        "impressions": 4549,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 10.95,
+        "impressions": 894,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.86,
+        "impressions": 885,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-21",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.62,
+        "impressions": 596,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.15,
+        "impressions": 2638,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.25,
+        "impressions": 831,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 26.74,
+        "impressions": 1698,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.58,
+        "impressions": 592,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 51.01,
+        "impressions": 3975,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 10.55,
+        "impressions": 843,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.39,
+        "impressions": 1209,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-22",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.67,
+        "impressions": 605,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.33,
+        "impressions": 2991,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 7.59,
+        "impressions": 564,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 33.8,
+        "impressions": 2237,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.33,
+        "impressions": 485,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 51.84,
+        "impressions": 3808,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 14.52,
+        "impressions": 1103,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.51,
+        "impressions": 1186,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-23",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.37,
+        "impressions": 585,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 42.18,
+        "impressions": 3024,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.85,
+        "impressions": 726,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 31.12,
+        "impressions": 2026,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.78,
+        "impressions": 691,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 46.68,
+        "impressions": 3458,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.59,
+        "impressions": 1049,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.95,
+        "impressions": 1018,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-24",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.25,
+        "impressions": 402,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 34.77,
+        "impressions": 2466,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.46,
+        "impressions": 763,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 32.21,
+        "impressions": 2002,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.38,
+        "impressions": 582,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 53.19,
+        "impressions": 4302,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 17.06,
+        "impressions": 1354,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 25.16,
+        "impressions": 1063,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-25",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.96,
+        "impressions": 454,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 41.24,
+        "impressions": 2875,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.15,
+        "impressions": 785,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 22.62,
+        "impressions": 1320,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.1,
+        "impressions": 524,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.28,
+        "impressions": 4255,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 15.49,
+        "impressions": 1112,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 30.2,
+        "impressions": 1201,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-26",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.73,
+        "impressions": 379,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.08,
+        "impressions": 2701,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.17,
+        "impressions": 688,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 23.78,
+        "impressions": 1558,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.58,
+        "impressions": 622,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.72,
+        "impressions": 4298,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 12.06,
+        "impressions": 973,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 24.53,
+        "impressions": 1058,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-27",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.23,
+        "impressions": 490,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 45.3,
+        "impressions": 3141,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.1,
+        "impressions": 813,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 32.64,
+        "impressions": 2074,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.56,
+        "impressions": 499,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.63,
+        "impressions": 3493,
+        "purchases": 3
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 13.12,
+        "impressions": 1029,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 26.18,
+        "impressions": 1119,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-28",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.39,
+        "impressions": 524,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 37.8,
+        "impressions": 2584,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.88,
+        "impressions": 845,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 22.92,
+        "impressions": 1463,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.99,
+        "impressions": 659,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.09,
+        "impressions": 2852,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.71,
+        "impressions": 887,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.07,
+        "impressions": 1143,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-29",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.55,
+        "impressions": 535,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 38.92,
+        "impressions": 2877,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.11,
+        "impressions": 550,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2201",
+        "spend": 28.15,
+        "impressions": 1682,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.43,
+        "impressions": 623,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 42.26,
+        "impressions": 3313,
+        "purchases": 2
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2303",
+        "spend": 11.5,
+        "impressions": 829,
+        "purchases": 0
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 20.93,
+        "impressions": 838,
+        "purchases": 1
+      },
+      {
+        "date": "2026-09-30",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 11.85,
+        "impressions": 461,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.67,
+        "impressions": 3052,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.55,
+        "impressions": 696,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.99,
+        "impressions": 479,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 6.97,
+        "impressions": 412,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 38.57,
+        "impressions": 2827,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.8,
+        "impressions": 1226,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-01",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.54,
+        "impressions": 454,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 49.66,
+        "impressions": 3521,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.23,
+        "impressions": 896,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.63,
+        "impressions": 621,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.73,
+        "impressions": 579,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 57.97,
+        "impressions": 4470,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.3,
+        "impressions": 846,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-02",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.22,
+        "impressions": 543,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 39.27,
+        "impressions": 2962,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 8.2,
+        "impressions": 618,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.51,
+        "impressions": 631,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.83,
+        "impressions": 544,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 51.05,
+        "impressions": 4040,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.57,
+        "impressions": 1260,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-03",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.83,
+        "impressions": 456,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 44.31,
+        "impressions": 3110,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.16,
+        "impressions": 896,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.59,
+        "impressions": 659,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.46,
+        "impressions": 678,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 43.82,
+        "impressions": 3392,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 18.85,
+        "impressions": 833,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-04",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.87,
+        "impressions": 467,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 37.52,
+        "impressions": 2532,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.44,
+        "impressions": 809,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.04,
+        "impressions": 523,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.32,
+        "impressions": 594,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.04,
+        "impressions": 2876,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.25,
+        "impressions": 821,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-05",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.67,
+        "impressions": 430,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.63,
+        "impressions": 2562,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.11,
+        "impressions": 847,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.32,
+        "impressions": 624,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.27,
+        "impressions": 640,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.98,
+        "impressions": 4197,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.94,
+        "impressions": 936,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-06",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.4,
+        "impressions": 434,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 46.76,
+        "impressions": 3177,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 10.44,
+        "impressions": 786,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.73,
+        "impressions": 517,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.42,
+        "impressions": 589,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.17,
+        "impressions": 3473,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.4,
+        "impressions": 1159,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-07",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.0,
+        "impressions": 578,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 48.65,
+        "impressions": 3340,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 9.22,
+        "impressions": 663,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 11.21,
+        "impressions": 740,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.84,
+        "impressions": 615,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 49.43,
+        "impressions": 3980,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 26.1,
+        "impressions": 1115,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-08",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 11.43,
+        "impressions": 470,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.13,
+        "impressions": 2259,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 12.3,
+        "impressions": 892,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.1,
+        "impressions": 426,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 7.75,
+        "impressions": 518,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 53.88,
+        "impressions": 4386,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.65,
+        "impressions": 851,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-09",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.12,
+        "impressions": 499,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.59,
+        "impressions": 2365,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2103",
+        "spend": 11.13,
+        "impressions": 843,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.71,
+        "impressions": 610,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.6,
+        "impressions": 587,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 43.44,
+        "impressions": 3420,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.09,
+        "impressions": 1131,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-10",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.49,
+        "impressions": 625,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.65,
+        "impressions": 2177,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.41,
+        "impressions": 484,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 6.63,
+        "impressions": 424,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.61,
+        "impressions": 4398,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.74,
+        "impressions": 1210,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-11",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.4,
+        "impressions": 610,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 34.23,
+        "impressions": 2318,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.17,
+        "impressions": 372,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.25,
+        "impressions": 475,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.1,
+        "impressions": 549,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 42.52,
+        "impressions": 3228,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.67,
+        "impressions": 1032,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-12",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.07,
+        "impressions": 538,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.6,
+        "impressions": 2684,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 4.51,
+        "impressions": 335,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.89,
+        "impressions": 528,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.05,
+        "impressions": 570,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 54.07,
+        "impressions": 4045,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.24,
+        "impressions": 1198,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-13",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.42,
+        "impressions": 567,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 44.2,
+        "impressions": 3121,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.65,
+        "impressions": 484,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.01,
+        "impressions": 629,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.53,
+        "impressions": 654,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 47.59,
+        "impressions": 3648,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.28,
+        "impressions": 1215,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-14",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.49,
+        "impressions": 460,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.61,
+        "impressions": 2723,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.25,
+        "impressions": 380,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.84,
+        "impressions": 671,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.83,
+        "impressions": 591,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.95,
+        "impressions": 3556,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.24,
+        "impressions": 415,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 26.59,
+        "impressions": 1169,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-15",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.2,
+        "impressions": 372,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 42.45,
+        "impressions": 2844,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.23,
+        "impressions": 386,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 6.79,
+        "impressions": 408,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.65,
+        "impressions": 535,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 52.94,
+        "impressions": 4185,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.16,
+        "impressions": 392,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 19.09,
+        "impressions": 825,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-16",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.26,
+        "impressions": 405,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 39.21,
+        "impressions": 2911,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.7,
+        "impressions": 456,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.28,
+        "impressions": 448,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.46,
+        "impressions": 639,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.87,
+        "impressions": 4088,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 4.08,
+        "impressions": 307,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.86,
+        "impressions": 913,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-17",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.5,
+        "impressions": 407,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.02,
+        "impressions": 2718,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.89,
+        "impressions": 460,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.5,
+        "impressions": 668,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.29,
+        "impressions": 489,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 46.64,
+        "impressions": 3603,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.47,
+        "impressions": 437,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 25.23,
+        "impressions": 1074,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-18",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.73,
+        "impressions": 594,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 44.11,
+        "impressions": 1842,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.18,
+        "impressions": 277,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.03,
+        "impressions": 456,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 7.42,
+        "impressions": 440,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 45.39,
+        "impressions": 3690,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.1,
+        "impressions": 388,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 29.53,
+        "impressions": 1266,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-19",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.33,
+        "impressions": 391,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 48.71,
+        "impressions": 2179,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.99,
+        "impressions": 246,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.89,
+        "impressions": 626,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.27,
+        "impressions": 545,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.14,
+        "impressions": 4442,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.74,
+        "impressions": 448,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.4,
+        "impressions": 905,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-20",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.78,
+        "impressions": 620,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 49.45,
+        "impressions": 1954,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.1,
+        "impressions": 260,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.14,
+        "impressions": 472,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.41,
+        "impressions": 661,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 46.07,
+        "impressions": 3640,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.32,
+        "impressions": 407,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 21.53,
+        "impressions": 835,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-21",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.62,
+        "impressions": 539,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 36.08,
+        "impressions": 1481,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.49,
+        "impressions": 243,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.37,
+        "impressions": 515,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 10.33,
+        "impressions": 665,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.87,
+        "impressions": 3208,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 6.19,
+        "impressions": 445,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 18.78,
+        "impressions": 748,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-22",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 13.68,
+        "impressions": 538,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 30.66,
+        "impressions": 1226,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.33,
+        "impressions": 235,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.94,
+        "impressions": 589,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 7.83,
+        "impressions": 459,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 54.93,
+        "impressions": 4487,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.63,
+        "impressions": 437,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 22.36,
+        "impressions": 991,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-23",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.91,
+        "impressions": 609,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 44.57,
+        "impressions": 2966,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 7.48,
+        "impressions": 557,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 9.03,
+        "impressions": 526,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.66,
+        "impressions": 565,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 55.77,
+        "impressions": 4274,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 4.22,
+        "impressions": 326,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 24.15,
+        "impressions": 1049,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-24",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.22,
+        "impressions": 361,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 47.17,
+        "impressions": 3371,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 4.81,
+        "impressions": 348,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.21,
+        "impressions": 499,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.02,
+        "impressions": 534,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 58.81,
+        "impressions": 4400,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.81,
+        "impressions": 464,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 28.49,
+        "impressions": 1133,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-25",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 14.99,
+        "impressions": 595,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 40.6,
+        "impressions": 2756,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 5.42,
+        "impressions": 389,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 10.61,
+        "impressions": 620,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 7.51,
+        "impressions": 477,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 61.28,
+        "impressions": 4693,
+        "purchases": 3
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.62,
+        "impressions": 455,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 27.6,
+        "impressions": 1110,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-26",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 10.19,
+        "impressions": 441,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 35.77,
+        "impressions": 2536,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 6.55,
+        "impressions": 469,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 7.24,
+        "impressions": 430,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 8.19,
+        "impressions": 526,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 39.06,
+        "impressions": 3144,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 4.46,
+        "impressions": 343,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 23.8,
+        "impressions": 939,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-27",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 12.65,
+        "impressions": 534,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2101",
+        "spend": 32.64,
+        "impressions": 2420,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1101",
+        "ad_id": "2105",
+        "spend": 7.29,
+        "impressions": 548,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2203",
+        "spend": 8.46,
+        "impressions": 563,
+        "purchases": 1
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1102",
+        "ad_id": "2204",
+        "spend": 9.05,
+        "impressions": 549,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2301",
+        "spend": 48.49,
+        "impressions": 3679,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1001",
+        "adset_id": "1103",
+        "ad_id": "2304",
+        "spend": 5.47,
+        "impressions": 412,
+        "purchases": 0
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2401",
+        "spend": 24.96,
+        "impressions": 1092,
+        "purchases": 2
+      },
+      {
+        "date": "2026-10-28",
+        "campaign_id": "1002",
+        "adset_id": "1104",
+        "ad_id": "2402",
+        "spend": 9.43,
+        "impressions": 380,
+        "purchases": 1
+      }
+    ],
+    "weekly_ad_set_rows": [
+      {
+        "date_start": "2026-07-30",
+        "date_stop": "2026-08-05",
+        "adset_id": "1101",
+        "spend": 343.34,
+        "impressions": 24390,
+        "reach": 13570,
+        "frequency": 1.8,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-07-30",
+        "date_stop": "2026-08-05",
+        "adset_id": "1102",
+        "spend": 238.52,
+        "impressions": 15118,
+        "reach": 9374,
+        "frequency": 1.61,
+        "purchases": 7
+      },
+      {
+        "date_start": "2026-07-30",
+        "date_stop": "2026-08-05",
+        "adset_id": "1103",
+        "spend": 371.32,
+        "impressions": 27914,
+        "reach": 17621,
+        "frequency": 1.58,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-07-30",
+        "date_stop": "2026-08-05",
+        "adset_id": "1104",
+        "spend": 173.19,
+        "impressions": 7230,
+        "reach": 2259,
+        "frequency": 3.2,
+        "purchases": 11
+      },
+      {
+        "date_start": "2026-08-06",
+        "date_stop": "2026-08-12",
+        "adset_id": "1101",
+        "spend": 524.66,
+        "impressions": 37248,
+        "reach": 28069,
+        "frequency": 1.33,
+        "purchases": 15
+      },
+      {
+        "date_start": "2026-08-06",
+        "date_stop": "2026-08-12",
+        "adset_id": "1102",
+        "spend": 362.0,
+        "impressions": 22354,
+        "reach": 16875,
+        "frequency": 1.32,
+        "purchases": 10
+      },
+      {
+        "date_start": "2026-08-06",
+        "date_stop": "2026-08-12",
+        "adset_id": "1103",
+        "spend": 372.95,
+        "impressions": 29182,
+        "reach": 16390,
+        "frequency": 1.78,
+        "purchases": 16
+      },
+      {
+        "date_start": "2026-08-06",
+        "date_stop": "2026-08-12",
+        "adset_id": "1104",
+        "spend": 176.74,
+        "impressions": 7285,
+        "reach": 2208,
+        "frequency": 3.3,
+        "purchases": 12
+      },
+      {
+        "date_start": "2026-08-13",
+        "date_stop": "2026-08-19",
+        "adset_id": "1101",
+        "spend": 518.57,
+        "impressions": 37112,
+        "reach": 22306,
+        "frequency": 1.66,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-08-13",
+        "date_stop": "2026-08-19",
+        "adset_id": "1102",
+        "spend": 382.25,
+        "impressions": 24240,
+        "reach": 13730,
+        "frequency": 1.77,
+        "purchases": 12
+      },
+      {
+        "date_start": "2026-08-13",
+        "date_stop": "2026-08-19",
+        "adset_id": "1103",
+        "spend": 574.1,
+        "impressions": 44577,
+        "reach": 30314,
+        "frequency": 1.47,
+        "purchases": 21
+      },
+      {
+        "date_start": "2026-08-13",
+        "date_stop": "2026-08-19",
+        "adset_id": "1104",
+        "spend": 171.85,
+        "impressions": 7088,
+        "reach": 2085,
+        "frequency": 3.4,
+        "purchases": 11
+      },
+      {
+        "date_start": "2026-08-20",
+        "date_stop": "2026-08-26",
+        "adset_id": "1101",
+        "spend": 523.18,
+        "impressions": 37132,
+        "reach": 19609,
+        "frequency": 1.89,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-08-20",
+        "date_stop": "2026-08-26",
+        "adset_id": "1102",
+        "spend": 417.69,
+        "impressions": 25816,
+        "reach": 14984,
+        "frequency": 1.72,
+        "purchases": 12
+      },
+      {
+        "date_start": "2026-08-20",
+        "date_stop": "2026-08-26",
+        "adset_id": "1103",
+        "spend": 526.36,
+        "impressions": 41140,
+        "reach": 30323,
+        "frequency": 1.36,
+        "purchases": 19
+      },
+      {
+        "date_start": "2026-08-20",
+        "date_stop": "2026-08-26",
+        "adset_id": "1104",
+        "spend": 189.14,
+        "impressions": 7774,
+        "reach": 2221,
+        "frequency": 3.5,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-08-27",
+        "date_stop": "2026-09-02",
+        "adset_id": "1101",
+        "spend": 561.63,
+        "impressions": 39964,
+        "reach": 22439,
+        "frequency": 1.78,
+        "purchases": 18
+      },
+      {
+        "date_start": "2026-08-27",
+        "date_stop": "2026-09-02",
+        "adset_id": "1102",
+        "spend": 424.81,
+        "impressions": 26854,
+        "reach": 18143,
+        "frequency": 1.48,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-08-27",
+        "date_stop": "2026-09-02",
+        "adset_id": "1103",
+        "spend": 452.64,
+        "impressions": 34348,
+        "reach": 24004,
+        "frequency": 1.43,
+        "purchases": 20
+      },
+      {
+        "date_start": "2026-08-27",
+        "date_stop": "2026-09-02",
+        "adset_id": "1104",
+        "spend": 189.49,
+        "impressions": 7919,
+        "reach": 2329,
+        "frequency": 3.4,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-09-03",
+        "date_stop": "2026-09-09",
+        "adset_id": "1101",
+        "spend": 535.69,
+        "impressions": 38119,
+        "reach": 26170,
+        "frequency": 1.46,
+        "purchases": 16
+      },
+      {
+        "date_start": "2026-09-03",
+        "date_stop": "2026-09-09",
+        "adset_id": "1102",
+        "spend": 404.96,
+        "impressions": 25262,
+        "reach": 17746,
+        "frequency": 1.42,
+        "purchases": 12
+      },
+      {
+        "date_start": "2026-09-03",
+        "date_stop": "2026-09-09",
+        "adset_id": "1103",
+        "spend": 454.91,
+        "impressions": 35702,
+        "reach": 19627,
+        "frequency": 1.82,
+        "purchases": 19
+      },
+      {
+        "date_start": "2026-09-03",
+        "date_stop": "2026-09-09",
+        "adset_id": "1104",
+        "spend": 221.01,
+        "impressions": 9146,
+        "reach": 2541,
+        "frequency": 3.6,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-09-10",
+        "date_stop": "2026-09-16",
+        "adset_id": "1101",
+        "spend": 507.01,
+        "impressions": 36097,
+        "reach": 20907,
+        "frequency": 1.73,
+        "purchases": 15
+      },
+      {
+        "date_start": "2026-09-10",
+        "date_stop": "2026-09-16",
+        "adset_id": "1102",
+        "spend": 373.86,
+        "impressions": 23177,
+        "reach": 12482,
+        "frequency": 1.86,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-09-10",
+        "date_stop": "2026-09-16",
+        "adset_id": "1103",
+        "spend": 454.55,
+        "impressions": 35297,
+        "reach": 19296,
+        "frequency": 1.83,
+        "purchases": 20
+      },
+      {
+        "date_start": "2026-09-10",
+        "date_stop": "2026-09-16",
+        "adset_id": "1104",
+        "spend": 271.5,
+        "impressions": 11410,
+        "reach": 3084,
+        "frequency": 3.7,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-09-17",
+        "date_stop": "2026-09-23",
+        "adset_id": "1101",
+        "spend": 426.26,
+        "impressions": 30497,
+        "reach": 19455,
+        "frequency": 1.57,
+        "purchases": 14
+      },
+      {
+        "date_start": "2026-09-17",
+        "date_stop": "2026-09-23",
+        "adset_id": "1102",
+        "spend": 625.72,
+        "impressions": 39110,
+        "reach": 24237,
+        "frequency": 1.61,
+        "purchases": 23
+      },
+      {
+        "date_start": "2026-09-17",
+        "date_stop": "2026-09-23",
+        "adset_id": "1103",
+        "spend": 479.63,
+        "impressions": 37162,
+        "reach": 23406,
+        "frequency": 1.59,
+        "purchases": 21
+      },
+      {
+        "date_start": "2026-09-17",
+        "date_stop": "2026-09-23",
+        "adset_id": "1104",
+        "spend": 271.85,
+        "impressions": 11094,
+        "reach": 2919,
+        "frequency": 3.8,
+        "purchases": 18
+      },
+      {
+        "date_start": "2026-09-24",
+        "date_stop": "2026-09-30",
+        "adset_id": "1101",
+        "spend": 354.01,
+        "impressions": 24838,
+        "reach": 17857,
+        "frequency": 1.39,
+        "purchases": 15
+      },
+      {
+        "date_start": "2026-09-24",
+        "date_stop": "2026-09-30",
+        "adset_id": "1102",
+        "spend": 261.26,
+        "impressions": 16325,
+        "reach": 11843,
+        "frequency": 1.38,
+        "purchases": 11
+      },
+      {
+        "date_start": "2026-09-24",
+        "date_stop": "2026-09-30",
+        "adset_id": "1103",
+        "spend": 435.38,
+        "impressions": 33204,
+        "reach": 19648,
+        "frequency": 1.69,
+        "purchases": 19
+      },
+      {
+        "date_start": "2026-09-24",
+        "date_stop": "2026-09-30",
+        "adset_id": "1104",
+        "spend": 258.98,
+        "impressions": 10685,
+        "reach": 2740,
+        "frequency": 3.9,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-10-01",
+        "date_stop": "2026-10-07",
+        "adset_id": "1101",
+        "spend": 368.95,
+        "impressions": 26464,
+        "reach": 16578,
+        "frequency": 1.6,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-10-01",
+        "date_stop": "2026-10-07",
+        "adset_id": "1102",
+        "spend": 127.81,
+        "impressions": 8090,
+        "reach": 5300,
+        "frequency": 1.53,
+        "purchases": 4
+      },
+      {
+        "date_start": "2026-10-01",
+        "date_stop": "2026-10-07",
+        "adset_id": "1103",
+        "spend": 334.6,
+        "impressions": 25275,
+        "reach": 15368,
+        "frequency": 1.64,
+        "purchases": 16
+      },
+      {
+        "date_start": "2026-10-01",
+        "date_stop": "2026-10-07",
+        "adset_id": "1104",
+        "spend": 242.64,
+        "impressions": 10443,
+        "reach": 2547,
+        "frequency": 4.1,
+        "purchases": 16
+      },
+      {
+        "date_start": "2026-10-08",
+        "date_stop": "2026-10-14",
+        "adset_id": "1101",
+        "spend": 309.03,
+        "impressions": 21853,
+        "reach": 15893,
+        "frequency": 1.38,
+        "purchases": 11
+      },
+      {
+        "date_start": "2026-10-08",
+        "date_stop": "2026-10-14",
+        "adset_id": "1102",
+        "spend": 124.08,
+        "impressions": 7809,
+        "reach": 4182,
+        "frequency": 1.87,
+        "purchases": 4
+      },
+      {
+        "date_start": "2026-10-08",
+        "date_stop": "2026-10-14",
+        "adset_id": "1103",
+        "spend": 349.54,
+        "impressions": 27105,
+        "reach": 17869,
+        "frequency": 1.52,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-10-08",
+        "date_stop": "2026-10-14",
+        "adset_id": "1104",
+        "spend": 273.19,
+        "impressions": 11521,
+        "reach": 2618,
+        "frequency": 4.4,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-10-15",
+        "date_stop": "2026-10-21",
+        "adset_id": "1101",
+        "spend": 346.9,
+        "impressions": 19636,
+        "reach": 11333,
+        "frequency": 1.73,
+        "purchases": 13
+      },
+      {
+        "date_start": "2026-10-15",
+        "date_stop": "2026-10-21",
+        "adset_id": "1102",
+        "spend": 122.8,
+        "impressions": 7649,
+        "reach": 4410,
+        "frequency": 1.73,
+        "purchases": 3
+      },
+      {
+        "date_start": "2026-10-15",
+        "date_stop": "2026-10-21",
+        "adset_id": "1103",
+        "spend": 387.11,
+        "impressions": 29998,
+        "reach": 16118,
+        "frequency": 1.86,
+        "purchases": 18
+      },
+      {
+        "date_start": "2026-10-15",
+        "date_stop": "2026-10-21",
+        "adset_id": "1104",
+        "spend": 246.65,
+        "impressions": 10315,
+        "reach": 2149,
+        "frequency": 4.8,
+        "purchases": 16
+      },
+      {
+        "date_start": "2026-10-22",
+        "date_stop": "2026-10-28",
+        "adset_id": "1101",
+        "spend": 309.86,
+        "impressions": 19545,
+        "reach": 10425,
+        "frequency": 1.87,
+        "purchases": 11
+      },
+      {
+        "date_start": "2026-10-22",
+        "date_stop": "2026-10-28",
+        "adset_id": "1102",
+        "spend": 122.45,
+        "impressions": 7517,
+        "reach": 4628,
+        "frequency": 1.62,
+        "purchases": 4
+      },
+      {
+        "date_start": "2026-10-22",
+        "date_stop": "2026-10-28",
+        "adset_id": "1103",
+        "spend": 395.61,
+        "impressions": 30767,
+        "reach": 22199,
+        "frequency": 1.39,
+        "purchases": 17
+      },
+      {
+        "date_start": "2026-10-22",
+        "date_stop": "2026-10-28",
+        "adset_id": "1104",
+        "spend": 255.21,
+        "impressions": 10520,
+        "reach": 1985,
+        "frequency": 5.3,
+        "purchases": 17
+      }
+    ],
+    "lifetime_totals_live_ads": [
+      {
+        "ad_id": "2101",
+        "spend": 5187.44,
+        "impressions": 358881,
+        "purchases": 215
+      },
+      {
+        "ad_id": "2105",
+        "spend": 101.04,
+        "impressions": 6445,
+        "purchases": 0
+      },
+      {
+        "ad_id": "2203",
+        "spend": 771.69,
+        "impressions": 48219,
+        "purchases": 31
+      },
+      {
+        "ad_id": "2204",
+        "spend": 250.42,
+        "impressions": 15628,
+        "purchases": 4
+      },
+      {
+        "ad_id": "2301",
+        "spend": 5565.98,
+        "impressions": 429536,
+        "purchases": 265
+      },
+      {
+        "ad_id": "2304",
+        "spend": 73.51,
+        "impressions": 5676,
+        "purchases": 1
+      },
+      {
+        "ad_id": "2401",
+        "spend": 3001.54,
+        "impressions": 125041,
+        "purchases": 200
+      },
+      {
+        "ad_id": "2402",
+        "spend": 645.15,
+        "impressions": 26789,
+        "purchases": 38
+      }
+    ],
+    "activity_log_budget_changes": [
+      {
+        "event_time": "2026-09-17T09:12:40-0500",
+        "event_type": "update_ad_set_budget",
+        "object_type": "CAMPAIGN",
+        "object_id": "1102",
+        "extra_data": {
+          "old_value": 8000,
+          "new_value": 80000,
+          "type": "daily_budget"
+        }
+      },
+      {
+        "event_time": "2026-09-18T10:05:02-0500",
+        "event_type": "update_ad_set_budget",
+        "object_type": "CAMPAIGN",
+        "object_id": "1102",
+        "extra_data": {
+          "old_value": 80000,
+          "new_value": 8000,
+          "type": "daily_budget"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,790 @@
+{
+  "request": "Track my prices against Brewline Supply and Kettlemere Home, plus anyone else Google shows next to us, and an Amazon seller I pasted. Set a repricing rule per collection. Grinders, kettles and filters should match the market, brewers should beat it, and leave our own coffee alone. Don't go under a 25% margin.",
+  "note": "Example data: an invented online coffee gear store with invented rival shops, products and accounts, not a real business. Every number in expected_output.json follows from this input. Merchant Center is shown as connected in this example.",
+  "store": {
+    "name": "Example Coffee Supply",
+    "domain": "examplecoffee.example",
+    "platform": "Shopify",
+    "shop_name": "examplecoffee",
+    "workspace_id": 1,
+    "brand_id": 1,
+    "merchant_center": {
+      "merchant_id": "100000001",
+      "country": "US"
+    }
+  },
+  "run_date": "2026-10-28",
+  "settings": {
+    "country": "US",
+    "currency": "USD",
+    "tolerance_pct": 5,
+    "well_pct": 15,
+    "min_margin_pct": 25,
+    "fee_pct": 2.9,
+    "fee_fixed": 0.3,
+    "other_cost_per_order": 1.5,
+    "price_ending": ".99",
+    "max_move_pct": 10,
+    "beat_margin_pct": 2,
+    "premium_pct": 10,
+    "map_prices": "none for these brands"
+  },
+  "group_positions": {
+    "Grinders": "match",
+    "Kettles": "match",
+    "Brewers": "beat",
+    "Filters and accessories": "match",
+    "Coffee (own brand)": "hold"
+  },
+  "our_shipping": {
+    "flat_rate": 6.95,
+    "free_from": 75.0
+  },
+  "data_pulled": {
+    "shopify_products": {
+      "calls": [
+        "get_products (status active)",
+        "get_inventory_items (cost)",
+        "get_shipping_zones",
+        "get_price_rules"
+      ],
+      "rows": [
+        {
+          "sku": "ECS-G1",
+          "product_type": "Grinders",
+          "title": "Conical burr grinder, 40 settings",
+          "barcode": "0850000000011",
+          "price": 119.99,
+          "compare_at_price": null,
+          "msrp_from_user": 149.99,
+          "cost": 62.0,
+          "units_sold_30d": 38
+        },
+        {
+          "sku": "ECS-G2",
+          "product_type": "Grinders",
+          "title": "Hand grinder, ceramic burrs",
+          "barcode": "0850000000028",
+          "price": 39.99,
+          "compare_at_price": null,
+          "msrp_from_user": 54.99,
+          "cost": 17.0,
+          "units_sold_30d": 61
+        },
+        {
+          "sku": "ECS-G3",
+          "product_type": "Grinders",
+          "title": "Flat burr grinder, single dose",
+          "barcode": "0850000000035",
+          "price": 229.99,
+          "compare_at_price": null,
+          "msrp_from_user": 279.99,
+          "cost": 128.0,
+          "units_sold_30d": 9
+        },
+        {
+          "sku": "ECS-K1",
+          "product_type": "Kettles",
+          "title": "Gooseneck electric kettle, 1 L",
+          "barcode": "0850000000042",
+          "price": 99.99,
+          "compare_at_price": null,
+          "msrp_from_user": 109.99,
+          "cost": 41.0,
+          "units_sold_30d": 44
+        },
+        {
+          "sku": "ECS-K2",
+          "product_type": "Kettles",
+          "title": "Stovetop gooseneck kettle, 0.9 L",
+          "barcode": "0850000000059",
+          "price": 49.99,
+          "compare_at_price": null,
+          "msrp_from_user": 54.99,
+          "cost": 19.0,
+          "units_sold_30d": 27
+        },
+        {
+          "sku": "ECS-K3",
+          "product_type": "Kettles",
+          "title": "Variable temperature kettle, 1.2 L",
+          "barcode": "0850000000066",
+          "price": 129.99,
+          "compare_at_price": null,
+          "msrp_from_user": 139.99,
+          "cost": 58.0,
+          "units_sold_30d": 15
+        },
+        {
+          "sku": "ECS-B1",
+          "product_type": "Brewers",
+          "title": "Ceramic pour-over dripper, size 02",
+          "barcode": "0850000000073",
+          "price": 27.99,
+          "compare_at_price": null,
+          "msrp_from_user": 29.99,
+          "cost": 9.5,
+          "units_sold_30d": 120
+        },
+        {
+          "sku": "ECS-B2",
+          "product_type": "Brewers",
+          "title": "French press, 34 oz",
+          "barcode": "0850000000080",
+          "price": 39.99,
+          "compare_at_price": null,
+          "msrp_from_user": 44.99,
+          "cost": 15.0,
+          "units_sold_30d": 73
+        },
+        {
+          "sku": "ECS-B3",
+          "product_type": "Brewers",
+          "title": "Glass pour-over carafe brewer, 6 cup",
+          "barcode": "0850000000097",
+          "price": 46.99,
+          "compare_at_price": null,
+          "msrp_from_user": 49.99,
+          "cost": 18.0,
+          "units_sold_30d": 88
+        },
+        {
+          "sku": "ECS-B4",
+          "product_type": "Brewers",
+          "title": "Cold brew maker, 1.5 qt",
+          "barcode": "0850000000103",
+          "price": 36.99,
+          "compare_at_price": null,
+          "msrp_from_user": 39.99,
+          "cost": 14.0,
+          "units_sold_30d": 52
+        },
+        {
+          "sku": "ECS-F1",
+          "product_type": "Filters and accessories",
+          "title": "Paper filters size 02, 4 x 100 pack",
+          "barcode": "0850000000110",
+          "price": 24.99,
+          "compare_at_price": null,
+          "msrp_from_user": 27.99,
+          "cost": 11.0,
+          "units_sold_30d": 96
+        },
+        {
+          "sku": "ECS-F2",
+          "product_type": "Filters and accessories",
+          "title": "Coffee scale with timer",
+          "barcode": "0850000000127",
+          "price": 49.99,
+          "compare_at_price": null,
+          "msrp_from_user": 59.99,
+          "cost": 21.0,
+          "units_sold_30d": 34
+        },
+        {
+          "sku": "ECS-F3",
+          "product_type": "Filters and accessories",
+          "title": "Knock box, small",
+          "barcode": "0850000000134",
+          "price": 25.99,
+          "compare_at_price": null,
+          "msrp_from_user": 27.99,
+          "cost": 14.0,
+          "units_sold_30d": 19
+        },
+        {
+          "sku": "ECS-H1",
+          "product_type": "Coffee (own brand)",
+          "title": "House blend whole beans, 12 oz",
+          "barcode": null,
+          "price": 17.99,
+          "compare_at_price": null,
+          "msrp_from_user": null,
+          "cost": 6.5,
+          "units_sold_30d": 340
+        }
+      ]
+    },
+    "our_promotions": [
+      {
+        "title": "BREW10",
+        "type": "discount code",
+        "value": "10% off",
+        "applies_to": "Brewers collection",
+        "starts_at": "2026-10-01",
+        "ends_at": "2026-11-30"
+      }
+    ],
+    "merchant_center_top_merchants": {
+      "query": "competitive_visibility_top_merchant_view, US, category Coffee and tea makers, 2026-09-30 to 2026-10-27, traffic_source ALL",
+      "rows": [
+        {
+          "domain": "brewline.example",
+          "is_your_domain": false,
+          "rank": 1,
+          "page_overlap_rate": 0.42,
+          "higher_position_rate": 0.51
+        },
+        {
+          "domain": "marketplace.example",
+          "is_your_domain": false,
+          "rank": 2,
+          "page_overlap_rate": 0.55,
+          "higher_position_rate": 0.63
+        },
+        {
+          "domain": "burrvale.example",
+          "is_your_domain": false,
+          "rank": 3,
+          "page_overlap_rate": 0.37,
+          "higher_position_rate": 0.44
+        },
+        {
+          "domain": "examplecoffee.example",
+          "is_your_domain": true,
+          "rank": 4,
+          "page_overlap_rate": 1.0,
+          "higher_position_rate": 0.0
+        },
+        {
+          "domain": "kettlemere.example",
+          "is_your_domain": false,
+          "rank": 5,
+          "page_overlap_rate": 0.29,
+          "higher_position_rate": 0.4
+        },
+        {
+          "domain": "bigbox-home.example",
+          "is_your_domain": false,
+          "rank": 6,
+          "page_overlap_rate": 0.12,
+          "higher_position_rate": 0.35
+        }
+      ]
+    },
+    "merchant_center_benchmarks": [
+      {
+        "offer_id": "ECS-F2",
+        "benchmark_price": 44.99
+      },
+      {
+        "offer_id": "ECS-K1",
+        "benchmark_price": 82.49
+      },
+      {
+        "offer_id": "ECS-B1",
+        "benchmark_price": 26.49
+      }
+    ],
+    "merchant_center_suggested_prices": [
+      {
+        "offer_id": "ECS-K1",
+        "suggested_price": 87.99,
+        "effectiveness": "HIGH",
+        "predicted_clicks_change_fraction": 0.21,
+        "predicted_conversions_change_fraction": 0.14
+      },
+      {
+        "offer_id": "ECS-F2",
+        "suggested_price": 46.99,
+        "effectiveness": "MEDIUM",
+        "predicted_clicks_change_fraction": 0.12,
+        "predicted_conversions_change_fraction": 0.08
+      }
+    ],
+    "rivals": {
+      "Brewline Supply": {
+        "domain": "brewline.example",
+        "shipping_one_unit": 5.99,
+        "free_shipping_from": 50.0,
+        "prices_from": "product pages (JSON-LD)"
+      },
+      "Kettlemere Home": {
+        "domain": "kettlemere.example",
+        "shipping_one_unit": 7.5,
+        "free_shipping_from": 49.0,
+        "prices_from": "pasted price list"
+      },
+      "Burrvale Goods": {
+        "domain": "burrvale.example",
+        "shipping_one_unit": 0.0,
+        "free_shipping_from": 0.0,
+        "prices_from": "product pages (JSON-LD)"
+      },
+      "Tallowfen Trading (Amazon seller)": {
+        "domain": null,
+        "shipping_one_unit": null,
+        "free_shipping_from": null,
+        "prices_from": "Amazon export"
+      }
+    },
+    "rival_offers": [
+      {
+        "sku": "ECS-G1",
+        "shop": "Brewline Supply",
+        "item_price": 127.49,
+        "regular_price_if_sale": 149.99,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G1",
+        "shop": "Kettlemere Home",
+        "item_price": 139.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G1",
+        "shop": "Burrvale Goods",
+        "item_price": 134.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G1",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 136.5,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G2",
+        "shop": "Brewline Supply",
+        "item_price": 42.49,
+        "regular_price_if_sale": 49.99,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G2",
+        "shop": "Kettlemere Home",
+        "item_price": 44.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G2",
+        "shop": "Burrvale Goods",
+        "item_price": 46.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G2",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 45.9,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G3",
+        "shop": "Brewline Supply",
+        "item_price": 220.99,
+        "regular_price_if_sale": 259.99,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G3",
+        "shop": "Kettlemere Home",
+        "item_price": 239.99,
+        "regular_price_if_sale": null,
+        "in_stock": false,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-G3",
+        "shop": "Burrvale Goods",
+        "item_price": 249.0,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted (no Product markup on the page)",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K1",
+        "shop": "Brewline Supply",
+        "item_price": 84.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K1",
+        "shop": "Kettlemere Home",
+        "item_price": 79.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K1",
+        "shop": "Burrvale Goods",
+        "item_price": 82.0,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K1",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 81.45,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K2",
+        "shop": "Brewline Supply",
+        "item_price": 44.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K2",
+        "shop": "Kettlemere Home",
+        "item_price": 39.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K2",
+        "shop": "Burrvale Goods",
+        "item_price": 42.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K2",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 44.2,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K3",
+        "shop": "Brewline Supply",
+        "item_price": 119.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K3",
+        "shop": "Kettlemere Home",
+        "item_price": 124.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-K3",
+        "shop": "Burrvale Goods",
+        "item_price": 121.5,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B1",
+        "shop": "Brewline Supply",
+        "item_price": 24.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B1",
+        "shop": "Kettlemere Home",
+        "item_price": 26.0,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B1",
+        "shop": "Burrvale Goods",
+        "item_price": 29.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B1",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 28.75,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B2",
+        "shop": "Brewline Supply",
+        "item_price": 37.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B2",
+        "shop": "Kettlemere Home",
+        "item_price": 36.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B2",
+        "shop": "Burrvale Goods",
+        "item_price": 41.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B2",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 39.95,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B3",
+        "shop": "Brewline Supply",
+        "item_price": 44.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B3",
+        "shop": "Kettlemere Home",
+        "item_price": 42.0,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B3",
+        "shop": "Burrvale Goods",
+        "item_price": 47.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B3",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 46.5,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B4",
+        "shop": "Brewline Supply",
+        "item_price": 29.99,
+        "regular_price_if_sale": null,
+        "in_stock": false,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B4",
+        "shop": "Kettlemere Home",
+        "item_price": 33.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-B4",
+        "shop": "Burrvale Goods",
+        "item_price": 38.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F1",
+        "shop": "Brewline Supply",
+        "item_price": 19.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F1",
+        "shop": "Kettlemere Home",
+        "item_price": 18.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F1",
+        "shop": "Burrvale Goods",
+        "item_price": 16.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F1",
+        "shop": "Tallowfen Trading (Amazon seller)",
+        "item_price": 17.1,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "Amazon export",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F3",
+        "shop": "Brewline Supply",
+        "item_price": 17.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F3",
+        "shop": "Kettlemere Home",
+        "item_price": 19.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "pasted",
+        "read_on": "2026-10-28"
+      },
+      {
+        "sku": "ECS-F3",
+        "shop": "Burrvale Goods",
+        "item_price": 18.99,
+        "regular_price_if_sale": null,
+        "in_stock": true,
+        "read_by": "product page JSON-LD",
+        "read_on": "2026-10-28"
+      }
+    ],
+    "pages_not_read": [
+      {
+        "shop": "Burrvale Goods",
+        "sku": "ECS-G3",
+        "result": "the fetched page has no Product JSON-LD block",
+        "fallback": "price pasted by the user"
+      }
+    ],
+    "previous_log": {
+      "sheet": "Price log",
+      "run_date": "2026-10-21",
+      "rows": [
+        {
+          "sku": "ECS-G1",
+          "shop": "Brewline Supply",
+          "item_price": 149.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-G2",
+          "shop": "Brewline Supply",
+          "item_price": 49.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-G3",
+          "shop": "Brewline Supply",
+          "item_price": 259.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-G3",
+          "shop": "Kettlemere Home",
+          "item_price": 239.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-K1",
+          "shop": "Kettlemere Home",
+          "item_price": 89.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-K1",
+          "shop": "Brewline Supply",
+          "item_price": 84.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-B4",
+          "shop": "Brewline Supply",
+          "item_price": 29.99,
+          "on_sale": false,
+          "in_stock": true
+        },
+        {
+          "sku": "ECS-B1",
+          "shop": "Burrvale Goods",
+          "item_price": 29.99,
+          "on_sale": false,
+          "in_stock": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6990 @@
+{
+  "request": "Run a win-loss analysis on our closed deals for the last 12 months. Tell us why we lose, which competitors beat us and where, which marketing channels bring deals we can win, and give us a buyer interview guide for next quarter. Deal size bands: under $10k, $10k to $30k, $30k and up.",
+  "business": "Example Dispatch Software, field service management software for HVAC, plumbing and electrical contractors, sold by a sales team on annual contracts (invented example)",
+  "run_date": "2026-10-28",
+  "currency": "USD",
+  "window": {
+    "closed_between": [
+      "2025-10-01",
+      "2026-09-30"
+    ],
+    "channel_cohort_created_between": [
+      "2025-10-01",
+      "2026-09-30"
+    ]
+  },
+  "answers_to_before_you_start": {
+    "outcomes": "Won, Lost, No decision. Housekeeping values set aside (records, not buying decisions): Duplicate, Test deal.",
+    "deal_size_bands_usd": [
+      [
+        "Under $10k",
+        0,
+        10000
+      ],
+      [
+        "$10k to $30k",
+        10000,
+        30000
+      ],
+      [
+        "$30k and up",
+        30000,
+        null
+      ]
+    ],
+    "segment_field": "industry",
+    "company_size_field": "technicians (1-10, 11-50, 51+)",
+    "list_price": "list_amount_usd = technicians x monthly list price x 12 ($60 for 1-10, $55 for 11-50, $50 for 51+)",
+    "lead_event_names": {
+      "ga4": [
+        "generate_lead"
+      ],
+      "google_ads": [
+        "Demo request form",
+        "Pricing page contact form"
+      ],
+      "linkedin_ads": [
+        "oneClickLeads",
+        "externalWebsiteConversions"
+      ],
+      "callrail": "first-time calls marked good_lead"
+    }
+  },
+  "sources": {
+    "crm_export": "Uploaded CSV: every deal created or closed in the window, open deals included (no CRM connector; the export is the source).",
+    "call_notes": "Pasted rep notes, keyed by deal id.",
+    "interviews": "Pasted lines from 20 buyer interviews held 14 to 40 days after close, keyed by deal id. Interviewees are described by role, never named.",
+    "platform_leads": "Pulled through the InsightfulPipe MCP for the cohort window: Google Ads gaql (conversions by action), LinkedIn Ads get_account_analytics, GA4 get_report (key events by source, medium and event), CallRail get_calls (first-time calls)."
+  },
+  "crm_export": [
+    {
+      "deal_id": "D-1001",
+      "created": "2026-03-07",
+      "closed": "2026-04-14",
+      "status": "Won",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1002",
+      "created": "2026-05-11",
+      "closed": "2026-06-21",
+      "status": "Won",
+      "amount_usd": 18410,
+      "list_amount_usd": 20460,
+      "industry": "HVAC",
+      "technicians": 31,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1003",
+      "created": "2026-04-30",
+      "closed": "2026-06-26",
+      "status": "Won",
+      "amount_usd": 2740,
+      "list_amount_usd": 2880,
+      "industry": "Multi-trade",
+      "technicians": 4,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1004",
+      "created": "2025-07-22",
+      "closed": "2025-11-29",
+      "status": "Lost",
+      "amount_usd": 25500,
+      "list_amount_usd": 27720,
+      "industry": "Electrical",
+      "technicians": 42,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1005",
+      "created": "2026-04-11",
+      "closed": "2026-07-03",
+      "status": "Won",
+      "amount_usd": 4440,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1006",
+      "created": "2026-07-29",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 5760,
+      "list_amount_usd": 5760,
+      "industry": "HVAC",
+      "technicians": 8,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1007",
+      "created": "2026-05-26",
+      "closed": "2026-07-05",
+      "status": "Won",
+      "amount_usd": 10030,
+      "list_amount_usd": 10560,
+      "industry": "Electrical",
+      "technicians": 16,
+      "lead_source": "Inbound call",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1008",
+      "created": "2026-06-13",
+      "closed": "2026-08-03",
+      "status": "Won",
+      "amount_usd": 4790,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1009",
+      "created": "2025-10-14",
+      "closed": "2026-03-07",
+      "status": "Lost",
+      "amount_usd": 25540,
+      "list_amount_usd": 28380,
+      "industry": "HVAC",
+      "technicians": 43,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1010",
+      "created": "2025-12-08",
+      "closed": "2026-03-10",
+      "status": "Lost",
+      "amount_usd": 10660,
+      "list_amount_usd": 11220,
+      "industry": "HVAC",
+      "technicians": 17,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1011",
+      "created": "2026-03-20",
+      "closed": "2026-04-17",
+      "status": "Lost",
+      "amount_usd": 18480,
+      "list_amount_usd": 18480,
+      "industry": "Plumbing",
+      "technicians": 28,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1012",
+      "created": "2026-09-23",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 15440,
+      "list_amount_usd": 17160,
+      "industry": "Electrical",
+      "technicians": 26,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1013",
+      "created": "2026-04-11",
+      "closed": "2026-06-23",
+      "status": "Lost",
+      "amount_usd": 27490,
+      "list_amount_usd": 32340,
+      "industry": "Electrical",
+      "technicians": 49,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1014",
+      "created": "2025-07-01",
+      "closed": "2025-11-16",
+      "status": "Lost",
+      "amount_usd": 9500,
+      "list_amount_usd": 10560,
+      "industry": "HVAC",
+      "technicians": 16,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1015",
+      "created": "2025-12-18",
+      "closed": "2026-04-14",
+      "status": "Lost",
+      "amount_usd": 30360,
+      "list_amount_usd": 33000,
+      "industry": "Plumbing",
+      "technicians": 50,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1016",
+      "created": "2026-06-13",
+      "closed": "2026-08-22",
+      "status": "Lost",
+      "amount_usd": 30360,
+      "list_amount_usd": 30360,
+      "industry": "Plumbing",
+      "technicians": 46,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1017",
+      "created": "2026-07-09",
+      "closed": "2026-08-04",
+      "status": "Won",
+      "amount_usd": 34800,
+      "list_amount_usd": 34800,
+      "industry": "Electrical",
+      "technicians": 58,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1018",
+      "created": "2026-03-07",
+      "closed": "2026-05-23",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 3600,
+      "industry": "Electrical",
+      "technicians": 5,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1019",
+      "created": "2025-09-28",
+      "closed": "2025-12-03",
+      "status": "Lost",
+      "amount_usd": 51890,
+      "list_amount_usd": 56400,
+      "industry": "Multi-trade",
+      "technicians": 94,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1020",
+      "created": "2025-07-20",
+      "closed": "2025-11-10",
+      "status": "Lost",
+      "amount_usd": 21120,
+      "list_amount_usd": 26400,
+      "industry": "Multi-trade",
+      "technicians": 40,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1021",
+      "created": "2026-08-31",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6900,
+      "list_amount_usd": 7260,
+      "industry": "HVAC",
+      "technicians": 11,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1022",
+      "created": "2026-06-05",
+      "closed": "2026-06-27",
+      "status": "Won",
+      "amount_usd": 14520,
+      "list_amount_usd": 14520,
+      "industry": "Electrical",
+      "technicians": 22,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1023",
+      "created": "2026-03-10",
+      "closed": "2026-05-02",
+      "status": "Won",
+      "amount_usd": 5470,
+      "list_amount_usd": 5760,
+      "industry": "HVAC",
+      "technicians": 8,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1024",
+      "created": "2025-11-29",
+      "closed": "2025-12-16",
+      "status": "Won",
+      "amount_usd": 16270,
+      "list_amount_usd": 19140,
+      "industry": "Electrical",
+      "technicians": 29,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1025",
+      "created": "2025-07-21",
+      "closed": "2025-10-08",
+      "status": "Lost",
+      "amount_usd": 6480,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1026",
+      "created": "2026-05-22",
+      "closed": "2026-07-28",
+      "status": "Lost",
+      "amount_usd": 11910,
+      "list_amount_usd": 12540,
+      "industry": "Electrical",
+      "technicians": 19,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1027",
+      "created": "2025-06-24",
+      "closed": "2025-12-20",
+      "status": "No decision",
+      "amount_usd": 2590,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1028",
+      "created": "2026-05-28",
+      "closed": "2026-06-25",
+      "status": "Lost",
+      "amount_usd": 1730,
+      "list_amount_usd": 2160,
+      "industry": "Plumbing",
+      "technicians": 3,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1029",
+      "created": "2026-04-10",
+      "closed": "2026-06-02",
+      "status": "Won",
+      "amount_usd": 16930,
+      "list_amount_usd": 17820,
+      "industry": "Electrical",
+      "technicians": 27,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1030",
+      "created": "2025-08-21",
+      "closed": "2025-12-27",
+      "status": "No decision",
+      "amount_usd": 14850,
+      "list_amount_usd": 16500,
+      "industry": "Multi-trade",
+      "technicians": 25,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1031",
+      "created": "2025-08-10",
+      "closed": "2026-01-29",
+      "status": "No decision",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "Plumbing",
+      "technicians": 9,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1032",
+      "created": "2026-08-15",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 27320,
+      "list_amount_usd": 29700,
+      "industry": "Multi-trade",
+      "technicians": 45,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1033",
+      "created": "2026-01-27",
+      "closed": "2026-04-24",
+      "status": "No decision",
+      "amount_usd": 2810,
+      "list_amount_usd": 3600,
+      "industry": "Multi-trade",
+      "technicians": 5,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1034",
+      "created": "2025-09-27",
+      "closed": "2025-12-28",
+      "status": "No decision",
+      "amount_usd": 23830,
+      "list_amount_usd": 25080,
+      "industry": "Plumbing",
+      "technicians": 38,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1035",
+      "created": "2026-09-08",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 29750,
+      "list_amount_usd": 32340,
+      "industry": "Plumbing",
+      "technicians": 49,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1036",
+      "created": "2025-12-22",
+      "closed": "2026-04-28",
+      "status": "No decision",
+      "amount_usd": 17820,
+      "list_amount_usd": 19800,
+      "industry": "HVAC",
+      "technicians": 30,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1037",
+      "created": "2026-05-16",
+      "closed": "2026-07-24",
+      "status": "Lost",
+      "amount_usd": 7550,
+      "list_amount_usd": 8580,
+      "industry": "HVAC",
+      "technicians": 13,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1038",
+      "created": "2025-08-20",
+      "closed": "2025-11-13",
+      "status": "Lost",
+      "amount_usd": 1620,
+      "list_amount_usd": 2160,
+      "industry": "Multi-trade",
+      "technicians": 3,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1039",
+      "created": "2026-07-24",
+      "closed": "2026-09-09",
+      "status": "Won",
+      "amount_usd": 3600,
+      "list_amount_usd": 3600,
+      "industry": "Multi-trade",
+      "technicians": 5,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1040",
+      "created": "2026-07-19",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 4610,
+      "list_amount_usd": 5760,
+      "industry": "HVAC",
+      "technicians": 8,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1041",
+      "created": "2026-05-29",
+      "closed": "2026-07-01",
+      "status": "Won",
+      "amount_usd": 3420,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1042",
+      "created": "2026-05-06",
+      "closed": "2026-08-01",
+      "status": "Won",
+      "amount_usd": 14850,
+      "list_amount_usd": 16500,
+      "industry": "HVAC",
+      "technicians": 25,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1043",
+      "created": "2025-08-30",
+      "closed": "2025-11-05",
+      "status": "Lost",
+      "amount_usd": 3670,
+      "list_amount_usd": 4320,
+      "industry": "Plumbing",
+      "technicians": 6,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1044",
+      "created": "2026-03-24",
+      "closed": "2026-05-03",
+      "status": "Lost",
+      "amount_usd": 8580,
+      "list_amount_usd": 8580,
+      "industry": "Multi-trade",
+      "technicians": 13,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1045",
+      "created": "2025-09-03",
+      "closed": "2025-11-17",
+      "status": "Won",
+      "amount_usd": 64410,
+      "list_amount_usd": 67800,
+      "industry": "Electrical",
+      "technicians": 113,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1046",
+      "created": "2026-08-09",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 32210,
+      "list_amount_usd": 36600,
+      "industry": "HVAC",
+      "technicians": 61,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1047",
+      "created": "2025-07-12",
+      "closed": "2025-12-21",
+      "status": "No decision",
+      "amount_usd": 3670,
+      "list_amount_usd": 4320,
+      "industry": "Electrical",
+      "technicians": 6,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1048",
+      "created": "2025-09-03",
+      "closed": "2025-11-14",
+      "status": "Won",
+      "amount_usd": 19430,
+      "list_amount_usd": 21120,
+      "industry": "Plumbing",
+      "technicians": 32,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1049",
+      "created": "2025-11-09",
+      "closed": "2026-02-02",
+      "status": "Won",
+      "amount_usd": 2530,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "Inbound call",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1050",
+      "created": "2026-01-03",
+      "closed": "2026-03-30",
+      "status": "Lost",
+      "amount_usd": 43740,
+      "list_amount_usd": 48600,
+      "industry": "HVAC",
+      "technicians": 81,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1051",
+      "created": "2025-11-10",
+      "closed": "2025-12-13",
+      "status": "Won",
+      "amount_usd": 55970,
+      "list_amount_usd": 63600,
+      "industry": "Plumbing",
+      "technicians": 106,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1052",
+      "created": "2026-08-04",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 10450,
+      "list_amount_usd": 11880,
+      "industry": "HVAC",
+      "technicians": 18,
+      "lead_source": "Trade show",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1053",
+      "created": "2026-02-20",
+      "closed": "2026-03-25",
+      "status": "Won",
+      "amount_usd": 2160,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1054",
+      "created": "2025-10-24",
+      "closed": "2026-01-18",
+      "status": "Lost",
+      "amount_usd": 43890,
+      "list_amount_usd": 46200,
+      "industry": "Plumbing",
+      "technicians": 77,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1055",
+      "created": "2026-02-05",
+      "closed": "2026-03-20",
+      "status": "Lost",
+      "amount_usd": 17820,
+      "list_amount_usd": 17820,
+      "industry": "HVAC",
+      "technicians": 27,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1056",
+      "created": "2026-04-17",
+      "closed": "2026-06-10",
+      "status": "Lost",
+      "amount_usd": 3060,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1057",
+      "created": "2026-07-18",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 64800,
+      "list_amount_usd": 64800,
+      "industry": "Plumbing",
+      "technicians": 108,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1058",
+      "created": "2025-08-02",
+      "closed": "2025-12-29",
+      "status": "Lost",
+      "amount_usd": 3060,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1059",
+      "created": "2026-09-11",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 1990,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1060",
+      "created": "2026-09-16",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 2880,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1061",
+      "created": "2026-04-12",
+      "closed": "2026-06-20",
+      "status": "Won",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "Plumbing",
+      "technicians": 7,
+      "lead_source": "Trade show",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1062",
+      "created": "2026-08-30",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 38400,
+      "list_amount_usd": 38400,
+      "industry": "Electrical",
+      "technicians": 64,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1063",
+      "created": "2025-11-22",
+      "closed": "2026-01-06",
+      "status": "Won",
+      "amount_usd": 26400,
+      "list_amount_usd": 26400,
+      "industry": "Plumbing",
+      "technicians": 40,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1064",
+      "created": "2025-10-30",
+      "closed": "2025-12-28",
+      "status": "Won",
+      "amount_usd": 6480,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1065",
+      "created": "2026-04-13",
+      "closed": "2026-08-22",
+      "status": "Lost",
+      "amount_usd": 33000,
+      "list_amount_usd": 33000,
+      "industry": "Plumbing",
+      "technicians": 50,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1066",
+      "created": "2025-10-27",
+      "closed": "2026-01-12",
+      "status": "Won",
+      "amount_usd": 60720,
+      "list_amount_usd": 69000,
+      "industry": "HVAC",
+      "technicians": 115,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1067",
+      "created": "2026-01-18",
+      "closed": "2026-05-07",
+      "status": "Lost",
+      "amount_usd": 25810,
+      "list_amount_usd": 30360,
+      "industry": "Multi-trade",
+      "technicians": 46,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1068",
+      "created": "2026-02-17",
+      "closed": "2026-06-28",
+      "status": "Lost",
+      "amount_usd": 25080,
+      "list_amount_usd": 25080,
+      "industry": "Multi-trade",
+      "technicians": 38,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1069",
+      "created": "2025-12-15",
+      "closed": "2026-02-10",
+      "status": "Lost",
+      "amount_usd": 2880,
+      "list_amount_usd": 2880,
+      "industry": "Electrical",
+      "technicians": 4,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1070",
+      "created": "2025-12-25",
+      "closed": "2026-02-17",
+      "status": "Won",
+      "amount_usd": 4440,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1071",
+      "created": "2026-06-17",
+      "closed": "2026-09-25",
+      "status": "Lost",
+      "amount_usd": 1730,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1072",
+      "created": "2026-06-12",
+      "closed": "2026-08-05",
+      "status": "Won",
+      "amount_usd": 7920,
+      "list_amount_usd": 7920,
+      "industry": "Electrical",
+      "technicians": 12,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1073",
+      "created": "2026-06-13",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 3970,
+      "list_amount_usd": 4320,
+      "industry": "HVAC",
+      "technicians": 6,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1074",
+      "created": "2025-12-17",
+      "closed": "2026-04-05",
+      "status": "Lost",
+      "amount_usd": 22700,
+      "list_amount_usd": 28380,
+      "industry": "HVAC",
+      "technicians": 43,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1075",
+      "created": "2026-06-14",
+      "closed": "2026-09-05",
+      "status": "Lost",
+      "amount_usd": 3600,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "Inbound call",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1076",
+      "created": "2026-05-31",
+      "closed": "2026-07-12",
+      "status": "Won",
+      "amount_usd": 16270,
+      "list_amount_usd": 19140,
+      "industry": "Multi-trade",
+      "technicians": 29,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1077",
+      "created": "2025-11-09",
+      "closed": "2025-12-31",
+      "status": "Lost",
+      "amount_usd": 6170,
+      "list_amount_usd": 7260,
+      "industry": "HVAC",
+      "technicians": 11,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1078",
+      "created": "2025-09-10",
+      "closed": "2026-02-15",
+      "status": "No decision",
+      "amount_usd": 21490,
+      "list_amount_usd": 24420,
+      "industry": "HVAC",
+      "technicians": 37,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1079",
+      "created": "2026-06-09",
+      "closed": "2026-07-02",
+      "status": "Won",
+      "amount_usd": 61780,
+      "list_amount_usd": 70200,
+      "industry": "HVAC",
+      "technicians": 117,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1080",
+      "created": "2025-09-16",
+      "closed": "2025-11-20",
+      "status": "Won",
+      "amount_usd": 14520,
+      "list_amount_usd": 14520,
+      "industry": "Plumbing",
+      "technicians": 22,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1081",
+      "created": "2025-06-17",
+      "closed": "2025-10-07",
+      "status": "Lost",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "Plumbing",
+      "technicians": 7,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1082",
+      "created": "2025-12-27",
+      "closed": "2026-02-28",
+      "status": "Won",
+      "amount_usd": 20460,
+      "list_amount_usd": 20460,
+      "industry": "HVAC",
+      "technicians": 31,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1083",
+      "created": "2026-04-03",
+      "closed": "2026-07-10",
+      "status": "Won",
+      "amount_usd": 4900,
+      "list_amount_usd": 5760,
+      "industry": "Plumbing",
+      "technicians": 8,
+      "lead_source": "Trade show",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1084",
+      "created": "2025-10-18",
+      "closed": "2026-03-26",
+      "status": "Lost",
+      "amount_usd": 3600,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1085",
+      "created": "2025-12-17",
+      "closed": "2026-03-24",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1086",
+      "created": "2025-06-24",
+      "closed": "2025-11-23",
+      "status": "Lost",
+      "amount_usd": 43820,
+      "list_amount_usd": 49800,
+      "industry": "Multi-trade",
+      "technicians": 83,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1087",
+      "created": "2026-06-28",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 30360,
+      "list_amount_usd": 33000,
+      "industry": "HVAC",
+      "technicians": 55,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1088",
+      "created": "2025-09-30",
+      "closed": "2025-12-15",
+      "status": "Lost",
+      "amount_usd": 3670,
+      "list_amount_usd": 4320,
+      "industry": "Plumbing",
+      "technicians": 6,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1089",
+      "created": "2025-08-27",
+      "closed": "2025-10-12",
+      "status": "Won",
+      "amount_usd": 17000,
+      "list_amount_usd": 18480,
+      "industry": "HVAC",
+      "technicians": 28,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1090",
+      "created": "2025-11-14",
+      "closed": "2026-01-08",
+      "status": "Lost",
+      "amount_usd": 5510,
+      "list_amount_usd": 6480,
+      "industry": "Multi-trade",
+      "technicians": 9,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1091",
+      "created": "2025-12-30",
+      "closed": "2026-02-16",
+      "status": "Lost",
+      "amount_usd": 9870,
+      "list_amount_usd": 11220,
+      "industry": "Plumbing",
+      "technicians": 17,
+      "lead_source": "Trade show",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1092",
+      "created": "2026-01-26",
+      "closed": "2026-06-26",
+      "status": "Lost",
+      "amount_usd": 25340,
+      "list_amount_usd": 31680,
+      "industry": "HVAC",
+      "technicians": 48,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1093",
+      "created": "2026-05-29",
+      "closed": "2026-06-16",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 4320,
+      "industry": "Multi-trade",
+      "technicians": 6,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1094",
+      "created": "2026-04-09",
+      "closed": "2026-06-27",
+      "status": "Lost",
+      "amount_usd": 57020,
+      "list_amount_usd": 64800,
+      "industry": "Plumbing",
+      "technicians": 108,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1095",
+      "created": "2025-09-15",
+      "closed": "2025-10-05",
+      "status": "Won",
+      "amount_usd": 7200,
+      "list_amount_usd": 7200,
+      "industry": "HVAC",
+      "technicians": 10,
+      "lead_source": "Inbound call",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1096",
+      "created": "2025-08-22",
+      "closed": "2025-11-21",
+      "status": "Won",
+      "amount_usd": 6840,
+      "list_amount_usd": 7200,
+      "industry": "HVAC",
+      "technicians": 10,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1097",
+      "created": "2026-08-21",
+      "closed": "2026-09-22",
+      "status": "Won",
+      "amount_usd": 12540,
+      "list_amount_usd": 12540,
+      "industry": "Plumbing",
+      "technicians": 19,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1098",
+      "created": "2026-01-02",
+      "closed": "2026-02-01",
+      "status": "Won",
+      "amount_usd": 45390,
+      "list_amount_usd": 53400,
+      "industry": "Electrical",
+      "technicians": 89,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1099",
+      "created": "2026-09-19",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 2360,
+      "list_amount_usd": 2880,
+      "industry": "Multi-trade",
+      "technicians": 4,
+      "lead_source": "Trade show",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1100",
+      "created": "2025-12-17",
+      "closed": "2026-04-14",
+      "status": "Won",
+      "amount_usd": 46920,
+      "list_amount_usd": 55200,
+      "industry": "HVAC",
+      "technicians": 92,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1101",
+      "created": "2026-07-31",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 11220,
+      "list_amount_usd": 13200,
+      "industry": "Plumbing",
+      "technicians": 20,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1102",
+      "created": "2025-12-25",
+      "closed": "2026-03-17",
+      "status": "Won",
+      "amount_usd": 1940,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1103",
+      "created": "2026-04-21",
+      "closed": "2026-08-16",
+      "status": "Lost",
+      "amount_usd": 5960,
+      "list_amount_usd": 6480,
+      "industry": "Multi-trade",
+      "technicians": 9,
+      "lead_source": "Outbound",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1104",
+      "created": "2025-11-04",
+      "closed": "2026-01-20",
+      "status": "Lost",
+      "amount_usd": 43740,
+      "list_amount_usd": 48600,
+      "industry": "HVAC",
+      "technicians": 81,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1105",
+      "created": "2026-08-30",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6480,
+      "list_amount_usd": 7200,
+      "industry": "HVAC",
+      "technicians": 10,
+      "lead_source": "Outbound",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1106",
+      "created": "2026-07-15",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 3460,
+      "list_amount_usd": 4320,
+      "industry": "HVAC",
+      "technicians": 6,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1107",
+      "created": "2026-07-11",
+      "closed": "2026-08-04",
+      "status": "Won",
+      "amount_usd": 46980,
+      "list_amount_usd": 52200,
+      "industry": "HVAC",
+      "technicians": 87,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1108",
+      "created": "2025-12-23",
+      "closed": "2026-05-09",
+      "status": "Lost",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1109",
+      "created": "2026-06-09",
+      "closed": "2026-09-29",
+      "status": "No decision",
+      "amount_usd": 3670,
+      "list_amount_usd": 4320,
+      "industry": "Multi-trade",
+      "technicians": 6,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1110",
+      "created": "2026-08-14",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 50780,
+      "list_amount_usd": 55200,
+      "industry": "Multi-trade",
+      "technicians": 92,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1111",
+      "created": "2026-05-08",
+      "closed": "2026-06-20",
+      "status": "Won",
+      "amount_usd": 59060,
+      "list_amount_usd": 64200,
+      "industry": "HVAC",
+      "technicians": 107,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1112",
+      "created": "2026-09-02",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 31020,
+      "list_amount_usd": 31020,
+      "industry": "Multi-trade",
+      "technicians": 47,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1113",
+      "created": "2026-06-30",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 4900,
+      "list_amount_usd": 5760,
+      "industry": "Plumbing",
+      "technicians": 8,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1114",
+      "created": "2026-04-28",
+      "closed": "2026-06-23",
+      "status": "Won",
+      "amount_usd": 53010,
+      "list_amount_usd": 55800,
+      "industry": "HVAC",
+      "technicians": 93,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1115",
+      "created": "2025-12-16",
+      "closed": "2026-01-10",
+      "status": "Won",
+      "amount_usd": 31680,
+      "list_amount_usd": 31680,
+      "industry": "HVAC",
+      "technicians": 48,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1116",
+      "created": "2025-08-30",
+      "closed": "2025-10-21",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 4320,
+      "industry": "HVAC",
+      "technicians": 6,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1117",
+      "created": "2026-06-10",
+      "closed": "2026-06-30",
+      "status": "Lost",
+      "amount_usd": 4720,
+      "list_amount_usd": 5760,
+      "industry": "HVAC",
+      "technicians": 8,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1118",
+      "created": "2026-05-21",
+      "closed": "2026-07-26",
+      "status": "Lost",
+      "amount_usd": 29470,
+      "list_amount_usd": 31020,
+      "industry": "HVAC",
+      "technicians": 47,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1119",
+      "created": "2025-12-01",
+      "closed": "2026-02-23",
+      "status": "Lost",
+      "amount_usd": 25080,
+      "list_amount_usd": 25080,
+      "industry": "Plumbing",
+      "technicians": 38,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1120",
+      "created": "2025-09-19",
+      "closed": "2025-12-16",
+      "status": "Lost",
+      "amount_usd": 6120,
+      "list_amount_usd": 7200,
+      "industry": "Electrical",
+      "technicians": 10,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1121",
+      "created": "2026-01-26",
+      "closed": "2026-06-02",
+      "status": "Lost",
+      "amount_usd": 17820,
+      "list_amount_usd": 19800,
+      "industry": "HVAC",
+      "technicians": 30,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1122",
+      "created": "2026-04-01",
+      "closed": "2026-05-07",
+      "status": "Won",
+      "amount_usd": 10560,
+      "list_amount_usd": 10560,
+      "industry": "HVAC",
+      "technicians": 16,
+      "lead_source": "Trade show",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1123",
+      "created": "2026-05-03",
+      "closed": "2026-07-18",
+      "status": "Lost",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1124",
+      "created": "2026-04-24",
+      "closed": "2026-06-06",
+      "status": "Lost",
+      "amount_usd": 12470,
+      "list_amount_usd": 13860,
+      "industry": "Electrical",
+      "technicians": 21,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1125",
+      "created": "2025-11-25",
+      "closed": "2025-12-26",
+      "status": "Lost",
+      "amount_usd": 3460,
+      "list_amount_usd": 4320,
+      "industry": "Electrical",
+      "technicians": 6,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1126",
+      "created": "2026-06-15",
+      "closed": "2026-08-16",
+      "status": "Won",
+      "amount_usd": 8500,
+      "list_amount_usd": 9240,
+      "industry": "Plumbing",
+      "technicians": 14,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1127",
+      "created": "2026-03-31",
+      "closed": "2026-07-12",
+      "status": "Lost",
+      "amount_usd": 39960,
+      "list_amount_usd": 44400,
+      "industry": "Electrical",
+      "technicians": 74,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1128",
+      "created": "2026-01-26",
+      "closed": "2026-03-08",
+      "status": "Won",
+      "amount_usd": 9900,
+      "list_amount_usd": 9900,
+      "industry": "Plumbing",
+      "technicians": 15,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1129",
+      "created": "2026-02-03",
+      "closed": "2026-02-17",
+      "status": "Won",
+      "amount_usd": 41180,
+      "list_amount_usd": 46800,
+      "industry": "Electrical",
+      "technicians": 78,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1130",
+      "created": "2026-01-10",
+      "closed": "2026-03-09",
+      "status": "Lost",
+      "amount_usd": 5760,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1131",
+      "created": "2025-10-04",
+      "closed": "2026-01-10",
+      "status": "Won",
+      "amount_usd": 45030,
+      "list_amount_usd": 47400,
+      "industry": "HVAC",
+      "technicians": 79,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1132",
+      "created": "2026-07-17",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 3420,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1133",
+      "created": "2026-05-10",
+      "closed": "2026-06-16",
+      "status": "Won",
+      "amount_usd": 22650,
+      "list_amount_usd": 25740,
+      "industry": "Plumbing",
+      "technicians": 39,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1134",
+      "created": "2026-05-19",
+      "closed": "2026-09-05",
+      "status": "Won",
+      "amount_usd": 2590,
+      "list_amount_usd": 2880,
+      "industry": "Electrical",
+      "technicians": 4,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1135",
+      "created": "2025-11-23",
+      "closed": "2026-02-20",
+      "status": "Won",
+      "amount_usd": 68400,
+      "list_amount_usd": 72000,
+      "industry": "HVAC",
+      "technicians": 120,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1136",
+      "created": "2025-11-17",
+      "closed": "2026-03-01",
+      "status": "No decision",
+      "amount_usd": 4610,
+      "list_amount_usd": 5760,
+      "industry": "Multi-trade",
+      "technicians": 8,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1137",
+      "created": "2025-09-30",
+      "closed": "2025-11-08",
+      "status": "Won",
+      "amount_usd": 3420,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1138",
+      "created": "2026-02-12",
+      "closed": "2026-04-10",
+      "status": "Lost",
+      "amount_usd": 5180,
+      "list_amount_usd": 5760,
+      "industry": "HVAC",
+      "technicians": 8,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1139",
+      "created": "2025-10-05",
+      "closed": "2025-10-29",
+      "status": "Won",
+      "amount_usd": 10560,
+      "list_amount_usd": 10560,
+      "industry": "Electrical",
+      "technicians": 16,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1140",
+      "created": "2025-12-20",
+      "closed": "2026-05-26",
+      "status": "No decision",
+      "amount_usd": 3800,
+      "list_amount_usd": 4320,
+      "industry": "Electrical",
+      "technicians": 6,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1141",
+      "created": "2026-06-18",
+      "closed": "2026-08-25",
+      "status": "Won",
+      "amount_usd": 6340,
+      "list_amount_usd": 7200,
+      "industry": "Plumbing",
+      "technicians": 10,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1142",
+      "created": "2026-04-12",
+      "closed": "2026-05-16",
+      "status": "Won",
+      "amount_usd": 29150,
+      "list_amount_usd": 31680,
+      "industry": "Plumbing",
+      "technicians": 48,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1143",
+      "created": "2026-04-12",
+      "closed": "2026-09-02",
+      "status": "Lost",
+      "amount_usd": 27320,
+      "list_amount_usd": 30360,
+      "industry": "Electrical",
+      "technicians": 46,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1144",
+      "created": "2026-02-23",
+      "closed": "2026-04-17",
+      "status": "Won",
+      "amount_usd": 14260,
+      "list_amount_usd": 15840,
+      "industry": "HVAC",
+      "technicians": 24,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1145",
+      "created": "2025-12-15",
+      "closed": "2026-03-10",
+      "status": "Won",
+      "amount_usd": 11620,
+      "list_amount_usd": 13200,
+      "industry": "HVAC",
+      "technicians": 20,
+      "lead_source": "Outbound",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1146",
+      "created": "2026-06-05",
+      "closed": "2026-09-22",
+      "status": "Lost",
+      "amount_usd": 7890,
+      "list_amount_usd": 8580,
+      "industry": "Electrical",
+      "technicians": 13,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1147",
+      "created": "2025-10-05",
+      "closed": "2026-03-06",
+      "status": "No decision",
+      "amount_usd": 37800,
+      "list_amount_usd": 37800,
+      "industry": "Electrical",
+      "technicians": 63,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1148",
+      "created": "2025-12-12",
+      "closed": "2026-02-24",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 3600,
+      "industry": "Electrical",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1149",
+      "created": "2025-08-11",
+      "closed": "2025-10-31",
+      "status": "Won",
+      "amount_usd": 2880,
+      "list_amount_usd": 2880,
+      "industry": "Plumbing",
+      "technicians": 4,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1150",
+      "created": "2025-12-06",
+      "closed": "2025-12-25",
+      "status": "Lost",
+      "amount_usd": 61200,
+      "list_amount_usd": 72000,
+      "industry": "HVAC",
+      "technicians": 120,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1151",
+      "created": "2026-07-30",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 19640,
+      "list_amount_usd": 23100,
+      "industry": "Multi-trade",
+      "technicians": 35,
+      "lead_source": "Outbound",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1152",
+      "created": "2026-08-01",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 9240,
+      "list_amount_usd": 9240,
+      "industry": "Plumbing",
+      "technicians": 14,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1153",
+      "created": "2026-06-18",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 14020,
+      "list_amount_usd": 16500,
+      "industry": "HVAC",
+      "technicians": 25,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1154",
+      "created": "2025-11-16",
+      "closed": "2026-02-18",
+      "status": "Won",
+      "amount_usd": 2160,
+      "list_amount_usd": 2160,
+      "industry": "Electrical",
+      "technicians": 3,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1155",
+      "created": "2025-12-25",
+      "closed": "2026-06-05",
+      "status": "No decision",
+      "amount_usd": 8320,
+      "list_amount_usd": 9240,
+      "industry": "Multi-trade",
+      "technicians": 14,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1156",
+      "created": "2026-07-08",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 20790,
+      "list_amount_usd": 23100,
+      "industry": "HVAC",
+      "technicians": 35,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1157",
+      "created": "2026-09-23",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 23680,
+      "list_amount_usd": 25740,
+      "industry": "HVAC",
+      "technicians": 39,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1158",
+      "created": "2025-10-27",
+      "closed": "2026-01-30",
+      "status": "Lost",
+      "amount_usd": 5310,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1159",
+      "created": "2026-02-06",
+      "closed": "2026-04-13",
+      "status": "Lost",
+      "amount_usd": 4490,
+      "list_amount_usd": 5760,
+      "industry": "Multi-trade",
+      "technicians": 8,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1160",
+      "created": "2025-08-11",
+      "closed": "2026-01-09",
+      "status": "No decision",
+      "amount_usd": 22440,
+      "list_amount_usd": 26400,
+      "industry": "HVAC",
+      "technicians": 40,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1161",
+      "created": "2026-07-23",
+      "closed": "2026-09-14",
+      "status": "Lost",
+      "amount_usd": 17230,
+      "list_amount_usd": 19140,
+      "industry": "HVAC",
+      "technicians": 29,
+      "lead_source": "Inbound call",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1162",
+      "created": "2026-05-08",
+      "closed": "2026-07-08",
+      "status": "Lost",
+      "amount_usd": 2880,
+      "list_amount_usd": 3600,
+      "industry": "Multi-trade",
+      "technicians": 5,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1163",
+      "created": "2026-05-25",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 8130,
+      "list_amount_usd": 9240,
+      "industry": "HVAC",
+      "technicians": 14,
+      "lead_source": "Trade show",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1164",
+      "created": "2026-08-21",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 26730,
+      "list_amount_usd": 29700,
+      "industry": "Plumbing",
+      "technicians": 45,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1165",
+      "created": "2026-01-16",
+      "closed": "2026-04-29",
+      "status": "Won",
+      "amount_usd": 24970,
+      "list_amount_usd": 28380,
+      "industry": "HVAC",
+      "technicians": 43,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1166",
+      "created": "2026-07-13",
+      "closed": "2026-09-07",
+      "status": "Won",
+      "amount_usd": 38190,
+      "list_amount_usd": 40200,
+      "industry": "Multi-trade",
+      "technicians": 67,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1167",
+      "created": "2025-06-12",
+      "closed": "2025-10-23",
+      "status": "No decision",
+      "amount_usd": 3780,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1168",
+      "created": "2026-06-10",
+      "closed": "2026-09-10",
+      "status": "Lost",
+      "amount_usd": 70200,
+      "list_amount_usd": 70200,
+      "industry": "Plumbing",
+      "technicians": 117,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1169",
+      "created": "2025-12-28",
+      "closed": "2026-04-02",
+      "status": "Lost",
+      "amount_usd": 4900,
+      "list_amount_usd": 5760,
+      "industry": "Electrical",
+      "technicians": 8,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1170",
+      "created": "2026-04-02",
+      "closed": "2026-07-26",
+      "status": "Lost",
+      "amount_usd": 38880,
+      "list_amount_usd": 43200,
+      "industry": "Plumbing",
+      "technicians": 72,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1171",
+      "created": "2026-04-18",
+      "closed": "2026-07-16",
+      "status": "Lost",
+      "amount_usd": 27880,
+      "list_amount_usd": 31680,
+      "industry": "Multi-trade",
+      "technicians": 48,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1172",
+      "created": "2026-02-03",
+      "closed": "2026-05-02",
+      "status": "Won",
+      "amount_usd": 6530,
+      "list_amount_usd": 7260,
+      "industry": "Electrical",
+      "technicians": 11,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1173",
+      "created": "2025-11-30",
+      "closed": "2026-02-01",
+      "status": "Won",
+      "amount_usd": 4540,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1174",
+      "created": "2025-11-07",
+      "closed": "2026-02-07",
+      "status": "Lost",
+      "amount_usd": 31200,
+      "list_amount_usd": 31200,
+      "industry": "Multi-trade",
+      "technicians": 52,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1175",
+      "created": "2025-08-17",
+      "closed": "2025-11-12",
+      "status": "Won",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "Electrical",
+      "technicians": 7,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1176",
+      "created": "2026-03-17",
+      "closed": "2026-05-04",
+      "status": "Won",
+      "amount_usd": 23760,
+      "list_amount_usd": 26400,
+      "industry": "Multi-trade",
+      "technicians": 40,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1177",
+      "created": "2026-08-23",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6680,
+      "list_amount_usd": 7260,
+      "industry": "Plumbing",
+      "technicians": 11,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1178",
+      "created": "2025-07-26",
+      "closed": "2025-12-24",
+      "status": "Lost",
+      "amount_usd": 55200,
+      "list_amount_usd": 55200,
+      "industry": "Multi-trade",
+      "technicians": 92,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1179",
+      "created": "2025-07-27",
+      "closed": "2025-11-01",
+      "status": "Lost",
+      "amount_usd": 1730,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1180",
+      "created": "2026-08-11",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 48580,
+      "list_amount_usd": 52800,
+      "industry": "Electrical",
+      "technicians": 88,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1181",
+      "created": "2025-09-08",
+      "closed": "2025-11-26",
+      "status": "Lost",
+      "amount_usd": 27030,
+      "list_amount_usd": 31800,
+      "industry": "Plumbing",
+      "technicians": 53,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1182",
+      "created": "2025-10-25",
+      "closed": "2026-04-02",
+      "status": "No decision",
+      "amount_usd": 2300,
+      "list_amount_usd": 2880,
+      "industry": "Plumbing",
+      "technicians": 4,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1183",
+      "created": "2026-03-30",
+      "closed": "2026-05-06",
+      "status": "Lost",
+      "amount_usd": 59400,
+      "list_amount_usd": 66000,
+      "industry": "Plumbing",
+      "technicians": 110,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1184",
+      "created": "2026-03-23",
+      "closed": "2026-04-29",
+      "status": "Won",
+      "amount_usd": 3170,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1185",
+      "created": "2025-11-29",
+      "closed": "2026-03-18",
+      "status": "Lost",
+      "amount_usd": 60190,
+      "list_amount_usd": 68400,
+      "industry": "Electrical",
+      "technicians": 114,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1186",
+      "created": "2026-01-14",
+      "closed": "2026-05-14",
+      "status": "Won",
+      "amount_usd": 32490,
+      "list_amount_usd": 34200,
+      "industry": "Electrical",
+      "technicians": 57,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1187",
+      "created": "2026-06-11",
+      "closed": "2026-08-21",
+      "status": "Won",
+      "amount_usd": 23070,
+      "list_amount_usd": 25080,
+      "industry": "Multi-trade",
+      "technicians": 38,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1188",
+      "created": "2025-09-06",
+      "closed": "2025-12-12",
+      "status": "Lost",
+      "amount_usd": 2880,
+      "list_amount_usd": 2880,
+      "industry": "Plumbing",
+      "technicians": 4,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1189",
+      "created": "2025-09-03",
+      "closed": "2025-11-30",
+      "status": "Lost",
+      "amount_usd": 15840,
+      "list_amount_usd": 19800,
+      "industry": "Multi-trade",
+      "technicians": 30,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1190",
+      "created": "2026-03-11",
+      "closed": "2026-05-31",
+      "status": "Lost",
+      "amount_usd": 2880,
+      "list_amount_usd": 2880,
+      "industry": "Plumbing",
+      "technicians": 4,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1191",
+      "created": "2026-06-27",
+      "closed": "2026-09-11",
+      "status": "Lost",
+      "amount_usd": 3890,
+      "list_amount_usd": 4320,
+      "industry": "Electrical",
+      "technicians": 6,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1192",
+      "created": "2025-09-02",
+      "closed": "2025-12-10",
+      "status": "Lost",
+      "amount_usd": 2590,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "Trade show",
+      "competitor": "",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1193",
+      "created": "2025-08-18",
+      "closed": "2025-12-17",
+      "status": "Lost",
+      "amount_usd": 15100,
+      "list_amount_usd": 17160,
+      "industry": "HVAC",
+      "technicians": 26,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1194",
+      "created": "2025-12-02",
+      "closed": "2026-01-31",
+      "status": "Won",
+      "amount_usd": 27880,
+      "list_amount_usd": 31680,
+      "industry": "HVAC",
+      "technicians": 48,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1195",
+      "created": "2025-10-02",
+      "closed": "2025-11-04",
+      "status": "Won",
+      "amount_usd": 21120,
+      "list_amount_usd": 21120,
+      "industry": "Plumbing",
+      "technicians": 32,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1196",
+      "created": "2025-08-09",
+      "closed": "2025-10-01",
+      "status": "Won",
+      "amount_usd": 1840,
+      "list_amount_usd": 2160,
+      "industry": "Multi-trade",
+      "technicians": 3,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1197",
+      "created": "2026-05-16",
+      "closed": "2026-07-23",
+      "status": "Lost",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "Multi-trade",
+      "technicians": 9,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1198",
+      "created": "2026-07-26",
+      "closed": "2026-09-27",
+      "status": "Lost",
+      "amount_usd": 8580,
+      "list_amount_usd": 8580,
+      "industry": "Plumbing",
+      "technicians": 13,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1199",
+      "created": "2026-04-11",
+      "closed": "2026-07-13",
+      "status": "Lost",
+      "amount_usd": 23760,
+      "list_amount_usd": 26400,
+      "industry": "HVAC",
+      "technicians": 40,
+      "lead_source": "Trade show",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1200",
+      "created": "2025-12-29",
+      "closed": "2026-02-16",
+      "status": "Won",
+      "amount_usd": 10030,
+      "list_amount_usd": 10560,
+      "industry": "HVAC",
+      "technicians": 16,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1201",
+      "created": "2026-06-17",
+      "closed": "2026-07-25",
+      "status": "Won",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1202",
+      "created": "2025-08-20",
+      "closed": "2025-10-31",
+      "status": "Lost",
+      "amount_usd": 16040,
+      "list_amount_usd": 17820,
+      "industry": "Plumbing",
+      "technicians": 27,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1203",
+      "created": "2026-08-23",
+      "closed": "2026-09-30",
+      "status": "Won",
+      "amount_usd": 31350,
+      "list_amount_usd": 33000,
+      "industry": "HVAC",
+      "technicians": 55,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1204",
+      "created": "2026-04-05",
+      "closed": "2026-06-11",
+      "status": "Lost",
+      "amount_usd": 6840,
+      "list_amount_usd": 7200,
+      "industry": "Electrical",
+      "technicians": 10,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1205",
+      "created": "2025-12-11",
+      "closed": "2026-02-04",
+      "status": "Won",
+      "amount_usd": 12540,
+      "list_amount_usd": 13200,
+      "industry": "Plumbing",
+      "technicians": 20,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1206",
+      "created": "2026-09-09",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 21780,
+      "list_amount_usd": 21780,
+      "industry": "HVAC",
+      "technicians": 33,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1207",
+      "created": "2025-12-02",
+      "closed": "2026-04-17",
+      "status": "Lost",
+      "amount_usd": 3780,
+      "list_amount_usd": 5040,
+      "industry": "Multi-trade",
+      "technicians": 7,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1208",
+      "created": "2026-04-30",
+      "closed": "2026-06-20",
+      "status": "Won",
+      "amount_usd": 14260,
+      "list_amount_usd": 15840,
+      "industry": "HVAC",
+      "technicians": 24,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1209",
+      "created": "2026-09-24",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6120,
+      "list_amount_usd": 7200,
+      "industry": "Plumbing",
+      "technicians": 10,
+      "lead_source": "Outbound",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1210",
+      "created": "2025-10-25",
+      "closed": "2025-12-06",
+      "status": "Won",
+      "amount_usd": 8320,
+      "list_amount_usd": 9240,
+      "industry": "HVAC",
+      "technicians": 14,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1211",
+      "created": "2026-07-09",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 10100,
+      "list_amount_usd": 11220,
+      "industry": "HVAC",
+      "technicians": 17,
+      "lead_source": "Outbound",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1212",
+      "created": "2026-02-17",
+      "closed": "2026-04-18",
+      "status": "Won",
+      "amount_usd": 9500,
+      "list_amount_usd": 10560,
+      "industry": "HVAC",
+      "technicians": 16,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1213",
+      "created": "2026-02-12",
+      "closed": "2026-04-21",
+      "status": "Lost",
+      "amount_usd": 3600,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1214",
+      "created": "2025-12-21",
+      "closed": "2026-02-27",
+      "status": "Won",
+      "amount_usd": 11220,
+      "list_amount_usd": 11220,
+      "industry": "HVAC",
+      "technicians": 17,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1215",
+      "created": "2026-02-25",
+      "closed": "2026-05-16",
+      "status": "Won",
+      "amount_usd": 3600,
+      "list_amount_usd": 3600,
+      "industry": "HVAC",
+      "technicians": 5,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1216",
+      "created": "2026-08-10",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 4320,
+      "list_amount_usd": 4320,
+      "industry": "Plumbing",
+      "technicians": 6,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1217",
+      "created": "2026-02-03",
+      "closed": "2026-04-12",
+      "status": "Won",
+      "amount_usd": 1840,
+      "list_amount_usd": 2160,
+      "industry": "Multi-trade",
+      "technicians": 3,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1218",
+      "created": "2026-08-17",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 66000,
+      "list_amount_usd": 66000,
+      "industry": "HVAC",
+      "technicians": 110,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1219",
+      "created": "2026-05-24",
+      "closed": "2026-07-06",
+      "status": "Won",
+      "amount_usd": 6160,
+      "list_amount_usd": 6480,
+      "industry": "Plumbing",
+      "technicians": 9,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1220",
+      "created": "2026-08-24",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 40290,
+      "list_amount_usd": 47400,
+      "industry": "Plumbing",
+      "technicians": 79,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1221",
+      "created": "2026-09-08",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 15680,
+      "list_amount_usd": 17820,
+      "industry": "Electrical",
+      "technicians": 27,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1222",
+      "created": "2026-07-05",
+      "closed": "2026-08-12",
+      "status": "Won",
+      "amount_usd": 48060,
+      "list_amount_usd": 53400,
+      "industry": "HVAC",
+      "technicians": 89,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1223",
+      "created": "2025-08-14",
+      "closed": "2026-01-04",
+      "status": "Lost",
+      "amount_usd": 5510,
+      "list_amount_usd": 6480,
+      "industry": "Multi-trade",
+      "technicians": 9,
+      "lead_source": "Trade show",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1224",
+      "created": "2026-03-17",
+      "closed": "2026-04-24",
+      "status": "Won",
+      "amount_usd": 4790,
+      "list_amount_usd": 5040,
+      "industry": "Plumbing",
+      "technicians": 7,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1225",
+      "created": "2025-10-11",
+      "closed": "2026-02-06",
+      "status": "No decision",
+      "amount_usd": 1900,
+      "list_amount_usd": 2160,
+      "industry": "Electrical",
+      "technicians": 3,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1226",
+      "created": "2025-09-12",
+      "closed": "2025-12-04",
+      "status": "Won",
+      "amount_usd": 19430,
+      "list_amount_usd": 21120,
+      "industry": "Electrical",
+      "technicians": 32,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1227",
+      "created": "2026-03-05",
+      "closed": "2026-05-14",
+      "status": "Lost",
+      "amount_usd": 4030,
+      "list_amount_usd": 5040,
+      "industry": "Electrical",
+      "technicians": 7,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1228",
+      "created": "2026-05-02",
+      "closed": "2026-09-20",
+      "status": "Lost",
+      "amount_usd": 2590,
+      "list_amount_usd": 2880,
+      "industry": "Electrical",
+      "technicians": 4,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1229",
+      "created": "2026-09-20",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6340,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1230",
+      "created": "2026-08-17",
+      "closed": "2026-09-29",
+      "status": "Won",
+      "amount_usd": 6840,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1231",
+      "created": "2026-01-16",
+      "closed": "2026-04-18",
+      "status": "Lost",
+      "amount_usd": 3540,
+      "list_amount_usd": 4320,
+      "industry": "Multi-trade",
+      "technicians": 6,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1232",
+      "created": "2026-08-04",
+      "closed": "2026-09-15",
+      "status": "Won",
+      "amount_usd": 21780,
+      "list_amount_usd": 21780,
+      "industry": "Electrical",
+      "technicians": 33,
+      "lead_source": "Organic search",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1233",
+      "created": "2025-09-02",
+      "closed": "2025-11-20",
+      "status": "Lost",
+      "amount_usd": 21380,
+      "list_amount_usd": 23760,
+      "industry": "Plumbing",
+      "technicians": 36,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1234",
+      "created": "2026-06-30",
+      "closed": "2026-09-12",
+      "status": "Won",
+      "amount_usd": 3240,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1235",
+      "created": "2026-03-24",
+      "closed": "2026-06-26",
+      "status": "Lost",
+      "amount_usd": 13200,
+      "list_amount_usd": 16500,
+      "industry": "Electrical",
+      "technicians": 25,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1236",
+      "created": "2025-11-20",
+      "closed": "2026-02-15",
+      "status": "Lost",
+      "amount_usd": 6970,
+      "list_amount_usd": 7920,
+      "industry": "Electrical",
+      "technicians": 12,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1237",
+      "created": "2025-10-07",
+      "closed": "2025-12-03",
+      "status": "Won",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "Electrical",
+      "technicians": 7,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1238",
+      "created": "2026-08-24",
+      "closed": "2026-09-21",
+      "status": "Won",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "Plumbing",
+      "technicians": 9,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1239",
+      "created": "2025-11-21",
+      "closed": "2026-02-13",
+      "status": "Lost",
+      "amount_usd": 14420,
+      "list_amount_usd": 15180,
+      "industry": "HVAC",
+      "technicians": 23,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1240",
+      "created": "2026-02-05",
+      "closed": "2026-04-30",
+      "status": "Won",
+      "amount_usd": 22470,
+      "list_amount_usd": 24420,
+      "industry": "Plumbing",
+      "technicians": 37,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1241",
+      "created": "2025-12-04",
+      "closed": "2026-01-26",
+      "status": "Lost",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "Multi-trade",
+      "technicians": 9,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1242",
+      "created": "2026-07-11",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6120,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1243",
+      "created": "2025-11-21",
+      "closed": "2025-12-29",
+      "status": "Won",
+      "amount_usd": 14520,
+      "list_amount_usd": 14520,
+      "industry": "HVAC",
+      "technicians": 22,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1244",
+      "created": "2025-11-08",
+      "closed": "2025-12-31",
+      "status": "Lost",
+      "amount_usd": 18000,
+      "list_amount_usd": 20460,
+      "industry": "HVAC",
+      "technicians": 31,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1245",
+      "created": "2025-12-05",
+      "closed": "2026-05-04",
+      "status": "No decision",
+      "amount_usd": 5180,
+      "list_amount_usd": 5760,
+      "industry": "Multi-trade",
+      "technicians": 8,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1246",
+      "created": "2025-12-24",
+      "closed": "2026-04-09",
+      "status": "Lost",
+      "amount_usd": 27490,
+      "list_amount_usd": 32340,
+      "industry": "Electrical",
+      "technicians": 49,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1247",
+      "created": "2025-06-20",
+      "closed": "2025-10-07",
+      "status": "Lost",
+      "amount_usd": 36480,
+      "list_amount_usd": 38400,
+      "industry": "HVAC",
+      "technicians": 64,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1248",
+      "created": "2026-07-09",
+      "closed": "2026-08-11",
+      "status": "Lost",
+      "amount_usd": 25540,
+      "list_amount_usd": 28380,
+      "industry": "Electrical",
+      "technicians": 43,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1249",
+      "created": "2025-11-16",
+      "closed": "2026-01-19",
+      "status": "Lost",
+      "amount_usd": 4900,
+      "list_amount_usd": 5760,
+      "industry": "Electrical",
+      "technicians": 8,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1250",
+      "created": "2025-11-04",
+      "closed": "2026-02-03",
+      "status": "Lost",
+      "amount_usd": 5810,
+      "list_amount_usd": 7260,
+      "industry": "HVAC",
+      "technicians": 11,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1251",
+      "created": "2026-09-08",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 21320,
+      "list_amount_usd": 22440,
+      "industry": "Plumbing",
+      "technicians": 34,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1252",
+      "created": "2026-02-06",
+      "closed": "2026-04-29",
+      "status": "Lost",
+      "amount_usd": 6120,
+      "list_amount_usd": 7200,
+      "industry": "Electrical",
+      "technicians": 10,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1253",
+      "created": "2026-05-10",
+      "closed": "2026-06-26",
+      "status": "Won",
+      "amount_usd": 22440,
+      "list_amount_usd": 26400,
+      "industry": "HVAC",
+      "technicians": 40,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor C",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1254",
+      "created": "2026-08-08",
+      "closed": "2026-09-07",
+      "status": "Won",
+      "amount_usd": 13790,
+      "list_amount_usd": 14520,
+      "industry": "Plumbing",
+      "technicians": 22,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1255",
+      "created": "2026-07-08",
+      "closed": "2026-08-04",
+      "status": "Won",
+      "amount_usd": 5040,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1256",
+      "created": "2025-12-29",
+      "closed": "2026-02-03",
+      "status": "Won",
+      "amount_usd": 13970,
+      "list_amount_usd": 15180,
+      "industry": "Multi-trade",
+      "technicians": 23,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1257",
+      "created": "2025-11-21",
+      "closed": "2026-03-29",
+      "status": "Lost",
+      "amount_usd": 41310,
+      "list_amount_usd": 48600,
+      "industry": "Plumbing",
+      "technicians": 81,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor C",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1258",
+      "created": "2025-07-24",
+      "closed": "2025-10-22",
+      "status": "Lost",
+      "amount_usd": 26730,
+      "list_amount_usd": 29700,
+      "industry": "Multi-trade",
+      "technicians": 45,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1259",
+      "created": "2026-01-20",
+      "closed": "2026-02-19",
+      "status": "Won",
+      "amount_usd": 6480,
+      "list_amount_usd": 6480,
+      "industry": "Electrical",
+      "technicians": 9,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1260",
+      "created": "2025-12-14",
+      "closed": "2026-02-09",
+      "status": "Lost",
+      "amount_usd": 36210,
+      "list_amount_usd": 42600,
+      "industry": "Multi-trade",
+      "technicians": 71,
+      "lead_source": "Referral",
+      "competitor": "Competitor B",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1261",
+      "created": "2026-05-22",
+      "closed": "2026-06-22",
+      "status": "Won",
+      "amount_usd": 24420,
+      "list_amount_usd": 24420,
+      "industry": "HVAC",
+      "technicians": 37,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1262",
+      "created": "2025-08-11",
+      "closed": "2025-10-30",
+      "status": "Won",
+      "amount_usd": 8580,
+      "list_amount_usd": 8580,
+      "industry": "HVAC",
+      "technicians": 13,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1263",
+      "created": "2026-08-22",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 13660,
+      "list_amount_usd": 15180,
+      "industry": "Plumbing",
+      "technicians": 23,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1264",
+      "created": "2025-10-31",
+      "closed": "2026-02-13",
+      "status": "No decision",
+      "amount_usd": 2590,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1265",
+      "created": "2026-05-23",
+      "closed": "2026-09-30",
+      "status": "No decision",
+      "amount_usd": 6970,
+      "list_amount_usd": 7920,
+      "industry": "Electrical",
+      "technicians": 12,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1266",
+      "created": "2026-01-16",
+      "closed": "2026-03-21",
+      "status": "Lost",
+      "amount_usd": 5830,
+      "list_amount_usd": 6480,
+      "industry": "HVAC",
+      "technicians": 9,
+      "lead_source": "Outbound",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1267",
+      "created": "2025-07-28",
+      "closed": "2025-10-21",
+      "status": "Lost",
+      "amount_usd": 5180,
+      "list_amount_usd": 6480,
+      "industry": "Electrical",
+      "technicians": 9,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1268",
+      "created": "2026-09-03",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6970,
+      "list_amount_usd": 7920,
+      "industry": "HVAC",
+      "technicians": 12,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1269",
+      "created": "2025-10-17",
+      "closed": "2026-01-31",
+      "status": "Won",
+      "amount_usd": 5700,
+      "list_amount_usd": 6480,
+      "industry": "Plumbing",
+      "technicians": 9,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1270",
+      "created": "2026-02-08",
+      "closed": "2026-05-05",
+      "status": "Won",
+      "amount_usd": 26330,
+      "list_amount_usd": 27720,
+      "industry": "HVAC",
+      "technicians": 42,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1271",
+      "created": "2025-09-28",
+      "closed": "2026-02-02",
+      "status": "No decision",
+      "amount_usd": 4030,
+      "list_amount_usd": 5040,
+      "industry": "HVAC",
+      "technicians": 7,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1272",
+      "created": "2025-08-18",
+      "closed": "2025-10-24",
+      "status": "Won",
+      "amount_usd": 24450,
+      "list_amount_usd": 25740,
+      "industry": "Plumbing",
+      "technicians": 39,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1273",
+      "created": "2025-12-24",
+      "closed": "2026-01-24",
+      "status": "Won",
+      "amount_usd": 45940,
+      "list_amount_usd": 52200,
+      "industry": "Plumbing",
+      "technicians": 87,
+      "lead_source": "Organic search",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1274",
+      "created": "2026-02-09",
+      "closed": "2026-04-12",
+      "status": "Lost",
+      "amount_usd": 2880,
+      "list_amount_usd": 3600,
+      "industry": "Plumbing",
+      "technicians": 5,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1275",
+      "created": "2026-06-02",
+      "closed": "2026-07-08",
+      "status": "Won",
+      "amount_usd": 60420,
+      "list_amount_usd": 63600,
+      "industry": "Plumbing",
+      "technicians": 106,
+      "lead_source": "Trade show",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1276",
+      "created": "2025-08-23",
+      "closed": "2026-01-10",
+      "status": "No decision",
+      "amount_usd": 1730,
+      "list_amount_usd": 2160,
+      "industry": "Multi-trade",
+      "technicians": 3,
+      "lead_source": "Trade show",
+      "competitor": "",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1277",
+      "created": "2025-08-24",
+      "closed": "2026-01-27",
+      "status": "No decision",
+      "amount_usd": 1840,
+      "list_amount_usd": 2160,
+      "industry": "HVAC",
+      "technicians": 3,
+      "lead_source": "Referral",
+      "competitor": "Competitor C",
+      "reason_logged": "Went dark"
+    },
+    {
+      "deal_id": "D-1278",
+      "created": "2025-10-16",
+      "closed": "2026-01-05",
+      "status": "Lost",
+      "amount_usd": 15180,
+      "list_amount_usd": 15180,
+      "industry": "HVAC",
+      "technicians": 23,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1279",
+      "created": "2026-05-10",
+      "closed": "2026-06-07",
+      "status": "Lost",
+      "amount_usd": 14520,
+      "list_amount_usd": 16500,
+      "industry": "Plumbing",
+      "technicians": 25,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1280",
+      "created": "2026-03-05",
+      "closed": "2026-07-15",
+      "status": "Lost",
+      "amount_usd": 3370,
+      "list_amount_usd": 4320,
+      "industry": "Electrical",
+      "technicians": 6,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor B",
+      "reason_logged": "Chose competitor"
+    },
+    {
+      "deal_id": "D-1281",
+      "created": "2025-10-03",
+      "closed": "2025-12-14",
+      "status": "Won",
+      "amount_usd": 10030,
+      "list_amount_usd": 10560,
+      "industry": "Electrical",
+      "technicians": 16,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1282",
+      "created": "2026-03-27",
+      "closed": "2026-07-30",
+      "status": "Lost",
+      "amount_usd": 41580,
+      "list_amount_usd": 46200,
+      "industry": "Electrical",
+      "technicians": 77,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1283",
+      "created": "2026-09-02",
+      "closed": "2026-09-23",
+      "status": "Won",
+      "amount_usd": 8150,
+      "list_amount_usd": 8580,
+      "industry": "HVAC",
+      "technicians": 13,
+      "lead_source": "Trade show",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1284",
+      "created": "2025-09-12",
+      "closed": "2025-11-20",
+      "status": "Won",
+      "amount_usd": 6970,
+      "list_amount_usd": 7920,
+      "industry": "HVAC",
+      "technicians": 12,
+      "lead_source": "Organic search",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1285",
+      "created": "2026-02-09",
+      "closed": "2026-06-11",
+      "status": "Won",
+      "amount_usd": 37800,
+      "list_amount_usd": 37800,
+      "industry": "Plumbing",
+      "technicians": 63,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1286",
+      "created": "2026-04-08",
+      "closed": "2026-06-25",
+      "status": "Won",
+      "amount_usd": 25080,
+      "list_amount_usd": 26400,
+      "industry": "Multi-trade",
+      "technicians": 40,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Relationship"
+    },
+    {
+      "deal_id": "D-1287",
+      "created": "2025-12-18",
+      "closed": "2026-04-23",
+      "status": "Lost",
+      "amount_usd": 23760,
+      "list_amount_usd": 26400,
+      "industry": "Plumbing",
+      "technicians": 40,
+      "lead_source": "Organic search",
+      "competitor": "",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1288",
+      "created": "2025-10-08",
+      "closed": "2025-12-09",
+      "status": "Lost",
+      "amount_usd": 14260,
+      "list_amount_usd": 15840,
+      "industry": "HVAC",
+      "technicians": 24,
+      "lead_source": "Inbound call",
+      "competitor": "Competitor A",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1289",
+      "created": "2025-12-28",
+      "closed": "2026-04-12",
+      "status": "Lost",
+      "amount_usd": 32400,
+      "list_amount_usd": 32400,
+      "industry": "HVAC",
+      "technicians": 54,
+      "lead_source": "Outbound",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1290",
+      "created": "2026-03-20",
+      "closed": "2026-07-30",
+      "status": "Lost",
+      "amount_usd": 27920,
+      "list_amount_usd": 31020,
+      "industry": "Electrical",
+      "technicians": 47,
+      "lead_source": "Trade show",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1291",
+      "created": "2026-07-21",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 7200,
+      "list_amount_usd": 7200,
+      "industry": "HVAC",
+      "technicians": 10,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1292",
+      "created": "2026-08-31",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 20060,
+      "list_amount_usd": 25080,
+      "industry": "Multi-trade",
+      "technicians": 38,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1293",
+      "created": "2025-10-24",
+      "closed": "2026-01-23",
+      "status": "Won",
+      "amount_usd": 6340,
+      "list_amount_usd": 7200,
+      "industry": "Plumbing",
+      "technicians": 10,
+      "lead_source": "Referral",
+      "competitor": "Competitor A",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1294",
+      "created": "2026-04-04",
+      "closed": "2026-06-13",
+      "status": "Lost",
+      "amount_usd": 19140,
+      "list_amount_usd": 19140,
+      "industry": "HVAC",
+      "technicians": 29,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1295",
+      "created": "2025-08-30",
+      "closed": "2025-11-22",
+      "status": "Won",
+      "amount_usd": 22570,
+      "list_amount_usd": 25080,
+      "industry": "HVAC",
+      "technicians": 38,
+      "lead_source": "Google Ads",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1296",
+      "created": "2026-01-23",
+      "closed": "2026-03-08",
+      "status": "Won",
+      "amount_usd": 11220,
+      "list_amount_usd": 11220,
+      "industry": "Multi-trade",
+      "technicians": 17,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1297",
+      "created": "2026-04-06",
+      "closed": "2026-05-19",
+      "status": "Won",
+      "amount_usd": 29110,
+      "list_amount_usd": 32340,
+      "industry": "HVAC",
+      "technicians": 49,
+      "lead_source": "Organic search",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Product fit"
+    },
+    {
+      "deal_id": "D-1298",
+      "created": "2025-12-01",
+      "closed": "2026-03-18",
+      "status": "Lost",
+      "amount_usd": 4640,
+      "list_amount_usd": 5040,
+      "industry": "Electrical",
+      "technicians": 7,
+      "lead_source": "Outbound",
+      "competitor": "",
+      "reason_logged": "Timing"
+    },
+    {
+      "deal_id": "D-1299",
+      "created": "2025-08-03",
+      "closed": "2025-10-06",
+      "status": "Won",
+      "amount_usd": 47430,
+      "list_amount_usd": 55800,
+      "industry": "Plumbing",
+      "technicians": 93,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1300",
+      "created": "2026-07-19",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 6160,
+      "list_amount_usd": 6480,
+      "industry": "Electrical",
+      "technicians": 9,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1301",
+      "created": "2026-01-20",
+      "closed": "2026-05-11",
+      "status": "Lost",
+      "amount_usd": 25740,
+      "list_amount_usd": 25740,
+      "industry": "Electrical",
+      "technicians": 39,
+      "lead_source": "Google Ads",
+      "competitor": "",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1302",
+      "created": "2026-04-26",
+      "closed": "2026-08-19",
+      "status": "Lost",
+      "amount_usd": 52380,
+      "list_amount_usd": 58200,
+      "industry": "HVAC",
+      "technicians": 97,
+      "lead_source": "Outbound",
+      "competitor": "Competitor C",
+      "reason_logged": "Missing feature"
+    },
+    {
+      "deal_id": "D-1303",
+      "created": "2026-03-04",
+      "closed": "2026-04-15",
+      "status": "Won",
+      "amount_usd": 8320,
+      "list_amount_usd": 9240,
+      "industry": "Multi-trade",
+      "technicians": 14,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Price"
+    },
+    {
+      "deal_id": "D-1304",
+      "created": "2026-08-21",
+      "closed": "",
+      "status": "Open",
+      "amount_usd": 3460,
+      "list_amount_usd": 4320,
+      "industry": "HVAC",
+      "technicians": 6,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": ""
+    },
+    {
+      "deal_id": "D-1305",
+      "created": "2025-10-19",
+      "closed": "2025-11-22",
+      "status": "Won",
+      "amount_usd": 2650,
+      "list_amount_usd": 2880,
+      "industry": "HVAC",
+      "technicians": 4,
+      "lead_source": "Referral",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "Implementation"
+    },
+    {
+      "deal_id": "D-1306",
+      "created": "2026-01-10",
+      "closed": "2026-03-23",
+      "status": "Lost",
+      "amount_usd": 6160,
+      "list_amount_usd": 6480,
+      "industry": "Electrical",
+      "technicians": 9,
+      "lead_source": "Inbound call",
+      "competitor": "Spreadsheets and paper",
+      "reason_logged": "No budget"
+    },
+    {
+      "deal_id": "D-1307",
+      "created": "2026-03-20",
+      "closed": "2026-04-17",
+      "status": "Lost",
+      "amount_usd": 18480,
+      "list_amount_usd": 18480,
+      "industry": "Plumbing",
+      "technicians": 28,
+      "lead_source": "Google Ads",
+      "competitor": "Competitor A",
+      "reason_logged": "Duplicate"
+    },
+    {
+      "deal_id": "D-1308",
+      "created": "2026-03-07",
+      "closed": "2026-05-23",
+      "status": "Lost",
+      "amount_usd": 3240,
+      "list_amount_usd": 3600,
+      "industry": "Electrical",
+      "technicians": 5,
+      "lead_source": "LinkedIn Ads",
+      "competitor": "Competitor C",
+      "reason_logged": "Duplicate"
+    },
+    {
+      "deal_id": "D-1309",
+      "created": "2025-07-21",
+      "closed": "2025-10-08",
+      "status": "Lost",
+      "amount_usd": 6480,
+      "list_amount_usd": 7200,
+      "industry": "Multi-trade",
+      "technicians": 10,
+      "lead_source": "Outbound",
+      "competitor": "Competitor B",
+      "reason_logged": "Test deal"
+    }
+  ],
+  "call_notes": [
+    {
+      "deal_id": "D-1001",
+      "date": "2026-03-19",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N001"
+    },
+    {
+      "deal_id": "D-1001",
+      "date": "2026-04-09",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N002"
+    },
+    {
+      "deal_id": "D-1002",
+      "date": "2026-05-24",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N003"
+    },
+    {
+      "deal_id": "D-1002",
+      "date": "2026-06-12",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N004"
+    },
+    {
+      "deal_id": "D-1004",
+      "date": "2025-09-03",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N005"
+    },
+    {
+      "deal_id": "D-1004",
+      "date": "2025-11-25",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N006"
+    },
+    {
+      "deal_id": "D-1005",
+      "date": "2026-05-08",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N007"
+    },
+    {
+      "deal_id": "D-1005",
+      "date": "2026-06-27",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N008"
+    },
+    {
+      "deal_id": "D-1007",
+      "date": "2026-06-08",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N009"
+    },
+    {
+      "deal_id": "D-1007",
+      "date": "2026-07-03",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N010"
+    },
+    {
+      "deal_id": "D-1009",
+      "date": "2025-12-01",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N011"
+    },
+    {
+      "deal_id": "D-1009",
+      "date": "2026-03-06",
+      "source": "call note",
+      "text": "Timeline concern: go-live would land in the busy season.",
+      "line_id": "N012"
+    },
+    {
+      "deal_id": "D-1010",
+      "date": "2026-01-07",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N013"
+    },
+    {
+      "deal_id": "D-1010",
+      "date": "2026-03-06",
+      "source": "call note",
+      "text": "Dropped after the pilot week: no offline mode when techs lose signal.",
+      "line_id": "N014"
+    },
+    {
+      "deal_id": "D-1014",
+      "date": "2025-08-16",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N015"
+    },
+    {
+      "deal_id": "D-1014",
+      "date": "2025-11-08",
+      "source": "call note",
+      "text": "Ops manager said invoices would still have to be re-keyed into their accounting system; no two-way accounting sync.",
+      "line_id": "N016"
+    },
+    {
+      "deal_id": "D-1015",
+      "date": "2026-01-26",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N017"
+    },
+    {
+      "deal_id": "D-1015",
+      "date": "2026-04-04",
+      "source": "call note",
+      "text": "Ops manager said invoices would still have to be re-keyed into their accounting system; no two-way accounting sync.",
+      "line_id": "N018"
+    },
+    {
+      "deal_id": "D-1016",
+      "date": "2026-07-06",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N019"
+    },
+    {
+      "deal_id": "D-1016",
+      "date": "2026-08-17",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N020"
+    },
+    {
+      "deal_id": "D-1017",
+      "date": "2026-07-17",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N021"
+    },
+    {
+      "deal_id": "D-1017",
+      "date": "2026-07-31",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N022"
+    },
+    {
+      "deal_id": "D-1018",
+      "date": "2026-04-01",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N023"
+    },
+    {
+      "deal_id": "D-1018",
+      "date": "2026-05-20",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N024"
+    },
+    {
+      "deal_id": "D-1020",
+      "date": "2025-08-26",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N025"
+    },
+    {
+      "deal_id": "D-1020",
+      "date": "2025-10-31",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N026"
+    },
+    {
+      "deal_id": "D-1020",
+      "date": "2025-11-01",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N027"
+    },
+    {
+      "deal_id": "D-1022",
+      "date": "2026-06-12",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N028"
+    },
+    {
+      "deal_id": "D-1022",
+      "date": "2026-06-18",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N029"
+    },
+    {
+      "deal_id": "D-1024",
+      "date": "2025-12-04",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N030"
+    },
+    {
+      "deal_id": "D-1024",
+      "date": "2025-12-09",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N031"
+    },
+    {
+      "deal_id": "D-1028",
+      "date": "2026-06-06",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N032"
+    },
+    {
+      "deal_id": "D-1028",
+      "date": "2026-06-19",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N033"
+    },
+    {
+      "deal_id": "D-1029",
+      "date": "2026-04-27",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N034"
+    },
+    {
+      "deal_id": "D-1029",
+      "date": "2026-05-30",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N035"
+    },
+    {
+      "deal_id": "D-1030",
+      "date": "2025-10-02",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N036"
+    },
+    {
+      "deal_id": "D-1030",
+      "date": "2025-12-20",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N037"
+    },
+    {
+      "deal_id": "D-1031",
+      "date": "2025-10-06",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N038"
+    },
+    {
+      "deal_id": "D-1031",
+      "date": "2026-01-28",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N039"
+    },
+    {
+      "deal_id": "D-1033",
+      "date": "2026-02-25",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N040"
+    },
+    {
+      "deal_id": "D-1033",
+      "date": "2026-04-21",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N041"
+    },
+    {
+      "deal_id": "D-1034",
+      "date": "2025-10-27",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N042"
+    },
+    {
+      "deal_id": "D-1034",
+      "date": "2025-12-26",
+      "source": "call note",
+      "text": "Single-threaded with the dispatcher; owner never joined and it stalled.",
+      "line_id": "N043"
+    },
+    {
+      "deal_id": "D-1037",
+      "date": "2026-06-08",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N044"
+    },
+    {
+      "deal_id": "D-1037",
+      "date": "2026-07-19",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N045"
+    },
+    {
+      "deal_id": "D-1037",
+      "date": "2026-07-23",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N046"
+    },
+    {
+      "deal_id": "D-1038",
+      "date": "2025-09-17",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N047"
+    },
+    {
+      "deal_id": "D-1038",
+      "date": "2025-11-04",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N048"
+    },
+    {
+      "deal_id": "D-1038",
+      "date": "2025-11-07",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N049"
+    },
+    {
+      "deal_id": "D-1041",
+      "date": "2026-06-09",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N050"
+    },
+    {
+      "deal_id": "D-1041",
+      "date": "2026-06-21",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N051"
+    },
+    {
+      "deal_id": "D-1044",
+      "date": "2026-04-06",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N052"
+    },
+    {
+      "deal_id": "D-1044",
+      "date": "2026-04-29",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N053"
+    },
+    {
+      "deal_id": "D-1045",
+      "date": "2025-09-28",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N054"
+    },
+    {
+      "deal_id": "D-1045",
+      "date": "2025-11-07",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N055"
+    },
+    {
+      "deal_id": "D-1047",
+      "date": "2025-09-04",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N056"
+    },
+    {
+      "deal_id": "D-1047",
+      "date": "2025-12-16",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N057"
+    },
+    {
+      "deal_id": "D-1048",
+      "date": "2025-09-27",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N058"
+    },
+    {
+      "deal_id": "D-1048",
+      "date": "2025-11-04",
+      "source": "call note",
+      "text": "Technicians picked up the mobile app in the demo without training.",
+      "line_id": "N059"
+    },
+    {
+      "deal_id": "D-1049",
+      "date": "2025-12-07",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N060"
+    },
+    {
+      "deal_id": "D-1049",
+      "date": "2026-01-24",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N061"
+    },
+    {
+      "deal_id": "D-1051",
+      "date": "2025-11-21",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N062"
+    },
+    {
+      "deal_id": "D-1051",
+      "date": "2025-12-08",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N063"
+    },
+    {
+      "deal_id": "D-1053",
+      "date": "2026-03-03",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N064"
+    },
+    {
+      "deal_id": "D-1053",
+      "date": "2026-03-23",
+      "source": "call note",
+      "text": "Technicians picked up the mobile app in the demo without training.",
+      "line_id": "N065"
+    },
+    {
+      "deal_id": "D-1054",
+      "date": "2025-11-21",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N066"
+    },
+    {
+      "deal_id": "D-1054",
+      "date": "2026-01-08",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N067"
+    },
+    {
+      "deal_id": "D-1055",
+      "date": "2026-02-19",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N068"
+    },
+    {
+      "deal_id": "D-1055",
+      "date": "2026-03-13",
+      "source": "call note",
+      "text": "Ops manager said invoices would still have to be re-keyed into their accounting system; no two-way accounting sync.",
+      "line_id": "N069"
+    },
+    {
+      "deal_id": "D-1056",
+      "date": "2026-05-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N070"
+    },
+    {
+      "deal_id": "D-1056",
+      "date": "2026-06-07",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N071"
+    },
+    {
+      "deal_id": "D-1061",
+      "date": "2026-05-05",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N072"
+    },
+    {
+      "deal_id": "D-1061",
+      "date": "2026-06-14",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N073"
+    },
+    {
+      "deal_id": "D-1064",
+      "date": "2025-11-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N074"
+    },
+    {
+      "deal_id": "D-1064",
+      "date": "2025-12-18",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N075"
+    },
+    {
+      "deal_id": "D-1065",
+      "date": "2026-05-26",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N076"
+    },
+    {
+      "deal_id": "D-1065",
+      "date": "2026-08-20",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N077"
+    },
+    {
+      "deal_id": "D-1066",
+      "date": "2025-11-21",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N078"
+    },
+    {
+      "deal_id": "D-1066",
+      "date": "2026-01-06",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N079"
+    },
+    {
+      "deal_id": "D-1068",
+      "date": "2026-04-01",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N080"
+    },
+    {
+      "deal_id": "D-1068",
+      "date": "2026-06-26",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N081"
+    },
+    {
+      "deal_id": "D-1069",
+      "date": "2026-01-03",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N082"
+    },
+    {
+      "deal_id": "D-1069",
+      "date": "2026-02-08",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N083"
+    },
+    {
+      "deal_id": "D-1071",
+      "date": "2026-07-20",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N084"
+    },
+    {
+      "deal_id": "D-1071",
+      "date": "2026-09-22",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N085"
+    },
+    {
+      "deal_id": "D-1072",
+      "date": "2026-06-30",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N086"
+    },
+    {
+      "deal_id": "D-1072",
+      "date": "2026-07-29",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N087"
+    },
+    {
+      "deal_id": "D-1074",
+      "date": "2026-01-22",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N088"
+    },
+    {
+      "deal_id": "D-1074",
+      "date": "2026-04-03",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N089"
+    },
+    {
+      "deal_id": "D-1074",
+      "date": "2026-04-04",
+      "source": "call note",
+      "text": "Lost on per-user price; Competitor B's small-team plan undercut us.",
+      "line_id": "N090"
+    },
+    {
+      "deal_id": "D-1075",
+      "date": "2026-07-11",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N091"
+    },
+    {
+      "deal_id": "D-1075",
+      "date": "2026-08-26",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N092"
+    },
+    {
+      "deal_id": "D-1076",
+      "date": "2026-06-14",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N093"
+    },
+    {
+      "deal_id": "D-1076",
+      "date": "2026-07-07",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N094"
+    },
+    {
+      "deal_id": "D-1078",
+      "date": "2025-11-01",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N095"
+    },
+    {
+      "deal_id": "D-1078",
+      "date": "2026-02-09",
+      "source": "call note",
+      "text": "No owner on any call, so no one could sign.",
+      "line_id": "N096"
+    },
+    {
+      "deal_id": "D-1080",
+      "date": "2025-10-07",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N097"
+    },
+    {
+      "deal_id": "D-1080",
+      "date": "2025-11-14",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N098"
+    },
+    {
+      "deal_id": "D-1083",
+      "date": "2026-05-05",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N099"
+    },
+    {
+      "deal_id": "D-1083",
+      "date": "2026-07-08",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N100"
+    },
+    {
+      "deal_id": "D-1085",
+      "date": "2026-01-18",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N101"
+    },
+    {
+      "deal_id": "D-1085",
+      "date": "2026-03-18",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N102"
+    },
+    {
+      "deal_id": "D-1086",
+      "date": "2025-08-13",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N103"
+    },
+    {
+      "deal_id": "D-1086",
+      "date": "2025-11-13",
+      "source": "call note",
+      "text": "No owner on any call, so no one could sign.",
+      "line_id": "N104"
+    },
+    {
+      "deal_id": "D-1086",
+      "date": "2025-11-22",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N105"
+    },
+    {
+      "deal_id": "D-1088",
+      "date": "2025-10-25",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N106"
+    },
+    {
+      "deal_id": "D-1088",
+      "date": "2025-12-11",
+      "source": "call note",
+      "text": "Ops manager said invoices would still have to be re-keyed into their accounting system; no two-way accounting sync.",
+      "line_id": "N107"
+    },
+    {
+      "deal_id": "D-1089",
+      "date": "2025-09-11",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N108"
+    },
+    {
+      "deal_id": "D-1089",
+      "date": "2025-10-09",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N109"
+    },
+    {
+      "deal_id": "D-1090",
+      "date": "2025-12-02",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N110"
+    },
+    {
+      "deal_id": "D-1090",
+      "date": "2025-12-29",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N111"
+    },
+    {
+      "deal_id": "D-1093",
+      "date": "2026-06-04",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N112"
+    },
+    {
+      "deal_id": "D-1093",
+      "date": "2026-06-06",
+      "source": "call note",
+      "text": "Timeline concern: go-live would land in the busy season.",
+      "line_id": "N113"
+    },
+    {
+      "deal_id": "D-1093",
+      "date": "2026-06-15",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N114"
+    },
+    {
+      "deal_id": "D-1094",
+      "date": "2026-05-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N115"
+    },
+    {
+      "deal_id": "D-1094",
+      "date": "2026-06-24",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N116"
+    },
+    {
+      "deal_id": "D-1096",
+      "date": "2025-09-21",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N117"
+    },
+    {
+      "deal_id": "D-1096",
+      "date": "2025-11-18",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N118"
+    },
+    {
+      "deal_id": "D-1097",
+      "date": "2026-08-31",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N119"
+    },
+    {
+      "deal_id": "D-1097",
+      "date": "2026-09-20",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N120"
+    },
+    {
+      "deal_id": "D-1098",
+      "date": "2026-01-12",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N121"
+    },
+    {
+      "deal_id": "D-1098",
+      "date": "2026-01-26",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N122"
+    },
+    {
+      "deal_id": "D-1100",
+      "date": "2026-01-25",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N123"
+    },
+    {
+      "deal_id": "D-1100",
+      "date": "2026-04-07",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N124"
+    },
+    {
+      "deal_id": "D-1102",
+      "date": "2026-01-21",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N125"
+    },
+    {
+      "deal_id": "D-1102",
+      "date": "2026-03-14",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N126"
+    },
+    {
+      "deal_id": "D-1103",
+      "date": "2026-05-30",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N127"
+    },
+    {
+      "deal_id": "D-1103",
+      "date": "2026-08-07",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N128"
+    },
+    {
+      "deal_id": "D-1104",
+      "date": "2025-11-29",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N129"
+    },
+    {
+      "deal_id": "D-1104",
+      "date": "2026-01-19",
+      "source": "call note",
+      "text": "Dropped after the pilot week: no offline mode when techs lose signal.",
+      "line_id": "N130"
+    },
+    {
+      "deal_id": "D-1107",
+      "date": "2026-07-19",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N131"
+    },
+    {
+      "deal_id": "D-1107",
+      "date": "2026-08-01",
+      "source": "call note",
+      "text": "Technicians picked up the mobile app in the demo without training.",
+      "line_id": "N132"
+    },
+    {
+      "deal_id": "D-1109",
+      "date": "2026-07-16",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N133"
+    },
+    {
+      "deal_id": "D-1109",
+      "date": "2026-09-25",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N134"
+    },
+    {
+      "deal_id": "D-1114",
+      "date": "2026-05-16",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N135"
+    },
+    {
+      "deal_id": "D-1114",
+      "date": "2026-06-13",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N136"
+    },
+    {
+      "deal_id": "D-1115",
+      "date": "2025-12-24",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N137"
+    },
+    {
+      "deal_id": "D-1115",
+      "date": "2025-12-31",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N138"
+    },
+    {
+      "deal_id": "D-1117",
+      "date": "2026-06-16",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N139"
+    },
+    {
+      "deal_id": "D-1117",
+      "date": "2026-06-27",
+      "source": "call note",
+      "text": "Lost on per-user price; Competitor B's small-team plan undercut us.",
+      "line_id": "N140"
+    },
+    {
+      "deal_id": "D-1118",
+      "date": "2026-06-12",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N141"
+    },
+    {
+      "deal_id": "D-1118",
+      "date": "2026-07-19",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N142"
+    },
+    {
+      "deal_id": "D-1119",
+      "date": "2025-12-29",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N143"
+    },
+    {
+      "deal_id": "D-1119",
+      "date": "2026-02-15",
+      "source": "call note",
+      "text": "Dropped after the pilot week: no offline mode when techs lose signal.",
+      "line_id": "N144"
+    },
+    {
+      "deal_id": "D-1120",
+      "date": "2025-10-18",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N145"
+    },
+    {
+      "deal_id": "D-1120",
+      "date": "2025-12-08",
+      "source": "call note",
+      "text": "Lost on per-user price; Competitor B's small-team plan undercut us.",
+      "line_id": "N146"
+    },
+    {
+      "deal_id": "D-1120",
+      "date": "2025-12-13",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N147"
+    },
+    {
+      "deal_id": "D-1122",
+      "date": "2026-04-13",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N148"
+    },
+    {
+      "deal_id": "D-1122",
+      "date": "2026-05-01",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N149"
+    },
+    {
+      "deal_id": "D-1123",
+      "date": "2026-05-28",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N150"
+    },
+    {
+      "deal_id": "D-1123",
+      "date": "2026-07-12",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N151"
+    },
+    {
+      "deal_id": "D-1124",
+      "date": "2026-05-08",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N152"
+    },
+    {
+      "deal_id": "D-1124",
+      "date": "2026-05-30",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N153"
+    },
+    {
+      "deal_id": "D-1125",
+      "date": "2025-12-05",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N154"
+    },
+    {
+      "deal_id": "D-1125",
+      "date": "2025-12-18",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N155"
+    },
+    {
+      "deal_id": "D-1125",
+      "date": "2025-12-25",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N156"
+    },
+    {
+      "deal_id": "D-1126",
+      "date": "2026-07-05",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N157"
+    },
+    {
+      "deal_id": "D-1126",
+      "date": "2026-08-07",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N158"
+    },
+    {
+      "deal_id": "D-1129",
+      "date": "2026-02-07",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N159"
+    },
+    {
+      "deal_id": "D-1129",
+      "date": "2026-02-16",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N160"
+    },
+    {
+      "deal_id": "D-1130",
+      "date": "2026-01-29",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N161"
+    },
+    {
+      "deal_id": "D-1130",
+      "date": "2026-03-07",
+      "source": "call note",
+      "text": "Lost on per-user price; Competitor B's small-team plan undercut us.",
+      "line_id": "N162"
+    },
+    {
+      "deal_id": "D-1131",
+      "date": "2025-11-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N163"
+    },
+    {
+      "deal_id": "D-1131",
+      "date": "2026-01-04",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N164"
+    },
+    {
+      "deal_id": "D-1135",
+      "date": "2025-12-22",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N165"
+    },
+    {
+      "deal_id": "D-1135",
+      "date": "2026-02-19",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N166"
+    },
+    {
+      "deal_id": "D-1136",
+      "date": "2025-12-21",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N167"
+    },
+    {
+      "deal_id": "D-1136",
+      "date": "2026-02-19",
+      "source": "call note",
+      "text": "Single-threaded with the dispatcher; owner never joined and it stalled.",
+      "line_id": "N168"
+    },
+    {
+      "deal_id": "D-1137",
+      "date": "2025-10-13",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N169"
+    },
+    {
+      "deal_id": "D-1137",
+      "date": "2025-11-02",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N170"
+    },
+    {
+      "deal_id": "D-1138",
+      "date": "2026-03-03",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N171"
+    },
+    {
+      "deal_id": "D-1138",
+      "date": "2026-03-31",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N172"
+    },
+    {
+      "deal_id": "D-1139",
+      "date": "2025-10-13",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N173"
+    },
+    {
+      "deal_id": "D-1139",
+      "date": "2025-10-28",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N174"
+    },
+    {
+      "deal_id": "D-1140",
+      "date": "2026-02-10",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N175"
+    },
+    {
+      "deal_id": "D-1140",
+      "date": "2026-05-17",
+      "source": "call note",
+      "text": "Single-threaded with the dispatcher; owner never joined and it stalled.",
+      "line_id": "N176"
+    },
+    {
+      "deal_id": "D-1141",
+      "date": "2026-07-10",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N177"
+    },
+    {
+      "deal_id": "D-1141",
+      "date": "2026-08-20",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N178"
+    },
+    {
+      "deal_id": "D-1142",
+      "date": "2026-04-23",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N179"
+    },
+    {
+      "deal_id": "D-1142",
+      "date": "2026-05-12",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N180"
+    },
+    {
+      "deal_id": "D-1143",
+      "date": "2026-05-29",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N181"
+    },
+    {
+      "deal_id": "D-1143",
+      "date": "2026-08-23",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N182"
+    },
+    {
+      "deal_id": "D-1146",
+      "date": "2026-07-11",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N183"
+    },
+    {
+      "deal_id": "D-1146",
+      "date": "2026-09-16",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N184"
+    },
+    {
+      "deal_id": "D-1149",
+      "date": "2025-09-07",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N185"
+    },
+    {
+      "deal_id": "D-1149",
+      "date": "2025-10-28",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N186"
+    },
+    {
+      "deal_id": "D-1155",
+      "date": "2026-02-17",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N187"
+    },
+    {
+      "deal_id": "D-1155",
+      "date": "2026-05-31",
+      "source": "call note",
+      "text": "Owner never joined a call; the office manager could not sign.",
+      "line_id": "N188"
+    },
+    {
+      "deal_id": "D-1162",
+      "date": "2026-05-28",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N189"
+    },
+    {
+      "deal_id": "D-1162",
+      "date": "2026-06-29",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N190"
+    },
+    {
+      "deal_id": "D-1165",
+      "date": "2026-02-19",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N191"
+    },
+    {
+      "deal_id": "D-1165",
+      "date": "2026-04-24",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N192"
+    },
+    {
+      "deal_id": "D-1167",
+      "date": "2025-07-26",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N193"
+    },
+    {
+      "deal_id": "D-1167",
+      "date": "2025-10-17",
+      "source": "call note",
+      "text": "No owner on any call, so no one could sign.",
+      "line_id": "N194"
+    },
+    {
+      "deal_id": "D-1168",
+      "date": "2026-07-10",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N195"
+    },
+    {
+      "deal_id": "D-1168",
+      "date": "2026-09-07",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N196"
+    },
+    {
+      "deal_id": "D-1170",
+      "date": "2026-05-10",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N197"
+    },
+    {
+      "deal_id": "D-1170",
+      "date": "2026-07-23",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N198"
+    },
+    {
+      "deal_id": "D-1172",
+      "date": "2026-03-04",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N199"
+    },
+    {
+      "deal_id": "D-1172",
+      "date": "2026-04-23",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N200"
+    },
+    {
+      "deal_id": "D-1173",
+      "date": "2025-12-21",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N201"
+    },
+    {
+      "deal_id": "D-1173",
+      "date": "2026-01-31",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N202"
+    },
+    {
+      "deal_id": "D-1175",
+      "date": "2025-09-15",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N203"
+    },
+    {
+      "deal_id": "D-1175",
+      "date": "2025-11-06",
+      "source": "call note",
+      "text": "Technicians picked up the mobile app in the demo without training.",
+      "line_id": "N204"
+    },
+    {
+      "deal_id": "D-1176",
+      "date": "2026-04-02",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N205"
+    },
+    {
+      "deal_id": "D-1176",
+      "date": "2026-05-02",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N206"
+    },
+    {
+      "deal_id": "D-1179",
+      "date": "2025-08-28",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N207"
+    },
+    {
+      "deal_id": "D-1179",
+      "date": "2025-10-24",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N208"
+    },
+    {
+      "deal_id": "D-1181",
+      "date": "2025-10-04",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N209"
+    },
+    {
+      "deal_id": "D-1181",
+      "date": "2025-11-17",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N210"
+    },
+    {
+      "deal_id": "D-1182",
+      "date": "2025-12-17",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N211"
+    },
+    {
+      "deal_id": "D-1182",
+      "date": "2026-03-25",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N212"
+    },
+    {
+      "deal_id": "D-1183",
+      "date": "2026-04-11",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N213"
+    },
+    {
+      "deal_id": "D-1183",
+      "date": "2026-05-04",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N214"
+    },
+    {
+      "deal_id": "D-1184",
+      "date": "2026-04-04",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N215"
+    },
+    {
+      "deal_id": "D-1184",
+      "date": "2026-04-24",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N216"
+    },
+    {
+      "deal_id": "D-1185",
+      "date": "2026-01-04",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N217"
+    },
+    {
+      "deal_id": "D-1185",
+      "date": "2026-03-17",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N218"
+    },
+    {
+      "deal_id": "D-1186",
+      "date": "2026-02-23",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N219"
+    },
+    {
+      "deal_id": "D-1186",
+      "date": "2026-05-04",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N220"
+    },
+    {
+      "deal_id": "D-1187",
+      "date": "2026-07-04",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N221"
+    },
+    {
+      "deal_id": "D-1187",
+      "date": "2026-08-16",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N222"
+    },
+    {
+      "deal_id": "D-1189",
+      "date": "2025-10-02",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N223"
+    },
+    {
+      "deal_id": "D-1189",
+      "date": "2025-11-29",
+      "source": "call note",
+      "text": "Technicians work in basements with no signal; our app has no offline mode.",
+      "line_id": "N224"
+    },
+    {
+      "deal_id": "D-1192",
+      "date": "2025-10-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N225"
+    },
+    {
+      "deal_id": "D-1192",
+      "date": "2025-11-30",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N226"
+    },
+    {
+      "deal_id": "D-1193",
+      "date": "2025-09-27",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N227"
+    },
+    {
+      "deal_id": "D-1193",
+      "date": "2025-12-13",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N228"
+    },
+    {
+      "deal_id": "D-1195",
+      "date": "2025-10-13",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N229"
+    },
+    {
+      "deal_id": "D-1195",
+      "date": "2025-11-03",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N230"
+    },
+    {
+      "deal_id": "D-1196",
+      "date": "2025-08-26",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N231"
+    },
+    {
+      "deal_id": "D-1196",
+      "date": "2025-09-30",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N232"
+    },
+    {
+      "deal_id": "D-1197",
+      "date": "2026-06-07",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N233"
+    },
+    {
+      "deal_id": "D-1197",
+      "date": "2026-07-15",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N234"
+    },
+    {
+      "deal_id": "D-1198",
+      "date": "2026-08-16",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N235"
+    },
+    {
+      "deal_id": "D-1198",
+      "date": "2026-09-18",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N236"
+    },
+    {
+      "deal_id": "D-1198",
+      "date": "2026-09-21",
+      "source": "call note",
+      "text": "No owner on any call, so no one could sign.",
+      "line_id": "N237"
+    },
+    {
+      "deal_id": "D-1199",
+      "date": "2026-05-12",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N238"
+    },
+    {
+      "deal_id": "D-1199",
+      "date": "2026-07-09",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N239"
+    },
+    {
+      "deal_id": "D-1200",
+      "date": "2026-01-14",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N240"
+    },
+    {
+      "deal_id": "D-1200",
+      "date": "2026-02-12",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N241"
+    },
+    {
+      "deal_id": "D-1201",
+      "date": "2026-06-29",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N242"
+    },
+    {
+      "deal_id": "D-1201",
+      "date": "2026-07-19",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N243"
+    },
+    {
+      "deal_id": "D-1202",
+      "date": "2025-09-13",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N244"
+    },
+    {
+      "deal_id": "D-1202",
+      "date": "2025-10-24",
+      "source": "call note",
+      "text": "Field lead asked twice about offline mode for jobs with no signal.",
+      "line_id": "N245"
+    },
+    {
+      "deal_id": "D-1202",
+      "date": "2025-10-30",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N246"
+    },
+    {
+      "deal_id": "D-1203",
+      "date": "2026-09-04",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N247"
+    },
+    {
+      "deal_id": "D-1203",
+      "date": "2026-09-27",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N248"
+    },
+    {
+      "deal_id": "D-1207",
+      "date": "2026-01-16",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N249"
+    },
+    {
+      "deal_id": "D-1207",
+      "date": "2026-04-14",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N250"
+    },
+    {
+      "deal_id": "D-1210",
+      "date": "2025-11-08",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N251"
+    },
+    {
+      "deal_id": "D-1210",
+      "date": "2025-11-29",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N252"
+    },
+    {
+      "deal_id": "D-1212",
+      "date": "2026-03-09",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N253"
+    },
+    {
+      "deal_id": "D-1212",
+      "date": "2026-04-08",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N254"
+    },
+    {
+      "deal_id": "D-1214",
+      "date": "2026-01-12",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N255"
+    },
+    {
+      "deal_id": "D-1214",
+      "date": "2026-02-21",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N256"
+    },
+    {
+      "deal_id": "D-1215",
+      "date": "2026-03-23",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N257"
+    },
+    {
+      "deal_id": "D-1215",
+      "date": "2026-05-11",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N258"
+    },
+    {
+      "deal_id": "D-1217",
+      "date": "2026-02-25",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N259"
+    },
+    {
+      "deal_id": "D-1217",
+      "date": "2026-04-02",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N260"
+    },
+    {
+      "deal_id": "D-1219",
+      "date": "2026-06-07",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N261"
+    },
+    {
+      "deal_id": "D-1219",
+      "date": "2026-07-05",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N262"
+    },
+    {
+      "deal_id": "D-1222",
+      "date": "2026-07-17",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N263"
+    },
+    {
+      "deal_id": "D-1222",
+      "date": "2026-08-03",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N264"
+    },
+    {
+      "deal_id": "D-1223",
+      "date": "2025-09-30",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N265"
+    },
+    {
+      "deal_id": "D-1223",
+      "date": "2026-01-02",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N266"
+    },
+    {
+      "deal_id": "D-1224",
+      "date": "2026-03-29",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N267"
+    },
+    {
+      "deal_id": "D-1224",
+      "date": "2026-04-17",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N268"
+    },
+    {
+      "deal_id": "D-1225",
+      "date": "2025-11-19",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N269"
+    },
+    {
+      "deal_id": "D-1225",
+      "date": "2026-01-27",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N270"
+    },
+    {
+      "deal_id": "D-1226",
+      "date": "2025-10-09",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N271"
+    },
+    {
+      "deal_id": "D-1226",
+      "date": "2025-11-28",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N272"
+    },
+    {
+      "deal_id": "D-1228",
+      "date": "2026-06-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N273"
+    },
+    {
+      "deal_id": "D-1228",
+      "date": "2026-09-13",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N274"
+    },
+    {
+      "deal_id": "D-1230",
+      "date": "2026-08-31",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N275"
+    },
+    {
+      "deal_id": "D-1230",
+      "date": "2026-09-28",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N276"
+    },
+    {
+      "deal_id": "D-1231",
+      "date": "2026-02-15",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N277"
+    },
+    {
+      "deal_id": "D-1231",
+      "date": "2026-04-17",
+      "source": "call note",
+      "text": "Liked the product but could not justify it; payback was never shown.",
+      "line_id": "N278"
+    },
+    {
+      "deal_id": "D-1232",
+      "date": "2026-08-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N279"
+    },
+    {
+      "deal_id": "D-1232",
+      "date": "2026-09-11",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N280"
+    },
+    {
+      "deal_id": "D-1233",
+      "date": "2025-09-28",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N281"
+    },
+    {
+      "deal_id": "D-1233",
+      "date": "2025-11-13",
+      "source": "call note",
+      "text": "Lost on per-user price; Competitor B's small-team plan undercut us.",
+      "line_id": "N282"
+    },
+    {
+      "deal_id": "D-1233",
+      "date": "2025-11-13",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N283"
+    },
+    {
+      "deal_id": "D-1234",
+      "date": "2026-07-24",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N284"
+    },
+    {
+      "deal_id": "D-1234",
+      "date": "2026-09-10",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N285"
+    },
+    {
+      "deal_id": "D-1235",
+      "date": "2026-04-24",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N286"
+    },
+    {
+      "deal_id": "D-1235",
+      "date": "2026-06-19",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N287"
+    },
+    {
+      "deal_id": "D-1236",
+      "date": "2025-12-19",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N288"
+    },
+    {
+      "deal_id": "D-1236",
+      "date": "2026-02-11",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N289"
+    },
+    {
+      "deal_id": "D-1237",
+      "date": "2025-10-26",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N290"
+    },
+    {
+      "deal_id": "D-1237",
+      "date": "2025-11-27",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N291"
+    },
+    {
+      "deal_id": "D-1239",
+      "date": "2025-12-19",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N292"
+    },
+    {
+      "deal_id": "D-1239",
+      "date": "2026-02-09",
+      "source": "call note",
+      "text": "Field lead asked twice about offline mode for jobs with no signal.",
+      "line_id": "N293"
+    },
+    {
+      "deal_id": "D-1240",
+      "date": "2026-03-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N294"
+    },
+    {
+      "deal_id": "D-1240",
+      "date": "2026-04-24",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N295"
+    },
+    {
+      "deal_id": "D-1243",
+      "date": "2025-12-03",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N296"
+    },
+    {
+      "deal_id": "D-1243",
+      "date": "2025-12-23",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N297"
+    },
+    {
+      "deal_id": "D-1244",
+      "date": "2025-11-25",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N298"
+    },
+    {
+      "deal_id": "D-1244",
+      "date": "2025-12-22",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N299"
+    },
+    {
+      "deal_id": "D-1246",
+      "date": "2026-01-28",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N300"
+    },
+    {
+      "deal_id": "D-1246",
+      "date": "2026-04-01",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N301"
+    },
+    {
+      "deal_id": "D-1248",
+      "date": "2026-07-20",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N302"
+    },
+    {
+      "deal_id": "D-1248",
+      "date": "2026-08-01",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N303"
+    },
+    {
+      "deal_id": "D-1249",
+      "date": "2025-12-07",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N304"
+    },
+    {
+      "deal_id": "D-1249",
+      "date": "2026-01-17",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N305"
+    },
+    {
+      "deal_id": "D-1250",
+      "date": "2025-12-04",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N306"
+    },
+    {
+      "deal_id": "D-1250",
+      "date": "2026-01-31",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N307"
+    },
+    {
+      "deal_id": "D-1252",
+      "date": "2026-03-05",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N308"
+    },
+    {
+      "deal_id": "D-1252",
+      "date": "2026-04-23",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N309"
+    },
+    {
+      "deal_id": "D-1253",
+      "date": "2026-05-25",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N310"
+    },
+    {
+      "deal_id": "D-1253",
+      "date": "2026-06-24",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N311"
+    },
+    {
+      "deal_id": "D-1254",
+      "date": "2026-08-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N312"
+    },
+    {
+      "deal_id": "D-1254",
+      "date": "2026-08-30",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N313"
+    },
+    {
+      "deal_id": "D-1255",
+      "date": "2026-07-17",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N314"
+    },
+    {
+      "deal_id": "D-1255",
+      "date": "2026-07-25",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N315"
+    },
+    {
+      "deal_id": "D-1256",
+      "date": "2026-01-10",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N316"
+    },
+    {
+      "deal_id": "D-1256",
+      "date": "2026-02-02",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N317"
+    },
+    {
+      "deal_id": "D-1257",
+      "date": "2026-01-02",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N318"
+    },
+    {
+      "deal_id": "D-1257",
+      "date": "2026-03-23",
+      "source": "call note",
+      "text": "Worried go-live would run into the busy season; they wanted to be live in under three weeks.",
+      "line_id": "N319"
+    },
+    {
+      "deal_id": "D-1259",
+      "date": "2026-01-30",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N320"
+    },
+    {
+      "deal_id": "D-1259",
+      "date": "2026-02-10",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N321"
+    },
+    {
+      "deal_id": "D-1260",
+      "date": "2026-01-02",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N322"
+    },
+    {
+      "deal_id": "D-1260",
+      "date": "2026-02-05",
+      "source": "call note",
+      "text": "Owner compared per-user price with Competitor B; ours was higher for a crew this size.",
+      "line_id": "N323"
+    },
+    {
+      "deal_id": "D-1261",
+      "date": "2026-06-01",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N324"
+    },
+    {
+      "deal_id": "D-1261",
+      "date": "2026-06-17",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N325"
+    },
+    {
+      "deal_id": "D-1262",
+      "date": "2025-09-06",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N326"
+    },
+    {
+      "deal_id": "D-1262",
+      "date": "2025-10-27",
+      "source": "call note",
+      "text": "They chose us for the 30-day launch plan with a named onboarding lead.",
+      "line_id": "N327"
+    },
+    {
+      "deal_id": "D-1266",
+      "date": "2026-02-06",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N328"
+    },
+    {
+      "deal_id": "D-1266",
+      "date": "2026-03-13",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N329"
+    },
+    {
+      "deal_id": "D-1267",
+      "date": "2025-08-25",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N330"
+    },
+    {
+      "deal_id": "D-1267",
+      "date": "2025-10-17",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N331"
+    },
+    {
+      "deal_id": "D-1269",
+      "date": "2025-11-21",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N332"
+    },
+    {
+      "deal_id": "D-1269",
+      "date": "2026-01-25",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N333"
+    },
+    {
+      "deal_id": "D-1273",
+      "date": "2026-01-03",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N334"
+    },
+    {
+      "deal_id": "D-1273",
+      "date": "2026-01-20",
+      "source": "call note",
+      "text": "Techs liked the mobile app; checklists and photos on the job won it.",
+      "line_id": "N335"
+    },
+    {
+      "deal_id": "D-1274",
+      "date": "2026-03-01",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N336"
+    },
+    {
+      "deal_id": "D-1274",
+      "date": "2026-04-03",
+      "source": "call note",
+      "text": "Technicians work in basements with no signal; our app has no offline mode.",
+      "line_id": "N337"
+    },
+    {
+      "deal_id": "D-1274",
+      "date": "2026-04-07",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N338"
+    },
+    {
+      "deal_id": "D-1275",
+      "date": "2026-06-14",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N339"
+    },
+    {
+      "deal_id": "D-1275",
+      "date": "2026-07-04",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N340"
+    },
+    {
+      "deal_id": "D-1276",
+      "date": "2025-10-08",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N341"
+    },
+    {
+      "deal_id": "D-1276",
+      "date": "2026-01-06",
+      "source": "call note",
+      "text": "Owner never joined a call; the office manager could not sign.",
+      "line_id": "N342"
+    },
+    {
+      "deal_id": "D-1277",
+      "date": "2025-10-15",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N343"
+    },
+    {
+      "deal_id": "D-1277",
+      "date": "2026-01-19",
+      "source": "call note",
+      "text": "Go-live estimate of six weeks was too long before the busy season.",
+      "line_id": "N344"
+    },
+    {
+      "deal_id": "D-1279",
+      "date": "2026-05-19",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N345"
+    },
+    {
+      "deal_id": "D-1279",
+      "date": "2026-05-28",
+      "source": "call note",
+      "text": "Blocker was the accounting sync. They will not re-key invoices by hand.",
+      "line_id": "N346"
+    },
+    {
+      "deal_id": "D-1280",
+      "date": "2026-04-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N347"
+    },
+    {
+      "deal_id": "D-1280",
+      "date": "2026-07-06",
+      "source": "call note",
+      "text": "Competitor B quoted a lower per-user price for their small crew and we could not get close.",
+      "line_id": "N348"
+    },
+    {
+      "deal_id": "D-1281",
+      "date": "2025-10-27",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N349"
+    },
+    {
+      "deal_id": "D-1281",
+      "date": "2025-12-11",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N350"
+    },
+    {
+      "deal_id": "D-1282",
+      "date": "2026-05-07",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N351"
+    },
+    {
+      "deal_id": "D-1282",
+      "date": "2026-07-21",
+      "source": "call note",
+      "text": "No owner on any call, so no one could sign.",
+      "line_id": "N352"
+    },
+    {
+      "deal_id": "D-1283",
+      "date": "2026-09-09",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N353"
+    },
+    {
+      "deal_id": "D-1283",
+      "date": "2026-09-15",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N354"
+    },
+    {
+      "deal_id": "D-1284",
+      "date": "2025-10-05",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N355"
+    },
+    {
+      "deal_id": "D-1284",
+      "date": "2025-11-11",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N356"
+    },
+    {
+      "deal_id": "D-1285",
+      "date": "2026-03-21",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N357"
+    },
+    {
+      "deal_id": "D-1285",
+      "date": "2026-06-08",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N358"
+    },
+    {
+      "deal_id": "D-1286",
+      "date": "2026-05-04",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N359"
+    },
+    {
+      "deal_id": "D-1286",
+      "date": "2026-06-19",
+      "source": "call note",
+      "text": "A named onboarding lead and a 30-day launch plan closed it.",
+      "line_id": "N360"
+    },
+    {
+      "deal_id": "D-1287",
+      "date": "2026-01-29",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N361"
+    },
+    {
+      "deal_id": "D-1287",
+      "date": "2026-04-22",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N362"
+    },
+    {
+      "deal_id": "D-1288",
+      "date": "2025-10-28",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N363"
+    },
+    {
+      "deal_id": "D-1288",
+      "date": "2025-11-30",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N364"
+    },
+    {
+      "deal_id": "D-1289",
+      "date": "2026-02-01",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N365"
+    },
+    {
+      "deal_id": "D-1289",
+      "date": "2026-04-04",
+      "source": "call note",
+      "text": "Could not see the payback; the demo stayed on office screens and never showed technician time saved.",
+      "line_id": "N366"
+    },
+    {
+      "deal_id": "D-1290",
+      "date": "2026-05-03",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N367"
+    },
+    {
+      "deal_id": "D-1290",
+      "date": "2026-07-20",
+      "source": "call note",
+      "text": "Timeline concern: go-live would land in the busy season.",
+      "line_id": "N368"
+    },
+    {
+      "deal_id": "D-1293",
+      "date": "2025-11-23",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N369"
+    },
+    {
+      "deal_id": "D-1293",
+      "date": "2026-01-21",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N370"
+    },
+    {
+      "deal_id": "D-1294",
+      "date": "2026-04-27",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N371"
+    },
+    {
+      "deal_id": "D-1294",
+      "date": "2026-06-09",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N372"
+    },
+    {
+      "deal_id": "D-1296",
+      "date": "2026-02-06",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N373"
+    },
+    {
+      "deal_id": "D-1296",
+      "date": "2026-02-27",
+      "source": "call note",
+      "text": "Field lead tried the mobile app on site and was sold.",
+      "line_id": "N374"
+    },
+    {
+      "deal_id": "D-1297",
+      "date": "2026-04-20",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N375"
+    },
+    {
+      "deal_id": "D-1297",
+      "date": "2026-05-10",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N376"
+    },
+    {
+      "deal_id": "D-1301",
+      "date": "2026-02-26",
+      "source": "call note",
+      "text": "Asked for references in their trade.",
+      "line_id": "N377"
+    },
+    {
+      "deal_id": "D-1301",
+      "date": "2026-05-06",
+      "source": "call note",
+      "text": "Single-threaded with the dispatcher; owner never joined and it stalled.",
+      "line_id": "N378"
+    },
+    {
+      "deal_id": "D-1302",
+      "date": "2026-06-03",
+      "source": "call note",
+      "text": "Demo done with dispatcher and owner.",
+      "line_id": "N379"
+    },
+    {
+      "deal_id": "D-1302",
+      "date": "2026-08-15",
+      "source": "call note",
+      "text": "Bookkeeper pushed back: without an accounting sync they double-enter every invoice.",
+      "line_id": "N380"
+    },
+    {
+      "deal_id": "D-1303",
+      "date": "2026-03-18",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N381"
+    },
+    {
+      "deal_id": "D-1303",
+      "date": "2026-04-12",
+      "source": "call note",
+      "text": "Route planning cut drive time in the pilot; the owner ran the numbers himself.",
+      "line_id": "N382"
+    },
+    {
+      "deal_id": "D-1305",
+      "date": "2025-10-30",
+      "source": "call note",
+      "text": "Pricing sheet sent.",
+      "line_id": "N383"
+    },
+    {
+      "deal_id": "D-1305",
+      "date": "2025-11-16",
+      "source": "call note",
+      "text": "Showed route planning on their own job list; drive time saved paid for it.",
+      "line_id": "N384"
+    },
+    {
+      "deal_id": "D-1306",
+      "date": "2026-02-03",
+      "source": "call note",
+      "text": "Sent proposal; follow-up booked.",
+      "line_id": "N385"
+    },
+    {
+      "deal_id": "D-1306",
+      "date": "2026-03-22",
+      "source": "call note",
+      "text": "Owner asked what it saves per technician and we had no payback number.",
+      "line_id": "N386"
+    }
+  ],
+  "interviews": [
+    {
+      "deal_id": "D-1015",
+      "date": "2026-05-17",
+      "interviewee": "operations manager, plumbing contractor, 50 technicians",
+      "text": "\"My bookkeeper said no the minute she heard she'd re-key every invoice.\"",
+      "line_id": "I01"
+    },
+    {
+      "deal_id": "D-1028",
+      "date": "2026-07-31",
+      "interviewee": "owner, plumbing contractor, 3 technicians",
+      "text": "\"Nobody showed me what it saves per tech. I couldn't sell it to my partner.\"",
+      "line_id": "I02"
+    },
+    {
+      "deal_id": "D-1041",
+      "date": "2026-07-23",
+      "interviewee": "owner, HVAC contractor, 5 technicians",
+      "text": "\"Seeing route planning cut drive time on our real jobs was the moment.\"",
+      "line_id": "I03"
+    },
+    {
+      "deal_id": "D-1072",
+      "date": "2026-08-29",
+      "interviewee": "operations manager, electrical contractor, 12 technicians",
+      "text": "\"Route planning on our own job list showed the drive time we'd save. That sold it.\"",
+      "line_id": "I04"
+    },
+    {
+      "deal_id": "D-1094",
+      "date": "2026-08-05",
+      "interviewee": "service director, plumbing contractor, 108 technicians",
+      "text": "\"We needed to go live before the busy season and your date was after it.\"",
+      "line_id": "I05"
+    },
+    {
+      "deal_id": "D-1103",
+      "date": "2026-09-17",
+      "interviewee": "owner, multi-trade contractor, 9 technicians",
+      "text": "\"We'd still be typing every invoice into the books twice. That was the end of it.\"",
+      "line_id": "I06"
+    },
+    {
+      "deal_id": "D-1122",
+      "date": "2026-06-15",
+      "interviewee": "operations manager, HVAC contractor, 16 technicians",
+      "text": "\"Having a named onboarding lead and a 30-day launch plan made it an easy yes.\"",
+      "line_id": "I07"
+    },
+    {
+      "deal_id": "D-1138",
+      "date": "2026-05-11",
+      "interviewee": "owner, HVAC contractor, 8 technicians",
+      "text": "\"Per user, you were the most expensive one we looked at for a crew our size.\"",
+      "line_id": "I08"
+    },
+    {
+      "deal_id": "D-1142",
+      "date": "2026-05-31",
+      "interviewee": "operations manager, plumbing contractor, 48 technicians",
+      "text": "\"Seeing route planning cut drive time on our real jobs was the moment.\"",
+      "line_id": "I09"
+    },
+    {
+      "deal_id": "D-1143",
+      "date": "2026-10-12",
+      "interviewee": "operations manager, electrical contractor, 46 technicians",
+      "text": "\"I never saw a payback number. Everything was about the office, not the trucks.\"",
+      "line_id": "I10"
+    },
+    {
+      "deal_id": "D-1176",
+      "date": "2026-05-29",
+      "interviewee": "operations manager, multi-trade contractor, 40 technicians",
+      "text": "\"Route planning on our own job list showed the drive time we'd save. That sold it.\"",
+      "line_id": "I11"
+    },
+    {
+      "deal_id": "D-1183",
+      "date": "2026-05-27",
+      "interviewee": "service director, plumbing contractor, 110 technicians",
+      "text": "\"We needed to go live before the busy season and your date was after it.\"",
+      "line_id": "I12"
+    },
+    {
+      "deal_id": "D-1197",
+      "date": "2026-08-31",
+      "interviewee": "owner, multi-trade contractor, 9 technicians",
+      "text": "\"It looked good, but I couldn't tell you what it saves per tech per week.\"",
+      "line_id": "I13"
+    },
+    {
+      "deal_id": "D-1224",
+      "date": "2026-05-20",
+      "interviewee": "owner, plumbing contractor, 7 technicians",
+      "text": "\"Having a named onboarding lead and a 30-day launch plan made it an easy yes.\"",
+      "line_id": "I14"
+    },
+    {
+      "deal_id": "D-1230",
+      "date": "2026-10-31",
+      "interviewee": "owner, multi-trade contractor, 10 technicians",
+      "text": "\"My techs had the mobile app figured out before the demo was over.\"",
+      "line_id": "I15"
+    },
+    {
+      "deal_id": "D-1252",
+      "date": "2026-05-25",
+      "interviewee": "owner, electrical contractor, 10 technicians",
+      "text": "\"Nobody showed me what it saves per tech. I couldn't sell it to my partner.\"",
+      "line_id": "I16"
+    },
+    {
+      "deal_id": "D-1280",
+      "date": "2026-08-15",
+      "interviewee": "owner, electrical contractor, 6 technicians",
+      "text": "\"Per user, you were the most expensive one we looked at for a crew our size.\"",
+      "line_id": "I17"
+    },
+    {
+      "deal_id": "D-1294",
+      "date": "2026-06-30",
+      "interviewee": "operations manager, HVAC contractor, 29 technicians",
+      "text": "\"The other one talks to our accounting software. Yours doesn't. Simple as that.\"",
+      "line_id": "I18"
+    },
+    {
+      "deal_id": "D-1297",
+      "date": "2026-06-09",
+      "interviewee": "operations manager, HVAC contractor, 49 technicians",
+      "text": "\"Route planning on our own job list showed the drive time we'd save. That sold it.\"",
+      "line_id": "I19"
+    },
+    {
+      "deal_id": "D-1302",
+      "date": "2026-09-23",
+      "interviewee": "service director, HVAC contractor, 97 technicians",
+      "text": "\"The other one talks to our accounting software. Yours doesn't. Simple as that.\"",
+      "line_id": "I20"
+    }
+  ],
+  "platform_leads": {
+    "google_ads_gaql": [
+      {
+        "conversion_action": "Demo request form",
+        "conversions": 129
+      },
+      {
+        "conversion_action": "Pricing page contact form",
+        "conversions": 51
+      }
+    ],
+    "linkedin_ads_get_account_analytics": {
+      "oneClickLeads": 307,
+      "externalWebsiteConversions": 51
+    },
+    "ga4_get_report_key_events": [
+      {
+        "sessionSource": "google",
+        "sessionMedium": "organic",
+        "eventName": "generate_lead",
+        "keyEvents": 121
+      },
+      {
+        "sessionSource": "bing",
+        "sessionMedium": "organic",
+        "eventName": "generate_lead",
+        "keyEvents": 17
+      },
+      {
+        "sessionSource": "google",
+        "sessionMedium": "cpc",
+        "eventName": "generate_lead",
+        "keyEvents": 167
+      },
+      {
+        "sessionSource": "linkedin",
+        "sessionMedium": "paid_social",
+        "eventName": "generate_lead",
+        "keyEvents": 50
+      },
+      {
+        "sessionSource": "(direct)",
+        "sessionMedium": "(none)",
+        "eventName": "generate_lead",
+        "keyEvents": 88
+      }
+    ],
+    "callrail_get_calls_first_time": [
+      {
+        "source": "Google Ads",
+        "first_calls": 27,
+        "good_lead": 18
+      },
+      {
+        "source": "Google Organic",
+        "first_calls": 19,
+        "good_lead": 12
+      },
+      {
+        "source": "Direct",
+        "first_calls": 23,
+        "good_lead": 11
+      }
+    ]
+  },
+  "note": "Example data: an invented field service software company with an invented CRM export, call notes, buyer interviews and platform lead counts, not a real business. Buyers are counted, never named. Every number in expected_output.json follows from this input."
+}

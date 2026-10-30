@@ -1,0 +1,660 @@
+{
+  "header": {
+    "site": "https://www.example.com/",
+    "move_type": "URL restructure on the same domain: /resources moved to /blog, templates to /templates",
+    "move_date": "2026-10-14",
+    "run_date": "2026-10-28",
+    "day": 14,
+    "stage": "settling",
+    "search_console_data_through": "2026-10-24",
+    "overall": "act now",
+    "not_graded": []
+  },
+  "scorecard": [
+    {
+      "area": "1. Redirects",
+      "result": "fail",
+      "key_number": "43 of 50 priority URLs ok",
+      "why": "/resources/cancellation-policy-template (517 clicks, 14 referring domains) lands on the home page, and /resources/appointment-reminder-text-templates (642 clicks) lands on a page that answers 404. 4 template URLs take 2 hops and /resources uses a 302. The other 43 redirect in 1 permanent hop to the expected page."
+    },
+    {
+      "area": "2. Untouched pages",
+      "result": "pass",
+      "key_number": "10 of 10 answer 200 directly",
+      "why": "The 10 pages outside the move with the most clicks (23,280 baseline clicks) still answer 200 with no redirect."
+    },
+    {
+      "area": "3. New pages",
+      "result": "fail",
+      "key_number": "9 of 10 targets indexable; 1 canonical points elsewhere",
+      "why": "/blog/appointment-reminder-text-templates/ answers 404, so it can't be indexed (the same page as the broken redirect in area 1). /blog/deposit-policy/ still names its old URL /resources/deposit-policy as canonical; URL Inspection shows the same. Google has the other 6 inspected targets indexed as their own canonical."
+    },
+    {
+      "area": "4. robots.txt",
+      "result": "pass",
+      "key_number": "0 blocking rules",
+      "why": "Rules for * block only /app/, /account/, /api/; none of the new pages sits under them. The sitemap is declared."
+    },
+    {
+      "area": "5. Sitemaps",
+      "result": "warn",
+      "key_number": "live sitemap: 74 URLs, 4 moved; Google re-read: yes; Bing re-read: no",
+      "why": "The live sitemap still lists 4 old category pages and lacks 1 expected target (/blog/appointment-reminder-text-templates/, the dead page). Google downloaded it on 2026-10-16, after the move. Bing last crawled it on 2026-10-09, before the move, and it's day 14."
+    },
+    {
+      "area": "6. Search engine pickup",
+      "result": "pass",
+      "key_number": "Google: 6 of 8 old URLs picked up; Bing: 1 of 4",
+      "why": "Google has recrawled 6 of the top 8 old URLs since the move, so more than half are picked up. Bing has recrawled 1 of 4; a URL submission for the working targets is offered below. Bing lists 1 crawl issue on a target: /blog/appointment-reminder-text-templates/ answers 404."
+    },
+    {
+      "area": "7. Traffic",
+      "result": "warn",
+      "key_number": "moved pages -17.3% (469 to 388 clicks, 7 days vs 7 days)",
+      "why": "The moved URLs and their targets (home page left out) earned 388 clicks from 2026-10-15 to 2026-10-21 against 469 in the 7 days before the move: the targets gained 241 while the old URLs lost 322. 60 of the 81 lost clicks sit on the 2 failed redirects. Site clicks -1.9%. Before day 28 this can only warn."
+    },
+    {
+      "area": "8. Tracking and 404s",
+      "result": "warn",
+      "key_number": "231 404 views on a target path; GA4 capture ratio 0.83",
+      "why": "GA4 shows 231 'Page not found' views on /blog/appointment-reminder-text-templates/ since the move. Tracking is sound: GA4 recorded 0.83 Organic Search sessions per Search Console click over the baseline, and no day near the move jumped or fell."
+    }
+  ],
+  "act_now": [
+    {
+      "area": "1. Redirects",
+      "issue": "Template page with 14 referring domains redirects to the home page",
+      "urls": [
+        "/resources/cancellation-policy-template"
+      ],
+      "baseline_clicks": 517,
+      "referring_domains": 14,
+      "evidence": "301 in 1 hop to / (expected /templates/cancellation-policy/, which answers 200 in the sitemap)",
+      "fix": "Your exception sends it to /templates/cancellation-policy/, but the server sends it to the home page. Add the exception to the redirect rules above the catch-all."
+    },
+    {
+      "area": "1. Redirects and 3. New pages",
+      "issue": "Old reminder-templates post redirects to a page that answers 404",
+      "urls": [
+        "/resources/appointment-reminder-text-templates",
+        "/blog/appointment-reminder-text-templates/"
+      ],
+      "baseline_clicks": 642,
+      "referring_domains": 6,
+      "evidence": "301 to /blog/appointment-reminder-text-templates/, which answers 404; GA4 counts 231 'Page not found' views there since the move and Bing lists it as a crawl issue",
+      "fix": "The rule sends it to /blog/appointment-reminder-text-templates/, which answers 404. The post's new address in the live sitemap is /blog/appointment-reminder-templates/: add an exception pointing there."
+    }
+  ],
+  "watch": [
+    {
+      "area": "1. Redirects",
+      "issue": "4 template URLs chain through 2 hops",
+      "urls": [
+        "/resources/templates/client-intake-form",
+        "/resources/templates/consent-form",
+        "/resources/templates/booking-policy",
+        "/resources/templates/gift-card-terms"
+      ],
+      "evidence": "301 to the target without the trailing slash, then 308 to add it",
+      "fix": "The template rule writes the target without the trailing slash, so a second redirect adds it. Add the slash to the rule's target."
+    },
+    {
+      "area": "1. Redirects",
+      "issue": "The old hub page uses a temporary redirect",
+      "urls": [
+        "/resources"
+      ],
+      "evidence": "302 to /blog/",
+      "fix": "Change the 302 to a 301."
+    },
+    {
+      "area": "3. New pages",
+      "issue": "A moved post still names its old URL as canonical",
+      "urls": [
+        "/blog/deposit-policy/"
+      ],
+      "evidence": "canonical-checker and URL Inspection user_canonical both give /resources/deposit-policy",
+      "fix": "Set the post's canonical to its own new URL (it was likely typed into the post's SEO field)."
+    },
+    {
+      "area": "5. Sitemaps",
+      "issue": "Old URLs in the sitemap, and Bing hasn't re-read it",
+      "urls": [
+        "/resources/category/clinics/",
+        "/resources/category/fitness/",
+        "/resources/category/guides/",
+        "/resources/category/salons/"
+      ],
+      "evidence": "4 /resources/category/ pages listed; Bing last crawled the sitemap 2026-10-09",
+      "fix": "Drop the old category pages from the sitemap generator, then resubmit it to Bing (offered below)."
+    },
+    {
+      "area": "7. Traffic",
+      "issue": "Moved pages are down while redirects settle",
+      "urls": [],
+      "evidence": "469 to 388 clicks (-17.3%); 60 of the 81 lost clicks are on the 2 failed redirects",
+      "fix": "Fix the two act-now redirects first; most of the loss sits there. Re-read on day 28."
+    },
+    {
+      "area": "8. Tracking and 404s",
+      "issue": "404 views on a target path",
+      "urls": [
+        "/blog/appointment-reminder-text-templates/"
+      ],
+      "evidence": "231 views since 2026-10-14",
+      "fix": "Clears once the redirect is fixed (act now)."
+    }
+  ],
+  "redirect_table": {
+    "checked": 50,
+    "problems": [
+      {
+        "url": "/resources/appointment-reminder-text-templates",
+        "verdict": "broken",
+        "first_status": 301,
+        "hops": 1,
+        "final_url": "/blog/appointment-reminder-text-templates/",
+        "final_status": 404,
+        "expected_target": "/blog/appointment-reminder-text-templates/",
+        "baseline_clicks": 642,
+        "referring_domains": 6,
+        "fix": "The rule sends it to /blog/appointment-reminder-text-templates/, which answers 404. The post's new address in the live sitemap is /blog/appointment-reminder-templates/: add an exception pointing there."
+      },
+      {
+        "url": "/resources/cancellation-policy-template",
+        "verdict": "wrong target",
+        "first_status": 301,
+        "hops": 1,
+        "final_url": "/",
+        "final_status": 200,
+        "expected_target": "/templates/cancellation-policy/",
+        "baseline_clicks": 517,
+        "referring_domains": 14,
+        "fix": "Your exception sends it to /templates/cancellation-policy/, but the server sends it to the home page. Add the exception to the redirect rules above the catch-all."
+      },
+      {
+        "url": "/resources/templates/client-intake-form",
+        "verdict": "chain",
+        "first_status": 301,
+        "hops": 2,
+        "final_url": "/templates/client-intake-form/",
+        "final_status": 200,
+        "expected_target": "/templates/client-intake-form/",
+        "baseline_clicks": 276,
+        "referring_domains": 2,
+        "fix": "The template rule writes the target without the trailing slash, so a second redirect adds it. Add the slash to the rule's target."
+      },
+      {
+        "url": "/resources",
+        "verdict": "temporary",
+        "first_status": 302,
+        "hops": 1,
+        "final_url": "/blog/",
+        "final_status": 200,
+        "expected_target": "/blog/",
+        "baseline_clicks": 212,
+        "referring_domains": 3,
+        "fix": "Change the 302 to a 301 so search engines treat the move as permanent."
+      },
+      {
+        "url": "/resources/templates/consent-form",
+        "verdict": "chain",
+        "first_status": 301,
+        "hops": 2,
+        "final_url": "/templates/consent-form/",
+        "final_status": 200,
+        "expected_target": "/templates/consent-form/",
+        "baseline_clicks": 198,
+        "referring_domains": 1,
+        "fix": "The template rule writes the target without the trailing slash, so a second redirect adds it. Add the slash to the rule's target."
+      },
+      {
+        "url": "/resources/templates/booking-policy",
+        "verdict": "chain",
+        "first_status": 301,
+        "hops": 2,
+        "final_url": "/templates/booking-policy/",
+        "final_status": 200,
+        "expected_target": "/templates/booking-policy/",
+        "baseline_clicks": 133,
+        "referring_domains": 0,
+        "fix": "The template rule writes the target without the trailing slash, so a second redirect adds it. Add the slash to the rule's target."
+      },
+      {
+        "url": "/resources/templates/gift-card-terms",
+        "verdict": "chain",
+        "first_status": 301,
+        "hops": 2,
+        "final_url": "/templates/gift-card-terms/",
+        "final_status": 200,
+        "expected_target": "/templates/gift-card-terms/",
+        "baseline_clicks": 97,
+        "referring_domains": 0,
+        "fix": "The template rule writes the target without the trailing slash, so a second redirect adds it. Add the slash to the rule's target."
+      }
+    ],
+    "ok_count": 43
+  },
+  "untouched_pages": [
+    {
+      "url": "/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 9840
+    },
+    {
+      "url": "/pricing/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 3120
+    },
+    {
+      "url": "/features/online-booking/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 2210
+    },
+    {
+      "url": "/industries/salons/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 1980
+    },
+    {
+      "url": "/features/reminders/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 1460
+    },
+    {
+      "url": "/signup/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 1310
+    },
+    {
+      "url": "/industries/clinics/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 1120
+    },
+    {
+      "url": "/features/payments/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 870
+    },
+    {
+      "url": "/industries/fitness/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 760
+    },
+    {
+      "url": "/integrations/",
+      "status": 200,
+      "hops": 0,
+      "baseline_clicks": 610
+    }
+  ],
+  "new_pages": {
+    "html_probe": "passed (title returned for https://example.com/)",
+    "indexability_checked": 10,
+    "not_indexable": [
+      {
+        "url": "/blog/appointment-reminder-text-templates/",
+        "status_code": 404
+      }
+    ],
+    "canonical_points_elsewhere": [
+      {
+        "url": "/blog/deposit-policy/",
+        "canonical": "/resources/deposit-policy"
+      }
+    ],
+    "google_view": [
+      {
+        "url": "/blog/reduce-no-shows/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/blog/reduce-no-shows/",
+        "last_crawl": "2026-10-18",
+        "result": "pass"
+      },
+      {
+        "url": "/blog/salon-booking-tips/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/blog/salon-booking-tips/",
+        "last_crawl": "2026-10-20",
+        "result": "pass"
+      },
+      {
+        "url": "/blog/appointment-reminder-text-templates/",
+        "coverage_state": "Not found (404)",
+        "google_canonical_is_self": null,
+        "user_canonical": null,
+        "last_crawl": "2026-10-17",
+        "result": "not indexed: answers 404 (graded by the live check)"
+      },
+      {
+        "url": "/templates/cancellation-policy/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/templates/cancellation-policy/",
+        "last_crawl": "2026-10-12",
+        "result": "pass"
+      },
+      {
+        "url": "/blog/deposit-policy/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/resources/deposit-policy",
+        "last_crawl": "2026-10-23",
+        "result": "warn"
+      },
+      {
+        "url": "/blog/front-desk-checklist/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/blog/front-desk-checklist/",
+        "last_crawl": "2026-10-21",
+        "result": "pass"
+      },
+      {
+        "url": "/blog/scheduling-app-comparison/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/blog/scheduling-app-comparison/",
+        "last_crawl": "2026-10-25",
+        "result": "pass"
+      },
+      {
+        "url": "/templates/client-intake-form/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical_is_self": true,
+        "user_canonical": "/templates/client-intake-form/",
+        "last_crawl": "2026-10-22",
+        "result": "pass"
+      }
+    ]
+  },
+  "robots_txt": {
+    "disallow_for_all": [
+      "/app/",
+      "/account/",
+      "/api/"
+    ],
+    "blocking_rules": [],
+    "sitemap_declared": true
+  },
+  "sitemaps": {
+    "live_sitemap_urls": 74,
+    "live_fetched_at": "2026-10-28 09:12 UTC",
+    "moved_urls_listed": [
+      "/resources/category/clinics/",
+      "/resources/category/fitness/",
+      "/resources/category/guides/",
+      "/resources/category/salons/"
+    ],
+    "priority_targets": 50,
+    "priority_targets_missing": [
+      "/blog/appointment-reminder-text-templates/"
+    ],
+    "google": {
+      "path": "https://www.example.com/sitemap.xml",
+      "last_downloaded": "2026-10-16",
+      "submitted_count": 74,
+      "re_read_since_move": "yes"
+    },
+    "bing": {
+      "url": "https://www.example.com/sitemap.xml",
+      "last_crawled": "2026-10-09",
+      "url_count": 104,
+      "re_read_since_move": "no"
+    },
+    "old_url_sitemap_kept": false
+  },
+  "pickup": {
+    "google_old_urls": [
+      {
+        "url": "/resources/no-show-guide",
+        "coverage_state": "Page with redirect",
+        "last_crawl": "2026-10-16",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/salon-booking-tips",
+        "coverage_state": "Page with redirect",
+        "last_crawl": "2026-10-19",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/appointment-reminder-text-templates",
+        "coverage_state": "Not found (404)",
+        "last_crawl": "2026-10-17",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/cancellation-policy-template",
+        "coverage_state": "Page with redirect",
+        "last_crawl": "2026-10-21",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/deposit-policy",
+        "coverage_state": "Page with redirect",
+        "last_crawl": "2026-10-22",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/front-desk-checklist",
+        "coverage_state": "Submitted and indexed",
+        "last_crawl": "2026-10-11",
+        "google": "not recrawled"
+      },
+      {
+        "url": "/resources/scheduling-app-comparison",
+        "coverage_state": "Page with redirect",
+        "last_crawl": "2026-10-24",
+        "google": "picked up"
+      },
+      {
+        "url": "/resources/templates/client-intake-form",
+        "coverage_state": "Submitted and indexed",
+        "last_crawl": "2026-10-02",
+        "google": "not recrawled"
+      }
+    ],
+    "google_not_recrawled": 2,
+    "bing_old_urls": [
+      {
+        "url": "/resources/no-show-guide",
+        "last_crawled": "2026-10-19",
+        "bing": "picked up"
+      },
+      {
+        "url": "/resources/salon-booking-tips",
+        "last_crawled": "2026-10-06",
+        "bing": "not recrawled"
+      },
+      {
+        "url": "/resources/appointment-reminder-text-templates",
+        "last_crawled": "2026-09-30",
+        "bing": "not recrawled"
+      },
+      {
+        "url": "/resources/cancellation-policy-template",
+        "last_crawled": "2026-10-02",
+        "bing": "not recrawled"
+      }
+    ],
+    "bing_crawl_issues_on_moved_or_target_urls": [
+      {
+        "url": "/blog/appointment-reminder-text-templates/",
+        "http_code": 404
+      }
+    ],
+    "bing_crawl_issues_elsewhere": [
+      {
+        "url": "/features/sms-reminders/",
+        "http_code": 404
+      }
+    ]
+  },
+  "traffic": {
+    "pre_window": "2026-10-07 to 2026-10-13",
+    "post_window": "2026-10-15 to 2026-10-21",
+    "days_each": 7,
+    "site_clicks": {
+      "pre": 7636,
+      "post": 7489,
+      "change_pct": -1.9
+    },
+    "moved_pages_clicks": {
+      "pre": 469,
+      "post": 388,
+      "change_pct": -17.3,
+      "old_urls": {
+        "pre": 469,
+        "post": 147
+      },
+      "targets_without_home": {
+        "pre": 0,
+        "post": 241
+      }
+    },
+    "lost_on_failed_redirects": {
+      "/resources/appointment-reminder-text-templates": {
+        "pre": 53,
+        "post": 12
+      },
+      "/resources/cancellation-policy-template": {
+        "pre": 37,
+        "post": 18
+      }
+    },
+    "ga4_organic_sessions": {
+      "pre": 6364,
+      "post": 6219,
+      "change_pct": -2.3,
+      "used": true
+    },
+    "result_cap": "warn at worst before day 28"
+  },
+  "tracking": {
+    "capture_ratio": 0.83,
+    "ga4_organic_sessions_baseline": 80329,
+    "gsc_clicks_baseline": 96915,
+    "tracking_changes": [],
+    "not_found_views_on_moved_or_target_paths": [
+      {
+        "path": "/blog/appointment-reminder-text-templates/",
+        "views": 231
+      }
+    ],
+    "not_found_views_elsewhere": [
+      {
+        "path": "/features/sms-reminders/",
+        "views": 12
+      }
+    ],
+    "ga4_used_for_traffic": true
+  },
+  "baseline": {
+    "window": "2026-07-16 to 2026-10-13",
+    "why_this_window": "90 days ending the day before the move (Search Console data runs later than that)",
+    "site_clicks": 96915,
+    "moved_urls_with_impressions": 52,
+    "moved_urls_with_a_click": 38,
+    "moved_clicks": 6091,
+    "moved_impressions": 232827,
+    "moved_share_of_site_clicks_pct": 6.3,
+    "moved_urls_with_backlinks": 14,
+    "moved_urls_with_ga4_sessions": 38,
+    "priority_set": {
+      "size": 50,
+      "with_value": 38,
+      "filled_by_impressions": 12,
+      "folder_roots_with_impressions_in_set": "1 of 1",
+      "share_of_moved_clicks_pct": 100.0,
+      "share_of_moved_impressions_pct": 99.9
+    },
+    "collateral_set": [
+      "/",
+      "/pricing/",
+      "/features/online-booking/",
+      "/industries/salons/",
+      "/features/reminders/",
+      "/signup/",
+      "/industries/clinics/",
+      "/features/payments/",
+      "/industries/fitness/",
+      "/integrations/"
+    ]
+  },
+  "tips": [
+    "No old-URL sitemap was kept. Publishing one with the moved URLs that had impressions for a few more weeks would make Google re-crawl the redirects sooner. Optional.",
+    "Once the two act-now redirects are fixed, request indexing for /templates/cancellation-policy/ and /blog/appointment-reminder-templates/ in Search Console; the MCP has no Search Console write.",
+    "Once the redirect fixes are live, re-run the redirect check on the 7 problem URLs; it works the same day."
+  ],
+  "next_checks": [
+    {
+      "day": 28,
+      "date": "2026-11-11",
+      "grades": "everything at full strength; traffic can fail"
+    },
+    {
+      "day": 90,
+      "date": "2027-01-12",
+      "grades": "full re-run: redirects still in place, pickup, and the latest 28 days of traffic"
+    }
+  ],
+  "unknowns": [
+    "Traffic covers 7 of the 14 days since the move: Search Console data ends 2026-10-24 and the window uses whole weeks only.",
+    "Bing's site-move setting and Search Console's Change of Address apply to domain moves only, so they don't apply here."
+  ],
+  "fixes_offered": [
+    {
+      "fix": "Resubmit the sitemap to Bing",
+      "action": "submit_sitemap",
+      "payload": {
+        "platform": "bing-webmaster",
+        "action": "submit_sitemap",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "site_url": "https://www.example.com/",
+        "feed_url": "https://www.example.com/sitemap.xml"
+      },
+      "why": "Bing last crawled it on 2026-10-09, before the move, and it's day 14. Best run after the old category pages are dropped from it.",
+      "status": "not run: waiting for your yes"
+    },
+    {
+      "fix": "Ask Bing to crawl the working new pages",
+      "action": "submit_url_batch",
+      "payload": {
+        "platform": "bing-webmaster",
+        "action": "submit_url_batch",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "site_url": "https://www.example.com/",
+        "url_list": [
+          "https://www.example.com/blog/reduce-no-shows/",
+          "https://www.example.com/blog/salon-booking-tips/",
+          "https://www.example.com/templates/cancellation-policy/",
+          "https://www.example.com/blog/front-desk-checklist/",
+          "https://www.example.com/blog/scheduling-app-comparison/",
+          "https://www.example.com/templates/client-intake-form/",
+          "https://www.example.com/blog/",
+          "https://www.example.com/templates/consent-form/"
+        ]
+      },
+      "why": "Bing has recrawled 1 of the top 4 old URLs. These are the 8 of the 10 checked targets that passed area 3, inside today's quota of 100.",
+      "status": "not run: waiting for your yes"
+    }
+  ],
+  "go_deeper": [
+    "internal-linking-planner (if installed): move internal links from /resources to the new URLs so they stop leaning on redirects",
+    "content-decay-refresh (if installed): from day 28, for any moved post still below its baseline"
+  ]
+}

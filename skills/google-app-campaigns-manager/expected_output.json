@@ -1,0 +1,1058 @@
+{
+  "header": {
+    "app": "Example Meal Planner",
+    "google_play": "app.example.mealplanner",
+    "app_store_id": 6400000001,
+    "account": "Example Kitchen Apps",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "date_range": "2026-09-30 to 2026-10-29",
+    "event_window": "2026-10-02 to 2026-10-29",
+    "run_date": "2026-10-30",
+    "mode": "Review, plus a plan for one new campaign"
+  },
+  "verdicts": [
+    {
+      "campaign": "Android | Installs | US",
+      "store": "GOOGLE_APP_STORE",
+      "goal": "Installs (target CPI)",
+      "target_cpi": 1.8,
+      "daily_budget": 150.0,
+      "budget_to_target_ratio": 83.3,
+      "ratio_check": "pass",
+      "cost_30d": 4166,
+      "installs_30d": 2554,
+      "cost_per_install_30d": 1.63,
+      "days_at_90pct_budget": 26,
+      "change_window": "no budget, target or bidding change in the 28-day change window; 2554 conversions in 30 days",
+      "ad_strength": "AVERAGE",
+      "decision": "Scale",
+      "why": "30-day cost per install $1.63 is under the $1.80 target, and spend reached 90% of the budget on 26 of 30 days. Raise the budget once by 20% to $180; the ratio becomes 100.0x, still above 50x."
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "store": "APPLE_APP_STORE",
+      "goal": "Installs (target CPI)",
+      "target_cpi": 3.5,
+      "daily_budget": 120.0,
+      "budget_to_target_ratio": 34.3,
+      "ratio_check": "fail",
+      "cost_30d": 3309,
+      "installs_30d": 1004,
+      "cost_per_install_30d": 3.3,
+      "days_at_90pct_budget": 24,
+      "change_window": "target changed on 2026-10-06 (24 days ago); 767 conversions since",
+      "ad_strength": "GOOD",
+      "decision": "Fix the budget",
+      "why": "Budget $120 is 34.3x the $3.50 target CPI; Google's guidance is at least 50x. Either raise the budget to $175 a day, or lower the target to $2.40, which is under the 30-day actual of $3.30 and would likely cut installs."
+    }
+  ],
+  "goal_choice_android": {
+    "rows": [
+      {
+        "goal": "Pre-registration",
+        "result": "not eligible",
+        "why": "The app is already released on Google Play."
+      },
+      {
+        "goal": "Value (target ROAS)",
+        "result": "not eligible",
+        "why": "subscribe has a median of 7.0 different users a day (one day hit 41, which is why the median is used) and 199 across the 28 days, short of 10 conversions a day or 300 in 30 days, and no target CPA campaign has run for this app yet.",
+        "guidance": {
+          "rule": "Target ROAS in App campaigns: at least 10 conversions every day (or 300 in 30 days), Firebase SDK value events, and a target CPA campaign run first",
+          "source": "support.google.com/google-ads/answer/6268637 and answer/10617884",
+          "checked": "2026-10-30"
+        }
+      },
+      {
+        "goal": "In-app actions (target CPA) on create_first_plan",
+        "result": "eligible",
+        "why": "Median 43.0 different Android users a day, at least 10; it is already a Google Ads conversion action; a $80 budget is 13.4x the $5.96 target CPA, at least 10x.",
+        "guidance": [
+          {
+            "rule": "Pick an in-app action that at least 10 different users complete every day",
+            "source": "support.google.com/google-ads/answer/6167156",
+            "checked": "2026-10-30"
+          },
+          {
+            "rule": "Daily budget at least 10 times the target CPA (setup guide: 10 to 15 times)",
+            "source": "support.google.com/google-ads/answer/14104492 and answer/6167156",
+            "checked": "2026-10-30"
+          }
+        ]
+      },
+      {
+        "goal": "In-app actions (target CPA) on subscribe",
+        "result": "not eligible",
+        "why": "Median 7.0 different users a day, under 10.",
+        "guidance": {
+          "rule": "Pick an in-app action that at least 10 different users complete every day",
+          "source": "support.google.com/google-ads/answer/6167156",
+          "checked": "2026-10-30"
+        }
+      },
+      {
+        "goal": "Installs (target CPI)",
+        "result": "eligible",
+        "why": "Running now; budget 83.3x the target.",
+        "guidance": {
+          "rule": "Daily budget at least 50 times the target CPI",
+          "source": "support.google.com/google-ads/answer/14104492",
+          "checked": "2026-10-30"
+        }
+      }
+    ],
+    "lands_on": "Keep the installs campaign and add a separate in-app actions campaign on create_first_plan, paused, so the working installs campaign keeps its learning. Keep the installs campaign until the new one has 100 conversions.",
+    "target": {
+      "target_cpa_create_first_plan": 5.96,
+      "label": "derived",
+      "math": "$1.80 target CPI / 0.302 (Android users creating a first plan per first open over 28 days in GA4: 1166 / 3860) = $5.96",
+      "caveat": "GA4 counts organic and paid users together, so the share is an approximation for paid installers.",
+      "budget_check": "$80 / $5.96 = 13.4x (needs at least 10x, so at least $59.60 a day)"
+    }
+  },
+  "event_volume": [
+    {
+      "platform": "Android",
+      "event": "first_open",
+      "median_users_per_day": 141.5,
+      "mean_users_per_day": 137.9,
+      "max_day": 150,
+      "total_users_28d": 3860,
+      "passes_10_users": null,
+      "is_google_ads_conversion_action": true
+    },
+    {
+      "platform": "Android",
+      "event": "create_first_plan",
+      "median_users_per_day": 43.0,
+      "mean_users_per_day": 41.6,
+      "max_day": 49,
+      "total_users_28d": 1166,
+      "passes_10_users": true,
+      "is_google_ads_conversion_action": true
+    },
+    {
+      "platform": "Android",
+      "event": "subscribe",
+      "median_users_per_day": 7.0,
+      "mean_users_per_day": 7.1,
+      "max_day": 41,
+      "total_users_28d": 199,
+      "passes_10_users": false,
+      "is_google_ads_conversion_action": true
+    },
+    {
+      "platform": "iOS",
+      "event": "first_open",
+      "median_users_per_day": 47.0,
+      "mean_users_per_day": 45.9,
+      "max_day": 51,
+      "total_users_28d": 1286,
+      "passes_10_users": null,
+      "is_google_ads_conversion_action": true
+    },
+    {
+      "platform": "iOS",
+      "event": "create_first_plan",
+      "median_users_per_day": 14.5,
+      "mean_users_per_day": 14.2,
+      "max_day": 18,
+      "total_users_28d": 397,
+      "passes_10_users": true,
+      "is_google_ads_conversion_action": true
+    },
+    {
+      "platform": "iOS",
+      "event": "subscribe",
+      "median_users_per_day": 4.0,
+      "mean_users_per_day": 3.8,
+      "max_day": 6,
+      "total_users_28d": 105,
+      "passes_10_users": false,
+      "is_google_ads_conversion_action": false
+    }
+  ],
+  "listing_flags": [
+    {
+      "store": "Google Play",
+      "rating": 4.4,
+      "ratings": 18400,
+      "screenshots": 6,
+      "days_since_update": 16,
+      "reviews_read": 50,
+      "review_source": "50 newest from the reviews call",
+      "low_star_reviews": 13,
+      "low_star_share_pct": 26.0,
+      "low_star_themes": [
+        {
+          "theme": "Shared plan or partner sync fails",
+          "low_star_reviews": 7
+        },
+        {
+          "theme": "Repeated subscription prompts",
+          "low_star_reviews": 3
+        },
+        {
+          "theme": "Recipe import from a link fails",
+          "low_star_reviews": 3
+        }
+      ],
+      "flags": [
+        "13 of the 50 newest reviews (26.0%) are 1 or 2 stars, over this skill's 20% line",
+        "No promo video on the Play listing, so Google has less to build video ads from",
+        "Partner sharing is a listed feature, but 7 low-star reviews say sync fails: keep it out of the ads"
+      ]
+    },
+    {
+      "store": "App Store",
+      "rating": 4.6,
+      "ratings": 5200,
+      "screenshots": 6,
+      "days_since_update": 16,
+      "reviews_read": 20,
+      "review_source": "20 pasted by the user; the reviews call returned none",
+      "low_star_reviews": 3,
+      "low_star_share_pct": 15.0,
+      "low_star_themes": [
+        {
+          "theme": "Shared plan or partner sync fails",
+          "low_star_reviews": 1
+        },
+        {
+          "theme": "Repeated subscription prompts",
+          "low_star_reviews": 1
+        },
+        {
+          "theme": "Recipe import from a link fails",
+          "low_star_reviews": 1
+        }
+      ],
+      "flags": [
+        "none"
+      ]
+    }
+  ],
+  "networks": [
+    {
+      "campaign": "Android | Installs | US",
+      "network": "SEARCH",
+      "cost": 2083,
+      "cost_share_pct": 50.0,
+      "conversions": 1481,
+      "conversion_share_pct": 58.0,
+      "cost_per_conversion": 1.41
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "network": "YOUTUBE",
+      "cost": 1250,
+      "cost_share_pct": 30.0,
+      "conversions": 562,
+      "conversion_share_pct": 22.0,
+      "cost_per_conversion": 2.22
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "network": "CONTENT",
+      "cost": 833,
+      "cost_share_pct": 20.0,
+      "conversions": 511,
+      "conversion_share_pct": 20.0,
+      "cost_per_conversion": 1.63
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "network": "SEARCH",
+      "cost": 1522,
+      "cost_share_pct": 46.0,
+      "conversions": 552,
+      "conversion_share_pct": 55.0,
+      "cost_per_conversion": 2.76
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "network": "YOUTUBE",
+      "cost": 1125,
+      "cost_share_pct": 34.0,
+      "conversions": 271,
+      "conversion_share_pct": 27.0,
+      "cost_per_conversion": 4.15
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "network": "CONTENT",
+      "cost": 662,
+      "cost_share_pct": 20.0,
+      "conversions": 181,
+      "conversion_share_pct": 18.0,
+      "cost_per_conversion": 3.66
+    }
+  ],
+  "network_read": [
+    "YouTube takes 30.0% of Android cost and 34.0% of iOS cost, and neither campaign has a 9:16 video, so Google crops or makes the vertical ones. Networks can't be excluded in App campaigns; the fix is a vertical video.",
+    "The API has no separate Google Play value, so no Google Play figure is reported."
+  ],
+  "asset_decisions": [
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Plan a week of meals fast",
+      "label": "BEST",
+      "impressions": 412000,
+      "conversions": 1490,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Your shopping list, sorted",
+      "label": "GOOD",
+      "impressions": 365000,
+      "conversions": 1120,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Over 3,000 easy recipes",
+      "label": "GOOD",
+      "impressions": 298000,
+      "conversions": 860,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Meal planning made simple",
+      "label": "LOW",
+      "impressions": 341000,
+      "conversions": 420,
+      "decision": "cut",
+      "why": "LOW with 341,000 impressions, at or above the 341,000 median for its type here, and a BEST or GOOD headline exists"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Dinner ideas for every night",
+      "label": "LEARNING",
+      "impressions": 52000,
+      "conversions": 110,
+      "decision": "keep learning",
+      "why": "still learning; never cut"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+      "label": "BEST",
+      "impressions": 520000,
+      "conversions": 1760,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+      "label": "GOOD",
+      "impressions": 431000,
+      "conversions": 1210,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Weekly meal plans and a shopping list in one app.",
+      "label": "LOW",
+      "impressions": 166000,
+      "conversions": 230,
+      "decision": "keep",
+      "why": "LOW but only 166,000 impressions, under the 298,500 median, so not fully tested"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Easy recipes for busy weeknights, with diet filters built in.",
+      "label": "LEARNING",
+      "impressions": 61000,
+      "conversions": 120,
+      "decision": "keep learning",
+      "why": "still learning; never cut"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "landscape-weekly-plan.png",
+      "label": "GOOD",
+      "impressions": 288000,
+      "conversions": 610,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "landscape-recipe-grid.png",
+      "label": "LOW",
+      "impressions": 301000,
+      "conversions": 260,
+      "decision": "cut",
+      "why": "LOW with 301,000 impressions, at or above the 294,500 median for its type here, and a BEST or GOOD marketing_image exists"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "square-shopping-list.png",
+      "label": "BEST",
+      "impressions": 342000,
+      "conversions": 820,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "square-pantry.png",
+      "label": "GOOD",
+      "impressions": 205000,
+      "conversions": 410,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "YOUTUBE_VIDEO",
+      "asset": "vid-landscape-01",
+      "label": "GOOD",
+      "impressions": 610000,
+      "conversions": 1050,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "field_type": "YOUTUBE_VIDEO",
+      "asset": "vid-square-01",
+      "label": "LOW",
+      "impressions": 230000,
+      "conversions": 170,
+      "decision": "keep",
+      "why": "LOW but only 230,000 impressions, under the 420,000 median, so not fully tested"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Plan a week of meals fast",
+      "label": "BEST",
+      "impressions": 158000,
+      "conversions": 520,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Your shopping list, sorted",
+      "label": "GOOD",
+      "impressions": 141000,
+      "conversions": 400,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Over 3,000 easy recipes",
+      "label": "GOOD",
+      "impressions": 120000,
+      "conversions": 310,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Cook from your pantry",
+      "label": "GOOD",
+      "impressions": 97000,
+      "conversions": 240,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "HEADLINE",
+      "asset": "Meals sorted for the week",
+      "label": "LEARNING",
+      "impressions": 31000,
+      "conversions": 60,
+      "decision": "keep learning",
+      "why": "still learning; never cut"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+      "label": "BEST",
+      "impressions": 210000,
+      "conversions": 640,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+      "label": "GOOD",
+      "impressions": 172000,
+      "conversions": 450,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Tell the app what is in your pantry and it suggests meals that use it up first.",
+      "label": "GOOD",
+      "impressions": 133000,
+      "conversions": 330,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Scale any recipe from 1 to 8 servings and the shopping list updates by itself.",
+      "label": "GOOD",
+      "impressions": 98000,
+      "conversions": 230,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "DESCRIPTION",
+      "asset": "Your plan and list work offline, so you can shop with no signal.",
+      "label": "LEARNING",
+      "impressions": 28000,
+      "conversions": 50,
+      "decision": "keep learning",
+      "why": "still learning; never cut"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "landscape-weekly-plan.png",
+      "label": "GOOD",
+      "impressions": 121000,
+      "conversions": 230,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "square-shopping-list.png",
+      "label": "BEST",
+      "impressions": 143000,
+      "conversions": 310,
+      "decision": "keep",
+      "why": "BEST"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "MARKETING_IMAGE",
+      "asset": "portrait-week-view.png",
+      "label": "GOOD",
+      "impressions": 96000,
+      "conversions": 190,
+      "decision": "keep",
+      "why": "GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "field_type": "YOUTUBE_VIDEO",
+      "asset": "vid-landscape-01",
+      "label": "GOOD",
+      "impressions": 255000,
+      "conversions": 380,
+      "decision": "keep",
+      "why": "GOOD"
+    }
+  ],
+  "slots": [
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Image 1.91:1",
+      "have": 2
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Image 4:5",
+      "have": 0
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Image 1:1",
+      "have": 2
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Video 16:9",
+      "have": 1
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Video 9:16",
+      "have": 0
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "slot": "Video 1:1",
+      "have": 1
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Image 1.91:1",
+      "have": 1
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Image 4:5",
+      "have": 1
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Image 1:1",
+      "have": 1
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Video 16:9",
+      "have": 1
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Video 9:16",
+      "have": 0
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "slot": "Video 1:1",
+      "have": 0
+    }
+  ],
+  "to_add": [
+    {
+      "campaign": "Android | Installs | US",
+      "add": "Image 4:5"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "add": "Video 9:16"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "add": "1 description(s)"
+    },
+    {
+      "campaign": "Android | Installs | US",
+      "add": "assets to lift ad strength from AVERAGE to at least GOOD"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "add": "Video 9:16"
+    },
+    {
+      "campaign": "iOS | Installs | US",
+      "add": "Video 1:1"
+    }
+  ],
+  "new_text_assets": {
+    "headlines": [
+      {
+        "text": "Plan a week of meals in 5 min",
+        "chars": 29,
+        "source": "Plan a week of meals in 5 minutes"
+      },
+      {
+        "text": "Shopping list sorted by aisle",
+        "chars": 29,
+        "source": "One shopping list for the week, sorted by store aisle"
+      },
+      {
+        "text": "Over 3,000 easy recipes",
+        "chars": 23,
+        "source": "Over 3,000 easy recipes"
+      },
+      {
+        "text": "Use what's in your pantry",
+        "chars": 25,
+        "source": "Pantry tracker suggests meals that use what you already have"
+      },
+      {
+        "text": "Vegetarian and gluten-free too",
+        "chars": 30,
+        "source": "Diet filters: vegetarian, gluten-free and dairy-free"
+      }
+    ],
+    "descriptions": [
+      {
+        "text": "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+        "chars": 78,
+        "source": "One shopping list for the week, sorted by store aisle"
+      },
+      {
+        "text": "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+        "chars": 86,
+        "source": "Over 3,000 easy recipes; diet filters"
+      },
+      {
+        "text": "Tell the app what is in your pantry and it suggests meals that use it up first.",
+        "chars": 79,
+        "source": "Pantry tracker suggests meals that use what you already have"
+      },
+      {
+        "text": "Scale any recipe from 1 to 8 servings and the shopping list updates by itself.",
+        "chars": 78,
+        "source": "Scale any recipe from 1 to 8 servings; the list updates by itself"
+      },
+      {
+        "text": "Your plan and list work offline, so you can shop with no signal in the store.",
+        "chars": 77,
+        "source": "Plans and lists work offline"
+      }
+    ],
+    "left_out": "Partner sharing is in the listing, but recent low-star reviews say sync fails, so no line promotes it."
+  },
+  "android_ad_after_edit": {
+    "headlines": [
+      "Plan a week of meals fast",
+      "Your shopping list, sorted",
+      "Over 3,000 easy recipes",
+      "Dinner ideas for every night",
+      "Use what's in your pantry"
+    ],
+    "descriptions": [
+      "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+      "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+      "Weekly meal plans and a shopping list in one app.",
+      "Easy recipes for busy weeknights, with diet filters built in.",
+      "Tell the app what is in your pantry and it suggests meals that use it up first."
+    ],
+    "removed": [
+      "Meal planning made simple"
+    ]
+  },
+  "creative_briefs": [
+    {
+      "slot": "Image 4:5",
+      "brief": "1200 x 1500: the week view with seven dinners filled in, phone held upright, app name small at the bottom"
+    },
+    {
+      "slot": "Image 1.91:1",
+      "brief": "1200 x 628: the aisle-sorted shopping list next to a full grocery bag (replaces the LOW recipe-grid image)"
+    },
+    {
+      "slot": "Video 9:16",
+      "brief": "15 to 30 s vertical: first 3 seconds show an empty week turning into a full plan with one tap, then the list sorted by aisle"
+    },
+    {
+      "slot": "Video 1:1",
+      "brief": "15 s square for iOS (it has none) and the new Android actions campaign: pantry tracker suggests three dinners from what is in the fridge"
+    }
+  ],
+  "image_and_video_cuts_waiting_for_replacements": {
+    "images": [
+      "landscape-recipe-grid.png"
+    ],
+    "videos": [],
+    "note": "Cut only once the replacement is uploaded, so the ratio or orientation never goes empty."
+  },
+  "guidance_used": [
+    {
+      "rule": "Daily budget at least 50 times the target CPI",
+      "source": "support.google.com/google-ads/answer/14104492",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Daily budget at least 10 times the target CPA (setup guide: 10 to 15 times)",
+      "source": "support.google.com/google-ads/answer/14104492 and answer/6167156",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Pick an in-app action that at least 10 different users complete every day",
+      "source": "support.google.com/google-ads/answer/6167156",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Target ROAS in App campaigns: at least 10 conversions every day (or 300 in 30 days), Firebase SDK value events, and a target CPA campaign run first",
+      "source": "support.google.com/google-ads/answer/6268637 and answer/10617884",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Avoid disruptive changes before the first 100 conversions; make one-time changes rather than cycling",
+      "source": "support.google.com/google-ads/answer/14104492",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Allow 7 to 14 days to stabilise; evaluate over 30 days",
+      "source": "support.google.com/google-ads/answer/6167156",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Ad strength at least Good in every ad group",
+      "source": "support.google.com/google-ads/answer/14104492",
+      "checked": "2026-10-30"
+    },
+    {
+      "rule": "Headlines up to 30 characters and descriptions up to 90, 5 of each recommended; images 1.91:1, 4:5 and 1:1; videos 16:9, 9:16 and 1:1, 10 to 60 seconds; at least 1 per ratio or orientation recommended",
+      "source": "support.google.com/google-ads/answer/17091671",
+      "checked": "2026-10-30"
+    }
+  ],
+  "payloads": [
+    {
+      "step": 1,
+      "status": "not run",
+      "change": "Scale Android installs: budget once from $150 to $180",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "update_campaign",
+        "campaign_id": "21000000001",
+        "budget_amount": 180.0
+      }
+    },
+    {
+      "step": 2,
+      "status": "not run",
+      "change": "iOS budget fix, option A: raise the budget to $175, 50x the $3.50 target (option B is a $2.40 target; you choose)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "update_campaign",
+        "campaign_id": "21000000002",
+        "budget_amount": 175.0
+      }
+    },
+    {
+      "step": 3,
+      "status": "needs your file",
+      "change": "Upload the 4:5 image (Android has none)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "upload_image_asset",
+        "image_url": "<PUBLIC_URL_OF_1200x1500_IMAGE>",
+        "name": "portrait-week-view"
+      },
+      "returns": "<NEW_4x5_IMAGE_ID>"
+    },
+    {
+      "step": 4,
+      "status": "needs your file",
+      "change": "Upload the 1.91:1 image that replaces the LOW landscape-recipe-grid.png",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "upload_image_asset",
+        "image_url": "<PUBLIC_URL_OF_1200x628_IMAGE>",
+        "name": "landscape-aisle-list"
+      },
+      "returns": "<NEW_1.91x1_IMAGE_ID>"
+    },
+    {
+      "step": 5,
+      "status": "needs your file",
+      "change": "Add the 9:16 video once it is on YouTube (both campaigns)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "create_youtube_video_asset",
+        "youtube_video_id": "<VERTICAL_VIDEO_ID>",
+        "name": "vertical-plan-in-one-tap"
+      },
+      "returns": "<NEW_9x16_VIDEO_ID>"
+    },
+    {
+      "step": 6,
+      "status": "needs your file",
+      "change": "Add a 1:1 video once it is on YouTube (iOS has none; the new Android actions campaign uses it too)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "create_youtube_video_asset",
+        "youtube_video_id": "<SQUARE_VIDEO_ID>",
+        "name": "square-pantry-dinners"
+      },
+      "returns": "<NEW_1x1_VIDEO_ID>"
+    },
+    {
+      "step": 7,
+      "status": "not run; after steps 3 to 5",
+      "change": "Android App ad: swap the LOW headline 'Meal planning made simple', add a 5th description, swap the LOW landscape image, add the 4:5 image and the 9:16 video. Each list replaces the whole list, so every kept asset is in it.",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "update_app_ad",
+        "ad_id": "61000000001",
+        "headlines": [
+          "Plan a week of meals fast",
+          "Your shopping list, sorted",
+          "Over 3,000 easy recipes",
+          "Dinner ideas for every night",
+          "Use what's in your pantry"
+        ],
+        "descriptions": [
+          "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+          "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+          "Weekly meal plans and a shopping list in one app.",
+          "Easy recipes for busy weeknights, with diet filters built in.",
+          "Tell the app what is in your pantry and it suggests meals that use it up first."
+        ],
+        "image_asset_ids": [
+          "5100000010",
+          "5100000012",
+          "5100000013",
+          "<NEW_4x5_IMAGE_ID>",
+          "<NEW_1.91x1_IMAGE_ID>"
+        ],
+        "youtube_video_asset_ids": [
+          "5100000014",
+          "5100000015",
+          "<NEW_9x16_VIDEO_ID>"
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "status": "not run; after steps 5 and 6",
+      "change": "iOS App ad: add the 9:16 and 1:1 videos, keeping the current one",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "update_app_ad",
+        "ad_id": "61000000002",
+        "youtube_video_asset_ids": [
+          "5200000014",
+          "<NEW_9x16_VIDEO_ID>",
+          "<NEW_1x1_VIDEO_ID>"
+        ]
+      }
+    },
+    {
+      "step": 9,
+      "status": "not run",
+      "change": "New Android in-app actions campaign on create_first_plan, $80 a day, target CPA $5.96, created paused with its ad group",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "create_app_campaign",
+        "name": "Android | Actions | create_first_plan | US",
+        "budget_amount": 80.0,
+        "app_id": "app.example.mealplanner",
+        "app_store": "GOOGLE_APP_STORE",
+        "campaign_subtype": "APP_CAMPAIGN",
+        "bidding_strategy": "TARGET_CPA",
+        "bidding_strategy_goal_type": "OPTIMIZE_IN_APP_CONVERSIONS_TARGET_CONVERSION_COST",
+        "target_cpa": 5.96,
+        "ad_group_name": "Android | Actions | All users",
+        "target_locations": [
+          "US"
+        ],
+        "target_languages": [
+          "en"
+        ]
+      },
+      "returns": "<NEW_CAMPAIGN_ID>, <NEW_AD_GROUP_ID>"
+    },
+    {
+      "step": 10,
+      "status": "not run",
+      "change": "Optimise the new campaign for create_first_plan only",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "attach_conversion_actions_to_campaign",
+        "campaign_id": "<NEW_CAMPAIGN_ID>",
+        "conversion_action_ids": [
+          "41000000002"
+        ]
+      }
+    },
+    {
+      "step": 11,
+      "status": "not run; after steps 3, 5, 6 and 9",
+      "change": "The new campaign's App ad with the 5 new headlines and descriptions, created paused",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "account_id": "<ACCOUNT_ID>",
+        "action": "create_app_ad",
+        "ad_group_id": "<NEW_AD_GROUP_ID>",
+        "headlines": [
+          "Plan a week of meals in 5 min",
+          "Shopping list sorted by aisle",
+          "Over 3,000 easy recipes",
+          "Use what's in your pantry",
+          "Vegetarian and gluten-free too"
+        ],
+        "descriptions": [
+          "Pick your meals for the week and get one shopping list, sorted by store aisle.",
+          "Over 3,000 easy recipes with filters for vegetarian, gluten-free and dairy-free diets.",
+          "Tell the app what is in your pantry and it suggests meals that use it up first.",
+          "Scale any recipe from 1 to 8 servings and the shopping list updates by itself.",
+          "Your plan and list work offline, so you can shop with no signal in the store."
+        ],
+        "image_asset_ids": [
+          "5100000010",
+          "5100000012",
+          "5100000013",
+          "<NEW_4x5_IMAGE_ID>"
+        ],
+        "youtube_video_asset_ids": [
+          "5100000014",
+          "<NEW_9x16_VIDEO_ID>",
+          "<NEW_1x1_VIDEO_ID>"
+        ]
+      }
+    }
+  ],
+  "going_live": "Turning the new campaign on is a separate yes: update_campaign, update_ad_group and update_ad with status ENABLED. Keep the Android installs campaign running until the new one has 100 conversions.",
+  "unknowns": [
+    "Deep links: the Fully deeplinked URLs view is in the Google Ads interface, not the API. Check it there.",
+    "Install quality after the click (retention by campaign) needs an MMP or Firebase export; not graded."
+  ],
+  "go_deeper": [
+    "video-ad-script-writer for the 9:16 and 1:1 scripts, if installed",
+    "conversion-tracking-auditor to confirm create_first_plan fires once per user, if installed",
+    "ltv-cac-ratio-optimizer to check the $1.80 install target against revenue per user, if installed"
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "header": {
+    "property": "Example Booking Software GA4 property (properties/123456789), site and app in one property",
+    "signup_url": "https://app.example.com/signup",
+    "signup_host": "app.example.com",
+    "date_range": "2026-09-27 to 2026-10-26",
+    "previous_period": "2026-08-28 to 2026-09-26",
+    "measurement_grade": "measured"
+  },
+  "measurement": [
+    {
+      "check": "Signup host is in the property",
+      "result": "pass",
+      "evidence": "hostName in the last 30 days: www.example.com (40,800 sessions) and app.example.com (11,300 sessions)."
+    },
+    {
+      "check": "sign_up fires",
+      "result": "pass",
+      "evidence": "sign_up fired 566 times for 560 users, with method set on every row (google, email, microsoft)."
+    },
+    {
+      "check": "sign_up is a key event",
+      "result": "pass",
+      "evidence": "sign_up is one of 3 key events and fires."
+    },
+    {
+      "check": "Signup clicks are recorded",
+      "result": "pass",
+      "evidence": "Outbound clicks are on, and 1,338 clicks to app.example.com/signup were recorded from 6 pages in 30 days."
+    },
+    {
+      "check": "Form events",
+      "result": "pass",
+      "evidence": "form_start (1,910) and form_submit (1,220) both fire."
+    }
+  ],
+  "measurement_summary": "Measured. The app host is in the property, sign_up fires with method and is a key event, and clicks into signup and form events are recorded, so steps 2 to 4 all ran.",
+  "path_into_signup": {
+    "pages_with_button": [
+      {
+        "page": "https://www.example.com/",
+        "sessions_30d": 9400,
+        "mobile_share_pct": 42,
+        "signup_clicks_30d": 612,
+        "click_rate_pct": 6.5
+      },
+      {
+        "page": "https://www.example.com/features/online-booking/",
+        "sessions_30d": 5200,
+        "mobile_share_pct": 48,
+        "signup_clicks_30d": 62,
+        "click_rate_pct": 1.2
+      },
+      {
+        "page": "https://www.example.com/blog/reduce-no-shows/",
+        "sessions_30d": 3600,
+        "mobile_share_pct": 60,
+        "signup_clicks_30d": 54,
+        "click_rate_pct": 1.5
+      },
+      {
+        "page": "https://www.example.com/pricing/",
+        "sessions_30d": 3100,
+        "mobile_share_pct": 31,
+        "signup_clicks_30d": 418,
+        "click_rate_pct": 13.5
+      },
+      {
+        "page": "https://www.example.com/industries/salons/",
+        "sessions_30d": 2300,
+        "mobile_share_pct": 47,
+        "signup_clicks_30d": 121,
+        "click_rate_pct": 5.3
+      },
+      {
+        "page": "https://www.example.com/features/reminders/",
+        "sessions_30d": 1900,
+        "mobile_share_pct": 44,
+        "signup_clicks_30d": 71,
+        "click_rate_pct": 3.7
+      }
+    ],
+    "sessions_on_button_pages_30d": 25500,
+    "mobile_share_pct": 45,
+    "signup_clicks_30d": 1338,
+    "reading": "The pricing page sends the highest share of its visitors to signup (13.5%). The online booking feature page has the second-most sessions (5,200) and the weakest click rate (1.2%), below even the blog post (1.5%), which readers open for an article."
+  },
+  "funnel": {
+    "status": "measured",
+    "steps": [
+      {
+        "step": "Signup page users",
+        "users": 1060,
+        "previous_users": 1010,
+        "change_pct": 5.0
+      },
+      {
+        "step": "form_start",
+        "users": 610,
+        "previous_users": 590,
+        "change_pct": 3.4,
+        "rate_pct": 57.5,
+        "rate_of": "signup_page_users",
+        "previous_rate_pct": 58.4
+      },
+      {
+        "step": "sign_up",
+        "users": 560,
+        "previous_users": 545,
+        "change_pct": 2.8,
+        "rate_pct": 52.8,
+        "rate_of": "signup_page_users",
+        "previous_rate_pct": 54.0
+      },
+      {
+        "step": "email_verified",
+        "users": 410,
+        "previous_users": 402,
+        "change_pct": 2.0,
+        "rate_pct": 73.2,
+        "rate_of": "sign_up",
+        "previous_rate_pct": 73.8
+      },
+      {
+        "step": "booking_received (activation, approximate)",
+        "users": 160,
+        "previous_users": 150,
+        "change_pct": 6.7,
+        "rate_pct": 28.6,
+        "rate_of": "sign_up",
+        "previous_rate_pct": 27.5
+      }
+    ],
+    "email_route": {
+      "form_start": 610,
+      "email_signups": 290,
+      "rate_pct": 47.5,
+      "previous_rate_pct": 50.5,
+      "note": "Single sign-on signups skip the form, so the form's completion is read on the email route only: sign_up with method=email ÷ form_start."
+    },
+    "biggest_drop": {
+      "where": "email form: started, no account",
+      "users": 320,
+      "all_drops": {
+        "email form: started, no account": 320,
+        "signed up, never confirmed the email": 150,
+        "confirmed, no first booking yet": 250
+      }
+    },
+    "method_mix_pct": {
+      "google": 44.6,
+      "email": 51.8,
+      "microsoft": 3.6
+    },
+    "method_mix_previous_pct": {
+      "google": 42.0,
+      "email": 54.7,
+      "microsoft": 3.3
+    },
+    "method_reading": "Email carries 51.8% of signups and Google 44.6%. No single sign-on method carries most signups, so the button order isn't a fix by the rule, but Google sits under a 5-field form, which is worth a test.",
+    "device": {
+      "signup_rate_pct": {
+        "desktop": 61.7,
+        "mobile": 38.8,
+        "tablet": 50.0
+      },
+      "mobile_vs_desktop_pct": 63,
+      "flag": true,
+      "note": "Mobile signs up at 63% of the desktop rate, under the 70% line. Tablet (20 page users) is too small to read."
+    },
+    "verification": {
+      "rate_pct": 73.2,
+      "lost": 150,
+      "email_route_estimate": "about 140 of 290 email signups confirmed, if every Google and Microsoft account counts as confirmed at signup (your answer); approximate",
+      "note": "email_verified doesn't carry method, so the split by route comes from your answer, not from GA4."
+    },
+    "activation": {
+      "rate_pct": 28.6,
+      "label": "approximate: two counts in one window, not a cohort"
+    }
+  },
+  "page_teardown": {
+    "url": "https://app.example.com/signup",
+    "javascript": true,
+    "checks": [
+      {
+        "check": "Sign-in options",
+        "result": "pass",
+        "evidence": "Google and Microsoft single sign-on plus an email form. Google fits an audience of small business owners; Microsoft covers clinics on Microsoft 365."
+      },
+      {
+        "check": "Fields at signup",
+        "result": "fail",
+        "evidence": "5 visible fields: Full name, Business name, Email, Mobile number, Password. Business name and a mobile number are asked before the account exists."
+      },
+      {
+        "check": "Field setup",
+        "result": "warn",
+        "evidence": "Email is type=\"email\" with autocomplete=\"email\"; the password field has no autocomplete=\"new-password\", so browsers won't offer a strong password."
+      },
+      {
+        "check": "Password rule",
+        "result": "pass",
+        "evidence": "Shown before typing: the placeholder reads \"At least 8 characters\"."
+      },
+      {
+        "check": "Clicks to the first field",
+        "result": "pass",
+        "evidence": "The email form is visible on load: no click needed."
+      },
+      {
+        "check": "Distractions",
+        "result": "fail",
+        "evidence": "41 links on the page: the full site header and footer sit around the form."
+      },
+      {
+        "check": "Value line",
+        "result": "pass",
+        "evidence": "The H1 says what the account is for (taking online bookings), and the line under it names the booking page, reminders and payments."
+      },
+      {
+        "check": "Submit button",
+        "result": "warn",
+        "evidence": "\"Sign up\". (The raw text also holds its hidden loading label, which is ignored.)"
+      },
+      {
+        "check": "Bot protection",
+        "result": "pass",
+        "evidence": "1 unlabelled input pushed off screen and out of the tab order (a honeypot); no CAPTCHA."
+      },
+      {
+        "check": "Legal",
+        "result": "pass",
+        "evidence": "A \"by signing up you agree\" line with links, and no checkbox among the inputs."
+      },
+      {
+        "check": "Labels",
+        "result": "pass",
+        "evidence": "All 5 visible fields have labels."
+      },
+      {
+        "check": "Load (one crawl)",
+        "result": "pass",
+        "evidence": "dom_complete 2,650 ms, time_to_interactive 910 ms, 3 render-blocking scripts and 2 render-blocking stylesheets. One crawl from DataForSEO's servers, not a phone: a rough signal."
+      }
+    ],
+    "order_on_page": "The two single sign-on buttons sit under the form, below an 'or' divider.",
+    "summary": "8 pass, 2 warn, 2 fail. The heading, sign-in options, password rule and bot protection are right. The form asks for 5 fields where 2 would do, and the full site navigation surrounds it."
+  },
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Ask only for email and password at signup; collect name, business name and mobile number after the account exists",
+      "step": "Funnel: the email form, the biggest measured drop",
+      "visitors_touched": "610 people a month start the email form; 320 of them leave without an account",
+      "evidence": "Step 3: 290 email signups from 610 form starts (47.5%). Step 4: 5 required fields, with business name and a mobile number before the account exists (fail). The business name can be asked on the first setup screen, where it names the booking page; the number when reminders are switched on. Mobile signs up at 63% of the desktop rate, and five fields cost most on a phone.",
+      "who": "do this in your app"
+    },
+    {
+      "rank": 2,
+      "fix": "Let people into the app before they confirm their email, with a 'confirm to publish your booking page' banner",
+      "step": "Funnel: email confirmation",
+      "visitors_touched": "150 signups a month who never confirmed and so never got in",
+      "evidence": "Step 3: 410 of 560 signups confirmed (73.2%); by your answer, single sign-on accounts are confirmed at signup, so the loss sits on the email route. A booking page isn't money or health data, so a gate on publishing is enough.",
+      "who": "do this in your app"
+    },
+    {
+      "rank": 3,
+      "fix": "Put a clear signup button on the online booking feature page",
+      "step": "Path into signup",
+      "visitors_touched": "5,200 sessions in 30 days, 48% on mobile",
+      "evidence": "Step 2: 62 signup clicks from 5,200 sessions (1.2%), against 6.5% on the home page. Check whether the button shows above the fold on a phone.",
+      "who": "do this on your site"
+    },
+    {
+      "rank": 4,
+      "fix": "Remove the site header and footer from the signup page",
+      "step": "Signup page",
+      "visitors_touched": "1,060 signup page users a month",
+      "evidence": "Distractions: fail. 41 links on the page, against 5 or fewer for a pass.",
+      "who": "do this in your app"
+    },
+    {
+      "rank": 5,
+      "fix": "Rename the button 'Create my booking page' and add autocomplete=\"new-password\"",
+      "step": "Signup page",
+      "visitors_touched": "1,060 signup page users a month",
+      "evidence": "Submit button: warn (\"Sign up\"). Field setup: warn (no new-password on the password field).",
+      "who": "do this in your app"
+    }
+  ],
+  "tests_to_run": [
+    {
+      "hypothesis": "If we cut the email form to email and password, email signups per form start will rise from 47.5%, because 5 required fields, two of them about the business, stand between a start and an account.",
+      "metric": "sign_up (method=email) ÷ form_start, then booking_received ÷ sign_up to check that new accounts still reach a first booking"
+    },
+    {
+      "hypothesis": "If we move Continue with Google above the form, signups per signup page user will rise, because Google signups skip every field and already make up 44.6% of signups from under the form.",
+      "metric": "sign_up ÷ signup page users, and the method mix"
+    },
+    {
+      "hypothesis": "If we remove the site header and footer, mobile signups per signup page user will rise from 38.8%, because 41 links surround the form and mobile signs up at 63% of the desktop rate.",
+      "metric": "sign_up ÷ signup page users on mobile"
+    }
+  ],
+  "unknowns": [
+    "What happens after the form: the confirmation email (how fast it arrives, how long the link lasts), the first screen and onboarding. The skill never signs up to find out; check them once by hand.",
+    "What a phone shows above the fold, and lab mobile speed: the optional screenshot and PageSpeed Insights calls weren't run.",
+    "Weekly signup cohorts (active on day 1, activated by day 7, paying by day 30): GA4 gives two counts in one window, not a cohort."
+  ],
+  "fixes_this_skill_can_run": [
+    {
+      "action": "create_key_event",
+      "status": "not needed: sign_up is already a key event"
+    },
+    {
+      "action": "update_enhanced_measurement_settings",
+      "status": "not needed: outbound clicks and form interactions are already on"
+    },
+    {
+      "action": "create_custom_dimension",
+      "status": "not needed: method is built into GA4 and no other signup parameter was found"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "The 250 confirmed accounts a month with no first booking yet",
+      "skill": "onboarding-cro"
+    },
+    {
+      "area": "The online booking feature page that carries the button",
+      "skill": "landing-page-auditor"
+    },
+    {
+      "area": "Designing the field-cut test",
+      "skill": "ab-test-designer"
+    }
+  ]
+}

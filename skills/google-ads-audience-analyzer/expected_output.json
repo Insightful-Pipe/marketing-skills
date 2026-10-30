@@ -1,0 +1,316 @@
+{
+  "header": {"account": "Example home services company", "currency": "USD", "date_range": "2026-07-23 to 2026-10-20 (last 90 complete days)", "spend": 39970, "conversions": 726, "cpa": 55, "target_cpa": 65, "policy_gate": "Home services: remarketing, Customer Match, demographics, predefined Google segments and custom segments are all allowed."},
+  "scorecard": [
+    {"section": "Audience segments", "result": "fail", "key_number": "1 of 14 enabled ad groups on targeting", "why": "Ad group 410000000011 in Plumbing only shows ads to All visitors (540 days). One list bid adjustment is ignored by Smart Bidding."},
+    {"section": "Remarketing lists", "result": "pass", "key_number": "3 of 5 lists can serve on Search (1 retired similar list not counted)", "why": "The open site and GA4 lists are well over 100 users. One 30-day list is too small for Search and one GA4 purchase list will never fill, but neither is attached."},
+    {"section": "Customer Match", "result": "warn", "key_number": "24% match rate", "why": "The list serves and converts well, but fewer than 30% of the uploaded customers matched."},
+    {"section": "Demographics", "result": "warn", "key_number": "1 exclusion candidate, 1 exclusion not backed, 1 excluded unknown, 1 ignored bid adjustment", "why": "Age 18-24 in AC Installation spent $573 with no conversion (1.4% of spend, under the 5% fail line). Older homeowners convert well, yet one campaign excludes them and another lowers their bids."}
+  ],
+  "actions": [
+    {
+      "rank": 1,
+      "action": "Remove the -30% age 65+ bid adjustment on AC Repair",
+      "detail": "Smart Bidding ignores it, and it lowers bids on one of the campaign's strong segments, the opposite of what the data says.",
+      "spend_basis": "90-day spend of the 2 ad groups that carry it",
+      "evidence": "section 4 settings query (bid_modifier 0.7) on a target_cpa campaign; segment test: strong",
+      "who": "do this in Google Ads",
+      "spend_involved": 7160
+    },
+    {
+      "rank": 2,
+      "action": "Remove the +25% bid adjustment on Past customers (CRM upload) in Furnace Repair",
+      "detail": "Smart Bidding ignores it, so it's a dead setting. The list is strong there (21.4 conversions where 8.2 were expected), and the bid strategy already uses that signal. Removing it is housekeeping and changes nothing in the auction.",
+      "spend_basis": "90-day spend of the ad group that carries it",
+      "evidence": "section 1 audience query (bid_modifier 1.25) on a maximize_conversions campaign",
+      "who": "do this in Google Ads",
+      "spend_involved": 4921
+    },
+    {
+      "rank": 3,
+      "action": "Watch income lower 50% in Plumbing",
+      "detail": "23.6 conversions where 36.9 were expected (chance 1.6%). Smart Bidding already bids on this signal, so a bid adjustment would be ignored. Nothing to change now; re-check next quarter.",
+      "spend_basis": "the segment's 90-day spend",
+      "evidence": "income view, segment test against the campaign's $59 CPA (target_cpa)",
+      "who": "do this in Google Ads",
+      "spend_involved": 2182
+    },
+    {
+      "rank": 4,
+      "action": "Switch ad group 410000000011 in Plumbing from targeting to observation",
+      "detail": "Its audience setting is on targeting, so its ads only reach people on All visitors (540 days); new customers searching for that service never see them. Set the audience setting to observation in the ad group's settings. No action this skill runs changes it.",
+      "spend_basis": "90-day spend of the ad group",
+      "evidence": "section 1 targeting settings query (AUDIENCE bid_only = false)",
+      "who": "do this in Google Ads",
+      "spend_involved": 1390
+    },
+    {
+      "rank": 5,
+      "action": "Set a +30% bid adjustment on age 45-54 in AC Installation",
+      "detail": "11.5 conversions where 6.1 were expected (chance 2.2%), a CPA of $89 against the campaign's $168. Maximize clicks applies bid adjustments, so this one works; it is capped at the skill's 30% limit. The action this skill runs can't set demographic bid adjustments.",
+      "spend_basis": "the segment's 90-day spend",
+      "evidence": "age view, segment test against the campaign's $168 CPA (maximize_clicks)",
+      "who": "do this in Google Ads",
+      "spend_involved": 1024
+    },
+    {
+      "rank": 6,
+      "action": "Re-upload Past customers (CRM upload) with phone numbers and postal codes",
+      "detail": "The match rate is 24%, under 30%. The list is the account's strongest audience (21.4 conversions where 8.2 were expected in Furnace Repair), so more matched customers is the cheapest gain here. The skill never uploads customer data.",
+      "spend_basis": "the list's 90-day spend across the campaigns that observe it",
+      "evidence": "section 2 user_list query (match_rate_percentage) and the section 1 segment test",
+      "who": "do this in Google Ads",
+      "spend_involved": 832
+    },
+    {
+      "rank": 7,
+      "action": "Remove the exclusion on unknown age in Furnace Repair",
+      "detail": "It sits on 1 ad group and removes everyone Google can't classify. Elsewhere unknown age is 14% of spend at a $58 CPA. No action this skill runs removes a criterion.",
+      "spend_basis": "90-day spend of the ad group that carries it",
+      "evidence": "section 4 settings query (negative = true on an undetermined segment) and the age view elsewhere",
+      "who": "do this in Google Ads",
+      "spend_involved": 663
+    },
+    {
+      "rank": 8,
+      "action": "Review the age 65+ exclusion in Plumbing",
+      "detail": "It sits on 1 of the campaign's 3 ad groups. Elsewhere in the account 65+ brought 82.4 conversions at $39, under the $65 target. Ask who added it and why before removing it.",
+      "spend_basis": "90-day spend of the ad group that carries it",
+      "evidence": "section 4 settings query and the age view outside that ad group, against the target CPA",
+      "who": "do this in Google Ads",
+      "spend_involved": 621
+    },
+    {"rank": 9, "action": "Exclude age 18-24 in AC Installation", "detail": "0.0 conversions where 3.4 were expected, after $573 (chance of zero by luck 3.3%). Run once per ad group, 2 ad groups.", "spend_basis": "the segment's 90-day spend", "evidence": "age view, segment test against the campaign's $168 CPA", "who": "I can do this now", "spend_involved": 573},
+    {
+      "rank": 10,
+      "action": "Add Booked a service (540 days) in observation to 2 Plumbing ad groups",
+      "detail": "1,150 users on Search, not attached anywhere; past customers come back for other jobs. Ad groups 410000000010 and 410000000012 already observe, so the list reports without narrowing reach. Ad group 410000000011 is left out until it is switched to observation. No bid adjustment: Target CPA ignores it.",
+      "spend_basis": "no spend behind it yet",
+      "evidence": "section 2 user_list query and section 1 targeting settings",
+      "who": "I can do this now",
+      "spend_involved": 0
+    }
+  ],
+  "policy_gate": {
+    "category_matched": "none: heating, cooling and plumbing repair for homes is not a sensitive interest category, and the ads don't offer housing, jobs or credit",
+    "how_matched": "the business the user gave, checked against the campaign names",
+    "remarketing_and_customer_match": "allowed",
+    "demographics": "allowed",
+    "predefined_google_segments": "allowed (in-market, affinity, life events)",
+    "custom_segments": "allowed",
+    "note": "If the account starts advertising financing for new systems, those ads may fall under the US and Canada consumer finance rule, which rules out age, gender and parental status targeting on them."
+  },
+  "sections": {
+    "audience_segments": {
+      "result": "fail",
+      "enabled_search_campaigns": 6,
+      "campaigns_with_segments": 5,
+      "campaigns_without_segments": ["Brand"],
+      "audience_criteria_on_enabled_campaigns": 23,
+      "enabled_ad_groups": 14,
+      "ad_groups_in_observation": 13,
+      "ad_groups_in_targeting": 1,
+      "targeting_ad_groups": [
+        {"campaign": "Plumbing", "ad_group_id": "410000000011", "lists": ["All visitors (540 days)"], "spend": 1390}
+      ],
+      "segment_test_counts": {"exclusion candidate": 0, "costly": 0, "strong": 1, "in line": 9, "thin": 0},
+      "segments_tested": [
+        {"campaign": "AC Installation", "segment": "HVAC Services", "type": "user_interest", "spend": 1745, "conversions": 10.0, "expected_conversions": 10.4, "verdict": "in line"},
+        {"campaign": "AC Installation", "segment": "People researching AC replacement", "type": "custom_audience", "spend": 1229, "conversions": 8.3, "expected_conversions": 7.3, "verdict": "in line"},
+        {"campaign": "AC Repair", "segment": "All visitors (540 days)", "type": "user_list", "spend": 1106, "conversions": 18.7, "expected_conversions": 15.6, "verdict": "in line"},
+        {"campaign": "AC Repair", "segment": "HVAC Services", "type": "user_interest", "spend": 1820, "conversions": 24.9, "expected_conversions": 25.7, "verdict": "in line"},
+        {"campaign": "Furnace Repair", "segment": "HVAC Services", "type": "user_interest", "spend": 2113, "conversions": 33.3, "expected_conversions": 33.9, "verdict": "in line"},
+        {"campaign": "Furnace Repair", "segment": "Past customers (CRM upload)", "type": "user_list", "spend": 514, "conversions": 21.4, "expected_conversions": 8.2, "verdict": "strong"},
+        {"campaign": "Plumbing", "segment": "All visitors (540 days)", "type": "user_list", "spend": 1390, "conversions": 27.0, "expected_conversions": 23.5, "verdict": "in line"},
+        {"campaign": "Plumbing", "segment": "Plumbing Services", "type": "user_interest", "spend": 1424, "conversions": 23.3, "expected_conversions": 24.1, "verdict": "in line"},
+        {"campaign": "Water Heaters", "segment": "Past customers (CRM upload)", "type": "user_list", "spend": 318, "conversions": 8.4, "expected_conversions": 5.6, "verdict": "in line"},
+        {"campaign": "Water Heaters", "segment": "Plumbing Services", "type": "user_interest", "spend": 1224, "conversions": 21.3, "expected_conversions": 21.6, "verdict": "in line"}
+      ],
+      "segment_findings": [
+        {"campaign": "Furnace Repair", "bidding": "maximize_conversions", "dimension": "audience", "segment": "Past customers (CRM upload)", "spend": 514, "conversions": 21.4, "expected_conversions": 8.2, "chance_pct": "under 0.1%", "verdict": "strong", "segment_cpa": 24, "campaign_cpa": 62}
+      ],
+      "ignored_segment_bid_adjustments": [
+        {"campaign": "Furnace Repair", "segment": "Past customers (CRM upload)", "ad_group_id": "410000000002", "bidding": "maximize_conversions", "bid_adjustment_pct": 25, "ad_group_spend": 4921}
+      ],
+      "finding": "Ad group 410000000011 in Plumbing has its audience setting on targeting, so its ads only reach people on All visitors (540 days); every other enabled ad group observes. Brand has no segment, which is fine for a brand campaign. The +25% adjustment on Past customers (CRM upload) in Furnace Repair is ignored by Smart Bidding."
+    },
+    "remarketing_lists": {
+      "result": "pass",
+      "lists_counted": 5,
+      "lists_in_inventory": 6,
+      "can_serve_on_search": 3,
+      "can_serve_on_display": 4,
+      "retired_similar_lists": 1,
+      "attached_lists": 1,
+      "attached_but_not_found": 0,
+      "inventory": [
+        {"name": "All visitors (540 days)", "type": "rule_based", "source": "the Google Ads tag", "membership": "open", "size_for_search": 6400, "size_for_display": 15200, "life_span_days": 540, "can_serve_search": true, "can_serve_display": true, "state": "open, can serve", "attached_to": ["AC Repair", "Plumbing"], "attached_as": ["observation", "targeting"]},
+        {"name": "Booked a service (540 days)", "type": "rule_based", "source": "the Google Ads tag", "membership": "open", "size_for_search": 1150, "size_for_display": 2600, "life_span_days": 540, "can_serve_search": true, "can_serve_display": true, "state": "open, can serve", "attached_to": [], "attached_as": []},
+        {"name": "Furnace pages (30 days)", "type": "rule_based", "source": "the Google Ads tag", "membership": "open", "size_for_search": 70, "size_for_display": 180, "life_span_days": 30, "can_serve_search": false, "can_serve_display": true, "state": "open, too small for Search", "attached_to": [], "attached_as": []},
+        {"name": "All users - GA4", "type": "rule_based", "source": "the GA4 link", "membership": "open", "size_for_search": 5900, "size_for_display": 13400, "life_span_days": 540, "can_serve_search": true, "can_serve_display": true, "state": "open, can serve", "attached_to": [], "attached_as": []},
+        {"name": "Purchasers - GA4", "type": "rule_based", "source": "the GA4 link", "membership": "open", "size_for_search": 0, "size_for_display": 0, "life_span_days": 540, "can_serve_search": false, "can_serve_display": false, "state": "open but empty: its source is not sending members", "attached_to": [], "attached_as": []},
+        {"name": "Similar to All visitors (540 days)", "type": "similar", "source": "none (Google retired similar audiences)", "membership": "closed", "size_for_search": 0, "size_for_display": 0, "life_span_days": 540, "can_serve_search": false, "can_serve_display": false, "state": "retired by Google (similar audience)", "attached_to": [], "attached_as": []}
+      ],
+      "segment_findings": [],
+      "notes": [
+        "3 open lists clear the 100-user minimum on Search and Display. The one attached list, All visitors (540 days), can serve; its problem is the targeting setting in section 1, not its size.",
+        "Furnace pages (30 days) has 70 users on Search, under the 100 minimum, and 180 on Display. It is not attached anywhere; a 30-day window is short for a Search list, so widen it to 90 days before using it.",
+        "Purchasers - GA4 is open but empty: the site sends calls and booking forms, not a purchase event, so the list will stay at 0. Build a GA4 list on the booking event instead, or leave it.",
+        "1 similar list is retired by Google and left out of the counts.",
+        "Booked a service (540 days) (1,150 users on Search) is not attached anywhere. Past customers come back for other services, so it is worth observing on Plumbing."
+      ]
+    },
+    "customer_match": {
+      "result": "warn",
+      "customer_match_lists": 1,
+      "lists": [
+        {"name": "Past customers (CRM upload)", "upload_key_type": "contact_info", "size_for_search": 1900, "size_for_display": 2700, "match_rate_pct": 24, "life_span_days": 10000, "members_expire": false, "attached_to": ["Furnace Repair", "Water Heaters"], "attached_as": ["observation"]}
+      ],
+      "performance": [
+        {"campaign": "Furnace Repair", "segment": "Past customers (CRM upload)", "type": "user_list", "spend": 514, "conversions": 21.4, "expected_conversions": 8.2, "verdict": "strong"},
+        {"campaign": "Water Heaters", "segment": "Past customers (CRM upload)", "type": "user_list", "spend": 318, "conversions": 8.4, "expected_conversions": 5.6, "verdict": "in line"}
+      ],
+      "finding": "The list can serve (1,900 users on Search) and is the account's best audience: 21.4 conversions where 8.2 were expected in Furnace Repair. But only 24% of the uploaded customers matched, under the 30% bar: the upload probably lacks phone numbers, or names with postal codes."
+    },
+    "demographics": {
+      "result": "warn",
+      "coverage": {"age": "adds up to the Search campaigns' spend", "gender": "adds up to the Search campaigns' spend", "income": "adds up to the Search campaigns' spend", "parental status": "adds up to the Search campaigns' spend", "note": "The views cover the 6 Search campaigns. PMax | All services has no rows in the demographic views, so its $6,670 is not in these tables."},
+      "unknown_share_of_spend_pct": {"age": 14, "gender": 16, "income": 17, "parental status": 17},
+      "unknown_share_by_campaign_pct": {
+        "AC Installation": {"age": 13, "gender": 15, "income": 17, "parental status": 17},
+        "AC Repair": {"age": 14, "gender": 16, "income": 16, "parental status": 18},
+        "Brand": {"age": 14, "gender": 15, "income": 16, "parental status": 16},
+        "Furnace Repair": {"age": "excluded in 1 of 3 ad groups; 13% in the others", "gender": 16, "income": 17, "parental status": 18},
+        "Plumbing": {"age": 14, "gender": 16, "income": 17, "parental status": 17},
+        "Water Heaters": {"age": 15, "gender": 16, "income": 18, "parental status": 17}
+      },
+      "overview": {
+        "age": [
+          {"segment": "18-24", "spend": 1720, "share_pct": 5, "conversions": 11.3, "cpa": 152},
+          {"segment": "25-34", "spend": 5086, "share_pct": 15, "conversions": 79.8, "cpa": 64},
+          {"segment": "35-44", "spend": 7032, "share_pct": 21, "conversions": 131.7, "cpa": 53},
+          {"segment": "45-54", "spend": 6634, "share_pct": 20, "conversions": 139.5, "cpa": 48},
+          {"segment": "55-64", "spend": 5008, "share_pct": 15, "conversions": 108.7, "cpa": 46},
+          {"segment": "65+", "spend": 3229, "share_pct": 10, "conversions": 82.4, "cpa": 39},
+          {"segment": "unknown", "spend": 4591, "share_pct": 14, "conversions": 79.6, "cpa": 58}
+        ],
+        "gender": [
+          {"segment": "male", "spend": 14700, "share_pct": 44, "conversions": 275.8, "cpa": 53},
+          {"segment": "female", "spend": 13311, "share_pct": 40, "conversions": 260.3, "cpa": 51},
+          {"segment": "unknown", "spend": 5289, "share_pct": 16, "conversions": 96.9, "cpa": 55}
+        ],
+        "income": [
+          {"segment": "lower 50%", "spend": 9964, "share_pct": 30, "conversions": 163.9, "cpa": 61},
+          {"segment": "41-50%", "spend": 3388, "share_pct": 10, "conversions": 66.0, "cpa": 51},
+          {"segment": "31-40%", "spend": 3712, "share_pct": 11, "conversions": 73.7, "cpa": 50},
+          {"segment": "21-30%", "spend": 3897, "share_pct": 12, "conversions": 81.8, "cpa": 48},
+          {"segment": "11-20%", "spend": 3713, "share_pct": 11, "conversions": 79.4, "cpa": 47},
+          {"segment": "top 10%", "spend": 2993, "share_pct": 9, "conversions": 62.5, "cpa": 48},
+          {"segment": "unknown", "spend": 5633, "share_pct": 17, "conversions": 105.7, "cpa": 53}
+        ],
+        "parental status": [
+          {"segment": "unknown", "spend": 5776, "share_pct": 17, "conversions": 104.4, "cpa": 55},
+          {"segment": "parent", "spend": 12465, "share_pct": 37, "conversions": 231.9, "cpa": 54},
+          {"segment": "not a parent", "spend": 15059, "share_pct": 45, "conversions": 296.7, "cpa": 51}
+        ]
+      },
+      "campaigns_tested": ["AC Installation", "AC Repair", "Brand", "Furnace Repair", "Plumbing", "Water Heaters"],
+      "too_thin_to_judge": "none: every Search campaign had 10 or more conversions",
+      "segment_test_counts": {"exclusion candidate": 1, "costly": 1, "strong": 2, "in line": 90, "thin": 1},
+      "segment_findings": [
+        {"campaign": "AC Installation", "bidding": "maximize_clicks", "dimension": "age", "segment": "18-24", "spend": 573, "conversions": 0.0, "expected_conversions": 3.4, "chance_pct": 3.3, "verdict": "exclusion candidate", "segment_cpa": null, "campaign_cpa": 168},
+        {"campaign": "Plumbing", "bidding": "target_cpa", "dimension": "income", "segment": "lower 50%", "spend": 2182, "conversions": 23.6, "expected_conversions": 36.9, "chance_pct": 1.6, "verdict": "costly", "segment_cpa": 92, "campaign_cpa": 59},
+        {"campaign": "AC Installation", "bidding": "maximize_clicks", "dimension": "age", "segment": "45-54", "spend": 1024, "conversions": 11.5, "expected_conversions": 6.1, "chance_pct": 2.2, "verdict": "strong", "segment_cpa": 89, "campaign_cpa": 168},
+        {"campaign": "AC Repair", "bidding": "target_cpa", "dimension": "age", "segment": "65+", "spend": 680, "conversions": 19.3, "expected_conversions": 9.6, "chance_pct": 0.5, "verdict": "strong", "segment_cpa": 35, "campaign_cpa": 71}
+      ],
+      "caution": "105 segments were tested across sections 1 and 4, so about 5 could cross 5% by chance. Costly and strong segments are worth watching, not proof.",
+      "existing_exclusions": [
+        {
+          "campaign": "Plumbing",
+          "dimension": "age",
+          "segment": "65+",
+          "ad_groups": 1,
+          "of_ad_groups_in_campaign": 3,
+          "ad_group_spend": 621,
+          "rest_of_account": {"spend": 3229, "conversions": 82.4, "cpa": 39},
+          "backed_by_data": false,
+          "reading": "the rest of the account converts this segment at $39, under the $65 target CPA, so the exclusion may cost leads"
+        },
+        {
+          "campaign": "Water Heaters",
+          "dimension": "age",
+          "segment": "18-24",
+          "ad_groups": 3,
+          "of_ad_groups_in_campaign": 3,
+          "ad_group_spend": 5090,
+          "rest_of_account": {"spend": 1720, "conversions": 11.3, "cpa": 152},
+          "backed_by_data": true,
+          "reading": "the rest of the account converts this segment at $152, over the $65 target CPA, so the data backs the exclusion"
+        }
+      ],
+      "excluded_unknowns": [
+        {
+          "campaign": "Furnace Repair",
+          "dimension": "age",
+          "segment": "unknown",
+          "ad_groups": 1,
+          "of_ad_groups_in_campaign": 3,
+          "ad_group_spend": 663,
+          "unknown_share_elsewhere_pct": 14,
+          "rest_of_account": {"spend": 4591, "conversions": 79.6, "cpa": 58}
+        }
+      ],
+      "ignored_bid_adjustments": [
+        {"campaign": "AC Repair", "bidding": "target_cpa", "dimension": "age", "segment": "65+", "bid_adjustment_pct": -30, "ad_groups": 2, "ignored_by_bid_strategy": true, "segment_verdict": "strong", "reading": "Smart Bidding ignores it, and it lowers bids on one of the campaign's strong segments, the opposite of what the data says", "ad_group_spend": 7160}
+      ]
+    }
+  },
+  "fixes_offered": [
+    {
+      "for": "exclude age 18-24 in AC Installation",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "add_demographic_targeting",
+        "ad_group_id": "410000000013",
+        "age_ranges": [
+          {"type": "AGE_RANGE_18_24", "negative": true}
+        ]
+      }
+    },
+    {
+      "for": "exclude age 18-24 in AC Installation",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1234567890",
+        "action": "add_demographic_targeting",
+        "ad_group_id": "410000000014",
+        "age_ranges": [
+          {"type": "AGE_RANGE_18_24", "negative": true}
+        ]
+      }
+    },
+    {
+      "for": "observe Booked a service (540 days) in Plumbing",
+      "body": {"platform": "google-ads", "workspace_id": 1, "brand_id": 1, "account_id": "1234567890", "action": "add_audience_targeting", "ad_group_id": "410000000010", "user_list_id": "7200000002"}
+    },
+    {
+      "for": "observe Booked a service (540 days) in Plumbing",
+      "body": {"platform": "google-ads", "workspace_id": 1, "brand_id": 1, "account_id": "1234567890", "action": "add_audience_targeting", "ad_group_id": "410000000012", "user_list_id": "7200000002"}
+    }
+  ],
+  "fixes_offered_note": "Shown for the user's yes; nothing was run. After a yes, the skill re-runs the section 4 settings query or the section 1 inventory query to show each criterion is there.",
+  "unknowns": [
+    "The API returns no upload date for Past customers (CRM upload), and its members never expire (life span 10000). Ask when it was last uploaded.",
+    "PMax | All services returns no rows in the demographic or audience views, so its audience signals are not reviewed here.",
+    "Excluded segments have no data in their own ad groups, so their cost is read from the rest of the account."
+  ],
+  "go_deeper": [
+    {"area": "Whole-account health", "skill": "google-ads-account-audit"},
+    {"area": "Smart Bidding and targets", "skill": "bid-strategy-auditor"},
+    {"area": "Performance Max audience signals", "skill": "pmax-asset-group-analyzer"}
+  ]
+}

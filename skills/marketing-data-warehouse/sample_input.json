@@ -1,0 +1,3060 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The warehouse, its tables and the platform totals are invented; no query ran on a real project.",
+  "request": "Hey Claude, I just added the \"marketing-data-warehouse\" skill. Our ad data lands in BigQuery and the dashboard never matches Google Ads or Meta. Check the loaded tables against each platform for the last 30 days, tell me what's broken and give me the SQL to fix it. Then tell me our cost per new paid subscription by platform.",
+  "warehouse": {
+    "engine": "BigQuery",
+    "project": "example-booking-analytics",
+    "connected_via": "InsightfulPipe MCP (bigquery)",
+    "datasets_read": [
+      "marketing",
+      "google_ads_raw",
+      "meta_ads_raw",
+      "linkedin_ads_raw",
+      "tiktok_ads_raw"
+    ]
+  },
+  "settings": {
+    "reporting_currency": "USD",
+    "reporting_time_zone": "America/New_York",
+    "date_range": [
+      "2026-09-28",
+      "2026-10-27"
+    ],
+    "current_reload_lookback_days": 3,
+    "conversion_window_days": 30,
+    "source": "the user's answers; the lookback is read from the saved scheduled query"
+  },
+  "schema": [
+    {
+      "table": "marketing.ad_spend_daily",
+      "partitioned_by": "date",
+      "clustered_by": [
+        "platform",
+        "account_id",
+        "campaign_id"
+      ],
+      "columns": [
+        "date DATE",
+        "platform STRING",
+        "account_id STRING",
+        "account_name STRING",
+        "campaign_id STRING",
+        "campaign_name STRING",
+        "currency STRING",
+        "spend NUMERIC",
+        "spend_reporting NUMERIC",
+        "impressions INT64",
+        "clicks INT64",
+        "conversions NUMERIC",
+        "conversion_value NUMERIC",
+        "conversion_value_reporting NUMERIC",
+        "loaded_at TIMESTAMP"
+      ]
+    },
+    {
+      "table": "marketing.fx_daily",
+      "partitioned_by": null,
+      "columns": [
+        "date DATE",
+        "currency STRING",
+        "to_reporting NUMERIC"
+      ]
+    },
+    {
+      "table": "meta_ads_raw.insights_daily",
+      "partitioned_by": "synced_at (month)",
+      "columns": [
+        "date_start DATE",
+        "account_id STRING",
+        "campaign_id STRING",
+        "spend NUMERIC",
+        "impressions INT64",
+        "clicks INT64",
+        "synced_at TIMESTAMP"
+      ]
+    },
+    {
+      "table": "tiktok_ads_raw.report_hourly",
+      "partitioned_by": "stat_time_hour (day)",
+      "columns": [
+        "stat_time_hour TIMESTAMP",
+        "advertiser_id STRING",
+        "campaign_id STRING",
+        "spend NUMERIC",
+        "impressions INT64",
+        "clicks INT64",
+        "conversion NUMERIC",
+        "synced_at TIMESTAMP"
+      ]
+    },
+    {
+      "table": "marketing.conversions_crm",
+      "partitioned_by": "DATE(created_at)",
+      "columns": [
+        "order_or_deal_id STRING",
+        "created_at TIMESTAMP",
+        "platform STRING",
+        "campaign_id STRING",
+        "utm_campaign STRING",
+        "revenue NUMERIC",
+        "currency STRING",
+        "status STRING"
+      ]
+    }
+  ],
+  "staging_view_excerpts": {
+    "stg_meta_ads": "SELECT date_start AS date, 'meta_ads' AS platform, account_id, ..., 'USD' AS currency, ...",
+    "stg_tiktok_ads": "SELECT DATE(stat_time_hour) AS date, 'tiktok_ads' AS platform, advertiser_id AS account_id, ..."
+  },
+  "fx_daily_gbp": [
+    {
+      "date": "2026-09-28",
+      "currency": "GBP",
+      "to_reporting": 1.3229
+    },
+    {
+      "date": "2026-09-29",
+      "currency": "GBP",
+      "to_reporting": 1.3357
+    },
+    {
+      "date": "2026-09-30",
+      "currency": "GBP",
+      "to_reporting": 1.3279
+    },
+    {
+      "date": "2026-10-01",
+      "currency": "GBP",
+      "to_reporting": 1.3304
+    },
+    {
+      "date": "2026-10-02",
+      "currency": "GBP",
+      "to_reporting": 1.3228
+    },
+    {
+      "date": "2026-10-03",
+      "currency": "GBP",
+      "to_reporting": 1.317
+    },
+    {
+      "date": "2026-10-04",
+      "currency": "GBP",
+      "to_reporting": 1.3332
+    },
+    {
+      "date": "2026-10-05",
+      "currency": "GBP",
+      "to_reporting": 1.3392
+    },
+    {
+      "date": "2026-10-06",
+      "currency": "GBP",
+      "to_reporting": 1.3419
+    },
+    {
+      "date": "2026-10-07",
+      "currency": "GBP",
+      "to_reporting": 1.3382
+    },
+    {
+      "date": "2026-10-08",
+      "currency": "GBP",
+      "to_reporting": 1.3441
+    },
+    {
+      "date": "2026-10-09",
+      "currency": "GBP",
+      "to_reporting": 1.3235
+    },
+    {
+      "date": "2026-10-10",
+      "currency": "GBP",
+      "to_reporting": 1.3286
+    },
+    {
+      "date": "2026-10-11",
+      "currency": "GBP",
+      "to_reporting": 1.325
+    },
+    {
+      "date": "2026-10-12",
+      "currency": "GBP",
+      "to_reporting": 1.3164
+    },
+    {
+      "date": "2026-10-13",
+      "currency": "GBP",
+      "to_reporting": 1.3373
+    },
+    {
+      "date": "2026-10-14",
+      "currency": "GBP",
+      "to_reporting": 1.3312
+    },
+    {
+      "date": "2026-10-15",
+      "currency": "GBP",
+      "to_reporting": 1.3235
+    },
+    {
+      "date": "2026-10-16",
+      "currency": "GBP",
+      "to_reporting": 1.3409
+    },
+    {
+      "date": "2026-10-17",
+      "currency": "GBP",
+      "to_reporting": 1.3341
+    },
+    {
+      "date": "2026-10-18",
+      "currency": "GBP",
+      "to_reporting": 1.3428
+    },
+    {
+      "date": "2026-10-19",
+      "currency": "GBP",
+      "to_reporting": 1.339
+    },
+    {
+      "date": "2026-10-20",
+      "currency": "GBP",
+      "to_reporting": 1.3398
+    },
+    {
+      "date": "2026-10-21",
+      "currency": "GBP",
+      "to_reporting": 1.3213
+    },
+    {
+      "date": "2026-10-22",
+      "currency": "GBP",
+      "to_reporting": 1.3447
+    },
+    {
+      "date": "2026-10-23",
+      "currency": "GBP",
+      "to_reporting": 1.3278
+    },
+    {
+      "date": "2026-10-24",
+      "currency": "GBP",
+      "to_reporting": 1.3217
+    },
+    {
+      "date": "2026-10-25",
+      "currency": "GBP",
+      "to_reporting": 1.3353
+    },
+    {
+      "date": "2026-10-26",
+      "currency": "GBP",
+      "to_reporting": 1.3276
+    },
+    {
+      "date": "2026-10-27",
+      "currency": "GBP",
+      "to_reporting": 1.3386
+    }
+  ],
+  "data_pulled": {
+    "check1_freshness": [
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "last_date": "2026-10-27",
+        "days_behind": 0
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "last_date": "2026-10-27",
+        "days_behind": 0
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "last_date": "2026-10-27",
+        "days_behind": 0
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "last_date": "2026-10-27",
+        "days_behind": 0
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "last_date": "2026-10-27",
+        "days_behind": 0
+      }
+    ],
+    "check2_missing_days": [
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "missing_date": "2026-10-14"
+      }
+    ],
+    "check3_duplicates": [
+      {
+        "date": "2026-10-08",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000002",
+        "copies": 2,
+        "spend_all_copies": 465.14,
+        "spend_one_copy": 232.57,
+        "loaded_at": [
+          "2026-10-11T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000002",
+        "copies": 2,
+        "spend_all_copies": 399.46,
+        "spend_one_copy": 199.73,
+        "loaded_at": [
+          "2026-10-12T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000003",
+        "copies": 2,
+        "spend_all_copies": 262.9,
+        "spend_one_copy": 131.45,
+        "loaded_at": [
+          "2026-10-11T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000003",
+        "copies": 2,
+        "spend_all_copies": 225.78,
+        "spend_one_copy": 112.89,
+        "loaded_at": [
+          "2026-10-12T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000004",
+        "copies": 2,
+        "spend_all_copies": 161.78,
+        "spend_one_copy": 80.89,
+        "loaded_at": [
+          "2026-10-11T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000004",
+        "copies": 2,
+        "spend_all_copies": 138.94,
+        "spend_one_copy": 69.47,
+        "loaded_at": [
+          "2026-10-12T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000001",
+        "copies": 2,
+        "spend_all_copies": 121.34,
+        "spend_one_copy": 60.67,
+        "loaded_at": [
+          "2026-10-11T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "campaign_id": "20000000001",
+        "copies": 2,
+        "spend_all_copies": 104.2,
+        "spend_one_copy": 52.1,
+        "loaded_at": [
+          "2026-10-12T06:10:00Z",
+          "2026-10-20T14:32:00Z"
+        ]
+      }
+    ],
+    "check4_currency": [
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "currencies": "USD",
+        "rows_without_currency": 0,
+        "rows_without_rate": 0,
+        "spend": 14336.1
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "currencies": "USD",
+        "rows_without_currency": 0,
+        "rows_without_rate": 0,
+        "spend": 7257.46
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "currencies": "USD",
+        "rows_without_currency": 0,
+        "rows_without_rate": 0,
+        "spend": 5014.97
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "currencies": "USD",
+        "rows_without_currency": 0,
+        "rows_without_rate": 0,
+        "spend": 3579.08
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "currencies": "USD",
+        "rows_without_currency": 0,
+        "rows_without_rate": 0,
+        "spend": 2776.13
+      }
+    ],
+    "check5_daily_totals": [
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-09-28",
+        "spend": 369.06,
+        "impressions": 2565,
+        "clicks": 125,
+        "conversions": 7.14,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-09-29",
+        "spend": 467.56,
+        "impressions": 3135,
+        "clicks": 173,
+        "conversions": 10.69,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-09-30",
+        "spend": 485.71,
+        "impressions": 3517,
+        "clicks": 180,
+        "conversions": 9.76,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-01",
+        "spend": 507.35,
+        "impressions": 3246,
+        "clicks": 169,
+        "conversions": 9.97,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-02",
+        "spend": 359.48,
+        "impressions": 2347,
+        "clicks": 118,
+        "conversions": 6.94,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-03",
+        "spend": 443.81,
+        "impressions": 2780,
+        "clicks": 140,
+        "conversions": 7.95,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-04",
+        "spend": 385.37,
+        "impressions": 2933,
+        "clicks": 140,
+        "conversions": 9.95,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-05",
+        "spend": 532.1,
+        "impressions": 3945,
+        "clicks": 185,
+        "conversions": 14.11,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-06",
+        "spend": 414.03,
+        "impressions": 2846,
+        "clicks": 143,
+        "conversions": 10.22,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-07",
+        "spend": 407.69,
+        "impressions": 3025,
+        "clicks": 152,
+        "conversions": 11.92,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-08",
+        "spend": 1011.16,
+        "impressions": 5830,
+        "clicks": 318,
+        "conversions": 24.44,
+        "row_count": 8
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-09",
+        "spend": 868.38,
+        "impressions": 5336,
+        "clicks": 282,
+        "conversions": 16.06,
+        "row_count": 8
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-10",
+        "spend": 477.64,
+        "impressions": 3064,
+        "clicks": 169,
+        "conversions": 10.39,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-11",
+        "spend": 391.35,
+        "impressions": 2818,
+        "clicks": 143,
+        "conversions": 11.23,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-12",
+        "spend": 424.86,
+        "impressions": 3042,
+        "clicks": 161,
+        "conversions": 10.13,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-13",
+        "spend": 468.3,
+        "impressions": 3433,
+        "clicks": 162,
+        "conversions": 8.66,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-14",
+        "spend": 401.59,
+        "impressions": 2478,
+        "clicks": 129,
+        "conversions": 7.41,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-15",
+        "spend": 540.14,
+        "impressions": 3300,
+        "clicks": 183,
+        "conversions": 13.78,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-16",
+        "spend": 406.27,
+        "impressions": 2574,
+        "clicks": 135,
+        "conversions": 10.21,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-17",
+        "spend": 304.74,
+        "impressions": 2047,
+        "clicks": 97,
+        "conversions": 7.08,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-18",
+        "spend": 462.45,
+        "impressions": 3094,
+        "clicks": 173,
+        "conversions": 11.1,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-19",
+        "spend": 468.72,
+        "impressions": 2767,
+        "clicks": 157,
+        "conversions": 11.23,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-20",
+        "spend": 366.25,
+        "impressions": 2696,
+        "clicks": 137,
+        "conversions": 8.32,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-21",
+        "spend": 485.82,
+        "impressions": 3472,
+        "clicks": 175,
+        "conversions": 14.88,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-22",
+        "spend": 523.81,
+        "impressions": 3132,
+        "clicks": 165,
+        "conversions": 14.06,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-23",
+        "spend": 558.31,
+        "impressions": 3484,
+        "clicks": 193,
+        "conversions": 16.32,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-24",
+        "spend": 442.33,
+        "impressions": 2757,
+        "clicks": 156,
+        "conversions": 7.59,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-25",
+        "spend": 420.42,
+        "impressions": 2507,
+        "clicks": 139,
+        "conversions": 8.09,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-26",
+        "spend": 522.51,
+        "impressions": 3636,
+        "clicks": 198,
+        "conversions": 10.78,
+        "row_count": 4
+      },
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "date": "2026-10-27",
+        "spend": 418.89,
+        "impressions": 2611,
+        "clicks": 138,
+        "conversions": 8.1,
+        "row_count": 4
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-09-28",
+        "spend": 176.89,
+        "impressions": 15861,
+        "clicks": 175,
+        "conversions": 4.85,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-09-29",
+        "spend": 149.15,
+        "impressions": 11290,
+        "clicks": 133,
+        "conversions": 3.56,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-09-30",
+        "spend": 179.65,
+        "impressions": 15756,
+        "clicks": 170,
+        "conversions": 5.83,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-01",
+        "spend": 146.49,
+        "impressions": 11022,
+        "clicks": 127,
+        "conversions": 4.14,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-02",
+        "spend": 169.24,
+        "impressions": 12139,
+        "clicks": 140,
+        "conversions": 5.06,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-03",
+        "spend": 148.57,
+        "impressions": 11333,
+        "clicks": 136,
+        "conversions": 4.28,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-04",
+        "spend": 124.96,
+        "impressions": 10377,
+        "clicks": 119,
+        "conversions": 2.84,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-05",
+        "spend": 165.48,
+        "impressions": 13667,
+        "clicks": 149,
+        "conversions": 5.05,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-06",
+        "spend": 151.99,
+        "impressions": 11446,
+        "clicks": 126,
+        "conversions": 3.53,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-07",
+        "spend": 146.36,
+        "impressions": 12520,
+        "clicks": 130,
+        "conversions": 5.04,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-08",
+        "spend": 185.85,
+        "impressions": 15611,
+        "clicks": 187,
+        "conversions": 6.59,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-09",
+        "spend": 191.97,
+        "impressions": 18891,
+        "clicks": 189,
+        "conversions": 4.04,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-10",
+        "spend": 189.46,
+        "impressions": 15775,
+        "clicks": 176,
+        "conversions": 6.33,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-11",
+        "spend": 187.44,
+        "impressions": 14018,
+        "clicks": 159,
+        "conversions": 5.64,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-12",
+        "spend": 176.5,
+        "impressions": 16346,
+        "clicks": 173,
+        "conversions": 5.49,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-13",
+        "spend": 160.74,
+        "impressions": 13150,
+        "clicks": 143,
+        "conversions": 5.45,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-14",
+        "spend": 168.97,
+        "impressions": 13997,
+        "clicks": 163,
+        "conversions": 5.21,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-15",
+        "spend": 160.71,
+        "impressions": 15974,
+        "clicks": 162,
+        "conversions": 4.19,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-16",
+        "spend": 184.51,
+        "impressions": 16997,
+        "clicks": 186,
+        "conversions": 4.76,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-17",
+        "spend": 150.61,
+        "impressions": 12169,
+        "clicks": 144,
+        "conversions": 5.27,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-18",
+        "spend": 117.82,
+        "impressions": 11053,
+        "clicks": 114,
+        "conversions": 2.92,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-19",
+        "spend": 213.93,
+        "impressions": 17927,
+        "clicks": 196,
+        "conversions": 6.55,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-20",
+        "spend": 178.22,
+        "impressions": 15814,
+        "clicks": 163,
+        "conversions": 5.48,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-21",
+        "spend": 217.57,
+        "impressions": 16471,
+        "clicks": 189,
+        "conversions": 4.16,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-22",
+        "spend": 153.9,
+        "impressions": 13113,
+        "clicks": 148,
+        "conversions": 5.71,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-23",
+        "spend": 156.02,
+        "impressions": 12237,
+        "clicks": 147,
+        "conversions": 4.47,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-24",
+        "spend": 150.64,
+        "impressions": 14384,
+        "clicks": 149,
+        "conversions": 5.58,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-25",
+        "spend": 136.22,
+        "impressions": 12532,
+        "clicks": 126,
+        "conversions": 4.76,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-26",
+        "spend": 227.15,
+        "impressions": 19076,
+        "clicks": 206,
+        "conversions": 4.72,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "date": "2026-10-27",
+        "spend": 147.96,
+        "impressions": 12332,
+        "clicks": 134,
+        "conversions": 3.85,
+        "row_count": 2
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-09-28",
+        "spend": 103.01,
+        "impressions": 9941,
+        "clicks": 117,
+        "conversions": 3.06,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-09-29",
+        "spend": 82.72,
+        "impressions": 8214,
+        "clicks": 101,
+        "conversions": 3.14,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-09-30",
+        "spend": 88.4,
+        "impressions": 7776,
+        "clicks": 92,
+        "conversions": 3.19,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-01",
+        "spend": 91.89,
+        "impressions": 9121,
+        "clicks": 103,
+        "conversions": 2.68,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-02",
+        "spend": 117.31,
+        "impressions": 10260,
+        "clicks": 124,
+        "conversions": 3.69,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-03",
+        "spend": 95.72,
+        "impressions": 8112,
+        "clicks": 105,
+        "conversions": 2.66,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-04",
+        "spend": 81.98,
+        "impressions": 7678,
+        "clicks": 83,
+        "conversions": 2.54,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-05",
+        "spend": 90.43,
+        "impressions": 7543,
+        "clicks": 95,
+        "conversions": 2.31,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-06",
+        "spend": 106.41,
+        "impressions": 9283,
+        "clicks": 110,
+        "conversions": 2.42,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-07",
+        "spend": 101.53,
+        "impressions": 9058,
+        "clicks": 108,
+        "conversions": 3.18,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-08",
+        "spend": 87.04,
+        "impressions": 7745,
+        "clicks": 95,
+        "conversions": 2.95,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-09",
+        "spend": 84.7,
+        "impressions": 8373,
+        "clicks": 96,
+        "conversions": 2.41,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-10",
+        "spend": 78.06,
+        "impressions": 7995,
+        "clicks": 89,
+        "conversions": 2.02,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-11",
+        "spend": 58.74,
+        "impressions": 5189,
+        "clicks": 60,
+        "conversions": 1.66,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-12",
+        "spend": 110.75,
+        "impressions": 11351,
+        "clicks": 136,
+        "conversions": 3.25,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-13",
+        "spend": 98.03,
+        "impressions": 9521,
+        "clicks": 106,
+        "conversions": 3.76,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-14",
+        "spend": 93.4,
+        "impressions": 8113,
+        "clicks": 97,
+        "conversions": 2.24,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-15",
+        "spend": 76.46,
+        "impressions": 7169,
+        "clicks": 90,
+        "conversions": 2.41,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-16",
+        "spend": 115.79,
+        "impressions": 9633,
+        "clicks": 127,
+        "conversions": 4.19,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-17",
+        "spend": 93.16,
+        "impressions": 8876,
+        "clicks": 98,
+        "conversions": 3.0,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-18",
+        "spend": 71.81,
+        "impressions": 6971,
+        "clicks": 86,
+        "conversions": 2.44,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-19",
+        "spend": 118.33,
+        "impressions": 9260,
+        "clicks": 120,
+        "conversions": 4.06,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-20",
+        "spend": 83.91,
+        "impressions": 7909,
+        "clicks": 103,
+        "conversions": 2.76,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-21",
+        "spend": 79.99,
+        "impressions": 6188,
+        "clicks": 81,
+        "conversions": 2.04,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-22",
+        "spend": 93.57,
+        "impressions": 8208,
+        "clicks": 104,
+        "conversions": 3.62,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-23",
+        "spend": 116.28,
+        "impressions": 10215,
+        "clicks": 127,
+        "conversions": 3.56,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-24",
+        "spend": 89.0,
+        "impressions": 7891,
+        "clicks": 98,
+        "conversions": 2.07,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-25",
+        "spend": 76.23,
+        "impressions": 7096,
+        "clicks": 93,
+        "conversions": 3.18,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-26",
+        "spend": 86.74,
+        "impressions": 8114,
+        "clicks": 90,
+        "conversions": 2.8,
+        "row_count": 1
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "date": "2026-10-27",
+        "spend": 104.74,
+        "impressions": 8389,
+        "clicks": 110,
+        "conversions": 3.79,
+        "row_count": 1
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-09-28",
+        "spend": 223.75,
+        "impressions": 5262,
+        "clicks": 33,
+        "conversions": 1.92,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-09-29",
+        "spend": 245.0,
+        "impressions": 6252,
+        "clicks": 35,
+        "conversions": 1.88,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-09-30",
+        "spend": 261.79,
+        "impressions": 5412,
+        "clicks": 35,
+        "conversions": 1.82,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-01",
+        "spend": 289.07,
+        "impressions": 5942,
+        "clicks": 39,
+        "conversions": 2.05,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-02",
+        "spend": 212.25,
+        "impressions": 4438,
+        "clicks": 29,
+        "conversions": 1.88,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-03",
+        "spend": 249.97,
+        "impressions": 6182,
+        "clicks": 37,
+        "conversions": 1.7,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-04",
+        "spend": 183.42,
+        "impressions": 3571,
+        "clicks": 22,
+        "conversions": 1.4,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-05",
+        "spend": 217.88,
+        "impressions": 4895,
+        "clicks": 31,
+        "conversions": 1.25,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-06",
+        "spend": 267.63,
+        "impressions": 5776,
+        "clicks": 35,
+        "conversions": 1.82,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-07",
+        "spend": 290.83,
+        "impressions": 6967,
+        "clicks": 40,
+        "conversions": 1.89,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-08",
+        "spend": 283.66,
+        "impressions": 5449,
+        "clicks": 35,
+        "conversions": 1.44,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-09",
+        "spend": 263.53,
+        "impressions": 6217,
+        "clicks": 36,
+        "conversions": 1.64,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-10",
+        "spend": 212.53,
+        "impressions": 4991,
+        "clicks": 30,
+        "conversions": 1.1,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-11",
+        "spend": 204.41,
+        "impressions": 4440,
+        "clicks": 29,
+        "conversions": 1.58,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-12",
+        "spend": 277.07,
+        "impressions": 6298,
+        "clicks": 36,
+        "conversions": 2.3,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-13",
+        "spend": 225.24,
+        "impressions": 4554,
+        "clicks": 30,
+        "conversions": 1.06,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-15",
+        "spend": 235.94,
+        "impressions": 5658,
+        "clicks": 32,
+        "conversions": 1.61,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-16",
+        "spend": 283.81,
+        "impressions": 6021,
+        "clicks": 37,
+        "conversions": 2.32,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-17",
+        "spend": 243.67,
+        "impressions": 5546,
+        "clicks": 30,
+        "conversions": 1.91,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-18",
+        "spend": 205.11,
+        "impressions": 4075,
+        "clicks": 25,
+        "conversions": 1.07,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-19",
+        "spend": 315.55,
+        "impressions": 7420,
+        "clicks": 45,
+        "conversions": 1.82,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-20",
+        "spend": 246.97,
+        "impressions": 5667,
+        "clicks": 31,
+        "conversions": 1.79,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-21",
+        "spend": 216.97,
+        "impressions": 3943,
+        "clicks": 26,
+        "conversions": 1.39,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-22",
+        "spend": 256.0,
+        "impressions": 6032,
+        "clicks": 36,
+        "conversions": 1.93,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-23",
+        "spend": 308.63,
+        "impressions": 6739,
+        "clicks": 42,
+        "conversions": 2.46,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-24",
+        "spend": 246.27,
+        "impressions": 6154,
+        "clicks": 36,
+        "conversions": 1.44,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-25",
+        "spend": 254.61,
+        "impressions": 5594,
+        "clicks": 31,
+        "conversions": 1.63,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-26",
+        "spend": 211.65,
+        "impressions": 4289,
+        "clicks": 28,
+        "conversions": 1.13,
+        "row_count": 2
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "date": "2026-10-27",
+        "spend": 324.25,
+        "impressions": 6492,
+        "clicks": 40,
+        "conversions": 1.46,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-09-28",
+        "spend": 110.18,
+        "impressions": 25294,
+        "clicks": 208,
+        "conversions": 1.85,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-09-29",
+        "spend": 148.97,
+        "impressions": 31739,
+        "clicks": 282,
+        "conversions": 2.87,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-09-30",
+        "spend": 153.14,
+        "impressions": 32359,
+        "clicks": 289,
+        "conversions": 3.97,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-01",
+        "spend": 110.88,
+        "impressions": 23678,
+        "clicks": 206,
+        "conversions": 2.61,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-02",
+        "spend": 125.33,
+        "impressions": 29254,
+        "clicks": 248,
+        "conversions": 3.48,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-03",
+        "spend": 95.06,
+        "impressions": 21492,
+        "clicks": 190,
+        "conversions": 2.07,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-04",
+        "spend": 105.62,
+        "impressions": 20920,
+        "clicks": 194,
+        "conversions": 1.7,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-05",
+        "spend": 104.48,
+        "impressions": 21159,
+        "clicks": 204,
+        "conversions": 2.85,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-06",
+        "spend": 142.29,
+        "impressions": 29781,
+        "clicks": 248,
+        "conversions": 2.91,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-07",
+        "spend": 150.11,
+        "impressions": 34957,
+        "clicks": 293,
+        "conversions": 3.66,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-08",
+        "spend": 152.76,
+        "impressions": 33641,
+        "clicks": 295,
+        "conversions": 4.22,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-09",
+        "spend": 105.36,
+        "impressions": 21760,
+        "clicks": 202,
+        "conversions": 3.03,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-10",
+        "spend": 99.19,
+        "impressions": 18849,
+        "clicks": 170,
+        "conversions": 1.84,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-11",
+        "spend": 88.43,
+        "impressions": 17681,
+        "clicks": 149,
+        "conversions": 1.29,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-12",
+        "spend": 94.15,
+        "impressions": 19732,
+        "clicks": 184,
+        "conversions": 2.68,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-13",
+        "spend": 101.73,
+        "impressions": 18247,
+        "clicks": 178,
+        "conversions": 2.0,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-14",
+        "spend": 113.16,
+        "impressions": 21194,
+        "clicks": 200,
+        "conversions": 2.19,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-15",
+        "spend": 147.16,
+        "impressions": 31367,
+        "clicks": 269,
+        "conversions": 3.84,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-16",
+        "spend": 118.63,
+        "impressions": 22278,
+        "clicks": 209,
+        "conversions": 3.17,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-17",
+        "spend": 112.03,
+        "impressions": 21442,
+        "clicks": 187,
+        "conversions": 2.16,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-18",
+        "spend": 99.36,
+        "impressions": 20498,
+        "clicks": 182,
+        "conversions": 2.25,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-19",
+        "spend": 98.08,
+        "impressions": 20158,
+        "clicks": 173,
+        "conversions": 2.12,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-20",
+        "spend": 133.01,
+        "impressions": 25612,
+        "clicks": 240,
+        "conversions": 3.21,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-21",
+        "spend": 139.2,
+        "impressions": 28139,
+        "clicks": 248,
+        "conversions": 3.73,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-22",
+        "spend": 149.44,
+        "impressions": 30849,
+        "clicks": 254,
+        "conversions": 2.94,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-23",
+        "spend": 127.44,
+        "impressions": 26358,
+        "clicks": 225,
+        "conversions": 2.7,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-24",
+        "spend": 119.31,
+        "impressions": 22663,
+        "clicks": 212,
+        "conversions": 2.16,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-25",
+        "spend": 107.35,
+        "impressions": 20646,
+        "clicks": 185,
+        "conversions": 1.95,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-26",
+        "spend": 118.51,
+        "impressions": 23714,
+        "clicks": 212,
+        "conversions": 1.95,
+        "row_count": 2
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "date": "2026-10-27",
+        "spend": 108.72,
+        "impressions": 20848,
+        "clicks": 190,
+        "conversions": 2.26,
+        "row_count": 2
+      }
+    ],
+    "check6_platform_daily": [
+      {
+        "platform": "google_ads",
+        "account_id": "1234567890",
+        "account_name": "Example Booking Software",
+        "currency": "USD",
+        "time_zone": "America/New_York",
+        "daily": [
+          {
+            "date": "2026-09-28",
+            "spend": 369.06,
+            "impressions": 2565,
+            "clicks": 125,
+            "conversions": 8.11
+          },
+          {
+            "date": "2026-09-29",
+            "spend": 467.56,
+            "impressions": 3135,
+            "clicks": 173,
+            "conversions": 12.15
+          },
+          {
+            "date": "2026-09-30",
+            "spend": 485.71,
+            "impressions": 3517,
+            "clicks": 180,
+            "conversions": 11.09
+          },
+          {
+            "date": "2026-10-01",
+            "spend": 507.35,
+            "impressions": 3246,
+            "clicks": 169,
+            "conversions": 11.33
+          },
+          {
+            "date": "2026-10-02",
+            "spend": 359.48,
+            "impressions": 2347,
+            "clicks": 118,
+            "conversions": 7.89
+          },
+          {
+            "date": "2026-10-03",
+            "spend": 443.81,
+            "impressions": 2780,
+            "clicks": 140,
+            "conversions": 9.03
+          },
+          {
+            "date": "2026-10-04",
+            "spend": 385.37,
+            "impressions": 2933,
+            "clicks": 140,
+            "conversions": 11.31
+          },
+          {
+            "date": "2026-10-05",
+            "spend": 532.1,
+            "impressions": 3945,
+            "clicks": 185,
+            "conversions": 16.03
+          },
+          {
+            "date": "2026-10-06",
+            "spend": 414.03,
+            "impressions": 2846,
+            "clicks": 143,
+            "conversions": 11.61
+          },
+          {
+            "date": "2026-10-07",
+            "spend": 407.69,
+            "impressions": 3025,
+            "clicks": 152,
+            "conversions": 13.54
+          },
+          {
+            "date": "2026-10-08",
+            "spend": 505.58,
+            "impressions": 2915,
+            "clicks": 159,
+            "conversions": 13.89
+          },
+          {
+            "date": "2026-10-09",
+            "spend": 434.19,
+            "impressions": 2668,
+            "clicks": 141,
+            "conversions": 9.12
+          },
+          {
+            "date": "2026-10-10",
+            "spend": 477.64,
+            "impressions": 3064,
+            "clicks": 169,
+            "conversions": 11.81
+          },
+          {
+            "date": "2026-10-11",
+            "spend": 391.35,
+            "impressions": 2818,
+            "clicks": 143,
+            "conversions": 12.76
+          },
+          {
+            "date": "2026-10-12",
+            "spend": 424.86,
+            "impressions": 3042,
+            "clicks": 161,
+            "conversions": 11.51
+          },
+          {
+            "date": "2026-10-13",
+            "spend": 468.3,
+            "impressions": 3433,
+            "clicks": 162,
+            "conversions": 9.84
+          },
+          {
+            "date": "2026-10-14",
+            "spend": 401.59,
+            "impressions": 2478,
+            "clicks": 129,
+            "conversions": 8.42
+          },
+          {
+            "date": "2026-10-15",
+            "spend": 540.14,
+            "impressions": 3300,
+            "clicks": 183,
+            "conversions": 15.66
+          },
+          {
+            "date": "2026-10-16",
+            "spend": 406.27,
+            "impressions": 2574,
+            "clicks": 135,
+            "conversions": 11.6
+          },
+          {
+            "date": "2026-10-17",
+            "spend": 304.74,
+            "impressions": 2047,
+            "clicks": 97,
+            "conversions": 8.04
+          },
+          {
+            "date": "2026-10-18",
+            "spend": 462.45,
+            "impressions": 3094,
+            "clicks": 173,
+            "conversions": 12.61
+          },
+          {
+            "date": "2026-10-19",
+            "spend": 468.72,
+            "impressions": 2767,
+            "clicks": 157,
+            "conversions": 12.76
+          },
+          {
+            "date": "2026-10-20",
+            "spend": 366.25,
+            "impressions": 2696,
+            "clicks": 137,
+            "conversions": 9.46
+          },
+          {
+            "date": "2026-10-21",
+            "spend": 485.82,
+            "impressions": 3472,
+            "clicks": 175,
+            "conversions": 16.91
+          },
+          {
+            "date": "2026-10-22",
+            "spend": 523.81,
+            "impressions": 3132,
+            "clicks": 165,
+            "conversions": 15.98
+          },
+          {
+            "date": "2026-10-23",
+            "spend": 558.31,
+            "impressions": 3484,
+            "clicks": 193,
+            "conversions": 18.54
+          },
+          {
+            "date": "2026-10-24",
+            "spend": 442.33,
+            "impressions": 2757,
+            "clicks": 156,
+            "conversions": 8.62
+          },
+          {
+            "date": "2026-10-25",
+            "spend": 420.42,
+            "impressions": 2507,
+            "clicks": 139,
+            "conversions": 8.09
+          },
+          {
+            "date": "2026-10-26",
+            "spend": 522.51,
+            "impressions": 3636,
+            "clicks": 198,
+            "conversions": 10.78
+          },
+          {
+            "date": "2026-10-27",
+            "spend": 418.89,
+            "impressions": 2611,
+            "clicks": 138,
+            "conversions": 8.1
+          }
+        ]
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000001",
+        "account_name": "Example Booking Software US",
+        "currency": "USD",
+        "time_zone": "America/New_York",
+        "daily": [
+          {
+            "date": "2026-09-28",
+            "spend": 176.89,
+            "impressions": 15861,
+            "clicks": 175,
+            "conversions": 4.85
+          },
+          {
+            "date": "2026-09-29",
+            "spend": 149.15,
+            "impressions": 11290,
+            "clicks": 133,
+            "conversions": 3.56
+          },
+          {
+            "date": "2026-09-30",
+            "spend": 179.65,
+            "impressions": 15756,
+            "clicks": 170,
+            "conversions": 5.83
+          },
+          {
+            "date": "2026-10-01",
+            "spend": 146.49,
+            "impressions": 11022,
+            "clicks": 127,
+            "conversions": 4.14
+          },
+          {
+            "date": "2026-10-02",
+            "spend": 169.24,
+            "impressions": 12139,
+            "clicks": 140,
+            "conversions": 5.06
+          },
+          {
+            "date": "2026-10-03",
+            "spend": 148.57,
+            "impressions": 11333,
+            "clicks": 136,
+            "conversions": 4.28
+          },
+          {
+            "date": "2026-10-04",
+            "spend": 124.96,
+            "impressions": 10377,
+            "clicks": 119,
+            "conversions": 2.84
+          },
+          {
+            "date": "2026-10-05",
+            "spend": 165.48,
+            "impressions": 13667,
+            "clicks": 149,
+            "conversions": 5.05
+          },
+          {
+            "date": "2026-10-06",
+            "spend": 151.99,
+            "impressions": 11446,
+            "clicks": 126,
+            "conversions": 3.53
+          },
+          {
+            "date": "2026-10-07",
+            "spend": 146.36,
+            "impressions": 12520,
+            "clicks": 130,
+            "conversions": 5.04
+          },
+          {
+            "date": "2026-10-08",
+            "spend": 185.85,
+            "impressions": 15611,
+            "clicks": 187,
+            "conversions": 6.59
+          },
+          {
+            "date": "2026-10-09",
+            "spend": 191.97,
+            "impressions": 18891,
+            "clicks": 189,
+            "conversions": 4.04
+          },
+          {
+            "date": "2026-10-10",
+            "spend": 189.46,
+            "impressions": 15775,
+            "clicks": 176,
+            "conversions": 6.33
+          },
+          {
+            "date": "2026-10-11",
+            "spend": 187.44,
+            "impressions": 14018,
+            "clicks": 159,
+            "conversions": 5.64
+          },
+          {
+            "date": "2026-10-12",
+            "spend": 176.5,
+            "impressions": 16346,
+            "clicks": 173,
+            "conversions": 5.49
+          },
+          {
+            "date": "2026-10-13",
+            "spend": 160.74,
+            "impressions": 13150,
+            "clicks": 143,
+            "conversions": 5.45
+          },
+          {
+            "date": "2026-10-14",
+            "spend": 168.97,
+            "impressions": 13997,
+            "clicks": 163,
+            "conversions": 5.21
+          },
+          {
+            "date": "2026-10-15",
+            "spend": 160.71,
+            "impressions": 15974,
+            "clicks": 162,
+            "conversions": 4.19
+          },
+          {
+            "date": "2026-10-16",
+            "spend": 184.51,
+            "impressions": 16997,
+            "clicks": 186,
+            "conversions": 4.76
+          },
+          {
+            "date": "2026-10-17",
+            "spend": 150.61,
+            "impressions": 12169,
+            "clicks": 144,
+            "conversions": 5.27
+          },
+          {
+            "date": "2026-10-18",
+            "spend": 117.82,
+            "impressions": 11053,
+            "clicks": 114,
+            "conversions": 2.92
+          },
+          {
+            "date": "2026-10-19",
+            "spend": 213.93,
+            "impressions": 17927,
+            "clicks": 196,
+            "conversions": 6.55
+          },
+          {
+            "date": "2026-10-20",
+            "spend": 178.22,
+            "impressions": 15814,
+            "clicks": 163,
+            "conversions": 5.48
+          },
+          {
+            "date": "2026-10-21",
+            "spend": 217.57,
+            "impressions": 16471,
+            "clicks": 189,
+            "conversions": 4.16
+          },
+          {
+            "date": "2026-10-22",
+            "spend": 153.9,
+            "impressions": 13113,
+            "clicks": 148,
+            "conversions": 5.71
+          },
+          {
+            "date": "2026-10-23",
+            "spend": 156.02,
+            "impressions": 12237,
+            "clicks": 147,
+            "conversions": 4.47
+          },
+          {
+            "date": "2026-10-24",
+            "spend": 150.64,
+            "impressions": 14384,
+            "clicks": 149,
+            "conversions": 5.58
+          },
+          {
+            "date": "2026-10-25",
+            "spend": 136.22,
+            "impressions": 12532,
+            "clicks": 126,
+            "conversions": 4.76
+          },
+          {
+            "date": "2026-10-26",
+            "spend": 227.15,
+            "impressions": 19076,
+            "clicks": 206,
+            "conversions": 4.72
+          },
+          {
+            "date": "2026-10-27",
+            "spend": 147.96,
+            "impressions": 12332,
+            "clicks": 134,
+            "conversions": 3.85
+          }
+        ]
+      },
+      {
+        "platform": "meta_ads",
+        "account_id": "act_100000000000002",
+        "account_name": "Example Booking Software UK",
+        "currency": "GBP",
+        "time_zone": "Europe/London",
+        "daily": [
+          {
+            "date": "2026-09-28",
+            "spend": 103.01,
+            "impressions": 9941,
+            "clicks": 117,
+            "conversions": 3.06
+          },
+          {
+            "date": "2026-09-29",
+            "spend": 82.72,
+            "impressions": 8214,
+            "clicks": 101,
+            "conversions": 3.14
+          },
+          {
+            "date": "2026-09-30",
+            "spend": 88.4,
+            "impressions": 7776,
+            "clicks": 92,
+            "conversions": 3.19
+          },
+          {
+            "date": "2026-10-01",
+            "spend": 91.89,
+            "impressions": 9121,
+            "clicks": 103,
+            "conversions": 2.68
+          },
+          {
+            "date": "2026-10-02",
+            "spend": 117.31,
+            "impressions": 10260,
+            "clicks": 124,
+            "conversions": 3.69
+          },
+          {
+            "date": "2026-10-03",
+            "spend": 95.72,
+            "impressions": 8112,
+            "clicks": 105,
+            "conversions": 2.66
+          },
+          {
+            "date": "2026-10-04",
+            "spend": 81.98,
+            "impressions": 7678,
+            "clicks": 83,
+            "conversions": 2.54
+          },
+          {
+            "date": "2026-10-05",
+            "spend": 90.43,
+            "impressions": 7543,
+            "clicks": 95,
+            "conversions": 2.31
+          },
+          {
+            "date": "2026-10-06",
+            "spend": 106.41,
+            "impressions": 9283,
+            "clicks": 110,
+            "conversions": 2.42
+          },
+          {
+            "date": "2026-10-07",
+            "spend": 101.53,
+            "impressions": 9058,
+            "clicks": 108,
+            "conversions": 3.18
+          },
+          {
+            "date": "2026-10-08",
+            "spend": 87.04,
+            "impressions": 7745,
+            "clicks": 95,
+            "conversions": 2.95
+          },
+          {
+            "date": "2026-10-09",
+            "spend": 84.7,
+            "impressions": 8373,
+            "clicks": 96,
+            "conversions": 2.41
+          },
+          {
+            "date": "2026-10-10",
+            "spend": 78.06,
+            "impressions": 7995,
+            "clicks": 89,
+            "conversions": 2.02
+          },
+          {
+            "date": "2026-10-11",
+            "spend": 58.74,
+            "impressions": 5189,
+            "clicks": 60,
+            "conversions": 1.66
+          },
+          {
+            "date": "2026-10-12",
+            "spend": 110.75,
+            "impressions": 11351,
+            "clicks": 136,
+            "conversions": 3.25
+          },
+          {
+            "date": "2026-10-13",
+            "spend": 98.03,
+            "impressions": 9521,
+            "clicks": 106,
+            "conversions": 3.76
+          },
+          {
+            "date": "2026-10-14",
+            "spend": 93.4,
+            "impressions": 8113,
+            "clicks": 97,
+            "conversions": 2.24
+          },
+          {
+            "date": "2026-10-15",
+            "spend": 76.46,
+            "impressions": 7169,
+            "clicks": 90,
+            "conversions": 2.41
+          },
+          {
+            "date": "2026-10-16",
+            "spend": 115.79,
+            "impressions": 9633,
+            "clicks": 127,
+            "conversions": 4.19
+          },
+          {
+            "date": "2026-10-17",
+            "spend": 93.16,
+            "impressions": 8876,
+            "clicks": 98,
+            "conversions": 3.0
+          },
+          {
+            "date": "2026-10-18",
+            "spend": 71.81,
+            "impressions": 6971,
+            "clicks": 86,
+            "conversions": 2.44
+          },
+          {
+            "date": "2026-10-19",
+            "spend": 118.33,
+            "impressions": 9260,
+            "clicks": 120,
+            "conversions": 4.06
+          },
+          {
+            "date": "2026-10-20",
+            "spend": 83.91,
+            "impressions": 7909,
+            "clicks": 103,
+            "conversions": 2.76
+          },
+          {
+            "date": "2026-10-21",
+            "spend": 79.99,
+            "impressions": 6188,
+            "clicks": 81,
+            "conversions": 2.04
+          },
+          {
+            "date": "2026-10-22",
+            "spend": 93.57,
+            "impressions": 8208,
+            "clicks": 104,
+            "conversions": 3.62
+          },
+          {
+            "date": "2026-10-23",
+            "spend": 116.28,
+            "impressions": 10215,
+            "clicks": 127,
+            "conversions": 3.56
+          },
+          {
+            "date": "2026-10-24",
+            "spend": 89.0,
+            "impressions": 7891,
+            "clicks": 98,
+            "conversions": 2.07
+          },
+          {
+            "date": "2026-10-25",
+            "spend": 76.23,
+            "impressions": 7096,
+            "clicks": 93,
+            "conversions": 3.18
+          },
+          {
+            "date": "2026-10-26",
+            "spend": 86.74,
+            "impressions": 8114,
+            "clicks": 90,
+            "conversions": 2.8
+          },
+          {
+            "date": "2026-10-27",
+            "spend": 104.74,
+            "impressions": 8389,
+            "clicks": 110,
+            "conversions": 3.79
+          }
+        ]
+      },
+      {
+        "platform": "linkedin_ads",
+        "account_id": "500000001",
+        "account_name": "Example Booking Software (LinkedIn ad account)",
+        "currency": "USD",
+        "time_zone": "America/New_York",
+        "daily": [
+          {
+            "date": "2026-09-28",
+            "spend": 223.75,
+            "impressions": 5262,
+            "clicks": 33,
+            "conversions": 1.92
+          },
+          {
+            "date": "2026-09-29",
+            "spend": 245.0,
+            "impressions": 6252,
+            "clicks": 35,
+            "conversions": 1.88
+          },
+          {
+            "date": "2026-09-30",
+            "spend": 261.79,
+            "impressions": 5412,
+            "clicks": 35,
+            "conversions": 1.82
+          },
+          {
+            "date": "2026-10-01",
+            "spend": 289.07,
+            "impressions": 5942,
+            "clicks": 39,
+            "conversions": 2.05
+          },
+          {
+            "date": "2026-10-02",
+            "spend": 212.25,
+            "impressions": 4438,
+            "clicks": 29,
+            "conversions": 1.88
+          },
+          {
+            "date": "2026-10-03",
+            "spend": 249.97,
+            "impressions": 6182,
+            "clicks": 37,
+            "conversions": 1.7
+          },
+          {
+            "date": "2026-10-04",
+            "spend": 183.42,
+            "impressions": 3571,
+            "clicks": 22,
+            "conversions": 1.4
+          },
+          {
+            "date": "2026-10-05",
+            "spend": 217.88,
+            "impressions": 4895,
+            "clicks": 31,
+            "conversions": 1.25
+          },
+          {
+            "date": "2026-10-06",
+            "spend": 267.63,
+            "impressions": 5776,
+            "clicks": 35,
+            "conversions": 1.82
+          },
+          {
+            "date": "2026-10-07",
+            "spend": 290.83,
+            "impressions": 6967,
+            "clicks": 40,
+            "conversions": 1.89
+          },
+          {
+            "date": "2026-10-08",
+            "spend": 283.66,
+            "impressions": 5449,
+            "clicks": 35,
+            "conversions": 1.44
+          },
+          {
+            "date": "2026-10-09",
+            "spend": 263.53,
+            "impressions": 6217,
+            "clicks": 36,
+            "conversions": 1.64
+          },
+          {
+            "date": "2026-10-10",
+            "spend": 212.53,
+            "impressions": 4991,
+            "clicks": 30,
+            "conversions": 1.1
+          },
+          {
+            "date": "2026-10-11",
+            "spend": 204.41,
+            "impressions": 4440,
+            "clicks": 29,
+            "conversions": 1.58
+          },
+          {
+            "date": "2026-10-12",
+            "spend": 277.07,
+            "impressions": 6298,
+            "clicks": 36,
+            "conversions": 2.3
+          },
+          {
+            "date": "2026-10-13",
+            "spend": 225.24,
+            "impressions": 4554,
+            "clicks": 30,
+            "conversions": 1.06
+          },
+          {
+            "date": "2026-10-14",
+            "spend": 293.04,
+            "impressions": 6531,
+            "clicks": 40,
+            "conversions": 2.26
+          },
+          {
+            "date": "2026-10-15",
+            "spend": 235.94,
+            "impressions": 5658,
+            "clicks": 32,
+            "conversions": 1.61
+          },
+          {
+            "date": "2026-10-16",
+            "spend": 283.81,
+            "impressions": 6021,
+            "clicks": 37,
+            "conversions": 2.32
+          },
+          {
+            "date": "2026-10-17",
+            "spend": 243.67,
+            "impressions": 5546,
+            "clicks": 30,
+            "conversions": 1.91
+          },
+          {
+            "date": "2026-10-18",
+            "spend": 205.11,
+            "impressions": 4075,
+            "clicks": 25,
+            "conversions": 1.07
+          },
+          {
+            "date": "2026-10-19",
+            "spend": 315.55,
+            "impressions": 7420,
+            "clicks": 45,
+            "conversions": 1.82
+          },
+          {
+            "date": "2026-10-20",
+            "spend": 246.97,
+            "impressions": 5667,
+            "clicks": 31,
+            "conversions": 1.79
+          },
+          {
+            "date": "2026-10-21",
+            "spend": 216.97,
+            "impressions": 3943,
+            "clicks": 26,
+            "conversions": 1.39
+          },
+          {
+            "date": "2026-10-22",
+            "spend": 256.0,
+            "impressions": 6032,
+            "clicks": 36,
+            "conversions": 1.93
+          },
+          {
+            "date": "2026-10-23",
+            "spend": 308.63,
+            "impressions": 6739,
+            "clicks": 42,
+            "conversions": 2.46
+          },
+          {
+            "date": "2026-10-24",
+            "spend": 246.27,
+            "impressions": 6154,
+            "clicks": 36,
+            "conversions": 1.44
+          },
+          {
+            "date": "2026-10-25",
+            "spend": 254.61,
+            "impressions": 5594,
+            "clicks": 31,
+            "conversions": 1.63
+          },
+          {
+            "date": "2026-10-26",
+            "spend": 211.65,
+            "impressions": 4289,
+            "clicks": 28,
+            "conversions": 1.13
+          },
+          {
+            "date": "2026-10-27",
+            "spend": 324.25,
+            "impressions": 6492,
+            "clicks": 40,
+            "conversions": 1.46
+          }
+        ]
+      },
+      {
+        "platform": "tiktok_ads",
+        "account_id": "7000000000000000001",
+        "account_name": "Example Booking Software (TikTok ad account)",
+        "currency": "USD",
+        "time_zone": "America/New_York",
+        "daily": [
+          {
+            "date": "2026-09-28",
+            "spend": 113.03,
+            "impressions": 25618,
+            "clicks": 211,
+            "conversions": 1.78
+          },
+          {
+            "date": "2026-09-29",
+            "spend": 156.16,
+            "impressions": 32963,
+            "clicks": 296,
+            "conversions": 3.09
+          },
+          {
+            "date": "2026-09-30",
+            "spend": 152.54,
+            "impressions": 32238,
+            "clicks": 288,
+            "conversions": 4.14
+          },
+          {
+            "date": "2026-10-01",
+            "spend": 102.55,
+            "impressions": 21966,
+            "clicks": 190,
+            "conversions": 2.3
+          },
+          {
+            "date": "2026-10-02",
+            "spend": 129.88,
+            "impressions": 30712,
+            "clicks": 260,
+            "conversions": 3.71
+          },
+          {
+            "date": "2026-10-03",
+            "spend": 88.09,
+            "impressions": 19648,
+            "clicks": 176,
+            "conversions": 1.74
+          },
+          {
+            "date": "2026-10-04",
+            "spend": 109.12,
+            "impressions": 21174,
+            "clicks": 198,
+            "conversions": 1.69
+          },
+          {
+            "date": "2026-10-05",
+            "spend": 103.55,
+            "impressions": 21156,
+            "clicks": 205,
+            "conversions": 3.08
+          },
+          {
+            "date": "2026-10-06",
+            "spend": 150.04,
+            "impressions": 31506,
+            "clicks": 257,
+            "conversions": 2.88
+          },
+          {
+            "date": "2026-10-07",
+            "spend": 150.12,
+            "impressions": 35647,
+            "clicks": 300,
+            "conversions": 3.81
+          },
+          {
+            "date": "2026-10-08",
+            "spend": 153.29,
+            "impressions": 33240,
+            "clicks": 294,
+            "conversions": 4.3
+          },
+          {
+            "date": "2026-10-09",
+            "spend": 95.77,
+            "impressions": 19464,
+            "clicks": 183,
+            "conversions": 2.78
+          },
+          {
+            "date": "2026-10-10",
+            "spend": 99.87,
+            "impressions": 18726,
+            "clicks": 168,
+            "conversions": 1.65
+          },
+          {
+            "date": "2026-10-11",
+            "spend": 86.14,
+            "impressions": 17472,
+            "clicks": 145,
+            "conversions": 1.22
+          },
+          {
+            "date": "2026-10-12",
+            "spend": 95.75,
+            "impressions": 20184,
+            "clicks": 192,
+            "conversions": 2.97
+          },
+          {
+            "date": "2026-10-13",
+            "spend": 102.93,
+            "impressions": 17860,
+            "clicks": 175,
+            "conversions": 1.81
+          },
+          {
+            "date": "2026-10-14",
+            "spend": 115.2,
+            "impressions": 21861,
+            "clicks": 205,
+            "conversions": 2.26
+          },
+          {
+            "date": "2026-10-15",
+            "spend": 153.55,
+            "impressions": 33268,
+            "clicks": 282,
+            "conversions": 4.16
+          },
+          {
+            "date": "2026-10-16",
+            "spend": 111.65,
+            "impressions": 20080,
+            "clicks": 194,
+            "conversions": 2.97
+          },
+          {
+            "date": "2026-10-17",
+            "spend": 112.11,
+            "impressions": 21715,
+            "clicks": 186,
+            "conversions": 2.0
+          },
+          {
+            "date": "2026-10-18",
+            "spend": 96.81,
+            "impressions": 20255,
+            "clicks": 181,
+            "conversions": 2.3
+          },
+          {
+            "date": "2026-10-19",
+            "spend": 98.33,
+            "impressions": 20139,
+            "clicks": 171,
+            "conversions": 2.08
+          },
+          {
+            "date": "2026-10-20",
+            "spend": 139.95,
+            "impressions": 26707,
+            "clicks": 254,
+            "conversions": 3.43
+          },
+          {
+            "date": "2026-10-21",
+            "spend": 139.05,
+            "impressions": 28425,
+            "clicks": 247,
+            "conversions": 3.79
+          },
+          {
+            "date": "2026-10-22",
+            "spend": 151.52,
+            "impressions": 31334,
+            "clicks": 256,
+            "conversions": 2.77
+          },
+          {
+            "date": "2026-10-23",
+            "spend": 122.62,
+            "impressions": 25363,
+            "clicks": 219,
+            "conversions": 2.69
+          },
+          {
+            "date": "2026-10-24",
+            "spend": 118.65,
+            "impressions": 22123,
+            "clicks": 210,
+            "conversions": 2.05
+          },
+          {
+            "date": "2026-10-25",
+            "spend": 105.09,
+            "impressions": 20351,
+            "clicks": 180,
+            "conversions": 1.93
+          },
+          {
+            "date": "2026-10-26",
+            "spend": 121.19,
+            "impressions": 24386,
+            "clicks": 218,
+            "conversions": 1.95
+          },
+          {
+            "date": "2026-10-27",
+            "spend": 106.23,
+            "impressions": 20141,
+            "clicks": 184,
+            "conversions": 2.32
+          }
+        ]
+      }
+    ],
+    "question_new_paid_subscriptions": {
+      "query": "conversions_crm, status 'paid', created in the date range (New York time), by platform",
+      "rows": [
+        {
+          "platform": "google_ads",
+          "new_paid_subscriptions": 61
+        },
+        {
+          "platform": "meta_ads",
+          "new_paid_subscriptions": 29
+        },
+        {
+          "platform": "linkedin_ads",
+          "new_paid_subscriptions": 11
+        },
+        {
+          "platform": "tiktok_ads",
+          "new_paid_subscriptions": 6
+        }
+      ]
+    }
+  }
+}

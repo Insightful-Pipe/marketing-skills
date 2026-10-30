@@ -1,0 +1,768 @@
+{
+  "header": {
+    "team": "Example Booking Software marketing team (4 people)",
+    "run_date": "2026-10-28",
+    "sources": [
+      "task list (pasted)",
+      "time log, Google Sheets, 2026-09-30 to 2026-10-27",
+      "connection inventory (query_contexts accounts)",
+      "available_actions for 9 platforms",
+      "Social Media Scheduler list_scheduled_posts, last 28 days"
+    ],
+    "defaults": [
+      "Hours saved use the planning shares 0.8 (Automate) and 0.5 (Assist); replace them with the four-run logs"
+    ],
+    "open_questions": [
+      "Who approves customer emails? (T8 waits until one is named)",
+      "How long does building UTM links take? (T11, ask Maya Cohen)"
+    ]
+  },
+  "summary": {
+    "tasks": 12,
+    "by_decision": {
+      "Assist": [
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T8"
+      ],
+      "Automate": [
+        "T1",
+        "T2"
+      ],
+      "Keep human": [
+        "T10",
+        "T12"
+      ],
+      "Keep human for now": [
+        "T9"
+      ],
+      "Leave as is": [
+        "T11"
+      ]
+    },
+    "hours_now_a_year_counted": 745.0,
+    "hours_saved_a_year_estimate": 336.1,
+    "not_counted": [
+      "T11"
+    ],
+    "estimate_note": "Hours saved are an estimate from the team's logged minutes and the planning shares, not a measurement."
+  },
+  "task_table": [
+    {
+      "id": "T1",
+      "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+      "owner": "Leo Park",
+      "runs_a_year": 52,
+      "minutes_a_run": 94.0,
+      "minutes_from": "median of 5 log entries",
+      "F": 2,
+      "T": 2,
+      "R": 1,
+      "D": 2,
+      "decision": "Automate",
+      "rule": "4: R 1 and D 2",
+      "feasibility": "ready",
+      "sources": [
+        {
+          "platform": "google-ads",
+          "action": "gaql",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "facebook-ads",
+          "action": "get_insights_adaccount",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "linkedin-ads",
+          "action": "get_account_analytics",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "google-sheets",
+          "action": "update_cells",
+          "use": "write",
+          "status": "ready"
+        },
+        {
+          "platform": "slack",
+          "action": "post_message",
+          "use": "write",
+          "status": "ready"
+        }
+      ],
+      "hours_now_a_year": 81.5,
+      "hours_saved_a_year": 65.2
+    },
+    {
+      "id": "T2",
+      "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+      "owner": "Leo Park",
+      "runs_a_year": 250,
+      "minutes_a_run": 12.0,
+      "minutes_from": "median of 20 log entries",
+      "F": 3,
+      "T": 0,
+      "R": 1,
+      "D": 2,
+      "decision": "Automate",
+      "rule": "4: R 1 and D 2",
+      "feasibility": "ready",
+      "sources": [
+        {
+          "platform": "google-ads",
+          "action": "gaql",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "facebook-ads",
+          "action": "get_insights_adaccount",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "linkedin-ads",
+          "action": "get_account_analytics",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "slack",
+          "action": "post_message",
+          "use": "write",
+          "status": "ready"
+        }
+      ],
+      "hours_now_a_year": 50.0,
+      "hours_saved_a_year": 40.0
+    },
+    {
+      "id": "T3",
+      "task": "Write the monthly marketing report for leadership",
+      "owner": "Dana Whitfield",
+      "runs_a_year": 12,
+      "minutes_a_run": 209.0,
+      "minutes_from": "median of 1 log entries",
+      "F": 1,
+      "T": 3,
+      "R": 1,
+      "D": 1,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "no connector",
+      "sources": [
+        {
+          "platform": "google-analytics",
+          "action": "get_report",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "google-ads",
+          "action": "gaql",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "facebook-ads",
+          "action": "get_insights_adaccount",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "linkedin-ads",
+          "action": "get_account_analytics",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "klaviyo",
+          "action": "get_campaign_report",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "outside:HubSpot",
+          "action": "pipeline export",
+          "use": "read",
+          "status": "no connector"
+        }
+      ],
+      "hours_now_a_year": 41.8,
+      "hours_saved_a_year": 20.9
+    },
+    {
+      "id": "T4",
+      "task": "Review Google Ads search terms and add negative keywords",
+      "owner": "Leo Park",
+      "runs_a_year": 52,
+      "minutes_a_run": 66.0,
+      "minutes_from": "median of 4 log entries",
+      "F": 2,
+      "T": 2,
+      "R": 3,
+      "D": 2,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "ready",
+      "sources": [
+        {
+          "platform": "google-ads",
+          "action": "search_terms_report",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "google-ads",
+          "action": "add_negative_keywords",
+          "use": "write",
+          "status": "ready"
+        }
+      ],
+      "hours_now_a_year": 57.2,
+      "hours_saved_a_year": 28.6
+    },
+    {
+      "id": "T5",
+      "task": "Review Meta ad results and pause tired ads",
+      "owner": "Leo Park",
+      "runs_a_year": 52,
+      "minutes_a_run": 41.5,
+      "minutes_from": "median of 4 log entries",
+      "F": 2,
+      "T": 1,
+      "R": 3,
+      "D": 2,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "read only",
+      "sources": [
+        {
+          "platform": "facebook-ads",
+          "action": "get_insights_ad",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "facebook-ads",
+          "action": "update_ad",
+          "use": "write",
+          "status": "read only"
+        }
+      ],
+      "hours_now_a_year": 36.0,
+      "hours_saved_a_year": 18.0
+    },
+    {
+      "id": "T6",
+      "task": "Draft and schedule LinkedIn and X posts",
+      "owner": "Nina Alvarez",
+      "runs_a_year": 156,
+      "minutes_a_run": 37.5,
+      "minutes_from": "median of 12 log entries",
+      "F": 2,
+      "T": 1,
+      "R": 2,
+      "D": 2,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "ready",
+      "sources": [
+        {
+          "platform": "google-sheets",
+          "action": "query_sheet_data",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "social-media-scheduler",
+          "action": "schedule_linkedin_post",
+          "use": "write",
+          "status": "ready"
+        },
+        {
+          "platform": "social-media-scheduler",
+          "action": "schedule_x_post",
+          "use": "write",
+          "status": "ready"
+        }
+      ],
+      "hours_now_a_year": 97.5,
+      "hours_saved_a_year": 48.8
+    },
+    {
+      "id": "T7",
+      "task": "Write one blog post from the content calendar",
+      "owner": "Nina Alvarez",
+      "runs_a_year": 52,
+      "minutes_a_run": 200.0,
+      "minutes_from": "median of 4 log entries",
+      "F": 2,
+      "T": 3,
+      "R": 2,
+      "D": 2,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "not connected",
+      "sources": [
+        {
+          "platform": "google-search-console",
+          "action": "search_analytics",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "google-sheets",
+          "action": "query_sheet_data",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "wordpress",
+          "action": "create_post",
+          "use": "write",
+          "status": "not connected"
+        }
+      ],
+      "hours_now_a_year": 173.3,
+      "hours_saved_a_year": 86.7
+    },
+    {
+      "id": "T8",
+      "task": "Build the weekly customer newsletter in Klaviyo",
+      "owner": "Nina Alvarez",
+      "runs_a_year": 52,
+      "minutes_a_run": 64.5,
+      "minutes_from": "median of 4 log entries",
+      "F": 2,
+      "T": 2,
+      "R": 2,
+      "D": 2,
+      "decision": "Assist",
+      "rule": "5: everything else",
+      "feasibility": "ready",
+      "sources": [
+        {
+          "platform": "klaviyo",
+          "action": "get_campaign_report",
+          "use": "read",
+          "status": "ready"
+        },
+        {
+          "platform": "klaviyo",
+          "action": "create_campaign",
+          "use": "write",
+          "status": "ready"
+        }
+      ],
+      "open_question": "No approver named for customer emails",
+      "hours_now_a_year": 55.9,
+      "hours_saved_a_year": 27.9
+    },
+    {
+      "id": "T9",
+      "task": "Route new demo requests to sales in HubSpot",
+      "owner": "Maya Cohen",
+      "runs_a_year": 250,
+      "minutes_a_run": 18.5,
+      "minutes_from": "median of 20 log entries",
+      "F": 3,
+      "T": 1,
+      "R": 3,
+      "D": 0,
+      "decision": "Keep human for now",
+      "rule": "2: data access 0",
+      "feasibility": "not needed",
+      "sources": [
+        {
+          "platform": "outside:HubSpot",
+          "action": "demo requests",
+          "use": "read",
+          "status": "no connector"
+        }
+      ],
+      "hours_now_a_year": 77.1,
+      "hours_saved_a_year": 0.0
+    },
+    {
+      "id": "T10",
+      "task": "Plan the next quarter and split the budget across channels",
+      "owner": "Dana Whitfield",
+      "runs_a_year": 4,
+      "minutes_a_run": 360.0,
+      "minutes_from": "stated by the owner (not in the 4-week log)",
+      "F": 0,
+      "T": 3,
+      "R": 3,
+      "D": 1,
+      "decision": "Keep human",
+      "rule": "1: judgment",
+      "feasibility": "not needed",
+      "sources": [],
+      "hours_now_a_year": 24.0,
+      "hours_saved_a_year": 0.0
+    },
+    {
+      "id": "T11",
+      "task": "Build UTM links for each launch",
+      "owner": "Maya Cohen",
+      "runs_a_year": 24,
+      "minutes_a_run": null,
+      "minutes_from": "ask the owner",
+      "F": 1,
+      "T": 0,
+      "R": 1,
+      "D": 2,
+      "decision": "Leave as is",
+      "rule": "3: F + T is 1",
+      "provisional": "minutes unknown, ask Maya Cohen",
+      "feasibility": "not needed",
+      "sources": [
+        {
+          "platform": "google-sheets",
+          "action": "query_sheet_data",
+          "use": "read",
+          "status": "ready"
+        }
+      ],
+      "hours_now_a_year": "not counted",
+      "hours_saved_a_year": "not counted"
+    },
+    {
+      "id": "T12",
+      "task": "Hold calls with partner agencies and integration partners",
+      "owner": "Dana Whitfield",
+      "runs_a_year": 52,
+      "minutes_a_run": 58.5,
+      "minutes_from": "median of 4 log entries",
+      "F": 2,
+      "T": 2,
+      "R": 1,
+      "D": 0,
+      "decision": "Keep human",
+      "rule": "1: judgment",
+      "feasibility": "not needed",
+      "sources": [],
+      "hours_now_a_year": 50.7,
+      "hours_saved_a_year": 0.0
+    }
+  ],
+  "scheduler_check_T6": {
+    "posts_published_or_scheduled": 12,
+    "by_platform": {
+      "linkedin": 8,
+      "x": 4
+    },
+    "per_week": 3.0,
+    "stated_per_week": 3,
+    "agrees": true,
+    "drafts": 1
+  },
+  "connection_check": [
+    {
+      "platform": "facebook-ads",
+      "access": "read",
+      "status": "read only",
+      "tasks": [
+        "T1",
+        "T2",
+        "T3",
+        "T5"
+      ],
+      "what_to_do": "reads work; the planned write needs a Read & Write connection, so until then the owner makes the change by hand"
+    },
+    {
+      "platform": "google-ads",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "google-analytics",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T3"
+      ],
+      "what_to_do": "no task writes here: switch the connection to read only"
+    },
+    {
+      "platform": "google-search-console",
+      "access": "read",
+      "status": "ready",
+      "tasks": [
+        "T7"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "google-sheets",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T1",
+        "T6",
+        "T7"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "klaviyo",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T3",
+        "T8"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "linkedin-ads",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "what_to_do": "no task writes here: switch the connection to read only"
+    },
+    {
+      "platform": "HubSpot (no connector)",
+      "access": null,
+      "status": "no connector",
+      "tasks": [
+        "T3"
+      ],
+      "what_to_do": "no connector: the owner pastes an export each run"
+    },
+    {
+      "platform": "slack",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T1",
+        "T2"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "social-media-scheduler",
+      "access": "full",
+      "status": "ready",
+      "tasks": [
+        "T6"
+      ],
+      "what_to_do": "nothing to change"
+    },
+    {
+      "platform": "wordpress",
+      "access": null,
+      "status": "not connected",
+      "tasks": [
+        "T7"
+      ],
+      "what_to_do": "connect it to let Claude prepare the post there; until then the owner publishes by hand"
+    }
+  ],
+  "build_specs": [
+    {
+      "id": "T1",
+      "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+      "decision": "Automate",
+      "hours_saved_a_year": 65.2,
+      "trigger": "every Monday at 08:00 America/New_York",
+      "inputs": [
+        "google-ads gaql: last week and the week before, by campaign (ready)",
+        "facebook-ads get_insights_adaccount: same weeks, level campaign (ready; read access is enough)",
+        "linkedin-ads get_account_analytics: same weeks (ready)"
+      ],
+      "steps": [
+        "read: pull the three platforms for both weeks",
+        "draft: one table per platform (spend, clicks, conversions, cost per conversion, change on the week) and three lines on what moved",
+        "write: update_cells into the tab Weekly paid in the marketing ops sheet (approved once at setup by Leo Park)",
+        "write: post_message with the three lines and the sheet link to #marketing (approved once at setup by Leo Park)"
+      ],
+      "output": "the Weekly paid tab and a message in #marketing",
+      "review_gate": "Leo Park reads the message by 10:00 Monday; the channel and the tab were approved once at setup",
+      "when_it_fails": "a failed call posts 'not run: <platform> <action>' and skips both writes; a platform with no spend is shown as no spend, never left out",
+      "owner": "Leo Park",
+      "stop_it": "delete the Monday schedule; the sheet and channel stay as they are",
+      "measure": "Leo logs minutes for the first four Mondays; working means he changed no number and no conclusion",
+      "tool": "marketing-performance-report, if installed"
+    },
+    {
+      "id": "T2",
+      "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+      "decision": "Automate",
+      "hours_saved_a_year": 40.0,
+      "trigger": "every business day at 09:00 America/New_York",
+      "inputs": [
+        "google-ads gaql: month-to-date cost (ready)",
+        "facebook-ads get_insights_adaccount: month-to-date spend (ready)",
+        "linkedin-ads get_account_analytics: month-to-date spend (ready)",
+        "the monthly plan per platform from the team"
+      ],
+      "steps": [
+        "read: month-to-date spend per platform",
+        "draft: compare with the plan pro rata to the day, using the pacing band set by Leo Park (plus or minus 10%)",
+        "write: post_message to #marketing only when a platform is outside the band (approved once at setup by Leo Park)"
+      ],
+      "output": "a message in #marketing on the days a platform is off pace; nothing on other days",
+      "review_gate": "Leo Park acts on any message the same day; budget changes stay with him and Dana Whitfield",
+      "when_it_fails": "a failed call posts 'pacing not checked: <platform>' so silence never means on pace by mistake",
+      "owner": "Leo Park",
+      "stop_it": "delete the daily schedule",
+      "measure": "Leo logs minutes for the first four runs; working means no off-pace day was missed",
+      "tool": "spend-pacing-monitor, if installed"
+    },
+    {
+      "id": "T7",
+      "task": "Write one blog post from the content calendar",
+      "decision": "Assist",
+      "hours_saved_a_year": 86.7,
+      "trigger": "Wednesday at 09:00 America/New_York, when the content calendar row for the week is marked Brief ready",
+      "inputs": [
+        "google-sheets query_sheet_data: the week's row in the content calendar (ready)",
+        "google-search-console search_analytics: queries for the topic, last 28 days (ready; read access is enough)"
+      ],
+      "steps": [
+        "read: the brief and the queries",
+        "draft: outline, then the full post in the brand voice, with every product claim from the approved list",
+        "hand-off: Nina Alvarez edits; Dana Whitfield approves; Nina publishes in WordPress by hand (WordPress isn't connected, so there is no create_post step)"
+      ],
+      "output": "a draft post for Nina to edit",
+      "review_gate": "Nina edits by Thursday; Dana Whitfield approves before it goes live",
+      "when_it_fails": "no Search Console rows for the topic: the draft says so and works from the brief alone",
+      "owner": "Nina Alvarez",
+      "stop_it": "stop marking rows Brief ready, or delete the schedule",
+      "measure": "Nina logs minutes for the first four posts, editing included",
+      "tool": "content-brief-writer and copywriting, if installed"
+    },
+    {
+      "id": "T6",
+      "task": "Draft and schedule LinkedIn and X posts",
+      "decision": "Assist",
+      "hours_saved_a_year": 48.8,
+      "trigger": "Monday, Wednesday and Friday at 08:30 America/New_York",
+      "inputs": [
+        "google-sheets query_sheet_data: the social rows of the content calendar (ready)"
+      ],
+      "steps": [
+        "read: the day's calendar row",
+        "draft: the post for LinkedIn or X in the brand voice",
+        "write: schedule_linkedin_post or schedule_x_post with status draft (ready), so nothing publishes",
+        "hand-off: Nina Alvarez edits the draft and Dana Whitfield approves; Nina sets it to scheduled in the scheduler"
+      ],
+      "output": "a draft post in the scheduler",
+      "review_gate": "Dana Whitfield approves each post before Nina schedules it",
+      "when_it_fails": "a failed write leaves the draft text in the run report for Nina to paste",
+      "owner": "Nina Alvarez",
+      "stop_it": "delete the schedule; drafts already in the scheduler stay as drafts",
+      "measure": "Nina logs minutes for the first four posts; the scheduler count per week should stay at 3",
+      "tool": "social-content and content-calendar-scheduler, if installed"
+    },
+    {
+      "id": "T4",
+      "task": "Review Google Ads search terms and add negative keywords",
+      "decision": "Assist",
+      "hours_saved_a_year": 28.6,
+      "trigger": "every Tuesday at 09:00 America/New_York",
+      "inputs": [
+        "google-ads search_terms_report: last 7 days (ready)"
+      ],
+      "steps": [
+        "read: search terms with spend",
+        "draft: terms that spent with no conversion, grouped by intent, each with its spend; terms that name the service go on a watch list, not the negative list",
+        "write: add_negative_keywords with the exact list, only after Dana Whitfield says yes to it (ready: full access)"
+      ],
+      "output": "a proposed negative list, then the confirmation of what was added",
+      "review_gate": "Dana Whitfield approves the exact list and match types every run",
+      "when_it_fails": "a failed read stops the run; a failed write reports which terms were not added",
+      "owner": "Leo Park",
+      "stop_it": "delete the schedule",
+      "measure": "Leo logs minutes for four runs; working means Dana removed no term for being wrong",
+      "tool": "search-term-gold-miner and negative-keyword-implementer, if installed"
+    }
+  ],
+  "other_tasks_one_line": [
+    {
+      "id": "T8",
+      "task": "Build the weekly customer newsletter in Klaviyo",
+      "summary": "Assist, waiting: Claude would build the newsletter as a Klaviyo draft with create_campaign; send_campaign is never part of it. No approver is named for customer emails, so it waits in wave 3. Skill: newsletter, if installed."
+    },
+    {
+      "id": "T3",
+      "task": "Write the monthly marketing report for leadership",
+      "summary": "Assist: Claude pulls GA4, Google Ads, Meta, LinkedIn Ads and Klaviyo for the month and drafts the report; Dana Whitfield pastes the HubSpot pipeline export (no connector) and edits. Skill: month-end-report-generator, if installed."
+    },
+    {
+      "id": "T5",
+      "task": "Review Meta ad results and pause tired ads",
+      "summary": "Assist: Claude reads get_insights_ad and lists tired ads with the numbers; the Meta connection is read only, so Leo Park pauses them in Ads Manager after Dana Whitfield approves. Skill: ad-creative-fatigue-detector, if installed."
+    }
+  ],
+  "ai_use_policy": {
+    "tools": [
+      "Claude with the MCP connections listed in the connection check.",
+      "Read & Write and written to by this plan: google-ads, google-sheets, klaviyo, slack, social-media-scheduler.",
+      "Read & Write but nothing in this plan writes there, so switch to read only: linkedin-ads, google-analytics.",
+      "Read only and enough: google-search-console.",
+      "Read only, so the planned write stays a hand-off: facebook-ads (T5: Leo Park pauses ads by hand after Dana Whitfield approves; granting Read & Write is Dana's call)."
+    ],
+    "data": "Demo request contact details stay in HubSpot. Routing them (T9) stays with Maya Cohen; nobody pastes lead or customer personal data into a prompt.",
+    "brand_and_claims": "Every draft follows the brand voice. Product claims come only from the approved claims list; a new claim goes to Dana Whitfield.",
+    "disclosure": "Follow each platform's rules for labelling AI-made content. Never publish an AI-made review, testimonial or customer quote.",
+    "approvals": {
+      "R0": "none",
+      "R1": "the owner reads it before sharing (T1, T2, T3)",
+      "R2": "Dana Whitfield before a post or blog goes live (T6, T7); customer emails need an approver named (T8)",
+      "R3": "Dana Whitfield on the exact change, every run (T4, T5)"
+    },
+    "records": "Approvals are logged in the Approvals tab of the marketing ops sheet. Dana Whitfield reviews this policy every quarter (next: 2027-01-28) and after any incident.",
+    "not_legal_advice": "A working policy for the team, not legal advice; health, finance or legal claims need the company's own review."
+  },
+  "rollout": {
+    "wave_1": [
+      "T1",
+      "T2"
+    ],
+    "wave_2": [
+      "T7",
+      "T6",
+      "T4",
+      "T3",
+      "T5"
+    ],
+    "wave_3": [
+      "T8"
+    ],
+    "pilot_exit": "four runs where the reviewer changed no number and no decision; fail that twice and the task goes back to Assist or human"
+  },
+  "go_deeper": [
+    "Write the weekly paid report process up step by step before automating it: marketing-sop-builder, if installed",
+    "Put the Monday report on a schedule: orchestrator, if installed",
+    "Team hours and capacity: marketing-capacity-planner, if installed",
+    "The tools themselves and what they cost: marketing-ops-stack-audit, if installed"
+  ],
+  "save_to_sheets": {
+    "status": "offered, not run",
+    "actions": [
+      "create_sheet (title 'AI plan 2026-10-28')",
+      "update_cells (range A1:O13)"
+    ]
+  }
+}

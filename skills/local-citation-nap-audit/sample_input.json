@@ -1,0 +1,451 @@
+{
+  "note": "Example data: an invented dental practice, not a real business. Every number in expected_output.json follows from this input. Directory names are real platforms; every listing, address, phone number and place id is invented.",
+  "request": "Hey Claude, I just added the \"local-citation-nap-audit\" skill. Check that my business name, address, phone, website and hours match everywhere I'm listed, and tell me what to fix first. We were Calder Point Smile Studio at 22 Mill St Ste 4 until 2024, with the number (503) 555-0109. The (503) 555-0177 number on Yelp is our call-tracking line. Apple Maps shows the details below.",
+  "run_date": "2026-10-30",
+  "business": "Calder Point Family Dental, an invented dental practice in the invented town of Calder Point, Oregon",
+  "connectors": [
+    "google-my-business",
+    "crawler",
+    "facebook-pages",
+    "dataforseo"
+  ],
+  "answers": {
+    "old_names": [
+      "Calder Point Smile Studio"
+    ],
+    "old_addresses": [
+      "22 Mill St Ste 4, Calder Point, OR 97399"
+    ],
+    "old_phones": [
+      "(503) 555-0109"
+    ],
+    "tracking_numbers": [
+      {
+        "number": "(503) 555-0177",
+        "where": "Yelp"
+      }
+    ],
+    "category_city": "dentist calder point",
+    "pasted_listings": {
+      "Apple Maps": {
+        "name": "Calder Point Family Dental",
+        "address": "1180 Alder Crest Ave, Ste 200, Calder Point, OR 97399",
+        "phone": "(503) 555-0142",
+        "website": "https://calderpoint-dental.example",
+        "hours": "Mon-Thu 08:00-17:00; Fri 08:00-14:00"
+      }
+    }
+  },
+  "data_pulled": {
+    "get_location_details": {
+      "title": "Calder Point Family Dental",
+      "storefrontAddress": {
+        "regionCode": "US",
+        "postalCode": "97399",
+        "administrativeArea": "OR",
+        "locality": "Calder Point",
+        "addressLines": [
+          "1180 Alder Crest Avenue",
+          "Suite 200"
+        ]
+      },
+      "phoneNumbers": {
+        "primaryPhone": "(503) 555-0142"
+      },
+      "websiteUri": "https://www.calderpoint-dental.example/",
+      "regularHours": {
+        "periods": [
+          {
+            "openDay": "MONDAY",
+            "openTime": {
+              "hours": 8
+            },
+            "closeDay": "MONDAY",
+            "closeTime": {
+              "hours": 17
+            }
+          },
+          {
+            "openDay": "TUESDAY",
+            "openTime": {
+              "hours": 8
+            },
+            "closeDay": "TUESDAY",
+            "closeTime": {
+              "hours": 17
+            }
+          },
+          {
+            "openDay": "WEDNESDAY",
+            "openTime": {
+              "hours": 8
+            },
+            "closeDay": "WEDNESDAY",
+            "closeTime": {
+              "hours": 17
+            }
+          },
+          {
+            "openDay": "THURSDAY",
+            "openTime": {
+              "hours": 8
+            },
+            "closeDay": "THURSDAY",
+            "closeTime": {
+              "hours": 17
+            }
+          },
+          {
+            "openDay": "FRIDAY",
+            "openTime": {
+              "hours": 8
+            },
+            "closeDay": "FRIDAY",
+            "closeTime": {
+              "hours": 14
+            }
+          }
+        ]
+      },
+      "categories": {
+        "primaryCategory": {
+          "displayName": "Dentist"
+        }
+      },
+      "openInfo": {
+        "status": "OPEN"
+      },
+      "metadata": {
+        "placeId": "PLACE-0001",
+        "mapsUri": "https://maps.google.com/?cid=1000000000000000001"
+      }
+    },
+    "structured_data_checker": [
+      {
+        "url": "https://www.calderpoint-dental.example/",
+        "schemas": [
+          {
+            "type": "Dentist",
+            "format": "json-ld",
+            "data": {
+              "@type": "Dentist",
+              "name": "Calder Point Family Dental",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1180 Alder Crest Ave, Ste 200",
+                "addressLocality": "Calder Point",
+                "addressRegion": "OR",
+                "postalCode": "97399"
+              },
+              "telephone": "+1-503-555-0109",
+              "url": "https://www.calderpoint-dental.example/",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday"
+                  ],
+                  "opens": "08:00",
+                  "closes": "17:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Friday"
+                  ],
+                  "opens": "08:00",
+                  "closes": "14:00"
+                }
+              ]
+            }
+          },
+          {
+            "type": "WebSite",
+            "format": "json-ld",
+            "data": {
+              "@type": "WebSite",
+              "name": "Calder Point Family Dental",
+              "url": "https://www.calderpoint-dental.example/"
+            }
+          }
+        ],
+        "types": [
+          "Dentist",
+          "WebSite"
+        ],
+        "has_structured_data": true
+      },
+      {
+        "url": "https://www.calderpoint-dental.example/contact",
+        "schemas": [
+          {
+            "type": "Dentist",
+            "format": "json-ld",
+            "data": {
+              "@type": "Dentist",
+              "name": "Calder Point Family Dental",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1180 Alder Crest Avenue, Suite 200",
+                "addressLocality": "Calder Point",
+                "addressRegion": "OR",
+                "postalCode": "97399"
+              },
+              "telephone": "+1-503-555-0142",
+              "url": "https://www.calderpoint-dental.example/"
+            }
+          }
+        ],
+        "types": [
+          "Dentist"
+        ],
+        "has_structured_data": true
+      }
+    ],
+    "facebook_get_page_info": {
+      "name": "Calder Point Family Dental",
+      "phone": "+1 503-555-0142",
+      "website": "calderpoint-dental.example",
+      "location": {
+        "street": "1180 Alder Crest Ave Ste 200",
+        "city": "Calder Point",
+        "state": "OR",
+        "zip": "97399"
+      },
+      "hours": {
+        "mon_1_open": "08:00",
+        "tue_1_open": "08:00",
+        "wed_1_open": "08:00",
+        "thu_1_open": "08:00",
+        "fri_1_open": "08:00",
+        "mon_1_close": "17:00",
+        "tue_1_close": "17:00",
+        "wed_1_close": "17:00",
+        "thu_1_close": "17:00",
+        "fri_1_close": "17:00"
+      }
+    },
+    "business_listings_search": [
+      {
+        "title": "Calder Point Family Dental",
+        "location_coordinate": "45.51230,-122.67650,20000",
+        "is_claimed": true,
+        "limit": 20,
+        "items": [
+          {
+            "title": "Calder Point Family Dental",
+            "place_id": "PLACE-0001",
+            "is_claimed": true,
+            "category": "Dentist",
+            "address": "1180 Alder Crest Ave Ste 200, Calder Point, OR 97399",
+            "phone": "+15035550142",
+            "url": "https://www.calderpoint-dental.example/"
+          },
+          {
+            "title": "Calder Point Kids Dentistry",
+            "place_id": "PLACE-0007",
+            "is_claimed": true,
+            "category": "Pediatric dentist",
+            "address": "415 Orchard Way, Calder Point, OR 97399",
+            "phone": "+15035550188",
+            "url": "https://www.cpkids-dentistry.example/"
+          }
+        ]
+      },
+      {
+        "title": "Calder Point Family Dental",
+        "location_coordinate": "45.51230,-122.67650,20000",
+        "is_claimed": false,
+        "limit": 20,
+        "items": []
+      },
+      {
+        "title": "Calder Point Smile Studio",
+        "location_coordinate": "45.51230,-122.67650,20000",
+        "is_claimed": false,
+        "limit": 20,
+        "items": [
+          {
+            "title": "Calder Point Smile Studio",
+            "place_id": "PLACE-0002",
+            "is_claimed": false,
+            "category": "Dentist",
+            "address": "22 Mill St Ste 4, Calder Point, OR 97399",
+            "phone": "+15035550109",
+            "url": "http://www.calderpoint-smilestudio.example/"
+          }
+        ]
+      }
+    ],
+    "serp_google_organic": [
+      {
+        "keyword": "\"(503) 555-0142\"",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 30,
+        "items": [
+          {
+            "rank": 1,
+            "domain": "www.calderpoint-dental.example",
+            "url": "https://www.calderpoint-dental.example/contact",
+            "title": "Contact Us | Calder Point Family Dental",
+            "description": "Call (503) 555-0142 or visit us at 1180 Alder Crest Avenue, Suite 200."
+          },
+          {
+            "rank": 2,
+            "domain": "www.facebook.com",
+            "url": "https://www.facebook.com/calderpointdental",
+            "title": "Calder Point Family Dental | Facebook",
+            "description": "Calder Point Family Dental, Calder Point, Oregon. (503) 555-0142."
+          },
+          {
+            "rank": 3,
+            "domain": "www.bbb.org",
+            "url": "https://www.bbb.org/us/or/calder-point/profile/dentist/calder-point-family-dental",
+            "title": "Calder Point Family Dental | BBB Business Profile",
+            "description": "1180 Alder Crest Avenue, Suite 200, Calder Point, OR 97399 · (503) 555-0142 · Dentist."
+          },
+          {
+            "rank": 4,
+            "domain": "www.zocdoc.com",
+            "url": "https://www.zocdoc.com/practice/calder-point-family-dental",
+            "title": "Calder Point Family Dental, LLC - Book Online",
+            "description": "Book a cleaning or exam online. Office phone 503.555.0142."
+          }
+        ]
+      },
+      {
+        "keyword": "\"(503) 555-0109\"",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 30,
+        "items": [
+          {
+            "rank": 1,
+            "domain": "www.yellowpages.com",
+            "url": "https://www.yellowpages.com/calder-point-or/mip/calder-point-smile-studio",
+            "title": "Calder Point Smile Studio - Calder Point, OR",
+            "description": "Calder Point Smile Studio, 22 Mill St Ste 4, Calder Point, OR 97399. (503) 555-0109. Dentists."
+          },
+          {
+            "rank": 2,
+            "domain": "www.manta.com",
+            "url": "https://www.manta.com/c/calder-point-smile-studio",
+            "title": "Calder Point Smile Studio - Calder Point, OR",
+            "description": "Contact Calder Point Smile Studio at (503) 555-0109. Dentist office."
+          }
+        ]
+      },
+      {
+        "keyword": "\"Calder Point Family Dental\" Calder Point",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 30,
+        "items": [
+          {
+            "rank": 1,
+            "domain": "www.calderpoint-dental.example",
+            "url": "https://www.calderpoint-dental.example/",
+            "title": "Calder Point Family Dental | Dentist in Calder Point, OR",
+            "description": "Family and cosmetic dentistry in Calder Point."
+          },
+          {
+            "rank": 2,
+            "domain": "www.yelp.com",
+            "url": "https://www.yelp.com/biz/calder-point-family-dental-calder-point",
+            "title": "Calder Point Family Dental - Calder Point, OR - Yelp",
+            "description": "1180 Alder Crest Ave, Ste 200, Calder Point, OR 97399. (503) 555-0177. Dentists."
+          },
+          {
+            "rank": 3,
+            "domain": "www.healthgrades.com",
+            "url": "https://www.healthgrades.com/dental/practice/calder-point-family-dental",
+            "title": "Calder Point Family Dental | Healthgrades",
+            "description": "Calder Point Family Dental, 1180 Alder Crest Ave, Calder Point, OR 97399. Dentists at this practice."
+          },
+          {
+            "rank": 4,
+            "domain": "www.facebook.com",
+            "url": "https://www.facebook.com/calderpointdental",
+            "title": "Calder Point Family Dental | Facebook",
+            "description": "Calder Point Family Dental, Calder Point, Oregon."
+          }
+        ]
+      },
+      {
+        "keyword": "dentist calder point",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 20,
+        "items": [
+          {
+            "rank": 1,
+            "domain": "www.yelp.com",
+            "title": "Top 10 Best Dentists in Calder Point, OR - Yelp"
+          },
+          {
+            "rank": 2,
+            "domain": "www.cedarbrook-dental.example",
+            "title": "Cedarbrook Dental | Calder Point Dentist"
+          },
+          {
+            "rank": 3,
+            "domain": "www.healthgrades.com",
+            "title": "Best Dentists in Calder Point, OR | Healthgrades"
+          },
+          {
+            "rank": 4,
+            "domain": "www.calderpoint-dental.example",
+            "title": "Calder Point Family Dental | Dentist in Calder Point, OR"
+          },
+          {
+            "rank": 5,
+            "domain": "www.zocdoc.com",
+            "title": "Dentists in Calder Point, OR: book online | Zocdoc"
+          },
+          {
+            "rank": 6,
+            "domain": "www.northgate-smiles.example",
+            "title": "Northgate Smiles | Family Dentist"
+          },
+          {
+            "rank": 7,
+            "domain": "www.opencare.com",
+            "title": "The 10 best dentists in Calder Point, OR | Opencare"
+          },
+          {
+            "rank": 8,
+            "domain": "www.cpkids-dentistry.example",
+            "title": "Calder Point Kids Dentistry"
+          },
+          {
+            "rank": 9,
+            "domain": "www.bbb.org",
+            "title": "Dentists near Calder Point, OR | BBB"
+          },
+          {
+            "rank": 11,
+            "domain": "www.yellowpages.com",
+            "title": "Dentists in Calder Point, OR | YP.com"
+          },
+          {
+            "rank": 12,
+            "domain": "www.calderpointchamber.example",
+            "title": "Health and Dental | Calder Point Chamber of Commerce Directory"
+          },
+          {
+            "rank": 14,
+            "domain": "www.cedarbrook-dental.example",
+            "title": "Cedarbrook Dental Team"
+          }
+        ]
+      }
+    ]
+  },
+  "paid_calls": {
+    "dataforseo": 7
+  }
+}

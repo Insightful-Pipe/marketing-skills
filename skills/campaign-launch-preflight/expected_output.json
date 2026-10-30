@@ -1,0 +1,244 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "platform": "LinkedIn Ads",
+    "account": "Example Booking Software (LinkedIn ad account), id 500000001",
+    "campaign": "Clinic scheduling - Sponsored Content (640000107)",
+    "mode": "launch",
+    "plan": {
+      "campaign": "Clinic scheduling - Sponsored Content",
+      "daily_budget_usd": 60,
+      "start_date": "2026-11-02",
+      "landing_url": "https://www.example.com/industries/clinics?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4",
+      "judged_on": "GA4 key event sign_up",
+      "target_cost_per_result": "not given; the default is the account's own cost per result, $180"
+    },
+    "windows": {
+      "tracking": "2026-10-11 to 2026-10-24",
+      "history": "2025-10-28 to 2026-10-27"
+    },
+    "verdict": "NO-GO",
+    "counts": {
+      "pass": 11,
+      "warn": 2,
+      "fail": 3,
+      "unknown": 1
+    }
+  },
+  "summary": "NO-GO, with 3 blockers. Both creatives are approved but saved as PAUSED, so the campaign would serve nothing when switched on. The \"Account created\" conversion is linked to the two older campaigns but not to this one, so a WEBSITE_CONVERSION campaign would have nothing to optimise for. And the ad URL has no trailing slash: the site's 301 redirect drops the UTMs, so GA4 would not credit the visits or sign-ups to the campaign. Tracking itself is healthy: GA4 sees 88% of Search Console clicks and sign_up fired 491 times in 14 days. Also fix the daily budget (USD 40 set, 60 planned) and look at the 3.1 s mobile LCP.",
+  "blockers": [
+    {
+      "check": "At least one ad will serve",
+      "number": "2 creatives, both intendedStatus PAUSED; they stay off even after the campaign is switched on",
+      "fix": "Set both creatives to ACTIVE; switching on the campaign alone would serve nothing.",
+      "who": "I can do this after you confirm, once a re-run clears the blockers"
+    },
+    {
+      "check": "Conversion linked to the campaign",
+      "number": "objective WEBSITE_CONVERSION; the only enabled conversion (\"Account created\") is linked to campaigns 640000101, 640000102, not to 640000107",
+      "fix": "Add campaign 640000107 to the \"Account created\" conversion in Campaign Manager. Until then LinkedIn optimises a conversion campaign with no conversion to learn from and reports 0 results for it.",
+      "who": "do this in LinkedIn Campaign Manager (Analyze, Conversion tracking)"
+    },
+    {
+      "check": "Keeps tracking",
+      "number": "the 301 drops the query string: final URL https://www.example.com/industries/clinics/ has none of utm_source, utm_medium, utm_campaign",
+      "fix": "Point the ad at https://www.example.com/industries/clinics/?utm_source=linkedin&utm_medium=paid_social&utm_campaign=clinics_q4 (with the trailing slash), or make the site's redirect keep the query string. Then re-run this check.",
+      "who": "do this in the post's link on LinkedIn, or on the website"
+    }
+  ],
+  "checklist": [
+    {
+      "section": "1. The account can spend",
+      "check": "Account status",
+      "result": "pass",
+      "number": "status ACTIVE, serving RUNNABLE",
+      "source": "linkedin-ads get_accounts"
+    },
+    {
+      "section": "1. The account can spend",
+      "check": "Spending limit",
+      "result": "pass",
+      "number": "no totalBudget on the campaign or its group, so no cap",
+      "source": "linkedin-ads get_campaigns, get_campaign_groups"
+    },
+    {
+      "section": "2. The campaign will serve",
+      "check": "Parent can run",
+      "result": "pass",
+      "number": "campaign group \"Clinics Q4\" is ACTIVE",
+      "source": "linkedin-ads get_campaign_groups"
+    },
+    {
+      "section": "2. The campaign will serve",
+      "check": "Dates",
+      "result": "pass",
+      "number": "runSchedule starts 2026-11-02, the planned start; no end date",
+      "source": "linkedin-ads get_campaigns"
+    },
+    {
+      "section": "2. The campaign will serve",
+      "check": "Budget matches the plan",
+      "result": "warn",
+      "number": "dailyBudget USD 40 vs plan 60",
+      "source": "linkedin-ads get_campaigns"
+    },
+    {
+      "section": "2. The campaign will serve",
+      "check": "Targeting",
+      "result": "pass",
+      "number": "locations United States, United Kingdom, Canada, plus job function, industry and company size facets (Healthcare Services, Administrative; Hospitals and Health Care, Medical Practices; 2-10 and 11-50 employees)",
+      "source": "linkedin-ads get_campaigns"
+    },
+    {
+      "section": "2. The campaign will serve",
+      "check": "Bid",
+      "result": "pass",
+      "number": "costType CPC, manual bid USD 9.50",
+      "source": "linkedin-ads get_campaigns"
+    },
+    {
+      "section": "3. The ads are approved and on",
+      "check": "At least one ad will serve",
+      "result": "fail",
+      "number": "2 creatives, both intendedStatus PAUSED; they stay off even after the campaign is switched on",
+      "source": "linkedin-ads get_creatives"
+    },
+    {
+      "section": "3. The ads are approved and on",
+      "check": "Approval",
+      "result": "pass",
+      "number": "2 of 2 creatives APPROVED",
+      "source": "linkedin-ads get_creatives"
+    },
+    {
+      "section": "3. The ads are approved and on",
+      "check": "Landing URL",
+      "result": "unknown",
+      "number": "both creatives reuse company page posts, so their link is not readable here; the landing URL comes from the plan",
+      "source": "linkedin-ads get_creatives"
+    },
+    {
+      "section": "4. The platform can see the result",
+      "check": "Conversion linked to the campaign",
+      "result": "fail",
+      "number": "objective WEBSITE_CONVERSION; the only enabled conversion (\"Account created\") is linked to campaigns 640000101, 640000102, not to 640000107",
+      "source": "linkedin-ads get_conversions"
+    },
+    {
+      "section": "4. The platform can see the result",
+      "check": "Past conversions recorded",
+      "result": "pass",
+      "number": "92 externalWebsiteConversions from 1,840 landing-page clicks on the campaigns it is linked to",
+      "source": "linkedin-ads get_campaign_analytics"
+    },
+    {
+      "section": "5. The site's analytics can see the result",
+      "check": "GA4 sees the site's traffic",
+      "result": "pass",
+      "number": "GA4 Organic Search sessions 3,630 vs Search Console clicks 4,114 over the same 14 days (88%); GA4 sessions of any channel on the host: 7,704",
+      "source": "google-analytics get_report, google-search-console search_analytics"
+    },
+    {
+      "section": "5. The site's analytics can see the result",
+      "check": "The judged event fires",
+      "result": "pass",
+      "number": "sign_up is a key event and fired 491 times in 2026-10-11 to 2026-10-24",
+      "source": "google-analytics list_key_events, get_report"
+    },
+    {
+      "section": "6. The landing page works",
+      "check": "Loads",
+      "result": "pass",
+      "number": "status 200 after 1 redirect (301 to the URL with a trailing slash)",
+      "source": "crawler status-code-checker"
+    },
+    {
+      "section": "6. The landing page works",
+      "check": "Keeps tracking",
+      "result": "fail",
+      "number": "the 301 drops the query string: final URL https://www.example.com/industries/clinics/ has none of utm_source, utm_medium, utm_campaign",
+      "source": "crawler status-code-checker"
+    },
+    {
+      "section": "6. The landing page works",
+      "check": "Mobile speed",
+      "result": "warn",
+      "number": "mobile LCP 3.1 s (performance score 84)",
+      "source": "pagespeed-insights core-web-vitals"
+    }
+  ],
+  "budget": {
+    "type": "launch estimate",
+    "inputs": "1,840 landing-page clicks and 92 website conversions for $16,560 on campaigns 640000101, 640000102 (2025-10-28 to 2026-10-27)",
+    "cost_per_landing_page_click": 9.0,
+    "cost_per_result": 180.0,
+    "expected_clicks_per_day": "about 6.7 (estimate: $60 / $9.00)",
+    "expected_results_per_day": "about 0.33, or about 10 in 30 days (estimate: $60 / $180.00; only once the conversion is linked to this campaign)",
+    "learning_check": "not applicable: the skill's learning thresholds cover Google Smart Bidding and Meta ad sets, not LinkedIn"
+  },
+  "unknowns": [
+    {
+      "check": "Landing URL",
+      "why": "both creatives reuse company page posts, so their link is not readable here; the landing URL comes from the plan"
+    }
+  ],
+  "not_run": [
+    "Section 8 (scale mode): this is a launch",
+    "Google Ads and Meta checks: the campaign runs on LinkedIn only",
+    "LinkedIn get_tracking_params: not used; UTM survival was checked on the tagged URL with status-code-checker"
+  ],
+  "offered_actions": [],
+  "offered_actions_note": "None offered: the verdict is NO-GO. The switch-on payloads below are prepared for after the fixes.",
+  "prepared_payloads": [
+    {
+      "step": 1,
+      "what": "Switch on creative 840000215",
+      "payload": {
+        "platform": "linkedin-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_creative",
+        "ad_account_id": "500000001",
+        "creative_id": "840000215",
+        "intendedStatus": "ACTIVE"
+      },
+      "status": "not run, not offered until a re-run clears the blockers"
+    },
+    {
+      "step": 2,
+      "what": "Switch on creative 840000216",
+      "payload": {
+        "platform": "linkedin-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_creative",
+        "ad_account_id": "500000001",
+        "creative_id": "840000216",
+        "intendedStatus": "ACTIVE"
+      },
+      "status": "not run, not offered until a re-run clears the blockers"
+    },
+    {
+      "step": 3,
+      "what": "Switch on the campaign at the planned USD 60 a day",
+      "payload": {
+        "platform": "linkedin-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "500000001",
+        "campaign_id": "640000107",
+        "status": "ACTIVE",
+        "dailyBudget": {
+          "amount": "60.00",
+          "currencyCode": "USD"
+        }
+      },
+      "status": "not run, not offered until a re-run clears the blockers"
+    }
+  ],
+  "go_deeper": [
+    "utm-auditor (if installed) to check the tagged links on the other LinkedIn posts for the same redirect",
+    "ad-landing-page-match-scorer (if installed) to check the clinics page against the two posts the ads reuse"
+  ]
+}

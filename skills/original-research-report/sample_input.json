@@ -1,0 +1,391 @@
+{
+  "note": "Example data: an invented online booking software company, its product data, survey and search results, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"original-research-report\" skill. Plan and write our 2026 industry report on appointment no-shows from our booking data and the owner survey we ran in September. Give me the headline stats, charts, a methods section and a one-page stat sheet for press and sales.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "audience_for_the_report": "small service business owners, trade journalists covering salons, clinics and fitness, and our sales team",
+  "publish_month": "2026-11",
+  "data_permission": "Confirmed by the user: the customer terms allow aggregated, de-identified use of product data in published research; the survey invitation said answers would be published in aggregate.",
+  "settings": {
+    "headline_max_moe_points": 5,
+    "supporting_max_moe_points": 10,
+    "headline_max_relative_halfwidth": 0.1,
+    "supporting_max_relative_halfwidth": 0.2,
+    "min_accounts_per_cell": 10,
+    "max_top_account_share": 0.3,
+    "alpha": 0.05,
+    "confidence": 0.95
+  },
+  "gsc_window": "2026-07-30 to 2026-10-27 (search_analytics, dimension query, stat-seeking queries kept)",
+  "question_candidates": [
+    {
+      "question": "How often do clients miss booked appointments, and what goes with fewer misses?",
+      "data_fit": "yes",
+      "newest_dated_figure_in_top10": 2020,
+      "gsc_stat_queries": {
+        "no show statistics": 2140,
+        "average no show rate": 960,
+        "appointment no show rate": 410
+      }
+    },
+    {
+      "question": "How far ahead do clients book appointments?",
+      "data_fit": "yes",
+      "newest_dated_figure_in_top10": 2025,
+      "gsc_stat_queries": {
+        "how far in advance do people book appointments": 280,
+        "booking lead time statistics": 140
+      }
+    },
+    {
+      "question": "What do small service businesses pay for software each month?",
+      "data_fit": "partly",
+      "newest_dated_figure_in_top10": 2024,
+      "gsc_stat_queries": {
+        "salon software cost": 610,
+        "average cost of booking software": 290
+      }
+    }
+  ],
+  "product_data": {
+    "source": "bigquery run_query (SELECT shown to the user, dry run first)",
+    "dry_run": {
+      "statementType": "SELECT",
+      "totalBytesProcessed": "1840211968"
+    },
+    "period": "2025-10-01 to 2026-09-30",
+    "unit": "account (a business with 150 or more bookings in the period)",
+    "query": "WITH acct AS (SELECT account_id, industry, reminder_setting, deposit_policy, COUNT(*) AS bookings, COUNTIF(status = 'no_show') AS no_shows FROM `app_data.bookings` WHERE appointment_date BETWEEN '2025-10-01' AND '2026-09-30' GROUP BY account_id, industry, reminder_setting, deposit_policy HAVING COUNT(*) >= 150) SELECT 'all' AS dimension, 'all' AS value, COUNT(*) AS accounts, SUM(bookings) AS bookings, SUM(no_shows) AS no_shows, AVG(SAFE_DIVIDE(no_shows, bookings)) AS mean_rate, STDDEV_SAMP(SAFE_DIVIDE(no_shows, bookings)) AS sd_rate, SAFE_DIVIDE(MAX(bookings), SUM(bookings)) AS top_account_share FROM acct UNION ALL SELECT 'reminders', reminder_setting, COUNT(*), SUM(bookings), SUM(no_shows), AVG(SAFE_DIVIDE(no_shows, bookings)), STDDEV_SAMP(SAFE_DIVIDE(no_shows, bookings)), SAFE_DIVIDE(MAX(bookings), SUM(bookings)) FROM acct GROUP BY reminder_setting HAVING COUNT(*) >= 10 UNION ALL SELECT 'deposit', deposit_policy, ... GROUP BY deposit_policy HAVING COUNT(*) >= 10 UNION ALL SELECT 'industry', industry, ... GROUP BY industry HAVING COUNT(*) >= 10 UNION ALL SELECT 'industry x deposit', CONCAT(industry, ' / ', deposit_policy), ... GROUP BY industry, deposit_policy HAVING COUNT(*) >= 10",
+    "rows": [
+      {
+        "dimension": "all",
+        "value": "all",
+        "accounts": 4180,
+        "bookings": 5938687,
+        "no_shows": 378698,
+        "mean_rate": 0.06331,
+        "sd_rate": 0.03423,
+        "top_account_share": 0.0009
+      },
+      {
+        "dimension": "reminders",
+        "value": "Email only",
+        "accounts": 1276,
+        "bookings": 1762579,
+        "no_shows": 123624,
+        "mean_rate": 0.06944,
+        "sd_rate": 0.03109,
+        "top_account_share": 0.0029
+      },
+      {
+        "dimension": "reminders",
+        "value": "No reminders",
+        "accounts": 643,
+        "bookings": 967036,
+        "no_shows": 96309,
+        "mean_rate": 0.10015,
+        "sd_rate": 0.04334,
+        "top_account_share": 0.0054
+      },
+      {
+        "dimension": "reminders",
+        "value": "SMS and email",
+        "accounts": 2261,
+        "bookings": 3209072,
+        "no_shows": 158765,
+        "mean_rate": 0.04937,
+        "sd_rate": 0.02203,
+        "top_account_share": 0.0016
+      },
+      {
+        "dimension": "deposit",
+        "value": "Deposit required",
+        "accounts": 860,
+        "bookings": 1244269,
+        "no_shows": 47562,
+        "mean_rate": 0.03836,
+        "sd_rate": 0.01985,
+        "top_account_share": 0.0042
+      },
+      {
+        "dimension": "deposit",
+        "value": "No deposit",
+        "accounts": 3320,
+        "bookings": 4694418,
+        "no_shows": 331136,
+        "mean_rate": 0.06977,
+        "sd_rate": 0.03421,
+        "top_account_share": 0.0011
+      },
+      {
+        "dimension": "industry",
+        "value": "Clinics",
+        "accounts": 1150,
+        "bookings": 1552769,
+        "no_shows": 90951,
+        "mean_rate": 0.05721,
+        "sd_rate": 0.03026,
+        "top_account_share": 0.0033
+      },
+      {
+        "dimension": "industry",
+        "value": "Fitness studios",
+        "accounts": 1080,
+        "bookings": 1550620,
+        "no_shows": 120561,
+        "mean_rate": 0.07817,
+        "sd_rate": 0.03886,
+        "top_account_share": 0.0033
+      },
+      {
+        "dimension": "industry",
+        "value": "Other",
+        "accounts": 230,
+        "bookings": 337036,
+        "no_shows": 22996,
+        "mean_rate": 0.06802,
+        "sd_rate": 0.03415,
+        "top_account_share": 0.0154
+      },
+      {
+        "dimension": "industry",
+        "value": "Salons",
+        "accounts": 1720,
+        "bookings": 2498262,
+        "no_shows": 144190,
+        "mean_rate": 0.05742,
+        "sd_rate": 0.03053,
+        "top_account_share": 0.0021
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Clinics / Deposit required",
+        "accounts": 240,
+        "bookings": 315784,
+        "no_shows": 10227,
+        "mean_rate": 0.03354,
+        "sd_rate": 0.01649,
+        "top_account_share": 0.0164
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Clinics / No deposit",
+        "accounts": 910,
+        "bookings": 1236985,
+        "no_shows": 80724,
+        "mean_rate": 0.06346,
+        "sd_rate": 0.02998,
+        "top_account_share": 0.0042
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Fitness studios / Deposit required",
+        "accounts": 233,
+        "bookings": 353898,
+        "no_shows": 18060,
+        "mean_rate": 0.05007,
+        "sd_rate": 0.02376,
+        "top_account_share": 0.0144
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Fitness studios / No deposit",
+        "accounts": 847,
+        "bookings": 1196722,
+        "no_shows": 102501,
+        "mean_rate": 0.0859,
+        "sd_rate": 0.03864,
+        "top_account_share": 0.0043
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Other / No deposit",
+        "accounts": 223,
+        "bookings": 327522,
+        "no_shows": 22533,
+        "mean_rate": 0.06887,
+        "sd_rate": 0.03419,
+        "top_account_share": 0.0157
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Salons / Deposit required",
+        "accounts": 380,
+        "bookings": 565073,
+        "no_shows": 18812,
+        "mean_rate": 0.03418,
+        "sd_rate": 0.01592,
+        "top_account_share": 0.0092
+      },
+      {
+        "dimension": "industry x deposit",
+        "value": "Salons / No deposit",
+        "accounts": 1340,
+        "bookings": 1933189,
+        "no_shows": 125378,
+        "mean_rate": 0.06401,
+        "sd_rate": 0.03046,
+        "top_account_share": 0.0027
+      }
+    ]
+  },
+  "survey": {
+    "fielded": "2026-09-08 to 2026-09-29",
+    "recruited_from": "an invitation in the company's monthly newsletter (customers and non-customers) and two posts in its own social channels",
+    "list_size": 38400,
+    "rows_received": 655,
+    "removed": {
+      "incomplete": 29,
+      "duplicate": 6,
+      "speeders": 8
+    },
+    "complete": 612,
+    "customers_among_complete": 251,
+    "segments": {
+      "Salons": 301,
+      "Clinics": 88,
+      "Fitness studios": 163,
+      "Other": 60
+    },
+    "questions": {
+      "q1_cost_over_5pct": {
+        "text": "In the last 12 months, did no-shows and late cancellations cost you more than 5% of your revenue?",
+        "yes": 287,
+        "base": 612,
+        "by_segment": {
+          "Salons": [
+            131,
+            301
+          ],
+          "Clinics": [
+            51,
+            88
+          ],
+          "Fitness studios": [
+            92,
+            163
+          ],
+          "Other": [
+            13,
+            60
+          ]
+        },
+        "by_fee": {
+          "Charge a no-show fee": [
+            70,
+            147
+          ],
+          "No fee": [
+            217,
+            465
+          ]
+        }
+      },
+      "q2_main_reason": {
+        "text": "What reason do clients most often give for missing an appointment?",
+        "base": 612,
+        "counts": {
+          "Forgot": 251,
+          "Schedule changed": 159,
+          "Felt unwell": 98,
+          "Cost or price": 37,
+          "Other": 67
+        }
+      },
+      "q3_plan_deposit": {
+        "text": "Do you plan to start taking deposits in the next 12 months? (asked of the 455 who take none)",
+        "yes": 174,
+        "base": 455
+      }
+    }
+  },
+  "serp_check": {
+    "queries": [
+      "no show statistics",
+      "appointment no show rate"
+    ],
+    "location": "United States",
+    "pulled": "2026-10-27",
+    "results_quoting_a_figure": [
+      {
+        "url": "https://competitor-a.example/blog/no-show-statistics",
+        "measure": "average no-show rate",
+        "figure": 0.3,
+        "data_year": 2019,
+        "method_shown": false,
+        "wording": "up to 30% of appointments are no-shows"
+      },
+      {
+        "url": "https://industry-blog.example/missed-appointments",
+        "measure": "average no-show rate",
+        "figure": 0.18,
+        "data_year": 2020,
+        "method_shown": false,
+        "wording": "the average no-show rate is 18%"
+      },
+      {
+        "url": "https://competitor-c.example/research/why-clients-miss",
+        "measure": "share naming forgetting as the main reason",
+        "figure": 0.4,
+        "data_year": 2025,
+        "method_shown": true,
+        "wording": "40% of missed appointments are simply forgotten (survey of 500 owners)"
+      },
+      {
+        "url": "https://small-business-news.example/no-show-cost",
+        "measure": "total yearly cost of no-shows to US businesses",
+        "figure": null,
+        "data_year": 2022,
+        "method_shown": false,
+        "wording": "no-shows cost US businesses billions a year"
+      }
+    ],
+    "results_without_a_figure": [
+      {
+        "url": "https://competitor-b.example/blog/appointment-reminders",
+        "claim": "reminders lower no-shows (no number given)"
+      }
+    ]
+  },
+  "planned_comparisons": [
+    {
+      "id": "C1",
+      "source": "product",
+      "what": "mean account no-show rate",
+      "dimension": "reminders",
+      "a": "SMS and email",
+      "b": "No reminders"
+    },
+    {
+      "id": "C2",
+      "source": "product",
+      "what": "mean account no-show rate",
+      "dimension": "deposit",
+      "a": "Deposit required",
+      "b": "No deposit"
+    },
+    {
+      "id": "C3",
+      "source": "product",
+      "what": "mean account no-show rate",
+      "dimension": "industry",
+      "a": "Fitness studios",
+      "b": "Salons"
+    },
+    {
+      "id": "C4",
+      "source": "survey",
+      "what": "share saying no-shows cost over 5% of revenue",
+      "split": "by_segment",
+      "a": "Fitness studios",
+      "b": "Salons"
+    },
+    {
+      "id": "C5",
+      "source": "survey",
+      "what": "share saying no-shows cost over 5% of revenue",
+      "split": "by_fee",
+      "a": "Charge a no-show fee",
+      "b": "No fee"
+    }
+  ]
+}

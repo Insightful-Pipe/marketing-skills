@@ -1,0 +1,1197 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Large tables are stored as one comma-separated line per row, in the order of 'columns'.",
+  "request": "Hey Claude, I just added the \"ai-search-visibility\" skill. Check how visible example.com is in AI search and tell me what to do to get cited more. My competitors are competitor-a.example, competitor-b.example and competitor-c.example.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "site": {
+    "domain": "example.com",
+    "ga4_property": "properties/123456789",
+    "search_console": "https://www.example.com/",
+    "bing": "https://www.example.com/"
+  },
+  "brand_terms": [
+    "example booking",
+    "examplebooking"
+  ],
+  "competitors": [
+    "competitor-a.example",
+    "competitor-b.example",
+    "competitor-c.example"
+  ],
+  "priority_questions": [
+    "how to reduce no shows",
+    "how to send appointment reminders",
+    "what is the best salon booking app"
+  ],
+  "priority_questions_source": "not given, so the step 3 default: the three non-brand question queries with the most impressions",
+  "chatgpt_prompts": [
+    "What's the best booking app for a small hair salon?",
+    "How do I reduce no-shows at my salon or clinic?"
+  ],
+  "date_ranges": {
+    "search_console": "2026-09-27 to 2026-10-26 (last date returned)",
+    "ga4_ai_referrals": "2026-07-30 to 2026-10-27",
+    "bing": "weekly rows filtered from 2026-09-27"
+  },
+  "data_pulled": [
+    "GA4 get_report by sessionSource and sessionMedium, 90 days (20 rows, 82350 sessions)",
+    "GA4 get_report by sessionSource and landingPage, 90 days (1240 rows; data keeps the AI sources)",
+    "GA4 get_report by date, 90 days (90 days with sessions)",
+    "GA4 get_report by source on the Search Console dates (3 rows)",
+    "Search Console search_analytics by query (3400 rows), query and page, and date (30 days)",
+    "Bing get_query_stats (weekly rows, 96 kept for the last 12 weeks)",
+    "DataForSEO ai_opt_llm_mentions_cross_aggregated (4 domains), ai_opt_llm_mentions_search (6 answers)",
+    "DataForSEO serp_google_organic x3, ai_opt_chatgpt_scraper x2",
+    "crawler robots-txt-checker, ai-crawler-checker, llms-txt-checker, structured-data-checker x2 (home page and /blog/reduce-no-shows/), a direct fetch of llms.txt, and the 8 FAQ pages opened directly"
+  ],
+  "dataforseo_calls": 7,
+  "data": {
+    "ga4_source_medium_90d": {
+      "columns": [
+        "sessionSource",
+        "sessionMedium",
+        "sessions",
+        "engagedSessions",
+        "keyEvents",
+        "totalUsers"
+      ],
+      "rows": [
+        "google,organic,20300,13000,820,16100",
+        "(direct),(none),24800,14100,1650,19900",
+        "google,cpc,18900,11300,1720,15800",
+        "bing,organic,2350,1480,96,1950",
+        "newsletter,email,4100,2900,260,2600",
+        "facebook.com,referral,2900,1400,70,2500",
+        "instagram.com,referral,3600,1900,110,3100",
+        "linkedin.com,referral,820,450,21,700",
+        "tiktok.com,referral,1300,520,18,1200",
+        "perplexity.ai,referral,380,290,31,330",
+        "chatgpt.com,referral,340,251,26,300",
+        "chatgpt.com,(not set),120,84,7,110",
+        "gemini.google.com,referral,210,150,14,190",
+        "copilot.microsoft.com,referral,140,96,8,125",
+        "claude.ai,referral,90,71,9,80",
+        "duckduckgo,organic,610,390,24,520",
+        "yahoo,organic,410,250,12,350",
+        "partner-directory.example,referral,540,330,41,480",
+        "salon-news.example,referral,260,150,9,240",
+        "(not set),(not set),180,40,1,170"
+      ]
+    },
+    "ga4_source_landing_page_90d": {
+      "rows_returned": 1240,
+      "note": "data keeps the rows for the AI sources",
+      "rows": {
+        "columns": [
+          "sessionSource",
+          "landingPage",
+          "sessions",
+          "engagedSessions"
+        ],
+        "rows": [
+          "perplexity.ai,/blog/reduce-no-shows/,140,108",
+          "perplexity.ai,/blog/scheduling-app-comparison/,96,77",
+          "perplexity.ai,/pricing/,61,49",
+          "perplexity.ai,/features/reminders/,47,36",
+          "perplexity.ai,/blog/deposit-policy/,36,20",
+          "chatgpt.com,/blog/scheduling-app-comparison/,170,128",
+          "chatgpt.com,/,121,82",
+          "chatgpt.com,/pricing/,88,70",
+          "chatgpt.com,/blog/reduce-no-shows/,81,55",
+          "gemini.google.com,/blog/reduce-no-shows/,92,70",
+          "gemini.google.com,/templates/cancellation-policy/,71,49",
+          "gemini.google.com,/,47,31",
+          "copilot.microsoft.com,/blog/front-desk-checklist/,64,45",
+          "copilot.microsoft.com,/,46,30",
+          "copilot.microsoft.com,/pricing/,30,21",
+          "claude.ai,/blog/scheduling-app-comparison/,41,35",
+          "claude.ai,/features/online-booking/,28,22",
+          "claude.ai,/pricing/,21,14"
+        ]
+      }
+    },
+    "ga4_date_90d": {
+      "columns": [
+        "date",
+        "sessions"
+      ],
+      "rows": [
+        "2026-07-30,1034",
+        "2026-07-31,876",
+        "2026-08-01,755",
+        "2026-08-02,845",
+        "2026-08-03,1018",
+        "2026-08-04,983",
+        "2026-08-05,1006",
+        "2026-08-06,921",
+        "2026-08-07,840",
+        "2026-08-08,728",
+        "2026-08-09,766",
+        "2026-08-10,1053",
+        "2026-08-11,1037",
+        "2026-08-12,1046",
+        "2026-08-13,1007",
+        "2026-08-14,812",
+        "2026-08-15,768",
+        "2026-08-16,764",
+        "2026-08-17,993",
+        "2026-08-18,1051",
+        "2026-08-19,965",
+        "2026-08-20,965",
+        "2026-08-21,883",
+        "2026-08-22,772",
+        "2026-08-23,844",
+        "2026-08-24,1052",
+        "2026-08-25,1051",
+        "2026-08-26,964",
+        "2026-08-27,910",
+        "2026-08-28,921",
+        "2026-08-29,716",
+        "2026-08-30,758",
+        "2026-08-31,956",
+        "2026-09-01,1059",
+        "2026-09-02,1036",
+        "2026-09-03,1012",
+        "2026-09-04,868",
+        "2026-09-05,705",
+        "2026-09-06,783",
+        "2026-09-07,995",
+        "2026-09-08,1052",
+        "2026-09-09,1048",
+        "2026-09-10,934",
+        "2026-09-11,821",
+        "2026-09-12,731",
+        "2026-09-13,787",
+        "2026-09-14,952",
+        "2026-09-15,1082",
+        "2026-09-16,1063",
+        "2026-09-17,1031",
+        "2026-09-18,846",
+        "2026-09-19,694",
+        "2026-09-20,746",
+        "2026-09-21,1047",
+        "2026-09-22,1069",
+        "2026-09-23,962",
+        "2026-09-24,950",
+        "2026-09-25,923",
+        "2026-09-26,682",
+        "2026-09-27,753",
+        "2026-09-28,993",
+        "2026-09-29,1073",
+        "2026-09-30,1047",
+        "2026-10-01,1019",
+        "2026-10-02,877",
+        "2026-10-03,756",
+        "2026-10-04,815",
+        "2026-10-05,1013",
+        "2026-10-06,1072",
+        "2026-10-07,1069",
+        "2026-10-08,932",
+        "2026-10-09,884",
+        "2026-10-10,769",
+        "2026-10-11,758",
+        "2026-10-12,986",
+        "2026-10-13,975",
+        "2026-10-14,992",
+        "2026-10-15,1020",
+        "2026-10-16,823",
+        "2026-10-17,741",
+        "2026-10-18,829",
+        "2026-10-19,1030",
+        "2026-10-20,1030",
+        "2026-10-21,963",
+        "2026-10-22,1026",
+        "2026-10-23,855",
+        "2026-10-24,769",
+        "2026-10-25,780",
+        "2026-10-26,1051",
+        "2026-10-27,993"
+      ]
+    },
+    "ga4_source_medium_on_search_console_dates": {
+      "columns": [
+        "sessionSource",
+        "sessionMedium",
+        "sessions"
+      ],
+      "rows": [
+        "google,organic,6650",
+        "(direct),(none),8300",
+        "google,cpc,6200"
+      ]
+    },
+    "search_console_by_query": {
+      "rows_returned": 3400,
+      "note": "data keeps the brand rows, every question query and the queries this run names",
+      "rows": {
+        "columns": [
+          "query",
+          "clicks",
+          "impressions",
+          "position"
+        ],
+        "rows": [
+          "example booking,2100,3900,1.0",
+          "example booking login,1450,2200,1.1",
+          "examplebooking,310,640,1.2",
+          "example booking pricing,160,330,1.2",
+          "is example booking free,58,180,1.4",
+          "example booking phone number,1,150,1.2",
+          "competitor a login,0,260,4.6",
+          "appointment reminder text template,18,2600,2.8",
+          "no show policy,6,900,4.2",
+          "salon booking app,41,2500,9.4",
+          "online booking system,24,3000,14.8",
+          "appointment scheduling software,3,3200,25.1",
+          "cancellation policy template,95,1600,6.9",
+          "front desk checklist,31,720,4.1",
+          "reduce no shows,40,1150,6.2",
+          "appointment reminder app,20,1350,9.8",
+          "salon booking software,25,1950,10.8",
+          "booking software,4,2500,22.4",
+          "online booking software,19,1750,12.1",
+          "sms appointment reminders,9,310,7.9",
+          "deposit policy for appointments,22,780,7.1",
+          "best appointment app for a small physio clinic with two staff,0,60,13.5",
+          "booking app that takes deposits and sends text reminders,0,45,9.8",
+          "salon software that lets clients book on instagram and google,0,38,12.2",
+          "online booking page for a mobile hairdresser with no website,0,30,15.1",
+          "appointment reminder message to send the day before,1,55,7.0",
+          "how to reduce no shows,52,1400,4.4",
+          "how to send appointment reminders,9,620,6.8",
+          "what is the best salon booking app,4,480,8.9",
+          "how to write an appointment reminder text,11,260,3.2",
+          "what is a good cancellation policy for a salon,22,240,2.1",
+          "how to take deposits for appointments,15,210,2.7",
+          "how do i stop clients from not showing up,3,190,5.6",
+          "should i charge a no show fee,2,170,6.1",
+          "how to set up online booking for my salon,2,150,7.4",
+          "how much does salon booking software cost,1,140,9.8",
+          "how to add a booking button to google business profile,6,130,3.0",
+          "is there a free appointment reminder app,0,120,9.6",
+          "what should a front desk checklist include,9,110,2.4",
+          "can clients book through instagram,1,90,5.2",
+          "why do clients not show up for appointments,2,85,12.6",
+          "how many reminders should you send before an appointment,0,70,4.9",
+          "best way to remind clients of appointments?,0,60,6.3",
+          "which booking app do physios use,0,40,11.5",
+          "when should you send a booking confirmation,1,35,1.8",
+          "does google calendar work with booking apps,0,25,14.0",
+          "salon booking app with deposits?,0,20,8.0",
+          "cómo reducir las ausencias en citas?,0,30,12.0",
+          "qué es una política de cancelación?,0,25,9.0",
+          "wie funktioniert online terminbuchung?,0,20,15.0",
+          "comment réduire les rendez-vous manqués?,0,15,18.0"
+        ]
+      }
+    },
+    "search_console_by_query_page": {
+      "columns": [
+        "query",
+        "page",
+        "clicks",
+        "impressions",
+        "position"
+      ],
+      "rows": [
+        "example booking phone number,https://www.example.com/,1,150,1.2",
+        "competitor a login,https://www.example.com/blog/scheduling-app-comparison/,0,260,4.6",
+        "appointment reminder text template,https://www.example.com/blog/appointment-reminder-templates/,18,2600,2.8",
+        "no show policy,https://www.example.com/templates/cancellation-policy/,6,900,4.2",
+        "how to reduce no shows,https://www.example.com/blog/reduce-no-shows/,52,1400,4.4",
+        "how to send appointment reminders,https://www.example.com/features/reminders/,9,620,6.8",
+        "what is the best salon booking app,https://www.example.com/industries/salons/,4,480,8.9",
+        "how to write an appointment reminder text,https://www.example.com/blog/appointment-reminder-templates/,11,260,3.2",
+        "what is a good cancellation policy for a salon,https://www.example.com/templates/cancellation-policy/,22,240,2.1",
+        "how to take deposits for appointments,https://www.example.com/blog/deposit-policy/,15,210,2.7",
+        "how do i stop clients from not showing up,https://www.example.com/blog/reduce-no-shows/,3,190,5.6",
+        "should i charge a no show fee,https://www.example.com/blog/reduce-no-shows/,2,170,6.1",
+        "how to set up online booking for my salon,https://www.example.com/blog/how-to-take-online-bookings/,2,150,7.4",
+        "how much does salon booking software cost,https://www.example.com/pricing/,1,140,9.8",
+        "how to add a booking button to google business profile,https://www.example.com/integrations/google-business-profile/,6,130,3.0",
+        "is there a free appointment reminder app,https://www.example.com/features/reminders/,0,120,9.6",
+        "what should a front desk checklist include,https://www.example.com/blog/front-desk-checklist/,9,110,2.4",
+        "can clients book through instagram,https://www.example.com/integrations/instagram/,1,90,5.2",
+        "how many reminders should you send before an appointment,https://www.example.com/blog/appointment-reminder-templates/,0,70,4.9",
+        "best way to remind clients of appointments?,https://www.example.com/features/reminders/,0,60,6.3",
+        "when should you send a booking confirmation,https://www.example.com/templates/booking-confirmation-email/,1,35,1.8",
+        "salon booking app with deposits?,https://www.example.com/industries/salons/,0,20,8.0"
+      ]
+    },
+    "search_console_by_date": {
+      "columns": [
+        "date",
+        "clicks",
+        "impressions"
+      ],
+      "rows": [
+        "2026-09-27,231,2414",
+        "2026-09-28,278,3045",
+        "2026-09-29,298,3149",
+        "2026-09-30,269,2987",
+        "2026-10-01,260,2883",
+        "2026-10-02,243,2863",
+        "2026-10-03,190,2414",
+        "2026-10-04,209,2601",
+        "2026-10-05,269,3048",
+        "2026-10-06,294,3346",
+        "2026-10-07,293,3147",
+        "2026-10-08,282,2875",
+        "2026-10-09,234,2790",
+        "2026-10-10,215,2178",
+        "2026-10-11,221,2464",
+        "2026-10-12,284,3150",
+        "2026-10-13,301,3362",
+        "2026-10-14,270,3016",
+        "2026-10-15,285,3080",
+        "2026-10-16,259,2768",
+        "2026-10-17,202,2198",
+        "2026-10-18,226,2335",
+        "2026-10-19,280,3246",
+        "2026-10-20,273,3171",
+        "2026-10-21,279,3203",
+        "2026-10-22,263,2857",
+        "2026-10-23,241,2552",
+        "2026-10-24,194,2156",
+        "2026-10-25,235,2447",
+        "2026-10-26,275,3261"
+      ]
+    },
+    "bing_get_query_stats": {
+      "note": "weekly rows for about six months; data keeps the last 12 weeks",
+      "rows": {
+        "columns": [
+          "Date",
+          "Query",
+          "Impressions",
+          "Clicks",
+          "AvgImpressionPosition"
+        ],
+        "rows": [
+          "/Date(1786233600000)/,how far in advance should you send appointment reminders,16,1,2.9",
+          "/Date(1786233600000)/,can i add booking to my facebook page,11,0,4.6",
+          "/Date(1786233600000)/,what should a salon cancellation policy say,17,1,2.9",
+          "/Date(1786233600000)/,how do i take deposits for salon bookings,15,1,3.4",
+          "/Date(1786233600000)/,how to stop no shows at a salon,36,2,4.2",
+          "/Date(1786233600000)/,salon booking app,131,4,8.1",
+          "/Date(1786233600000)/,appointment reminder text template,110,0,2.9",
+          "/Date(1786233600000)/,cómo reducir ausencias en citas?,3,0,8.7",
+          "/Date(1786838400000)/,how far in advance should you send appointment reminders,20,1,2.7",
+          "/Date(1786838400000)/,can i add booking to my facebook page,10,0,4.5",
+          "/Date(1786838400000)/,what should a salon cancellation policy say,19,1,2.5",
+          "/Date(1786838400000)/,how do i take deposits for salon bookings,11,0,3.1",
+          "/Date(1786838400000)/,how to stop no shows at a salon,29,0,4.2",
+          "/Date(1786838400000)/,salon booking app,121,0,7.6",
+          "/Date(1786838400000)/,appointment reminder text template,95,2,3.3",
+          "/Date(1786838400000)/,cómo reducir ausencias en citas?,4,0,8.6",
+          "/Date(1787443200000)/,how far in advance should you send appointment reminders,17,1,3.1",
+          "/Date(1787443200000)/,can i add booking to my facebook page,11,0,4.1",
+          "/Date(1787443200000)/,what should a salon cancellation policy say,19,1,2.3",
+          "/Date(1787443200000)/,how do i take deposits for salon bookings,14,1,3.1",
+          "/Date(1787443200000)/,how to stop no shows at a salon,29,2,4.3",
+          "/Date(1787443200000)/,salon booking app,104,4,8.3",
+          "/Date(1787443200000)/,appointment reminder text template,98,2,3.0",
+          "/Date(1787443200000)/,cómo reducir ausencias en citas?,5,0,8.7",
+          "/Date(1788048000000)/,how far in advance should you send appointment reminders,22,0,3.0",
+          "/Date(1788048000000)/,can i add booking to my facebook page,11,0,4.3",
+          "/Date(1788048000000)/,what should a salon cancellation policy say,17,0,2.8",
+          "/Date(1788048000000)/,how do i take deposits for salon bookings,15,1,3.6",
+          "/Date(1788048000000)/,how to stop no shows at a salon,33,2,3.6",
+          "/Date(1788048000000)/,salon booking app,125,0,8.2",
+          "/Date(1788048000000)/,appointment reminder text template,78,2,3.2",
+          "/Date(1788048000000)/,cómo reducir ausencias en citas?,4,0,9.3",
+          "/Date(1788652800000)/,how far in advance should you send appointment reminders,18,1,2.8",
+          "/Date(1788652800000)/,can i add booking to my facebook page,12,0,4.1",
+          "/Date(1788652800000)/,what should a salon cancellation policy say,19,0,3.0",
+          "/Date(1788652800000)/,how do i take deposits for salon bookings,12,1,3.2",
+          "/Date(1788652800000)/,how to stop no shows at a salon,33,2,3.9",
+          "/Date(1788652800000)/,salon booking app,124,0,7.6",
+          "/Date(1788652800000)/,appointment reminder text template,101,2,3.1",
+          "/Date(1788652800000)/,cómo reducir ausencias en citas?,4,0,8.8",
+          "/Date(1789257600000)/,how far in advance should you send appointment reminders,22,1,3.1",
+          "/Date(1789257600000)/,can i add booking to my facebook page,9,0,4.1",
+          "/Date(1789257600000)/,what should a salon cancellation policy say,21,1,2.7",
+          "/Date(1789257600000)/,how do i take deposits for salon bookings,16,1,3.7",
+          "/Date(1789257600000)/,how to stop no shows at a salon,28,0,3.6",
+          "/Date(1789257600000)/,salon booking app,116,4,7.9",
+          "/Date(1789257600000)/,appointment reminder text template,87,2,2.8",
+          "/Date(1789257600000)/,cómo reducir ausencias en citas?,4,0,8.6",
+          "/Date(1789862400000)/,how far in advance should you send appointment reminders,23,1,3.2",
+          "/Date(1789862400000)/,can i add booking to my facebook page,9,0,4.4",
+          "/Date(1789862400000)/,what should a salon cancellation policy say,15,1,2.6",
+          "/Date(1789862400000)/,how do i take deposits for salon bookings,16,0,3.4",
+          "/Date(1789862400000)/,how to stop no shows at a salon,30,0,4.1",
+          "/Date(1789862400000)/,salon booking app,90,0,7.6",
+          "/Date(1789862400000)/,appointment reminder text template,112,2,3.3",
+          "/Date(1789862400000)/,cómo reducir ausencias en citas?,4,0,8.8",
+          "/Date(1790467200000)/,how far in advance should you send appointment reminders,21,1,2.8",
+          "/Date(1790467200000)/,can i add booking to my facebook page,11,0,4.3",
+          "/Date(1790467200000)/,what should a salon cancellation policy say,19,1,2.4",
+          "/Date(1790467200000)/,how do i take deposits for salon bookings,13,0,3.5",
+          "/Date(1790467200000)/,how to stop no shows at a salon,30,2,3.6",
+          "/Date(1790467200000)/,salon booking app,119,4,8.0",
+          "/Date(1790467200000)/,appointment reminder text template,99,2,2.9",
+          "/Date(1790467200000)/,cómo reducir ausencias en citas?,3,0,9.4",
+          "/Date(1791072000000)/,how far in advance should you send appointment reminders,23,1,3.5",
+          "/Date(1791072000000)/,can i add booking to my facebook page,11,0,4.2",
+          "/Date(1791072000000)/,what should a salon cancellation policy say,21,1,2.3",
+          "/Date(1791072000000)/,how do i take deposits for salon bookings,14,1,3.6",
+          "/Date(1791072000000)/,how to stop no shows at a salon,26,2,3.8",
+          "/Date(1791072000000)/,salon booking app,126,4,7.9",
+          "/Date(1791072000000)/,appointment reminder text template,92,0,2.9",
+          "/Date(1791072000000)/,cómo reducir ausencias en citas?,4,0,8.8",
+          "/Date(1791676800000)/,how far in advance should you send appointment reminders,23,1,3.4",
+          "/Date(1791676800000)/,can i add booking to my facebook page,11,0,4.8",
+          "/Date(1791676800000)/,what should a salon cancellation policy say,16,0,2.3",
+          "/Date(1791676800000)/,how do i take deposits for salon bookings,12,1,3.5",
+          "/Date(1791676800000)/,how to stop no shows at a salon,34,2,4.1",
+          "/Date(1791676800000)/,salon booking app,104,4,7.8",
+          "/Date(1791676800000)/,appointment reminder text template,101,2,3.1",
+          "/Date(1791676800000)/,cómo reducir ausencias en citas?,5,0,9.2",
+          "/Date(1792281600000)/,how far in advance should you send appointment reminders,19,1,2.9",
+          "/Date(1792281600000)/,can i add booking to my facebook page,12,0,4.5",
+          "/Date(1792281600000)/,what should a salon cancellation policy say,20,1,2.6",
+          "/Date(1792281600000)/,how do i take deposits for salon bookings,11,1,2.9",
+          "/Date(1792281600000)/,how to stop no shows at a salon,29,0,4.2",
+          "/Date(1792281600000)/,salon booking app,99,4,8.2",
+          "/Date(1792281600000)/,appointment reminder text template,108,2,2.8",
+          "/Date(1792281600000)/,cómo reducir ausencias en citas?,4,0,9.3",
+          "/Date(1792886400000)/,how far in advance should you send appointment reminders,21,0,2.7",
+          "/Date(1792886400000)/,can i add booking to my facebook page,12,0,4.3",
+          "/Date(1792886400000)/,what should a salon cancellation policy say,17,0,2.2",
+          "/Date(1792886400000)/,how do i take deposits for salon bookings,16,1,2.9",
+          "/Date(1792886400000)/,how to stop no shows at a salon,31,2,3.9",
+          "/Date(1792886400000)/,salon booking app,99,0,7.9",
+          "/Date(1792886400000)/,appointment reminder text template,105,0,3.3",
+          "/Date(1792886400000)/,cómo reducir ausencias en citas?,5,0,8.8"
+        ]
+      }
+    },
+    "dataforseo_llm_mentions_cross_aggregated": [
+      {
+        "aggregation_key": "you",
+        "target": [
+          {
+            "domain": "example.com"
+          }
+        ],
+        "location": [
+          {
+            "location_code": 2840,
+            "mentions": 140,
+            "ai_search_volume": 9400
+          }
+        ],
+        "platform": [
+          {
+            "key": "google",
+            "mentions": 120
+          },
+          {
+            "key": "chat_gpt",
+            "mentions": 20
+          }
+        ],
+        "sources_domain": [
+          {
+            "key": "forum-a.example",
+            "mentions": 34
+          },
+          {
+            "key": "directory-a.example",
+            "mentions": 29
+          },
+          {
+            "key": "video-site.example",
+            "mentions": 22
+          },
+          {
+            "key": "industry-magazine.example",
+            "mentions": 17
+          },
+          {
+            "key": "competitor-b.example",
+            "mentions": 12
+          }
+        ]
+      },
+      {
+        "aggregation_key": "competitor_1",
+        "target": [
+          {
+            "domain": "competitor-a.example"
+          }
+        ],
+        "location": [
+          {
+            "location_code": 2840,
+            "mentions": 610,
+            "ai_search_volume": 52000
+          }
+        ],
+        "platform": [
+          {
+            "key": "google",
+            "mentions": 430
+          },
+          {
+            "key": "chat_gpt",
+            "mentions": 180
+          }
+        ],
+        "sources_domain": [
+          {
+            "key": "directory-a.example",
+            "mentions": 140
+          },
+          {
+            "key": "forum-a.example",
+            "mentions": 96
+          },
+          {
+            "key": "video-site.example",
+            "mentions": 81
+          },
+          {
+            "key": "directory-b.example",
+            "mentions": 66
+          },
+          {
+            "key": "salon-news.example",
+            "mentions": 40
+          }
+        ]
+      },
+      {
+        "aggregation_key": "competitor_2",
+        "target": [
+          {
+            "domain": "competitor-b.example"
+          }
+        ],
+        "location": [
+          {
+            "location_code": 2840,
+            "mentions": 320,
+            "ai_search_volume": 23000
+          }
+        ],
+        "platform": [
+          {
+            "key": "google",
+            "mentions": 250
+          },
+          {
+            "key": "chat_gpt",
+            "mentions": 70
+          }
+        ],
+        "sources_domain": [
+          {
+            "key": "clinic-association.example",
+            "mentions": 58
+          },
+          {
+            "key": "directory-a.example",
+            "mentions": 51
+          },
+          {
+            "key": "forum-a.example",
+            "mentions": 39
+          },
+          {
+            "key": "industry-magazine.example",
+            "mentions": 30
+          },
+          {
+            "key": "video-site.example",
+            "mentions": 22
+          }
+        ]
+      },
+      {
+        "aggregation_key": "competitor_3",
+        "target": [
+          {
+            "domain": "competitor-c.example"
+          }
+        ],
+        "location": [
+          {
+            "location_code": 2840,
+            "mentions": 90,
+            "ai_search_volume": 6100
+          }
+        ],
+        "platform": [
+          {
+            "key": "google",
+            "mentions": 80
+          },
+          {
+            "key": "chat_gpt",
+            "mentions": 10
+          }
+        ],
+        "sources_domain": [
+          {
+            "key": "directory-b.example",
+            "mentions": 21
+          },
+          {
+            "key": "forum-a.example",
+            "mentions": 15
+          },
+          {
+            "key": "salon-news.example",
+            "mentions": 11
+          },
+          {
+            "key": "video-site.example",
+            "mentions": 9
+          },
+          {
+            "key": "directory-a.example",
+            "mentions": 7
+          }
+        ]
+      }
+    ],
+    "dataforseo_llm_mentions_search": [
+      {
+        "question": "how to reduce no shows",
+        "platform": "google",
+        "ai_search_volume": 1900,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/blog/reduce-no-shows/"
+          },
+          {
+            "domain": "industry-magazine.example"
+          },
+          {
+            "domain": "competitor-b.example"
+          },
+          {
+            "domain": "clinic-association.example"
+          }
+        ],
+        "last_seen": "2026-10-21"
+      },
+      {
+        "question": "appointment reminder text template",
+        "platform": "google",
+        "ai_search_volume": 1300,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/blog/appointment-reminder-templates/"
+          },
+          {
+            "domain": "templates-site.example"
+          },
+          {
+            "domain": "competitor-a.example"
+          },
+          {
+            "domain": "forum-a.example"
+          }
+        ],
+        "last_seen": "2026-10-19"
+      },
+      {
+        "question": "how to reduce patient no shows",
+        "platform": "google",
+        "ai_search_volume": 720,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/blog/reduce-no-shows/"
+          },
+          {
+            "domain": "clinic-association.example"
+          },
+          {
+            "domain": "competitor-b.example"
+          },
+          {
+            "domain": "video-site.example"
+          }
+        ],
+        "last_seen": "2026-10-12"
+      },
+      {
+        "question": "salon cancellation policy wording",
+        "platform": "google",
+        "ai_search_volume": 480,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/templates/cancellation-policy/"
+          },
+          {
+            "domain": "salon-news.example"
+          },
+          {
+            "domain": "directory-a.example"
+          }
+        ],
+        "last_seen": "2026-10-16"
+      },
+      {
+        "question": "how to take deposits for appointments",
+        "platform": "google",
+        "ai_search_volume": 320,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/blog/deposit-policy/"
+          },
+          {
+            "domain": "competitor-c.example"
+          },
+          {
+            "domain": "forum-a.example"
+          }
+        ],
+        "last_seen": "2026-10-08"
+      },
+      {
+        "question": "best scheduling app for small business",
+        "platform": "chat_gpt",
+        "ai_search_volume": 2400,
+        "sources": [
+          {
+            "domain": "www.example.com",
+            "url": "https://www.example.com/blog/scheduling-app-comparison/"
+          },
+          {
+            "domain": "directory-a.example"
+          },
+          {
+            "domain": "competitor-a.example"
+          },
+          {
+            "domain": "competitor-b.example"
+          }
+        ],
+        "last_seen": "2026-08-30"
+      }
+    ],
+    "serp_google_organic": [
+      {
+        "keyword": "how to reduce no shows",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 20,
+        "items": [
+          {
+            "type": "ai_overview",
+            "rank_absolute": 1,
+            "asynchronous_ai_overview": false,
+            "references": [
+              {
+                "domain": "industry-magazine.example"
+              },
+              {
+                "domain": "www.example.com"
+              },
+              {
+                "domain": "competitor-b.example"
+              },
+              {
+                "domain": "clinic-association.example"
+              }
+            ]
+          },
+          {
+            "type": "organic",
+            "rank_group": 1,
+            "domain": "industry-magazine.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 2,
+            "domain": "competitor-b.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 3,
+            "domain": "clinic-association.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 4,
+            "domain": "www.example.com"
+          },
+          {
+            "type": "organic",
+            "rank_group": 5,
+            "domain": "forum-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 6,
+            "domain": "competitor-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 7,
+            "domain": "video-site.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 8,
+            "domain": "salon-news.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 9,
+            "domain": "directory-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 10,
+            "domain": "competitor-c.example"
+          },
+          {
+            "type": "people_also_ask",
+            "items": [
+              {
+                "title": "What is the most effective way to reduce no-shows?"
+              },
+              {
+                "title": "Do appointment reminders reduce no-shows?"
+              },
+              {
+                "title": "How do you charge for no-shows?"
+              },
+              {
+                "title": "What is an acceptable no-show rate?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "keyword": "how to send appointment reminders",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 20,
+        "items": [
+          {
+            "type": "ai_overview",
+            "rank_absolute": 1,
+            "asynchronous_ai_overview": true,
+            "references": []
+          },
+          {
+            "type": "featured_snippet",
+            "domain": "competitor-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 1,
+            "domain": "competitor-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 2,
+            "domain": "templates-site.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 3,
+            "domain": "competitor-b.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 4,
+            "domain": "forum-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 5,
+            "domain": "video-site.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 6,
+            "domain": "www.example.com"
+          },
+          {
+            "type": "organic",
+            "rank_group": 7,
+            "domain": "directory-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 8,
+            "domain": "competitor-c.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 9,
+            "domain": "industry-magazine.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 10,
+            "domain": "salon-news.example"
+          },
+          {
+            "type": "people_also_ask",
+            "items": [
+              {
+                "title": "How far in advance should you send appointment reminders?"
+              },
+              {
+                "title": "What should an appointment reminder say?"
+              },
+              {
+                "title": "Are text reminders better than email?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "keyword": "what is the best salon booking app",
+        "location_code": 2840,
+        "language_code": "en",
+        "depth": 20,
+        "items": [
+          {
+            "type": "ai_overview",
+            "rank_absolute": 1,
+            "asynchronous_ai_overview": false,
+            "references": [
+              {
+                "domain": "directory-a.example"
+              },
+              {
+                "domain": "competitor-a.example"
+              },
+              {
+                "domain": "forum-a.example"
+              },
+              {
+                "domain": "video-site.example"
+              }
+            ]
+          },
+          {
+            "type": "organic",
+            "rank_group": 1,
+            "domain": "directory-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 2,
+            "domain": "competitor-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 3,
+            "domain": "directory-b.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 4,
+            "domain": "forum-a.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 5,
+            "domain": "competitor-b.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 6,
+            "domain": "salon-news.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 7,
+            "domain": "video-site.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 8,
+            "domain": "competitor-c.example"
+          },
+          {
+            "type": "organic",
+            "rank_group": 9,
+            "domain": "www.example.com"
+          },
+          {
+            "type": "organic",
+            "rank_group": 10,
+            "domain": "forum-a.example"
+          },
+          {
+            "type": "people_also_ask",
+            "items": [
+              {
+                "title": "Which app is best for salon booking?"
+              },
+              {
+                "title": "Is there a free salon booking app?"
+              },
+              {
+                "title": "What do salons use for booking?"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "dataforseo_chatgpt_scraper": [
+      {
+        "keyword": "What's the best booking app for a small hair salon?",
+        "force_web_search": true,
+        "items": [
+          {
+            "markdown": "For a small hair salon, three apps come up most often. **Competitor A** is the most popular pick, with online booking, reminders and a client app. **Competitor B** suits salons that also sell retail and want simple deposits. **Competitor C** is the cheapest option for a single chair. Compare how each one handles deposits and no-show fees before you choose."
+          }
+        ],
+        "sources": [
+          {
+            "domain": "directory-a.example"
+          },
+          {
+            "domain": "competitor-a.example"
+          },
+          {
+            "domain": "forum-a.example"
+          }
+        ]
+      },
+      {
+        "keyword": "How do I reduce no-shows at my salon or clinic?",
+        "force_web_search": true,
+        "items": [
+          {
+            "markdown": "1. Send reminders 24 hours and 2 hours before the visit.\n2. Ask for a deposit on long or first-time bookings.\n3. Publish a clear cancellation window.\n4. Keep a waitlist to fill gaps.\nBooking tools such as **Competitor B** automate the reminders and deposits."
+          }
+        ],
+        "sources": [
+          {
+            "domain": "clinic-association.example"
+          },
+          {
+            "domain": "industry-magazine.example"
+          },
+          {
+            "domain": "competitor-b.example"
+          }
+        ]
+      }
+    ],
+    "crawler_robots_txt_checker": {
+      "rules": [
+        {
+          "user_agent": "*",
+          "allow": [
+            "/"
+          ],
+          "disallow": [
+            "/app/"
+          ]
+        },
+        {
+          "user_agent": "GPTBot",
+          "disallow": [
+            "/"
+          ]
+        },
+        {
+          "user_agent": "OAI-SearchBot",
+          "disallow": [
+            "/"
+          ]
+        },
+        {
+          "user_agent": "CCBot",
+          "disallow": [
+            "/"
+          ]
+        }
+      ],
+      "sitemaps": [
+        "https://www.example.com/sitemap.xml"
+      ]
+    },
+    "crawler_ai_crawler_checker": {
+      "issues": [
+        "no_ai_crawler_rules"
+      ],
+      "bots": {
+        "Googlebot": null,
+        "Bingbot": null,
+        "OAI-SearchBot": null,
+        "ChatGPT-User": null,
+        "Claude-SearchBot": null,
+        "Claude-User": null,
+        "PerplexityBot": null,
+        "Perplexity-User": null,
+        "GPTBot": null,
+        "ClaudeBot": null,
+        "Google-Extended": null,
+        "CCBot": null,
+        "Applebot-Extended": null
+      }
+    },
+    "crawler_llms_txt_checker": {
+      "url": "https://www.example.com/llms.txt",
+      "exists": false,
+      "status_code": 404
+    },
+    "direct_fetch_llms_txt": {
+      "url": "https://www.example.com/llms.txt",
+      "status_code": 404
+    },
+    "crawler_structured_data_checker": [
+      {
+        "url": "https://www.example.com/",
+        "json_ld_types": [
+          "Organization",
+          "WebSite"
+        ]
+      },
+      {
+        "url": "https://www.example.com/blog/reduce-no-shows/",
+        "json_ld_types": [
+          "BlogPosting",
+          "BreadcrumbList"
+        ]
+      }
+    ],
+    "pages_read_directly": {
+      "https://www.example.com/blog/reduce-no-shows/": "Nine tactics: automatic reminders 24 hours and 2 hours before the visit; a one-tap link to confirm or reschedule in every reminder; a deposit for long or first-time appointments; a clear cancellation window (24 hours is the most common); a waitlist that fills freed slots; a follow-up message after a missed visit. Reminders are the first tactic because they catch clients who simply forgot.",
+      "https://www.example.com/features/reminders/": "Reminders go out by SMS and email. You choose when they go: 48 hours, 24 hours or 2 hours before. Each reminder carries the time, the address and a link to confirm, cancel or reschedule. The wording can be edited per service.",
+      "https://www.example.com/industries/salons/": "Clients book 24/7 from your website, Instagram and Google. Reminders go out automatically, deposits can be taken for long services, and every stylist works from one shared calendar. Plans start at $19 a month for one staff member; the Business plan is $99 for up to 20.",
+      "https://www.example.com/blog/appointment-reminder-templates/": "A good reminder text stays under 160 characters, names the business, gives the day and time, and ends with one action: reply C to confirm or tap the link to reschedule. The post has 14 templates for salons, clinics and studios.",
+      "https://www.example.com/templates/cancellation-policy/": "Most salons ask for 24 hours' notice. The template sets a 24-hour window, a fee of 50% of the service price for late cancellations, the full price for no-shows, and one free late cancellation a year for regular clients. Show the policy at booking and in every reminder.",
+      "https://www.example.com/blog/deposit-policy/": "Take the deposit by card when the client books online; the slot is held once it is paid. 20 to 50% of the service price is common, or a fixed amount for short services. The deposit comes off the final bill and is kept if the client cancels inside the cancellation window.",
+      "https://www.example.com/blog/how-to-take-online-bookings/": "Setup takes four steps: add your services with prices and durations, set each staff member's working hours, connect the calendar you already use, and put the booking link on your website, your Instagram profile and your Google Business Profile.",
+      "https://www.example.com/integrations/facebook/": "Add a Book now button to your Facebook page that opens your booking page. Clients pick a service, a staff member and a time, and the booking lands in the same calendar as every other booking."
+    },
+    "domain_types": {
+      "forum-a.example": "forum thread",
+      "directory-a.example": "review directory",
+      "directory-b.example": "review directory",
+      "video-site.example": "video",
+      "industry-magazine.example": "industry magazine",
+      "clinic-association.example": "clinic association",
+      "salon-news.example": "salon news site",
+      "templates-site.example": "template library",
+      "competitor-a.example": "Competitor A",
+      "competitor-b.example": "Competitor B",
+      "competitor-c.example": "Competitor C",
+      "www.example.com": "the site"
+    }
+  }
+}

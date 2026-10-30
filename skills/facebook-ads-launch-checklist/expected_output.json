@@ -1,0 +1,537 @@
+{
+  "header": {
+    "account": "Example DTC skincare store",
+    "currency": "USD",
+    "time_zone": "America/Los_Angeles",
+    "campaign": "Prospecting | Sales | Night Cream | US | 2026-06",
+    "objective": "OUTCOME_SALES",
+    "planned": "2026-10-23T09:00:00-0700 to 2026-11-20T09:00:00-0800",
+    "run_date": "2026-10-21",
+    "verdict": "NOT READY",
+    "before_switch_on": "Fix the blocker, then tick the first four sign-off items: this is a conversion campaign, so all four apply."
+  },
+  "blockers": [
+    {
+      "check": "1.3 Dates",
+      "evidence": "ad set end_time 2026-07-03T09:00:00-0700 and campaign stop_time 2026-07-03T09:00:00-0700: both before the planned start 2026-10-23T09:00:00-0700 and before today",
+      "fix": "Move the ad set's dates to 2026-10-23T09:00:00-0700 to 2026-11-20T09:00:00-0800; the campaign's dates follow its ad set",
+      "who": "I can do this now"
+    }
+  ],
+  "summary": {
+    "tier_1": {
+      "warn": 2,
+      "pass": 5,
+      "fail": 1
+    },
+    "tier_2": {
+      "pass": 2,
+      "warn": 6
+    },
+    "tier_3": {
+      "warn": 4,
+      "pass": 3
+    }
+  },
+  "checklist": {
+    "tier_1": [
+      {
+        "check": "1.1 Account can spend",
+        "result": "warn",
+        "calls": "A",
+        "value": "account_status 1, disable_reason 0, a funding source on file; the spend cap leaves $3,800: 95.0 days at this campaign's $40, but only 9.0 days at the account's $420 a day once it runs"
+      },
+      {
+        "check": "1.2 The ad's identity can run",
+        "result": "pass",
+        "calls": "E, F",
+        "value": "the creative's Page is the one Page the account can promote"
+      },
+      {
+        "check": "1.3 Dates",
+        "result": "fail",
+        "calls": "B, C",
+        "value": "ad set end_time 2026-07-03T09:00:00-0700 and campaign stop_time 2026-07-03T09:00:00-0700: both before the planned start 2026-10-23T09:00:00-0700 and before today"
+      },
+      {
+        "check": "1.4 Something will serve",
+        "result": "warn",
+        "calls": "C, D",
+        "value": "1 ad set with 2 ads: Static - night cream launch turns on with it; Static - night cream v2 is PENDING_REVIEW and can't serve until review finishes"
+      },
+      {
+        "check": "1.5 Tracking fits the goal",
+        "result": "pass",
+        "calls": "C, G",
+        "value": "OFFSITE_CONVERSIONS with PURCHASE on pixel 100000000000001, which last fired 2026-10-21T08:40:00-0700"
+      },
+      {
+        "check": "1.6 Budget is above Meta's floor",
+        "result": "pass",
+        "calls": "A, C, H",
+        "value": "$40.00 a day on IMPRESSIONS billing; the floor is $1.00"
+      },
+      {
+        "check": "1.7 The landing page answers",
+        "result": "pass",
+        "calls": "M",
+        "value": "https://example.com/night-cream redirects once (301) to https://example.com/products/night-cream, which returns 200 over HTTPS"
+      },
+      {
+        "check": "1.8 Special ad category",
+        "result": "pass",
+        "calls": "B",
+        "value": "skincare needs none; special_ad_categories is empty"
+      }
+    ],
+    "tier_2": [
+      {
+        "check": "2.1 Objective, goal and destination agree",
+        "result": "pass",
+        "calls": "B, C, E",
+        "value": "OUTCOME_SALES, optimising for purchases, a SHOP_NOW button to the product page"
+      },
+      {
+        "check": "2.2 Enough results to learn",
+        "result": "warn",
+        "calls": "C, K",
+        "value": "$40 x 7 / $41.88 (90-day cost per offsite_conversion.fb_pixel_purchase) = 6.7 purchases a week, under 50"
+      },
+      {
+        "check": "2.3 Audience size and targeting",
+        "result": "warn",
+        "calls": "C, I",
+        "value": "US, ages 25-54, all genders; estimate 128,000,000 to 151,000,000, well above the 80,000 guide for $40 a day. The age box is narrowed with no reason given"
+      },
+      {
+        "check": "2.4 Exclusions",
+        "result": "warn",
+        "calls": "C, I",
+        "value": "a prospecting ad set that excludes nothing, though Purchasers 180d exists"
+      },
+      {
+        "check": "2.5 Creative specs",
+        "result": "warn",
+        "calls": "E, J",
+        "value": "a landscape image only (1200x628) on automatic placements: no 1:1, 4:5 or 9:16 version; primary text is 165 characters, over 125; headline is 46 characters, over 40"
+      },
+      {
+        "check": "2.6 Copy reads safely",
+        "result": "warn",
+        "calls": "E",
+        "value": "\"Wake up with visibly younger skin, guaranteed.\" promises a result as certain"
+      },
+      {
+        "check": "2.7 Landing page speed (mobile)",
+        "result": "warn",
+        "calls": "M",
+        "value": "LCP 3.1 s, CLS 0.04"
+      },
+      {
+        "check": "2.8 Landing page matches the ad",
+        "result": "pass",
+        "calls": "E",
+        "value": "page heading \"Overnight Repair Night Cream\" and ad headline \"New: Overnight Repair Night Cream with Retinol\" share the product name"
+      }
+    ],
+    "tier_3": [
+      {
+        "check": "3.1 Ads to test",
+        "result": "warn",
+        "calls": "D, E",
+        "value": "2 ads, both single images"
+      },
+      {
+        "check": "3.2 UTMs",
+        "result": "warn",
+        "calls": "E",
+        "value": "url_tags is empty and the link has no utm_ parameters"
+      },
+      {
+        "check": "3.3 Names",
+        "result": "warn",
+        "calls": "B",
+        "value": "the campaign name ends in 2026-06, but it relaunches in 2026-10"
+      },
+      {
+        "check": "3.4 Placements and Advantage+ audience",
+        "result": "warn",
+        "calls": "C",
+        "value": "Advantage+ audience is off with ages 25-54 on a conversion goal"
+      },
+      {
+        "check": "3.5 Attribution",
+        "result": "pass",
+        "calls": "C",
+        "value": "7-day click, 1-day view"
+      },
+      {
+        "check": "3.6 Bid strategy",
+        "result": "pass",
+        "calls": "B, C",
+        "value": "lowest cost, no cap"
+      },
+      {
+        "check": "3.7 Budget level (CBO or ABO)",
+        "result": "pass",
+        "calls": "B, C",
+        "value": "one ad set, so the level makes no difference"
+      }
+    ]
+  },
+  "other_fixes": [
+    {
+      "check": "1.1",
+      "fix": "Raise or remove the account spending limit: $3,800 lasts 9.0 days at $420 a day",
+      "who": "do this in Ads Manager (Billing)"
+    },
+    {
+      "check": "2.4",
+      "fix": "Exclude Purchasers 180d from the ad set",
+      "who": "I can do this now, with the full targeting object, once you say so"
+    },
+    {
+      "check": "2.5",
+      "fix": "Add a 1080x1080 or 1080x1350 image and a 1080x1920 version; cut the primary text to 125 characters and the headline to 40",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "check": "2.6",
+      "fix": "Drop \"guaranteed\": state what the cream does, not a certain result",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "check": "2.7",
+      "fix": "Bring mobile LCP from 3.1 s under 2.5 s: compress the hero image on the product page",
+      "who": "your site team"
+    },
+    {
+      "check": "3.4",
+      "fix": "Switch Advantage+ audience on, or say why the ages are narrowed",
+      "who": "do this in Ads Manager"
+    }
+  ],
+  "sign_off": [
+    {
+      "item": "Purchase fires once per order, with value and currency",
+      "where": "Events Manager > Test events"
+    },
+    {
+      "item": "Conversions API on and deduplicated (shared event_id)",
+      "where": "Events Manager > dataset > Overview"
+    },
+    {
+      "item": "Event match quality for Purchase",
+      "where": "Events Manager > Overview"
+    },
+    {
+      "item": "Pixel on every page, PageView firing on the product page",
+      "where": "Meta Pixel Helper or Events Manager > Test events"
+    },
+    {
+      "item": "The product page works on a phone",
+      "where": "open the ad's link"
+    },
+    {
+      "item": "The ad looks right on a phone",
+      "where": "the preview from call L"
+    }
+  ],
+  "unknowns": [
+    "Why Static - night cream v2 is still in review: review feedback isn't readable through these actions."
+  ],
+  "fix_payloads": [
+    {
+      "fix": "1.3 Dates",
+      "action": "update_adset",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100008",
+        "start_time": "2026-10-23T09:00:00-0700",
+        "end_time": "2026-11-20T09:00:00-0800"
+      }
+    },
+    {
+      "fix": "3.3 Names, campaign",
+      "action": "update_campaign",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000006",
+        "name": "[SALES] PROS - Night Cream - 2610"
+      }
+    },
+    {
+      "fix": "3.2 UTMs, step 1: a copy of the creative with url_tags",
+      "action": "create_ad_creative",
+      "status": "not run, needs your yes; agree the tags first",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_ad_creative",
+        "ad_account_id": "act_123456789",
+        "name": "Static - night cream launch - utm",
+        "object_story_spec": {
+          "page_id": "100000000000000",
+          "link_data": {
+            "link": "https://example.com/night-cream",
+            "message": "Our new overnight cream works while you sleep. Retinol and ceramides repair dryness overnight. Wake up with visibly younger skin, guaranteed. Free shipping over $40.",
+            "name": "New: Overnight Repair Night Cream with Retinol",
+            "image_hash": "abc123",
+            "call_to_action": {
+              "type": "SHOP_NOW"
+            }
+          }
+        },
+        "url_tags": "utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      }
+    },
+    {
+      "fix": "3.2 UTMs, step 2: point the ad at the copy",
+      "action": "update_ad",
+      "status": "not run, needs your yes",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_ad",
+        "ad_account_id": "act_123456789",
+        "ad_id": "120000000000200011",
+        "creative": {
+          "creative_id": "<id from the step above>"
+        }
+      }
+    }
+  ],
+  "not_offered": [
+    "Switching on: Meta's API here accepts only PAUSED, so you turn the campaign on in Ads Manager after the date fix.",
+    "Budget: $40 a day is above the floor; no change unless you want one."
+  ],
+  "after_launch": [
+    "Day 1: both ads leave review and spend; no delivery error.",
+    "Days 2 to 3: purchases show in Events Manager and Ads Manager; spend paces near $40 a day.",
+    "Day 7: cost per purchase against the account's $41.88, and whether the ad set left learning (it won't on 6.7 purchases a week). Avoid big edits before then."
+  ],
+  "go_deeper": [
+    "facebook-ads-audience-builder for the Purchasers 180d exclusion, if installed",
+    "ad-landing-page-match-scorer for the product page, if installed"
+  ],
+  "mode_examples": {
+    "not_delivering": {
+      "header": {
+        "account": "Example DTC skincare store",
+        "currency": "USD",
+        "time_zone": "America/Los_Angeles",
+        "run_at": "2026-10-21T09:30:00-0700",
+        "reported": "two new gift set ad sets spend nothing since Monday; Interest - skincare shows Learning limited",
+        "window": "last 7 complete days, 2026-10-14 to 2026-10-20"
+      },
+      "ad_sets": [
+        {
+          "ad_set": "Gift sets | Broad 25-54 | US",
+          "campaign": "Prospecting | Sales | Gift Sets | US | 2026-10",
+          "state": "NOT DELIVERING",
+          "spend_7d": "$0 of $120 ($60 x 2 days on)",
+          "delivered_pct": 0.0,
+          "purchases_7d": "0 of 50",
+          "stopped_by": [
+            "D3 ad set: cap under what results cost"
+          ]
+        },
+        {
+          "ad_set": "Gift sets | LAL 1% purchasers | US",
+          "campaign": "Prospecting | Sales | Gift Sets | US | 2026-10",
+          "state": "NOT DELIVERING",
+          "spend_7d": "$0 of $80 ($40 x 2 days on)",
+          "delivered_pct": 0.0,
+          "purchases_7d": "0 of 50",
+          "stopped_by": [
+            "D4 ads: none can serve",
+            "D4 ads: rejected",
+            "D4 ads: stuck in review"
+          ]
+        },
+        {
+          "ad_set": "Interest - skincare",
+          "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+          "state": "LEARNING LIMITED (inferred)",
+          "spend_7d": "$280 of $280 ($40 x 7 days on)",
+          "delivered_pct": 100.0,
+          "purchases_7d": "5 of 50",
+          "stopped_by": [],
+          "learning": {
+            "purchases_7d": 5,
+            "below_50": true,
+            "cost_per_purchase_7d": 56.0,
+            "budget_for_50_a_week": 400.0,
+            "current_budget": 40.0,
+            "edits_that_restart_learning_7d": 0,
+            "merged": {
+              "ad_sets": [
+                "Interest - skincare",
+                "Broad 25-54 | US"
+              ],
+              "purchases_7d": 20,
+              "spend_7d": 910,
+              "cost_per_purchase": 45.5,
+              "budget_for_50_a_week": 325.0,
+              "budget_now": 130.0,
+              "add_to_cart_7d": 83
+            },
+            "fix_order": [
+              "1. No edits in the last 7 days (P's only change, ad set targeting updated, was on 2026-10-10), so this is limited, not relearning.",
+              "2. Merge with Broad 25-54 | US (same campaign, same event, overlapping audience): 20 purchases a week together, $910 spend, $45.50 a purchase. Still under 50. The merged ad set starts learning again, so expect a week of uneven results.",
+              "3. Budget: 50 purchases a week at $45.50 needs $325.00 a day, against $130 for the merged ad set: more than twice the budget, so the budget can't buy 50 a week. Not proposed.",
+              "4. Audience: 41,000,000 people at the lower bound, not small. Not the cause.",
+              "5. Optimise the merged ad set for add to cart: 83 add to cart events a week, over 50, so it can leave learning. The cost: Meta then finds people who add to cart, not people who buy. A new optimisation event needs a new ad set, which you build in Ads Manager."
+            ]
+          }
+        }
+      ],
+      "causes": [
+        {
+          "ad_set": "Gift sets | Broad 25-54 | US",
+          "rung": "D3 ad set: cap under what results cost",
+          "state": "stops it",
+          "found": "COST_CAP at $18.00 a purchase, under half of the $41.88 cost per purchase (90-day, call K, because O has 0 purchases)",
+          "evidence": "N: bid_amount 1800; K: $22,530 / 538 purchases",
+          "fix": "Raise the cost cap to $45.00 (your target, which is above the $41.88 it was compared with)",
+          "who": "I can do this now"
+        },
+        {
+          "ad_set": "Gift sets | LAL 1% purchasers | US",
+          "rung": "D4 ads: rejected",
+          "state": "stops it",
+          "found": "Gift sets - static 3 for 2 is DISAPPROVED",
+          "evidence": "N: effective_status",
+          "fix": "Read the reason in Account Quality, then edit the ad or request another review",
+          "who": "do this in Ads Manager"
+        },
+        {
+          "ad_set": "Gift sets | LAL 1% purchasers | US",
+          "rung": "D4 ads: stuck in review",
+          "state": "stops it",
+          "found": "Gift sets - UGC review has been PENDING_REVIEW for 49.3 hours, with no edit since (P)",
+          "evidence": "N: updated_time 2026-10-19T08:10:00-0700; P: last change 2026-10-19T08:10:00-0700",
+          "fix": "Request another review on the ad in Ads Manager; if it is still in review after that, contact Meta support from Ads Manager",
+          "who": "do this in Ads Manager"
+        },
+        {
+          "ad_set": "Gift sets | Broad 25-54 | US",
+          "rung": "D3 ad set: overlap (inferred from targeting)",
+          "state": "holds it back",
+          "found": "4 other ad sets on, optimising for purchases, US, overlapping ages, the same included audiences (none: broad), neither excluding the other: Broad 25-54 | US ($90/day); Interest - skincare ($40/day); broad serum ($60/day); New Sales Ad Set ($50/day)",
+          "evidence": "N: targeting of every ad set that is on",
+          "fix": "Check the overlap in Audiences > tick two audiences > Show audience overlap; then merge them or exclude one from the other",
+          "who": "do this in Ads Manager",
+          "after_this_is_fixed": true
+        },
+        {
+          "ad_set": "Gift sets | LAL 1% purchasers | US",
+          "rung": "D3 ad set: overlap (inferred from targeting)",
+          "state": "holds it back",
+          "found": "1 other ad set on, optimising for purchases, US, overlapping ages, the same included audiences (LAL 1% US - Purchasers 180d), neither excluding the other: LAL 1% purchasers 180d ($40/day)",
+          "evidence": "N: targeting of every ad set that is on",
+          "fix": "Check the overlap in Audiences > tick two audiences > Show audience overlap; then merge them or exclude one from the other",
+          "who": "do this in Ads Manager",
+          "after_this_is_fixed": true
+        },
+        {
+          "ad_set": "Interest - skincare",
+          "rung": "D3 ad set: overlap (inferred from targeting)",
+          "state": "holds it back",
+          "found": "4 other ad sets on, optimising for purchases, US, overlapping ages, the same included audiences (none: broad), neither excluding the other: Broad 25-54 | US ($90/day); broad serum ($60/day); New Sales Ad Set ($50/day); Gift sets | Broad 25-54 | US ($60/day)",
+          "evidence": "N: targeting of every ad set that is on",
+          "fix": "Check the overlap in Audiences > tick two audiences > Show audience overlap; then merge them or exclude one from the other",
+          "who": "do this in Ads Manager"
+        },
+        {
+          "ad_set": "Interest - skincare",
+          "rung": "D4 ads: rejected",
+          "state": "holds it back",
+          "found": "Static - claims v2 is DISAPPROVED",
+          "evidence": "N: effective_status",
+          "fix": "Read the reason in Account Quality, then edit the ad or request another review",
+          "who": "do this in Ads Manager"
+        },
+        {
+          "ad_set": "Interest - skincare",
+          "rung": "D5 learning limited (inferred)",
+          "state": "holds it back",
+          "found": "5 purchases in the last 7 days, all 7 days on: under 50, so very likely Learning limited. The API doesn't return the label",
+          "evidence": "O: 5 offsite_conversion.fb_pixel_purchase, $280 spend; P: no change since 2026-10-10",
+          "fix": "See the fix order in the ad set row: merge, then optimise the merged ad set for add to cart",
+          "who": "do this in Ads Manager"
+        }
+      ],
+      "checked_and_fine": [
+        {
+          "rung": "D1 account",
+          "value": "account_status 1, disable_reason 0, a funding source on file, no ad at PENDING_BILLING_INFO; the spending limit leaves $3,800, 7.9 days at the $480 a day of every ad set that is on"
+        },
+        {
+          "rung": "D2 campaigns",
+          "value": "Prospecting | Sales | Gift Sets | US | 2026-10 and Prospecting | Sales | Hydra Serum | US | 2026-08: ACTIVE, no stop_time, no campaign spend_cap, budgets on the ad sets"
+        },
+        {
+          "rung": "D3 Gift sets | Broad 25-54 | US (other checks)",
+          "value": "dates include today, $60 a day above the $1.00 floor, audience 128,000,000 at the lower bound"
+        },
+        {
+          "rung": "D3 Gift sets | LAL 1% purchasers | US",
+          "value": "dates include today, $40 a day above the $1.00 floor, LOWEST_COST_WITHOUT_CAP, audience 2,100,000 at the lower bound, included audiences ready (delivery_status 200)"
+        },
+        {
+          "rung": "D3 Interest - skincare",
+          "value": "dates include today, $40 a day above the $1.00 floor, LOWEST_COST_WITHOUT_CAP, audience 41,000,000 at the lower bound"
+        }
+      ],
+      "confirm": [
+        "A failed charge or an expired card: Ads Manager > Billing and payments (the API shows a funding source, not whether the last charge went through).",
+        "Why Gift sets - static 3 for 2 was rejected: Account Quality, or the ad in Ads Manager.",
+        "The exact Learning limited label on Interest - skincare: the Delivery column in Ads Manager."
+      ],
+      "fix_payloads": [
+        {
+          "fix": "D3 cost cap, Gift sets | Broad 25-54 | US",
+          "action": "update_adset",
+          "status": "not run, needs your yes",
+          "body": {
+            "platform": "facebook-ads",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "update_adset",
+            "ad_account_id": "act_123456789",
+            "adset_id": "120000000000100009",
+            "bid_amount": 4500
+          }
+        }
+      ],
+      "not_offered": [
+        "Requesting a review or appealing a rejection: done on the ad in Ads Manager.",
+        "Merging ad sets or switching to add to cart: the skill proposes it; you build the new ad set in Ads Manager.",
+        "Pausing or switching anything on: never done through the API here."
+      ],
+      "what_to_watch": [
+        "Within 24 hours of the cap change: Gift sets | Broad 25-54 | US starts spending toward $60 a day.",
+        "Within 24 hours of the review request: Gift sets - UGC review leaves review, or shows a reason.",
+        "After 7 days without edits: weekly add to cart events on the new merged ad set against 50.",
+        "The account spending limit: $3,800 left at $480 a day, so every ad stops around 2026-10-29 unless it is raised in Ads Manager > Billing and payments."
+      ],
+      "go_deeper": [
+        "audience-overlap-analyzer for the five broad ad sets that overlap, if installed",
+        "meta-ads-performance-analyzer once they spend, if installed"
+      ]
+    }
+  }
+}

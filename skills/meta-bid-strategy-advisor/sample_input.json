@@ -1,0 +1,2636 @@
+{
+  "note": "Example data: an invented online booking software company with an invented Meta ad account, not a real business. Every number in expected_output.json follows from this input. The daily rows are generated with a fixed seed.",
+  "request": "Hey Claude, I just added the \"meta-bid-strategy-advisor\" skill. Look at every Meta campaign and tell me which bid strategy each should use and where to set the caps. We can pay up to $12 per sign-up and $45 per demo request, and we want at least 3.0 ROAS on paid-plan purchases (we send first-year plan value). Of our sign-ups, 24% in the US, 20% in the UK and 12% in Canada become paying customers.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "account": {
+    "name": "Example Booking Software",
+    "ad_account_id": "act_1234567890",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "source": "connected: Meta Ads through the InsightfulPipe MCP",
+  "window": {
+    "since": "2026-09-28",
+    "until": "2026-10-27",
+    "days": 30,
+    "run_date": "2026-10-28"
+  },
+  "user_answers": {
+    "target_cost_per_sign_up": 12.0,
+    "target_cost_per_demo_request": 45.0,
+    "target_roas": 3.0,
+    "roas_goal_or_value_rules_set_now": "none",
+    "paid_rate_by_country_pct": {
+      "US": 24,
+      "GB": 20,
+      "CA": 12
+    }
+  },
+  "data_pulled": {
+    "get_campaigns": [
+      {
+        "id": "1200000000000001",
+        "name": "Prospecting | Sign-ups | US",
+        "objective": "OUTCOME_LEADS",
+        "effective_status": "ACTIVE",
+        "bid_strategy": "COST_CAP",
+        "daily_budget": "30000"
+      },
+      {
+        "id": "1200000000000002",
+        "name": "Retargeting | Paid plans | Value",
+        "objective": "OUTCOME_SALES",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "1200000000000003",
+        "name": "Demo requests | Clinics",
+        "objective": "OUTCOME_LEADS",
+        "effective_status": "ACTIVE",
+        "bid_strategy": "LOWEST_COST_WITH_BID_CAP",
+        "daily_budget": "6000"
+      },
+      {
+        "id": "1200000000000004",
+        "name": "Prospecting | Sign-ups | UK and Canada",
+        "objective": "OUTCOME_LEADS",
+        "effective_status": "ACTIVE",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "daily_budget": "20000"
+      },
+      {
+        "id": "1200000000000005",
+        "name": "Blog | Traffic | US",
+        "objective": "OUTCOME_TRAFFIC",
+        "effective_status": "ACTIVE"
+      }
+    ],
+    "get_adsets": [
+      {
+        "id": "1200000000001001",
+        "name": "US | Broad",
+        "campaign_id": "1200000000000001",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "COMPLETE_REGISTRATION"
+        },
+        "bid_strategy": "COST_CAP",
+        "bid_amount": 1100
+      },
+      {
+        "id": "1200000000001002",
+        "name": "US | Lookalike 1% paying customers",
+        "campaign_id": "1200000000000001",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "COMPLETE_REGISTRATION"
+        },
+        "bid_strategy": "COST_CAP",
+        "bid_amount": 1100
+      },
+      {
+        "id": "1200000000001003",
+        "name": "Site visitors 30d | Paid plans",
+        "campaign_id": "1200000000000002",
+        "optimization_goal": "VALUE",
+        "promoted_object": {
+          "custom_event_type": "PURCHASE"
+        },
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "daily_budget": "45000"
+      },
+      {
+        "id": "1200000000001004",
+        "name": "Clinic owners | Instant form",
+        "campaign_id": "1200000000000003",
+        "optimization_goal": "LEAD_GENERATION",
+        "promoted_object": {
+          "page_id": "100000000000001"
+        },
+        "bid_strategy": "LOWEST_COST_WITH_BID_CAP",
+        "bid_amount": 4000
+      },
+      {
+        "id": "1200000000001005",
+        "name": "UK and Canada | Broad",
+        "campaign_id": "1200000000000004",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "custom_event_type": "COMPLETE_REGISTRATION"
+        },
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+      },
+      {
+        "id": "1200000000001006",
+        "name": "Blog readers | US",
+        "campaign_id": "1200000000000005",
+        "optimization_goal": "LINK_CLICKS",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "daily_budget": "2500"
+      }
+    ],
+    "get_insights_adaccount_adset_by_day": [
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "156.38",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "13"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "126.08",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "422.11",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1272.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "31.13"
+      },
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "145.67",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-28",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.03",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "74"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "157.50",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "125.90",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "442.93",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1632.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "21.62",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "142.35",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-29",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.41",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "75"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "157.96",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "128.80",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "429.24",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "588.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "23.43",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "144.71",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-09-30",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.23",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "84"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "163.75",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "13"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "131.75",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "423.34",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "6"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3768.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "17.14"
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "143.68",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-01",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.90",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "66"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "91.83",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "61.55",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "441.18",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1860.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "20.65",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "145.83",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-02",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.17",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "73"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "92.13",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "61.05",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "442.13",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2592.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "23.14",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "149.55",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-03",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.51",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "72"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "81.22",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "65.50",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "433.69"
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "33.90",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "145.21",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-04",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "22.93",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "65"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "85.76",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "71.07",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "428.36",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1176.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "18.83"
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "141.10",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "11"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-05",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "22.76",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "61"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "93.94",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "77.22",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "433.80",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1176.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "29.66",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "140.56",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-06",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.22",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "81"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "108.03",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "72.82",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "423.20",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "588.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "23.78",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "141.66",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-07",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.08",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "61"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "92.88",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "70.86",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "426.16",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2364.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "27.10",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "145.57",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-08",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.22",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "63"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "93.12",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "75.94",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "434.03",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1992.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "20.66"
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "142.77",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "11"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-09",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "22.77",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "65"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "98.64",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "83.55",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "444.89",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1272.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "23.53",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "145.58",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-10",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.97",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "63"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "106.99",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "66.67",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "447.79",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2604.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "21.65",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "144.80",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-11",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.37",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "82"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "108.83",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "68.15",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "423.65",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4140.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "29.33",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "148.61",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-12",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.25",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "59"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "97.56",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "68.93",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "449.90",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2460.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "27.68",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "141.76",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "11"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-13",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.83",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "65"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "86.01",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "70.35",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "430.49",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1272.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "20.28",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "146.50",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-14",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.14",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "76"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "93.58",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "72.65",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "439.00",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3192.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "34.19",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "148.68",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-15",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.97",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "63"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "98.39",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "67.35",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "438.56",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "6"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2448.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "18.31",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "149.18",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-16",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.21",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "73"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "91.39",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "60.11",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "4"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "428.84",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2232.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "31.62"
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "144.07",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "11"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-17",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.09",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "85"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "84.70",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "82.08",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "447.02",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2100.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "26.92",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "142.43",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-18",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.67",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "84"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "80.07",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "60.67",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "449.56",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "2376.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "20.36"
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "146.02",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-19",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.06",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "60"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "87.76",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "69.73",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "433.93",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1632.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "29.78",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "147.84",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-20",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "22.89",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "66"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "104.45",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "79.34",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "436.51",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1860.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "16.45"
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "147.49",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-21",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.32",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "61"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "88.50",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "68.34",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "442.28",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3192.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "30.98",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "142.10",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-22",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "22.17",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "70"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "99.41",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "66.53",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "438.09",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "912.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "28.77"
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "141.20",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "11"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-23",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.92",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "79"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "80.11",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "63.54",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "449.23",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "6"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4008.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "23.17",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "191.83",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "12"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-24",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.40",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "63"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "81.99",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "65.70",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "428.86",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "3"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1404.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "17.11"
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "197.75",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "15"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-25",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.20",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "61"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "88.51",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "72.36",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "424.98",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "228.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "22.53"
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "196.92",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "13"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-26",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "24.76",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "69"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001001",
+        "adset_name": "US | Broad",
+        "spend": "104.55",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "9"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000001",
+        "adset_id": "1200000000001002",
+        "adset_name": "US | Lookalike 1% paying customers",
+        "spend": "84.85",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "8"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000002",
+        "adset_id": "1200000000001003",
+        "adset_name": "Site visitors 30d | Paid plans",
+        "spend": "422.22",
+        "actions": [
+          {
+            "action_type": "omni_purchase",
+            "value": "4"
+          }
+        ],
+        "action_values": [
+          {
+            "action_type": "omni_purchase",
+            "value": "1632.00"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000003",
+        "adset_id": "1200000000001004",
+        "adset_name": "Clinic owners | Instant form",
+        "spend": "22.66",
+        "actions": [
+          {
+            "action_type": "lead",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "adset_name": "UK and Canada | Broad",
+        "spend": "199.75",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "13"
+          }
+        ]
+      },
+      {
+        "date_start": "2026-10-27",
+        "campaign_id": "1200000000000005",
+        "adset_id": "1200000000001006",
+        "adset_name": "Blog readers | US",
+        "spend": "23.73",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "63"
+          }
+        ]
+      }
+    ],
+    "get_insights_adaccount_adset_by_country": [
+      {
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "country": "CA",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "95"
+          }
+        ]
+      },
+      {
+        "campaign_id": "1200000000000004",
+        "adset_id": "1200000000001005",
+        "country": "GB",
+        "actions": [
+          {
+            "action_type": "offsite_conversion.fb_pixel_complete_registration",
+            "value": "233"
+          }
+        ]
+      }
+    ],
+    "get_activities_adaccount": [
+      {
+        "event_time": "2026-10-02T13:14:00+0000",
+        "event_type": "update_ad_set_bidding",
+        "translated_event_type": "Ad set bid amount updated",
+        "object_id": "1200000000001001",
+        "object_name": "US | Broad",
+        "object_type": "CAMPAIGN",
+        "extra_data": "{\"old_value\":1400,\"new_value\":1100,\"currency\":\"USD\",\"type\":\"payment_amount\"}"
+      },
+      {
+        "event_time": "2026-10-02T13:14:00+0000",
+        "event_type": "update_ad_set_bidding",
+        "translated_event_type": "Ad set bid amount updated",
+        "object_id": "1200000000001002",
+        "object_name": "US | Lookalike 1% paying customers",
+        "object_type": "CAMPAIGN",
+        "extra_data": "{\"old_value\":1400,\"new_value\":1100,\"currency\":\"USD\",\"type\":\"payment_amount\"}"
+      },
+      {
+        "event_time": "2026-10-24T20:02:00+0000",
+        "event_type": "update_campaign_budget",
+        "translated_event_type": "Campaign budget updated",
+        "object_id": "1200000000000004",
+        "object_name": "Prospecting | Sign-ups | UK and Canada",
+        "object_type": "CAMPAIGN_GROUP",
+        "extra_data": "{\"old_value\":15000,\"new_value\":20000,\"currency\":\"USD\",\"type\":\"daily_budget\"}"
+      }
+    ]
+  }
+}

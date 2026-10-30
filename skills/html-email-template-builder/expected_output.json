@@ -1,0 +1,428 @@
+{
+  "header": {
+    "mode": "build",
+    "email_job": "marketing: a feature announcement to existing customers",
+    "platform": "Klaviyo",
+    "subject": "New: take a deposit when clients book",
+    "brand_source": "https://www.example.com/ read with the crawler's brand-extractor on 2026-10-28, logo PNG from the user"
+  },
+  "brand_kit": [
+    {
+      "item": "Button colour",
+      "source": "brand-extractor primaryButton.background",
+      "site_value": "#3B82F6",
+      "email_value": "#3472D8",
+      "why": "white text on #3B82F6 is 3.67:1, under 4.5:1; darkened 12% to reach 4.62:1"
+    },
+    {
+      "item": "Link colour",
+      "source": "brand-extractor colors.primary",
+      "site_value": "#3B82F6",
+      "email_value": "#3370D4",
+      "why": "#3B82F6 on the card background is 3.52:1; darkened 14% to reach 4.56:1"
+    },
+    {
+      "item": "Button text",
+      "source": "brand-extractor primaryButton.textColor",
+      "site_value": "#FFFFFF",
+      "email_value": "#FFFFFF",
+      "why": "kept"
+    },
+    {
+      "item": "Corner radius",
+      "source": "brand-extractor primaryButton.borderRadius",
+      "site_value": "6px",
+      "email_value": "6px",
+      "why": "rounded, so the button gets a VML shape for classic Outlook"
+    },
+    {
+      "item": "Text colour",
+      "source": "brand-extractor colors.text",
+      "site_value": "#1F2937",
+      "email_value": "#1F2937",
+      "why": "14.06:1 on the card background"
+    },
+    {
+      "item": "Card background",
+      "source": "brand-extractor colors.background",
+      "site_value": "#FFFFFF",
+      "email_value": "#FAFAFA",
+      "why": "near-white instead of pure white, so forced dark-mode inversion is gentler"
+    },
+    {
+      "item": "Heading font",
+      "source": "brand-extractor typography.heading",
+      "site_value": "Sora",
+      "email_value": "Sora, 'Segoe UI', Helvetica, Arial, sans-serif",
+      "why": "web font loads only in Apple Mail, iOS Mail and some Android apps; the link is hidden from Outlook and the stack falls back to system fonts"
+    },
+    {
+      "item": "Body font",
+      "source": "brand-extractor typography.body",
+      "site_value": "ui-sans-serif",
+      "email_value": "'Segoe UI', Helvetica, Arial, sans-serif",
+      "why": "a CSS generic, not a brand font, so a safe stack is used"
+    },
+    {
+      "item": "Body size",
+      "source": "brand-extractor typography.sizes.body",
+      "site_value": "18px",
+      "email_value": "16px / 24px line height",
+      "why": "email body size, not the site's"
+    },
+    {
+      "item": "Logo",
+      "source": "user (PNG)",
+      "site_value": "https://www.example.com/assets/logo.svg",
+      "email_value": "https://www.example.com/email/logo-dark@2x.png at 160 x 38",
+      "why": "the site logo is an SVG, which Gmail and classic Outlook don't show; ogImage is a social banner, not the logo"
+    },
+    {
+      "item": "Ignored",
+      "source": "brand-extractor secondaryButton",
+      "site_value": "FAQ accordion row read as a button",
+      "email_value": "not used",
+      "why": "secondaryButton and buttons[] can pick up page components"
+    }
+  ],
+  "account_read": {
+    "sender": "Example Booking Software <hello@example.com>",
+    "postal_address_set": true,
+    "what_it_means": "the {{ organization.full_address }} tag will print the address, so the footer uses the tag",
+    "templates": [
+      {
+        "id": "TmPl01",
+        "name": "Monthly product update",
+        "editor_type": "USER_DRAGGABLE",
+        "unsubscribe_tag": true,
+        "address_tag": false,
+        "lang": false,
+        "role_presentation": false,
+        "svg_image": true,
+        "plain_text": false
+      },
+      {
+        "id": "TmPl02",
+        "name": "test template",
+        "editor_type": "CODE",
+        "unsubscribe_tag": false,
+        "address_tag": false,
+        "lang": false,
+        "role_presentation": false,
+        "svg_image": false,
+        "plain_text": false
+      }
+    ],
+    "template_finding": "'Monthly product update' lacks an address tag, lang, role attributes, uses an SVG logo; 'test template' lacks an unsubscribe tag, an address tag, lang, role attributes. No template carries both footer tags, so the new email carries its own footer."
+  },
+  "block_plan": [
+    "preheader (hidden, empty for Klaviyo)",
+    "header: logo on a white pill, View in browser",
+    "hero image 600 x 300",
+    "headline (h1)",
+    "intro paragraph",
+    "button: Turn on deposits",
+    "two cards side by side (256px + 24px gap + 256px = the 536px inside the padding), stacking under 620px",
+    "secondary link and sign-off",
+    "footer: reason, address tag, Manage preferences, Unsubscribe"
+  ],
+  "html": "<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<meta name=\"color-scheme\" content=\"light dark\">\n<meta name=\"supported-color-schemes\" content=\"light dark\">\n<title>New: take a deposit when clients book</title>\n<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->\n<!--[if !mso]><!--><link href=\"https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap\" rel=\"stylesheet\"><!--<![endif]-->\n<style>a{color:#3370D4;}@media only screen and (max-width:620px){.eb-col{max-width:100%!important;width:100%!important;display:block!important;}.eb-gap{display:block!important;width:100%!important;height:16px!important;}.eb-pad{padding-left:20px!important;padding-right:20px!important;}}@media (prefers-color-scheme: dark){.eb-page{background-color:#0B1220!important;}.eb-card{background-color:#111827!important;}.eb-soft{background-color:#1E293B!important;}.eb-text{color:#F3F4F6!important;}.eb-muted{color:#CBD5E1!important;}.eb-link{color:#93C5FD!important;}.eb-logo-pill{background-color:#FFFFFF!important;}}[data-ogsb] .eb-page{background-color:#0B1220!important;}[data-ogsb] .eb-card{background-color:#111827!important;}[data-ogsb] .eb-soft{background-color:#1E293B!important;}[data-ogsc] .eb-text{color:#F3F4F6!important;}[data-ogsc] .eb-muted{color:#CBD5E1!important;}[data-ogsc] .eb-link{color:#93C5FD!important;}</style>\n</head>\n<body class=\"eb-page\" style=\"margin:0;padding:0;background-color:#F3F4F6;\">\n<div style=\"display:none;max-height:0;overflow:hidden;mso-hide:all;\">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>\n<table role=\"presentation\" class=\"eb-page\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background-color:#F3F4F6;\"><tr><td align=\"center\" style=\"padding:24px 0;\">\n<!--[if mso]><table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\"><tr><td><![endif]-->\n<table role=\"presentation\" class=\"eb-card\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:100%;max-width:600px;background-color:#FAFAFA;\">\n<tr><td class=\"eb-pad\" style=\"padding:20px 32px;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td valign=\"middle\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td class=\"eb-logo-pill\" style=\"padding:6px 10px;background-color:#FFFFFF;border-radius:6px;\"><a href=\"https://www.example.com/\"><img src=\"https://www.example.com/email/logo-dark@2x.png\" width=\"160\" height=\"38\" alt=\"Example Booking Software\" border=\"0\" style=\"display:block;width:160px;height:38px;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:14px;color:#1F2937;\"></a></td></tr></table></td><td align=\"right\" valign=\"middle\"><a class=\"eb-muted\" href=\"{% web_view_link %}\" style=\"font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;color:#4B5563;text-decoration:underline;\">View in browser</a></td></tr></table></td></tr>\n<tr><td style=\"padding:0;\"><img class=\"eb-text\" src=\"https://www.example.com/email/deposits-hero@2x.png\" width=\"600\" alt=\"Booking page with a deposit step before the confirm button\" border=\"0\" style=\"display:block;width:100%;max-width:600px;height:auto;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;color:#1F2937;\"></td></tr>\n<tr><td class=\"eb-pad\" style=\"padding:32px 32px 32px 32px;\"><h1 class=\"eb-text\" style=\"margin:0 0 16px 0;font-family:Sora, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:28px;line-height:36px;font-weight:600;color:#1F2937;\">Take a deposit when clients book</h1><p class=\"eb-text\" style=\"margin:0 0 24px 0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;color:#1F2937;\">Deposits are now part of your booking page. Ask for a fixed amount or a share of the price, and the money is in your account before the client walks in.</p><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td align=\"center\" bgcolor=\"#3472D8\" style=\"background-color:#3472D8;border-radius:6px;\"><!--[if mso]><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"https://www.example.com/features/payments/\" style=\"height:48px;v-text-anchor:middle;width:220px;\" arcsize=\"12%\" stroke=\"f\" fillcolor=\"#3472D8\"><w:anchorlock/><center style=\"color:#FFFFFF;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;\">Turn on deposits</center></v:roundrect><![endif]--><!--[if !mso]><!--><a href=\"https://www.example.com/features/payments/\" style=\"display:inline-block;padding:14px 28px;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:20px;font-weight:bold;color:#FFFFFF;text-decoration:none;background-color:#3472D8;border-radius:6px;\">Turn on deposits</a><!--<![endif]--></td></tr></table></td></tr>\n<tr><td class=\"eb-pad\" style=\"padding:0 32px 8px 32px;font-size:0;\"><!--[if mso]><table role=\"presentation\" width=\"536\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td width=\"256\" valign=\"top\"><![endif]--><div class=\"eb-col\" style=\"display:inline-block;width:100%;max-width:256px;vertical-align:top;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td class=\"eb-soft\" style=\"padding:20px;background-color:#EFF6FF;border-radius:6px;\"><h2 class=\"eb-text\" style=\"margin:0 0 8px 0;font-family:Sora, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:18px;line-height:26px;color:#1F2937;\">Fewer no-shows</h2><p class=\"eb-text\" style=\"margin:0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;color:#1F2937;\">Clients who pay a deposit are far more likely to turn up, and you keep the deposit if they don't.</p></td></tr></table></div><!--[if mso]></td><td width=\"24\" style=\"width:24px;\">&nbsp;</td><td width=\"256\" valign=\"top\"><![endif]--><!--[if !mso]><!--><div class=\"eb-gap\" style=\"display:inline-block;width:24px;font-size:0;line-height:0;\">&nbsp;</div><!--<![endif]--><div class=\"eb-col\" style=\"display:inline-block;width:100%;max-width:256px;vertical-align:top;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td class=\"eb-soft\" style=\"padding:20px;background-color:#EFF6FF;border-radius:6px;\"><h2 class=\"eb-text\" style=\"margin:0 0 8px 0;font-family:Sora, 'Segoe UI', Helvetica, Arial, sans-serif;font-size:18px;line-height:26px;color:#1F2937;\">Your rules</h2><p class=\"eb-text\" style=\"margin:0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;color:#1F2937;\">Choose which services need a deposit, how much, and how late a client can cancel for a refund.</p></td></tr></table></div><!--[if mso]></td></tr></table><![endif]--></td></tr>\n<tr><td class=\"eb-pad\" style=\"padding:24px 32px 32px 32px;\"><p class=\"eb-text\" style=\"margin:0 0 16px 0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;color:#1F2937;\"><a class=\"eb-link\" href=\"https://www.example.com/blog/deposit-policy/\" style=\"color:#3370D4;text-decoration:underline;\">Read the deposit policy guide</a></p><p class=\"eb-text\" style=\"margin:0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;color:#1F2937;\">The Example Booking Software team</p></td></tr>\n</table>\n<!--[if mso]></td></tr></table><![endif]-->\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:100%;max-width:600px;\"><tr><td class=\"eb-pad\" style=\"padding:24px 32px;\"><p class=\"eb-muted\" style=\"margin:0 0 16px 0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;color:#4B5563;\">You're getting this email because you have an Example Booking Software account.</p><p class=\"eb-muted\" style=\"margin:0 0 16px 0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;color:#4B5563;\">Example Booking Software, {{ organization.full_address }}</p><p class=\"eb-muted\" style=\"margin:0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;color:#4B5563;\"><a class=\"eb-muted\" href=\"{% manage_preferences_link %}\" style=\"color:#4B5563;text-decoration:underline;\">Manage preferences</a> &nbsp;|&nbsp; <a class=\"eb-muted\" href=\"{% unsubscribe_link %}\" style=\"color:#4B5563;text-decoration:underline;\">Unsubscribe</a></p></td></tr></table>\n</td></tr></table>\n</body>\n</html>",
+  "plain_text": "View in browser: {% web_view_link %}\n\nTake a deposit when clients book\n\nDeposits are now part of your booking page. Ask for a fixed amount or a share\nof the price, and the money is in your account before the client walks in.\n\nTurn on deposits: https://www.example.com/features/payments/\n\nFewer no-shows\nClients who pay a deposit are far more likely to turn up, and you keep the\ndeposit if they don't.\n\nYour rules\nChoose which services need a deposit, how much, and how late a client can\ncancel for a refund.\n\nRead the deposit policy guide: https://www.example.com/blog/deposit-policy/\n\nThe Example Booking Software team\nExample Booking Software: https://www.example.com/\n\n---\nYou're getting this email because you have an Example Booking Software\naccount.\nExample Booking Software, {{ organization.full_address }}\nManage preferences: {% manage_preferences_link %}\nUnsubscribe: {% unsubscribe_link %}",
+  "checks": [
+    {
+      "n": 1,
+      "check": "Gmail clipping",
+      "measured": "9,190 bytes",
+      "rule": "under 102,000 bytes; aim for 90,000 or less",
+      "result": "pass"
+    },
+    {
+      "n": 2,
+      "check": "Width",
+      "measured": "content table width=\"600\" with max-width:600px; mso wrapper 600px; card row: 256 + 24 + 256 = 536px in 600 - 2 x 32 = 536px of space; mso column table 536px",
+      "rule": "600px, fluid below, fixed table for Outlook; columns plus gaps no wider than the cell minus its side padding",
+      "result": "pass"
+    },
+    {
+      "n": 3,
+      "check": "Layout tables",
+      "measured": "10 of 10 tables have role=\"presentation\"",
+      "rule": "every layout table",
+      "result": "pass"
+    },
+    {
+      "n": 4,
+      "check": "Language",
+      "measured": "lang=\"en\" dir=\"ltr\"",
+      "rule": "present and correct",
+      "result": "pass"
+    },
+    {
+      "n": 5,
+      "check": "Images",
+      "measured": "2 images: 2 with alt, 2 with width, 2 https PNG/JPG/GIF",
+      "rule": "every one",
+      "result": "pass"
+    },
+    {
+      "n": 6,
+      "check": "Smallest text",
+      "measured": "14px (body 16px)",
+      "rule": "14px or larger",
+      "result": "pass"
+    },
+    {
+      "n": 7,
+      "check": "Contrast",
+      "measured": "18 pairs, lowest 4.56:1",
+      "rule": "4.5:1 or more for every pair",
+      "result": "fixed",
+      "detail": "brand button #3B82F6 with #FFFFFF text was 3.67:1; darkened 12% to #3472D8, now 4.62:1. Brand blue as link text on the card was 3.52:1; darkened 14% to #3370D4, now 4.56:1"
+    },
+    {
+      "n": 8,
+      "check": "Buttons",
+      "measured": "live-text link in a coloured cell; v:roundrect for Outlook (6px corners); height 14 + 14 + 20 = 48px",
+      "rule": "all three, 44px or taller",
+      "result": "pass"
+    },
+    {
+      "n": 9,
+      "check": "Links",
+      "measured": "7 links, 0 not https or a platform tag",
+      "rule": "https or platform tag, none empty",
+      "result": "pass"
+    },
+    {
+      "n": 10,
+      "check": "Dark mode",
+      "measured": "color-scheme metas, prefers-color-scheme block, [data-ogsc] and [data-ogsb] selectors, white pill behind the dark logo",
+      "rule": "all present",
+      "result": "pass"
+    },
+    {
+      "n": 11,
+      "check": "Outlook",
+      "measured": "PixelsPerInch 96, 600px mso wrapper, VML button, 536px mso table for the two cards (256 + 24 + 256), inside the 536px padded cell",
+      "rule": "all present",
+      "result": "pass"
+    },
+    {
+      "n": 12,
+      "check": "Preheader",
+      "measured": "hidden block present and left empty for Klaviyo; preview text 80 characters goes in the message's preview text field",
+      "rule": "40 to 110 characters; on Klaviyo the block holds only the filler, so the preview text field is measured",
+      "result": "pass"
+    },
+    {
+      "n": 13,
+      "check": "Footer",
+      "measured": "{% unsubscribe_link %}, {{ organization.full_address }}, reason line, {% manage_preferences_link %}",
+      "rule": "all present",
+      "result": "pass"
+    },
+    {
+      "n": 14,
+      "check": "Plain text",
+      "measured": "28 lines; 6 of 6 HTML links included",
+      "rule": "exists and has every link",
+      "result": "pass"
+    },
+    {
+      "n": 15,
+      "check": "Banned code",
+      "measured": "0 hits for script, form, iframe, video, position, flex, grid; 0 external stylesheets besides the web-font link",
+      "rule": "none",
+      "result": "pass"
+    }
+  ],
+  "contrast": [
+    {
+      "pair": "View in browser link",
+      "text": "#4B5563",
+      "background": "#FAFAFA",
+      "ratio": 7.24,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Logo alt text (images off)",
+      "text": "#1F2937",
+      "background": "#FFFFFF",
+      "ratio": 14.67,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Hero alt text (images off)",
+      "text": "#1F2937",
+      "background": "#FAFAFA",
+      "ratio": 14.06,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Headline, intro and sign-off",
+      "text": "#1F2937",
+      "background": "#FAFAFA",
+      "ratio": 14.06,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Button text",
+      "text": "#FFFFFF",
+      "background": "#3472D8",
+      "ratio": 4.62,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Card headings",
+      "text": "#1F2937",
+      "background": "#EFF6FF",
+      "ratio": 13.48,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Card text",
+      "text": "#1F2937",
+      "background": "#EFF6FF",
+      "ratio": 13.48,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Secondary link",
+      "text": "#3370D4",
+      "background": "#FAFAFA",
+      "ratio": 4.56,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Footer text and links",
+      "text": "#4B5563",
+      "background": "#F3F4F6",
+      "ratio": 6.86,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "View in browser link (dark)",
+      "text": "#CBD5E1",
+      "background": "#111827",
+      "ratio": 11.94,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Logo alt text (dark, the pill stays white)",
+      "text": "#1F2937",
+      "background": "#FFFFFF",
+      "ratio": 14.67,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Hero alt text (dark)",
+      "text": "#F3F4F6",
+      "background": "#111827",
+      "ratio": 16.11,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Headline, intro and sign-off (dark)",
+      "text": "#F3F4F6",
+      "background": "#111827",
+      "ratio": 16.11,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Button text (dark, colours unchanged)",
+      "text": "#FFFFFF",
+      "background": "#3472D8",
+      "ratio": 4.62,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Card headings (dark)",
+      "text": "#F3F4F6",
+      "background": "#1E293B",
+      "ratio": 13.29,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Card text (dark)",
+      "text": "#F3F4F6",
+      "background": "#1E293B",
+      "ratio": 13.29,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Secondary link (dark)",
+      "text": "#93C5FD",
+      "background": "#111827",
+      "ratio": 9.83,
+      "needed": 4.5,
+      "result": "pass"
+    },
+    {
+      "pair": "Footer text and links (dark)",
+      "text": "#CBD5E1",
+      "background": "#0B1220",
+      "ratio": 12.61,
+      "needed": 4.5,
+      "result": "pass"
+    }
+  ],
+  "placeholders_to_fill": [],
+  "set_in_klaviyo": {
+    "subject": "New: take a deposit when clients book",
+    "preview_text": "Cut no-shows with a deposit step on your booking page. Set it up in two minutes.",
+    "note": "Put the preview text in the message's preview text field; the HTML's hidden preheader block stays empty so it doesn't show twice."
+  },
+  "test_before_sending": [
+    "Send a test to a Gmail address and open it on the web and in the Gmail app, light and dark mode",
+    "Open the test in classic Outlook for Windows: the button shape, the 600px width and the two cards side by side",
+    "Open it on an iPhone in Mail with dark mode on: the logo pill and the swapped colours",
+    "These checks measure the code; they can't show how each inbox draws it. That needs a paid rendering service such as Litmus or Email on Acid."
+  ],
+  "offered_actions": [
+    {
+      "action": "create_email_template",
+      "platform": "klaviyo",
+      "status": "not run, waiting for the user's yes",
+      "payload": {
+        "platform": "klaviyo",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_email_template",
+        "body": {
+          "data": {
+            "type": "template",
+            "attributes": {
+              "name": "Feature launch: deposits",
+              "editor_type": "CODE",
+              "html": "<the HTML above, 9,190 bytes>",
+              "text": "<the plain text above>"
+            }
+          }
+        }
+      },
+      "then": "read it back with get_email_template and share its screenshot_url (Klaviyo's thumbnail, not a test in other inboxes)"
+    }
+  ],
+  "go_deeper": [
+    "email-sequence-builder to write the rest of a launch sequence on this template, if installed",
+    "newsletter to plan the content of a regular issue that reuses this layout, if installed",
+    "klaviyo-flow-auditor to see which flows still need emails, if installed",
+    "brand-voice to set the tone of the copy before the next build, if installed"
+  ]
+}

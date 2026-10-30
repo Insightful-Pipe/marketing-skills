@@ -1,0 +1,743 @@
+{
+  "header": {
+    "site": "https://www.example.com/",
+    "run_date": "2026-10-28",
+    "impressions_window": "2026-09-29 to 2026-10-26",
+    "sitemap": "https://www.example.com/sitemap.xml",
+    "live_sitemap_urls": 195,
+    "overall": "fail",
+    "inspections_used": "54 of 2,000 a day for this property (34 by batch_url_inspection in 4 batches of up to 10, 20 by check_indexing_issues)",
+    "paid_calls": 0
+  },
+  "status": [
+    {
+      "area": "Sitemap health",
+      "result": "warn",
+      "key_number": "live 195 URLs, Google's copy 193, Bing's 117",
+      "why": "Google's copy is current, but Bing last read the sitemap on 2026-09-12, before the 72 /help/ pages were added, and all 72 of them share one lastmod."
+    },
+    {
+      "area": "Google coverage",
+      "result": "ok",
+      "key_number": "176 of 195 sitemap URLs confirmed indexed (90.3%)",
+      "why": "162 had impressions in 28 days and 14 more of the 34 inspected passed."
+    },
+    {
+      "area": "Not-indexed reasons",
+      "result": "fail",
+      "key_number": "1 fix now, 2 fixed since Google's last crawl, 2 Google picked another page, 8 crawled, not indexed, 6 not crawled yet, 10 orphans",
+      "why": "https://www.example.com/blog/2024-pricing-update/ still returns 404 today and is in the sitemap; the 8 crawled, not indexed pages are all intake-form templates."
+    },
+    {
+      "area": "Top pages",
+      "result": "ok",
+      "key_number": "20 of 20 indexed",
+      "why": "0 not indexed and 0 canonical mismatches among the 20 pages with the most impressions."
+    },
+    {
+      "area": "New pages",
+      "result": "warn",
+      "key_number": "2 of 6 indexed, 1 late",
+      "why": "https://www.example.com/blog/holiday-booking-rush/ is 12 days old, not crawled by Google or Bing, and no page links to it; the rest are indexed or under 7 days old."
+    },
+    {
+      "area": "Bing coverage",
+      "result": "warn",
+      "key_number": "InIndex 118 on 2026-10-26 (61% of the sitemap)",
+      "why": "Below the 70% line because Bing's sitemap copy has none of the /help/ pages; 1.9% crawl errors, 0 server errors and 0 crawl issues."
+    },
+    {
+      "area": "Sitemap vs pages the engines found",
+      "result": "fail",
+      "key_number": "76 URLs with impressions are not in the sitemap",
+      "why": "https://www.example.com/features/text-reminders/ returns 404 with 175 impressions; 9 live pages are missing from the sitemap; 2 checked URLs redirect to live pages."
+    }
+  ],
+  "top_fixes": [
+    {
+      "fix": "Restore https://www.example.com/features/text-reminders/ or 301 it to the closest live page, https://www.example.com/features/reminders/",
+      "evidence": "status-code-checker: 404 today; search_analytics: 175 impressions and 2 clicks in 28 days",
+      "who": "do this on the site",
+      "priority": 1
+    },
+    {
+      "fix": "Take 3 dead or redirected URLs out of the sitemap: https://www.example.com/blog/2024-pricing-update/ (deleted post) and https://www.example.com/help/two-way-sync/ and https://www.example.com/templates/no-show-policy/ (now redirects)",
+      "evidence": "batch_url_inspection: 'Not found (404)' (crawled 2026-10-12) and 2 'Page with redirect'; status-code-checker today: 404, 301 to /help/calendar-sync/, 308 to /templates/cancellation-policy/",
+      "who": "do this on the site",
+      "priority": 2
+    },
+    {
+      "fix": "Resubmit the sitemap to Bing",
+      "evidence": "get_feeds: Bing's copy has 117 URLs, last read 2026-09-12; the live sitemap has 195; get_crawl_stats: InIndex 118 (61% of the sitemap)",
+      "who": "I can do this now",
+      "priority": 3
+    },
+    {
+      "fix": "Link to https://www.example.com/blog/holiday-booking-rush/ from indexed blog and industry pages, then submit it (submission plan)",
+      "evidence": "published 2026-10-16, 12 days ago; batch_url_inspection: 'Discovered - currently not indexed', no referring page other than the sitemap; get_url_info: Bing discovered it 2026-10-18 but has not crawled it",
+      "who": "do this on the site",
+      "priority": 4
+    },
+    {
+      "fix": "Merge the 8 intake-form templates Google crawled but did not index into one page with a section per industry, or give each one questions of its own; then take the merged URLs out of the sitemap",
+      "evidence": "batch_url_inspection: 'Crawled - currently not indexed', last crawled 2026-09-04 to 2026-10-20, all in /templates/; 4 have no referring page other than the sitemap",
+      "who": "do this on the site",
+      "priority": 5
+    }
+  ],
+  "sitemap_health": {
+    "checks": [
+      {
+        "check": "Google read the sitemap without errors",
+        "result": "ok",
+        "evidence": "sitemaps_list: errors 0, warnings 0, isPending false"
+      },
+      {
+        "check": "Google's copy matches the live sitemap",
+        "result": "ok",
+        "evidence": "Google counted 193 URLs when it last downloaded the sitemap on 2026-10-24; the live file has 195 (1% apart, inside the 10% limit). The 2 URLs Google's copy lacks were published after that download."
+      },
+      {
+        "check": "Google downloaded it in the last 14 days",
+        "result": "ok",
+        "evidence": "lastDownloaded 2026-10-24, 4 days ago"
+      },
+      {
+        "check": "Bing's copy matches the live sitemap",
+        "result": "warn",
+        "evidence": "get_feeds: status Success, 117 URLs when Bing last read it on 2026-09-12; the live file has 195 (78 more, 40% of the live count). Bing's copy predates the 72 /help/ pages, whose lastmod is 2026-09-16."
+      },
+      {
+        "check": "robots.txt names the sitemap",
+        "result": "ok",
+        "evidence": "robots-txt-checker: Sitemap lines ['https://www.example.com/sitemap.xml'], 0 issues"
+      },
+      {
+        "check": "lastmod dates look like real edit dates",
+        "result": "warn",
+        "evidence": "0 of 195 URLs have no lastmod; 72 URLs share the exact lastmod 2026-09-16T00:00:00+00:00 (every /help/ page, stamped when the help center moved). Bulk dates teach the engines to ignore lastmod."
+      }
+    ],
+    "google_indexed_field": "not used: Google marks the field deprecated"
+  },
+  "google_coverage": {
+    "sitemap_urls": 195,
+    "with_impressions_28d": 162,
+    "inspected": 34,
+    "inspection_batches": 4,
+    "inspected_indexed": 15,
+    "inspected_indexed_without_impressions": 14,
+    "confirmed_indexed": 176,
+    "confirmed_share_pct": 90.3,
+    "not_confirmed": 19,
+    "inspect_order": "6 new pages first, then 28 sitemap URLs with no impressions (no must-index list was given)",
+    "normalised": "search_analytics rows were matched to the sitemap after removing #fragments and adding the trailing slash (2 rows folded in)"
+  },
+  "not_indexed_reasons": {
+    "rows": [
+      {
+        "group": "Fix now",
+        "coverage_state": "Not found (404)",
+        "urls": 1,
+        "by_folder": [
+          {
+            "folder": "/blog",
+            "urls": 1
+          }
+        ],
+        "examples": [
+          "https://www.example.com/blog/2024-pricing-update/"
+        ],
+        "orphans": 0,
+        "note": "https://www.example.com/blog/2024-pricing-update/: still fails today (404)"
+      },
+      {
+        "group": "Google picked another page",
+        "coverage_state": "Page with redirect",
+        "urls": 2,
+        "by_folder": [
+          {
+            "folder": "/help",
+            "urls": 1
+          },
+          {
+            "folder": "/templates",
+            "urls": 1
+          }
+        ],
+        "examples": [
+          "https://www.example.com/help/two-way-sync/",
+          "https://www.example.com/templates/no-show-policy/"
+        ],
+        "orphans": 0,
+        "note": "https://www.example.com/help/two-way-sync/: still redirects: take it out of the sitemap; https://www.example.com/templates/no-show-policy/: still redirects: take it out of the sitemap"
+      },
+      {
+        "group": "Crawled, not indexed",
+        "coverage_state": "Crawled - currently not indexed",
+        "urls": 8,
+        "by_folder": [
+          {
+            "folder": "/templates",
+            "urls": 8
+          }
+        ],
+        "examples": [
+          "https://www.example.com/templates/intake-form-for-clinics/",
+          "https://www.example.com/templates/intake-form-for-dental/",
+          "https://www.example.com/templates/intake-form-for-fitness/"
+        ],
+        "orphans": 4
+      },
+      {
+        "group": "Not crawled yet",
+        "coverage_state": "Discovered - currently not indexed",
+        "urls": 3,
+        "by_folder": [
+          {
+            "folder": "/blog",
+            "urls": 1
+          },
+          {
+            "folder": "/help",
+            "urls": 1
+          },
+          {
+            "folder": "/industries",
+            "urls": 1
+          }
+        ],
+        "examples": [
+          "https://www.example.com/blog/holiday-booking-rush/",
+          "https://www.example.com/help/sms-sender-id/",
+          "https://www.example.com/industries/yoga-studios/"
+        ],
+        "orphans": 3,
+        "new_pages_included": 2
+      },
+      {
+        "group": "Not crawled yet",
+        "coverage_state": "URL is unknown to Google",
+        "urls": 3,
+        "by_folder": [
+          {
+            "folder": "/blog",
+            "urls": 1
+          },
+          {
+            "folder": "/industries",
+            "urls": 1
+          },
+          {
+            "folder": "/templates",
+            "urls": 1
+          }
+        ],
+        "examples": [
+          "https://www.example.com/blog/no-show-fee-guide/",
+          "https://www.example.com/industries/barbershops/",
+          "https://www.example.com/templates/intake-form-for-tutoring/"
+        ],
+        "orphans": 3,
+        "new_pages_included": 2
+      }
+    ],
+    "fixed_since_last_crawl": {
+      "group": "Fixed since Google's last crawl",
+      "urls": 2,
+      "by_state": [
+        {
+          "coverage_state": "Redirect error",
+          "urls": 1
+        },
+        {
+          "coverage_state": "Server error (5xx)",
+          "urls": 1
+        }
+      ],
+      "google_last_crawl": "2026-09-17 and 2026-09-18",
+      "urls_list": [
+        "https://www.example.com/help/connect-payments/",
+        "https://www.example.com/help/staff-permissions/"
+      ],
+      "note": "Google crawled them a day or two after the /help/ pages' lastmod stamp (2026-09-16); both return 200 today with no redirect.",
+      "action": "in the submission plan: Request indexing in Search Console"
+    },
+    "orphans": {
+      "count": 10,
+      "rule": "no referring_urls other than the sitemap file",
+      "by_state": [
+        {
+          "coverage_state": "Crawled - currently not indexed",
+          "urls": 4
+        },
+        {
+          "coverage_state": "Discovered - currently not indexed",
+          "urls": 3
+        },
+        {
+          "coverage_state": "URL is unknown to Google",
+          "urls": 3
+        }
+      ],
+      "new_pages_among_them": 4,
+      "note": "'URL is unknown to Google' pages have no referring_urls at all: Google has found no link to them. The others were found through the sitemap alone.",
+      "examples": [
+        "https://www.example.com/help/sms-sender-id/",
+        "https://www.example.com/templates/intake-form-for-dental/",
+        "https://www.example.com/templates/intake-form-for-massage/"
+      ]
+    },
+    "canonical_check": [
+      {
+        "url": "https://www.example.com/help/two-way-sync/",
+        "coverage_state": "Page with redirect",
+        "google_last_crawl": "2026-10-03",
+        "google_canonical": "https://www.example.com/help/calendar-sync/",
+        "user_canonical": null,
+        "status_today": 301,
+        "final_url_today": "https://www.example.com/help/calendar-sync/",
+        "verdict": "Google's choice is right: the URL redirects to /help/calendar-sync/, which is in the sitemap. Take this URL out of the sitemap."
+      },
+      {
+        "url": "https://www.example.com/templates/no-show-policy/",
+        "coverage_state": "Page with redirect",
+        "google_last_crawl": "2026-09-26",
+        "google_canonical": "https://www.example.com/templates/cancellation-policy/",
+        "user_canonical": null,
+        "status_today": 308,
+        "final_url_today": "https://www.example.com/templates/cancellation-policy/",
+        "verdict": "Google's choice is right: the URL redirects to /templates/cancellation-policy/, which is in the sitemap. Take this URL out of the sitemap."
+      }
+    ],
+    "crawled_not_indexed_last_crawls": "2026-09-04 to 2026-10-20",
+    "live_recheck": [
+      {
+        "url": "https://www.example.com/blog/2024-pricing-update/",
+        "coverage_state": "Not found (404)",
+        "google_last_crawl": "2026-10-12",
+        "status_today": 404,
+        "final_url_today": "https://www.example.com/blog/2024-pricing-update/",
+        "redirects_today": 0,
+        "verdict": "still fails today (404)"
+      },
+      {
+        "url": "https://www.example.com/help/connect-payments/",
+        "coverage_state": "Redirect error",
+        "google_last_crawl": "2026-09-18",
+        "status_today": 200,
+        "final_url_today": "https://www.example.com/help/connect-payments/",
+        "redirects_today": 0,
+        "verdict": "fixed since Google's last crawl"
+      },
+      {
+        "url": "https://www.example.com/help/staff-permissions/",
+        "coverage_state": "Server error (5xx)",
+        "google_last_crawl": "2026-09-17",
+        "status_today": 200,
+        "final_url_today": "https://www.example.com/help/staff-permissions/",
+        "redirects_today": 0,
+        "verdict": "fixed since Google's last crawl"
+      },
+      {
+        "url": "https://www.example.com/help/two-way-sync/",
+        "coverage_state": "Page with redirect",
+        "google_last_crawl": "2026-10-03",
+        "status_today": 301,
+        "final_url_today": "https://www.example.com/help/calendar-sync/",
+        "redirects_today": 1,
+        "verdict": "still redirects: take it out of the sitemap"
+      },
+      {
+        "url": "https://www.example.com/templates/no-show-policy/",
+        "coverage_state": "Page with redirect",
+        "google_last_crawl": "2026-09-26",
+        "status_today": 308,
+        "final_url_today": "https://www.example.com/templates/cancellation-policy/",
+        "redirects_today": 1,
+        "verdict": "still redirects: take it out of the sitemap"
+      }
+    ],
+    "live_recheck_by_state": [
+      {
+        "coverage_state": "Not found (404)",
+        "urls": 1,
+        "checked": 1,
+        "fixed_today": 0
+      },
+      {
+        "coverage_state": "Redirect error",
+        "urls": 1,
+        "checked": 1,
+        "fixed_today": 1
+      },
+      {
+        "coverage_state": "Server error (5xx)",
+        "urls": 1,
+        "checked": 1,
+        "fixed_today": 1
+      },
+      {
+        "coverage_state": "Page with redirect",
+        "urls": 2,
+        "checked": 2,
+        "fixed_today": 0
+      }
+    ],
+    "crawled_not_indexed_plus_picked_share_pct": 5.1
+  },
+  "top_pages_guard": {
+    "pages_checked": 20,
+    "indexed": 20,
+    "not_indexed": 0,
+    "canonical_mismatches": 0,
+    "impressions_covered": 39430,
+    "share_of_all_impressions_pct": 52.1,
+    "result": "ok"
+  },
+  "new_pages": [
+    {
+      "url": "https://www.example.com/features/waitlist/",
+      "published": "2026-10-09",
+      "age_days": 19,
+      "google": "Submitted and indexed",
+      "google_last_crawl": "2026-10-13",
+      "google_referring_pages": 3,
+      "bing_discovered": "2026-10-10",
+      "bing_last_crawled": "2026-10-13",
+      "result": "ok",
+      "status": "indexed by Google, crawled by Bing"
+    },
+    {
+      "url": "https://www.example.com/blog/client-rebooking-emails/",
+      "published": "2026-10-14",
+      "age_days": 14,
+      "google": "Submitted and indexed",
+      "google_last_crawl": "2026-10-19",
+      "google_referring_pages": 2,
+      "bing_discovered": "2026-10-15",
+      "bing_last_crawled": "2026-10-20",
+      "result": "ok",
+      "status": "indexed by Google, crawled by Bing"
+    },
+    {
+      "url": "https://www.example.com/blog/holiday-booking-rush/",
+      "published": "2026-10-16",
+      "age_days": 12,
+      "google": "Discovered - currently not indexed",
+      "google_last_crawl": null,
+      "google_referring_pages": 0,
+      "bing_discovered": "2026-10-18",
+      "bing_last_crawled": null,
+      "result": "warn",
+      "status": "late: submit it and add internal links"
+    },
+    {
+      "url": "https://www.example.com/blog/no-show-fee-guide/",
+      "published": "2026-10-22",
+      "age_days": 6,
+      "google": "URL is unknown to Google",
+      "google_last_crawl": null,
+      "google_referring_pages": 0,
+      "bing_discovered": null,
+      "bing_last_crawled": null,
+      "result": "ok",
+      "status": "too early: check again after 2026-10-29"
+    },
+    {
+      "url": "https://www.example.com/industries/barbershops/",
+      "published": "2026-10-25",
+      "age_days": 3,
+      "google": "URL is unknown to Google",
+      "google_last_crawl": null,
+      "google_referring_pages": 0,
+      "bing_discovered": null,
+      "bing_last_crawled": null,
+      "result": "ok",
+      "status": "too early: check again after 2026-11-01"
+    },
+    {
+      "url": "https://www.example.com/industries/yoga-studios/",
+      "published": "2026-10-25",
+      "age_days": 3,
+      "google": "Discovered - currently not indexed",
+      "google_last_crawl": null,
+      "google_referring_pages": 0,
+      "bing_discovered": null,
+      "bing_last_crawled": null,
+      "result": "ok",
+      "status": "too early: check again after 2026-11-01"
+    }
+  ],
+  "bing_coverage": {
+    "checks": [
+      {
+        "check": "Pages in Bing's index vs the live sitemap",
+        "result": "warn",
+        "evidence": "get_crawl_stats 2026-10-26: InIndex 118 vs 195 sitemap URLs (61%, under the 70% line). Bing still reads the 2026-09-12 sitemap copy, which has none of the 72 /help/ pages."
+      },
+      {
+        "check": "Crawl errors, last 28 days",
+        "result": "ok",
+        "evidence": "last 28 rows (2026-09-29 to 2026-10-26): 52 errors on 2,679 crawled pages (1.9%); 47 4xx, 0 5xx, robots blocks 0"
+      },
+      {
+        "check": "Crawl issues Bing flagged",
+        "result": "ok",
+        "evidence": "get_crawl_issues: 0 issues"
+      },
+      {
+        "check": "New pages known to Bing",
+        "result": "warn",
+        "evidence": "get_url_info: 2 of 6 new pages crawled; 3 not discovered yet (all under 7 days old), 1 discovered but not crawled (12 days old)"
+      }
+    ],
+    "in_index_trend": {
+      "from": {
+        "date": "2026-04-29",
+        "in_index": 84
+      },
+      "to": {
+        "date": "2026-10-26",
+        "in_index": 118
+      }
+    },
+    "sitemap_feed": {
+      "url": "https://www.example.com/sitemap.xml",
+      "status": "Success",
+      "url_count": 117,
+      "last_crawled": "2026-09-12",
+      "submitted": "2026-03-02"
+    }
+  },
+  "sitemap_vs_found": {
+    "urls_with_impressions_not_in_sitemap": 76,
+    "impressions_28d": 2939,
+    "folders_missing_from_sitemap": [
+      {
+        "folder": "/support/",
+        "urls": 57,
+        "impressions_28d": 956,
+        "checked_url": "https://www.example.com/support/set-up-online-booking/",
+        "result": "301 to https://www.example.com/help/set-up-online-booking/",
+        "meaning": "the old help center: the checked URL 301s to the matching /help/ page, so the folder should drop out as Google recrawls (an estimate from the 1 URL checked)"
+      },
+      {
+        "folder": "/lp/",
+        "urls": 6,
+        "impressions_28d": 354,
+        "checked_url": "https://www.example.com/lp/salon-booking-app/",
+        "result": "200, no redirect",
+        "meaning": "paid-ad landing pages that Google indexed; they should carry noindex rather than join the sitemap"
+      }
+    ],
+    "folders_ranked_by": "28-day impressions; the URL with the most impressions in each folder was checked",
+    "checked": [
+      {
+        "url": "https://www.example.com/support/set-up-online-booking/",
+        "impressions_28d": 64,
+        "clicks_28d": 1,
+        "first_status": 301,
+        "final_status": 200,
+        "final_url": "https://www.example.com/help/set-up-online-booking/",
+        "verdict": "redirects to a live page: fine, Google will drop the old URL (the target is in the sitemap)"
+      },
+      {
+        "url": "https://www.example.com/lp/salon-booking-app/",
+        "impressions_28d": 120,
+        "clicks_28d": 0,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/lp/salon-booking-app/",
+        "verdict": "a live ad landing page missing from the sitemap: noindex it, it shouldn't rank"
+      },
+      {
+        "url": "https://www.example.com/blog/",
+        "impressions_28d": 430,
+        "clicks_28d": 7,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/blog/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/help/",
+        "impressions_28d": 300,
+        "clicks_28d": 1,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/help/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/booking-software-for-salons/",
+        "impressions_28d": 260,
+        "clicks_28d": 6,
+        "first_status": 301,
+        "final_status": 200,
+        "final_url": "https://www.example.com/industries/salons/",
+        "verdict": "redirects to a live page: fine, Google will drop the old URL (the target is in the sitemap)"
+      },
+      {
+        "url": "https://www.example.com/templates/",
+        "impressions_28d": 180,
+        "clicks_28d": 1,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/templates/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/features/text-reminders/",
+        "impressions_28d": 175,
+        "clicks_28d": 2,
+        "first_status": 404,
+        "final_status": 404,
+        "final_url": "https://www.example.com/features/text-reminders/",
+        "verdict": "returns 404 but still earns impressions: restore it or 301 it to the closest live page"
+      },
+      {
+        "url": "https://www.example.com/features/",
+        "impressions_28d": 98,
+        "clicks_28d": 2,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/features/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/blog/category/salons/",
+        "impressions_28d": 62,
+        "clicks_28d": 0,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/blog/category/salons/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/blog/category/clinics/",
+        "impressions_28d": 46,
+        "clicks_28d": 0,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/blog/category/clinics/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/blog/category/fitness/",
+        "impressions_28d": 23,
+        "clicks_28d": 0,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/blog/category/fitness/",
+        "verdict": "a live page missing from the sitemap: add it"
+      },
+      {
+        "url": "https://www.example.com/blog/category/payments/",
+        "impressions_28d": 22,
+        "clicks_28d": 0,
+        "first_status": 200,
+        "final_status": 200,
+        "final_url": "https://www.example.com/blog/category/payments/",
+        "verdict": "a live page missing from the sitemap: add it"
+      }
+    ],
+    "not_checked_top": [
+      {
+        "url": "https://www.example.com/blog/page/2/",
+        "impressions_28d": 17
+      },
+      {
+        "url": "https://www.example.com/blog/page/3/",
+        "impressions_28d": 9
+      },
+      {
+        "url": "https://www.example.com/blog/category/marketing/",
+        "impressions_28d": 7
+      }
+    ]
+  },
+  "submission_plan": [
+    {
+      "step": 1,
+      "what": "Resubmit the sitemap to Google",
+      "why": "Not needed: Google downloaded it 4 days ago and its copy (193 URLs) is within 10% of the live file (195).",
+      "run": "skipped"
+    },
+    {
+      "step": 2,
+      "what": "Resubmit the sitemap to Bing",
+      "why": "Bing's copy lists 117 URLs from 2026-09-12; the live file has 195, including the 72 /help/ pages.",
+      "action": "submit_sitemap (bing-webmaster)",
+      "payload": {
+        "platform": "bing-webmaster",
+        "workspace_id": "<workspace_id>",
+        "brand_id": "<brand_id>",
+        "action": "submit_sitemap",
+        "site_url": "https://www.example.com/",
+        "feed_url": "https://www.example.com/sitemap.xml"
+      },
+      "check_after": "get_feeds shows a new Submitted date",
+      "run": "not run"
+    },
+    {
+      "step": 3,
+      "what": "Submit the 4 new pages Bing hasn't crawled",
+      "why": "get_url_info: /blog/holiday-booking-rush/ discovered, not crawled; /blog/no-show-fee-guide/ not discovered; /industries/barbershops/ not discovered; /industries/yoga-studios/ not discovered.",
+      "action": "submit_url_batch (bing-webmaster)",
+      "payload": {
+        "platform": "bing-webmaster",
+        "workspace_id": "<workspace_id>",
+        "brand_id": "<brand_id>",
+        "action": "submit_url_batch",
+        "site_url": "https://www.example.com/",
+        "url_list": [
+          "https://www.example.com/blog/holiday-booking-rush/",
+          "https://www.example.com/blog/no-show-fee-guide/",
+          "https://www.example.com/industries/barbershops/",
+          "https://www.example.com/industries/yoga-studios/"
+        ]
+      },
+      "quota": "uses 4 of the 80 left today (2,640 left this month)",
+      "check_after": "get_url_submission_quota shows 76 left today",
+      "run": "not run"
+    },
+    {
+      "step": 4,
+      "what": "Request indexing in Google for 6 pages",
+      "why": "The 4 new pages Google hasn't indexed, then the 2 pages fixed since Google's last crawl. Google has no API for this: use URL Inspection > Request indexing in Search Console, one URL at a time.",
+      "urls": [
+        "https://www.example.com/blog/holiday-booking-rush/",
+        "https://www.example.com/blog/no-show-fee-guide/",
+        "https://www.example.com/industries/barbershops/",
+        "https://www.example.com/industries/yoga-studios/",
+        "https://www.example.com/help/connect-payments/",
+        "https://www.example.com/help/staff-permissions/"
+      ],
+      "run": "manual"
+    },
+    {
+      "step": 5,
+      "what": "Left out on purpose",
+      "why": "The 72 /help/ pages all carry lastmod 2026-09-16T00:00:00+00:00, a migration stamp rather than real edits, so they were not submitted one by one. The Bing sitemap resubmit in step 2 covers them, and it uses no URL quota.",
+      "run": "skipped"
+    }
+  ],
+  "go_deeper": [
+    {
+      "skill": "seo-audit",
+      "for": "on-page problems on the 8 crawled, not indexed intake-form templates",
+      "note": "if installed"
+    },
+    {
+      "skill": "internal-linking-planner",
+      "for": "links to /blog/holiday-booking-rush/ and the 10 orphan pages",
+      "note": "if installed"
+    }
+  ],
+  "unknowns": [
+    "Search Console has no API for the full Page indexing report, so pages that are in neither the sitemap nor the impressions list aren't covered.",
+    "Bing per-URL status was checked only for the 6 new pages (get_url_info); for the /help/ pages and older pages the report uses Bing's site-wide InIndex count.",
+    "A crawl of the site was not compared with the sitemap: the crawler's sitemap-generator returns raw XML the MCP can't read."
+  ]
+}

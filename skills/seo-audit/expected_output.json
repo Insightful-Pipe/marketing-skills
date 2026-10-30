@@ -1,0 +1,574 @@
+{
+  "header": {
+    "site": "example.com",
+    "property": "https://www.example.com/",
+    "date_range": "2026-09-28 to 2026-10-25",
+    "clicks_28d": 10536,
+    "impressions_28d": 287269,
+    "grade": 68,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "Crawl access",
+      "result": "pass",
+      "key_number": "all 3 other host variants redirect in 1 hop",
+      "why": "robots.txt allows all crawlers and names the sitemap; http://example.com/ 301s to https://www.example.com/ in 1 hop; https://example.com/ 301s to https://www.example.com/ in 1 hop; http://www.example.com/ 301s to https://www.example.com/ in 1 hop. The certificate is valid for 73 more days and HSTS is on."
+    },
+    {
+      "area": "Indexation",
+      "result": "pass",
+      "key_number": "about 9.8% of sitemap URLs not indexed (estimate)",
+      "why": "20 of 20 top pages are indexed and 19 declare a canonical that matches Google's choice; / has no user-declared canonical in the inspection, but its live HTML declares a self-referencing canonical (onpage_instant_pages), so Google picked the same page. Of 177 sitemap URLs, 37 had no impressions; 14 of 30 sampled were not indexed (10 'Crawled - currently not indexed', 2 'URL is unknown to Google', 1 'Discovered - currently not indexed', 1 'Redirect error')."
+    },
+    {
+      "area": "Broken and redirected URLs",
+      "result": "fail",
+      "key_number": "3 URLs people reach return 404",
+      "why": "/blog/no-show-policy/ has 85 sessions and 1900 impressions; /features/text-reminders/ has 120 sessions and 640 impressions; /lp/salon-offer/ has 410 sessions and 0 impressions. 1 redirect chain (/booking-software/ takes 2 hops) and 1 temporary redirect (/blog/2024/salon-tips/ is a 302). The other 6 retired URLs checked redirect in one 301 hop."
+    },
+    {
+      "area": "On-page tags",
+      "result": "warn",
+      "key_number": "4 of 8 pages have titles over 60 characters",
+      "why": "No title or description repeats, and every page has a self-referencing canonical. /pricing/ has a 25-character title (under 30); / has a 195-character description; /about/ has two H1s; /industries/salons/ has images without alt text; the home page skips heading levels."
+    },
+    {
+      "area": "Content depth",
+      "result": "warn",
+      "key_number": "33% of the sample crawled but not indexed",
+      "why": "Every audit-set page has 300+ words. Crawled-not-indexed pages cluster in locations (8), templates (2): the city pages share one template, and /locations/denver/ has 140 words."
+    },
+    {
+      "area": "Speed (lab, mobile)",
+      "result": "warn",
+      "key_number": "LCP 3.7 s on /blog/reduce-no-shows/",
+      "why": "home LCP 2.2 s, CLS 0.02, TBT 180 ms (pass), blog post LCP 3.7 s, CLS 0.04, TBT 240 ms (warn), pricing LCP 2.6 s, CLS 0.12, TBT 150 ms (warn), industry page LCP 3.1 s, CLS 0.03, TBT 320 ms (warn), feature page LCP 2.4 s, CLS 0.01, TBT 210 ms (warn). Nothing is past a fail line. The slowest template is the blog post (/blog/reduce-no-shows/, 11800 impressions); its top resource-optimizations saving: Properly size images (Est savings of 380 KiB). TBT stands in for INP, which lab data can't measure."
+    },
+    {
+      "area": "Search performance",
+      "result": "warn",
+      "key_number": "about 239 clicks at stake from 2 snippet gaps",
+      "why": "2 live pages rank in the top 10 with a CTR under half the site median for their position. GA4 recorded 9029 Organic Search sessions against 10536 Search Console clicks (85.7%), so GA4 measures search traffic."
+    },
+    {
+      "area": "Authority and trust",
+      "result": "pass",
+      "key_number": "410 referring domains, spam score 6",
+      "why": "No broken backlinks, and no TLD outside the site's US, UK and Canada market carries a third of the links (.com 58%). The About page has 520 words and a 43-character title. Rich results found: Breadcrumbs on 18 of the top 20 pages, FAQ on 3 of the top 20 pages."
+    }
+  ],
+  "grade_math": "100 - 12 x 1 fail - 5 x 4 warns = 68",
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "301 the 404 URLs that people still land on",
+      "area": "Broken and redirected URLs",
+      "impressions_at_stake": 2540,
+      "sessions_at_stake_28d": 615,
+      "detail": [
+        {
+          "url": "/blog/no-show-policy/",
+          "sessions_28d": 85,
+          "impressions_28d": 1900,
+          "status": 404,
+          "redirect_to": "/templates/cancellation-policy/"
+        },
+        {
+          "url": "/features/text-reminders/",
+          "sessions_28d": 120,
+          "impressions_28d": 640,
+          "status": 404,
+          "redirect_to": "/features/reminders/"
+        },
+        {
+          "url": "/lp/salon-offer/",
+          "sessions_28d": 410,
+          "impressions_28d": 0,
+          "status": 404,
+          "redirect_to": "/industries/salons/"
+        }
+      ],
+      "evidence": "crawler status-code-checker + google-analytics get_report (landingPage) + search_analytics (page): 3 URLs return 404",
+      "who": "do this in your site or CMS (redirect rules); for /lp/salon-offer/, which gets only Paid Search visits, also point the ads that still use it at a live page"
+    },
+    {
+      "rank": 2,
+      "fix": "Bring titles to 30-60 characters (trim the long ones, lengthen /pricing/) and shorten the long description",
+      "area": "On-page tags",
+      "impressions_at_stake": 63100,
+      "detail": [
+        {
+          "page": "/",
+          "title_length": 62,
+          "description_length": 195
+        },
+        {
+          "page": "/blog/reduce-no-shows/",
+          "title_length": 78,
+          "description_length": 128
+        },
+        {
+          "page": "/features/online-booking/",
+          "title_length": 80,
+          "description_length": 130
+        },
+        {
+          "page": "/pricing/",
+          "title_length": 25,
+          "description_length": 110
+        },
+        {
+          "page": "/templates/cancellation-policy/",
+          "title_length": 80,
+          "description_length": 129
+        }
+      ],
+      "evidence": "dataforseo onpage_instant_pages on the 8 audit-set pages",
+      "who": "do this in your site or CMS"
+    },
+    {
+      "rank": 3,
+      "fix": "Rewrite titles and descriptions on the top-10 pages with low CTR",
+      "area": "Search performance",
+      "impressions_at_stake": 13700,
+      "clicks_at_stake_28d": 239,
+      "detail": [
+        {
+          "page": "/blog/appointment-reminder-templates/",
+          "impressions_28d": 7100,
+          "position": 3.2,
+          "ctr_pct": 0.9,
+          "band_median_ctr_pct": 2.78,
+          "clicks_at_stake_28d": 134
+        },
+        {
+          "page": "/templates/cancellation-policy/",
+          "impressions_28d": 6600,
+          "position": 6.8,
+          "ctr_pct": 1.2,
+          "band_median_ctr_pct": 2.78,
+          "clicks_at_stake_28d": 105
+        }
+      ],
+      "estimate": "impressions x (site median CTR for the position band - page CTR); band medians 11.77% (positions 1-3, 3 pages) and 2.78% (3-10, 43 pages). Assumes position holds.",
+      "evidence": "google-search-console search_analytics (page), 2026-09-28 to 2026-10-25",
+      "who": "do this in your site or CMS"
+    },
+    {
+      "rank": 4,
+      "fix": "Cut mobile LCP on the blog post template",
+      "area": "Speed (lab, mobile)",
+      "impressions_at_stake": 11800,
+      "detail": [
+        {
+          "page": "/blog/reduce-no-shows/",
+          "lcp_s": 3.7,
+          "tbt_ms": 240
+        }
+      ],
+      "evidence": "pagespeed-insights core-web-vitals (mobile); resource-optimizations on /blog/reduce-no-shows/: Properly size images, Est savings of 380 KiB; Serve images in next-gen formats, Est savings of 240 KiB",
+      "who": "do this in your site code (image sizes and formats in the blog template)"
+    },
+    {
+      "rank": 5,
+      "fix": "Point the redirect chain straight at its last URL and make the temporary redirect a 301",
+      "area": "Broken and redirected URLs",
+      "impressions_at_stake": 830,
+      "detail": [
+        {
+          "url": "/booking-software/",
+          "now": "/booking-software/ > /features/online-booking > /features/online-booking/",
+          "make_it": "301 to /features/online-booking/"
+        },
+        {
+          "url": "/blog/2024/salon-tips/",
+          "now": "302 to /blog/salon-booking-tips/",
+          "make_it": "301 to /blog/salon-booking-tips/"
+        }
+      ],
+      "evidence": "crawler status-code-checker on the 10 retired Search Console URLs",
+      "who": "do this in your site or CMS (redirect rules)"
+    }
+  ],
+  "content_inventory": [
+    {
+      "section": "(top-level pages)",
+      "urls": 9,
+      "impressions": 30568,
+      "clicks": 5501,
+      "zero_impression_urls": 0,
+      "zero_impression_urls_inspected": 0,
+      "indexed_in_inspection": 0,
+      "indexed_share_pct_est": 100
+    },
+    {
+      "section": "features",
+      "urls": 8,
+      "impressions": 37848,
+      "clicks": 608,
+      "zero_impression_urls": 0,
+      "zero_impression_urls_inspected": 0,
+      "indexed_in_inspection": 0,
+      "indexed_share_pct_est": 100
+    },
+    {
+      "section": "industries",
+      "urls": 14,
+      "impressions": 29736,
+      "clicks": 575,
+      "zero_impression_urls": 2,
+      "zero_impression_urls_inspected": 2,
+      "indexed_in_inspection": 2,
+      "indexed_share_pct_est": 100
+    },
+    {
+      "section": "integrations",
+      "urls": 6,
+      "impressions": 5532,
+      "clicks": 122,
+      "zero_impression_urls": 0,
+      "zero_impression_urls_inspected": 0,
+      "indexed_in_inspection": 0,
+      "indexed_share_pct_est": 100
+    },
+    {
+      "section": "blog",
+      "urls": 80,
+      "impressions": 167184,
+      "clicks": 3516,
+      "zero_impression_urls": 5,
+      "zero_impression_urls_inspected": 3,
+      "indexed_in_inspection": 2,
+      "indexed_share_pct_est": 98
+    },
+    {
+      "section": "templates",
+      "urls": 12,
+      "impressions": 10192,
+      "clicks": 158,
+      "zero_impression_urls": 5,
+      "zero_impression_urls_inspected": 5,
+      "indexed_in_inspection": 2,
+      "indexed_share_pct_est": 75
+    },
+    {
+      "section": "locations",
+      "urls": 48,
+      "impressions": 759,
+      "clicks": 0,
+      "zero_impression_urls": 25,
+      "zero_impression_urls_inspected": 20,
+      "indexed_in_inspection": 10,
+      "indexed_share_pct_est": 74
+    }
+  ],
+  "content_inventory_note": "indexed_share_pct_est = (URLs with impressions + zero-impression URLs x indexed share of that section's inspection sample) / URLs; an estimate from 30 inspected URLs. Sections with no zero-impression URLs are 100%.",
+  "page_table": [
+    {
+      "page": "/about/",
+      "title": "About Example Booking Software and Our Team",
+      "title_length": 43,
+      "description_length": 79,
+      "h1_count": 2,
+      "word_count": 520,
+      "canonical": "/about/",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 900,
+      "position": 2.2
+    },
+    {
+      "page": "/features/online-booking/",
+      "title": "Online Booking System for Small Businesses: Take Bookings 24/7 | Example Booking",
+      "title_length": 80,
+      "description_length": 130,
+      "h1_count": 1,
+      "word_count": 1120,
+      "canonical": "/features/online-booking/",
+      "no_image_alt": false,
+      "lcp_s": 2.4,
+      "impressions_28d": 21000,
+      "position": 12.4
+    },
+    {
+      "page": "/",
+      "title": "Online Booking Software for Small Businesses | Example Booking",
+      "title_length": 62,
+      "description_length": 195,
+      "h1_count": 1,
+      "word_count": 940,
+      "canonical": "/",
+      "no_image_alt": false,
+      "lcp_s": 2.2,
+      "impressions_28d": 18500,
+      "position": 6.1
+    },
+    {
+      "page": "/industries/salons/",
+      "title": "Salon Booking App and Software | Example Booking",
+      "title_length": 48,
+      "description_length": 133,
+      "h1_count": 1,
+      "word_count": 660,
+      "canonical": "/industries/salons/",
+      "no_image_alt": true,
+      "lcp_s": 3.1,
+      "impressions_28d": 14200,
+      "position": 10.2
+    },
+    {
+      "page": "/blog/reduce-no-shows/",
+      "title": "How to Reduce No-Shows: 9 Tactics That Work (With Templates) | Example Booking",
+      "title_length": 78,
+      "description_length": 128,
+      "h1_count": 1,
+      "word_count": 2640,
+      "canonical": "/blog/reduce-no-shows/",
+      "no_image_alt": false,
+      "lcp_s": 3.7,
+      "impressions_28d": 11800,
+      "position": 5.1
+    },
+    {
+      "page": "/blog/appointment-reminder-templates/",
+      "title": "Appointment Reminder Text Templates | Example Booking",
+      "title_length": 53,
+      "description_length": 93,
+      "h1_count": 1,
+      "word_count": 2120,
+      "canonical": "/blog/appointment-reminder-templates/",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 7100,
+      "position": 3.2
+    },
+    {
+      "page": "/templates/cancellation-policy/",
+      "title": "Cancellation Policy Template (Free and Editable) for Salons, Clinics and Studios",
+      "title_length": 80,
+      "description_length": 129,
+      "h1_count": 1,
+      "word_count": 450,
+      "canonical": "/templates/cancellation-policy/",
+      "no_image_alt": false,
+      "lcp_s": null,
+      "impressions_28d": 6600,
+      "position": 6.8
+    },
+    {
+      "page": "/pricing/",
+      "title": "Pricing | Example Booking",
+      "title_length": 25,
+      "description_length": 110,
+      "h1_count": 1,
+      "word_count": 380,
+      "canonical": "/pricing/",
+      "no_image_alt": false,
+      "lcp_s": 2.6,
+      "impressions_28d": 5200,
+      "position": 2.4
+    }
+  ],
+  "page_table_note": "word_count is the HTML text without JavaScript; none of the audit-set pages builds its text in JavaScript.",
+  "other_findings": {
+    "crawler_gate": "meta-tags-checker read the home page title (1 title tag) on a 200 page, so the crawler can read this site's HTML; page checks still use DataForSEO and PageSpeed as the skill sets out.",
+    "stale_redirect_errors": [
+      {
+        "url": "/blog/switching-booking-software/",
+        "last_crawl": "2026-06-30",
+        "status_now": 200
+      }
+    ],
+    "orphan_candidates": [
+      "/locations/albuquerque/",
+      "/locations/tucson/"
+    ],
+    "retired_urls_still_shown": {
+      "impressions_28d": 2910,
+      "retired_folder": "/blog/2024/",
+      "retired_folder_urls_with_impressions": 8,
+      "note": "every row in /blog/2024/, which redirects as a whole (status-checked on /blog/2024/no-show-tips/), plus the other retired URLs below, each status-checked. Information only: Google is still catching up, and the redirects carry the value over.",
+      "checked_redirects": [
+        {
+          "url": "/blog/2024/no-show-tips/",
+          "redirects_to": "/blog/reduce-no-shows/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 900
+        },
+        {
+          "url": "/booking-software/",
+          "redirects_to": "/features/online-booking/",
+          "code": 301,
+          "hops": 2,
+          "impressions_28d": 450
+        },
+        {
+          "url": "/blog/2024/salon-tips/",
+          "redirects_to": "/blog/salon-booking-tips/",
+          "code": 302,
+          "hops": 1,
+          "impressions_28d": 380
+        },
+        {
+          "url": "/blog/2024/reminder-templates/",
+          "redirects_to": "/blog/appointment-reminder-templates/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 310
+        },
+        {
+          "url": "/pricing/old/",
+          "redirects_to": "/pricing/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 200
+        },
+        {
+          "url": "/blog/2024/deposit-guide/",
+          "redirects_to": "/blog/deposit-policy/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 180
+        },
+        {
+          "url": "/blog/tag/reminders/",
+          "redirects_to": "/blog/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 150
+        },
+        {
+          "url": "/signup/trial/",
+          "redirects_to": "/signup/",
+          "code": 301,
+          "hops": 1,
+          "impressions_28d": 120
+        }
+      ]
+    },
+    "bing": {
+      "day": "2026-10-27",
+      "in_index": 196,
+      "code_4xx": 10,
+      "code_5xx": 0,
+      "sitemap_urls": 177,
+      "crawl_issue_rows": 0
+    },
+    "gsc_sitemap": {
+      "submitted": 177,
+      "last_downloaded": "2026-10-26",
+      "note": "indexed shows 0 in the API for every sitemap; not used"
+    },
+    "measurement": {
+      "ga4_organic_sessions": 9029,
+      "gsc_clicks": 10536,
+      "ratio_pct": 85.7
+    },
+    "ga4_landing_pages_checked": {
+      "top_15_with_ties": 16,
+      "cut_sessions": 133,
+      "skipped_values": [
+        "(not set)",
+        "/features/reminders/)"
+      ]
+    },
+    "lighthouse_seo_failing_audits": 0,
+    "security": {
+      "hsts": true,
+      "csp": true
+    },
+    "thin_pages": [
+      {
+        "page": "/locations/ (city pages)",
+        "example": "/locations/denver/",
+        "word_count": 140,
+        "crawled_not_indexed_in_sample": 8,
+        "action": "merge and drop from the sitemap",
+        "why": "48 city pages share one template with a city name swapped in; 25 had no impressions in 28 days. Fold the city lists into the industry pages, 301 the city URLs that have impressions to them, and drop the rest from the sitemap. Keep a city page only where you can add real local content (clients, reviews, prices)."
+      }
+    ],
+    "redirect_chains": [
+      {
+        "url": "/booking-software/",
+        "chain": [
+          "/features/online-booking",
+          "/features/online-booking/"
+        ],
+        "hops": 2,
+        "impressions_28d": 450
+      }
+    ],
+    "temporary_redirects": [
+      {
+        "url": "/blog/2024/salon-tips/",
+        "code": 302,
+        "to": "/blog/salon-booking-tips/",
+        "impressions_28d": 380
+      }
+    ],
+    "striking_distance_pages": 98,
+    "later_fixes": [
+      {
+        "fix": "Get the crawled-not-indexed city pages indexed or out of the sitemap",
+        "area": "Content depth",
+        "pages_at_stake": 12
+      }
+    ]
+  },
+  "eeat_plan": [
+    "Name the author on every blog post and link a short profile that says why they can speak to salon, clinic and studio scheduling.",
+    "Show first-hand proof on the guides: screenshots of the booking and reminder flow, and results a named customer agrees to share.",
+    "Keep the About page as it is (520 words, who runs the company and how to reach a person) and fix its second H1.",
+    "When the 301s from fix 1 are live, re-run backlinks_summary: the deleted no-show policy post may hold links that should pass to its new home."
+  ],
+  "unknowns": [
+    {
+      "check": "Speed on the template, integration and location pages",
+      "why": "the skill tests one URL per template, at most 5"
+    },
+    {
+      "check": "International (hreflang)",
+      "why": "not applicable: the site is in one language"
+    }
+  ],
+  "go_deeper": {
+    "note": "name a skill only if it is installed; otherwise give the plain next step",
+    "next_steps": [
+      {
+        "skill": "internal-linking-planner",
+        "for": "2 orphan candidates (URL is unknown to Google)",
+        "without_it": "link each orphan candidate from its section hub and from 2 or 3 related pages, then request indexing in Search Console"
+      },
+      {
+        "skill": "striking-distance-optimizer",
+        "for": "2 snippet gaps and 98 live pages with 100+ impressions at an average position of 4 to 20",
+        "without_it": "pull search_analytics by page and query for those pages, and rewrite each title around the query that brings the most impressions"
+      },
+      {
+        "skill": "schema-markup-generator",
+        "for": "rich results found: Breadcrumbs, FAQ",
+        "without_it": "only those types were detected on the top 20 pages; check whether the blog posts should carry Article markup before adding any"
+      }
+    ]
+  },
+  "offered_review": {
+    "mode": "E-E-A-T and helpful content review",
+    "why": "area 5 found 8 of the 20 inspected location pages crawled but not indexed, and the 48 city pages share one template with a city name swapped in. The review checks that section against Google's scaled content abuse policy with the evidence, reads the blog posts' bylines, sources and dates, and drafts author bios from facts you confirm.",
+    "runs_after": "your yes; it changes nothing on the site"
+  },
+  "offered_actions": [
+    {
+      "action": "submit_url_batch",
+      "platform": "bing-webmaster",
+      "body": {
+        "site_url": "https://www.example.com/",
+        "url_list": [
+          "https://www.example.com/blog/switching-booking-software/"
+        ]
+      },
+      "why": "this page shows a stale redirect error and returns 200 now; check get_url_submission_quota first"
+    }
+  ]
+}

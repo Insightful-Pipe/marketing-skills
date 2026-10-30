@@ -1,0 +1,749 @@
+{
+  "header": {
+    "account": "Example DTC skincare store",
+    "ad_account_id": "act_123456789",
+    "currency": "USD",
+    "timezone": "America/Los_Angeles",
+    "date_range": "2026-09-21 to 2026-10-20",
+    "spend_30d": 11400,
+    "results_30d": "244 purchases",
+    "cost_per_result": 43.03,
+    "cost_per_result_basis": "$10,500 on purchase-optimised ad sets / 244 purchases; the $900 traffic ad set is reported separately",
+    "target": 45.0,
+    "grade": 56,
+    "rating": "critical",
+    "headline": "Grade 56, critical. The account spend cap stops all delivery in about 10.0 days, a disapproved ad sits in a live campaign, and the top-spending prospecting video is worn out. Purchases cost $43.03 against a $45 target overall, but $1,500 went to a default-named campaign at $83.33 a purchase."
+  },
+  "scorecard": [
+    {
+      "area": "Account status and billing",
+      "result": "warn",
+      "key_number": "10.0 days of spend left under the account cap",
+      "why": "Status 1 (active), disable reason 0, payment method on file. Spend cap $52,000 with $48,200 spent leaves $3,800, which lasts 10.0 days at $380 a day."
+    },
+    {
+      "area": "Ad review and policy",
+      "result": "fail",
+      "key_number": "1 disapproved ad in a live campaign",
+      "why": "Static - claims v2 (120000000000200004) was disapproved on 2026-10-03 after a creative edit. It sits in Interest - skincare, in a live campaign, and spent $210 in the window. 1 rejection in 30 days, nothing pending over 24 hours."
+    },
+    {
+      "area": "Tracking",
+      "result": "pass",
+      "key_number": "pixel fired 2026-10-21; Conversions API on",
+      "why": "Every purchase-optimised ad set records purchases, the pixel fired today, and the one custom conversion fires. Event Match Quality 6.8 for Purchase, from you. Deduplication is unknown."
+    },
+    {
+      "area": "Structure",
+      "result": "warn",
+      "key_number": "34.2% of spend in ad sets under 10 purchases a week",
+      "why": "$3,900 of $11,400 sits in 3 stuck ad sets. 3 broad ad sets in 3 campaigns buy the same people; see the consolidation plan. 4 live ad sets hold one ad."
+    },
+    {
+      "area": "Audiences",
+      "result": "warn",
+      "key_number": "3 prospecting ad sets exclude nothing",
+      "why": "broad serum, New Sales Ad Set and Blog readers | US ($4,200) don't exclude the website visitors and purchasers that retargeting uses. All 4 audiences deliver (status 200)."
+    },
+    {
+      "area": "Budget efficiency",
+      "result": "pass",
+      "key_number": "13.2% of spend 30%+ above target",
+      "why": "Only New Sales Campaign is far above target ($83.33, +85.2%), with 13.2% of spend, under the 30% line. Retargeting is the cheapest at $30.00. No budget below the $1.00 minimum."
+    },
+    {
+      "area": "Creative health",
+      "result": "fail",
+      "key_number": "2 ads fail",
+      "why": "UGC video - glow routine: 7-day frequency 3.8, CTR -25.0%, CPM +19.0%, live 111 days. New Sales Ad: quality ranking BELOW_AVERAGE_20. Static, video and carousel are all live."
+    },
+    {
+      "area": "Naming convention",
+      "result": "warn",
+      "key_number": "5 of 8 names follow the convention",
+      "why": "75.0% of names use ' | ' with 5 parts, so the convention is <Funnel> | <Objective> | <Offer> | <Country> | <YYYY-MM>. 3 live campaigns break it: a wrong separator, a Meta default name and a '- Copy' leftover."
+    }
+  ],
+  "grade_math": "100 - 2 fails x 12 - 4 warns x 5 = 56 (critical: under 65)",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Raise or remove the account spending limit before delivery stops",
+      "money_at_stake": "all delivery: $11,400 in the last 30 days runs through this account; $3,800 of headroom lasts about 10.0 days at $380 a day",
+      "evidence": "get_adaccount: spend_cap 5200000 cents, amount_spent 4820000 cents; 30-day spend from insights",
+      "who": "do this in Ads Manager (Billing, account spending limit)"
+    },
+    {
+      "rank": 2,
+      "fix": "Fold broad serum and New Sales Ad Set into Broad 25-54 | US, then pause the two emptied ad sets",
+      "money_at_stake": "$3,300 in two ad sets that can't leave learning and exclude nobody; New Sales Ad Set alone spent $1,500 at $83.33 a purchase, $690 more than its 18 purchases would cost at the $45 target",
+      "evidence": "ad set insights: 10.5 and 4.2 purchases a week; both target US 25-54 broad with no exclusions; New Sales Ad has quality ranking BELOW_AVERAGE_20, so don't copy it into the keeper",
+      "who": "merge in Ads Manager; I can pause the two emptied ad sets once you confirm the keeper is live"
+    },
+    {
+      "rank": 3,
+      "fix": "Rest UGC video - glow routine and brief a replacement",
+      "money_at_stake": "$1,500 of 30-day spend on a worn-out ad",
+      "evidence": "7-day frequency 3.8, CTR 1.4% to 1.05% (-25.0%), CPM $14.20 to $16.90 (+19.0%), live 111 days; its ad set keeps Static - before/after active",
+      "who": "I can pause it now, after your yes; the new creative is yours"
+    },
+    {
+      "rank": 4,
+      "fix": "Find the reason Static - claims v2 was disapproved, then edit and resubmit or replace it",
+      "money_at_stake": "$210 spent in the window with 0 purchases; Interest - skincare now runs on a single active ad",
+      "evidence": "activity log: Pending Review -> Disapproved on 2026-10-03 after update_ad_creative; get_ads effective_status DISAPPROVED",
+      "who": "check Account Quality for the reason, then do this in Ads Manager"
+    },
+    {
+      "rank": 5,
+      "fix": "Rename the 3 live campaigns that break the convention",
+      "money_at_stake": "none directly; ranked last because it changes no delivery, only how readable reports are",
+      "evidence": "5 of 8 names follow <Funnel> | <Objective> | <Offer> | <Country> | <YYYY-MM>",
+      "who": "I can do this now, after you approve each new name"
+    }
+  ],
+  "consolidation_plan": [
+    {
+      "keep": {
+        "adset_id": "120000000000100001",
+        "name": "Broad 25-54 | US",
+        "results_30d": 66,
+        "cost_per_result": 40.91
+      },
+      "fold_in": [
+        {
+          "adset_id": "120000000000100004",
+          "name": "broad serum",
+          "results_30d": 45,
+          "cost_per_result": 40.0
+        },
+        {
+          "adset_id": "120000000000100006",
+          "name": "New Sales Ad Set",
+          "results_30d": 18,
+          "cost_per_result": 83.33
+        }
+      ],
+      "why": "same objective (sales) and event (purchase), all US 25-54, broad targeting, in three campaigns",
+      "combined_daily_budget": 200,
+      "combined_results_30d": 129,
+      "combined_results_per_week": 30.1,
+      "combined_budget_could_buy_per_week": 31.1,
+      "after": "the keeper already excludes Website visitors 30d and Purchasers 180d, so the merge also fixes the missing exclusions; still under Meta's 50 a week, so keep it broad and let it gather data",
+      "how": "duplicate Static - serum hero into the keeper in Ads Manager (the API can't move ads), confirm it is live, then pause the two emptied ad sets"
+    }
+  ],
+  "consolidation_note": "Interest - skincare and LAL 1% purchasers 180d are stuck too, but they target an interest and a lookalike, so they are not merge candidates under the same-audience rule. Test them inside the keeper with Advantage+ audience instead of running them alone.",
+  "naming": {
+    "convention_found": "<Funnel> | <Objective> | <Offer> | <Country> | <YYYY-MM>",
+    "convention_basis": "75.0% of 8 names use ' | ' with 5 parts",
+    "follow": "5 of 8 (62.5%)",
+    "rows": [
+      {
+        "campaign_id": "120000000000000002",
+        "current_name": "PROSP_Broad_Serum",
+        "status": "active",
+        "found_in": "get_campaigns",
+        "objective": "OUTCOME_SALES",
+        "problems": [
+          "wrong separator (_)",
+          "no objective, offer, country or month slot"
+        ],
+        "proposed_name": "Prospecting | Sales | Serum | US | 2026-08",
+        "unknown_parts": "none"
+      },
+      {
+        "campaign_id": "120000000000000004",
+        "current_name": "New Sales Campaign",
+        "status": "active",
+        "found_in": "get_campaigns",
+        "objective": "OUTCOME_SALES",
+        "problems": [
+          "Meta default name",
+          "no funnel, offer, country or month slot"
+        ],
+        "proposed_name": "Prospecting | Sales | [?] | US | 2026-08",
+        "unknown_parts": "Offer"
+      },
+      {
+        "campaign_id": "120000000000000005",
+        "current_name": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+        "status": "active",
+        "found_in": "get_campaigns",
+        "objective": "OUTCOME_TRAFFIC",
+        "problems": [
+          "leftover '- Copy' suffix in the month slot"
+        ],
+        "proposed_name": "Prospecting | Traffic | Blog | US | 2026-09",
+        "unknown_parts": "none"
+      }
+    ]
+  },
+  "policy": {
+    "blocked_ads": [
+      {
+        "ad_id": "120000000000200004",
+        "name": "Static - claims v2",
+        "adset": "Interest - skincare",
+        "campaign": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "state": "DISAPPROVED",
+        "since": "2026-10-03",
+        "spend_30d": 210,
+        "reason": "unknown: not in the API; open Account Quality"
+      }
+    ],
+    "review_history_30d": [
+      {
+        "ad_id": "120000000000200004",
+        "event_time": "2026-09-22T10:05",
+        "change": "Pending Review -> Active",
+        "minutes_in_review": 35
+      },
+      {
+        "ad_id": "120000000000200008",
+        "event_time": "2026-09-25T16:40",
+        "change": "Pending Review -> Active",
+        "minutes_in_review": 48
+      },
+      {
+        "ad_id": "120000000000200004",
+        "event_time": "2026-10-03T14:20",
+        "change": "Pending Review -> Disapproved",
+        "minutes_in_review": 52,
+        "after": "update_ad_creative on 2026-10-03"
+      }
+    ],
+    "rejections_30d": 1,
+    "pending_over_24h": 0
+  },
+  "everything_else": {
+    "billing": [
+      {
+        "check": "Account status",
+        "value": "1 (active)",
+        "result": "pass"
+      },
+      {
+        "check": "Disable reason",
+        "value": "0",
+        "result": "pass"
+      },
+      {
+        "check": "Account spend cap",
+        "value": "$3,800 left, 10.0 days at the 30-day pace",
+        "result": "warn"
+      },
+      {
+        "check": "Campaign spend caps",
+        "value": "0 of 6 campaigns have one",
+        "result": "pass"
+      },
+      {
+        "check": "Payment method",
+        "value": "on file",
+        "result": "pass"
+      },
+      {
+        "check": "Unbilled balance",
+        "value": "$1,240.00",
+        "result": "information"
+      }
+    ],
+    "tracking": [
+      {
+        "check": "Pixel exists and fires",
+        "value": "Example store pixel, last fired 2026-10-21",
+        "result": "pass"
+      },
+      {
+        "check": "Right event",
+        "value": "$10,500 of $11,400 optimises for Purchase",
+        "result": "pass"
+      },
+      {
+        "check": "Results arrive",
+        "value": "every purchase-optimised ad set with spend recorded purchases",
+        "result": "pass"
+      },
+      {
+        "check": "Custom conversions",
+        "value": "Quiz completed fired 2026-10-20; no ad set uses it",
+        "result": "pass"
+      },
+      {
+        "check": "Conversions API and Event Match Quality",
+        "value": "on, EMQ 6.8 for Purchase (from you)",
+        "result": "pass"
+      },
+      {
+        "check": "Deduplication",
+        "value": "you weren't sure",
+        "result": "unknown"
+      }
+    ],
+    "structure_learning": [
+      {
+        "adset_id": "120000000000100001",
+        "name": "Broad 25-54 | US",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 2700,
+        "results_30d": 66,
+        "results_per_week": 15.4,
+        "state": "slow",
+        "daily_budget": 90,
+        "budget_could_buy_per_week": 14.0,
+        "cost_per_result": 40.91
+      },
+      {
+        "adset_id": "120000000000100002",
+        "name": "Interest - skincare",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 1200,
+        "results_30d": 21,
+        "results_per_week": 4.9,
+        "state": "stuck",
+        "daily_budget": 40,
+        "budget_could_buy_per_week": 6.2,
+        "cost_per_result": 57.14
+      },
+      {
+        "adset_id": "120000000000100003",
+        "name": "LAL 1% purchasers 180d",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 1200,
+        "results_30d": 24,
+        "results_per_week": 5.6,
+        "state": "stuck",
+        "daily_budget": 40,
+        "budget_could_buy_per_week": 6.2,
+        "cost_per_result": 50.0
+      },
+      {
+        "adset_id": "120000000000100004",
+        "name": "broad serum",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 1800,
+        "results_30d": 45,
+        "results_per_week": 10.5,
+        "state": "slow",
+        "daily_budget": 60,
+        "budget_could_buy_per_week": 9.3,
+        "cost_per_result": 40.0
+      },
+      {
+        "adset_id": "120000000000100005",
+        "name": "Site visitors 30d + ATC 14d",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 2100,
+        "results_30d": 70,
+        "results_per_week": 16.3,
+        "state": "slow",
+        "daily_budget": 70,
+        "budget_could_buy_per_week": 10.9,
+        "cost_per_result": 30.0
+      },
+      {
+        "adset_id": "120000000000100006",
+        "name": "New Sales Ad Set",
+        "goal": "OFFSITE_CONVERSIONS",
+        "spend_30d": 1500,
+        "results_30d": 18,
+        "results_per_week": 4.2,
+        "state": "stuck",
+        "daily_budget": 50,
+        "budget_could_buy_per_week": 7.8,
+        "cost_per_result": 83.33
+      },
+      {
+        "adset_id": "120000000000100007",
+        "name": "Blog readers | US",
+        "goal": "LINK_CLICKS",
+        "spend_30d": 900,
+        "results_30d": 1500,
+        "results_per_week": 350.0,
+        "state": "n/a"
+      }
+    ],
+    "structure_other": {
+      "one_ad_ad_sets": [
+        "120000000000100003",
+        "120000000000100004",
+        "120000000000100006",
+        "120000000000100007"
+      ],
+      "interest_skincare_note": "has 2 ads, but Static - claims v2 is disapproved, so it runs on 1",
+      "live_campaigns": 5,
+      "too_many_campaigns": "no (5 live)",
+      "thin_budgets": "none under $20 a day",
+      "mixed_objectives": "Prospecting | Traffic | Blog sends people to blog posts next to four sales campaigns; fine if deliberate",
+      "clutter": "1 paused campaign and 1 paused ad set with no spend in 30 days (Night Cream, archive candidate)"
+    },
+    "audiences": {
+      "prospecting_without_exclusions": [
+        {
+          "adset_id": "120000000000100004",
+          "name": "broad serum",
+          "spend_30d": 1800
+        },
+        {
+          "adset_id": "120000000000100006",
+          "name": "New Sales Ad Set",
+          "spend_30d": 1500
+        },
+        {
+          "adset_id": "120000000000100007",
+          "name": "Blog readers | US",
+          "spend_30d": 900
+        }
+      ],
+      "spend_mix_pct": {
+        "retargeting": 18.4,
+        "lookalike": 10.5,
+        "interest": 10.5,
+        "broad": 60.5
+      },
+      "website_audience_windows": {
+        "Website visitors 30d": 30,
+        "Add to cart 14d": 14,
+        "Purchasers 180d": 180
+      },
+      "note": "Purchasers 180d is at the 180-day maximum, so part of it is buyers from months ago. Overlap percentages are not in the API: check broad serum and New Sales Ad Set against Website visitors 30d in Ads Manager's Audience Overlap tool."
+    },
+    "budget": [
+      {
+        "campaign_id": "120000000000000001",
+        "name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "spend_30d": 5100,
+        "share_of_spend_pct": 44.7,
+        "result": "purchases",
+        "results_30d": 111,
+        "cost_per_result": 45.95,
+        "vs_target_pct": 2.1
+      },
+      {
+        "campaign_id": "120000000000000002",
+        "name": "PROSP_Broad_Serum",
+        "spend_30d": 1800,
+        "share_of_spend_pct": 15.8,
+        "result": "purchases",
+        "results_30d": 45,
+        "cost_per_result": 40.0,
+        "vs_target_pct": -11.1
+      },
+      {
+        "campaign_id": "120000000000000003",
+        "name": "Retargeting | Sales | All Products | US | 2026-07",
+        "spend_30d": 2100,
+        "share_of_spend_pct": 18.4,
+        "result": "purchases",
+        "results_30d": 70,
+        "cost_per_result": 30.0,
+        "vs_target_pct": -33.3
+      },
+      {
+        "campaign_id": "120000000000000004",
+        "name": "New Sales Campaign",
+        "spend_30d": 1500,
+        "share_of_spend_pct": 13.2,
+        "result": "purchases",
+        "results_30d": 18,
+        "cost_per_result": 83.33,
+        "vs_target_pct": 85.2
+      },
+      {
+        "campaign_id": "120000000000000005",
+        "name": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+        "spend_30d": 900,
+        "share_of_spend_pct": 7.9,
+        "result": "link clicks",
+        "results_30d": 1500,
+        "cost_per_result": 0.6,
+        "vs_target": "not judged: traffic campaign, a different result"
+      }
+    ],
+    "budget_notes": [
+      "No starved winner: Retargeting is cheapest at $30.00 and already gets 18.4% of spend.",
+      "No over-concentration: the largest campaign has 44.7% of spend."
+    ],
+    "creative": [
+      {
+        "ad_id": "120000000000200001",
+        "name": "UGC video - glow routine",
+        "adset_id": "120000000000100001",
+        "spend_30d": 1500,
+        "frequency_7d": 3.8,
+        "ctr_change_pct": -25.0,
+        "cpm_change_pct": 19.0,
+        "age_days": 111,
+        "retargeting_bands": false,
+        "result": "fail",
+        "signals": [
+          "7-day frequency 3.8",
+          "CTR -25.0% vs 30 days",
+          "CPM +19.0% vs 30 days",
+          "live 111 days at frequency above 2.5"
+        ]
+      },
+      {
+        "ad_id": "120000000000200002",
+        "name": "Static - before/after",
+        "adset_id": "120000000000100001",
+        "spend_30d": 1200,
+        "frequency_7d": 1.9,
+        "ctr_change_pct": -1.8,
+        "cpm_change_pct": 2.2,
+        "age_days": 41,
+        "retargeting_bands": false,
+        "result": "pass",
+        "signals": []
+      },
+      {
+        "ad_id": "120000000000200003",
+        "name": "Carousel - bestsellers",
+        "adset_id": "120000000000100002",
+        "spend_30d": 990,
+        "frequency_7d": 2.2,
+        "ctr_change_pct": -5.3,
+        "cpm_change_pct": 3.3,
+        "age_days": 62,
+        "retargeting_bands": false,
+        "result": "warn",
+        "signals": [
+          "7-day frequency 2.2"
+        ]
+      },
+      {
+        "ad_id": "120000000000200005",
+        "name": "UGC video - texture",
+        "adset_id": "120000000000100003",
+        "spend_30d": 1200,
+        "frequency_7d": 2.4,
+        "ctr_change_pct": -2.5,
+        "cpm_change_pct": 2.0,
+        "age_days": 81,
+        "retargeting_bands": false,
+        "result": "warn",
+        "signals": [
+          "7-day frequency 2.4"
+        ]
+      },
+      {
+        "ad_id": "120000000000200006",
+        "name": "Static - serum hero",
+        "adset_id": "120000000000100004",
+        "spend_30d": 1800,
+        "frequency_7d": 2.1,
+        "ctr_change_pct": -4.0,
+        "cpm_change_pct": 3.0,
+        "age_days": 67,
+        "retargeting_bands": false,
+        "result": "warn",
+        "signals": [
+          "7-day frequency 2.1",
+          "conversion-rate ranking BELOW_AVERAGE_35"
+        ]
+      },
+      {
+        "ad_id": "120000000000200007",
+        "name": "Carousel - reviews",
+        "adset_id": "120000000000100005",
+        "spend_30d": 1300,
+        "frequency_7d": 4.1,
+        "ctr_change_pct": -5.6,
+        "cpm_change_pct": 3.1,
+        "age_days": 93,
+        "retargeting_bands": true,
+        "result": "warn",
+        "signals": [
+          "7-day frequency 4.1",
+          "live 93 days at frequency above 3.5"
+        ]
+      },
+      {
+        "ad_id": "120000000000200008",
+        "name": "Static - 15% off returning",
+        "adset_id": "120000000000100005",
+        "spend_30d": 800,
+        "frequency_7d": 3.2,
+        "ctr_change_pct": -2.6,
+        "cpm_change_pct": 2.9,
+        "age_days": 26,
+        "retargeting_bands": true,
+        "result": "warn",
+        "signals": [
+          "7-day frequency 3.2"
+        ]
+      },
+      {
+        "ad_id": "120000000000200009",
+        "name": "New Sales Ad",
+        "adset_id": "120000000000100006",
+        "spend_30d": 1500,
+        "frequency_7d": 1.8,
+        "ctr_change_pct": -11.4,
+        "cpm_change_pct": 3.8,
+        "age_days": 54,
+        "retargeting_bands": false,
+        "result": "fail",
+        "signals": [
+          "CTR -11.4% vs 30 days",
+          "quality ranking BELOW_AVERAGE_20",
+          "engagement ranking BELOW_AVERAGE_35"
+        ]
+      },
+      {
+        "ad_id": "120000000000200010",
+        "name": "Blog - 5 ingredient myths",
+        "adset_id": "120000000000100007",
+        "spend_30d": 900,
+        "frequency_7d": 1.6,
+        "ctr_change_pct": -2.4,
+        "cpm_change_pct": 2.1,
+        "age_days": 49,
+        "retargeting_bands": false,
+        "result": "pass",
+        "signals": []
+      }
+    ],
+    "creative_not_judged": "Static - claims v2 ($210, under the 5% line of $570) and the paused Night Cream ad",
+    "conversion_rate_trend": "checked on 7 ads with 20+ purchases; none fell 10% or more",
+    "freshness": {
+      "campaigns_without_a_new_ad_in_30_days": [
+        "PROSP_Broad_Serum",
+        "New Sales Campaign",
+        "Prospecting | Traffic | Blog | US | 2026-09 - Copy"
+      ],
+      "result": "warn"
+    },
+    "format_mix": {
+      "live_formats": [
+        "carousel",
+        "static",
+        "video"
+      ],
+      "result": "pass"
+    }
+  },
+  "creative_inventory": {
+    "ads": 11,
+    "by_format": {
+      "static": 7,
+      "video": 2,
+      "carousel": 2
+    },
+    "live_ads": 9,
+    "oldest_live_ad": {
+      "name": "UGC video - glow routine",
+      "days": 111
+    },
+    "newest_ad_created": "2026-09-25"
+  },
+  "unknowns": [
+    "Deduplication between the pixel and Conversions API: you weren't sure; check it in Events Manager.",
+    "Why Static - claims v2 was disapproved: rejection reasons are not in the API; open Account Quality.",
+    "How far broad serum and New Sales Ad Set overlap retargeting audiences: overlap percentages are not in the API.",
+    "Archived campaigns: their ad sets are hidden from get_adsets; both archived names follow the convention, so no rename is proposed."
+  ],
+  "fixes_offered": [
+    {
+      "action": "update_ad",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_ad",
+        "ad_account_id": "act_123456789",
+        "ad_id": "120000000000200001",
+        "status": "PAUSED"
+      },
+      "status": "not run: waiting for your yes; switching it back on is done in Ads Manager"
+    },
+    {
+      "action": "update_adset",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100004",
+        "status": "PAUSED"
+      },
+      "status": "not run: only after you confirm the keeper ad set is live with the duplicated ad"
+    },
+    {
+      "action": "update_adset",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_123456789",
+        "adset_id": "120000000000100006",
+        "status": "PAUSED"
+      },
+      "status": "not run: only after you confirm the keeper ad set is live"
+    },
+    {
+      "action": "update_campaign",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000002",
+        "name": "Prospecting | Sales | Serum | US | 2026-08"
+      },
+      "status": "not run: waiting for your approval of each name"
+    },
+    {
+      "action": "update_campaign",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000004",
+        "name": "Prospecting | Sales | [?] | US | 2026-08"
+      },
+      "status": "not run: waiting for your approval of each name and the [?] part"
+    },
+    {
+      "action": "update_campaign",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_campaign",
+        "ad_account_id": "act_123456789",
+        "campaign_id": "120000000000000005",
+        "name": "Prospecting | Traffic | Blog | US | 2026-09"
+      },
+      "status": "not run: waiting for your approval of each name"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "Rebuilding the structure",
+      "skill": "facebook-ads-campaign-structure",
+      "when": "to plan the merge of the three broad ad sets"
+    },
+    {
+      "area": "Creative fatigue",
+      "skill": "ad-creative-fatigue-detector",
+      "when": "before you brief the replacement for UGC video - glow routine"
+    },
+    {
+      "area": "Audience overlap",
+      "skill": "audience-overlap-analyzer",
+      "when": "to size the overlap between prospecting and retargeting"
+    },
+    {
+      "area": "Budget split",
+      "skill": "facebook-ads-budget-allocator",
+      "when": "after the merge, to set the keeper's budget"
+    }
+  ]
+}

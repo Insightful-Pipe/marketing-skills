@@ -1,0 +1,914 @@
+{
+  "note": "Example data: an invented dispatch software company (Crewdial) with invented deals, comments, reviews and search queries, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"objection-handling-guide\" skill. Build our sales objection handling guide from these deal notes and lost reasons, and use the comments, reviews and search queries from the connected accounts too.",
+  "business": {
+    "name": "Crewdial (invented example)",
+    "what_it_sells": "dispatch, scheduling and invoicing software for home service contractors, with a technician mobile app",
+    "buyers": "owners and office managers of HVAC, plumbing and electrical companies with 5 to 50 technicians, in the US",
+    "pricing": "annual plans at $39 per technician per month",
+    "sales_steps": [
+      "discovery call",
+      "demo",
+      "proposal",
+      "closed"
+    ],
+    "site": "https://www.crewdial.example",
+    "competitors": {
+      "Competitor A": "competitor-a.example",
+      "Competitor B": "competitor-b.example"
+    }
+  },
+  "run_date": "2026-10-28",
+  "windows": {
+    "deals": "2026-04-28 to 2026-10-27",
+    "comments_reviews_search": "2026-07-30 to 2026-10-27"
+  },
+  "sources": {
+    "pasted": [
+      "CRM export of 30 deals with call notes and lost reasons",
+      "proof list",
+      "product facts"
+    ],
+    "connected": {
+      "facebook-pages": "get_posts, get_comments",
+      "linkedin-pages": "fetch_organization_posts, fetch_post_comments",
+      "youtube-data": "get_channels, get_commentthreads",
+      "google-play": "reviews (technician app)",
+      "apple-store": "reviews (technician app)",
+      "google-search-console": "search_analytics (query dimension)"
+    },
+    "not_connected": [
+      "instagram",
+      "google-my-business"
+    ]
+  },
+  "data_pulled": {
+    "deals": [
+      {
+        "deal": "D-101",
+        "company": "HVAC contractor 101",
+        "trade": "HVAC",
+        "technicians": 22,
+        "annual_value": 10296,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-05-04",
+            "note": "Owner said \"per tech pricing adds up fast with 22 guys\". Ran the ROI calculator together."
+          },
+          {
+            "call": "demo",
+            "date": "2026-05-12",
+            "note": "Liked the dispatch board. Asked how the office moves customer history over; walked through the import service."
+          }
+        ]
+      },
+      {
+        "deal": "D-102",
+        "company": "Plumbing contractor 102",
+        "trade": "Plumbing",
+        "technicians": 9,
+        "annual_value": 4212,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Stayed with current process",
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-05-06",
+            "note": "Office manager: \"our whiteboard and spreadsheet work fine, we know where everyone is\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-05-15",
+            "note": "Owner: \"honestly we're fine for now\". No pain we could find."
+          }
+        ]
+      },
+      {
+        "deal": "D-103",
+        "company": "Electrical contractor 103",
+        "trade": "Electrical",
+        "technicians": 31,
+        "annual_value": 14508,
+        "stage": "closed lost",
+        "competitor": "Competitor A",
+        "lost_reason": "Went with Competitor A on price",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-05-10",
+            "note": "Ops lead: \"Competitor A quoted us less per user\". Comparing line by line."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-05-24",
+            "note": "Lost on price. They did not count the GPS add-on in the Competitor A quote."
+          }
+        ]
+      },
+      {
+        "deal": "D-104",
+        "company": "HVAC contractor 104",
+        "trade": "HVAC",
+        "technicians": 40,
+        "annual_value": 18720,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-05-14",
+            "note": "Service manager: \"my older techs won't touch a new app\". Showed the offline mode."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-05-27",
+            "note": "CFO asked about the annual contract: \"we don't want to be locked in for 12 months\". Opt-out clause closed it."
+          }
+        ]
+      },
+      {
+        "deal": "D-105",
+        "company": "Plumbing contractor 105",
+        "trade": "Plumbing",
+        "technicians": 12,
+        "annual_value": 5616,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Accounting integration",
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-05-18",
+            "note": "Bookkeeper: \"we run QuickBooks Desktop, does it sync?\". Told them Online only."
+          },
+          {
+            "call": "demo",
+            "date": "2026-05-26",
+            "note": "Lost: will not move their books to QuickBooks Online."
+          }
+        ]
+      },
+      {
+        "deal": "D-106",
+        "company": "HVAC contractor 106",
+        "trade": "HVAC",
+        "technicians": 18,
+        "annual_value": 8424,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-05-20",
+            "note": "Owner: \"per tech price is more than we budgeted\". Built the payback with him."
+          },
+          {
+            "call": "demo",
+            "date": "2026-06-01",
+            "note": "Partner wanted to see it too; second demo with both owners."
+          }
+        ]
+      },
+      {
+        "deal": "D-107",
+        "company": "Electrical contractor 107",
+        "trade": "Electrical",
+        "technicians": 7,
+        "annual_value": 3276,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "No decision",
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-06-02",
+            "note": "Owner: \"we are only 7 techs, feels like overkill for us\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-06-10",
+            "note": "Went quiet after the demo. Last note: \"too busy, busy season, call me after the summer\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-108",
+        "company": "HVAC contractor 108",
+        "trade": "HVAC",
+        "technicians": 26,
+        "annual_value": 12168,
+        "stage": "closed lost",
+        "competitor": "Competitor A",
+        "lost_reason": "Went with Competitor A",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-06-05",
+            "note": "GM: \"Competitor A is cheaper and our dispatcher already knows it\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-06-19",
+            "note": "Asked for month to month; \"can't sign an annual contract with a new vendor\". Chose Competitor A."
+          }
+        ]
+      },
+      {
+        "deal": "D-109",
+        "company": "Plumbing contractor 109",
+        "trade": "Plumbing",
+        "technicians": 15,
+        "annual_value": 7020,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-06-08",
+            "note": "Office manager: \"moving 10 years of customer history scares me\". Import service answered it."
+          },
+          {
+            "call": "demo",
+            "date": "2026-06-16",
+            "note": "Owner asked about price per tech; accepted after the ROI calculator."
+          }
+        ]
+      },
+      {
+        "deal": "D-110",
+        "company": "HVAC contractor 110",
+        "trade": "HVAC",
+        "technicians": 35,
+        "annual_value": 16380,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-06-11",
+            "note": "Owner: \"techs will not use another app, we tried one in 2023\". Shared the training video."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-06-25",
+            "note": "Went through the annual contract terms with their lawyer; signed with the opt-out."
+          }
+        ]
+      },
+      {
+        "deal": "D-111",
+        "company": "Electrical contractor 111",
+        "trade": "Electrical",
+        "technicians": 11,
+        "annual_value": 5148,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Accounting integration",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-06-15",
+            "note": "Controller: \"QuickBooks Desktop is non-negotiable for us\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-112",
+        "company": "Plumbing contractor 112",
+        "trade": "Plumbing",
+        "technicians": 8,
+        "annual_value": 3744,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Stayed with current process",
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-06-18",
+            "note": "Owner: \"paper tickets and a spreadsheet have worked for 20 years\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-06-29",
+            "note": "Said the price per tech was \"too expensive for a shop our size\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-113",
+        "company": "HVAC contractor 113",
+        "trade": "HVAC",
+        "technicians": 20,
+        "annual_value": 9360,
+        "stage": "closed won",
+        "competitor": "Competitor A",
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-06-22",
+            "note": "Owner: \"Competitor A is cheaper on paper\". Showed the comparison page with the add-ons."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-07-03",
+            "note": "Chose us after counting GPS and the customer portal."
+          }
+        ]
+      },
+      {
+        "deal": "D-114",
+        "company": "Electrical contractor 114",
+        "trade": "Electrical",
+        "technicians": 28,
+        "annual_value": 13104,
+        "stage": "closed lost",
+        "competitor": "Competitor A",
+        "lost_reason": "Went with Competitor A on price",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-06-25",
+            "note": "Ops manager: \"Competitor A came in lower per tech, hard to argue with\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-07-08",
+            "note": "Owner and his partner decided; we never met the partner."
+          }
+        ]
+      },
+      {
+        "deal": "D-115",
+        "company": "HVAC contractor 115",
+        "trade": "HVAC",
+        "technicians": 45,
+        "annual_value": 21060,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-07-01",
+            "note": "Owner: \"I need to run it by my partner before anything\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-07-09",
+            "note": "Partner joined. Asked \"how do we migrate 3 years of service agreements?\". Import service plan sent."
+          }
+        ]
+      },
+      {
+        "deal": "D-116",
+        "company": "Plumbing contractor 116",
+        "trade": "Plumbing",
+        "technicians": 10,
+        "annual_value": 4680,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Timing",
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-07-06",
+            "note": "Owner: \"peak season, nobody has time to learn software till October\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-07-14",
+            "note": "Lost to timing; asked us to come back in winter."
+          }
+        ]
+      },
+      {
+        "deal": "D-117",
+        "company": "Electrical contractor 117",
+        "trade": "Electrical",
+        "technicians": 6,
+        "annual_value": 2808,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-07-08",
+            "note": "Owner: \"is this overkill for 6 techs?\". Showed the small-team setup."
+          }
+        ]
+      },
+      {
+        "deal": "D-118",
+        "company": "HVAC contractor 118",
+        "trade": "HVAC",
+        "technicians": 30,
+        "annual_value": 14040,
+        "stage": "closed lost",
+        "competitor": "Competitor A",
+        "lost_reason": "Went with Competitor A",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-07-13",
+            "note": "Owner: \"Competitor A was cheaper and their rep offered 2 months off\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-07-27",
+            "note": "Price per tech was the stated reason."
+          }
+        ]
+      },
+      {
+        "deal": "D-119",
+        "company": "Plumbing contractor 119",
+        "trade": "Plumbing",
+        "technicians": 13,
+        "annual_value": 6084,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-07-15",
+            "note": "Office manager: \"our whiteboard works fine, but I spend 2 hours a day on the phone with techs\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-07-22",
+            "note": "Owner asked about the annual contract and cancellation; the opt-out answered it."
+          }
+        ]
+      },
+      {
+        "deal": "D-120",
+        "company": "Electrical contractor 120",
+        "trade": "Electrical",
+        "technicians": 16,
+        "annual_value": 7488,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Techs pushed back",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-07-20",
+            "note": "Lead tech: \"my guys won't use an app on the roof\". Owner backed the techs."
+          }
+        ]
+      },
+      {
+        "deal": "D-121",
+        "company": "HVAC contractor 121",
+        "trade": "HVAC",
+        "technicians": 24,
+        "annual_value": 11232,
+        "stage": "closed won",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-07-24",
+            "note": "Owner asked about price per tech against their current spend on dispatch hours."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-08-05",
+            "note": "Signed after the owner one-pager went to the co-owner."
+          }
+        ]
+      },
+      {
+        "deal": "D-122",
+        "company": "Plumbing contractor 122",
+        "trade": "Plumbing",
+        "technicians": 9,
+        "annual_value": 4212,
+        "stage": "closed lost",
+        "competitor": null,
+        "lost_reason": "Accounting integration",
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-08-03",
+            "note": "Bookkeeper: \"we are on QuickBooks Desktop and not switching\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-123",
+        "company": "HVAC contractor 123",
+        "trade": "HVAC",
+        "technicians": 38,
+        "annual_value": 17784,
+        "stage": "proposal",
+        "competitor": "Competitor A",
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-09-02",
+            "note": "VP ops: \"Competitor A is cheaper per tech, why pay more?\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-09-18",
+            "note": "Asked to cut price per tech by 15%. Proposal out."
+          }
+        ]
+      },
+      {
+        "deal": "D-124",
+        "company": "Electrical contractor 124",
+        "trade": "Electrical",
+        "technicians": 14,
+        "annual_value": 6552,
+        "stage": "demo",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-09-08",
+            "note": "Owner: \"busy season until November, let's talk then\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-09-30",
+            "note": "Demo went well; owner wants to run it by his partner."
+          }
+        ]
+      },
+      {
+        "deal": "D-125",
+        "company": "Plumbing contractor 125",
+        "trade": "Plumbing",
+        "technicians": 19,
+        "annual_value": 8892,
+        "stage": "proposal",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-09-10",
+            "note": "Office manager: \"moving all our customer history is the scary part\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-10-06",
+            "note": "Owner pushed on the annual contract: \"12 months is a long time with a new vendor\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-126",
+        "company": "HVAC contractor 126",
+        "trade": "HVAC",
+        "technicians": 27,
+        "annual_value": 12636,
+        "stage": "demo",
+        "competitor": "Competitor B",
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-09-15",
+            "note": "Also looking at Competitor B for the customer portal."
+          }
+        ]
+      },
+      {
+        "deal": "D-127",
+        "company": "Electrical contractor 127",
+        "trade": "Electrical",
+        "technicians": 8,
+        "annual_value": 3744,
+        "stage": "discovery",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-09-22",
+            "note": "Owner: \"the spreadsheet works fine for 8 techs, what would change?\"."
+          }
+        ]
+      },
+      {
+        "deal": "D-128",
+        "company": "HVAC contractor 128",
+        "trade": "HVAC",
+        "technicians": 33,
+        "annual_value": 15444,
+        "stage": "proposal",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "demo",
+            "date": "2026-09-25",
+            "note": "Service manager: \"older techs will not use it, they barely text\"."
+          },
+          {
+            "call": "proposal",
+            "date": "2026-10-09",
+            "note": "Owner wants the price per tech held for 2 years."
+          }
+        ]
+      },
+      {
+        "deal": "D-129",
+        "company": "Plumbing contractor 129",
+        "trade": "Plumbing",
+        "technicians": 12,
+        "annual_value": 5616,
+        "stage": "demo",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-10-01",
+            "note": "Owner: \"not now, after the season we can look\"."
+          },
+          {
+            "call": "demo",
+            "date": "2026-10-14",
+            "note": "Asked if QuickBooks Desktop sync is coming."
+          }
+        ]
+      },
+      {
+        "deal": "D-130",
+        "company": "Electrical contractor 130",
+        "trade": "Electrical",
+        "technicians": 21,
+        "annual_value": 9828,
+        "stage": "discovery",
+        "competitor": null,
+        "lost_reason": null,
+        "call_notes": [
+          {
+            "call": "discovery",
+            "date": "2026-10-20",
+            "note": "Owner: \"our office manager handles dispatch fine on the whiteboard, and price per tech seems high\"."
+          }
+        ]
+      }
+    ],
+    "comments": [
+      {
+        "platform": "facebook",
+        "post": "Post: dispatch board walkthrough (video)",
+        "author": "fb-01",
+        "date": "2026-08-04",
+        "text": "How much per tech? Pricing isn't on the video."
+      },
+      {
+        "platform": "facebook",
+        "post": "Post: dispatch board walkthrough (video)",
+        "author": "fb-02",
+        "date": "2026-08-05",
+        "text": "We're only 5 guys, is this overkill for us?"
+      },
+      {
+        "platform": "facebook",
+        "post": "Post: dispatch board walkthrough (video)",
+        "author": "fb-03",
+        "date": "2026-08-05",
+        "text": "Does it work with QuickBooks Desktop?"
+      },
+      {
+        "platform": "facebook",
+        "post": "Post: summer rush tips",
+        "author": "fb-04",
+        "date": "2026-08-21",
+        "text": "Price per tech is steep for a small shop."
+      },
+      {
+        "platform": "facebook",
+        "post": "Post: summer rush tips",
+        "author": "fb-01",
+        "date": "2026-08-22",
+        "text": "Still want to know the price per tech."
+      },
+      {
+        "platform": "facebook",
+        "post": "Post: customer story, a 14-technician plumbing company",
+        "author": "fb-05",
+        "date": "2026-09-12",
+        "text": "Love the idea but my techs won't use another app."
+      },
+      {
+        "platform": "linkedin",
+        "post": "Post: why whiteboards break at 10 trucks",
+        "author": "li-01",
+        "date": "2026-08-11",
+        "text": "Our spreadsheet works fine at 12 techs. What actually changes?"
+      },
+      {
+        "platform": "linkedin",
+        "post": "Post: why whiteboards break at 10 trucks",
+        "author": "li-02",
+        "date": "2026-08-12",
+        "text": "Is it an annual contract or month to month?"
+      },
+      {
+        "platform": "linkedin",
+        "post": "Post: 2026 field service survey",
+        "author": "li-03",
+        "date": "2026-09-30",
+        "text": "How does it compare with Competitor A on price?"
+      },
+      {
+        "platform": "youtube",
+        "post": "Video: Crewdial in 5 minutes",
+        "author": "yt-01",
+        "date": "2026-08-15",
+        "text": "My guys won't use this in the field, half of them barely text."
+      },
+      {
+        "platform": "youtube",
+        "post": "Video: Crewdial in 5 minutes",
+        "author": "yt-02",
+        "date": "2026-08-19",
+        "text": "How hard is it to migrate from spreadsheets? We have years of customer history."
+      },
+      {
+        "platform": "youtube",
+        "post": "Video: Crewdial in 5 minutes",
+        "author": "yt-03",
+        "date": "2026-09-03",
+        "text": "Great video. Price per tech?"
+      },
+      {
+        "platform": "youtube",
+        "post": "Video: setting up your dispatch board",
+        "author": "yt-04",
+        "date": "2026-10-02",
+        "text": "Can I import my customer list or do I type it all in?"
+      }
+    ],
+    "app_reviews": [
+      {
+        "store": "google-play",
+        "author": "gp-01",
+        "date": "2026-08-09",
+        "rating": 5,
+        "text": "Easy for my techs, even the older ones picked it up in a day."
+      },
+      {
+        "store": "google-play",
+        "author": "gp-02",
+        "date": "2026-08-27",
+        "rating": 2,
+        "text": "Office needs QuickBooks Desktop sync. Without it we double enter invoices."
+      },
+      {
+        "store": "google-play",
+        "author": "gp-03",
+        "date": "2026-09-14",
+        "rating": 3,
+        "text": "Works offline which is great, but my older techs won't use the photo upload."
+      },
+      {
+        "store": "google-play",
+        "author": "gp-04",
+        "date": "2026-10-05",
+        "rating": 5,
+        "text": "Saves me an hour a day of phone calls."
+      },
+      {
+        "store": "app-store",
+        "author": "as-01",
+        "date": "2026-08-30",
+        "rating": 4,
+        "text": "Good app. Would like a month to month option instead of the annual contract."
+      },
+      {
+        "store": "app-store",
+        "author": "as-02",
+        "date": "2026-09-21",
+        "rating": 5,
+        "text": "Dispatch notifications are fast."
+      }
+    ],
+    "search_queries": [
+      {
+        "query": "crewdial pricing",
+        "impressions": 880,
+        "clicks": 140
+      },
+      {
+        "query": "crewdial price per technician",
+        "impressions": 210,
+        "clicks": 31
+      },
+      {
+        "query": "crewdial vs competitor a",
+        "impressions": 340,
+        "clicks": 52
+      },
+      {
+        "query": "crewdial quickbooks desktop",
+        "impressions": 160,
+        "clicks": 9
+      },
+      {
+        "query": "crewdial contract cancel",
+        "impressions": 70,
+        "clicks": 6
+      },
+      {
+        "query": "crewdial reviews",
+        "impressions": 450,
+        "clicks": 60
+      },
+      {
+        "query": "is crewdial worth it",
+        "impressions": 90,
+        "clicks": 11
+      },
+      {
+        "query": "crewdial import customers",
+        "impressions": 60,
+        "clicks": 8
+      }
+    ]
+  },
+  "proof_list": [
+    {
+      "id": "P1",
+      "type": "calculator",
+      "claim": "ROI calculator: enter technicians, jobs a day and drive time to see dispatch hours and drive time saved",
+      "url": "https://www.crewdial.example/roi-calculator/"
+    },
+    {
+      "id": "P2",
+      "type": "case study",
+      "claim": "A plumbing customer with 14 technicians cut drive time 18% in its first 60 days",
+      "url": "https://www.crewdial.example/customers/plumbing-14-technicians/"
+    },
+    {
+      "id": "P3",
+      "type": "contract term",
+      "claim": "90-day opt-out on the first annual plan, written into the order form",
+      "url": "https://www.crewdial.example/legal/order-form-opt-out/"
+    },
+    {
+      "id": "P4",
+      "type": "rating",
+      "claim": "Technician app rated 4.7 on Google Play from 1,300 ratings",
+      "url": "https://www.crewdial.example/technician-app/"
+    },
+    {
+      "id": "P5",
+      "type": "service",
+      "claim": "Our team imports your customer list, equipment records and 2 years of job history in 5 working days",
+      "url": "https://www.crewdial.example/onboarding/data-import/"
+    },
+    {
+      "id": "P6",
+      "type": "comparison page",
+      "claim": "Crewdial vs Competitor A, checked 2026-09-15: GPS tracking and the customer portal are add-ons on Competitor A's listed plan and included in ours",
+      "url": "https://www.crewdial.example/compare/competitor-a/"
+    },
+    {
+      "id": "P7",
+      "type": "one-pager",
+      "claim": "Owner one-pager: cost per technician, what changes for the office, and payback from the ROI calculator",
+      "url": "https://www.crewdial.example/one-pagers/owners.pdf"
+    },
+    {
+      "id": "P8",
+      "type": "onboarding plan",
+      "claim": "Go-live plan of 10 working days, with office training in two 1-hour sessions",
+      "url": "https://www.crewdial.example/onboarding/"
+    },
+    {
+      "id": "P9",
+      "type": "video",
+      "claim": "12-minute technician training video",
+      "url": "https://www.crewdial.example/technician-app/training/"
+    }
+  ],
+  "product_facts": [
+    "Syncs invoices and payments with QuickBooks Online. There is no QuickBooks Desktop sync, and none is planned this year.",
+    "The first annual plan has a 90-day opt-out written into the order form.",
+    "The technician app works offline and syncs when the signal comes back."
+  ]
+}

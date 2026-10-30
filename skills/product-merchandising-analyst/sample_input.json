@@ -1,0 +1,1091 @@
+{
+  "note": "Example data: an invented online kitchenware store with an invented Shopify store, GA4 property and Merchant Center account, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"product-merchandising-analyst\" skill. Rank my products and collections for the last 90 days and tell me what to feature on the home page, how to sort each collection, which product pages need work and what to retire.",
+  "store": {
+    "name": "Brackenfold Kitchen",
+    "domain": "brackenfoldkitchen.example",
+    "platform": "Shopify",
+    "currency": "USD",
+    "time_zone": "America/Chicago"
+  },
+  "run_date": "2026-10-29",
+  "date_range": "2026-07-30 to 2026-10-27",
+  "answers": {
+    "first_screen_slots": 8,
+    "home_page_slots": 8,
+    "home_page_collection": "Home page",
+    "unit_cost": "from the products, per product"
+  },
+  "data_pulled": {
+    "shopify_products": {
+      "source": "shopify get_products (status active) with unit cost from get_inventory_items",
+      "rows": [
+        {
+          "product_id": 8100000000,
+          "title": "Stoneware mug 12oz",
+          "product_type": "Mugs and cups",
+          "price": 28.0,
+          "unit_cost": 9.0,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 140,
+          "tags": "mugs, stoneware"
+        },
+        {
+          "product_id": 8100001137,
+          "title": "Speckled espresso cups, set of 2",
+          "product_type": "Mugs and cups",
+          "price": 34.0,
+          "unit_cost": 11.0,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 60,
+          "tags": "mugs, gift"
+        },
+        {
+          "product_id": 8100002274,
+          "title": "Tall latte mug",
+          "product_type": "Mugs and cups",
+          "price": 30.0,
+          "unit_cost": 10.5,
+          "created_at": "2025-04-11",
+          "status": "active",
+          "sellable_stock": 85,
+          "tags": "mugs"
+        },
+        {
+          "product_id": 8100003411,
+          "title": "Matte black mug",
+          "product_type": "Mugs and cups",
+          "price": 26.0,
+          "unit_cost": 9.0,
+          "created_at": "2025-05-20",
+          "status": "active",
+          "sellable_stock": 70,
+          "tags": "mugs"
+        },
+        {
+          "product_id": 8100004548,
+          "title": "Double-wall glass tumbler",
+          "product_type": "Mugs and cups",
+          "price": 24.0,
+          "unit_cost": 7.0,
+          "created_at": "2025-09-14",
+          "status": "active",
+          "sellable_stock": 120,
+          "tags": "glassware"
+        },
+        {
+          "product_id": 8100005685,
+          "title": "Kids melamine cup",
+          "product_type": "Mugs and cups",
+          "price": 14.0,
+          "unit_cost": 6.5,
+          "created_at": "2025-06-01",
+          "status": "active",
+          "sellable_stock": 200,
+          "tags": "kids"
+        },
+        {
+          "product_id": 8100006822,
+          "title": "Enamel camp mug",
+          "product_type": "Mugs and cups",
+          "price": 22.0,
+          "unit_cost": 8.0,
+          "created_at": "2025-07-08",
+          "status": "active",
+          "sellable_stock": 90,
+          "tags": "mugs, outdoor"
+        },
+        {
+          "product_id": 8100007959,
+          "title": "Stoneware mug set of 4",
+          "product_type": "Mugs and cups",
+          "price": 96.0,
+          "unit_cost": 34.0,
+          "created_at": "2025-11-03",
+          "status": "active",
+          "sellable_stock": 40,
+          "tags": "mugs, gift, sets"
+        },
+        {
+          "product_id": 8100009096,
+          "title": "Speckled pasta bowl",
+          "product_type": "Tableware",
+          "price": 32.0,
+          "unit_cost": 9.5,
+          "created_at": "2025-08-19",
+          "status": "active",
+          "sellable_stock": 110,
+          "tags": "bowls"
+        },
+        {
+          "product_id": 8100010233,
+          "title": "Everyday cereal bowl",
+          "product_type": "Tableware",
+          "price": 18.0,
+          "unit_cost": 6.0,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 160,
+          "tags": "bowls"
+        },
+        {
+          "product_id": 8100011370,
+          "title": "Rimmed dinner plate",
+          "product_type": "Tableware",
+          "price": 26.0,
+          "unit_cost": 8.5,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 130,
+          "tags": "plates"
+        },
+        {
+          "product_id": 8100012507,
+          "title": "Side plate",
+          "product_type": "Tableware",
+          "price": 20.0,
+          "unit_cost": 6.5,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 150,
+          "tags": "plates"
+        },
+        {
+          "product_id": 8100013644,
+          "title": "Nesting bowl set of 3",
+          "product_type": "Tableware",
+          "price": 58.0,
+          "unit_cost": 21.0,
+          "created_at": "2025-10-07",
+          "status": "active",
+          "sellable_stock": 45,
+          "tags": "bowls, sets"
+        },
+        {
+          "product_id": 8100014781,
+          "title": "Large serving bowl",
+          "product_type": "Tableware",
+          "price": 48.0,
+          "unit_cost": 16.0,
+          "created_at": "2025-04-11",
+          "status": "active",
+          "sellable_stock": 0,
+          "tags": "bowls, serveware"
+        },
+        {
+          "product_id": 8100015918,
+          "title": "Linen apron",
+          "product_type": "Kitchen linens",
+          "price": 44.0,
+          "unit_cost": 15.0,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 75,
+          "tags": "linen"
+        },
+        {
+          "product_id": 8100017055,
+          "title": "Linen napkins, set of 4",
+          "product_type": "Kitchen linens",
+          "price": 36.0,
+          "unit_cost": 12.0,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 90,
+          "tags": "linen, sets"
+        },
+        {
+          "product_id": 8100018192,
+          "title": "Linen table runner",
+          "product_type": "Kitchen linens",
+          "price": 52.0,
+          "unit_cost": 19.0,
+          "created_at": "2025-05-20",
+          "status": "active",
+          "sellable_stock": 50,
+          "tags": "linen"
+        },
+        {
+          "product_id": 8100019329,
+          "title": "Printed tea towel",
+          "product_type": "Kitchen linens",
+          "price": 16.0,
+          "unit_cost": 7.5,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 230,
+          "tags": "linen, towels"
+        },
+        {
+          "product_id": 8100020466,
+          "title": "Quilted oven mitt",
+          "product_type": "Kitchen linens",
+          "price": 18.0,
+          "unit_cost": 6.0,
+          "created_at": "2025-06-01",
+          "status": "active",
+          "sellable_stock": 140,
+          "tags": "linen"
+        },
+        {
+          "product_id": 8100021603,
+          "title": "Waffle weave dish towels, set of 3",
+          "product_type": "Kitchen linens",
+          "price": 24.0,
+          "unit_cost": 8.0,
+          "created_at": "2026-10-12",
+          "status": "active",
+          "sellable_stock": 300,
+          "tags": "linen, towels, new"
+        },
+        {
+          "product_id": 8100022740,
+          "title": "Walnut serving board",
+          "product_type": "Serveware",
+          "price": 68.0,
+          "unit_cost": 24.0,
+          "created_at": "2025-04-11",
+          "status": "active",
+          "sellable_stock": 55,
+          "tags": "wood, serveware"
+        },
+        {
+          "product_id": 8100023877,
+          "title": "Cast iron trivet",
+          "product_type": "Serveware",
+          "price": 30.0,
+          "unit_cost": 11.0,
+          "created_at": "2025-06-01",
+          "status": "active",
+          "sellable_stock": 80,
+          "tags": "serveware"
+        },
+        {
+          "product_id": 8100025014,
+          "title": "Glass carafe 1L",
+          "product_type": "Serveware",
+          "price": 22.0,
+          "unit_cost": 13.5,
+          "created_at": "2025-03-02",
+          "status": "active",
+          "sellable_stock": 140,
+          "tags": "glassware, serveware"
+        },
+        {
+          "product_id": 8100026151,
+          "title": "Ceramic butter dish",
+          "product_type": "Serveware",
+          "price": 38.0,
+          "unit_cost": 12.0,
+          "created_at": "2025-02-10",
+          "status": "active",
+          "sellable_stock": 35,
+          "tags": "serveware"
+        },
+        {
+          "product_id": 8100027288,
+          "title": "Olive oil pourer",
+          "product_type": "Serveware",
+          "price": 26.0,
+          "unit_cost": 8.0,
+          "created_at": "2025-07-08",
+          "status": "active",
+          "sellable_stock": 100,
+          "tags": "serveware, glassware"
+        },
+        {
+          "product_id": 8100028425,
+          "title": "Marble salt cellar",
+          "product_type": "Serveware",
+          "price": 24.0,
+          "unit_cost": 7.0,
+          "created_at": "2025-08-19",
+          "status": "active",
+          "sellable_stock": 95,
+          "tags": "serveware, marble"
+        }
+      ]
+    },
+    "shopify_collections": {
+      "source": "shopify get_custom_collections, get_smart_collections and get_collection_products",
+      "rows": [
+        {
+          "collection_id": 512000101,
+          "title": "Mugs and cups",
+          "type": "custom",
+          "sort_order": "manual",
+          "products": [
+            {
+              "position": 1,
+              "product_id": 8100000000,
+              "title": "Stoneware mug 12oz"
+            },
+            {
+              "position": 2,
+              "product_id": 8100002274,
+              "title": "Tall latte mug"
+            },
+            {
+              "position": 3,
+              "product_id": 8100003411,
+              "title": "Matte black mug"
+            },
+            {
+              "position": 4,
+              "product_id": 8100001137,
+              "title": "Speckled espresso cups, set of 2"
+            },
+            {
+              "position": 5,
+              "product_id": 8100006822,
+              "title": "Enamel camp mug"
+            },
+            {
+              "position": 6,
+              "product_id": 8100005685,
+              "title": "Kids melamine cup"
+            },
+            {
+              "position": 7,
+              "product_id": 8100025014,
+              "title": "Glass carafe 1L"
+            },
+            {
+              "position": 8,
+              "product_id": 8100007959,
+              "title": "Stoneware mug set of 4"
+            },
+            {
+              "position": 9,
+              "product_id": 8100004548,
+              "title": "Double-wall glass tumbler"
+            }
+          ]
+        },
+        {
+          "collection_id": 512000102,
+          "title": "Tableware",
+          "type": "custom",
+          "sort_order": "manual",
+          "products": [
+            {
+              "position": 1,
+              "product_id": 8100011370,
+              "title": "Rimmed dinner plate"
+            },
+            {
+              "position": 2,
+              "product_id": 8100010233,
+              "title": "Everyday cereal bowl"
+            },
+            {
+              "position": 3,
+              "product_id": 8100014781,
+              "title": "Large serving bowl"
+            },
+            {
+              "position": 4,
+              "product_id": 8100012507,
+              "title": "Side plate"
+            },
+            {
+              "position": 5,
+              "product_id": 8100025014,
+              "title": "Glass carafe 1L"
+            },
+            {
+              "position": 6,
+              "product_id": 8100013644,
+              "title": "Nesting bowl set of 3"
+            },
+            {
+              "position": 7,
+              "product_id": 8100028425,
+              "title": "Marble salt cellar"
+            },
+            {
+              "position": 8,
+              "product_id": 8100027288,
+              "title": "Olive oil pourer"
+            },
+            {
+              "position": 9,
+              "product_id": 8100026151,
+              "title": "Ceramic butter dish"
+            },
+            {
+              "position": 10,
+              "product_id": 8100009096,
+              "title": "Speckled pasta bowl"
+            }
+          ]
+        },
+        {
+          "collection_id": 512000103,
+          "title": "Kitchen linens",
+          "type": "smart",
+          "sort_order": "best-selling",
+          "products": [
+            {
+              "position": 1,
+              "product_id": 8100015918,
+              "title": "Linen apron"
+            },
+            {
+              "position": 2,
+              "product_id": 8100017055,
+              "title": "Linen napkins, set of 4"
+            },
+            {
+              "position": 3,
+              "product_id": 8100020466,
+              "title": "Quilted oven mitt"
+            },
+            {
+              "position": 4,
+              "product_id": 8100018192,
+              "title": "Linen table runner"
+            },
+            {
+              "position": 5,
+              "product_id": 8100019329,
+              "title": "Printed tea towel"
+            },
+            {
+              "position": 6,
+              "product_id": 8100021603,
+              "title": "Waffle weave dish towels, set of 3"
+            }
+          ]
+        },
+        {
+          "collection_id": 512000104,
+          "title": "Serveware",
+          "type": "custom",
+          "sort_order": "manual",
+          "products": [
+            {
+              "position": 1,
+              "product_id": 8100022740,
+              "title": "Walnut serving board"
+            },
+            {
+              "position": 2,
+              "product_id": 8100025014,
+              "title": "Glass carafe 1L"
+            },
+            {
+              "position": 3,
+              "product_id": 8100023877,
+              "title": "Cast iron trivet"
+            },
+            {
+              "position": 4,
+              "product_id": 8100014781,
+              "title": "Large serving bowl"
+            },
+            {
+              "position": 5,
+              "product_id": 8100027288,
+              "title": "Olive oil pourer"
+            },
+            {
+              "position": 6,
+              "product_id": 8100028425,
+              "title": "Marble salt cellar"
+            },
+            {
+              "position": 7,
+              "product_id": 8100026151,
+              "title": "Ceramic butter dish"
+            }
+          ]
+        },
+        {
+          "collection_id": 512000100,
+          "title": "Home page",
+          "type": "custom",
+          "sort_order": "manual",
+          "products": [
+            {
+              "position": 1,
+              "product_id": 8100022740,
+              "title": "Walnut serving board"
+            },
+            {
+              "position": 2,
+              "product_id": 8100000000,
+              "title": "Stoneware mug 12oz"
+            },
+            {
+              "position": 3,
+              "product_id": 8100002274,
+              "title": "Tall latte mug"
+            },
+            {
+              "position": 4,
+              "product_id": 8100025014,
+              "title": "Glass carafe 1L"
+            },
+            {
+              "position": 5,
+              "product_id": 8100015918,
+              "title": "Linen apron"
+            },
+            {
+              "position": 6,
+              "product_id": 8100019329,
+              "title": "Printed tea towel"
+            },
+            {
+              "position": 7,
+              "product_id": 8100011370,
+              "title": "Rimmed dinner plate"
+            },
+            {
+              "position": 8,
+              "product_id": 8100018192,
+              "title": "Linen table runner"
+            }
+          ]
+        }
+      ]
+    },
+    "shopify_sales": {
+      "source": "shopify get_orders (status any, paid, refunds netted) summed by product",
+      "rows": [
+        {
+          "product_id": 8100000000,
+          "title": "Stoneware mug 12oz",
+          "orders": 298,
+          "net_quantity": 314,
+          "net_sales": 8264.48
+        },
+        {
+          "product_id": 8100001137,
+          "title": "Speckled espresso cups, set of 2",
+          "orders": 114,
+          "net_quantity": 130,
+          "net_sales": 4154.8
+        },
+        {
+          "product_id": 8100002274,
+          "title": "Tall latte mug",
+          "orders": 108,
+          "net_quantity": 114,
+          "net_sales": 3214.8
+        },
+        {
+          "product_id": 8100003411,
+          "title": "Matte black mug",
+          "orders": 83,
+          "net_quantity": 87,
+          "net_sales": 2126.28
+        },
+        {
+          "product_id": 8100004548,
+          "title": "Double-wall glass tumbler",
+          "orders": 115,
+          "net_quantity": 121,
+          "net_sales": 2729.76
+        },
+        {
+          "product_id": 8100005685,
+          "title": "Kids melamine cup",
+          "orders": 20,
+          "net_quantity": 21,
+          "net_sales": 276.36
+        },
+        {
+          "product_id": 8100006822,
+          "title": "Enamel camp mug",
+          "orders": 39,
+          "net_quantity": 41,
+          "net_sales": 847.88
+        },
+        {
+          "product_id": 8100007959,
+          "title": "Stoneware mug set of 4",
+          "orders": 48,
+          "net_quantity": 54,
+          "net_sales": 4872.96
+        },
+        {
+          "product_id": 8100009096,
+          "title": "Speckled pasta bowl",
+          "orders": 124,
+          "net_quantity": 131,
+          "net_sales": 3940.48
+        },
+        {
+          "product_id": 8100010233,
+          "title": "Everyday cereal bowl",
+          "orders": 122,
+          "net_quantity": 128,
+          "net_sales": 2165.76
+        },
+        {
+          "product_id": 8100011370,
+          "title": "Rimmed dinner plate",
+          "orders": 125,
+          "net_quantity": 132,
+          "net_sales": 3226.08
+        },
+        {
+          "product_id": 8100012507,
+          "title": "Side plate",
+          "orders": 62,
+          "net_quantity": 65,
+          "net_sales": 1222.0
+        },
+        {
+          "product_id": 8100013644,
+          "title": "Nesting bowl set of 3",
+          "orders": 44,
+          "net_quantity": 50,
+          "net_sales": 2726.0
+        },
+        {
+          "product_id": 8100014781,
+          "title": "Large serving bowl",
+          "orders": 46,
+          "net_quantity": 48,
+          "net_sales": 2165.76
+        },
+        {
+          "product_id": 8100015918,
+          "title": "Linen apron",
+          "orders": 66,
+          "net_quantity": 69,
+          "net_sales": 2853.84
+        },
+        {
+          "product_id": 8100017055,
+          "title": "Linen napkins, set of 4",
+          "orders": 44,
+          "net_quantity": 50,
+          "net_sales": 1692.0
+        },
+        {
+          "product_id": 8100018192,
+          "title": "Linen table runner",
+          "orders": 18,
+          "net_quantity": 19,
+          "net_sales": 928.72
+        },
+        {
+          "product_id": 8100019329,
+          "title": "Printed tea towel",
+          "orders": 11,
+          "net_quantity": 12,
+          "net_sales": 180.48
+        },
+        {
+          "product_id": 8100020466,
+          "title": "Quilted oven mitt",
+          "orders": 27,
+          "net_quantity": 28,
+          "net_sales": 473.76
+        },
+        {
+          "product_id": 8100021603,
+          "title": "Waffle weave dish towels, set of 3",
+          "orders": 8,
+          "net_quantity": 9,
+          "net_sales": 203.04
+        },
+        {
+          "product_id": 8100022740,
+          "title": "Walnut serving board",
+          "orders": 46,
+          "net_quantity": 48,
+          "net_sales": 3068.16
+        },
+        {
+          "product_id": 8100023877,
+          "title": "Cast iron trivet",
+          "orders": 32,
+          "net_quantity": 34,
+          "net_sales": 958.8
+        },
+        {
+          "product_id": 8100025014,
+          "title": "Glass carafe 1L",
+          "orders": 13,
+          "net_quantity": 14,
+          "net_sales": 289.52
+        },
+        {
+          "product_id": 8100026151,
+          "title": "Ceramic butter dish",
+          "orders": 4,
+          "net_quantity": 4,
+          "net_sales": 142.88
+        },
+        {
+          "product_id": 8100027288,
+          "title": "Olive oil pourer",
+          "orders": 36,
+          "net_quantity": 38,
+          "net_sales": 928.72
+        },
+        {
+          "product_id": 8100028425,
+          "title": "Marble salt cellar",
+          "orders": 36,
+          "net_quantity": 38,
+          "net_sales": 857.28
+        }
+      ]
+    },
+    "ga4_items": {
+      "source": "google-analytics ecommerce, dimensions itemId and itemName",
+      "rows": [
+        {
+          "itemId": "8100000000",
+          "itemName": "Stoneware mug 12oz",
+          "itemsViewed": 9200,
+          "itemsAddedToCart": 920,
+          "itemsPurchased": 290
+        },
+        {
+          "itemId": "8100001137",
+          "itemName": "Speckled espresso cups, set of 2",
+          "itemsViewed": 4100,
+          "itemsAddedToCart": 410,
+          "itemsPurchased": 120
+        },
+        {
+          "itemId": "8100002274",
+          "itemName": "Tall latte mug",
+          "itemsViewed": 5200,
+          "itemsAddedToCart": 400,
+          "itemsPurchased": 104
+        },
+        {
+          "itemId": "8100003411",
+          "itemName": "Matte black mug",
+          "itemsViewed": 3800,
+          "itemsAddedToCart": 300,
+          "itemsPurchased": 80
+        },
+        {
+          "itemId": "8100004548",
+          "itemName": "Double-wall glass tumbler",
+          "itemsViewed": 2600,
+          "itemsAddedToCart": 338,
+          "itemsPurchased": 112
+        },
+        {
+          "itemId": "8100005685",
+          "itemName": "Kids melamine cup",
+          "itemsViewed": 1400,
+          "itemsAddedToCart": 70,
+          "itemsPurchased": 18
+        },
+        {
+          "itemId": "8100006822",
+          "itemName": "Enamel camp mug",
+          "itemsViewed": 2100,
+          "itemsAddedToCart": 140,
+          "itemsPurchased": 38
+        },
+        {
+          "itemId": "8100007959",
+          "itemName": "Stoneware mug set of 4",
+          "itemsViewed": 1500,
+          "itemsAddedToCart": 140,
+          "itemsPurchased": 50
+        },
+        {
+          "itemId": "8100009096",
+          "itemName": "Speckled pasta bowl",
+          "itemsViewed": 3300,
+          "itemsAddedToCart": 360,
+          "itemsPurchased": 121
+        },
+        {
+          "itemId": "8100010233",
+          "itemName": "Everyday cereal bowl",
+          "itemsViewed": 4600,
+          "itemsAddedToCart": 400,
+          "itemsPurchased": 118
+        },
+        {
+          "itemId": "8100011370",
+          "itemName": "Rimmed dinner plate",
+          "itemsViewed": 5100,
+          "itemsAddedToCart": 430,
+          "itemsPurchased": 122
+        },
+        {
+          "itemId": "8100012507",
+          "itemName": "Side plate",
+          "itemsViewed": 2900,
+          "itemsAddedToCart": 210,
+          "itemsPurchased": 58
+        },
+        {
+          "itemId": "8100013644",
+          "itemName": "Nesting bowl set of 3",
+          "itemsViewed": 1700,
+          "itemsAddedToCart": 150,
+          "itemsPurchased": 46
+        },
+        {
+          "itemId": "8100014781",
+          "itemName": "Large serving bowl",
+          "itemsViewed": 1600,
+          "itemsAddedToCart": 150,
+          "itemsPurchased": 44
+        },
+        {
+          "itemId": "8100015918",
+          "itemName": "Linen apron",
+          "itemsViewed": 3600,
+          "itemsAddedToCart": 230,
+          "itemsPurchased": 62
+        },
+        {
+          "itemId": "8100017055",
+          "itemName": "Linen napkins, set of 4",
+          "itemsViewed": 2700,
+          "itemsAddedToCart": 160,
+          "itemsPurchased": 44
+        },
+        {
+          "itemId": "8100018192",
+          "itemName": "Linen table runner",
+          "itemsViewed": 1900,
+          "itemsAddedToCart": 85,
+          "itemsPurchased": 18
+        },
+        {
+          "itemId": "8100019329",
+          "itemName": "Printed tea towel",
+          "itemsViewed": 2200,
+          "itemsAddedToCart": 70,
+          "itemsPurchased": 10
+        },
+        {
+          "itemId": "8100020466",
+          "itemName": "Quilted oven mitt",
+          "itemsViewed": 1300,
+          "itemsAddedToCart": 95,
+          "itemsPurchased": 26
+        },
+        {
+          "itemId": "8100021603",
+          "itemName": "Waffle weave dish towels, set of 3",
+          "itemsViewed": 380,
+          "itemsAddedToCart": 30,
+          "itemsPurchased": 8
+        },
+        {
+          "itemId": "8100022740",
+          "itemName": "Walnut serving board",
+          "itemsViewed": 6800,
+          "itemsAddedToCart": 204,
+          "itemsPurchased": 44
+        },
+        {
+          "itemId": "8100023877",
+          "itemName": "Cast iron trivet",
+          "itemsViewed": 3400,
+          "itemsAddedToCart": 306,
+          "itemsPurchased": 30
+        },
+        {
+          "itemId": "8100025014",
+          "itemName": "Glass carafe 1L",
+          "itemsViewed": 1800,
+          "itemsAddedToCart": 70,
+          "itemsPurchased": 12
+        },
+        {
+          "itemId": "8100026151",
+          "itemName": "Ceramic butter dish",
+          "itemsViewed": 150,
+          "itemsAddedToCart": 14,
+          "itemsPurchased": 4
+        },
+        {
+          "itemId": "8100027288",
+          "itemName": "Olive oil pourer",
+          "itemsViewed": 1200,
+          "itemsAddedToCart": 110,
+          "itemsPurchased": 34
+        },
+        {
+          "itemId": "8100028425",
+          "itemName": "Marble salt cellar",
+          "itemsViewed": 1100,
+          "itemsAddedToCart": 105,
+          "itemsPurchased": 33
+        }
+      ]
+    },
+    "ga4_events": {
+      "source": "google-analytics events, dimension eventName",
+      "rows": [
+        {
+          "eventName": "page_view",
+          "eventCount": 412000
+        },
+        {
+          "eventName": "view_item",
+          "eventCount": 72600
+        },
+        {
+          "eventName": "add_to_cart",
+          "eventCount": 6120
+        },
+        {
+          "eventName": "begin_checkout",
+          "eventCount": 2890
+        },
+        {
+          "eventName": "purchase",
+          "eventCount": 1210
+        },
+        {
+          "eventName": "view_cart",
+          "eventCount": 3400
+        }
+      ]
+    },
+    "merchant_center": {
+      "source": "google-merchant-center query_report on product_performance_view, clicks and impressions for the window",
+      "rows": [
+        {
+          "offer_id": "shopify_US_8100000000_47000000000",
+          "title": "Stoneware mug 12oz",
+          "clicks": 1460,
+          "impressions": 61000
+        },
+        {
+          "offer_id": "shopify_US_8100001137_47000000031",
+          "title": "Speckled espresso cups, set of 2",
+          "clicks": 520,
+          "impressions": 24000
+        },
+        {
+          "offer_id": "shopify_US_8100002274_47000000062",
+          "title": "Tall latte mug",
+          "clicks": 610,
+          "impressions": 30500
+        },
+        {
+          "offer_id": "shopify_US_8100003411_47000000093",
+          "title": "Matte black mug",
+          "clicks": 300,
+          "impressions": 18800
+        },
+        {
+          "offer_id": "shopify_US_8100004548_47000000124",
+          "title": "Double-wall glass tumbler",
+          "clicks": 690,
+          "impressions": 21500
+        },
+        {
+          "offer_id": "shopify_US_8100007959_47000000217",
+          "title": "Stoneware mug set of 4",
+          "clicks": 280,
+          "impressions": 9100
+        },
+        {
+          "offer_id": "shopify_US_8100009096_47000000248",
+          "title": "Speckled pasta bowl",
+          "clicks": 720,
+          "impressions": 26400
+        },
+        {
+          "offer_id": "shopify_US_8100010233_47000000279",
+          "title": "Everyday cereal bowl",
+          "clicks": 410,
+          "impressions": 22800
+        },
+        {
+          "offer_id": "shopify_US_8100011370_47000000310",
+          "title": "Rimmed dinner plate",
+          "clicks": 560,
+          "impressions": 29000
+        },
+        {
+          "offer_id": "shopify_US_8100013644_47000000372",
+          "title": "Nesting bowl set of 3",
+          "clicks": 240,
+          "impressions": 8700
+        },
+        {
+          "offer_id": "shopify_US_8100014781_47000000403",
+          "title": "Large serving bowl",
+          "clicks": 310,
+          "impressions": 11900
+        },
+        {
+          "offer_id": "shopify_US_8100015918_47000000434",
+          "title": "Linen apron",
+          "clicks": 330,
+          "impressions": 19600
+        },
+        {
+          "offer_id": "shopify_US_8100017055_47000000465",
+          "title": "Linen napkins, set of 4",
+          "clicks": 190,
+          "impressions": 12400
+        },
+        {
+          "offer_id": "shopify_US_8100018192_47000000496",
+          "title": "Linen table runner",
+          "clicks": 120,
+          "impressions": 9800
+        },
+        {
+          "offer_id": "shopify_US_8100019329_47000000527",
+          "title": "Printed tea towel",
+          "clicks": 90,
+          "impressions": 7600
+        },
+        {
+          "offer_id": "shopify_US_8100022740_47000000620",
+          "title": "Walnut serving board",
+          "clicks": 1220,
+          "impressions": 52000
+        },
+        {
+          "offer_id": "shopify_US_8100023877_47000000651",
+          "title": "Cast iron trivet",
+          "clicks": 260,
+          "impressions": 13300
+        },
+        {
+          "offer_id": "shopify_US_8100025014_47000000682",
+          "title": "Glass carafe 1L",
+          "clicks": 150,
+          "impressions": 10200
+        },
+        {
+          "offer_id": "shopify_US_8100026151_47000000713",
+          "title": "Ceramic butter dish",
+          "clicks": 840,
+          "impressions": 23100
+        },
+        {
+          "offer_id": "shopify_US_8100027288_47000000744",
+          "title": "Olive oil pourer",
+          "clicks": 140,
+          "impressions": 6900
+        },
+        {
+          "offer_id": "shopify_US_8100028425_47000000775",
+          "title": "Marble salt cellar",
+          "clicks": 130,
+          "impressions": 6100
+        }
+      ]
+    }
+  }
+}

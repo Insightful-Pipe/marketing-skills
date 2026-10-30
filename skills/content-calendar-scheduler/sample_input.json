@@ -1,0 +1,2252 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The TikTok profile is invented for this sample too.",
+  "request": "Hey Claude, I just added the \"content-calendar-scheduler\" skill. Check our scheduled queue for gaps and build next week's calendar for our Facebook Page and TikTok at our best times.",
+  "run_at": "2026-10-28T09:00:00-04:00",
+  "accounts": [
+    {
+      "name": "Example Booking Software (Facebook Page)",
+      "network": "facebook",
+      "scheduler_account_id": 101
+    },
+    {
+      "name": "Example Booking Software (TikTok)",
+      "network": "tiktok",
+      "scheduler_account_id": 102
+    }
+  ],
+  "window": "2026-11-02 to 2026-11-08",
+  "time_zone": "America/New_York (given when asked)",
+  "weekly_target": "not given, so each account's own 90-day rate, rounded up, minimum 2",
+  "content_source": "not given, so recycle what worked",
+  "data_pulled": [
+    "social-media-scheduler accounts (4 profiles, all brand 1)",
+    "list_scheduled_posts for brand 1: whole queue (56 posts), scheduled in the window, failed",
+    "facebook-pages accounts (publish capability)",
+    "facebook-pages get_posts 2025-10-28 to 2026-10-28 (101 posts) and get_post_insights post_media_view for each",
+    "tiktok-pages list_videos, all pages (142 videos)",
+    "media-files list_media_files for brand 1 (4 files)"
+  ],
+  "data": {
+    "scheduler_accounts": [
+      {
+        "scheduler_account_id": 101,
+        "network": "facebook",
+        "display_name": "Example Booking Software (Facebook Page)",
+        "brand_id": 1,
+        "status": "active"
+      },
+      {
+        "scheduler_account_id": 102,
+        "network": "tiktok",
+        "display_name": "Example Booking Software (TikTok)",
+        "brand_id": 1,
+        "status": "active"
+      },
+      {
+        "scheduler_account_id": 103,
+        "network": "instagram",
+        "display_name": "Example Booking Software (Instagram)",
+        "brand_id": 1,
+        "status": "active"
+      },
+      {
+        "scheduler_account_id": 104,
+        "network": "linkedin",
+        "display_name": "Example Booking Software (LinkedIn Page)",
+        "brand_id": 1,
+        "status": "active"
+      }
+    ],
+    "facebook_page": {
+      "page_id": "100000000000001",
+      "name": "Example Booking Software",
+      "capabilities": {
+        "publish": true
+      },
+      "brand_id": 1
+    },
+    "queue": [
+      {
+        "post_id": 2054,
+        "status": "draft",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2027-01-04T14:00:00+00:00",
+        "content": "test",
+        "created_at": "2026-09-30T10:00:00+00:00"
+      },
+      {
+        "post_id": 2055,
+        "status": "draft",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2027-01-04T14:00:00+00:00",
+        "content": "[TEST] safe to delete",
+        "created_at": "2026-09-30T10:00:00+00:00"
+      },
+      {
+        "post_id": 2053,
+        "status": "pending_approval",
+        "account": 104,
+        "network": "linkedin",
+        "scheduled_for": "2026-11-10T14:00:00+00:00",
+        "content": "How clinics cut no-shows with two reminders",
+        "created_at": "2026-10-23T10:00:00+00:00"
+      },
+      {
+        "post_id": 2047,
+        "status": "scheduled",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-11-05T17:00:00+00:00",
+        "content": "Front desk checklist: print it, tick it, open on time.",
+        "created_at": "2026-10-26T10:00:00+00:00"
+      },
+      {
+        "post_id": 2049,
+        "status": "scheduled",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-11-05T01:00:00+00:00",
+        "content": "Try this: reminder texts clients actually answer",
+        "created_at": "2026-10-26T10:00:00+00:00"
+      },
+      {
+        "post_id": 2048,
+        "status": "scheduled",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-11-04T23:30:00+00:00",
+        "content": "Owner tip: waitlists that fill your class",
+        "created_at": "2026-10-25T10:00:00+00:00"
+      },
+      {
+        "post_id": 2050,
+        "status": "scheduled",
+        "account": 103,
+        "network": "instagram",
+        "scheduled_for": "2026-11-03T16:00:00+00:00",
+        "content": "Before and after: a fully booked Saturday",
+        "created_at": "2026-10-24T10:00:00+00:00"
+      },
+      {
+        "post_id": 2046,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-25T01:40:00+00:00",
+        "content": "Deposit policy wording that works",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000141"
+          }
+        ]
+      },
+      {
+        "post_id": 2045,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-23T00:15:00+00:00",
+        "content": "Cancellation policy in 3 lines",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000140"
+          }
+        ]
+      },
+      {
+        "post_id": 2051,
+        "status": "failed",
+        "account": 103,
+        "network": "instagram",
+        "scheduled_for": "2026-10-22T15:00:00+00:00",
+        "content": "Five reminder templates, one swipe each",
+        "created_at": "2026-10-19T10:00:00+00:00",
+        "failure_reason": "Instagram denied permission for this request: the account needs to be reconnected"
+      },
+      {
+        "post_id": 2018,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-20T16:10:00+00:00",
+        "content": "Owners ask us: one booking link for your website, your bio a",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000100"
+          }
+        ]
+      },
+      {
+        "post_id": 2052,
+        "status": "draft",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-20T16:00:00+00:00",
+        "content": "Last chance to set up holiday booking hours",
+        "created_at": "2026-10-12T10:00:00+00:00"
+      },
+      {
+        "post_id": 2044,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-16T23:30:00+00:00",
+        "content": "How to ask for a deposit",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000138"
+          }
+        ]
+      },
+      {
+        "post_id": 2043,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-14T23:10:00+00:00",
+        "content": "In 30 seconds: stop late cancellations",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000137"
+          }
+        ]
+      },
+      {
+        "post_id": 2017,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-14T14:20:00+00:00",
+        "content": "Owners ask us: twelve salon booking tips, ranked by how fast",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000098"
+          }
+        ]
+      },
+      {
+        "post_id": 2042,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-10T22:45:00+00:00",
+        "content": "In 30 seconds: studio owners, try this",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000136"
+          }
+        ]
+      },
+      {
+        "post_id": 2056,
+        "status": "canceled",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-09T16:00:00+00:00",
+        "content": "Autumn promo: book three, get the fourth free",
+        "created_at": "2026-10-01T10:00:00+00:00"
+      },
+      {
+        "post_id": 2016,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-07T13:05:00+00:00",
+        "content": "Worth a save: free cancellation policy template you can past",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000097"
+          }
+        ]
+      },
+      {
+        "post_id": 2041,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-06T20:05:00+00:00",
+        "content": "In 30 seconds: fair cancellation rules",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000134"
+          }
+        ]
+      },
+      {
+        "post_id": 2015,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-10-05T13:40:00+00:00",
+        "content": "Owners ask us: why clients forget appointments, and the remi",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000096"
+          }
+        ]
+      },
+      {
+        "post_id": 2040,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-10-02T19:40:00+00:00",
+        "content": "In 30 seconds: fill the 6am class",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000133"
+          }
+        ]
+      },
+      {
+        "post_id": 2039,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-30T17:15:00+00:00",
+        "content": "In 30 seconds: deposit policy wording that works",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000132"
+          }
+        ]
+      },
+      {
+        "post_id": 2014,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-29T11:00:00+00:00",
+        "content": "Owners ask us: late cancellations: what to write so nobody i",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000094"
+          }
+        ]
+      },
+      {
+        "post_id": 2038,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-28T16:00:00+00:00",
+        "content": "In 30 seconds: cancellation policy in 3 lines",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000131"
+          }
+        ]
+      },
+      {
+        "post_id": 2037,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-25T15:30:00+00:00",
+        "content": "In 30 seconds: waitlists that fill your class",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000130"
+          }
+        ]
+      },
+      {
+        "post_id": 2013,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-23T21:30:00+00:00",
+        "content": "Owners ask us: how studios fill the 6am class without chasin",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000093"
+          }
+        ]
+      },
+      {
+        "post_id": 2036,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-23T12:10:00+00:00",
+        "content": "In 30 seconds: how to ask for a deposit",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000129"
+          }
+        ]
+      },
+      {
+        "post_id": 2035,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-20T11:45:00+00:00",
+        "content": "In 30 seconds: front desk morning routine",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000128"
+          }
+        ]
+      },
+      {
+        "post_id": 2012,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-18T20:10:00+00:00",
+        "content": "Owners ask us: the reminder text that gets a 'see you then!'",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000092"
+          }
+        ]
+      },
+      {
+        "post_id": 2034,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-18T01:20:00+00:00",
+        "content": "Real talk: studio owners, try this",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000127"
+          }
+        ]
+      },
+      {
+        "post_id": 2033,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-16T00:05:00+00:00",
+        "content": "Real talk: clients said yes to this deposit",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000126"
+          }
+        ]
+      },
+      {
+        "post_id": 2011,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-15T19:45:00+00:00",
+        "content": "Owners ask us: ten minutes before opening: the checklist tha",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000091"
+          }
+        ]
+      },
+      {
+        "post_id": 2032,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-09T23:15:00+00:00",
+        "content": "Real talk: fill the 6am class",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000124"
+          }
+        ]
+      },
+      {
+        "post_id": 2031,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-07T23:00:00+00:00",
+        "content": "Real talk: deposit policy wording that works",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000123"
+          }
+        ]
+      },
+      {
+        "post_id": 2010,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-07T17:05:00+00:00",
+        "content": "Owners ask us: copy these appointment reminder texts. Short,",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000089"
+          }
+        ]
+      },
+      {
+        "post_id": 2009,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-06T17:40:00+00:00",
+        "content": "Owners ask us: open slots on a Tuesday? Try a last-minute bo",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000088"
+          }
+        ]
+      },
+      {
+        "post_id": 2008,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-09-05T16:15:00+00:00",
+        "content": "Owners ask us: let clients book while you sleep: one link, e",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000087"
+          }
+        ]
+      },
+      {
+        "post_id": 2030,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-04T22:30:00+00:00",
+        "content": "Real talk: the 10-minute opening checklist",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000122"
+          }
+        ]
+      },
+      {
+        "post_id": 2029,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-09-01T21:10:00+00:00",
+        "content": "Real talk: waitlists that fill your class",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000121"
+          }
+        ]
+      },
+      {
+        "post_id": 2028,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-29T20:45:00+00:00",
+        "content": "In 30 seconds: reminder texts clients actually answer",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000120"
+          }
+        ]
+      },
+      {
+        "post_id": 2027,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-27T19:20:00+00:00",
+        "content": "Real talk: front desk morning routine",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000119"
+          }
+        ]
+      },
+      {
+        "post_id": 2007,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-27T16:00:00+00:00",
+        "content": "Owners ask us: a reminder 24 hours out and another 2 hours o",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000086"
+          }
+        ]
+      },
+      {
+        "post_id": 2006,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-25T16:30:00+00:00",
+        "content": "Owners ask us: fill the gaps in your salon calendar with the",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000085"
+          }
+        ]
+      },
+      {
+        "post_id": 2026,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-24T17:05:00+00:00",
+        "content": "Try this: studio owners, try this",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000118"
+          }
+        ]
+      },
+      {
+        "post_id": 2025,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-23T16:40:00+00:00",
+        "content": "Real talk: reminder templates in 30 seconds",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000117"
+          }
+        ]
+      },
+      {
+        "post_id": 2005,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-23T15:10:00+00:00",
+        "content": "Owners ask us: a cancellation policy that is fair to clients",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000084"
+          }
+        ]
+      },
+      {
+        "post_id": 2024,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-21T15:15:00+00:00",
+        "content": "Try this: calm front desk, on time day",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000116"
+          }
+        ]
+      },
+      {
+        "post_id": 2023,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-13T11:30:00+00:00",
+        "content": "Real talk: steal this reminder text",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000114"
+          }
+        ]
+      },
+      {
+        "post_id": 2022,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-12T01:10:00+00:00",
+        "content": "Try this: the 10-minute opening checklist",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000113"
+          }
+        ]
+      },
+      {
+        "post_id": 2004,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-10T13:20:00+00:00",
+        "content": "Owners ask us: a deposit policy clients accept: say why, say",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000081"
+          }
+        ]
+      },
+      {
+        "post_id": 2003,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-09T13:05:00+00:00",
+        "content": "Owners ask us: the front desk checklist small clinics use ev",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000080"
+          }
+        ]
+      },
+      {
+        "post_id": 2021,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-08T00:45:00+00:00",
+        "content": "In 30 seconds: bookings while you sleep",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000112"
+          }
+        ]
+      },
+      {
+        "post_id": 2002,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-06T18:40:00+00:00",
+        "content": "Owners ask us: class full? Clients join the waitlist and get",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000079"
+          }
+        ]
+      },
+      {
+        "post_id": 2020,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-08-05T23:20:00+00:00",
+        "content": "Real talk: reminder texts clients actually answer",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000111"
+          }
+        ]
+      },
+      {
+        "post_id": 2001,
+        "status": "published",
+        "account": 101,
+        "network": "facebook",
+        "scheduled_for": "2026-08-01T11:15:00+00:00",
+        "content": "From the blog: five reminder templates for salons, clinics a",
+        "published_posts": [
+          {
+            "network_post_id": "100000000000001_1000000000000078"
+          }
+        ]
+      },
+      {
+        "post_id": 2019,
+        "status": "published",
+        "account": 102,
+        "network": "tiktok",
+        "scheduled_for": "2026-07-31T22:15:00+00:00",
+        "content": "Try this: reminder templates in 30 seconds",
+        "published_posts": [
+          {
+            "network_post_id": "7400000000000000109"
+          }
+        ]
+      }
+    ],
+    "facebook_posts": [
+      {
+        "id": "100000000000001_1000000000000001",
+        "message": "Free cancellation policy template you can paste on your booking page.",
+        "created_time": "2025-10-28T13:00:00+0000",
+        "post_media_view": 747
+      },
+      {
+        "id": "100000000000001_1000000000000002",
+        "message": "How to ask for a deposit without losing the booking.",
+        "created_time": "2025-10-30T13:15:00+0000",
+        "post_media_view": 751
+      },
+      {
+        "id": "100000000000001_1000000000000003",
+        "message": "No-shows cost more than an empty chair. Three reminders that bring clients back on time.",
+        "created_time": "2025-11-03T15:40:00+0000",
+        "post_media_view": 231
+      },
+      {
+        "id": "100000000000001_1000000000000004",
+        "message": "A cancellation policy that is fair to clients and to you.",
+        "created_time": "2025-11-05T16:05:00+0000",
+        "post_media_view": 384
+      },
+      {
+        "id": "100000000000001_1000000000000005",
+        "message": "Fill the gaps in your salon calendar with these booking tips.",
+        "created_time": "2025-11-12T17:20:00+0000",
+        "post_media_view": 733
+      },
+      {
+        "id": "100000000000001_1000000000000006",
+        "message": "A reminder 24 hours out and another 2 hours out: the simplest fix for no-shows.",
+        "created_time": "2025-11-14T17:45:00+0000",
+        "post_media_view": "not returned by get_post_insights"
+      },
+      {
+        "id": "100000000000001_1000000000000007",
+        "message": "Let clients book while you sleep: one link, every open slot.",
+        "created_time": "2025-11-18T17:10:00+0000",
+        "post_media_view": 986
+      },
+      {
+        "id": "100000000000001_1000000000000008",
+        "message": "Open slots on a Tuesday? Try a last-minute booking link in your bio.",
+        "created_time": "2025-11-22T18:30:00+0000",
+        "post_media_view": 650
+      },
+      {
+        "id": "100000000000001_1000000000000009",
+        "message": "Copy these appointment reminder texts. Short, friendly, and they get replies.",
+        "created_time": "2025-11-27T18:00:00+0000",
+        "post_media_view": 799
+      },
+      {
+        "id": "100000000000001_1000000000000010",
+        "message": "Your booking page shows real availability, so nobody books a slot you don't have.",
+        "created_time": "2025-11-30T19:15:00+0000",
+        "post_media_view": 583
+      },
+      {
+        "id": "100000000000001_1000000000000011",
+        "message": "The front desk checklist small clinics use every morning.",
+        "created_time": "2025-12-01T20:40:00+0000",
+        "post_media_view": 200
+      },
+      {
+        "id": "100000000000001_1000000000000012",
+        "message": "A deposit policy clients accept: say why, say how much, say when it comes back.",
+        "created_time": "2025-12-10T21:05:00+0000",
+        "post_media_view": 258
+      },
+      {
+        "id": "100000000000001_1000000000000013",
+        "message": "Class full? Clients join the waitlist and get the spot when someone cancels.",
+        "created_time": "2025-12-14T22:20:00+0000",
+        "post_media_view": 280
+      },
+      {
+        "id": "100000000000001_1000000000000014",
+        "message": "Late cancellations: what to write so nobody is surprised.",
+        "created_time": "2025-12-16T12:45:00+0000",
+        "post_media_view": 450
+      },
+      {
+        "id": "100000000000001_1000000000000015",
+        "message": "Deposits feel awkward until you word them like this.",
+        "created_time": "2025-12-18T19:10:00+0000",
+        "post_media_view": 654
+      },
+      {
+        "id": "100000000000001_1000000000000016",
+        "message": "Why clients forget appointments, and the reminder schedule that fixes it.",
+        "created_time": "2025-12-27T14:30:00+0000",
+        "post_media_view": 322
+      },
+      {
+        "id": "100000000000001_1000000000000017",
+        "message": "Quick tip: free cancellation policy template you can paste on your booking page.",
+        "created_time": "2025-12-28T14:00:00+0000",
+        "post_media_view": 265
+      },
+      {
+        "id": "100000000000001_1000000000000018",
+        "message": "Twelve salon booking tips, ranked by how fast they work.",
+        "created_time": "2025-12-29T15:15:00+0000",
+        "post_media_view": 145
+      },
+      {
+        "id": "100000000000001_1000000000000019",
+        "message": "Quick tip: no-shows cost more than an empty chair. Three reminders that bring clients back on time.",
+        "created_time": "2026-01-01T16:40:00+0000",
+        "post_media_view": 425
+      },
+      {
+        "id": "100000000000001_1000000000000020",
+        "message": "One booking link for your website, your bio and your messages.",
+        "created_time": "2026-01-06T17:05:00+0000",
+        "post_media_view": 794
+      },
+      {
+        "id": "100000000000001_1000000000000021",
+        "message": "Quick tip: fill the gaps in your salon calendar with these booking tips.",
+        "created_time": "2026-01-09T17:20:00+0000",
+        "post_media_view": 690
+      },
+      {
+        "id": "100000000000001_1000000000000022",
+        "message": "Introducing two-way calendar sync: every booking lands in your phone's calendar.",
+        "created_time": "2026-01-14T17:10:00+0000",
+        "post_media_view": 1698
+      },
+      {
+        "id": "100000000000001_1000000000000023",
+        "message": "The reminder text that gets a 'see you then!' instead of silence.",
+        "created_time": "2026-01-14T17:45:00+0000",
+        "post_media_view": 531
+      },
+      {
+        "id": "100000000000001_1000000000000024",
+        "message": "How studios fill the 6am class without chasing anyone.",
+        "created_time": "2026-01-20T18:10:00+0000",
+        "post_media_view": 732
+      },
+      {
+        "id": "100000000000001_1000000000000025",
+        "message": "Ten minutes before opening: the checklist that keeps the day on time.",
+        "created_time": "2026-01-22T18:30:00+0000",
+        "post_media_view": 901
+      },
+      {
+        "id": "100000000000001_1000000000000026",
+        "message": "Quick tip: how to ask for a deposit without losing the booking.",
+        "created_time": "2026-01-26T19:00:00+0000",
+        "post_media_view": 351
+      },
+      {
+        "id": "100000000000001_1000000000000027",
+        "message": "Class packs, waitlists and reminders in one place.",
+        "created_time": "2026-01-28T20:15:00+0000",
+        "post_media_view": 207
+      },
+      {
+        "id": "100000000000001_1000000000000028",
+        "message": "Quick tip: a cancellation policy that is fair to clients and to you.",
+        "created_time": "2026-02-04T21:40:00+0000",
+        "post_media_view": 329
+      },
+      {
+        "id": "100000000000001_1000000000000029",
+        "message": "Quick tip: a deposit policy clients accept: say why, say how much, say when it comes back.",
+        "created_time": "2026-02-06T22:05:00+0000",
+        "post_media_view": 410
+      },
+      {
+        "id": "100000000000001_1000000000000030",
+        "message": "Quick tip: a reminder 24 hours out and another 2 hours out: the simplest fix for no-shows.",
+        "created_time": "2026-02-10T12:20:00+0000",
+        "post_media_view": 470
+      },
+      {
+        "id": "100000000000001_1000000000000031",
+        "message": "Quick tip: late cancellations: what to write so nobody is surprised.",
+        "created_time": "2026-02-14T19:45:00+0000",
+        "post_media_view": 532
+      },
+      {
+        "id": "100000000000001_1000000000000032",
+        "message": "Quick tip: open slots on a Tuesday? Try a last-minute booking link in your bio.",
+        "created_time": "2026-02-19T14:10:00+0000",
+        "post_media_view": 706
+      },
+      {
+        "id": "100000000000001_1000000000000033",
+        "message": "Quick tip: why clients forget appointments, and the reminder schedule that fixes it.",
+        "created_time": "2026-02-22T14:30:00+0000",
+        "post_media_view": 417
+      },
+      {
+        "id": "100000000000001_1000000000000034",
+        "message": "Quick tip: let clients book while you sleep: one link, every open slot.",
+        "created_time": "2026-02-23T15:00:00+0000",
+        "post_media_view": 220
+      },
+      {
+        "id": "100000000000001_1000000000000035",
+        "message": "What a calm front desk does before the first patient arrives.",
+        "created_time": "2026-03-04T16:15:00+0000",
+        "post_media_view": 335
+      },
+      {
+        "id": "100000000000001_1000000000000036",
+        "message": "Five reminder templates for salons, clinics and studios.",
+        "created_time": "2026-03-08T16:40:00+0000",
+        "post_media_view": 896
+      },
+      {
+        "id": "100000000000001_1000000000000037",
+        "message": "Quick tip: class full? Clients join the waitlist and get the spot when someone cancels.",
+        "created_time": "2026-03-10T16:05:00+0000",
+        "post_media_view": 1043
+      },
+      {
+        "id": "100000000000001_1000000000000038",
+        "message": "Starter plan: $19 a month for unlimited bookings and reminders.",
+        "created_time": "2026-03-10T17:05:00+0000",
+        "post_media_view": 3172
+      },
+      {
+        "id": "100000000000001_1000000000000039",
+        "message": "Quick tip: the front desk checklist small clinics use every morning.",
+        "created_time": "2026-03-12T16:20:00+0000",
+        "post_media_view": 975
+      },
+      {
+        "id": "100000000000001_1000000000000040",
+        "message": "Quick tip: deposits feel awkward until you word them like this.",
+        "created_time": "2026-03-21T17:45:00+0000",
+        "post_media_view": 778
+      },
+      {
+        "id": "100000000000001_1000000000000041",
+        "message": "Quick tip: how studios fill the 6am class without chasing anyone.",
+        "created_time": "2026-03-22T17:10:00+0000",
+        "post_media_view": 556
+      },
+      {
+        "id": "100000000000001_1000000000000042",
+        "message": "From the blog: free cancellation policy template you can paste on your booking page.",
+        "created_time": "2026-03-23T18:30:00+0000",
+        "post_media_view": 492
+      },
+      {
+        "id": "100000000000001_1000000000000043",
+        "message": "From the blog: how to ask for a deposit without losing the booking.",
+        "created_time": "2026-03-26T19:00:00+0000",
+        "post_media_view": 656
+      },
+      {
+        "id": "100000000000001_1000000000000044",
+        "message": "From the blog: no-shows cost more than an empty chair. Three reminders that bring clients back on time.",
+        "created_time": "2026-03-31T20:15:00+0000",
+        "post_media_view": 741
+      },
+      {
+        "id": "100000000000001_1000000000000045",
+        "message": "test",
+        "created_time": "2026-04-02T14:00:00+0000",
+        "post_media_view": 39
+      },
+      {
+        "id": "100000000000001_1000000000000046",
+        "message": "From the blog: a cancellation policy that is fair to clients and to you.",
+        "created_time": "2026-04-03T21:40:00+0000",
+        "post_media_view": 367
+      },
+      {
+        "id": "100000000000001_1000000000000047",
+        "message": "Quick tip: twelve salon booking tips, ranked by how fast they work.",
+        "created_time": "2026-04-08T11:05:00+0000",
+        "post_media_view": 572
+      },
+      {
+        "id": "100000000000001_1000000000000048",
+        "message": "Quick tip: copy these appointment reminder texts. Short, friendly, and they get replies.",
+        "created_time": "2026-04-14T18:20:00+0000",
+        "post_media_view": 782
+      },
+      {
+        "id": "100000000000001_1000000000000049",
+        "message": "Quick tip: your booking page shows real availability, so nobody books a slot you don't have.",
+        "created_time": "2026-04-16T13:45:00+0000",
+        "post_media_view": 437
+      },
+      {
+        "id": "100000000000001_1000000000000050",
+        "message": "Quick tip: ten minutes before opening: the checklist that keeps the day on time.",
+        "created_time": "2026-04-20T13:10:00+0000",
+        "post_media_view": 260
+      },
+      {
+        "id": "100000000000001_1000000000000051",
+        "message": "Quick tip: the reminder text that gets a 'see you then!' instead of silence.",
+        "created_time": "2026-04-22T14:30:00+0000",
+        "post_media_view": 311
+      },
+      {
+        "id": "100000000000001_1000000000000052",
+        "message": "Quick tip: class packs, waitlists and reminders in one place.",
+        "created_time": "2026-04-29T15:00:00+0000",
+        "post_media_view": 355
+      },
+      {
+        "id": "100000000000001_1000000000000053",
+        "message": "Quick tip: what a calm front desk does before the first patient arrives.",
+        "created_time": "2026-05-01T16:15:00+0000",
+        "post_media_view": 824
+      },
+      {
+        "id": "100000000000001_1000000000000054",
+        "message": "From the blog: a deposit policy clients accept: say why, say how much, say when it comes back.",
+        "created_time": "2026-05-05T16:40:00+0000",
+        "post_media_view": 848
+      },
+      {
+        "id": "100000000000001_1000000000000055",
+        "message": "From the blog: class full? Clients join the waitlist and get the spot when someone cancels.",
+        "created_time": "2026-05-09T16:05:00+0000",
+        "post_media_view": 546
+      },
+      {
+        "id": "100000000000001_1000000000000056",
+        "message": "From the blog: late cancellations: what to write so nobody is surprised.",
+        "created_time": "2026-05-14T17:20:00+0000",
+        "post_media_view": 1148
+      },
+      {
+        "id": "100000000000001_1000000000000057",
+        "message": "From the blog: deposits feel awkward until you word them like this.",
+        "created_time": "2026-05-17T17:45:00+0000",
+        "post_media_view": 593
+      },
+      {
+        "id": "100000000000001_1000000000000058",
+        "message": "From the blog: a reminder 24 hours out and another 2 hours out: the simplest fix for no-shows.",
+        "created_time": "2026-05-18T18:10:00+0000",
+        "post_media_view": 390
+      },
+      {
+        "id": "100000000000001_1000000000000059",
+        "message": "Join our free webinar on deposit policies clients accept.",
+        "created_time": "2026-05-19T16:40:00+0000",
+        "post_media_view": 3118
+      },
+      {
+        "id": "100000000000001_1000000000000060",
+        "message": "Quick tip: one booking link for your website, your bio and your messages.",
+        "created_time": "2026-05-27T19:30:00+0000",
+        "post_media_view": 331
+      },
+      {
+        "id": "100000000000001_1000000000000061",
+        "message": "From the blog: fill the gaps in your salon calendar with these booking tips.",
+        "created_time": "2026-05-31T20:00:00+0000",
+        "post_media_view": 348
+      },
+      {
+        "id": "100000000000001_1000000000000062",
+        "message": "Quick tip: five reminder templates for salons, clinics and studios.",
+        "created_time": "2026-06-02T21:15:00+0000",
+        "post_media_view": 547
+      },
+      {
+        "id": "100000000000001_1000000000000063",
+        "message": "From the blog: let clients book while you sleep: one link, every open slot.",
+        "created_time": "2026-06-04T11:40:00+0000",
+        "post_media_view": 395
+      },
+      {
+        "id": "100000000000001_1000000000000064",
+        "message": "From the blog: the front desk checklist small clinics use every morning.",
+        "created_time": "2026-06-13T18:05:00+0000",
+        "post_media_view": 669
+      },
+      {
+        "id": "100000000000001_1000000000000065",
+        "message": "From the blog: copy these appointment reminder texts. Short, friendly, and they get replies.",
+        "created_time": "2026-06-14T13:20:00+0000",
+        "post_media_view": 342
+      },
+      {
+        "id": "100000000000001_1000000000000066",
+        "message": "From the blog: how studios fill the 6am class without chasing anyone.",
+        "created_time": "2026-06-15T13:45:00+0000",
+        "post_media_view": 225
+      },
+      {
+        "id": "100000000000001_1000000000000067",
+        "message": "From the blog: ten minutes before opening: the checklist that keeps the day on time.",
+        "created_time": "2026-06-18T14:10:00+0000",
+        "post_media_view": 456
+      },
+      {
+        "id": "100000000000001_1000000000000068",
+        "message": "Owners ask us: how to ask for a deposit without losing the booking.",
+        "created_time": "2026-06-23T15:30:00+0000",
+        "post_media_view": 502
+      },
+      {
+        "id": "100000000000001_1000000000000069",
+        "message": "From the blog: class packs, waitlists and reminders in one place.",
+        "created_time": "2026-06-26T16:00:00+0000",
+        "post_media_view": 428
+      },
+      {
+        "id": "100000000000001_1000000000000070",
+        "message": "Owners ask us: free cancellation policy template you can paste on your booking page.",
+        "created_time": "2026-07-01T16:15:00+0000",
+        "post_media_view": 492
+      },
+      {
+        "id": "100000000000001_1000000000000071",
+        "message": "From the blog: open slots on a Tuesday? Try a last-minute booking link in your bio.",
+        "created_time": "2026-07-07T16:40:00+0000",
+        "post_media_view": 882
+      },
+      {
+        "id": "100000000000001_1000000000000072",
+        "message": "From the blog: why clients forget appointments, and the reminder schedule that fixes it.",
+        "created_time": "2026-07-09T17:05:00+0000",
+        "post_media_view": 778
+      },
+      {
+        "id": "100000000000001_1000000000000073",
+        "message": "From the blog: your booking page shows real availability, so nobody books a slot you don't have.",
+        "created_time": "2026-07-13T17:20:00+0000",
+        "post_media_view": 325
+      },
+      {
+        "id": "100000000000001_1000000000000074",
+        "message": "From the blog: twelve salon booking tips, ranked by how fast they work.",
+        "created_time": "2026-07-15T18:45:00+0000",
+        "post_media_view": 727
+      },
+      {
+        "id": "100000000000001_1000000000000075",
+        "message": "From the blog: the reminder text that gets a 'see you then!' instead of silence.",
+        "created_time": "2026-07-22T19:10:00+0000",
+        "post_media_view": 271
+      },
+      {
+        "id": "100000000000001_1000000000000076",
+        "message": "From the blog: one booking link for your website, your bio and your messages.",
+        "created_time": "2026-07-24T20:30:00+0000",
+        "post_media_view": 318
+      },
+      {
+        "id": "100000000000001_1000000000000077",
+        "message": "From the blog: what a calm front desk does before the first patient arrives.",
+        "created_time": "2026-07-28T21:00:00+0000",
+        "post_media_view": 553
+      },
+      {
+        "id": "100000000000001_1000000000000078",
+        "message": "From the blog: five reminder templates for salons, clinics and studios.",
+        "created_time": "2026-08-01T11:15:00+0000",
+        "post_media_view": 245
+      },
+      {
+        "id": "100000000000001_1000000000000079",
+        "message": "Owners ask us: class full? Clients join the waitlist and get the spot when someone cancels.",
+        "created_time": "2026-08-06T18:40:00+0000",
+        "post_media_view": 952
+      },
+      {
+        "id": "100000000000001_1000000000000080",
+        "message": "Owners ask us: the front desk checklist small clinics use every morning.",
+        "created_time": "2026-08-09T13:05:00+0000",
+        "post_media_view": 258
+      },
+      {
+        "id": "100000000000001_1000000000000081",
+        "message": "Owners ask us: a deposit policy clients accept: say why, say how much, say when it comes back.",
+        "created_time": "2026-08-10T13:20:00+0000",
+        "post_media_view": 215
+      },
+      {
+        "id": "100000000000001_1000000000000082",
+        "message": "[TEST] scheduler connection check - safe to delete",
+        "created_time": "2026-08-12T13:30:00+0000",
+        "post_media_view": 21
+      },
+      {
+        "id": "100000000000001_1000000000000083",
+        "message": "Owners ask us: no-shows cost more than an empty chair. Three reminders that bring clients back on time.",
+        "created_time": "2026-08-19T14:45:00+0000",
+        "post_media_view": 467
+      },
+      {
+        "id": "100000000000001_1000000000000084",
+        "message": "Owners ask us: a cancellation policy that is fair to clients and to you.",
+        "created_time": "2026-08-23T15:10:00+0000",
+        "post_media_view": 250
+      },
+      {
+        "id": "100000000000001_1000000000000085",
+        "message": "Owners ask us: fill the gaps in your salon calendar with these booking tips.",
+        "created_time": "2026-08-25T16:30:00+0000",
+        "post_media_view": 768
+      },
+      {
+        "id": "100000000000001_1000000000000086",
+        "message": "Owners ask us: a reminder 24 hours out and another 2 hours out: the simplest fix for no-shows.",
+        "created_time": "2026-08-27T16:00:00+0000",
+        "post_media_view": 1197
+      },
+      {
+        "id": "100000000000001_1000000000000087",
+        "message": "Owners ask us: let clients book while you sleep: one link, every open slot.",
+        "created_time": "2026-09-05T16:15:00+0000",
+        "post_media_view": 823
+      },
+      {
+        "id": "100000000000001_1000000000000088",
+        "message": "Owners ask us: open slots on a Tuesday? Try a last-minute booking link in your bio.",
+        "created_time": "2026-09-06T17:40:00+0000",
+        "post_media_view": 903
+      },
+      {
+        "id": "100000000000001_1000000000000089",
+        "message": "Owners ask us: copy these appointment reminder texts. Short, friendly, and they get replies.",
+        "created_time": "2026-09-07T17:05:00+0000",
+        "post_media_view": 455
+      },
+      {
+        "id": "100000000000001_1000000000000090",
+        "message": "Owners ask us: your booking page shows real availability, so nobody books a slot you don't have.",
+        "created_time": "2026-09-10T18:20:00+0000",
+        "post_media_view": 1144
+      },
+      {
+        "id": "100000000000001_1000000000000091",
+        "message": "Owners ask us: ten minutes before opening: the checklist that keeps the day on time.",
+        "created_time": "2026-09-15T19:45:00+0000",
+        "post_media_view": 675
+      },
+      {
+        "id": "100000000000001_1000000000000092",
+        "message": "Owners ask us: the reminder text that gets a 'see you then!' instead of silence.",
+        "created_time": "2026-09-18T20:10:00+0000",
+        "post_media_view": 523
+      },
+      {
+        "id": "100000000000001_1000000000000093",
+        "message": "Owners ask us: how studios fill the 6am class without chasing anyone.",
+        "created_time": "2026-09-23T21:30:00+0000",
+        "post_media_view": 383
+      },
+      {
+        "id": "100000000000001_1000000000000094",
+        "message": "Owners ask us: late cancellations: what to write so nobody is surprised.",
+        "created_time": "2026-09-29T11:00:00+0000",
+        "post_media_view": 505
+      },
+      {
+        "id": "100000000000001_1000000000000095",
+        "message": "Owners ask us: deposits feel awkward until you word them like this.",
+        "created_time": "2026-10-01T18:15:00+0000",
+        "post_media_view": 1144
+      },
+      {
+        "id": "100000000000001_1000000000000096",
+        "message": "Owners ask us: why clients forget appointments, and the reminder schedule that fixes it.",
+        "created_time": "2026-10-05T13:40:00+0000",
+        "post_media_view": 378
+      },
+      {
+        "id": "100000000000001_1000000000000097",
+        "message": "Worth a save: free cancellation policy template you can paste on your booking page.",
+        "created_time": "2026-10-07T13:05:00+0000",
+        "post_media_view": 443
+      },
+      {
+        "id": "100000000000001_1000000000000098",
+        "message": "Owners ask us: twelve salon booking tips, ranked by how fast they work.",
+        "created_time": "2026-10-14T14:20:00+0000",
+        "post_media_view": 523
+      },
+      {
+        "id": "100000000000001_1000000000000099",
+        "message": "Worth a save: no-shows cost more than an empty chair. Three reminders that bring clients back on time.",
+        "created_time": "2026-10-16T15:45:00+0000",
+        "post_media_view": 495
+      },
+      {
+        "id": "100000000000001_1000000000000100",
+        "message": "Owners ask us: one booking link for your website, your bio and your messages.",
+        "created_time": "2026-10-20T16:10:00+0000",
+        "post_media_view": 1012
+      },
+      {
+        "id": "100000000000001_1000000000000101",
+        "message": "Worth a save: fill the gaps in your salon calendar with these booking tips.",
+        "created_time": "2026-10-24T16:30:00+0000",
+        "post_media_view": 804
+      }
+    ],
+    "tiktok_videos": [
+      {
+        "id": "7400000000000000001",
+        "create_time": 1761750900,
+        "title": "How to ask for a deposit",
+        "view_count": 4193
+      },
+      {
+        "id": "7400000000000000002",
+        "create_time": 1761928800,
+        "title": "Waitlists that fill your class",
+        "view_count": 3502
+      },
+      {
+        "id": "7400000000000000003",
+        "create_time": 1762279500,
+        "title": "Cancellation policy in 3 lines",
+        "view_count": 3068
+      },
+      {
+        "id": "7400000000000000004",
+        "create_time": 1762460400,
+        "title": "Deposit policy wording that works",
+        "view_count": 2531
+      },
+      {
+        "id": "7400000000000000005",
+        "create_time": 1762638300,
+        "title": "Fill the 6am class",
+        "view_count": 2626
+      },
+      {
+        "id": "7400000000000000006",
+        "create_time": 1762985400,
+        "title": "Fair cancellation rules",
+        "view_count": 3640
+      },
+      {
+        "id": "7400000000000000007",
+        "create_time": 1763163000,
+        "title": "Clients said yes to this deposit",
+        "view_count": 6312
+      },
+      {
+        "id": "7400000000000000008",
+        "create_time": 1763424000,
+        "title": "3 reminders that stop no-shows",
+        "view_count": 4863
+      },
+      {
+        "id": "7400000000000000009",
+        "create_time": 1763684100,
+        "title": "Stop late cancellations",
+        "view_count": 5230
+      },
+      {
+        "id": "7400000000000000010",
+        "create_time": 1763858400,
+        "title": "POV: how to ask for a deposit",
+        "view_count": 2266
+      },
+      {
+        "id": "7400000000000000011",
+        "create_time": 1764119100,
+        "title": "The 24h + 2h reminder trick",
+        "view_count": 2870
+      },
+      {
+        "id": "7400000000000000012",
+        "create_time": 1764382800,
+        "title": "POV: cancellation policy in 3 lines",
+        "view_count": 5147
+      },
+      {
+        "id": "7400000000000000013",
+        "create_time": 1764506700,
+        "title": "POV: deposit policy wording that works",
+        "view_count": 1454
+      },
+      {
+        "id": "7400000000000000014",
+        "create_time": 1764594600,
+        "title": "Why your clients forget (and how to fix it)",
+        "view_count": 1536
+      },
+      {
+        "id": "7400000000000000015",
+        "create_time": 1764779400,
+        "title": "POV: fair cancellation rules",
+        "view_count": 2744
+      },
+      {
+        "id": "7400000000000000016",
+        "create_time": 1765299600,
+        "title": "Fill your Tuesday gaps",
+        "view_count": 1754
+      },
+      {
+        "id": "7400000000000000017",
+        "create_time": 1765476900,
+        "title": "POV: 3 reminders that stop no-shows",
+        "view_count": 1426
+      },
+      {
+        "id": "7400000000000000018",
+        "create_time": 1765744800,
+        "title": "POV: stop late cancellations",
+        "view_count": 1469
+      },
+      {
+        "id": "7400000000000000019",
+        "create_time": 1765842300,
+        "title": "Owner tip: cancellation policy in 3 lines",
+        "view_count": 2389
+      },
+      {
+        "id": "7400000000000000020",
+        "create_time": 1766005500,
+        "title": "Salon booking hacks",
+        "view_count": 3053
+      },
+      {
+        "id": "7400000000000000021",
+        "create_time": 1766182800,
+        "title": "POV: the 24h + 2h reminder trick",
+        "view_count": 5246
+      },
+      {
+        "id": "7400000000000000022",
+        "create_time": 1766448600,
+        "title": "Last-minute slots, filled",
+        "view_count": 3751
+      },
+      {
+        "id": "7400000000000000023",
+        "create_time": 1766622600,
+        "title": "POV: why your clients forget (and how to fix it)",
+        "view_count": 6532
+      },
+      {
+        "id": "7400000000000000024",
+        "create_time": 1767139200,
+        "title": "Bookings while you sleep",
+        "view_count": 2832
+      },
+      {
+        "id": "7400000000000000025",
+        "create_time": 1767316500,
+        "title": "POV: fill your Tuesday gaps",
+        "view_count": 3524
+      },
+      {
+        "id": "7400000000000000026",
+        "create_time": 1767494400,
+        "title": "Owner tip: 3 reminders that stop no-shows",
+        "view_count": 2213
+      },
+      {
+        "id": "7400000000000000027",
+        "create_time": 1767787500,
+        "title": "One link, every open slot",
+        "view_count": 3411
+      },
+      {
+        "id": "7400000000000000028",
+        "create_time": 1767964800,
+        "title": "POV: salon booking hacks",
+        "view_count": 3677
+      },
+      {
+        "id": "7400000000000000029",
+        "create_time": 1768149900,
+        "title": "Owner tip: the 24h + 2h reminder trick",
+        "view_count": 1248
+      },
+      {
+        "id": "7400000000000000030",
+        "create_time": 1768237800,
+        "title": "Show real availability",
+        "view_count": 2589
+      },
+      {
+        "id": "7400000000000000031",
+        "create_time": 1768501800,
+        "title": "POV: last-minute slots, filled",
+        "view_count": 1918
+      },
+      {
+        "id": "7400000000000000032",
+        "create_time": 1768939200,
+        "title": "Reminder texts clients actually answer",
+        "view_count": 2249
+      },
+      {
+        "id": "7400000000000000033",
+        "create_time": 1769202900,
+        "title": "POV: bookings while you sleep",
+        "view_count": 5282
+      },
+      {
+        "id": "7400000000000000034",
+        "create_time": 1769380800,
+        "title": "Owner tip: fill your Tuesday gaps",
+        "view_count": 1144
+      },
+      {
+        "id": "7400000000000000035",
+        "create_time": 1769468700,
+        "title": "Steal this reminder text",
+        "view_count": 2971
+      },
+      {
+        "id": "7400000000000000036",
+        "create_time": 1769646000,
+        "title": "POV: one link, every open slot",
+        "view_count": 5252
+      },
+      {
+        "id": "7400000000000000037",
+        "create_time": 1769906700,
+        "title": "Owner tip: salon booking hacks",
+        "view_count": 4968
+      },
+      {
+        "id": "7400000000000000038",
+        "create_time": 1770163800,
+        "title": "Reminder templates in 30 seconds",
+        "view_count": 3209
+      },
+      {
+        "id": "7400000000000000039",
+        "create_time": 1770341400,
+        "title": "POV: show real availability",
+        "view_count": 3481
+      },
+      {
+        "id": "7400000000000000040",
+        "create_time": 1770423300,
+        "title": "We just launched online payments for salons",
+        "view_count": 19151
+      },
+      {
+        "id": "7400000000000000041",
+        "create_time": 1770644400,
+        "title": "Owner tip: bookings while you sleep",
+        "view_count": 2373
+      },
+      {
+        "id": "7400000000000000042",
+        "create_time": 1770861600,
+        "title": "Front desk morning routine",
+        "view_count": 5090
+      },
+      {
+        "id": "7400000000000000043",
+        "create_time": 1770984900,
+        "title": "POV: reminder texts clients actually answer",
+        "view_count": 3224
+      },
+      {
+        "id": "7400000000000000044",
+        "create_time": 1771257900,
+        "title": "The 10-minute opening checklist",
+        "view_count": 2894
+      },
+      {
+        "id": "7400000000000000045",
+        "create_time": 1771435200,
+        "title": "POV: steal this reminder text",
+        "view_count": 4974
+      },
+      {
+        "id": "7400000000000000046",
+        "create_time": 1771613100,
+        "title": "Owner tip: one link, every open slot",
+        "view_count": 3510
+      },
+      {
+        "id": "7400000000000000047",
+        "create_time": 1771963800,
+        "title": "Calm front desk, on time day",
+        "view_count": 2566
+      },
+      {
+        "id": "7400000000000000048",
+        "create_time": 1772141400,
+        "title": "POV: reminder templates in 30 seconds",
+        "view_count": 3198
+      },
+      {
+        "id": "7400000000000000049",
+        "create_time": 1772661600,
+        "title": "Studio owners, try this",
+        "view_count": 5555
+      },
+      {
+        "id": "7400000000000000050",
+        "create_time": 1772838900,
+        "title": "POV: front desk morning routine",
+        "view_count": 9540
+      },
+      {
+        "id": "7400000000000000051",
+        "create_time": 1773013200,
+        "title": "Owner tip: reminder texts clients actually answer",
+        "view_count": 2140
+      },
+      {
+        "id": "7400000000000000052",
+        "create_time": 1773097500,
+        "title": "POV: waitlists that fill your class",
+        "view_count": 4269
+      },
+      {
+        "id": "7400000000000000053",
+        "create_time": 1773357600,
+        "title": "POV: the 10-minute opening checklist",
+        "view_count": 6858
+      },
+      {
+        "id": "7400000000000000054",
+        "create_time": 1773535500,
+        "title": "Owner tip: steal this reminder text",
+        "view_count": 4551
+      },
+      {
+        "id": "7400000000000000055",
+        "create_time": 1773796200,
+        "title": "POV: fill the 6am class",
+        "view_count": 3480
+      },
+      {
+        "id": "7400000000000000056",
+        "create_time": 1774006200,
+        "title": "POV: calm front desk, on time day",
+        "view_count": 3566
+      },
+      {
+        "id": "7400000000000000057",
+        "create_time": 1774267200,
+        "title": "POV: clients said yes to this deposit",
+        "view_count": 3763
+      },
+      {
+        "id": "7400000000000000058",
+        "create_time": 1774451700,
+        "title": "POV: studio owners, try this",
+        "view_count": 4232
+      },
+      {
+        "id": "7400000000000000059",
+        "create_time": 1774716000,
+        "title": "Owner tip: front desk morning routine",
+        "view_count": 2681
+      },
+      {
+        "id": "7400000000000000060",
+        "create_time": 1774976700,
+        "title": "Owner tip: how to ask for a deposit",
+        "view_count": 2473
+      },
+      {
+        "id": "7400000000000000061",
+        "create_time": 1775157600,
+        "title": "Owner tip: waitlists that fill your class",
+        "view_count": 2879
+      },
+      {
+        "id": "7400000000000000062",
+        "create_time": 1775421900,
+        "title": "Owner tip: the 10-minute opening checklist",
+        "view_count": 1862
+      },
+      {
+        "id": "7400000000000000063",
+        "create_time": 1775682600,
+        "title": "Owner tip: deposit policy wording that works",
+        "view_count": 4358
+      },
+      {
+        "id": "7400000000000000064",
+        "create_time": 1775860200,
+        "title": "Owner tip: fill the 6am class",
+        "view_count": 5745
+      },
+      {
+        "id": "7400000000000000065",
+        "create_time": 1776121200,
+        "title": "Owner tip: fair cancellation rules",
+        "view_count": 4917
+      },
+      {
+        "id": "7400000000000000066",
+        "create_time": 1776294900,
+        "title": "Owner tip: clients said yes to this deposit",
+        "view_count": 7898
+      },
+      {
+        "id": "7400000000000000067",
+        "create_time": 1776469200,
+        "title": "Owner tip: studio owners, try this",
+        "view_count": 14352
+      },
+      {
+        "id": "7400000000000000068",
+        "create_time": 1776816300,
+        "title": "Owner tip: stop late cancellations",
+        "view_count": 4477
+      },
+      {
+        "id": "7400000000000000069",
+        "create_time": 1776993600,
+        "title": "Try this: how to ask for a deposit",
+        "view_count": 3861
+      },
+      {
+        "id": "7400000000000000070",
+        "create_time": 1777117500,
+        "title": "Try this: waitlists that fill your class",
+        "view_count": 2033
+      },
+      {
+        "id": "7400000000000000071",
+        "create_time": 1777464600,
+        "title": "Try this: cancellation policy in 3 lines",
+        "view_count": 4999
+      },
+      {
+        "id": "7400000000000000072",
+        "create_time": 1777649400,
+        "title": "Try this: deposit policy wording that works",
+        "view_count": 5203
+      },
+      {
+        "id": "7400000000000000073",
+        "create_time": 1777910400,
+        "title": "Owner tip: why your clients forget (and how to fix it)",
+        "view_count": 2935
+      },
+      {
+        "id": "7400000000000000074",
+        "create_time": 1778174100,
+        "title": "Try this: fair cancellation rules",
+        "view_count": 4064
+      },
+      {
+        "id": "7400000000000000075",
+        "create_time": 1778355600,
+        "title": "Try this: clients said yes to this deposit",
+        "view_count": 2513
+      },
+      {
+        "id": "7400000000000000076",
+        "create_time": 1778616300,
+        "title": "Try this: 3 reminders that stop no-shows",
+        "view_count": 5352
+      },
+      {
+        "id": "7400000000000000077",
+        "create_time": 1778880000,
+        "title": "Try this: stop late cancellations",
+        "view_count": 5867
+      },
+      {
+        "id": "7400000000000000078",
+        "create_time": 1779057900,
+        "title": "Real talk: how to ask for a deposit",
+        "view_count": 3097
+      },
+      {
+        "id": "7400000000000000079",
+        "create_time": 1779145800,
+        "title": "Try this: the 24h + 2h reminder trick",
+        "view_count": 5393
+      },
+      {
+        "id": "7400000000000000080",
+        "create_time": 1779319800,
+        "title": "Real talk: cancellation policy in 3 lines",
+        "view_count": 8051
+      },
+      {
+        "id": "7400000000000000081",
+        "create_time": 1779836400,
+        "title": "Owner tip: last-minute slots, filled",
+        "view_count": 4957
+      },
+      {
+        "id": "7400000000000000082",
+        "create_time": 1780013700,
+        "title": "Try this: why your clients forget (and how to fix it)",
+        "view_count": 5182
+      },
+      {
+        "id": "7400000000000000083",
+        "create_time": 1780278000,
+        "title": "Real talk: fair cancellation rules",
+        "view_count": 2073
+      },
+      {
+        "id": "7400000000000000084",
+        "create_time": 1780328700,
+        "title": "Real talk: stop late cancellations",
+        "view_count": 3581
+      },
+      {
+        "id": "7400000000000000085",
+        "create_time": 1780484700,
+        "title": "Try this: fill your Tuesday gaps",
+        "view_count": 3578
+      },
+      {
+        "id": "7400000000000000086",
+        "create_time": 1780662000,
+        "title": "Real talk: 3 reminders that stop no-shows",
+        "view_count": 2509
+      },
+      {
+        "id": "7400000000000000087",
+        "create_time": 1780935000,
+        "title": "Try this: salon booking hacks",
+        "view_count": 2868
+      },
+      {
+        "id": "7400000000000000088",
+        "create_time": 1781112600,
+        "title": "Real talk: the 24h + 2h reminder trick",
+        "view_count": 4450
+      },
+      {
+        "id": "7400000000000000089",
+        "create_time": 1781636400,
+        "title": "Owner tip: show real availability",
+        "view_count": 1988
+      },
+      {
+        "id": "7400000000000000090",
+        "create_time": 1781813700,
+        "title": "Try this: last-minute slots, filled",
+        "view_count": 3174
+      },
+      {
+        "id": "7400000000000000091",
+        "create_time": 1781912400,
+        "title": "20% off your first 3 months",
+        "view_count": 17023
+      },
+      {
+        "id": "7400000000000000092",
+        "create_time": 1781991600,
+        "title": "Real talk: why your clients forget (and how to fix it)",
+        "view_count": 3407
+      },
+      {
+        "id": "7400000000000000093",
+        "create_time": 1782338700,
+        "title": "Try this: bookings while you sleep",
+        "view_count": 9355
+      },
+      {
+        "id": "7400000000000000094",
+        "create_time": 1782516000,
+        "title": "Real talk: fill your Tuesday gaps",
+        "view_count": 8617
+      },
+      {
+        "id": "7400000000000000095",
+        "create_time": 1782690300,
+        "title": "In 30 seconds: 3 reminders that stop no-shows",
+        "view_count": 3204
+      },
+      {
+        "id": "7400000000000000096",
+        "create_time": 1782774600,
+        "title": "Try this: one link, every open slot",
+        "view_count": 6241
+      },
+      {
+        "id": "7400000000000000097",
+        "create_time": 1783038600,
+        "title": "Real talk: salon booking hacks",
+        "view_count": 5471
+      },
+      {
+        "id": "7400000000000000098",
+        "create_time": 1783472400,
+        "title": "Owner tip: reminder templates in 30 seconds",
+        "view_count": 2841
+      },
+      {
+        "id": "7400000000000000099",
+        "create_time": 1783522800,
+        "title": "test upload",
+        "view_count": 7
+      },
+      {
+        "id": "7400000000000000100",
+        "create_time": 1783682100,
+        "title": "Try this: show real availability",
+        "view_count": 4338
+      },
+      {
+        "id": "7400000000000000101",
+        "create_time": 1783860000,
+        "title": "Real talk: last-minute slots, filled",
+        "view_count": 1340
+      },
+      {
+        "id": "7400000000000000102",
+        "create_time": 1783955100,
+        "title": "Try this: reminder texts clients actually answer",
+        "view_count": 2748
+      },
+      {
+        "id": "7400000000000000103",
+        "create_time": 1784132400,
+        "title": "Real talk: bookings while you sleep",
+        "view_count": 4052
+      },
+      {
+        "id": "7400000000000000104",
+        "create_time": 1784396700,
+        "title": "In 30 seconds: fill your Tuesday gaps",
+        "view_count": 3578
+      },
+      {
+        "id": "7400000000000000105",
+        "create_time": 1784661000,
+        "title": "Try this: steal this reminder text",
+        "view_count": 3011
+      },
+      {
+        "id": "7400000000000000106",
+        "create_time": 1784838600,
+        "title": "Real talk: one link, every open slot",
+        "view_count": 2683
+      },
+      {
+        "id": "7400000000000000107",
+        "create_time": 1785195600,
+        "title": "Real talk: show real availability",
+        "view_count": 5447
+      },
+      {
+        "id": "7400000000000000108",
+        "create_time": 1785358800,
+        "title": "Owner tip: calm front desk, on time day",
+        "view_count": 3362
+      },
+      {
+        "id": "7400000000000000109",
+        "create_time": 1785536100,
+        "title": "Try this: reminder templates in 30 seconds",
+        "view_count": 7797
+      },
+      {
+        "id": "7400000000000000110",
+        "create_time": 1785798300,
+        "title": "Try this: front desk morning routine",
+        "view_count": 4463
+      },
+      {
+        "id": "7400000000000000111",
+        "create_time": 1785972000,
+        "title": "Real talk: reminder texts clients actually answer",
+        "view_count": 7204
+      },
+      {
+        "id": "7400000000000000112",
+        "create_time": 1786149900,
+        "title": "In 30 seconds: bookings while you sleep",
+        "view_count": 12842
+      },
+      {
+        "id": "7400000000000000113",
+        "create_time": 1786497000,
+        "title": "Try this: the 10-minute opening checklist",
+        "view_count": 2866
+      },
+      {
+        "id": "7400000000000000114",
+        "create_time": 1786620600,
+        "title": "Real talk: steal this reminder text",
+        "view_count": 3086
+      },
+      {
+        "id": "7400000000000000115",
+        "create_time": 1787140800,
+        "title": "Try this: fill the 6am class",
+        "view_count": 4294
+      },
+      {
+        "id": "7400000000000000116",
+        "create_time": 1787325300,
+        "title": "Try this: calm front desk, on time day",
+        "view_count": 4226
+      },
+      {
+        "id": "7400000000000000117",
+        "create_time": 1787503200,
+        "title": "Real talk: reminder templates in 30 seconds",
+        "view_count": 1918
+      },
+      {
+        "id": "7400000000000000118",
+        "create_time": 1787591100,
+        "title": "Try this: studio owners, try this",
+        "view_count": 2693
+      },
+      {
+        "id": "7400000000000000119",
+        "create_time": 1787858400,
+        "title": "Real talk: front desk morning routine",
+        "view_count": 3624
+      },
+      {
+        "id": "7400000000000000120",
+        "create_time": 1788036300,
+        "title": "In 30 seconds: reminder texts clients actually answer",
+        "view_count": 3687
+      },
+      {
+        "id": "7400000000000000121",
+        "create_time": 1788297000,
+        "title": "Real talk: waitlists that fill your class",
+        "view_count": 3822
+      },
+      {
+        "id": "7400000000000000122",
+        "create_time": 1788561000,
+        "title": "Real talk: the 10-minute opening checklist",
+        "view_count": 9485
+      },
+      {
+        "id": "7400000000000000123",
+        "create_time": 1788822000,
+        "title": "Real talk: deposit policy wording that works",
+        "view_count": 4479
+      },
+      {
+        "id": "7400000000000000124",
+        "create_time": 1788995700,
+        "title": "Real talk: fill the 6am class",
+        "view_count": 8507
+      },
+      {
+        "id": "7400000000000000125",
+        "create_time": 1789256400,
+        "title": "Real talk: calm front desk, on time day",
+        "view_count": 5793
+      },
+      {
+        "id": "7400000000000000126",
+        "create_time": 1789517100,
+        "title": "Real talk: clients said yes to this deposit",
+        "view_count": 7355
+      },
+      {
+        "id": "7400000000000000127",
+        "create_time": 1789694400,
+        "title": "Real talk: studio owners, try this",
+        "view_count": 3785
+      },
+      {
+        "id": "7400000000000000128",
+        "create_time": 1789904700,
+        "title": "In 30 seconds: front desk morning routine",
+        "view_count": 2602
+      },
+      {
+        "id": "7400000000000000129",
+        "create_time": 1790165400,
+        "title": "In 30 seconds: how to ask for a deposit",
+        "view_count": 4566
+      },
+      {
+        "id": "7400000000000000130",
+        "create_time": 1790350200,
+        "title": "In 30 seconds: waitlists that fill your class",
+        "view_count": 6120
+      },
+      {
+        "id": "7400000000000000131",
+        "create_time": 1790611200,
+        "title": "In 30 seconds: cancellation policy in 3 lines",
+        "view_count": 3640
+      },
+      {
+        "id": "7400000000000000132",
+        "create_time": 1790788500,
+        "title": "In 30 seconds: deposit policy wording that works",
+        "view_count": 6496
+      },
+      {
+        "id": "7400000000000000133",
+        "create_time": 1790970000,
+        "title": "In 30 seconds: fill the 6am class",
+        "view_count": 6770
+      },
+      {
+        "id": "7400000000000000134",
+        "create_time": 1791317100,
+        "title": "In 30 seconds: fair cancellation rules",
+        "view_count": 5167
+      },
+      {
+        "id": "7400000000000000135",
+        "create_time": 1791494400,
+        "title": "In 30 seconds: clients said yes to this deposit",
+        "view_count": 4410
+      },
+      {
+        "id": "7400000000000000136",
+        "create_time": 1791672300,
+        "title": "In 30 seconds: studio owners, try this",
+        "view_count": 9380
+      },
+      {
+        "id": "7400000000000000137",
+        "create_time": 1792019400,
+        "title": "In 30 seconds: stop late cancellations",
+        "view_count": 9864
+      },
+      {
+        "id": "7400000000000000138",
+        "create_time": 1792193400,
+        "title": "How to ask for a deposit",
+        "view_count": 10802
+      },
+      {
+        "id": "7400000000000000139",
+        "create_time": 1792450800,
+        "title": "In 30 seconds: the 24h + 2h reminder trick",
+        "view_count": 6593
+      },
+      {
+        "id": "7400000000000000140",
+        "create_time": 1792714500,
+        "title": "Cancellation policy in 3 lines",
+        "view_count": 6083
+      },
+      {
+        "id": "7400000000000000141",
+        "create_time": 1792892400,
+        "title": "Deposit policy wording that works",
+        "view_count": 3753
+      },
+      {
+        "id": "7400000000000000142",
+        "create_time": 1793099100,
+        "title": "In 30 seconds: why your clients forget (and how to fix it)",
+        "view_count": 2992
+      }
+    ],
+    "media_files": [
+      {
+        "id": 501,
+        "name": "reminders-screen-recording.mp4",
+        "media_type": "video",
+        "created_at": "2026-09-15",
+        "used_in_posts": 2
+      },
+      {
+        "id": 502,
+        "name": "studio-waitlist-demo.mp4",
+        "media_type": "video",
+        "created_at": "2026-10-02",
+        "used_in_posts": 1
+      },
+      {
+        "id": 503,
+        "name": "front-desk-morning.mp4",
+        "media_type": "video",
+        "created_at": "2026-10-10",
+        "used_in_posts": 0
+      },
+      {
+        "id": 504,
+        "name": "booking-page-hero.png",
+        "media_type": "image",
+        "created_at": "2026-08-20",
+        "used_in_posts": 3
+      }
+    ]
+  }
+}

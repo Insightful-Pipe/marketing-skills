@@ -1,0 +1,225 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The ads and the email are read as the connectors return them; the page was pasted.",
+  "request": "Hey Claude, I just added the \"marketing-claims-checker\" skill. Check every claim in our live ads, landing page and latest email, tell me what proof each one needs, and rewrite anything we can't back. We sell in the US, the UK and Ireland. Our proof file is attached.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "markets": [
+    "US",
+    "UK",
+    "IE"
+  ],
+  "run_date": "2026-10-28",
+  "reach_window": "2026-09-28 to 2026-10-27",
+  "sources": [
+    {
+      "source": "Google Ads",
+      "account": {
+        "customer_id": "1234567890",
+        "name": "Example Booking Software"
+      },
+      "calls": [
+        "gaql on ad_group_ad (RSA text and approval)",
+        "gaql on campaign_asset (callouts)"
+      ]
+    },
+    {
+      "source": "Meta Ads",
+      "calls": [
+        "get_ads",
+        "get_ad_creatives"
+      ]
+    },
+    {
+      "source": "Klaviyo",
+      "calls": [
+        "get_email_templates"
+      ]
+    },
+    {
+      "source": "Page",
+      "calls": [
+        "pasted by the user"
+      ]
+    }
+  ],
+  "data_pulled": {
+    "page": {
+      "source": "page (pasted by the user)",
+      "url": "https://www.example.com/",
+      "elements": [
+        {
+          "position": "hero headline",
+          "text": "The #1 booking app for salons and clinics."
+        },
+        {
+          "position": "hero subhead",
+          "text": "Cut no-shows by 40% with automatic reminders. Join 5,000+ businesses."
+        },
+        {
+          "position": "trust bar",
+          "text": "Rated 4.9 stars by our customers."
+        },
+        {
+          "position": "clinics block",
+          "text": "HIPAA compliant booking for clinics. Booking that feels effortless."
+        },
+        {
+          "position": "pricing teaser",
+          "text": "Half the price of Competitor A. Free setup on every plan."
+        },
+        {
+          "position": "footer badge",
+          "text": "Carbon-neutral booking: our hosting is 100% offset."
+        },
+        {
+          "position": "pricing banner",
+          "text": "Price goes up Friday: lock in today's rate."
+        }
+      ]
+    },
+    "google_ads_rsas": [
+      {
+        "campaign": "Search | Salons",
+        "ad_group": "Salon booking",
+        "ad_group_id": "150000000001",
+        "ad_id": "690000000001",
+        "final_url": "https://www.example.com/industries/salons/",
+        "status": "ENABLED",
+        "approval_status": "APPROVED",
+        "impressions_30d": 41000,
+        "headlines": [
+          "Salon Booking Software",
+          "#1 Booking App for Salons",
+          "40% Fewer No-Shows",
+          "Rated 4.9 Stars",
+          "Free Setup on Every Plan",
+          "Join 5,000+ Businesses",
+          "Book a Demo Today"
+        ],
+        "descriptions": [
+          "Automatic reminders cut no-shows by 40%. Free setup on every plan.",
+          "Half the price of Competitor A. Booking that feels effortless."
+        ]
+      },
+      {
+        "campaign": "Search | Clinics",
+        "ad_group": "Clinic scheduling",
+        "ad_group_id": "150000000002",
+        "ad_id": "690000000002",
+        "final_url": "https://www.example.com/industries/clinics/",
+        "status": "ENABLED",
+        "approval_status": "APPROVED",
+        "impressions_30d": 18500,
+        "headlines": [
+          "Clinic Scheduling Software",
+          "HIPAA Compliant Booking",
+          "No-Shows Down 40%",
+          "Rated 4.9 Stars",
+          "Price Goes Up Friday",
+          "Online Booking for Clinics"
+        ],
+        "descriptions": [
+          "HIPAA compliant online booking and reminders for clinics.",
+          "Join 5,000+ businesses. Carbon-neutral booking on every plan."
+        ]
+      }
+    ],
+    "google_ads_callouts": {
+      "campaign": "Search | Salons",
+      "level": "campaign",
+      "texts": [
+        "Free Setup",
+        "No-Shows Down 40%",
+        "Carbon-Neutral Hosting"
+      ]
+    },
+    "meta_ad": {
+      "ad_id": "120000000000300001",
+      "name": "Salons | Testimonial | Oct",
+      "effective_status": "ACTIVE",
+      "creative_id": "120000000000400001",
+      "impressions_30d": 63000,
+      "object_story_spec": {
+        "link_data": {
+          "message": "Example Hair Studio cut no-shows by 80% in a month. \"I got my Saturdays back.\" Join 5,000+ businesses. The #1 booking app for salons.",
+          "name": "Free setup on every plan",
+          "description": "Rated 4.9 stars",
+          "link": "https://www.example.com/industries/salons/"
+        }
+      }
+    },
+    "klaviyo_template": {
+      "template_id": "Tm8Ex1",
+      "name": "October newsletter",
+      "subject": "Last chance: price goes up Friday",
+      "text": null,
+      "html": "<h1>October at Example Booking Software</h1><p>Our customers save 10 hours a week on scheduling.</p><blockquote>The owner of Example Hair Studio: \"Our no-shows dropped 80% in the first month.\"</blockquote><p>Carbon-neutral booking on every plan.</p><p>Booking that feels effortless.</p>",
+      "updated": "2026-10-24T09:00:00+00:00"
+    }
+  },
+  "proof_supplied": {
+    "no_show_study": {
+      "customers": 212,
+      "period": "2026-03-01 to 2026-08-31",
+      "method": "no-show rate in the 3 months before and after turning on reminders",
+      "rate_before_pct": 11.8,
+      "rate_after_pct": 8.6
+    },
+    "customer_count": {
+      "paying_businesses": 4812,
+      "as_of": "2026-10-27"
+    },
+    "reviews": {
+      "site": "ExampleReviews",
+      "rating": 4.7,
+      "count": 318,
+      "as_of": "2026-10-27",
+      "how_collected": "every customer is invited by email after 30 days, with no incentive; every review is published"
+    },
+    "ranking": null,
+    "hipaa": {
+      "baa_signed_on_plans": [
+        "Business"
+      ],
+      "third_party_audit": null
+    },
+    "competitor_price": {
+      "competitor": "Competitor A",
+      "plan": "5-staff plan",
+      "price_month": 79,
+      "checked": "2026-10-20",
+      "our_plan": "Growth",
+      "our_price_month": 49,
+      "our_staff": 5
+    },
+    "hosting": {
+      "provider_offsets_pct": 100,
+      "reduction_plan": null
+    },
+    "setup_fee": {
+      "Starter": 0,
+      "Growth": 0,
+      "Business": 0
+    },
+    "price_change_scheduled": null,
+    "hours_saved": null,
+    "testimonial": {
+      "person": "the owner (named with permission in the case study)",
+      "business": "Example Hair Studio",
+      "quote_on_file": true,
+      "written_permission": true,
+      "material_connection": "3 months of service at no cost for the case study",
+      "result_check": {
+        "source": "the studio's booking data",
+        "rate_before_pct": 15.0,
+        "month_before": "2026-08",
+        "rate_after_pct": 3.0,
+        "month_after": "2026-09"
+      }
+    },
+    "confirmed_features": [
+      "Two-Way Calendar Sync",
+      "Automatic SMS Reminders",
+      "Deposits at Booking"
+    ]
+  }
+}

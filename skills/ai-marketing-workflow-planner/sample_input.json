@@ -1,0 +1,892 @@
+{
+  "note": "Example data: an invented online booking software company with an invented marketing team and invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Plan how our four-person marketing team should use AI and automation. Tell us which tasks to automate, which ones Claude should draft for us, what stays human, how many hours it saves, and give us a short AI policy.",
+  "run_date": "2026-10-28",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "team": [
+    {
+      "name": "Dana Whitfield",
+      "role": "Marketing lead"
+    },
+    {
+      "name": "Leo Park",
+      "role": "Paid media specialist"
+    },
+    {
+      "name": "Maya Cohen",
+      "role": "Web and analytics"
+    },
+    {
+      "name": "Nina Alvarez",
+      "role": "Content and email"
+    }
+  ],
+  "approvers": {
+    "spend and ad account changes": "Dana Whitfield",
+    "public posts and blog": "Dana Whitfield",
+    "customer emails": null
+  },
+  "team_thresholds": {
+    "pacing band": "plus or minus 10% of the monthly plan, pro rata to the day (Leo Park)"
+  },
+  "tools_without_a_connector": [
+    "HubSpot (CRM: demo requests, pipeline)"
+  ],
+  "task_list": [
+    {
+      "id": "T1",
+      "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+      "owner": "Leo Park",
+      "cadence": "weekly",
+      "reads": [
+        "google-ads: gaql",
+        "facebook-ads: get_insights_adaccount",
+        "linkedin-ads: get_account_analytics"
+      ],
+      "writes": [
+        "google-sheets: update_cells",
+        "slack: post_message"
+      ],
+      "produces": "a tab in the marketing ops sheet and a summary in #marketing",
+      "reaches": "internal"
+    },
+    {
+      "id": "T2",
+      "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+      "owner": "Leo Park",
+      "cadence": "daily",
+      "reads": [
+        "google-ads: gaql",
+        "facebook-ads: get_insights_adaccount",
+        "linkedin-ads: get_account_analytics"
+      ],
+      "writes": [
+        "slack: post_message"
+      ],
+      "produces": "a message in #marketing when a platform is outside the pacing band",
+      "reaches": "internal"
+    },
+    {
+      "id": "T3",
+      "task": "Write the monthly marketing report for leadership",
+      "owner": "Dana Whitfield",
+      "cadence": "monthly",
+      "reads": [
+        "google-analytics: get_report",
+        "google-ads: gaql",
+        "facebook-ads: get_insights_adaccount",
+        "linkedin-ads: get_account_analytics",
+        "klaviyo: get_campaign_report",
+        "HubSpot (no connector): pipeline export"
+      ],
+      "writes": [],
+      "produces": "a report for the leadership meeting",
+      "reaches": "internal"
+    },
+    {
+      "id": "T4",
+      "task": "Review Google Ads search terms and add negative keywords",
+      "owner": "Leo Park",
+      "cadence": "weekly",
+      "reads": [
+        "google-ads: search_terms_report"
+      ],
+      "writes": [
+        "google-ads: add_negative_keywords"
+      ],
+      "produces": "negative keywords added to campaigns",
+      "reaches": "changes an ad account"
+    },
+    {
+      "id": "T5",
+      "task": "Review Meta ad results and pause tired ads",
+      "owner": "Leo Park",
+      "cadence": "weekly",
+      "reads": [
+        "facebook-ads: get_insights_ad"
+      ],
+      "writes": [
+        "facebook-ads: update_ad"
+      ],
+      "produces": "paused ads and a note of why",
+      "reaches": "changes an ad account"
+    },
+    {
+      "id": "T6",
+      "task": "Draft and schedule LinkedIn and X posts",
+      "owner": "Nina Alvarez",
+      "cadence": "3x weekly",
+      "reads": [
+        "google-sheets: query_sheet_data"
+      ],
+      "writes": [
+        "social-media-scheduler: schedule_linkedin_post",
+        "social-media-scheduler: schedule_x_post"
+      ],
+      "produces": "posts on the company LinkedIn page and X profile",
+      "reaches": "public"
+    },
+    {
+      "id": "T7",
+      "task": "Write one blog post from the content calendar",
+      "owner": "Nina Alvarez",
+      "cadence": "weekly",
+      "reads": [
+        "google-search-console: search_analytics",
+        "google-sheets: query_sheet_data"
+      ],
+      "writes": [
+        "wordpress: create_post"
+      ],
+      "produces": "a published blog post",
+      "reaches": "public"
+    },
+    {
+      "id": "T8",
+      "task": "Build the weekly customer newsletter in Klaviyo",
+      "owner": "Nina Alvarez",
+      "cadence": "weekly",
+      "reads": [
+        "klaviyo: get_campaign_report"
+      ],
+      "writes": [
+        "klaviyo: create_campaign"
+      ],
+      "produces": "the newsletter to customers",
+      "reaches": "customers"
+    },
+    {
+      "id": "T9",
+      "task": "Route new demo requests to sales in HubSpot",
+      "owner": "Maya Cohen",
+      "cadence": "daily",
+      "reads": [
+        "HubSpot (no connector): demo requests"
+      ],
+      "writes": [],
+      "produces": "each demo request assigned to a salesperson",
+      "reaches": "changes an account"
+    },
+    {
+      "id": "T10",
+      "task": "Plan the next quarter and split the budget across channels",
+      "owner": "Dana Whitfield",
+      "cadence": "quarterly",
+      "reads": [],
+      "writes": [],
+      "produces": "the quarterly plan and budget",
+      "reaches": "spend",
+      "stated_minutes": 360
+    },
+    {
+      "id": "T11",
+      "task": "Build UTM links for each launch",
+      "owner": "Maya Cohen",
+      "cadence": "per event",
+      "runs_per_year_stated": 24,
+      "reads": [
+        "google-sheets: query_sheet_data"
+      ],
+      "writes": [],
+      "produces": "tagged links in the launch sheet",
+      "reaches": "internal"
+    },
+    {
+      "id": "T12",
+      "task": "Hold calls with partner agencies and integration partners",
+      "owner": "Dana Whitfield",
+      "cadence": "weekly",
+      "reads": [],
+      "writes": [],
+      "produces": "partner relationships and co-marketing ideas",
+      "reaches": "internal"
+    }
+  ],
+  "time_log": {
+    "source": "Google Sheets, tab Time log (get_sheet_peak, then query_sheet_data)",
+    "window": {
+      "start": "2026-09-30",
+      "end": "2026-10-27"
+    },
+    "rows": [
+      {
+        "date": "2026-09-30",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 10
+      },
+      {
+        "date": "2026-09-30",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 19
+      },
+      {
+        "date": "2026-09-30",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 32
+      },
+      {
+        "date": "2026-09-30",
+        "person": "Nina Alvarez",
+        "task": "Write one blog post from the content calendar",
+        "minutes": 184
+      },
+      {
+        "date": "2026-10-01",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 14
+      },
+      {
+        "date": "2026-10-01",
+        "person": "Leo Park",
+        "task": "Review Meta ad results and pause tired ads",
+        "minutes": 44
+      },
+      {
+        "date": "2026-10-01",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 18
+      },
+      {
+        "date": "2026-10-01",
+        "person": "Nina Alvarez",
+        "task": "Build the weekly customer newsletter in Klaviyo",
+        "minutes": 71
+      },
+      {
+        "date": "2026-10-02",
+        "person": "Dana Whitfield",
+        "task": "Hold calls with partner agencies and integration partners",
+        "minutes": 61
+      },
+      {
+        "date": "2026-10-02",
+        "person": "Dana Whitfield",
+        "task": "Write the monthly marketing report for leadership",
+        "minutes": 209
+      },
+      {
+        "date": "2026-10-02",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 14
+      },
+      {
+        "date": "2026-10-02",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-02",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 38
+      },
+      {
+        "date": "2026-10-05",
+        "person": "Leo Park",
+        "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+        "minutes": 102
+      },
+      {
+        "date": "2026-10-05",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-05",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-05",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 42
+      },
+      {
+        "date": "2026-10-06",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-06",
+        "person": "Leo Park",
+        "task": "Review Google Ads search terms and add negative keywords",
+        "minutes": 62
+      },
+      {
+        "date": "2026-10-06",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 23
+      },
+      {
+        "date": "2026-10-07",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 10
+      },
+      {
+        "date": "2026-10-07",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 19
+      },
+      {
+        "date": "2026-10-07",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 42
+      },
+      {
+        "date": "2026-10-07",
+        "person": "Nina Alvarez",
+        "task": "Write one blog post from the content calendar",
+        "minutes": 242
+      },
+      {
+        "date": "2026-10-08",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-08",
+        "person": "Leo Park",
+        "task": "Review Meta ad results and pause tired ads",
+        "minutes": 47
+      },
+      {
+        "date": "2026-10-08",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-08",
+        "person": "Nina Alvarez",
+        "task": "Build the weekly customer newsletter in Klaviyo",
+        "minutes": 56
+      },
+      {
+        "date": "2026-10-09",
+        "person": "Dana Whitfield",
+        "task": "Hold calls with partner agencies and integration partners",
+        "minutes": 67
+      },
+      {
+        "date": "2026-10-09",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-09",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 23
+      },
+      {
+        "date": "2026-10-09",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 34
+      },
+      {
+        "date": "2026-10-12",
+        "person": "Leo Park",
+        "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+        "minutes": 82
+      },
+      {
+        "date": "2026-10-12",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 13
+      },
+      {
+        "date": "2026-10-12",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 22
+      },
+      {
+        "date": "2026-10-12",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 36
+      },
+      {
+        "date": "2026-10-13",
+        "person": "Leo Park",
+        "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+        "minutes": 190
+      },
+      {
+        "date": "2026-10-13",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 11
+      },
+      {
+        "date": "2026-10-13",
+        "person": "Leo Park",
+        "task": "Review Google Ads search terms and add negative keywords",
+        "minutes": 61
+      },
+      {
+        "date": "2026-10-13",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 23
+      },
+      {
+        "date": "2026-10-14",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 11
+      },
+      {
+        "date": "2026-10-14",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 16
+      },
+      {
+        "date": "2026-10-14",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 37
+      },
+      {
+        "date": "2026-10-14",
+        "person": "Nina Alvarez",
+        "task": "Write one blog post from the content calendar",
+        "minutes": 193
+      },
+      {
+        "date": "2026-10-15",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 11
+      },
+      {
+        "date": "2026-10-15",
+        "person": "Leo Park",
+        "task": "Review Meta ad results and pause tired ads",
+        "minutes": 37
+      },
+      {
+        "date": "2026-10-15",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 18
+      },
+      {
+        "date": "2026-10-15",
+        "person": "Nina Alvarez",
+        "task": "Build the weekly customer newsletter in Klaviyo",
+        "minutes": 63
+      },
+      {
+        "date": "2026-10-16",
+        "person": "Dana Whitfield",
+        "task": "Hold calls with partner agencies and integration partners",
+        "minutes": 56
+      },
+      {
+        "date": "2026-10-16",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 10
+      },
+      {
+        "date": "2026-10-16",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 19
+      },
+      {
+        "date": "2026-10-16",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 38
+      },
+      {
+        "date": "2026-10-19",
+        "person": "Leo Park",
+        "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+        "minutes": 89
+      },
+      {
+        "date": "2026-10-19",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 10
+      },
+      {
+        "date": "2026-10-19",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-19",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 42
+      },
+      {
+        "date": "2026-10-20",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-20",
+        "person": "Leo Park",
+        "task": "Review Google Ads search terms and add negative keywords",
+        "minutes": 75
+      },
+      {
+        "date": "2026-10-20",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-21",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 11
+      },
+      {
+        "date": "2026-10-21",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 22
+      },
+      {
+        "date": "2026-10-21",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 30
+      },
+      {
+        "date": "2026-10-21",
+        "person": "Nina Alvarez",
+        "task": "Write one blog post from the content calendar",
+        "minutes": 207
+      },
+      {
+        "date": "2026-10-22",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 12
+      },
+      {
+        "date": "2026-10-22",
+        "person": "Leo Park",
+        "task": "Review Meta ad results and pause tired ads",
+        "minutes": 39
+      },
+      {
+        "date": "2026-10-22",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 21
+      },
+      {
+        "date": "2026-10-22",
+        "person": "Nina Alvarez",
+        "task": "Build the weekly customer newsletter in Klaviyo",
+        "minutes": 66
+      },
+      {
+        "date": "2026-10-23",
+        "person": "Dana Whitfield",
+        "task": "Hold calls with partner agencies and integration partners",
+        "minutes": 55
+      },
+      {
+        "date": "2026-10-23",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 13
+      },
+      {
+        "date": "2026-10-23",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-23",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 38
+      },
+      {
+        "date": "2026-10-26",
+        "person": "Leo Park",
+        "task": "Build the weekly paid media report (Google Ads, Meta, LinkedIn Ads)",
+        "minutes": 94
+      },
+      {
+        "date": "2026-10-26",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 14
+      },
+      {
+        "date": "2026-10-26",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 17
+      },
+      {
+        "date": "2026-10-26",
+        "person": "Nina Alvarez",
+        "task": "Draft and schedule LinkedIn and X posts",
+        "minutes": 30
+      },
+      {
+        "date": "2026-10-27",
+        "person": "Leo Park",
+        "task": "Check daily spend pacing on Google Ads, Meta and LinkedIn Ads",
+        "minutes": 13
+      },
+      {
+        "date": "2026-10-27",
+        "person": "Leo Park",
+        "task": "Review Google Ads search terms and add negative keywords",
+        "minutes": 70
+      },
+      {
+        "date": "2026-10-27",
+        "person": "Maya Cohen",
+        "task": "Route new demo requests to sales in HubSpot",
+        "minutes": 19
+      }
+    ]
+  },
+  "connections": {
+    "source": "query_contexts request=accounts (no platform)",
+    "rows": [
+      {
+        "platform": "google-ads",
+        "account": "Example Booking Software",
+        "access_level": "full",
+        "status": "active"
+      },
+      {
+        "platform": "facebook-ads",
+        "account": "Example Booking Software (Meta ad account)",
+        "access_level": "read",
+        "status": "active"
+      },
+      {
+        "platform": "linkedin-ads",
+        "account": "Example Booking Software (LinkedIn ad account)",
+        "access_level": "full",
+        "status": "active"
+      },
+      {
+        "platform": "google-analytics",
+        "account": "Example Booking Software",
+        "access_level": "full"
+      },
+      {
+        "platform": "google-search-console",
+        "account": "https://www.example.com/",
+        "access_level": "read"
+      },
+      {
+        "platform": "klaviyo",
+        "account": "Example Booking Software",
+        "access_level": "full"
+      },
+      {
+        "platform": "social-media-scheduler",
+        "account": "Example Booking Software (LinkedIn page, X profile)",
+        "access_level": "full",
+        "status": "active"
+      },
+      {
+        "platform": "google-sheets",
+        "account": "Marketing ops (spreadsheet)",
+        "access_level": "full"
+      },
+      {
+        "platform": "slack",
+        "account": "Example Booking Software workspace",
+        "access_level": "full"
+      }
+    ]
+  },
+  "available_actions_checked": {
+    "google-ads": [
+      "gaql",
+      "search_terms_report",
+      "add_negative_keywords"
+    ],
+    "facebook-ads": [
+      "get_insights_adaccount",
+      "get_insights_ad",
+      "update_ad"
+    ],
+    "linkedin-ads": [
+      "get_account_analytics"
+    ],
+    "google-analytics": [
+      "get_report"
+    ],
+    "google-search-console": [
+      "search_analytics"
+    ],
+    "klaviyo": [
+      "get_campaign_report",
+      "create_campaign",
+      "send_campaign"
+    ],
+    "social-media-scheduler": [
+      "list_scheduled_posts",
+      "schedule_linkedin_post",
+      "schedule_x_post"
+    ],
+    "google-sheets": [
+      "get_sheet_peak",
+      "query_sheet_data",
+      "create_sheet",
+      "update_cells"
+    ],
+    "slack": [
+      "post_message"
+    ]
+  },
+  "connectors_not_connected": [
+    "wordpress"
+  ],
+  "scheduler_last_28_days": {
+    "source": "list_scheduled_posts",
+    "window": {
+      "start": "2026-09-30",
+      "end": "2026-10-27"
+    },
+    "posts": [
+      {
+        "id": 9101,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-09-30T14:00:00Z"
+      },
+      {
+        "id": 9102,
+        "status": "published",
+        "platforms": [
+          "x"
+        ],
+        "scheduled_for": "2026-10-02T14:00:00Z"
+      },
+      {
+        "id": 9103,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-05T14:00:00Z"
+      },
+      {
+        "id": 9104,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-07T14:00:00Z"
+      },
+      {
+        "id": 9105,
+        "status": "published",
+        "platforms": [
+          "x"
+        ],
+        "scheduled_for": "2026-10-09T14:00:00Z"
+      },
+      {
+        "id": 9106,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-12T14:00:00Z"
+      },
+      {
+        "id": 9107,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-14T14:00:00Z"
+      },
+      {
+        "id": 9108,
+        "status": "published",
+        "platforms": [
+          "x"
+        ],
+        "scheduled_for": "2026-10-16T14:00:00Z"
+      },
+      {
+        "id": 9109,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-19T14:00:00Z"
+      },
+      {
+        "id": 9110,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-21T14:00:00Z"
+      },
+      {
+        "id": 9111,
+        "status": "published",
+        "platforms": [
+          "x"
+        ],
+        "scheduled_for": "2026-10-23T14:00:00Z"
+      },
+      {
+        "id": 9112,
+        "status": "published",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": "2026-10-26T14:00:00Z"
+      },
+      {
+        "id": 9113,
+        "status": "draft",
+        "platforms": [
+          "linkedin"
+        ],
+        "scheduled_for": null
+      }
+    ]
+  }
+}

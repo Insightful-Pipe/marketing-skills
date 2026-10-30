@@ -1,0 +1,602 @@
+{
+  "header": {
+    "sender": "Example Tea Company",
+    "from_domain": "teashop.example",
+    "esp": "Mailchimp",
+    "date_range": "2026-09-28 to 2026-10-27",
+    "symptom": "spam folder at Outlook and some Gmail, Outlook bounces, clicks down this month",
+    "grade": 47,
+    "rating": "at risk",
+    "headline": "No mail is signed with teashop.example and the domain has no DMARC record, so Microsoft refuses it (6.42% of Outlook-family mail bounced) and Gmail defers part of it. The repair starts with three DNS changes today."
+  },
+  "scorecard": [
+    {
+      "area": "1. Authentication and alignment",
+      "result": "fail",
+      "key": "2 SPF records, no DMARC, DKIM d=mail42.atl11.mcsv.net",
+      "why": "SPF and DKIM pass only on Mailchimp's domain; nothing aligns with teashop.example."
+    },
+    {
+      "area": "2. Bulk-sender rules",
+      "result": "fail",
+      "key": "Gmail peak 20,965 a day, Microsoft peak 7,226 a day",
+      "why": "A bulk sender at all three providers, missing DMARC and alignment; unsubscribe headers and TLS pass."
+    },
+    {
+      "area": "3. Bounces and complaints by provider",
+      "result": "fail",
+      "key": "Microsoft bounces 6.42%, Yahoo complaints 0.152%",
+      "why": "Microsoft is refusing the mail (5.7.515); Gmail's spam rate can't be read until DKIM aligns."
+    },
+    {
+      "area": "4. Who is still being mailed",
+      "result": "warn",
+      "key": "33.1% never clicked",
+      "why": "A third of the audience never clicked and joined more than 180 days ago; every campaign went to everyone."
+    },
+    {
+      "area": "5. Sending domain and IP",
+      "result": "fail",
+      "key": "verified, not authenticated",
+      "why": "The domain is verified in Mailchimp but not authenticated, so Mailchimp signs with its own domain."
+    },
+    {
+      "area": "6. BIMI readiness",
+      "result": "not graded",
+      "key": "blocked by DMARC",
+      "why": "Needs DMARC at quarantine or reject with pct=100."
+    },
+    {
+      "area": "7. Ramp-up schedule",
+      "result": "plan",
+      "key": "7 weekday steps",
+      "why": "Authenticating the domain makes teashop.example a new signing identity at every provider."
+    }
+  ],
+  "grade_math": {
+    "start": 100,
+    "lines": [
+      {
+        "area": "1. Authentication and alignment",
+        "result": "fail",
+        "deduction": -12
+      },
+      {
+        "area": "2. Bulk-sender rules",
+        "result": "fail",
+        "deduction": -12
+      },
+      {
+        "area": "3. Bounces and complaints by provider",
+        "result": "fail",
+        "deduction": -12
+      },
+      {
+        "area": "4. Who is still being mailed",
+        "result": "warn",
+        "deduction": -5
+      },
+      {
+        "area": "5. Sending domain and IP",
+        "result": "fail",
+        "deduction": -12
+      }
+    ],
+    "grade": 47,
+    "rating": "at risk"
+  },
+  "authentication": [
+    {
+      "check": "SPF record count",
+      "result": "fail",
+      "evidence": "2 v=spf1 records on teashop.example: v=spf1 include:_spf.google.com ~all | v=spf1 include:servers.mcsv.net ?all",
+      "why": "Two SPF records make every SPF check on the domain a permanent error, including Google Workspace staff mail."
+    },
+    {
+      "check": "SPF ending",
+      "result": "warn",
+      "evidence": "include:_spf.google.com ... ~all; include:servers.mcsv.net ... ?all",
+      "why": "The second record ends in ?all (neutral), which tells receivers nothing."
+    },
+    {
+      "check": "SPF DNS lookups",
+      "result": "pass",
+      "evidence": "v=spf1 include:_spf.google.com ~all: 4 lookups (includes resolved); v=spf1 include:servers.mcsv.net ?all: 1 lookup (includes resolved)",
+      "why": "Even merged, the two records need 5 lookups, inside the limit of 10."
+    },
+    {
+      "check": "DKIM key",
+      "result": "fail",
+      "evidence": "TXT k2._domainkey.teashop.example: no record; TXT k3._domainkey.teashop.example: no record",
+      "why": "The selectors Mailchimp's Domains page gives for this domain return nothing, so no mail is signed with teashop.example."
+    },
+    {
+      "check": "DMARC record",
+      "result": "fail",
+      "evidence": "TXT _dmarc.teashop.example: no record",
+      "why": "No DMARC record: a bulk-sender requirement at Gmail, Yahoo and Microsoft, and no reports on who sends as the domain."
+    },
+    {
+      "check": "Alignment",
+      "result": "fail",
+      "evidence": "From teashop.example; DKIM d=mail42.atl11.mcsv.net; SPF Return-Path mail42.atl11.mcsv.net",
+      "why": "SPF and DKIM both pass, but on Mailchimp's domain. Nothing matches the From domain, which is what the providers test."
+    }
+  ],
+  "bulk_sender_status": {
+    "Gmail": {
+      "peak_emails_in_one_day": 20965,
+      "line": "5,000 or more a day",
+      "bulk": true
+    },
+    "Microsoft": {
+      "peak_emails_in_one_day": 7226,
+      "line": "more than 5,000 a day",
+      "bulk": true
+    },
+    "Yahoo family": {
+      "peak_emails_in_one_day": 5725,
+      "line": "no stated number; treated as bulk because Gmail's line is met",
+      "bulk": true
+    }
+  },
+  "bulk_sender_matrix": [
+    {
+      "requirement": "SPF and DKIM both pass",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "required",
+      "result": "pass",
+      "evidence": "Authentication-Results: dkim=pass, spf=pass (both on Mailchimp's domain)"
+    },
+    {
+      "requirement": "DMARC record, p=none or stricter",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "required",
+      "result": "fail",
+      "evidence": "no _dmarc record"
+    },
+    {
+      "requirement": "From domain aligned with SPF or DKIM",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "required",
+      "result": "fail",
+      "evidence": "From teashop.example, DKIM d=mail42.atl11.mcsv.net, Return-Path mail42.atl11.mcsv.net"
+    },
+    {
+      "requirement": "One-click unsubscribe headers",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "recommended",
+      "result": "pass",
+      "evidence": "List-Unsubscribe has an https link; List-Unsubscribe-Post: List-Unsubscribe=One-Click"
+    },
+    {
+      "requirement": "Visible unsubscribe link in the body",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "recommended",
+      "result": "pass",
+      "evidence": "yes, in the Mailchimp footer of every campaign"
+    },
+    {
+      "requirement": "Unsubscribes honored within 2 days",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "recommended",
+      "result": "pass",
+      "evidence": "Mailchimp's default: unsubscribes take effect at once"
+    },
+    {
+      "requirement": "Spam rate below 0.3%",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "not stated",
+      "result": "unknown",
+      "evidence": "Gmail: unknown, Postmaster Tools has no data. Yahoo: passes at 0.152% from the ESP (below 0.3%)"
+    },
+    {
+      "requirement": "Forward and reverse DNS on the sending IP",
+      "gmail": "required",
+      "yahoo": "required",
+      "microsoft": "",
+      "result": "pass",
+      "evidence": "Mailchimp shared IP pool; no dedicated IP"
+    },
+    {
+      "requirement": "TLS on the connection",
+      "gmail": "required",
+      "yahoo": "",
+      "microsoft": "",
+      "result": "pass",
+      "evidence": "Received: ... version=TLS1_3"
+    }
+  ],
+  "provider_table": [
+    {
+      "provider": "Gmail",
+      "sent": 162601,
+      "delivered": 160182,
+      "bounces": 2419,
+      "bounce_rate_pct": 1.49,
+      "bounce_result": "warn",
+      "complaints": 1,
+      "complaint_rate_pct": 0.001,
+      "complaint_result": "unknown",
+      "complaint_note": "ESP count shown, not graded: Gmail doesn't pass complaints to ESPs. Postmaster Tools has no data because no mail is signed with teashop.example.",
+      "peak_emails_in_one_day": 20965,
+      "bounce_rate_of_all_other_providers_pct": 2.26,
+      "refusing_the_mail": false
+    },
+    {
+      "provider": "Microsoft",
+      "sent": 56601,
+      "delivered": 52968,
+      "bounces": 3633,
+      "bounce_rate_pct": 6.42,
+      "bounce_result": "fail",
+      "complaints": 26,
+      "complaint_rate_pct": 0.049,
+      "complaint_result": "pass",
+      "complaint_note": "from the provider's feedback loop, through Mailchimp abuse reports",
+      "peak_emails_in_one_day": 7226,
+      "bounce_rate_of_all_other_providers_pct": 1.13,
+      "refusing_the_mail": true
+    },
+    {
+      "provider": "Yahoo family",
+      "sent": 44968,
+      "delivered": 44652,
+      "bounces": 316,
+      "bounce_rate_pct": 0.7,
+      "bounce_result": "pass",
+      "complaints": 68,
+      "complaint_rate_pct": 0.152,
+      "complaint_result": "warn",
+      "complaint_note": "from the provider's feedback loop, through Mailchimp abuse reports",
+      "peak_emails_in_one_day": 5725,
+      "bounce_rate_of_all_other_providers_pct": 2.09,
+      "refusing_the_mail": false
+    },
+    {
+      "provider": "Apple",
+      "sent": 32984,
+      "delivered": 32850,
+      "bounces": 134,
+      "bounce_rate_pct": 0.41,
+      "bounce_result": "pass",
+      "complaints": 0,
+      "complaint_rate_pct": 0.0,
+      "complaint_result": "not graded",
+      "complaint_note": "no complaint feedback reaches the ESP from this group",
+      "peak_emails_in_one_day": 4215,
+      "bounce_rate_of_all_other_providers_pct": 2.07,
+      "refusing_the_mail": false
+    },
+    {
+      "provider": "Other",
+      "sent": 78490,
+      "delivered": 77765,
+      "bounces": 725,
+      "bounce_rate_pct": 0.92,
+      "bounce_result": "pass",
+      "complaints": 8,
+      "complaint_rate_pct": 0.01,
+      "complaint_result": "not graded",
+      "complaint_note": "no complaint feedback reaches the ESP from this group",
+      "peak_emails_in_one_day": 10369,
+      "bounce_rate_of_all_other_providers_pct": 2.19,
+      "refusing_the_mail": false
+    }
+  ],
+  "overall": {
+    "sent": 375644,
+    "bounces": 7227,
+    "bounce_rate_pct": 1.92,
+    "bounce_result": "warn",
+    "delivered": 368417,
+    "complaints": 103,
+    "complaint_rate_pct": 0.028,
+    "complaint_result": "warn"
+  },
+  "area3_checks": [
+    {
+      "check": "Bounce rate, Gmail",
+      "result": "warn",
+      "evidence": "2,419 of 162,601 sent = 1.49%"
+    },
+    {
+      "check": "Bounce rate, Microsoft",
+      "result": "fail",
+      "evidence": "3,633 of 56,601 sent = 6.42%"
+    },
+    {
+      "check": "Bounce rate, Yahoo family",
+      "result": "pass",
+      "evidence": "316 of 44,968 sent = 0.7%"
+    },
+    {
+      "check": "Bounce rate, Apple",
+      "result": "pass",
+      "evidence": "134 of 32,984 sent = 0.41%"
+    },
+    {
+      "check": "Bounce rate, Other",
+      "result": "pass",
+      "evidence": "725 of 78,490 sent = 0.92%"
+    },
+    {
+      "check": "Bounce rate, overall",
+      "result": "warn",
+      "evidence": "7,227 of 375,644 sent = 1.92%"
+    },
+    {
+      "check": "Gmail spam rate (Postmaster Tools)",
+      "result": "unknown",
+      "evidence": "domain added and verified; the dashboards say there is no data to display"
+    },
+    {
+      "check": "Complaint rate, Microsoft",
+      "result": "pass",
+      "evidence": "26 of 52,968 delivered = 0.049%"
+    },
+    {
+      "check": "Complaint rate, Yahoo family",
+      "result": "warn",
+      "evidence": "68 of 44,652 delivered = 0.152%"
+    },
+    {
+      "check": "Account-wide complaint rate (ESP)",
+      "result": "warn",
+      "evidence": "103 of 368,417 delivered = 0.028%"
+    }
+  ],
+  "providers_refusing_the_mail": [
+    "Microsoft"
+  ],
+  "bounce_codes": [
+    {
+      "code": "5.7.515",
+      "provider": "Microsoft",
+      "meaning": "sending domain doesn't meet the required authentication level",
+      "points_to": "areas 1 and 2"
+    },
+    {
+      "code": "4.7.32",
+      "provider": "Gmail",
+      "meaning": "From header not aligned",
+      "points_to": "area 1 alignment"
+    }
+  ],
+  "who_is_mailed": {
+    "subscribed": 47550,
+    "sunset_group": 15720,
+    "share_pct": 33.1,
+    "checks": [
+      {
+        "check": "Never-clickers who opted in before 2026-05-01",
+        "result": "warn",
+        "evidence": "15,720 of 47,550 subscribed = 33.1%"
+      },
+      {
+        "check": "Targeting",
+        "result": "warn",
+        "evidence": "8 of 8 campaigns had an empty segment_text (whole audience)"
+      }
+    ]
+  },
+  "sunset_rule": {
+    "group": "subscribed members with no click who opted in before 2026-05-01",
+    "size": 15720,
+    "rule": "2 re-permission emails a week apart with one keep-me-subscribed button; anyone who doesn't click within 14 days of the second email stops getting campaigns; re-check every quarter.",
+    "dates": {
+      "email_1": "2026-11-13",
+      "email_2": "2026-11-20",
+      "stop": "2026-12-04"
+    }
+  },
+  "sending_setup": [
+    {
+      "check": "From address",
+      "result": "pass",
+      "evidence": "news@teashop.example, own domain"
+    },
+    {
+      "check": "Own domain in the ESP",
+      "result": "fail",
+      "evidence": "list_verified_domains: verified True, authenticated False, status VERIFIED"
+    },
+    {
+      "check": "Dedicated IP",
+      "result": "pass",
+      "evidence": "none; Mailchimp's shared pool"
+    }
+  ],
+  "bimi": {
+    "state": "blocked by DMARC",
+    "record": "none at default._bimi.teashop.example",
+    "path": "possible from step 7 (DMARC p=quarantine, pct=100); needs a VMC or CMC and an SVG Tiny PS logo"
+  },
+  "ramp_up": {
+    "why": "DKIM moves from Mailchimp's domain to teashop.example, which has no sending history.",
+    "target": 31830,
+    "target_is": "the whole subscribed audience (every campaign went to everyone) minus the sunset group",
+    "excluded_sunset_group": 15720,
+    "start": "the weekday after the DNS changes in steps 1 to 3 are confirmed; dated here as if they are confirmed today",
+    "tiers_in_order": [
+      {
+        "tier": "rating 5",
+        "members": 4430
+      },
+      {
+        "tier": "rating 4",
+        "members": 7500
+      },
+      {
+        "tier": "rating 3",
+        "members": 11170
+      },
+      {
+        "tier": "rating 2",
+        "members": 7770
+      },
+      {
+        "tier": "rating 1",
+        "members": 960
+      }
+    ],
+    "rule": "day 1 = 10% of the target (at least 1,000), then 1.5 times the day before on each weekday, capped at the target",
+    "gates": "move up only when bounces are at or under 2% and complaints under 0.1% at every provider with no 4.7.28 deferrals; otherwise hold 2 days; at 0.3% complaints or a block, drop back one step",
+    "schedule": [
+      {
+        "date": "2026-10-29",
+        "weekday": "Thursday",
+        "emails": 3183,
+        "reaches": "members down to rating 5"
+      },
+      {
+        "date": "2026-10-30",
+        "weekday": "Friday",
+        "emails": 4774,
+        "reaches": "members down to rating 4"
+      },
+      {
+        "date": "2026-11-02",
+        "weekday": "Monday",
+        "emails": 7161,
+        "reaches": "members down to rating 4"
+      },
+      {
+        "date": "2026-11-03",
+        "weekday": "Tuesday",
+        "emails": 10742,
+        "reaches": "members down to rating 4"
+      },
+      {
+        "date": "2026-11-04",
+        "weekday": "Wednesday",
+        "emails": 16113,
+        "reaches": "members down to rating 3"
+      },
+      {
+        "date": "2026-11-05",
+        "weekday": "Thursday",
+        "emails": 24170,
+        "reaches": "members down to rating 2"
+      },
+      {
+        "date": "2026-11-06",
+        "weekday": "Friday",
+        "emails": 31830,
+        "reaches": "members down to rating 1"
+      }
+    ]
+  },
+  "repair_sequence": [
+    {
+      "date": "2026-10-28",
+      "who": "DNS admin",
+      "priority": "what makes providers reject mail now",
+      "do": "Replace the two SPF records with one: v=spf1 include:_spf.google.com include:servers.mcsv.net ~all",
+      "recheck": "dig +short TXT teashop.example shows exactly one v=spf1 line (5 lookups); a staff email from Google Workspace shows spf=pass in its headers.",
+      "step": 1
+    },
+    {
+      "date": "2026-10-28",
+      "who": "DNS admin, then Mailchimp admin",
+      "priority": "what makes providers reject mail now",
+      "do": "Add the two DKIM CNAME records from Mailchimp's Domains page (k2._domainkey and k3._domainkey), then click Authenticate in Mailchimp.",
+      "recheck": "list_verified_domains shows authenticated true and status AUTHENTICATED; a new Gmail test send shows dkim=pass header.i=@teashop.example.",
+      "step": 2
+    },
+    {
+      "date": "2026-10-28",
+      "who": "DNS admin",
+      "priority": "what makes providers reject mail now",
+      "do": "Publish TXT _dmarc.teashop.example: v=DMARC1; p=none; rua=mailto:dmarc-reports@teashop.example",
+      "recheck": "dig +short TXT _dmarc.teashop.example returns the record; the next test send shows dmarc=pass; daily aggregate reports start arriving at the rua address.",
+      "step": 3
+    },
+    {
+      "date": "2026-10-29",
+      "who": "email marketer",
+      "priority": "what hides the evidence",
+      "do": "Watch Gmail's spam rate in Postmaster Tools now that mail is signed with teashop.example.",
+      "recheck": "Postmaster Tools shows a daily spam rate within days of the DKIM change; it stays under 0.1% for 7 days in a row.",
+      "step": 4
+    },
+    {
+      "date": "2026-10-28",
+      "who": "email marketer",
+      "priority": "who gets mailed",
+      "do": "Stop sending campaigns to the whole audience: build a segment that leaves out the 15,720 never-clickers and send every campaign to it.",
+      "recheck": "list_campaigns shows a segment_text on every new campaign.",
+      "step": 5
+    },
+    {
+      "date": "2026-11-13",
+      "who": "email marketer",
+      "priority": "who gets mailed",
+      "do": "Send re-permission email 1 to the sunset group (15,720 never-clickers), a week after the ramp ends; email 2 on 2026-11-20.",
+      "recheck": "On 2026-12-04, everyone in the group who didn't click is moved out of campaign sends; the never-clicker share drops under 20%.",
+      "step": 6
+    },
+    {
+      "date": "2026-10-29",
+      "who": "email marketer",
+      "priority": "volume",
+      "do": "Run the ramp-up in area 7 (7 weekday steps to 31,830), top-rated members first, never the sunset group.",
+      "recheck": "On each step's send, Microsoft bounces back under 2% (now 6.42%) with no 5.7.515, Gmail bounces at or under 1% (now 1.49%) with no 4.7.32, and complaints under 0.1% at Yahoo and Microsoft.",
+      "step": 7
+    },
+    {
+      "date": "2026-11-25",
+      "who": "DNS admin",
+      "priority": "tightening",
+      "do": "If 4 weeks of DMARC aggregate reports show only Google Workspace and Mailchimp sending as the domain, change the policy to p=quarantine; pct=100.",
+      "recheck": "dig +short TXT _dmarc.teashop.example shows p=quarantine; reports show no legitimate mail failing.",
+      "step": 8
+    },
+    {
+      "date": "2026-12-23",
+      "who": "DNS admin",
+      "priority": "tightening",
+      "do": "After 4 more clean weeks, change the policy to p=reject.",
+      "recheck": "Reports keep showing only known senders passing; nothing legitimate is rejected.",
+      "step": 9
+    },
+    {
+      "date": "2026-11-25",
+      "who": "brand owner",
+      "priority": "BIMI",
+      "do": "Once DMARC is at quarantine with pct=100, decide on BIMI: a Verified Mark Certificate needs a registered trademark for the logo; a Common Mark Certificate doesn't. Prepare the logo as SVG Tiny PS.",
+      "recheck": "dig +short TXT default._bimi.teashop.example returns a record with l= and a=; the logo shows in Gmail.",
+      "step": 10
+    }
+  ],
+  "unknowns": [
+    {
+      "what": "Gmail spam rate",
+      "why": "Postmaster Tools only reports mail signed with the domain's own DKIM",
+      "close_it": "re-read Postmaster Tools a few days after step 2"
+    },
+    {
+      "what": "DKIM key size for teashop.example",
+      "why": "no key published yet",
+      "close_it": "after step 2, dig the k2 and k3 selectors (they point to Mailchimp's keys)"
+    }
+  ],
+  "fixes_offered": [
+    {
+      "action": "create_verified_domain",
+      "status": "not needed",
+      "why": "list_verified_domains already shows teashop.example as verified; the missing part is authentication, which is done in DNS (step 2)."
+    }
+  ],
+  "go_deeper": [
+    "email-campaign-analyst for per-campaign results, if installed",
+    "email-sequence-builder for the two re-permission emails, if installed"
+  ]
+}

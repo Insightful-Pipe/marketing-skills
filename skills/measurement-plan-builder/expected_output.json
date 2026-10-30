@@ -1,0 +1,1245 @@
+{
+  "header": {
+    "business": "Example Booking Software (example.com)",
+    "model": "SaaS",
+    "model_inferred": false,
+    "model_note": "given in the request; sign_up is a key event and fires from the app",
+    "accounts_used": [
+      "GA4 properties/123456789",
+      "Search Console https://www.example.com/",
+      "Google Ads 1234567890 (Example Booking Software)",
+      "Meta Ads act_100000000000002 (Example Booking Software)",
+      "LinkedIn Ads 500000001 (Example Booking Software)",
+      "Tag Manager GTM-A1B2C3D (www.example.com)"
+    ],
+    "ga4_window": "2026-09-29 to 2026-10-26",
+    "ga4_prior_window": "2026-09-01 to 2026-09-28",
+    "search_console_window": "2026-09-27 to 2026-10-24",
+    "search_console_prior_window": "2026-08-30 to 2026-09-26",
+    "time_zone": "America/New_York",
+    "currency": "USD"
+  },
+  "measured_today": [
+    {
+      "source": "GA4 (Example Booking Software, properties/123456789)",
+      "status": "measuring",
+      "key_number": "88.1% of Google clicks seen as google / organic sessions (2026-09-29 to 2026-10-24)",
+      "why": "GA4 saw 7,539 google / organic sessions against 8,561 Search Console clicks (2026-09-29 to 2026-10-24), 88.1%; no tracking change in the window; sign_up fires on app.example.com, which sends to the same measurement id. Days after Search Console's last date (2026-10-25, 2026-10-26) aren't in the check"
+    },
+    {
+      "source": "Search Console (https://www.example.com/)",
+      "status": "measuring",
+      "key_number": "9,169 clicks, 221,733 impressions (2026-09-27 to 2026-10-24)",
+      "why": "daily rows through 2026-10-24, the last day Search Console has reported"
+    },
+    {
+      "source": "Google Ads (Example Booking Software)",
+      "status": "measuring",
+      "key_number": "11,843.27 USD spend, 1,012 conversions, 79.9% of them pricing page views",
+      "why": "spend and the imported sign_up flow, but 'Pricing page view' is a primary conversion counted many per click: 809 of the 1,012 conversions Google Ads bids on are page views (build order)"
+    },
+    {
+      "source": "Meta Ads (Example Booking Software)",
+      "status": "measuring",
+      "key_number": "3,482.15 USD spend, 1 pixel (last fired 2026-10-28), 33 pixel registrations",
+      "why": "the pixel fires, and 'Sign-up complete' counts the welcome page in the app"
+    },
+    {
+      "source": "LinkedIn Ads (Example Booking Software)",
+      "status": "no activity",
+      "key_number": "1 conversion defined, 0.00 USD spend",
+      "why": "a conversion is set up, but nothing ran in the window, so it can't be judged"
+    },
+    {
+      "source": "Google Tag Manager (GTM-A1B2C3D)",
+      "status": "measuring",
+      "key_number": "1 Google tag and 2 GA4 event tags send to G-AB12CD34EF",
+      "why": "the www.example.com container carries this property's measurement id; sign_up and login are sent by the app's own code, not by this container"
+    }
+  ],
+  "checks": {
+    "tracking_change": {
+      "step_found": false,
+      "days_checked": "2026-10-06 to 2026-10-26 (each with at least 7 days before it)",
+      "median_daily_sessions": 806.0,
+      "result": "no day where sessions stepped up to 3 times or down to a third of the median before it; GA4 baselines use all 28 days"
+    },
+    "coverage": {
+      "window": "2026-09-29 to 2026-10-24",
+      "ga4_google_organic_sessions": 7539,
+      "search_console_clicks": 8561,
+      "coverage_pct": 88.1,
+      "status": "measuring",
+      "days_after_gsc_end_not_checked": [
+        {
+          "date": "2026-10-25",
+          "ga4_google_organic_sessions": 216
+        },
+        {
+          "date": "2026-10-26",
+          "ga4_google_organic_sessions": 327
+        }
+      ]
+    },
+    "hosts": [
+      {
+        "hostName": "www.example.com",
+        "sessions": 20020,
+        "eventCount": 125210
+      },
+      {
+        "hostName": "app.example.com",
+        "sessions": 3884,
+        "eventCount": 17501
+      }
+    ],
+    "hosts_note": "sessions by host add up to more than the total, because a session that moves from the site to the app counts on both hosts",
+    "conversion_host_in_property": true
+  },
+  "metric_system": {
+    "north_star": {
+      "name": "Weekly active businesses",
+      "definition": "businesses that received at least one online booking in the week (Monday to Sunday)",
+      "status": "outside connected sources",
+      "tests": [
+        {
+          "rule": "counts value the customer gets",
+          "result": "pass",
+          "why": "a booking taken online is the job the product is bought for"
+        },
+        {
+          "rule": "revenue follows when it rises",
+          "result": "pass",
+          "why": "businesses that take bookings stay on and move up to plans with more staff"
+        },
+        {
+          "rule": "moves within weeks",
+          "result": "pass",
+          "why": "it is counted every week"
+        },
+        {
+          "rule": "the team can move it",
+          "result": "pass",
+          "why": "through sign-ups, activation and retention"
+        },
+        {
+          "rule": "not a vanity count",
+          "result": "pass",
+          "why": "it counts use, not visits or impressions"
+        },
+        {
+          "rule": "measurable now or after the build order",
+          "result": "pass once build-order fix 1 is done",
+          "why": "it lives in the product database; no connected source holds it"
+        }
+      ]
+    },
+    "rejected": [
+      {
+        "candidate": "Sign-ups",
+        "fails": "counts value the customer gets",
+        "why": "a business that signs up and never takes a booking got nothing; sign-ups stay an input"
+      },
+      {
+        "candidate": "Monthly recurring revenue",
+        "fails": "moves within weeks",
+        "why": "it trails usage by a billing cycle; it stays a business result to report, not the weekly target"
+      }
+    ],
+    "inputs": [
+      "Sign-ups",
+      "Activation rate",
+      "Site sessions by channel",
+      "Week-4 retention"
+    ],
+    "guardrails": [
+      "Cost per activated business",
+      "GA4 coverage of Search Console clicks",
+      "Cancellations"
+    ]
+  },
+  "kpi_tree": {
+    "text": [
+      "0 Weekly active businesses (North Star): outside connected sources",
+      "  1 New active businesses: outside connected sources",
+      "    1.1 Sign-ups: 713 (prior 648, within noise)",
+      "      1.1.1 Site sessions: 20,768 (prior 19,291, up)",
+      "        1.1.1.1 Organic Search: 8,663 (prior 8,537, within noise)",
+      "        1.1.1.2 Direct: 4,027 (prior 3,890, within noise)",
+      "        1.1.1.3 Paid Search: 3,779 (prior 2,339, up)",
+      "        1.1.1.4 Paid Social: 1,301 (prior 1,791, down)",
+      "        1.1.1.5 Email: 989 (prior 904, within noise)",
+      "        1.1.1.6 Other channels (Referral, Organic Social, Unassigned, AI Assistant, Organic Video): 2,009 (prior 1,830, up)",
+      "      1.1.2 Sign-up rate: 3.43% (prior 3.36%, within noise)",
+      "    1.2 Activation rate: not tracked",
+      "  2 Returning active businesses: outside connected sources",
+      "    2.1 Week-4 retention: outside connected sources"
+    ],
+    "nodes": [
+      {
+        "id": "0",
+        "name": "Weekly active businesses (North Star)",
+        "formula": "1 + 2",
+        "source_and_metric": "product database: businesses that received at least one online booking in the week",
+        "baseline": null,
+        "prior": null,
+        "change": null,
+        "status": "outside connected sources",
+        "why": "not in GA4 or the ad platforms; give the weekly number and it is used, labelled as given by you"
+      },
+      {
+        "id": "1",
+        "name": "New active businesses",
+        "formula": "1.1 x 1.2 (the GA4 drivers of this count)",
+        "source_and_metric": "product database: businesses created in the week that received a first booking",
+        "baseline": null,
+        "prior": null,
+        "change": null,
+        "status": "outside connected sources",
+        "why": "a part of the North Star, so it comes from the same source; GA4 first_booking_receive (1.2, not tracked yet) will be its proxy"
+      },
+      {
+        "id": "1.1",
+        "name": "Sign-ups",
+        "formula": "1.1.1 x 1.1.2",
+        "source_and_metric": "GA4 sign_up event count (fires on app.example.com)",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 713,
+        "prior": 648,
+        "change": "within noise",
+        "status": "measured",
+        "note": "sign_up is the only key event with events in the window (purchase 0, qa_test_signup 0), so the keyEvents totals give its count in both windows"
+      },
+      {
+        "id": "1.1.1",
+        "name": "Site sessions",
+        "formula": "1.1.1.1 + 1.1.1.2 + 1.1.1.3 + 1.1.1.4 + 1.1.1.5 + 1.1.1.6 (GA4 channel rows, same window)",
+        "source_and_metric": "GA4 sessions, no-dimension total",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 20768,
+        "prior": 19291,
+        "change": "up",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.1",
+        "name": "Organic Search",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, channel Organic Search",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 8663,
+        "prior": 8537,
+        "change": "within noise",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.2",
+        "name": "Direct",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, channel Direct",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 4027,
+        "prior": 3890,
+        "change": "within noise",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.3",
+        "name": "Paid Search",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, channel Paid Search",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 3779,
+        "prior": 2339,
+        "change": "up",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.4",
+        "name": "Paid Social",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, channel Paid Social",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 1301,
+        "prior": 1791,
+        "change": "down",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.5",
+        "name": "Email",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, channel Email",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 989,
+        "prior": 904,
+        "change": "within noise",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.1.6",
+        "name": "Other channels (Referral, Organic Social, Unassigned, AI Assistant, Organic Video)",
+        "formula": "leaf",
+        "source_and_metric": "GA4 sessions, sum of those channel rows",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 2009,
+        "prior": 1830,
+        "change": "up",
+        "status": "measured"
+      },
+      {
+        "id": "1.1.2",
+        "name": "Sign-up rate",
+        "formula": "1.1 / 1.1.1",
+        "source_and_metric": "GA4 sign_up / GA4 sessions, same window",
+        "window": "2026-09-29 to 2026-10-26",
+        "prior_window": "2026-09-01 to 2026-09-28",
+        "baseline": 3.43,
+        "prior": 3.36,
+        "unit": "%",
+        "change": "within noise",
+        "status": "measured",
+        "change_note": "judged on the count: at the prior rate, 20,768 sessions would give 698 sign-ups; 713 came, a gap of 15 against a noise band of 75"
+      },
+      {
+        "id": "1.2",
+        "name": "Activation rate",
+        "formula": "first_booking_receive / sign_up",
+        "source_and_metric": "GA4 first_booking_receive / GA4 sign_up, same window",
+        "baseline": null,
+        "prior": null,
+        "change": null,
+        "status": "not tracked",
+        "why": "no event tells GA4 when a new business receives its first booking; none of the 14 live events records it"
+      },
+      {
+        "id": "2",
+        "name": "Returning active businesses",
+        "formula": "0 - 1",
+        "source_and_metric": "product database",
+        "baseline": null,
+        "prior": null,
+        "change": null,
+        "status": "outside connected sources",
+        "why": "lives in the product database"
+      },
+      {
+        "id": "2.1",
+        "name": "Week-4 retention",
+        "formula": "leaf",
+        "source_and_metric": "product database: share of a week's new businesses still receiving bookings 4 weeks later",
+        "baseline": null,
+        "prior": null,
+        "change": null,
+        "status": "outside connected sources",
+        "why": "lives in the product database"
+      }
+    ],
+    "search_console_kpi": {
+      "clicks": 9169,
+      "prior": 9054,
+      "change": "within noise",
+      "window": "2026-09-27 to 2026-10-24",
+      "prior_window": "2026-08-30 to 2026-09-26",
+      "note": "GA4 is measuring, so the organic node keeps its GA4 baseline and needs no stand-in; Search Console clicks are shown here for the organic search review, never added to 1.1.1"
+    }
+  },
+  "measurement_plan": [
+    {
+      "objective": "Grow the number of businesses that get value every week",
+      "kpi": "Weekly active businesses (North Star)",
+      "definition": "businesses that received at least one online booking in the week (Monday to Sunday)",
+      "source_of_truth": "product database",
+      "baseline": "outside connected sources",
+      "target": "to set",
+      "segments": "plan, business type, signup channel",
+      "owner": "to assign",
+      "cadence": "weekly",
+      "decision": "a flat or falling week sends the team to the input that moved: sign-ups, activation or retention"
+    },
+    {
+      "objective": "Bring in new businesses",
+      "kpi": "Sign-ups",
+      "definition": "GA4 sign_up events, sent by the app when an account is created, with method and plan_name",
+      "source_of_truth": "GA4",
+      "baseline": "713 (2026-09-29 to 2026-10-26); prior 648, within noise",
+      "target": "to set",
+      "segments": "channel, landing page, plan_name, business_type",
+      "owner": "to assign",
+      "cadence": "weekly",
+      "decision": "shift effort to the channels and pages with the most sign-ups per session"
+    },
+    {
+      "objective": "Turn sign-ups into businesses that take bookings",
+      "kpi": "Activation rate",
+      "definition": "first_booking_receive / sign_up in the same week",
+      "source_of_truth": "GA4",
+      "baseline": "not tracked",
+      "target": "to set",
+      "segments": "channel, plan_name, business_type",
+      "owner": "to assign",
+      "cadence": "weekly",
+      "decision": "a drop sends the team to onboarding and booking-page setup, not to acquisition"
+    },
+    {
+      "objective": "Grow qualified visits",
+      "kpi": "Site sessions by channel",
+      "definition": "GA4 sessions, no-dimension total, split by default channel group",
+      "source_of_truth": "GA4",
+      "baseline": "20,768 (2026-09-29 to 2026-10-26); prior 19,291, up",
+      "target": "to set",
+      "segments": "channel, device, country",
+      "owner": "to assign",
+      "cadence": "weekly",
+      "decision": "budget follows the channels whose sessions turn into sign-ups; Search Console clicks show whether organic search demand moved"
+    },
+    {
+      "objective": "Keep businesses coming back",
+      "kpi": "Week-4 retention",
+      "definition": "share of a week's new businesses that received a booking in their fourth week",
+      "source_of_truth": "product database",
+      "baseline": "outside connected sources",
+      "target": "to set",
+      "segments": "signup channel, plan, business type",
+      "owner": "to assign",
+      "cadence": "weekly",
+      "decision": "a falling cohort means fix the product experience before buying more sign-ups"
+    },
+    {
+      "objective": "Guardrail: pay a sane price for growth",
+      "kpi": "Cost per activated business",
+      "definition": "Google Ads + Meta spend / new activated businesses from paid channels",
+      "source_of_truth": "the ad platforms for spend, GA4 for activations",
+      "baseline": "not tracked: no activation event yet; spend is known (11,843.27 USD Google Ads, 3,482.15 USD Meta, 15,325.42 USD together)",
+      "target": "to set",
+      "segments": "platform, campaign",
+      "owner": "to assign",
+      "cadence": "monthly",
+      "decision": "pause a campaign whose cost per activation stays above target for two months"
+    },
+    {
+      "objective": "Guardrail: trust the data",
+      "kpi": "GA4 coverage of Search Console clicks",
+      "definition": "GA4 google / organic sessions / Search Console clicks, same days",
+      "source_of_truth": "GA4 for sessions, Search Console for clicks (the Step 1 coverage check)",
+      "baseline": "88.1% (2026-09-29 to 2026-10-24)",
+      "target": "to set",
+      "segments": "day",
+      "owner": "to assign",
+      "cadence": "monthly",
+      "decision": "under 80%, GA4 counts are floors; under 50%, GA4 numbers stay out of decisions until the tag is fixed"
+    },
+    {
+      "objective": "Guardrail: don't lose paying customers",
+      "kpi": "Cancellations",
+      "definition": "businesses that cancel a paid plan in the month",
+      "source_of_truth": "billing",
+      "baseline": "outside connected sources",
+      "target": "to set",
+      "segments": "plan, tenure, business type",
+      "owner": "to assign",
+      "cadence": "monthly",
+      "decision": "a rise pauses growth pushes until the reasons are known"
+    }
+  ],
+  "tracking_plan": {
+    "naming_rules": [
+      "GA4 recommended names first (sign_up, login, generate_lead, purchase)",
+      "custom events: object_action, lower-case snake_case, at most 40 characters",
+      "parameter names at most 40 characters, values at most 100, no reserved prefixes",
+      "at most 25 parameters per event",
+      "no personal data in any parameter"
+    ],
+    "live_events": [
+      {
+        "event": "page_view",
+        "type": "automatic",
+        "event_count": 63965,
+        "users": 15811,
+        "verdict": "keep"
+      },
+      {
+        "event": "session_start",
+        "type": "automatic",
+        "event_count": 20768,
+        "users": 15811,
+        "verdict": "keep"
+      },
+      {
+        "event": "scroll",
+        "type": "enhanced measurement",
+        "event_count": 17445,
+        "users": 8696,
+        "verdict": "keep"
+      },
+      {
+        "event": "user_engagement",
+        "type": "automatic",
+        "event_count": 17010,
+        "users": 11226,
+        "verdict": "keep"
+      },
+      {
+        "event": "first_visit",
+        "type": "automatic",
+        "event_count": 12439,
+        "users": 12439,
+        "verdict": "keep"
+      },
+      {
+        "event": "login",
+        "type": "recommended",
+        "event_count": 3572,
+        "users": 1357,
+        "verdict": "keep"
+      },
+      {
+        "event": "click",
+        "type": "enhanced measurement",
+        "event_count": 1931,
+        "users": 1475,
+        "verdict": "keep"
+      },
+      {
+        "event": "form_start",
+        "type": "enhanced measurement",
+        "event_count": 1475,
+        "users": 1205,
+        "verdict": "keep"
+      },
+      {
+        "event": "BookingWidgetOpen",
+        "type": "custom",
+        "event_count": 1267,
+        "users": 914,
+        "verdict": "rename to booking_widget_open: capital letters. It is sent by the Tag Manager tag 'GA4 event - BookingWidgetOpen' on the 'Click - Try the booking widget' trigger, so it records visitors opening the demo booking widget"
+      },
+      {
+        "event": "form_submit",
+        "type": "enhanced measurement",
+        "event_count": 955,
+        "users": 851,
+        "verdict": "keep as an enhanced event, not as a conversion: it fires on every form, including the newsletter form"
+      },
+      {
+        "event": "sign_up",
+        "type": "recommended",
+        "event_count": 713,
+        "users": 710,
+        "verdict": "keep"
+      },
+      {
+        "event": "view_search_results",
+        "type": "enhanced measurement",
+        "event_count": 540,
+        "users": 395,
+        "verdict": "keep"
+      },
+      {
+        "event": "file_download",
+        "type": "enhanced measurement",
+        "event_count": 436,
+        "users": 353,
+        "verdict": "keep"
+      },
+      {
+        "event": "generate_lead",
+        "type": "recommended",
+        "event_count": 195,
+        "users": 191,
+        "verdict": "keep, and mark it as a key event: the demo form sends it with form_name, but it isn't a key event, so demo requests count as a conversion nowhere in GA4"
+      }
+    ],
+    "event_table": [
+      {
+        "event": "sign_up",
+        "type": "recommended",
+        "status": "live (713)",
+        "when_it_fires": "an account is created, on app.example.com",
+        "parameters": [
+          {
+            "name": "method",
+            "example": "google",
+            "custom_dimension": "not needed: method is a built-in dimension"
+          },
+          {
+            "name": "plan_name",
+            "example": "Growth",
+            "custom_dimension": "yes, plan_name (received values on 713 events)"
+          }
+        ],
+        "key_event": "yes, ONCE_PER_EVENT (already defined)",
+        "sends_to": [
+          "GA4",
+          "Google Ads (already imported as 'Sign-up (GA4 sign_up)')",
+          "Meta (already counted by 'Sign-up complete')"
+        ],
+        "implemented_in": "the app"
+      },
+      {
+        "event": "first_booking_receive",
+        "type": "custom (object_action)",
+        "status": "to add",
+        "when_it_fires": "a new business receives its first online booking from one of its clients",
+        "parameters": [
+          {
+            "name": "plan_name",
+            "example": "Starter",
+            "custom_dimension": "yes, plan_name (reuse)"
+          },
+          {
+            "name": "days_since_signup",
+            "example": "3",
+            "custom_dimension": "none; register it as a custom metric if you want to report it"
+          }
+        ],
+        "key_event": "yes, ONCE_PER_EVENT, once it fires",
+        "sends_to": [
+          "GA4",
+          "Google Ads (import it as a secondary conversion first)"
+        ],
+        "implemented_in": "the server, when the first booking is saved (the business owner isn't on the page when a client books)"
+      },
+      {
+        "event": "generate_lead",
+        "type": "recommended",
+        "status": "live (195)",
+        "when_it_fires": "the demo form on www.example.com/demo/ is submitted",
+        "parameters": [
+          {
+            "name": "form_name",
+            "example": "demo",
+            "custom_dimension": "no; register it (I can do this)"
+          }
+        ],
+        "key_event": "no today; mark it, ONCE_PER_EVENT (I can do this)",
+        "sends_to": [
+          "GA4",
+          "Google Ads (replace the URL rule of 'Demo request (form)')",
+          "LinkedIn (its URL rule counts the same step)"
+        ],
+        "implemented_in": "Tag Manager (GTM-A1B2C3D)"
+      },
+      {
+        "event": "login",
+        "type": "recommended",
+        "status": "live (3,572)",
+        "when_it_fires": "a user signs in, on app.example.com",
+        "parameters": [
+          {
+            "name": "method",
+            "example": "email",
+            "custom_dimension": "not needed: built-in"
+          }
+        ],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the app"
+      },
+      {
+        "event": "booking_widget_open",
+        "type": "custom (object_action)",
+        "status": "to add, replacing BookingWidgetOpen (1,267)",
+        "when_it_fires": "a visitor opens the demo booking widget on www.example.com",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "Tag Manager (GTM-A1B2C3D)"
+      },
+      {
+        "event": "BookingWidgetOpen",
+        "type": "custom",
+        "status": "to remove (1,267), once booking_widget_open is live",
+        "when_it_fires": "a visitor opens the demo booking widget",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "Tag Manager (GTM-A1B2C3D)"
+      },
+      {
+        "event": "page_view",
+        "type": "automatic",
+        "status": "live (63,965)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "session_start",
+        "type": "automatic",
+        "status": "live (20,768)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "scroll",
+        "type": "enhanced measurement",
+        "status": "live (17,445)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "user_engagement",
+        "type": "automatic",
+        "status": "live (17,010)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "first_visit",
+        "type": "automatic",
+        "status": "live (12,439)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "click",
+        "type": "enhanced measurement",
+        "status": "live (1,931)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "form_start",
+        "type": "enhanced measurement",
+        "status": "live (1,475)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "form_submit",
+        "type": "enhanced measurement",
+        "status": "live (955)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "view_search_results",
+        "type": "enhanced measurement",
+        "status": "live (540)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      },
+      {
+        "event": "file_download",
+        "type": "enhanced measurement",
+        "status": "live (436)",
+        "when_it_fires": "set by GA4",
+        "parameters": [],
+        "key_event": "no",
+        "sends_to": [
+          "GA4"
+        ],
+        "implemented_in": "the Google tag"
+      }
+    ],
+    "key_events": [
+      {
+        "event": "sign_up",
+        "counting_method": "ONCE_PER_EVENT",
+        "fired_in_window": 713,
+        "verdict": "keep: the plan's Sign-ups node counts it"
+      },
+      {
+        "event": "purchase",
+        "counting_method": "ONCE_PER_EVENT",
+        "fired_in_window": 0,
+        "verdict": "keep: GA4's built-in key event, it can't be removed (no deletable flag); the app doesn't send it, and billing holds paid plans"
+      },
+      {
+        "event": "qa_test_signup",
+        "counting_method": "ONCE_PER_EVENT",
+        "fired_in_window": 0,
+        "verdict": "archive in GA4 Admin: test name, never fired, not in the plan"
+      },
+      {
+        "event": "generate_lead",
+        "counting_method": "ONCE_PER_EVENT (proposed)",
+        "fired_in_window": 195,
+        "verdict": "add: demo requests fire it but aren't a key event (I can do this now)"
+      }
+    ],
+    "custom_dimensions": [
+      {
+        "parameter": "plan_name",
+        "scope": "EVENT",
+        "received_values_in_window": true,
+        "events_with_a_value": 713,
+        "verdict": "reuse: sent with sign_up, and the plan segments by it"
+      },
+      {
+        "parameter": "signup_method",
+        "scope": "EVENT",
+        "received_values_in_window": false,
+        "events_with_a_value": 0,
+        "verdict": "archive: does the job of the built-in dimension method, which sign_up's method parameter fills; it received no values"
+      },
+      {
+        "parameter": "campaign_name",
+        "scope": "EVENT",
+        "received_values_in_window": true,
+        "events_with_a_value": 6908,
+        "verdict": "archive: copies the built-in dimension campaignName"
+      },
+      {
+        "parameter": "qa_test_dimension",
+        "scope": "EVENT",
+        "received_values_in_window": false,
+        "events_with_a_value": 0,
+        "verdict": "archive: test name, no values"
+      },
+      {
+        "parameter": "business_type",
+        "scope": "USER",
+        "received_values_in_window": true,
+        "events_with_a_value": 15926,
+        "verdict": "reuse: the plan segments sign-ups, activation and retention by it"
+      }
+    ],
+    "custom_metrics": {
+      "defined": 1,
+      "names": [
+        "staff_count"
+      ],
+      "values_checked": false,
+      "note": "the plan uses none, so they weren't checked for values"
+    },
+    "enhanced_measurement": {
+      "streamEnabled": true,
+      "scrollsEnabled": true,
+      "outboundClicksEnabled": true,
+      "siteSearchEnabled": true,
+      "videoEngagementEnabled": true,
+      "fileDownloadsEnabled": true,
+      "pageChangesEnabled": true,
+      "formInteractionsEnabled": true
+    },
+    "tag_manager_ga4_event_tags": [
+      {
+        "tag": "GA4 event - generate_lead",
+        "event": "generate_lead",
+        "parameters": [
+          "form_name"
+        ]
+      },
+      {
+        "tag": "GA4 event - BookingWidgetOpen",
+        "event": "BookingWidgetOpen",
+        "parameters": []
+      }
+    ],
+    "conversion_map": [
+      {
+        "conversion": "Sign-up",
+        "ga4": "sign_up key event (ONCE_PER_EVENT), 713 in window",
+        "google_ads": "'Sign-up (GA4 sign_up)', imported from GA4, primary, one per click: 203 in window. 'Pricing page view' (PAGE_VIEW, URL rule, primary, many per click) is counted next to it as if it were a sign-up: 809 in window, 79.9% of the conversions Google Ads bids on",
+        "meta": "'Sign-up complete' (COMPLETE_REGISTRATION, URL contains app.example.com/welcome); the pixel reported 33 registrations",
+        "linkedin": "no conversion defined"
+      },
+      {
+        "conversion": "Activation (first booking received)",
+        "ga4": "no event yet (first_booking_receive, to add)",
+        "google_ads": "none",
+        "meta": "none",
+        "linkedin": "none"
+      },
+      {
+        "conversion": "Demo request",
+        "ga4": "generate_lead fires (195 in window) but isn't a key event",
+        "google_ads": "'Demo request (form)', URL rule, secondary, not in conversions: 33 in window",
+        "meta": "none",
+        "linkedin": "'Demo request': LEAD by INSIGHT_TAG_URL_MATCH_RULES, URL https://www.example.com/demo/thanks/, 30-day click / 7-day view, 0 recorded (no delivery)"
+      }
+    ],
+    "conversion_map_note": "Each platform credits itself, so these counts are never added together or to GA4 key events."
+  },
+  "build_order": [
+    {
+      "rank": 1,
+      "fix": "Give the weekly active businesses, new active businesses and week-4 retention numbers from the product database, or connect a source that holds them.",
+      "where": "the product database",
+      "kind": "broken measurement",
+      "evidence": "no connected source holds product usage",
+      "who": "do this in the product database: give me the weekly numbers, or connect a source that holds them",
+      "unblocks_nodes": [
+        "0",
+        "1",
+        "2",
+        "2.1"
+      ],
+      "unblocks_count": 4
+    },
+    {
+      "rank": 2,
+      "fix": "Send first_booking_receive from the server when a new business receives its first online booking, with plan_name, then mark it as a key event.",
+      "where": "the server; then GA4 (I can mark the key event)",
+      "kind": "broken measurement",
+      "evidence": "14 live events and none records a first booking; sign_up fired 713 times, so activation is the missing step. It also unblocks the cost per activated business guardrail (15,325.42 USD of spend with nothing to divide it by)",
+      "who": "do this in the server code; I can create the key event after it fires",
+      "unblocks_nodes": [
+        "1.2"
+      ],
+      "unblocks_count": 1
+    },
+    {
+      "rank": 3,
+      "fix": "In Google Ads, make 'Pricing page view' a secondary conversion so bidding optimises for sign-ups, not page views.",
+      "where": "Google Ads (Goals, Conversions)",
+      "kind": "broken measurement",
+      "evidence": "'Pricing page view' is primary, counted many per click: 809 of 1,012 conversions (79.9%) in 2026-09-29 to 2026-10-26, against 203 sign-ups",
+      "who": "do this in Google Ads",
+      "unblocks_nodes": [],
+      "unblocks_count": 0
+    },
+    {
+      "rank": 4,
+      "fix": "Mark generate_lead as a key event (ONCE_PER_EVENT) and register form_name as an event-scoped custom dimension.",
+      "where": "GA4",
+      "kind": "broken measurement",
+      "evidence": "generate_lead fired 195 times and isn't a key event; the Tag Manager tag sends form_name, which has no custom dimension",
+      "who": "I can do this now, after your yes",
+      "unblocks_nodes": [],
+      "unblocks_count": 0
+    },
+    {
+      "rank": 5,
+      "fix": "Rename BookingWidgetOpen to booking_widget_open in its Tag Manager tag.",
+      "where": "Tag Manager (GTM-A1B2C3D)",
+      "kind": "clean-up",
+      "evidence": "BookingWidgetOpen: 1,267 events, capital letters",
+      "who": "do this in Tag Manager",
+      "unblocks_nodes": [],
+      "unblocks_count": 0
+    },
+    {
+      "rank": 6,
+      "fix": "Archive the qa_test_signup key event and 3 custom dimensions the plan doesn't use.",
+      "where": "GA4 Admin",
+      "kind": "clean-up",
+      "evidence": "key event: qa_test_signup (0 events); custom dimensions: signup_method, campaign_name, qa_test_dimension",
+      "who": "do this in GA4 Admin",
+      "unblocks_nodes": [],
+      "unblocks_count": 0
+    }
+  ],
+  "offered_actions": [
+    {
+      "action": "create_key_event",
+      "platform": "google-analytics",
+      "status": "not run; waiting for your yes",
+      "condition": "generate_lead fired 195 times in the window (build-order fix 4)",
+      "body": {
+        "platform": "google-analytics",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_key_event",
+        "property_id": "properties/123456789",
+        "event_name": "generate_lead",
+        "counting_method": "ONCE_PER_EVENT"
+      }
+    },
+    {
+      "action": "create_custom_dimension",
+      "platform": "google-analytics",
+      "status": "not run; waiting for your yes",
+      "condition": "the Tag Manager tag already sends form_name with generate_lead; scope and parameter name can't be changed later",
+      "body": {
+        "platform": "google-analytics",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_custom_dimension",
+        "property_id": "properties/123456789",
+        "parameter_name": "form_name",
+        "display_name": "Form name",
+        "scope": "EVENT"
+      }
+    },
+    {
+      "action": "create_key_event",
+      "platform": "google-analytics",
+      "status": "not run; drafted for later",
+      "condition": "not offered yet: first_booking_receive hasn't fired. It is offered once the event fires in a window (build-order fix 2)",
+      "body": {
+        "platform": "google-analytics",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_key_event",
+        "property_id": "properties/123456789",
+        "event_name": "first_booking_receive",
+        "counting_method": "ONCE_PER_EVENT"
+      }
+    },
+    {
+      "action": "create_sheet",
+      "platform": "google-sheets",
+      "status": "not run",
+      "condition": "after you name the spreadsheet",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_sheet",
+        "spreadsheet_id": "SPREADSHEET_ID (you choose)",
+        "title": "Tracking plan"
+      }
+    },
+    {
+      "action": "update_cells",
+      "platform": "google-sheets",
+      "status": "not run",
+      "condition": "after create_sheet returns the sheet_id",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_cells",
+        "spreadsheet_id": "SPREADSHEET_ID (you choose)",
+        "sheet_id": "SHEET_ID (from create_sheet)",
+        "range": "A1:G17",
+        "values": [
+          [
+            "event",
+            "type",
+            "status",
+            "when it fires",
+            "key event",
+            "sends to",
+            "implemented in"
+          ],
+          [
+            "sign_up",
+            "recommended",
+            "live (713)",
+            "an account is created, on app.example.com",
+            "yes, ONCE_PER_EVENT (already defined)",
+            "GA4, Google Ads (already imported as 'Sign-up (GA4 sign_up)'), Meta (already counted by 'Sign-up complete')",
+            "the app"
+          ],
+          [
+            "first_booking_receive",
+            "custom (object_action)",
+            "to add",
+            "a new business receives its first online booking from one of its clients",
+            "yes, ONCE_PER_EVENT, once it fires",
+            "GA4, Google Ads (import it as a secondary conversion first)",
+            "the server, when the first booking is saved (the business owner isn't on the page when a client books)"
+          ],
+          [
+            "generate_lead",
+            "recommended",
+            "live (195)",
+            "the demo form on www.example.com/demo/ is submitted",
+            "no today; mark it, ONCE_PER_EVENT (I can do this)",
+            "GA4, Google Ads (replace the URL rule of 'Demo request (form)'), LinkedIn (its URL rule counts the same step)",
+            "Tag Manager (GTM-A1B2C3D)"
+          ],
+          [
+            "login",
+            "recommended",
+            "live (3,572)",
+            "a user signs in, on app.example.com",
+            "no",
+            "GA4",
+            "the app"
+          ],
+          [
+            "booking_widget_open",
+            "custom (object_action)",
+            "to add, replacing BookingWidgetOpen (1,267)",
+            "a visitor opens the demo booking widget on www.example.com",
+            "no",
+            "GA4",
+            "Tag Manager (GTM-A1B2C3D)"
+          ],
+          [
+            "BookingWidgetOpen",
+            "custom",
+            "to remove (1,267), once booking_widget_open is live",
+            "a visitor opens the demo booking widget",
+            "no",
+            "GA4",
+            "Tag Manager (GTM-A1B2C3D)"
+          ],
+          [
+            "page_view",
+            "automatic",
+            "live (63,965)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "session_start",
+            "automatic",
+            "live (20,768)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "scroll",
+            "enhanced measurement",
+            "live (17,445)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "user_engagement",
+            "automatic",
+            "live (17,010)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "first_visit",
+            "automatic",
+            "live (12,439)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "click",
+            "enhanced measurement",
+            "live (1,931)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "form_start",
+            "enhanced measurement",
+            "live (1,475)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "form_submit",
+            "enhanced measurement",
+            "live (955)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "view_search_results",
+            "enhanced measurement",
+            "live (540)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ],
+          [
+            "file_download",
+            "enhanced measurement",
+            "live (436)",
+            "set by GA4",
+            "no",
+            "GA4",
+            "the Google tag"
+          ]
+        ],
+        "value_input_option": "USER_ENTERED"
+      }
+    }
+  ],
+  "offered_actions_note": "No other custom dimension is offered: plan_name and business_type already exist, method is built in, and days_since_signup isn't sent yet.",
+  "unknowns": [
+    "Weekly active businesses, new and returning businesses, week-4 retention and cancellations: outside the connected sources",
+    "GA4 days after 2026-10-24: Search Console hasn't reported them yet, so they aren't in the coverage check",
+    "LinkedIn's 'Demo request' conversion: nothing ran in the window, so whether it records can't be judged",
+    "Custom metrics: not checked for values (the plan uses none)"
+  ],
+  "go_deeper": [
+    {
+      "area": "GA4 setup and data quality",
+      "skill": "ga4-property-audit"
+    },
+    {
+      "area": "Conversion tracking on ad platforms",
+      "skill": "conversion-tracking-auditor"
+    },
+    {
+      "area": "UTM tags behind Unassigned traffic",
+      "skill": "utm-auditor"
+    },
+    {
+      "area": "Weekly reporting on the plan",
+      "skill": "ga4-weekly-report"
+    },
+    {
+      "area": "Where users drop out of the funnel",
+      "skill": "funnel-dropoff-diagnostician"
+    }
+  ]
+}

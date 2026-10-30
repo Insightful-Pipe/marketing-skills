@@ -1,0 +1,273 @@
+{
+  "note": "Example data: an invented online booking software company and its Klaviyo campaign with invented accounts, not a real business. Every number in expected_output.json follows from this input. The crawler, PageSpeed and GA4 results are invented too; the 403 on the LinkedIn link shows how a bot-blocked link is reported.",
+  "request": "Hey Claude, check the deposits email before it goes out tomorrow at 10am New York time. It should only go to Starter plan customers, minus anyone who cancelled in the last 90 days. Main button goes to pricing. Tags: klaviyo / email / deposits_launch_202610.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "platform": "klaviyo",
+  "account": {
+    "name": "Example Booking Software",
+    "workspace_id": 1,
+    "brand_id": 1,
+    "klaviyo_account": "XyZ123",
+    "ga4_property": "properties/123456789"
+  },
+  "user_brief": {
+    "subject": "{{ first_name }}, deposits are here",
+    "preview_text": "Take a deposit when clients book, and cut no-shows.",
+    "sender": "Example Booking Software <hello@example.com>",
+    "intended_audience": [
+      "Starter plan customers"
+    ],
+    "must_exclude": [
+      "Cancelled in last 90 days"
+    ],
+    "agreed_tags": {
+      "utm_source": "klaviyo",
+      "utm_medium": "email",
+      "utm_campaign": "deposits_launch_202610"
+    },
+    "main_cta": {
+      "text": "See Growth plan pricing",
+      "should_land_on": "https://www.example.com/pricing/"
+    },
+    "landing_pages": {
+      "How deposits work": "https://www.example.com/features/deposits/",
+      "Write a deposit policy clients accept": "https://www.example.com/blog/deposit-policy/",
+      "Book a 15-minute walkthrough": "https://www.example.com/demo/"
+    },
+    "send_time_wanted": "2026-10-29 10:00 America/New_York",
+    "audience_time_zones": {
+      "America/New_York": 0.46,
+      "America/Los_Angeles": 0.22,
+      "Europe/London": 0.18,
+      "America/Toronto": 0.14
+    }
+  },
+  "data_pulled": {
+    "klaviyo_get_campaign": {
+      "id": "01EXAMPLECAMPAIGN0000000001",
+      "name": "Deposits launch, Starter upgrade",
+      "status": "Draft",
+      "audiences": {
+        "included": [
+          "SgAllCu"
+        ],
+        "excluded": [
+          "SgCanc9"
+        ]
+      },
+      "send_options": {
+        "use_smart_sending": true
+      },
+      "tracking_options": {
+        "add_tracking_params": false,
+        "custom_tracking_params": [],
+        "is_tracking_clicks": true,
+        "is_tracking_opens": true
+      },
+      "send_strategy": {
+        "method": "static",
+        "datetime": "2026-10-29T10:00:00+00:00",
+        "options": {
+          "is_local": false
+        }
+      },
+      "_relationships": {
+        "campaign-messages": {
+          "data": [
+            {
+              "type": "campaign-message",
+              "id": "01EXAMPLEMESSAGE00000000001"
+            }
+          ]
+        }
+      }
+    },
+    "klaviyo_get_segments": [
+      {
+        "id": "SgAllCu",
+        "name": "All customers"
+      },
+      {
+        "id": "SgStart",
+        "name": "Starter plan customers"
+      },
+      {
+        "id": "SgCanc9",
+        "name": "Cancelled in last 90 days"
+      }
+    ],
+    "klaviyo_get_segment_report_total_members": {
+      "SgAllCu": 4820,
+      "SgStart": 2960,
+      "SgCanc9": 310
+    },
+    "klaviyo_get_email_templates": {
+      "id": "TmDep1",
+      "name": "Deposits launch, Starter upgrade",
+      "editor_type": "CODE",
+      "html": "<!doctype html>\n<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Deposits are here</title></head>\n<body style=\"margin:0;background:#f4f5f7;\">\n<div style=\"display:none;max-height:0;overflow:hidden;\">Take a deposit when clients book, and cut no-shows.</div>\n<table role=\"presentation\" width=\"640\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;\">\n<tr><td style=\"padding:24px;\"><img src=\"https://www.example.com/email/logo.png\" width=\"160\" alt=\"Example Booking Software\"></td></tr>\n<tr><td><img src=\"https://www.example.com/email/deposits-hero.png\" width=\"600\"></td></tr>\n<tr><td style=\"padding:24px;font-family:Arial,sans-serif;font-size:16px;color:#1d2433;\">\n<p>Hi {{ first_name|default:'there' }},</p>\n<p>Deposits are live. Ask clients for a deposit when they book, and the no-show that used to cost you an afternoon now pays for it.</p>\n<p>Deposits come with the Growth plan. Move up from Starter in two clicks and keep everything you have set up.</p>\n<p><a href=\"https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610\" style=\"background:#2f6fed;color:#ffffff;padding:12px 20px;text-decoration:none;\">See Growth plan pricing</a></p>\n<p><a href=\"https://www.example.com/features/payments/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610\">How deposits work</a></p>\n<p><a href=\"https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610\">Write a deposit policy clients accept</a></p>\n<p><a href=\"https://www.example.com/demo?utm_source=Klaviyo&amp;utm_medium=newsletter&amp;utm_campaign=deposits_launch_202610\">Book a 15-minute walkthrough</a></p>\n<img src=\"https://www.example.com/email/spacer.gif\" width=\"1\" height=\"1\" alt=\"\">\n</td></tr>\n<tr><td style=\"padding:24px;font-family:Arial,sans-serif;font-size:12px;color:#6b7280;\">\n<a href=\"https://www.linkedin.com/company/example-booking-software\">Follow us on LinkedIn</a><br>\n{{ organization.name }}, {{ organization.full_address }}<br>\n{% unsubscribe %} | {% manage_preferences %}\n</td></tr>\n</table></body></html>\n",
+      "text": null
+    },
+    "klaviyo_get_account_details": {
+      "organization_name": "Example Booking Software",
+      "timezone": "America/New_York",
+      "street_address": {
+        "address1": "100 Example Street",
+        "address2": "Suite 4",
+        "city": "Boston",
+        "region": "MA",
+        "country": "US",
+        "zip": "02100"
+      }
+    },
+    "crawler_status_code_checker": {
+      "https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610": {
+        "status_code": 200,
+        "final_url": "https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+        "redirect_count": 0,
+        "redirect_chain": [
+          {
+            "url": "https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+            "status_code": 200
+          }
+        ]
+      },
+      "https://www.example.com/features/payments/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610": {
+        "status_code": 200,
+        "final_url": "https://www.example.com/features/deposits/",
+        "redirect_count": 1,
+        "redirect_chain": [
+          {
+            "url": "https://www.example.com/features/payments/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+            "status_code": 301
+          },
+          {
+            "url": "https://www.example.com/features/deposits/",
+            "status_code": 200
+          }
+        ]
+      },
+      "https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610": {
+        "status_code": 404,
+        "final_url": "https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+        "redirect_count": 0,
+        "redirect_chain": [
+          {
+            "url": "https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+            "status_code": 404
+          }
+        ]
+      },
+      "https://www.example.com/demo?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610": {
+        "status_code": 200,
+        "final_url": "https://www.example.com/demo/?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610",
+        "redirect_count": 1,
+        "redirect_chain": [
+          {
+            "url": "https://www.example.com/demo?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610",
+            "status_code": 301
+          },
+          {
+            "url": "https://www.example.com/demo/?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610",
+            "status_code": 200
+          }
+        ]
+      },
+      "https://www.linkedin.com/company/example-booking-software": {
+        "status_code": 403,
+        "final_url": "https://www.linkedin.com/company/example-booking-software",
+        "redirect_count": 0,
+        "redirect_chain": []
+      },
+      "https://www.example.com/blog/deposit-policy/": {
+        "status_code": 200,
+        "final_url": "https://www.example.com/blog/deposit-policy/",
+        "redirect_count": 0,
+        "redirect_chain": [
+          {
+            "url": "https://www.example.com/blog/deposit-policy/",
+            "status_code": 200
+          }
+        ]
+      }
+    },
+    "pagespeed_core_web_vitals_mobile": {
+      "https://www.example.com/pricing/": {
+        "lcp_ms": 2140,
+        "fcp_ms": 1310,
+        "cls": 0.02,
+        "performance_score": 0.88
+      },
+      "https://www.example.com/features/deposits/": {
+        "lcp_ms": 4620,
+        "fcp_ms": 2240,
+        "cls": 0.11,
+        "performance_score": 0.52
+      },
+      "https://www.example.com/demo/": {
+        "lcp_ms": 2480,
+        "fcp_ms": 1390,
+        "cls": 0.0,
+        "performance_score": 0.86
+      }
+    },
+    "ga4_get_report": {
+      "window": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "rows": [
+        {
+          "sessionSource": "google",
+          "sessionMedium": "organic",
+          "sessionDefaultChannelGroup": "Organic Search",
+          "sessions": 18400,
+          "keyEvents": 512
+        },
+        {
+          "sessionSource": "(direct)",
+          "sessionMedium": "(none)",
+          "sessionDefaultChannelGroup": "Direct",
+          "sessions": 9200,
+          "keyEvents": 301
+        },
+        {
+          "sessionSource": "google",
+          "sessionMedium": "cpc",
+          "sessionDefaultChannelGroup": "Paid Search",
+          "sessions": 6100,
+          "keyEvents": 244
+        },
+        {
+          "sessionSource": "klaviyo",
+          "sessionMedium": "email",
+          "sessionDefaultChannelGroup": "Email",
+          "sessions": 1240,
+          "keyEvents": 96
+        },
+        {
+          "sessionSource": "klaviyo",
+          "sessionMedium": "newsletter",
+          "sessionDefaultChannelGroup": "Unassigned",
+          "sessions": 38,
+          "keyEvents": 2
+        },
+        {
+          "sessionSource": "linkedin.com",
+          "sessionMedium": "referral",
+          "sessionDefaultChannelGroup": "Organic Social",
+          "sessions": 610,
+          "keyEvents": 9
+        }
+      ]
+    },
+    "ga4_list_channel_groups": [
+      {
+        "displayName": "Default channel group",
+        "systemDefined": true,
+        "primary": true
+      }
+    ]
+  }
+}

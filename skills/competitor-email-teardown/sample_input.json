@@ -1,0 +1,936 @@
+{
+  "request": "Tear down the email programs of Larkmoor Tea, Mistlecombe Tea and Pellridge Tea and compare them with ours. Tell me what to copy, what to avoid and which three tests to run.",
+  "note": "Example data: an invented online tea shop (Kettlewick Tea Co.) and three invented rival tea shops, not real businesses. Every number in expected_output.json follows from this input.",
+  "settings": {
+    "window": {
+      "start": "2026-08-17",
+      "end": "2026-10-11",
+      "days": 56,
+      "time_zone": "America/New_York"
+    },
+    "event": {
+      "name": "Labor Day",
+      "date": "2026-09-07"
+    },
+    "max_discount_pct": 20,
+    "minimum_lift": 0.2,
+    "triggered_flows": "signup only; no carts started and nothing bought with the research inboxes"
+  },
+  "programs": [
+    {
+      "brand": "Kettlewick Tea Co.",
+      "role": "own",
+      "site": "https://www.kettlewick.example",
+      "research_inbox": "seed@kettlewick.example",
+      "signed_up_at": "2026-08-17T09:00:00-04:00",
+      "signup_capture": {
+        "source": "screenshot capture of the home page, mobile",
+        "offer_text": "Popup on the home page: 10% off your first order when you join"
+      },
+      "emails": [
+        {
+          "received_at": "2026-08-18T09:02:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Welcome to Kettlewick: here is your 10% off code for your first order",
+          "preview": "Use code HELLO10 on loose-leaf tea and teaware",
+          "excerpt": "Thanks for joining. Code HELLO10 takes 10% off your first order."
+        },
+        {
+          "received_at": "2026-08-20T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "A slow morning ritual with our new autumn chai blend, available now in tins",
+          "preview": "Cinnamon, cardamom and a malty Assam base",
+          "excerpt": "Our new autumn chai is in the shop."
+        },
+        {
+          "received_at": "2026-08-22T09:02:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "The story behind our Assam estate and how we choose each harvest we buy",
+          "preview": "A visit to the garden that grows our breakfast blend",
+          "excerpt": "Our buyer spent a week with the family that grows our Assam."
+        },
+        {
+          "received_at": "2026-08-27T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Five easy ways to cold brew loose-leaf tea before the summer is over",
+          "preview": "No special gear, just a jar and a fridge",
+          "excerpt": "Cold brewing takes the bitterness out of green tea."
+        },
+        {
+          "received_at": "2026-09-03T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Tasting notes for the September oolong collection, with brewing tips",
+          "preview": "Three oolongs from light to roasted",
+          "excerpt": "We tasted every oolong in the collection side by side."
+        },
+        {
+          "received_at": "2026-09-07T08:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Labor Day: 20% off everything in the shop until midnight tonight",
+          "preview": "No code needed, the price drops at checkout",
+          "excerpt": "Every tea and every pot is 20% off today only."
+        },
+        {
+          "received_at": "2026-09-10T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Why we pack every tea in tins and what that means for freshness at home",
+          "preview": "Light and air are what fade a tea",
+          "excerpt": "Tins keep light out, which keeps the leaf fresh longer."
+        },
+        {
+          "received_at": "2026-09-17T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "A slow morning ritual with our new autumn chai blend, available now in tins",
+          "preview": "Cinnamon, cardamom and a malty Assam base",
+          "excerpt": "Our new autumn chai is in the shop."
+        },
+        {
+          "received_at": "2026-09-24T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Five easy ways to cold brew loose-leaf tea before the summer is over",
+          "preview": "No special gear, just a jar and a fridge",
+          "excerpt": "Cold brewing takes the bitterness out of green tea."
+        },
+        {
+          "received_at": "2026-10-01T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Tasting notes for the September oolong collection, with brewing tips",
+          "preview": "Three oolongs from light to roasted",
+          "excerpt": "We tasted every oolong in the collection side by side."
+        },
+        {
+          "received_at": "2026-10-08T10:00:00-04:00",
+          "from_name": "Kettlewick Tea Co.",
+          "subject": "Why we pack every tea in tins and what that means for freshness at home",
+          "preview": "Light and air are what fade a tea",
+          "excerpt": "Tins keep light out, which keeps the leaf fresh longer."
+        }
+      ]
+    },
+    {
+      "brand": "Larkmoor Tea",
+      "role": "rival",
+      "site": "https://www.larkmoor.example",
+      "research_inbox": "research+larkmoor@kettlewick.example",
+      "signed_up_at": "2026-08-17T09:10:00-04:00",
+      "signup_capture": {
+        "source": "screenshot capture of the home page, mobile",
+        "offer_text": "Popup on the home page: Join the list for 15% off your first order"
+      },
+      "emails": [
+        {
+          "received_at": "2026-08-17T09:12:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Your 15% off is inside",
+          "preview": "Welcome to Larkmoor. Your code is LARK15",
+          "excerpt": "Use LARK15 for 15% off your first order."
+        },
+        {
+          "received_at": "2026-08-18T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "New: smoked Lapsang",
+          "preview": "Pine smoke, slow finish",
+          "excerpt": "Our new Lapsang has landed."
+        },
+        {
+          "received_at": "2026-08-19T10:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Meet our growers",
+          "preview": "Six families, three countries",
+          "excerpt": "Every tin starts with a family we know by name."
+        },
+        {
+          "received_at": "2026-08-21T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Iced tea, 3 ways",
+          "preview": "Three recipes for warm days",
+          "excerpt": "Three iced tea recipes we drink all week."
+        },
+        {
+          "received_at": "2026-08-22T10:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Brew it right in 4 steps",
+          "preview": "Water, time, leaf, cup",
+          "excerpt": "A four-step guide to a better pot."
+        },
+        {
+          "received_at": "2026-08-25T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Back in stock: Silver Needle",
+          "preview": "It sold out in June",
+          "excerpt": "Silver Needle is back in stock."
+        },
+        {
+          "received_at": "2026-08-26T10:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Last chance: 15% off ends Sunday",
+          "preview": "Your welcome code expires soon",
+          "excerpt": "Your LARK15 code ends this Sunday at midnight."
+        },
+        {
+          "received_at": "2026-08-28T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Your weekend pot",
+          "preview": "A blend for slow mornings",
+          "excerpt": "This week's pick for a slow Saturday."
+        },
+        {
+          "received_at": "2026-09-01T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "How we taste tea",
+          "preview": "Inside our tasting room",
+          "excerpt": "What happens at a Larkmoor tasting."
+        },
+        {
+          "received_at": "2026-09-03T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Early access: Labor Day 20% off",
+          "preview": "Subscribers shop first",
+          "excerpt": "Our Labor Day sale opens early for you: 20% off sitewide."
+        },
+        {
+          "received_at": "2026-09-04T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "New harvest: Darjeeling",
+          "preview": "Second flush, just landed",
+          "excerpt": "The second flush Darjeeling is new in the shop."
+        },
+        {
+          "received_at": "2026-09-05T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Labor Day weekend: 20% off",
+          "preview": "Tins, pots and gift sets",
+          "excerpt": "20% off sitewide all Labor Day weekend."
+        },
+        {
+          "received_at": "2026-09-07T09:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Ends tonight: Labor Day 20% off",
+          "preview": "Last day of the sale",
+          "excerpt": "The Labor Day sale ends tonight at midnight."
+        },
+        {
+          "received_at": "2026-09-08T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "New: smoked Lapsang",
+          "preview": "Pine smoke, slow finish",
+          "excerpt": "Our new Lapsang has landed."
+        },
+        {
+          "received_at": "2026-09-11T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Iced tea, 3 ways",
+          "preview": "Three recipes for warm days",
+          "excerpt": "Three iced tea recipes we drink all week."
+        },
+        {
+          "received_at": "2026-09-15T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Back in stock: Silver Needle",
+          "preview": "It sold out in June",
+          "excerpt": "Silver Needle is back in stock."
+        },
+        {
+          "received_at": "2026-09-18T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Your weekend pot",
+          "preview": "A blend for slow mornings",
+          "excerpt": "This week's pick for a slow Saturday."
+        },
+        {
+          "received_at": "2026-09-22T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "How we taste tea",
+          "preview": "Inside our tasting room",
+          "excerpt": "What happens at a Larkmoor tasting."
+        },
+        {
+          "received_at": "2026-09-25T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "New harvest: Darjeeling",
+          "preview": "Second flush, just landed",
+          "excerpt": "The second flush Darjeeling is new in the shop."
+        },
+        {
+          "received_at": "2026-09-29T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "New: smoked Lapsang",
+          "preview": "Pine smoke, slow finish",
+          "excerpt": "Our new Lapsang has landed."
+        },
+        {
+          "received_at": "2026-10-02T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Iced tea, 3 ways",
+          "preview": "Three recipes for warm days",
+          "excerpt": "Three iced tea recipes we drink all week."
+        },
+        {
+          "received_at": "2026-10-06T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Back in stock: Silver Needle",
+          "preview": "It sold out in June",
+          "excerpt": "Silver Needle is back in stock."
+        },
+        {
+          "received_at": "2026-10-09T11:00:00-04:00",
+          "from_name": "Larkmoor Tea",
+          "subject": "Your weekend pot",
+          "preview": "A blend for slow mornings",
+          "excerpt": "This week's pick for a slow Saturday."
+        }
+      ]
+    },
+    {
+      "brand": "Mistlecombe Tea",
+      "role": "rival",
+      "site": "https://www.mistlecombe.example",
+      "research_inbox": "research+mistlecombe@kettlewick.example",
+      "signed_up_at": "2026-08-17T09:20:00-04:00",
+      "signup_capture": {
+        "source": "screenshot capture of the home page, mobile",
+        "offer_text": "Footer form: Get our three-part brewing guide, plus a free sample with your first order"
+      },
+      "emails": [
+        {
+          "received_at": "2026-08-17T09:24:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Welcome! A free sample rides along",
+          "preview": "Plus our three-part brewing guide",
+          "excerpt": "Your first order ships with a free sample tin of our house blend."
+        },
+        {
+          "received_at": "2026-08-18T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Brewing guide, part 1: water",
+          "preview": "Why temperature matters most",
+          "excerpt": "Green tea likes cooler water than you think."
+        },
+        {
+          "received_at": "2026-08-19T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "New harvest: spring Sencha",
+          "preview": "Grassy, sweet, bright",
+          "excerpt": "Our spring Sencha has arrived."
+        },
+        {
+          "received_at": "2026-08-20T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Brewing guide, part 2: time",
+          "preview": "Steep times for every tea",
+          "excerpt": "A steep-time chart you can pin to the fridge."
+        },
+        {
+          "received_at": "2026-08-23T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Brewing guide, part 3: ratio",
+          "preview": "How much leaf per cup",
+          "excerpt": "Weigh your leaf once and you will never guess again."
+        },
+        {
+          "received_at": "2026-08-23T08:00:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Sunday reading: tea and sleep",
+          "preview": "What caffeine does at night",
+          "excerpt": "Which teas are gentle in the evening."
+        },
+        {
+          "received_at": "2026-08-26T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "The tea map: where it grows",
+          "preview": "A one-page map of tea country",
+          "excerpt": "A map of the regions our teas come from."
+        },
+        {
+          "received_at": "2026-08-27T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "What our buyers drink at home",
+          "preview": "Four picks from the team",
+          "excerpt": "Four teas our buyers keep in their own kitchens."
+        },
+        {
+          "received_at": "2026-09-02T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Why loose leaf beats bags",
+          "preview": "A side-by-side test",
+          "excerpt": "We brewed the same tea loose and bagged."
+        },
+        {
+          "received_at": "2026-09-05T08:00:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Labor Day: free shipping this weekend",
+          "preview": "Every order, no minimum",
+          "excerpt": "Free shipping on every order through Monday."
+        },
+        {
+          "received_at": "2026-09-06T08:00:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Sunday reading: the oolong spectrum",
+          "preview": "From green to roasted",
+          "excerpt": "Oolong covers more ground than any other tea."
+        },
+        {
+          "received_at": "2026-09-09T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Back in stock: jasmine pearls",
+          "preview": "Hand-rolled and fragrant",
+          "excerpt": "Jasmine pearls are back in stock."
+        },
+        {
+          "received_at": "2026-09-16T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "New harvest: spring Sencha",
+          "preview": "Grassy, sweet, bright",
+          "excerpt": "Our spring Sencha has arrived."
+        },
+        {
+          "received_at": "2026-09-20T08:00:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Sunday reading: storing tea",
+          "preview": "Light, air and heat",
+          "excerpt": "How to keep tea fresh for months."
+        },
+        {
+          "received_at": "2026-09-23T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "The tea map: where it grows",
+          "preview": "A one-page map of tea country",
+          "excerpt": "A map of the regions our teas come from."
+        },
+        {
+          "received_at": "2026-09-30T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Why loose leaf beats bags",
+          "preview": "A side-by-side test",
+          "excerpt": "We brewed the same tea loose and bagged."
+        },
+        {
+          "received_at": "2026-10-04T08:00:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Sunday reading: tea and sleep",
+          "preview": "What caffeine does at night",
+          "excerpt": "Which teas are gentle in the evening."
+        },
+        {
+          "received_at": "2026-10-07T07:30:00-04:00",
+          "from_name": "Mistlecombe Tea",
+          "subject": "Back in stock: jasmine pearls",
+          "preview": "Hand-rolled and fragrant",
+          "excerpt": "Jasmine pearls are back in stock."
+        }
+      ]
+    },
+    {
+      "brand": "Pellridge Tea",
+      "role": "rival",
+      "site": "https://www.pellridge.example",
+      "research_inbox": "research+pellridge@kettlewick.example",
+      "signed_up_at": "2026-08-17T09:30:00-04:00",
+      "signup_capture": {
+        "source": "screenshot capture of the home page, mobile",
+        "offer_text": "Popup three seconds after the page loads: Unlock 20% off. Enter your email."
+      },
+      "emails": [
+        {
+          "received_at": "2026-08-17T09:31:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "20% OFF your first order 🎉",
+          "preview": "Code PELL20 inside",
+          "excerpt": "Take 20% off your first order with PELL20."
+        },
+        {
+          "received_at": "2026-08-17T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "15% off oolongs today",
+          "preview": "Today only",
+          "excerpt": "15% off every oolong today."
+        },
+        {
+          "received_at": "2026-08-18T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "New: matcha starter kit",
+          "preview": "Whisk, bowl and tin",
+          "excerpt": "Our new matcha kit is here."
+        },
+        {
+          "received_at": "2026-08-19T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Your 20% code is waiting",
+          "preview": "PELL20 still works",
+          "excerpt": "You still have 20% off with PELL20."
+        },
+        {
+          "received_at": "2026-08-20T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Bestsellers, 10% off",
+          "preview": "Our top 10 teas",
+          "excerpt": "10% off our ten bestsellers."
+        },
+        {
+          "received_at": "2026-08-22T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Re: your order?",
+          "preview": "We saved your 20% for you",
+          "excerpt": "Your 20% off code PELL20 is still active."
+        },
+        {
+          "received_at": "2026-08-22T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "2 for 1 on herbal tins",
+          "preview": "Mix and match",
+          "excerpt": "Buy one herbal tin, get one free."
+        },
+        {
+          "received_at": "2026-08-24T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Teaware 20% off",
+          "preview": "Pots, cups, kettles",
+          "excerpt": "20% off all teaware."
+        },
+        {
+          "received_at": "2026-08-25T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Back in stock: Earl Grey",
+          "preview": "The one you asked for",
+          "excerpt": "Earl Grey is back in stock."
+        },
+        {
+          "received_at": "2026-08-27T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Still thinking? Take 25% off",
+          "preview": "We bumped your code to PELL25",
+          "excerpt": "Use PELL25 for 25% off your first order."
+        },
+        {
+          "received_at": "2026-08-27T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Weekend deal: 15% off",
+          "preview": "Ends Sunday",
+          "excerpt": "15% off everything this weekend."
+        },
+        {
+          "received_at": "2026-08-29T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "How to brew matcha",
+          "preview": "No lumps, no bitterness",
+          "excerpt": "A guide to smooth matcha."
+        },
+        {
+          "received_at": "2026-08-30T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "25% off ends tonight ⏰",
+          "preview": "PELL25 expires at midnight",
+          "excerpt": "Your PELL25 code ends tonight at midnight."
+        },
+        {
+          "received_at": "2026-08-31T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "15% off oolongs today",
+          "preview": "Today only",
+          "excerpt": "15% off every oolong today."
+        },
+        {
+          "received_at": "2026-09-01T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "New: matcha starter kit",
+          "preview": "Whisk, bowl and tin",
+          "excerpt": "Our new matcha kit is here."
+        },
+        {
+          "received_at": "2026-09-02T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Labor Day sale: 25% off starts NOW",
+          "preview": "Everything, sitewide",
+          "excerpt": "Labor Day sale: 25% off everything."
+        },
+        {
+          "received_at": "2026-09-03T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Bestsellers, 10% off",
+          "preview": "Our top 10 teas",
+          "excerpt": "10% off our ten bestsellers."
+        },
+        {
+          "received_at": "2026-09-04T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Labor Day: 25% off + free shipping",
+          "preview": "Two days left",
+          "excerpt": "Labor Day sale, 25% off and free shipping."
+        },
+        {
+          "received_at": "2026-09-05T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "2 for 1 on herbal tins",
+          "preview": "Mix and match",
+          "excerpt": "Buy one herbal tin, get one free."
+        },
+        {
+          "received_at": "2026-09-05T18:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Labor Day weekend: 25% off",
+          "preview": "Stock up now",
+          "excerpt": "25% off everything for Labor Day."
+        },
+        {
+          "received_at": "2026-09-06T18:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Labor Day: 25% off ends tomorrow",
+          "preview": "Final full day",
+          "excerpt": "Labor Day 25% off ends tomorrow."
+        },
+        {
+          "received_at": "2026-09-07T08:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Last chance: 25% off ends tonight",
+          "preview": "Labor Day sale ends at midnight",
+          "excerpt": "The Labor Day sale ends tonight."
+        },
+        {
+          "received_at": "2026-09-07T20:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Final hours: Labor Day 25% off",
+          "preview": "4 hours left",
+          "excerpt": "Final hours of the Labor Day sale."
+        },
+        {
+          "received_at": "2026-09-08T10:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Extended! Labor Day 25% off, 1 more day",
+          "preview": "You asked, we listened",
+          "excerpt": "Labor Day 25% off is extended one more day."
+        },
+        {
+          "received_at": "2026-09-08T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Teaware 20% off",
+          "preview": "Pots, cups, kettles",
+          "excerpt": "20% off all teaware."
+        },
+        {
+          "received_at": "2026-09-10T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Back in stock: Earl Grey",
+          "preview": "The one you asked for",
+          "excerpt": "Earl Grey is back in stock."
+        },
+        {
+          "received_at": "2026-09-12T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Weekend deal: 15% off",
+          "preview": "Ends Sunday",
+          "excerpt": "15% off everything this weekend."
+        },
+        {
+          "received_at": "2026-09-14T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "How to brew matcha",
+          "preview": "No lumps, no bitterness",
+          "excerpt": "A guide to smooth matcha."
+        },
+        {
+          "received_at": "2026-09-15T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "15% off oolongs today",
+          "preview": "Today only",
+          "excerpt": "15% off every oolong today."
+        },
+        {
+          "received_at": "2026-09-17T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "New: matcha starter kit",
+          "preview": "Whisk, bowl and tin",
+          "excerpt": "Our new matcha kit is here."
+        },
+        {
+          "received_at": "2026-09-19T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Bestsellers, 10% off",
+          "preview": "Our top 10 teas",
+          "excerpt": "10% off our ten bestsellers."
+        },
+        {
+          "received_at": "2026-09-21T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "2 for 1 on herbal tins",
+          "preview": "Mix and match",
+          "excerpt": "Buy one herbal tin, get one free."
+        },
+        {
+          "received_at": "2026-09-22T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Teaware 20% off",
+          "preview": "Pots, cups, kettles",
+          "excerpt": "20% off all teaware."
+        },
+        {
+          "received_at": "2026-09-24T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Back in stock: Earl Grey",
+          "preview": "The one you asked for",
+          "excerpt": "Earl Grey is back in stock."
+        },
+        {
+          "received_at": "2026-09-26T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Weekend deal: 15% off",
+          "preview": "Ends Sunday",
+          "excerpt": "15% off everything this weekend."
+        },
+        {
+          "received_at": "2026-09-28T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "How to brew matcha",
+          "preview": "No lumps, no bitterness",
+          "excerpt": "A guide to smooth matcha."
+        },
+        {
+          "received_at": "2026-09-29T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "15% off oolongs today",
+          "preview": "Today only",
+          "excerpt": "15% off every oolong today."
+        },
+        {
+          "received_at": "2026-10-01T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "New: matcha starter kit",
+          "preview": "Whisk, bowl and tin",
+          "excerpt": "Our new matcha kit is here."
+        },
+        {
+          "received_at": "2026-10-03T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Bestsellers, 10% off",
+          "preview": "Our top 10 teas",
+          "excerpt": "10% off our ten bestsellers."
+        },
+        {
+          "received_at": "2026-10-05T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "2 for 1 on herbal tins",
+          "preview": "Mix and match",
+          "excerpt": "Buy one herbal tin, get one free."
+        },
+        {
+          "received_at": "2026-10-06T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Teaware 20% off",
+          "preview": "Pots, cups, kettles",
+          "excerpt": "20% off all teaware."
+        },
+        {
+          "received_at": "2026-10-08T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Back in stock: Earl Grey",
+          "preview": "The one you asked for",
+          "excerpt": "Earl Grey is back in stock."
+        },
+        {
+          "received_at": "2026-10-10T12:00:00-04:00",
+          "from_name": "Pellridge Tea",
+          "subject": "Weekend deal: 15% off",
+          "preview": "Ends Sunday",
+          "excerpt": "15% off everything this weekend."
+        }
+      ]
+    }
+  ],
+  "ad_library_meta_active_ads": {
+    "Larkmoor Tea": {
+      "active_ads": 4,
+      "ads": [
+        {
+          "start_date": "2026-07-02",
+          "body_text": "Join the Larkmoor list for 15% off your first order."
+        },
+        {
+          "start_date": "2026-08-10",
+          "body_text": "New harvest Darjeeling, shipped in a tin."
+        },
+        {
+          "start_date": "2026-08-28",
+          "body_text": "Labor Day: 20% off sitewide."
+        },
+        {
+          "start_date": "2026-06-15",
+          "body_text": "Single-estate teas from six families. 15% off your first order when you join."
+        }
+      ]
+    },
+    "Mistlecombe Tea": {
+      "active_ads": 2,
+      "ads": [
+        {
+          "start_date": "2026-05-20",
+          "body_text": "Learn to brew like a buyer. Free brewing guide."
+        },
+        {
+          "start_date": "2026-08-01",
+          "body_text": "Spring Sencha is here."
+        }
+      ]
+    },
+    "Pellridge Tea": {
+      "active_ads": 5,
+      "ads": [
+        {
+          "start_date": "2026-04-11",
+          "body_text": "Get 20% off your first order. Sign up today."
+        },
+        {
+          "start_date": "2026-07-19",
+          "body_text": "Matcha starter kit, now 15% off."
+        },
+        {
+          "start_date": "2026-08-30",
+          "body_text": "Labor Day: 25% off everything."
+        },
+        {
+          "start_date": "2026-06-03",
+          "body_text": "Unlock 20% off your first order."
+        },
+        {
+          "start_date": "2026-08-14",
+          "body_text": "2 for 1 herbal tins."
+        }
+      ]
+    }
+  },
+  "klaviyo_own_account": {
+    "flows": [
+      {
+        "name": "Welcome Series",
+        "status": "live",
+        "trigger_type": "Added to List"
+      },
+      {
+        "name": "Abandoned Checkout",
+        "status": "live",
+        "trigger_type": "Metric"
+      },
+      {
+        "name": "Post-Purchase Thank You",
+        "status": "live",
+        "trigger_type": "Metric"
+      },
+      {
+        "name": "Browse Abandonment",
+        "status": "draft",
+        "trigger_type": "Metric"
+      }
+    ],
+    "flow_report_last_90_days": [
+      {
+        "flow_name": "Welcome Series",
+        "flow_message_name": "Welcome 1: 10% code",
+        "recipients": 20570,
+        "click_rate": 0.1183,
+        "unsubscribe_rate": 0.0041,
+        "conversions": 1337,
+        "conversion_rate": 0.065
+      },
+      {
+        "flow_name": "Welcome Series",
+        "flow_message_name": "Welcome 2: our Assam estate",
+        "recipients": 19412,
+        "click_rate": 0.0462,
+        "unsubscribe_rate": 0.0058,
+        "conversions": 408,
+        "conversion_rate": 0.021
+      }
+    ],
+    "campaign_report_last_90_days": [
+      {
+        "campaign": "Weekly Thursday send 1",
+        "recipients": 59849,
+        "click_rate": 0.0125,
+        "unsubscribe_rate": 0.0017,
+        "conversion_rate": 0.0037
+      },
+      {
+        "campaign": "Weekly Thursday send 2",
+        "recipients": 60305,
+        "click_rate": 0.0124,
+        "unsubscribe_rate": 0.0021,
+        "conversion_rate": 0.003
+      },
+      {
+        "campaign": "Weekly Thursday send 3",
+        "recipients": 58545,
+        "click_rate": 0.0126,
+        "unsubscribe_rate": 0.002,
+        "conversion_rate": 0.0038
+      },
+      {
+        "campaign": "Weekly Thursday send 4",
+        "recipients": 58226,
+        "click_rate": 0.0118,
+        "unsubscribe_rate": 0.0017,
+        "conversion_rate": 0.0031
+      },
+      {
+        "campaign": "Weekly Thursday send 5",
+        "recipients": 59642,
+        "click_rate": 0.0135,
+        "unsubscribe_rate": 0.002,
+        "conversion_rate": 0.0031
+      },
+      {
+        "campaign": "Weekly Thursday send 6",
+        "recipients": 58212,
+        "click_rate": 0.011,
+        "unsubscribe_rate": 0.0021,
+        "conversion_rate": 0.0031
+      },
+      {
+        "campaign": "Weekly Thursday send 7",
+        "recipients": 58999,
+        "click_rate": 0.0129,
+        "unsubscribe_rate": 0.0018,
+        "conversion_rate": 0.0031
+      },
+      {
+        "campaign": "Weekly Thursday send 8",
+        "recipients": 60621,
+        "click_rate": 0.0121,
+        "unsubscribe_rate": 0.002,
+        "conversion_rate": 0.0037
+      },
+      {
+        "campaign": "Weekly Thursday send 9",
+        "recipients": 59793,
+        "click_rate": 0.0134,
+        "unsubscribe_rate": 0.0019,
+        "conversion_rate": 0.0035
+      },
+      {
+        "campaign": "Weekly Thursday send 10",
+        "recipients": 61016,
+        "click_rate": 0.0119,
+        "unsubscribe_rate": 0.0018,
+        "conversion_rate": 0.0029
+      },
+      {
+        "campaign": "Weekly Thursday send 11",
+        "recipients": 60410,
+        "click_rate": 0.0132,
+        "unsubscribe_rate": 0.002,
+        "conversion_rate": 0.0035
+      },
+      {
+        "campaign": "Weekly Thursday send 12",
+        "recipients": 61653,
+        "click_rate": 0.0132,
+        "unsubscribe_rate": 0.0021,
+        "conversion_rate": 0.0035
+      },
+      {
+        "campaign": "Weekly Thursday send 13",
+        "recipients": 58239,
+        "click_rate": 0.0118,
+        "unsubscribe_rate": 0.0021,
+        "conversion_rate": 0.003
+      }
+    ]
+  }
+}

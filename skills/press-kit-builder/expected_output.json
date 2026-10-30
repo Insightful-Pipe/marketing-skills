@@ -1,0 +1,609 @@
+{
+  "header": {
+    "company": "Example Roasting Co.",
+    "press_page": "https://www.roasting.example/press/",
+    "date": "2026-10-28",
+    "sources_used": [
+      "pasted facts and page text",
+      "crawler",
+      "DataForSEO",
+      "GA4",
+      "Shopify",
+      "WordPress (get_pages only)"
+    ],
+    "sources_not_used": []
+  },
+  "audit_scorecard": [
+    {
+      "check": "Media contact",
+      "status": "fix",
+      "evidence": "The only email is hello@roasting.example, a general inbox. The kit names press@roasting.example and a person."
+    },
+    {
+      "check": "Asset links",
+      "status": "fix",
+      "evidence": "6 asset links checked one by one: 3 ready, 2 fix, 1 unknown.",
+      "links": [
+        {
+          "url": "https://www.roasting.example/press/logo.svg",
+          "status_code": 200,
+          "status": "ready",
+          "evidence": "Returns 200."
+        },
+        {
+          "url": "https://www.roasting.example/press/logo-dark.png",
+          "status_code": 404,
+          "status": "fix",
+          "evidence": "Returns 404."
+        },
+        {
+          "url": "https://www.roasting.example/press/maya-torres-headshot.jpg",
+          "status_code": 200,
+          "status": "ready",
+          "evidence": "Returns 200."
+        },
+        {
+          "url": "https://www.roasting.example/press/product-photos.zip",
+          "status_code": 200,
+          "status": "ready",
+          "evidence": "Returns 200."
+        },
+        {
+          "url": "https://www.roasting.example/press/brand-guidelines.pdf",
+          "status_code": 200,
+          "status": "fix",
+          "evidence": "Redirects to https://www.roasting.example/brand/, a page, not the file."
+        },
+        {
+          "url": "https://drive.example/folders/roasting-press-photos",
+          "status_code": 200,
+          "status": "unknown",
+          "evidence": "Asset folder redirects the crawler to a sign-in page; open it in a private window."
+        }
+      ]
+    },
+    {
+      "check": "Other broken links",
+      "status": "fix",
+      "evidence": "link-analysis-checker counted 58 links and 2 broken, but listed only 50; each flagged link was rechecked with status-code-checker.",
+      "links": [
+        {
+          "url": "https://oldmag.example/2024/04/roaster-profile",
+          "status": "fix",
+          "evidence": "Confirmed 404."
+        },
+        {
+          "url": "https://social.example/roastingco",
+          "status": "unknown",
+          "evidence": "403 from the crawler and again from status-code-checker: bot blocking, open it by hand."
+        }
+      ]
+    },
+    {
+      "check": "Dated releases",
+      "status": "fix",
+      "evidence": "1 of 6 releases has no date: Second roastery opens."
+    },
+    {
+      "check": "Archive freshness",
+      "status": "fix",
+      "evidence": "Newest dated release 2026-02-10, 260 days ago. Median gap between the last five releases is 98 days, so the limit is 196 days."
+    },
+    {
+      "check": "Numbers on the page",
+      "status": "fix",
+      "evidence": "150,000 orders shipped since launch (stale, understated); 40,000 customers (overstated)."
+    },
+    {
+      "check": "Markup",
+      "status": "fix",
+      "evidence": "2 Organization nodes with different @id values (https://www.roasting.example/#organization, https://www.roasting.example/#org-legacy): one company split in two. Keep one @id. The newest release page carries WebPage only, no NewsArticle."
+    },
+    {
+      "check": "Kit parts",
+      "status": "missing",
+      "evidence": "Missing: fact sheet, product descriptions, spokespeople list, asset usage rules. To fix: boilerplate: 1 of 3 lengths, and it opens with \"a leading\", which no fact backs; bios: missing for Daniel Okafor."
+    }
+  ],
+  "key_numbers": [
+    {
+      "claim": "orders shipped since launch",
+      "claimed_value": 150000,
+      "claimed_as_of": "2025-03-01",
+      "on_press_page": true,
+      "source": "shopify get_orders_count, status any, fulfillment_status shipped, since 2016-04-01",
+      "source_value": 208950,
+      "status": "fix",
+      "reasons": [
+        "stale: as of 2025-03-01, 606 days old",
+        "understated: the source shows 208,950, more than 25% above the claimed 150,000"
+      ],
+      "label": "checked",
+      "kit_prints": "more than 200,000 orders shipped since 2016",
+      "kit_as_of": "2026-10-27"
+    },
+    {
+      "claim": "customers",
+      "claimed_value": 40000,
+      "claimed_as_of": "2026-06-30",
+      "on_press_page": true,
+      "source": "shopify get_customers_count",
+      "source_value": 36912,
+      "status": "fix",
+      "reasons": [
+        "overstated: the source shows 36,912, below the claimed 40,000"
+      ],
+      "label": "checked",
+      "kit_prints": "more than 36,000 customer accounts",
+      "kit_as_of": "2026-10-27",
+      "note": "Shopify counts customer accounts, including people who never ordered, so the kit says customer accounts."
+    },
+    {
+      "claim": "people visit the website each year",
+      "claimed_value": 1000000,
+      "claimed_as_of": "2026-10-27",
+      "on_press_page": false,
+      "source": "google-analytics get_report, totalUsers, last 12 months, no dimension",
+      "source_value": 684215,
+      "status": "fix",
+      "reasons": [
+        "overstated: the source shows 684,215, below the claimed 1,000,000"
+      ],
+      "label": "checked",
+      "kit_prints": "more than 680,000 people visited the website in the last 12 months",
+      "kit_as_of": "2026-10-27",
+      "note": "Whole-window totalUsers for 2025-10-28 to 2026-10-27. The 13 monthly rows add up to 752,860, which counts a returning visitor once per month, so the kit does not use the sum."
+    },
+    {
+      "claim": "cafes supplied",
+      "claimed_value": 140,
+      "claimed_as_of": "2026-10-01",
+      "on_press_page": false,
+      "source": "user-stated (wholesale account list)",
+      "source_value": null,
+      "status": "ready",
+      "reasons": [],
+      "label": "user-stated",
+      "kit_prints": "140 cafes supplied",
+      "kit_as_of": "2026-10-01"
+    },
+    {
+      "claim": "team members",
+      "claimed_value": 38,
+      "claimed_as_of": "2026-10-01",
+      "on_press_page": false,
+      "source": "user-stated",
+      "source_value": null,
+      "status": "ready",
+      "reasons": [],
+      "label": "user-stated",
+      "kit_prints": "38 team members",
+      "kit_as_of": "2026-10-01"
+    }
+  ],
+  "kit": {
+    "fact_sheet": [
+      {
+        "field": "Name",
+        "value": "Example Roasting Co.",
+        "source": "company"
+      },
+      {
+        "field": "Legal name",
+        "value": "Example Roasting Company, Inc.",
+        "source": "company"
+      },
+      {
+        "field": "Founded",
+        "value": "2016",
+        "source": "company"
+      },
+      {
+        "field": "Headquarters",
+        "value": "Asheville, North Carolina",
+        "source": "company"
+      },
+      {
+        "field": "Team",
+        "value": "38 people",
+        "as_of": "2026-10-01",
+        "source": "user-stated"
+      },
+      {
+        "field": "Leadership",
+        "value": "Maya Torres, Co-founder and CEO; Daniel Okafor, Co-founder and Head Roaster; Lena Fischer, Head of Wholesale",
+        "source": "company"
+      },
+      {
+        "field": "Products",
+        "value": "Home Subscription, Cafe Wholesale",
+        "source": "company"
+      },
+      {
+        "field": "Orders shipped",
+        "value": "more than 200,000 orders shipped since 2016",
+        "as_of": "2026-10-27",
+        "source": "Shopify order count, fulfillment status shipped"
+      },
+      {
+        "field": "Customer accounts",
+        "value": "more than 36,000 customer accounts",
+        "as_of": "2026-10-27",
+        "source": "Shopify customer count"
+      },
+      {
+        "field": "Website reach",
+        "value": "more than 680,000 people visited the website in the last 12 months",
+        "as_of": "2026-10-27",
+        "source": "GA4, whole 12-month window"
+      },
+      {
+        "field": "Cafes supplied",
+        "value": "140",
+        "as_of": "2026-10-01",
+        "source": "user-stated"
+      },
+      {
+        "field": "Funding",
+        "value": "not disclosed",
+        "source": "company"
+      },
+      {
+        "field": "Website",
+        "value": "https://www.roasting.example",
+        "source": "company"
+      },
+      {
+        "field": "Social profiles",
+        "value": "https://social.example/roastingco, https://video.example/@roastingco",
+        "source": "company"
+      },
+      {
+        "field": "Media contact",
+        "value": "press@roasting.example (Maya Torres), reply within 4 hours",
+        "source": "company"
+      }
+    ],
+    "boilerplate": [
+      {
+        "length": "up to 25 words",
+        "text": "Example Roasting Co. is a specialty coffee roaster in Asheville, North Carolina that roasts to order for home subscribers, cafes and offices.",
+        "word_count": 22
+      },
+      {
+        "length": "up to 50 words",
+        "text": "Example Roasting Co. is a specialty coffee roaster in Asheville, North Carolina. Its main product is a home subscription: whole-bean or ground coffee, roasted the week it ships and delivered every one, two or four weeks. It has shipped more than 200,000 orders since 2016.",
+        "word_count": 45
+      },
+      {
+        "length": "up to 100 words",
+        "text": "Example Roasting Co. is a specialty coffee roaster founded in 2016 and based in Asheville, North Carolina. It roasts every order the week it ships and buys from partner farms its head roaster visits each harvest. Home brewers subscribe to fresh whole-bean or ground coffee delivered every one, two or four weeks, and its wholesale program supplies 140 cafes with roasted-to-order beans, staff training and equipment advice. The company has shipped more than 200,000 orders since 2016 (as of 2026-10-27). It employs 38 people (as of 2026-10-01). Learn more at www.roasting.example.",
+        "word_count": 91
+      }
+    ],
+    "press_bios": [
+      {
+        "name": "Maya Torres",
+        "title": "Co-founder and CEO",
+        "bio_short": "Maya Torres is Co-founder and CEO of Example Roasting Co. Maya co-founded the company in 2016 after eight years as a cafe owner and leads strategy, retail and the subscription business. Maya speaks on subscription retail and running a direct-to-consumer food brand.",
+        "bio_short_words": 42,
+        "bio_long": "Maya Torres is Co-founder and CEO of Example Roasting Co. Maya co-founded the company in 2016 after eight years as a cafe owner and leads strategy, retail and the subscription business. Maya serves on the board of a regional small business association. Maya speaks to journalists about subscription retail, running a direct-to-consumer food brand and coffee prices. Interview requests go to press@roasting.example.",
+        "bio_long_words": 62,
+        "headshot": "ready"
+      },
+      {
+        "name": "Daniel Okafor",
+        "title": "Co-founder and Head Roaster",
+        "bio_short": "Daniel Okafor is Co-founder and Head Roaster of Example Roasting Co. Daniel co-founded the company in 2016 and leads sourcing and roasting, and visits partner farms each harvest. Daniel speaks on direct trade sourcing and roasting.",
+        "bio_short_words": 36,
+        "bio_long": "Daniel Okafor is Co-founder and Head Roaster of Example Roasting Co. Daniel co-founded the company in 2016 and leads sourcing and roasting, and visits partner farms each harvest. Daniel is a licensed coffee quality grader. Daniel speaks to journalists about direct trade sourcing, roasting and coffee quality. Interview requests go to press@roasting.example.",
+        "bio_long_words": 52,
+        "headshot": "missing: send a recent headshot, at least 2,000 px on the long side"
+      }
+    ],
+    "product_descriptions": [
+      {
+        "name": "Home Subscription",
+        "text": "Home Subscription from Example Roasting Co.: fresh whole-bean or ground coffee delivered every one, two or four weeks, roasted the week it ships. Built for home brewers, it launched in 2017 and is roasted to order in Asheville, North Carolina by the team that has shipped more than 200,000 orders since 2016.",
+        "word_count": 52
+      },
+      {
+        "name": "Cafe Wholesale",
+        "text": "Cafe Wholesale from Example Roasting Co.: roasted-to-order beans, staff training and equipment advice for cafes and offices. Built for independent cafes and offices, it launched in 2025 and is roasted to order in Asheville, North Carolina by the team that has shipped more than 200,000 orders since 2016.",
+        "word_count": 48
+      }
+    ],
+    "spokespeople": [
+      {
+        "name": "Maya Torres",
+        "title": "Co-founder and CEO",
+        "topics": [
+          "subscription retail",
+          "running a direct-to-consumer food brand",
+          "coffee prices"
+        ]
+      },
+      {
+        "name": "Daniel Okafor",
+        "title": "Co-founder and Head Roaster",
+        "topics": [
+          "direct trade sourcing",
+          "roasting",
+          "coffee quality"
+        ]
+      }
+    ],
+    "media_contact": {
+      "email": "press@roasting.example",
+      "name": "Maya Torres",
+      "reply_within_hours": 4
+    },
+    "asset_checklist": [
+      {
+        "asset": "Logo, vector file (SVG)",
+        "status": "ready",
+        "file": "https://www.roasting.example/press/logo.svg"
+      },
+      {
+        "asset": "Reversed logo for dark photos, PNG",
+        "status": "fix",
+        "file": "https://www.roasting.example/press/logo-dark.png",
+        "action": "re-upload the file; the link returns 404"
+      },
+      {
+        "asset": "Square mark (at least 112 x 112 px, used in Organization markup)",
+        "status": "missing",
+        "action": "export a square version of the logo"
+      },
+      {
+        "asset": "Headshot, Maya Torres",
+        "status": "ready",
+        "file": "https://www.roasting.example/press/maya-torres-headshot.jpg"
+      },
+      {
+        "asset": "Headshot, Daniel Okafor",
+        "status": "missing",
+        "action": "send a recent headshot"
+      },
+      {
+        "asset": "Product photos",
+        "status": "ready",
+        "file": "https://www.roasting.example/press/product-photos.zip"
+      },
+      {
+        "asset": "Photo folder",
+        "status": "unknown",
+        "file": "https://drive.example/folders/roasting-press-photos",
+        "action": "open in a private window to confirm it is shared"
+      },
+      {
+        "asset": "Brand guidelines",
+        "status": "fix",
+        "file": "https://www.roasting.example/press/brand-guidelines.pdf",
+        "action": "link the PDF itself, not the /brand/ page it redirects to"
+      },
+      {
+        "asset": "Usage rules on the page",
+        "status": "missing",
+        "action": "add clear space, colours, what not to change, and the photo credit line"
+      }
+    ],
+    "as_covered_in": [
+      {
+        "outlet": "officeweek-news.example",
+        "headline": "The roasters changing how offices buy coffee",
+        "date": "2026-09-14",
+        "url": "https://officeweek-news.example/2026/09/offices-coffee-roasters",
+        "links_to_site": true
+      },
+      {
+        "outlet": "foodbiz-weekly.example",
+        "headline": "Subscription coffee keeps growing as cafes look for steady suppliers",
+        "date": "2026-06-02",
+        "url": "https://foodbiz-weekly.example/subscription-coffee-growth",
+        "links_to_site": false
+      },
+      {
+        "outlet": "citypaper.example",
+        "headline": "Five local roasters to know this winter",
+        "date": "2025-12-05",
+        "url": "https://citypaper.example/food/five-local-roasters",
+        "links_to_site": true
+      },
+      {
+        "outlet": "retailtrends.example",
+        "headline": "The direct-to-consumer food brands that grew in 2025",
+        "date": "2025-10-20",
+        "url": "https://retailtrends.example/dtc-brands-2025",
+        "links_to_site": true
+      }
+    ],
+    "coverage_left_out": [
+      {
+        "url": "https://newswire.example/releases/example-roasting-co-opens-wholesale-program-for-cafes",
+        "reason": "a distribution copy of the company's own release"
+      },
+      {
+        "url": "https://brewblog.example/switching-cafe-beans",
+        "reason": "undated: no publish date (fetch_time is the crawl date, not used); ask the user or open the page"
+      },
+      {
+        "url": "https://www.roasting.example/blog/our-decaf-story/",
+        "reason": "the company's own site"
+      },
+      {
+        "url": "https://oldmag.example/2024/04/roaster-profile",
+        "reason": "link returns 404"
+      }
+    ],
+    "releases": [
+      {
+        "date": "2026-02-10",
+        "title": "Example Roasting Co. launches a decaf line",
+        "url": "https://www.roasting.example/press/releases/2026-02-10-example-roasting-co-launches-decaf-line/"
+      },
+      {
+        "date": "2025-11-04",
+        "title": "Example Roasting Co. wins a regional roaster award",
+        "url": "https://www.roasting.example/press/releases/2025-11-04-example-roasting-co-wins-regional-roaster-award/"
+      },
+      {
+        "date": "2025-08-19",
+        "title": "Example Roasting Co. opens wholesale program for cafes",
+        "url": "https://www.roasting.example/press/releases/2025-08-19-example-roasting-co-opens-wholesale-program-for-cafes/"
+      },
+      {
+        "date": "2025-05-06",
+        "title": "Example Roasting Co. moves to a solar-powered roastery",
+        "url": "https://www.roasting.example/press/releases/2025-05-06-example-roasting-co-moves-to-solar-powered-roastery/"
+      },
+      {
+        "date": "2025-01-28",
+        "title": "Example Roasting Co. names a head of wholesale",
+        "url": "https://www.roasting.example/press/releases/2025-01-28-example-roasting-co-names-head-of-wholesale/"
+      },
+      {
+        "date": null,
+        "title": "Second roastery opens",
+        "url": "https://www.roasting.example/press/releases/second-roastery-opens/",
+        "status": "fix: add the date"
+      }
+    ]
+  },
+  "kit_status": [
+    {
+      "part": "Fact sheet",
+      "status": "ready"
+    },
+    {
+      "part": "Boilerplate, 3 lengths",
+      "status": "ready"
+    },
+    {
+      "part": "Press bios",
+      "status": "fix",
+      "why": "Daniel Okafor's headshot is missing"
+    },
+    {
+      "part": "Product descriptions",
+      "status": "ready"
+    },
+    {
+      "part": "Spokespeople and contact",
+      "status": "ready",
+      "why": "press email press@roasting.example replaces hello@roasting.example"
+    },
+    {
+      "part": "Assets",
+      "status": "fix",
+      "why": "6 of 9 asset items need you (2 fix, 3 missing, 1 unknown)"
+    },
+    {
+      "part": "As covered in",
+      "status": "ready",
+      "why": "4 items kept, 4 left out"
+    },
+    {
+      "part": "Releases",
+      "status": "fix",
+      "why": "1 undated release"
+    },
+    {
+      "part": "Markup",
+      "status": "ready",
+      "why": "two JSON-LD blocks written; the live pages still need them pasted in"
+    }
+  ],
+  "markup": {
+    "organization_home_page": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.roasting.example/#organization",
+      "name": "Example Roasting Co.",
+      "legalName": "Example Roasting Company, Inc.",
+      "url": "https://www.roasting.example",
+      "logo": "https://www.roasting.example/press/logo-square.png",
+      "foundingDate": "2016-04-01",
+      "sameAs": [
+        "https://social.example/roastingco",
+        "https://video.example/@roastingco"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "media relations",
+        "email": "press@roasting.example"
+      }
+    },
+    "newsarticle_newest_release": {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Example Roasting Co. launches a decaf line",
+      "datePublished": "2026-02-10",
+      "dateModified": "2026-02-10",
+      "image": [
+        "https://www.roasting.example/press/releases/decaf-line-16x9.jpg"
+      ],
+      "author": {
+        "@id": "https://www.roasting.example/#organization"
+      },
+      "publisher": {
+        "@id": "https://www.roasting.example/#organization"
+      },
+      "mainEntityOfPage": "https://www.roasting.example/press/releases/2026-02-10-example-roasting-co-launches-decaf-line/"
+    },
+    "note": "Test each block in Google's Rich Results Test. For a full structured data audit, use schema-markup-generator if installed."
+  },
+  "still_needs_you": [
+    "Re-upload the dark logo (404) and link the brand guidelines PDF directly.",
+    "Send Daniel Okafor's headshot, and upload a square logo mark at /press/logo-square.png (the Organization block points to it).",
+    "Open the photo folder in a private window and confirm it is shared publicly.",
+    "Add a date to \"Second roastery opens\" in the release archive.",
+    "Tell us the publish date of the brewblog.example article, or leave it out.",
+    "Confirm press@roasting.example is set up and someone answers within 4 hours.",
+    "Publish a release soon: the last one was 260 days ago, past the 196-day limit.",
+    "Paste the Organization block on the home page and the NewsArticle block on each release page, then remove the second Organization @id."
+  ],
+  "unknowns": [
+    "https://drive.example/folders/roasting-press-photos: Asset folder redirects the crawler to a sign-in page; open it in a private window.",
+    "https://social.example/roastingco: 403 from the crawler and again from status-code-checker: bot blocking, open it by hand."
+  ],
+  "go_deeper": [
+    {
+      "area": "Full structured data audit",
+      "skill": "schema-markup-generator",
+      "if_installed": true
+    },
+    {
+      "area": "The voice of the boilerplate and bios",
+      "skill": "brand-voice",
+      "if_installed": true
+    },
+    {
+      "area": "The holiday push the kit supports",
+      "skill": "launch-strategy",
+      "if_installed": true
+    },
+    {
+      "area": "What makes the company different",
+      "skill": "usp-extractor",
+      "if_installed": true
+    }
+  ],
+  "offered_change": {
+    "action": "create_page",
+    "platform": "wordpress",
+    "status": "not run, waiting for the user's yes",
+    "payload": {
+      "platform": "wordpress",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "action": "create_page",
+      "title": "Press and media",
+      "slug": "press-kit",
+      "status": "draft",
+      "content": "<!-- the kit above, as page HTML: fact sheet, boilerplate, bios, products, contact, assets, coverage, releases -->"
+    },
+    "before_running": "get_pages with search \"press\" found page 412 (/press/, published). The draft goes beside it at /press-kit/ for review; the live page is never updated from here."
+  },
+  "note": "Example data: an invented specialty coffee roaster with invented people, outlets and accounts, not a real business. Every number in expected_output.json follows from this input."
+}

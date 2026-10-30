@@ -1,0 +1,929 @@
+{
+  "header": {
+    "account": "Example Booking Software",
+    "currency": "USD",
+    "time_zone": "America/New_York",
+    "date_range": "flow and campaign reports: last 90 days to 2026-10-27; engagement: 2026-05-01 to 2026-10-27",
+    "business_model": "lead and SaaS (from the account industry, Software / SaaS)",
+    "conversion_metric": "Placed Order (picked by the report actions)",
+    "grade": 68,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "Flow coverage",
+      "result": "fail",
+      "key_number": "5 flows, 4 live; core flows: 2 live, 1 not live, 1 missing, 2 not applicable",
+      "why": "Welcome and post-purchase are live. The Win-back: cancelled accounts flow is still a draft, and there is no sunset flow although 12 campaigns went out in 90 days: a core flow missing with its data ready fails the area. Abandoned checkout and browse abandonment are not applicable: no Started Checkout or Viewed Product metric on a SaaS account."
+    },
+    {
+      "area": "Flow performance",
+      "result": "warn",
+      "key_number": "21,185 flow recipients, $19,940 flow revenue in 90 days (80.4% of email revenue)",
+      "why": "Spam complaints and flow share pass. Three warnings: Trial onboarding email 3 (Turn on reminders) had 0 recipients; 2 emails lose more than 1% to unsubscribes (Demo follow-up email 2 at 1.7%, Trial onboarding email 4 at 1.3%); and the Newsletter welcome flow bounces 2.34%."
+    },
+    {
+      "area": "Lists and segments",
+      "result": "warn",
+      "key_number": "4 segments, 6 lists; 9 of 12 campaigns sent to a whole list",
+      "why": "There is an engaged segment but no unengaged or sunset segment, and most campaigns skip the engaged segment and go to the whole Newsletter list. No segment shrank by more than 20% in 30 days. 1 list looks like a test list (QA seed list)."
+    },
+    {
+      "area": "Engagement",
+      "result": "warn",
+      "key_number": "2,770 of 9,700 mailed profiles unengaged (28.6%)",
+      "why": "Above the 20% warning line, below the 35% fail line. Another 2,360 (24.3%) opened but never clicked, which machine opens can hide."
+    },
+    {
+      "area": "Deliverability and consent",
+      "result": "warn",
+      "key_number": "640 sendable profiles never subscribed; 27 bounced twice and still sendable",
+      "why": "Hard bounces (318) and all 11 spam complainers are already suppressed. 640 profiles can receive marketing without ever giving email consent, and 27 keep bouncing but are still mailed."
+    }
+  ],
+  "grade_math": "100 - 12 (Flow coverage fail) - 5 (Flow performance warn) - 5 (Lists and segments warn) - 5 (Engagement warn) - 5 (Deliverability and consent warn) = 68",
+  "flow_map": [
+    {
+      "flow": "Welcome",
+      "trigger_metric": "Subscribed to List",
+      "metric_tracked": true,
+      "state": "live",
+      "flow_name": "Newsletter welcome",
+      "flow_id": "WqT4nA"
+    },
+    {
+      "flow": "Abandoned checkout",
+      "trigger_metric": "Started Checkout",
+      "metric_tracked": false,
+      "state": "not applicable",
+      "why": "no Started Checkout metric on a lead and SaaS account; trials and plans are bought in the app, not from a cart"
+    },
+    {
+      "flow": "Browse abandonment",
+      "trigger_metric": "Viewed Product",
+      "metric_tracked": false,
+      "state": "not applicable",
+      "why": "no Viewed Product metric on a lead and SaaS account; trials and plans are bought in the app, not from a cart"
+    },
+    {
+      "flow": "Post-purchase",
+      "trigger_metric": "Placed Order",
+      "metric_tracked": true,
+      "state": "live",
+      "flow_name": "New customer: first 30 days",
+      "flow_id": "Jp5XcE"
+    },
+    {
+      "flow": "Winback",
+      "trigger_metric": "Cancelled Subscription",
+      "metric_tracked": true,
+      "state": "not live",
+      "flow_name": "Win-back: cancelled accounts",
+      "flow_id": "Ry3QsD",
+      "why": "the flow exists but is draft, triggered by Cancelled Subscription (14-day delay): it sends nothing"
+    },
+    {
+      "flow": "Sunset",
+      "trigger_metric": "an unengaged segment",
+      "metric_tracked": true,
+      "state": "missing, data ready",
+      "why": "no sunset flow, while 12 campaigns went out in 90 days and Received, Opened and Clicked Email are tracked"
+    },
+    {
+      "flow": "Trial onboarding (not a core flow)",
+      "trigger_metric": "Started Trial",
+      "metric_tracked": true,
+      "state": "live",
+      "flow_id": "Hk2PzR"
+    },
+    {
+      "flow": "Demo follow-up (not a core flow)",
+      "trigger_metric": "Requested Demo",
+      "metric_tracked": true,
+      "state": "live",
+      "flow_id": "Bv8LmC"
+    }
+  ],
+  "flow_performance": {
+    "window": "last 90 days",
+    "judged_on": "click rate and revenue; open rates are shown but inflated by mail privacy features",
+    "checks": [
+      {
+        "check": "Spam complaints",
+        "result": "pass",
+        "evidence": "highest flow rate 0.081% (Newsletter welcome)"
+      },
+      {
+        "check": "Unsubscribes",
+        "result": "warn",
+        "evidence": "Trial onboarding, Take deposits: 1.3%; Demo follow-up, How clinics cut no-shows: 1.7%"
+      },
+      {
+        "check": "Bounces",
+        "result": "warn",
+        "evidence": "Newsletter welcome: 2.34%"
+      },
+      {
+        "check": "Dead messages",
+        "result": "warn",
+        "evidence": "Trial onboarding, Turn on reminders: 0 recipients in 90 days"
+      },
+      {
+        "check": "Flow share of email revenue",
+        "result": "pass",
+        "evidence": "flows $19,940 of $24,791 flow plus campaign revenue (80.4%)"
+      }
+    ],
+    "flows_ranked_by_revenue_per_recipient": [
+      {
+        "flow": "Demo follow-up",
+        "recipients": 1825,
+        "delivered": 1815,
+        "revenue_usd": 3204.0,
+        "revenue_per_recipient_usd": 1.76,
+        "open_rate_pct": 57.6,
+        "click_rate_pct": 8.2,
+        "unsubscribe_rate_pct": 0.82,
+        "bounce_rate_pct": 0.55,
+        "spam_complaint_rate_pct": 0.0,
+        "best_message": "Your demo recording and next steps (click rate 14.1%)",
+        "worst_message": "How clinics cut no-shows (click rate 3.8%)",
+        "rank_by_revenue_per_recipient": 1
+      },
+      {
+        "flow": "Trial onboarding",
+        "recipients": 8560,
+        "delivered": 8532,
+        "revenue_usd": 10302.0,
+        "revenue_per_recipient_usd": 1.2,
+        "open_rate_pct": 60.0,
+        "click_rate_pct": 6.7,
+        "unsubscribe_rate_pct": 0.55,
+        "bounce_rate_pct": 0.33,
+        "spam_complaint_rate_pct": 0.022,
+        "best_message": "Welcome to your trial (click rate 9.8%)",
+        "worst_message": "Take deposits (click rate 2.9%)",
+        "rank_by_revenue_per_recipient": 2
+      },
+      {
+        "flow": "New customer: first 30 days",
+        "recipients": 4610,
+        "delivered": 4602,
+        "revenue_usd": 5380.0,
+        "revenue_per_recipient_usd": 1.17,
+        "open_rate_pct": 64.3,
+        "click_rate_pct": 9.1,
+        "unsubscribe_rate_pct": 0.17,
+        "bounce_rate_pct": 0.17,
+        "spam_complaint_rate_pct": 0.0,
+        "best_message": "You're live: what happens next (click rate 11.8%)",
+        "worst_message": "Save with annual billing (click rate 5.2%)",
+        "rank_by_revenue_per_recipient": 3
+      },
+      {
+        "flow": "Newsletter welcome",
+        "recipients": 6190,
+        "delivered": 6045,
+        "revenue_usd": 1054.0,
+        "revenue_per_recipient_usd": 0.17,
+        "open_rate_pct": 48.5,
+        "click_rate_pct": 6.9,
+        "unsubscribe_rate_pct": 0.68,
+        "bounce_rate_pct": 2.34,
+        "spam_complaint_rate_pct": 0.081,
+        "best_message": "Welcome: your no-show checklist (click rate 9.3%)",
+        "worst_message": "See your booking page in 5 minutes (click rate 4.9%)",
+        "rank_by_revenue_per_recipient": 4
+      }
+    ],
+    "ranked_by_total_revenue": [
+      "Trial onboarding: $10,302",
+      "New customer: first 30 days: $5,380",
+      "Demo follow-up: $3,204",
+      "Newsletter welcome: $1,054"
+    ],
+    "campaigns_90_days": {
+      "campaigns": 12,
+      "recipients": 108517,
+      "revenue_usd": 4851.0
+    }
+  },
+  "lists_and_segments": {
+    "checks": [
+      {
+        "check": "Segment shrinking or empty",
+        "result": "pass",
+        "evidence": "largest 30-day fall 1.9%; 0 empty segments"
+      },
+      {
+        "check": "Engagement segments exist",
+        "result": "warn",
+        "evidence": "engaged segment: Engaged 90 days; unengaged or sunset segment: none"
+      },
+      {
+        "check": "Inactive or stuck",
+        "result": "pass",
+        "evidence": "all segments active, none processing"
+      },
+      {
+        "check": "What campaigns send to",
+        "result": "warn",
+        "evidence": "9 of 12 campaigns in 90 days went to the whole Newsletter list, 3 to Engaged 90 days"
+      }
+    ],
+    "segments": [
+      {
+        "segment": "Engaged 90 days",
+        "total_members": 7120,
+        "net_change_30_days": 130,
+        "net_change_pct": 1.9,
+        "definition": "Opened Email at least once in the last 90 days, or Clicked Email at least once in the last 90 days"
+      },
+      {
+        "segment": "Active customers",
+        "total_members": 1520,
+        "net_change_30_days": 57,
+        "net_change_pct": 3.9,
+        "definition": "Placed Order at least once over all time, and Cancelled Subscription zero times since the last Placed Order"
+      },
+      {
+        "segment": "Trials in progress",
+        "total_members": 690,
+        "net_change_30_days": 70,
+        "net_change_pct": 11.3,
+        "definition": "Started Trial at least once in the last 14 days, and Placed Order zero times over all time"
+      },
+      {
+        "segment": "UK and Canada",
+        "total_members": 2310,
+        "net_change_30_days": 105,
+        "net_change_pct": 4.8,
+        "definition": "Location country is United Kingdom or Canada"
+      }
+    ],
+    "lists": [
+      {
+        "name": "Newsletter",
+        "opt_in": "single_opt_in"
+      },
+      {
+        "name": "Trial sign-ups",
+        "opt_in": "single_opt_in"
+      },
+      {
+        "name": "Demo requests",
+        "opt_in": "single_opt_in"
+      },
+      {
+        "name": "Customers",
+        "opt_in": "single_opt_in"
+      },
+      {
+        "name": "Webinar registrants 2026",
+        "opt_in": "single_opt_in"
+      },
+      {
+        "name": "QA seed list",
+        "opt_in": "single_opt_in"
+      }
+    ],
+    "list_sizes": "not counted: the account has 14,040 profiles, more than the few thousand it is worth paging get_list_profiles for",
+    "engaged_segment_note": "Engaged 90 days counts opens, which mail privacy features trigger by themselves; adding clicks or Active on Site makes it stricter.",
+    "clutter": [
+      "QA seed list"
+    ]
+  },
+  "engagement": {
+    "window": "2026-05-01 to 2026-10-27 (180 days)",
+    "mailed_profiles": 9700,
+    "unengaged": 2770,
+    "unengaged_pct": 28.6,
+    "weakly_engaged_opened_never_clicked": 2360,
+    "weakly_engaged_pct": 24.3,
+    "never_engaged": 1850,
+    "lapsed": 920,
+    "lapsed_buyers": 230,
+    "events_read": {
+      "Received Email": 148200,
+      "Opened Email": 61900,
+      "Clicked Email": 9870,
+      "Active on Site": 21400,
+      "Bounced Email": 1124,
+      "Marked Email as Spam": 11
+    },
+    "row_limit_hit": false,
+    "segment_to_build": [
+      "can receive email marketing",
+      "created at least 180 days ago",
+      "Received Email at least 5 times in the last 180 days",
+      "Opened Email 0 times in the last 180 days",
+      "Clicked Email 0 times in the last 180 days",
+      "Active on Site 0 times in the last 180 days"
+    ],
+    "segment_note": "Placed Order is left out of the definition: plans are paid in the app, not ordered in a store."
+  },
+  "consent_and_suppression": {
+    "profiles": 14040,
+    "sendable": 11820,
+    "sendable_by_consent": {
+      "SUBSCRIBED": 11180,
+      "NEVER_SUBSCRIBED": 640
+    },
+    "suppressed": 2220,
+    "suppressed_pct_of_profiles": 15.8,
+    "suppressed_by_reason": {
+      "UNSUBSCRIBE": 1830,
+      "HARD_BOUNCE": 318,
+      "SPAM_COMPLAINT": 29,
+      "USER_SUPPRESSED": 43
+    },
+    "suppression_note": "Each suppressed profile is counted once, under its first reason.",
+    "hard_bounces": 318,
+    "bounced_profiles_in_window": 862,
+    "bounced_twice_still_sendable": 27,
+    "spam_complainers_in_window": 11,
+    "spam_complainers_still_sendable": 0,
+    "checks": [
+      {
+        "check": "Hard bounces",
+        "result": "pass",
+        "evidence": "318 profiles already suppressed by Klaviyo with HARD_BOUNCE"
+      },
+      {
+        "check": "Bounced but still sendable",
+        "result": "warn",
+        "evidence": "27 profiles bounced 2 or more times in 180 days and can still receive marketing"
+      },
+      {
+        "check": "Spam complaints",
+        "result": "pass",
+        "evidence": "11 complaints from 11 profiles in 180 days, 0 of them still sendable"
+      },
+      {
+        "check": "Consent",
+        "result": "warn",
+        "evidence": "640 of 11,820 sendable profiles (5.4%) never gave email consent"
+      }
+    ]
+  },
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "Find out why Trial onboarding email 3 (Turn on reminders) sends to no one",
+      "stake": "Money: Trial onboarding earns the most of any flow ($10,302 in 90 days, 52% of flow revenue), and every trial skips this step.",
+      "evidence": "get_flow_report: email 2 reached 2,240, email 3 reached 0, email 4 reached 2,050. A broken time delay or a conditional split in front of email 3 is the usual cause.",
+      "who": "do this in Klaviyo: open the flow and check the delay and any split before email 3"
+    },
+    {
+      "rank": 2,
+      "fix": "Rewrite Demo follow-up email 2 (How clinics cut no-shows)",
+      "stake": "Money: Demo follow-up has the highest revenue per recipient of any flow ($1.76), and this email loses 1.7% of the people who asked for a demo.",
+      "evidence": "get_flow_report: unsubscribe rate 1.7% (warn above 1%) and click rate 3.8%, the lowest in the flow.",
+      "who": "do this in Klaviyo (email-sequence-builder can draft the new email, if installed)"
+    },
+    {
+      "rank": 3,
+      "fix": "Review the Win-back: cancelled accounts flow and set it live",
+      "stake": "Money: 230 lapsed buyers in the engagement window paid before and hear nothing that brings them back.",
+      "evidence": "get_flows: Win-back: cancelled accounts is a draft (trigger: Cancelled Subscription with a 14-day delay). Area 4: 230 unengaged profiles placed an order before.",
+      "who": "I can do this now, once you have reviewed the emails in Klaviyo (update_flow_status)"
+    },
+    {
+      "rank": 4,
+      "fix": "Build an unengaged segment and a sunset flow, and send campaigns to Engaged 90 days instead of the whole list",
+      "stake": "Reputation: 2,770 of 9,700 mailed profiles (28.6%) haven't opened, clicked or visited in 180 days and are still mailed.",
+      "evidence": "get_events over 180 days (148,200 Received Email events read in full). get_segments: no unengaged segment. get_campaigns: 9 of 12 campaigns went to the Newsletter list.",
+      "who": "do this in Klaviyo (the API cannot create segments); I can put the unengaged profiles on a review list now"
+    },
+    {
+      "rank": 5,
+      "fix": "Stop treating the 640 never-subscribed profiles as marketable",
+      "stake": "Reputation and consent: mailing people who never gave consent risks complaints and, in many places, breaks the law.",
+      "evidence": "get_profiles with subscriptions: of 11,820 sendable profiles, 11,180 SUBSCRIBED and 640 NEVER_SUBSCRIBED.",
+      "who": "do this in Klaviyo: exclude them from campaigns, or send one opt-in request; the imported Webinar registrants 2026 list is the first place to look"
+    }
+  ],
+  "re_engagement_plan": {
+    "who": "2,770 unengaged profiles: 1,850 never engaged (no open or click since they joined) and 920 lapsed (engaged before, quiet for 180 days), 230 of them lapsed buyers.",
+    "winback_for_lapsed_buyers": "First, the 230 lapsed buyers: 3 emails over about 3 weeks in the Win-back: cancelled accounts flow. Open with what shipped since they left (two-way calendar sync and class booking, the two launches the last 90 days of campaigns announced), then a plain reason to come back. The account has 1 real coupon (ANNUAL15); offer it only if you say yes.",
+    "lapsed_non_buyers": "The other 690 lapsed profiles get the same first email, without an offer, before they enter the sunset.",
+    "sunset_for_never_engaged": "1,850 profiles: 2 emails a week apart asking whether they still want booking tips and product news, with one button to stay. Anyone who doesn't click is suppressed after the second email, only with your yes.",
+    "measure": "the share of each group that clicks, and Placed Order revenue from each group, in the 30 days after the last email",
+    "expected_effect": "Suppressing the never-engaged lowers the bounce and complaint rates of every later send. No revenue number is promised: the win-back flow has never sent, so there is no baseline yet."
+  },
+  "unknowns": [
+    {
+      "area": "Lists and segments",
+      "reason": "list sizes were not counted: 14,040 profiles is too many to page get_list_profiles"
+    },
+    {
+      "area": "Flow performance",
+      "reason": "trends over 12 months were not pulled; ask for them if a flow looks broken beyond the dead email"
+    },
+    {
+      "area": "Win-back",
+      "reason": "the flow has never sent, so its emails and results are unknown until you review it"
+    }
+  ],
+  "fixes_offered": [
+    {
+      "action": "create_list then add_profiles_to_list",
+      "status": "offered, not run (needs your yes)",
+      "payload": {
+        "type": "list",
+        "attributes": {
+          "name": "Unengaged 180 days - review (2026-10-28)"
+        }
+      },
+      "what": "a static review list of the 2,770 unengaged profiles, so you can look before anything is suppressed"
+    },
+    {
+      "action": "suppress_profiles",
+      "status": "offered, not run (needs your yes)",
+      "payload": {
+        "type": "profile-suppression-bulk-create-job",
+        "attributes": {
+          "profiles": {
+            "data": [
+              {
+                "type": "profile",
+                "attributes": {
+                  "email": "<one of the listed addresses>"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "what": "suppress the 27 profiles that bounced 2 or more times and can still be mailed; every address is shown to you first, and none is published here"
+    },
+    {
+      "action": "update_flow_status",
+      "status": "offered after your review in Klaviyo, not run",
+      "payload": {
+        "type": "flow",
+        "id": "Ry3QsD",
+        "attributes": {
+          "status": "live"
+        }
+      },
+      "what": "set Win-back: cancelled accounts live; it starts emailing real people at once"
+    }
+  ],
+  "go_deeper": [
+    "email-sequence-builder (rewrite Demo follow-up email 2 and draft the sunset and win-back emails), if installed",
+    "newsletter (campaign content for the engaged segment), if installed",
+    "retargeting-sequence-designer (reach lapsed buyers on paid channels), if installed"
+  ],
+  "mode_examples": {
+    "abandoned_cart_recovery_review": {
+      "header": {
+        "store": "Example Trail Supply",
+        "platforms": "Shopify (store) and Klaviyo (flows)",
+        "currency": "USD",
+        "window": "abandoned checkouts created 2026-07-23 to 2026-10-20, orders read to 2026-10-27",
+        "return_window": "an order by the same email within 7 days of the checkout",
+        "result": "fail"
+      },
+      "recovery_scorecard": {
+        "abandoned_checkouts_with_email": 536,
+        "of_which_completed_from_a_reminder_link_and_added_from_orders": 68,
+        "abandoned_value_usd": 49220,
+        "average_abandoned_checkout_usd": 91.82,
+        "recovered": 115,
+        "recovery_rate_pct": 21.5,
+        "recovered_value_usd": 10060,
+        "value_recovery_rate_pct": 20.4,
+        "email_consent_share_pct": 74.4,
+        "recovery_with_email_consent_pct": 26.3,
+        "recovery_without_email_consent_pct": 7.3,
+        "consent_gap_note": "checkouts the flow can reach came back at 26.3% and the rest at 7.3%: a rough sign of what the flow adds, not a controlled test (the two groups differ)",
+        "by_channel": [
+          {
+            "channel": "email link",
+            "orders": 64,
+            "order_value_usd": 5500,
+            "share_of_recovered_pct": 55.7
+          },
+          {
+            "channel": "text link",
+            "orders": 4,
+            "order_value_usd": 220,
+            "share_of_recovered_pct": 3.5
+          },
+          {
+            "channel": "paid ads",
+            "orders": 7,
+            "order_value_usd": 690,
+            "share_of_recovered_pct": 6.1
+          },
+          {
+            "channel": "on its own",
+            "orders": 40,
+            "order_value_usd": 3640,
+            "share_of_recovered_pct": 34.8
+          }
+        ],
+        "store_measured_vs_platform": {
+          "store_orders_through_flow_links_or_code": 68,
+          "store_value_through_flow_usd": 5720,
+          "klaviyo_attributed_orders": 74,
+          "klaviyo_attributed_revenue_usd": 6280,
+          "gap": "Klaviyo credits 6 more orders than came through a flow link or code; they are orders placed after someone received (and possibly opened) a step, most of them people who came back on their own. Report both; never add them."
+        }
+      },
+      "return_curve": {
+        "buckets": [
+          {
+            "bucket": "under 1 hour",
+            "all_recovered": 5,
+            "came_back_on_their_own": 3
+          },
+          {
+            "bucket": "1 to 4 hours",
+            "all_recovered": 20,
+            "came_back_on_their_own": 16
+          },
+          {
+            "bucket": "4 to 24 hours",
+            "all_recovered": 25,
+            "came_back_on_their_own": 11
+          },
+          {
+            "bucket": "1 to 3 days",
+            "all_recovered": 38,
+            "came_back_on_their_own": 0
+          },
+          {
+            "bucket": "3 to 7 days",
+            "all_recovered": 27,
+            "came_back_on_their_own": 10
+          }
+        ],
+        "came_back_on_their_own_median_hours": 4.6,
+        "came_back_on_their_own_75th_percentile_hours": 12.0
+      },
+      "flow_steps": [
+        {
+          "step": 1,
+          "channel": "email",
+          "sent_after_hours": 6.0,
+          "discount_code": "none",
+          "recipients": 399,
+          "click_rate_pct": 6.0,
+          "store_measured_orders": 9,
+          "store_measured_order_rate_pct": 2.26,
+          "platform_attributed_orders": 9,
+          "unsubscribe_rate_pct": 0.5,
+          "already_ordered_when_sent": 21
+        },
+        {
+          "step": 2,
+          "channel": "sms",
+          "sent_after_hours": 6.5,
+          "discount_code": "none",
+          "recipients": 149,
+          "click_rate_pct": 6.7,
+          "store_measured_orders": 4,
+          "store_measured_order_rate_pct": 2.68,
+          "platform_attributed_orders": 4,
+          "unsubscribe_rate_pct": 3.36,
+          "already_ordered_when_sent": 4
+        },
+        {
+          "step": 3,
+          "channel": "email",
+          "sent_after_hours": 24.0,
+          "discount_code": "TRAIL10",
+          "recipients": 399,
+          "click_rate_pct": 4.8,
+          "store_measured_orders": 38,
+          "store_measured_order_rate_pct": 9.52,
+          "platform_attributed_orders": 38,
+          "unsubscribe_rate_pct": 0.75,
+          "already_ordered_when_sent": 40
+        },
+        {
+          "step": 4,
+          "channel": "email",
+          "sent_after_hours": 72.0,
+          "discount_code": "TRAIL10",
+          "recipients": 399,
+          "click_rate_pct": 2.5,
+          "store_measured_orders": 17,
+          "store_measured_order_rate_pct": 4.26,
+          "platform_attributed_orders": 23,
+          "unsubscribe_rate_pct": 1.25,
+          "already_ordered_when_sent": 78
+        }
+      ],
+      "checks": [
+        {
+          "check": "First reminder timing",
+          "result": "pass",
+          "evidence": "step 1 goes out 6 hours after the checkout; three quarters of the people who came back on their own did so within 12 hours (median 4.6)"
+        },
+        {
+          "check": "Email and text clash",
+          "result": "warn",
+          "evidence": "the text goes out 0.5 hours after email 1, so 149 people got both within the hour"
+        },
+        {
+          "check": "Discount step",
+          "result": "pass",
+          "evidence": "the first code (TRAIL10) is in step 3, 24 hours in; steps 1 and 2 carry none"
+        },
+        {
+          "check": "Every step earns its place",
+          "result": "warn",
+          "evidence": "step 2 (sms): unsubscribes 3.36% vs store-measured orders 2.68%"
+        },
+        {
+          "check": "Exit once someone buys",
+          "result": "fail",
+          "evidence": "143 messages went to 78 people who had already ordered; none: the flow has no 'Placed Order zero times since starting this flow' filter"
+        },
+        {
+          "check": "Cart, checkout and browse coverage",
+          "result": "fail",
+          "evidence": "checkout flow live; browse abandonment missing with Viewed Product tracked; abandoned cart needs an Added to Cart event"
+        },
+        {
+          "check": "Code-trained repeat abandoners",
+          "result": "warn",
+          "evidence": "5 people recovered 2 or more times in the window and 3 of them (60.0%) used the code every time; 48 of 115 recovered orders (41.7%) used it"
+        }
+      ],
+      "coverage": [
+        {
+          "flow": "Abandoned checkout",
+          "trigger_metric": "Started Checkout",
+          "metric_tracked": true,
+          "state": "live",
+          "flow_name": "Checkout recovery"
+        },
+        {
+          "flow": "Abandoned cart",
+          "trigger_metric": "Added to Cart",
+          "metric_tracked": false,
+          "state": "missing, needs tracking",
+          "why": "the store sends no Added to Cart event, so people who never reach checkout get nothing"
+        },
+        {
+          "flow": "Browse abandonment",
+          "trigger_metric": "Viewed Product",
+          "metric_tracked": true,
+          "state": "missing, data ready",
+          "why": "Viewed Product is tracked but no flow uses it"
+        }
+      ],
+      "top_fixes": [
+        {
+          "rank": 1,
+          "fix": "Add an exit filter: Placed Order zero times since starting this flow",
+          "affected_per_month": "26 buyers a month get reminders for a cart they already bought",
+          "who": "do this in Klaviyo (flow filters)",
+          "evidence": "143 messages went to 78 people who had already ordered; none: the flow has no 'Placed Order zero times since starting this flow' filter",
+          "severity": "fail"
+        },
+        {
+          "rank": 2,
+          "fix": "Build a browse abandonment flow on Viewed Product",
+          "affected_per_month": "not sized: product viewer counts were not pulled; run the money view to size it",
+          "who": "write it with email-sequence-builder, if installed, then build it in Klaviyo",
+          "evidence": "checkout flow live; browse abandonment missing with Viewed Product tracked; abandoned cart needs an Added to Cart event",
+          "severity": "fail"
+        },
+        {
+          "rank": 3,
+          "fix": "Move the text off email 1's heels: send it at 24 hours, only to people who haven't clicked email 1",
+          "affected_per_month": "50 people a month get an email and a text within the hour",
+          "who": "do this in Klaviyo (time delay and a conditional split on Clicked Email)",
+          "evidence": "the text goes out 0.5 hours after email 1, so 149 people got both within the hour; step 2 (sms): unsubscribes 3.36% vs store-measured orders 2.68%",
+          "severity": "warn"
+        },
+        {
+          "rank": 4,
+          "fix": "Keep TRAIL10 away from people who used it in the last 90 days (a conditional split on the code's use), and test step 3 without a code",
+          "affected_per_month": "16 code orders a month at 10% off",
+          "who": "do this in Klaviyo and Shopify (a one-use code per person)",
+          "evidence": "5 people recovered 2 or more times in the window and 3 of them (60.0%) used the code every time; 48 of 115 recovered orders (41.7%) used it",
+          "severity": "warn"
+        }
+      ],
+      "handed_on": "Checkout page leaks (shipping cost surprise, payment errors, forced account creation) are not graded here: checkout-cro-auditor reads the checkout steps, if installed.",
+      "unknowns": [
+        "GA4 email and SMS purchases were not pulled as a cross-check",
+        "Abandoned carts before checkout: no Added to Cart event, so they can't be counted"
+      ]
+    },
+    "email_program_audit_any_platform": {
+      "header": {
+        "account": "Example Leaf Tea Co",
+        "platform": "Mailchimp, with the Shopify store connected inside Mailchimp",
+        "currency": "USD",
+        "window": "last 90 days to 2026-10-27",
+        "grade": 78,
+        "rating": "needs work"
+      },
+      "scorecard": [
+        {
+          "area": "Flow coverage",
+          "result": "fail",
+          "key_number": "3 automations: 2 sending, 1 paused; winback and sunset missing with data ready"
+        },
+        {
+          "area": "Flow performance",
+          "result": "pass",
+          "key_number": "12 campaigns, 204,310 emails; automations earn 27.1% of email-credited revenue"
+        },
+        {
+          "area": "Lists and segments",
+          "result": "warn",
+          "key_number": "18,400 subscribed; 10 of 12 campaigns went to the whole list"
+        },
+        {
+          "area": "Engagement",
+          "result": "warn",
+          "key_number": "4,700 of 18,400 subscribed members rated 1 or 2 stars (25.5%)",
+          "why": "Mailchimp's own member rating, not an event count; above the 20% warning line"
+        },
+        {
+          "area": "Deliverability and consent",
+          "result": "pass",
+          "key_number": "cleaned addresses 6.6% of everyone ever on the list; Mailchimp mails subscribed members only"
+        }
+      ],
+      "grade_math": "100 - 12 x 1 fail - 5 x 2 warn = 78 (unknown areas cost nothing)",
+      "flow_map": [
+        {
+          "flow": "Welcome",
+          "state": "live",
+          "automation": "Welcome new subscribers"
+        },
+        {
+          "flow": "Abandoned cart",
+          "state": "not live",
+          "automation": "Abandoned cart",
+          "why": "paused on 2026-08-02; the store still sends carts"
+        },
+        {
+          "flow": "Browse abandonment",
+          "state": "missing, needs tracking",
+          "why": "no product-view count reaches Mailchimp from this store"
+        },
+        {
+          "flow": "Post-purchase",
+          "state": "live",
+          "automation": "First purchase follow-up"
+        },
+        {
+          "flow": "Winback",
+          "state": "missing, data ready",
+          "why": "store orders are synced, so lapsed buyers can be found"
+        },
+        {
+          "flow": "Sunset",
+          "state": "missing, data ready",
+          "why": "12 campaigns in 90 days and no clean-up automation"
+        }
+      ],
+      "performance_checks": [
+        {
+          "check": "Spam complaints (abuse reports, campaigns)",
+          "result": "pass",
+          "evidence": "highest 0.029% (Last call: oolong sale)"
+        },
+        {
+          "check": "Unsubscribes (campaigns)",
+          "result": "pass",
+          "evidence": "highest 0.2% (Last call: oolong sale)"
+        },
+        {
+          "check": "Bounces (campaigns)",
+          "result": "pass",
+          "evidence": "highest 0.99% (Weekend sale: 15% off oolong)"
+        },
+        {
+          "check": "Dead messages",
+          "result": "unknown",
+          "evidence": "automation report_summary counts are lifetime, so 90-day sends per email aren't shown; the paused cart flow is counted under coverage"
+        },
+        {
+          "check": "Flow share of email revenue",
+          "result": "pass",
+          "evidence": "automations $5,220 of $19,230 email-credited store revenue (27.1%)"
+        }
+      ],
+      "money_view": {
+        "email_revenue_source": "store orders credited by Mailchimp to a campaign or automation (outreach); not GA4, not added to any other source",
+        "email_revenue_90_days_usd": 19230,
+        "flows_usd": 5220,
+        "campaigns_usd": 14010,
+        "flow_share_pct": 27.1,
+        "email_share_of_store_revenue_pct": 17.6,
+        "average_order_usd": 51.0,
+        "value_per_subscriber_per_month_usd": 0.35,
+        "value_per_subscriber_math": "$19,230 / 3 months / 18,400 subscribed",
+        "gaps": [
+          {
+            "flow": "Abandoned cart (paused)",
+            "basis": "its own history: lowest and highest monthly order rate per cart reached in its last 3 sending months",
+            "trigger_per_month": 630,
+            "reachable_share_pct": 63.0,
+            "reachable_per_month": 397,
+            "rate_range_pct": [
+              5.92,
+              8.76
+            ],
+            "monthly_range_usd": [
+              1200,
+              1770
+            ],
+            "formula": "1,890 carts / 3 months x 63.0% opted in x 5.92% to 8.76% x $51.00 average order"
+          },
+          {
+            "flow": "Post-purchase (reaches only list members)",
+            "basis": "coverage gap at its own current rate: first-time buyers not on the list x the orders it wins per buyer reached",
+            "trigger_per_month": 207,
+            "missed_per_month": 81,
+            "rate_range_pct": [
+              8.2,
+              8.2
+            ],
+            "monthly_range_usd": [
+              340,
+              340
+            ],
+            "formula": "242 buyers not on the list / 3 months x 8.2% (31 orders from 378 reached) x $51.00",
+            "note": "only buyers who give marketing consent at checkout can be added; the figure is the ceiling"
+          },
+          {
+            "flow": "Winback (missing)",
+            "basis": "house starting range, an assumption not taken from this account: replace it with your own rate once the flow runs",
+            "trigger_per_month": 150,
+            "reachable_share_pct": 72.0,
+            "reachable_per_month": 108,
+            "rate_range_pct": [
+              0.5,
+              2.0
+            ],
+            "monthly_range_usd": [
+              30,
+              110
+            ],
+            "formula": "450 buyers pass 120 days without an order / 3 months x 72.0% on the list x 0.5% to 2% x $51.00"
+          },
+          {
+            "flow": "Browse abandonment (missing)",
+            "basis": "not sized",
+            "trigger_per_month": null,
+            "monthly_range_usd": null,
+            "why": "no product-view count; GA4 view_item users per month, or the store's product view report, would size it"
+          },
+          {
+            "flow": "Sunset (missing)",
+            "basis": "not sized in money",
+            "trigger_per_month": null,
+            "monthly_range_usd": null,
+            "why": "it protects sending reputation rather than earning orders"
+          }
+        ],
+        "total_monthly_range_usd": [
+          1570,
+          2220
+        ],
+        "total_note": "sum of the sized gaps; they reach different people, so nothing is counted twice. A range, not a promise."
+      },
+      "top_fixes": [
+        {
+          "rank": 1,
+          "fix": "Turn the abandoned cart automation back on after checking why it was paused",
+          "money": "$1,200 to $1,770 a month",
+          "who": "do this in Mailchimp"
+        },
+        {
+          "rank": 2,
+          "fix": "Ask for marketing consent at checkout so first-time buyers join the follow-up",
+          "money": "up to $340 a month",
+          "who": "do this in Shopify checkout settings"
+        },
+        {
+          "rank": 3,
+          "fix": "Build a winback automation for buyers 120 days past their last order",
+          "money": "$30 to $110 a month (assumed rate)",
+          "who": "write it with email-sequence-builder, if installed"
+        },
+        {
+          "rank": 4,
+          "fix": "Send campaigns to an engaged segment instead of the whole list, and add a sunset automation",
+          "money": "not sized: protects sending reputation",
+          "who": "do this in Mailchimp"
+        }
+      ],
+      "unknowns": [
+        "automation report_summary counts are lifetime, so 90-day sends per email aren't shown; the paused cart flow is counted under coverage"
+      ]
+    }
+  }
+}

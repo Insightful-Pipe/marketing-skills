@@ -1,0 +1,535 @@
+{
+  "header": {
+    "property": "properties/123456789",
+    "window": "2026-08-03 to 2026-10-25 (12 complete weeks, run 2026-10-28)",
+    "activation_event": "booking_received (the user's candidate, not yet tested against week-4 retention)",
+    "grade": 68,
+    "rating": "needs work",
+    "grade_math": "100 - 5 (Measurement, warn) - 12 (Onboarding completion, fail) - 5 (Activation and time to value, warn) - 5 (Segments, warn) - 5 (Onboarding emails, warn) = 68"
+  },
+  "headline": [
+    "Setup is the biggest drop: 43.0% of the 1,536 new signups finish the wizard and publish a booking page, and the calendar step loses the most of them (1,250 added services, 690 connected a calendar) (call 5).",
+    "On mobile, 21.9% of signups finish setup against 50.0% on desktop, and mobile brings 44.9% of new users (call 6).",
+    "28.0% of signups get a first client booking, and 6.0% of booking user-days fall on day 0 (calls 5 and 7). booking_received fires but isn't a key event yet (call 1)."
+  ],
+  "journey_map": [
+    {
+      "stage": "1. Arrive",
+      "signal": "first_visit",
+      "source": "call 5",
+      "new_users": 21600,
+      "step_rate_pct": null,
+      "share_of_new_users_pct": 100.0
+    },
+    {
+      "stage": "2. Engage",
+      "signal": "user_engagement",
+      "source": "call 5",
+      "new_users": 13180,
+      "step_rate_pct": 61.0,
+      "share_of_new_users_pct": 61.0
+    },
+    {
+      "stage": "3. Evaluate",
+      "signal": "pricing and demo pages",
+      "source": "call 8",
+      "new_users": "at least 3,420",
+      "step_rate_pct": null,
+      "share_of_new_users_pct": 15.8,
+      "note": "At least, because pricing (3,420) and demo (610) users can't be added together. No step rate: a visitor can reach pricing without an engaged visit, so the two don't nest."
+    },
+    {
+      "stage": "4. Hand-off",
+      "signal": "signup page view (app.example.com/signup)",
+      "source": "call 8",
+      "new_users": 2950,
+      "step_rate_pct": null,
+      "share_of_new_users_pct": 13.7,
+      "note": "No step rate for the same reason: the signup page can be reached straight from an ad or a link."
+    },
+    {
+      "stage": "5. Sign up",
+      "signal": "sign_up",
+      "source": "call 5",
+      "new_users": 1536,
+      "step_rate_pct": 52.1,
+      "share_of_new_users_pct": 7.1,
+      "note": "Share of the signup page's new users; signup happens on that page, so the two nest."
+    },
+    {
+      "stage": "6. Onboard",
+      "signal": "tutorial_complete (booking page published)",
+      "source": "call 5",
+      "new_users": 660,
+      "step_rate_pct": 43.0,
+      "share_of_new_users_pct": 3.1
+    },
+    {
+      "stage": "7. Activate and return",
+      "signal": "booking_received; week-1 return from call 10",
+      "source": "calls 5 and 10",
+      "new_users": 430,
+      "step_rate_pct": 65.2,
+      "share_of_new_users_pct": 2.0,
+      "note": "Week-1 return is in the Early return area."
+    }
+  ],
+  "fix_first": "Stage 6, Onboard: 43.0% of signups finish setup, the lowest step rate on the map. Inside the wizard, the step from services_added (1,250) to calendar_connected (690) loses 560 users, the most of any step.",
+  "setup_steps": {
+    "source": "call 5, in the order the user gave",
+    "users": {
+      "tutorial_begin": 1370,
+      "services_added": 1250,
+      "calendar_connected": 690,
+      "tutorial_complete": 660
+    },
+    "note": "GA4 doesn't know the order, so this reads the wizard order from the user's answer; no step has more users than the one before it."
+  },
+  "weekly_new_users": {
+    "source": "call 5: first_visit users summed by first-session week",
+    "weeks": [
+      1712,
+      1764,
+      1690,
+      1825,
+      1801,
+      1748,
+      1866,
+      1902,
+      1835,
+      1779,
+      1840,
+      1838
+    ],
+    "flagged_weeks": "none: no week is 3 or more times the median of the others",
+    "rows_left_out": "14 (not set) first-session rows and 3,880 rows of users who first came before 2026-08-03"
+  },
+  "scorecard": [
+    {
+      "area": "Measurement",
+      "result": "warn",
+      "source": "calls 1, 3 and 4",
+      "key_number": "booking_received fires, not a key event",
+      "why": "The property sees both the site and the app (2 hosts, no test host), signup and all four setup steps fire, and weekly new users are steady. The activation event fired for 430 new users but isn't one of the 2 key events."
+    },
+    {
+      "area": "Hand-off",
+      "result": "pass",
+      "source": "call 8",
+      "key_number": "13.7% of new users reach the signup page",
+      "why": "2,950 of 21,600 new users opened the signup page, above your own floor of 12% (SKILL.md sets no threshold for this area, so your target is used)."
+    },
+    {
+      "area": "Onboarding completion",
+      "result": "fail",
+      "source": "calls 5 and 6",
+      "key_number": "43.0% finish setup",
+      "why": "660 of 1,536 signups published a booking page, under the 50% fail line."
+    },
+    {
+      "area": "Activation and time to value",
+      "result": "warn",
+      "source": "calls 5 and 7",
+      "key_number": "28.0% activation",
+      "why": "430 of 1,536 signups got a client booking, in the 20% to 40% warn band; only 6.0% of booking user-days are on day 0, so the first session rarely ends with value."
+    },
+    {
+      "area": "Early return",
+      "result": "pass",
+      "source": "calls 10 and 11",
+      "key_number": "week-1 return 11.5%",
+      "why": "2,274 of 19,762 new users in cohorts w01-w11 came back in week 1, above your floor of 10%; 6.1% came back in week 4 (cohorts w01-w08)."
+    },
+    {
+      "area": "Segments",
+      "result": "warn",
+      "source": "calls 5 and 6",
+      "key_number": "mobile 21.9% vs desktop 50.0%",
+      "why": "Mobile brings 44.9% of new users and finishes setup at under half the desktop rate; the gap (28.1 points) is far above the 5.6-point threshold."
+    },
+    {
+      "area": "Onboarding emails",
+      "result": "warn",
+      "source": "call 12",
+      "key_number": "3 welcome emails on fixed days",
+      "why": "'Welcome series' goes to every new account on day 0, 2 and 5 whatever they did; nothing is triggered by a step done or skipped."
+    }
+  ],
+  "top_fixes": [
+    {
+      "rank": 1,
+      "kind": "drop",
+      "fix": "Let people publish the booking page before connecting a calendar",
+      "users_lost_per_month": 313,
+      "loss_counted_as": "signups who never finished setup (876), x 30 / 84 days",
+      "pattern": "inside the setup steps: a short guided setup that shows progress, saves partial work, lets people skip a step and come back, and asks only for what the first result needs",
+      "what": "Make calendar sync a skippable step that the app asks for again after the first booking, and show progress ('Step 3 of 4') with saved answers. Services and opening hours are all a booking page needs to go live.",
+      "evidence": "Call 5: services_added 1,250, calendar_connected 690, tutorial_complete 660. Call 8: the calendar connection guide is the most-read help page (412 new users) and calendar troubleshooting comes next (236).",
+      "expected_impact": "stage 6, going after about 313 signups a month who stop before the booking page is live",
+      "effort": "medium: a product change to the wizard",
+      "who": "do this in the product"
+    },
+    {
+      "rank": 2,
+      "kind": "drop",
+      "fix": "Trigger the setup emails on what people did, not on the day",
+      "users_lost_per_month": 313,
+      "loss_counted_as": "the same stage as fix 1: signups who never finished setup",
+      "pattern": "emails after signup triggered by what the user did or didn't do",
+      "what": "Replace the fixed day-2 and day-5 emails with: setup started but not finished after a day (a link back to the step they left, with the calendar guide), booking page live (share it now), and no booking after about a week (ask what's in the way). Send sign_up, tutorial_complete and booking_received to Klaviyo so the triggers work.",
+      "evidence": "Call 12: the day-2 'Connect your calendar' email reached 1,420 people in 90 days at a 9% click rate. It goes out on a fixed day, so it also reaches people who connected a calendar on day 0.",
+      "expected_impact": "stage 6, the same users as fix 1, reached by email when they leave the app",
+      "effort": "medium: a flow in Klaviyo plus the events sent to it",
+      "who": "do this in Klaviyo"
+    },
+    {
+      "rank": 3,
+      "kind": "drop",
+      "fix": "Make the setup wizard work on a phone",
+      "users_lost_per_month": 117,
+      "loss_counted_as": "mobile signups who never finished setup (328), x 30 / 84 days",
+      "pattern": "if mobile users stall, the first run must work on a phone",
+      "what": "Test each wizard step on a phone, starting with the calendar connection (it opens a sign-in window that is easy to lose on mobile), and let people finish setup on desktop with a 'send me a link' option.",
+      "evidence": "Call 6: mobile 92 of 420 signups finished setup (21.9%), desktop 575 of 1,150 (50.0%).",
+      "expected_impact": "stage 6 on mobile, about 117 signups a month",
+      "effort": "medium: product and design work",
+      "who": "do this in the product"
+    },
+    {
+      "rank": 4,
+      "kind": "drop",
+      "fix": "Turn the empty dashboard into a 'get your first booking' checklist",
+      "users_lost_per_month": 82,
+      "loss_counted_as": "users who published a booking page but got no booking (230), x 30 / 84 days",
+      "pattern": "after setup, before first value: one clear first action; slow time to value: a short checklist with visible progress",
+      "what": "After the page goes live, show 4 small tasks: copy the booking link, add it to the Instagram bio, add it to the Google Business profile, send it to 5 regular clients. Mark each as done.",
+      "evidence": "Call 5: 660 finished setup, 430 got a booking. Call 7: 6.0% of booking user-days on day 0, 24.8% on days 3 to 7.",
+      "expected_impact": "stage 7, about 82 users a month who are set up but have no client booking yet",
+      "effort": "medium: a product change",
+      "who": "do this in the product"
+    },
+    {
+      "rank": 5,
+      "kind": "tracking",
+      "fix": "Mark booking_received as a key event",
+      "users_lost_per_month": "can't be counted: it changes what GA4 reports, not what users do",
+      "what": "So activation shows up in GA4's standard reports and can be imported to the ad platforms as a conversion.",
+      "evidence": "Call 1: key events are sign_up, purchase; call 3: booking_received fired in the window.",
+      "expected_impact": "activation counted next to signups in every GA4 report",
+      "effort": "low: one setting",
+      "who": "I can do this now, with your yes"
+    }
+  ],
+  "help_pages_read_by_new_users": {
+    "source": "call 8",
+    "rows": [
+      {
+        "type": "calendar connection guide",
+        "pages": 1,
+        "users_on_most_read_page": 412,
+        "most_read_page": "https://www.example.com/help/connect-google-calendar/"
+      },
+      {
+        "type": "troubleshooting",
+        "pages": 1,
+        "users_on_most_read_page": 236,
+        "most_read_page": "https://www.example.com/help/calendar-not-syncing/"
+      },
+      {
+        "type": "payments setup",
+        "pages": 1,
+        "users_on_most_read_page": 198,
+        "most_read_page": "https://www.example.com/help/set-up-payments/"
+      },
+      {
+        "type": "account setup (services, hours, client import)",
+        "pages": 2,
+        "users_on_most_read_page": 151,
+        "most_read_page": "https://www.example.com/help/add-services-and-hours/"
+      },
+      {
+        "type": "sharing the booking page",
+        "pages": 1,
+        "users_on_most_read_page": 64,
+        "most_read_page": "https://www.example.com/help/share-your-booking-link/"
+      }
+    ],
+    "dropped_pages": "1 blog post that only mentions pricing in its path (/blog/salon-pricing-guide/), and 1 help path that GA4 returned cut short, so its page can't be told",
+    "reading": "The most-read help pages are about connecting and syncing a calendar, the step where the wizard loses the most people. Pages can't be added together, so each type shows its most-read page."
+  },
+  "time_to_value": {
+    "source": "call 7",
+    "counts": "user-days, not people: a user who does an event on 3 days counts 3 times, and booking_received repeats with every booking",
+    "by_event": {
+      "sign_up": {
+        "user_days": 1534,
+        "share_pct": {
+          "day 0": 58.1,
+          "days 1-2": 15.4,
+          "days 3-7": 17.5,
+          "days 8-14": 7.4,
+          "day 15 or later": 1.6
+        }
+      },
+      "tutorial_complete": {
+        "user_days": 700,
+        "share_pct": {
+          "day 0": 66.0,
+          "days 1-2": 16.1,
+          "days 3-7": 14.4,
+          "days 8-14": 3.3,
+          "day 15 or later": 0.1
+        }
+      },
+      "booking_received": {
+        "user_days": 1941,
+        "share_pct": {
+          "day 0": 6.0,
+          "days 1-2": 14.4,
+          "days 3-7": 24.8,
+          "days 8-14": 23.1,
+          "day 15 or later": 31.7
+        }
+      }
+    }
+  },
+  "feature_adoption": {
+    "source": "call 5",
+    "purchase_users_per_activated_user_pct": 60.5,
+    "note": "GA4 doesn't know the order, so this is how many activated users also bought a plan, not when."
+  },
+  "segments": {
+    "source": "calls 5 and 6",
+    "step": "signup to setup finished (the stage to fix)",
+    "by_device": [
+      {
+        "device": "desktop",
+        "first_visit_users": 11300,
+        "signups": 1150,
+        "finished_setup": 575,
+        "setup_rate_pct": 50.0
+      },
+      {
+        "device": "mobile",
+        "first_visit_users": 9700,
+        "signups": 420,
+        "finished_setup": 92,
+        "setup_rate_pct": 21.9
+      },
+      {
+        "device": "tablet",
+        "first_visit_users": 700,
+        "signups": 24,
+        "finished_setup": 7,
+        "setup_rate_pct": "too few users to compare"
+      }
+    ],
+    "mobile_vs_desktop": {
+      "gap_points": 28.1,
+      "threshold_points": 5.6,
+      "verdict": "real",
+      "warn": true
+    },
+    "by_first_channel": [
+      {
+        "channel": "Organic Search",
+        "new_users": 9800,
+        "signups": 640,
+        "finished_setup": 284,
+        "setup_rate_pct": 44.4,
+        "share_of_new_users_pct": 45.4
+      },
+      {
+        "channel": "Direct",
+        "new_users": 4200,
+        "signups": 330,
+        "finished_setup": 152,
+        "setup_rate_pct": 46.1,
+        "share_of_new_users_pct": 19.4
+      },
+      {
+        "channel": "Paid Search",
+        "new_users": 3000,
+        "signups": 300,
+        "finished_setup": 105,
+        "setup_rate_pct": 35.0,
+        "share_of_new_users_pct": 13.9
+      },
+      {
+        "channel": "Organic Social",
+        "new_users": 2100,
+        "signups": 86,
+        "finished_setup": 34,
+        "setup_rate_pct": 39.5,
+        "share_of_new_users_pct": 9.7
+      },
+      {
+        "channel": "Referral",
+        "new_users": 1500,
+        "signups": 140,
+        "finished_setup": 65,
+        "setup_rate_pct": 46.4,
+        "share_of_new_users_pct": 6.9
+      },
+      {
+        "channel": "Email",
+        "new_users": 1000,
+        "signups": 40,
+        "finished_setup": 20,
+        "setup_rate_pct": 50.0,
+        "share_of_new_users_pct": 4.6
+      }
+    ],
+    "paid_search_vs_rest": {
+      "paid_pct": 35.0,
+      "rest_pct": 44.9,
+      "gap_points": 9.9,
+      "threshold_points": 6.4,
+      "verdict": "real",
+      "warn": false,
+      "why_no_warn": "Paid Search brings 13.9% of new users, under the 20% the warn needs"
+    },
+    "device_note": "Device rows can't be added up: one person can sign up on a phone and finish on a laptop."
+  },
+  "early_return": {
+    "source": "calls 10 and 11",
+    "week_1": {
+      "cohorts": "w01-w11",
+      "cohort_users": 19762,
+      "returned": 2274,
+      "rate_pct": 11.5
+    },
+    "week_4": {
+      "cohorts": "w01-w08",
+      "cohort_users": 14308,
+      "returned": 878,
+      "rate_pct": 6.1
+    },
+    "blank_cell": "GA4 returned 110 for w12 week 1, but that week ends after the window, so it is left blank",
+    "missing_cells": "none inside the window: every cohort had people back in every finished week",
+    "activation_repeat_use": {
+      "base": "102 users who got a booking in their first week, cohorts w01-w08",
+      "share_with_a_booking_pct": {
+        "week 1": 70.6,
+        "week 2": 66.7,
+        "week 3": 59.8,
+        "week 4": 57.8
+      },
+      "reading": "Businesses that get one booking keep getting them, so the activation event turns into a habit once it happens."
+    }
+  },
+  "measurement_plan": "Not needed: every stage is tracked. The one change is marking booking_received as a key event (fix 5).",
+  "onboarding_emails": {
+    "source": "call 12",
+    "flows": [
+      {
+        "flow": "Welcome series",
+        "trigger": "added to list 'New accounts'",
+        "messages": [
+          {
+            "message": "Welcome: set up your booking page",
+            "sent": "day 0",
+            "recipients": 1490,
+            "open_rate_pct": 58.0,
+            "click_rate_pct": 21.0
+          },
+          {
+            "message": "Connect your calendar",
+            "sent": "day 2",
+            "recipients": 1420,
+            "open_rate_pct": 46.0,
+            "click_rate_pct": 9.0
+          },
+          {
+            "message": "Share your booking link",
+            "sent": "day 5",
+            "recipients": 1380,
+            "open_rate_pct": 41.0,
+            "click_rate_pct": 7.0
+          }
+        ]
+      },
+      {
+        "flow": "Newsletter welcome",
+        "trigger": "added to list 'Blog newsletter'",
+        "messages": [
+          {
+            "message": "Your reminder templates",
+            "sent": "day 0",
+            "recipients": 640,
+            "open_rate_pct": 52.0,
+            "click_rate_pct": 18.0
+          }
+        ]
+      }
+    ],
+    "conversions": "not read: Klaviyo counts conversions against Placed Order, and the product doesn't send the activation event to Klaviyo yet",
+    "plan": [
+      "right after signup: welcome and one link that opens the setup wizard where they left it",
+      "setup started, not finished after a day: a link back to the step they left, with the calendar guide if that is the step",
+      "booking page live: share it now, with the link ready to copy",
+      "page live, no booking after about a week: ask what's in the way, and offer a short call",
+      "first booking received: well done, here's how to cut no-shows with reminders"
+    ],
+    "gaps": "Every current message goes out on a fixed day. Nothing reacts to setup done, setup skipped or a first booking."
+  },
+  "personalisation_opportunities": [
+    {
+      "segment": "device: mobile",
+      "source": "call 6",
+      "number": "420 signups, 21.9% finished setup",
+      "tailored_experience": "a phone-first wizard, or a 'finish on your computer' email with a link straight back to the step they left"
+    },
+    {
+      "segment": "first channel: Paid Search",
+      "source": "call 5",
+      "number": "300 signups, 35.0% finished setup",
+      "tailored_experience": "open on the promise of the ad they clicked (most search ads sell online booking): the booking page preview first, with setup steps after it"
+    },
+    {
+      "segment": "read the calendar help pages",
+      "source": "call 8",
+      "number": "412 new users on the calendar connection guide",
+      "tailored_experience": "offer 'skip for now' at the calendar step and a one-click connection test, with the guide beside it"
+    },
+    {
+      "segment": "first channel: Organic Social",
+      "source": "call 5",
+      "number": "86 signups, 39.5% finished setup",
+      "tailored_experience": "none: its setup rate is 3.6 points below the rest, inside the 11.0-point threshold, so the gap isn't real"
+    }
+  ],
+  "onboarding_model": "Self-serve: low monthly prices and many signups, so the wizard, the first screens and the emails carry the load. A short setup call for the Business plan is worth a test later.",
+  "fixes_offered": {
+    "source": "calls 1, 2 and 3",
+    "offered": [
+      {
+        "action": "create_key_event",
+        "body": {
+          "action": "create_key_event",
+          "property_id": "properties/123456789",
+          "event_name": "booking_received",
+          "counting_method": "ONCE_PER_SESSION"
+        },
+        "why": "booking_received fires and isn't a key event"
+      },
+      {
+        "action": "create_audience",
+        "display_name": "Signed up, not activated",
+        "why": "none of the 3 existing audiences covers it; 1,106 new signups in the window had no booking",
+        "membership_duration_days": 30
+      }
+    ],
+    "status": "shown, not run: waiting for your yes on each exact body"
+  },
+  "unknowns": [
+    "Which first-week action predicts staying: needs user-level data (a BigQuery export or the product's own data); neither is connected, so booking_received stays an untested candidate.",
+    "Which wizard step people leave on mobile: the step events aren't split by device in call 6."
+  ],
+  "go_deeper": [
+    "cro/signup-flow-cro: the 48% of signup page visitors who leave without an account",
+    "marketing/email-sequence-builder: copy for the triggered setup emails",
+    "measurement/conversion-tracking-auditor: check the new key event once it is created",
+    "measurement/ga4-audience-retention (if installed): retention by cohort, channel and device in more depth"
+  ]
+}

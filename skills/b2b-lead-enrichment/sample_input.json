@@ -1,0 +1,1509 @@
+{
+  "note": "Example data: an invented workforce scheduling software company, its invented inbound leads and invented target accounts, not real businesses. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"b2b-lead-enrichment\" skill. Clean the \"Inbound\" tab of our leads sheet, enrich each company and score them against our ICP: 3PL and fulfillment or warehousing and distribution companies first, freight and parcel carriers second; 200 to 2,000 employees; headquarters in the US or Canada; bonus for a warehouse management system, a labor management system, RF barcode scanning, pick-to-light or a timekeeping system in their stack. Exclude our own domain, shift-software.example. Map decision-makers and draft outreach for the best accounts.",
+  "seller": "Example Shift Software, workforce scheduling software for warehouses and distribution centers (invented)",
+  "icp": {
+    "core_industries": [
+      "third-party logistics and fulfillment",
+      "warehousing and distribution"
+    ],
+    "adjacent_industries": [
+      "freight and parcel carriers"
+    ],
+    "employees": "200-2,000",
+    "regions": [
+      "United States",
+      "Canada"
+    ],
+    "technologies": [
+      "warehouse management system",
+      "labor management system",
+      "RF barcode scanning",
+      "pick-to-light",
+      "timekeeping system"
+    ],
+    "excluded_domains": [
+      "shift-software.example"
+    ]
+  },
+  "sheet_check": {
+    "spreadsheet": "Inbound leads",
+    "spreadsheet_id": "1ExAmPlEInboundLeadsSheet0000000000000000000",
+    "tab": "Inbound",
+    "list_sheets": "2 tabs: Inbound (sheet_id 0) and Archive (sheet_id 1)",
+    "get_sheet_peak": "columns Email, Source; 2 sample rows",
+    "query_sheet_data": "select \"Email,Source\": 12 rows (sheet rows 2 to 13; row 1 is the header)",
+    "result": "12 lead rows read from the Inbound tab"
+  },
+  "leads": [
+    {
+      "row": 2,
+      "email": "ops@larkmoor-fulfillment.example",
+      "source": "Demo request"
+    },
+    {
+      "row": 3,
+      "email": "  Ops@Larkmoor-Fulfillment.example ",
+      "source": "Webinar: peak season staffing"
+    },
+    {
+      "row": 4,
+      "email": "people@larkmoor-fulfillment.example",
+      "source": "Webinar: peak season staffing"
+    },
+    {
+      "row": 5,
+      "email": "sales@pellham-warehousing.example",
+      "source": "Pricing page form"
+    },
+    {
+      "row": 6,
+      "email": "dispatch@vantorra-freight.example",
+      "source": "Trade show list"
+    },
+    {
+      "row": 7,
+      "email": "info@thistlegate-distribution.example",
+      "source": "Guide download"
+    },
+    {
+      "row": 8,
+      "email": "hello@fennick-parcel.example",
+      "source": "Guide download"
+    },
+    {
+      "row": 9,
+      "email": "hello@maasbrug-logistics.example",
+      "source": "Guide download"
+    },
+    {
+      "row": 10,
+      "email": "info@oaklune-living.example",
+      "source": "Newsletter signup"
+    },
+    {
+      "row": 11,
+      "email": "ops@pellham-warehousing",
+      "source": "Pricing page form"
+    },
+    {
+      "row": 12,
+      "email": "night.shift.lead.example@gmail.com",
+      "source": "Webinar: peak season staffing"
+    },
+    {
+      "row": 13,
+      "email": "hello@shift-software.example",
+      "source": "Demo request"
+    }
+  ],
+  "call_budget": "up to 35 calls for 7 companies (5 per company at most), plus retries",
+  "data_pulled": [
+    "google-sheets list_sheets, get_sheet_peak and query_sheet_data on the Inbound tab",
+    "enrichment-crawlers stage A: profile-crawler and metrics-crawler for 7 companies (14 calls, plus 1 retry after a server error)",
+    "enrichment-crawlers stage B: tech-stack-crawler and funding-crawler for the 5 companies not ruled out (10 calls)",
+    "enrichment-crawlers stage C: leadership-crawler for the 1 tier A account (1 call)"
+  ],
+  "crawl_results": {
+    "larkmoor-fulfillment.example": {
+      "company": "Larkmoor Fulfillment",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://larkmoor-fulfillment.example/",
+              "type": "direct",
+              "text": "Larkmoor Fulfillment | E-commerce fulfillment and 3PL warehousing for growing brands. Pick, pack and ship from four fulfillment centers.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "e-commerce fulfillment and 3PL warehousing for growing brands",
+                  "quote": "E-commerce fulfillment and 3PL warehousing for growing brands"
+                },
+                {
+                  "field": "industry",
+                  "value": "third-party logistics (3PL) and e-commerce fulfillment",
+                  "quote": "E-commerce fulfillment and 3PL warehousing for growing brands"
+                }
+              ]
+            },
+            {
+              "url": "https://larkmoor-fulfillment.example/about/",
+              "type": "company_page",
+              "text": "About Larkmoor. Founded in 2012, Larkmoor Fulfillment is headquartered in Louisville, Kentucky and runs four fulfillment centers across the Midwest and South.",
+              "claims": [
+                {
+                  "field": "headquarters",
+                  "value": "Louisville, Kentucky",
+                  "country": "United States",
+                  "quote": "headquartered in Louisville, Kentucky"
+                },
+                {
+                  "field": "founded",
+                  "value": "2012",
+                  "quote": "Founded in 2012"
+                }
+              ]
+            },
+            {
+              "url": "https://www.linkedin.com/company/larkmoor-fulfillment/",
+              "type": "linkedin",
+              "text": "Larkmoor Fulfillment. Logistics and supply chain. 501-1,000 employees. Headquarters: Louisville, Kentucky.",
+              "claims": [
+                {
+                  "field": "employees",
+                  "value": "501-1,000",
+                  "quote": "501-1,000 employees"
+                }
+              ]
+            },
+            {
+              "type": "search",
+              "unrelated_pages": 2
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://company-data.example/larkmoor-fulfillment",
+              "type": "search",
+              "text": "Larkmoor Fulfillment (larkmoor-fulfillment.example) was founded in 2011 and has an estimated 640 employees.",
+              "claims": [
+                {
+                  "field": "founded",
+                  "value": "2011",
+                  "quote": "was founded in 2011"
+                },
+                {
+                  "field": "employees",
+                  "value": "640",
+                  "quote": "an estimated 640 employees"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "tech-stack-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://larkmoor-fulfillment.example/careers/inventory-control-lead/",
+              "type": "company_page",
+              "text": "Inventory Control Lead, Louisville. You will run cycle counts in our warehouse management system (WMS) and train new associates on receiving.",
+              "claims": [
+                {
+                  "field": "technology",
+                  "value": "warehouse management system",
+                  "quote": "cycle counts in our warehouse management system (WMS)"
+                }
+              ]
+            },
+            {
+              "url": "https://larkmoor-fulfillment.example/careers/",
+              "type": "company_page",
+              "text": "Careers at Larkmoor. 14 open roles across our four fulfillment centers.",
+              "claims": [
+                {
+                  "field": "growth_signal",
+                  "value": "open roles listed on the careers page (14)",
+                  "quote": "14 open roles across our four fulfillment centers"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "funding-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://news-wire.example/2026/05/19/larkmoor-fulfillment-series-b",
+              "type": "search",
+              "text": "Larkmoor Fulfillment closes $28 million Series B to add two fulfillment centers. LOUISVILLE, May 19, 2026. Larkmoor Fulfillment (larkmoor-fulfillment.example) today announced a $28 million Series B.",
+              "claims": [
+                {
+                  "field": "funding_round",
+                  "stage": "Series B",
+                  "amount": "$28M",
+                  "date": "2026-05-19",
+                  "quote": "Larkmoor Fulfillment closes $28 million Series B to add two fulfillment centers. LOUISVILLE, May 19, 2026."
+                }
+              ]
+            },
+            {
+              "type": "search",
+              "unrelated_pages": 1
+            }
+          ]
+        },
+        {
+          "stage": "C",
+          "crawler": "leadership-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://larkmoor-fulfillment.example/about/leadership/",
+              "type": "company_page",
+              "text": "Leadership. Imelda Strand, Chief Executive Officer. Tobias Renwick, Chief Operating Officer. Anjali Desmond, Chief Technology Officer.",
+              "claims": [
+                {
+                  "field": "leader",
+                  "name": "Imelda Strand",
+                  "title": "Chief Executive Officer",
+                  "quote": "Imelda Strand, Chief Executive Officer"
+                },
+                {
+                  "field": "leader",
+                  "name": "Tobias Renwick",
+                  "title": "Chief Operating Officer",
+                  "quote": "Tobias Renwick, Chief Operating Officer"
+                },
+                {
+                  "field": "leader",
+                  "name": "Anjali Desmond",
+                  "title": "Chief Technology Officer",
+                  "quote": "Anjali Desmond, Chief Technology Officer"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pellham-warehousing.example": {
+      "company": "Pellham Warehousing",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://pellham-warehousing.example/",
+              "type": "direct",
+              "text": "Pellham Warehousing | Contract warehousing and distribution for food and beverage brands.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "contract warehousing and distribution for food and beverage brands",
+                  "quote": "Contract warehousing and distribution for food and beverage brands"
+                },
+                {
+                  "field": "industry",
+                  "value": "contract warehousing and distribution",
+                  "quote": "Contract warehousing and distribution for food and beverage brands"
+                }
+              ]
+            },
+            {
+              "url": "https://www.linkedin.com/company/pellham-warehousing/",
+              "type": "linkedin",
+              "text": "Pellham Warehousing. Warehousing. Headquarters: Allentown, Pennsylvania.",
+              "claims": [
+                {
+                  "field": "headquarters",
+                  "value": "Allentown, Pennsylvania",
+                  "country": "United States",
+                  "quote": "Headquarters: Allentown, Pennsylvania"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://company-data.example/pellham-warehousing",
+              "type": "search",
+              "text": "Pellham Warehousing (pellham-warehousing.example) was founded in 2004 and has an estimated 150 employees.",
+              "claims": [
+                {
+                  "field": "founded",
+                  "value": "2004",
+                  "quote": "was founded in 2004"
+                },
+                {
+                  "field": "employees",
+                  "value": "150",
+                  "quote": "an estimated 150 employees"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "tech-stack-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://pellham-warehousing.example/careers/order-selector-second-shift/",
+              "type": "company_page",
+              "text": "Order Selector, second shift. Pick cases to pick-to-light displays and load outbound trailers.",
+              "claims": [
+                {
+                  "field": "technology",
+                  "value": "pick-to-light",
+                  "quote": "Pick cases to pick-to-light displays"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "funding-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://pellham-warehousing.example/news/2026/07/08/bethlehem-distribution-center/",
+              "type": "company_page",
+              "text": "July 8, 2026. Pellham Warehousing opens a 220,000 square foot distribution center in Bethlehem, Pennsylvania.",
+              "claims": [
+                {
+                  "field": "growth_signal",
+                  "value": "opened a 220,000 sq ft distribution center in Bethlehem, Pennsylvania",
+                  "date": "2026-07-08",
+                  "quote": "Pellham Warehousing opens a 220,000 square foot distribution center"
+                }
+              ]
+            },
+            {
+              "url": "https://property-listings.example/warehouse-for-lease-pelham",
+              "type": "search",
+              "text": "Warehouse space for lease in Pelham, with dock doors and trailer parking.",
+              "claims": []
+            }
+          ]
+        }
+      ]
+    },
+    "vantorra-freight.example": {
+      "company": "Vantorra Freight",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://vantorra-freight.example/",
+              "type": "direct",
+              "text": "Vantorra Freight | Regional LTL freight and final-mile delivery across the Mountain West.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "regional LTL freight and final-mile delivery across the Mountain West",
+                  "quote": "Regional LTL freight and final-mile delivery across the Mountain West"
+                },
+                {
+                  "field": "industry",
+                  "value": "regional LTL freight carrier",
+                  "quote": "Regional LTL freight and final-mile delivery"
+                }
+              ]
+            },
+            {
+              "url": "https://vantorra-freight.example/about/",
+              "type": "company_page",
+              "text": "Vantorra Freight is based in Denver, Colorado. Our 2,600 drivers, dock workers and staff run 31 terminals. Founded in 1998.",
+              "claims": [
+                {
+                  "field": "headquarters",
+                  "value": "Denver, Colorado",
+                  "country": "United States",
+                  "quote": "based in Denver, Colorado"
+                },
+                {
+                  "field": "employees",
+                  "value": "2,600",
+                  "quote": "Our 2,600 drivers, dock workers and staff"
+                },
+                {
+                  "field": "founded",
+                  "value": "1998",
+                  "quote": "Founded in 1998"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://company-data.example/vantorra-freight",
+              "type": "search",
+              "text": "Vantorra Freight (vantorra-freight.example) has an estimated 1,900 employees.",
+              "claims": [
+                {
+                  "field": "employees",
+                  "value": "1,900",
+                  "quote": "an estimated 1,900 employees"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "tech-stack-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://stack-directory.example/vantorra-freight",
+              "type": "search",
+              "text": "Vantorra Freight (vantorra-freight.example) technologies: RF barcode scanning, route optimization software.",
+              "claims": [
+                {
+                  "field": "technology",
+                  "value": "RF barcode scanning",
+                  "quote": "RF barcode scanning"
+                },
+                {
+                  "field": "technology",
+                  "value": "route optimization software",
+                  "quote": "route optimization software"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "funding-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://freight-news.example/vantorra-freight-raises-210-million",
+              "type": "search",
+              "text": "Vantorra Freight raises $210 million. The new money brings Vantorra Freight's total funding to $210 million across four rounds.",
+              "claims": [
+                {
+                  "field": "funding_round",
+                  "stage": null,
+                  "amount": "$210M",
+                  "date": null,
+                  "quote": "Vantorra Freight raises $210 million"
+                }
+              ]
+            },
+            {
+              "url": "https://vantorra-freight.example/news/2026/09/15/salt-lake-city-cross-dock/",
+              "type": "company_page",
+              "text": "September 15, 2026. Vantorra Freight opens a cross-dock terminal in Salt Lake City.",
+              "claims": [
+                {
+                  "field": "growth_signal",
+                  "value": "opened a cross-dock terminal in Salt Lake City",
+                  "date": "2026-09-15",
+                  "quote": "Vantorra Freight opens a cross-dock terminal in Salt Lake City"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "thistlegate-distribution.example": {
+      "company": "Thistlegate Distribution",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://thistlegate-distribution.example/",
+              "type": "direct",
+              "text": "Thistlegate Distribution | Warehousing and distribution of industrial parts across Ontario.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "warehousing and distribution of industrial parts across Ontario",
+                  "quote": "Warehousing and distribution of industrial parts across Ontario"
+                },
+                {
+                  "field": "industry",
+                  "value": "warehousing and distribution of industrial parts",
+                  "quote": "Warehousing and distribution of industrial parts"
+                }
+              ]
+            },
+            {
+              "url": "https://thistlegate-distribution.example/about/",
+              "type": "company_page",
+              "text": "Just a moment...",
+              "claims": []
+            },
+            {
+              "url": "https://thistlegate-distribution.example/contact/",
+              "type": "company_page",
+              "text": "Contact us. Thistlegate Distribution is headquartered in Hamilton, Ontario.",
+              "claims": [
+                {
+                  "field": "headquarters",
+                  "value": "Hamilton, Ontario",
+                  "country": "Canada",
+                  "quote": "headquartered in Hamilton, Ontario"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "error",
+          "sources": [],
+          "note": "server error page; retried once"
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://business-directory.example/thistlegate-farm-supply",
+              "type": "search",
+              "text": "Thistlegate Farm Supply, a family farm store with 12 employees.",
+              "claims": [
+                {
+                  "field": "employees",
+                  "value": "12",
+                  "quote": "12 employees"
+                }
+              ]
+            }
+          ],
+          "note": "retry"
+        },
+        {
+          "stage": "B",
+          "crawler": "tech-stack-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://thistlegate-distribution.example/engineering/",
+              "type": "company_page",
+              "text": "404 Page not found",
+              "claims": []
+            },
+            {
+              "type": "search",
+              "unrelated_pages": 2
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "funding-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://thistlegate-distribution.example/about/",
+              "type": "company_page",
+              "text": "Just a moment...",
+              "claims": []
+            },
+            {
+              "type": "search",
+              "unrelated_pages": 3
+            }
+          ]
+        }
+      ]
+    },
+    "fennick-parcel.example": {
+      "company": "Fennick Parcel",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://fennick-parcel.example/",
+              "type": "direct",
+              "text": "Fennick Parcel | Same-day and next-day parcel delivery for retailers in the Pacific Northwest.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "same-day and next-day parcel delivery for retailers in the Pacific Northwest",
+                  "quote": "Same-day and next-day parcel delivery for retailers in the Pacific Northwest"
+                },
+                {
+                  "field": "industry",
+                  "value": "regional parcel carrier",
+                  "quote": "Same-day and next-day parcel delivery"
+                }
+              ]
+            },
+            {
+              "url": "https://www.linkedin.com/company/fennick-parcel/",
+              "type": "linkedin",
+              "text": "Fennick Parcel. Truck transportation. 1,001-5,000 employees. Headquarters: Boise, Idaho.",
+              "claims": [
+                {
+                  "field": "employees",
+                  "value": "1,001-5,000",
+                  "quote": "1,001-5,000 employees"
+                },
+                {
+                  "field": "headquarters",
+                  "value": "Boise, Idaho",
+                  "country": "United States",
+                  "quote": "Headquarters: Boise, Idaho"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://company-data.example/fennick-parcel",
+              "type": "search",
+              "text": "Fennick Parcel (fennick-parcel.example) was founded in 2015.",
+              "claims": [
+                {
+                  "field": "founded",
+                  "value": "2015",
+                  "quote": "was founded in 2015"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "tech-stack-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://fennick-parcel.example/careers/route-dispatcher/",
+              "type": "company_page",
+              "text": "Route Dispatcher. Plan daily routes in our route optimization software and support drivers on the driver mobile app.",
+              "claims": [
+                {
+                  "field": "technology",
+                  "value": "route optimization software",
+                  "quote": "our route optimization software"
+                },
+                {
+                  "field": "technology",
+                  "value": "driver mobile app",
+                  "quote": "the driver mobile app"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "B",
+          "crawler": "funding-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://news-wire.example/2025/02/03/fennick-parcel-series-a",
+              "type": "search",
+              "text": "Fennick Parcel raises $12 million Series A. BOISE, February 3, 2025. Fennick Parcel (fennick-parcel.example) will use the funds to add delivery routes.",
+              "claims": [
+                {
+                  "field": "funding_round",
+                  "stage": "Series A",
+                  "amount": "$12M",
+                  "date": "2025-02-03",
+                  "quote": "Fennick Parcel raises $12 million Series A. BOISE, February 3, 2025."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "maasbrug-logistics.example": {
+      "company": "Maasbrug Logistics",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://maasbrug-logistics.example/",
+              "type": "direct",
+              "text": "Maasbrug Logistics | Contract logistics and cross-border fulfillment from the port of Rotterdam.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "contract logistics and cross-border fulfillment from the port of Rotterdam",
+                  "quote": "Contract logistics and cross-border fulfillment from the port of Rotterdam"
+                },
+                {
+                  "field": "industry",
+                  "value": "contract logistics and cross-border fulfillment",
+                  "quote": "Contract logistics and cross-border fulfillment"
+                }
+              ]
+            },
+            {
+              "url": "https://maasbrug-logistics.example/about/",
+              "type": "company_page",
+              "text": "Maasbrug Logistics is headquartered in Rotterdam, the Netherlands.",
+              "claims": [
+                {
+                  "field": "headquarters",
+                  "value": "Rotterdam, the Netherlands",
+                  "country": "Netherlands",
+                  "quote": "headquartered in Rotterdam, the Netherlands"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://www.linkedin.com/company/maasbrug-logistics/",
+              "type": "linkedin",
+              "text": "Maasbrug Logistics. Transportation, logistics, supply chain and storage. 201-500 employees.",
+              "claims": [
+                {
+                  "field": "employees",
+                  "value": "201-500",
+                  "quote": "201-500 employees"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "oaklune-living.example": {
+      "company": "Oaklune Living",
+      "calls": [
+        {
+          "stage": "A",
+          "crawler": "profile-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://oaklune-living.example/",
+              "type": "direct",
+              "text": "Oaklune Living | Solid wood furniture and home decor, delivered to your door.",
+              "claims": [
+                {
+                  "field": "description",
+                  "value": "solid wood furniture and home decor sold online",
+                  "quote": "Solid wood furniture and home decor, delivered to your door"
+                },
+                {
+                  "field": "industry",
+                  "value": "furniture and home decor retail",
+                  "quote": "Solid wood furniture and home decor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "A",
+          "crawler": "metrics-crawler",
+          "status": "ok",
+          "sources": [
+            {
+              "url": "https://recipes.example/oat-lemon-cake",
+              "type": "search",
+              "text": "Lemon cake with an oat crumble, ready in an hour.",
+              "claims": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "mode_examples": {
+    "note": "Example data: an invented workforce scheduling software company and invented target accounts, not real businesses. Every number in expected_output.json follows from this input.",
+    "weekly_buying_signal_watch": {
+      "note": "Example data: an invented workforce scheduling software company and invented target accounts, not real businesses. Every number in expected_output.json follows from this input.",
+      "request": "Hey Claude, I just added the \"b2b-lead-enrichment\" skill. Here are our 8 target accounts, our open deals, last week's watch table and this week's website-visitor export. We sell workforce scheduling software for warehouses; the team we serve is warehouse operations. Run the weekly buying signal watch and include news.",
+      "seller": {
+        "business": "Example Shift Software, workforce scheduling software for warehouses and distribution centers (invented)",
+        "domain": "shift-software.example",
+        "team_served": "warehouse operations",
+        "team_words": [
+          "warehouse",
+          "operations",
+          "workforce",
+          "shift",
+          "scheduling",
+          "fulfillment"
+        ],
+        "buyer_titles": [
+          "VP Operations",
+          "Director of Warehouse Operations",
+          "Head of Fulfillment",
+          "COO"
+        ],
+        "problems_it_solves": [
+          "build shift schedules from forecast order volume",
+          "cut overtime by matching staff to demand per hour",
+          "let floor staff swap and pick up shifts on their phones",
+          "one schedule across several sites"
+        ]
+      },
+      "run_date": "2026-10-30",
+      "window": {
+        "start": "2026-10-23",
+        "end": "2026-10-29"
+      },
+      "first_run_window": {
+        "start": "2026-07-25",
+        "end": "2026-10-22"
+      },
+      "accounts": [
+        {
+          "company": "Northwind Logistics",
+          "domain": "northwind-logistics.example",
+          "linkedin_page": "linkedin.com/company/1000001",
+          "fit": {
+            "icp_score": 85
+          }
+        },
+        {
+          "company": "Bluefield Freight",
+          "domain": "bluefield-freight.example",
+          "linkedin_page": "linkedin.com/company/1000002",
+          "fit": {
+            "tier": "B"
+          }
+        },
+        {
+          "company": "Harbor Cold Storage",
+          "domain": "harbor-cold.example",
+          "linkedin_page": "linkedin.com/company/1000003",
+          "fit": {
+            "tier": "A"
+          },
+          "app_store_id": 6400000001,
+          "google_play_id": "example.harborcold.driver"
+        },
+        {
+          "company": "Summit Parcel",
+          "domain": "summit-parcel.example",
+          "linkedin_page": null,
+          "fit": {
+            "icp_score": 72
+          }
+        },
+        {
+          "company": "Redwood Fulfillment",
+          "domain": "redwood-fulfillment.example",
+          "linkedin_page": "linkedin.com/company/1000005",
+          "fit": {
+            "tier": "C"
+          }
+        },
+        {
+          "company": "Lakeshore Distribution",
+          "domain": "lakeshore-dist.example",
+          "linkedin_page": "linkedin.com/company/1000006",
+          "fit": {
+            "tier": "B"
+          }
+        },
+        {
+          "company": "Granite 3PL",
+          "domain": "granite-3pl.example",
+          "linkedin_page": "linkedin.com/company/1000007",
+          "fit": {
+            "tier": "A"
+          }
+        },
+        {
+          "company": "Pinecrest Supply",
+          "domain": "pinecrest-supply.example",
+          "linkedin_page": null,
+          "fit": {},
+          "added_this_week": true
+        }
+      ],
+      "open_deals": [
+        "lakeshore-dist.example"
+      ],
+      "news_opt_in": true,
+      "last_week_table": {
+        "run_date": "2026-10-23",
+        "short_list": [
+          "Granite 3PL",
+          "Bluefield Freight",
+          "Northwind Logistics"
+        ],
+        "signals": [
+          {
+            "account": "granite-3pl.example",
+            "type": "funding",
+            "date": "2026-08-05",
+            "date_kind": "published",
+            "source": "https://news-wire.example/2026/08/05/granite-3pl-raises-growth-round",
+            "evidence": "Granite 3PL raises growth round",
+            "first_seen": "2026-08-07"
+          },
+          {
+            "account": "granite-3pl.example",
+            "type": "new_page",
+            "date": "2026-07-28",
+            "date_kind": "first seen",
+            "source": "https://granite-3pl.example/locations/reno/",
+            "evidence": "new page /locations/reno/ linked from the homepage"
+          },
+          {
+            "account": "bluefield-freight.example",
+            "type": "hiring",
+            "date": "2026-09-24",
+            "date_kind": "first seen",
+            "source": "https://jobs.ats-board.example/bluefield-freight",
+            "evidence": "job board went from 0 to 4 job links, roles not named in the links",
+            "points": 10
+          },
+          {
+            "account": "northwind-logistics.example",
+            "type": "new_page",
+            "date": "2026-10-16",
+            "date_kind": "first seen",
+            "source": "https://northwind-logistics.example/solutions/peak-season/",
+            "evidence": "new page /solutions/peak-season/ linked from the homepage"
+          },
+          {
+            "account": "redwood-fulfillment.example",
+            "type": "news",
+            "date": "2026-09-10",
+            "date_kind": "published",
+            "source": "https://trade-weekly.example/2026/09/10/redwood-fulfillment-opens-dock-expansion",
+            "evidence": "Redwood Fulfillment opens dock expansion",
+            "first_seen": "2026-09-11"
+          }
+        ],
+        "state": {
+          "northwind-logistics.example": {
+            "google_ads": 2,
+            "linkedin_ads": 0,
+            "team_job_links": 1,
+            "home_paths": [
+              "/",
+              "/pricing/",
+              "/solutions/peak-season/",
+              "/about/",
+              "/careers/",
+              "/news/"
+            ]
+          },
+          "bluefield-freight.example": {
+            "google_ads": 6,
+            "linkedin_ads": 3,
+            "team_job_links": 4,
+            "home_paths": [
+              "/",
+              "/services/",
+              "/about/",
+              "/careers/"
+            ]
+          },
+          "harbor-cold.example": {
+            "google_ads": 0,
+            "linkedin_ads": 0,
+            "team_job_links": 0,
+            "app_version": "3.4.0",
+            "play_version": "3.4.0",
+            "home_paths": [
+              "/",
+              "/facilities/",
+              "/about/",
+              "/news/"
+            ]
+          },
+          "summit-parcel.example": {
+            "google_ads": 4,
+            "linkedin_ads": 0,
+            "team_job_links": 0,
+            "home_paths": [
+              "/",
+              "/shipping/",
+              "/about/",
+              "/careers/"
+            ]
+          },
+          "redwood-fulfillment.example": {
+            "google_ads": 0,
+            "linkedin_ads": 0,
+            "team_job_links": 2,
+            "home_paths": [
+              "/",
+              "/services/",
+              "/about/",
+              "/careers/"
+            ]
+          },
+          "granite-3pl.example": {
+            "google_ads": 9,
+            "linkedin_ads": 2,
+            "team_job_links": 3,
+            "home_paths": [
+              "/",
+              "/locations/reno/",
+              "/about/",
+              "/careers/"
+            ]
+          }
+        }
+      },
+      "reads_this_week": {
+        "northwind-logistics.example": {
+          "google_ads": {
+            "count": 14,
+            "full_page": false
+          },
+          "linkedin_ads": {
+            "count": 0,
+            "last_page": true
+          },
+          "home_paths": [
+            "/",
+            "/pricing/",
+            "/solutions/peak-season/",
+            "/solutions/cold-chain/",
+            "/locations/columbus-east/",
+            "/about/",
+            "/careers/",
+            "/news/"
+          ],
+          "careers_page": "https://jobs.ats-board.example/northwind-logistics",
+          "job_paths": [
+            "/northwind-logistics/jobs/warehouse-operations-manager-columbus",
+            "/northwind-logistics/jobs/shift-supervisor-night",
+            "/northwind-logistics/jobs/workforce-planning-analyst",
+            "/northwind-logistics/jobs/warehouse-operations-lead",
+            "/northwind-logistics/jobs/accounts-payable-specialist"
+          ],
+          "news_posts": [
+            "/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/",
+            "/news/2026/09/02/northwind-earns-safety-award/"
+          ]
+        },
+        "bluefield-freight.example": {
+          "google_ads": {
+            "count": 7,
+            "full_page": false
+          },
+          "linkedin_ads": {
+            "count": 3,
+            "last_page": true
+          },
+          "home_paths": [
+            "/",
+            "/services/",
+            "/about/",
+            "/careers/"
+          ],
+          "careers_page": "https://jobs.ats-board.example/bluefield-freight",
+          "job_paths": [
+            "/bluefield-freight/jobs/48213",
+            "/bluefield-freight/jobs/48214",
+            "/bluefield-freight/jobs/48220",
+            "/bluefield-freight/jobs/48231"
+          ],
+          "news_posts": []
+        },
+        "harbor-cold.example": {
+          "google_ads": {
+            "count": 0,
+            "full_page": false
+          },
+          "linkedin_ads": {
+            "count": 0,
+            "last_page": true
+          },
+          "home_paths": [
+            "/",
+            "/facilities/",
+            "/about/",
+            "/news/"
+          ],
+          "careers_page": null,
+          "job_paths": [],
+          "news_posts": [
+            "/news/2026/06/30/harbor-cold-summer-update/"
+          ],
+          "app_store": {
+            "version": "4.0.0",
+            "updated": "2026-10-27",
+            "release_notes": "New: drivers can now book a dock slot from the app and see live door assignments. Bug fixes."
+          },
+          "google_play": {
+            "version": "4.0.0",
+            "updated": "2026-10-27",
+            "recent_changes": "New dock slot booking and live door assignments."
+          }
+        },
+        "summit-parcel.example": {
+          "google_ads": {
+            "count": 40,
+            "full_page": true
+          },
+          "linkedin_ads": {
+            "count": 0,
+            "last_page": true
+          },
+          "home_paths": [],
+          "home_read": false,
+          "careers_page": null,
+          "job_paths": [],
+          "news_posts": []
+        },
+        "redwood-fulfillment.example": {
+          "google_ads": {
+            "count": 0,
+            "full_page": false
+          },
+          "linkedin_ads": {
+            "count": 0,
+            "last_page": true
+          },
+          "home_paths": [
+            "/",
+            "/services/",
+            "/about/",
+            "/careers/"
+          ],
+          "careers_page": "https://redwood-fulfillment.example/careers/",
+          "job_paths": [
+            "/careers/warehouse-associate",
+            "/careers/fulfillment-shift-lead"
+          ],
+          "news_posts": []
+        },
+        "granite-3pl.example": {
+          "google_ads": {
+            "count": 8,
+            "full_page": false
+          },
+          "linkedin_ads": {
+            "count": 2,
+            "last_page": true
+          },
+          "home_paths": [
+            "/",
+            "/locations/reno/",
+            "/about/",
+            "/careers/"
+          ],
+          "careers_page": "https://granite-3pl.example/careers/",
+          "job_paths": [
+            "/careers/warehouse-operations-supervisor",
+            "/careers/shift-lead",
+            "/careers/fulfillment-coordinator"
+          ],
+          "news_posts": []
+        },
+        "pinecrest-supply.example": {
+          "google_ads": {
+            "count": 5,
+            "full_page": false,
+            "prior_90": 0
+          },
+          "linkedin_ads": {
+            "count": 2,
+            "last_page": true,
+            "prior_90": 0
+          },
+          "home_paths": [
+            "/",
+            "/products/",
+            "/about/",
+            "/contact/"
+          ],
+          "careers_page": null,
+          "job_paths": [],
+          "news_posts": []
+        },
+        "lakeshore-dist.example": null
+      },
+      "news_results": [
+        {
+          "domain": "northwind-logistics.example",
+          "date": "2026-10-21",
+          "title": "Northwind Logistics names new VP of Warehouse Operations",
+          "url": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations",
+          "names_company": true
+        },
+        {
+          "domain": "summit-parcel.example",
+          "date": "2026-10-14",
+          "title": "Summit Parcel closes Series C to expand regional sort centers",
+          "url": "https://news-wire.example/2026/10/14/summit-parcel-series-c",
+          "names_company": true
+        },
+        {
+          "domain": "summit-parcel.example",
+          "date": "2026-10-12",
+          "title": "Summit Ridge ski resort opens early",
+          "url": "https://ski-news.example/2026/10/12/summit-ridge-opens",
+          "names_company": false
+        },
+        {
+          "domain": "redwood-fulfillment.example",
+          "date": "2026-09-10",
+          "title": "Redwood Fulfillment opens dock expansion",
+          "url": "https://trade-weekly.example/2026/09/10/redwood-fulfillment-opens-dock-expansion",
+          "names_company": true
+        },
+        {
+          "domain": "granite-3pl.example",
+          "date": "2026-08-05",
+          "title": "Granite 3PL raises growth round",
+          "url": "https://news-wire.example/2026/08/05/granite-3pl-raises-growth-round",
+          "names_company": true
+        }
+      ],
+      "linkedin_member_company_rows": [
+        {
+          "pivotValues": [
+            "urn:li:organization:1000002"
+          ],
+          "impressions": 212,
+          "clicks": 3,
+          "totalEngagements": 5
+        },
+        {
+          "pivotValues": [
+            "urn:li:organization:1000003"
+          ],
+          "impressions": 96,
+          "clicks": 0,
+          "totalEngagements": 0
+        },
+        {
+          "pivotValues": [
+            "urn:li:organization:1000006"
+          ],
+          "impressions": 150,
+          "clicks": 4,
+          "totalEngagements": 6
+        },
+        {
+          "pivotValues": [
+            "urn:li:organization:2999999"
+          ],
+          "impressions": 88,
+          "clicks": 2,
+          "totalEngagements": 2
+        }
+      ],
+      "visitor_export": [
+        {
+          "domain": "bluefield-freight.example",
+          "date": "2026-10-28",
+          "page": "/pricing/"
+        },
+        {
+          "domain": "bluefield-freight.example",
+          "date": "2026-10-28",
+          "page": "/blog/overtime-costs/"
+        },
+        {
+          "domain": "harbor-cold.example",
+          "date": "2026-10-09",
+          "page": "/blog/cold-storage-staffing/"
+        },
+        {
+          "domain": "lakeshore-dist.example",
+          "date": "2026-10-27",
+          "page": "/pricing/"
+        }
+      ]
+    },
+    "pre_call_account_brief": {
+      "note": "Example data: an invented workforce scheduling software company and invented target accounts, not real businesses. Every number in expected_output.json follows from this input.",
+      "request": "Hey Claude, I just added the \"b2b-lead-enrichment\" skill. I have a first call with northwind-logistics.example on 2026-11-05 with their VP of Warehouse Operations and Director of Workforce Planning. We sell workforce scheduling software. Build me the pre-call brief.",
+      "seller": {
+        "business": "Example Shift Software, workforce scheduling software for warehouses and distribution centers (invented)",
+        "domain": "shift-software.example",
+        "team_served": "warehouse operations",
+        "team_words": [
+          "warehouse",
+          "operations",
+          "workforce",
+          "shift",
+          "scheduling",
+          "fulfillment"
+        ],
+        "buyer_titles": [
+          "VP Operations",
+          "Director of Warehouse Operations",
+          "Head of Fulfillment",
+          "COO"
+        ],
+        "problems_it_solves": [
+          "build shift schedules from forecast order volume",
+          "cut overtime by matching staff to demand per hour",
+          "let floor staff swap and pick up shifts on their phones",
+          "one schedule across several sites"
+        ]
+      },
+      "run_date": "2026-10-30",
+      "read_results": {
+        "company": "Northwind Logistics",
+        "domain": "northwind-logistics.example",
+        "meeting": {
+          "date": "2026-11-05",
+          "attendees": [
+            "VP of Warehouse Operations",
+            "Director of Workforce Planning"
+          ],
+          "notes": "Came in from a webinar on peak-season staffing; asked about multi-site schedules."
+        },
+        "profile": {
+          "value": "Third-party logistics: warehousing, pick and pack and returns for consumer brands",
+          "source": "https://northwind-logistics.example/",
+          "kind": "own site",
+          "date": "2026-10-30"
+        },
+        "metrics": {
+          "employees": "501-1,000",
+          "source": "https://www.linkedin.com/company/1000001",
+          "kind": "LinkedIn",
+          "date": "2026-10-30",
+          "sites": 6,
+          "sites_source": "https://northwind-logistics.example/locations/",
+          "sites_date": "2026-10-30"
+        },
+        "headquarters": {
+          "value": "Columbus, Ohio",
+          "source": "https://northwind-logistics.example/about/",
+          "kind": "own site",
+          "date": "2026-10-30"
+        },
+        "funding": {
+          "value": "Series B, USD 40 million",
+          "date": "2025-03-12",
+          "source": "https://news-wire.example/2025/03/12/northwind-logistics-series-b",
+          "kind": "third-party"
+        },
+        "news": [
+          {
+            "date": "2026-10-21",
+            "title": "Northwind Logistics names new VP of Warehouse Operations",
+            "url": "https://supply-chain-daily.example/2026/10/21/northwind-names-vp-warehouse-operations"
+          },
+          {
+            "date": "2026-10-30",
+            "title": "New location page: Columbus East",
+            "url": "https://northwind-logistics.example/locations/columbus-east/",
+            "first_seen": true
+          },
+          {
+            "date": "2026-09-02",
+            "title": "Northwind earns warehouse safety award",
+            "url": "https://northwind-logistics.example/news/2026/09/02/northwind-earns-safety-award/"
+          },
+          {
+            "date": "2025-11-18",
+            "title": "Northwind opens a fifth site in Indianapolis",
+            "url": "https://trade-weekly.example/2025/11/18/northwind-indianapolis"
+          }
+        ],
+        "ads_30_days": {
+          "google": {
+            "count": 31,
+            "formats": {
+              "text": 24,
+              "image": 7
+            },
+            "offer": "Peak-season capacity, book a warehouse tour",
+            "landing_page": "https://northwind-logistics.example/solutions/peak-season/"
+          },
+          "linkedin": {
+            "count": 4,
+            "offer": "Hiring: warehouse operations roles in Columbus",
+            "landing_page": "https://jobs.ats-board.example/northwind-logistics"
+          }
+        },
+        "search": {
+          "keywords": 1240,
+          "pos_1_3": 35,
+          "pos_4_10": 160,
+          "etv": 5400,
+          "source": "DataForSEO Labs domain rank overview, United States, English"
+        },
+        "mobile_speed": {
+          "url": "https://northwind-logistics.example/",
+          "lcp_s": 3.4,
+          "cls": 0.02,
+          "tbt_ms": 420,
+          "source": "PageSpeed Insights, mobile"
+        },
+        "apps": [],
+        "app_reads": "apple-store search (term \"Northwind Logistics\") and google-play search (query \"Northwind Logistics\"): no app from this company in either result",
+        "leaders": [
+          {
+            "name": "Dana Whitfield",
+            "title": "Chief Executive Officer",
+            "source": "https://northwind-logistics.example/about/leadership/",
+            "date": "2026-10-30",
+            "date_kind": "read on"
+          },
+          {
+            "name": "Marcus Lee",
+            "title": "VP of Warehouse Operations",
+            "source": "https://northwind-logistics.example/news/2026/10/20/northwind-appoints-vp-of-warehouse-operations/",
+            "date": "2026-10-20",
+            "date_kind": "published"
+          },
+          {
+            "name": "Priya Nair",
+            "title": "Chief Financial Officer",
+            "source": "https://northwind-logistics.example/about/leadership/",
+            "date": "2026-10-30",
+            "date_kind": "read on"
+          }
+        ],
+        "not_found": [
+          "revenue",
+          "the scheduling or workforce tool in use today",
+          "overtime or labour cost figures"
+        ],
+        "calls": {
+          "enrichment": 4,
+          "dataforseo": 2,
+          "crawler": 1,
+          "ads-libraries": 2,
+          "pagespeed": 1,
+          "apple-store": 1,
+          "google-play": 1
+        }
+      }
+    }
+  }
+}

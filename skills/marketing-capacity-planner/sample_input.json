@@ -1,0 +1,595 @@
+{
+  "note": "Example data: an invented marketing agency with four invented clients, not a real business. People are role codes, not names. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"marketing-capacity-planner\" skill. Here is our October timesheet and our retainers. Which clients are we losing money on, who is overloaded, and can we deliver the November backlog? Our target margin is 35%.",
+  "agency": "Example Harborview Marketing",
+  "currency": "USD",
+  "review_period": {
+    "start": "2026-10-01",
+    "end": "2026-10-31",
+    "public_holidays": []
+  },
+  "plan_period": {
+    "start": "2026-11-01",
+    "end": "2026-11-30",
+    "public_holidays": [
+      "2026-11-26",
+      "2026-11-27"
+    ]
+  },
+  "target_margin": 0.35,
+  "team": [
+    {
+      "person": "AD1",
+      "role": "Account director (also runs sales)",
+      "skills": [
+        "account management",
+        "client meetings"
+      ],
+      "hours_per_week": 40,
+      "loaded_cost_per_hour": 95,
+      "billable_target_band": [
+        20,
+        35
+      ],
+      "days_off": {
+        "review": 0,
+        "plan": 0
+      }
+    },
+    {
+      "person": "PM1",
+      "role": "Paid media lead",
+      "skills": [
+        "paid media",
+        "reporting"
+      ],
+      "hours_per_week": 40,
+      "loaded_cost_per_hour": 62,
+      "billable_target_band": [
+        70,
+        80
+      ],
+      "days_off": {
+        "review": 4,
+        "plan": 0
+      }
+    },
+    {
+      "person": "PM2",
+      "role": "Paid media specialist",
+      "skills": [
+        "paid media"
+      ],
+      "hours_per_week": 40,
+      "loaded_cost_per_hour": 44,
+      "billable_target_band": [
+        70,
+        80
+      ],
+      "days_off": {
+        "review": 1,
+        "plan": 0
+      }
+    },
+    {
+      "person": "SM1",
+      "role": "Social media and content manager",
+      "skills": [
+        "social",
+        "content",
+        "reporting"
+      ],
+      "hours_per_week": 40,
+      "loaded_cost_per_hour": 40,
+      "billable_target_band": [
+        70,
+        80
+      ],
+      "days_off": {
+        "review": 0,
+        "plan": 1
+      }
+    }
+  ],
+  "retainers": [
+    {
+      "client": "Example Dental Group",
+      "monthly_fee": 6000,
+      "hours_sold": 80,
+      "tools_per_month": 180,
+      "scope": [
+        "paid media management",
+        "ad refresh",
+        "reporting",
+        "client meetings",
+        "account management"
+      ],
+      "unused_hours": "expire"
+    },
+    {
+      "client": "Example Outdoor Gear",
+      "monthly_fee": 11000,
+      "hours_sold": 140,
+      "tools_per_month": 320,
+      "scope": [
+        "paid media management",
+        "ad refresh",
+        "social posts",
+        "reporting",
+        "client meetings",
+        "account management"
+      ],
+      "unused_hours": "expire"
+    },
+    {
+      "client": "Example Legal Software",
+      "monthly_fee": 7500,
+      "hours_sold": 90,
+      "tools_per_month": 150,
+      "scope": [
+        "paid media management",
+        "ad refresh",
+        "content",
+        "reporting",
+        "client meetings",
+        "account management"
+      ],
+      "unused_hours": "expire"
+    },
+    {
+      "client": "Example Coffee Roasters",
+      "monthly_fee": 3200,
+      "hours_sold": 45,
+      "tools_per_month": 90,
+      "scope": [
+        "social posts",
+        "community management",
+        "reporting",
+        "client meetings",
+        "account management"
+      ],
+      "unused_hours": "expire"
+    }
+  ],
+  "category_mapping_confirmed": true,
+  "data_pulled": {
+    "account_size": {
+      "Example Dental Group": {
+        "google_ads": {
+          "active_campaigns": 18,
+          "active_ads": 124
+        },
+        "meta_ads": {
+          "active_campaigns": 6,
+          "active_ads": 36
+        },
+        "reports": 1,
+        "meetings": 2
+      },
+      "Example Outdoor Gear": {
+        "google_ads": {
+          "active_campaigns": 14,
+          "active_ads": 112
+        },
+        "meta_ads": {
+          "active_campaigns": 8,
+          "active_ads": 68
+        },
+        "facebook_page_posts": 20,
+        "instagram_posts": 20,
+        "reports": 1,
+        "meetings": 2
+      },
+      "Example Legal Software": {
+        "google_ads": {
+          "active_campaigns": 9,
+          "active_ads": 54
+        },
+        "content_published": 4,
+        "reports": 1,
+        "meetings": 4
+      },
+      "Example Coffee Roasters": {
+        "facebook_page_posts": 15,
+        "instagram_posts": 15,
+        "reports": 1,
+        "meetings": 1
+      }
+    },
+    "account_size_source": "Google Ads gaql (campaign and ad_group_ad rows with impressions above 0), Meta get_insights_adaccount at ad level, Facebook Pages get_posts and Instagram get_media for 2026-10-01 to 2026-10-31; reports, meetings and content pieces from the user",
+    "timesheet_rollup": [
+      {
+        "person": "PM1",
+        "client": "Example Dental Group",
+        "category": "paid media management",
+        "hours": 30,
+        "billable": true,
+        "unplanned_hours": 4
+      },
+      {
+        "person": "PM2",
+        "client": "Example Dental Group",
+        "category": "paid media management",
+        "hours": 40,
+        "billable": true,
+        "unplanned_hours": 6
+      },
+      {
+        "person": "PM2",
+        "client": "Example Dental Group",
+        "category": "ad refresh",
+        "hours": 23,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Dental Group",
+        "category": "reporting",
+        "hours": 4.5,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Dental Group",
+        "category": "client meetings",
+        "hours": 3,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Dental Group",
+        "category": "account management",
+        "hours": 6,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Outdoor Gear",
+        "category": "paid media management",
+        "hours": 40,
+        "billable": true,
+        "unplanned_hours": 6
+      },
+      {
+        "person": "PM2",
+        "client": "Example Outdoor Gear",
+        "category": "paid media management",
+        "hours": 24,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Outdoor Gear",
+        "category": "ad refresh",
+        "hours": 11,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM2",
+        "client": "Example Outdoor Gear",
+        "category": "ad refresh",
+        "hours": 16,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Example Outdoor Gear",
+        "category": "social posts",
+        "hours": 41,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Outdoor Gear",
+        "category": "reporting",
+        "hours": 4,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Outdoor Gear",
+        "category": "client meetings",
+        "hours": 3,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Outdoor Gear",
+        "category": "account management",
+        "hours": 8,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Legal Software",
+        "category": "paid media management",
+        "hours": 28,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM2",
+        "client": "Example Legal Software",
+        "category": "ad refresh",
+        "hours": 8,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Example Legal Software",
+        "category": "content",
+        "hours": 30,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Example Legal Software",
+        "category": "landing pages",
+        "hours": 6,
+        "billable": true,
+        "unplanned_hours": 6
+      },
+      {
+        "person": "SM1",
+        "client": "Example Legal Software",
+        "category": "landing pages",
+        "hours": 8,
+        "billable": true,
+        "unplanned_hours": 8
+      },
+      {
+        "person": "PM1",
+        "client": "Example Legal Software",
+        "category": "reporting",
+        "hours": 4,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Legal Software",
+        "category": "client meetings",
+        "hours": 6,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Legal Software",
+        "category": "account management",
+        "hours": 6,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Example Coffee Roasters",
+        "category": "social posts",
+        "hours": 24,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Example Coffee Roasters",
+        "category": "community management",
+        "hours": 3,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Example Coffee Roasters",
+        "category": "reporting",
+        "hours": 2.5,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Coffee Roasters",
+        "category": "client meetings",
+        "hours": 1,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Example Coffee Roasters",
+        "category": "account management",
+        "hours": 3,
+        "billable": true,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Internal",
+        "category": "sales",
+        "hours": 60,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Internal",
+        "category": "management",
+        "hours": 30,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "AD1",
+        "client": "Internal",
+        "category": "team meetings",
+        "hours": 8,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Internal",
+        "category": "team meetings",
+        "hours": 8,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM1",
+        "client": "Internal",
+        "category": "admin",
+        "hours": 6,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM2",
+        "client": "Internal",
+        "category": "team meetings",
+        "hours": 8,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM2",
+        "client": "Internal",
+        "category": "admin",
+        "hours": 4,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "PM2",
+        "client": "Internal",
+        "category": "training",
+        "hours": 6,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Internal",
+        "category": "team meetings",
+        "hours": 8,
+        "billable": false,
+        "unplanned_hours": 0.0
+      },
+      {
+        "person": "SM1",
+        "client": "Internal",
+        "category": "admin",
+        "hours": 6,
+        "billable": false,
+        "unplanned_hours": 0.0
+      }
+    ],
+    "completed_tasks_with_estimates": [
+      {
+        "task": "Fall sale campaign build",
+        "client": "Example Outdoor Gear",
+        "estimate_hours": 10,
+        "actual_hours": 13
+      },
+      {
+        "task": "New service campaign",
+        "client": "Example Dental Group",
+        "estimate_hours": 8,
+        "actual_hours": 9
+      },
+      {
+        "task": "Two comparison articles",
+        "client": "Example Legal Software",
+        "estimate_hours": 12,
+        "actual_hours": 15
+      },
+      {
+        "task": "Demo request landing page",
+        "client": "Example Legal Software",
+        "estimate_hours": 6,
+        "actual_hours": 8
+      },
+      {
+        "task": "Holiday content calendar",
+        "client": "Example Coffee Roasters",
+        "estimate_hours": 4,
+        "actual_hours": 4
+      },
+      {
+        "task": "Meta account audit",
+        "client": "Example Outdoor Gear",
+        "estimate_hours": 6,
+        "actual_hours": 7.5
+      }
+    ]
+  },
+  "backlog_plan_period": [
+    {
+      "task": "Black Friday and Cyber Monday campaigns",
+      "client": "Example Outdoor Gear",
+      "skill": "paid media",
+      "category": "paid media management",
+      "estimate_hours": 8,
+      "due": "2026-11-20",
+      "priority": 1
+    },
+    {
+      "task": "Gift guide social series",
+      "client": "Example Coffee Roasters",
+      "skill": "social",
+      "category": "social posts",
+      "estimate_hours": 6,
+      "due": "2026-11-16",
+      "priority": 1
+    },
+    {
+      "task": "Second clinic location campaigns",
+      "client": "Example Dental Group",
+      "skill": "paid media",
+      "category": "paid media management",
+      "estimate_hours": 8,
+      "due": "2026-11-23",
+      "priority": 2
+    },
+    {
+      "task": "Two extra product articles",
+      "client": "Example Legal Software",
+      "skill": "content",
+      "category": "content",
+      "estimate_hours": 10,
+      "due": "2026-11-27",
+      "priority": 2
+    },
+    {
+      "task": "Q1 search account restructure plan",
+      "client": "Example Outdoor Gear",
+      "skill": "paid media",
+      "category": "paid media management",
+      "estimate_hours": 6,
+      "due": "2026-11-30",
+      "priority": 3
+    },
+    {
+      "task": "Webinar landing page",
+      "client": "Example Legal Software",
+      "skill": "content",
+      "category": "landing pages",
+      "estimate_hours": 6,
+      "due": "2026-11-30",
+      "priority": 3,
+      "change_order": "sent, not signed"
+    }
+  ],
+  "planned_account_size": "same as the review month (the user expects no change)"
+}

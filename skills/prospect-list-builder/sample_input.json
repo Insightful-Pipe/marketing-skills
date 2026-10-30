@@ -1,0 +1,588 @@
+{
+  "note": "Example data: an invented online booking software company building a prospect list of invented clinics, not real businesses. Every clinic, page, domain and ad id is made up, and every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"prospect-list-builder\" skill. We sell online booking, reminders and payments to small clinics. Build me a list of 8 independent physical therapy and chiropractic clinics near downtown Denver, with the ones paying for new patients first. Leave out our customers, open deals and the do-not-contact list I uploaded, and anything owned by Velmont Health.",
+  "seller": {
+    "company": "Example Booking Software",
+    "sells": "online booking, reminders and payments for salons, clinics, studios and personal trainers"
+  },
+  "icp": {
+    "company_type": "independent physical therapy clinics and chiropractors",
+    "area": "within 15 km of downtown Denver, CO (39.7392, -104.9903)",
+    "size": "1 to 3 locations",
+    "must_haves": [
+      "M1: Google category is Physical therapy clinic or Chiropractor",
+      "M2: within 15 km of downtown Denver",
+      "M3: at least 10 Google reviews",
+      "M4: has its own website"
+    ],
+    "signal": "an active Meta ad that started in the last 90 days",
+    "count": 8,
+    "max_locations": 3
+  },
+  "pull_date": "2026-10-28",
+  "calls": [
+    {
+      "platform": "dataforseo",
+      "action": "business_listings_search",
+      "body": {
+        "categories": [
+          "Physical therapy clinic",
+          "Chiropractor",
+          "Massage therapist"
+        ],
+        "location_coordinate": "39.7392,-104.9903,20000",
+        "limit": 100
+      },
+      "note": "searched about a third wider than the 15 km must-have; Massage therapist added because some spine clinics list under it"
+    },
+    {
+      "platform": "ads-libraries",
+      "action": "facebook_search_ads",
+      "body": {
+        "query": "physical therapy Denver",
+        "country": "US",
+        "status": "ACTIVE",
+        "trim": true
+      }
+    },
+    {
+      "platform": "ads-libraries",
+      "action": "facebook_search_ads",
+      "body": {
+        "query": "chiropractic Denver",
+        "country": "US",
+        "status": "ACTIVE",
+        "trim": true
+      }
+    }
+  ],
+  "data_pulled": {
+    "business_listings_search": [
+      {
+        "title": "Quillfern Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.quillfernpt.example/",
+        "domain": "www.quillfernpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7606,
+        "longitude": -104.967,
+        "rating": {
+          "value": 4.8,
+          "votes_count": 142
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Tamsett Chiropractic",
+        "category": "Chiropractor",
+        "url": "https://www.tamsettchiro.example/",
+        "domain": "www.tamsettchiro.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7022,
+        "longitude": -104.933,
+        "rating": {
+          "value": 4.6,
+          "votes_count": 88
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Orrin Creek Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.orrincreekpt.example/",
+        "domain": "www.orrincreekpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.709,
+        "longitude": -105.098,
+        "rating": {
+          "value": 4.9,
+          "votes_count": 61
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Brisebrook Sports Rehab",
+        "category": "Physical therapy clinic",
+        "url": "https://www.brisebrookrehab.example/",
+        "domain": "www.brisebrookrehab.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7895,
+        "longitude": -105.1038,
+        "rating": {
+          "value": 4.7,
+          "votes_count": 203
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Wendever Chiropractic",
+        "category": "Chiropractor",
+        "url": "https://www.wendeverchiro.example/",
+        "domain": "www.wendeverchiro.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7038,
+        "longitude": -104.9984,
+        "rating": {
+          "value": 4.5,
+          "votes_count": 37
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Pellstone Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.pellstonept.example/",
+        "domain": "www.pellstonept.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7608,
+        "longitude": -104.8302,
+        "rating": {
+          "value": 4.4,
+          "votes_count": 19
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Kestrow Chiropractic and Wellness",
+        "category": "Chiropractor",
+        "url": "https://www.kestrowchiro.example/",
+        "domain": "www.kestrowchiro.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.8074,
+        "longitude": -104.9746,
+        "rating": {
+          "value": 5.0,
+          "votes_count": 12
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Ambergate Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.ambergatept.example/",
+        "domain": "www.ambergatept.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.724,
+        "longitude": -105.0068,
+        "rating": {
+          "value": 4.3,
+          "votes_count": 54
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Thistlemoor Chiropractic",
+        "category": "Chiropractor",
+        "url": "https://www.thistlemoorchiro.example/",
+        "domain": "www.thistlemoorchiro.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.782,
+        "longitude": -105.0225,
+        "rating": {
+          "value": 4.9,
+          "votes_count": 7
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Copperhollow Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.copperhollowpt.example/",
+        "domain": "www.copperhollowpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.582,
+        "longitude": -104.9161,
+        "rating": {
+          "value": 4.6,
+          "votes_count": 45
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Grisdale Chiropractic",
+        "category": "Chiropractor",
+        "url": null,
+        "domain": null,
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7518,
+        "longitude": -105.0836,
+        "rating": {
+          "value": 4.8,
+          "votes_count": 33
+        },
+        "is_claimed": false
+      },
+      {
+        "title": "Fennick Spine Studio",
+        "category": "Massage therapist",
+        "url": "https://www.fennickspine.example/",
+        "domain": "www.fennickspine.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7284,
+        "longitude": -104.9108,
+        "rating": {
+          "value": 4.2,
+          "votes_count": 4
+        },
+        "is_claimed": false
+      },
+      {
+        "title": "Quorvane Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": null,
+        "domain": null,
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.8406,
+        "longitude": -104.9422,
+        "rating": {
+          "value": 4.0,
+          "votes_count": 6
+        },
+        "is_claimed": false
+      },
+      {
+        "title": "Marlowe Peak Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.marlowepeakpt.example/",
+        "domain": "www.marlowepeakpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7617,
+        "longitude": -104.9396,
+        "rating": {
+          "value": 4.7,
+          "votes_count": 96
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Ridgeloft Chiropractic, LLC",
+        "category": "Chiropractor",
+        "url": "https://www.ridgeloftchiropractic.example/",
+        "domain": "www.ridgeloftchiropractic.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7392,
+        "longitude": -105.0324,
+        "rating": {
+          "value": 4.8,
+          "votes_count": 74
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Sablewood Physical Therapy",
+        "category": "Physical therapy clinic",
+        "url": "https://www.sablewoodpt.example/",
+        "domain": "www.sablewoodpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.6648,
+        "longitude": -105.0255,
+        "rating": {
+          "value": 4.5,
+          "votes_count": 48
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Brindle Row Physical Therapy Highlands",
+        "category": "Physical therapy clinic",
+        "url": "https://www.brindlerowhighlands.example/",
+        "domain": "www.brindlerowhighlands.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7646,
+        "longitude": -105.0297,
+        "rating": {
+          "value": 4.7,
+          "votes_count": 71
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Halvery Chiropractic",
+        "category": "Chiropractor",
+        "url": "https://www.halverychiro.example/",
+        "domain": "www.halverychiro.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.6682,
+        "longitude": -104.9129,
+        "rating": {
+          "value": 4.6,
+          "votes_count": 29
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Velmont Health Physical Therapy Lowry",
+        "category": "Physical therapy clinic",
+        "url": "https://www.velmonthealth.example/",
+        "domain": "www.velmonthealth.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.732,
+        "longitude": -104.8843,
+        "rating": {
+          "value": 4.1,
+          "votes_count": 166
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Stridemoor PT Capitol Hill",
+        "category": "Physical therapy clinic",
+        "url": "https://www.stridemoorpt.example/",
+        "domain": "www.stridemoorpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7343,
+        "longitude": -104.9727,
+        "rating": {
+          "value": 4.4,
+          "votes_count": 58
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Stridemoor PT Washington Park",
+        "category": "Physical therapy clinic",
+        "url": "https://www.stridemoorpt.example/",
+        "domain": "www.stridemoorpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.6953,
+        "longitude": -104.9853,
+        "rating": {
+          "value": 4.5,
+          "votes_count": 63
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Stridemoor PT Central Park",
+        "category": "Physical therapy clinic",
+        "url": "https://www.stridemoorpt.example/",
+        "domain": "www.stridemoorpt.example",
+        "address_info": {
+          "city": "Denver",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7756,
+        "longitude": -104.8885,
+        "rating": {
+          "value": 4.3,
+          "votes_count": 41
+        },
+        "is_claimed": true
+      },
+      {
+        "title": "Stridemoor PT Lakewood",
+        "category": "Physical therapy clinic",
+        "url": "https://www.stridemoorpt.example/",
+        "domain": "www.stridemoorpt.example",
+        "address_info": {
+          "city": "Lakewood",
+          "region": "CO",
+          "country_code": "US"
+        },
+        "latitude": 39.7103,
+        "longitude": -105.1303,
+        "rating": {
+          "value": 4.4,
+          "votes_count": 38
+        },
+        "is_claimed": true
+      }
+    ],
+    "facebook_search_ads": [
+      {
+        "ad_archive_id": "200000000000101",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000101",
+        "page_name": "Quillfern Physical Therapy",
+        "link_url": "https://quillfernpt.example/new-patients",
+        "start_date": 1791298800,
+        "body_text": "Back pain slowing you down? Book a physical therapy evaluation in Denver this week."
+      },
+      {
+        "ad_archive_id": "200000000000102",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000102",
+        "page_name": "Tamsett Chiropractic",
+        "link_url": "https://www.tamsettchiro.example/first-visit",
+        "start_date": 1789484400,
+        "body_text": "New patient chiropractic exam, Denver. Same-week appointments."
+      },
+      {
+        "ad_archive_id": "200000000000103",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000103",
+        "page_name": "Orrin Creek Physical Therapy",
+        "link_url": "https://orrincreekpt.example/",
+        "start_date": 1779289200,
+        "body_text": "Sports injury? Our Denver physical therapy team gets you back on the trail."
+      },
+      {
+        "ad_archive_id": "200000000000104",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000104",
+        "page_name": "Harrowgate Spine and Sport",
+        "link_url": "https://harrowgatespine.example/offer",
+        "start_date": 1791817200,
+        "body_text": "Denver chiropractic and physical therapy for runners. First visit offer."
+      },
+      {
+        "ad_archive_id": "200000000000105",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000105",
+        "page_name": "Denver Pain Relief Finder",
+        "link_url": "https://painmatch-leads.example/co",
+        "start_date": 1790866800,
+        "body_text": "Find a physical therapy clinic near you in Denver. Compare and book."
+      },
+      {
+        "ad_archive_id": "200000000000106",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000106",
+        "page_name": "Back Pain Help Colorado",
+        "link_url": "https://painmatch-leads.example/denver",
+        "start_date": 1791039600,
+        "body_text": "Matched with a top Denver physical therapy provider in 60 seconds."
+      },
+      {
+        "ad_archive_id": "200000000000107",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000107",
+        "page_name": "Personal profile (name withheld)",
+        "link_url": "https://www.facebook.com/marketplace/item/300000000000107/",
+        "start_date": 1792508400,
+        "body_text": "Selling a used massage table, great for physical therapy at home. Denver pickup."
+      },
+      {
+        "ad_archive_id": "200000000000108",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000108",
+        "page_name": "Plushbarrow Mattress Outlet",
+        "link_url": "https://plushbarrow.example/sale",
+        "start_date": 1791558000,
+        "body_text": "Wake up without back pain. Denver showroom sale ends Sunday."
+      },
+      {
+        "ad_archive_id": "200000000000109",
+        "ad_link_url": "https://www.facebook.com/ads/library/?id=200000000000109",
+        "page_name": "Stridemoor PT",
+        "link_url": "https://stridemoorpt.example/locations",
+        "start_date": 1788361200,
+        "body_text": "Four Denver physical therapy locations. Book online."
+      }
+    ]
+  },
+  "uploaded_lists": {
+    "customers": [
+      {
+        "company": "Marlowe Peak PT",
+        "website": "https://www.MarlowePeakPT.example/contact"
+      },
+      {
+        "company": "Ridgeloft Chiropractic",
+        "website": ""
+      },
+      {
+        "company": "Junipera Pilates Studio",
+        "website": "junipera.example"
+      }
+    ],
+    "open_deals": [
+      {
+        "company": "Sablewood Physical Therapy",
+        "domain": "sablewoodpt.example",
+        "stage": "Demo booked"
+      },
+      {
+        "company": "Brindle Row Physical Therapy",
+        "domain": "brindlerow.example",
+        "stage": "Proposal sent"
+      }
+    ],
+    "do_not_contact": [
+      {
+        "company": "Halvery Chiropractic",
+        "reason": "asked not to be contacted"
+      }
+    ],
+    "excluded_owners": [
+      "Velmont Health"
+    ]
+  }
+}

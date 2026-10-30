@@ -1,0 +1,903 @@
+{
+  "header": {
+    "business_type": "B2B (default preset)",
+    "ga4_property": "Example Booking Software (123456789)",
+    "search_console_site": "https://www.example.com/",
+    "linkedin_ad_account": "Example Booking Software (500000001)",
+    "google_ads_account": "Example Booking Software (1234567890)",
+    "window": "2026-07-30 to 2026-10-27",
+    "history_range": "2025-09-28 to 2026-10-27 (13 months; the property was created on 2022-03-14)",
+    "search_console_through": "2026-10-24",
+    "paid_dates": "the window",
+    "time_zone": "America/New_York",
+    "currency": "USD",
+    "target_cost_per_lead": "$60.00 (yours)",
+    "grade": 73,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "Lead tracking",
+      "result": "pass",
+      "deduction": 0,
+      "key_number": "1,282 lead events in the window; 87.0% of Google clicks reach GA4",
+      "why": "Lead events fire, GA4 sees the search traffic and leads complete on the tracked host; generate_lead still isn't a key event."
+    },
+    {
+      "area": "Lead sources",
+      "result": "pass",
+      "deduction": 0,
+      "key_number": "1.8% Unassigned, 21.6% Direct; top channel 43.1% of lead sessions",
+      "why": "Source labels are clean and leads come from several channels."
+    },
+    {
+      "area": "Search demand",
+      "result": "warn",
+      "deduction": -5,
+      "key_number": "41.5% non-brand clicks; 10.7% of intent impressions in the top 3",
+      "why": "Non-brand search brings plenty of clicks, but buying-intent searches rarely reach the top 3: 226 of them sit at positions 4-20 with 100+ impressions."
+    },
+    {
+      "area": "Lead pages and forms",
+      "result": "warn",
+      "deduction": -5,
+      "key_number": "/pricing/ contact-sales form: 16.8% of starts sent",
+      "why": "The demo and sign-up forms complete well; the contact-sales form on /pricing/ loses 849 of 1,020 people who start it."
+    },
+    {
+      "area": "Paid lead cost",
+      "result": "fail",
+      "deduction": -12,
+      "key_number": "LinkedIn $132.48 per lead (2.21x target); Google Ads $45.71",
+      "why": "Google Ads leads cost less than the $60.00 target; LinkedIn's cost more than twice it."
+    },
+    {
+      "area": "Audience fit",
+      "result": "warn",
+      "deduction": -5,
+      "key_number": "50.2% of LinkedIn clicks from buyer seniorities; 78.5% from 1 to 50 staff",
+      "why": "LinkedIn reaches the right size of business, but half the clicks come from staff who don't buy."
+    },
+    {
+      "area": "Lead quality and follow-up",
+      "result": "pass",
+      "deduction": 0,
+      "key_number": "33.3% of CRM leads qualified; median first response 35 minutes",
+      "why": "Leads qualify and get a fast answer; LinkedIn Ads leads qualify least (14.5%)."
+    }
+  ],
+  "grade_math": "100 - 12 (Paid lead cost fail) - 5 (Search demand warn) - 5 (Lead pages and forms warn) - 5 (Audience fit warn) = 73",
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "Cut LinkedIn's cost per lead: exclude the entry, senior, training and unpaid seniorities, and move budget to the campaigns and seniorities that bring qualified leads",
+      "at_stake": "$8,611.13 of LinkedIn spend for 65 leads at $132.48 each, against a $60.00 target",
+      "evidence": "get_analytics 2026-07-30 to 2026-10-27: Lead Gen Form | Salon and spa owners | US $4,180.55, 34 leads, $122.96; Website demo | Clinics | US and CA $3,042.18, 19 leads, $160.11; Retargeting | Site visitors 90 days $1,388.40, 12 leads, $115.70. get_demographic_analytics: 50.2% of clicks from buyer seniorities; non-buyer rows took $3,423.80 (48.0% of the spend in the rows). Your CRM: 9 of 62 LinkedIn leads qualified (14.5%).",
+      "who": "do this in Campaign Manager (linkedin-lead-gen-optimizer and linkedin-ads-auditor, if installed)"
+    },
+    {
+      "rank": 2,
+      "fix": "Push the buying-intent searches that are within reach into the top 3",
+      "at_stake": "172,600 impressions on 226 intent queries at positions 4-20, which earned 2,495 clicks",
+      "evidence": "Search Console query rows 2026-07-30 to 2026-10-24; biggest: \"salon booking software\" 21,000 impressions at 6.8; \"booking software for small business\" 18,500 impressions at 7.9; \"online booking system\" 16,200 impressions at 11.4",
+      "who": "do this on your website: improve the pages that rank for them (striking-distance-optimizer, if installed)"
+    },
+    {
+      "rank": 3,
+      "fix": "Shorten the contact-sales form on /pricing/ and test that it submits",
+      "at_stake": "849 of 1,020 people who started it over the history range left without sending; /pricing/ was the landing page for 6,100 sessions in the window",
+      "evidence": "form_start and form_submit by page: /pricing/ 16.8% against /demo/ 44.7% and /signup/ 62.6%",
+      "who": "do this on your website (form-cro, if installed)"
+    },
+    {
+      "rank": 4,
+      "fix": "Mark generate_lead as a key event, counted once per session",
+      "at_stake": "58 contact-sales leads in the window that GA4 doesn't count as conversions",
+      "evidence": "list_key_events: sign_up, demo_request, signup_qa_test and subscription_started; generate_lead fired but isn't among them",
+      "who": "I can do this now (payload below, after your yes)"
+    },
+    {
+      "rank": 5,
+      "fix": "Switch sign_up to count once per session",
+      "at_stake": "25 repeat sign_up events in the window (1,010 events in 985 sessions) counted as extra conversions",
+      "evidence": "list_key_events: sign_up counts ONCE_PER_EVENT; event report for the window",
+      "who": "I can do this now (payload below, after your yes)"
+    }
+  ],
+  "areas": {
+    "lead_tracking": {
+      "result": "pass",
+      "checks": [
+        {
+          "check": "Lead events defined",
+          "result": "pass",
+          "detail": "2 of your lead events are key events: sign_up, demo_request. generate_lead fired 58 times in the window (the contact-sales form on /pricing/) but is not a key event, so GA4 doesn't count it as a conversion: that's a fix this skill can run (below). Set aside as a test event: signup_qa_test. Other key events, not leads: subscription_started."
+        },
+        {
+          "check": "Lead events fire",
+          "result": "pass",
+          "detail": "1,282 lead events in the window: sign_up 1,010, demo_request 214, generate_lead 58."
+        },
+        {
+          "check": "GA4 sees your search traffic",
+          "result": "pass",
+          "detail": "GA4 recorded 22,450 Google organic sessions against 25,800 Search Console clicks from 2026-07-30 to 2026-10-24: 87.0%. Above 80%, so no daily break search was needed."
+        },
+        {
+          "check": "Form sends recorded",
+          "result": "pass",
+          "detail": "All 5 pages with form starts over the history range also record form_submit. formInteractionsEnabled is true."
+        },
+        {
+          "check": "Lead completes on a tracked host",
+          "result": "pass",
+          "detail": "Both LinkedIn conversion rules watch pages on www.example.com (/demo/thanks/ and /signup/welcome/), the host that carries the live site's sessions."
+        },
+        {
+          "check": "Stray hosts",
+          "result": "pass",
+          "detail": "250 of 61,800 sessions (0.4%) came from hosts other than the live site: staging.example.com (210), localhost (40). Under 1%."
+        },
+        {
+          "check": "Calls measured",
+          "result": "not graded",
+          "detail": "B2B preset: calls are not leads unless the user says so."
+        }
+      ],
+      "lead_events": [
+        {
+          "event": "sign_up",
+          "events_in_window": 1010,
+          "sessions_in_window": 985,
+          "key_event": true
+        },
+        {
+          "event": "demo_request",
+          "events_in_window": 214,
+          "sessions_in_window": 214,
+          "key_event": true
+        },
+        {
+          "event": "generate_lead",
+          "events_in_window": 58,
+          "sessions_in_window": 57,
+          "key_event": false
+        }
+      ],
+      "form_starts_by_page": [
+        {
+          "page": "/signup/",
+          "form_start": 11820,
+          "form_submit": 7400,
+          "start_sessions": 10920
+        },
+        {
+          "page": "/demo/",
+          "form_start": 2150,
+          "form_submit": 960,
+          "start_sessions": 2030
+        },
+        {
+          "page": "/pricing/",
+          "form_start": 1020,
+          "form_submit": 171,
+          "start_sessions": 940
+        },
+        {
+          "page": "/blog/reduce-no-shows/",
+          "form_start": 640,
+          "form_submit": 407,
+          "start_sessions": 610
+        },
+        {
+          "page": "/templates/cancellation-policy/",
+          "form_start": 380,
+          "form_submit": 251,
+          "start_sessions": 371
+        }
+      ]
+    },
+    "lead_sources": {
+      "result": "pass",
+      "checks": [
+        {
+          "check": "Unassigned",
+          "result": "pass",
+          "detail": "1,100 of 61,800 sessions (1.8%) have no channel; under 5%."
+        },
+        {
+          "check": "Direct",
+          "result": "pass",
+          "detail": "13,360 sessions (21.6%), engagement rate 48.7% against 60.7% for the rest of the site; under 35%."
+        },
+        {
+          "check": "One channel carries everything",
+          "result": "pass",
+          "detail": "Organic Search brings 520 of 1,207 lead sessions (43.1%); under 70%."
+        },
+        {
+          "check": "Traffic without leads",
+          "result": "information",
+          "detail": "Channels with 100+ sessions and no lead session: none."
+        }
+      ],
+      "channels": [
+        {
+          "channel": "Organic Search",
+          "sessions": 26400,
+          "share_pct": 42.7,
+          "engagement_rate_pct": 61.4,
+          "lead_sessions": 520,
+          "lead_rate_pct": 1.97
+        },
+        {
+          "channel": "Direct",
+          "sessions": 13360,
+          "share_pct": 21.6,
+          "engagement_rate_pct": 48.7,
+          "lead_sessions": 160,
+          "lead_rate_pct": 1.2
+        },
+        {
+          "channel": "Paid Search",
+          "sessions": 9450,
+          "share_pct": 15.3,
+          "engagement_rate_pct": 63.1,
+          "lead_sessions": 395,
+          "lead_rate_pct": 4.18
+        },
+        {
+          "channel": "Referral",
+          "sessions": 4300,
+          "share_pct": 7.0,
+          "engagement_rate_pct": 64.9,
+          "lead_sessions": 30,
+          "lead_rate_pct": 0.7
+        },
+        {
+          "channel": "Email",
+          "sessions": 3800,
+          "share_pct": 6.1,
+          "engagement_rate_pct": 69.7,
+          "lead_sessions": 62,
+          "lead_rate_pct": 1.63
+        },
+        {
+          "channel": "Organic Social",
+          "sessions": 2160,
+          "share_pct": 3.5,
+          "engagement_rate_pct": 45.8,
+          "lead_sessions": 9,
+          "lead_rate_pct": 0.42
+        },
+        {
+          "channel": "Paid Social",
+          "sessions": 1230,
+          "share_pct": 2.0,
+          "engagement_rate_pct": 49.6,
+          "lead_sessions": 28,
+          "lead_rate_pct": 2.28
+        },
+        {
+          "channel": "Unassigned",
+          "sessions": 1100,
+          "share_pct": 1.8,
+          "engagement_rate_pct": 20.0,
+          "lead_sessions": 3,
+          "lead_rate_pct": 0.27
+        }
+      ],
+      "lead_sessions_total": 1207
+    },
+    "search_demand": {
+      "result": "warn",
+      "checks": [
+        {
+          "check": "Non-brand share",
+          "result": "pass",
+          "detail": "8,607 of 20,747 query-row clicks (41.5%) are non-brand; 12,140 are brand searches."
+        },
+        {
+          "check": "Intent captured",
+          "result": "warn",
+          "detail": "1,397 intent queries earned 228,200 impressions and 4,105 clicks; queries at position 3 or better hold 24,400 of those impressions (10.7%), under the 25% line."
+        },
+        {
+          "check": "Within reach",
+          "result": "information",
+          "detail": "226 intent queries sit at positions 4-20 with 100+ impressions: 172,600 impressions and 2,495 clicks. Top 10 below."
+        }
+      ],
+      "property_clicks": 25800,
+      "property_impressions": 694000,
+      "query_rows": 3600,
+      "query_row_clicks": 20747,
+      "brand_clicks": 12140,
+      "non_brand_clicks": 8607,
+      "intent_queries": 1397,
+      "intent_impressions": 228200,
+      "intent_clicks": 4105,
+      "intent_impressions_top_3": 24400,
+      "within_reach_top_10": [
+        {
+          "query": "salon booking software",
+          "impressions": 21000,
+          "clicks": 310,
+          "position": 6.8
+        },
+        {
+          "query": "booking software for small business",
+          "impressions": 18500,
+          "clicks": 240,
+          "position": 7.9
+        },
+        {
+          "query": "online booking system",
+          "impressions": 16200,
+          "clicks": 120,
+          "position": 11.4
+        },
+        {
+          "query": "appointment scheduling software",
+          "impressions": 14800,
+          "clicks": 150,
+          "position": 9.2
+        },
+        {
+          "query": "clinic appointment software",
+          "impressions": 9400,
+          "clicks": 210,
+          "position": 5.6
+        },
+        {
+          "query": "fitness class booking app",
+          "impressions": 8700,
+          "clicks": 180,
+          "position": 6.1
+        },
+        {
+          "query": "best scheduling app for salons",
+          "impressions": 6900,
+          "clicks": 260,
+          "position": 4.4
+        },
+        {
+          "query": "appointment reminder software",
+          "impressions": 6100,
+          "clicks": 140,
+          "position": 8.3
+        },
+        {
+          "query": "booking app for personal trainers",
+          "impressions": 3900,
+          "clicks": 95,
+          "position": 12.7
+        },
+        {
+          "query": "booking software pricing",
+          "impressions": 2400,
+          "clicks": 60,
+          "position": 9.8
+        }
+      ]
+    },
+    "lead_pages_and_forms": {
+      "result": "warn",
+      "checks": [
+        {
+          "check": "Pages with traffic and no leads",
+          "result": "pass",
+          "detail": "2 landing pages with 100+ sessions had no lead session: /blog/appointment-reminder-templates/ 5,200 sessions; /templates/cancellation-policy/ 3,100 sessions. Together 8,300 sessions (13.4%), under the 30% line."
+        },
+        {
+          "check": "Lead rate on the main lead pages",
+          "result": "information",
+          "detail": "/pricing/ 240 lead sessions of 6,100 (3.9%); /features/online-booking/ 120 lead sessions of 3,900 (3.1%); /demo/ 64 lead sessions of 1,900 (3.4%)."
+        },
+        {
+          "check": "Form completion",
+          "result": "warn",
+          "detail": "Over the history range: /signup/ 7,400 of 11,820 starts sent (62.6%); /demo/ 960 of 2,150 starts sent (44.7%); /pricing/ 171 of 1,020 starts sent (16.8%); /blog/reduce-no-shows/ 407 of 640 starts sent (63.6%); /templates/cancellation-policy/ 251 of 380 starts sent (66.1%). The contact-sales form on /pricing/ is under 30%."
+        },
+        {
+          "check": "(not set) and empty landing pages",
+          "result": "information",
+          "detail": "620 of 61,800 sessions (1.0%) started with no landing page; under 5%."
+        }
+      ],
+      "form_completion": [
+        {
+          "page": "/signup/",
+          "form_start": 11820,
+          "form_submit": 7400,
+          "completion_pct": 62.6,
+          "result": "pass"
+        },
+        {
+          "page": "/demo/",
+          "form_start": 2150,
+          "form_submit": 960,
+          "completion_pct": 44.7,
+          "result": "pass"
+        },
+        {
+          "page": "/pricing/",
+          "form_start": 1020,
+          "form_submit": 171,
+          "completion_pct": 16.8,
+          "result": "warn"
+        },
+        {
+          "page": "/blog/reduce-no-shows/",
+          "form_start": 640,
+          "form_submit": 407,
+          "completion_pct": 63.6,
+          "result": "pass"
+        },
+        {
+          "page": "/templates/cancellation-policy/",
+          "form_start": 380,
+          "form_submit": 251,
+          "completion_pct": 66.1,
+          "result": "pass"
+        }
+      ],
+      "main_lead_pages": [
+        {
+          "page": "/pricing/",
+          "sessions": 6100,
+          "engaged_sessions": 4300,
+          "lead_sessions": 240,
+          "lead_rate_pct": 3.9
+        },
+        {
+          "page": "/features/online-booking/",
+          "sessions": 3900,
+          "engaged_sessions": 2500,
+          "lead_sessions": 120,
+          "lead_rate_pct": 3.1
+        },
+        {
+          "page": "/demo/",
+          "sessions": 1900,
+          "engaged_sessions": 1250,
+          "lead_sessions": 64,
+          "lead_rate_pct": 3.4
+        }
+      ]
+    },
+    "paid_lead_cost": {
+      "result": "fail",
+      "checks": [
+        {
+          "check": "Spend without leads",
+          "result": "pass",
+          "detail": "Both platforms recorded leads: LinkedIn 65, Google Ads 431. LinkedIn's website campaigns count on \"Demo request thank-you\" (https://www.example.com/demo/thanks/) and \"Trial sign-up complete\" (https://www.example.com/signup/welcome/)."
+        },
+        {
+          "check": "Cost per lead",
+          "result": "fail",
+          "detail": "LinkedIn: $8,611.13 for 65 leads, $132.48 each, 2.21x your $60.00 target (fail: above 2x). Google Ads: $19,701.55 for 431 conversions, $45.71 each, 0.76x target (pass)."
+        },
+        {
+          "check": "Ad clicks tagged",
+          "result": "pass",
+          "detail": "GA4 files LinkedIn visits as linkedin / paid_social with campaign names (2 campaigns) and Google Ads visits as google / cpc with campaign names (auto-tagging)."
+        },
+        {
+          "check": "Clicks reach the site",
+          "result": "pass",
+          "detail": "LinkedIn: 1,230 GA4 sessions against 1,420 landing-page clicks (86.6%; the lead gen form campaign keeps people on LinkedIn, so it has none). Google Ads: 9,450 GA4 sessions against 10,220 clicks (92.5%)."
+        }
+      ],
+      "linkedin_by_campaign": [
+        {
+          "campaign": "Lead Gen Form | Salon and spa owners | US",
+          "objective": "LEAD_GENERATION",
+          "status": "ACTIVE",
+          "spend_usd": 4180.55,
+          "impressions": 268000,
+          "clicks": 1520,
+          "landing_page_clicks": 0,
+          "lead_form_opens": 640,
+          "leads": 34,
+          "cost_per_lead": 122.96
+        },
+        {
+          "campaign": "Website demo | Clinics | US and CA",
+          "objective": "WEBSITE_CONVERSION",
+          "status": "ACTIVE",
+          "spend_usd": 3042.18,
+          "impressions": 154000,
+          "clicks": 1060,
+          "landing_page_clicks": 980,
+          "lead_form_opens": 0,
+          "leads": 19,
+          "cost_per_lead": 160.11
+        },
+        {
+          "campaign": "Retargeting | Site visitors 90 days",
+          "objective": "WEBSITE_CONVERSION",
+          "status": "ACTIVE",
+          "spend_usd": 1388.4,
+          "impressions": 61000,
+          "clicks": 470,
+          "landing_page_clicks": 440,
+          "lead_form_opens": 0,
+          "leads": 12,
+          "cost_per_lead": 115.7
+        }
+      ],
+      "linkedin_totals": {
+        "impressions": 483000,
+        "clicks": 3050,
+        "landing_page_clicks": 1420,
+        "lead_form_opens": 640,
+        "leads": 65,
+        "spend_usd": 8611.13,
+        "cost_per_lead": 132.48,
+        "ga4_sessions": 1230,
+        "ga4_engaged_sessions": 610
+      },
+      "google_ads_by_campaign": [
+        {
+          "campaign": "Brand",
+          "type": "SEARCH",
+          "cost_usd": 1850.4,
+          "clicks": 2350,
+          "impressions": 5900,
+          "conversions": 148.0,
+          "cost_per_lead": 12.5
+        },
+        {
+          "campaign": "Non-brand | Salon software",
+          "type": "SEARCH",
+          "cost_usd": 7420.1,
+          "clicks": 3100,
+          "impressions": 61000,
+          "conversions": 121.0,
+          "cost_per_lead": 61.32
+        },
+        {
+          "campaign": "Non-brand | Clinic scheduling",
+          "type": "SEARCH",
+          "cost_usd": 5260.75,
+          "clicks": 2050,
+          "impressions": 44000,
+          "conversions": 84.0,
+          "cost_per_lead": 62.63
+        },
+        {
+          "campaign": "Non-brand | Fitness booking",
+          "type": "SEARCH",
+          "cost_usd": 2980.3,
+          "clicks": 1240,
+          "impressions": 29000,
+          "conversions": 41.0,
+          "cost_per_lead": 72.69
+        },
+        {
+          "campaign": "Performance Max | Trial",
+          "type": "PERFORMANCE_MAX",
+          "cost_usd": 2190.0,
+          "clicks": 1480,
+          "impressions": 98000,
+          "conversions": 37.0,
+          "cost_per_lead": 59.19
+        }
+      ],
+      "google_ads_totals": {
+        "cost_usd": 19701.55,
+        "clicks": 10220,
+        "impressions": 237900,
+        "conversions": 431.0,
+        "cost_per_lead": 45.71,
+        "ga4_sessions": 9450
+      }
+    },
+    "audience_fit": {
+      "result": "warn",
+      "checks": [
+        {
+          "check": "Buyer seniority",
+          "result": "warn",
+          "detail": "1,285 of 2,560 clicks in the seniority rows (50.2%) came from manager, director, VP, CXO, partner or owner (the default buyer seniorities), under the 60% line. senior 610, entry 540, training 95, unpaid 30 clicks took $3,423.80 (48.0% of the spend in these rows). Rows are approximate, so they're compared with each other, not with the campaign totals."
+        },
+        {
+          "check": "Company size",
+          "result": "pass",
+          "detail": "2,010 of 2,560 clicks (78.5%) came from businesses of 1 to 50 staff (SIZE_1, SIZE_2_TO_10, SIZE_11_TO_50), the sizes you named."
+        }
+      ],
+      "seniority": [
+        {
+          "seniority": "owner",
+          "clicks": 640,
+          "impressions": 71000,
+          "spend_usd": 1690.2,
+          "buyer": true
+        },
+        {
+          "seniority": "senior",
+          "clicks": 610,
+          "impressions": 98000,
+          "spend_usd": 1710.55,
+          "buyer": false
+        },
+        {
+          "seniority": "entry",
+          "clicks": 540,
+          "impressions": 92000,
+          "spend_usd": 1402.1,
+          "buyer": false
+        },
+        {
+          "seniority": "manager",
+          "clicks": 420,
+          "impressions": 64000,
+          "spend_usd": 1180.9,
+          "buyer": true
+        },
+        {
+          "seniority": "director",
+          "clicks": 110,
+          "impressions": 21000,
+          "spend_usd": 402.3,
+          "buyer": true
+        },
+        {
+          "seniority": "training",
+          "clicks": 95,
+          "impressions": 18000,
+          "spend_usd": 240.75,
+          "buyer": false
+        },
+        {
+          "seniority": "CXO",
+          "clicks": 70,
+          "impressions": 12000,
+          "spend_usd": 260.1,
+          "buyer": true
+        },
+        {
+          "seniority": "unpaid",
+          "clicks": 30,
+          "impressions": 7000,
+          "spend_usd": 70.4,
+          "buyer": false
+        },
+        {
+          "seniority": "VP",
+          "clicks": 25,
+          "impressions": 6000,
+          "spend_usd": 98.0,
+          "buyer": true
+        },
+        {
+          "seniority": "partner",
+          "clicks": 20,
+          "impressions": 3500,
+          "spend_usd": 71.25,
+          "buyer": true
+        }
+      ],
+      "company_size": [
+        {
+          "company_size": "SIZE_2_TO_10",
+          "clicks": 980,
+          "impressions": 171000,
+          "buyer": true
+        },
+        {
+          "company_size": "SIZE_11_TO_50",
+          "clicks": 720,
+          "impressions": 132000,
+          "buyer": true
+        },
+        {
+          "company_size": "SIZE_1",
+          "clicks": 310,
+          "impressions": 61000,
+          "buyer": true
+        },
+        {
+          "company_size": "SIZE_51_TO_200",
+          "clicks": 260,
+          "impressions": 50000,
+          "buyer": false
+        },
+        {
+          "company_size": "SIZE_201_TO_500",
+          "clicks": 120,
+          "impressions": 23000,
+          "buyer": false
+        },
+        {
+          "company_size": "SIZE_501_TO_1000",
+          "clicks": 60,
+          "impressions": 14000,
+          "buyer": false
+        },
+        {
+          "company_size": "SIZE_1001_TO_5000",
+          "clicks": 55,
+          "impressions": 15000,
+          "buyer": false
+        },
+        {
+          "company_size": "SIZE_10001_OR_MORE",
+          "clicks": 35,
+          "impressions": 9000,
+          "buyer": false
+        },
+        {
+          "company_size": "SIZE_5001_TO_10000",
+          "clicks": 20,
+          "impressions": 5000,
+          "buyer": false
+        }
+      ]
+    },
+    "lead_quality_and_follow_up": {
+      "result": "pass",
+      "checks": [
+        {
+          "check": "Qualified share",
+          "result": "pass",
+          "detail": "Your CRM: 380 of 1,140 leads qualified (33.3%). Lowest: LinkedIn Ads, 9 of 62 (14.5%), against Google Ads 36.6%, Organic search 34.9%, Other 29.8%."
+        },
+        {
+          "check": "Pipeline measured",
+          "result": "information",
+          "detail": "No pipeline event (qualify_lead, close_convert_lead and the rest) has fired over the history range, so quality comes only from the CRM, and LinkedIn and Google Ads bid on raw sign-ups and form fills."
+        },
+        {
+          "check": "Speed to first response",
+          "result": "pass",
+          "detail": "Your CRM: median 35 minutes; under 1 hour."
+        },
+        {
+          "check": "Calls answered",
+          "result": "not graded",
+          "detail": "B2B preset; no CallRail account connected."
+        }
+      ],
+      "crm_by_source": [
+        {
+          "source": "Google Ads",
+          "leads": 410,
+          "qualified": 150,
+          "qualified_pct": 36.6
+        },
+        {
+          "source": "Organic search",
+          "leads": 430,
+          "qualified": 150,
+          "qualified_pct": 34.9
+        },
+        {
+          "source": "LinkedIn Ads",
+          "leads": 62,
+          "qualified": 9,
+          "qualified_pct": 14.5
+        },
+        {
+          "source": "Other",
+          "leads": 238,
+          "qualified": 71,
+          "qualified_pct": 29.8
+        }
+      ]
+    }
+  },
+  "everything_else": [
+    {
+      "area": "Lead tracking",
+      "finding": "The test event signup_qa_test is still a key event (it fired 6 times over the history range). Consider removing it in GA4 yourself; this skill never removes a key event."
+    },
+    {
+      "area": "Lead tracking",
+      "finding": "Besides the live web stream, \"Staging\" (https://staging.example.com) is a test stream. staging.example.com sent 210 sessions and localhost 40; small now, but filter them out before they grow."
+    },
+    {
+      "area": "Lead sources",
+      "finding": "Channel table: Organic Search 26,400 (42.7%, 61.4% engaged, 520 lead sessions); Direct 13,360 (21.6%, 48.7% engaged, 160 lead sessions); Paid Search 9,450 (15.3%, 63.1% engaged, 395 lead sessions); Referral 4,300 (7.0%, 64.9% engaged, 30 lead sessions); Email 3,800 (6.1%, 69.7% engaged, 62 lead sessions); Organic Social 2,160 (3.5%, 45.8% engaged, 9 lead sessions); Paid Social 1,230 (2.0%, 49.6% engaged, 28 lead sessions); Unassigned 1,100 (1.8%, 20.0% engaged, 3 lead sessions)."
+    },
+    {
+      "area": "Search demand",
+      "finding": "Query rows show 20,747 of the property's 25,800 clicks (80.4%); the rest are hidden rare searches."
+    },
+    {
+      "area": "Lead pages and forms",
+      "finding": "Pages with 100+ sessions and no lead: /blog/appointment-reminder-templates/ (5,200 sessions); /templates/cancellation-policy/ (3,100 sessions). Both are templates people come for; offer a next step that fits, such as a free trial with that template built in."
+    },
+    {
+      "area": "Paid lead cost",
+      "finding": "Google Ads by campaign: Brand $1,850.40, 148 conversions, $12.50; Non-brand | Salon software $7,420.10, 121 conversions, $61.32; Non-brand | Clinic scheduling $5,260.75, 84 conversions, $62.63; Non-brand | Fitness booking $2,980.30, 41 conversions, $72.69; Performance Max | Trial $2,190.00, 37 conversions, $59.19. Check what these conversions count with google-ads-account-audit before trusting them."
+    },
+    {
+      "area": "Lead quality and follow-up",
+      "finding": "No pipeline event fires. Sending qualify_lead from the CRM to GA4 lets LinkedIn and Google Ads learn from qualified leads instead of raw sign-ups."
+    }
+  ],
+  "not_graded_and_unknowns": [
+    {
+      "item": "Calls",
+      "why": "B2B preset; calls aren't leads here and CallRail isn't connected."
+    },
+    {
+      "item": "Meta",
+      "why": "No Meta ad account is connected."
+    }
+  ],
+  "fixes_offered": [
+    {
+      "fix": "Mark generate_lead as a key event, counted once per session",
+      "action": "create_key_event",
+      "payloads": [
+        {
+          "platform": "google-analytics",
+          "action": "create_key_event",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "property_id": "properties/123456789",
+          "event_name": "generate_lead",
+          "counting_method": "ONCE_PER_SESSION"
+        }
+      ],
+      "status": "not run, waiting for your yes"
+    },
+    {
+      "fix": "Switch sign_up to count once per session",
+      "action": "update_key_event",
+      "payloads": [
+        {
+          "platform": "google-analytics",
+          "action": "update_key_event",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "property_id": "properties/123456789",
+          "key_event_id": "10000000011",
+          "counting_method": "ONCE_PER_SESSION"
+        }
+      ],
+      "status": "not run, waiting for your yes"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "LinkedIn",
+      "skills": [
+        "linkedin-lead-gen-optimizer",
+        "linkedin-ads-auditor"
+      ]
+    },
+    {
+      "area": "Search demand",
+      "skills": [
+        "striking-distance-optimizer",
+        "keyword-research-clustering"
+      ]
+    },
+    {
+      "area": "Pages and forms",
+      "skills": [
+        "landing-page-auditor",
+        "form-cro"
+      ]
+    },
+    {
+      "area": "Google Ads",
+      "skills": [
+        "google-ads-account-audit"
+      ]
+    },
+    {
+      "area": "Tracking",
+      "skills": [
+        "conversion-tracking-auditor",
+        "ga4-property-audit"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1929 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The CRM statuses are counts the user gave; job function and industry names are LinkedIn's or the user's.",
+  "how_produced": "Built by a script from invented API responses in the shapes the InsightfulPipe MCP returns, with no number typed into the output by hand. Nothing was created: the build plan payloads were not run.",
+  "request": "Hey Claude, I just added the \"linkedin-lead-gen-optimizer\" skill. Review our LinkedIn lead gen forms: completion rate, cost per lead by campaign and audience, and lead quality. Our target is $60 a lead, and our CRM statuses for the same 90 days are attached. Then draft a Lead Gen Form campaign for our no-show cost calculator.",
+  "account": {
+    "name": "Example Booking Software (LinkedIn ad account)",
+    "ad_account_id": "500000001",
+    "currency": "USD",
+    "organization_id": "10000001",
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "what_linkedin_sells": "a scheduling playbook and demos to the operations leads of salon groups, clinic groups and gym chains"
+  },
+  "date_range": {
+    "window": "2026-07-30 to 2026-10-27",
+    "why": "the last 90 complete days, ending yesterday (LinkedIn returns reach on 92 days or less)"
+  },
+  "target_cost_per_lead": 60.0,
+  "buying_committee": {
+    "source": "given by the user",
+    "seniorities": [
+      "manager",
+      "director",
+      "VP",
+      "CXO",
+      "owner"
+    ],
+    "job_functions": [
+      "Operations",
+      "Entrepreneurship"
+    ],
+    "company_sizes": [
+      "11-50",
+      "51-200",
+      "201-500",
+      "501-1,000"
+    ]
+  },
+  "names_for_ids": {
+    "job_functions": {
+      "urn:li:function:18": "Operations",
+      "urn:li:function:9": "Entrepreneurship",
+      "urn:li:function:11": "Healthcare Services",
+      "urn:li:function:2": "Administrative",
+      "urn:li:function:15": "Marketing",
+      "urn:li:function:25": "Sales",
+      "urn:li:function:12": "Human Resources"
+    },
+    "industries_given_by_user": {
+      "urn:li:industry:91": "Consumer services",
+      "urn:li:industry:13": "Medical practices",
+      "urn:li:industry:124": "Wellness and fitness"
+    }
+  },
+  "lead_export": "not given",
+  "crm_statuses": {
+    "source": "the user's CRM report, by campaign, same 90 days, test leads already removed",
+    "qualified_means": "reached MQL or later",
+    "rows": [
+      {
+        "campaign_id": "600000501",
+        "leads": 124,
+        "reached_mql": 71,
+        "reached_sql": 29,
+        "reached_opportunity": 11,
+        "junk": 5
+      },
+      {
+        "campaign_id": "600000502",
+        "leads": 103,
+        "reached_mql": 53,
+        "reached_sql": 22,
+        "reached_opportunity": 8,
+        "junk": 6
+      },
+      {
+        "campaign_id": "600000503",
+        "leads": 30,
+        "reached_mql": 21,
+        "reached_sql": 14,
+        "reached_opportunity": 7,
+        "junk": 1
+      },
+      {
+        "campaign_id": "600000504",
+        "leads": 88,
+        "reached_mql": 14,
+        "reached_sql": 4,
+        "reached_opportunity": 1,
+        "junk": 23
+      }
+    ]
+  },
+  "new_campaign": {
+    "offer": "No-show cost calculator",
+    "landing_page": "https://www.example.com/tools/no-show-calculator/",
+    "daily_budget": "not given"
+  },
+  "data_pulled": {
+    "get_campaigns": [
+      {
+        "id": "600000501",
+        "name": "Lead gen | Playbook | Salon and spa groups",
+        "status": "ACTIVE",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000051",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "60.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:91"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:seniorities": [
+                    "urn:li:seniority:5",
+                    "urn:li:seniority:6",
+                    "urn:li:seniority:7",
+                    "urn:li:seniority:8",
+                    "urn:li:seniority:10"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:jobFunctions": [
+                    "urn:li:function:18",
+                    "urn:li:function:9"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:staffCountRanges": [
+                    "urn:li:staffCountRange:(11,50)",
+                    "urn:li:staffCountRange:(51,200)",
+                    "urn:li:staffCountRange:(201,500)",
+                    "urn:li:staffCountRange:(501,1000)"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000502",
+        "name": "Lead gen | Playbook | Clinic groups",
+        "status": "ACTIVE",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000051",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "65.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:13"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:seniorities": [
+                    "urn:li:seniority:5",
+                    "urn:li:seniority:6",
+                    "urn:li:seniority:7",
+                    "urn:li:seniority:8",
+                    "urn:li:seniority:10"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:jobFunctions": [
+                    "urn:li:function:18",
+                    "urn:li:function:9"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:staffCountRanges": [
+                    "urn:li:staffCountRange:(11,50)",
+                    "urn:li:staffCountRange:(51,200)",
+                    "urn:li:staffCountRange:(201,500)",
+                    "urn:li:staffCountRange:(501,1000)"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000503",
+        "name": "Lead gen | Demo request | Gym and studio chains",
+        "status": "ACTIVE",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000052",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "80.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:124"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:seniorities": [
+                    "urn:li:seniority:5",
+                    "urn:li:seniority:6",
+                    "urn:li:seniority:7",
+                    "urn:li:seniority:8",
+                    "urn:li:seniority:10"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:jobFunctions": [
+                    "urn:li:function:18",
+                    "urn:li:function:9"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:staffCountRanges": [
+                    "urn:li:staffCountRange:(11,50)",
+                    "urn:li:staffCountRange:(51,200)",
+                    "urn:li:staffCountRange:(201,500)",
+                    "urn:li:staffCountRange:(501,1000)"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000504",
+        "name": "Lead gen | No-show calculator | Broad",
+        "status": "ACTIVE",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000052",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "40.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:jobFunctions": [
+                    "urn:li:function:18",
+                    "urn:li:function:2"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000505",
+        "name": "Lead gen | Webinar | Front desk teams",
+        "status": "PAUSED",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000053",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "30.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:jobFunctions": [
+                    "urn:li:function:2"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000506",
+        "name": "Lead gen | Playbook v1 | Salon groups",
+        "status": "ARCHIVED",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000051",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "50.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:91"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000507",
+        "name": "Lead gen | Spring offer | Clinics",
+        "status": "ARCHIVED",
+        "objectiveType": "LEAD_GENERATION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000053",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "40.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:13"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "600000508",
+        "name": "Website | Demo | Clinic groups",
+        "status": "ACTIVE",
+        "objectiveType": "WEBSITE_CONVERSION",
+        "campaignGroup": "urn:li:sponsoredCampaignGroup:610000054",
+        "dailyBudget": {
+          "currencyCode": "USD",
+          "amount": "50.00"
+        },
+        "targetingCriteria": {
+          "include": {
+            "and": [
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:industries": [
+                    "urn:li:industry:13"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:seniorities": [
+                    "urn:li:seniority:6",
+                    "urn:li:seniority:7",
+                    "urn:li:seniority:8",
+                    "urn:li:seniority:10"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:staffCountRanges": [
+                    "urn:li:staffCountRange:(11,50)",
+                    "urn:li:staffCountRange:(51,200)",
+                    "urn:li:staffCountRange:(201,500)",
+                    "urn:li:staffCountRange:(501,1000)"
+                  ]
+                }
+              },
+              {
+                "or": {
+                  "urn:li:adTargetingFacet:locations": [
+                    "urn:li:geo:103644278",
+                    "urn:li:geo:101165590"
+                  ]
+                }
+              }
+            ]
+          },
+          "exclude": {
+            "or": {
+              "urn:li:adTargetingFacet:employers": [
+                "urn:li:organization:10000001"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "get_campaigns_other": "9 more campaigns, archived website and brand campaigns, with no delivery in the window",
+    "get_lead_forms": [
+      {
+        "id": "1004000101",
+        "name": "Playbook download v2",
+        "state": "PUBLISHED",
+        "content": {
+          "headline": {
+            "localized": {
+              "en_US": "Get the multi-location scheduling playbook"
+            }
+          },
+          "questions": [
+            {
+              "name": "firstName",
+              "question": {
+                "localized": {
+                  "en_US": "First name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "FIRST_NAME"
+            },
+            {
+              "name": "lastName",
+              "question": {
+                "localized": {
+                  "en_US": "Last name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "LAST_NAME"
+            },
+            {
+              "name": "workEmail",
+              "question": {
+                "localized": {
+                  "en_US": "Work email"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "WORK_EMAIL"
+            },
+            {
+              "name": "companyName",
+              "question": {
+                "localized": {
+                  "en_US": "Company name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "COMPANY_NAME"
+            },
+            {
+              "name": "jobTitle",
+              "question": {
+                "localized": {
+                  "en_US": "Job title"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "JOB_TITLE"
+            }
+          ],
+          "legalInfo": {
+            "privacyPolicyUrl": "https://www.example.com/privacy/",
+            "legalDisclaimer": {
+              "localized": {
+                "en_US": "By submitting, you agree to our privacy policy."
+              }
+            }
+          },
+          "postSubmissionInfo": {
+            "message": {
+              "localized": {
+                "en_US": "Thanks, it is on its way."
+              }
+            },
+            "callToAction": {
+              "callToActionTarget": {
+                "landingPageUrl": "https://www.example.com/guides/multi-location-scheduling-playbook/"
+              },
+              "callToActionLabel": "LEARN_MORE"
+            }
+          }
+        },
+        "hiddenFields": [
+          {
+            "name": "offer",
+            "value": "playbook"
+          }
+        ],
+        "reviewInfo": {
+          "reviewStatus": "APPROVED"
+        }
+      },
+      {
+        "id": "1004000102",
+        "name": "Demo request",
+        "state": "PUBLISHED",
+        "content": {
+          "headline": {
+            "localized": {
+              "en_US": "Book a 20-minute demo"
+            }
+          },
+          "questions": [
+            {
+              "name": "firstName",
+              "question": {
+                "localized": {
+                  "en_US": "First name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "FIRST_NAME"
+            },
+            {
+              "name": "lastName",
+              "question": {
+                "localized": {
+                  "en_US": "Last name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "LAST_NAME"
+            },
+            {
+              "name": "workEmail",
+              "question": {
+                "localized": {
+                  "en_US": "Work email"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "WORK_EMAIL"
+            },
+            {
+              "name": "phone",
+              "question": {
+                "localized": {
+                  "en_US": "Phone number"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "PHONE_NUMBER"
+            },
+            {
+              "name": "companyName",
+              "question": {
+                "localized": {
+                  "en_US": "Company name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "COMPANY_NAME"
+            },
+            {
+              "name": "jobTitle",
+              "question": {
+                "localized": {
+                  "en_US": "Job title"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "JOB_TITLE"
+            },
+            {
+              "name": "companySize",
+              "question": {
+                "localized": {
+                  "en_US": "Company size"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "COMPANY_SIZE"
+            },
+            {
+              "name": "toolToday",
+              "question": {
+                "localized": {
+                  "en_US": "Which booking tool do you use today?"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              }
+            },
+            {
+              "name": "biggestProblem",
+              "question": {
+                "localized": {
+                  "en_US": "What is the biggest scheduling problem across your locations?"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              }
+            }
+          ],
+          "legalInfo": {
+            "privacyPolicyUrl": "https://www.example.com/privacy/",
+            "legalDisclaimer": {
+              "localized": {
+                "en_US": "By submitting, you agree to our privacy policy."
+              }
+            }
+          },
+          "postSubmissionInfo": {
+            "message": {
+              "localized": {
+                "en_US": "Thanks, it is on its way."
+              }
+            },
+            "callToAction": {
+              "callToActionTarget": {
+                "landingPageUrl": "https://www.example.com/demo/"
+              },
+              "callToActionLabel": "LEARN_MORE"
+            }
+          }
+        },
+        "hiddenFields": [],
+        "reviewInfo": {
+          "reviewStatus": "APPROVED"
+        }
+      },
+      {
+        "id": "1004000103",
+        "name": "No-show calculator",
+        "state": "PUBLISHED",
+        "content": {
+          "headline": {
+            "localized": {
+              "en_US": "What do no-shows cost you?"
+            }
+          },
+          "questions": [
+            {
+              "name": "firstName",
+              "question": {
+                "localized": {
+                  "en_US": "First name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "FIRST_NAME"
+            },
+            {
+              "name": "email",
+              "question": {
+                "localized": {
+                  "en_US": "Email"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "EMAIL"
+            },
+            {
+              "name": "locations",
+              "question": {
+                "localized": {
+                  "en_US": "How many locations do you run?"
+                }
+              },
+              "questionDetails": {
+                "multipleChoiceQuestionDetails": {
+                  "options": [
+                    {
+                      "value": {
+                        "localized": {
+                          "en_US": "1"
+                        }
+                      }
+                    },
+                    {
+                      "value": {
+                        "localized": {
+                          "en_US": "2 to 5"
+                        }
+                      }
+                    },
+                    {
+                      "value": {
+                        "localized": {
+                          "en_US": "6 to 20"
+                        }
+                      }
+                    },
+                    {
+                      "value": {
+                        "localized": {
+                          "en_US": "More than 20"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "legalInfo": {
+            "privacyPolicyUrl": "https://www.example.com/privacy/",
+            "legalDisclaimer": {
+              "localized": {
+                "en_US": "By submitting, you agree to our privacy policy."
+              }
+            }
+          },
+          "postSubmissionInfo": {
+            "message": {
+              "localized": {
+                "en_US": "Thanks, it is on its way."
+              }
+            },
+            "callToAction": {
+              "callToActionTarget": {
+                "landingPageUrl": "https://www.example.com/"
+              },
+              "callToActionLabel": "LEARN_MORE"
+            }
+          }
+        },
+        "hiddenFields": [],
+        "reviewInfo": {
+          "reviewStatus": "APPROVED"
+        }
+      },
+      {
+        "id": "1004000104",
+        "name": "Webinar signup",
+        "state": "DRAFT",
+        "content": {
+          "headline": {
+            "localized": {
+              "en_US": "Front desk webinar"
+            }
+          },
+          "questions": [
+            {
+              "name": "firstName",
+              "question": {
+                "localized": {
+                  "en_US": "First name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "FIRST_NAME"
+            },
+            {
+              "name": "workEmail",
+              "question": {
+                "localized": {
+                  "en_US": "Work email"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "WORK_EMAIL"
+            }
+          ],
+          "legalInfo": {
+            "privacyPolicyUrl": "https://www.example.com/privacy/",
+            "legalDisclaimer": {
+              "localized": {
+                "en_US": "By submitting, you agree to our privacy policy."
+              }
+            }
+          }
+        },
+        "hiddenFields": []
+      },
+      {
+        "id": "1004000105",
+        "name": "Playbook download v1",
+        "state": "ARCHIVED",
+        "content": {
+          "headline": {
+            "localized": {
+              "en_US": "Get the playbook"
+            }
+          },
+          "questions": [
+            {
+              "name": "firstName",
+              "question": {
+                "localized": {
+                  "en_US": "First name"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "FIRST_NAME"
+            },
+            {
+              "name": "email",
+              "question": {
+                "localized": {
+                  "en_US": "Email"
+                }
+              },
+              "questionDetails": {
+                "textQuestionDetails": {}
+              },
+              "predefinedField": "EMAIL"
+            }
+          ],
+          "legalInfo": {
+            "privacyPolicyUrl": "https://www.example.com/privacy/",
+            "legalDisclaimer": {
+              "localized": {
+                "en_US": "By submitting, you agree to our privacy policy."
+              }
+            }
+          },
+          "postSubmissionInfo": {
+            "message": {
+              "localized": {
+                "en_US": "Thanks, it is on its way."
+              }
+            },
+            "callToAction": {
+              "callToActionTarget": {
+                "landingPageUrl": "https://www.example.com/guides/multi-location-scheduling-playbook/"
+              },
+              "callToActionLabel": "LEARN_MORE"
+            }
+          }
+        },
+        "hiddenFields": [],
+        "reviewInfo": {
+          "reviewStatus": "APPROVED"
+        }
+      }
+    ],
+    "get_creatives": [
+      {
+        "id": "urn:li:sponsoredCreative:700000501",
+        "campaign": "urn:li:sponsoredCampaign:600000501",
+        "name": "Playbook | 5 rules for multi-site salons",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638501"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000101",
+          "label": "DOWNLOAD"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000502",
+        "campaign": "urn:li:sponsoredCampaign:600000501",
+        "name": "Playbook | No-show math per chair",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638502"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000101",
+          "label": "DOWNLOAD"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000503",
+        "campaign": "urn:li:sponsoredCampaign:600000502",
+        "name": "Playbook | One calendar for every clinic",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638503"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000101",
+          "label": "DOWNLOAD"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000504",
+        "campaign": "urn:li:sponsoredCampaign:600000502",
+        "name": "Playbook | Deposits by site",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638504"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000101",
+          "label": "DOWNLOAD"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000505",
+        "campaign": "urn:li:sponsoredCampaign:600000503",
+        "name": "Demo | See it on your class schedule",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638505"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000102",
+          "label": "LEARN_MORE"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000506",
+        "campaign": "urn:li:sponsoredCampaign:600000503",
+        "name": "Demo | Book a 20-minute walkthrough",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638506"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000102",
+          "label": "LEARN_MORE"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000507",
+        "campaign": "urn:li:sponsoredCampaign:600000504",
+        "name": "Calculator | What no-shows cost you",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638507"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000103",
+          "label": "LEARN_MORE"
+        },
+        "review": {
+          "status": "APPROVED"
+        }
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000508",
+        "campaign": "urn:li:sponsoredCampaign:600000504",
+        "name": "Calculator | Cut no-shows in half",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638508"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000103",
+          "label": "LEARN_MORE"
+        },
+        "review": {
+          "status": "REJECTED",
+          "rejectionReasons": [
+            "UNSUPPORTED_CLAIM"
+          ]
+        },
+        "servingHoldReasons": [
+          "UNDER_REVIEW_REJECTED"
+        ]
+      },
+      {
+        "id": "urn:li:sponsoredCreative:700000509",
+        "campaign": "urn:li:sponsoredCampaign:600000505",
+        "name": "Webinar | Front desk in 30 minutes",
+        "intendedStatus": "ACTIVE",
+        "content": {
+          "reference": "urn:li:ugcPost:725183920471638509"
+        },
+        "leadgenCallToAction": {
+          "destination": "urn:li:adForm:1004000104",
+          "label": "LEARN_MORE"
+        },
+        "review": {
+          "status": "APPROVED"
+        },
+        "servingHoldReasons": [
+          "CAMPAIGN_STOPPED"
+        ]
+      }
+    ],
+    "get_conversions": [
+      {
+        "id": "8800501",
+        "name": "Demo booked",
+        "enabled": true,
+        "type": "LEAD",
+        "urlMatchRuleExpression": [
+          [
+            {
+              "matchType": "EXACT",
+              "matchValue": "https://www.example.com/demo/thanks/"
+            }
+          ]
+        ],
+        "campaigns": [
+          "urn:li:sponsoredCampaign:600000508"
+        ]
+      }
+    ],
+    "get_analytics_CAMPAIGN_window": [
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCampaign:600000501"
+        ],
+        "costInUsd": "5350.00",
+        "impressions": 69600,
+        "clicks": 531,
+        "landingPageClicks": 0,
+        "oneClickLeadFormOpens": 374,
+        "oneClickLeads": 124,
+        "validWorkEmailLeads": 106,
+        "externalWebsiteConversions": 0,
+        "approximateMemberReach": 21300
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCampaign:600000502"
+        ],
+        "costInUsd": "5800.00",
+        "impressions": 74300,
+        "clicks": 400,
+        "landingPageClicks": 0,
+        "oneClickLeadFormOpens": 315,
+        "oneClickLeads": 103,
+        "validWorkEmailLeads": 84,
+        "externalWebsiteConversions": 0,
+        "approximateMemberReach": 24800
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCampaign:600000503"
+        ],
+        "costInUsd": "7150.00",
+        "impressions": 72000,
+        "clicks": 390,
+        "landingPageClicks": 0,
+        "oneClickLeadFormOpens": 333,
+        "oneClickLeads": 30,
+        "validWorkEmailLeads": 27,
+        "externalWebsiteConversions": 0,
+        "approximateMemberReach": 22900
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCampaign:600000504"
+        ],
+        "costInUsd": "3260.00",
+        "impressions": 58300,
+        "clicks": 412,
+        "landingPageClicks": 0,
+        "oneClickLeadFormOpens": 287,
+        "oneClickLeads": 88,
+        "validWorkEmailLeads": 29,
+        "externalWebsiteConversions": 0,
+        "approximateMemberReach": 31600
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCampaign:600000508"
+        ],
+        "costInUsd": "4120.00",
+        "impressions": 39800,
+        "clicks": 290,
+        "landingPageClicks": 276,
+        "oneClickLeadFormOpens": 0,
+        "oneClickLeads": 0,
+        "validWorkEmailLeads": 0,
+        "externalWebsiteConversions": 22,
+        "approximateMemberReach": 17400
+      }
+    ],
+    "get_analytics_CREATIVE_window": [
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000501"
+        ],
+        "impressions": 38400,
+        "clicks": 290,
+        "costInUsd": "2940.00",
+        "oneClickLeadFormOpens": 196,
+        "oneClickLeads": 81,
+        "validWorkEmailLeads": 70
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000502"
+        ],
+        "impressions": 31200,
+        "clicks": 241,
+        "costInUsd": "2410.00",
+        "oneClickLeadFormOpens": 178,
+        "oneClickLeads": 43,
+        "validWorkEmailLeads": 36
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000503"
+        ],
+        "impressions": 52800,
+        "clicks": 302,
+        "costInUsd": "4180.00",
+        "oneClickLeadFormOpens": 241,
+        "oneClickLeads": 79,
+        "validWorkEmailLeads": 64
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000504"
+        ],
+        "impressions": 21500,
+        "clicks": 98,
+        "costInUsd": "1620.00",
+        "oneClickLeadFormOpens": 74,
+        "oneClickLeads": 24,
+        "validWorkEmailLeads": 20
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000505"
+        ],
+        "impressions": 44900,
+        "clicks": 251,
+        "costInUsd": "4460.00",
+        "oneClickLeadFormOpens": 212,
+        "oneClickLeads": 19,
+        "validWorkEmailLeads": 17
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000506"
+        ],
+        "impressions": 27100,
+        "clicks": 139,
+        "costInUsd": "2690.00",
+        "oneClickLeadFormOpens": 121,
+        "oneClickLeads": 11,
+        "validWorkEmailLeads": 10
+      },
+      {
+        "pivotValues": [
+          "urn:li:sponsoredCreative:700000507"
+        ],
+        "impressions": 58300,
+        "clicks": 412,
+        "costInUsd": "3260.00",
+        "oneClickLeadFormOpens": 287,
+        "oneClickLeads": 88,
+        "validWorkEmailLeads": 29
+      }
+    ],
+    "get_demographic_analytics": {
+      "MEMBER_SENIORITY": [
+        {
+          "pivotValues": [
+            "urn:li:seniority:2"
+          ],
+          "impressions": 3462,
+          "clicks": 24,
+          "costInUsd": "147.98",
+          "oneClickLeadFormOpens": 13,
+          "oneClickLeads": 4,
+          "validWorkEmailLeads": 1
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:3"
+          ],
+          "impressions": 24638,
+          "clicks": 169,
+          "costInUsd": "1289.03",
+          "oneClickLeadFormOpens": 120,
+          "oneClickLeads": 37,
+          "validWorkEmailLeads": 18
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:4"
+          ],
+          "impressions": 32139,
+          "clicks": 207,
+          "costInUsd": "2091.28",
+          "oneClickLeadFormOpens": 163,
+          "oneClickLeads": 44,
+          "validWorkEmailLeads": 28
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:5"
+          ],
+          "impressions": 86231,
+          "clicks": 544,
+          "costInUsd": "6616.93",
+          "oneClickLeadFormOpens": 453,
+          "oneClickLeads": 124,
+          "validWorkEmailLeads": 92
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:6"
+          ],
+          "impressions": 43486,
+          "clicks": 267,
+          "costInUsd": "4000.54",
+          "oneClickLeadFormOpens": 202,
+          "oneClickLeads": 46,
+          "validWorkEmailLeads": 36
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:7"
+          ],
+          "impressions": 12951,
+          "clicks": 76,
+          "costInUsd": "1344.49",
+          "oneClickLeadFormOpens": 53,
+          "oneClickLeads": 10,
+          "validWorkEmailLeads": 9
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:8"
+          ],
+          "impressions": 12176,
+          "clicks": 73,
+          "costInUsd": "1305.82",
+          "oneClickLeadFormOpens": 53,
+          "oneClickLeads": 10,
+          "validWorkEmailLeads": 8
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:10"
+          ],
+          "impressions": 50891,
+          "clicks": 321,
+          "costInUsd": "4117.13",
+          "oneClickLeadFormOpens": 213,
+          "oneClickLeads": 59,
+          "validWorkEmailLeads": 45
+        }
+      ],
+      "MEMBER_JOB_FUNCTION": [
+        {
+          "pivotValues": [
+            "urn:li:function:18"
+          ],
+          "impressions": 121400,
+          "clicks": 742,
+          "costInUsd": "9480.00",
+          "oneClickLeadFormOpens": 581,
+          "oneClickLeads": 162,
+          "validWorkEmailLeads": 128
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:9"
+          ],
+          "impressions": 64300,
+          "clicks": 402,
+          "costInUsd": "5210.00",
+          "oneClickLeadFormOpens": 318,
+          "oneClickLeads": 83,
+          "validWorkEmailLeads": 61
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:11"
+          ],
+          "impressions": 38900,
+          "clicks": 221,
+          "costInUsd": "3060.00",
+          "oneClickLeadFormOpens": 162,
+          "oneClickLeads": 41,
+          "validWorkEmailLeads": 33
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:2"
+          ],
+          "impressions": 29600,
+          "clicks": 188,
+          "costInUsd": "1890.00",
+          "oneClickLeadFormOpens": 151,
+          "oneClickLeads": 49,
+          "validWorkEmailLeads": 14
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:15"
+          ],
+          "impressions": 11200,
+          "clicks": 61,
+          "costInUsd": "780.00",
+          "oneClickLeadFormOpens": 39,
+          "oneClickLeads": 9,
+          "validWorkEmailLeads": 6
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:25"
+          ],
+          "impressions": 6400,
+          "clicks": 29,
+          "costInUsd": "410.00",
+          "oneClickLeadFormOpens": 17,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 2
+        },
+        {
+          "pivotValues": [
+            "urn:li:function:12"
+          ],
+          "impressions": 4800,
+          "clicks": 22,
+          "costInUsd": "290.00",
+          "oneClickLeadFormOpens": 9,
+          "oneClickLeads": 0,
+          "validWorkEmailLeads": 0
+        }
+      ],
+      "MEMBER_COMPANY_SIZE": [
+        {
+          "pivotValues": [
+            "SIZE_2_TO_10"
+          ],
+          "impressions": 22100,
+          "clicks": 131,
+          "costInUsd": "1420.00",
+          "oneClickLeadFormOpens": 104,
+          "oneClickLeads": 38,
+          "validWorkEmailLeads": 15
+        },
+        {
+          "pivotValues": [
+            "SIZE_11_TO_50"
+          ],
+          "impressions": 71800,
+          "clicks": 448,
+          "costInUsd": "5310.00",
+          "oneClickLeadFormOpens": 351,
+          "oneClickLeads": 101,
+          "validWorkEmailLeads": 70
+        },
+        {
+          "pivotValues": [
+            "SIZE_51_TO_200"
+          ],
+          "impressions": 88300,
+          "clicks": 552,
+          "costInUsd": "7240.00",
+          "oneClickLeadFormOpens": 437,
+          "oneClickLeads": 118,
+          "validWorkEmailLeads": 84
+        },
+        {
+          "pivotValues": [
+            "SIZE_201_TO_500"
+          ],
+          "impressions": 46200,
+          "clicks": 286,
+          "costInUsd": "3980.00",
+          "oneClickLeadFormOpens": 214,
+          "oneClickLeads": 52,
+          "validWorkEmailLeads": 41
+        },
+        {
+          "pivotValues": [
+            "SIZE_501_TO_1000"
+          ],
+          "impressions": 21700,
+          "clicks": 128,
+          "costInUsd": "1860.00",
+          "oneClickLeadFormOpens": 92,
+          "oneClickLeads": 21,
+          "validWorkEmailLeads": 17
+        },
+        {
+          "pivotValues": [
+            "SIZE_1001_TO_5000"
+          ],
+          "impressions": 9800,
+          "clicks": 52,
+          "costInUsd": "760.00",
+          "oneClickLeadFormOpens": 36,
+          "oneClickLeads": 8,
+          "validWorkEmailLeads": 6
+        },
+        {
+          "pivotValues": [
+            "SIZE_10001_OR_MORE"
+          ],
+          "impressions": 6100,
+          "clicks": 27,
+          "costInUsd": "410.00",
+          "oneClickLeadFormOpens": 13,
+          "oneClickLeads": 0,
+          "validWorkEmailLeads": 0
+        }
+      ],
+      "MEMBER_INDUSTRY": [
+        {
+          "pivotValues": [
+            "urn:li:industry:91"
+          ],
+          "impressions": 81200,
+          "clicks": 538,
+          "costInUsd": "6120.00",
+          "oneClickLeadFormOpens": 402,
+          "oneClickLeads": 128,
+          "validWorkEmailLeads": 98
+        },
+        {
+          "pivotValues": [
+            "urn:li:industry:13"
+          ],
+          "impressions": 69400,
+          "clicks": 371,
+          "costInUsd": "5610.00",
+          "oneClickLeadFormOpens": 297,
+          "oneClickLeads": 94,
+          "validWorkEmailLeads": 74
+        },
+        {
+          "pivotValues": [
+            "urn:li:industry:124"
+          ],
+          "impressions": 78600,
+          "clicks": 441,
+          "costInUsd": "6980.00",
+          "oneClickLeadFormOpens": 349,
+          "oneClickLeads": 63,
+          "validWorkEmailLeads": 45
+        },
+        {
+          "pivotValues": [
+            "urn:li:industry:2190"
+          ],
+          "impressions": 9400,
+          "clicks": 61,
+          "costInUsd": "610.00",
+          "oneClickLeadFormOpens": 47,
+          "oneClickLeads": 16,
+          "validWorkEmailLeads": 4
+        },
+        {
+          "pivotValues": [
+            "urn:li:industry:14"
+          ],
+          "impressions": 7300,
+          "clicks": 38,
+          "costInUsd": "520.00",
+          "oneClickLeadFormOpens": 26,
+          "oneClickLeads": 5,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:industry:96"
+          ],
+          "impressions": 3900,
+          "clicks": 17,
+          "costInUsd": "240.00",
+          "oneClickLeadFormOpens": 8,
+          "oneClickLeads": 2,
+          "validWorkEmailLeads": 1
+        }
+      ]
+    },
+    "get_demographic_analytics_MEMBER_SENIORITY_per_campaign": {
+      "600000501": [
+        {
+          "pivotValues": [
+            "urn:li:seniority:3"
+          ],
+          "impressions": 3445,
+          "clicks": 27,
+          "costInUsd": "202.91",
+          "oneClickLeadFormOpens": 18,
+          "oneClickLeads": 6,
+          "validWorkEmailLeads": 5
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:4"
+          ],
+          "impressions": 5511,
+          "clicks": 42,
+          "costInUsd": "365.24",
+          "oneClickLeadFormOpens": 33,
+          "oneClickLeads": 11,
+          "validWorkEmailLeads": 9
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:5"
+          ],
+          "impressions": 24800,
+          "clicks": 189,
+          "costInUsd": "1826.22",
+          "oneClickLeadFormOpens": 156,
+          "oneClickLeads": 52,
+          "validWorkEmailLeads": 44
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:6"
+          ],
+          "impressions": 11022,
+          "clicks": 84,
+          "costInUsd": "933.40",
+          "oneClickLeadFormOpens": 54,
+          "oneClickLeads": 18,
+          "validWorkEmailLeads": 15
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:7"
+          ],
+          "impressions": 2756,
+          "clicks": 21,
+          "costInUsd": "253.64",
+          "oneClickLeadFormOpens": 9,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:8"
+          ],
+          "impressions": 3444,
+          "clicks": 26,
+          "costInUsd": "329.73",
+          "oneClickLeadFormOpens": 12,
+          "oneClickLeads": 4,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:10"
+          ],
+          "impressions": 16534,
+          "clicks": 126,
+          "costInUsd": "1278.36",
+          "oneClickLeadFormOpens": 81,
+          "oneClickLeads": 27,
+          "validWorkEmailLeads": 23
+        }
+      ],
+      "600000502": [
+        {
+          "pivotValues": [
+            "urn:li:seniority:3"
+          ],
+          "impressions": 4458,
+          "clicks": 24,
+          "costInUsd": "268.70",
+          "oneClickLeadFormOpens": 16,
+          "oneClickLeads": 5,
+          "validWorkEmailLeads": 4
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:4"
+          ],
+          "impressions": 8173,
+          "clicks": 44,
+          "costInUsd": "554.20",
+          "oneClickLeadFormOpens": 37,
+          "oneClickLeads": 12,
+          "validWorkEmailLeads": 10
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:5"
+          ],
+          "impressions": 25262,
+          "clicks": 136,
+          "costInUsd": "1903.32",
+          "oneClickLeadFormOpens": 127,
+          "oneClickLeads": 41,
+          "validWorkEmailLeads": 33
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:6"
+          ],
+          "impressions": 11145,
+          "clicks": 60,
+          "costInUsd": "965.66",
+          "oneClickLeadFormOpens": 46,
+          "oneClickLeads": 15,
+          "validWorkEmailLeads": 12
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:7"
+          ],
+          "impressions": 3715,
+          "clicks": 20,
+          "costInUsd": "349.88",
+          "oneClickLeadFormOpens": 12,
+          "oneClickLeads": 4,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:8"
+          ],
+          "impressions": 2972,
+          "clicks": 16,
+          "costInUsd": "291.10",
+          "oneClickLeadFormOpens": 9,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 2
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:10"
+          ],
+          "impressions": 16346,
+          "clicks": 88,
+          "costInUsd": "1293.14",
+          "oneClickLeadFormOpens": 59,
+          "oneClickLeads": 19,
+          "validWorkEmailLeads": 15
+        }
+      ],
+      "600000503": [
+        {
+          "pivotValues": [
+            "urn:li:seniority:4"
+          ],
+          "impressions": 5760,
+          "clicks": 31,
+          "costInUsd": "474.22",
+          "oneClickLeadFormOpens": 33,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:5"
+          ],
+          "impressions": 22320,
+          "clicks": 121,
+          "costInUsd": "2041.79",
+          "oneClickLeadFormOpens": 97,
+          "oneClickLeads": 9,
+          "validWorkEmailLeads": 8
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:6"
+          ],
+          "impressions": 17280,
+          "clicks": 94,
+          "costInUsd": "1817.85",
+          "oneClickLeadFormOpens": 86,
+          "oneClickLeads": 8,
+          "validWorkEmailLeads": 7
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:7"
+          ],
+          "impressions": 6480,
+          "clicks": 35,
+          "costInUsd": "740.97",
+          "oneClickLeadFormOpens": 32,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:8"
+          ],
+          "impressions": 5760,
+          "clicks": 31,
+          "costInUsd": "684.99",
+          "oneClickLeadFormOpens": 32,
+          "oneClickLeads": 3,
+          "validWorkEmailLeads": 3
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:10"
+          ],
+          "impressions": 12240,
+          "clicks": 66,
+          "costInUsd": "1175.68",
+          "oneClickLeadFormOpens": 43,
+          "oneClickLeads": 4,
+          "validWorkEmailLeads": 4
+        }
+      ],
+      "600000504": [
+        {
+          "pivotValues": [
+            "urn:li:seniority:2"
+          ],
+          "impressions": 3462,
+          "clicks": 24,
+          "costInUsd": "147.98",
+          "oneClickLeadFormOpens": 13,
+          "oneClickLeads": 4,
+          "validWorkEmailLeads": 1
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:3"
+          ],
+          "impressions": 16735,
+          "clicks": 118,
+          "costInUsd": "817.42",
+          "oneClickLeadFormOpens": 86,
+          "oneClickLeads": 26,
+          "validWorkEmailLeads": 9
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:4"
+          ],
+          "impressions": 12695,
+          "clicks": 90,
+          "costInUsd": "697.62",
+          "oneClickLeadFormOpens": 60,
+          "oneClickLeads": 18,
+          "validWorkEmailLeads": 6
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:5"
+          ],
+          "impressions": 13849,
+          "clicks": 98,
+          "costInUsd": "845.60",
+          "oneClickLeadFormOpens": 73,
+          "oneClickLeads": 22,
+          "validWorkEmailLeads": 7
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:6"
+          ],
+          "impressions": 4039,
+          "clicks": 29,
+          "costInUsd": "283.63",
+          "oneClickLeadFormOpens": 16,
+          "oneClickLeads": 5,
+          "validWorkEmailLeads": 2
+        },
+        {
+          "pivotValues": [
+            "urn:li:seniority:10"
+          ],
+          "impressions": 5771,
+          "clicks": 41,
+          "costInUsd": "369.95",
+          "oneClickLeadFormOpens": 30,
+          "oneClickLeads": 9,
+          "validWorkEmailLeads": 3
+        }
+      ]
+    }
+  },
+  "calls": "14 read-only calls: get_campaigns, get_lead_forms, get_creatives, get_conversions, get_analytics CAMPAIGN and CREATIVE, 4 demographic pivots on the 4 lead gen campaigns that delivered, and MEMBER_SENIORITY once per lead gen campaign. All returned success."
+}

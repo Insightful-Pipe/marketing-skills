@@ -1,0 +1,841 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "export_date": "2026-10-28",
+    "window": "2026-07-27 to 2026-10-25 (13 complete weeks)",
+    "time_zone": "America/New_York",
+    "leads": 460,
+    "mqls": 413,
+    "mature_cohort": {
+      "rule": "MQLs created at least M days before the export, M = max(30, 90th percentile of days from MQL to opportunity)",
+      "M_days": 30,
+      "created_on_or_before": "2026-09-28",
+      "mqls": 298,
+      "mql_to_sql_rate": 0.238
+    },
+    "win_rate_used": 0.3,
+    "average_opportunity_value": 6147
+  },
+  "funnel_13_weeks": {
+    "leads": 460,
+    "mqls": 413,
+    "sales_accepted": 396,
+    "sqls": 104,
+    "meetings_held": 70,
+    "opportunities": 36,
+    "pipeline_value": 221300,
+    "rejected_or_closed": 281,
+    "open_without_decision": 42
+  },
+  "lifecycle_stages": [
+    {
+      "stage": "Lead",
+      "enters_when": "a form is submitted or a chat leaves contact details (created_at)",
+      "leaves_when": "it meets the MQL rule below, or stays in nurture",
+      "owner": "Marketing",
+      "time_limit": null,
+      "ga4_event": "generate_lead"
+    },
+    {
+      "stage": "MQL",
+      "enters_when": "business email, and not in a nurture-first cell; or any hand-raise (mql_at)",
+      "leaves_when": "an SDR logs the first touch",
+      "owner": "Marketing hands off, SDR on rotation",
+      "time_limit": "first touch within 30 minutes of the clock start",
+      "ga4_event": null
+    },
+    {
+      "stage": "Sales accepted",
+      "enters_when": "first call or email logged (first_touch_at)",
+      "leaves_when": "SQL, or rejected with a required reason",
+      "owner": "SDR",
+      "time_limit": "decision within 6 business days",
+      "ga4_event": "working_lead"
+    },
+    {
+      "stage": "SQL",
+      "enters_when": "SDR confirms need and fit on a call and books the AE meeting (sql_at)",
+      "leaves_when": "meeting held, or no-show",
+      "owner": "SDR until the meeting, then AE",
+      "time_limit": "meeting no more than 3 days after booking",
+      "ga4_event": "qualify_lead"
+    },
+    {
+      "stage": "Opportunity",
+      "enters_when": "AE creates the deal with a value after a held meeting (opportunity_at)",
+      "leaves_when": "closed won or closed lost",
+      "owner": "AE",
+      "time_limit": "held meeting turned into an opportunity or closed within 5 business days",
+      "ga4_event": "close_convert_lead / close_unconvert_lead"
+    }
+  ],
+  "mql_rule": {
+    "overall_mature_mql_to_sql_rate": 0.238,
+    "nurture_first_below": 0.079,
+    "cells": [
+      {
+        "source": "Demo request",
+        "company_size": "1 to 4 staff",
+        "mature_mqls": 33,
+        "sqls": 9,
+        "mql_to_sql_rate": 0.273,
+        "decision": "keep as MQL"
+      },
+      {
+        "source": "Demo request",
+        "company_size": "5 to 20 staff",
+        "mature_mqls": 37,
+        "sqls": 20,
+        "mql_to_sql_rate": 0.541,
+        "decision": "keep as MQL"
+      },
+      {
+        "source": "Demo request",
+        "company_size": "21+ staff",
+        "mature_mqls": 9,
+        "sqls": 7,
+        "mql_to_sql_rate": 0.778,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      },
+      {
+        "source": "Pricing page chat",
+        "company_size": "1 to 4 staff",
+        "mature_mqls": 16,
+        "sqls": 3,
+        "mql_to_sql_rate": 0.188,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      },
+      {
+        "source": "Pricing page chat",
+        "company_size": "5 to 20 staff",
+        "mature_mqls": 13,
+        "sqls": 4,
+        "mql_to_sql_rate": 0.308,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      },
+      {
+        "source": "Pricing page chat",
+        "company_size": "21+ staff",
+        "mature_mqls": 5,
+        "sqls": 3,
+        "mql_to_sql_rate": 0.6,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      },
+      {
+        "source": "Content download",
+        "company_size": "1 to 4 staff",
+        "mature_mqls": 51,
+        "sqls": 0,
+        "mql_to_sql_rate": 0.0,
+        "decision": "nurture first: MQL only after a hand-raise"
+      },
+      {
+        "source": "Content download",
+        "company_size": "5 to 20 staff",
+        "mature_mqls": 49,
+        "sqls": 10,
+        "mql_to_sql_rate": 0.204,
+        "decision": "keep as MQL"
+      },
+      {
+        "source": "Content download",
+        "company_size": "21+ staff",
+        "mature_mqls": 16,
+        "sqls": 8,
+        "mql_to_sql_rate": 0.5,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      },
+      {
+        "source": "Webinar",
+        "company_size": "1 to 4 staff",
+        "mature_mqls": 25,
+        "sqls": 0,
+        "mql_to_sql_rate": 0.0,
+        "decision": "nurture first: MQL only after a hand-raise"
+      },
+      {
+        "source": "Webinar",
+        "company_size": "5 to 20 staff",
+        "mature_mqls": 34,
+        "sqls": 7,
+        "mql_to_sql_rate": 0.206,
+        "decision": "keep as MQL"
+      },
+      {
+        "source": "Webinar",
+        "company_size": "21+ staff",
+        "mature_mqls": 10,
+        "sqls": 0,
+        "mql_to_sql_rate": 0.0,
+        "decision": "keep today's rule, review (under 20 mature MQLs)"
+      }
+    ],
+    "change": "2 cell(s) go nurture-first: Content download, 1 to 4 staff (0 SQLs from 51 mature MQLs); Webinar, 1 to 4 staff (0 SQLs from 25 mature MQLs). That removes 105 of 413 MQLs in the window from the SDR queue; they become MQLs again on a demo request, a pricing page chat or a reply."
+  },
+  "response_target": {
+    "buckets": [
+      {
+        "bucket": "under 5 min",
+        "mature_mqls": 57,
+        "sqls": 20,
+        "mql_to_sql_rate": 0.351,
+        "usable": true,
+        "at_least_80pct_of_best": true,
+        "faster_than_best": false
+      },
+      {
+        "bucket": "5 to 30 min",
+        "mature_mqls": 119,
+        "sqls": 36,
+        "mql_to_sql_rate": 0.303,
+        "usable": true,
+        "at_least_80pct_of_best": true,
+        "faster_than_best": false
+      },
+      {
+        "bucket": "30 min to 2 h",
+        "mature_mqls": 71,
+        "sqls": 12,
+        "mql_to_sql_rate": 0.169,
+        "usable": true,
+        "at_least_80pct_of_best": false,
+        "faster_than_best": false
+      },
+      {
+        "bucket": "2 to 24 h",
+        "mature_mqls": 26,
+        "sqls": 1,
+        "mql_to_sql_rate": 0.038,
+        "usable": true,
+        "at_least_80pct_of_best": false,
+        "faster_than_best": false
+      },
+      {
+        "bucket": "over 24 h",
+        "mature_mqls": 13,
+        "sqls": 2,
+        "mql_to_sql_rate": 0.154,
+        "usable": false,
+        "at_least_80pct_of_best": null,
+        "faster_than_best": false
+      },
+      {
+        "bucket": "never touched",
+        "mature_mqls": 12,
+        "sqls": 0,
+        "mql_to_sql_rate": 0.0,
+        "usable": false,
+        "at_least_80pct_of_best": null,
+        "faster_than_best": false
+      }
+    ],
+    "best_usable_rate": 0.351,
+    "threshold": 0.281,
+    "target_minutes": 30,
+    "buckets_meeting_threshold": [
+      "under 5 min",
+      "5 to 30 min"
+    ],
+    "rate_within_target": 0.318,
+    "rate_after_target": 0.136,
+    "within_n": 176,
+    "after_n": 110,
+    "team_touched_within_target_pct": 62.9,
+    "caveat": "Fast follow-up and good leads can go together, so the gap is a sign, not proof. Treat the leak figures as estimates."
+  },
+  "routing": {
+    "owners": [
+      {
+        "owner": "Maya Chen",
+        "mqls_assigned": 138,
+        "touched": 133,
+        "median_response_min": 7,
+        "touched_within_target_pct": 82.7,
+        "rest_of_team_within_target_pct": 52.9,
+        "mature_mql_to_sql_rate": 0.28,
+        "flag": false
+      },
+      {
+        "owner": "Luis Ortega",
+        "mqls_assigned": 138,
+        "touched": 135,
+        "median_response_min": 59,
+        "touched_within_target_pct": 31.1,
+        "rest_of_team_within_target_pct": 79.3,
+        "mature_mql_to_sql_rate": 0.172,
+        "flag": true
+      },
+      {
+        "owner": "Dana Brooks",
+        "mqls_assigned": 137,
+        "touched": 128,
+        "median_response_min": 13,
+        "touched_within_target_pct": 75.8,
+        "rest_of_team_within_target_pct": 56.7,
+        "mature_mql_to_sql_rate": 0.263,
+        "flag": false
+      }
+    ],
+    "after_hours": {
+      "mqls_outside_staffed_hours": 148,
+      "share_of_mqls_pct": 35.8,
+      "median_wait_to_first_touch_h": 16.9,
+      "mature_rate_outside_hours": 0.168,
+      "mature_outside_hours_n": 113,
+      "mature_rate_in_hours": 0.281,
+      "mature_in_hours_n": 185,
+      "ratio": 0.6,
+      "needs_after_hours_step": true
+    },
+    "rules": [
+      {
+        "order": 1,
+        "rule": "Nurture-first cells skip the SDR queue",
+        "detail": "Content download, 1 to 4 staff; Webinar, 1 to 4 staff go to the nurture sequence and route only on a hand-raise."
+      },
+      {
+        "order": 2,
+        "rule": "Round-robin among SDRs on shift",
+        "detail": "Skip anyone off shift or out; keep today's even rotation."
+      },
+      {
+        "order": 3,
+        "rule": "Fallback at 30 minutes",
+        "detail": "An MQL with no first touch 30 minutes after the clock start moves to the next SDR on shift and alerts the sales manager."
+      },
+      {
+        "order": 4,
+        "rule": "After-hours step",
+        "detail": "35.8% of MQLs arrive outside staffed hours and wait a median 16.9 h; their SQL rate is 0.168 vs 0.281 in hours. Send an instant reply with the SDR booking link, and put these leads first in the queue at 08:00."
+      }
+    ],
+    "flagged_owner": {
+      "owner": "Luis Ortega",
+      "why": "31.1% touched within 30 min vs 79.3% for the rest of the team; median 59 min.",
+      "action": "Coach and check the alert setup first; the fallback rule protects the leads meanwhile."
+    }
+  },
+  "sla": [
+    {
+      "side": "Sales",
+      "promise": "First touch on every MQL within 30 minutes of the clock start (created time, or 08:00 next staffed day)",
+      "from_data": "SQL rate 0.318 within vs 0.136 after"
+    },
+    {
+      "side": "Sales",
+      "promise": "Accept as SQL or reject with a required reason within 6 business days of the first touch",
+      "from_data": "90th percentile of decided leads: 6 business days (minimum 2)"
+    },
+    {
+      "side": "Sales",
+      "promise": "Book the AE meeting no more than 3 days out",
+      "from_data": "show rate by days booked ahead"
+    },
+    {
+      "side": "Sales",
+      "promise": "Starting default, not from the data: rebook each no-show within 2 business days, two attempts",
+      "from_data": "Not set from data: the export has no rebook date, and nobody reviews no-shows today. It shows 27 no-shows, 9 rebooked (33.3%). Review the default in the weekly table (no-shows and rebooked) and change it once the CRM logs a rebook date."
+    },
+    {
+      "side": "Sales",
+      "promise": "Turn a held meeting into an opportunity with a value, or close it with a reason, within 5 business days",
+      "from_data": "90th percentile: 5 business days"
+    },
+    {
+      "side": "Marketing",
+      "promise": "Send only MQLs that meet the rule, with source, company size and the hand-raise on the record",
+      "from_data": "105 low-yield MQLs leave the queue"
+    },
+    {
+      "side": "Marketing",
+      "promise": "Run the recycle nurture for every 'nurture' reason and re-route on a hand-raise",
+      "from_data": "reason table below"
+    },
+    {
+      "side": "Both",
+      "promise": "Review the weekly table every Monday; change a number only from the data",
+      "from_data": "weekly table below"
+    }
+  ],
+  "rejected_and_stalled": {
+    "rejected_or_closed": 281,
+    "reasons": [
+      {
+        "reason": "Unreachable after 6 attempts",
+        "count": 50,
+        "share_pct": 17.8,
+        "route": "nurture",
+        "rule": "Nurture; re-enters on any hand-raise or a reply to nurture email."
+      },
+      {
+        "reason": "Other",
+        "count": 47,
+        "share_pct": 16.7,
+        "route": "fix the picklist",
+        "rule": "Cannot be routed: replace with a required reason."
+      },
+      {
+        "reason": "Single location, fewer than 3 staff",
+        "count": 41,
+        "share_pct": 14.6,
+        "route": "nurture",
+        "rule": "Self-serve nurture; re-enters as MQL only on a hand-raise (demo request or pricing chat)."
+      },
+      {
+        "reason": "Revisit next quarter",
+        "count": 40,
+        "share_pct": 14.2,
+        "route": "nurture",
+        "rule": "Nurture with a dated task: owner calls back on the date the prospect gave."
+      },
+      {
+        "reason": "(blank)",
+        "count": 30,
+        "share_pct": 10.7,
+        "route": "fix the picklist",
+        "rule": "Cannot be routed: make the reason required."
+      },
+      {
+        "reason": "Price objection",
+        "count": 25,
+        "share_pct": 8.9,
+        "route": "nurture",
+        "rule": "Nurture with pricing and ROI content; re-enters on a pricing page chat."
+      },
+      {
+        "reason": "Not a business (student or job seeker)",
+        "count": 21,
+        "share_pct": 7.5,
+        "route": "close",
+        "rule": "Never re-enters; suppress from sales alerts."
+      },
+      {
+        "reason": "Signed with another booking tool",
+        "count": 15,
+        "share_pct": 5.3,
+        "route": "nurture",
+        "rule": "Nurture; owner sets a renewal-date task when known."
+      },
+      {
+        "reason": "Needs a feature we lack",
+        "count": 12,
+        "share_pct": 4.3,
+        "route": "nurture",
+        "rule": "Tag the feature; marketing re-sends when it ships."
+      }
+    ],
+    "other_or_blank_pct": 27.4,
+    "must_fix": "'Other' and blank are 27.4% of reasons (over 15%): make the reason required and drop 'Other'.",
+    "stall_limits": [
+      {
+        "stage": "Sales accepted",
+        "limit_business_days": 6,
+        "p90_of_decided": 6,
+        "decided_n": 354,
+        "open_now": 42,
+        "past_limit_now": 34,
+        "action": "past the limit: reject with a reason or move to nurture, and alert the manager"
+      },
+      {
+        "stage": "Meeting held, no opportunity yet",
+        "limit_business_days": 5,
+        "p90_of_decided": 5,
+        "decided_n": 67,
+        "open_now": 3,
+        "past_limit_now": 1,
+        "action": "past the limit: AE creates the opportunity or closes with a reason"
+      }
+    ]
+  },
+  "meetings": {
+    "booking_time_column": "sql_at: this team marks a lead SQL when the AE meeting is booked, so the SQL time is the booking time",
+    "past_meetings": 97,
+    "held": 70,
+    "show_rate": 0.722,
+    "by_days_booked_ahead": [
+      {
+        "booked_ahead": "0 to 1 days",
+        "meetings": 11,
+        "held": 9,
+        "show_rate": 0.818,
+        "usable": false,
+        "at_least_90pct_of_best": null,
+        "sooner_than_best": true
+      },
+      {
+        "booked_ahead": "2 to 3 days",
+        "meetings": 19,
+        "held": 17,
+        "show_rate": 0.895,
+        "usable": true,
+        "at_least_90pct_of_best": true,
+        "sooner_than_best": false
+      },
+      {
+        "booked_ahead": "4 to 7 days",
+        "meetings": 27,
+        "held": 17,
+        "show_rate": 0.63,
+        "usable": true,
+        "at_least_90pct_of_best": false,
+        "sooner_than_best": false
+      },
+      {
+        "booked_ahead": "8+ days",
+        "meetings": 40,
+        "held": 27,
+        "show_rate": 0.675,
+        "usable": true,
+        "at_least_90pct_of_best": false,
+        "sooner_than_best": false
+      }
+    ],
+    "best_usable_show_rate": 0.895,
+    "threshold": 0.805,
+    "booking_window_cap_days": 3,
+    "no_shows": 27,
+    "rebooked": 9,
+    "not_rebooked": 18,
+    "scheduled_after_export": 7
+  },
+  "leaks": {
+    "rates_used": {
+      "sql_rate_within_target": 0.318,
+      "sql_rate_after_target": 0.136,
+      "sql_rate_decided_after_limit": 0.5,
+      "decided_after_limit_n": 24,
+      "opportunity_rate_held_decided_after_limit": null,
+      "held_decided_after_limit_n": 5,
+      "opportunities_per_sql": 0.366,
+      "opportunities_per_held_meeting": 0.531,
+      "average_opportunity_value": 6147
+    },
+    "ranked": [
+      {
+        "leak": "MQLs first touched after 30 min",
+        "kind": "lost",
+        "leads": 147,
+        "sqls_est": 26.8,
+        "opportunities_est": 9.8,
+        "pipeline_est": 60190,
+        "how": "147 x (0.318 - 0.136) (SQL rate within vs after the target)",
+        "rank": 1
+      },
+      {
+        "leak": "No-shows not rebooked",
+        "kind": "lost",
+        "leads": 18,
+        "sqls_est": null,
+        "opportunities_est": 9.6,
+        "pipeline_est": 58750,
+        "how": "18 x 0.531 (opportunities per held meeting), if each had been rebooked and held",
+        "rank": 2
+      },
+      {
+        "leak": "Accepted leads past the 6-business-day decision limit",
+        "kind": "at risk",
+        "leads": 34,
+        "sqls_est": 17.0,
+        "opportunities_est": 6.2,
+        "pipeline_est": 38250,
+        "how": "34 x 0.5 (SQL rate of mature leads that were decided after sitting past the limit, 24 leads). That rate is above the cohort's 0.238, so these leads are late, not gone: pipeline at risk, not lost.",
+        "rank": 3
+      },
+      {
+        "leak": "MQLs never touched",
+        "kind": "lost",
+        "leads": 17,
+        "sqls_est": 5.4,
+        "opportunities_est": 2.0,
+        "pipeline_est": 12160,
+        "how": "17 x 0.318 (SQL rate when touched within 30 min)",
+        "rank": 4
+      },
+      {
+        "leak": "Held meetings past the 5-business-day limit",
+        "kind": "at risk",
+        "leads": 1,
+        "sqls_est": null,
+        "opportunities_est": null,
+        "pipeline_est": null,
+        "how": "Count only: 5 mature held meetings were decided after the limit, under the 10 needed for a rate.",
+        "rank": 5
+      }
+    ],
+    "total_pipeline_lost_est": 131100,
+    "total_pipeline_at_risk_est": 38250,
+    "label": "Estimates over the 13 weeks: counts are facts from the export, rates come from the mature cohort. 'Lost' leads will not come back without a change; 'at risk' leads are still open and late, so their pipeline is delayed, not lost."
+  },
+  "ga4_event_map": {
+    "events": [
+      {
+        "stage": "Lead",
+        "event": "generate_lead",
+        "send_when": "form submitted (browser)",
+        "parameter": "lead_source",
+        "value_usd": 143,
+        "value_math": "0.0776 (rate from this stage to opportunity) x 0.3 (win rate) x $6,147 (average opportunity)",
+        "fires_today": true,
+        "key_event_today": true,
+        "make_key_event": false
+      },
+      {
+        "stage": "Sales accepted",
+        "event": "working_lead",
+        "send_when": "first touch logged in the CRM (server side)",
+        "parameter": "lead_status",
+        "value_usd": 168,
+        "value_math": "0.0909 (rate from this stage to opportunity) x 0.3 (win rate) x $6,147 (average opportunity)",
+        "fires_today": false,
+        "key_event_today": false,
+        "make_key_event": false
+      },
+      {
+        "stage": "SQL",
+        "event": "qualify_lead",
+        "send_when": "SDR qualifies and books the AE meeting (server side)",
+        "parameter": null,
+        "value_usd": 675,
+        "value_math": "0.366 (rate from this stage to opportunity) x 0.3 (win rate) x $6,147 (average opportunity)",
+        "fires_today": false,
+        "key_event_today": false,
+        "make_key_event": true
+      },
+      {
+        "stage": "Rejected",
+        "event": "disqualify_lead",
+        "send_when": "reject reason saved (server side)",
+        "parameter": "disqualified_lead_reason",
+        "value_usd": 0,
+        "value_math": "no value: a stage that ends the path",
+        "fires_today": false,
+        "key_event_today": false,
+        "make_key_event": false
+      },
+      {
+        "stage": "Opportunity won",
+        "event": "close_convert_lead",
+        "send_when": "deal closed won (server side)",
+        "parameter": null,
+        "value_usd": "the deal's own amount",
+        "value_math": "the won deal value, in USD",
+        "fires_today": false,
+        "key_event_today": false,
+        "make_key_event": true
+      },
+      {
+        "stage": "Opportunity lost",
+        "event": "close_unconvert_lead",
+        "send_when": "deal closed lost (server side)",
+        "parameter": "unconvert_lead_reason",
+        "value_usd": 0,
+        "value_math": "no value: a stage that ends the path",
+        "fires_today": false,
+        "key_event_today": false,
+        "make_key_event": false
+      }
+    ],
+    "found": "generate_lead fires every week; the other five lead events are not sent, so ad platforms can only optimise to form fills.",
+    "how_to_send": "Store the GA4 client_id in a hidden form field on the lead record, then send the server-side events from the CRM with the Measurement Protocol, with value and currency USD.",
+    "tracking_audit": "Checking that these events fire correctly is a tracking audit, not part of this design."
+  },
+  "weekly_table": {
+    "weeks": [
+      {
+        "week": "2026-09-28 to 2026-10-04",
+        "leads": 38,
+        "mqls": 37,
+        "touched_within_target_pct": 67.6,
+        "median_response_min": 14,
+        "sqls": 11,
+        "rejected": 28,
+        "meetings_held": 3,
+        "no_shows": 2,
+        "no_shows_rebooked": 0,
+        "opportunities": 1,
+        "pipeline_value": 5600,
+        "past_decision_limit_now": null
+      },
+      {
+        "week": "2026-10-05 to 2026-10-11",
+        "leads": 37,
+        "mqls": 34,
+        "touched_within_target_pct": 58.8,
+        "median_response_min": 16,
+        "sqls": 9,
+        "rejected": 18,
+        "meetings_held": 11,
+        "no_shows": 3,
+        "no_shows_rebooked": 0,
+        "opportunities": 5,
+        "pipeline_value": 37100,
+        "past_decision_limit_now": null
+      },
+      {
+        "week": "2026-10-12 to 2026-10-18",
+        "leads": 31,
+        "mqls": 29,
+        "touched_within_target_pct": 62.1,
+        "median_response_min": 12,
+        "sqls": 9,
+        "rejected": 17,
+        "meetings_held": 8,
+        "no_shows": 0,
+        "no_shows_rebooked": 0,
+        "opportunities": 3,
+        "pipeline_value": 10100,
+        "past_decision_limit_now": null
+      },
+      {
+        "week": "2026-10-19 to 2026-10-25",
+        "leads": 25,
+        "mqls": 21,
+        "touched_within_target_pct": 57.1,
+        "median_response_min": 18,
+        "sqls": 11,
+        "rejected": 17,
+        "meetings_held": 7,
+        "no_shows": 2,
+        "no_shows_rebooked": 1,
+        "opportunities": 5,
+        "pipeline_value": 39800,
+        "past_decision_limit_now": 34
+      }
+    ],
+    "note": "Events are counted in the week they happened; touched-within-target is for MQLs created that week."
+  },
+  "offered_after_confirmation": [
+    {
+      "action": "create_sheet",
+      "platform": "google-sheets",
+      "status": "not run",
+      "payload": {
+        "platform": "google-sheets",
+        "action": "create_sheet",
+        "workspace_id": "1",
+        "brand_id": "1",
+        "spreadsheet_id": "<the team's sheet>",
+        "title": "Weekly handoff table"
+      }
+    },
+    {
+      "action": "update_cells",
+      "platform": "google-sheets",
+      "status": "not run",
+      "payload": {
+        "platform": "google-sheets",
+        "action": "update_cells",
+        "workspace_id": "1",
+        "brand_id": "1",
+        "spreadsheet_id": "<the team's sheet>",
+        "sheet_id": "<sheet_id returned by create_sheet>",
+        "range": "A1:L5",
+        "value_input_option": "USER_ENTERED",
+        "values": [
+          [
+            "Week",
+            "Leads",
+            "MQLs",
+            "% touched within 30 min",
+            "Median first touch (min)",
+            "SQLs",
+            "Rejected",
+            "Meetings held",
+            "No-shows",
+            "No-shows rebooked",
+            "Opportunities",
+            "Pipeline ($)"
+          ],
+          [
+            "2026-09-28 to 2026-10-04",
+            38,
+            37,
+            67.6,
+            14,
+            11,
+            28,
+            3,
+            2,
+            0,
+            1,
+            5600
+          ],
+          [
+            "2026-10-05 to 2026-10-11",
+            37,
+            34,
+            58.8,
+            16,
+            9,
+            18,
+            11,
+            3,
+            0,
+            5,
+            37100
+          ],
+          [
+            "2026-10-12 to 2026-10-18",
+            31,
+            29,
+            62.1,
+            12,
+            9,
+            17,
+            8,
+            0,
+            0,
+            3,
+            10100
+          ],
+          [
+            "2026-10-19 to 2026-10-25",
+            25,
+            21,
+            57.1,
+            18,
+            11,
+            17,
+            7,
+            2,
+            1,
+            5,
+            39800
+          ]
+        ]
+      }
+    },
+    {
+      "action": "create_key_event",
+      "platform": "google-analytics",
+      "status": "not run",
+      "payload": {
+        "platform": "google-analytics",
+        "action": "create_key_event",
+        "workspace_id": "1",
+        "brand_id": "1",
+        "property_id": "properties/123456789",
+        "event_name": "qualify_lead",
+        "counting_method": "ONCE_PER_EVENT",
+        "default_value": {
+          "numericValue": 675,
+          "currencyCode": "USD"
+        }
+      }
+    },
+    {
+      "action": "create_key_event",
+      "platform": "google-analytics",
+      "status": "not run",
+      "payload": {
+        "platform": "google-analytics",
+        "action": "create_key_event",
+        "workspace_id": "1",
+        "brand_id": "1",
+        "property_id": "properties/123456789",
+        "event_name": "close_convert_lead",
+        "counting_method": "ONCE_PER_EVENT"
+      }
+    }
+  ]
+}

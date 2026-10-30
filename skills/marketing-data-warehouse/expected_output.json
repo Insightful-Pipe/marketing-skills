@@ -1,0 +1,536 @@
+{
+  "header": {
+    "warehouse": "BigQuery",
+    "project": "example-booking-analytics",
+    "datasets_read": [
+      "marketing",
+      "google_ads_raw",
+      "meta_ads_raw",
+      "linkedin_ads_raw",
+      "tiktok_ads_raw"
+    ],
+    "date_range": [
+      "2026-09-28",
+      "2026-10-27"
+    ],
+    "reporting_currency": "USD",
+    "reporting_time_zone": "America/New_York",
+    "accounts_in_other_time_zones": [
+      "Example Booking Software UK [meta_ads] (Europe/London)"
+    ],
+    "reconciled_live": [
+      "Example Booking Software [google_ads]",
+      "Example Booking Software US [meta_ads]",
+      "Example Booking Software UK [meta_ads]",
+      "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "Example Booking Software (TikTok ad account) [tiktok_ads]"
+    ]
+  },
+  "verdict": {
+    "result": "fix before the dashboard",
+    "checks": {
+      "pass": 22,
+      "warn": 2,
+      "fail": 5,
+      "unknown": 1
+    },
+    "spend_misstated_usd": {
+      "Remove the second copies on 2026-10-08, 2026-10-09 and make backfills MERGE, not append": 939.77,
+      "Label Example Booking Software UK [meta_ads] in GBP so the dated rate applies": 921.15,
+      "Reload 2026-10-14 for Example Booking Software (LinkedIn ad account) [linkedin_ads]": 293.04
+    },
+    "net_effect_on_range_total_usd": -274.42,
+    "summary": "5 checks fail and 2 warn. 3 faults change the range total: Remove the second copies on 2026-10-08, 2026-10-09 and make backfills MERGE, not append (overstated by 939.77 USD); Label Example Booking Software UK [meta_ads] in GBP so the dated rate applies (understated by 921.15 USD); Reload 2026-10-14 for Example Booking Software (LinkedIn ad account) [linkedin_ads] (understated by 293.04 USD). Fix those before any dashboard reads the table."
+  },
+  "checks": [
+    {
+      "check": "1. Freshness",
+      "account": "Example Booking Software [google_ads]",
+      "result": "pass",
+      "key_number": "last day 2026-10-27, 0 days behind",
+      "why": "Loaded up to the last complete day."
+    },
+    {
+      "check": "1. Freshness",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "last day 2026-10-27, 0 days behind",
+      "why": "Loaded up to the last complete day."
+    },
+    {
+      "check": "1. Freshness",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "pass",
+      "key_number": "last day 2026-10-27, 0 days behind",
+      "why": "Loaded up to the last complete day."
+    },
+    {
+      "check": "1. Freshness",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "pass",
+      "key_number": "last day 2026-10-27, 0 days behind",
+      "why": "Loaded up to the last complete day."
+    },
+    {
+      "check": "1. Freshness",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "pass",
+      "key_number": "last day 2026-10-27, 0 days behind",
+      "why": "Loaded up to the last complete day."
+    },
+    {
+      "check": "2. Missing days",
+      "account": "Example Booking Software [google_ads]",
+      "result": "pass",
+      "key_number": "0 missing days",
+      "why": "Every day in the range has rows."
+    },
+    {
+      "check": "2. Missing days",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "0 missing days",
+      "why": "Every day in the range has rows."
+    },
+    {
+      "check": "2. Missing days",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "pass",
+      "key_number": "0 missing days",
+      "why": "Every day in the range has rows."
+    },
+    {
+      "check": "2. Missing days",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "fail",
+      "key_number": "1 day(s) missing: 2026-10-14",
+      "why": "The platform spent 293.04 USD on the missing day(s), so the warehouse is short by that amount."
+    },
+    {
+      "check": "2. Missing days",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "pass",
+      "key_number": "0 missing days",
+      "why": "Every day in the range has rows."
+    },
+    {
+      "check": "3. Duplicate rows",
+      "account": "Example Booking Software [google_ads]",
+      "result": "fail",
+      "key_number": "8 keys with 2 copies on 2026-10-08, 2026-10-09",
+      "why": "939.77 USD of spend is counted twice. Every extra copy was loaded at 2026-10-20T14:32:00Z, after the originals (2026-10-11T06:10:00Z, 2026-10-12T06:10:00Z): a backfill appended instead of merging."
+    },
+    {
+      "check": "3. Duplicate rows",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "0 duplicate keys",
+      "why": "The grain key is unique."
+    },
+    {
+      "check": "3. Duplicate rows",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "pass",
+      "key_number": "0 duplicate keys",
+      "why": "The grain key is unique."
+    },
+    {
+      "check": "3. Duplicate rows",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "pass",
+      "key_number": "0 duplicate keys",
+      "why": "The grain key is unique."
+    },
+    {
+      "check": "3. Duplicate rows",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "pass",
+      "key_number": "0 duplicate keys",
+      "why": "The grain key is unique."
+    },
+    {
+      "check": "4. Currency",
+      "account": "Example Booking Software [google_ads]",
+      "result": "pass",
+      "key_number": "USD only",
+      "why": "Matches the account currency, and every row has a rate."
+    },
+    {
+      "check": "4. Currency",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "pass",
+      "key_number": "USD only",
+      "why": "Matches the account currency, and every row has a rate."
+    },
+    {
+      "check": "4. Currency",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "USD only",
+      "why": "Matches the account currency, and every row has a rate."
+    },
+    {
+      "check": "4. Currency",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "pass",
+      "key_number": "USD only",
+      "why": "Matches the account currency, and every row has a rate."
+    },
+    {
+      "check": "4. Currency",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "fail",
+      "key_number": "labelled USD, the account bills in GBP",
+      "why": "2,776.13 of GBP spend was converted at 1, so spend in USD is understated by 921.15 over the range."
+    },
+    {
+      "check": "6. Reconciliation: spend",
+      "account": "Example Booking Software [google_ads]",
+      "result": "fail",
+      "key_number": "warehouse 14,336.10 vs platform 13,396.33 USD (+7.02%)",
+      "why": "2 day(s) miss: 2026-10-08 duplicates (check 3); 2026-10-09 duplicates (check 3)."
+    },
+    {
+      "check": "6. Reconciliation: conversions",
+      "account": "Example Booking Software [google_ads]",
+      "result": "warn",
+      "key_number": "settled days older than the reload: warehouse 261.04 vs platform 296.61 (-12.0%) over 25 days",
+      "why": "Days older than the 3-day reload run 12.0% short of the platform. The platform keeps adding conversions for 30 days, and the load stops rewriting a day after 3: widen the lookback to 30. Days inside the reload window are all in the last 3 days, so they are still settling and left out."
+    },
+    {
+      "check": "6. Reconciliation: spend",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "warehouse 5,014.97 vs platform 5,014.97 USD (+0.00%)",
+      "why": "Every day matches within 0.5% or 1 unit of currency."
+    },
+    {
+      "check": "6. Reconciliation: conversions",
+      "account": "Example Booking Software US [meta_ads]",
+      "result": "pass",
+      "key_number": "settled days older than the reload: warehouse 132.02 vs platform 132.02 (+0.0%) over 27 days",
+      "why": "Settled days match within 2%."
+    },
+    {
+      "check": "6. Reconciliation: spend",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "pass",
+      "key_number": "warehouse 2,776.13 vs platform 2,776.13 GBP (+0.00%)",
+      "why": "Every day matches within 0.5% or 1 unit of currency."
+    },
+    {
+      "check": "6. Reconciliation: conversions",
+      "account": "Example Booking Software UK [meta_ads]",
+      "result": "pass",
+      "key_number": "settled days older than the reload: warehouse 77.31 vs platform 77.31 (+0.0%) over 27 days",
+      "why": "Settled days match within 2%."
+    },
+    {
+      "check": "6. Reconciliation: spend",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "fail",
+      "key_number": "warehouse 7,257.46 vs platform 7,550.50 USD (-3.88%)",
+      "why": "1 day(s) miss: 2026-10-14 missing day (check 2)."
+    },
+    {
+      "check": "6. Reconciliation: conversions",
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "result": "pass",
+      "key_number": "settled days older than the reload: warehouse 44.47 vs platform 44.47 (+0.0%) over 26 days",
+      "why": "Settled days match within 2%."
+    },
+    {
+      "check": "6. Reconciliation: spend",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "warn",
+      "key_number": "warehouse 3,579.08 vs platform 3,580.78 USD (-0.05%)",
+      "why": "The range total is only 0.05% off, but 28 of 30 days miss. 29 of 29 warehouse days sit between the platform's same day and the day before: days are cut in UTC, not in the account's New York time."
+    },
+    {
+      "check": "6. Reconciliation: conversions",
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "result": "unknown",
+      "key_number": "settled days older than the reload: warehouse 73.50 vs platform 73.45 (+0.1%) over 27 days",
+      "why": "Not graded: days are shifted (see the spend row), so day-level conversions can't be compared until the dates are fixed."
+    }
+  ],
+  "reconciliation_detail": [
+    {
+      "account": "Example Booking Software [google_ads]",
+      "currency": "USD",
+      "platform_total": 13396.33,
+      "warehouse_total": 14336.1,
+      "days_compared": 30,
+      "days_off": 2,
+      "days_off_first_8": [
+        {
+          "date": "2026-10-08",
+          "platform_spend": 505.58,
+          "warehouse_spend": 1011.16,
+          "gap": 505.58,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "duplicates (check 3)"
+        },
+        {
+          "date": "2026-10-09",
+          "platform_spend": 434.19,
+          "warehouse_spend": 868.38,
+          "gap": 434.19,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "duplicates (check 3)"
+        }
+      ]
+    },
+    {
+      "account": "Example Booking Software US [meta_ads]",
+      "currency": "USD",
+      "platform_total": 5014.97,
+      "warehouse_total": 5014.97,
+      "days_compared": 30,
+      "days_off": 0,
+      "days_off_first_8": []
+    },
+    {
+      "account": "Example Booking Software UK [meta_ads]",
+      "currency": "GBP",
+      "platform_total": 2776.13,
+      "warehouse_total": 2776.13,
+      "days_compared": 30,
+      "days_off": 0,
+      "days_off_first_8": []
+    },
+    {
+      "account": "Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "currency": "USD",
+      "platform_total": 7550.5,
+      "warehouse_total": 7257.46,
+      "days_compared": 30,
+      "days_off": 1,
+      "days_off_first_8": [
+        {
+          "date": "2026-10-14",
+          "platform_spend": 293.04,
+          "warehouse_spend": 0.0,
+          "gap": -293.04,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "missing day (check 2)"
+        }
+      ]
+    },
+    {
+      "account": "Example Booking Software (TikTok ad account) [tiktok_ads]",
+      "currency": "USD",
+      "platform_total": 3580.78,
+      "warehouse_total": 3579.08,
+      "days_compared": 30,
+      "days_off": 28,
+      "days_off_first_8": [
+        {
+          "date": "2026-09-28",
+          "platform_spend": 113.03,
+          "warehouse_spend": 110.18,
+          "gap": -2.85,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-09-29",
+          "platform_spend": 156.16,
+          "warehouse_spend": 148.97,
+          "gap": -7.19,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-01",
+          "platform_spend": 102.55,
+          "warehouse_spend": 110.88,
+          "gap": 8.33,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-02",
+          "platform_spend": 129.88,
+          "warehouse_spend": 125.33,
+          "gap": -4.55,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-03",
+          "platform_spend": 88.09,
+          "warehouse_spend": 95.06,
+          "gap": 6.97,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-04",
+          "platform_spend": 109.12,
+          "warehouse_spend": 105.62,
+          "gap": -3.5,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-06",
+          "platform_spend": 150.04,
+          "warehouse_spend": 142.29,
+          "gap": -7.75,
+          "metrics_off": [
+            "spend",
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        },
+        {
+          "date": "2026-10-07",
+          "platform_spend": 150.12,
+          "warehouse_spend": 150.11,
+          "gap": -0.01,
+          "metrics_off": [
+            "impressions",
+            "clicks"
+          ],
+          "explained_by": "date-boundary shift (check 6)"
+        }
+      ]
+    }
+  ],
+  "fixes_ranked": [
+    {
+      "fix": "Remove the second copies on 2026-10-08, 2026-10-09 and make backfills MERGE, not append",
+      "misstates_usd": 939.77,
+      "direction": "overstated",
+      "sql_to_save": "DELETE FROM `example-booking-analytics.marketing.ad_spend_daily` WHERE platform = 'google_ads' AND date IN ('2026-10-08', '2026-10-09') AND loaded_at = TIMESTAMP '2026-10-20 14:32:00 UTC'. Run it only after checking that each key keeps exactly one copy.",
+      "evidence": "check 3 and the spend row of check 6",
+      "rank": 1
+    },
+    {
+      "fix": "Label Example Booking Software UK [meta_ads] in GBP so the dated rate applies",
+      "misstates_usd": 921.15,
+      "direction": "understated",
+      "sql_to_save": "CREATE OR REPLACE VIEW `example-booking-analytics.marketing.stg_meta_ads` AS ... replace 'USD' AS currency with the account currency from the loader (account_currency), then let the MERGE rewrite the range (or run it once with a 30-day window).",
+      "evidence": "check 4 and the platform's account currency",
+      "rank": 2
+    },
+    {
+      "fix": "Reload 2026-10-14 for Example Booking Software (LinkedIn ad account) [linkedin_ads]",
+      "misstates_usd": 293.04,
+      "direction": "understated",
+      "sql_to_save": "Re-run the LinkedIn loader for the day, then let the scheduled MERGE pick it up (it is inside the 30-day window once widened).",
+      "evidence": "check 2 and the platform's spend that day",
+      "rank": 3
+    },
+    {
+      "fix": "Widen the scheduled MERGE lookback from 3 to 30 days",
+      "conversions_missing": 35.57,
+      "sql_to_save": "In the scheduled MERGE, change INTERVAL 3 DAY to INTERVAL 30 DAY in both places.",
+      "evidence": "the conversions row of check 6",
+      "rank": 4
+    },
+    {
+      "fix": "Cut Example Booking Software (TikTok ad account) [tiktok_ads] days in New York time",
+      "range_total_gap_usd": -1.7,
+      "spend_moved_between_days_usd": 49.47,
+      "sql_to_save": "In stg_tiktok_ads use DATE(stat_time_hour, 'America/New_York') AS date (or the platform's stat_time_day), then rewrite the range.",
+      "evidence": "the spend row of check 6",
+      "rank": 5
+    }
+  ],
+  "question": {
+    "asked": "Cost per new paid subscription by platform, last 30 days",
+    "restated": "spend in USD from the daily table, divided by paid subscriptions created in the range (New York time) by first-touch platform from conversions_crm",
+    "sql": "the Job 4 example query in SKILL.md, run as one SELECT after a dry run",
+    "rows": [
+      {
+        "platform": "google_ads",
+        "new_paid_subscriptions": 61,
+        "spend_as_loaded": 14336.1,
+        "cost_per_subscription_as_loaded": 235.02,
+        "spend_after_fixes": 13396.33,
+        "cost_per_subscription_after_fixes": 219.61
+      },
+      {
+        "platform": "meta_ads",
+        "new_paid_subscriptions": 29,
+        "spend_as_loaded": 7791.1,
+        "cost_per_subscription_as_loaded": 268.66,
+        "spend_after_fixes": 8712.25,
+        "cost_per_subscription_after_fixes": 300.42
+      },
+      {
+        "platform": "linkedin_ads",
+        "new_paid_subscriptions": 11,
+        "spend_as_loaded": 7257.46,
+        "cost_per_subscription_as_loaded": 659.77,
+        "spend_after_fixes": 7550.5,
+        "cost_per_subscription_after_fixes": 686.41
+      },
+      {
+        "platform": "tiktok_ads",
+        "new_paid_subscriptions": 6,
+        "spend_as_loaded": 3579.08,
+        "cost_per_subscription_as_loaded": 596.51,
+        "spend_after_fixes": 3580.78,
+        "cost_per_subscription_after_fixes": 596.8
+      }
+    ],
+    "totals": {
+      "spend_as_loaded": 32963.74,
+      "spend_after_fixes": 33239.86,
+      "new_paid_subscriptions": 107,
+      "cost_per_subscription_as_loaded": 308.07,
+      "cost_per_subscription_after_fixes": 310.65
+    },
+    "explanation": "Across all platforms a new paid subscription cost 310.65 USD after the fixes, against 308.07 USD as loaded. The biggest change is meta_ads: 268.66 as loaded, 300.42 after the fixes. Spend is platform-reported; subscriptions come from the CRM table by first touch, so they don't match the platforms' own conversion counts, and that is expected."
+  },
+  "unknowns": [
+    "Microsoft Ads is not loaded in this warehouse, so it was not checked.",
+    "GA4 was not part of this request; ga4_campaign_daily was not checked."
+  ],
+  "go_deeper": [
+    "Build the dashboard on the fixed table with marketing-dashboard-builder, if installed.",
+    "Compare platform conversions with the CRM subscriptions using conversion-reconciliation, if installed.",
+    "Move budget with the corrected cost per subscription using cross-platform-budget-allocator, if installed."
+  ],
+  "never_run": "No statement in this report was sent to the warehouse except the SELECT checks and the dry runs. The fixes are SQL for you to review and save."
+}

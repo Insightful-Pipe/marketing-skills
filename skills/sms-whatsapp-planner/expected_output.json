@@ -1,0 +1,576 @@
+{
+  "header": {
+    "business": "Brindlemoss Coffee Roasters (invented)",
+    "countries": "US, Canada (SMS); Mexico (WhatsApp)",
+    "platform": "Klaviyo SMS for the US and Canada; a WhatsApp Business provider for Mexico",
+    "sending_number": "toll-free, verification pending",
+    "window": "2026-07-30 to 2026-10-27",
+    "sources": "Klaviyo and Shopify (connected), the user's answers and pasted texts",
+    "currency": "USD",
+    "send_window": "10:00 to 20:00 recipient local time",
+    "link_length_counted": "23 characters per link (the shortener's length wasn't known)"
+  },
+  "audience": [
+    {
+      "country": "US",
+      "channel": "SMS",
+      "email_consented_klaviyo": 18400,
+      "sms_consented_klaviyo": 3120,
+      "sms_subscribed_shopify": 2980,
+      "textable_used_for_sizing": 2980,
+      "sms_share_of_email_pct": 16.2,
+      "single_opt_in_share_pct": 74.2,
+      "pending_not_textable": 85,
+      "note": "Klaviyo shows 3,120 and Shopify 2,980; the smaller number is used. Check that Shopify checkout consent syncs to Klaviyo."
+    },
+    {
+      "country": "CA",
+      "channel": "SMS",
+      "email_consented_klaviyo": 620,
+      "sms_consented_klaviyo": 140,
+      "sms_subscribed_shopify": 150,
+      "textable_used_for_sizing": 140,
+      "sms_share_of_email_pct": 22.6,
+      "single_opt_in_share_pct": 73.3,
+      "pending_not_textable": 4,
+      "note": "Klaviyo shows 140 and Shopify 150; the smaller number is used. Check that Shopify checkout consent syncs to Klaviyo."
+    },
+    {
+      "country": "MX",
+      "channel": "WhatsApp",
+      "email_consented_klaviyo": 2900,
+      "sms_consented_klaviyo": 0,
+      "sms_subscribed_shopify": 0,
+      "textable_used_for_sizing": 0,
+      "sms_share_of_email_pct": 0.0,
+      "single_opt_in_share_pct": 0.0,
+      "pending_not_textable": 0,
+      "note": "No SMS or WhatsApp consent is collected in Mexico yet; WhatsApp opt-in has to be added first."
+    }
+  ],
+  "channel_economics": {
+    "price_per_segment": 0.012,
+    "price_per_segment_basis": "Klaviyo text_message_spend / message_segment_count_sum across all SMS sends in 90 days",
+    "rows": [
+      {
+        "moment": "Welcome",
+        "email_recipients": 4800,
+        "email_rpr": 4.5,
+        "sms_recipients": 0,
+        "sms_history": false,
+        "sms_rpr": null,
+        "sms_cost_per_recipient": null,
+        "sms_net_rpr": null
+      },
+      {
+        "moment": "Abandoned checkout",
+        "email_recipients": 3900,
+        "email_rpr": 7.0,
+        "sms_recipients": 1250,
+        "sms_history": true,
+        "sms_rpr": 11.0,
+        "sms_cost_per_recipient": 0.024,
+        "sms_net_rpr": 10.98
+      },
+      {
+        "moment": "Browse abandonment",
+        "email_recipients": 5200,
+        "email_rpr": 1.5,
+        "sms_recipients": 0,
+        "sms_history": false,
+        "sms_rpr": null,
+        "sms_cost_per_recipient": null,
+        "sms_net_rpr": null
+      },
+      {
+        "moment": "Back in stock",
+        "email_recipients": 900,
+        "email_rpr": 6.0,
+        "sms_recipients": 0,
+        "sms_history": false,
+        "sms_rpr": null,
+        "sms_cost_per_recipient": null,
+        "sms_net_rpr": null
+      },
+      {
+        "moment": "Post-purchase and reviews",
+        "email_recipients": 5100,
+        "email_rpr": 1.2,
+        "sms_recipients": 0,
+        "sms_history": false,
+        "sms_rpr": null,
+        "sms_cost_per_recipient": null,
+        "sms_net_rpr": null
+      },
+      {
+        "moment": "Win-back",
+        "email_recipients": 2400,
+        "email_rpr": 1.5,
+        "sms_recipients": 300,
+        "sms_history": true,
+        "sms_rpr": 0.5,
+        "sms_cost_per_recipient": 0.012,
+        "sms_net_rpr": 0.49
+      },
+      {
+        "moment": "Campaigns",
+        "email_recipients": 204000,
+        "email_rpr": 0.3,
+        "sms_recipients": 17400,
+        "sms_history": true,
+        "sms_rpr": 0.95,
+        "sms_cost_per_recipient": 0.012,
+        "sms_net_rpr": 0.94
+      }
+    ],
+    "attribution_note": "Klaviyo can credit texts and emails on different attribution windows; check the account's attribution settings before reading the two RPRs as equal terms."
+  },
+  "moment_map": [
+    {
+      "moment": "Welcome",
+      "us_ca_decision": "email only (plus the opt-in confirmation text)",
+      "rule": 6,
+      "mexico": "email only",
+      "timing": "emails as today; confirmation text right after opt-in",
+      "overlap_check": "no text planned"
+    },
+    {
+      "moment": "Abandoned checkout",
+      "us_ca_decision": "text first, then email to non-buyers",
+      "rule": 2,
+      "mexico": "WhatsApp marketing template in place of the text, after WhatsApp opt-in",
+      "timing": "text at 30 minutes, email at 2 hours, one exit on order",
+      "overlap_check": "clash today, clear as planned"
+    },
+    {
+      "moment": "Browse abandonment",
+      "us_ca_decision": "email only",
+      "rule": 6,
+      "mexico": "email only",
+      "timing": "emails as today",
+      "overlap_check": "no text planned"
+    },
+    {
+      "moment": "Back in stock",
+      "us_ca_decision": "text as the follow-up (new; judge after 90 days)",
+      "rule": 5,
+      "mexico": "WhatsApp marketing template in place of the text, after WhatsApp opt-in",
+      "timing": "email right away, text 2 hours later if no purchase",
+      "overlap_check": "clear"
+    },
+    {
+      "moment": "Post-purchase and reviews",
+      "us_ca_decision": "email only",
+      "rule": 6,
+      "mexico": "email only",
+      "timing": "emails as today",
+      "overlap_check": "no text planned"
+    },
+    {
+      "moment": "Win-back",
+      "us_ca_decision": "email first, text as the follow-up",
+      "rule": 3,
+      "mexico": "WhatsApp marketing template in place of the text, after WhatsApp opt-in",
+      "timing": "email on day 75, text on day 78 if no order",
+      "overlap_check": "clear"
+    },
+    {
+      "moment": "Campaigns",
+      "us_ca_decision": "text first, then email to non-buyers",
+      "rule": 2,
+      "mexico": "WhatsApp marketing template in place of the text, after WhatsApp opt-in",
+      "timing": "text at 13:00 Eastern (10:00 Pacific) or recipient local time; the email about the same offer the next morning",
+      "overlap_check": "clear (the email goes the next day)"
+    },
+    {
+      "moment": "Shipping updates",
+      "us_ca_decision": "transactional text on shipment, email kept",
+      "rule": 1,
+      "mexico": "WhatsApp utility template on shipment",
+      "timing": "on shipment",
+      "overlap_check": "not checked (transactional)"
+    }
+  ],
+  "overlap_checks": [
+    {
+      "check": "Abandoned checkout, today: SMS flow vs email flow on Started Checkout",
+      "text_at_min": 45,
+      "email_at_min": 60,
+      "minutes_apart": 15,
+      "result": "clash",
+      "fix": "Two separate flows fire on the same trigger. Merge them into one Abandoned Checkout flow with the text at 30 minutes, the email at 2 hours, and a 'placed order since starting this flow' exit that stops both."
+    },
+    {
+      "check": "Abandoned checkout, planned",
+      "text_at_min": 30,
+      "email_at_min": 120,
+      "minutes_apart": 90,
+      "result": "clear"
+    },
+    {
+      "check": "Back in stock, planned",
+      "text_at_min": 120,
+      "email_at_min": 0,
+      "minutes_apart": 120,
+      "result": "clear"
+    },
+    {
+      "check": "Win-back, planned",
+      "text_at_min": 112320,
+      "email_at_min": 108000,
+      "minutes_apart": 4320,
+      "result": "clear"
+    },
+    {
+      "check": "Shipping updates, planned",
+      "result": "not checked",
+      "fix": "Transactional: the text is the alert and Shopify's shipping email is the record, so both go out on shipment."
+    }
+  ],
+  "cadence": {
+    "sms_campaigns_last_90_days": 6,
+    "current_per_month": 2.0,
+    "weighted_unsubscribe_rate_pct": 1.3,
+    "rule": "above 1%: hold the cadence where it is",
+    "wanted_per_month": 4,
+    "planned_per_month": 2,
+    "max_marketing_texts_per_person_per_month": 6,
+    "max_basis": "2 campaigns + one run of each marketing flow text: opt-in confirmation, abandoned checkout, back in stock, win-back (4)",
+    "disclosure_frequency": "up to 6 msgs/mo"
+  },
+  "opt_in_kit": {
+    "keyword": "BEANS (text it to the toll-free number once verified)",
+    "two_step_form": {
+      "step_1": "email address",
+      "step_2": "mobile number, with the disclosure below the field"
+    },
+    "form_disclosure": "By entering your number, you agree to receive recurring automated marketing texts from Brindlemoss Coffee (up to 6 msgs/mo) at this number. Consent is not a condition of purchase. Msg & data rates may apply. Reply HELP for help, STOP to cancel. See our Terms and Privacy Policy.",
+    "confirmation_text": "Brindlemoss Coffee: Thanks for joining! Recurring automated marketing texts, up to 6 msgs/mo. Consent not required to buy. Msg & data rates may apply. Reply HELP for help, STOP to cancel. Reply Y to confirm.",
+    "double_opt_in": "The confirmation text asks for 'Reply Y to confirm' because 74.2% of US SMS subscribers are single opt-in.",
+    "whatsapp_opt_in": "A separate checkbox at Mexico checkout: 'Quiero recibir avisos de pedidos y ofertas de Brindlemoss Coffee por WhatsApp.'",
+    "stop_keywords": [
+      "STOP",
+      "QUIT",
+      "END",
+      "REVOKE",
+      "OPT OUT",
+      "CANCEL",
+      "UNSUBSCRIBE"
+    ]
+  },
+  "messages": [
+    {
+      "name": "Opt-in confirmation",
+      "kind": "marketing (required)",
+      "trigger": "SMS consent given",
+      "timing": "right away (held to the send window at night)",
+      "text": "Brindlemoss Coffee: Thanks for joining! Recurring automated marketing texts, up to 6 msgs/mo. Consent not required to buy. Msg & data rates may apply. Reply HELP for help, STOP to cancel. Reply Y to confirm.",
+      "encoding": "GSM-7",
+      "characters": 207,
+      "segments": 2,
+      "cost_per_send": 0.024,
+      "recipients_per_month": 365.0,
+      "recipients_basis": "new SMS consents in 90 days / 3",
+      "cost_per_month": 8.76,
+      "length_check": "ok"
+    },
+    {
+      "name": "Abandoned checkout",
+      "kind": "marketing",
+      "trigger": "Started Checkout, no order",
+      "timing": "30 minutes after the trigger",
+      "text": "Brindlemoss Coffee: Don't forget your beans! Your cart is saved for you here: {link} Reply STOP to opt out",
+      "encoding": "GSM-7",
+      "characters": 123,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": 416.7,
+      "recipients_basis": "SMS recipients in 90 days / 3",
+      "cost_per_month": 5.0,
+      "length_check": "ok"
+    },
+    {
+      "name": "Back in stock",
+      "kind": "marketing",
+      "trigger": "Back in stock alert, no purchase",
+      "timing": "2 hours after the email",
+      "text": "Brindlemoss Coffee: The roast you asked about is back. Grab a bag before it sells out: {link} Reply STOP to opt out",
+      "encoding": "GSM-7",
+      "characters": 132,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": 49.2,
+      "recipients_basis": "email recipients in 90 days / 3 x SMS share of email-consented profiles (US and CA), an estimate",
+      "cost_per_month": 0.59,
+      "length_check": "ok"
+    },
+    {
+      "name": "Win-back",
+      "kind": "marketing",
+      "trigger": "75 days since last order, no order after the win-back email",
+      "timing": "day 78",
+      "text": "Brindlemoss Coffee: It's been a while! Your favorite roast is fresh this week. Pick up where you left off: {link} Reply STOP to opt out",
+      "encoding": "GSM-7",
+      "characters": 152,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": 100.0,
+      "recipients_basis": "SMS recipients in 90 days / 3",
+      "cost_per_month": 1.2,
+      "length_check": "ok"
+    },
+    {
+      "name": "Campaign (example: new roast)",
+      "kind": "marketing",
+      "trigger": "campaign, 2 a month",
+      "timing": "13:00 Eastern (10:00 Pacific), or recipient local time 13:00",
+      "text": "Brindlemoss Coffee: New Colombia roast is out today. Bright, sweet, small batch. Shop it: {link} Reply STOP to opt out",
+      "encoding": "GSM-7",
+      "characters": 135,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": 6240,
+      "recipients_basis": "textable US and CA profiles x 2 campaigns",
+      "cost_per_month": 74.88,
+      "length_check": "ok"
+    },
+    {
+      "name": "Shipping update",
+      "kind": "transactional",
+      "trigger": "order shipped",
+      "timing": "on shipment",
+      "text": "Brindlemoss Coffee: Your order is on its way! Track it here: {link}",
+      "encoding": "GSM-7",
+      "characters": 84,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": 267.1,
+      "recipients_basis": "orders in 90 days / 3 x SMS-subscribed share of customers (US and CA), an estimate",
+      "cost_per_month": 3.21,
+      "length_check": "ok"
+    },
+    {
+      "name": "HELP reply",
+      "kind": "reply",
+      "trigger": "customer texts HELP",
+      "timing": "right away",
+      "text": "Brindlemoss Coffee: Help is at support@brindlemoss-coffee.example or brindlemoss-coffee.example/help. Reply STOP to cancel.",
+      "encoding": "GSM-7",
+      "characters": 123,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": null,
+      "recipients_basis": "on demand",
+      "cost_per_month": null,
+      "length_check": "ok"
+    },
+    {
+      "name": "STOP reply",
+      "kind": "reply",
+      "trigger": "customer texts STOP or a variant",
+      "timing": "right away",
+      "text": "Brindlemoss Coffee: You're unsubscribed and won't get more texts from us.",
+      "encoding": "GSM-7",
+      "characters": 73,
+      "segments": 1,
+      "cost_per_send": 0.012,
+      "recipients_per_month": null,
+      "recipients_basis": "on demand",
+      "cost_per_month": null,
+      "length_check": "ok"
+    }
+  ],
+  "cheap_fix": {
+    "message": "Abandoned checkout (live today)",
+    "today": {
+      "text": "Brindlemoss Coffee: Don’t forget your beans! Your cart is saved for you here: {link} Reply STOP to opt out",
+      "encoding": "UCS-2",
+      "characters": 123,
+      "segments": 2
+    },
+    "fixed": {
+      "text": "Brindlemoss Coffee: Don't forget your beans! Your cart is saved for you here: {link} Reply STOP to opt out",
+      "encoding": "GSM-7",
+      "characters": 123,
+      "segments": 1
+    },
+    "why": "One curly apostrophe in \"Don’t\" switches the text to UCS-2.",
+    "saving_per_send": 0.012,
+    "saving_per_month": 5.0,
+    "check_against_report": "1,250 recipients used 2,500 segments in 90 days, 2 per send"
+  },
+  "whatsapp_messages": [
+    {
+      "name": "Shipping update",
+      "category": "utility",
+      "trigger": "order shipped",
+      "text": "Brindlemoss Coffee: Tu pedido {{1}} ya va en camino. Rastréalo aquí: {{2}}",
+      "cost_per_message": 0.01,
+      "segments": "not split (charged per delivered message)",
+      "upper_bound_per_month": {
+        "messages": 320.0,
+        "cost": 3.2,
+        "basis": "every Mexico order in 90 days / 3, if every buyer opted in to WhatsApp"
+      }
+    },
+    {
+      "name": "Abandoned checkout",
+      "category": "marketing",
+      "trigger": "Started Checkout, no order, 30 minutes",
+      "text": "Brindlemoss Coffee: Tu café te espera. Termina tu compra aquí: {{1}} Responde BAJA para no recibir más mensajes.",
+      "cost_per_message": 0.045,
+      "segments": "not split (charged per delivered message)",
+      "per_month": "unknown until WhatsApp opt-ins exist (0 today)"
+    },
+    {
+      "name": "Back in stock",
+      "category": "marketing",
+      "trigger": "back in stock alert",
+      "text": "Brindlemoss Coffee: El café que pediste ya está disponible otra vez: {{1}} Responde BAJA para no recibir más mensajes.",
+      "cost_per_message": 0.045,
+      "segments": "not split (charged per delivered message)",
+      "per_month": "unknown until WhatsApp opt-ins exist (0 today)"
+    },
+    {
+      "name": "Win-back",
+      "category": "marketing",
+      "trigger": "day 78 after the last order, no order after the email",
+      "text": "Brindlemoss Coffee: Hace tiempo que no te vemos. Tu tueste favorito está fresco esta semana: {{1}} Responde BAJA para no recibir más mensajes.",
+      "cost_per_message": 0.045,
+      "segments": "not split (charged per delivered message)",
+      "per_month": "unknown until WhatsApp opt-ins exist (0 today)"
+    },
+    {
+      "name": "Campaign (example: new roast)",
+      "category": "marketing",
+      "trigger": "campaign, 2 a month, 13:00 Mexico City time",
+      "text": "Brindlemoss Coffee: Ya llegó nuestro nuevo tueste de Colombia, dulce y de lote pequeño: {{1}} Responde BAJA para no recibir más mensajes.",
+      "cost_per_message": 0.045,
+      "segments": "not split (charged per delivered message)",
+      "per_month": "unknown until WhatsApp opt-ins exist (0 today)"
+    }
+  ],
+  "budget": {
+    "sms_flows_per_month": 18.76,
+    "sms_campaigns_per_month": 74.88,
+    "sms_total_per_month": 93.64,
+    "whatsapp_per_month": "up to 3.20 for shipping updates; marketing unknown until opt-ins exist",
+    "note": "SMS costs use the account's own price per segment; texts per month are estimates from 90-day volumes."
+  },
+  "past_sms_campaign_send_times": [
+    {
+      "campaign": "August new roast",
+      "eastern": "2026-08-06 14:00",
+      "pacific": "2026-08-06 11:00",
+      "in_window": true
+    },
+    {
+      "campaign": "Labor Day sale",
+      "eastern": "2026-08-31 15:00",
+      "pacific": "2026-08-31 12:00",
+      "in_window": true
+    },
+    {
+      "campaign": "Fall blend launch",
+      "eastern": "2026-09-10 14:30",
+      "pacific": "2026-09-10 11:30",
+      "in_window": true
+    },
+    {
+      "campaign": "Subscription restock",
+      "eastern": "2026-09-24 14:00",
+      "pacific": "2026-09-24 11:00",
+      "in_window": true
+    },
+    {
+      "campaign": "Flash sale 24h",
+      "eastern": "2026-10-07 21:15",
+      "pacific": "2026-10-07 18:15",
+      "in_window": false
+    },
+    {
+      "campaign": "October single origin",
+      "eastern": "2026-10-22 14:00",
+      "pacific": "2026-10-22 11:00",
+      "in_window": true
+    }
+  ],
+  "compliance_pass": [
+    {
+      "item": "US registration",
+      "result": "fail",
+      "detail": "Toll-free verification is pending. Send nothing until it is approved, and make the sample messages in the request match the texts below."
+    },
+    {
+      "item": "Disclosure",
+      "result": "fail",
+      "detail": "The checkout wording is missing: recurring automated marketing, consent not a condition of purchase, Msg & data rates may apply, HELP and STOP, terms and privacy links. It promises up to 4 msgs/mo but the plan can send up to 6. Use the new wording in the opt-in kit."
+    },
+    {
+      "item": "Send window",
+      "result": "fail",
+      "detail": "'Flash sale 24h' went out at 21:15 Eastern (18:15 Pacific) on 2026-10-07. Schedule campaigns at 13:00 Eastern or in recipient local time, and turn on quiet hours so flow texts triggered at night wait for morning."
+    },
+    {
+      "item": "Canada (CASL)",
+      "result": "to confirm",
+      "detail": "140 Canadian profiles get texts: confirm with counsel that the store keeps each consent record, that every text names the business and a contact, and that the unsubscribe works for 60 days and is processed within 10 business days."
+    },
+    {
+      "item": "Mexico",
+      "result": "to confirm",
+      "detail": "Confirm the WhatsApp opt-in wording and Mexico's consent rules with counsel before the first template."
+    },
+    {
+      "item": "Consent",
+      "result": "pass",
+      "detail": "Marketing texts go only to SMS-consented US and Canada profiles (3,260 in Klaviyo; 3,120 used for sizing, the smaller source per country); Mexico gets WhatsApp only after a WhatsApp opt-in."
+    },
+    {
+      "item": "Identification",
+      "result": "pass",
+      "detail": "Every message starts with the brand name."
+    },
+    {
+      "item": "Opt-out",
+      "result": "pass",
+      "detail": "Every marketing text carries the STOP line; HELP and STOP replies are written."
+    },
+    {
+      "item": "Links",
+      "result": "pass",
+      "detail": "Klaviyo's own short links, no public shortener."
+    },
+    {
+      "item": "Content",
+      "result": "pass",
+      "detail": "Coffee is not a restricted topic."
+    },
+    {
+      "item": "WhatsApp category",
+      "result": "pass",
+      "detail": "Shipping is utility with no promotion; abandoned checkout, back in stock, win-back, campaign are marketing."
+    },
+    {
+      "item": "WhatsApp to the US",
+      "result": "pass",
+      "detail": "WhatsApp is planned for Mexico only; US marketing stays on SMS while Meta's pause on marketing templates to US numbers holds."
+    },
+    {
+      "item": "WhatsApp window",
+      "result": "pass",
+      "detail": "Every WhatsApp message is a template, so none depends on the 24-hour window."
+    }
+  ],
+  "launch_order": [
+    "Finish toll-free verification; send nothing before approval.",
+    "Replace the checkout disclosure with the new wording and add the two-step form and the BEANS keyword.",
+    "Merge the two abandoned checkout flows (text at 30 minutes, email at 2 hours, one exit on order) and fix the curly apostrophe.",
+    "Turn on quiet hours and move campaigns to 13:00 Eastern or recipient local time.",
+    "Add the back in stock and win-back texts, then the shipping text.",
+    "Hold SMS campaigns at 2 a month; review unsubscribes after 90 days.",
+    "Mexico: add the WhatsApp opt-in, get the 5 templates approved, then start with shipping updates."
+  ],
+  "go_deeper": "email-sequence-builder for the emails next to these texts, klaviyo-flow-auditor for the email flows, copywriting for the pages the links go to (if installed).",
+  "changes_made": "none"
+}

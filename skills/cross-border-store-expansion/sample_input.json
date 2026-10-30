@@ -1,0 +1,426 @@
+{
+  "note": "Example data: an invented online store selling handmade stoneware, not a real business. Every number in expected_output.json follows from this input. Exchange rates, fees, carrier quotes and duty rates are invented user inputs.",
+  "run": {
+    "date": "2026-10-28",
+    "window": {
+      "start": "2026-07-30",
+      "end": "2026-10-27"
+    }
+  },
+  "request": "Hey Claude, I just added the \"cross-border-store-expansion\" skill. We've decided to sell into Canada, the UK, Germany and Australia. Set the store up: prices, shipping, duties, payments, what to translate, and tell me if each market is ready.",
+  "store": {
+    "name": "Hearth and Kiln",
+    "domain": "hearthandkiln.example",
+    "platform": "Shopify",
+    "home_country": "US",
+    "home_currency": "USD",
+    "what_it_sells": "handmade stoneware mugs, bowls, plates and coffee drippers"
+  },
+  "markets_chosen": [
+    "Canada",
+    "United Kingdom",
+    "Germany",
+    "Australia"
+  ],
+  "user_inputs": {
+    "target_margin": "not given: use each product's home margin",
+    "duties": "include in prices: one all-in price at checkout, the store pays the duty",
+    "currency_conversion_fee": 0.02,
+    "packaging_kg": 0.3,
+    "home_carrier": {
+      "base": 6.5,
+      "per_kg": 1.2
+    },
+    "markets": {
+      "CA": {
+        "name": "Canada",
+        "ga4": "Canada",
+        "gsc": "CAN",
+        "currency": "CAD",
+        "fx": 1.38,
+        "tax_display": "added at checkout",
+        "tax_rate": 0.13,
+        "tax_rate_note": "Ontario HST, the province most of their Canadian orders ship to",
+        "duty_rate": 0.0,
+        "duty_free_up_to": null,
+        "fixed_duty_per_parcel": 0.0,
+        "duty_note": "broker: US-origin stoneware enters Canada duty-free under CUSMA",
+        "carrier": {
+          "base": 11.0,
+          "per_kg": 3.0
+        }
+      },
+      "GB": {
+        "name": "United Kingdom",
+        "ga4": "United Kingdom",
+        "gsc": "GBR",
+        "currency": "GBP",
+        "fx": 0.76,
+        "tax_display": "included in prices",
+        "tax_rate": 0.2,
+        "duty_rate": 0.06,
+        "duty_free_up_to": 135.0,
+        "fixed_duty_per_parcel": 0.0,
+        "duty_note": "broker: no duty on consignments up to GBP 135; 6% for HS 6912.00 above that",
+        "carrier": {
+          "base": 13.0,
+          "per_kg": 4.0
+        }
+      },
+      "DE": {
+        "name": "Germany",
+        "ga4": "Germany",
+        "gsc": "DEU",
+        "currency": "EUR",
+        "fx": 0.88,
+        "tax_display": "included in prices",
+        "tax_rate": 0.19,
+        "duty_rate": 0.05,
+        "duty_free_up_to": 150.0,
+        "fixed_duty_per_parcel": 3.0,
+        "duty_note": "broker: a flat EUR 3 per parcel up to EUR 150 (the EU's low-value duty from 1 July 2026, charged per tariff line; every product here is HS 6912.00, so one line); 5% above EUR 150",
+        "carrier": {
+          "base": 14.0,
+          "per_kg": 4.5
+        }
+      },
+      "AU": {
+        "name": "Australia",
+        "ga4": "Australia",
+        "gsc": "AUS",
+        "currency": "AUD",
+        "fx": 1.53,
+        "tax_display": "included in prices",
+        "tax_rate": 0.1,
+        "duty_rate": 0.05,
+        "duty_free_up_to": 1000.0,
+        "fixed_duty_per_parcel": 0.0,
+        "duty_note": "broker: no duty up to AUD 1,000; 5% for HS 6912.00 above that",
+        "carrier": {
+          "base": 16.0,
+          "per_kg": 6.0
+        }
+      }
+    }
+  },
+  "data_pulled": {
+    "shopify.get_shop": {
+      "currency": "USD",
+      "country_code": "US",
+      "domain": "hearthandkiln.example"
+    },
+    "shopify.get_countries": [
+      {
+        "code": "US",
+        "tax": 0.0
+      },
+      {
+        "code": "CA",
+        "tax": 0.05
+      },
+      {
+        "code": "GB",
+        "tax": 0.2
+      },
+      {
+        "code": "AU",
+        "tax": 0.1
+      }
+    ],
+    "shopify.get_shipping_zones": [
+      {
+        "name": "Domestic",
+        "countries": [
+          "US"
+        ],
+        "rates": [
+          {
+            "name": "Standard",
+            "price": 6.95,
+            "min_order_subtotal": null
+          },
+          {
+            "name": "Free shipping",
+            "price": 0.0,
+            "min_order_subtotal": 75.0
+          }
+        ]
+      },
+      {
+        "name": "International",
+        "countries": [
+          "CA",
+          "GB",
+          "AU"
+        ],
+        "rates": [
+          {
+            "name": "International flat rate",
+            "price": 34.99,
+            "min_order_subtotal": null
+          }
+        ]
+      }
+    ],
+    "shopify.get_policies": [
+      {
+        "title": "Refund policy",
+        "body": "We accept returns within 30 days on orders shipped within the US."
+      },
+      {
+        "title": "Shipping policy",
+        "body": "We ship to the US, Canada, the UK and Australia. International orders ship for a flat $34.99. Duties and taxes are the buyer's responsibility."
+      }
+    ],
+    "shopify.get_orders_by_shipping_country": {
+      "US": {
+        "orders": 2140,
+        "revenue_usd": 124120.0,
+        "items": 4066,
+        "gateways": {
+          "shopify_payments": 1820,
+          "paypal": 320
+        }
+      },
+      "CA": {
+        "orders": 64,
+        "revenue_usd": 4288.0,
+        "items": 128,
+        "gateways": {
+          "shopify_payments": 52,
+          "paypal": 12
+        }
+      },
+      "GB": {
+        "orders": 21,
+        "revenue_usd": 1449.0,
+        "items": 38,
+        "gateways": {
+          "shopify_payments": 14,
+          "paypal": 7
+        }
+      },
+      "AU": {
+        "orders": 6,
+        "revenue_usd": 462.0,
+        "items": 12,
+        "gateways": {
+          "shopify_payments": 6
+        }
+      }
+    },
+    "shopify.products_variants_inventory_items": [
+      {
+        "title": "Speckled Stoneware Mug",
+        "price": 32.0,
+        "cost": 10.5,
+        "weight_kg": 0.45,
+        "hs_code": "6912.00",
+        "origin": "US",
+        "us_units_90d": 1900
+      },
+      {
+        "title": "Ramen Bowl Set of 2",
+        "price": 58.0,
+        "cost": 19.0,
+        "weight_kg": 1.4,
+        "hs_code": "6912.00",
+        "origin": "US",
+        "us_units_90d": 640
+      },
+      {
+        "title": "Dinner Plate Set of 4",
+        "price": 96.0,
+        "cost": 31.0,
+        "weight_kg": 3.2,
+        "hs_code": "6912.00",
+        "origin": "US",
+        "us_units_90d": 380
+      },
+      {
+        "title": "Large Serving Bowl",
+        "price": 84.0,
+        "cost": 26.0,
+        "weight_kg": 2.6,
+        "hs_code": "",
+        "origin": "US",
+        "us_units_90d": 310
+      },
+      {
+        "title": "Pour-Over Coffee Dripper",
+        "price": 44.0,
+        "cost": 13.0,
+        "weight_kg": 0.6,
+        "hs_code": "6912.00",
+        "origin": "US",
+        "us_units_90d": 836
+      }
+    ],
+    "ga4.geo_country": [
+      {
+        "country": "United States",
+        "sessions": 98400,
+        "transactions": 2096,
+        "purchaseRevenue": 121540.0
+      },
+      {
+        "country": "United Kingdom",
+        "sessions": 4880,
+        "transactions": 20,
+        "purchaseRevenue": 1380.0
+      },
+      {
+        "country": "Canada",
+        "sessions": 3950,
+        "transactions": 62,
+        "purchaseRevenue": 4150.0
+      },
+      {
+        "country": "Germany",
+        "sessions": 3620,
+        "transactions": 0,
+        "purchaseRevenue": 0.0
+      },
+      {
+        "country": "Australia",
+        "sessions": 1380,
+        "transactions": 6,
+        "purchaseRevenue": 462.0
+      },
+      {
+        "country": "(all other countries)",
+        "sessions": 6770,
+        "transactions": 0,
+        "purchaseRevenue": 0.0
+      }
+    ],
+    "ga4.get_report_country_funnel": [
+      {
+        "country": "United States",
+        "addToCarts": 7870,
+        "checkouts": 3540
+      },
+      {
+        "country": "United Kingdom",
+        "addToCarts": 410,
+        "checkouts": 72
+      },
+      {
+        "country": "Canada",
+        "addToCarts": 290,
+        "checkouts": 118
+      },
+      {
+        "country": "Germany",
+        "addToCarts": 260,
+        "checkouts": 41
+      },
+      {
+        "country": "Australia",
+        "addToCarts": 96,
+        "checkouts": 21
+      }
+    ],
+    "ga4.geo_country_language": [
+      {
+        "country": "Canada",
+        "language": "English",
+        "sessions": 3610
+      },
+      {
+        "country": "Canada",
+        "language": "French",
+        "sessions": 340
+      },
+      {
+        "country": "United Kingdom",
+        "language": "English",
+        "sessions": 4850
+      },
+      {
+        "country": "United Kingdom",
+        "language": "Polish",
+        "sessions": 30
+      },
+      {
+        "country": "Germany",
+        "language": "German",
+        "sessions": 2930
+      },
+      {
+        "country": "Germany",
+        "language": "English",
+        "sessions": 690
+      },
+      {
+        "country": "Australia",
+        "language": "English",
+        "sessions": 1370
+      },
+      {
+        "country": "Australia",
+        "language": "Chinese",
+        "sessions": 10
+      }
+    ],
+    "search_console.search_analytics_country": [
+      {
+        "country": "USA",
+        "clicks": 21400,
+        "impressions": 640000
+      },
+      {
+        "country": "GBR",
+        "clicks": 1130,
+        "impressions": 52000
+      },
+      {
+        "country": "CAN",
+        "clicks": 820,
+        "impressions": 31000
+      },
+      {
+        "country": "DEU",
+        "clicks": 640,
+        "impressions": 41000
+      },
+      {
+        "country": "AUS",
+        "clicks": 290,
+        "impressions": 12500
+      }
+    ],
+    "search_console.search_analytics_pages_deu": [
+      {
+        "page": "https://www.hearthandkiln.example/products/speckled-stoneware-mug",
+        "clicks": 160,
+        "impressions": 4200
+      },
+      {
+        "page": "https://www.hearthandkiln.example/products/pour-over-coffee-dripper",
+        "clicks": 120,
+        "impressions": 3100
+      },
+      {
+        "page": "https://www.hearthandkiln.example/collections/mugs",
+        "clicks": 70,
+        "impressions": 1900
+      },
+      {
+        "page": "https://www.hearthandkiln.example/",
+        "clicks": 180,
+        "impressions": 1400
+      },
+      {
+        "page": "https://www.hearthandkiln.example/products/ramen-bowl-set",
+        "clicks": 30,
+        "impressions": 900
+      },
+      {
+        "page": "https://www.hearthandkiln.example/pages/shipping",
+        "clicks": 12,
+        "impressions": 300
+      }
+    ]
+  }
+}

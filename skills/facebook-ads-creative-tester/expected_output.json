@@ -1,0 +1,786 @@
+{
+  "skill": "facebook-ads-creative-tester",
+  "header": {
+    "account": "Example DTC skincare store (act_123456789)",
+    "currency": "USD",
+    "time_zone": "America/Los_Angeles",
+    "run_date": "2026-10-21",
+    "windows": [
+      "last_90d",
+      "since launch of the flexible ad: 2026-09-24 to 2026-10-20"
+    ],
+    "asked": "compare formats, plan a hook test on the glow routine video at $40 a day per variant, prepare both variants from the media library, and report which assets win inside the flexible ad"
+  },
+  "baseline": {
+    "window": "last_90d: 2026-07-23 to 2026-10-20",
+    "goal": "OFFSITE_CONVERSIONS (purchase)",
+    "result_used": "offsite_conversion.fb_pixel_purchase",
+    "rates": {
+      "hook_rate": {
+        "value_pct": 27.7,
+        "denominator": "510,000 impressions on video ads",
+        "status": "baseline"
+      },
+      "hold_rate": {
+        "value_pct": 23.1,
+        "denominator": "141,200 three-second views",
+        "status": "baseline"
+      },
+      "link_ctr": {
+        "value_pct": 1.28,
+        "denominator": "1,432,000 impressions",
+        "status": "baseline"
+      },
+      "click_to_result": {
+        "value_pct": 2.9,
+        "denominator": "18,288 link clicks",
+        "status": "baseline"
+      },
+      "result_rate": {
+        "value_pct": 0.038,
+        "denominator": "1,432,000 impressions",
+        "status": "baseline"
+      },
+      "cpm": 15.73
+    },
+    "note": "Pooled over every purchase ad: sums of numerators over sums of denominators, never an average of the ads' rates."
+  },
+  "format_comparison": {
+    "window": "last_90d: 2026-07-23 to 2026-10-20",
+    "scope": "the purchase ads (the test's goal); the traffic ads are left out because their results are clicks, not purchases",
+    "formats": [
+      {
+        "ads": 2,
+        "impressions": 510000,
+        "spend": 7400,
+        "link_clicks": 6820,
+        "purchases": 164,
+        "link_ctr_pct": 1.34,
+        "cpm": 14.51,
+        "cost_per_purchase": 45.12,
+        "click_to_result_pct": 2.4,
+        "hook_rate_pct": 27.7,
+        "hold_rate_pct": 23.1,
+        "video_3s_views": 141200,
+        "thruplays": 32600,
+        "format": "Video",
+        "status": "graded"
+      },
+      {
+        "ads": 5,
+        "impressions": 572000,
+        "spend": 8380,
+        "link_clicks": 6438,
+        "purchases": 182,
+        "link_ctr_pct": 1.13,
+        "cpm": 14.65,
+        "cost_per_purchase": 46.04,
+        "click_to_result_pct": 2.8,
+        "format": "Single image",
+        "status": "graded"
+      },
+      {
+        "ads": 2,
+        "impressions": 350000,
+        "spend": 6750,
+        "link_clicks": 5030,
+        "purchases": 192,
+        "link_ctr_pct": 1.44,
+        "cpm": 19.29,
+        "cost_per_purchase": 35.16,
+        "click_to_result_pct": 3.8,
+        "format": "Carousel",
+        "status": "graded"
+      }
+    ],
+    "significance_test": {
+      "compared": "Carousel vs Video link CTR",
+      "rates_pct": [
+        1.44,
+        1.34
+      ],
+      "z": 3.9,
+      "p_value": "< 0.001",
+      "real_difference": true
+    },
+    "verdict": "Carousel has the best link CTR (1.44% against 1.34% for Video), a real difference at p < 0.001. Carousel has the lowest cost per purchase ($35.16).",
+    "caveat": "Not a test: the formats ran in different ad sets, audiences and weeks. The carousels run mostly in retargeting, which flatters their numbers."
+  },
+  "account_limits": {
+    "minimum_budgets_usd": {
+      "imp": 1.0,
+      "video_views": 1.0,
+      "high_freq": 5.0,
+      "low_freq": 40.0
+    },
+    "campaign_budgets": "none: every campaign uses ad set budgets",
+    "proven_ad_set": {
+      "name": "Broad 25-54 | US",
+      "why": "the most purchases at an acceptable cost: 66 in 30 days at $40.91"
+    },
+    "tests_running": "none"
+  },
+  "test_plan": {
+    "test_name": "[Test] Hook: original vs question opening",
+    "hypothesis": "If we change the first 3 seconds of UGC video - glow routine from the routine shot to a spoken question (\"Why does my skin look tired by 3pm?\"), then hook rate will rise by at least 20% because a question names the viewer's problem before the product appears.",
+    "variable": "the first 3 seconds only",
+    "variants": [
+      {
+        "variant": "A (control)",
+        "media": "glow-routine-original.mp4",
+        "format": "Video",
+        "aspect": "9:16",
+        "length_s": 22
+      },
+      {
+        "variant": "B (challenger)",
+        "media": "glow-routine-hook-question.mp4",
+        "format": "Video",
+        "aspect": "9:16",
+        "length_s": 22
+      }
+    ],
+    "isolation_check": {
+      "same": [
+        "everything after second 3",
+        "primary text",
+        "headline",
+        "link",
+        "call to action (SHOP_NOW)",
+        "audience (copied from Broad 25-54 | US)",
+        "placements",
+        "optimisation (purchase)",
+        "daily budget",
+        "shape (9:16)",
+        "length (22 s)"
+      ],
+      "creative_features_off": [
+        "video_auto_crop",
+        "video_highlight",
+        "video_filtering",
+        "text_optimizations",
+        "music",
+        "standard_enhancements"
+      ]
+    },
+    "primary_metric": "hook rate (3-second views / impressions)",
+    "watch_as_well": [
+      "link CTR",
+      "cost per purchase"
+    ],
+    "minimum_detectable_effect": "20%",
+    "mode": "planned from the baseline",
+    "sample_size": {
+      "p1_baseline_hook_rate_pct": 27.7,
+      "p2_pct": 33.2,
+      "impressions_per_variant": 1082
+    },
+    "length": {
+      "daily_impressions_per_variant": 2815,
+      "cpm_used": 14.21,
+      "days_to_reach_n": 0.4,
+      "planned_days": 7,
+      "why": "the sample is reached in under a day, but the floor is 7 days to clear Meta's learning swings and a full week of days"
+    },
+    "budget": {
+      "per_variant_per_day_usd": 40,
+      "variants": 2,
+      "per_day_usd": 80,
+      "planned_total_usd": 560,
+      "maximum_at_28_days_usd": 2240,
+      "clears_minimum": "$40 per ad set meets the account's $40 minimum for conversion goals"
+    },
+    "structure": {
+      "recommended": "Meta A/B test in Ads Manager (Experiments): split the audience, 2 variants, hook rate as the key metric, 7-day end date",
+      "via_mcp": "one test campaign with no campaign budget, one ad set per variant with the targeting of Broad 25-54 | US and $40 a day, one ad in each; people can fall into both ad sets",
+      "not_a_test": "both ads in one ad set (Meta would favour one within days)"
+    }
+  },
+  "success_criteria": {
+    "table": [
+      {
+        "outcome": "Winner",
+        "when": "p < 0.05 and lift >= 20%",
+        "action": "keep the winner, pause the other, log the learning"
+      },
+      {
+        "outcome": "Real but small",
+        "when": "p < 0.05 and 0 < lift < 20%",
+        "action": "keep either; test a bigger change next"
+      },
+      {
+        "outcome": "Leaning",
+        "when": "0.05 <= p < 0.10 and lift >= 20%",
+        "action": "extend once by up to 50% more sample, then decide"
+      },
+      {
+        "outcome": "No difference",
+        "when": "p >= 0.10",
+        "action": "the opening doesn't move hook rate at this size; test the body next"
+      },
+      {
+        "outcome": "Loser",
+        "when": "p < 0.05 and B is worse",
+        "action": "stop B and log why it lost"
+      }
+    ],
+    "guardrail": "With 30 or more purchases per variant, the winner's cost per purchase must be no more than 20% worse than the other's.",
+    "rules": [
+      "no budget, targeting, copy or creative changes",
+      "no pausing and restarting",
+      "no new variants",
+      "no verdict before day 7"
+    ]
+  },
+  "read": {
+    "status": "not run: no test is live yet. After day 7, pull each ad with get_insights_ad for the days since launch and apply the success criteria."
+  },
+  "asset_report": {
+    "ad": "Flexible - ingredient guide",
+    "ad_set": "Guide readers | US",
+    "kind": "flexible format (asset_feed_spec on the creative)",
+    "goal": "LINK_CLICKS: the result is the link click, so result rate is link CTR",
+    "window": "since launch: 2026-09-24 to 2026-10-20",
+    "ad_totals": {
+      "impressions": 104000,
+      "spend": 980,
+      "link_clicks": 1830,
+      "link_ctr_pct": 1.76,
+      "cost_per_result": 0.54
+    },
+    "evidence_gate": "judged at 5,000 impressions; each judged asset is tested against the rest of its group (two-sided, p < 0.05)",
+    "groups": [
+      {
+        "group": "headline",
+        "breakdown": "title_asset",
+        "assets_in_feed": 3,
+        "covered_impressions": 98000,
+        "covered_share_pct": 94.2,
+        "not_attributed_impressions": 6000,
+        "assets": [
+          {
+            "asset": "5 ingredient myths, busted",
+            "spend": 575,
+            "impressions": 61000,
+            "delivery_share_pct": 62.2,
+            "link_clicks": 1280,
+            "link_ctr_pct": 2.1,
+            "results": 1280,
+            "result_rate_pct": 2.1,
+            "cost_per_result": 0.45,
+            "vs_rest": {
+              "rest_ctr_pct": 1.3,
+              "z": 9.09,
+              "p_value": "< 0.001"
+            },
+            "verdict": "Leader",
+            "action": "keep; to prove it, move it into an ad of its own as the control of a job B test"
+          },
+          {
+            "asset": "What your moisturiser isn't telling you",
+            "spend": 310,
+            "impressions": 33000,
+            "delivery_share_pct": 33.7,
+            "link_clicks": 430,
+            "link_ctr_pct": 1.3,
+            "results": 430,
+            "result_rate_pct": 1.3,
+            "cost_per_result": 0.72,
+            "vs_rest": {
+              "rest_ctr_pct": 2.05,
+              "z": -8.31,
+              "p_value": "< 0.001"
+            },
+            "verdict": "Behind",
+            "action": "replace: write new variants and test them through job B"
+          },
+          {
+            "asset": "Read the guide",
+            "spend": 38,
+            "impressions": 4000,
+            "delivery_share_pct": 4.1,
+            "link_clicks": 52,
+            "link_ctr_pct": 1.3,
+            "results": 52,
+            "result_rate_pct": 1.3,
+            "cost_per_result": 0.73,
+            "verdict": "Barely delivered",
+            "why": "4.1% of the group's delivery against an even share of 33.3%: Meta stopped showing it early, so it hasn't lost",
+            "action": "drop it, or give it its own ad in a job B test"
+          }
+        ]
+      },
+      {
+        "group": "primary text",
+        "breakdown": "body_asset",
+        "assets_in_feed": 3,
+        "covered_impressions": 93000,
+        "covered_share_pct": 89.4,
+        "not_attributed_impressions": 11000,
+        "assets": [
+          {
+            "asset": "Retinol in the morning? Fragrance-free means safe? We checked 5 myths against the research.",
+            "spend": 490,
+            "impressions": 52000,
+            "delivery_share_pct": 55.9,
+            "link_clicks": 900,
+            "link_ctr_pct": 1.73,
+            "results": 900,
+            "result_rate_pct": 1.73,
+            "cost_per_result": 0.54,
+            "vs_rest": {
+              "rest_ctr_pct": 1.85,
+              "z": -1.41,
+              "p_value": 0.16
+            },
+            "verdict": "Level",
+            "action": "keep"
+          },
+          {
+            "asset": "I used the wrong serum for two years. Here is what our formulators wish everyone knew, in one short guide.",
+            "spend": 395,
+            "impressions": 41000,
+            "delivery_share_pct": 44.1,
+            "link_clicks": 760,
+            "link_ctr_pct": 1.85,
+            "results": 760,
+            "result_rate_pct": 1.85,
+            "cost_per_result": 0.52,
+            "vs_rest": {
+              "rest_ctr_pct": 1.73,
+              "z": 1.41,
+              "p_value": 0.16
+            },
+            "verdict": "Level",
+            "action": "keep"
+          },
+          {
+            "asset": "Our 5-myth guide, in 4 minutes.",
+            "impressions": 0,
+            "verdict": "Never delivered",
+            "action": "drop it, or move it into an ad of its own if you believe in it"
+          }
+        ]
+      },
+      {
+        "group": "media",
+        "breakdown": "image_asset + video_asset",
+        "assets_in_feed": 4,
+        "covered_impressions": 60100,
+        "covered_share_pct": 57.8,
+        "not_attributed_impressions": 43900,
+        "assets": [
+          {
+            "asset": "image: guide-flatlay.jpg",
+            "spend": 270,
+            "impressions": 28000,
+            "delivery_share_pct": 46.6,
+            "link_clicks": 520,
+            "link_ctr_pct": 1.86,
+            "results": 520,
+            "result_rate_pct": 1.86,
+            "cost_per_result": 0.52,
+            "vs_rest": {
+              "rest_ctr_pct": 1.25,
+              "z": 6.09,
+              "p_value": "< 0.001"
+            },
+            "verdict": "Leader",
+            "action": "keep; to prove it, move it into an ad of its own as the control of a job B test"
+          },
+          {
+            "asset": "image: myth-card.png",
+            "spend": 175,
+            "impressions": 19000,
+            "delivery_share_pct": 31.6,
+            "link_clicks": 210,
+            "link_ctr_pct": 1.11,
+            "results": 210,
+            "result_rate_pct": 1.11,
+            "cost_per_result": 0.83,
+            "vs_rest": {
+              "rest_ctr_pct": 1.73,
+              "z": -5.78,
+              "p_value": "< 0.001"
+            },
+            "verdict": "Behind",
+            "action": "replace: write new variants and test them through job B"
+          },
+          {
+            "asset": "video: myth-busting-30s.mp4",
+            "spend": 105,
+            "impressions": 11000,
+            "delivery_share_pct": 18.3,
+            "link_clicks": 160,
+            "link_ctr_pct": 1.45,
+            "results": 160,
+            "result_rate_pct": 1.45,
+            "cost_per_result": 0.66,
+            "hook_rate_pct": 26.4,
+            "vs_rest": {
+              "rest_ctr_pct": 1.55,
+              "z": -0.72,
+              "p_value": 0.471
+            },
+            "verdict": "Level",
+            "action": "keep"
+          },
+          {
+            "asset": "image: texture-closeup.jpg",
+            "spend": 20,
+            "impressions": 2100,
+            "delivery_share_pct": 3.5,
+            "link_clicks": 30,
+            "link_ctr_pct": 1.43,
+            "results": 30,
+            "result_rate_pct": 1.43,
+            "cost_per_result": 0.67,
+            "verdict": "Barely delivered",
+            "why": "3.5% of the group's delivery against an even share of 25.0%: Meta stopped showing it early, so it hasn't lost",
+            "action": "drop it, or give it its own ad in a job B test"
+          }
+        ]
+      },
+      {
+        "group": "description",
+        "assets_in_feed": 1,
+        "status": "one option (Read in 4 minutes): nothing to compare",
+        "breakdown": "not pulled"
+      },
+      {
+        "group": "call to action",
+        "assets_in_feed": 1,
+        "status": "one option (LEARN_MORE): nothing to compare",
+        "breakdown": "not pulled"
+      }
+    ],
+    "summary": {
+      "keep": [
+        "headline: 5 ingredient myths, busted",
+        "media: image: guide-flatlay.jpg",
+        "primary text: Retinol in the morning? Fragrance-free means safe? We checked 5 myths against the research.",
+        "primary text: I used the wrong serum for two years. Here is what our formulators wish everyone knew, in one short guide.",
+        "media: video: myth-busting-30s.mp4"
+      ],
+      "replace": [
+        "headline: What your moisturiser isn't telling you",
+        "media: image: myth-card.png"
+      ],
+      "never_got_a_fair_run": [
+        "headline: Read the guide",
+        "primary text: Our 5-myth guide, in 4 minutes.",
+        "media: image: texture-closeup.jpg"
+      ],
+      "next_test": "move the leading headline ('5 ingredient myths, busted') into an ad of its own as the control of a job B test against a new challenger"
+    },
+    "caveat": "Not a controlled test: Meta shows each asset to the people and placements it predicts will respond, so a leader can be partly the audience it was given. Rows not covered by a breakdown are shown as not attributed and never spread over the assets."
+  },
+  "media_check": {
+    "source": "Media Library, read with media-files list_media_files through the InsightfulPipe MCP",
+    "files": [
+      {
+        "file": "glow-routine-original.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1920",
+        "length_s": 22,
+        "aspect": "9:16",
+        "flags": "none"
+      },
+      {
+        "file": "glow-routine-hook-question.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1920",
+        "length_s": 22,
+        "aspect": "9:16",
+        "flags": "none"
+      },
+      {
+        "file": "glow-routine-hook-texture-closeup.mp4",
+        "type": "video",
+        "format": "mp4",
+        "size_px": "1080x1350",
+        "length_s": 21,
+        "aspect": "4:5",
+        "flags": "none"
+      },
+      {
+        "file": "serum-hero.jpg",
+        "type": "image",
+        "format": "jpeg",
+        "size_px": "1080x1080",
+        "length_s": null,
+        "aspect": "1:1",
+        "flags": "none"
+      },
+      {
+        "file": "before-after-day28.webp",
+        "type": "image",
+        "format": "webp",
+        "size_px": "1080x1350",
+        "length_s": null,
+        "aspect": "4:5",
+        "flags": [
+          "not JPG or PNG: convert before upload_ad_image"
+        ]
+      },
+      {
+        "file": "bestsellers-flatlay.png",
+        "type": "image",
+        "format": "png",
+        "size_px": "720x720",
+        "length_s": null,
+        "aspect": "1:1",
+        "flags": [
+          "under 1,080 px on the short side"
+        ]
+      }
+    ],
+    "picked": "glow-routine-original.mp4 and glow-routine-hook-question.mp4: both 9:16, 22 s, so the test measures only the opening"
+  },
+  "launch_payloads": {
+    "confirmation": "none given: nothing was created",
+    "calls": [
+      {
+        "step": 1,
+        "call": "upload_ad_video",
+        "status": "not run",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "upload_ad_video",
+          "file_url": "https://example.com/media/glow-routine-hook-question.mp4",
+          "name": "[Test] Hook - B question"
+        },
+        "returns": "video_id"
+      },
+      {
+        "step": 2,
+        "call": "create_campaign",
+        "status": "not run (created paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_campaign",
+          "name": "[Test] Hook: original vs question opening",
+          "objective": "OUTCOME_SALES",
+          "special_ad_categories": [],
+          "is_adset_budget_sharing_enabled": false
+        }
+      },
+      {
+        "step": 3,
+        "call": "create_adset",
+        "variant": "A original",
+        "status": "not run (created paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_adset",
+          "name": "[Test] Hook - A original",
+          "campaign_id": "<id from step 2>",
+          "billing_event": "IMPRESSIONS",
+          "optimization_goal": "OFFSITE_CONVERSIONS",
+          "promoted_object": {
+            "pixel_id": "<pixel id from Broad 25-54 | US>",
+            "custom_event_type": "PURCHASE"
+          },
+          "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+          "destination_type": "WEBSITE",
+          "daily_budget": 4000,
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 54,
+            "targeting_automation": {
+              "advantage_audience": 1
+            },
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000001"
+              },
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "step": 3,
+        "call": "create_adset",
+        "variant": "B question",
+        "status": "not run (created paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_adset",
+          "name": "[Test] Hook - B question",
+          "campaign_id": "<id from step 2>",
+          "billing_event": "IMPRESSIONS",
+          "optimization_goal": "OFFSITE_CONVERSIONS",
+          "promoted_object": {
+            "pixel_id": "<pixel id from Broad 25-54 | US>",
+            "custom_event_type": "PURCHASE"
+          },
+          "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+          "destination_type": "WEBSITE",
+          "daily_budget": 4000,
+          "targeting": {
+            "geo_locations": {
+              "countries": [
+                "US"
+              ]
+            },
+            "age_min": 25,
+            "age_max": 54,
+            "targeting_automation": {
+              "advantage_audience": 1
+            },
+            "excluded_custom_audiences": [
+              {
+                "id": "23800000000000001"
+              },
+              {
+                "id": "23800000000000003"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "step": 4,
+        "call": "create_ad_creative",
+        "variant": "A original",
+        "status": "not run",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad_creative",
+          "name": "[Test] Hook - A original",
+          "video_id": "<video_id of the live ad's creative>",
+          "page_id": "100000000000000",
+          "body": "<primary text of UGC video - glow routine: the same in A and B>",
+          "title": "The routine that fixed my dull skin",
+          "link_url": "https://example.com/routine",
+          "call_to_action_type": "SHOP_NOW",
+          "creative_feature_opt_outs": [
+            "video_auto_crop",
+            "video_highlight",
+            "video_filtering",
+            "text_optimizations",
+            "music",
+            "standard_enhancements"
+          ]
+        }
+      },
+      {
+        "step": 4,
+        "call": "create_ad_creative",
+        "variant": "B question",
+        "status": "not run",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad_creative",
+          "name": "[Test] Hook - B question",
+          "video_id": "<from step 1>",
+          "page_id": "100000000000000",
+          "body": "<primary text of UGC video - glow routine: the same in A and B>",
+          "title": "The routine that fixed my dull skin",
+          "link_url": "https://example.com/routine",
+          "call_to_action_type": "SHOP_NOW",
+          "creative_feature_opt_outs": [
+            "video_auto_crop",
+            "video_highlight",
+            "video_filtering",
+            "text_optimizations",
+            "music",
+            "standard_enhancements"
+          ]
+        }
+      },
+      {
+        "step": 5,
+        "call": "create_ad",
+        "variant": "A original",
+        "status": "not run (always paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad",
+          "name": "[Test] Hook - A original",
+          "adset_id": "<A ad set from step 3>",
+          "creative": {
+            "creative_id": "<A creative from step 4>"
+          }
+        }
+      },
+      {
+        "step": 5,
+        "call": "create_ad",
+        "variant": "B question",
+        "status": "not run (always paused)",
+        "body": {
+          "platform": "facebook-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "ad_account_id": "act_123456789",
+          "action": "create_ad",
+          "name": "[Test] Hook - B question",
+          "adset_id": "<B ad set from step 3>",
+          "creative": {
+            "creative_id": "<B creative from step 4>"
+          }
+        }
+      }
+    ]
+  },
+  "test_log": {
+    "test": "[Test] Hook: original vs question opening",
+    "launched": null,
+    "ended": null,
+    "days": null,
+    "spend_usd": {
+      "A": null,
+      "B": null
+    },
+    "impressions": {
+      "A": null,
+      "B": null
+    },
+    "video_3s_views": {
+      "A": null,
+      "B": null
+    },
+    "lift": null,
+    "p_value": null,
+    "verdict": null,
+    "learning": null,
+    "next_test": null
+  },
+  "go_deeper": [
+    "creative-testing-roadmap (if installed): order the next tests",
+    "ad-creative-fatigue-detector (if installed): watch the winner once it scales",
+    "meta-ad-copy-writer (if installed): new headlines to replace the one behind in the flexible ad"
+  ]
+}

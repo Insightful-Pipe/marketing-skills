@@ -1,0 +1,580 @@
+{
+  "note": "Example data: an invented heating, cooling and plumbing company with an invented Google Ads account, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"attribution-model-auditor\" skill. Audit how my conversions are attributed and tell me whether I can trust the numbers my campaigns bid on.",
+  "business": "Example Home Services, a heating, cooling and plumbing company (invented example)",
+  "connected_sources": {
+    "google-ads": "1 account (active)",
+    "google-analytics": "not connected for this business",
+    "facebook-ads": "not connected",
+    "linkedin-ads": "not connected",
+    "microsoft-ads": "not connected",
+    "tiktok-ads": "not connected"
+  },
+  "period": "2026-07-22 to 2026-10-19 (last 90 complete days; the last two weeks may still grow as late conversions arrive)",
+  "currency": "USD",
+  "time_zone": "America/Chicago",
+  "result_that_matters": "not named, so every counted conversion action is used",
+  "backend_count": "not given",
+  "time_to_buy": "not given, so measured from the conversion lag report",
+  "data_pulled": [
+    "gaql customer: auto-tagging and conversion tracking settings",
+    "gaql conversion_action: 16 enabled actions (5 counted, 11 secondary) with windows, counting and model",
+    "gaql conversions by action: 9 actions recorded something in the period",
+    "gaql conversion lag buckets by action: 41 rows",
+    "gaql campaign totals and bidding: 8 campaigns with impressions"
+  ],
+  "data": {
+    "customer": {
+      "currency_code": "USD",
+      "time_zone": "America/Chicago",
+      "auto_tagging_enabled": true,
+      "enhanced_conversions_for_leads_enabled": true,
+      "accepted_customer_data_terms": true
+    },
+    "conversion_actions": [
+      {
+        "name": "Calls from ads",
+        "type": "AD_CALL",
+        "category": "PHONE_CALL_LEAD",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 30,
+        "include_in_conversions_metric": true,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Website phone calls",
+        "type": "WEBSITE_CALL",
+        "category": "PHONE_CALL_LEAD",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": true,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Booking form submit",
+        "type": "WEBPAGE",
+        "category": "SUBMIT_LEAD_FORM",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": true,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Tap to call on site",
+        "type": "WEBPAGE",
+        "category": "PHONE_CALL_LEAD",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 90,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": true,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Phone call (imported)",
+        "type": "UPLOAD_CLICKS",
+        "category": "PHONE_CALL_LEAD",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 90,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": true,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Local actions - Directions",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Website visits",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Calls",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Menu views",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Other engagements",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Orders",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Local actions - Bookings",
+        "type": "GOOGLE_HOSTED",
+        "category": "DEFAULT",
+        "counting_type": "MANY_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_ADS_LAST_CLICK",
+          "data_driven_model_status": "UNKNOWN"
+        }
+      },
+      {
+        "name": "Chat lead",
+        "type": "WEBPAGE",
+        "category": "CONTACT",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Coupon download",
+        "type": "WEBPAGE",
+        "category": "DOWNLOAD",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Newsletter signup",
+        "type": "WEBPAGE",
+        "category": "SIGNUP",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      },
+      {
+        "name": "Careers page apply",
+        "type": "WEBPAGE",
+        "category": "SUBMIT_LEAD_FORM",
+        "counting_type": "ONE_PER_CLICK",
+        "click_through_lookback_window_days": 30,
+        "view_through_lookback_window_days": 1,
+        "include_in_conversions_metric": false,
+        "attribution_model_settings": {
+          "attribution_model": "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN",
+          "data_driven_model_status": "AVAILABLE"
+        }
+      }
+    ],
+    "conversions_by_action": {
+      "Calls from ads": {
+        "conversions": 180.0,
+        "all_conversions": 180.0
+      },
+      "Website phone calls": {
+        "conversions": 260.0,
+        "all_conversions": 260.0
+      },
+      "Booking form submit": {
+        "conversions": 210.0,
+        "all_conversions": 210.0
+      },
+      "Tap to call on site": {
+        "conversions": 150.0,
+        "all_conversions": 150.0
+      },
+      "Phone call (imported)": {
+        "conversions": 32.0,
+        "all_conversions": 32.0
+      },
+      "Local actions - Directions": {
+        "conversions": 0.0,
+        "all_conversions": 410.0
+      },
+      "Local actions - Website visits": {
+        "conversions": 0.0,
+        "all_conversions": 620.0
+      },
+      "Chat lead": {
+        "conversions": 0.0,
+        "all_conversions": 45.0
+      },
+      "Coupon download": {
+        "conversions": 0.0,
+        "all_conversions": 30.0
+      }
+    },
+    "conversion_lag": [
+      [
+        "Calls from ads",
+        "LESS_THAN_ONE_DAY",
+        158.0
+      ],
+      [
+        "Calls from ads",
+        "ONE_TO_TWO_DAYS",
+        11.0
+      ],
+      [
+        "Calls from ads",
+        "TWO_TO_THREE_DAYS",
+        5.0
+      ],
+      [
+        "Calls from ads",
+        "THREE_TO_FOUR_DAYS",
+        2.0
+      ],
+      [
+        "Calls from ads",
+        "SEVEN_TO_EIGHT_DAYS",
+        2.0
+      ],
+      [
+        "Calls from ads",
+        "FOURTEEN_TO_TWENTY_ONE_DAYS",
+        2.0
+      ],
+      [
+        "Website phone calls",
+        "LESS_THAN_ONE_DAY",
+        187.0
+      ],
+      [
+        "Website phone calls",
+        "ONE_TO_TWO_DAYS",
+        26.0
+      ],
+      [
+        "Website phone calls",
+        "TWO_TO_THREE_DAYS",
+        13.0
+      ],
+      [
+        "Website phone calls",
+        "THREE_TO_FOUR_DAYS",
+        8.0
+      ],
+      [
+        "Website phone calls",
+        "FOUR_TO_FIVE_DAYS",
+        5.0
+      ],
+      [
+        "Website phone calls",
+        "SIX_TO_SEVEN_DAYS",
+        5.0
+      ],
+      [
+        "Website phone calls",
+        "EIGHT_TO_NINE_DAYS",
+        5.0
+      ],
+      [
+        "Website phone calls",
+        "THIRTEEN_TO_FOURTEEN_DAYS",
+        5.0
+      ],
+      [
+        "Website phone calls",
+        "FOURTEEN_TO_TWENTY_ONE_DAYS",
+        4.0
+      ],
+      [
+        "Website phone calls",
+        "TWENTY_ONE_TO_THIRTY_DAYS",
+        2.0
+      ],
+      [
+        "Booking form submit",
+        "LESS_THAN_ONE_DAY",
+        116.0
+      ],
+      [
+        "Booking form submit",
+        "ONE_TO_TWO_DAYS",
+        25.0
+      ],
+      [
+        "Booking form submit",
+        "TWO_TO_THREE_DAYS",
+        15.0
+      ],
+      [
+        "Booking form submit",
+        "THREE_TO_FOUR_DAYS",
+        11.0
+      ],
+      [
+        "Booking form submit",
+        "FOUR_TO_FIVE_DAYS",
+        8.0
+      ],
+      [
+        "Booking form submit",
+        "FIVE_TO_SIX_DAYS",
+        6.0
+      ],
+      [
+        "Booking form submit",
+        "SIX_TO_SEVEN_DAYS",
+        6.0
+      ],
+      [
+        "Booking form submit",
+        "SEVEN_TO_EIGHT_DAYS",
+        4.0
+      ],
+      [
+        "Booking form submit",
+        "NINE_TO_TEN_DAYS",
+        4.0
+      ],
+      [
+        "Booking form submit",
+        "THIRTEEN_TO_FOURTEEN_DAYS",
+        2.0
+      ],
+      [
+        "Booking form submit",
+        "FOURTEEN_TO_TWENTY_ONE_DAYS",
+        11.0
+      ],
+      [
+        "Booking form submit",
+        "TWENTY_ONE_TO_THIRTY_DAYS",
+        2.0
+      ],
+      [
+        "Tap to call on site",
+        "LESS_THAN_ONE_DAY",
+        120.0
+      ],
+      [
+        "Tap to call on site",
+        "ONE_TO_TWO_DAYS",
+        12.0
+      ],
+      [
+        "Tap to call on site",
+        "TWO_TO_THREE_DAYS",
+        6.0
+      ],
+      [
+        "Tap to call on site",
+        "THREE_TO_FOUR_DAYS",
+        5.0
+      ],
+      [
+        "Tap to call on site",
+        "SIX_TO_SEVEN_DAYS",
+        4.0
+      ],
+      [
+        "Tap to call on site",
+        "THIRTEEN_TO_FOURTEEN_DAYS",
+        3.0
+      ],
+      [
+        "Phone call (imported)",
+        "LESS_THAN_ONE_DAY",
+        20.0
+      ],
+      [
+        "Phone call (imported)",
+        "ONE_TO_TWO_DAYS",
+        5.0
+      ],
+      [
+        "Phone call (imported)",
+        "TWO_TO_THREE_DAYS",
+        2.0
+      ],
+      [
+        "Phone call (imported)",
+        "FOUR_TO_FIVE_DAYS",
+        2.0
+      ],
+      [
+        "Phone call (imported)",
+        "SIX_TO_SEVEN_DAYS",
+        1.0
+      ],
+      [
+        "Phone call (imported)",
+        "THIRTEEN_TO_FOURTEEN_DAYS",
+        1.0
+      ],
+      [
+        "Phone call (imported)",
+        "FOURTEEN_TO_TWENTY_ONE_DAYS",
+        1.0
+      ]
+    ],
+    "campaigns": [
+      {
+        "campaign": "Brand",
+        "bidding": "TARGET_IMPRESSION_SHARE",
+        "channel": "SEARCH",
+        "cost": 4100.0,
+        "clicks": 1350,
+        "conversions": 150.0,
+        "conversions_by_conversion_date": 152.0,
+        "all_conversions": 349.2,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "AC Repair",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 11800.0,
+        "clicks": 1780,
+        "conversions": 260.0,
+        "conversions_by_conversion_date": 252.0,
+        "all_conversions": 605.3,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "Furnace Repair",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 4300.0,
+        "clicks": 610,
+        "conversions": 70.0,
+        "conversions_by_conversion_date": 68.0,
+        "all_conversions": 163.0,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "Water Heaters",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 6200.0,
+        "clicks": 820,
+        "conversions": 110.0,
+        "conversions_by_conversion_date": 107.0,
+        "all_conversions": 256.1,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "Emergency Plumbing",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 8400.0,
+        "clicks": 980,
+        "conversions": 140.0,
+        "conversions_by_conversion_date": 136.0,
+        "all_conversions": 325.9,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "Drain Cleaning",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 3100.0,
+        "clicks": 520,
+        "conversions": 60.0,
+        "conversions_by_conversion_date": 58.0,
+        "all_conversions": 139.7,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "HVAC Installation",
+        "bidding": "TARGET_CPA",
+        "channel": "SEARCH",
+        "cost": 3900.0,
+        "clicks": 330,
+        "conversions": 35.0,
+        "conversions_by_conversion_date": 34.0,
+        "all_conversions": 81.5,
+        "view_through_conversions": 0.0
+      },
+      {
+        "campaign": "Out of Area",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "channel": "SEARCH",
+        "cost": 650.0,
+        "clicks": 120,
+        "conversions": 7.0,
+        "conversions_by_conversion_date": 7.0,
+        "all_conversions": 16.3,
+        "view_through_conversions": 0.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "header": {
+    "business": "Quillmere Sleep Co. (invented)",
+    "media": "connected TV and radio",
+    "test_regions": [
+      "Ohio",
+      "Michigan",
+      "Indiana"
+    ],
+    "flight": "2026-09-07 to 2026-10-04 (4 weeks)",
+    "carry_over": "2026-10-05 to 2026-10-18 (2 weeks)",
+    "pre_period": "2026-05-18 to 2026-09-06 (16 weeks)",
+    "outcome_of_record": "Shopify orders by ship-to state",
+    "spend": 50000,
+    "currency": "USD"
+  },
+  "verdict": {
+    "readout_grade": "readable",
+    "summary": "The flight added about 123 orders in its 4 weeks (25.0% over what the control states predicted; 95% interval 43 to 203), with a 99.9% chance the lift is above zero. With the 2 carry-over weeks the total is about 146 orders (44 to 248), against 122 needed to pay back $50,000 at $410 an order, so payback is inconclusive: the interval spans break-even."
+  },
+  "controls": {
+    "rules": {
+      "min_weekly_outcomes": 5,
+      "min_pre_correlation": 0.5,
+      "max_controls": 5
+    },
+    "screen": [
+      {
+        "state": "Illinois",
+        "pre_weekly_avg": 85.1,
+        "pre_correlation": 0.78,
+        "status": "control",
+        "why": "Pre-flight correlation 0.78."
+      },
+      {
+        "state": "Wisconsin",
+        "pre_weekly_avg": 41.0,
+        "pre_correlation": 0.65,
+        "status": "control",
+        "why": "Pre-flight correlation 0.65."
+      },
+      {
+        "state": "Missouri",
+        "pre_weekly_avg": 38.0,
+        "pre_correlation": 0.59,
+        "status": "passes, not used",
+        "why": "Pre-flight correlation 0.59. Below the top 5 by correlation."
+      },
+      {
+        "state": "Tennessee",
+        "pre_weekly_avg": 40.8,
+        "pre_correlation": 0.76,
+        "status": "control",
+        "why": "Pre-flight correlation 0.76."
+      },
+      {
+        "state": "Minnesota",
+        "pre_weekly_avg": 34.9,
+        "pre_correlation": 0.79,
+        "status": "control",
+        "why": "Pre-flight correlation 0.79."
+      },
+      {
+        "state": "Georgia",
+        "pre_weekly_avg": 53.4,
+        "pre_correlation": 0.74,
+        "status": "control",
+        "why": "Pre-flight correlation 0.74."
+      },
+      {
+        "state": "Kentucky",
+        "pre_weekly_avg": 28.2,
+        "pre_correlation": 0.65,
+        "status": "excluded: spillover",
+        "why": "The Cincinnati TV market the flight bought reaches into northern Kentucky."
+      },
+      {
+        "state": "Pennsylvania",
+        "pre_weekly_avg": 83.3,
+        "pre_correlation": 0.59,
+        "status": "excluded: contaminated",
+        "why": "Pop-up showroom in Pittsburgh on 2026-09-19 to 2026-09-21, inside the flight, and only there."
+      },
+      {
+        "state": "Florida",
+        "pre_weekly_avg": 78.8,
+        "pre_correlation": -0.48,
+        "status": "excluded: did not move with the test states",
+        "why": "Pre-flight correlation -0.48, under 0.5."
+      },
+      {
+        "state": "Arizona",
+        "pre_weekly_avg": 28.4,
+        "pre_correlation": -0.17,
+        "status": "excluded: did not move with the test states",
+        "why": "Pre-flight correlation -0.17, under 0.5."
+      },
+      {
+        "state": "Iowa",
+        "pre_weekly_avg": 4.3,
+        "pre_correlation": 0.55,
+        "status": "excluded: thin",
+        "why": "Averages 4.3 orders a week before the flight, under the 5 needed."
+      }
+    ],
+    "chosen": [
+      "Minnesota",
+      "Illinois",
+      "Tennessee",
+      "Georgia",
+      "Wisconsin"
+    ]
+  },
+  "fit": {
+    "ratio": 0.7429,
+    "pre_correlation": 0.91,
+    "residual_sd": 14.4,
+    "count_noise": 18.2,
+    "noise_used": 18.2,
+    "noise_source": "count noise"
+  },
+  "lift": {
+    "flight": {
+      "weeks": 4,
+      "actual": 614,
+      "counterfactual": 491.1,
+      "lift": 122.9,
+      "lift_pct": 25.0,
+      "se": 40.7,
+      "interval_95": [
+        43.3,
+        202.6
+      ],
+      "interval_95_pct": [
+        8.8,
+        41.3
+      ],
+      "prob_above_zero": 99.9,
+      "mde": 113.8,
+      "mde_pct": 23.2
+    },
+    "carry_over": {
+      "weeks": 2,
+      "actual": 248,
+      "counterfactual": 225.1,
+      "lift": 22.9,
+      "lift_pct": 10.2,
+      "se": 27.3,
+      "interval_95": [
+        -30.5,
+        76.3
+      ],
+      "interval_95_pct": [
+        -13.6,
+        33.9
+      ],
+      "prob_above_zero": 79.9,
+      "mde": 76.4,
+      "mde_pct": 33.9
+    },
+    "flight_and_carry_over": {
+      "weeks": 6,
+      "actual": 862,
+      "counterfactual": 716.2,
+      "lift": 145.8,
+      "lift_pct": 20.4,
+      "se": 52.2,
+      "interval_95": [
+        43.5,
+        248.2
+      ],
+      "interval_95_pct": [
+        6.1,
+        34.7
+      ],
+      "prob_above_zero": 99.7,
+      "mde": 146.2,
+      "mde_pct": 20.4
+    }
+  },
+  "back_test": {
+    "windows": 13,
+    "beyond_95_interval": 1,
+    "allowed": 2,
+    "passes": true,
+    "windows_as_big_as_real_lift": 0,
+    "largest_placebo": {
+      "weeks": "2026-07-06 to 2026-07-27",
+      "placebo_lift": -86.7
+    }
+  },
+  "placebo_windows": [
+    {
+      "weeks": "2026-05-18 to 2026-06-08",
+      "placebo_lift": -17.7
+    },
+    {
+      "weeks": "2026-05-25 to 2026-06-15",
+      "placebo_lift": 2.2
+    },
+    {
+      "weeks": "2026-06-01 to 2026-06-22",
+      "placebo_lift": 1.5
+    },
+    {
+      "weeks": "2026-06-08 to 2026-06-29",
+      "placebo_lift": 53.4
+    },
+    {
+      "weeks": "2026-06-15 to 2026-07-06",
+      "placebo_lift": 52.8
+    },
+    {
+      "weeks": "2026-06-22 to 2026-07-13",
+      "placebo_lift": 6.7
+    },
+    {
+      "weeks": "2026-06-29 to 2026-07-20",
+      "placebo_lift": -27.6
+    },
+    {
+      "weeks": "2026-07-06 to 2026-07-27",
+      "placebo_lift": -86.7
+    },
+    {
+      "weeks": "2026-07-13 to 2026-08-03",
+      "placebo_lift": -69.0
+    },
+    {
+      "weeks": "2026-07-20 to 2026-08-10",
+      "placebo_lift": -31.4
+    },
+    {
+      "weeks": "2026-07-27 to 2026-08-17",
+      "placebo_lift": -0.5
+    },
+    {
+      "weeks": "2026-08-03 to 2026-08-24",
+      "placebo_lift": 47.1
+    },
+    {
+      "weeks": "2026-08-10 to 2026-08-31",
+      "placebo_lift": 31.6
+    }
+  ],
+  "brand_search_signal": {
+    "source": "Google Ads brand campaign impressions by state (user_location_view)",
+    "impression_share_min": 0.92,
+    "impression_share_ok": true,
+    "fit": {
+      "ratio": 0.7366,
+      "pre_correlation": 0.88,
+      "residual_sd": 152.3,
+      "count_noise": 54.1,
+      "noise_used": 152.3,
+      "noise_source": "residual spread",
+      "pre_correlation_note": "Same control states as orders; this is their correlation on brand impressions."
+    },
+    "flight": {
+      "weeks": 4,
+      "actual": 6953,
+      "counterfactual": 4368.0,
+      "lift": 2585.0,
+      "lift_pct": 59.2,
+      "se": 340.4,
+      "interval_95": [
+        1917.7,
+        3252.3
+      ],
+      "interval_95_pct": [
+        43.9,
+        74.5
+      ],
+      "prob_above_zero": 100.0,
+      "mde": 953.2,
+      "mde_pct": 21.8
+    },
+    "carry_over": {
+      "weeks": 2,
+      "actual": 2369,
+      "counterfactual": 2042.6,
+      "lift": 326.4,
+      "lift_pct": 16.0,
+      "se": 228.4,
+      "interval_95": [
+        -121.2,
+        774.1
+      ],
+      "interval_95_pct": [
+        -5.9,
+        37.9
+      ],
+      "prob_above_zero": 92.4,
+      "mde": 639.5,
+      "mde_pct": 31.3
+    },
+    "reading": "Brand search impressions rose 59.2% over the counterfactual in the flight (95% interval 43.9% to 74.5%). Impression share stayed at or above 92% in both groups, so impressions track demand, not budget."
+  },
+  "confound_checks": {
+    "nonbrand_paid_search": {
+      "test_to_control_spend_ratio_pre": 0.7417,
+      "ratio_flight_and_carry_over": 0.7206,
+      "shift_pct": -2.9,
+      "flag": false,
+      "reading": "Non-brand Google Ads spend in the test states fell 2.9% relative to the controls, inside the 20% limit, so a paid search shift does not explain the lift."
+    },
+    "excluded_for_spillover": [
+      "Kentucky"
+    ],
+    "excluded_for_contamination": [
+      "Pennsylvania"
+    ],
+    "holidays_logged": [
+      "The Labor Day sale ran in every state and ended 2026-09-07, the flight's first day. It hit test and control states alike, so the ratio absorbs it."
+    ]
+  },
+  "traceable_floor": {
+    "code_orders_test_states": 37,
+    "code_orders_other_states": 2,
+    "vanity_url_sessions": 214,
+    "share_of_modeled_lift": 25.4,
+    "consistent": true,
+    "reading": "37 orders used SLEEPTV in the test states, 25.4% of the modeled 146. Codes are a floor: most people who respond to TV never type one. 2 code orders came from other states (the code travelled); they are listed, not added."
+  },
+  "value": {
+    "spend": 50000,
+    "value_per_order": 410,
+    "break_even_incremental_orders": 122.0,
+    "cost_per_incremental_order": 342.94,
+    "cost_per_incremental_order_range": [
+      201.45,
+      1149.43
+    ],
+    "decision_rule": "Lower end of the flight-and-carry-over interval at or above break-even: paid back. Upper end below: did not pay back on orders. Otherwise inconclusive.",
+    "decision": "inconclusive"
+  },
+  "what_this_cannot_tell": [
+    "Orders after 2026-10-18 and repeat purchases from new customers are not counted, so long-run value is understated.",
+    "Connected TV and radio ran together in the same markets, so the lift cannot be split between them.",
+    "Northwest and southern Indiana sit in the Chicago and Louisville TV markets, which were not bought, so the Indiana lift is diluted."
+  ],
+  "next_steps": [
+    "To settle payback, run the next flight with 2 matched markets held dark (incrementality-test-designer, if installed) so the interval narrows.",
+    "Split connected TV and radio by market in the next flight if the team needs a per-medium answer."
+  ],
+  "unknowns": [],
+  "changes_made": "None. This skill reads data only."
+}

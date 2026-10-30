@@ -1,0 +1,833 @@
+{
+  "note": "Example data: an invented heating, cooling and plumbing company with an invented Google Ads account, not a real business. Every number in expected_output.json follows from this input. The example site answers automated readers with a bot check, so this sample shows the skill's blocked-page path: match scores stay unscored and the report asks for screenshots instead of guessing.",
+  "request": "Hey Claude, I just added the \"ad-landing-page-match-scorer\" skill. Check every active ad in my Google Ads account against the page it sends people to, and tell me which routes lose the most.",
+  "account": {
+    "name": "Example Home Services, a heating, cooling and plumbing company (invented example)",
+    "currency": "USD",
+    "time_zone": "America/Chicago"
+  },
+  "date_range": "2026-09-20 to 2026-10-19",
+  "scope": {
+    "campaigns": "every enabled campaign with spend (defaults)",
+    "conversion": "the account's conversions column (default)",
+    "pages_to_read": "top 10 by spend (7 unique pages exist)"
+  },
+  "data_pulled": [
+    "ad_group_ad: 16 enabled responsive search ads with impressions",
+    "keyword_view with Quality Score components: 34 keyword rows",
+    "campaign_asset: 13 sitelinks and 28 callouts",
+    "landing_page_view: 13 campaign x page rows"
+  ],
+  "data": {
+    "ads": [
+      {
+        "ad": "ad-1",
+        "campaign": "Brand",
+        "ad_group": "Brand",
+        "final_url": "https://www.example.com/",
+        "path": "Home-Services",
+        "spend": 900,
+        "clicks": 520,
+        "impressions": 2700,
+        "conversions": 61,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Example Home Services",
+          "Official Site",
+          "Book Online in 60 Seconds"
+        ],
+        "descriptions": [
+          "Heating, cooling and plumbing for Riverton and Lakemoor since 1998.",
+          "Call or book online. Upfront prices and a 90-day guarantee."
+        ]
+      },
+      {
+        "ad": "ad-2",
+        "campaign": "Brand",
+        "ad_group": "Brand",
+        "final_url": "https://www.example.com/",
+        "path": "Book-Online",
+        "spend": 550,
+        "clicks": 300,
+        "impressions": 1500,
+        "conversions": 35,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Example Home Services",
+          "Book a Visit Today",
+          "Rated 4.9 by Customers"
+        ],
+        "descriptions": [
+          "Book a licensed technician online. Free estimate on new systems.",
+          "Open 7 days. Call now or schedule a visit online."
+        ]
+      },
+      {
+        "ad": "ad-3",
+        "campaign": "AC Repair",
+        "ad_group": "AC Repair",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path": "AC-Repair/Same-Day",
+        "spend": 3200,
+        "clicks": 540,
+        "impressions": 10800,
+        "conversions": 66,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "AC Repair in Riverton",
+          "Same-Day AC Repair",
+          "1,200+ Five-Star Reviews",
+          "Upfront Flat-Rate Pricing",
+          "Licensed HVAC Technicians"
+        ],
+        "descriptions": [
+          "Same-day AC repair from licensed technicians. Upfront prices before any work starts.",
+          "Call or book online. Evening and weekend slots, 90-day guarantee on every repair."
+        ]
+      },
+      {
+        "ad": "ad-4",
+        "campaign": "AC Repair",
+        "ad_group": "AC Repair",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path": "AC-Repair",
+        "spend": 2100,
+        "clicks": 340,
+        "impressions": 6900,
+        "conversions": 40,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "AC Not Cooling? Call Today",
+          "AC Repair Near You",
+          "Open 7 Days a Week"
+        ],
+        "descriptions": [
+          "AC blowing warm air? Our technicians fix most units on the first visit.",
+          "Upfront pricing, no overtime charges, financing on bigger repairs."
+        ]
+      },
+      {
+        "ad": "ad-5",
+        "campaign": "AC Repair",
+        "ad_group": "AC Repair",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path": "AC-Repair/Riverton",
+        "spend": 1000,
+        "clicks": 170,
+        "impressions": 3300,
+        "conversions": 20,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Riverton AC Repair",
+          "Same-Day Service",
+          "Call for a Free Estimate"
+        ],
+        "descriptions": [
+          "AC repair across Riverton and Lakemoor. Call or book online today.",
+          "Licensed and insured. 90-day guarantee on parts and labour."
+        ]
+      },
+      {
+        "ad": "ad-6",
+        "campaign": "Emergency Plumbing",
+        "ad_group": "Emergency Plumber",
+        "final_url": "https://www.example.com/emergency-plumber/",
+        "path": "Emergency-Plumber",
+        "spend": 2600,
+        "clicks": 390,
+        "impressions": 6000,
+        "conversions": 50,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "24/7 Emergency Plumber",
+          "Burst Pipe? Call Now",
+          "Licensed Plumbers"
+        ],
+        "descriptions": [
+          "Burst pipe or major leak? A licensed plumber can be there within the hour, 24/7.",
+          "Upfront prices before any work starts. No overtime charges at night."
+        ]
+      },
+      {
+        "ad": "ad-7",
+        "campaign": "Emergency Plumbing",
+        "ad_group": "Emergency Plumber",
+        "final_url": "https://www.example.com/emergency-plumber/",
+        "path": "Emergency-Plumber/24-7",
+        "spend": 1700,
+        "clicks": 250,
+        "impressions": 3800,
+        "conversions": 33,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Emergency Plumber Near You",
+          "Open 24 Hours",
+          "1,200+ Five-Star Reviews"
+        ],
+        "descriptions": [
+          "Leaks, burst pipes and backed-up toilets fixed day or night.",
+          "Call now. Licensed, insured and rated 4.9 by local customers."
+        ]
+      },
+      {
+        "ad": "ad-8",
+        "campaign": "Water Heaters",
+        "ad_group": "Water Heater Repair",
+        "final_url": "https://www.example.com/water-heater-repair/",
+        "path": "Water-Heater/Repair",
+        "spend": 1400,
+        "clicks": 220,
+        "impressions": 4300,
+        "conversions": 19,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Water Heater Repair",
+          "No Hot Water? Call Today",
+          "Same-Day Repairs"
+        ],
+        "descriptions": [
+          "No hot water? Licensed plumbers repair tank and tankless water heaters the same day.",
+          "Slow drains? Our drain cleaning clears clogs fast, with a camera check included.",
+          "Clogged sewer line? Hydro-jet drain cleaning, booked the same day.",
+          "Upfront prices and a 90-day guarantee on every repair."
+        ]
+      },
+      {
+        "ad": "ad-9",
+        "campaign": "Water Heaters",
+        "ad_group": "Water Heater Repair",
+        "final_url": "https://www.example.com/water-heater-repair/",
+        "path": "Water-Heater",
+        "spend": 900,
+        "clicks": 140,
+        "impressions": 2700,
+        "conversions": 11,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Water Heater Repair Near You",
+          "Tankless Specialists",
+          "Open 7 Days a Week"
+        ],
+        "descriptions": [
+          "Water heater leaking? Call for upfront repair or replacement prices, 7 days a week.",
+          "Slow drains? Our drain cleaning clears clogs fast, with a camera check included.",
+          "Licensed plumbers. Call or book online today."
+        ]
+      },
+      {
+        "ad": "ad-10",
+        "campaign": "Water Heaters",
+        "ad_group": "Water Heater Replacement",
+        "final_url": "https://www.example.com/",
+        "path": "Water-Heater/Replacement",
+        "spend": 800,
+        "clicks": 110,
+        "impressions": 1600,
+        "conversions": 7,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "New Water Heater Installed",
+          "Same-Week Installation",
+          "Financing Available"
+        ],
+        "descriptions": [
+          "Old tank leaking? We install new tank and tankless water heaters, often the same week.",
+          "Upfront installed prices. Financing available on new systems."
+        ]
+      },
+      {
+        "ad": "ad-11",
+        "campaign": "Furnace Repair",
+        "ad_group": "Furnace Repair",
+        "final_url": "https://www.example.com/furnace-repair/",
+        "path": "Furnace-Repair",
+        "spend": 1300,
+        "clicks": 190,
+        "impressions": 3700,
+        "conversions": 19,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Furnace Repair Today",
+          "No Heat? Call Now",
+          "Licensed HVAC Technicians"
+        ],
+        "descriptions": [
+          "No heat? Licensed technicians repair gas and electric furnaces the same day.",
+          "Upfront pricing and a 90-day guarantee on every repair."
+        ]
+      },
+      {
+        "ad": "ad-12",
+        "campaign": "Furnace Repair",
+        "ad_group": "Furnace Repair",
+        "final_url": "https://www.example.com/furnace-repair/",
+        "path": "Furnace-Repair/Heating",
+        "spend": 900,
+        "clicks": 140,
+        "impressions": 2700,
+        "conversions": 14,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Heating Repair Near You",
+          "Same-Day Furnace Service",
+          "Open 7 Days a Week"
+        ],
+        "descriptions": [
+          "Furnace making noise or blowing cold air? We fix most units on the first visit.",
+          "Call or book online. Evening slots, no overtime charges."
+        ]
+      },
+      {
+        "ad": "ad-13",
+        "campaign": "Drain Cleaning",
+        "ad_group": "Drain Cleaning",
+        "final_url": "https://www.example.com/drain-cleaning/",
+        "path": "Drain-Cleaning",
+        "spend": 1500,
+        "clicks": 230,
+        "impressions": 4200,
+        "conversions": 7,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "Drain Cleaning Today",
+          "Clogged Drain? Call Now",
+          "Camera Inspection Included"
+        ],
+        "descriptions": [
+          "Clogged sink, tub or main line? We clear drains fast and show you the camera footage.",
+          "Upfront prices, licensed plumbers, 7 days a week."
+        ]
+      },
+      {
+        "ad": "ad-14",
+        "campaign": "Drain Cleaning",
+        "ad_group": "Drain Cleaning",
+        "final_url": "https://www.example.com/drain-cleaning/",
+        "path": "Drain-Cleaning/Sewer",
+        "spend": 1100,
+        "clicks": 170,
+        "impressions": 3000,
+        "conversions": 5,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "Sewer Line Cleaning",
+          "Hydro-Jetting Experts",
+          "Same-Day Service"
+        ],
+        "descriptions": [
+          "Sewer backup? Hydro-jet cleaning clears roots and grease from the main line.",
+          "Call now for an upfront price before any work starts."
+        ]
+      },
+      {
+        "ad": "ad-15",
+        "campaign": "HVAC Installation",
+        "ad_group": "AC Installation",
+        "final_url": "https://www.example.com/hvac-installation/",
+        "path": "AC-Installation",
+        "spend": 1900,
+        "clicks": 120,
+        "impressions": 3100,
+        "conversions": 9,
+        "ad_strength": "AVERAGE",
+        "headlines": [
+          "New AC Installation",
+          "Free Estimate on New Systems",
+          "Financing Available"
+        ],
+        "descriptions": [
+          "Replace an old AC with a high-efficiency system. Free in-home estimate.",
+          "Licensed installers, financing on approved credit, 10-year parts warranty."
+        ]
+      },
+      {
+        "ad": "ad-16",
+        "campaign": "Out of Area",
+        "ad_group": "Out of Area AC Repair",
+        "final_url": "https://www.example.com/ac-repair/",
+        "path": "AC-Repair/Same-Day",
+        "spend": 330,
+        "clicks": 60,
+        "impressions": 1500,
+        "conversions": 4,
+        "ad_strength": "GOOD",
+        "headlines": [
+          "AC Repair in Riverton",
+          "Same-Day AC Repair",
+          "1,200+ Five-Star Reviews",
+          "Upfront Flat-Rate Pricing",
+          "Licensed HVAC Technicians"
+        ],
+        "descriptions": [
+          "Same-day AC repair from licensed technicians. Upfront prices before any work starts.",
+          "Call or book online. Evening and weekend slots, 90-day guarantee on every repair."
+        ]
+      }
+    ],
+    "keywords": [
+      {
+        "ad_group": "Brand",
+        "keyword": "example home services",
+        "spend": 900,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Brand",
+        "keyword": "example home services reviews",
+        "spend": 300,
+        "landing_page_rating": "not rated"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "ac repair",
+        "spend": 2100,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "ac repair near me",
+        "spend": 1500,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "air conditioner repair",
+        "spend": 900,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "ac repair riverton",
+        "spend": 700,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "ac repair lakemoor",
+        "spend": 400,
+        "landing_page_rating": "BELOW_AVERAGE"
+      },
+      {
+        "ad_group": "AC Repair",
+        "keyword": "central air repair",
+        "spend": 300,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Emergency Plumber",
+        "keyword": "emergency plumber",
+        "spend": 1600,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Emergency Plumber",
+        "keyword": "24 hour plumber",
+        "spend": 1100,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Emergency Plumber",
+        "keyword": "plumber near me",
+        "spend": 900,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Emergency Plumber",
+        "keyword": "emergency plumber riverton",
+        "spend": 300,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Emergency Plumber",
+        "keyword": "burst pipe repair",
+        "spend": 200,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Repair",
+        "keyword": "water heater repair",
+        "spend": 900,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Repair",
+        "keyword": "hot water heater repair",
+        "spend": 600,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Repair",
+        "keyword": "tankless water heater repair",
+        "spend": 300,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Repair",
+        "keyword": "water heater repair near me",
+        "spend": 250,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Repair",
+        "keyword": "no hot water",
+        "spend": 150,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Replacement",
+        "keyword": "water heater replacement",
+        "spend": 500,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Water Heater Replacement",
+        "keyword": "new water heater",
+        "spend": 200,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Furnace Repair",
+        "keyword": "furnace repair",
+        "spend": 900,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Furnace Repair",
+        "keyword": "heating repair",
+        "spend": 600,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Furnace Repair",
+        "keyword": "furnace repair near me",
+        "spend": 400,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Furnace Repair",
+        "keyword": "furnace repair ashby",
+        "spend": 150,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Drain Cleaning",
+        "keyword": "drain cleaning",
+        "spend": 1000,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Drain Cleaning",
+        "keyword": "clogged drain",
+        "spend": 700,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Drain Cleaning",
+        "keyword": "drain cleaning near me",
+        "spend": 500,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "Drain Cleaning",
+        "keyword": "sewer line cleaning",
+        "spend": 300,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "AC Installation",
+        "keyword": "ac installation",
+        "spend": 900,
+        "landing_page_rating": "ABOVE_AVERAGE"
+      },
+      {
+        "ad_group": "AC Installation",
+        "keyword": "new ac unit",
+        "spend": 600,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "AC Installation",
+        "keyword": "ac replacement cost",
+        "spend": 300,
+        "landing_page_rating": "AVERAGE"
+      },
+      {
+        "ad_group": "Out of Area AC Repair",
+        "keyword": "ac repair fenwick",
+        "spend": 140,
+        "landing_page_rating": "BELOW_AVERAGE"
+      },
+      {
+        "ad_group": "Out of Area AC Repair",
+        "keyword": "ac repair millbrook",
+        "spend": 110,
+        "landing_page_rating": "BELOW_AVERAGE"
+      },
+      {
+        "ad_group": "Out of Area AC Repair",
+        "keyword": "ac repair stonebridge",
+        "spend": 60,
+        "landing_page_rating": "AVERAGE"
+      }
+    ],
+    "sitelinks": {
+      "Brand": [
+        {
+          "text": "AC Repair",
+          "url": "https://www.example.com/ac-repair/"
+        },
+        {
+          "text": "Drain Cleaning",
+          "url": "https://www.example.com/drain-cleaning/"
+        },
+        {
+          "text": "Free Estimate",
+          "url": "https://www.example.com/free-estimate/"
+        }
+      ],
+      "AC Repair": [
+        {
+          "text": "Water Heater Out? Call Now",
+          "url": "https://www.example.com/"
+        },
+        {
+          "text": "Free Estimate",
+          "url": "https://www.example.com/free-estimate/"
+        },
+        {
+          "text": "Read Our Reviews",
+          "url": "https://www.example.com/reviews/"
+        }
+      ],
+      "Emergency Plumbing": [
+        {
+          "text": "Water Heater Out? Call Now",
+          "url": "https://www.example.com/"
+        },
+        {
+          "text": "Read Our Reviews",
+          "url": "https://www.example.com/"
+        },
+        {
+          "text": "Financing Options",
+          "url": "https://www.example.com/"
+        }
+      ],
+      "Furnace Repair": [
+        {
+          "text": "No Hot Water? We Can Help",
+          "url": "https://www.example.com/"
+        },
+        {
+          "text": "Book Online",
+          "url": "https://www.example.com/book/"
+        }
+      ],
+      "Drain Cleaning": [
+        {
+          "text": "Read Our Reviews",
+          "url": "https://www.example.com/"
+        },
+        {
+          "text": "Book Online",
+          "url": "https://www.example.com/book/"
+        }
+      ]
+    },
+    "callouts": {
+      "Brand": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "AC Repair": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "Emergency Plumbing": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "Furnace Repair": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "Drain Cleaning": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "Water Heaters": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "90-Day Guarantee"
+      ],
+      "HVAC Installation": [
+        "Upfront Pricing",
+        "Licensed & Insured",
+        "Open 7 Days",
+        "Financing Available"
+      ]
+    },
+    "landing_page_view": [
+      {
+        "campaign": "Brand",
+        "page": "https://www.example.com/",
+        "clicks": 820,
+        "spend": 1450,
+        "conversions": 96
+      },
+      {
+        "campaign": "AC Repair",
+        "page": "https://www.example.com/ac-repair/",
+        "clicks": 1050,
+        "spend": 6300,
+        "conversions": 126
+      },
+      {
+        "campaign": "Emergency Plumbing",
+        "page": "https://www.example.com/emergency-plumber/",
+        "clicks": 618,
+        "spend": 4150,
+        "conversions": 80
+      },
+      {
+        "campaign": "Emergency Plumbing",
+        "page": "https://www.example.com/free-estimate/",
+        "clicks": 22,
+        "spend": 150,
+        "conversions": 3
+      },
+      {
+        "campaign": "Emergency Plumbing",
+        "page": "https://www.example.com/",
+        "clicks": 18,
+        "spend": 120,
+        "conversions": 1
+      },
+      {
+        "campaign": "Water Heaters",
+        "page": "https://www.example.com/water-heater-repair/",
+        "clicks": 360,
+        "spend": 2300,
+        "conversions": 27
+      },
+      {
+        "campaign": "Water Heaters",
+        "page": "https://www.example.com/",
+        "clicks": 110,
+        "spend": 800,
+        "conversions": 7
+      },
+      {
+        "campaign": "Furnace Repair",
+        "page": "https://www.example.com/furnace-repair/",
+        "clicks": 310,
+        "spend": 2050,
+        "conversions": 31
+      },
+      {
+        "campaign": "Furnace Repair",
+        "page": "https://www.example.com/",
+        "clicks": 20,
+        "spend": 150,
+        "conversions": 2
+      },
+      {
+        "campaign": "Drain Cleaning",
+        "page": "https://www.example.com/drain-cleaning/",
+        "clicks": 390,
+        "spend": 2550,
+        "conversions": 12
+      },
+      {
+        "campaign": "Drain Cleaning",
+        "page": "https://www.example.com/",
+        "clicks": 10,
+        "spend": 50,
+        "conversions": 0
+      },
+      {
+        "campaign": "HVAC Installation",
+        "page": "https://www.example.com/hvac-installation/",
+        "clicks": 120,
+        "spend": 1900,
+        "conversions": 9
+      },
+      {
+        "campaign": "Out of Area",
+        "page": "https://www.example.com/ac-repair/",
+        "clicks": 60,
+        "spend": 330,
+        "conversions": 4
+      }
+    ]
+  },
+  "page_reads": [
+    {
+      "page": "/ac-repair/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/emergency-plumber/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/drain-cleaning/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/water-heater-repair/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/furnace-repair/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/hvac-installation/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    },
+    {
+      "page": "/",
+      "status_code_checker": "blocked by a bot check (HTTP 403)",
+      "capture": "blocked by a bot check",
+      "headings_checker": "blocked by a bot check",
+      "meta_tags_checker": "blocked by a bot check",
+      "core_web_vitals": "blocked by a bot check"
+    }
+  ]
+}

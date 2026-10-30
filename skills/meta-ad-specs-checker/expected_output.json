@@ -1,0 +1,727 @@
+{
+  "header": {
+    "account": "Example Booking Software (Meta ad account)",
+    "ad_account_id": "act_100000000000001",
+    "date": "2026-10-30",
+    "specs": "Meta Ads Guide, checked 2026-10-30",
+    "ads_checked": 6,
+    "ad_placement_cells_graded": 28,
+    "ready": 1,
+    "fixes_recommended": 4,
+    "blocked": 1
+  },
+  "grid": [
+    {
+      "ad": "Static | No-shows stat | square",
+      "ad_set": "Prospecting | Salons and clinics | US",
+      "placements": "automatic",
+      "cells": {
+        "Facebook Feed": "warn: cut",
+        "Instagram Feed": "pass",
+        "Facebook Stories": "warn: small",
+        "Instagram Stories": "warn: small",
+        "Instagram Reels": "warn: small, cut",
+        "Facebook Reels": "warn: small, cut"
+      },
+      "verdict": "fixes recommended"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "ad_set": "Prospecting | Salons and clinics | US",
+      "placements": "automatic",
+      "cells": {
+        "Facebook Feed": "warn: small",
+        "Instagram Feed": "warn: small",
+        "Facebook Stories": "warn: small, cards",
+        "Instagram Stories": "warn: small, cards",
+        "Instagram Reels": "warn: small, cut",
+        "Facebook Reels": "warn: small, length unchecked, cut"
+      },
+      "verdict": "fixes recommended"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "ad_set": "Prospecting | Salons and clinics | US",
+      "placements": "automatic",
+      "cells": {
+        "Facebook Feed": "warn: cropped, cut",
+        "Instagram Feed": "warn: cropped, cut",
+        "Facebook Stories": "warn: cards, cut, covered",
+        "Instagram Stories": "warn: cards, cut, covered",
+        "Instagram Reels": "warn: cut, covered",
+        "Facebook Reels": "warn: length unchecked, cut, covered"
+      },
+      "verdict": "fixes recommended"
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "ad_set": "Prospecting | Salons and clinics | US",
+      "placements": "automatic",
+      "cells": {
+        "Facebook Feed": "warn: cut",
+        "Instagram Feed": "pass",
+        "Facebook Stories": "unknown: check safe zones by eye",
+        "Instagram Stories": "unknown: check safe zones by eye",
+        "Instagram Reels": "warn: cut, check safe zones by eye",
+        "Facebook Reels": "warn: cut, check safe zones by eye"
+      },
+      "verdict": "fixes recommended"
+    },
+    {
+      "ad": "Static | Testimonial card | old upload",
+      "ad_set": "Retargeting | Site visitors 30d",
+      "placements": "manual",
+      "cells": {
+        "Facebook Feed": "fail: resolution",
+        "Instagram Feed": "fail: resolution",
+        "Facebook Stories": "off",
+        "Instagram Stories": "off",
+        "Instagram Reels": "off",
+        "Facebook Reels": "off"
+      },
+      "verdict": "blocked in Facebook Feed, Instagram Feed"
+    },
+    {
+      "ad": "Static | Growth plan | 4:5",
+      "ad_set": "Retargeting | Site visitors 30d",
+      "placements": "manual",
+      "cells": {
+        "Facebook Feed": "pass",
+        "Instagram Feed": "pass",
+        "Facebook Stories": "off",
+        "Instagram Stories": "off",
+        "Instagram Reels": "off",
+        "Facebook Reels": "off"
+      },
+      "verdict": "ready"
+    }
+  ],
+  "fixes": [
+    {
+      "rank": 1,
+      "ad": "Static | Testimonial card | old upload",
+      "placements": [
+        "Facebook Feed"
+      ],
+      "result": "fail, resolution",
+      "evidence": "480 px wide is under Facebook Feed's minimum of 600 px",
+      "asset": "testimonial-card-old.jpg (480 x 600)",
+      "fix": "export it again at 1440 px wide or more and replace the image",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 2,
+      "ad": "Static | Testimonial card | old upload",
+      "placements": [
+        "Instagram Feed"
+      ],
+      "result": "fail, resolution",
+      "evidence": "480 px wide is under Instagram Feed's minimum of 500 px",
+      "asset": "testimonial-card-old.jpg (480 x 600)",
+      "fix": "export it again at 1440 px wide or more and replace the image",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 3,
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placements": [
+        "Facebook Feed",
+        "Instagram Feed"
+      ],
+      "result": "warn, small",
+      "evidence": "16:9 is wider than 1:1: it runs but fills less of the screen",
+      "asset": "demo-walkthrough-16x9.mp4 (1920 x 1080, 42 s)",
+      "fix": "a 4:5 version: a crop would be 864 px wide; export a new version at 1440 x 1800 instead",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 4,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Facebook Feed",
+        "Instagram Feed"
+      ],
+      "result": "warn, cropped",
+      "evidence": "9:16 is taller than 4:5: Feeds hide 285 px at the top and 285 px at the bottom",
+      "asset": "front-desk-reel.mp4 (1080 x 1920, 22.5 s)",
+      "fix": "a 4:5 version: crop [x, y, width, height] = [0, 285, 1080, 1350] from the 1080 x 1920 source; the logo in the uploaded frame sits in the 285 px band this crop removes, so move it first to x 65 to 1015, y 285 to 1248, which keeps it in the Feed crop and clear of the Stories and Reels bands",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 5,
+      "ad": "Static | No-shows stat | square",
+      "placements": [
+        "Facebook Stories",
+        "Instagram Stories",
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, small",
+      "evidence": "1:1 shows smaller than the screen with filled space above and below",
+      "asset": "no-shows-square.png (1080 x 1080)",
+      "fix": "a 9:16 version: a crop would be 608 px wide; export a new version at 1440 x 2560 instead",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 6,
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placements": [
+        "Facebook Stories",
+        "Instagram Stories",
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, small",
+      "evidence": "16:9 shows smaller than the screen with filled space above and below",
+      "asset": "demo-walkthrough-16x9.mp4 (1920 x 1080, 42 s)",
+      "fix": "a 9:16 version: a crop would be 608 px wide; export a new version at 1440 x 2560 instead",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 7,
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placements": [
+        "Facebook Stories",
+        "Instagram Stories"
+      ],
+      "result": "warn, cards",
+      "evidence": "42 s plays as 3 cards; viewers tap for the rest",
+      "asset": "demo-walkthrough-16x9.mp4 (1920 x 1080, 42 s)",
+      "fix": "make a cut of 15 s or less for Stories, or put the offer in the first 15 s",
+      "who": "do this in your video editor, then add it in Ads Manager"
+    },
+    {
+      "rank": 8,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Facebook Stories",
+        "Instagram Stories"
+      ],
+      "result": "warn, cards",
+      "evidence": "22.5 s plays as 2 cards; viewers tap for the rest",
+      "asset": "front-desk-reel.mp4 (1080 x 1920, 22.5 s)",
+      "fix": "make a cut of 15 s or less for Stories, or put the offer in the first 15 s",
+      "who": "do this in your video editor, then add it in Ads Manager"
+    },
+    {
+      "rank": 9,
+      "ad": "Static | No-shows stat | square",
+      "placements": [
+        "Facebook Feed"
+      ],
+      "result": "warn, cut",
+      "evidence": "headline over 27 characters",
+      "asset": null,
+      "fix": "a shorter headline: viewers see \"Cut no-shows with SMS remin...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 10,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Facebook Feed"
+      ],
+      "result": "warn, cut",
+      "evidence": "headline over 27 characters",
+      "asset": null,
+      "fix": "a shorter headline: viewers see \"Online booking in 20 second...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 11,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Instagram Feed",
+        "Facebook Stories",
+        "Instagram Stories"
+      ],
+      "result": "warn, cut",
+      "evidence": "primary text over 125 characters",
+      "asset": null,
+      "fix": "a shorter primary text: viewers see \"Your front desk answers the phone all day. Let clients book themselves at 2 a.m. instead, with reminders sent for you and dep...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 12,
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placements": [
+        "Facebook Feed"
+      ],
+      "result": "warn, cut",
+      "evidence": "headline over 27 characters",
+      "asset": null,
+      "fix": "a shorter headline: viewers see \"Reminders that fill your ca...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 13,
+      "ad": "Static | No-shows stat | square",
+      "placements": [
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, cut",
+      "evidence": "primary text over 44 characters",
+      "asset": null,
+      "fix": "a shorter primary text: viewers see \"Salons using automatic reminders see fewer e...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 14,
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placements": [
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, cut",
+      "evidence": "primary text over 44 characters",
+      "asset": null,
+      "fix": "a shorter primary text: viewers see \"See a full booking day in under a minute: cl...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 15,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, cut",
+      "evidence": "primary text over 44 characters",
+      "asset": null,
+      "fix": "a shorter primary text: viewers see \"Your front desk answers the phone all day. L...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 16,
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placements": [
+        "Instagram Reels",
+        "Facebook Reels"
+      ],
+      "result": "warn, cut",
+      "evidence": "primary text over 44 characters",
+      "asset": null,
+      "fix": "a shorter primary text: viewers see \"Fewer no-shows, a fuller calendar: reminders...\"",
+      "who": "do this in Ads Manager"
+    },
+    {
+      "rank": 17,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Stories and Reels"
+      ],
+      "result": "warn, covered",
+      "evidence": "logo overlaps the top band by 90 px",
+      "asset": "front-desk-reel.mp4 (1080 x 1920)",
+      "fix": "move the element: keep it inside x 65 to 1015, y 285 to 1248 (this ad also runs in Feeds, so the box also clears the 285 px Feed crop band; the Reels bands alone allow y 269 to 1248)",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 18,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Stories and Reels"
+      ],
+      "result": "warn, covered",
+      "evidence": "logo overlaps the left band by 25 px",
+      "asset": "front-desk-reel.mp4 (1080 x 1920)",
+      "fix": "move the element: keep it inside x 65 to 1015, y 285 to 1248 (this ad also runs in Feeds, so the box also clears the 285 px Feed crop band; the Reels bands alone allow y 269 to 1248)",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 19,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Stories and Reels"
+      ],
+      "result": "warn, covered",
+      "evidence": "face overlaps the bottom band by 32 px",
+      "asset": "front-desk-reel.mp4 (1080 x 1920)",
+      "fix": "move the element: keep it inside x 65 to 1015, y 285 to 1248 (this ad also runs in Feeds, so the box also clears the 285 px Feed crop band; the Reels bands alone allow y 269 to 1248)",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    },
+    {
+      "rank": 20,
+      "ad": "Reel | Front desk in 20 seconds",
+      "placements": [
+        "Stories and Reels"
+      ],
+      "result": "warn, covered",
+      "evidence": "caption \"Clients book themselves, even at 2 a.m.\" overlaps the bottom band by 160 px",
+      "asset": "front-desk-reel.mp4 (1080 x 1920)",
+      "fix": "move the element: keep it inside x 65 to 1015, y 285 to 1248 (this ad also runs in Feeds, so the box also clears the 285 px Feed crop band; the Reels bands alone allow y 269 to 1248)",
+      "who": "do this in your design tool, then add it in Ads Manager"
+    }
+  ],
+  "safe_zones": [
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "asset": "front-desk-reel.mp4 (1080 x 1920)",
+      "bands_px": {
+        "top": "y 0 to 269",
+        "bottom": "y 1248 to 1920",
+        "sides": "x 0 to 65 and 1015 to 1080"
+      },
+      "safe_box_px": [
+        65,
+        269,
+        950,
+        979
+      ],
+      "frame": "front-desk-reel-0m04s.png at 0:04",
+      "result": "warn, covered",
+      "elements_in_bands": [
+        {
+          "element": "logo",
+          "band": "top",
+          "overlap_px": 90
+        },
+        {
+          "element": "logo",
+          "band": "left",
+          "overlap_px": 25
+        },
+        {
+          "element": "face",
+          "band": "bottom",
+          "overlap_px": 32
+        },
+        {
+          "element": "caption \"Clients book themselves, even at 2 a.m.\"",
+          "band": "bottom",
+          "overlap_px": 160
+        }
+      ],
+      "clear": [
+        "on-screen headline \"Fewer no-shows\""
+      ],
+      "feed_crop": {
+        "hidden_px_top_and_bottom": 285,
+        "elements_cut_in_feeds": [
+          "logo"
+        ]
+      },
+      "safe_box_px_with_feed_crop": {
+        "x": [
+          65,
+          1015
+        ],
+        "y": [
+          285,
+          1248
+        ]
+      }
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "asset": "reminders-9x16.png (1440 x 2560)",
+      "bands_px": {
+        "top": "y 0 to 358",
+        "bottom": "y 1664 to 2560",
+        "sides": "x 0 to 86 and 1354 to 1440"
+      },
+      "safe_box_px": [
+        86,
+        358,
+        1268,
+        1306
+      ],
+      "result": "unknown: check by eye",
+      "ask": "upload a still of this image to check captions, logos and buttons against the bands"
+    }
+  ],
+  "text_cut_off": [
+    {
+      "ad": "Static | No-shows stat | square",
+      "primary_text_characters": 85,
+      "headline_characters": 31,
+      "over": [
+        {
+          "placement": "Facebook Feed",
+          "field": "headline",
+          "limit": 27,
+          "visible": "Cut no-shows with SMS remin..."
+        },
+        {
+          "placement": "Instagram Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Salons using automatic reminders see fewer e..."
+        },
+        {
+          "placement": "Facebook Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Salons using automatic reminders see fewer e..."
+        }
+      ]
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "primary_text_characters": 95,
+      "headline_characters": 23,
+      "over": [
+        {
+          "placement": "Instagram Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "See a full booking day in under a minute: cl..."
+        },
+        {
+          "placement": "Facebook Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "See a full booking day in under a minute: cl..."
+        }
+      ]
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "primary_text_characters": 146,
+      "headline_characters": 28,
+      "over": [
+        {
+          "placement": "Facebook Feed",
+          "field": "headline",
+          "limit": 27,
+          "visible": "Online booking in 20 second..."
+        },
+        {
+          "placement": "Instagram Feed",
+          "field": "primary text",
+          "limit": 125,
+          "visible": "Your front desk answers the phone all day. Let clients book themselves at 2 a.m. instead, with reminders sent for you and dep..."
+        },
+        {
+          "placement": "Facebook Stories",
+          "field": "primary text",
+          "limit": 125,
+          "visible": "Your front desk answers the phone all day. Let clients book themselves at 2 a.m. instead, with reminders sent for you and dep..."
+        },
+        {
+          "placement": "Instagram Stories",
+          "field": "primary text",
+          "limit": 125,
+          "visible": "Your front desk answers the phone all day. Let clients book themselves at 2 a.m. instead, with reminders sent for you and dep..."
+        },
+        {
+          "placement": "Instagram Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Your front desk answers the phone all day. L..."
+        },
+        {
+          "placement": "Facebook Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Your front desk answers the phone all day. L..."
+        }
+      ]
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "primary_text_characters": 85,
+      "headline_characters": 33,
+      "over": [
+        {
+          "placement": "Facebook Feed",
+          "field": "headline",
+          "limit": 27,
+          "visible": "Reminders that fill your ca..."
+        },
+        {
+          "placement": "Instagram Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Fewer no-shows, a fuller calendar: reminders..."
+        },
+        {
+          "placement": "Facebook Reels",
+          "field": "primary text",
+          "limit": 44,
+          "visible": "Fewer no-shows, a fuller calendar: reminders..."
+        }
+      ],
+      "note": "dynamic creative: 2 bodies and 2 headlines; the longest of each is graded"
+    },
+    {
+      "ad": "Static | Testimonial card | old upload",
+      "primary_text_characters": 62,
+      "headline_characters": 20,
+      "over": []
+    },
+    {
+      "ad": "Static | Growth plan | 4:5",
+      "primary_text_characters": 68,
+      "headline_characters": 24,
+      "over": []
+    }
+  ],
+  "previews": [
+    {
+      "ad": "Static | No-shows stat | square",
+      "placement": "Facebook Feed",
+      "ad_format": "MOBILE_FEED_STANDARD",
+      "link": "link returned by get_ad_preview (MOBILE_FEED_STANDARD)"
+    },
+    {
+      "ad": "Static | No-shows stat | square",
+      "placement": "Facebook Stories",
+      "ad_format": "FACEBOOK_STORY_MOBILE",
+      "link": "link returned by get_ad_preview (FACEBOOK_STORY_MOBILE)"
+    },
+    {
+      "ad": "Static | No-shows stat | square",
+      "placement": "Instagram Stories",
+      "ad_format": "INSTAGRAM_STORY",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STORY)"
+    },
+    {
+      "ad": "Static | No-shows stat | square",
+      "placement": "Instagram Reels",
+      "ad_format": "INSTAGRAM_REELS",
+      "link": "link returned by get_ad_preview (INSTAGRAM_REELS)"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placement": "Facebook Feed",
+      "ad_format": "MOBILE_FEED_STANDARD",
+      "link": "link returned by get_ad_preview (MOBILE_FEED_STANDARD)"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placement": "Instagram Feed",
+      "ad_format": "INSTAGRAM_STANDARD",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STANDARD)"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placement": "Facebook Stories",
+      "ad_format": "FACEBOOK_STORY_MOBILE",
+      "link": "link returned by get_ad_preview (FACEBOOK_STORY_MOBILE)"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placement": "Instagram Stories",
+      "ad_format": "INSTAGRAM_STORY",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STORY)"
+    },
+    {
+      "ad": "Video | Demo walkthrough | 16:9",
+      "placement": "Instagram Reels",
+      "ad_format": "INSTAGRAM_REELS",
+      "link": "link returned by get_ad_preview (INSTAGRAM_REELS)"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "placement": "Facebook Feed",
+      "ad_format": "MOBILE_FEED_STANDARD",
+      "link": "link returned by get_ad_preview (MOBILE_FEED_STANDARD)"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "placement": "Instagram Feed",
+      "ad_format": "INSTAGRAM_STANDARD",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STANDARD)"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "placement": "Facebook Stories",
+      "ad_format": "FACEBOOK_STORY_MOBILE",
+      "link": "link returned by get_ad_preview (FACEBOOK_STORY_MOBILE)"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "placement": "Instagram Stories",
+      "ad_format": "INSTAGRAM_STORY",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STORY)"
+    },
+    {
+      "ad": "Reel | Front desk in 20 seconds",
+      "placement": "Instagram Reels",
+      "ad_format": "INSTAGRAM_REELS",
+      "link": "link returned by get_ad_preview (INSTAGRAM_REELS)"
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placement": "Facebook Feed",
+      "ad_format": "MOBILE_FEED_STANDARD",
+      "link": "link returned by get_ad_preview (MOBILE_FEED_STANDARD)"
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placement": "Facebook Stories",
+      "ad_format": "FACEBOOK_STORY_MOBILE",
+      "link": "link returned by get_ad_preview (FACEBOOK_STORY_MOBILE)"
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placement": "Instagram Stories",
+      "ad_format": "INSTAGRAM_STORY",
+      "link": "link returned by get_ad_preview (INSTAGRAM_STORY)"
+    },
+    {
+      "ad": "Dynamic | Reminders | 4:5 + 9:16",
+      "placement": "Instagram Reels",
+      "ad_format": "INSTAGRAM_REELS",
+      "link": "link returned by get_ad_preview (INSTAGRAM_REELS)"
+    }
+  ],
+  "placement_change": {
+    "recommended": false,
+    "why": "2 ads in Prospecting | Salons and clinics | US show small in Stories and Reels (Static | No-shows stat | square, Video | Demo walkthrough | 16:9), but 2 other ads in the same ad set fit them full screen (Reel | Front desk in 20 seconds, Dynamic | Reminders | 4:5 + 9:16). Switching those placements off would take them from every ad in the ad set, and a 9:16 version fixes the cause. No change is offered.",
+    "if_you_still_want_it": {
+      "action": "update_adset",
+      "status": "not run",
+      "body": {
+        "platform": "facebook-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_adset",
+        "ad_account_id": "act_100000000000001",
+        "adset_id": "120000000000100001",
+        "targeting": {
+          "geo_locations": {
+            "countries": [
+              "US"
+            ]
+          },
+          "age_min": 25,
+          "age_max": 65,
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed"
+          ],
+          "instagram_positions": [
+            "stream"
+          ]
+        }
+      },
+      "note": "The full targeting object replaces the old one, so every other field is copied unchanged. Runs only after your yes on this exact payload."
+    }
+  },
+  "unknowns": [
+    "Static | No-shows stat | square in Facebook Reels: no preview format for Facebook Reels; use the Instagram Reels preview or Ads Manager's preview.",
+    "Video | Demo walkthrough | 16:9 in Facebook Reels: length of demo-walkthrough-16x9.mp4 (42 s) not graded; Meta's Facebook Reels specs page could not be read, so check the limit in the Ads Guide or Ads Manager.",
+    "Video | Demo walkthrough | 16:9 in Facebook Reels: no preview format for Facebook Reels; use the Instagram Reels preview or Ads Manager's preview.",
+    "Reel | Front desk in 20 seconds in Facebook Reels: length of front-desk-reel.mp4 (22.5 s) not graded; Meta's Facebook Reels specs page could not be read, so check the limit in the Ads Guide or Ads Manager.",
+    "Reel | Front desk in 20 seconds in Facebook Reels: no preview format for Facebook Reels; use the Instagram Reels preview or Ads Manager's preview.",
+    "Dynamic | Reminders | 4:5 + 9:16 in Facebook Reels: no preview format for Facebook Reels; use the Instagram Reels preview or Ads Manager's preview.",
+    "Dynamic | Reminders | 4:5 + 9:16: safe zones of reminders-9x16.png not checked; no frame uploaded.",
+    "Videos were graded from their size and length; Claude can't play them. Captions in the demo walkthrough were not checked."
+  ],
+  "go_deeper": [
+    "facebook-ads-launch-checklist (if installed): budget, pixel, dates, audience and landing page before launch",
+    "meta-ad-copy-writer (if installed): shorter primary text for Reels that keeps the winning angle",
+    "ad-creative-brief-generator (if installed): a brief for the missing 9:16 and 4:5 versions",
+    "video-ad-script-writer (if installed): a vertical cut of the demo walkthrough at 15 s or less",
+    "meta-ads-creative-ranker (if installed): which of these creatives earn the most, before you spend time on new versions"
+  ]
+}

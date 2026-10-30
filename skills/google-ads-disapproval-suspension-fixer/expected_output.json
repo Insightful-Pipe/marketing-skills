@@ -1,0 +1,428 @@
+{
+  "header": {
+    "account": "Example Home Loans",
+    "customer_id": "123-456-7890",
+    "account_status": "ENABLED",
+    "checked_on": "2026-10-30",
+    "flagged_ads": 7,
+    "flagged_keywords": 0,
+    "flagged_assets": 1,
+    "disapproved": 8,
+    "limited": 0,
+    "summary": "8 flagged items in live campaigns come from 5 causes. The biggest is one dead page behind 4 of them. No keyword is flagged. Nothing is limited."
+  },
+  "root_causes": [
+    {
+      "rank": 1,
+      "fix_type": "Destination",
+      "topic": "DESTINATION_NOT_WORKING",
+      "items": 4,
+      "which": [
+        "ad 700000000003",
+        "ad 700000000004",
+        "ad 700000000005",
+        "sitelink 800000000001"
+      ],
+      "fix": "Restore /refinance-rates/ (returns 404), or re-point the 4 items that use it to a live page."
+    },
+    {
+      "rank": 2,
+      "fix_type": "Editorial",
+      "topic": "CAPITALIZATION",
+      "items": 1,
+      "which": [
+        "ad 700000000001"
+      ],
+      "fix": "Rewrite the flagged words; nothing else changes."
+    },
+    {
+      "rank": 3,
+      "fix_type": "Editorial",
+      "topic": "STYLE_AND_SPELLING",
+      "items": 1,
+      "which": [
+        "ad 700000000002"
+      ],
+      "fix": "Rewrite the flagged words; nothing else changes."
+    },
+    {
+      "rank": 4,
+      "fix_type": "Destination",
+      "topic": "DESTINATION_MISMATCH",
+      "items": 1,
+      "which": [
+        "ad 700000000006"
+      ],
+      "fix": "Replace final URLs on the old domain www.examplemortgage.example with the pages they redirect to."
+    },
+    {
+      "rank": 5,
+      "fix_type": "Destination",
+      "topic": "DESTINATION_NOT_WORKING",
+      "items": 1,
+      "which": [
+        "ad 700000000007"
+      ],
+      "fix": "Page is back up (returns 200); appeal, no edit."
+    }
+  ],
+  "items": [
+    {
+      "kind": "ad",
+      "ad_id": "700000000001",
+      "campaign": "Refinance",
+      "ad_group": "Rate and term",
+      "status": "DISAPPROVED",
+      "topic": "CAPITALIZATION",
+      "in_plain_words": "Words in capital letters for emphasis are not allowed in ad text.",
+      "evidence": "Google flagged: \"APPLY NOW\"",
+      "fix": "Rewrite 1 line; the other 7 stay exactly as they are. Saving sends the ad back to review.",
+      "rewrite": [
+        {
+          "field": "headline",
+          "before": "APPLY NOW",
+          "after": "Apply Now",
+          "chars": 9
+        }
+      ]
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000002",
+      "campaign": "Refinance",
+      "ad_group": "Cash-out",
+      "status": "DISAPPROVED",
+      "topic": "STYLE_AND_SPELLING",
+      "in_plain_words": "Repeated or unnecessary punctuation, such as \"!!\", is not allowed, and a headline may not use an exclamation mark at all.",
+      "evidence": "Google flagged: \"Refinance Today!!\"",
+      "fix": "Rewrite 1 line; the other 6 stay exactly as they are. Saving sends the ad back to review.",
+      "rewrite": [
+        {
+          "field": "headline",
+          "before": "Refinance Today!!",
+          "after": "Refinance Today",
+          "chars": 15
+        }
+      ]
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000003",
+      "campaign": "Refinance",
+      "ad_group": "Rate and term",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_NOT_WORKING",
+      "in_plain_words": "Google could not load the ad's landing page when it reviewed the ad.",
+      "evidence": "Google gave no evidence for this item.",
+      "final_url": "https://www.examplehomeloans.example/refinance-rates/",
+      "page_check": "https://www.examplehomeloans.example/refinance-rates/ (404)",
+      "fix": "The page returns 404. Restore it, or point the ad at /refinance/, which returns 200 and already serves this campaign."
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000004",
+      "campaign": "Refinance",
+      "ad_group": "Cash-out",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_NOT_WORKING",
+      "in_plain_words": "Google could not load the ad's landing page when it reviewed the ad.",
+      "evidence": "Google gave no evidence for this item.",
+      "final_url": "https://www.examplehomeloans.example/refinance-rates/",
+      "page_check": "https://www.examplehomeloans.example/refinance-rates/ (404)",
+      "fix": "The page returns 404. Restore it, or point the ad at /refinance/cash-out/, which returns 200 and already serves this campaign."
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000005",
+      "campaign": "Refinance",
+      "ad_group": "VA streamline",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_NOT_WORKING",
+      "in_plain_words": "Google could not load the ad's landing page when it reviewed the ad.",
+      "evidence": "Google gave no evidence for this item.",
+      "final_url": "https://www.examplehomeloans.example/refinance-rates/",
+      "page_check": "https://www.examplehomeloans.example/refinance-rates/ (404)",
+      "fix": "The page returns 404. Restore it, or point the ad at /refinance/, which returns 200 and already serves this campaign."
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000006",
+      "campaign": "Purchase loans",
+      "ad_group": "First-time buyers",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_MISMATCH",
+      "in_plain_words": "The ad shows the domain of its final URL, but that URL redirects people to a different domain.",
+      "evidence": "Google says these disagree: DISPLAY_URL and FINAL_URL",
+      "final_url": "https://www.examplemortgage.example/first-time-buyers/",
+      "page_check": "https://www.examplemortgage.example/first-time-buyers/ (301) -> https://www.examplehomeloans.example/purchase/first-time-buyers/ (200)",
+      "fix": "The final URL starts on www.examplemortgage.example and redirects to https://www.examplehomeloans.example/purchase/first-time-buyers/. Use the end URL so the ad starts on the domain it shows."
+    },
+    {
+      "kind": "ad",
+      "ad_id": "700000000007",
+      "campaign": "Purchase loans",
+      "ad_group": "Home purchase",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_NOT_WORKING",
+      "in_plain_words": "Google could not load the ad's landing page when it reviewed the ad.",
+      "evidence": "Google gave no evidence for this item.",
+      "final_url": "https://www.examplehomeloans.example/purchase/",
+      "page_check": "https://www.examplehomeloans.example/purchase/ (200)",
+      "fix": "The page returns 200 now, and you said it was down for a day last week, which is when Google reviewed the ad. No edit is needed: appeal with \"Made changes to comply with policy\"."
+    },
+    {
+      "kind": "sitelink",
+      "asset_id": "800000000001",
+      "campaign": "Refinance",
+      "link_text": "Today's Refinance Rates",
+      "status": "DISAPPROVED",
+      "topic": "DESTINATION_NOT_WORKING",
+      "in_plain_words": "Google could not load the sitelink's page when it reviewed the sitelink.",
+      "evidence": "Google gave no evidence for this item.",
+      "final_url": "https://www.examplehomeloans.example/refinance-rates/",
+      "page_check": "https://www.examplehomeloans.example/refinance-rates/ (404)",
+      "fix": "In Google Ads (Assets), change this sitelink's final URL to https://www.examplehomeloans.example/refinance/. This skill does not edit assets."
+    }
+  ],
+  "targeting_check": {
+    "applies": "yes: mortgage ads are credit and housing ads, shown in the US",
+    "rule": "No targeting by gender, age, parental status, marital status or ZIP code.",
+    "demographic_exclusions": [
+      {
+        "campaign": "Refinance",
+        "ad_group": "Cash-out",
+        "excluded": "AGE_RANGE_18_24",
+        "finding": "breach: age is on Google's list"
+      },
+      {
+        "campaign": "Refinance",
+        "ad_group": "Cash-out",
+        "excluded": "AGE_RANGE_65_UP",
+        "finding": "breach: age is on Google's list"
+      },
+      {
+        "campaign": "Purchase loans",
+        "ad_group": "Home purchase",
+        "excluded": "INCOME_RANGE_0_50",
+        "finding": "check with you: income is not on Google's list, but excluding a low-income range on a credit or housing ad deserves a compliance review"
+      }
+    ],
+    "zip_targets": [
+      {
+        "campaign": "Purchase loans",
+        "zip_codes": [
+          "80202",
+          "80206",
+          "80209",
+          "80220"
+        ],
+        "count": 4,
+        "finding": "breach: ZIP code targeting",
+        "fix": "Remove the 4 ZIP codes; the campaign already targets Denver, or use a radius around the office instead."
+      }
+    ],
+    "summary": "2 age exclusions and 4 ZIP code targets to remove; 1 income exclusion to review with you.",
+    "how": "In Google Ads: Audiences, keywords and content > Demographics for the exclusions, and Locations for the ZIP codes. This skill drafts the list; it does not change targeting."
+  },
+  "landing_pages": [
+    {
+      "url": "https://www.examplehomeloans.example/purchase/",
+      "status": 200,
+      "phone_link": false,
+      "email_link": false,
+      "contact_page": false,
+      "privacy_page": false,
+      "note": "No phone, email or contact link and no privacy link on this page. Not flagged yet, but a common reason for misrepresentation reviews on financial ads: add them before the ads are reviewed again."
+    },
+    {
+      "url": "https://www.examplehomeloans.example/refinance-rates/",
+      "status": 404,
+      "contact_and_privacy": "not checked: the page is broken"
+    },
+    {
+      "url": "https://www.examplehomeloans.example/refinance/",
+      "status": 200,
+      "phone_link": true,
+      "email_link": true,
+      "contact_page": true,
+      "privacy_page": true
+    },
+    {
+      "url": "https://www.examplehomeloans.example/refinance/cash-out/",
+      "status": 200,
+      "phone_link": true,
+      "email_link": true,
+      "contact_page": true,
+      "privacy_page": true
+    },
+    {
+      "url": "https://www.examplemortgage.example/first-time-buyers/",
+      "status": 301,
+      "redirects_to": "https://www.examplehomeloans.example/purchase/first-time-buyers/",
+      "end_status": 200,
+      "phone_link": true,
+      "email_link": true,
+      "contact_page": true,
+      "privacy_page": true
+    }
+  ],
+  "verification": {
+    "type": "Advertiser verification",
+    "deadline": "2026-11-20",
+    "days_left": 21,
+    "what_it_means": "Google wants to confirm who pays for and runs the ads. Missing the deadline can restrict ads or pause the account until it is done.",
+    "collect": [
+      "The legal name of the business exactly as it appears on the Google Ads payments profile",
+      "A business registration or state licence document that shows that name and the business address",
+      "The name and ID of the person who will complete verification for the business",
+      "The mortgage broker licence for each state the ads target (Colorado, Arizona, Utah), in case Google asks for industry details"
+    ],
+    "steps": [
+      "Open the verification request from the banner in Google Ads.",
+      "Check the legal name on the payments profile matches the document before you upload it.",
+      "Submit before November 20, 2026; there are 21 days left."
+    ]
+  },
+  "appeals_to_file": {
+    "after_edits": "None. Saving an edited ad or sitelink sends it back to review by itself. Appeal only if it is still disapproved 24 hours later.",
+    "appeal_now": [
+      {
+        "item": "ad 700000000007",
+        "campaign": "Purchase loans",
+        "reason": "Made changes to comply with policy",
+        "why": "The page was down for a day and is back up; it returns 200."
+      }
+    ],
+    "draft": "Account: Example Home Loans (123-456-7890). Ad 700000000007 in Purchase loans > Home purchase was disapproved for \"Destination not working\". Our home purchase page was down for one day last week. It is back up and loads normally (HTTP 200). We have made no change to the ad. Please review it again.",
+    "where": "Policy manager (Tools > Troubleshooting > Policy manager), Appeal on the ad, reason \"Made changes to comply with policy\"."
+  },
+  "fixes_ready": {
+    "count": 6,
+    "note": "Each payload runs only after you say yes to it. Every edited ad goes back to review.",
+    "payloads": [
+      {
+        "for": "ad 700000000001 (Refinance > Rate and term)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000001",
+          "headlines": [
+            "Refinance Your Mortgage",
+            "Rate and Term Refinance",
+            "Apply Now",
+            "Local Colorado Lender",
+            "Compare Refinance Options",
+            "Talk to a Loan Officer"
+          ],
+          "descriptions": [
+            "Lower your payment or shorten your term. Get a quote from a local loan officer.",
+            "Licensed in Colorado, Arizona and Utah. See rates, fees and APR before you apply."
+          ]
+        }
+      },
+      {
+        "for": "ad 700000000002 (Refinance > Cash-out)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000002",
+          "headlines": [
+            "Cash-Out Refinance",
+            "Refinance Today",
+            "Use Your Home Equity",
+            "Licensed Loan Officers",
+            "Fixed and Adjustable Rates"
+          ],
+          "descriptions": [
+            "Turn home equity into cash for repairs or debt. See your rate, fees and APR up front.",
+            "Talk to a licensed loan officer in Colorado, Arizona or Utah about your options."
+          ]
+        }
+      },
+      {
+        "for": "ad 700000000003 (Refinance > Rate and term)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000003",
+          "final_urls": [
+            "https://www.examplehomeloans.example/refinance/"
+          ]
+        }
+      },
+      {
+        "for": "ad 700000000004 (Refinance > Cash-out)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000004",
+          "final_urls": [
+            "https://www.examplehomeloans.example/refinance/cash-out/"
+          ]
+        }
+      },
+      {
+        "for": "ad 700000000005 (Refinance > VA streamline)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000005",
+          "final_urls": [
+            "https://www.examplehomeloans.example/refinance/"
+          ]
+        }
+      },
+      {
+        "for": "ad 700000000006 (Purchase loans > First-time buyers)",
+        "action": "update_responsive_search_ad",
+        "status": "not run: waiting for your yes",
+        "body": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "update_responsive_search_ad",
+          "ad_id": "700000000006",
+          "final_urls": [
+            "https://www.examplehomeloans.example/purchase/first-time-buyers/"
+          ]
+        }
+      }
+    ]
+  },
+  "do_in_google_ads": [
+    "Change the sitelink \"Today's Refinance Rates\" to a live page.",
+    "Remove the 2 age exclusions and 4 ZIP code targets listed in the targeting check.",
+    "Add a phone or contact link and a privacy link to /purchase/.",
+    "Complete advertiser verification by 2026-11-20."
+  ],
+  "not_checked": [
+    "Whether rates, fees and APR are shown clearly on each page: the crawler reads links, not page text. Please confirm on the pages."
+  ],
+  "go_deeper": "For a full account review, google-ads-account-audit; for new ad copy, rsa-ad-copy-writer; for landing page message match, ad-landing-page-match-scorer (if installed)."
+}

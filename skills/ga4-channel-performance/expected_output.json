@@ -1,0 +1,940 @@
+{
+  "header": {
+    "property": "Example Booking Software",
+    "property_id": "properties/123456789",
+    "time_zone": "America/New_York",
+    "currency": "USD",
+    "date_range": "2026-09-27 to 2026-10-26",
+    "comparison": "2026-08-28 to 2026-09-26 (the property was created on 2023-03-14, so the comparison is full)",
+    "sessions": 56860,
+    "engaged_sessions": 34258,
+    "engagement_rate_pct": 60.2,
+    "key_events": 1108,
+    "revenue": 11022.0,
+    "grade": 73,
+    "rating": "needs cleanup"
+  },
+  "scorecard": [
+    {
+      "area": "Channel mix",
+      "result": "warn",
+      "key_number": "683 sessions (1.2%) on hosts other than www.example.com",
+      "why": "The GA4 tag also fires on staging.example.com (678 sessions) and localhost (5), above the 1% line. Key events fire (1,108 in the window), Unassigned is 1.4% and Direct 25.2%, all inside their thresholds."
+    },
+    {
+      "area": "Source/medium ROI",
+      "result": "fail",
+      "key_number": "$5,027.13 of LinkedIn spend, 1,299 landing page clicks, 0 matched GA4 sessions",
+      "why": "The LinkedIn ads are tagged utm_source=li, so GA4 files their 1,091 sessions as Paid Other and the spend can't be matched. Google Ads turns 88.3% of its clicks into sessions and TikTok 76.0%."
+    },
+    {
+      "area": "Referral quality",
+      "result": "warn",
+      "key_number": "430 suspected bot sessions, 0.8% of all sessions",
+      "why": "seo-traffic-checker.example sent 93.0% of its 430 sessions on 2026-10-06 with a 0.9% engagement rate. Your own app and the Google sign-in page also show up as referrers, and so does one ad server."
+    },
+    {
+      "area": "Direct spikes",
+      "result": "warn",
+      "key_number": "1 spike: 1,636 Direct sessions on 2026-10-14 vs a median of 469.5",
+      "why": "/blog/deposit-policy/ took 63.4% of the spike's sessions (baseline 1.1%), 39.0% arrived in the 10:00 hour and 75.2% were returning visitors: an email to customers sent without utm tags."
+    }
+  ],
+  "grade_math": "100 - 12 (Source/medium ROI fail) - 5 (Channel mix warn) - 5 (Referral quality warn) - 5 (Direct spikes warn) = 73",
+  "channel_table": [
+    {
+      "channel": "Organic Search",
+      "sessions": 22848,
+      "share_pct": 40.2,
+      "engaged_sessions": 14378,
+      "engagement_rate_pct": 62.9,
+      "key_events": 365,
+      "key_event_rate_pct": 1.45,
+      "revenue": 2851.0,
+      "prior_sessions": 22817,
+      "sessions_change_pct": 0.1,
+      "prior_engagement_rate_pct": 62.9,
+      "engagement_rate_change_points": 0.0
+    },
+    {
+      "channel": "Direct",
+      "sessions": 14353,
+      "share_pct": 25.2,
+      "engaged_sessions": 8080,
+      "engagement_rate_pct": 56.3,
+      "key_events": 273,
+      "key_event_rate_pct": 1.73,
+      "revenue": 3283.0,
+      "prior_sessions": 13003,
+      "sessions_change_pct": 10.4,
+      "prior_engagement_rate_pct": 54.4,
+      "engagement_rate_change_points": 1.9
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 9356,
+      "share_pct": 16.5,
+      "engaged_sessions": 6073,
+      "engagement_rate_pct": 64.9,
+      "key_events": 286,
+      "key_event_rate_pct": 2.78,
+      "revenue": 2469.0,
+      "prior_sessions": 9405,
+      "sessions_change_pct": -0.5,
+      "prior_engagement_rate_pct": 64.6,
+      "engagement_rate_change_points": 0.3
+    },
+    {
+      "channel": "Email",
+      "sessions": 3128,
+      "share_pct": 5.5,
+      "engaged_sessions": 2190,
+      "engagement_rate_pct": 70.0,
+      "key_events": 114,
+      "key_event_rate_pct": 3.32,
+      "revenue": 2018.0,
+      "prior_sessions": 3114,
+      "sessions_change_pct": 0.4,
+      "prior_engagement_rate_pct": 69.6,
+      "engagement_rate_change_points": 0.4
+    },
+    {
+      "channel": "Paid Social",
+      "sessions": 2074,
+      "share_pct": 3.6,
+      "engaged_sessions": 786,
+      "engagement_rate_pct": 37.9,
+      "key_events": 12,
+      "key_event_rate_pct": 0.53,
+      "revenue": 68.0,
+      "prior_sessions": 2077,
+      "sessions_change_pct": -0.1,
+      "prior_engagement_rate_pct": 38.2,
+      "engagement_rate_change_points": -0.3
+    },
+    {
+      "channel": "Referral",
+      "sessions": 1648,
+      "share_pct": 2.9,
+      "engaged_sessions": 836,
+      "engagement_rate_pct": 50.7,
+      "key_events": 11,
+      "key_event_rate_pct": 0.61,
+      "revenue": 0.0,
+      "prior_sessions": 949,
+      "sessions_change_pct": 73.7,
+      "prior_engagement_rate_pct": 66.5,
+      "engagement_rate_change_points": -15.8
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 1287,
+      "share_pct": 2.3,
+      "engaged_sessions": 649,
+      "engagement_rate_pct": 50.4,
+      "key_events": 12,
+      "key_event_rate_pct": 0.85,
+      "revenue": 49.0,
+      "prior_sessions": 1302,
+      "sessions_change_pct": -1.2,
+      "prior_engagement_rate_pct": 50.2,
+      "engagement_rate_change_points": 0.2
+    },
+    {
+      "channel": "Paid Other",
+      "sessions": 1091,
+      "share_pct": 1.9,
+      "engaged_sessions": 620,
+      "engagement_rate_pct": 56.8,
+      "key_events": 22,
+      "key_event_rate_pct": 1.83,
+      "revenue": 216.0,
+      "prior_sessions": 0,
+      "sessions_change_pct": null,
+      "prior_engagement_rate_pct": null,
+      "engagement_rate_change_points": null
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 796,
+      "share_pct": 1.4,
+      "engaged_sessions": 462,
+      "engagement_rate_pct": 58.0,
+      "key_events": 10,
+      "key_event_rate_pct": 1.13,
+      "revenue": 68.0,
+      "prior_sessions": 805,
+      "sessions_change_pct": -1.1,
+      "prior_engagement_rate_pct": 57.5,
+      "engagement_rate_change_points": 0.5
+    },
+    {
+      "channel": "Organic Video",
+      "sessions": 279,
+      "share_pct": 0.5,
+      "engaged_sessions": 184,
+      "engagement_rate_pct": 65.9,
+      "key_events": 3,
+      "key_event_rate_pct": 1.08,
+      "revenue": 0.0,
+      "prior_sessions": 292,
+      "sessions_change_pct": -4.5,
+      "prior_engagement_rate_pct": 66.1,
+      "engagement_rate_change_points": -0.2
+    }
+  ],
+  "channel_checks": {
+    "key_events": "pass: 3 real key events (sign_up, purchase, demo_request) fired 1,108 times; qa_test_signup is set aside as a test event.",
+    "unassigned": "pass: 1.4% of sessions (warn above 5%).",
+    "direct_share": "pass: 25.2% of sessions (warn above 35%), including the spike area 4 explains.",
+    "stray_hosts": "warn: 1.2% of sessions on hosts other than www.example.com (warn above 1%).",
+    "prior_period": "full: the property existed for the whole comparison period."
+  },
+  "hosts": [
+    {
+      "hostName": "www.example.com",
+      "sessions": 56177
+    },
+    {
+      "hostName": "staging.example.com",
+      "sessions": 678
+    },
+    {
+      "hostName": "localhost",
+      "sessions": 5
+    }
+  ],
+  "unassigned_sources": [
+    {
+      "source_medium": "partner-digest / newsletter",
+      "campaign": "autumn_partner_issue",
+      "sessions": 796
+    }
+  ],
+  "unassigned_note": "utm_medium=newsletter isn't a medium GA4's Email rule knows; tagging partner sends with utm_medium=email files them under Email.",
+  "custom_channel_groups": {
+    "groups": [],
+    "note": "Only the default channel group exists, and it is primary."
+  },
+  "roi_table": {
+    "paid": [
+      {
+        "platform": "Google Ads",
+        "spend": 12016.81,
+        "spend_source": [
+          "GA4 advertiserAdCost (linked account)",
+          "google-ads gaql (check)"
+        ],
+        "platform_clicks": 10596,
+        "ga4_sessions": 9356,
+        "ga4_engaged_sessions": 6073,
+        "click_to_session_pct": 88.3,
+        "check": "pass",
+        "cost_per_session": 1.28,
+        "cost_per_engaged_session": 1.98,
+        "key_events": 286,
+        "cost_per_key_event": 42.02,
+        "revenue": 2469.0,
+        "roas": 0.21,
+        "ga4_rows": [
+          "google / cpc (Search - Booking software)",
+          "google / cpc (Search - Brand)",
+          "google / cpc (Search - Salon software)"
+        ],
+        "note": "GA4 receives this cost through the Google Ads link; gaql for the same dates returns $12,016.81, the same figure."
+      },
+      {
+        "platform": "LinkedIn",
+        "spend": 5027.13,
+        "spend_source": [
+          "linkedin-ads get_account_analytics"
+        ],
+        "platform_clicks": 1299,
+        "ga4_sessions": 0,
+        "ga4_engaged_sessions": 0,
+        "click_to_session_pct": 0.0,
+        "check": "fail",
+        "cost_per_session": null,
+        "cost_per_engaged_session": null,
+        "key_events": 0,
+        "cost_per_key_event": null,
+        "revenue": 0.0,
+        "roas": null,
+        "ga4_rows": [],
+        "note": "No GA4 row has a LinkedIn source with a paid medium. The row li / paid_social (campaign linkedin_clinic_managers_oct) has 1,091 sessions and starts on 2026-10-01, the day LinkedIn's spend starts. These are almost certainly the LinkedIn clicks: utm_source=li matches neither this skill's table nor GA4's Paid Social rule, so GA4 files them as Paid Other. Counted as LinkedIn, the click-to-session ratio would be 84.0%. Cost per session, per key event and ROAS stay blank because no session matched."
+      },
+      {
+        "platform": "TikTok",
+        "spend": 2195.19,
+        "spend_source": [
+          "tiktok-ads integrated_report_basic"
+        ],
+        "platform_clicks": 2729,
+        "ga4_sessions": 2074,
+        "ga4_engaged_sessions": 786,
+        "click_to_session_pct": 76.0,
+        "check": "pass",
+        "cost_per_session": 1.06,
+        "cost_per_engaged_session": 2.79,
+        "key_events": 12,
+        "cost_per_key_event": 182.93,
+        "revenue": 68.0,
+        "roas": 0.03,
+        "ga4_rows": [
+          "tiktok / paid_social (tiktok_salon_owners)"
+        ]
+      },
+      {
+        "platform": "Other paid: li",
+        "spend": null,
+        "spend_source": "none: no connected platform matches this source",
+        "ga4_sessions": 1091,
+        "ga4_engaged_sessions": 620,
+        "cost_per_session": null,
+        "cost_per_engaged_session": null,
+        "key_events": 22,
+        "cost_per_key_event": null,
+        "revenue": 216.0,
+        "roas": null,
+        "check": "warn",
+        "ga4_rows": [
+          "li / paid_social (linkedin_clinic_managers_oct)"
+        ],
+        "note": "Its source is li, which no connected platform matches, so its cost is unknown here. Retagging it as linkedin moves it to the LinkedIn row."
+      }
+    ],
+    "top_unpaid_sources": [
+      {
+        "source_medium": "google / organic",
+        "channel": "Organic Search",
+        "sessions": 21534,
+        "engaged_sessions": 13573,
+        "key_events": 345,
+        "revenue": 2734.0,
+        "engagement_rate_pct": 63.0,
+        "cost": null
+      },
+      {
+        "source_medium": "(direct) / (none)",
+        "channel": "Direct",
+        "sessions": 14353,
+        "engaged_sessions": 8080,
+        "key_events": 273,
+        "revenue": 3283.0,
+        "engagement_rate_pct": 56.3,
+        "cost": null
+      },
+      {
+        "source_medium": "klaviyo / email",
+        "channel": "Email",
+        "sessions": 3128,
+        "engaged_sessions": 2190,
+        "key_events": 114,
+        "revenue": 2018.0,
+        "engagement_rate_pct": 70.0,
+        "cost": null
+      },
+      {
+        "source_medium": "bing / organic",
+        "channel": "Organic Search",
+        "sessions": 1314,
+        "engaged_sessions": 805,
+        "key_events": 20,
+        "revenue": 117.0,
+        "engagement_rate_pct": 61.3,
+        "cost": null
+      },
+      {
+        "source_medium": "partner-digest / newsletter",
+        "channel": "Unassigned",
+        "sessions": 796,
+        "engaged_sessions": 462,
+        "key_events": 10,
+        "revenue": 68.0,
+        "engagement_rate_pct": 58.0,
+        "cost": null
+      },
+      {
+        "source_medium": "instagram / social",
+        "channel": "Organic Social",
+        "sessions": 485,
+        "engaged_sessions": 237,
+        "key_events": 4,
+        "revenue": 0.0,
+        "engagement_rate_pct": 48.9,
+        "cost": null
+      },
+      {
+        "source_medium": "seo-traffic-checker.example / referral",
+        "channel": "Referral",
+        "sessions": 430,
+        "engaged_sessions": 4,
+        "key_events": 0,
+        "revenue": 0.0,
+        "engagement_rate_pct": 0.9,
+        "cost": null
+      },
+      {
+        "source_medium": "linkedin.com / referral",
+        "channel": "Organic Social",
+        "sessions": 402,
+        "engaged_sessions": 269,
+        "key_events": 4,
+        "revenue": 49.0,
+        "engagement_rate_pct": 66.9,
+        "cost": null
+      },
+      {
+        "source_medium": "software-reviews.example / referral",
+        "channel": "Referral",
+        "sessions": 310,
+        "engaged_sessions": 214,
+        "key_events": 3,
+        "revenue": 0.0,
+        "engagement_rate_pct": 69.0,
+        "cost": null
+      },
+      {
+        "source_medium": "youtube.com / referral",
+        "channel": "Organic Video",
+        "sessions": 279,
+        "engaged_sessions": 184,
+        "key_events": 3,
+        "revenue": 0.0,
+        "engagement_rate_pct": 65.9,
+        "cost": null
+      }
+    ],
+    "total_spend": 19239.13,
+    "return": "graded: key events and revenue fired. Revenue is the purchase event's value, the first payment of a plan, so ROAS shows first-month payback only.",
+    "checks": {
+      "spend_you_cant_see_in_ga4": "fail: LinkedIn 0.0% of clicks became matched sessions (fail under 30%)",
+      "paid_traffic_with_no_spend": "warn: li / paid_social, 1,091 sessions with no spend source"
+    }
+  },
+  "referral_review": {
+    "site_engagement_rate_pct_without_bots_and_internal": 60.6,
+    "judged_sources": [
+      {
+        "source": "seo-traffic-checker.example",
+        "label": "suspected bot",
+        "ga4_channel": "Referral",
+        "sessions": 430,
+        "engagement_rate_pct": 0.9,
+        "engaged_time_per_session_s": 1.4,
+        "key_events": 0,
+        "busiest_day": "2026-10-06",
+        "busiest_day_share_pct": 93.0,
+        "top_country": "Netherlands",
+        "top_country_share_pct": 97.0,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 100.0
+      },
+      {
+        "source": "linkedin.com",
+        "label": "strong",
+        "ga4_channel": "Organic Social",
+        "sessions": 402,
+        "engagement_rate_pct": 66.9,
+        "engaged_time_per_session_s": 50.8,
+        "key_events": 4,
+        "busiest_day": "2026-10-12",
+        "busiest_day_share_pct": 5.5,
+        "top_country": "United States",
+        "top_country_share_pct": 58.0,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 41.0
+      },
+      {
+        "source": "software-reviews.example",
+        "label": "strong",
+        "ga4_channel": "Referral",
+        "sessions": 310,
+        "engagement_rate_pct": 69.0,
+        "engaged_time_per_session_s": 52.3,
+        "key_events": 3,
+        "busiest_day": "2026-10-08",
+        "busiest_day_share_pct": 5.5,
+        "top_country": "United States",
+        "top_country_share_pct": 58.1,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 55.2
+      },
+      {
+        "source": "youtube.com",
+        "label": "strong",
+        "ga4_channel": "Organic Video",
+        "sessions": 279,
+        "engagement_rate_pct": 65.9,
+        "engaged_time_per_session_s": 50.2,
+        "key_events": 3,
+        "busiest_day": "2026-10-06",
+        "busiest_day_share_pct": 5.4,
+        "top_country": "United States",
+        "top_country_share_pct": 58.1,
+        "top_landing_page": "/blog/appointment-reminder-templates/",
+        "top_landing_page_share_pct": 40.1
+      },
+      {
+        "source": "facebook.com",
+        "label": "normal",
+        "ga4_channel": "Organic Social",
+        "sessions": 226,
+        "engagement_rate_pct": 43.8,
+        "engaged_time_per_session_s": 34.7,
+        "key_events": 2,
+        "busiest_day": "2026-09-30",
+        "busiest_day_share_pct": 5.8,
+        "top_country": "United States",
+        "top_country_share_pct": 58.0,
+        "top_landing_page": "/blog/salon-booking-tips/",
+        "top_landing_page_share_pct": 51.8
+      },
+      {
+        "source": "salon-trade-magazine.example",
+        "label": "one-day burst",
+        "ga4_channel": "Referral",
+        "sessions": 210,
+        "engagement_rate_pct": 66.2,
+        "engaged_time_per_session_s": 50.3,
+        "key_events": 3,
+        "busiest_day": "2026-10-20",
+        "busiest_day_share_pct": 86.7,
+        "top_country": "United States",
+        "top_country_share_pct": 71.0,
+        "top_landing_page": "/industries/salons/",
+        "top_landing_page_share_pct": 73.8
+      },
+      {
+        "source": "app.example.com",
+        "label": "internal or tool",
+        "ga4_channel": "Referral",
+        "sessions": 181,
+        "engagement_rate_pct": 81.2,
+        "engaged_time_per_session_s": 60.9,
+        "key_events": 2,
+        "busiest_day": "2026-10-05",
+        "busiest_day_share_pct": 5.5,
+        "top_country": "United States",
+        "top_country_share_pct": 60.8,
+        "top_landing_page": "/features/payments/",
+        "top_landing_page_share_pct": 45.9
+      },
+      {
+        "source": "l.instagram.com",
+        "label": "weak",
+        "ga4_channel": "Organic Social",
+        "sessions": 174,
+        "engagement_rate_pct": 25.3,
+        "engaged_time_per_session_s": 21.7,
+        "key_events": 2,
+        "busiest_day": "2026-10-07",
+        "busiest_day_share_pct": 5.7,
+        "top_country": "United States",
+        "top_country_share_pct": 58.0,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 62.1
+      },
+      {
+        "source": "chatgpt.com",
+        "label": "AI assistant",
+        "ga4_channel": "Referral",
+        "sessions": 144,
+        "engagement_rate_pct": 70.8,
+        "engaged_time_per_session_s": 53.6,
+        "key_events": 1,
+        "busiest_day": "2026-10-02",
+        "busiest_day_share_pct": 4.9,
+        "top_country": "United States",
+        "top_country_share_pct": 57.6,
+        "top_landing_page": "/blog/scheduling-app-comparison/",
+        "top_landing_page_share_pct": 38.2
+      },
+      {
+        "source": "clinic-owners-forum.example",
+        "label": "strong",
+        "ga4_channel": "Referral",
+        "sessions": 95,
+        "engagement_rate_pct": 71.6,
+        "engaged_time_per_session_s": 54.1,
+        "key_events": 1,
+        "busiest_day": "2026-09-28",
+        "busiest_day_share_pct": 5.3,
+        "top_country": "United States",
+        "top_country_share_pct": 49.5,
+        "top_landing_page": "/industries/clinics/",
+        "top_landing_page_share_pct": 70.5
+      },
+      {
+        "source": "partner-directory.example",
+        "label": "weak",
+        "ga4_channel": "Referral",
+        "sessions": 60,
+        "engagement_rate_pct": 23.3,
+        "engaged_time_per_session_s": 20.3,
+        "key_events": 1,
+        "busiest_day": "2026-09-30",
+        "busiest_day_share_pct": 5.0,
+        "top_country": "United States",
+        "top_country_share_pct": 58.3,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 80.0
+      },
+      {
+        "source": "tpc.googlesyndication.com",
+        "label": "ad network",
+        "ga4_channel": "Referral",
+        "sessions": 45,
+        "engagement_rate_pct": 8.9,
+        "engaged_time_per_session_s": 10.2,
+        "key_events": 0,
+        "busiest_day": "2026-09-27",
+        "busiest_day_share_pct": 4.4,
+        "top_country": "United States",
+        "top_country_share_pct": 71.1,
+        "top_landing_page": "/",
+        "top_landing_page_share_pct": 100.0
+      },
+      {
+        "source": "perplexity.ai",
+        "label": "AI assistant",
+        "ga4_channel": "Referral",
+        "sessions": 43,
+        "engagement_rate_pct": 72.1,
+        "engaged_time_per_session_s": 54.5,
+        "key_events": 0,
+        "busiest_day": "2026-09-29",
+        "busiest_day_share_pct": 4.7,
+        "top_country": "United States",
+        "top_country_share_pct": 58.1,
+        "top_landing_page": "/blog/scheduling-app-comparison/",
+        "top_landing_page_share_pct": 51.2
+      },
+      {
+        "source": "accounts.google.com",
+        "label": "internal or tool",
+        "ga4_channel": "Referral",
+        "sessions": 30,
+        "engagement_rate_pct": 70.0,
+        "engaged_time_per_session_s": 53.0,
+        "key_events": 0,
+        "busiest_day": "2026-10-13",
+        "busiest_day_share_pct": 6.7,
+        "top_country": "United States",
+        "top_country_share_pct": 56.7,
+        "top_landing_page": "/signup/",
+        "top_landing_page_share_pct": 100.0
+      },
+      {
+        "source": "claude.ai",
+        "label": "AI assistant",
+        "ga4_channel": "Referral",
+        "sessions": 29,
+        "engagement_rate_pct": 72.4,
+        "engaged_time_per_session_s": 54.7,
+        "key_events": 0,
+        "busiest_day": "2026-09-27",
+        "busiest_day_share_pct": 3.4,
+        "top_country": "United States",
+        "top_country_share_pct": 58.6,
+        "top_landing_page": "/blog/scheduling-app-comparison/",
+        "top_landing_page_share_pct": 58.6
+      }
+    ],
+    "named_small_sources": [
+      {
+        "source": "gemini.google.com",
+        "label": "AI assistant",
+        "sessions": 8,
+        "note": "under 10 sessions: named for its type, not judged on quality"
+      },
+      {
+        "source": "copilot.microsoft.com",
+        "label": "AI assistant",
+        "sessions": 4,
+        "note": "under 10 sessions: named for its type, not judged on quality"
+      }
+    ],
+    "too_few_sessions_to_judge": 14,
+    "site_with_and_without_suspected_bots": {
+      "without_bots": {
+        "sessions": 56430,
+        "engagement_rate_pct": 60.7
+      },
+      "with_bots": {
+        "sessions": 56860,
+        "engagement_rate_pct": 60.2
+      }
+    },
+    "burst_note": "salon-trade-magazine.example sent 86.7% of its sessions on 2026-10-20 and they engaged at 66.2%: a mention, not a bot. Don't read it as a trend."
+  },
+  "direct_spikes": {
+    "rule": "Direct sessions at least 3x the median of the previous 28 days and at least 30 above it",
+    "spikes": [
+      {
+        "day": "2026-10-14",
+        "direct_sessions": 1636,
+        "baseline_median": 469.5,
+        "excess_sessions": 1166.5,
+        "excess_share_of_window_direct_pct": 8.1,
+        "spike_day_profile": {
+          "sessions": 1636,
+          "sessions_source": "daily Direct report (get_report by date and channel)",
+          "profile_rows_sum": 1636,
+          "engagement_rate_pct": 66.9,
+          "top_landing_page": [
+            "/blog/deposit-policy/",
+            63.4
+          ],
+          "top_country": [
+            "United States",
+            61.4
+          ],
+          "top_browser": [
+            "Chrome",
+            48.9
+          ],
+          "device_split_pct": {
+            "mobile": 48.7,
+            "desktop": 47.4,
+            "tablet": 3.9
+          },
+          "new_visitor_share_pct": 24.8,
+          "off_production_host_sessions": 27,
+          "off_production_host_pct": 1.7,
+          "busiest_hour": "2026-10-14:10:00",
+          "busiest_hour_sessions": 638,
+          "busiest_hour_share_pct": 39.0
+        },
+        "baseline_profile_28_days": {
+          "sessions": 12191,
+          "sessions_source": "daily Direct report (get_report by date and channel)",
+          "profile_rows_sum": 12191,
+          "engagement_rate_pct": 54.5,
+          "top_landing_page": [
+            "/",
+            46.2
+          ],
+          "top_country": [
+            "United States",
+            60.3
+          ],
+          "top_browser": [
+            "Chrome",
+            60.3
+          ],
+          "device_split_pct": {
+            "desktop": 62.2,
+            "mobile": 34.1,
+            "tablet": 3.8
+          },
+          "new_visitor_share_pct": 50.3,
+          "off_production_host_sessions": 665,
+          "off_production_host_pct": 5.5,
+          "busiest_hour_share_median_pct": 8.4,
+          "days_with_direct_sessions": 28
+        },
+        "top_landing_page_baseline_share_pct": 1.1,
+        "top_country_baseline_share_pct": 60.3,
+        "profile_check": "The profile rows add up to the daily Direct report on the spike day and on the baseline days.",
+        "rules_checked": {
+          "internal or staging": false,
+          "bot or automated traffic": false,
+          "untagged campaign or shared link": true,
+          "app or in-app traffic": false
+        },
+        "other_channels_same_day": {
+          "Email": {
+            "sessions": 122,
+            "median_28_days": 110.0,
+            "fell_by_half_the_excess": false
+          },
+          "Organic Search": {
+            "sessions": 833,
+            "median_28_days": 819.5,
+            "fell_by_half_the_excess": false
+          },
+          "Organic Social": {
+            "sessions": 44,
+            "median_28_days": 45.0,
+            "fell_by_half_the_excess": false
+          },
+          "Organic Video": {
+            "sessions": 9,
+            "median_28_days": 9.5,
+            "fell_by_half_the_excess": false
+          },
+          "Paid Other": {
+            "sessions": 47,
+            "median_28_days": 0.0,
+            "fell_by_half_the_excess": false
+          },
+          "Paid Search": {
+            "sessions": 356,
+            "median_28_days": 333.0,
+            "fell_by_half_the_excess": false
+          },
+          "Paid Social": {
+            "sessions": 84,
+            "median_28_days": 74.0,
+            "fell_by_half_the_excess": false
+          },
+          "Referral": {
+            "sessions": 39,
+            "median_28_days": 32.5,
+            "fell_by_half_the_excess": false
+          },
+          "Unassigned": {
+            "sessions": 29,
+            "median_28_days": 28.5,
+            "fell_by_half_the_excess": false
+          }
+        },
+        "channels_that_fell": [],
+        "days_after": [
+          {
+            "date": "2026-10-15",
+            "direct_sessions": 683,
+            "baseline_median": 469.5
+          },
+          {
+            "date": "2026-10-16",
+            "direct_sessions": 473,
+            "baseline_median": 477.0
+          }
+        ],
+        "cause": "untagged campaign or shared link",
+        "reading": "One blog post took most of the spike, most visitors were returning, and the sessions came in a burst after 10:00 on a weekday: the pattern of an email to existing customers whose links carry no utm tags. Email itself was normal that day.",
+        "result": "warn"
+      }
+    ]
+  },
+  "top_5_actions": [
+    {
+      "sessions_at_stake": 1299,
+      "action": "Retag the LinkedIn ads with utm_source=linkedin and utm_medium=paid_social",
+      "evidence": "linkedin-ads get_account_analytics: $5,027.13, 1,299 landing page clicks; GA4 source/medium report: 0 sessions from a LinkedIn source with a paid medium, and 1,091 on li / paid_social since 2026-10-01.",
+      "who": "do this in LinkedIn Campaign Manager (the URL parameters on each campaign)",
+      "rank": 1
+    },
+    {
+      "sessions_at_stake": 1166,
+      "action": "Turn link tracking back on for the customer newsletter, and tag the links of the send that went out without it",
+      "evidence": "daily Direct report: 1,636 sessions on 2026-10-14 vs a median of 469.5; spike profile: /blog/deposit-policy/ 63.4% (baseline 1.1%), returning visitors 75.2%, 39.0% in one hour; Email had 122 sessions that day against a median of 110, so the send isn't in it.",
+      "who": "do this in Klaviyo (or the tool that sent the newsletter)",
+      "rank": 2
+    },
+    {
+      "sessions_at_stake": 683,
+      "action": "Keep the GA4 tag off staging and local copies of the site",
+      "evidence": "hostName report: staging.example.com 678, localhost 5 (1.2% of sessions).",
+      "who": "do this on the site (load the tag only on www.example.com) and in GA4 (a data filter for internal traffic)",
+      "rank": 3
+    },
+    {
+      "sessions_at_stake": 430,
+      "action": "Report the site with and without seo-traffic-checker.example, and compare periods without it",
+      "evidence": "referral report: 430 sessions, 93.0% on 2026-10-06, engagement 0.9%, 97.0% from Netherlands, all on /.",
+      "who": "do this in GA4 (past bot sessions can't be deleted)",
+      "rank": 4
+    },
+    {
+      "sessions_at_stake": 228,
+      "action": "Give AI assistant referrers their own channel",
+      "evidence": "referral report: chatgpt.com 144, perplexity.ai 43, claude.ai 29, gemini.google.com 8, copilot.microsoft.com 4, all in Referral.",
+      "who": "I can do this now (create_channel_group, after you confirm)",
+      "rank": 5
+    }
+  ],
+  "everything_else": [
+    {
+      "sessions_at_stake": 211,
+      "action": "Add app.example.com to the unwanted referrals list, and accounts.google.com with it",
+      "evidence": "referral report: app.example.com 181, accounts.google.com 30. Customers clicking from the app to the site, and people coming back from Google sign-in, start a new session that hides their real source.",
+      "who": "do this in GA4 (Admin, Data streams, Configure tag settings, List unwanted referrals)"
+    },
+    {
+      "sessions_at_stake": 45,
+      "action": "Tag the display placements so ad-server clicks stop landing in Referral",
+      "evidence": "referral report: tpc.googlesyndication.com 45 (engagement 8.9%).",
+      "who": "do this in the ad platform that buys these placements"
+    },
+    {
+      "sessions_at_stake": 0,
+      "action": "Remove the test event from the key events list",
+      "evidence": "list_key_events: qa_test_signup is marked as a key event; its name shows it is a setup check, not a conversion. It didn't fire in the window.",
+      "who": "do this in GA4 (Admin, Events, Key events)"
+    }
+  ],
+  "key_events": {
+    "real": [
+      "sign_up",
+      "purchase",
+      "demo_request"
+    ],
+    "test_events_set_aside": [
+      "qa_test_signup"
+    ],
+    "fired_in_window": {
+      "sign_up": 757,
+      "purchase": 228,
+      "demo_request": 123
+    },
+    "rule": "names containing test, qa or debug are setup checks and are not counted as conversions"
+  },
+  "unknowns_and_not_graded": [
+    "Cost of li / paid_social: no connected platform matches the source li, so its 1,091 sessions have no cost until it is retagged.",
+    "14 referrers with under 10 sessions each are listed only as a count.",
+    "Meta and Microsoft Ads aren't connected; GA4 shows no paid rows from them, so no spend is missing from the table."
+  ],
+  "fix_offered": {
+    "action": "create_channel_group",
+    "status": "not run: offered after confirmation",
+    "why": "5 AI assistant referrers (228 sessions) sit in Referral.",
+    "payload_preview": {
+      "display_name": "Channels with AI assistants",
+      "description": "Default channels, with AI assistant referrers split out of Referral",
+      "first_rule": "AI Assistants: eachScopeSource PARTIAL_REGEXP chatgpt|openai|perplexity|claude\\.ai|gemini\\.google|copilot\\.microsoft|deepseek",
+      "then_one_rule_per_default_channel": [
+        "Direct",
+        "Cross-network",
+        "Paid Shopping",
+        "Paid Search",
+        "Paid Social",
+        "Paid Video",
+        "Paid Other",
+        "Display",
+        "Organic Shopping",
+        "Organic Social",
+        "Organic Video",
+        "Organic Search",
+        "Email",
+        "Affiliates",
+        "Referral",
+        "Audio",
+        "SMS",
+        "Mobile Push Notifications",
+        "AI Assistant"
+      ],
+      "rule_count": 20
+    }
+  },
+  "go_deeper": [
+    {
+      "area": "LinkedIn and newsletter tagging",
+      "skill": "utm-auditor"
+    },
+    {
+      "area": "The page the Direct spike landed on (/blog/deposit-policy/)",
+      "skill": "ga4-landing-page-analyst"
+    },
+    {
+      "area": "How channels share credit for sign-ups and purchases",
+      "skill": "cross-channel-attribution-analyst"
+    },
+    {
+      "area": "A weekly view of the same channels",
+      "skill": "ga4-weekly-report"
+    }
+  ]
+}

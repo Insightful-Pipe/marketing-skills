@@ -1,0 +1,1672 @@
+{
+  "header": {
+    "account": "Example Trail Supply",
+    "customer_id": "111-222-3333",
+    "currency": "USD",
+    "date_range": "2026-09-29 to 2026-10-28",
+    "target": "ROAS 400% (given by the user)",
+    "retail_campaigns": [
+      "Shopping | Tents & Sleep (SHOPPING, priority Low)",
+      "Shopping | Kitchen & Lights (SHOPPING, priority Low)",
+      "PMax | Retail (PERFORMANCE_MAX)"
+    ],
+    "retail_spend": 16231.3,
+    "product_spend": 15047.1,
+    "product_value": 67271.84,
+    "product_roas": 4.47
+  },
+  "area_results": [
+    {
+      "area": "Product spend",
+      "result": "warn",
+      "key_number": "losers take 8.0% of product spend",
+      "why": "7 products spent 2 times or more their target cost per sale with no sale, 1,201.78 USD in all. 17 more are Too early and keep running."
+    },
+    {
+      "area": "Products that barely serve",
+      "result": "warn",
+      "key_number": "15 of 60 products under 10 impressions",
+      "why": "Not eligible 4 (6.7% of the catalogue), Not targeted 8 and Outbid 3 (18.3% together). No campaign includes trekking poles or water filters."
+    },
+    {
+      "area": "Product groups and asset groups",
+      "result": "warn",
+      "key_number": "12 products in two asset groups",
+      "why": "No catch-all group. Both PMax asset groups include backpacks, so the system picks the group for those 12 products. No tree splits on a custom label."
+    },
+    {
+      "area": "Priority and overlap",
+      "result": "fail",
+      "key_number": "65.0% of product spend on items in both campaign types",
+      "why": "28 items served from Standard Shopping and PMax: ROAS 3.46 in Standard Shopping against 5.28 in PMax on the same items. Shopping | Tents & Sleep and Shopping | Kitchen & Lights also share 9 tents at the same Low priority."
+    },
+    {
+      "area": "Custom labels",
+      "result": "warn",
+      "key_number": "3 of 5 slots filled, 0 used",
+      "why": "Margin band, bestseller and season are in the feed, but no product group or listing filter splits on any of them."
+    },
+    {
+      "area": "Search terms",
+      "result": "warn",
+      "key_number": "2.6% of visible search term spend",
+      "why": "8 terms are negative candidates, 204.10 USD. Search terms show 49.0% of retail spend."
+    }
+  ],
+  "top_fixes": [
+    {
+      "fix": "Give every overlapping product one home: move the 28 items that serve in both Standard Shopping and PMax into the layout below, then pause Shopping | Tents & Sleep and Shopping | Kitchen & Lights",
+      "spend_at_stake": 4865.51,
+      "how_counted": "last-30-day Standard Shopping spend on items that also served in PMax",
+      "evidence": "shopping_performance_view: 28 items, Standard Shopping 4,865.51 USD at ROAS 3.46, PMax 4,908.95 USD at ROAS 5.28",
+      "who": "I can create the new campaign paused after you confirm; the pauses come only after it is live",
+      "rank": 1
+    },
+    {
+      "fix": "Take backpacks out of the Camp & trail asset group so each product sits in one asset group",
+      "spend_at_stake": 4671.23,
+      "how_counted": "last-30-day PMax spend on products both asset groups include",
+      "evidence": "asset_group_listing_group_filter: Backpacks and Camp & trail both include backpacks",
+      "who": "do this in Google Ads: Camp & trail already has a subdivided partition, so the skill won't rewrite it",
+      "rank": 2
+    },
+    {
+      "fix": "Exclude the 4 Loser, exclude products and move the 3 Loser, limit products to the low-cost campaign",
+      "spend_at_stake": 1201.78,
+      "how_counted": "last-30-day spend of the losers: 793.57 USD exclude, 408.21 USD limit",
+      "evidence": "product ledger, each at 2 times or more its target cost per sale with no sale",
+      "who": "do the exclusions in Google Ads, or load the label table and split on it",
+      "rank": 3
+    },
+    {
+      "fix": "Add 8 negatives from this account's own search terms",
+      "spend_at_stake": 204.1,
+      "how_counted": "last-30-day spend on the candidate terms",
+      "evidence": "search_term_view and campaign_search_term_view, listed below",
+      "who": "I can do this after you confirm",
+      "rank": 4
+    },
+    {
+      "fix": "Bring the 8 untargeted products (trekking poles and water filters) into the low-cost campaign",
+      "spend_at_stake": 0.0,
+      "how_counted": "no spend at stake: they never served, so this is reach the store isn't buying",
+      "evidence": "shopping_product: eligible and in stock, returned by no retail campaign",
+      "who": "comes with the new campaign",
+      "rank": 5
+    }
+  ],
+  "campaign_money": [
+    {
+      "campaign": "Shopping | Tents & Sleep",
+      "type": "SHOPPING",
+      "cost": 3846.89,
+      "conversion_value": 13259.54,
+      "roas": 3.45,
+      "share_of_retail_spend_pct": 23.7,
+      "product_cost": 3846.89,
+      "non_product_cost": 0.0,
+      "impression_share": {
+        "search": 0.41,
+        "lost_to_budget": 0.07,
+        "lost_to_rank": 0.52
+      }
+    },
+    {
+      "campaign": "Shopping | Kitchen & Lights",
+      "type": "SHOPPING",
+      "cost": 1620.03,
+      "conversion_value": 6373.78,
+      "roas": 3.93,
+      "share_of_retail_spend_pct": 10.0,
+      "product_cost": 1620.03,
+      "non_product_cost": 0.0,
+      "impression_share": {
+        "search": 0.33,
+        "lost_to_budget": 0.02,
+        "lost_to_rank": 0.65
+      }
+    },
+    {
+      "campaign": "PMax | Retail",
+      "type": "PERFORMANCE_MAX",
+      "cost": 10764.38,
+      "conversion_value": 48250.92,
+      "roas": 4.48,
+      "share_of_retail_spend_pct": 66.3,
+      "product_cost": 9580.18,
+      "non_product_cost": 1184.2
+    }
+  ],
+  "product_ledger": {
+    "products_with_impressions": 48,
+    "tiers": [
+      {
+        "tier": "Star",
+        "products": 9,
+        "cost": 8259.44,
+        "share_of_product_spend_pct": 54.9,
+        "conversion_value": 47349.14,
+        "roas": 5.73
+      },
+      {
+        "tier": "On target",
+        "products": 11,
+        "cost": 2571.63,
+        "share_of_product_spend_pct": 17.1,
+        "conversion_value": 11700.28,
+        "roas": 4.55
+      },
+      {
+        "tier": "Below target",
+        "products": 4,
+        "cost": 2650.5,
+        "share_of_product_spend_pct": 17.6,
+        "conversion_value": 7904.42,
+        "roas": 2.98
+      },
+      {
+        "tier": "Too early",
+        "products": 17,
+        "cost": 363.75,
+        "share_of_product_spend_pct": 2.4,
+        "conversion_value": 318.0,
+        "roas": 0.87
+      },
+      {
+        "tier": "Loser, limit",
+        "products": 3,
+        "cost": 408.21,
+        "share_of_product_spend_pct": 2.7,
+        "conversion_value": 0.0,
+        "roas": 0.0
+      },
+      {
+        "tier": "Loser, exclude",
+        "products": 4,
+        "cost": 793.57,
+        "share_of_product_spend_pct": 5.3,
+        "conversion_value": 0.0,
+        "roas": 0.0
+      }
+    ],
+    "losers": [
+      {
+        "item_id": "ets-tent-05",
+        "title": "6-Person Cabin Tent",
+        "tier": "Loser, exclude",
+        "cost": 333.5,
+        "clicks": 291,
+        "target_cost_per_sale": 99.75,
+        "multiple_of_target": 3.34,
+        "campaigns": [
+          "PMax | Retail",
+          "Shopping | Kitchen & Lights",
+          "Shopping | Tents & Sleep"
+        ]
+      },
+      {
+        "item_id": "ets-pack-11",
+        "title": "75L Expedition Pack",
+        "tier": "Loser, exclude",
+        "cost": 266.23,
+        "clicks": 285,
+        "target_cost_per_sale": 82.25,
+        "multiple_of_target": 3.24,
+        "campaigns": [
+          "PMax | Retail"
+        ]
+      },
+      {
+        "item_id": "ets-tent-06",
+        "title": "4-Season Mountain Tent",
+        "tier": "Loser, limit",
+        "cost": 263.62,
+        "clicks": 245,
+        "target_cost_per_sale": 112.25,
+        "multiple_of_target": 2.35,
+        "campaigns": [
+          "PMax | Retail",
+          "Shopping | Kitchen & Lights",
+          "Shopping | Tents & Sleep"
+        ]
+      },
+      {
+        "item_id": "ets-sleep-05",
+        "title": "Double Sleeping Bag",
+        "tier": "Loser, exclude",
+        "cost": 155.0,
+        "clicks": 150,
+        "target_cost_per_sale": 44.75,
+        "multiple_of_target": 3.46,
+        "campaigns": [
+          "PMax | Retail",
+          "Shopping | Tents & Sleep"
+        ]
+      },
+      {
+        "item_id": "ets-pack-07",
+        "title": "Ultralight Frameless Pack",
+        "tier": "Loser, limit",
+        "cost": 124.23,
+        "clicks": 132,
+        "target_cost_per_sale": 49.75,
+        "multiple_of_target": 2.5,
+        "campaigns": [
+          "PMax | Retail"
+        ]
+      },
+      {
+        "item_id": "ets-lamp-06",
+        "title": "Running Headlamp",
+        "tier": "Loser, exclude",
+        "cost": 38.84,
+        "clicks": 66,
+        "target_cost_per_sale": 11.0,
+        "multiple_of_target": 3.53,
+        "campaigns": [
+          "Shopping | Kitchen & Lights"
+        ]
+      },
+      {
+        "item_id": "ets-cook-09",
+        "title": "Camp Coffee Press",
+        "tier": "Loser, limit",
+        "cost": 20.36,
+        "clicks": 37,
+        "target_cost_per_sale": 8.5,
+        "multiple_of_target": 2.4,
+        "campaigns": [
+          "PMax | Retail",
+          "Shopping | Kitchen & Lights"
+        ]
+      }
+    ],
+    "too_early": {
+      "products": 17,
+      "cost": 363.75,
+      "share_of_product_spend_pct": 2.4,
+      "list": [
+        {
+          "item_id": "ets-tent-07",
+          "title": "2-Person Trekking Pole Tent",
+          "cost": 101.76,
+          "conversions": 0,
+          "target_cost_per_sale": 67.25,
+          "spend_until_a_verdict": 32.74
+        },
+        {
+          "item_id": "ets-sleep-04",
+          "title": "Ultralight Quilt 30F",
+          "cost": 84.14,
+          "conversions": 0,
+          "target_cost_per_sale": 54.75,
+          "spend_until_a_verdict": 25.36
+        },
+        {
+          "item_id": "ets-tent-08",
+          "title": "Solo Bivy Shelter",
+          "cost": 67.84,
+          "conversions": 1,
+          "target_cost_per_sale": 50.09,
+          "spend_until_a_verdict": 32.33
+        },
+        {
+          "item_id": "ets-sleep-08",
+          "title": "Mummy Sleeping Bag 15F",
+          "cost": 40.85,
+          "conversions": 0,
+          "target_cost_per_sale": 49.75,
+          "spend_until_a_verdict": 58.65
+        },
+        {
+          "item_id": "ets-pack-09",
+          "title": "Waist Pack 3L",
+          "cost": 13.47,
+          "conversions": 1,
+          "target_cost_per_sale": 10.34,
+          "spend_until_a_verdict": 7.2
+        },
+        {
+          "item_id": "ets-sleep-07",
+          "title": "Camp Pillow",
+          "cost": 10.43,
+          "conversions": 1,
+          "target_cost_per_sale": 7.69,
+          "spend_until_a_verdict": 4.94
+        },
+        {
+          "item_id": "ets-lamp-04",
+          "title": "Kids Headlamp",
+          "cost": 9.34,
+          "conversions": 1,
+          "target_cost_per_sale": 6.36,
+          "spend_until_a_verdict": 3.38
+        },
+        {
+          "item_id": "ets-cook-10",
+          "title": "Wind Screen",
+          "cost": 7.47,
+          "conversions": 0,
+          "target_cost_per_sale": 4.75,
+          "spend_until_a_verdict": 2.03
+        },
+        {
+          "item_id": "ets-pack-08",
+          "title": "Kids Hiking Backpack 18L",
+          "cost": 7.25,
+          "conversions": 0,
+          "target_cost_per_sale": 19.75,
+          "spend_until_a_verdict": 32.25
+        },
+        {
+          "item_id": "ets-cook-05",
+          "title": "Folding Spork Set",
+          "cost": 6.58,
+          "conversions": 1,
+          "target_cost_per_sale": 5.04,
+          "spend_until_a_verdict": 3.49
+        },
+        {
+          "item_id": "ets-cook-08",
+          "title": "Collapsible Sink 10L",
+          "cost": 4.45,
+          "conversions": 0,
+          "target_cost_per_sale": 5.5,
+          "spend_until_a_verdict": 6.55
+        },
+        {
+          "item_id": "ets-lamp-05",
+          "title": "Red Light Headlamp",
+          "cost": 4.28,
+          "conversions": 0,
+          "target_cost_per_sale": 9.75,
+          "spend_until_a_verdict": 15.22
+        },
+        {
+          "item_id": "ets-pack-10",
+          "title": "Rain Cover 50L",
+          "cost": 3.96,
+          "conversions": 0,
+          "target_cost_per_sale": 7.25,
+          "spend_until_a_verdict": 10.54
+        },
+        {
+          "item_id": "ets-sleep-09",
+          "title": "Compression Stuff Sack",
+          "cost": 1.93,
+          "conversions": 0,
+          "target_cost_per_sale": 6.25,
+          "spend_until_a_verdict": 10.57
+        },
+        {
+          "item_id": "ets-lamp-07",
+          "title": "1000 Lumen Headlamp",
+          "cost": 0.0,
+          "conversions": 0,
+          "target_cost_per_sale": 22.25,
+          "spend_until_a_verdict": 44.5
+        },
+        {
+          "item_id": "ets-lamp-08",
+          "title": "Waterproof Headlamp",
+          "cost": 0.0,
+          "conversions": 0,
+          "target_cost_per_sale": 17.25,
+          "spend_until_a_verdict": 34.5
+        },
+        {
+          "item_id": "ets-lamp-09",
+          "title": "Headlamp and Lantern Kit",
+          "cost": 0.0,
+          "conversions": 0,
+          "target_cost_per_sale": 19.75,
+          "spend_until_a_verdict": 39.5
+        }
+      ]
+    }
+  },
+  "products_that_barely_serve": {
+    "products_in_catalogue": 60,
+    "barely_serve": 15,
+    "not_eligible": [
+      {
+        "item_id": "ets-tent-10",
+        "title": "Tent Footprint 2P",
+        "status": "NOT_ELIGIBLE",
+        "availability": "IN_STOCK",
+        "issues": [
+          "image_link_broken"
+        ],
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-pack-12",
+        "title": "Child Carrier Pack",
+        "status": "NOT_ELIGIBLE",
+        "availability": "IN_STOCK",
+        "issues": [
+          "landing_page_error"
+        ],
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-cook-11",
+        "title": "Fuel Canister 230g",
+        "status": "NOT_ELIGIBLE",
+        "availability": "OUT_OF_STOCK",
+        "issues": [],
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-cook-12",
+        "title": "Camp Griddle",
+        "status": "NOT_ELIGIBLE",
+        "availability": "OUT_OF_STOCK",
+        "issues": [],
+        "impressions": 0
+      }
+    ],
+    "not_targeted": [
+      {
+        "item_id": "ets-pole-01",
+        "title": "Carbon Trekking Poles",
+        "product_type": "trekking poles",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-pole-02",
+        "title": "Aluminum Trekking Poles",
+        "product_type": "trekking poles",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-pole-03",
+        "title": "Folding Trekking Poles",
+        "product_type": "trekking poles",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-pole-04",
+        "title": "Single Hiking Staff",
+        "product_type": "trekking poles",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-pole-05",
+        "title": "Trekking Pole Tips",
+        "product_type": "trekking poles",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-h2o-01",
+        "title": "Squeeze Water Filter",
+        "product_type": "water filters",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-h2o-02",
+        "title": "Gravity Water Filter 4L",
+        "product_type": "water filters",
+        "impressions": 0
+      },
+      {
+        "item_id": "ets-h2o-03",
+        "title": "Filter Water Bottle",
+        "product_type": "water filters",
+        "impressions": 0
+      }
+    ],
+    "outbid": [
+      {
+        "item_id": "ets-lamp-07",
+        "title": "1000 Lumen Headlamp",
+        "status": "ELIGIBLE",
+        "limit": null,
+        "impressions": 3,
+        "price": 89.0,
+        "median_price_of_other_products_in_type": 46.5,
+        "campaign": "Shopping | Kitchen & Lights",
+        "effective_max_cpc": 0.32
+      },
+      {
+        "item_id": "ets-lamp-08",
+        "title": "Waterproof Headlamp",
+        "status": "ELIGIBLE_LIMITED",
+        "limit": [
+          "missing_gtin"
+        ],
+        "impressions": 3,
+        "price": 69.0,
+        "median_price_of_other_products_in_type": 46.5,
+        "campaign": "Shopping | Kitchen & Lights",
+        "effective_max_cpc": 0.35
+      },
+      {
+        "item_id": "ets-lamp-09",
+        "title": "Headlamp and Lantern Kit",
+        "status": "ELIGIBLE",
+        "limit": null,
+        "impressions": 4,
+        "price": 79.0,
+        "median_price_of_other_products_in_type": 46.5,
+        "campaign": "Shopping | Kitchen & Lights",
+        "effective_max_cpc": 0.33
+      }
+    ],
+    "not_eligible_share_of_catalogue_pct": 6.7,
+    "not_targeted_plus_outbid_share_pct": 18.3
+  },
+  "structure": {
+    "catch_all_groups": [],
+    "standard_shopping_trees": [
+      {
+        "campaign": "Shopping | Tents & Sleep",
+        "ad_group": "Tents & sleep",
+        "splits_on": "product type (level 1)",
+        "included_units": [
+          {
+            "product_type": "tents",
+            "cpc_bid": 1.1
+          },
+          {
+            "product_type": "sleeping bags",
+            "cpc_bid": 0.95
+          }
+        ],
+        "everything_else": "excluded"
+      },
+      {
+        "campaign": "Shopping | Kitchen & Lights",
+        "ad_group": "Kitchen & lights",
+        "splits_on": "product type (level 1)",
+        "included_units": [
+          {
+            "product_type": "cookware",
+            "cpc_bid": 0.6
+          },
+          {
+            "product_type": "headlamps",
+            "cpc_bid": 0.55
+          },
+          {
+            "product_type": "tents",
+            "cpc_bid": 0.9
+          }
+        ],
+        "everything_else": "excluded"
+      }
+    ],
+    "pmax_asset_groups": [
+      {
+        "asset_group": "Backpacks",
+        "splits_on": "product type (level 1)",
+        "includes": [
+          "backpacks"
+        ],
+        "everything_else": "excluded",
+        "cost": 3875.18,
+        "conversion_value": 17370.33
+      },
+      {
+        "asset_group": "Camp & trail",
+        "splits_on": "product type (level 1)",
+        "includes": [
+          "backpacks",
+          "cookware",
+          "sleeping bags",
+          "tents"
+        ],
+        "everything_else": "excluded",
+        "cost": 6889.2,
+        "conversion_value": 30880.59
+      }
+    ],
+    "overlap_inside_pmax": {
+      "asset_groups": [
+        "Backpacks",
+        "Camp & trail"
+      ],
+      "shared_product_types": [
+        "backpacks"
+      ],
+      "products": 12,
+      "pmax_spend_on_them": 4671.23
+    },
+    "units_under_10_clicks": "0 of 5 included Standard Shopping units (information only)",
+    "custom_label_used_in_any_tree": false
+  },
+  "priority_and_overlap": {
+    "standard_shopping_vs_pmax": {
+      "items_in_both": 28,
+      "by_product_type": {
+        "cookware": 10,
+        "sleeping bags": 9,
+        "tents": 9
+      },
+      "standard_shopping_cost": 4865.51,
+      "standard_shopping_value": 16847.64,
+      "standard_shopping_roas": 3.46,
+      "pmax_cost": 4908.95,
+      "pmax_value": 25912.76,
+      "pmax_roas": 5.28,
+      "share_of_product_spend_pct": 65.0
+    },
+    "same_priority_standard_shopping": {
+      "campaigns": [
+        "Shopping | Tents & Sleep",
+        "Shopping | Kitchen & Lights"
+      ],
+      "priority": "Low (0) on both",
+      "shared_products": 9,
+      "products": [
+        {
+          "item_id": "ets-tent-01",
+          "title": "2-Person Backpacking Tent",
+          "cost_in_Shopping | Tents & Sleep": 718.6,
+          "cost_in_Shopping | Kitchen & Lights": 239.53
+        },
+        {
+          "item_id": "ets-tent-02",
+          "title": "1-Person Ultralight Tent",
+          "cost_in_Shopping | Tents & Sleep": 433.52,
+          "cost_in_Shopping | Kitchen & Lights": 144.51
+        },
+        {
+          "item_id": "ets-tent-03",
+          "title": "4-Person Dome Tent",
+          "cost_in_Shopping | Tents & Sleep": 252.15,
+          "cost_in_Shopping | Kitchen & Lights": 84.05
+        },
+        {
+          "item_id": "ets-tent-04",
+          "title": "3-Person Backpacking Tent",
+          "cost_in_Shopping | Tents & Sleep": 401.71,
+          "cost_in_Shopping | Kitchen & Lights": 133.9
+        },
+        {
+          "item_id": "ets-tent-05",
+          "title": "6-Person Cabin Tent",
+          "cost_in_Shopping | Tents & Sleep": 140.07,
+          "cost_in_Shopping | Kitchen & Lights": 46.69
+        },
+        {
+          "item_id": "ets-tent-06",
+          "title": "4-Season Mountain Tent",
+          "cost_in_Shopping | Tents & Sleep": 110.72,
+          "cost_in_Shopping | Kitchen & Lights": 36.91
+        },
+        {
+          "item_id": "ets-tent-07",
+          "title": "2-Person Trekking Pole Tent",
+          "cost_in_Shopping | Tents & Sleep": 42.74,
+          "cost_in_Shopping | Kitchen & Lights": 14.25
+        },
+        {
+          "item_id": "ets-tent-08",
+          "title": "Solo Bivy Shelter",
+          "cost_in_Shopping | Tents & Sleep": 28.49,
+          "cost_in_Shopping | Kitchen & Lights": 9.5
+        },
+        {
+          "item_id": "ets-tent-09",
+          "title": "Camping Tarp 10x10",
+          "cost_in_Shopping | Tents & Sleep": 89.02,
+          "cost_in_Shopping | Kitchen & Lights": 29.67
+        }
+      ],
+      "cost_in_Shopping | Tents & Sleep": 2217.02,
+      "cost_in_Shopping | Kitchen & Lights": 739.01,
+      "question_for_user": "Was adding tents to Shopping | Kitchen & Lights meant to steer tent traffic? If not, the bid decides which campaign serves each tent."
+    }
+  },
+  "custom_labels": {
+    "result": "warn",
+    "slots": [
+      {
+        "slot": "custom_label_0",
+        "meaning": "margin band (high, mid, low)",
+        "distinct_values": [
+          "high",
+          "low",
+          "mid"
+        ],
+        "share_of_catalogue_pct": 100.0,
+        "used_in_structure": false
+      },
+      {
+        "slot": "custom_label_1",
+        "meaning": "bestseller flag",
+        "distinct_values": [
+          "bestseller"
+        ],
+        "share_of_catalogue_pct": 15.0,
+        "used_in_structure": false
+      },
+      {
+        "slot": "custom_label_2",
+        "meaning": "season",
+        "distinct_values": [
+          "all-season",
+          "summer",
+          "winter"
+        ],
+        "share_of_catalogue_pct": 100.0,
+        "used_in_structure": false
+      },
+      {
+        "slot": "custom_label_3",
+        "meaning": "empty",
+        "distinct_values": [],
+        "share_of_catalogue_pct": 0.0,
+        "used_in_structure": false
+      },
+      {
+        "slot": "custom_label_4",
+        "meaning": "empty",
+        "distinct_values": [],
+        "share_of_catalogue_pct": 0.0,
+        "used_in_structure": false
+      }
+    ],
+    "free_slot_for_tier": "custom_label_3"
+  },
+  "negative_candidates": {
+    "account_target_cost_per_sale": 40.92,
+    "visible_share": {
+      "Shopping | Tents & Sleep": {
+        "search_term_cost": 2346.6,
+        "share_of_campaign_cost_pct": 61.0
+      },
+      "Shopping | Kitchen & Lights": {
+        "search_term_cost": 874.81,
+        "share_of_campaign_cost_pct": 54.0
+      },
+      "PMax | Retail": {
+        "search_term_cost": 4736.34,
+        "share_of_campaign_cost_pct": 44.0
+      }
+    },
+    "candidates": [
+      {
+        "term": "family camping tent 8 person",
+        "campaign": "Shopping | Tents & Sleep",
+        "cost": 49.8,
+        "clicks": 38,
+        "reason": "no sale after 49.80 USD, at least one account target cost per sale (40.92 USD); the largest tent sold sleeps 6"
+      },
+      {
+        "term": "school backpack",
+        "campaign": "PMax | Retail",
+        "cost": 41.3,
+        "clicks": 44,
+        "reason": "no sale after 41.30 USD, at least one account target cost per sale (40.92 USD); the catalogue has no school bags"
+      },
+      {
+        "term": "sleeping bag for toddlers",
+        "campaign": "Shopping | Tents & Sleep",
+        "cost": 39.6,
+        "clicks": 41,
+        "reason": "the catalogue has no toddler sleeping bags"
+      },
+      {
+        "term": "sleeping pad",
+        "campaign": "PMax | Retail",
+        "cost": 28.9,
+        "clicks": 30,
+        "reason": "the catalogue has no sleeping pads"
+      },
+      {
+        "term": "tent rental near me",
+        "campaign": "Shopping | Tents & Sleep",
+        "cost": 18.7,
+        "clicks": 17,
+        "reason": "asks to rent, and the store only sells"
+      },
+      {
+        "term": "cast iron dutch oven camping",
+        "campaign": "Shopping | Kitchen & Lights",
+        "cost": 15.1,
+        "clicks": 29,
+        "reason": "the catalogue has no cast iron cookware"
+      },
+      {
+        "term": "backpack rental",
+        "campaign": "PMax | Retail",
+        "cost": 6.1,
+        "clicks": 7,
+        "reason": "asks to rent, and the store only sells"
+      },
+      {
+        "term": "stove repair kit",
+        "campaign": "Shopping | Kitchen & Lights",
+        "cost": 4.6,
+        "clicks": 8,
+        "reason": "asks for a repair kit, and the catalogue has none"
+      }
+    ],
+    "candidate_cost": 204.1,
+    "already_excluded_left_out": [
+      "used tents"
+    ],
+    "brand_terms_reported_not_waste": [
+      {
+        "term": "example trail supply tent",
+        "campaign": "Shopping | Tents & Sleep",
+        "cost": 9.8,
+        "conversions": 2,
+        "conversion_value": 612.68
+      },
+      {
+        "term": "example trail supply",
+        "campaign": "PMax | Retail",
+        "cost": 31.4,
+        "conversions": 5,
+        "conversion_value": 1220.8
+      }
+    ]
+  },
+  "proposed_layout": {
+    "layout": [
+      {
+        "campaign": "PMax | Retail (existing)",
+        "group": "asset group: Tents & sleep",
+        "holds": "tents, sleeping bags with custom_label_3 = star, on-target or below-target",
+        "products": 9,
+        "last_30_day_cost": 7556.91,
+        "last_30_day_value": 37066.08,
+        "priority": "n/a (PMax)",
+        "target": "ROAS 400%"
+      },
+      {
+        "campaign": "PMax | Retail (existing)",
+        "group": "asset group: Backpacks",
+        "holds": "backpacks with custom_label_3 = star, on-target or below-target",
+        "products": 6,
+        "last_30_day_cost": 4256.09,
+        "last_30_day_value": 21684.42,
+        "priority": "n/a (PMax)",
+        "target": "ROAS 400%"
+      },
+      {
+        "campaign": "PMax | Retail (existing)",
+        "group": "asset group: Camp kitchen",
+        "holds": "cookware with custom_label_3 = star, on-target or below-target",
+        "products": 6,
+        "last_30_day_cost": 1119.62,
+        "last_30_day_value": 5443.1,
+        "priority": "n/a (PMax)",
+        "target": "ROAS 400%"
+      },
+      {
+        "campaign": "PMax | Retail (existing)",
+        "group": "asset group: Lights",
+        "holds": "headlamps with custom_label_3 = star, on-target or below-target",
+        "products": 3,
+        "last_30_day_cost": 548.95,
+        "last_30_day_value": 2760.24,
+        "priority": "n/a (PMax)",
+        "target": "ROAS 400%"
+      },
+      {
+        "campaign": "Shopping | No verdict yet (new)",
+        "group": "ad group: all products, split on custom_label_3 in Google Ads",
+        "holds": "custom_label_3 = too-early or no-sales-limit (includes eligible products with no impressions)",
+        "products": 28,
+        "last_30_day_cost": 771.96,
+        "last_30_day_value": 318.0,
+        "priority": "Low (0)",
+        "target": "Manual CPC, bid cap 0.53 USD, daily budget 25.73 USD (starting points)"
+      },
+      {
+        "campaign": "Excluded everywhere",
+        "group": "none",
+        "holds": "custom_label_3 = no-sales-exclude",
+        "products": 4,
+        "last_30_day_cost": 793.57,
+        "last_30_day_value": 0.0,
+        "priority": "n/a",
+        "target": "n/a until price, page or feed is fixed"
+      },
+      {
+        "campaign": "Waiting on the feed",
+        "group": "labelled too-early, so they land in Shopping | No verdict yet once fixed",
+        "holds": "Not eligible products",
+        "products": 4,
+        "last_30_day_cost": 0.0,
+        "last_30_day_value": 0.0,
+        "priority": "n/a",
+        "target": "fix in Merchant Center first"
+      }
+    ],
+    "moves": [
+      {
+        "from": "PMax | Retail / Backpacks",
+        "to": "Shopping | No verdict yet",
+        "products": 4,
+        "item_ids": [
+          "ets-pack-07",
+          "ets-pack-08",
+          "ets-pack-09",
+          "ets-pack-10"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Backpacks",
+        "to": "excluded everywhere",
+        "products": 1,
+        "item_ids": [
+          "ets-pack-11"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Backpacks",
+        "to": "waiting on the feed",
+        "products": 1,
+        "item_ids": [
+          "ets-pack-12"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "PMax | Retail / Backpacks",
+        "products": 6,
+        "item_ids": [
+          "ets-pack-01",
+          "ets-pack-02",
+          "ets-pack-03",
+          "ets-pack-04",
+          "ets-pack-05",
+          "ets-pack-06"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "PMax | Retail / Camp kitchen",
+        "products": 6,
+        "item_ids": [
+          "ets-cook-01",
+          "ets-cook-02",
+          "ets-cook-03",
+          "ets-cook-04",
+          "ets-cook-06",
+          "ets-cook-07"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "PMax | Retail / Tents & sleep",
+        "products": 9,
+        "item_ids": [
+          "ets-tent-01",
+          "ets-tent-02",
+          "ets-tent-03",
+          "ets-tent-04",
+          "ets-tent-09",
+          "ets-sleep-01",
+          "ets-sleep-02",
+          "ets-sleep-03",
+          "ets-sleep-06"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "Shopping | No verdict yet",
+        "products": 15,
+        "item_ids": [
+          "ets-tent-06",
+          "ets-tent-07",
+          "ets-tent-08",
+          "ets-sleep-04",
+          "ets-sleep-07",
+          "ets-sleep-08",
+          "ets-sleep-09",
+          "ets-pack-07",
+          "ets-pack-08",
+          "ets-pack-09",
+          "ets-pack-10",
+          "ets-cook-05",
+          "ets-cook-08",
+          "ets-cook-09",
+          "ets-cook-10"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "excluded everywhere",
+        "products": 3,
+        "item_ids": [
+          "ets-tent-05",
+          "ets-sleep-05",
+          "ets-pack-11"
+        ]
+      },
+      {
+        "from": "PMax | Retail / Camp & trail",
+        "to": "waiting on the feed",
+        "products": 4,
+        "item_ids": [
+          "ets-tent-10",
+          "ets-pack-12",
+          "ets-cook-11",
+          "ets-cook-12"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "PMax | Retail / Camp kitchen",
+        "products": 6,
+        "item_ids": [
+          "ets-cook-01",
+          "ets-cook-02",
+          "ets-cook-03",
+          "ets-cook-04",
+          "ets-cook-06",
+          "ets-cook-07"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "PMax | Retail / Lights",
+        "products": 3,
+        "item_ids": [
+          "ets-lamp-01",
+          "ets-lamp-02",
+          "ets-lamp-03"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "PMax | Retail / Tents & sleep",
+        "products": 5,
+        "item_ids": [
+          "ets-tent-01",
+          "ets-tent-02",
+          "ets-tent-03",
+          "ets-tent-04",
+          "ets-tent-09"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "Shopping | No verdict yet",
+        "products": 12,
+        "item_ids": [
+          "ets-tent-06",
+          "ets-tent-07",
+          "ets-tent-08",
+          "ets-cook-05",
+          "ets-cook-08",
+          "ets-cook-09",
+          "ets-cook-10",
+          "ets-lamp-04",
+          "ets-lamp-05",
+          "ets-lamp-07",
+          "ets-lamp-08",
+          "ets-lamp-09"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "excluded everywhere",
+        "products": 2,
+        "item_ids": [
+          "ets-tent-05",
+          "ets-lamp-06"
+        ]
+      },
+      {
+        "from": "Shopping | Kitchen & Lights",
+        "to": "waiting on the feed",
+        "products": 3,
+        "item_ids": [
+          "ets-tent-10",
+          "ets-cook-11",
+          "ets-cook-12"
+        ]
+      },
+      {
+        "from": "Shopping | Tents & Sleep",
+        "to": "PMax | Retail / Tents & sleep",
+        "products": 9,
+        "item_ids": [
+          "ets-tent-01",
+          "ets-tent-02",
+          "ets-tent-03",
+          "ets-tent-04",
+          "ets-tent-09",
+          "ets-sleep-01",
+          "ets-sleep-02",
+          "ets-sleep-03",
+          "ets-sleep-06"
+        ]
+      },
+      {
+        "from": "Shopping | Tents & Sleep",
+        "to": "Shopping | No verdict yet",
+        "products": 7,
+        "item_ids": [
+          "ets-tent-06",
+          "ets-tent-07",
+          "ets-tent-08",
+          "ets-sleep-04",
+          "ets-sleep-07",
+          "ets-sleep-08",
+          "ets-sleep-09"
+        ]
+      },
+      {
+        "from": "Shopping | Tents & Sleep",
+        "to": "excluded everywhere",
+        "products": 2,
+        "item_ids": [
+          "ets-tent-05",
+          "ets-sleep-05"
+        ]
+      },
+      {
+        "from": "Shopping | Tents & Sleep",
+        "to": "waiting on the feed",
+        "products": 1,
+        "item_ids": [
+          "ets-tent-10"
+        ]
+      },
+      {
+        "from": "nowhere (not targeted)",
+        "to": "Shopping | No verdict yet",
+        "products": 8,
+        "item_ids": [
+          "ets-pole-01",
+          "ets-pole-02",
+          "ets-pole-03",
+          "ets-pole-04",
+          "ets-pole-05",
+          "ets-h2o-01",
+          "ets-h2o-02",
+          "ets-h2o-03"
+        ]
+      }
+    ],
+    "low_cost_campaign_starting_points": {
+      "daily_budget": 25.73,
+      "how": "last-30-day spend of the 28 products moving there (771.96 USD) divided by 30",
+      "bid_cap": 0.53,
+      "how_bid": "60% of the average cost per click on retail products (0.88 USD)"
+    },
+    "label_counts": {
+      "star": 9,
+      "on-target": 11,
+      "below-target": 4,
+      "no-sales-exclude": 4,
+      "no-sales-limit": 3,
+      "too-early": 29
+    },
+    "supplemental_feed_table": [
+      {
+        "item_id": "ets-cook-01",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-cook-02",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-cook-03",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-cook-04",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-cook-05",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-cook-06",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-cook-07",
+        "custom_label_3": "below-target"
+      },
+      {
+        "item_id": "ets-cook-08",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-cook-09",
+        "custom_label_3": "no-sales-limit"
+      },
+      {
+        "item_id": "ets-cook-10",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-cook-11",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-cook-12",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-h2o-01",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-h2o-02",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-h2o-03",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-lamp-01",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-lamp-02",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-lamp-03",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-lamp-04",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-lamp-05",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-lamp-06",
+        "custom_label_3": "no-sales-exclude"
+      },
+      {
+        "item_id": "ets-lamp-07",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-lamp-08",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-lamp-09",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pack-01",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-pack-02",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-pack-03",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-pack-04",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-pack-05",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-pack-06",
+        "custom_label_3": "below-target"
+      },
+      {
+        "item_id": "ets-pack-07",
+        "custom_label_3": "no-sales-limit"
+      },
+      {
+        "item_id": "ets-pack-08",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pack-09",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pack-10",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pack-11",
+        "custom_label_3": "no-sales-exclude"
+      },
+      {
+        "item_id": "ets-pack-12",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pole-01",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pole-02",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pole-03",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pole-04",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-pole-05",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-sleep-01",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-sleep-02",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-sleep-03",
+        "custom_label_3": "below-target"
+      },
+      {
+        "item_id": "ets-sleep-04",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-sleep-05",
+        "custom_label_3": "no-sales-exclude"
+      },
+      {
+        "item_id": "ets-sleep-06",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-sleep-07",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-sleep-08",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-sleep-09",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-tent-01",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-tent-02",
+        "custom_label_3": "star"
+      },
+      {
+        "item_id": "ets-tent-03",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-tent-04",
+        "custom_label_3": "below-target"
+      },
+      {
+        "item_id": "ets-tent-05",
+        "custom_label_3": "no-sales-exclude"
+      },
+      {
+        "item_id": "ets-tent-06",
+        "custom_label_3": "no-sales-limit"
+      },
+      {
+        "item_id": "ets-tent-07",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-tent-08",
+        "custom_label_3": "too-early"
+      },
+      {
+        "item_id": "ets-tent-09",
+        "custom_label_3": "on-target"
+      },
+      {
+        "item_id": "ets-tent-10",
+        "custom_label_3": "too-early"
+      }
+    ],
+    "note": "A moved product may need a few weeks to settle in its new place. Re-run monthly so the label follows the products."
+  },
+  "fixes_offered_not_run": [
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "add_negative_keywords",
+        "campaign_id": "20000001",
+        "keywords": [
+          "family camping tent 8 person",
+          "sleeping bag for toddlers",
+          "tent rental near me"
+        ],
+        "match_type": "EXACT"
+      }
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "add_negative_keywords",
+        "campaign_id": "20000003",
+        "keywords": [
+          "school backpack",
+          "sleeping pad",
+          "backpack rental"
+        ],
+        "match_type": "EXACT"
+      }
+    },
+    {
+      "action": "add_negative_keywords",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "add_negative_keywords",
+        "campaign_id": "20000002",
+        "keywords": [
+          "cast iron dutch oven camping",
+          "stove repair kit"
+        ],
+        "match_type": "EXACT"
+      }
+    },
+    {
+      "action": "create_campaign",
+      "status": "not run (created paused)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "create_campaign",
+        "name": "Shopping | No verdict yet",
+        "campaign_type": "SHOPPING",
+        "merchant_id": "100200300",
+        "feed_label": "US",
+        "campaign_priority": 0,
+        "budget_amount": 25.73,
+        "bidding_strategy": "MANUAL_CPC",
+        "target_locations": [
+          "US"
+        ],
+        "target_languages": [
+          "en"
+        ]
+      }
+    },
+    {
+      "action": "create_ad_group",
+      "status": "not run (created paused)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "create_ad_group",
+        "campaign_id": "<id from create_campaign>",
+        "name": "All products",
+        "ad_group_type": "SHOPPING_PRODUCT_ADS",
+        "cpc_bid": 0.53
+      }
+    },
+    {
+      "action": "update_asset_group",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "update_asset_group",
+        "asset_group_id": "30000002",
+        "name": "Tents & sleep"
+      }
+    },
+    {
+      "action": "create_asset_group",
+      "status": "not run (created paused)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "create_asset_group",
+        "campaign_id": "20000003",
+        "name": "Camp kitchen",
+        "final_url": "https://www.example.com/",
+        "business_name": "Example Trail Supply",
+        "headlines": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>",
+        "descriptions": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>",
+        "long_headline": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>"
+      }
+    },
+    {
+      "action": "set_asset_group_listing_filters",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "set_asset_group_listing_filters",
+        "asset_group_id": "<id from create_asset_group Camp kitchen>",
+        "dimension": "product_item_id",
+        "include": [
+          "ets-cook-01",
+          "ets-cook-02",
+          "ets-cook-03",
+          "ets-cook-04",
+          "ets-cook-06",
+          "ets-cook-07"
+        ],
+        "other": "EXCLUDED"
+      }
+    },
+    {
+      "action": "create_asset_group",
+      "status": "not run (created paused)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "create_asset_group",
+        "campaign_id": "20000003",
+        "name": "Lights",
+        "final_url": "https://www.example.com/",
+        "business_name": "Example Trail Supply",
+        "headlines": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>",
+        "descriptions": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>",
+        "long_headline": "<copied from the Camp & trail asset group, read with the asset_group_asset query before creating>"
+      }
+    },
+    {
+      "action": "set_asset_group_listing_filters",
+      "status": "not run",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "set_asset_group_listing_filters",
+        "asset_group_id": "<id from create_asset_group Lights>",
+        "dimension": "product_item_id",
+        "include": [
+          "ets-lamp-01",
+          "ets-lamp-02",
+          "ets-lamp-03"
+        ],
+        "other": "EXCLUDED"
+      }
+    },
+    {
+      "action": "update_campaign",
+      "status": "not run (only after the new structure is live)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "update_campaign",
+        "campaign_id": "20000001",
+        "status": "PAUSED"
+      },
+      "stops_serving": "Shopping | Tents & Sleep",
+      "last_30_day_cost": 3846.89
+    },
+    {
+      "action": "update_campaign",
+      "status": "not run (only after the new structure is live)",
+      "body": {
+        "platform": "google-ads",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "account_id": "1112223333",
+        "action": "update_campaign",
+        "campaign_id": "20000002",
+        "status": "PAUSED"
+      },
+      "stops_serving": "Shopping | Kitchen & Lights",
+      "last_30_day_cost": 1620.03
+    }
+  ],
+  "done_in_google_ads": [
+    "Split the new ad group on custom_label_3: include too-early and no-sales-limit, exclude everything else. No action splits Standard Shopping product groups, and until this split is in place the ad group would serve every product, so the campaign stays paused until then.",
+    "Change the listing filters of Tents & sleep (today Camp & trail) to tents and sleeping bags, and of Backpacks to backpacks, each with custom_label_3 = star, on-target or below-target. Both already have a subdivided partition, so the skill won't rewrite them.",
+    "Exclude the no-sales-exclude products in every retail campaign."
+  ],
+  "unknowns": [
+    "Merchant Center isn't connected, so item status comes from Google Ads shopping_product only and products not linked to Google Ads aren't covered.",
+    "No store is connected, so stock is the feed's availability field."
+  ],
+  "go_deeper": "merchant-center-feed-fixer isn't installed: fix the 2 not eligible items' image and landing page issues and restock the 2 out of stock items in Merchant Center. Bids and targets stay with you."
+}

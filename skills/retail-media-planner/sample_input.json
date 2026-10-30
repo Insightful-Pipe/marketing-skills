@@ -1,0 +1,435 @@
+{
+  "note": "Example data: an invented granola and oat snack brand, Quillridge Pantry (quillridgepantry.example), with invented Walmart Connect, Instacart Ads and Roundel exports. Not a real business or account. Column names are simplified. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"retail-media-planner\" skill. Here are our September exports from Walmart Connect, Instacart Ads and Roundel, our sales by retailer and our margins. Tell me which network is really working and split $60,000 for November.",
+  "brand": {
+    "name": "Quillridge Pantry",
+    "site": "https://quillridgepantry.example",
+    "category": "granola, granola bars and oat snacks",
+    "currency": "USD",
+    "products": {
+      "QP-HAB12": "Honey Almond Granola Bars 12ct",
+      "QP-DCB10": "Dark Cocoa Oat Bites 10oz",
+      "QP-MPG16": "Maple Pecan Granola 16oz",
+      "QP-PBB06": "Peanut Butter Oat Bars 6ct",
+      "QP-BCG11": "Berry Crunch Granola 11oz"
+    }
+  },
+  "period": {
+    "start": "2026-09-01",
+    "end": "2026-09-30",
+    "days": 30
+  },
+  "plan_for": {
+    "start": "2026-11-01",
+    "end": "2026-11-30",
+    "days": 30,
+    "budget": 60000
+  },
+  "targets": {
+    "target_roas_all_networks": 4.0,
+    "new_to_brand_goal_pct": 35.0
+  },
+  "sales_and_margin_by_retailer": [
+    {
+      "retailer": "Walmart",
+      "network": "Walmart Connect",
+      "retail_sales": 520000,
+      "brand_paid": 322400,
+      "cost_of_goods": 166400,
+      "trade_funding": 10400,
+      "carried_items": [
+        "QP-HAB12",
+        "QP-DCB10",
+        "QP-MPG16",
+        "QP-PBB06",
+        "QP-BCG11"
+      ]
+    },
+    {
+      "retailer": "Target",
+      "network": "Roundel",
+      "retail_sales": 210000,
+      "brand_paid": 134400,
+      "cost_of_goods": 67200,
+      "trade_funding": 4200,
+      "carried_items": [
+        "QP-HAB12",
+        "QP-DCB10",
+        "QP-MPG16",
+        "QP-PBB06",
+        "QP-BCG11"
+      ]
+    },
+    {
+      "retailer": "Instacart (partner grocers)",
+      "network": "Instacart Ads",
+      "retail_sales": 150000,
+      "brand_paid": 90000,
+      "cost_of_goods": 48000,
+      "trade_funding": 3000,
+      "carried_items": [
+        "QP-HAB12",
+        "QP-DCB10",
+        "QP-MPG16",
+        "QP-PBB06",
+        "QP-BCG11"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "network": "Walmart Connect",
+      "export": "Sponsored Search item report, 2026-09-01 to 2026-09-30",
+      "counting": {
+        "windows_offered_days": [
+          3,
+          14,
+          30
+        ],
+        "models_offered": [
+          "the network's single model"
+        ],
+        "item_scope": "advertised item and the brand's other items, reported separately",
+        "view_through_included": false,
+        "in_store_measured": true,
+        "new_to_brand_definition": "Walmart Connect's own definition; the export does not state the lookback"
+      },
+      "headline_as_read_by_team": "30-day total attributed sales (advertised plus other items) / spend",
+      "totals": {
+        "spend": 30000,
+        "attributed_sales_total_3d": 101000,
+        "attributed_sales_total_14d": 139000,
+        "attributed_sales_total_30d": 151000
+      },
+      "budget_limited_days": 12,
+      "items": [
+        {
+          "item_id": "QP-HAB12",
+          "spend": 11000,
+          "clicks": 12900,
+          "adv_sales_online_14d": 30000,
+          "adv_sales_instore_14d": 22000,
+          "other_items_sales_14d": 6000,
+          "adv_orders_14d": 3250,
+          "ntb_sales_14d": 19760,
+          "in_stock_pct": 97
+        },
+        {
+          "item_id": "QP-DCB10",
+          "spend": 7000,
+          "clicks": 8200,
+          "adv_sales_online_14d": 14000,
+          "adv_sales_instore_14d": 12500,
+          "other_items_sales_14d": 3500,
+          "adv_orders_14d": 1660,
+          "ntb_sales_14d": 10070,
+          "in_stock_pct": 96
+        },
+        {
+          "item_id": "QP-MPG16",
+          "spend": 6000,
+          "clicks": 7100,
+          "adv_sales_online_14d": 9000,
+          "adv_sales_instore_14d": 8000,
+          "other_items_sales_14d": 2500,
+          "adv_orders_14d": 1060,
+          "ntb_sales_14d": 6460,
+          "in_stock_pct": 95
+        },
+        {
+          "item_id": "QP-PBB06",
+          "spend": 4000,
+          "clicks": 4600,
+          "adv_sales_online_14d": 10000,
+          "adv_sales_instore_14d": 9000,
+          "other_items_sales_14d": 2000,
+          "adv_orders_14d": 1190,
+          "ntb_sales_14d": 7220,
+          "in_stock_pct": 84
+        },
+        {
+          "item_id": "QP-BCG11",
+          "spend": 2000,
+          "clicks": 2300,
+          "adv_sales_online_14d": 6500,
+          "adv_sales_instore_14d": 3000,
+          "other_items_sales_14d": 1000,
+          "adv_orders_14d": 590,
+          "ntb_sales_14d": 3610,
+          "in_stock_pct": 98
+        }
+      ],
+      "search_terms_14d": [
+        {
+          "term": "granola bars",
+          "clicks": 13000,
+          "spend": 11000,
+          "adv_sales": 47500,
+          "adv_orders": 2970
+        },
+        {
+          "term": "honey almond granola bars",
+          "clicks": 4200,
+          "spend": 3500,
+          "adv_sales": 18500,
+          "adv_orders": 1150
+        },
+        {
+          "term": "high protein granola bars",
+          "clicks": 2600,
+          "spend": 2300,
+          "adv_sales": 11200,
+          "adv_orders": 700
+        },
+        {
+          "term": "oat bites",
+          "clicks": 2400,
+          "spend": 2050,
+          "adv_sales": 7400,
+          "adv_orders": 470
+        },
+        {
+          "term": "gluten free bread",
+          "clicks": 400,
+          "spend": 350,
+          "adv_sales": 0,
+          "adv_orders": 0
+        },
+        {
+          "term": "keto snacks",
+          "clicks": 260,
+          "spend": 230,
+          "adv_sales": 0,
+          "adv_orders": 0
+        },
+        {
+          "term": "quillridge granola",
+          "clicks": 40,
+          "spend": 30,
+          "adv_sales": 0,
+          "adv_orders": 0
+        },
+        {
+          "term": "cereal",
+          "clicks": 9,
+          "spend": 8,
+          "adv_sales": 0,
+          "adv_orders": 0
+        }
+      ]
+    },
+    {
+      "network": "Instacart Ads",
+      "export": "Sponsored Product report by product, 2026-09-01 to 2026-09-30",
+      "counting": {
+        "windows_offered_days": [
+          14
+        ],
+        "models_offered": [
+          "linear",
+          "last touch"
+        ],
+        "item_scope": "advertised products only (one attributed sales figure)",
+        "view_through_included": false,
+        "in_store_measured": false,
+        "new_to_brand_definition": "no purchase of the brand in the previous 26 weeks"
+      },
+      "headline_as_read_by_team": "linear attributed sales / spend (the report's default view)",
+      "budget_limited_days": 2,
+      "lift_study": {
+        "incremental_share_of_attributed_sales_pct": 38,
+        "run": "2026-06, run by the network for the brand"
+      },
+      "items": [
+        {
+          "item_id": "QP-HAB12",
+          "spend": 4500,
+          "clicks": 6400,
+          "attributed_sales_last_touch": 24000,
+          "attributed_sales_linear": 21000,
+          "attributed_orders_last_touch": 1700,
+          "ntb_sales_last_touch": 10080,
+          "in_stock_pct": 93
+        },
+        {
+          "item_id": "QP-DCB10",
+          "spend": 3000,
+          "clicks": 4300,
+          "attributed_sales_last_touch": 13800,
+          "attributed_sales_linear": 12300,
+          "attributed_orders_last_touch": 980,
+          "ntb_sales_last_touch": 5520,
+          "in_stock_pct": 92
+        },
+        {
+          "item_id": "QP-MPG16",
+          "spend": 2500,
+          "clicks": 3600,
+          "attributed_sales_last_touch": 11000,
+          "attributed_sales_linear": 9700,
+          "attributed_orders_last_touch": 790,
+          "ntb_sales_last_touch": 4400,
+          "in_stock_pct": 94
+        },
+        {
+          "item_id": "QP-BCG11",
+          "spend": 2000,
+          "clicks": 2900,
+          "attributed_sales_last_touch": 8800,
+          "attributed_sales_linear": 8000,
+          "attributed_orders_last_touch": 630,
+          "ntb_sales_last_touch": 3616,
+          "in_stock_pct": 88
+        }
+      ],
+      "search_terms_last_touch": [
+        {
+          "term": "granola bars",
+          "clicks": 5200,
+          "spend": 3700,
+          "adv_sales": 20000,
+          "adv_orders": 1420
+        },
+        {
+          "term": "maple granola",
+          "clicks": 1800,
+          "spend": 1250,
+          "adv_sales": 5600,
+          "adv_orders": 400
+        },
+        {
+          "term": "chocolate oat snacks",
+          "clicks": 1500,
+          "spend": 1050,
+          "adv_sales": 5000,
+          "adv_orders": 330
+        },
+        {
+          "term": "healthy snacks",
+          "clicks": 1400,
+          "spend": 980,
+          "adv_sales": 3400,
+          "adv_orders": 260
+        },
+        {
+          "term": "almond bars",
+          "clicks": 600,
+          "spend": 420,
+          "adv_sales": 2300,
+          "adv_orders": 160
+        },
+        {
+          "term": "trail mix",
+          "clicks": 300,
+          "spend": 210,
+          "adv_sales": 0,
+          "adv_orders": 0
+        }
+      ]
+    },
+    {
+      "network": "Roundel",
+      "export": "Target Product Ads report by item, 2026-09-01 to 2026-09-30",
+      "counting": {
+        "windows_offered_days": [
+          14
+        ],
+        "models_offered": [
+          "the network's single model"
+        ],
+        "item_scope": "advertised item and the brand's other items, reported separately",
+        "view_through_included": true,
+        "in_store_measured": true,
+        "new_to_brand_definition": "not reported"
+      },
+      "headline_as_read_by_team": "all attributed sales (click and view, advertised plus other items) / spend",
+      "budget_limited_days": 0,
+      "items": [
+        {
+          "item_id": "QP-HAB12",
+          "spend": 4000,
+          "clicks": 4700,
+          "click_adv_sales_14d": 16400,
+          "click_other_items_sales_14d": 3600,
+          "view_sales_1d": 6000,
+          "click_adv_orders_14d": 1090,
+          "in_stock_pct": 96
+        },
+        {
+          "item_id": "QP-DCB10",
+          "spend": 2500,
+          "clicks": 3100,
+          "click_adv_sales_14d": 8000,
+          "click_other_items_sales_14d": 2000,
+          "view_sales_1d": 4000,
+          "click_adv_orders_14d": 530,
+          "in_stock_pct": 95
+        },
+        {
+          "item_id": "QP-MPG16",
+          "spend": 2000,
+          "clicks": 2500,
+          "click_adv_sales_14d": 7000,
+          "click_other_items_sales_14d": 2000,
+          "view_sales_1d": 3000,
+          "click_adv_orders_14d": 470,
+          "in_stock_pct": 97
+        },
+        {
+          "item_id": "QP-PBB06",
+          "spend": 1500,
+          "clicks": 1800,
+          "click_adv_sales_14d": 5600,
+          "click_other_items_sales_14d": 1400,
+          "view_sales_1d": 2000,
+          "click_adv_orders_14d": 370,
+          "in_stock_pct": 91
+        }
+      ],
+      "search_terms_14d": [
+        {
+          "term": "granola bars",
+          "clicks": 4800,
+          "spend": 4000,
+          "adv_sales": 16800,
+          "adv_orders": 1000
+        },
+        {
+          "term": "honey almond granola bars",
+          "clicks": 1500,
+          "spend": 1250,
+          "adv_sales": 5900,
+          "adv_orders": 330
+        },
+        {
+          "term": "granola cereal",
+          "clicks": 900,
+          "spend": 740,
+          "adv_sales": 2800,
+          "adv_orders": 190
+        },
+        {
+          "term": "oat bites",
+          "clicks": 1100,
+          "spend": 900,
+          "adv_sales": 2600,
+          "adv_orders": 180
+        },
+        {
+          "term": "kids snacks",
+          "clicks": 700,
+          "spend": 560,
+          "adv_sales": 0,
+          "adv_orders": 0
+        },
+        {
+          "term": "quillridge oat bites",
+          "clicks": 20,
+          "spend": 16,
+          "adv_sales": 0,
+          "adv_orders": 0
+        }
+      ]
+    }
+  ]
+}

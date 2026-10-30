@@ -1,0 +1,438 @@
+{
+  "request": "Plan our SMS marketing strategy for the next quarter, and WhatsApp for Mexico. Tell us which moments should be texts, how often to send campaigns, and write every message with its cost. Check that we're compliant.",
+  "business": "Brindlemoss Coffee Roasters, an invented online coffee store (brindlemoss-coffee.example)",
+  "answers": {
+    "business": "Brindlemoss Coffee Roasters (invented), an online store selling roasted coffee beans and subscriptions",
+    "countries": {
+      "US": "about 82% of orders",
+      "MX": "about 15%",
+      "CA": "about 3%"
+    },
+    "texting_platform": "Klaviyo SMS for the US and Canada; a WhatsApp Business provider for Mexico",
+    "sending_number": {
+      "type": "toll-free",
+      "status": "verification submitted, pending"
+    },
+    "sms_consent_today": "a checkbox at Shopify checkout (US and Canada only) and the wording pasted below",
+    "goal": "flow revenue first, then campaigns",
+    "campaigns_wanted_per_month": 4,
+    "whatsapp_rate_card_usd_per_message_mexico": {
+      "marketing": 0.045,
+      "utility": 0.01,
+      "authentication": 0.01
+    },
+    "whatsapp_rate_note": "Rates the user pasted from their provider's rate card (invented for this example).",
+    "pasted_checkout_disclosure": "Text me offers from Brindlemoss Coffee. Up to 4 msgs/mo.",
+    "pasted_current_cart_text": "Brindlemoss Coffee: Don’t forget your beans! Your cart is saved for you here: {link} Reply STOP to opt out"
+  },
+  "account": {
+    "klaviyo": {
+      "company_name": "Brindlemoss Coffee Roasters",
+      "timezone": "America/Chicago",
+      "currency": "USD"
+    },
+    "shopify": {
+      "shop_name": "brindlemoss-coffee"
+    },
+    "site": "https://www.brindlemoss-coffee.example"
+  },
+  "window": {
+    "start": "2026-07-30",
+    "end": "2026-10-27",
+    "label": "last 90 complete days"
+  },
+  "send_window_local": "10:00 to 20:00 recipient local time (default)",
+  "data_pulled": {
+    "klaviyo.get_account_details": {
+      "company_name": "Brindlemoss Coffee Roasters",
+      "timezone": "America/Chicago",
+      "currency": "USD"
+    },
+    "klaviyo.get_profiles (counted by country)": [
+      {
+        "country": "US",
+        "can_receive_email_marketing": 18400,
+        "can_receive_sms_marketing": 3120,
+        "sms_consented_last_90_days": 1050
+      },
+      {
+        "country": "CA",
+        "can_receive_email_marketing": 620,
+        "can_receive_sms_marketing": 140,
+        "sms_consented_last_90_days": 45
+      },
+      {
+        "country": "MX",
+        "can_receive_email_marketing": 2900,
+        "can_receive_sms_marketing": 0,
+        "sms_consented_last_90_days": 0
+      }
+    ],
+    "shopify.get_customers (counted by country and consent)": [
+      {
+        "country": "US",
+        "customers": 21000,
+        "subscribed_single_opt_in": 2210,
+        "subscribed_confirmed_opt_in": 770,
+        "pending": 85,
+        "unsubscribed": 240
+      },
+      {
+        "country": "CA",
+        "customers": 900,
+        "subscribed_single_opt_in": 110,
+        "subscribed_confirmed_opt_in": 40,
+        "pending": 4,
+        "unsubscribed": 9
+      },
+      {
+        "country": "MX",
+        "customers": 3600,
+        "subscribed_single_opt_in": 0,
+        "subscribed_confirmed_opt_in": 0,
+        "pending": 0,
+        "unsubscribed": 0
+      }
+    ],
+    "shopify.get_orders (last 90 days, by shipping country)": [
+      {
+        "country": "US",
+        "orders": 5400
+      },
+      {
+        "country": "CA",
+        "orders": 210
+      },
+      {
+        "country": "MX",
+        "orders": 960
+      }
+    ],
+    "klaviyo.get_flows (live flows) + first-send delays in minutes from the user's answer": [
+      {
+        "flow_id": "FL001",
+        "name": "Welcome Series",
+        "status": "live",
+        "trigger_type": "Added to List",
+        "moment": "welcome",
+        "first_email_delay_min": 0,
+        "first_text_delay_min": null
+      },
+      {
+        "flow_id": "FL002",
+        "name": "Abandoned Checkout",
+        "status": "live",
+        "trigger_type": "Metric: Started Checkout",
+        "moment": "abandoned_checkout",
+        "first_email_delay_min": 60,
+        "first_text_delay_min": null
+      },
+      {
+        "flow_id": "FL003",
+        "name": "SMS Abandoned Checkout",
+        "status": "live",
+        "trigger_type": "Metric: Started Checkout",
+        "moment": "abandoned_checkout",
+        "first_email_delay_min": null,
+        "first_text_delay_min": 45
+      },
+      {
+        "flow_id": "FL004",
+        "name": "Browse Abandonment",
+        "status": "live",
+        "trigger_type": "Metric: Viewed Product",
+        "moment": "browse_abandonment",
+        "first_email_delay_min": 120,
+        "first_text_delay_min": null
+      },
+      {
+        "flow_id": "FL005",
+        "name": "Back in Stock",
+        "status": "live",
+        "trigger_type": "Metric: Subscribed to Back in Stock",
+        "moment": "back_in_stock",
+        "first_email_delay_min": 0,
+        "first_text_delay_min": null
+      },
+      {
+        "flow_id": "FL006",
+        "name": "Post-Purchase",
+        "status": "live",
+        "trigger_type": "Metric: Placed Order",
+        "moment": "post_purchase",
+        "first_email_delay_min": 10080,
+        "first_text_delay_min": null
+      },
+      {
+        "flow_id": "FL007",
+        "name": "Win-back",
+        "status": "live",
+        "trigger_type": "Metric: Placed Order",
+        "moment": "win_back",
+        "first_email_delay_min": 108000,
+        "first_text_delay_min": 112320
+      }
+    ],
+    "klaviyo.get_flow_report (last_90_days, by flow and send_channel)": [
+      {
+        "flow_id": "FL001",
+        "send_channel": "email",
+        "recipients": 4800,
+        "conversions": 410,
+        "conversion_value": 21600.0,
+        "unsubscribe_rate": 0.004,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL002",
+        "send_channel": "email",
+        "recipients": 3900,
+        "conversions": 520,
+        "conversion_value": 27300.0,
+        "unsubscribe_rate": 0.003,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL003",
+        "send_channel": "sms",
+        "recipients": 1250,
+        "conversions": 262,
+        "conversion_value": 13750.0,
+        "unsubscribe_rate": 0.011,
+        "text_message_spend": 30.0,
+        "message_segment_count_sum": 2500
+      },
+      {
+        "flow_id": "FL004",
+        "send_channel": "email",
+        "recipients": 5200,
+        "conversions": 160,
+        "conversion_value": 7800.0,
+        "unsubscribe_rate": 0.002,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL005",
+        "send_channel": "email",
+        "recipients": 900,
+        "conversions": 120,
+        "conversion_value": 5400.0,
+        "unsubscribe_rate": 0.002,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL006",
+        "send_channel": "email",
+        "recipients": 5100,
+        "conversions": 130,
+        "conversion_value": 6120.0,
+        "unsubscribe_rate": 0.002,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL007",
+        "send_channel": "email",
+        "recipients": 2400,
+        "conversions": 80,
+        "conversion_value": 3600.0,
+        "unsubscribe_rate": 0.005,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "flow_id": "FL007",
+        "send_channel": "sms",
+        "recipients": 300,
+        "conversions": 4,
+        "conversion_value": 150.0,
+        "unsubscribe_rate": 0.02,
+        "text_message_spend": 3.6,
+        "message_segment_count_sum": 300
+      }
+    ],
+    "klaviyo.get_campaign_report (last_90_days, email campaigns)": [
+      {
+        "campaign_id": "EC01",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5600,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC02",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 4900,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC03",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5200,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC04",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 4700,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC05",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5300,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC06",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5000,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC07",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5500,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC08",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 4800,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC09",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5100,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC10",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5000,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC11",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 5300,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      },
+      {
+        "campaign_id": "EC12",
+        "send_channel": "email",
+        "recipients": 17000,
+        "conversion_value": 4800,
+        "unsubscribe_rate": 0.0025,
+        "text_message_spend": 0.0,
+        "message_segment_count_sum": 0
+      }
+    ],
+    "klaviyo.get_campaigns + get_campaign_report (last_90_days, SMS campaigns)": [
+      {
+        "campaign_id": "SC01",
+        "name": "August new roast",
+        "send_time": "2026-08-06T18:00:00+00:00",
+        "recipients": 2850,
+        "conversion_value": 2600.0,
+        "unsubscribe_rate": 0.01,
+        "message_segment_count_sum": 2850,
+        "send_channel": "sms",
+        "text_message_spend": 34.2
+      },
+      {
+        "campaign_id": "SC02",
+        "name": "Labor Day sale",
+        "send_time": "2026-08-31T19:00:00+00:00",
+        "recipients": 2880,
+        "conversion_value": 3400.0,
+        "unsubscribe_rate": 0.012,
+        "message_segment_count_sum": 2880,
+        "send_channel": "sms",
+        "text_message_spend": 34.56
+      },
+      {
+        "campaign_id": "SC03",
+        "name": "Fall blend launch",
+        "send_time": "2026-09-10T18:30:00+00:00",
+        "recipients": 2900,
+        "conversion_value": 2700.0,
+        "unsubscribe_rate": 0.013,
+        "message_segment_count_sum": 2900,
+        "send_channel": "sms",
+        "text_message_spend": 34.8
+      },
+      {
+        "campaign_id": "SC04",
+        "name": "Subscription restock",
+        "send_time": "2026-09-24T18:00:00+00:00",
+        "recipients": 2910,
+        "conversion_value": 2300.0,
+        "unsubscribe_rate": 0.014,
+        "message_segment_count_sum": 2910,
+        "send_channel": "sms",
+        "text_message_spend": 34.92
+      },
+      {
+        "campaign_id": "SC05",
+        "name": "Flash sale 24h",
+        "send_time": "2026-10-08T01:15:00+00:00",
+        "recipients": 2930,
+        "conversion_value": 3130.0,
+        "unsubscribe_rate": 0.016,
+        "message_segment_count_sum": 2930,
+        "send_channel": "sms",
+        "text_message_spend": 35.16
+      },
+      {
+        "campaign_id": "SC06",
+        "name": "October single origin",
+        "send_time": "2026-10-22T18:00:00+00:00",
+        "recipients": 2930,
+        "conversion_value": 2400.0,
+        "unsubscribe_rate": 0.013,
+        "message_segment_count_sum": 2930,
+        "send_channel": "sms",
+        "text_message_spend": 35.16
+      }
+    ]
+  },
+  "note": "Example data: an invented online coffee store with invented accounts, not a real business. Every number in expected_output.json follows from this input. WhatsApp rates are the user's pasted provider rates, also invented."
+}

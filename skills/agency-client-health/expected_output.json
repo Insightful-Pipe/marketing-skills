@@ -1,0 +1,162 @@
+{
+  "header": {
+    "shape": "portfolio overview",
+    "windows": {
+      "CUR": "2026-09-29 to 2026-10-28",
+      "PRI": "2026-08-30 to 2026-09-28"
+    },
+    "clients_graded": 3,
+    "ratings": {
+      "healthy": 1,
+      "watch": 2,
+      "at risk": 0
+    },
+    "ad_spend_under_management_cur": "$34,070 USD: Client A $10,570, Client B $18,700, Client C $4,800; all three bill in USD, so the total is one currency. Results are never added across clients or platforms.",
+    "currency": {
+      "Client A: a home services company (heating and plumbing) in the US": "USD",
+      "Client B: an online store selling outdoor gear": "USD",
+      "Client C: a B2B software company": "USD"
+    }
+  },
+  "client_map": [
+    "Client A: a home services company (heating and plumbing) in the US: Google Ads (full access, active), Meta (full access, active), GA4 (full access, active), Search Console (full access, active)",
+    "Client B: an online store selling outdoor gear: Google Ads (full access, active), Meta (full access, active), GA4 (full access, active), Search Console (full access, active), Bing Webmaster (full access, active)",
+    "Client C: a B2B software company: LinkedIn Ads (read access, active), GA4 (full access, active), Search Console (full access, active)"
+  ],
+  "client_table": [
+    {
+      "client": "Client B: an online store selling outdoor gear",
+      "score": 65,
+      "rating": "watch",
+      "churn_risk": "high",
+      "spend_cur": "$18,700 (-17.6%)",
+      "main_result_cur": "Google Ads 410 conversions (-9.9%); Meta 88 purchases (-48.5%)",
+      "cost_per_result": "Google Ads $30.73 (+8.4%); Meta $69.32 (+21.0%)",
+      "top_issue": "H3: Meta 88 purchases vs 171 (-48.5%)"
+    },
+    {
+      "client": "Client C: a B2B software company",
+      "score": 70,
+      "rating": "watch",
+      "churn_risk": "medium",
+      "spend_cur": "$4,800 (+3.2%)",
+      "main_result_cur": "LinkedIn Ads 38 results (-22.4%)",
+      "cost_per_result": "LinkedIn Ads $126.32 (+33.1%)",
+      "top_issue": "H2: GA4 break: 4 days in a row under 20% of the PRI daily median of 176 sessions (2026-10-14 to 2026-10-17: 21, 17, 24, 19 sessions)"
+    },
+    {
+      "client": "Client A: a home services company (heating and plumbing) in the US",
+      "score": 95,
+      "rating": "healthy",
+      "churn_risk": "low",
+      "spend_cur": "$10,570 (+2.8%)",
+      "main_result_cur": "Google Ads 142 conversions (-15.5%); Meta 61 leads (-4.7%)",
+      "cost_per_result": "Google Ads $59.30 (+24.8%); Meta $35.25 (-1.9%)",
+      "top_issue": "H4: Google Ads $59.30 per result vs $47.50 (+24.8%)"
+    }
+  ],
+  "client_cards": [
+    {
+      "client": "Client B: an online store selling outdoor gear",
+      "score_math": "100 - 15 x 2 red - 5 x 1 amber = 65",
+      "rating": "watch",
+      "churn_risk": "high",
+      "churn_reason": "two or more of H2, H3, H4, H5, H7 are red (H3, H7); 1 amber check",
+      "flags": [
+        {
+          "check": "H3. Results",
+          "result": "red",
+          "numbers": "Meta 88 purchases vs 171 (-48.5%)",
+          "call": "each ad platform's results"
+        },
+        {
+          "check": "H7. Account activity",
+          "result": "red",
+          "numbers": "Meta: 0 changes in the activity log for the last 30 days on $6,100 of spend",
+          "call": "change_status, Meta activity log"
+        },
+        {
+          "check": "H4. Cost per result",
+          "result": "amber",
+          "numbers": "Meta $69.32 per result vs $57.31 (+21.0%)",
+          "call": "spend / results per platform"
+        }
+      ],
+      "other_checks": "green: H1, H2, H5, H6",
+      "next_actions": [
+        "H7: nobody has changed the Meta account in 30 days while it spent $6,100; review it this week and log the changes.",
+        "H3: Meta purchases fell 48.5% on 37.8% less Meta spend; ask the client whether the Meta budget cut was theirs, then refresh the ads that lost the most purchases.",
+        "H4: Meta cost per purchase rose 21.0%; check creative fatigue and the purchase event before adding budget back."
+      ]
+    },
+    {
+      "client": "Client C: a B2B software company",
+      "score_math": "100 - 15 x 1 red - 5 x 3 amber = 70",
+      "rating": "watch",
+      "churn_risk": "medium",
+      "churn_reason": "red on H2; 3 amber checks",
+      "flags": [
+        {
+          "check": "H2. Tracking",
+          "result": "red",
+          "numbers": "GA4 break: 4 days in a row under 20% of the PRI daily median of 176 sessions (2026-10-14 to 2026-10-17: 21, 17, 24, 19 sessions)",
+          "call": "GA4 get_report by date and by channel, Search Console search_analytics"
+        },
+        {
+          "check": "H1. Connections and access",
+          "result": "amber",
+          "numbers": "the LinkedIn Ads account the agency manages is connected with read access only, so no change can be made through it",
+          "call": "accounts list"
+        },
+        {
+          "check": "H3. Results",
+          "result": "amber",
+          "numbers": "LinkedIn Ads 38 results (website conversions plus lead-form leads) vs 49 (-22.4%)",
+          "call": "each ad platform's results"
+        },
+        {
+          "check": "H4. Cost per result",
+          "result": "amber",
+          "numbers": "LinkedIn Ads $126.32 per result vs $94.90 (+33.1%)",
+          "call": "spend / results per platform"
+        }
+      ],
+      "other_checks": "green: H5, H6; not graded: H7 (the skill reads change history on Google Ads and Meta only, and this client runs LinkedIn Ads)",
+      "next_actions": [
+        "H2: GA4 recorded almost nothing from 2026-10-14 to 2026-10-17; check what changed on the site on 2026-10-14 (a release or a consent banner), and add a GA4 annotation for those days before the next report.",
+        "H1: ask the client to raise the agency's LinkedIn access from read to a role that can edit campaigns, so fixes can be made.",
+        "H3: LinkedIn demo requests fell 22.4% on 3.2% more spend; check the lead form and the audience before the next monthly call."
+      ]
+    },
+    {
+      "client": "Client A: a home services company (heating and plumbing) in the US",
+      "score_math": "100 - 15 x 0 red - 5 x 1 amber = 95",
+      "rating": "healthy",
+      "churn_risk": "low",
+      "churn_reason": "no red on H2, H3, H4, H5, H7; 1 amber check",
+      "flags": [
+        {
+          "check": "H4. Cost per result",
+          "result": "amber",
+          "numbers": "Google Ads $59.30 per result vs $47.50 (+24.8%)",
+          "call": "spend / results per platform"
+        }
+      ],
+      "other_checks": "green: H1, H2, H3, H5, H6, H7",
+      "next_actions": [
+        "H4: Google Ads cost per lead rose 24.8% while Meta held; run the full Google Ads audit on search terms and bids before the monthly call."
+      ]
+    }
+  ],
+  "not_in_the_data": [
+    "Is any contract up for renewal in the next 60 days?",
+    "Has the main contact on the client side changed?",
+    "Are replies or approvals slower than usual?",
+    "Are any invoices late?",
+    "Client B: was the Meta budget cut the client's decision?"
+  ],
+  "left_out_and_not_graded": {
+    "left_out": "1 source left out: a placeholder ad account with no clear owner (name not shown)",
+    "not_graded": "Client B: an Instagram account and an email tool (organic social pages and email tools are not read by the seven checks)"
+  }
+}

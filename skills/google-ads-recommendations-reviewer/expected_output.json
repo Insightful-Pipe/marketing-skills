@@ -1,0 +1,311 @@
+{
+  "header": {"account": "Example home services company", "currency": "USD", "performance": "2026-09-21 to 2026-10-20", "change_history": "2026-09-22 to 2026-10-21", "target_cpa": 65.0, "target_rule": "a campaign's own target CPA where it has one, otherwise $65", "optimization_score": "81%", "score_line": "Worked out from Google's own recommendations; it doesn't measure results."},
+  "summary": {"open_recommendations": 11, "accept": 3, "adapt": 3, "dismiss": 5, "your call": 0, "auto_apply_types_to_switch_off": 5, "of_which_only_in_google_ads": 1, "auto_applied_changes_found": 3, "automation_settings_to_turn_off": 7},
+  "verdicts": [
+    {
+      "id": "R1",
+      "type": "CAMPAIGN_BUDGET",
+      "campaign": "Furnace Repair | Search",
+      "google_weekly_estimate": {"cost_now": 812.0, "conversions_now": 13.53, "cost_after": 1150.0, "conversions_after": 18.9, "extra_conversions": 5.37, "extra_cost": 338.0},
+      "verdict": "accept",
+      "test": "Campaign CPA $60.00 vs target $65.00; 21% of impression share lost to budget; the next conversion would cost $62.94 on Google's own weekly estimate.",
+      "numbers": {
+        "campaign_cpa": 60.0,
+        "target": 65.0,
+        "target_source": "your target CPA",
+        "conversions_30d": 58,
+        "budget_lost_is": "21%",
+        "next_conversion_cost": 62.94,
+        "tests": {"cpa_at_or_under_target": true, "budget_lost_at_least_10pct": true, "next_conversion_cost_at_or_under_target": true}
+      },
+      "action": {
+        "how": "connector",
+        "payload": {"platform": "google-ads", "workspace_id": 1, "brand_id": 1, "account_id": "1234567890", "action": "update_campaign", "campaign_id": "210000000002", "budget_amount": 170.0},
+        "status": "not run",
+        "note": "This budget isn't shared, so only this campaign changes."
+      }
+    },
+    {
+      "id": "R6",
+      "type": "SITELINK_ASSET",
+      "campaign": "Plumbing | Search",
+      "google_weekly_estimate": null,
+      "verdict": "accept",
+      "numbers": {"sitelinks_now": 2},
+      "test": "Adding missing assets rarely costs money. Text and URLs come from the account's own landing pages, not Google's suggestion; confirm both pages are live and every line is true.",
+      "action": {
+        "how": "connector",
+        "payload": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "add_sitelinks",
+          "level": "CAMPAIGN",
+          "campaign_id": "210000000005",
+          "sitelinks": [
+            {"link_text": "Drain Cleaning", "final_url": "https://example.com/drain-cleaning", "description1": "Kitchen, bath and main drains", "description2": "Book a visit on our website"},
+            {"link_text": "Leak Repair", "final_url": "https://example.com/leak-repair", "description1": "Pipes, sinks, walls and floors", "description2": "Book a visit on our website"}
+          ]
+        },
+        "status": "not run"
+      }
+    },
+    {
+      "id": "R11",
+      "type": "IMPROVE_GOOGLE_TAG_COVERAGE",
+      "campaign": "account",
+      "google_weekly_estimate": null,
+      "verdict": "accept",
+      "test": "Measurement upgrade: changes no spend and makes every other test more reliable.",
+      "numbers": {"pages_without_tag": 4},
+      "action": {"how": "click steps", "steps": "Recommendations, open the Google tag coverage card, note the pages listed, and have whoever manages the site add the Google tag to them."}
+    },
+    {
+      "id": "R4",
+      "type": "USE_BROAD_MATCH_KEYWORD",
+      "campaign": "Water Heaters | Search",
+      "google_weekly_estimate": {"cost_now": 406.0, "conversions_now": 7.23, "cost_after": 470.0, "conversions_after": 8.4, "extra_conversions": 1.17, "extra_cost": 64.0},
+      "verdict": "adapt",
+      "numbers": {
+        "campaign_cpa": 56.13,
+        "target": 65.0,
+        "target_source": "your target CPA",
+        "conversions_30d": 31,
+        "budget_lost_is": "8%",
+        "bidding": "MAXIMIZE_CONVERSIONS",
+        "tests": {"bids_on_conversions": true, "at_least_30_conversions": true, "cpa_at_or_under_target": true, "budget_lost_under_10pct": true}
+      },
+      "test": "MAXIMIZE_CONVERSIONS, 31 conversions in 30 days, CPA $56.13 under target $65.00, 8% lost to budget. All four tests pass. Held back: R9 changes bidding on the same campaign, so this waits 14 days.",
+      "action": {"how": "click steps", "steps": "Recommendations, open the broad match card for Water Heaters | Search, Apply.", "schedule": "2026-11-04, if the campaign is still at or under target"}
+    },
+    {
+      "id": "R5",
+      "type": "KEYWORD",
+      "campaign": "Furnace Repair | Search",
+      "google_weekly_estimate": {"cost_now": 812.0, "conversions_now": 13.53, "cost_after": 850.0, "conversions_after": 14.1, "extra_conversions": 0.57, "extra_cost": 38.0},
+      "verdict": "adapt",
+      "numbers": {
+        "campaign_cpa": 60.0,
+        "target": 65.0,
+        "target_source": "your target CPA",
+        "conversions_30d": 58,
+        "budget_lost_is": "21%",
+        "ad_group": "Furnace repair",
+        "ad_group_match_types": {"PHRASE": 2, "EXACT": 1, "BROAD": 1},
+        "campaign_negatives": ["diy", "parts"],
+        "google_match_type": "BROAD",
+        "most_used_match_type": "PHRASE",
+        "tests": {"names_a_service_the_ad_group_sells": true, "not_already_in_account": true, "no_word_is_a_campaign_negative": true}
+      },
+      "test": "\"furnace repair service\" names the ad group's service, isn't in the account and contains no campaign negative. Google suggests BROAD; the ad group mostly uses PHRASE.",
+      "action": {
+        "how": "connector",
+        "payload": {
+          "platform": "google-ads",
+          "workspace_id": 1,
+          "brand_id": 1,
+          "account_id": "1234567890",
+          "action": "add_keywords",
+          "ad_group_id": "410000000002",
+          "keywords": [
+            {"text": "furnace repair service", "match_type": "PHRASE"}
+          ]
+        },
+        "status": "not run",
+        "then": "Dismiss the card in Recommendations once the keyword is live, so it isn't applied again as broad."
+      }
+    },
+    {
+      "id": "R9",
+      "type": "TARGET_CPA_OPT_IN",
+      "campaign": "Water Heaters | Search",
+      "google_weekly_estimate": {"cost_now": 406.0, "conversions_now": 7.23, "cost_after": 398.0, "conversions_after": 7.5, "extra_conversions": 0.27, "extra_cost": -8.0},
+      "verdict": "adapt",
+      "numbers": {
+        "campaign_cpa": 56.13,
+        "target": 65.0,
+        "target_source": "your target CPA",
+        "conversions_30d": 31,
+        "budget_lost_is": "8%",
+        "google_target": 50.0,
+        "adapted_target": 57.0,
+        "tests": {"at_least_30_conversions": true, "suggested_target_not_below_30d_cpa": false}
+      },
+      "test": "31 conversions in 30 days clears the 30 needed. Google's $50.00 sits below the campaign's 30-day CPA of $56.13, which would choke volume, so start at $57.00.",
+      "action": {
+        "how": "connector",
+        "payload": {"platform": "google-ads", "workspace_id": 1, "brand_id": 1, "account_id": "1234567890", "action": "update_campaign", "campaign_id": "210000000004", "bidding_strategy": "TARGET_CPA", "target_cpa": 57.0},
+        "status": "not run",
+        "note": "This switches how the campaign bids, so confirm it on its own."
+      }
+    },
+    {
+      "id": "R2",
+      "type": "CAMPAIGN_BUDGET",
+      "campaign": "AC Repair | Search",
+      "google_weekly_estimate": {"cost_now": 469.0, "conversions_now": 6.07, "cost_after": 600.0, "conversions_after": 7.2, "extra_conversions": 1.13, "extra_cost": 131.0},
+      "verdict": "dismiss",
+      "test": "Campaign CPA $77.31 vs target $70.00; 5% of impression share lost to budget; the next conversion would cost $115.93 on Google's own weekly estimate. Failed: CPA at or under target, at least 10% lost to budget, next-conversion cost at or under target.",
+      "numbers": {
+        "campaign_cpa": 77.31,
+        "target": 70.0,
+        "target_source": "its own target CPA",
+        "conversions_30d": 26,
+        "budget_lost_is": "5%",
+        "next_conversion_cost": 115.93,
+        "tests": {"cpa_at_or_under_target": false, "budget_lost_at_least_10pct": false, "next_conversion_cost_at_or_under_target": false}
+      },
+      "action": {"how": "click steps", "steps": "Recommendations, open the budget card for AC Repair | Search, Dismiss."}
+    },
+    {
+      "id": "R3",
+      "type": "USE_BROAD_MATCH_KEYWORD",
+      "campaign": "AC Installation | Search",
+      "google_weekly_estimate": {"cost_now": 385.0, "conversions_now": 2.1, "cost_after": 520.0, "conversions_after": 3.4, "extra_conversions": 1.3, "extra_cost": 135.0},
+      "verdict": "dismiss",
+      "numbers": {
+        "campaign_cpa": 183.33,
+        "target": 65.0,
+        "target_source": "your target CPA",
+        "conversions_30d": 9,
+        "budget_lost_is": "4%",
+        "bidding": "MAXIMIZE_CLICKS",
+        "tests": {"bids_on_conversions": false, "at_least_30_conversions": false, "cpa_at_or_under_target": false, "budget_lost_under_10pct": true}
+      },
+      "test": "MAXIMIZE_CLICKS, 9 conversions in 30 days, CPA $183.33 vs target $65.00. Failed: bids on conversions, at least 30 conversions, CPA at or under target.",
+      "action": {"how": "click steps", "steps": "Recommendations, open the broad match card for AC Installation | Search, Dismiss."}
+    },
+    {
+      "id": "R7",
+      "type": "DISPLAY_EXPANSION_OPT_IN",
+      "campaign": "Furnace Repair | Search",
+      "google_weekly_estimate": {"cost_now": 812.0, "conversions_now": 13.53, "cost_after": 905.0, "conversions_after": 14.6, "extra_conversions": 1.07, "extra_cost": 93.0},
+      "verdict": "dismiss",
+      "numbers": {"campaign_cpa": 60.0, "target": 65.0, "target_source": "your target CPA", "conversions_30d": 58, "budget_lost_is": "21%"},
+      "test": "Furnace Repair | Search loses 21% of impression share to budget, so the budget doesn't yet cover Google Search.",
+      "action": {"how": "click steps", "steps": "Recommendations, open the card for Furnace Repair | Search, Dismiss."}
+    },
+    {
+      "id": "R8",
+      "type": "SEARCH_PARTNERS_OPT_IN",
+      "campaign": "Plumbing | Search",
+      "google_weekly_estimate": {"cost_now": 546.0, "conversions_now": 9.1, "cost_after": 580.0, "conversions_after": 9.6, "extra_conversions": 0.5, "extra_cost": 34.0},
+      "verdict": "dismiss",
+      "numbers": {"campaign_cpa": 60.0, "target": 55.0, "target_source": "its own target CPA", "conversions_30d": 39, "budget_lost_is": "3%"},
+      "test": "Plumbing | Search runs at a $60.00 CPA against its own target CPA of $55.00, so wider reach would widen the gap.",
+      "action": {"how": "click steps", "steps": "Recommendations, open the card for Plumbing | Search, Dismiss."}
+    },
+    {
+      "id": "R10",
+      "type": "RAISE_TARGET_CPA",
+      "campaign": "AC Repair | Search",
+      "google_weekly_estimate": {"cost_now": 469.0, "conversions_now": 6.07, "cost_after": 560.0, "conversions_after": 7.0, "extra_conversions": 0.93, "extra_cost": 91.0},
+      "verdict": "dismiss",
+      "numbers": {"campaign_cpa": 77.31, "target": 70.0, "target_source": "its own target CPA", "conversions_30d": 26, "budget_lost_is": "5%", "current_target": 70.0, "google_target": 84.0, "your_target": 65.0},
+      "test": "The new target $84.00 is above your $65.00 target, and the campaign already runs at $77.31.",
+      "action": {"how": "click steps", "steps": "Recommendations, open the target CPA card for AC Repair | Search, Dismiss."}
+    }
+  ],
+  "sequencing": ["Water Heaters | Search: R9 (target CPA) first, then R4 (broad match) on 2026-11-04."],
+  "auto_apply": {
+    "subscriptions": [
+      {"type": "KEYWORD", "status": "ENABLED", "verdict": "pause", "why": "Adds keywords that spend on new searches without review. Open now: R5 adapt."},
+      {"type": "USE_BROAD_MATCH_KEYWORD", "status": "ENABLED", "verdict": "pause", "why": "Switches keywords to broad match without the volume and budget tests. Open now: R4 adapt, R3 dismiss."},
+      {"type": "DISPLAY_EXPANSION_OPT_IN", "status": "ENABLED", "verdict": "pause", "why": "Turns on Display expansion without the budget test. Open now: R7 dismiss."},
+      {"type": "RESPONSIVE_SEARCH_AD_ASSET", "status": "ENABLED", "verdict": "pause", "why": "Writes ad text that can make claims you listed as off-limits. It changed AC Repair | Search headlines on 2026-10-17."},
+      {"type": "OPTIMIZE_AD_ROTATION", "status": "ENABLED", "verdict": "keep", "why": "Changes no spend, bids, keywords, targeting or ad text."},
+      {"type": "UNKNOWN", "status": "ENABLED", "verdict": "pause in Google Ads", "why": "A type this API version can't name or change. Open Recommendations, Auto-apply, and switch off any type you don't want applied without review."},
+      {"type": "TARGET_CPA_OPT_IN", "status": "PAUSED", "verdict": "already paused"}
+    ],
+    "pause_payload": {
+      "payload": {"platform": "google-ads", "workspace_id": 1, "brand_id": 1, "account_id": "1234567890", "action": "pause_recommendation_subscriptions", "types": ["KEYWORD", "USE_BROAD_MATCH_KEYWORD", "DISPLAY_EXPANSION_OPT_IN", "RESPONSIVE_SEARCH_AD_ASSET"]},
+      "status": "not run"
+    },
+    "changes_already_made": [
+      {
+        "date": "2026-10-03",
+        "campaign": "AC Installation | Search",
+        "changed": "keyword \"ac unit replacement\" (BROAD)",
+        "results_since": {"cost": 168.0, "conversions": 0},
+        "target": 65.0,
+        "finding": "Spent $168.00 since 2026-10-03 with 0 conversions: more than the $65.00 target and nothing to show.",
+        "verdict": "pause the keyword",
+        "action": {"how": "click steps", "steps": "Keywords, filter to ad group AC installation, select \"ac unit replacement\", Edit, Pause."}
+      },
+      {
+        "date": "2026-10-09",
+        "campaign": "Plumbing | Search",
+        "changed": "network_settings.target_content_network false to true",
+        "results_since": {"display_cost": 186.0, "display_conversions": 1, "display_cpa": 186.0},
+        "target": 55.0,
+        "target_source": "its own target CPA",
+        "finding": "Display rows since 2026-10-09: $186.00 for 1 conversion, a $186.00 CPA against its own target CPA of $55.00.",
+        "verdict": "turn Display expansion off",
+        "action": {
+          "how": "connector",
+          "payload": {
+            "platform": "google-ads",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "account_id": "1234567890",
+            "action": "update_campaign",
+            "campaign_id": "210000000005",
+            "network_settings": {"target_content_network": false}
+          },
+          "status": "not run"
+        }
+      },
+      {
+        "date": "2026-10-17",
+        "campaign": "AC Repair | Search",
+        "changed": "responsive search ad headlines",
+        "results_since": null,
+        "finding": "Ad text changed by auto-apply. The text isn't in this pull.",
+        "verdict": "read it",
+        "action": {"how": "click steps", "steps": "Change history, filter to AC Repair | Search on 2026-10-17, open the ad change and check every new headline against your list: no same-day service, no prices."}
+      }
+    ]
+  },
+  "automation_settings": {
+    "rows": [
+      {"campaign": "Brand | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_OUT", "deciding_fact": "Already off.", "verdict": "already off"},
+      {"campaign": "Furnace Repair | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_IN", "deciding_fact": "Ads must not claim same-day service or prices.", "verdict": "turn off"},
+      {"campaign": "Furnace Repair | Search", "setting": "target_search_network (search partners)", "status": "on", "deciding_fact": "Partner CPA $52.50 vs target $65.00 and Google Search CPA $60.56.", "verdict": "keep"},
+      {"campaign": "AC Repair | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_IN", "deciding_fact": "Ads must not claim same-day service or prices.", "verdict": "turn off"},
+      {"campaign": "Water Heaters | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_OUT", "deciding_fact": "Already off.", "verdict": "already off"},
+      {"campaign": "Plumbing | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_IN", "deciding_fact": "Ads must not claim same-day service or prices.", "verdict": "turn off"},
+      {"campaign": "Plumbing | Search", "setting": "target_content_network (Display expansion)", "status": "on (auto-applied 2026-10-09)", "deciding_fact": "See the auto-applied changes: Display CPA above the campaign's target.", "verdict": "turn off"},
+      {"campaign": "AC Installation | Search", "setting": "TEXT_ASSET_AUTOMATION", "status": "not reported", "deciding_fact": "Ads must not claim same-day service or prices.", "verdict": "check in settings"},
+      {"campaign": "PMax | All services", "setting": "TEXT_ASSET_AUTOMATION", "status": "OPTED_IN", "deciding_fact": "Ads must not claim same-day service or prices.", "verdict": "turn off"},
+      {"campaign": "PMax | All services", "setting": "FINAL_URL_EXPANSION_TEXT_ASSET_AUTOMATION", "status": "OPTED_IN", "deciding_fact": "The site has pages that don't sell: /careers and /blog.", "verdict": "turn off"},
+      {"campaign": "PMax | All services", "setting": "GENERATE_IMAGE_ENHANCEMENT", "status": "OPTED_IN", "deciding_fact": "No brand rules on image edits.", "verdict": "keep"},
+      {"campaign": "PMax | All services", "setting": "GENERATE_IMAGE_EXTRACTION", "status": "OPTED_IN", "deciding_fact": "The site's project photos show customers' homes.", "verdict": "turn off"},
+      {"campaign": "PMax | All services", "setting": "GENERATE_ENHANCED_YOUTUBE_VIDEOS", "status": "OPTED_IN", "deciding_fact": "No videos uploaded, so there is nothing for it to cut.", "verdict": "keep"}
+    ],
+    "how_to_turn_off_asset_automation": "No connector action changes these. Campaigns, the campaign, Settings, then the asset automation section, for each row marked turn off.",
+    "asset_automation_rows_to_turn_off": 6
+  },
+  "optimization_score": {
+    "account": "81%",
+    "by_campaign": {"Brand | Search": "97%", "Furnace Repair | Search": "74%", "AC Repair | Search": "79%", "Water Heaters | Search": "77%", "Plumbing | Search": "80%", "AC Installation | Search": "72%", "PMax | All services": "88%"},
+    "what_it_measures": "Google calls it an estimate of how well the account is set to perform. It is worked out from Google's own open recommendations, so in practice it shows how fully the account follows them.",
+    "what_it_does_not": "Results. Brand | Search scores 97% and AC Installation | Search 72%, but the score says nothing about Furnace Repair's $60 CPA against AC Installation's $183.33.",
+    "dismissing": "The 5 dismissals here also raise the score, because a dismissed recommendation stops counting against it.",
+    "quality_score": "Google states that Quality Score doesn't use it."
+  },
+  "order_to_act": [
+    "1. Pause the four auto-apply types, and switch off the UNKNOWN type in Google Ads, so nothing below is undone or re-applied.",
+    "2. Turn Display expansion off on Plumbing | Search and pause \"ac unit replacement\".",
+    "3. Accept R1 (Furnace Repair budget to $170), R6 (Plumbing sitelinks) and R11 (tag coverage).",
+    "4. Make the adapted changes: R5 (keyword as PHRASE) and R9 (Water Heaters target CPA $57.00).",
+    "5. Dismiss R2, R3, R7, R8 and R10 in Recommendations.",
+    "6. Turn off the asset automation settings marked turn off, in each campaign's settings.",
+    "7. On 2026-11-04, run R4 (broad match on Water Heaters) if the campaign is still at or under target."
+  ],
+  "not_checked": [
+    "Demand Gen ad-level automation: the account has no Demand Gen campaigns.",
+    "Auto-applied changes older than 29 days: only in the Google Ads change history screen."
+  ],
+  "fixes_offered": "Every payload above is marked not run. Nothing changes until you confirm each one."
+}

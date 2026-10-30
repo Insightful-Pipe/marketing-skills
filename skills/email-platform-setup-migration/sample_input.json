@@ -1,0 +1,498 @@
+{
+  "note": "Example data: an invented online yarn store, Thimbleroot Yarn Co., not a real business. Contact counts are the status totals from the audience and the store crosswalk the skill builds by matching the two contact exports on lowercased email (raw exports of about 29,000 rows are summarized here). Every number in expected_output.json follows from this input.",
+  "request": "We're moving our email from Mailchimp to Klaviyo. Cut-over is November 16. Plan it so nobody gets emailed twice or after they unsubscribed.",
+  "mode": "migration",
+  "business": {
+    "name": "Thimbleroot Yarn Co.",
+    "site": "https://www.thimbleroot.example",
+    "store": "Shopify",
+    "currency": "USD"
+  },
+  "run_date": "2026-10-28",
+  "cut_over_date": "2026-11-16",
+  "answers": {
+    "consent_rules": "keep each list's current opt-in setting (single opt-in); no double opt-in markets",
+    "order_emails_sent_by": "Shopify",
+    "sending_domain_on_new_platform": "not set up yet",
+    "customer_journeys": "none (user checked the Automations page)",
+    "automations_confirmed_running": [
+      "Welcome new subscribers",
+      "Abandoned cart",
+      "Product retargeting",
+      "Birthday"
+    ],
+    "sign_up_forms": [
+      {
+        "name": "Footer embed",
+        "where": "site footer, every page",
+        "platform": "Mailchimp embedded form"
+      },
+      {
+        "name": "Newsletter pop-up",
+        "where": "home and collection pages",
+        "platform": "Mailchimp pop-up"
+      }
+    ]
+  },
+  "old_platform": {
+    "platform": "mailchimp",
+    "calls": [
+      "list_lists",
+      "list_members (status counts)",
+      "list_merge_fields",
+      "list_interest_categories",
+      "list_segments",
+      "list_automations",
+      "list_automation_emails",
+      "list_templates",
+      "get_list_signup_forms",
+      "list_stores",
+      "list_campaigns (status=schedule)"
+    ],
+    "audience": {
+      "name": "Thimbleroot Customers",
+      "double_optin": false,
+      "member_status": {
+        "subscribed": 18420,
+        "unsubscribed": 3115,
+        "cleaned": 942,
+        "pending": 386,
+        "transactional": 6210,
+        "archived": 0
+      }
+    },
+    "interest_categories": [
+      {
+        "title": "Craft",
+        "interests": [
+          "Knitting",
+          "Crochet",
+          "Weaving"
+        ],
+        "members_with_any": 10422
+      }
+    ],
+    "tags": [
+      {
+        "name": "wholesale",
+        "members": 214
+      },
+      {
+        "name": "vip",
+        "members": 655
+      }
+    ],
+    "merge_fields": [
+      {
+        "tag": "FNAME",
+        "name": "First name",
+        "type": "text",
+        "filled_subscribed": 17104
+      },
+      {
+        "tag": "LNAME",
+        "name": "Last name",
+        "type": "text",
+        "filled_subscribed": 15388
+      },
+      {
+        "tag": "ADDRESS",
+        "name": "Address",
+        "type": "address",
+        "filled_subscribed": 11920
+      },
+      {
+        "tag": "PHONE",
+        "name": "Phone",
+        "type": "phone",
+        "filled_subscribed": 2940,
+        "e164_formatted": 1812
+      },
+      {
+        "tag": "BIRTHDAY",
+        "name": "Birthday",
+        "type": "birthday (MM/DD)",
+        "filled_subscribed": 5233
+      },
+      {
+        "tag": "MMERGE6",
+        "name": "Favorite fiber",
+        "type": "dropdown (wool, cotton, alpaca, blends)",
+        "filled_subscribed": 6012
+      },
+      {
+        "tag": "MMERGE7",
+        "name": "Signup source",
+        "type": "text",
+        "filled_subscribed": 9771
+      },
+      {
+        "tag": "MMERGE8",
+        "name": "Old loyalty ID",
+        "type": "text",
+        "filled_subscribed": 37
+      }
+    ],
+    "consent_fields": [
+      {
+        "field": "timestamp_opt",
+        "filled_subscribed": 18420
+      },
+      {
+        "field": "ip_opt",
+        "filled_subscribed": 11067
+      },
+      {
+        "field": "source",
+        "filled_subscribed": 18420
+      },
+      {
+        "field": "member_rating",
+        "filled_subscribed": 18420
+      }
+    ],
+    "segments": [
+      {
+        "name": "Bought in last 90 days",
+        "type": "saved",
+        "member_count": 4212,
+        "definition": "purchased in the last 90 days"
+      },
+      {
+        "name": "Knitters",
+        "type": "saved",
+        "member_count": 7904,
+        "definition": "interest Craft is Knitting"
+      },
+      {
+        "name": "Clicked in last 6 months",
+        "type": "saved",
+        "member_count": 6904,
+        "definition": "clicked any campaign in the last 6 months"
+      },
+      {
+        "name": "Workshop 2025 attendees",
+        "type": "static",
+        "member_count": 146,
+        "definition": "static import"
+      },
+      {
+        "name": "UK customers",
+        "type": "saved",
+        "member_count": 1388,
+        "definition": "country is United Kingdom and purchased at least once"
+      },
+      {
+        "name": "Test segment old",
+        "type": "saved",
+        "member_count": 0,
+        "definition": "email contains test"
+      }
+    ],
+    "automations": [
+      {
+        "id": "wf_01",
+        "title": "Welcome new subscribers",
+        "status": "sending",
+        "trigger": "signup to audience",
+        "dated_event": null,
+        "emails_sent_lifetime": 24310,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 0,
+            "template_id": 101
+          },
+          {
+            "position": 2,
+            "delay_days": 2,
+            "template_id": 102
+          },
+          {
+            "position": 3,
+            "delay_days": 5,
+            "template_id": 103
+          }
+        ]
+      },
+      {
+        "id": "wf_02",
+        "title": "Abandoned cart",
+        "status": "sending",
+        "trigger": "abandoned cart (store)",
+        "dated_event": null,
+        "emails_sent_lifetime": 9842,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 0,
+            "template_id": 104
+          }
+        ]
+      },
+      {
+        "id": "wf_03",
+        "title": "Product retargeting",
+        "status": "sending",
+        "trigger": "viewed product (store)",
+        "dated_event": null,
+        "emails_sent_lifetime": 6117,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 1,
+            "template_id": 105
+          }
+        ]
+      },
+      {
+        "id": "wf_04",
+        "title": "Birthday",
+        "status": "sending",
+        "trigger": "date field BIRTHDAY",
+        "dated_event": null,
+        "emails_sent_lifetime": 3402,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 0,
+            "template_id": 106
+          }
+        ]
+      },
+      {
+        "id": "wf_05",
+        "title": "Order follow-up",
+        "status": "paused",
+        "trigger": "first purchase (store)",
+        "dated_event": null,
+        "emails_sent_lifetime": 1205,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 3,
+            "template_id": 107
+          }
+        ]
+      },
+      {
+        "id": "wf_06",
+        "title": "Workshop reminder 2025",
+        "status": "sending",
+        "trigger": "date",
+        "dated_event": "2025-09-14",
+        "emails_sent_lifetime": 188,
+        "emails": [
+          {
+            "position": 1,
+            "delay_days": 0,
+            "template_id": 108
+          }
+        ]
+      }
+    ],
+    "templates": [
+      {
+        "id": 101,
+        "name": "Welcome 1",
+        "date_edited": "2026-04-02"
+      },
+      {
+        "id": 102,
+        "name": "Welcome 2",
+        "date_edited": "2026-04-02"
+      },
+      {
+        "id": 103,
+        "name": "Welcome 3",
+        "date_edited": "2026-04-03"
+      },
+      {
+        "id": 104,
+        "name": "Cart reminder",
+        "date_edited": "2026-02-18"
+      },
+      {
+        "id": 105,
+        "name": "Back in your basket",
+        "date_edited": "2026-02-18"
+      },
+      {
+        "id": 106,
+        "name": "Birthday treat",
+        "date_edited": "2025-11-30"
+      },
+      {
+        "id": 107,
+        "name": "Order thanks",
+        "date_edited": "2025-06-12"
+      },
+      {
+        "id": 108,
+        "name": "Workshop reminder",
+        "date_edited": "2025-08-20"
+      },
+      {
+        "id": 109,
+        "name": "Campaign base 2026",
+        "date_edited": "2026-10-09",
+        "kind": "campaign"
+      },
+      {
+        "id": 110,
+        "name": "Campaign base 2024",
+        "date_edited": "2024-12-01",
+        "kind": "campaign"
+      }
+    ],
+    "store_connected": "Shopify (Mailchimp store integration)",
+    "scheduled_campaigns": [
+      {
+        "title": "Sock club reminder",
+        "send_time": "2026-11-12T15:00:00Z",
+        "recipient_count": 2310
+      },
+      {
+        "title": "Holiday yarn drop",
+        "send_time": "2026-11-20T15:00:00Z",
+        "recipient_count": 18102
+      }
+    ]
+  },
+  "store_crosswalk": {
+    "how": "Mailchimp members matched to Shopify customers by lowercased email; Shopify status is email_marketing_consent.state",
+    "rows": [
+      {
+        "mailchimp": "subscribed",
+        "shopify": "subscribed",
+        "count": 12840
+      },
+      {
+        "mailchimp": "subscribed",
+        "shopify": "not_subscribed",
+        "count": 3950
+      },
+      {
+        "mailchimp": "subscribed",
+        "shopify": "not_in_store",
+        "count": 1630
+      },
+      {
+        "mailchimp": "unsubscribed",
+        "shopify": "subscribed",
+        "count": 1034
+      },
+      {
+        "mailchimp": "unsubscribed",
+        "shopify": "not_subscribed",
+        "count": 1701
+      },
+      {
+        "mailchimp": "unsubscribed",
+        "shopify": "not_in_store",
+        "count": 380
+      },
+      {
+        "mailchimp": "cleaned",
+        "shopify": "subscribed",
+        "count": 242
+      },
+      {
+        "mailchimp": "cleaned",
+        "shopify": "not_subscribed",
+        "count": 512
+      },
+      {
+        "mailchimp": "cleaned",
+        "shopify": "not_in_store",
+        "count": 188
+      },
+      {
+        "mailchimp": "pending",
+        "shopify": "not_subscribed",
+        "count": 214
+      },
+      {
+        "mailchimp": "pending",
+        "shopify": "not_in_store",
+        "count": 172
+      },
+      {
+        "mailchimp": "transactional",
+        "shopify": "not_subscribed",
+        "count": 6210
+      },
+      {
+        "mailchimp": "not_in_mailchimp",
+        "shopify": "subscribed",
+        "count": 418
+      }
+    ]
+  },
+  "new_platform": {
+    "platform": "klaviyo",
+    "calls": [
+      "get_lists",
+      "get_metrics",
+      "get_events (per metric, 7 days)",
+      "get_catalog_items"
+    ],
+    "lists": [
+      {
+        "name": "Preview List",
+        "opt_in_process": "single_opt_in"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "Placed Order",
+        "integration": "Shopify"
+      },
+      {
+        "name": "Started Checkout",
+        "integration": "Shopify"
+      },
+      {
+        "name": "Ordered Product",
+        "integration": "Shopify"
+      },
+      {
+        "name": "Fulfilled Order",
+        "integration": "Shopify"
+      },
+      {
+        "name": "Active on Site",
+        "integration": "Klaviyo (site script)"
+      }
+    ],
+    "event_window": {
+      "start": "2026-10-21",
+      "end": "2026-10-27"
+    },
+    "event_counts": {
+      "Placed Order": 412,
+      "Started Checkout": 1018,
+      "Active on Site": 3904
+    },
+    "placed_order_value_sample": {
+      "sampled": 50,
+      "with_value": 50
+    },
+    "catalog_items": 1184
+  },
+  "store": {
+    "platform": "shopify",
+    "calls": [
+      "get_orders_count",
+      "get_checkouts",
+      "get_products_count (status=active)"
+    ],
+    "window": {
+      "start": "2026-10-21",
+      "end": "2026-10-27"
+    },
+    "orders": 431,
+    "abandoned_checkouts": 604,
+    "active_products": 1240
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "request": "Hey Claude, I just added the \"html-email-template-builder\" skill. Turn this copy into an HTML email for Klaviyo. Use the brand from our website, and make sure it works in Outlook and dark mode.",
+  "mode": "build",
+  "email_job": "marketing: a feature announcement to existing customers",
+  "send_platform": "klaviyo",
+  "run_date": "2026-10-28",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "language": {
+    "lang": "en",
+    "dir": "ltr"
+  },
+  "copy_from_user": {
+    "subject": "New: take a deposit when clients book",
+    "preview_text": "Cut no-shows with a deposit step on your booking page. Set it up in two minutes.",
+    "headline": "Take a deposit when clients book",
+    "intro": "Deposits are now part of your booking page. Ask for a fixed amount or a share of the price, and the money is in your account before the client walks in.",
+    "cards": [
+      {
+        "title": "Fewer no-shows",
+        "text": "Clients who pay a deposit are far more likely to turn up, and you keep the deposit if they don't."
+      },
+      {
+        "title": "Your rules",
+        "text": "Choose which services need a deposit, how much, and how late a client can cancel for a refund."
+      }
+    ],
+    "button": {
+      "label": "Turn on deposits",
+      "url": "https://www.example.com/features/payments/"
+    },
+    "secondary_link": {
+      "label": "Read the deposit policy guide",
+      "url": "https://www.example.com/blog/deposit-policy/"
+    },
+    "sign_off": "The Example Booking Software team",
+    "footer_reason": "You're getting this email because you have an Example Booking Software account."
+  },
+  "assets_from_user": {
+    "logo_png": {
+      "url": "https://www.example.com/email/logo-dark@2x.png",
+      "file_width": 400,
+      "file_height": 96,
+      "note": "dark logo on a transparent background"
+    },
+    "hero": {
+      "url": "https://www.example.com/email/deposits-hero@2x.png",
+      "file_width": 1200,
+      "file_height": 600,
+      "alt": "Booking page with a deposit step before the confirm button"
+    }
+  },
+  "data_pulled": {
+    "crawler_brand_extractor": {
+      "call": {
+        "platform": "crawler",
+        "workspace_id": 1,
+        "action": "brand-extractor",
+        "url": "https://www.example.com/",
+        "timeout": 30000,
+        "wait_for_load": 2000
+      },
+      "response": {
+        "status": "success",
+        "data": {
+          "theme": "light",
+          "colors": {
+            "primary": "#3B82F6",
+            "accent": "#F59E0B",
+            "background": "#FFFFFF",
+            "text": "#1F2937"
+          },
+          "typography": {
+            "heading": "Sora",
+            "body": "ui-sans-serif",
+            "sizes": {
+              "h1": "48px",
+              "h2": "32px",
+              "body": "18px"
+            }
+          },
+          "spacing": {
+            "baseUnit": 8,
+            "borderRadius": "6px"
+          },
+          "images": {
+            "logo": "https://www.example.com/assets/logo.svg",
+            "favicon": "https://www.example.com/favicon.ico",
+            "ogImage": "https://www.example.com/assets/social-share-banner.png"
+          },
+          "primaryButton": {
+            "text": "Start booking",
+            "background": "#3B82F6",
+            "textColor": "#FFFFFF",
+            "borderRadius": "6px"
+          },
+          "secondaryButton": {
+            "text": "How do deposits work? Clients pay when they book and the amount comes off the final bill.",
+            "background": "#FFFFFF",
+            "textColor": "#1F2937",
+            "borderRadius": "0px"
+          },
+          "url": "https://www.example.com/"
+        }
+      }
+    },
+    "klaviyo_get_account_details": {
+      "call": {
+        "platform": "klaviyo",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "get_account_details"
+      },
+      "response": {
+        "status": "success",
+        "data": [
+          {
+            "id": "XyZ123",
+            "contact_information": {
+              "default_sender_name": "Example Booking Software",
+              "default_sender_email": "hello@example.com",
+              "website_url": "https://www.example.com",
+              "organization_name": "Example Booking Software",
+              "street_address": {
+                "address1": "100 Example Street",
+                "address2": "Suite 4",
+                "city": "Springfield",
+                "region": "IL",
+                "country": "United States",
+                "zip": "62701"
+              }
+            },
+            "timezone": "America/New_York",
+            "preferred_currency": "USD",
+            "locale": "en-US"
+          }
+        ]
+      }
+    },
+    "klaviyo_get_email_templates": {
+      "call": {
+        "platform": "klaviyo",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "get_email_templates",
+        "fields[template]": "name,editor_type,html,text,updated",
+        "auto_paginate": true
+      },
+      "response": {
+        "status": "success",
+        "data": [
+          {
+            "id": "TmPl01",
+            "name": "Monthly product update",
+            "editor_type": "USER_DRAGGABLE",
+            "updated": "2026-08-14T09:12:00+00:00",
+            "html": "<html><body><table><tr><td><img src=\"https://www.example.com/assets/logo.svg\"></td></tr><tr><td>{{ content }}</td></tr><tr><td>{% unsubscribe %}</td></tr></table></body></html>",
+            "text": null
+          },
+          {
+            "id": "TmPl02",
+            "name": "test template",
+            "editor_type": "CODE",
+            "updated": "2026-05-02T15:40:00+00:00",
+            "html": "<html><body><p>Test</p></body></html>",
+            "text": null
+          }
+        ]
+      }
+    }
+  },
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The HTML, the plain text and every check result are built and measured by the script from this input."
+}

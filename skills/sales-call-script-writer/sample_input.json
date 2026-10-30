@@ -1,0 +1,560 @@
+{
+  "request": "Hey Claude, I just added the \"sales-call-script-writer\" skill. Write our cold call guide, a 30-minute discovery call guide that fills our CRM fields, and a demo flow for clinics and for salon groups. Then score the discovery call I pasted against the guide.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "brief": {
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "offer": "online booking, reminders and payments for salons, clinics, studios and personal trainers. The calls aim at the Business plan ($99 a month, up to 20 staff) for businesses with more than one location.",
+    "sales_motion": {
+      "who_calls": "two SDRs book discovery calls; one account executive runs discovery and demos",
+      "direction": "outbound to lists of multi-location clinics and salons, plus inbound demo requests from /demo/",
+      "call_lengths_minutes": {
+        "cold": 5,
+        "discovery": 30,
+        "demo": 30
+      }
+    },
+    "personas": [
+      {
+        "persona": "Practice manager, multi-location clinic",
+        "cares_about": "a full schedule, fewer no-shows, one calendar across sites, less time on the phone"
+      },
+      {
+        "persona": "Owner, salon group with 2 to 4 locations",
+        "cares_about": "chair time sold, deposits for long appointments, stylists who keep their own clients"
+      }
+    ],
+    "qualification_fields": [
+      {
+        "field": "current_tool",
+        "label": "Current booking tool",
+        "bant": "N",
+        "filled_when": "a tool name, or 'phone and paper'"
+      },
+      {
+        "field": "locations_staff",
+        "label": "Locations and bookable staff",
+        "bant": "N",
+        "filled_when": "two numbers: locations and staff who take bookings"
+      },
+      {
+        "field": "monthly_no_shows",
+        "label": "No-shows a month",
+        "bant": "N",
+        "filled_when": "a count or a percentage of appointments"
+      },
+      {
+        "field": "decision_maker",
+        "label": "Who signs",
+        "bant": "A",
+        "filled_when": "the role of the person who signs, and whether they join the demo"
+      },
+      {
+        "field": "budget_range",
+        "label": "Budget range",
+        "bant": "B",
+        "filled_when": "a monthly amount, or what they pay today for the current tool"
+      },
+      {
+        "field": "switch_date",
+        "label": "Switch date",
+        "bant": "T",
+        "filled_when": "a month, or the date the current contract ends"
+      },
+      {
+        "field": "success_measure",
+        "label": "What success looks like",
+        "bant": "N",
+        "filled_when": "one number they would track after 90 days"
+      }
+    ],
+    "approved_claims": [
+      {
+        "claim": "Automatic SMS and email reminders, deposits at booking, two-way calendar sync, one calendar across locations",
+        "source": "https://www.example.com/features/reminders/"
+      },
+      {
+        "claim": "Business plan: up to 20 bookable staff, priced by bookable staff, not by location",
+        "source": "https://www.example.com/pricing/"
+      },
+      {
+        "claim": "The onboarding team imports existing appointments for Business plan customers",
+        "source": "the brief (onboarding team)"
+      }
+    ],
+    "proof": [
+      {
+        "persona": "Practice manager, multi-location clinic",
+        "proof": "An invented customer, a three-location physio clinic, went from 11% no-shows to 6% in 90 days after turning on reminders and deposits",
+        "source": "case study in the brief"
+      }
+    ],
+    "reasons_for_calling": [
+      {
+        "persona": "Practice manager, multi-location clinic",
+        "reason": "opened a new location this year (from the list)"
+      },
+      {
+        "persona": "Owner, salon group with 2 to 4 locations",
+        "reason": "takes bookings by phone and direct message only (from the list)"
+      }
+    ]
+  },
+  "call_notes": [
+    {
+      "note": 1,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "no-shows",
+        "phone tag at the front desk"
+      ],
+      "replies": [
+        {
+          "label": "already use a booking tool",
+          "quote": "We're on a scheduler already, it came with the practice software."
+        }
+      ],
+      "outcome": "meeting booked"
+    },
+    {
+      "note": 2,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "one calendar across locations",
+        "no-shows"
+      ],
+      "replies": [
+        {
+          "label": "already use a booking tool",
+          "quote": "We have something, it's fine."
+        },
+        {
+          "label": "send me an email",
+          "quote": "Just email me something."
+        }
+      ],
+      "outcome": "follow-up"
+    },
+    {
+      "note": 3,
+      "persona": "Owner, salon group with 2 to 4 locations",
+      "pains": [
+        "deposits chased by hand",
+        "phone tag at the front desk"
+      ],
+      "replies": [
+        {
+          "label": "staff won't learn a new system",
+          "quote": "My stylists hate new apps."
+        }
+      ],
+      "outcome": "no"
+    },
+    {
+      "note": 4,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "no-shows"
+      ],
+      "replies": [
+        {
+          "label": "price per location",
+          "quote": "Everything charges us per site, it adds up."
+        },
+        {
+          "label": "already use a booking tool",
+          "quote": "We use the one in our EHR."
+        }
+      ],
+      "outcome": "meeting booked"
+    },
+    {
+      "note": 5,
+      "persona": "Owner, salon group with 2 to 4 locations",
+      "pains": [
+        "deposits chased by hand"
+      ],
+      "replies": [
+        {
+          "label": "clients prefer to phone",
+          "quote": "My clients like to call, they're older."
+        },
+        {
+          "label": "staff won't learn a new system",
+          "quote": "The girls won't use it."
+        }
+      ],
+      "outcome": "follow-up"
+    },
+    {
+      "note": 6,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "phone tag at the front desk",
+        "one calendar across locations"
+      ],
+      "replies": [
+        {
+          "label": "send me an email",
+          "quote": "Send it over and I'll look."
+        }
+      ],
+      "outcome": "no"
+    },
+    {
+      "note": 7,
+      "persona": "Owner, salon group with 2 to 4 locations",
+      "pains": [
+        "deposits chased by hand",
+        "no-shows"
+      ],
+      "replies": [
+        {
+          "label": "price per location",
+          "quote": "With three shops that's three bills, right?"
+        }
+      ],
+      "outcome": "meeting booked"
+    },
+    {
+      "note": 8,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "no-shows",
+        "one calendar across locations"
+      ],
+      "replies": [
+        {
+          "label": "already use a booking tool",
+          "quote": "We signed with someone last year."
+        },
+        {
+          "label": "contract renews later",
+          "quote": "We're locked in till spring."
+        }
+      ],
+      "outcome": "follow-up"
+    },
+    {
+      "note": 9,
+      "persona": "Owner, salon group with 2 to 4 locations",
+      "pains": [
+        "phone tag at the front desk",
+        "deposits chased by hand"
+      ],
+      "replies": [
+        {
+          "label": "staff won't learn a new system",
+          "quote": "Training my team is the hard part."
+        },
+        {
+          "label": "clients prefer to phone",
+          "quote": "People here just ring."
+        }
+      ],
+      "outcome": "no"
+    },
+    {
+      "note": 10,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "no-shows"
+      ],
+      "replies": [
+        {
+          "label": "data migration worry",
+          "quote": "Moving all our patients over sounds like a nightmare."
+        },
+        {
+          "label": "already use a booking tool",
+          "quote": "We have a tool already."
+        }
+      ],
+      "outcome": "meeting booked"
+    },
+    {
+      "note": 11,
+      "persona": "Owner, salon group with 2 to 4 locations",
+      "pains": [
+        "no-shows",
+        "deposits chased by hand"
+      ],
+      "replies": [
+        {
+          "label": "staff won't learn a new system",
+          "quote": "Half my team is part-time."
+        }
+      ],
+      "outcome": "follow-up"
+    },
+    {
+      "note": 12,
+      "persona": "Practice manager, multi-location clinic",
+      "pains": [
+        "one calendar across locations",
+        "phone tag at the front desk"
+      ],
+      "replies": [
+        {
+          "label": "data migration worry",
+          "quote": "How would we even move the history?"
+        },
+        {
+          "label": "send me an email",
+          "quote": "Email is better for me."
+        }
+      ],
+      "outcome": "meeting booked"
+    }
+  ],
+  "search_console": {
+    "request": {
+      "platform": "google-search-console",
+      "action": "search_analytics",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "site_url": "https://www.example.com/",
+      "dimensions": [
+        "query"
+      ],
+      "start_date": "2026-07-28",
+      "end_date": "2026-10-25",
+      "row_limit": 5000
+    },
+    "rows": [
+      {
+        "query": "example booking software",
+        "impressions": 2400,
+        "clicks": 610,
+        "ctr": 25.42
+      },
+      {
+        "query": "examplebooking login",
+        "impressions": 900,
+        "clicks": 410,
+        "ctr": 45.56
+      },
+      {
+        "query": "online booking software for clinics",
+        "impressions": 1900,
+        "clicks": 45,
+        "ctr": 2.37
+      },
+      {
+        "query": "how to reduce no shows at a clinic",
+        "impressions": 1700,
+        "clicks": 52,
+        "ctr": 3.06
+      },
+      {
+        "query": "booking software for multiple locations",
+        "impressions": 1300,
+        "clicks": 38,
+        "ctr": 2.92
+      },
+      {
+        "query": "salon booking app",
+        "impressions": 1250,
+        "clicks": 22,
+        "ctr": 1.76
+      },
+      {
+        "query": "can clients pay a deposit when booking online",
+        "impressions": 820,
+        "clicks": 31,
+        "ctr": 3.78
+      },
+      {
+        "query": "what is a good no show rate for a physio clinic",
+        "impressions": 760,
+        "clicks": 19,
+        "ctr": 2.5
+      },
+      {
+        "query": "appointment reminder text",
+        "impressions": 700,
+        "clicks": 33,
+        "ctr": 4.71
+      },
+      {
+        "query": "how to move appointments to a new booking system",
+        "impressions": 540,
+        "clicks": 14,
+        "ctr": 2.59
+      },
+      {
+        "query": "example booking vs competitor a",
+        "impressions": 480,
+        "clicks": 40,
+        "ctr": 8.33
+      },
+      {
+        "query": "competitor a alternatives",
+        "impressions": 430,
+        "clicks": 9,
+        "ctr": 2.09
+      },
+      {
+        "query": "does online booking reduce phone calls",
+        "impressions": 390,
+        "clicks": 11,
+        "ctr": 2.82
+      },
+      {
+        "query": "salon deposit policy",
+        "impressions": 380,
+        "clicks": 16,
+        "ctr": 4.21
+      },
+      {
+        "query": "scheduling software cost per location",
+        "impressions": 310,
+        "clicks": 7,
+        "ctr": 2.26
+      },
+      {
+        "query": "front desk checklist",
+        "impressions": 300,
+        "clicks": 12,
+        "ctr": 4.0
+      }
+    ],
+    "meta": {
+      "total_rows_fetched": 16,
+      "row_limit": 5000
+    }
+  },
+  "transcript": {
+    "call_type": "discovery",
+    "booked_minutes": 30,
+    "consent_to_record": true,
+    "company": "Example Dental Partners (example-dental.example), an invented three-office dental group",
+    "lines": [
+      {
+        "t": "00:00",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Thanks for making the time, Marcus. I've got us down for thirty minutes. I'd like to hear how bookings work across your sites today, see if the problems are ones we solve, and if they are, agree on a next step. Does that work?"
+      },
+      {
+        "t": "00:20",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Sure, that works."
+      },
+      {
+        "t": "00:24",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Great. So, how do patients book with you today?"
+      },
+      {
+        "t": "00:29",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Mostly by phone. We use the scheduler that came with our practice software, and the front desk at each office keeps its own book."
+      },
+      {
+        "t": "00:45",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "And how many offices, and how many people take bookings?"
+      },
+      {
+        "t": "00:50",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Three offices now, the third opened in June. Eleven hygienists and dentists who get booked, plus four front desk staff."
+      },
+      {
+        "t": "01:10",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Let me tell you a bit about us, because I think it fits. We do online booking, automatic text and email reminders, deposits at booking and two-way calendar sync, and on the Business plan everything sits in one calendar across all your locations, so the front desk at one office can see and fill gaps at the others. Our customers usually turn on reminders in the first week and deposits in the second, and we move the existing appointments over for you. Most clinics your size are live in about two weeks, and the reminders alone tend to change the no-show picture quickly. We also integrate with the big calendar tools, so your team doesn't have to double-enter anything."
+      },
+      {
+        "t": "02:05",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Okay. No-shows are a thing for us, for sure."
+      },
+      {
+        "t": "02:09",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "How many would you say you get in a month?"
+      },
+      {
+        "t": "02:12",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Honestly, quite a lot. More since the new office opened."
+      },
+      {
+        "t": "02:20",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Has that changed how the front desk spends its day?"
+      },
+      {
+        "t": "02:25",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "They're on the phone half the morning confirming tomorrow's patients, and they still get gaps."
+      },
+      {
+        "t": "03:40",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Is the phone time or the gaps the bigger problem for you?"
+      },
+      {
+        "t": "03:46",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "The gaps. An empty hygiene chair is lost money."
+      },
+      {
+        "t": "05:10",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Who else would be involved in choosing a new system?"
+      },
+      {
+        "t": "05:14",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "I'd run it by the partners. Dr. Okafor, the managing partner, signs anything like this."
+      },
+      {
+        "t": "05:30",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Would she want to see a demo?"
+      },
+      {
+        "t": "05:33",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Probably, if I tell her it's worth it."
+      },
+      {
+        "t": "06:02",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "And timing, is there a contract with the current scheduler?"
+      },
+      {
+        "t": "06:06",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "It renews in March. We'd want to decide before February."
+      },
+      {
+        "t": "07:15",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "What would this cost for three offices?"
+      },
+      {
+        "t": "07:18",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "The Business plan covers up to twenty bookable staff, so you'd fit in one plan. I'll put the details in an email."
+      },
+      {
+        "t": "07:30",
+        "speaker": "Marcus (operations manager, Example Dental Partners)",
+        "text": "Okay, send me something and we'll find a time."
+      },
+      {
+        "t": "07:34",
+        "speaker": "Dana (account executive, Example Booking Software)",
+        "text": "Will do. Thanks, Marcus."
+      }
+    ]
+  },
+  "connectors": {
+    "google-search-console": "connected (invented property for this example)",
+    "crawler": "not used: the offer was pasted in the brief",
+    "callrail": "not connected: the transcript was pasted"
+  },
+  "note": "Example data: an invented online booking software company, its call notes, a Search Console pull and a discovery call, not a real business. Every number in expected_output.json follows from this input. The people in the call notes and the transcript are invented."
+}

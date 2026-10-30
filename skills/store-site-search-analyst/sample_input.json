@@ -1,0 +1,928 @@
+{
+  "note": "Example data: an invented online outdoor gear store, not a real business. Every number in expected_output.json follows from this input. The synonym words and the two retitled product names in the output are the analyst's proposals; the script checks each one against the catalogue.",
+  "request": "Hey Claude, I just added the \"store-site-search-analyst\" skill. Here are our GA4 search terms for the last 30 days and our Shopify products export. Which searches fail, what should we fix first, and which products should we pin?",
+  "store": {
+    "name": "Brackenfold Trail Supply (invented outdoor gear store)",
+    "site": "https://www.brackenfold.example",
+    "platform": "Shopify",
+    "currency": "USD",
+    "search_url": "https://www.brackenfold.example/search?q="
+  },
+  "date_range": {
+    "start": "2026-09-28",
+    "end": "2026-10-27"
+  },
+  "sources": {
+    "search_terms": "GA4 funnel exploration export: step 1 view_search_results broken down by search term, step 2 purchase (users)",
+    "store_totals": "GA4 report: totalUsers, totalPurchasers, transactions, purchaseRevenue for the same dates",
+    "tracking_check": "GA4 report: eventCount of view_search_results, split by searchTerm filled in, or empty or (not set)",
+    "catalogue": "Shopify products export plus orders per product for the same dates",
+    "collections": "Shopify collections list"
+  },
+  "tracking_check": {
+    "view_search_results_events": 6240,
+    "events_without_search_term": 120,
+    "search_query_parameter": "q",
+    "enhanced_measurement_site_search": "on"
+  },
+  "store_totals": {
+    "users": 48000,
+    "purchasers": 1200,
+    "transactions": 1290,
+    "purchase_revenue": 123840.0
+  },
+  "search_funnel_total": {
+    "searchers": 4480,
+    "bought_after_searching": 225
+  },
+  "search_terms": [
+    {
+      "search_term": "tent",
+      "searches": 700,
+      "searchers": 545,
+      "bought_after_searching": 44
+    },
+    {
+      "search_term": "Tents",
+      "searches": 120,
+      "searchers": 95,
+      "bought_after_searching": 8
+    },
+    {
+      "search_term": "sleeping bag",
+      "searches": 500,
+      "searchers": 385,
+      "bought_after_searching": 26
+    },
+    {
+      "search_term": "sleeping bags",
+      "searches": 110,
+      "searchers": 85,
+      "bought_after_searching": 5
+    },
+    {
+      "search_term": "headlamp",
+      "searches": 540,
+      "searchers": 420,
+      "bought_after_searching": 34
+    },
+    {
+      "search_term": "rain jacket",
+      "searches": 430,
+      "searchers": 330,
+      "bought_after_searching": 3
+    },
+    {
+      "search_term": "backpack",
+      "searches": 380,
+      "searchers": 300,
+      "bought_after_searching": 17
+    },
+    {
+      "search_term": "water filter",
+      "searches": 300,
+      "searchers": 240,
+      "bought_after_searching": 16
+    },
+    {
+      "search_term": "hiking boots",
+      "searches": 290,
+      "searchers": 230,
+      "bought_after_searching": 2
+    },
+    {
+      "search_term": "sale",
+      "searches": 260,
+      "searchers": 210,
+      "bought_after_searching": 9
+    },
+    {
+      "search_term": "sleeping pad",
+      "searches": 210,
+      "searchers": 170,
+      "bought_after_searching": 12
+    },
+    {
+      "search_term": "wool socks",
+      "searches": 180,
+      "searchers": 150,
+      "bought_after_searching": 11
+    },
+    {
+      "search_term": "camp stove",
+      "searches": 170,
+      "searchers": 135,
+      "bought_after_searching": 8
+    },
+    {
+      "search_term": "water bottle",
+      "searches": 160,
+      "searchers": 130,
+      "bought_after_searching": 5
+    },
+    {
+      "search_term": "rain coat",
+      "searches": 160,
+      "searchers": 125,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "summit 2 tent",
+      "searches": 150,
+      "searchers": 120,
+      "bought_after_searching": 14
+    },
+    {
+      "search_term": "puffer jacket",
+      "searches": 150,
+      "searchers": 120,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "ultralight tent",
+      "searches": 140,
+      "searchers": 110,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "bear spray",
+      "searches": 140,
+      "searchers": 115,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "trail runners",
+      "searches": 120,
+      "searchers": 95,
+      "bought_after_searching": 6
+    },
+    {
+      "search_term": "trekking poles",
+      "searches": 110,
+      "searchers": 90,
+      "bought_after_searching": 2
+    },
+    {
+      "search_term": "gifts",
+      "searches": 95,
+      "searchers": 80,
+      "bought_after_searching": 3
+    },
+    {
+      "search_term": "camp chair",
+      "searches": 90,
+      "searchers": 75,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "insulated bottle",
+      "searches": 85,
+      "searchers": 70,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "sleepng bag",
+      "searches": 75,
+      "searchers": 60,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "first aid kit",
+      "searches": 70,
+      "searchers": 58,
+      "bought_after_searching": 4
+    },
+    {
+      "search_term": "kayak",
+      "searches": 70,
+      "searchers": 60,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "beanie",
+      "searches": 65,
+      "searchers": 52,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "hedlamp",
+      "searches": 60,
+      "searchers": 48,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "fishing rod",
+      "searches": 45,
+      "searchers": 38,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "BF-HL400",
+      "searches": 40,
+      "searchers": 32,
+      "bought_after_searching": 5
+    },
+    {
+      "search_term": "ski goggles",
+      "searches": 30,
+      "searchers": 25,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "carabeener",
+      "searches": 25,
+      "searchers": 20,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "lantern",
+      "searches": 9,
+      "searchers": 8,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "cook pot",
+      "searches": 8,
+      "searchers": 7,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "daypack",
+      "searches": 7,
+      "searchers": 6,
+      "bought_after_searching": 1
+    },
+    {
+      "search_term": "tarp",
+      "searches": 6,
+      "searchers": 5,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "snowshoes",
+      "searches": 6,
+      "searchers": 5,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "down vest",
+      "searches": 5,
+      "searchers": 4,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "hammock",
+      "searches": 5,
+      "searchers": 4,
+      "bought_after_searching": 0
+    },
+    {
+      "search_term": "gift card",
+      "searches": 4,
+      "searchers": 4,
+      "bought_after_searching": 1
+    }
+  ],
+  "catalogue": [
+    {
+      "product_id": 9100000001,
+      "handle": "summit-2-tent",
+      "title": "Summit 2 Tent",
+      "product_type": "Tents",
+      "vendor": "Brackenfold",
+      "tags": [
+        "tent",
+        "backpacking",
+        "2-person"
+      ],
+      "sku": "BF-TN200",
+      "status": "active",
+      "inventory": 34,
+      "orders_30d": 41,
+      "price": 289,
+      "description": "An ultralight two-person backpacking tent that packs to the size of a water bottle."
+    },
+    {
+      "product_id": 9100000002,
+      "handle": "summit-3-tent",
+      "title": "Summit 3 Tent",
+      "product_type": "Tents",
+      "vendor": "Brackenfold",
+      "tags": [
+        "tent",
+        "backpacking",
+        "3-person"
+      ],
+      "sku": "BF-TN300",
+      "status": "active",
+      "inventory": 12,
+      "orders_30d": 18,
+      "price": 349,
+      "description": "The ultralight three-person version of our best-selling tent."
+    },
+    {
+      "product_id": 9100000003,
+      "handle": "basecamp-4-tent",
+      "title": "Basecamp 4 Tent",
+      "product_type": "Tents",
+      "vendor": "Brackenfold",
+      "tags": [
+        "tent",
+        "family",
+        "4-person"
+      ],
+      "sku": "BF-TN400",
+      "status": "active",
+      "inventory": 20,
+      "orders_30d": 22,
+      "price": 299,
+      "description": "A roomy family tent with two doors and a full rainfly."
+    },
+    {
+      "product_id": 9100000004,
+      "handle": "trail-shelter-tarp",
+      "title": "Trail Shelter Tarp",
+      "product_type": "Shelters",
+      "vendor": "Brackenfold",
+      "tags": [
+        "tarp",
+        "shelter"
+      ],
+      "sku": "BF-TP100",
+      "status": "active",
+      "inventory": 40,
+      "orders_30d": 9,
+      "price": 89,
+      "description": "An ultralight silnylon tarp for fast and light trips."
+    },
+    {
+      "product_id": 9100000005,
+      "handle": "alpine-20-sleeping-bag",
+      "title": "Alpine 20 Sleeping Bag",
+      "product_type": "Sleeping Bags",
+      "vendor": "Brackenfold",
+      "tags": [
+        "sleeping bag",
+        "down",
+        "3-season"
+      ],
+      "sku": "BF-SB020",
+      "status": "active",
+      "inventory": 25,
+      "orders_30d": 30,
+      "price": 249,
+      "description": "A 20 degree down sleeping bag for three-season trips."
+    },
+    {
+      "product_id": 9100000006,
+      "handle": "valley-40-sleeping-bag",
+      "title": "Valley 40 Sleeping Bag",
+      "product_type": "Sleeping Bags",
+      "vendor": "Brackenfold",
+      "tags": [
+        "sleeping bag",
+        "synthetic",
+        "summer"
+      ],
+      "sku": "BF-SB040",
+      "status": "active",
+      "inventory": 30,
+      "orders_30d": 26,
+      "price": 129,
+      "description": "A light synthetic bag for summer nights."
+    },
+    {
+      "product_id": 9100000007,
+      "handle": "kids-explorer-sleeping-bag",
+      "title": "Kids Explorer Sleeping Bag",
+      "product_type": "Sleeping Bags",
+      "vendor": "Brackenfold",
+      "tags": [
+        "sleeping bag",
+        "kids"
+      ],
+      "sku": "BF-SB010",
+      "status": "active",
+      "inventory": 15,
+      "orders_30d": 8,
+      "price": 69,
+      "description": "A warm sleeping bag sized for children."
+    },
+    {
+      "product_id": 9100000008,
+      "handle": "air-sleeping-pad",
+      "title": "Air Sleeping Pad",
+      "product_type": "Sleeping Pads",
+      "vendor": "Brackenfold",
+      "tags": [
+        "sleeping pad",
+        "inflatable"
+      ],
+      "sku": "BF-SP100",
+      "status": "active",
+      "inventory": 50,
+      "orders_30d": 33,
+      "price": 119,
+      "description": "An inflatable pad with an R-value of 4.2."
+    },
+    {
+      "product_id": 9100000009,
+      "handle": "ridge-rain-jacket-mens",
+      "title": "Ridge Rain Jacket (Men's)",
+      "product_type": "Jackets",
+      "vendor": "Brackenfold",
+      "tags": [
+        "rain jacket",
+        "waterproof",
+        "mens"
+      ],
+      "sku": "BF-RJ100M",
+      "status": "active",
+      "inventory": 6,
+      "orders_30d": 15,
+      "price": 159,
+      "description": "A three-layer waterproof jacket with pit zips."
+    },
+    {
+      "product_id": 9100000010,
+      "handle": "ridge-rain-jacket-womens",
+      "title": "Ridge Rain Jacket (Women's)",
+      "product_type": "Jackets",
+      "vendor": "Brackenfold",
+      "tags": [
+        "rain jacket",
+        "waterproof",
+        "womens"
+      ],
+      "sku": "BF-RJ100W",
+      "status": "active",
+      "inventory": 8,
+      "orders_30d": 10,
+      "price": 159,
+      "description": "A three-layer waterproof jacket with pit zips, women's fit."
+    },
+    {
+      "product_id": 9100000011,
+      "handle": "kids-puddle-rain-jacket",
+      "title": "Kids Puddle Rain Jacket",
+      "product_type": "Jackets",
+      "vendor": "Brackenfold",
+      "tags": [
+        "rain jacket",
+        "kids"
+      ],
+      "sku": "BF-RJ050K",
+      "status": "active",
+      "inventory": 40,
+      "orders_30d": 4,
+      "price": 59,
+      "description": "A bright waterproof jacket for kids."
+    },
+    {
+      "product_id": 9100000012,
+      "handle": "packable-rain-shell",
+      "title": "Packable Rain Shell",
+      "product_type": "Jackets",
+      "vendor": "Brackenfold",
+      "tags": [
+        "rain",
+        "packable",
+        "waterproof"
+      ],
+      "sku": "BF-RS200",
+      "status": "active",
+      "inventory": 24,
+      "orders_30d": 12,
+      "price": 129,
+      "description": "A waterproof shell that packs into its own pocket."
+    },
+    {
+      "product_id": 9100000013,
+      "handle": "ember-down-jacket",
+      "title": "Ember Down Jacket",
+      "product_type": "Jackets",
+      "vendor": "Brackenfold",
+      "tags": [
+        "down",
+        "insulated"
+      ],
+      "sku": "BF-DJ300",
+      "status": "active",
+      "inventory": 18,
+      "orders_30d": 20,
+      "price": 219,
+      "description": "An 800-fill down jacket for cold camps."
+    },
+    {
+      "product_id": 9100000014,
+      "handle": "ember-down-vest",
+      "title": "Ember Down Vest",
+      "product_type": "Vests",
+      "vendor": "Brackenfold",
+      "tags": [
+        "down",
+        "insulated"
+      ],
+      "sku": "BF-DV300",
+      "status": "active",
+      "inventory": 14,
+      "orders_30d": 7,
+      "price": 149,
+      "description": "The vest version of the Ember Down Jacket."
+    },
+    {
+      "product_id": 9100000015,
+      "handle": "trailblazer-hiking-boots",
+      "title": "Trailblazer Hiking Boots",
+      "product_type": "Footwear",
+      "vendor": "Brackenfold",
+      "tags": [
+        "hiking boots",
+        "waterproof"
+      ],
+      "sku": "BF-HB100",
+      "status": "active",
+      "inventory": 0,
+      "orders_30d": 14,
+      "price": 179,
+      "description": "Waterproof leather boots for rough trails."
+    },
+    {
+      "product_id": 9100000016,
+      "handle": "crestline-hiking-boots-womens",
+      "title": "Crestline Hiking Boots (Women's)",
+      "product_type": "Footwear",
+      "vendor": "Brackenfold",
+      "tags": [
+        "hiking boots",
+        "womens"
+      ],
+      "sku": "BF-HB200W",
+      "status": "active",
+      "inventory": 0,
+      "orders_30d": 6,
+      "price": 169,
+      "description": "Light waterproof boots with a women's last."
+    },
+    {
+      "product_id": 9100000017,
+      "handle": "swift-trail-runners",
+      "title": "Swift Trail Runners",
+      "product_type": "Footwear",
+      "vendor": "Brackenfold",
+      "tags": [
+        "trail running",
+        "shoes"
+      ],
+      "sku": "BF-TR100",
+      "status": "active",
+      "inventory": 22,
+      "orders_30d": 16,
+      "price": 139,
+      "description": "Grippy trail shoes for fast hiking and running."
+    },
+    {
+      "product_id": 9100000018,
+      "handle": "lumen-400-headlamp",
+      "title": "Lumen 400 Headlamp",
+      "product_type": "Lighting",
+      "vendor": "Brackenfold",
+      "tags": [
+        "headlamp",
+        "rechargeable"
+      ],
+      "sku": "BF-HL400",
+      "status": "active",
+      "inventory": 60,
+      "orders_30d": 45,
+      "price": 49,
+      "description": "A 400 lumen rechargeable headlamp."
+    },
+    {
+      "product_id": 9100000019,
+      "handle": "lumen-200-headlamp",
+      "title": "Lumen 200 Headlamp",
+      "product_type": "Lighting",
+      "vendor": "Brackenfold",
+      "tags": [
+        "headlamp"
+      ],
+      "sku": "BF-HL200",
+      "status": "active",
+      "inventory": 45,
+      "orders_30d": 28,
+      "price": 29,
+      "description": "A 200 lumen headlamp that runs on AAA batteries."
+    },
+    {
+      "product_id": 9100000020,
+      "handle": "lantern-mini",
+      "title": "Lantern Mini",
+      "product_type": "Lighting",
+      "vendor": "Brackenfold",
+      "tags": [
+        "lantern"
+      ],
+      "sku": "BF-LT100",
+      "status": "active",
+      "inventory": 30,
+      "orders_30d": 11,
+      "price": 25,
+      "description": "A palm-sized camp lantern."
+    },
+    {
+      "product_id": 9100000021,
+      "handle": "gravity-water-filter",
+      "title": "Gravity Water Filter",
+      "product_type": "Water",
+      "vendor": "Brackenfold",
+      "tags": [
+        "water filter",
+        "gravity"
+      ],
+      "sku": "BF-WF200",
+      "status": "active",
+      "inventory": 35,
+      "orders_30d": 24,
+      "price": 79,
+      "description": "A gravity water filter for groups."
+    },
+    {
+      "product_id": 9100000022,
+      "handle": "squeeze-water-filter",
+      "title": "Squeeze Water Filter",
+      "product_type": "Water",
+      "vendor": "Brackenfold",
+      "tags": [
+        "water filter"
+      ],
+      "sku": "BF-WF100",
+      "status": "active",
+      "inventory": 28,
+      "orders_30d": 19,
+      "price": 39,
+      "description": "A pocket squeeze filter."
+    },
+    {
+      "product_id": 9100000023,
+      "handle": "steel-water-bottle-1l",
+      "title": "Steel Water Bottle 1L",
+      "product_type": "Water",
+      "vendor": "Brackenfold",
+      "tags": [
+        "bottle"
+      ],
+      "sku": "BF-WB1000",
+      "status": "active",
+      "inventory": 70,
+      "orders_30d": 38,
+      "price": 35,
+      "description": "A double-wall insulated bottle that keeps drinks cold for 24 hours."
+    },
+    {
+      "product_id": 9100000024,
+      "handle": "steel-water-bottle-750ml",
+      "title": "Steel Water Bottle 750ml",
+      "product_type": "Water",
+      "vendor": "Brackenfold",
+      "tags": [
+        "bottle"
+      ],
+      "sku": "BF-WB750",
+      "status": "active",
+      "inventory": 55,
+      "orders_30d": 25,
+      "price": 29,
+      "description": "The 750ml insulated bottle, same double wall."
+    },
+    {
+      "product_id": 9100000025,
+      "handle": "trek-45-backpack",
+      "title": "Trek 45 Backpack",
+      "product_type": "Packs",
+      "vendor": "Brackenfold",
+      "tags": [
+        "backpack",
+        "hiking"
+      ],
+      "sku": "BF-BP045",
+      "status": "active",
+      "inventory": 20,
+      "orders_30d": 21,
+      "price": 169,
+      "description": "A 45 liter pack for overnight trips."
+    },
+    {
+      "product_id": 9100000026,
+      "handle": "trek-65-backpack",
+      "title": "Trek 65 Backpack",
+      "product_type": "Packs",
+      "vendor": "Brackenfold",
+      "tags": [
+        "backpack",
+        "hiking"
+      ],
+      "sku": "BF-BP065",
+      "status": "active",
+      "inventory": 14,
+      "orders_30d": 13,
+      "price": 219,
+      "description": "A 65 liter pack for long trips."
+    },
+    {
+      "product_id": 9100000027,
+      "handle": "day-22-daypack",
+      "title": "Day 22 Daypack",
+      "product_type": "Packs",
+      "vendor": "Brackenfold",
+      "tags": [
+        "daypack"
+      ],
+      "sku": "BF-DP022",
+      "status": "active",
+      "inventory": 30,
+      "orders_30d": 17,
+      "price": 79,
+      "description": "A 22 liter daypack with a hip belt."
+    },
+    {
+      "product_id": 9100000028,
+      "handle": "pocket-camp-stove",
+      "title": "Pocket Camp Stove",
+      "product_type": "Cooking",
+      "vendor": "Brackenfold",
+      "tags": [
+        "stove"
+      ],
+      "sku": "BF-ST100",
+      "status": "active",
+      "inventory": 26,
+      "orders_30d": 18,
+      "price": 49,
+      "description": "A folding canister stove."
+    },
+    {
+      "product_id": 9100000029,
+      "handle": "titanium-cook-pot",
+      "title": "Titanium Cook Pot",
+      "product_type": "Cooking",
+      "vendor": "Brackenfold",
+      "tags": [
+        "cookware"
+      ],
+      "sku": "BF-CP100",
+      "status": "active",
+      "inventory": 33,
+      "orders_30d": 12,
+      "price": 45,
+      "description": "A 750ml titanium pot with a lid."
+    },
+    {
+      "product_id": 9100000030,
+      "handle": "merino-hiking-socks",
+      "title": "Merino Hiking Socks",
+      "product_type": "Socks",
+      "vendor": "Brackenfold",
+      "tags": [
+        "socks",
+        "merino",
+        "wool"
+      ],
+      "sku": "BF-SK100",
+      "status": "active",
+      "inventory": 90,
+      "orders_30d": 40,
+      "price": 22,
+      "description": "Cushioned merino socks for long days."
+    },
+    {
+      "product_id": 9100000031,
+      "handle": "merino-watch-cap",
+      "title": "Merino Watch Cap",
+      "product_type": "Hats",
+      "vendor": "Brackenfold",
+      "tags": [
+        "hat",
+        "merino"
+      ],
+      "sku": "BF-HT100",
+      "status": "active",
+      "inventory": 40,
+      "orders_30d": 10,
+      "price": 32,
+      "description": "A rib-knit merino cap."
+    },
+    {
+      "product_id": 9100000032,
+      "handle": "carbon-hiking-poles",
+      "title": "Carbon Hiking Poles",
+      "product_type": "Poles",
+      "vendor": "Brackenfold",
+      "tags": [
+        "poles"
+      ],
+      "sku": "BF-PL100",
+      "status": "active",
+      "inventory": 25,
+      "orders_30d": 15,
+      "price": 129,
+      "description": "Folding carbon poles with cork grips."
+    },
+    {
+      "product_id": 9100000033,
+      "handle": "locking-carabiner-set",
+      "title": "Locking Carabiner Set",
+      "product_type": "Climbing",
+      "vendor": "Brackenfold",
+      "tags": [
+        "carabiner"
+      ],
+      "sku": "BF-CB300",
+      "status": "active",
+      "inventory": 60,
+      "orders_30d": 9,
+      "price": 34,
+      "description": "Three screw-gate carabiners."
+    },
+    {
+      "product_id": 9100000034,
+      "handle": "first-aid-kit",
+      "title": "First Aid Kit",
+      "product_type": "Safety",
+      "vendor": "Brackenfold",
+      "tags": [
+        "first aid"
+      ],
+      "sku": "BF-FA100",
+      "status": "active",
+      "inventory": 40,
+      "orders_30d": 14,
+      "price": 39,
+      "description": "A trail first aid kit for two people."
+    },
+    {
+      "product_id": 9100000035,
+      "handle": "brackenfold-gift-card",
+      "title": "Brackenfold Gift Card",
+      "product_type": "Gift Cards",
+      "vendor": "Brackenfold",
+      "tags": [
+        "gift card"
+      ],
+      "sku": "BF-GC",
+      "status": "active",
+      "inventory": 999,
+      "orders_30d": 30,
+      "price": 50,
+      "description": "A digital gift card."
+    },
+    {
+      "product_id": 9100000036,
+      "handle": "camp-chair-lite",
+      "title": "Camp Chair Lite",
+      "product_type": "Furniture",
+      "vendor": "Brackenfold",
+      "tags": [
+        "chair",
+        "camp"
+      ],
+      "sku": "BF-CH100",
+      "status": "draft",
+      "inventory": 48,
+      "orders_30d": 0,
+      "price": 99,
+      "description": "A 900 gram folding camp chair."
+    }
+  ],
+  "collections": [
+    {
+      "handle": "tents",
+      "title": "Tents"
+    },
+    {
+      "handle": "sleeping-bags",
+      "title": "Sleeping Bags"
+    },
+    {
+      "handle": "rain-gear",
+      "title": "Rain Gear"
+    },
+    {
+      "handle": "footwear",
+      "title": "Footwear"
+    },
+    {
+      "handle": "sale",
+      "title": "Sale"
+    },
+    {
+      "handle": "new-arrivals",
+      "title": "New Arrivals"
+    },
+    {
+      "handle": "gifts",
+      "title": "Gifts"
+    }
+  ],
+  "existing_redirects": []
+}

@@ -1,0 +1,470 @@
+{
+  "note": "Example data: an invented marketing agency with three invented clients, not real businesses. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"agency-client-health\" skill. Check the health of every client I have connected and tell me which ones need attention first.",
+  "shape": "portfolio overview (default)",
+  "run_date": "2026-10-30",
+  "windows": {
+    "CUR": "2026-09-29 to 2026-10-28",
+    "PRI": "2026-08-30 to 2026-09-28"
+  },
+  "targets": "none given, so each ad platform's own results are graded on their trend",
+  "client_map_confirmed_by_user": true,
+  "left_out_sources": 1,
+  "clients": {
+    "Client A": {
+      "what": "a home services company (heating and plumbing) in the US",
+      "currency": "USD",
+      "result": "leads (calls and quote forms)",
+      "sources": [
+        {
+          "platform": "Google Ads",
+          "account": "client-a google ads",
+          "access_level": "full"
+        },
+        {
+          "platform": "Meta",
+          "account": "client-a meta ad account",
+          "access_level": "full"
+        },
+        {
+          "platform": "GA4",
+          "account": "client-a.example",
+          "access_level": "full"
+        },
+        {
+          "platform": "Search Console",
+          "account": "sc-domain:client-a.example",
+          "access_level": "full"
+        }
+      ],
+      "google_ads": {
+        "auto_tagging_enabled": true,
+        "CUR": {
+          "cost": 8420.0,
+          "clicks": 3105,
+          "conversions": 142
+        },
+        "PRI": {
+          "cost": 7980.0,
+          "clicks": 3240,
+          "conversions": 168
+        },
+        "conversion_actions": [
+          {
+            "name": "Calls from ads",
+            "category": "PHONE_CALL_LEAD",
+            "counting_type": "ONE_PER_CLICK",
+            "counted": true
+          },
+          {
+            "name": "Quote form",
+            "category": "SUBMIT_LEAD_FORM",
+            "counting_type": "ONE_PER_CLICK",
+            "counted": true
+          },
+          {
+            "name": "Page view, thank-you page (old)",
+            "category": "PAGE_VIEW",
+            "counting_type": "MANY_PER_CLICK",
+            "counted": false
+          }
+        ],
+        "change_status": {
+          "rows_last_30_days": 86,
+          "last_change": "2026-10-27"
+        }
+      },
+      "meta": {
+        "account_status": 1,
+        "result_action_type": "lead",
+        "CUR": {
+          "spend": 2150.0,
+          "results": 61
+        },
+        "PRI": {
+          "spend": 2300.0,
+          "results": 64
+        },
+        "activity_log_last_30_days": {
+          "events": 19,
+          "last_event": "2026-10-23"
+        }
+      },
+      "search_console": {
+        "CUR": {
+          "clicks": 4120,
+          "days_returned": 28
+        },
+        "PRI": {
+          "clicks": 4390,
+          "days_returned": 30
+        }
+      },
+      "ga4": {
+        "sessions_cur": 11309,
+        "key_events_cur": 233,
+        "sessions_by_channel_cur": {
+          "Organic Search": 3506,
+          "Paid Search": 3053,
+          "Paid Social": 1244,
+          "Referral": 565,
+          "Direct": 2941
+        },
+        "daily_sessions_PRI_and_CUR": {
+          "2026-08-30": 254,
+          "2026-08-31": 446,
+          "2026-09-01": 444,
+          "2026-09-02": 380,
+          "2026-09-03": 460,
+          "2026-09-04": 428,
+          "2026-09-05": 296,
+          "2026-09-06": 282,
+          "2026-09-07": 386,
+          "2026-09-08": 409,
+          "2026-09-09": 435,
+          "2026-09-10": 397,
+          "2026-09-11": 397,
+          "2026-09-12": 269,
+          "2026-09-13": 249,
+          "2026-09-14": 403,
+          "2026-09-15": 426,
+          "2026-09-16": 449,
+          "2026-09-17": 401,
+          "2026-09-18": 404,
+          "2026-09-19": 288,
+          "2026-09-20": 281,
+          "2026-09-21": 435,
+          "2026-09-22": 460,
+          "2026-09-23": 385,
+          "2026-09-24": 423,
+          "2026-09-25": 446,
+          "2026-09-26": 277,
+          "2026-09-27": 298,
+          "2026-09-28": 438,
+          "2026-09-29": 426,
+          "2026-09-30": 459,
+          "2026-10-01": 434,
+          "2026-10-02": 423,
+          "2026-10-03": 262,
+          "2026-10-04": 252,
+          "2026-10-05": 392,
+          "2026-10-06": 387,
+          "2026-10-07": 394,
+          "2026-10-08": 397,
+          "2026-10-09": 382,
+          "2026-10-10": 266,
+          "2026-10-11": 252,
+          "2026-10-12": 426,
+          "2026-10-13": 424,
+          "2026-10-14": 427,
+          "2026-10-15": 414,
+          "2026-10-16": 388,
+          "2026-10-17": 263,
+          "2026-10-18": 255,
+          "2026-10-19": 424,
+          "2026-10-20": 435,
+          "2026-10-21": 449,
+          "2026-10-22": 453,
+          "2026-10-23": 429,
+          "2026-10-24": 289,
+          "2026-10-25": 274,
+          "2026-10-26": 393,
+          "2026-10-27": 392,
+          "2026-10-28": 448
+        }
+      }
+    },
+    "Client B": {
+      "what": "an online store selling outdoor gear",
+      "currency": "USD",
+      "result": "purchases",
+      "sources": [
+        {
+          "platform": "Google Ads",
+          "account": "client-b google ads",
+          "access_level": "full"
+        },
+        {
+          "platform": "Meta",
+          "account": "client-b meta ad account",
+          "access_level": "full"
+        },
+        {
+          "platform": "GA4",
+          "account": "client-b.example",
+          "access_level": "full"
+        },
+        {
+          "platform": "Search Console",
+          "account": "sc-domain:client-b.example",
+          "access_level": "full"
+        },
+        {
+          "platform": "Bing Webmaster",
+          "account": "client-b.example",
+          "access_level": "full"
+        }
+      ],
+      "google_ads": {
+        "auto_tagging_enabled": true,
+        "CUR": {
+          "cost": 12600.0,
+          "clicks": 9870,
+          "conversions": 410
+        },
+        "PRI": {
+          "cost": 12900.0,
+          "clicks": 10140,
+          "conversions": 455
+        },
+        "conversion_actions": [
+          {
+            "name": "Purchase",
+            "category": "PURCHASE",
+            "counting_type": "MANY_PER_CLICK",
+            "counted": true
+          },
+          {
+            "name": "Add to cart",
+            "category": "ADD_TO_CART",
+            "counting_type": "MANY_PER_CLICK",
+            "counted": false
+          }
+        ],
+        "change_status": {
+          "rows_last_30_days": 214,
+          "last_change": "2026-10-28"
+        }
+      },
+      "meta": {
+        "account_status": 1,
+        "result_action_type": "purchase",
+        "CUR": {
+          "spend": 6100.0,
+          "results": 88
+        },
+        "PRI": {
+          "spend": 9800.0,
+          "results": 171
+        },
+        "activity_log_last_30_days": {
+          "events": 0,
+          "last_event": null
+        }
+      },
+      "search_console": {
+        "CUR": {
+          "clicks": 9640,
+          "days_returned": 28
+        },
+        "PRI": {
+          "clicks": 10050,
+          "days_returned": 30
+        }
+      },
+      "bing": {
+        "CUR": {
+          "clicks": 1180
+        },
+        "PRI": {
+          "clicks": 1215
+        }
+      },
+      "not_graded_sources": [
+        "an Instagram account",
+        "an email tool"
+      ],
+      "ga4": {
+        "sessions_cur": 48267,
+        "key_events_cur": 1012,
+        "sessions_by_channel_cur": {
+          "Organic Search": 11584,
+          "Paid Search": 14480,
+          "Paid Social": 7723,
+          "Email": 4344,
+          "Referral": 1931,
+          "Direct": 8205
+        },
+        "daily_sessions_PRI_and_CUR": {
+          "2026-08-30": 1552,
+          "2026-08-31": 1713,
+          "2026-09-01": 1549,
+          "2026-09-02": 1539,
+          "2026-09-03": 1546,
+          "2026-09-04": 1648,
+          "2026-09-05": 1410,
+          "2026-09-06": 1447,
+          "2026-09-07": 1695,
+          "2026-09-08": 1598,
+          "2026-09-09": 1694,
+          "2026-09-10": 1640,
+          "2026-09-11": 1651,
+          "2026-09-12": 1415,
+          "2026-09-13": 1408,
+          "2026-09-14": 1542,
+          "2026-09-15": 1622,
+          "2026-09-16": 1538,
+          "2026-09-17": 1501,
+          "2026-09-18": 1569,
+          "2026-09-19": 1381,
+          "2026-09-20": 1406,
+          "2026-09-21": 1576,
+          "2026-09-22": 1626,
+          "2026-09-23": 1810,
+          "2026-09-24": 1710,
+          "2026-09-25": 1757,
+          "2026-09-26": 1552,
+          "2026-09-27": 1406,
+          "2026-09-28": 1588,
+          "2026-09-29": 1726,
+          "2026-09-30": 1727,
+          "2026-10-01": 1591,
+          "2026-10-02": 1720,
+          "2026-10-03": 1573,
+          "2026-10-04": 1565,
+          "2026-10-05": 1535,
+          "2026-10-06": 1600,
+          "2026-10-07": 1552,
+          "2026-10-08": 1808,
+          "2026-10-09": 1611,
+          "2026-10-10": 1535,
+          "2026-10-11": 1419,
+          "2026-10-12": 1485,
+          "2026-10-13": 1747,
+          "2026-10-14": 1486,
+          "2026-10-15": 1680,
+          "2026-10-16": 1792,
+          "2026-10-17": 1550,
+          "2026-10-18": 1460,
+          "2026-10-19": 1584,
+          "2026-10-20": 1558,
+          "2026-10-21": 1613,
+          "2026-10-22": 1488,
+          "2026-10-23": 1698,
+          "2026-10-24": 1573,
+          "2026-10-25": 1516,
+          "2026-10-26": 1810,
+          "2026-10-27": 1692,
+          "2026-10-28": 1573
+        }
+      }
+    },
+    "Client C": {
+      "what": "a B2B software company",
+      "currency": "USD",
+      "result": "demo requests (website conversions plus lead-form leads)",
+      "sources": [
+        {
+          "platform": "LinkedIn Ads",
+          "account": "client-c linkedin ad account",
+          "access_level": "read"
+        },
+        {
+          "platform": "GA4",
+          "account": "client-c.example",
+          "access_level": "full"
+        },
+        {
+          "platform": "Search Console",
+          "account": "sc-domain:client-c.example",
+          "access_level": "full"
+        }
+      ],
+      "linkedin": {
+        "CUR": {
+          "cost": 4800.0,
+          "externalWebsiteConversions": 27,
+          "oneClickLeads": 11
+        },
+        "PRI": {
+          "cost": 4650.0,
+          "externalWebsiteConversions": 35,
+          "oneClickLeads": 14
+        }
+      },
+      "search_console": {
+        "CUR": {
+          "clicks": 2050,
+          "days_returned": 28
+        },
+        "PRI": {
+          "clicks": 2180,
+          "days_returned": 30
+        }
+      },
+      "ga4": {
+        "sessions_cur": 4322,
+        "key_events_cur": 96,
+        "sessions_by_channel_cur": {
+          "Organic Search": 1988,
+          "Paid Social": 519,
+          "Referral": 346,
+          "Email": 173,
+          "Direct": 1296
+        },
+        "daily_sessions_PRI_and_CUR": {
+          "2026-08-30": 77,
+          "2026-08-31": 174,
+          "2026-09-01": 175,
+          "2026-09-02": 202,
+          "2026-09-03": 190,
+          "2026-09-04": 200,
+          "2026-09-05": 94,
+          "2026-09-06": 88,
+          "2026-09-07": 203,
+          "2026-09-08": 172,
+          "2026-09-09": 205,
+          "2026-09-10": 172,
+          "2026-09-11": 179,
+          "2026-09-12": 89,
+          "2026-09-13": 78,
+          "2026-09-14": 177,
+          "2026-09-15": 198,
+          "2026-09-16": 176,
+          "2026-09-17": 184,
+          "2026-09-18": 189,
+          "2026-09-19": 91,
+          "2026-09-20": 77,
+          "2026-09-21": 176,
+          "2026-09-22": 203,
+          "2026-09-23": 187,
+          "2026-09-24": 174,
+          "2026-09-25": 186,
+          "2026-09-26": 77,
+          "2026-09-27": 87,
+          "2026-09-28": 182,
+          "2026-09-29": 197,
+          "2026-09-30": 190,
+          "2026-10-01": 175,
+          "2026-10-02": 196,
+          "2026-10-03": 92,
+          "2026-10-04": 80,
+          "2026-10-05": 207,
+          "2026-10-06": 189,
+          "2026-10-07": 196,
+          "2026-10-08": 208,
+          "2026-10-09": 175,
+          "2026-10-10": 78,
+          "2026-10-11": 93,
+          "2026-10-12": 190,
+          "2026-10-13": 199,
+          "2026-10-14": 21,
+          "2026-10-15": 17,
+          "2026-10-16": 24,
+          "2026-10-17": 19,
+          "2026-10-18": 80,
+          "2026-10-19": 186,
+          "2026-10-20": 177,
+          "2026-10-21": 201,
+          "2026-10-22": 200,
+          "2026-10-23": 209,
+          "2026-10-24": 78,
+          "2026-10-25": 86,
+          "2026-10-26": 197,
+          "2026-10-27": 183,
+          "2026-10-28": 179
+        }
+      }
+    }
+  }
+}

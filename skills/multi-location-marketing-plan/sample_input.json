@@ -1,0 +1,504 @@
+{
+  "request": "Hey Claude, I just added the \"multi-location-marketing-plan\" skill. Build our franchise marketing plan for the next 90 days. We have 10 studios, 4 corporate and 6 franchised. The brand fund is $30,000 a month and co-op matches 50% of approved local ads.",
+  "note": "Example data: an invented boutique fitness franchise with invented studios, profiles, reviews and ad results, not a real business. Every number in expected_output.json follows from this input.",
+  "business": "Example Fit Studios, a boutique fitness franchise with 10 studios around one metro area (invented example)",
+  "brief": {
+    "brand_name_on_signs": "Example Fit Studios",
+    "approved_sub_brands": [],
+    "standard_primary_category": "Fitness center",
+    "location_page_pattern": "/studios/<city>",
+    "website": "https://www.fitstudios.example",
+    "money_per_month": {
+      "brand_fund": 30000,
+      "shared_costs_from_fund": 4000,
+      "shared_costs_detail": "creative studio retainer and tools",
+      "co_op_match_rate": 0.5,
+      "launch_amount_per_new_location": 1500,
+      "franchisee_own_local_budgets": {
+        "Aurora": 2400,
+        "Lakewood": 2400,
+        "Golden": 900,
+        "Parker": 1400,
+        "Westminster": 800,
+        "Erie": 1200
+      }
+    },
+    "fund_rules": "The fund may pay brand advertising, shared creative and co-op matches on approved local ads (confirmed by the user against the franchise agreement).",
+    "goal": "profile actions per month across the network (default)",
+    "owners": "brand marketing lead (40 hours a month); each studio manager (6 hours a month)"
+  },
+  "run_date": "2026-10-30",
+  "windows": {
+    "last_day_with_data_L": "2026-10-27",
+    "current_C": [
+      "2026-09-30",
+      "2026-10-27"
+    ],
+    "previous_P": [
+      "2026-09-02",
+      "2026-09-29"
+    ],
+    "reviews_pace": [
+      "2026-07-30",
+      "2026-10-27"
+    ],
+    "reply_rate": [
+      "2025-10-28",
+      "2026-10-27"
+    ]
+  },
+  "sources_read": [
+    "Google Business Profile: 10 locations x 4 calls (get_location_details, get_reviews, get_local_posts, get_multi_daily_metrics)",
+    "Search Console: search_analytics by page for C",
+    "Google Ads: gaql campaign rows for C, mapped to locations by the user"
+  ],
+  "sources_not_read": [
+    "GA4: not connected",
+    "Meta Ads: the user runs no Meta ads for the studios"
+  ],
+  "locations": [
+    {
+      "location": "Denver Highlands",
+      "ownership": "corporate",
+      "opened": "2019-03-04",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/denver-highlands?utm_source=google&utm_medium=organic&utm_campaign=gbp-denver-highlands",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 18400,
+        "calls": 96,
+        "directions": 212,
+        "website": 318,
+        "bookings": 104
+      },
+      "performance_P": {
+        "views": 17200,
+        "calls": 90,
+        "directions": 201,
+        "website": 290,
+        "bookings": 96
+      },
+      "reviews": {
+        "total": 412,
+        "average_rating": 4.8,
+        "new_last_90_days": 27,
+        "last_12_months": 96,
+        "last_12_months_with_reply": 91,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-21"
+    },
+    {
+      "location": "Boulder",
+      "ownership": "corporate",
+      "opened": "2019-09-16",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/boulder?utm_source=google&utm_medium=organic&utm_campaign=gbp-boulder",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 15100,
+        "calls": 71,
+        "directions": 168,
+        "website": 244,
+        "bookings": 88
+      },
+      "performance_P": {
+        "views": 14800,
+        "calls": 69,
+        "directions": 171,
+        "website": 236,
+        "bookings": 80
+      },
+      "reviews": {
+        "total": 338,
+        "average_rating": 4.7,
+        "new_last_90_days": 21,
+        "last_12_months": 81,
+        "last_12_months_with_reply": 74,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-14"
+    },
+    {
+      "location": "Aurora",
+      "ownership": "franchise",
+      "opened": "2021-01-11",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/aurora?utm_source=google&utm_medium=organic&utm_campaign=gbp-aurora",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 13200,
+        "calls": 58,
+        "directions": 131,
+        "website": 176,
+        "bookings": 61
+      },
+      "performance_P": {
+        "views": 12900,
+        "calls": 55,
+        "directions": 128,
+        "website": 170,
+        "bookings": 60
+      },
+      "reviews": {
+        "total": 241,
+        "average_rating": 4.6,
+        "new_last_90_days": 15,
+        "last_12_months": 58,
+        "last_12_months_with_reply": 50,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-09"
+    },
+    {
+      "location": "Lakewood",
+      "ownership": "franchise",
+      "opened": "2020-06-01",
+      "profile": {
+        "title": "Example Fit Studios Lakewood",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/lakewood?utm_source=google&utm_medium=organic&utm_campaign=gbp-lakewood",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 16900,
+        "calls": 48,
+        "directions": 139,
+        "website": 152,
+        "bookings": 41
+      },
+      "performance_P": {
+        "views": 16500,
+        "calls": 52,
+        "directions": 141,
+        "website": 160,
+        "bookings": 47
+      },
+      "reviews": {
+        "total": 287,
+        "average_rating": 4.4,
+        "new_last_90_days": 12,
+        "last_12_months": 60,
+        "last_12_months_with_reply": 41,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-12"
+    },
+    {
+      "location": "Littleton",
+      "ownership": "corporate",
+      "opened": "2020-02-17",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Gym",
+        "websiteUri": "https://www.fitstudios.example/studios/littleton?utm_source=google&utm_medium=organic&utm_campaign=gbp-littleton",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 14300,
+        "calls": 44,
+        "directions": 118,
+        "website": 137,
+        "bookings": 39
+      },
+      "performance_P": {
+        "views": 13600,
+        "calls": 43,
+        "directions": 110,
+        "website": 131,
+        "bookings": 37
+      },
+      "reviews": {
+        "total": 206,
+        "average_rating": 4.5,
+        "new_last_90_days": 11,
+        "last_12_months": 47,
+        "last_12_months_with_reply": 40,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-19"
+    },
+    {
+      "location": "Golden",
+      "ownership": "franchise",
+      "opened": "2022-04-04",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/golden?utm_source=google&utm_medium=organic&utm_campaign=gbp-golden",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 7800,
+        "calls": 41,
+        "directions": 96,
+        "website": 131,
+        "bookings": 47
+      },
+      "performance_P": {
+        "views": 7300,
+        "calls": 37,
+        "directions": 90,
+        "website": 124,
+        "bookings": 43
+      },
+      "reviews": {
+        "total": 158,
+        "average_rating": 4.9,
+        "new_last_90_days": 13,
+        "last_12_months": 44,
+        "last_12_months_with_reply": 44,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-23"
+    },
+    {
+      "location": "Parker",
+      "ownership": "franchise",
+      "opened": "2022-10-03",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/parker?utm_source=google&utm_medium=organic&utm_campaign=gbp-parker",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 6900,
+        "calls": 33,
+        "directions": 84,
+        "website": 104,
+        "bookings": 38
+      },
+      "performance_P": {
+        "views": 6600,
+        "calls": 31,
+        "directions": 79,
+        "website": 99,
+        "bookings": 36
+      },
+      "reviews": {
+        "total": 119,
+        "average_rating": 4.8,
+        "new_last_90_days": 9,
+        "last_12_months": 33,
+        "last_12_months_with_reply": 31,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-16"
+    },
+    {
+      "location": "Westminster",
+      "ownership": "franchise",
+      "opened": "2021-08-23",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 9100,
+        "calls": 22,
+        "directions": 71,
+        "website": 58,
+        "bookings": 17
+      },
+      "performance_P": {
+        "views": 9600,
+        "calls": 25,
+        "directions": 76,
+        "website": 66,
+        "bookings": 20
+      },
+      "reviews": {
+        "total": 176,
+        "average_rating": 3.8,
+        "new_last_90_days": 10,
+        "last_12_months": 41,
+        "last_12_months_with_reply": 19,
+        "three_stars_or_fewer_last_90_days_without_reply": 3
+      },
+      "newest_live_post": "2026-08-02"
+    },
+    {
+      "location": "Castle Rock",
+      "ownership": "corporate",
+      "opened": "2023-05-08",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/castle-rock?utm_source=google&utm_medium=organic&utm_campaign=gbp-castle-rock",
+        "verified": true
+      },
+      "performance_C": {
+        "views": 8200,
+        "calls": 24,
+        "directions": 63,
+        "website": 72,
+        "bookings": 21
+      },
+      "performance_P": {
+        "views": 8000,
+        "calls": 24,
+        "directions": 60,
+        "website": 70,
+        "bookings": 22
+      },
+      "reviews": {
+        "total": 94,
+        "average_rating": 4.5,
+        "new_last_90_days": 6,
+        "last_12_months": 25,
+        "last_12_months_with_reply": 22,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-06"
+    },
+    {
+      "location": "Erie",
+      "ownership": "franchise",
+      "opened": "2026-06-29",
+      "profile": {
+        "title": "Example Fit Studios",
+        "primary_category": "Fitness center",
+        "websiteUri": "https://www.fitstudios.example/studios/erie?utm_source=google&utm_medium=organic&utm_campaign=gbp-erie",
+        "verified": false
+      },
+      "performance_C": {
+        "views": 3100,
+        "calls": 14,
+        "directions": 39,
+        "website": 52,
+        "bookings": 18
+      },
+      "performance_P": {
+        "views": 2400,
+        "calls": 10,
+        "directions": 31,
+        "website": 40,
+        "bookings": 13
+      },
+      "reviews": {
+        "total": 17,
+        "average_rating": 4.9,
+        "new_last_90_days": 11,
+        "last_12_months": 17,
+        "last_12_months_with_reply": 15,
+        "three_stars_or_fewer_last_90_days_without_reply": 0
+      },
+      "newest_live_post": "2026-10-25"
+    }
+  ],
+  "search_console_pages_C": [
+    {
+      "page": "https://www.fitstudios.example/studios/denver-highlands",
+      "clicks": 1840,
+      "impressions": 31200
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/boulder",
+      "clicks": 1510,
+      "impressions": 27400
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/aurora",
+      "clicks": 1090,
+      "impressions": 22100
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/lakewood",
+      "clicks": 980,
+      "impressions": 26300
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/littleton",
+      "clicks": 870,
+      "impressions": 21900
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/golden",
+      "clicks": 720,
+      "impressions": 11800
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/parker",
+      "clicks": 610,
+      "impressions": 10400
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/westminster",
+      "clicks": 240,
+      "impressions": 9800
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/castle-rock",
+      "clicks": 410,
+      "impressions": 9100
+    },
+    {
+      "page": "https://www.fitstudios.example/studios/erie",
+      "clicks": 95,
+      "impressions": 2600
+    }
+  ],
+  "google_ads_campaigns_C": [
+    {
+      "campaign": "Brand | Search",
+      "mapped_to": "brand",
+      "cost_micros": 5880000000,
+      "clicks": 4120,
+      "conversions": 611.0
+    },
+    {
+      "campaign": "Local | Denver Highlands | Search",
+      "mapped_to": "Denver Highlands",
+      "cost_micros": 1960000000,
+      "clicks": 880,
+      "conversions": 58.0
+    },
+    {
+      "campaign": "Local | Boulder | Search",
+      "mapped_to": "Boulder",
+      "cost_micros": 1610000000,
+      "clicks": 702,
+      "conversions": 44.0
+    },
+    {
+      "campaign": "Local | Aurora | Search",
+      "mapped_to": "Aurora",
+      "cost_micros": 1240000000,
+      "clicks": 531,
+      "conversions": 33.0
+    },
+    {
+      "campaign": "Local | Lakewood | Search",
+      "mapped_to": "Lakewood",
+      "cost_micros": 1500000000,
+      "clicks": 566,
+      "conversions": 18.0
+    },
+    {
+      "campaign": "Local | Littleton | Search",
+      "mapped_to": "Littleton",
+      "cost_micros": 1080000000,
+      "clicks": 470,
+      "conversions": 29.0
+    },
+    {
+      "campaign": "Local | Castle Rock | Search",
+      "mapped_to": "Castle Rock",
+      "cost_micros": 420000000,
+      "clicks": 190,
+      "conversions": 6.0
+    }
+  ]
+}

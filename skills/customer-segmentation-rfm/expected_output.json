@@ -1,0 +1,816 @@
+{
+  "header": {
+    "store": "Harbor Lane Tea",
+    "currency": "USD",
+    "as_of": "2026-10-28",
+    "orders_window": "2024-10-28 to 2026-10-27",
+    "email_window": "2026-07-30 to 2026-10-27",
+    "source": "Shopify get_orders; Klaviyo get_events and get_profiles",
+    "net_value": "Shopify current_total_price, after refunds; it includes tax and shipping"
+  },
+  "data_quality": {
+    "order_rows_read": 675,
+    "order_rows_kept": 661,
+    "dropped": {
+      "cancelled_or_voided": 6,
+      "test": 2,
+      "zero_or_fully_refunded": 4,
+      "no_customer_key": 2,
+      "outside_window": 0
+    },
+    "partially_refunded_orders_kept_at_net": 9,
+    "refunded_amount_removed": 153.88,
+    "customers_scored": 250,
+    "orders_scored": 661,
+    "net_revenue": 31251.47
+  },
+  "cut_offs": {
+    "recency_days": {
+      "R5": "0 to 27",
+      "R4": "28 to 86",
+      "R3": "87 to 231",
+      "R2": "232 to 417",
+      "R1": "over 417"
+    },
+    "frequency_orders": {
+      "F1": "1 order",
+      "repeat_buyer_quartiles": [
+        2,
+        3,
+        6
+      ],
+      "rule": "F2 up to the 25th percentile of repeat buyers' order counts, F3 to the median, F4 to the 75th, F5 above",
+      "repeat_buyers": 122
+    },
+    "monetary_net_revenue": {
+      "M1": "up to $33.21",
+      "M2": "$33.21 to $48.76",
+      "M3": "$48.76 to $71.51",
+      "M4": "$71.51 to $154.96",
+      "M5": "over $154.96"
+    },
+    "method": "nearest-rank percentiles of this store's own customers; ties share a score"
+  },
+  "segments": [
+    {
+      "segment": "Best customers",
+      "rule": "R 4 to 5, F 4 to 5, M 4 to 5",
+      "customers": 31,
+      "share_of_customers_pct": 12.4,
+      "net_revenue": 11875.39,
+      "share_of_revenue_pct": 38.0,
+      "orders": 235,
+      "avg_orders": 7.6,
+      "avg_net_spend": 383.08,
+      "avg_order_value": 50.53,
+      "median_days_since_last_order": 34
+    },
+    {
+      "segment": "Big spenders gone quiet",
+      "rule": "R 1 to 2, M 4 to 5",
+      "customers": 20,
+      "share_of_customers_pct": 8.0,
+      "net_revenue": 6923.62,
+      "share_of_revenue_pct": 22.2,
+      "orders": 90,
+      "avg_orders": 4.5,
+      "avg_net_spend": 346.18,
+      "avg_order_value": 76.93,
+      "median_days_since_last_order": 406
+    },
+    {
+      "segment": "Loyal",
+      "rule": "R 3 to 5, F 4 to 5",
+      "customers": 15,
+      "share_of_customers_pct": 6.0,
+      "net_revenue": 2762.37,
+      "share_of_revenue_pct": 8.8,
+      "orders": 76,
+      "avg_orders": 5.1,
+      "avg_net_spend": 184.16,
+      "avg_order_value": 36.35,
+      "median_days_since_last_order": 140
+    },
+    {
+      "segment": "New",
+      "rule": "F 1, R 5",
+      "customers": 25,
+      "share_of_customers_pct": 10.0,
+      "net_revenue": 1159.94,
+      "share_of_revenue_pct": 3.7,
+      "orders": 25,
+      "avg_orders": 1.0,
+      "avg_net_spend": 46.4,
+      "avg_order_value": 46.4,
+      "median_days_since_last_order": 13
+    },
+    {
+      "segment": "Growing",
+      "rule": "F 2 to 3, R 4 to 5",
+      "customers": 28,
+      "share_of_customers_pct": 11.2,
+      "net_revenue": 2735.46,
+      "share_of_revenue_pct": 8.8,
+      "orders": 70,
+      "avg_orders": 2.5,
+      "avg_net_spend": 97.7,
+      "avg_order_value": 39.08,
+      "median_days_since_last_order": 33
+    },
+    {
+      "segment": "Slipping",
+      "rule": "F 2 to 5, R 2 to 3",
+      "customers": 12,
+      "share_of_customers_pct": 4.8,
+      "net_revenue": 1061.19,
+      "share_of_revenue_pct": 3.4,
+      "orders": 30,
+      "avg_orders": 2.5,
+      "avg_net_spend": 88.43,
+      "avg_order_value": 35.37,
+      "median_days_since_last_order": 202
+    },
+    {
+      "segment": "One-time buyers",
+      "rule": "F 1, R 2 to 4",
+      "customers": 77,
+      "share_of_customers_pct": 30.8,
+      "net_revenue": 3051.3,
+      "share_of_revenue_pct": 9.8,
+      "orders": 77,
+      "avg_orders": 1.0,
+      "avg_net_spend": 39.63,
+      "avg_order_value": 39.63,
+      "median_days_since_last_order": 229
+    },
+    {
+      "segment": "Dormant",
+      "rule": "everyone left (R 1 with M 1 to 3)",
+      "customers": 42,
+      "share_of_customers_pct": 16.8,
+      "net_revenue": 1682.2,
+      "share_of_revenue_pct": 5.4,
+      "orders": 58,
+      "avg_orders": 1.4,
+      "avg_net_spend": 40.05,
+      "avg_order_value": 29.0,
+      "median_days_since_last_order": 531
+    }
+  ],
+  "second_order_timing": {
+    "repeat_buyers": 122,
+    "median_days_first_to_second_order": 40,
+    "one_order_share_pct": 51.2
+  },
+  "non_buyer_subscribers": {
+    "total": 151,
+    "tiers": [
+      {
+        "tier": "Clicking",
+        "subscribers": 22,
+        "share_pct": 14.6,
+        "message": "A product-led first-order nudge: best sellers and a sampler, no discount yet.",
+        "frequency": "2 a week"
+      },
+      {
+        "tier": "Interested",
+        "subscribers": 19,
+        "share_pct": 12.6,
+        "message": "Brewing guides and new arrivals, with one first-order offer at the store's cap after 2 weeks.",
+        "frequency": "1 a week"
+      },
+      {
+        "tier": "Opens only",
+        "subscribers": 41,
+        "share_pct": 27.2,
+        "message": "Test subject lines that ask for a click (a short quiz, pick your tea); opens alone prove little.",
+        "frequency": "2 a month"
+      },
+      {
+        "tier": "Quiet",
+        "subscribers": 48,
+        "share_pct": 31.8,
+        "message": "A 2-email sunset asking whether they still want the emails; suppress non-clickers only after the owner says yes.",
+        "frequency": "2 emails, then stop"
+      },
+      {
+        "tier": "Not yet mailed",
+        "subscribers": 14,
+        "share_pct": 9.3,
+        "message": "The welcome series, not campaigns, until it has run.",
+        "frequency": "welcome series only"
+      },
+      {
+        "tier": "Not yet judged",
+        "subscribers": 7,
+        "share_pct": 4.6,
+        "message": "Leave in the main newsletter until they have received 3 emails.",
+        "frequency": "1 a week"
+      }
+    ],
+    "rule": "click-led: Clicking = last click within 30 days; Interested = 31 to 90 days; Opens only = opened but no click in 90 days; Quiet = 3 or more emails received, no open or click in 90 days; Not yet mailed = 0 received; Not yet judged = 1 or 2 received, no open or click"
+  },
+  "email_response": {
+    "all_customers_mailed_90d": 207,
+    "all_customers_clicked_90d": 56,
+    "all_customer_click_share_pct": 27.1,
+    "by_segment": [
+      {
+        "segment": "Best customers",
+        "customers": 31,
+        "emailable": 26,
+        "emailable_pct": 83.9,
+        "mailed_90d": 26,
+        "clicked_90d": 14,
+        "click_share_pct": 53.8,
+        "starting_frequency": "1 a week",
+        "frequency": "2 a week",
+        "why": "53.8% clicked in 90 days, over 1.5 times the 27.1% all-customer figure: one step up"
+      },
+      {
+        "segment": "Big spenders gone quiet",
+        "customers": 20,
+        "emailable": 14,
+        "emailable_pct": 70.0,
+        "mailed_90d": 14,
+        "clicked_90d": 2,
+        "click_share_pct": 14.3,
+        "starting_frequency": "2 a month",
+        "frequency": "2 a month",
+        "why": "14.3% clicked in 90 days, within range of the 27.1% all-customer figure"
+      },
+      {
+        "segment": "Loyal",
+        "customers": 15,
+        "emailable": 12,
+        "emailable_pct": 80.0,
+        "mailed_90d": 12,
+        "clicked_90d": 3,
+        "click_share_pct": 25.0,
+        "starting_frequency": "1 a week",
+        "frequency": "1 a week",
+        "why": "25.0% clicked in 90 days, within range of the 27.1% all-customer figure"
+      },
+      {
+        "segment": "New",
+        "customers": 25,
+        "emailable": 21,
+        "emailable_pct": 84.0,
+        "mailed_90d": 21,
+        "clicked_90d": 6,
+        "click_share_pct": 28.6,
+        "starting_frequency": "1 a week",
+        "frequency": "1 a week",
+        "why": "28.6% clicked in 90 days, within range of the 27.1% all-customer figure"
+      },
+      {
+        "segment": "Growing",
+        "customers": 28,
+        "emailable": 26,
+        "emailable_pct": 92.9,
+        "mailed_90d": 26,
+        "clicked_90d": 12,
+        "click_share_pct": 46.2,
+        "starting_frequency": "1 a week",
+        "frequency": "2 a week",
+        "why": "46.2% clicked in 90 days, over 1.5 times the 27.1% all-customer figure: one step up"
+      },
+      {
+        "segment": "Slipping",
+        "customers": 12,
+        "emailable": 11,
+        "emailable_pct": 91.7,
+        "mailed_90d": 11,
+        "clicked_90d": 3,
+        "click_share_pct": 27.3,
+        "starting_frequency": "2 a month",
+        "frequency": "2 a month",
+        "why": "27.3% clicked in 90 days, within range of the 27.1% all-customer figure"
+      },
+      {
+        "segment": "One-time buyers",
+        "customers": 77,
+        "emailable": 66,
+        "emailable_pct": 85.7,
+        "mailed_90d": 66,
+        "clicked_90d": 16,
+        "click_share_pct": 24.2,
+        "starting_frequency": "2 a month",
+        "frequency": "2 a month",
+        "why": "24.2% clicked in 90 days, within range of the 27.1% all-customer figure"
+      },
+      {
+        "segment": "Dormant",
+        "customers": 42,
+        "emailable": 31,
+        "emailable_pct": 73.8,
+        "mailed_90d": 31,
+        "clicked_90d": 0,
+        "click_share_pct": 0.0,
+        "starting_frequency": "1 a month",
+        "frequency": "1 a month",
+        "why": "0.0% clicked in 90 days, under half the 27.1% all-customer figure, already at the 1 a month floor"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "segment": "Best customers",
+      "message": "Early access to new harvests and limited lots, a handwritten thank-you in the next parcel, a review or referral ask.",
+      "offer_rule": "No discount. Perks only: early access and first pick of limited teas.",
+      "frequency": "2 a week"
+    },
+    {
+      "segment": "Big spenders gone quiet",
+      "message": "A 3-email comeback over 3 weeks: a personal note from the owner, what's new in teas like the ones they bought, then the offer.",
+      "offer_rule": "The store's cap (15% off) in the last email only, with a minimum spend of $75, their own average order.",
+      "frequency": "3 emails over 3 weeks, then 2 a month"
+    },
+    {
+      "segment": "Loyal",
+      "message": "Refill reminders for the teas they reorder, and a step up to larger tins.",
+      "offer_rule": "No blanket discount. Free shipping on refills at most.",
+      "frequency": "1 a week"
+    },
+    {
+      "segment": "New",
+      "message": "The post-purchase flow (brewing guide, how to store tea), then a second-order email at day 33, a week before the store's median 40-day gap between first and second order.",
+      "offer_rule": "No discount in the first 30 days. A second-order offer only if the owner already runs one.",
+      "frequency": "1 a week"
+    },
+    {
+      "segment": "Growing",
+      "message": "Discovery: teas close to what they bought, brewing tips, a bundle that adds a new category.",
+      "offer_rule": "No discount. A bundle priced as the store already prices bundles.",
+      "frequency": "2 a week"
+    },
+    {
+      "segment": "Slipping",
+      "message": "What's new since their last order, and a reorder link for what they bought before.",
+      "offer_rule": "At most half the store's cap (7% off), with a minimum spend of $35, their own average order.",
+      "frequency": "2 a month"
+    },
+    {
+      "segment": "One-time buyers",
+      "message": "Why people come back: best sellers among repeat buyers, a sampler, reviews.",
+      "offer_rule": "One offer at the store's cap (15% off), once, with a minimum spend of $40.",
+      "frequency": "2 a month"
+    },
+    {
+      "segment": "Dormant",
+      "message": "Content first (seasonal teas, brewing guides), one offer, then a sunset for anyone who still doesn't click.",
+      "offer_rule": "One email at the store's cap (15% off), with a minimum spend of $30, then the sunset. Suppressing anyone who still doesn't click waits for the owner's yes.",
+      "frequency": "1 a month"
+    }
+  ],
+  "findings": [
+    "Best customers are 31 people (12.4% of buyers) and bring 38.0% of net revenue. Protect them: no discounts, early access.",
+    "Big spenders gone quiet: 20 customers who spent $6,923.62 (22.2% of revenue) and haven't ordered in a median 406 days. 14.3% of those mailed clicked in 90 days (all customers: 27.1%), so pair the comeback emails with the ad-audience file.",
+    "51.2% of buyers have ordered once. Repeat buyers placed their second order a median 40 days after the first, so the second-order email goes at day 33.",
+    "48 of 151 subscribers who never bought (31.8%) received 3 or more emails in 90 days with no open or click. Run the 2-email sunset before anything else is sent to them."
+  ],
+  "klaviyo_segment_conditions": {
+    "historic_clv": "Not available: Klaviyo shows Historic CLV (predictive analytics) only from 500 buyers with orders, and this store has 250. Without it Klaviyo can't split on spend, so Best customers and Loyal are built as one segment, and Big spenders gone quiet and Dormant as one Gone quiet segment (R 1). The 13 Big spenders gone quiet with R 2 fall into Slipping or One-time buyers in Klaviyo. Use the static lists for the exact RFM members.",
+    "how_to_build": "Build in the order shown: Klaviyo doesn't apply rules in order, so each segment excludes the ones above it. Counts here are on the cleaned orders; Klaviyo counts every Placed Order (cancelled and refunded ones too), so live counts can run a little higher.",
+    "segments": [
+      {
+        "klaviyo_segment": "Best customers and Loyal (merged)",
+        "conditions": [
+          "Placed Order at least once in the last 231 days",
+          "Placed Order at least 4 times in the last 730 days"
+        ],
+        "customers_caught": 46,
+        "rfm_segments_held": {
+          "Best customers": 31,
+          "Loyal": 15
+        },
+        "match": "Same members as Best customers and Loyal together on these orders; Klaviyo can't split them on spend under 500 buyers."
+      },
+      {
+        "klaviyo_segment": "New",
+        "conditions": [
+          "Placed Order at least once in the last 27 days",
+          "Placed Order equals 1 time in the last 730 days",
+          "is not in: Best customers and Loyal (merged)"
+        ],
+        "customers_caught": 25,
+        "rfm_segments_held": {
+          "New": 25
+        },
+        "match": "Same members as the RFM New segment on these orders."
+      },
+      {
+        "klaviyo_segment": "Growing",
+        "conditions": [
+          "Placed Order at least once in the last 86 days",
+          "Placed Order at least 2 times in the last 730 days",
+          "Placed Order at most 3 times in the last 730 days",
+          "is not in: Best customers and Loyal (merged), New"
+        ],
+        "customers_caught": 28,
+        "rfm_segments_held": {
+          "Growing": 28
+        },
+        "match": "Same members as the RFM Growing segment on these orders."
+      },
+      {
+        "klaviyo_segment": "Slipping",
+        "conditions": [
+          "Placed Order zero times in the last 86 days",
+          "Placed Order at least once in the last 417 days",
+          "Placed Order at least 2 times in the last 730 days",
+          "is not in: Best customers and Loyal (merged), New, Growing"
+        ],
+        "customers_caught": 25,
+        "rfm_segments_held": {
+          "Big spenders gone quiet": 13,
+          "Slipping": 12
+        },
+        "match": "Differs from the RFM table: also holds 13 Big spenders gone quiet."
+      },
+      {
+        "klaviyo_segment": "One-time buyers",
+        "conditions": [
+          "Placed Order zero times in the last 27 days",
+          "Placed Order at least once in the last 417 days",
+          "Placed Order equals 1 time in the last 730 days",
+          "is not in: Best customers and Loyal (merged), New, Growing, Slipping"
+        ],
+        "customers_caught": 77,
+        "rfm_segments_held": {
+          "One-time buyers": 77
+        },
+        "match": "Same members as the RFM One-time buyers segment on these orders."
+      },
+      {
+        "klaviyo_segment": "Gone quiet (Big spenders gone quiet and Dormant, merged)",
+        "conditions": [
+          "Placed Order zero times in the last 417 days",
+          "Placed Order at least once in the last 730 days",
+          "is not in: Best customers and Loyal (merged), New, Growing, Slipping, One-time buyers"
+        ],
+        "customers_caught": 49,
+        "rfm_segments_held": {
+          "Big spenders gone quiet": 7,
+          "Dormant": 42
+        },
+        "match": "Differs from the RFM table: misses 13 of the RFM Big spenders gone quiet and Dormant customers."
+      }
+    ]
+  },
+  "offered_writes": [
+    {
+      "segment": "Best customers",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Best customers"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 31,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 26
+    },
+    {
+      "segment": "Big spenders gone quiet",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Big spenders gone quiet"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 20,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 14
+    },
+    {
+      "segment": "Loyal",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Loyal"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 15,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 12
+    },
+    {
+      "segment": "New",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: New"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 25,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 21
+    },
+    {
+      "segment": "Growing",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Growing"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 28,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 26
+    },
+    {
+      "segment": "Slipping",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Slipping"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 12,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 11
+    },
+    {
+      "segment": "One-time buyers",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: One-time buyers"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 77,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 66
+    },
+    {
+      "segment": "Dormant",
+      "status": "not run, offered after confirmation",
+      "create_list": {
+        "platform": "klaviyo",
+        "action": "create_list",
+        "body": {
+          "data": {
+            "type": "list",
+            "attributes": {
+              "name": "RFM 2026-10-28: Dormant"
+            }
+          }
+        }
+      },
+      "add_profiles_to_list": {
+        "platform": "klaviyo",
+        "action": "add_profiles_to_list",
+        "list_id": "<id returned by create_list>",
+        "body": {
+          "data": [
+            {
+              "type": "profile",
+              "id": "<profile id>"
+            }
+          ]
+        },
+        "profiles": 42,
+        "calls": 1,
+        "note": "profile ids looked up by email with get_profiles, up to 100 per call"
+      },
+      "ad_audience_csv_rows": 31
+    }
+  ],
+  "files": [
+    {
+      "name": "rfm-scores-2026-10-28.csv",
+      "rows": 250,
+      "columns": [
+        "customer",
+        "email",
+        "last_order",
+        "orders",
+        "net_revenue",
+        "R",
+        "F",
+        "M",
+        "segment"
+      ]
+    },
+    {
+      "name": "ad-audience files, one per segment",
+      "columns": [
+        "email",
+        "phone",
+        "first_name",
+        "last_name",
+        "country",
+        "zip"
+      ],
+      "rows_total": 207,
+      "files": [
+        {
+          "name": "ad-audience-2026-10-28-best-customers.csv",
+          "rows": 26
+        },
+        {
+          "name": "ad-audience-2026-10-28-big-spenders-gone-quiet.csv",
+          "rows": 14
+        },
+        {
+          "name": "ad-audience-2026-10-28-loyal.csv",
+          "rows": 12
+        },
+        {
+          "name": "ad-audience-2026-10-28-new.csv",
+          "rows": 21
+        },
+        {
+          "name": "ad-audience-2026-10-28-growing.csv",
+          "rows": 26
+        },
+        {
+          "name": "ad-audience-2026-10-28-slipping.csv",
+          "rows": 11
+        },
+        {
+          "name": "ad-audience-2026-10-28-one-time-buyers.csv",
+          "rows": 66
+        },
+        {
+          "name": "ad-audience-2026-10-28-dormant.csv",
+          "rows": 31
+        }
+      ],
+      "sources": "email, phone_number, first_name, last_name and location (country, zip) from Klaviyo get_profiles; a column the profile leaves empty stays blank",
+      "note": "customers who can receive email marketing only; confirm the privacy policy allows customer-list advertising before uploading"
+    },
+    {
+      "name": "segment-table.csv",
+      "content": [
+        "segment,customers,share_of_customers_pct,net_revenue,share_of_revenue_pct,avg_orders,avg_order_value",
+        "Best customers,31,12.4,11875.39,38.0,7.6,50.53",
+        "Big spenders gone quiet,20,8.0,6923.62,22.2,4.5,76.93",
+        "Loyal,15,6.0,2762.37,8.8,5.1,36.35",
+        "New,25,10.0,1159.94,3.7,1.0,46.40",
+        "Growing,28,11.2,2735.46,8.8,2.5,39.08",
+        "Slipping,12,4.8,1061.19,3.4,2.5,35.37",
+        "One-time buyers,77,30.8,3051.30,9.8,1.0,39.63",
+        "Dormant,42,16.8,1682.20,5.4,1.4,29.00"
+      ]
+    }
+  ],
+  "unknowns": [
+    "None: every order in the window and all email activity in the 90-day window were read."
+  ],
+  "go_deeper": [
+    "churn-risk-winback-planner for the comeback program for big spenders gone quiet and dormant buyers, if installed",
+    "klaviyo-flow-auditor for the welcome, post-purchase and winback flows these segments feed, if installed",
+    "email-sequence-builder to write each segment's emails, if installed",
+    "ltv-cac-ratio-optimizer to bid for new buyers who look like the best customers, if installed",
+    "retargeting-sequence-designer for the ad side of the big spenders gone quiet audience, if installed"
+  ]
+}

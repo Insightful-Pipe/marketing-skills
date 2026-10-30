@@ -1,0 +1,1205 @@
+{
+  "first_line": "Keep 14 of 45 rows, re-confirm 9 and remove 22.",
+  "what_this_skill_does_not_do": "It doesn't probe mailboxes: it checks addresses, domains and mail-server records, so a closed mailbox on a working domain still passes. It doesn't make a bought list safe: bought rows are removed.",
+  "header": {
+    "file": "contacts-to-import-2026-10.csv",
+    "rows_read": 45,
+    "run_date": "2026-10-28",
+    "quiet_window_days": 365,
+    "quiet_cutoff": "2025-10-28",
+    "platform_check": "Klaviyo",
+    "mail_server_lookup": "dig, in Claude Code",
+    "checks": [
+      {
+        "check": "1 syntax",
+        "status": "ran",
+        "rows_flagged": 2
+      },
+      {
+        "check": "2 duplicates",
+        "status": "ran",
+        "rows_flagged": 3
+      },
+      {
+        "check": "3 already blocked in the platform",
+        "status": "ran on Klaviyo (1 get_profiles call, 42 addresses)",
+        "rows_flagged": 3
+      },
+      {
+        "check": "4 bought source",
+        "status": "ran",
+        "rows_flagged": 6
+      },
+      {
+        "check": "5 consent record",
+        "status": "ran (file columns plus Klaviyo)",
+        "rows_flagged": 7
+      },
+      {
+        "check": "6 throwaway domain",
+        "status": "ran (seed list in SKILL.md only)",
+        "rows_flagged": 2
+      },
+      {
+        "check": "7 domain takes no mail",
+        "status": "ran with dig on 37 domains; 1 not checked (timeout)",
+        "rows_flagged": 4
+      },
+      {
+        "check": "8 never-read address",
+        "status": "ran",
+        "rows_flagged": 2
+      },
+      {
+        "check": "9 misspelt domain",
+        "status": "ran",
+        "rows_flagged": 3
+      },
+      {
+        "check": "10 role address",
+        "status": "ran",
+        "rows_flagged": 5
+      },
+      {
+        "check": "11 quiet longer than 365 days",
+        "status": "ran (last_click, else opt_in_date, else the Klaviyo consent date)",
+        "rows_flagged": 5
+      }
+    ]
+  },
+  "counts": {
+    "keep": 14,
+    "re_confirm": 9,
+    "remove": 22,
+    "by_reason": [
+      {
+        "file": "keep",
+        "reason": "passed every check that ran",
+        "rows": 14
+      },
+      {
+        "file": "remove",
+        "reason": "bad syntax",
+        "rows": 2
+      },
+      {
+        "file": "remove",
+        "reason": "duplicate",
+        "rows": 3
+      },
+      {
+        "file": "remove",
+        "reason": "already unsubscribed, bounced or suppressed in Klaviyo",
+        "rows": 3
+      },
+      {
+        "file": "remove",
+        "reason": "bought, rented or scraped source",
+        "rows": 6
+      },
+      {
+        "file": "remove",
+        "reason": "no record of consent",
+        "rows": 2
+      },
+      {
+        "file": "remove",
+        "reason": "throwaway domain",
+        "rows": 2
+      },
+      {
+        "file": "remove",
+        "reason": "domain takes no mail",
+        "rows": 3
+      },
+      {
+        "file": "remove",
+        "reason": "address that never reads mail",
+        "rows": 1
+      },
+      {
+        "file": "re-confirm",
+        "reason": "misspelt domain",
+        "rows": 3
+      },
+      {
+        "file": "re-confirm",
+        "reason": "role address",
+        "rows": 3
+      },
+      {
+        "file": "re-confirm",
+        "reason": "quiet longer than 365 days",
+        "rows": 3
+      }
+    ]
+  },
+  "tidy_ups_applied": [
+    {
+      "change": "trimmed spaces",
+      "rows": 1
+    },
+    {
+      "change": "lowercased the domain",
+      "rows": 1
+    },
+    {
+      "change": "took the address out of angle brackets",
+      "rows": 1
+    },
+    {
+      "change": "stripped mailto:",
+      "rows": 1
+    },
+    {
+      "change": "dropped a trailing dot, comma or semicolon",
+      "rows": 1
+    }
+  ],
+  "misspelt_domains": [
+    {
+      "domain": "gmial.com",
+      "suggestion": "gmail.com",
+      "rows": [
+        6
+      ],
+      "mail_server": "no MX, but an A record"
+    },
+    {
+      "domain": "gnail.com",
+      "suggestion": "gmail.com",
+      "rows": [
+        7
+      ],
+      "mail_server": "no MX, but an A record"
+    },
+    {
+      "domain": "gmail.con",
+      "suggestion": "gmail.com",
+      "rows": [
+        18
+      ],
+      "mail_server": "the domain doesn't exist"
+    }
+  ],
+  "platform_check": {
+    "platform": "Klaviyo",
+    "addresses_looked_up": 42,
+    "found_in_klaviyo": 8,
+    "already_unsubscribed_bounced_or_suppressed": [
+      {
+        "row": 21,
+        "email": "grace@willowmassage.example",
+        "status": "already unsubscribed in Klaviyo"
+      },
+      {
+        "row": 22,
+        "email": "dev@pixeltattoo.example",
+        "status": "already bounced (hard bounce) in Klaviyo"
+      },
+      {
+        "row": 23,
+        "email": "lucas@summitchiro.example",
+        "status": "already suppressed (spam complaint) in Klaviyo"
+      }
+    ],
+    "consent_record_in_klaviyo": 4,
+    "consent_found_only_in_klaviyo": [
+      {
+        "row": 39,
+        "email": "paul@oakbarbers.example"
+      },
+      {
+        "row": 45,
+        "email": "olga@olgabrows.example"
+      }
+    ],
+    "never_subscribed_profiles": [
+      {
+        "row": 33,
+        "email": "leo@northgatedental.example"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "warning": "paid verifier",
+      "needed": false,
+      "detail": "4 of 38 dated rows (10.5%) have no activity or signup since 2024-10-28, under half, so a paid verifier isn't required before the first send. Run one anyway if this list has never been mailed."
+    },
+    {
+      "warning": "bought list",
+      "needed": true,
+      "detail": "6 of 45 rows (13.3%) come from a bought list. They are removed; don't import them or mail them to ask for consent. Row 45 (olga@olgabrows.example) is already subscribed in Klaviyo: check how it got there before deciding."
+    }
+  ],
+  "files": {
+    "keep": [
+      {
+        "row": 2,
+        "email": "jordan@northsidehair.example",
+        "name": "Jordan Lee",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 8,
+        "email": "lena@foxyoga.example",
+        "name": "Lena Fox",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 10,
+        "email": "alex@brightsmiledental.example",
+        "name": "Alex Morgan",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 11,
+        "email": "alex+expo@brightsmiledental.example",
+        "name": "Alex Morgan",
+        "reason": "passed every check that ran",
+        "also": [
+          "possible duplicate of row 10"
+        ],
+        "next_step": "import"
+      },
+      {
+        "row": 15,
+        "email": "meichen_demo42@gmail.com",
+        "name": "Mei Chen",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 19,
+        "email": "owen@pawsgrooming.example",
+        "name": "Owen Hart",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 24,
+        "email": "ella@bloombarbers.example",
+        "name": "Ella Novak",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 25,
+        "email": "ivan@stonemedspa.example",
+        "name": "Ivan Petrov",
+        "reason": "passed every check that ran",
+        "also": [
+          "mail server not checked (lookup timed out)"
+        ],
+        "next_step": "import"
+      },
+      {
+        "row": 26,
+        "email": "zoe@quickfixnails.example",
+        "name": "Zoe Clark",
+        "reason": "passed every check that ran",
+        "also": [
+          "no MX record, mail goes to the main server"
+        ],
+        "next_step": "import"
+      },
+      {
+        "row": 27,
+        "email": "ben@alifitness.example",
+        "name": "Ben Ali",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 30,
+        "email": "priya.raman@lakeviewphysio.example",
+        "name": "Priya Raman",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 33,
+        "email": "leo@northgatedental.example",
+        "name": "Leo Grant",
+        "reason": "passed every check that ran",
+        "also": [],
+        "next_step": "import"
+      },
+      {
+        "row": 37,
+        "email": "amy@lotusspa.example",
+        "name": "Amy Nguyen",
+        "reason": "passed every check that ran",
+        "also": [
+          "subscribed in Klaviyo since 2023-05-09"
+        ],
+        "next_step": "import"
+      },
+      {
+        "row": 39,
+        "email": "paul@oakbarbers.example",
+        "name": "Paul Stone",
+        "reason": "passed every check that ran",
+        "also": [
+          "subscribed in Klaviyo since 2025-11-18"
+        ],
+        "next_step": "import"
+      }
+    ],
+    "re-confirm": [
+      {
+        "row": 4,
+        "email": "info@ironworksfitness.example",
+        "name": "Sam Ortega",
+        "reason": "role address",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      },
+      {
+        "row": 5,
+        "email": "hello@brightsmiledental.example",
+        "name": "Dana Whitfield",
+        "reason": "role address",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      },
+      {
+        "row": 6,
+        "email": "maria_gomez_demo@gmial.com",
+        "name": "Maria Gomez",
+        "reason": "misspelt domain",
+        "also": [
+          "no MX record, mail goes to the main server"
+        ],
+        "suggested": "maria_gomez_demo@gmail.com",
+        "next_step": "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+      },
+      {
+        "row": 7,
+        "email": "tom_becker_demo@gnail.com",
+        "name": "Tom Becker",
+        "reason": "misspelt domain",
+        "also": [
+          "no MX record, mail goes to the main server"
+        ],
+        "suggested": "tom_becker_demo@gmail.com",
+        "next_step": "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+      },
+      {
+        "row": 9,
+        "email": "bookings@glowspa.example",
+        "name": "Hana Sato",
+        "reason": "role address",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      },
+      {
+        "row": 18,
+        "email": "rosa_diaz_demo@gmail.con",
+        "name": "Rosa Diaz",
+        "reason": "misspelt domain",
+        "also": [
+          "domain takes no mail: the domain doesn't exist"
+        ],
+        "suggested": "rosa_diaz_demo@gmail.com",
+        "next_step": "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+      },
+      {
+        "row": 32,
+        "email": "hannah@elmwoodsalon.example",
+        "name": "Hannah Wright",
+        "reason": "quiet longer than 365 days (last date 2025-05-14)",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      },
+      {
+        "row": 34,
+        "email": "sofia@crestfitness.example",
+        "name": "Sofia Rossi",
+        "reason": "quiet longer than 365 days (last date 2023-04-11)",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      },
+      {
+        "row": 36,
+        "email": "jack@morrisphysio.example",
+        "name": "Jack Morris",
+        "reason": "quiet longer than 365 days (last date 2024-08-01)",
+        "also": [],
+        "next_step": "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+      }
+    ],
+    "remove": [
+      {
+        "row": 3,
+        "email": "Priya.Raman@lakeviewphysio.example",
+        "name": "Priya Raman",
+        "reason": "duplicate of row 30",
+        "also": [],
+        "next_step": "leave out of the import; row 30 covers this person"
+      },
+      {
+        "row": 12,
+        "email": "test.demo@mailinator.com",
+        "name": "Test User",
+        "reason": "throwaway domain",
+        "also": [
+          "subscribed in Klaviyo since 2026-02-03"
+        ],
+        "next_step": "leave out of the import; it can still be emailed in Klaviyo, so suppression there is offered below"
+      },
+      {
+        "row": 13,
+        "email": "nina@corepilates",
+        "name": "Nina Park",
+        "reason": "bad syntax",
+        "also": [],
+        "next_step": "leave out of the import; fix by hand only if the right address is known"
+      },
+      {
+        "row": 14,
+        "email": "ken@harborclinic.example",
+        "name": "Ken Adams",
+        "reason": "domain takes no mail: null MX",
+        "also": [],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 16,
+        "email": "mei.chen_demo42@gmail.com",
+        "name": "Mei Chen",
+        "reason": "duplicate of row 15",
+        "also": [],
+        "next_step": "leave out of the import; row 15 covers this person"
+      },
+      {
+        "row": 17,
+        "email": "MeiChen_Demo42+expo@googlemail.com",
+        "name": "Mei Chen",
+        "reason": "duplicate of row 15",
+        "also": [],
+        "next_step": "leave out of the import; row 15 covers this person"
+      },
+      {
+        "row": 20,
+        "email": "noreply@citycuts.example",
+        "name": "City Cuts",
+        "reason": "address that never reads mail",
+        "also": [],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 21,
+        "email": "grace@willowmassage.example",
+        "name": "Grace Kim",
+        "reason": "already unsubscribed in Klaviyo",
+        "also": [],
+        "next_step": "keep on Klaviyo's suppression list so it is never imported again"
+      },
+      {
+        "row": 22,
+        "email": "dev@pixeltattoo.example",
+        "name": "Dev Patel",
+        "reason": "already bounced (hard bounce) in Klaviyo",
+        "also": [],
+        "next_step": "keep on Klaviyo's suppression list so it is never imported again"
+      },
+      {
+        "row": 23,
+        "email": "lucas@summitchiro.example",
+        "name": "Lucas Brown",
+        "reason": "already suppressed (spam complaint) in Klaviyo",
+        "also": [],
+        "next_step": "keep on Klaviyo's suppression list so it is never imported again"
+      },
+      {
+        "row": 28,
+        "email": "carla@@sunsetsalon.example",
+        "name": "Carla Reyes",
+        "reason": "bad syntax",
+        "also": [],
+        "next_step": "leave out of the import; fix by hand only if the right address is known"
+      },
+      {
+        "row": 29,
+        "email": "omar@ridgephysio.example",
+        "name": "Omar Haddad",
+        "reason": "domain takes no mail: the domain doesn't exist",
+        "also": [],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 31,
+        "email": "frank.demo@yopmail.com",
+        "name": "Frank Doe",
+        "reason": "throwaway domain",
+        "also": [],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 35,
+        "email": "support@harborclinic.example",
+        "name": "Harbor Clinic",
+        "reason": "domain takes no mail: null MX",
+        "also": [
+          "role address",
+          "quiet longer than 365 days (last date 2023-04-11)"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 38,
+        "email": "ruth@meadowvet.example",
+        "name": "Ruth Long",
+        "reason": "no record of consent",
+        "also": [
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 40,
+        "email": "postmaster@cedarclinic.example",
+        "name": "Cedar Clinic",
+        "reason": "no record of consent",
+        "also": [
+          "address that never reads mail",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 41,
+        "email": "owner@luxenails.example",
+        "name": "Luxe Nails",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "no record of consent",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 42,
+        "email": "contact@primebarber.example",
+        "name": "Prime Barber",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "no record of consent",
+          "role address",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 43,
+        "email": "jess_demo@gmail.com",
+        "name": "Jess",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "no record of consent",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 44,
+        "email": "mark@zenithspa.example",
+        "name": "Mark",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "no record of consent",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      },
+      {
+        "row": 45,
+        "email": "olga@olgabrows.example",
+        "name": "Olga",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "quiet longer than 365 days (last date 2024-02-27)",
+          "subscribed in Klaviyo since 2024-02-27"
+        ],
+        "next_step": "leave out of the import; already subscribed in Klaviyo, so check how it got there (listed for you to decide)"
+      },
+      {
+        "row": 46,
+        "email": "dr.kim@seasideclinic.example",
+        "name": "Kim",
+        "reason": "bought, rented or scraped source",
+        "also": [
+          "no record of consent",
+          "no date, quiet check not possible"
+        ],
+        "next_step": "leave out of the import"
+      }
+    ]
+  },
+  "offered_write_backs": {
+    "google_sheets": {
+      "spreadsheet": "Contact imports",
+      "tabs": [
+        {
+          "status": "not run",
+          "create_sheet": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "create_sheet",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "title": "Keep 2026-10-28"
+          },
+          "update_cells": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "update_cells",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "sheet_id": "<sheet_id returned for Keep 2026-10-28>",
+            "range": "A1:G15",
+            "values": [
+              [
+                "row",
+                "email",
+                "name",
+                "reason",
+                "also",
+                "suggested",
+                "next step"
+              ],
+              [
+                "2",
+                "jordan@northsidehair.example",
+                "Jordan Lee",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "8",
+                "lena@foxyoga.example",
+                "Lena Fox",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "10",
+                "alex@brightsmiledental.example",
+                "Alex Morgan",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "11",
+                "alex+expo@brightsmiledental.example",
+                "Alex Morgan",
+                "passed every check that ran",
+                "possible duplicate of row 10",
+                "",
+                "import"
+              ],
+              [
+                "15",
+                "meichen_demo42@gmail.com",
+                "Mei Chen",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "19",
+                "owen@pawsgrooming.example",
+                "Owen Hart",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "24",
+                "ella@bloombarbers.example",
+                "Ella Novak",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "25",
+                "ivan@stonemedspa.example",
+                "Ivan Petrov",
+                "passed every check that ran",
+                "mail server not checked (lookup timed out)",
+                "",
+                "import"
+              ],
+              [
+                "26",
+                "zoe@quickfixnails.example",
+                "Zoe Clark",
+                "passed every check that ran",
+                "no MX record, mail goes to the main server",
+                "",
+                "import"
+              ],
+              [
+                "27",
+                "ben@alifitness.example",
+                "Ben Ali",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "30",
+                "priya.raman@lakeviewphysio.example",
+                "Priya Raman",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "33",
+                "leo@northgatedental.example",
+                "Leo Grant",
+                "passed every check that ran",
+                "",
+                "",
+                "import"
+              ],
+              [
+                "37",
+                "amy@lotusspa.example",
+                "Amy Nguyen",
+                "passed every check that ran",
+                "subscribed in Klaviyo since 2023-05-09",
+                "",
+                "import"
+              ],
+              [
+                "39",
+                "paul@oakbarbers.example",
+                "Paul Stone",
+                "passed every check that ran",
+                "subscribed in Klaviyo since 2025-11-18",
+                "",
+                "import"
+              ]
+            ],
+            "value_input_option": "RAW"
+          }
+        },
+        {
+          "status": "not run",
+          "create_sheet": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "create_sheet",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "title": "Re-confirm 2026-10-28"
+          },
+          "update_cells": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "update_cells",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "sheet_id": "<sheet_id returned for Re-confirm 2026-10-28>",
+            "range": "A1:G10",
+            "values": [
+              [
+                "row",
+                "email",
+                "name",
+                "reason",
+                "also",
+                "suggested",
+                "next step"
+              ],
+              [
+                "4",
+                "info@ironworksfitness.example",
+                "Sam Ortega",
+                "role address",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ],
+              [
+                "5",
+                "hello@brightsmiledental.example",
+                "Dana Whitfield",
+                "role address",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ],
+              [
+                "6",
+                "maria_gomez_demo@gmial.com",
+                "Maria Gomez",
+                "misspelt domain",
+                "no MX record, mail goes to the main server",
+                "maria_gomez_demo@gmail.com",
+                "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+              ],
+              [
+                "7",
+                "tom_becker_demo@gnail.com",
+                "Tom Becker",
+                "misspelt domain",
+                "no MX record, mail goes to the main server",
+                "tom_becker_demo@gmail.com",
+                "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+              ],
+              [
+                "9",
+                "bookings@glowspa.example",
+                "Hana Sato",
+                "role address",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ],
+              [
+                "18",
+                "rosa_diaz_demo@gmail.con",
+                "Rosa Diaz",
+                "misspelt domain",
+                "domain takes no mail: the domain doesn't exist",
+                "rosa_diaz_demo@gmail.com",
+                "confirm the right address with the person another way (account page, next booking, a call); mail neither the typo nor the suggestion until they do"
+              ],
+              [
+                "32",
+                "hannah@elmwoodsalon.example",
+                "Hannah Wright",
+                "quiet longer than 365 days (last date 2025-05-14)",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ],
+              [
+                "34",
+                "sofia@crestfitness.example",
+                "Sofia Rossi",
+                "quiet longer than 365 days (last date 2023-04-11)",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ],
+              [
+                "36",
+                "jack@morrisphysio.example",
+                "Jack Morris",
+                "quiet longer than 365 days (last date 2024-08-01)",
+                "",
+                "",
+                "send one plain email asking them to click to stay subscribed; no click after 14 days moves to remove"
+              ]
+            ],
+            "value_input_option": "RAW"
+          }
+        },
+        {
+          "status": "not run",
+          "create_sheet": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "create_sheet",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "title": "Remove 2026-10-28"
+          },
+          "update_cells": {
+            "platform": "google-sheets",
+            "workspace_id": 1,
+            "brand_id": 1,
+            "action": "update_cells",
+            "spreadsheet_id": "1ExampleContactImportsSheet000000000000000",
+            "sheet_id": "<sheet_id returned for Remove 2026-10-28>",
+            "range": "A1:G23",
+            "values": [
+              [
+                "row",
+                "email",
+                "name",
+                "reason",
+                "also",
+                "suggested",
+                "next step"
+              ],
+              [
+                "3",
+                "Priya.Raman@lakeviewphysio.example",
+                "Priya Raman",
+                "duplicate of row 30",
+                "",
+                "",
+                "leave out of the import; row 30 covers this person"
+              ],
+              [
+                "12",
+                "test.demo@mailinator.com",
+                "Test User",
+                "throwaway domain",
+                "subscribed in Klaviyo since 2026-02-03",
+                "",
+                "leave out of the import; it can still be emailed in Klaviyo, so suppression there is offered below"
+              ],
+              [
+                "13",
+                "nina@corepilates",
+                "Nina Park",
+                "bad syntax",
+                "",
+                "",
+                "leave out of the import; fix by hand only if the right address is known"
+              ],
+              [
+                "14",
+                "ken@harborclinic.example",
+                "Ken Adams",
+                "domain takes no mail: null MX",
+                "",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "16",
+                "mei.chen_demo42@gmail.com",
+                "Mei Chen",
+                "duplicate of row 15",
+                "",
+                "",
+                "leave out of the import; row 15 covers this person"
+              ],
+              [
+                "17",
+                "MeiChen_Demo42+expo@googlemail.com",
+                "Mei Chen",
+                "duplicate of row 15",
+                "",
+                "",
+                "leave out of the import; row 15 covers this person"
+              ],
+              [
+                "20",
+                "noreply@citycuts.example",
+                "City Cuts",
+                "address that never reads mail",
+                "",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "21",
+                "grace@willowmassage.example",
+                "Grace Kim",
+                "already unsubscribed in Klaviyo",
+                "",
+                "",
+                "keep on Klaviyo's suppression list so it is never imported again"
+              ],
+              [
+                "22",
+                "dev@pixeltattoo.example",
+                "Dev Patel",
+                "already bounced (hard bounce) in Klaviyo",
+                "",
+                "",
+                "keep on Klaviyo's suppression list so it is never imported again"
+              ],
+              [
+                "23",
+                "lucas@summitchiro.example",
+                "Lucas Brown",
+                "already suppressed (spam complaint) in Klaviyo",
+                "",
+                "",
+                "keep on Klaviyo's suppression list so it is never imported again"
+              ],
+              [
+                "28",
+                "carla@@sunsetsalon.example",
+                "Carla Reyes",
+                "bad syntax",
+                "",
+                "",
+                "leave out of the import; fix by hand only if the right address is known"
+              ],
+              [
+                "29",
+                "omar@ridgephysio.example",
+                "Omar Haddad",
+                "domain takes no mail: the domain doesn't exist",
+                "",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "31",
+                "frank.demo@yopmail.com",
+                "Frank Doe",
+                "throwaway domain",
+                "",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "35",
+                "support@harborclinic.example",
+                "Harbor Clinic",
+                "domain takes no mail: null MX",
+                "role address; quiet longer than 365 days (last date 2023-04-11)",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "38",
+                "ruth@meadowvet.example",
+                "Ruth Long",
+                "no record of consent",
+                "no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "40",
+                "postmaster@cedarclinic.example",
+                "Cedar Clinic",
+                "no record of consent",
+                "address that never reads mail; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "41",
+                "owner@luxenails.example",
+                "Luxe Nails",
+                "bought, rented or scraped source",
+                "no record of consent; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "42",
+                "contact@primebarber.example",
+                "Prime Barber",
+                "bought, rented or scraped source",
+                "no record of consent; role address; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "43",
+                "jess_demo@gmail.com",
+                "Jess",
+                "bought, rented or scraped source",
+                "no record of consent; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "44",
+                "mark@zenithspa.example",
+                "Mark",
+                "bought, rented or scraped source",
+                "no record of consent; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ],
+              [
+                "45",
+                "olga@olgabrows.example",
+                "Olga",
+                "bought, rented or scraped source",
+                "quiet longer than 365 days (last date 2024-02-27); subscribed in Klaviyo since 2024-02-27",
+                "",
+                "leave out of the import; already subscribed in Klaviyo, so check how it got there (listed for you to decide)"
+              ],
+              [
+                "46",
+                "dr.kim@seasideclinic.example",
+                "Kim",
+                "bought, rented or scraped source",
+                "no record of consent; no date, quiet check not possible",
+                "",
+                "leave out of the import"
+              ]
+            ],
+            "value_input_option": "RAW"
+          }
+        }
+      ]
+    },
+    "klaviyo_suppress_profiles": {
+      "status": "not run",
+      "rows": [
+        {
+          "row": 12,
+          "email": "test.demo@mailinator.com",
+          "why": "throwaway domain"
+        }
+      ],
+      "body": {
+        "platform": "klaviyo",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "suppress_profiles",
+        "body": {
+          "data": {
+            "type": "profile-suppression-bulk-create-job",
+            "attributes": {
+              "profiles": {
+                "data": [
+                  {
+                    "type": "profile",
+                    "attributes": {
+                      "email": "test.demo@mailinator.com"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "for_you_to_decide": [
+      {
+        "row": 45,
+        "email": "olga@olgabrows.example",
+        "why": "bought-list row that is already subscribed in Klaviyo; not suppressed by this skill"
+      }
+    ],
+    "mailchimp_update_member_tags": "not offered: the file goes to Klaviyo"
+  },
+  "go_deeper": [
+    "klaviyo-flow-auditor (if installed) cleans unengaged and bounced profiles already inside Klaviyo",
+    "email-sequence-builder (if installed) writes the confirmation email for the re-confirm file"
+  ]
+}

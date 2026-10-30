@@ -1,0 +1,996 @@
+{
+  "skill": "funnel-dropoff-diagnostician",
+  "account": "Example Home Services, a heating, cooling and plumbing company (invented example)",
+  "summary": {
+    "funnel": "Lead generation, ad impression to lead (Google Ads Search)",
+    "window": "2026-09-20 to 2026-10-19",
+    "comparison_window": "2026-08-21 to 2026-09-19",
+    "sources": "Google Ads for every step; GA4 not connected for this business, so the site steps are taken from the account's own conversion actions",
+    "eligible_impressions": 109945,
+    "impressions": 61800,
+    "clicks": 3890,
+    "leads": 415,
+    "impression_to_lead_pct": 0.67,
+    "spend_usd": 22180,
+    "cost_per_lead_usd": 53,
+    "change_vs_comparison_window": {
+      "impressions_pct": -11.5,
+      "clicks_pct": -6.9,
+      "leads_pct": -10.8
+    },
+    "score": 70,
+    "grade": "B",
+    "biggest_leak": "AC Repair campaign: 52.0% impression share (71.0% in the comparison window), up to 75 leads a month as a ceiling",
+    "likely_cause": "Budget runs out on the two cheapest non-brand campaigns, so the top of the funnel shrank while the click-to-lead rate held.",
+    "first_fix": "Check that the 'Tap to call' action counts real calls, then move budget from Drain Cleaning into AC Repair and Emergency Plumbing."
+  },
+  "trust_checks": [
+    {
+      "check": "The final step is measured",
+      "result": "pass",
+      "detail": "5 enabled conversion actions are counted; they recorded 415 leads in the window."
+    },
+    {
+      "check": "Value is measured",
+      "result": "warn",
+      "detail": "Conversion value is 0 on every campaign, and no qualified-lead or booked-job step is imported. The funnel ends at leads, and impact is counted in leads and spend."
+    },
+    {
+      "check": "Ad conversions are real leads",
+      "result": "warn",
+      "detail": "'Tap to call (website)' is a counted website action and recorded 142 of the 415 leads (34.2%). Its name and type suggest a tap on a call button, not a completed call. If so, the lead step is inflated by up to that share."
+    },
+    {
+      "check": "Steps run in order",
+      "result": "warn",
+      "detail": "The booking-page load action recorded 276 visits, but the booking form recorded 124 leads. Bookings are also submitted on landing pages without a visit to the booking page, so the page load is not a step before the form and is left out of the funnel."
+    },
+    {
+      "check": "Tracking is steady / test traffic",
+      "result": "skipped",
+      "detail": "GA4 is not connected for this business; the ad platform records impressions and clicks itself."
+    },
+    {
+      "check": "Ad clicks reach the site",
+      "result": "unknown",
+      "detail": "Needs GA4 Paid Search sessions to compare with the clicks; GA4 is not connected for this business."
+    }
+  ],
+  "funnel_map": [
+    {
+      "step": "Eligible impressions (Search)",
+      "count": 109945,
+      "comparison_window": 105349,
+      "source": "Google Ads call 13 (impressions ÷ impression share)"
+    },
+    {
+      "step": "Impressions",
+      "count": 61800,
+      "comparison_window": 69800,
+      "step_rate_pct": 56.2,
+      "lost": 48145,
+      "lost_split": {
+        "to_budget": 18630,
+        "to_rank": 29515
+      },
+      "source": "Google Ads call 14"
+    },
+    {
+      "step": "Clicks",
+      "count": 3890,
+      "comparison_window": 4180,
+      "step_rate_pct": 6.3,
+      "lost": 57910,
+      "source": "Google Ads call 14"
+    },
+    {
+      "step": "Sessions that landed",
+      "count": "not connected",
+      "source": "GA4 is not connected for this business"
+    },
+    {
+      "step": "Leads (counted conversions)",
+      "count": 415,
+      "comparison_window": 465,
+      "step_rate_pct": 10.7,
+      "share_of_impressions_pct": 0.67,
+      "source": "Google Ads calls 14 and 15"
+    },
+    {
+      "step": "Booked jobs",
+      "count": "not tracked",
+      "source": "no offline import or value"
+    }
+  ],
+  "lead_routes": [
+    {
+      "route": "Tap to call (website)",
+      "leads": 142,
+      "share_pct": 34.2,
+      "comparison_window_leads": 158
+    },
+    {
+      "route": "Booking form",
+      "leads": 124,
+      "share_pct": 29.9,
+      "comparison_window_leads": 139
+    },
+    {
+      "route": "Calls from ads",
+      "leads": 91,
+      "share_pct": 21.9,
+      "comparison_window_leads": 102
+    },
+    {
+      "route": "Live chat",
+      "leads": 37,
+      "share_pct": 8.9,
+      "comparison_window_leads": 42
+    },
+    {
+      "route": "Phone call (offline import)",
+      "leads": 21,
+      "share_pct": 5.1,
+      "comparison_window_leads": 24
+    }
+  ],
+  "lead_routes_note": "Calls from ads happen on the results page and never reach the site; the other routes start with a site visit.",
+  "counted_conversion_actions": [
+    "Booking form",
+    "Calls from ads",
+    "Live chat",
+    "Phone call (offline import)",
+    "Tap to call (website)"
+  ],
+  "transitions": [
+    {
+      "transition": "Eligible impressions → impressions (impression share)",
+      "level": "account",
+      "entering": 109945,
+      "entering_unit": "eligible impressions",
+      "rate_pct": 56.2,
+      "comparison_window_rate_pct": 66.3,
+      "reference": "comparison window",
+      "low_below_pct": 30.0,
+      "gap_test": {
+        "gap_points": -10.0,
+        "threshold_points": 0.4,
+        "verdict": "real"
+      },
+      "severity": "moderate",
+      "worst_segment_severity": "high",
+      "severity_counted_in_score": "high"
+    },
+    {
+      "transition": "Impressions → clicks",
+      "level": "account",
+      "entering": 61800,
+      "entering_unit": "impressions",
+      "rate_pct": 6.3,
+      "comparison_window_rate_pct": 6.0,
+      "reference": "comparison window",
+      "low_below_pct": 2.0,
+      "gap_test": {
+        "gap_points": 0.3,
+        "threshold_points": 0.3,
+        "verdict": "real"
+      },
+      "severity": "normal",
+      "worst_segment_severity": "normal",
+      "severity_counted_in_score": "normal"
+    },
+    {
+      "transition": "Clicks → leads",
+      "level": "account",
+      "entering": 3890,
+      "entering_unit": "clicks",
+      "rate_pct": 10.7,
+      "comparison_window_rate_pct": 11.1,
+      "reference": "comparison window",
+      "low_below_pct": 4.0,
+      "gap_test": {
+        "gap_points": -0.5,
+        "threshold_points": 1.4,
+        "verdict": "noise"
+      },
+      "severity": "normal",
+      "worst_segment_severity": "critical",
+      "severity_counted_in_score": "critical"
+    }
+  ],
+  "severity_by_transition": {
+    "Eligible impressions → impressions": "high",
+    "Impressions → clicks": "normal",
+    "Clicks → leads": "critical"
+  },
+  "score_working": "100 - 10 x 1 high - 20 x 1 critical - 4 x 0 moderate = 70",
+  "segments": {
+    "campaigns": [
+      {
+        "campaign": "AC Repair",
+        "impressions": 21000,
+        "clicks": 1050,
+        "leads": 126,
+        "spend_usd": 6300,
+        "cost_per_lead_usd": 50,
+        "ctr_pct": 5.0,
+        "click_to_lead_pct": 12.0,
+        "impression_share_pct": 52.0,
+        "lost_to_budget_pct": 31.0,
+        "lost_to_rank_pct": 17.0,
+        "impression_share_prior_pct": 71.0,
+        "impression_share_test": {
+          "gap_points": -19.0,
+          "threshold_points": 0.7,
+          "verdict": "real"
+        },
+        "impression_share_severity": "high",
+        "ctr_prior_pct": 4.9,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 9.6,
+          "gap_test": {
+            "gap_points": 2.4,
+            "threshold_points": 2.3,
+            "verdict": "real"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 12.2,
+          "gap_test": {
+            "gap_points": -0.2,
+            "threshold_points": 2.7,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "Emergency Plumbing",
+        "impressions": 9800,
+        "clicks": 640,
+        "leads": 83,
+        "spend_usd": 4300,
+        "cost_per_lead_usd": 52,
+        "ctr_pct": 6.5,
+        "click_to_lead_pct": 13.0,
+        "impression_share_pct": 55.0,
+        "lost_to_budget_pct": 27.0,
+        "lost_to_rank_pct": 18.0,
+        "impression_share_prior_pct": 68.0,
+        "impression_share_test": {
+          "gap_points": -13.0,
+          "threshold_points": 1.0,
+          "verdict": "real"
+        },
+        "impression_share_severity": "moderate",
+        "ctr_prior_pct": 6.4,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 9.7,
+          "gap_test": {
+            "gap_points": 3.3,
+            "threshold_points": 2.7,
+            "verdict": "real"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 13.0,
+          "gap_test": {
+            "gap_points": -0.1,
+            "threshold_points": 3.6,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "Water Heaters",
+        "impressions": 8600,
+        "clicks": 470,
+        "leads": 52,
+        "spend_usd": 3100,
+        "cost_per_lead_usd": 60,
+        "ctr_pct": 5.5,
+        "click_to_lead_pct": 11.1,
+        "impression_share_pct": 66.0,
+        "lost_to_budget_pct": 5.0,
+        "lost_to_rank_pct": 29.0,
+        "impression_share_prior_pct": 67.0,
+        "impression_share_test": {
+          "gap_points": -1.0,
+          "threshold_points": 1.2,
+          "verdict": "noise"
+        },
+        "impression_share_severity": "normal",
+        "ctr_prior_pct": 5.3,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 10.3,
+          "gap_test": {
+            "gap_points": 0.8,
+            "threshold_points": 3.1,
+            "verdict": "noise"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 11.1,
+          "gap_test": {
+            "gap_points": -0.0,
+            "threshold_points": 4.1,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "Drain Cleaning",
+        "impressions": 7200,
+        "clicks": 400,
+        "leads": 12,
+        "spend_usd": 2600,
+        "cost_per_lead_usd": 217,
+        "ctr_pct": 5.6,
+        "click_to_lead_pct": 3.0,
+        "impression_share_pct": 63.0,
+        "lost_to_budget_pct": 2.0,
+        "lost_to_rank_pct": 35.0,
+        "impression_share_prior_pct": 64.0,
+        "impression_share_test": {
+          "gap_points": -1.0,
+          "threshold_points": 1.3,
+          "verdict": "noise"
+        },
+        "impression_share_severity": "normal",
+        "ctr_prior_pct": 4.2,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 11.5,
+          "gap_test": {
+            "gap_points": -8.5,
+            "threshold_points": 3.3,
+            "verdict": "real"
+          }
+        },
+        "click_to_lead_severity": "critical",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 3.5,
+          "gap_test": {
+            "gap_points": -0.5,
+            "threshold_points": 2.7,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "Furnace Repair",
+        "impressions": 6400,
+        "clicks": 330,
+        "leads": 33,
+        "spend_usd": 2200,
+        "cost_per_lead_usd": 67,
+        "ctr_pct": 5.2,
+        "click_to_lead_pct": 10.0,
+        "impression_share_pct": 61.0,
+        "lost_to_budget_pct": 4.0,
+        "lost_to_rank_pct": 35.0,
+        "impression_share_prior_pct": 60.0,
+        "impression_share_test": {
+          "gap_points": 1.0,
+          "threshold_points": 1.4,
+          "verdict": "noise"
+        },
+        "impression_share_severity": "normal",
+        "ctr_prior_pct": 4.8,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 10.4,
+          "gap_test": {
+            "gap_points": -0.4,
+            "threshold_points": 3.6,
+            "verdict": "noise"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 10.0,
+          "gap_test": {
+            "gap_points": 0.0,
+            "threshold_points": 4.8,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "HVAC Installation",
+        "impressions": 3100,
+        "clicks": 120,
+        "leads": 9,
+        "spend_usd": 1900,
+        "cost_per_lead_usd": 211,
+        "ctr_pct": 3.9,
+        "click_to_lead_pct": 7.5,
+        "impression_share_pct": 38.0,
+        "lost_to_budget_pct": 0.0,
+        "lost_to_rank_pct": 62.0,
+        "impression_share_prior_pct": 45.0,
+        "impression_share_test": {
+          "gap_points": -7.0,
+          "threshold_points": 1.6,
+          "verdict": "real"
+        },
+        "impression_share_severity": "moderate",
+        "ctr_prior_pct": 3.9,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 10.5,
+          "gap_test": {
+            "gap_points": -3.0,
+            "threshold_points": 5.7,
+            "verdict": "noise"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 7.7,
+          "gap_test": {
+            "gap_points": -0.2,
+            "threshold_points": 6.7,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      },
+      {
+        "campaign": "Brand",
+        "impressions": 4200,
+        "clicks": 820,
+        "leads": 96,
+        "spend_usd": 1450,
+        "cost_per_lead_usd": 15,
+        "ctr_pct": 19.5,
+        "click_to_lead_pct": 11.7,
+        "impression_share_pct": 86.0,
+        "lost_to_budget_pct": 0.0,
+        "lost_to_rank_pct": 14.0,
+        "impression_share_prior_pct": 93.0,
+        "impression_share_test": {
+          "gap_points": -7.0,
+          "threshold_points": 1.3,
+          "verdict": "real"
+        },
+        "impression_share_severity": "moderate",
+        "ctr_prior_pct": 19.5,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "own comparison window",
+          "rate_pct": 11.9,
+          "gap_test": {
+            "gap_points": -0.2,
+            "threshold_points": 3.2,
+            "verdict": "noise"
+          }
+        },
+        "click_to_lead_severity": "normal"
+      },
+      {
+        "campaign": "Out of Area",
+        "impressions": 1500,
+        "clicks": 60,
+        "leads": 4,
+        "spend_usd": 330,
+        "cost_per_lead_usd": 82,
+        "ctr_pct": 4.0,
+        "click_to_lead_pct": 6.7,
+        "impression_share_pct": 40.0,
+        "lost_to_budget_pct": 0.0,
+        "lost_to_rank_pct": 60.0,
+        "impression_share_prior_pct": 41.0,
+        "impression_share_test": {
+          "gap_points": -1.0,
+          "threshold_points": 2.3,
+          "verdict": "noise"
+        },
+        "impression_share_severity": "normal",
+        "ctr_prior_pct": 4.5,
+        "ctr_severity": "normal",
+        "click_to_lead_reference": {
+          "against": "the other non-brand campaigns",
+          "rate_pct": 10.5,
+          "gap_test": {
+            "gap_points": -3.8,
+            "threshold_points": 8.0,
+            "verdict": "noise"
+          }
+        },
+        "click_to_lead_severity": "normal",
+        "click_to_lead_vs_own_window": {
+          "rate_pct": 7.1,
+          "gap_test": {
+            "gap_points": -0.5,
+            "threshold_points": 8.9,
+            "verdict": "noise"
+          },
+          "reading": "worse (noise)"
+        }
+      }
+    ],
+    "devices": [
+      {
+        "device": "mobile",
+        "impressions": 49440,
+        "clicks": 3112,
+        "leads": 332,
+        "ctr_pct": 6.3,
+        "click_to_lead_pct": 10.7,
+        "spend_usd": 17740,
+        "vs_other_devices": {
+          "gap_points": 0.0,
+          "threshold_points": 2.5,
+          "verdict": "noise"
+        },
+        "reading": "no real gap",
+        "click_to_lead_severity": "normal"
+      },
+      {
+        "device": "desktop",
+        "impressions": 10506,
+        "clicks": 622,
+        "leads": 74,
+        "ctr_pct": 5.9,
+        "click_to_lead_pct": 11.9,
+        "spend_usd": 3540,
+        "vs_other_devices": {
+          "gap_points": 1.5,
+          "threshold_points": 2.7,
+          "verdict": "noise"
+        },
+        "reading": "no real gap",
+        "click_to_lead_severity": "normal"
+      },
+      {
+        "device": "tablet",
+        "impressions": 1854,
+        "clicks": 156,
+        "leads": 9,
+        "ctr_pct": 8.4,
+        "click_to_lead_pct": 5.8,
+        "spend_usd": 890,
+        "vs_other_devices": {
+          "gap_points": -5.1,
+          "threshold_points": 5.0,
+          "verdict": "real"
+        },
+        "reading": "real gap",
+        "click_to_lead_severity": "high"
+      }
+    ],
+    "regions": [
+      {
+        "region": "The home region (the service area)",
+        "impressions": 60300,
+        "clicks": 3830,
+        "leads": 411,
+        "spend_usd": 21850,
+        "click_to_lead_pct": 10.7,
+        "vs_the_rest": {
+          "gap_points": 4.1,
+          "threshold_points": 8.0,
+          "verdict": "noise"
+        },
+        "reading": "no real gap",
+        "click_to_lead_severity": "normal"
+      },
+      {
+        "region": "Other regions (4, added together)",
+        "impressions": 1500,
+        "clicks": 60,
+        "leads": 4,
+        "spend_usd": 330,
+        "click_to_lead_pct": 6.7,
+        "vs_the_rest": {
+          "gap_points": -4.1,
+          "threshold_points": 8.0,
+          "verdict": "noise"
+        },
+        "reading": "no real gap",
+        "click_to_lead_severity": "normal"
+      }
+    ],
+    "landing_pages": [
+      {
+        "landing_page": "AC-repair page",
+        "clicks": 1050,
+        "leads": 98,
+        "click_to_lead_pct": 9.3,
+        "spend_usd": 6300,
+        "vs_other_pages": {
+          "gap_points": 1.4,
+          "threshold_points": 2.0,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Home page",
+        "clicks": 820,
+        "leads": 75,
+        "click_to_lead_pct": 9.1,
+        "spend_usd": 1450,
+        "vs_other_pages": {
+          "gap_points": 1.0,
+          "threshold_points": 2.2,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Emergency-plumber page",
+        "clicks": 618,
+        "leads": 62,
+        "click_to_lead_pct": 10.0,
+        "spend_usd": 4150,
+        "vs_other_pages": {
+          "gap_points": 2.0,
+          "threshold_points": 2.4,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Water-heater page",
+        "clicks": 470,
+        "leads": 41,
+        "click_to_lead_pct": 8.7,
+        "spend_usd": 3100,
+        "vs_other_pages": {
+          "gap_points": 0.4,
+          "threshold_points": 2.7,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Drain-cleaning page",
+        "clicks": 400,
+        "leads": 9,
+        "click_to_lead_pct": 2.2,
+        "spend_usd": 2600,
+        "vs_other_pages": {
+          "gap_points": -6.8,
+          "threshold_points": 2.9,
+          "verdict": "real"
+        },
+        "severity": "critical"
+      },
+      {
+        "landing_page": "Furnace-repair page",
+        "clicks": 330,
+        "leads": 26,
+        "click_to_lead_pct": 7.9,
+        "spend_usd": 2200,
+        "vs_other_pages": {
+          "gap_points": -0.5,
+          "threshold_points": 3.2,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "HVAC-installation page",
+        "clicks": 120,
+        "leads": 7,
+        "click_to_lead_pct": 5.8,
+        "spend_usd": 1900,
+        "vs_other_pages": {
+          "gap_points": -2.6,
+          "threshold_points": 5.1,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Service-area page",
+        "clicks": 60,
+        "leads": 3,
+        "click_to_lead_pct": 5.0,
+        "spend_usd": 330,
+        "vs_other_pages": {
+          "gap_points": -3.4,
+          "threshold_points": 7.2,
+          "verdict": "noise"
+        },
+        "severity": "normal"
+      },
+      {
+        "landing_page": "Free estimate page",
+        "clicks": 22,
+        "leads": 3,
+        "click_to_lead_pct": 13.6,
+        "spend_usd": 150,
+        "vs_other_pages": {
+          "verdict": "too few to compare"
+        },
+        "severity": "not graded (under 30 clicks)"
+      }
+    ]
+  },
+  "segment_notes": [
+    "Each rate has one reference that sets its severity: a campaign's impression share and click rate against its own comparison window; click-to-lead against the other non-brand campaigns (Brand against its own window), devices against the other devices and landing pages against the other pages. The other comparison is shown as context only.",
+    "The 'low below' lines (30% impression share, 2% click rate, 4% click to lead) are floors for the account totals and every non-brand segment, with or without history; Brand is exempt.",
+    "Campaigns or pages with under 30 clicks are listed but not graded.",
+    "4 other regions each sent under 30 clicks, so they are added together and never graded one by one. Every click from them came from the Out of Area campaign, which targets the nearby regions on purpose, and every other campaign's clicks came from the home region, so here the region split repeats the campaign split.",
+    "The free estimate page turned 3 of 22 ad clicks into leads: too few to grade, but a candidate page to test against the weak drain-cleaning page.",
+    "Leads from the landing-page report (324) are fewer than the account's 415, because calls from ads have no landing page."
+  ],
+  "leaks": [
+    {
+      "step": "Eligible impressions → impressions",
+      "segment": "AC Repair campaign",
+      "severity": "high",
+      "current": "52.0% impression share",
+      "reference": "71.0% in the comparison window",
+      "counted_part": "budget",
+      "counted_part_note": "Lost 31.0% to budget and 17.0% to rank. Both parts count (leads cost $50, at or under the account's $53); the budget part costs more leads, so it sets the impact.",
+      "missed_impressions_to_budget": 12519,
+      "missed_impressions_to_rank": 6865,
+      "leads_a_month_ceiling": 75,
+      "extra_spend_a_month_ceiling_usd": 3760,
+      "cost_per_lead_usd": 50,
+      "impact": "high"
+    },
+    {
+      "step": "Eligible impressions → impressions",
+      "segment": "Emergency Plumbing campaign",
+      "severity": "moderate",
+      "current": "55.0% impression share",
+      "reference": "68.0% in the comparison window",
+      "counted_part": "budget",
+      "counted_part_note": "Lost 27.0% to budget and 18.0% to rank. Both parts count (leads cost $52, at or under the account's $53); the budget part costs more leads, so it sets the impact.",
+      "missed_impressions_to_budget": 4811,
+      "missed_impressions_to_rank": 3207,
+      "leads_a_month_ceiling": 41,
+      "extra_spend_a_month_ceiling_usd": 2110,
+      "cost_per_lead_usd": 52,
+      "impact": "high"
+    },
+    {
+      "step": "Clicks → leads",
+      "segment": "Drain Cleaning campaign",
+      "severity": "critical",
+      "current": "3.0% of 400 clicks",
+      "reference": "11.5% on the other non-brand campaigns",
+      "leads_a_month_lost": 34.0,
+      "spend_usd": 2600,
+      "cost_per_lead_usd": 217,
+      "excess_spend_a_month_usd": 1960,
+      "impact": "high"
+    },
+    {
+      "step": "Eligible impressions → impressions",
+      "segment": "Brand campaign",
+      "severity": "moderate",
+      "current": "86.0% impression share",
+      "reference": "93.0% in the comparison window",
+      "counted_part": "rank",
+      "counted_part_note": "Lost 14.0% to rank and none to budget, so the rank part sets the impact.",
+      "missed_impressions_to_budget": 0,
+      "missed_impressions_to_rank": 684,
+      "leads_a_month_ceiling": 16,
+      "extra_spend_a_month_ceiling_usd": 240,
+      "cost_per_lead_usd": 15,
+      "impact": "low"
+    },
+    {
+      "step": "Eligible impressions → impressions",
+      "segment": "HVAC Installation campaign",
+      "severity": "moderate",
+      "current": "38.0% impression share",
+      "reference": "45.0% in the comparison window",
+      "counted_part": "rank",
+      "counted_part_note": "Lost 62.0% to rank and none to budget, so the rank part sets the impact.",
+      "missed_impressions_to_budget": 0,
+      "missed_impressions_to_rank": 5058,
+      "leads_a_month_ceiling": 15,
+      "extra_spend_a_month_ceiling_usd": 3100,
+      "cost_per_lead_usd": 211,
+      "impact": "low"
+    }
+  ],
+  "priority_matrix": {
+    "do first": [
+      "#1 Leads: Confirm what 'Tap to call (website)' records",
+      "#2 Below leads: Import the step after the lead: booked jobs from the job management system as an offline conversion, with a job value, so the funnel reaches revenue and leaks can be priced",
+      "#3 AC Repair campaign: Move budget from the Drain Cleaning campaign (the most expensive leads) into this campaign, then raise it in steps while its cost per lead stays under the account's",
+      "#4 Emergency Plumbing campaign: Move budget from the Drain Cleaning campaign (the most expensive leads) into this campaign, then raise it in steps while its cost per lead stays under the account's",
+      "#5 Drain Cleaning campaign: Rebuild the drain-cleaning page above the fold for mobile: the problem named in the ad as the headline, a click-to-call button and a 3-field booking form, plus reviews and the price range"
+    ],
+    "plan next": [],
+    "quick wins": [
+      "#6 Brand campaign: Raise the brand keywords' bids or target impression share so the company's own name shows on every search, and check the brand ads' quality"
+    ],
+    "later": [
+      "#7 HVAC Installation campaign: Leave its budget as it is"
+    ]
+  },
+  "top_fixes": [
+    {
+      "rank": 1,
+      "type": "trust",
+      "step": "Leads",
+      "fix": "Confirm what 'Tap to call (website)' records. If it is a button tap, move it to a secondary action and count a confirmed call (call tracking with a minimum length) instead.",
+      "why": "'Tap to call (website)' is a counted website action and recorded 142 of the 415 leads (34.2%). Its name and type suggest a tap on a call button, not a completed call. If so, the lead step is inflated by up to that share.",
+      "effort": "low",
+      "go_deeper": "measurement/conversion-tracking-auditor (if installed)",
+      "quadrant": "do first"
+    },
+    {
+      "rank": 2,
+      "type": "trust",
+      "step": "Below leads",
+      "fix": "Import the step after the lead: booked jobs from the job management system as an offline conversion, with a job value, so the funnel reaches revenue and leaks can be priced.",
+      "why": "Conversion value is 0 on every campaign, and no qualified-lead or booked-job step is imported. The funnel ends at leads, and impact is counted in leads and spend.",
+      "effort": "medium",
+      "go_deeper": "measurement/conversion-tracking-auditor (if installed)",
+      "quadrant": "do first"
+    },
+    {
+      "rank": 3,
+      "type": "leak",
+      "step": "Eligible impressions → impressions",
+      "segment": "AC Repair campaign",
+      "severity": "high",
+      "current": "52.0% impression share",
+      "reference": "71.0% in the comparison window",
+      "impact": "up to 75 more leads a month (a ceiling) for up to $3,760 more spend, at a cost per lead of $50 against the account's $53",
+      "cause_hypothesis": "The daily budget runs out: 12,519 eligible impressions were lost to budget in the window.",
+      "evidence": "Call 13: lost-to-budget share up on the comparison window.",
+      "fix": "Move budget from the Drain Cleaning campaign (the most expensive leads) into this campaign, then raise it in steps while its cost per lead stays under the account's.",
+      "effort": "low",
+      "go_deeper": "google-ads/budget-allocation-optimizer",
+      "impact_level": "high",
+      "quadrant": "do first"
+    },
+    {
+      "rank": 4,
+      "type": "leak",
+      "step": "Eligible impressions → impressions",
+      "segment": "Emergency Plumbing campaign",
+      "severity": "moderate",
+      "current": "55.0% impression share",
+      "reference": "68.0% in the comparison window",
+      "impact": "up to 41 more leads a month (a ceiling) for up to $2,110 more spend, at a cost per lead of $52 against the account's $53",
+      "cause_hypothesis": "The daily budget runs out: 4,811 eligible impressions were lost to budget in the window.",
+      "evidence": "Call 13: lost-to-budget share up on the comparison window.",
+      "fix": "Move budget from the Drain Cleaning campaign (the most expensive leads) into this campaign, then raise it in steps while its cost per lead stays under the account's.",
+      "effort": "low",
+      "go_deeper": "google-ads/budget-allocation-optimizer",
+      "impact_level": "high",
+      "quadrant": "do first"
+    },
+    {
+      "rank": 5,
+      "type": "leak",
+      "step": "Clicks → leads",
+      "segment": "Drain Cleaning campaign",
+      "severity": "critical",
+      "current": "3.0% of 400 clicks",
+      "reference": "11.5% on the other non-brand campaigns",
+      "impact": "about 34.0 leads a month lost; $2,600 spent at $217 a lead against the account's $53, so about $1,960 a month buys nothing extra",
+      "cause_hypothesis": "The step after the click, not the ad: the campaign's click rate rose from 4.2% to 5.6%, so the ad draws clicks, but the leads don't follow. Its landing page turns 2.2% of 400 clicks into leads against 9.0% on the other landing pages; that page gap is real on its own. Likely causes: the page doesn't answer the search (the problem, the price, how soon a plumber arrives), the call button and booking form sit low on mobile, or there is no proof such as reviews and a guarantee.",
+      "evidence": "Calls 14 and 17; confirm with a session recording or a form-field report, and check the page's mobile speed.",
+      "fix": "Rebuild the drain-cleaning page above the fold for mobile: the problem named in the ad as the headline, a click-to-call button and a 3-field booking form, plus reviews and the price range. Until it converts, cap the campaign's budget.",
+      "effort": "medium",
+      "go_deeper": "marketing/ad-landing-page-match-scorer, marketing/landing-page-auditor",
+      "impact_level": "high",
+      "quadrant": "do first"
+    }
+  ],
+  "more_fixes": [
+    {
+      "rank": 6,
+      "type": "leak",
+      "step": "Eligible impressions → impressions",
+      "segment": "Brand campaign",
+      "severity": "moderate",
+      "current": "86.0% impression share",
+      "reference": "93.0% in the comparison window",
+      "impact": "up to 16 more leads a month (a ceiling)",
+      "cause_hypothesis": "Ad rank: 14.0% of brand impressions were lost to rank and none to budget.",
+      "evidence": "Call 13: lost-to-rank and lost-to-budget shares.",
+      "fix": "Raise the brand keywords' bids or target impression share so the company's own name shows on every search, and check the brand ads' quality; a competitor bidding on the name is the usual cause of brand share lost to rank.",
+      "effort": "low",
+      "go_deeper": "google-ads/impression-share-analyst (if installed)",
+      "impact_level": "low",
+      "quadrant": "quick win"
+    },
+    {
+      "rank": 7,
+      "type": "leak",
+      "step": "Eligible impressions → impressions",
+      "segment": "HVAC Installation campaign",
+      "severity": "moderate",
+      "current": "38.0% impression share",
+      "reference": "45.0% in the comparison window",
+      "impact": "up to 15 more leads a month (a ceiling)",
+      "cause_hypothesis": "Lost 62.0% to rank and none to budget, so the rank part sets the impact.",
+      "evidence": "Call 13: lost-to-rank and lost-to-budget shares.",
+      "fix": "Leave its budget as it is; before adding any, find out why its leads cost so much (its keywords, its ads and its landing page), then raise bids only if the cost per lead comes down.",
+      "effort": "medium",
+      "go_deeper": "google-ads/keyword-performance-analyzer",
+      "impact_level": "low",
+      "quadrant": "later"
+    }
+  ],
+  "tests": [
+    {
+      "leak": "AC Repair campaign impressions lost to budget",
+      "hypothesis": "If the budget rises in steps for 2 weeks each, leads rise while the cost per lead stays under the account's $53, because 12,519 eligible impressions went unserved.",
+      "type": "stepped budget test (not a split test)",
+      "stop_rule": "Stop raising when 2 weeks' cost per lead goes above $53."
+    },
+    {
+      "leak": "Emergency Plumbing campaign impressions lost to budget",
+      "hypothesis": "If the budget rises in steps for 2 weeks each, leads rise while the cost per lead stays under the account's $53, because 4,811 eligible impressions went unserved.",
+      "type": "stepped budget test (not a split test)",
+      "stop_rule": "Stop raising when 2 weeks' cost per lead goes above $53."
+    },
+    {
+      "leak": "Drain Cleaning clicks → leads",
+      "hypothesis": "If the drain-cleaning page leads with the problem named in the ad, a click-to-call button and a 3-field booking form above the fold on mobile, its click-to-lead rate rises from 3.0% towards 11.5%, because visitors see their problem and the next step without scrolling.",
+      "clicks_per_version": 143,
+      "months_at_current_volume": 0.7,
+      "note": "At this volume a split test takes months; run the new page for all traffic for 30 days and compare with this window instead, using the same gap test."
+    }
+  ],
+  "monitoring": [
+    {
+      "metric": "Impression share (all Search)",
+      "current_pct": 56.2,
+      "warning_below_pct": 66.0,
+      "critical_below_pct": 33.1,
+      "check": "weekly"
+    },
+    {
+      "metric": "Impressions → clicks",
+      "current_pct": 6.3,
+      "warning_below_pct": 5.8,
+      "critical_below_pct": 3.0,
+      "check": "weekly"
+    },
+    {
+      "metric": "Clicks → leads",
+      "current_pct": 10.7,
+      "warning_below_pct": 10.2,
+      "critical_below_pct": 5.5,
+      "check": "weekly"
+    },
+    {
+      "metric": "Mobile vs desktop gap, clicks → leads",
+      "current_gap_points": -1.2,
+      "warning_when_gap_beyond_points": 2.7,
+      "note": "The gap that would count as real at this window's clicks; past it, check the mobile page first.",
+      "check": "weekly"
+    }
+  ],
+  "not_checked": [
+    "Sessions that landed, engagement, form starts and the lead form report: GA4 is not connected for this business.",
+    "Whether ad clicks reach the site (the click-to-session check): needs GA4.",
+    "Booked jobs and revenue: not tracked. An offline conversion import of booked jobs from the job management system, with a job value, would add them (fix #2).",
+    "Mobile speed of the drain-cleaning page: run Core Web Vitals Fixer (if installed) before the rebuild.",
+    "Meta, LinkedIn and Search Console: the business doesn't advertise there through this workspace, so those rows are left out."
+  ],
+  "write_actions_offered": [],
+  "write_actions_note": "None offered: the GA4 key event and drop-off audience need GA4, which isn't connected for this business. Budget moves are handed to Budget Allocation Optimizer."
+}

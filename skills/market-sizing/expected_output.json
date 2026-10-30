@@ -1,0 +1,1707 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "scope_grid": [
+      {
+        "dimension": "vertical",
+        "in_sam": "salons; clinics; fitness studios and trainers",
+        "tam_only": "other appointment-based service businesses (spas, pet grooming, tutoring and others)",
+        "why_tam_only": "no industry setup for them in the product yet"
+      },
+      {
+        "dimension": "country",
+        "in_sam": "US, UK, CA",
+        "tam_only": "AU, IE, NZ",
+        "why_tam_only": "no local payments yet"
+      },
+      {
+        "dimension": "size band",
+        "in_sam": "1 to 20 staff",
+        "tam_only": "21 to 49 staff",
+        "why_tam_only": "multi-location features are missing"
+      }
+    ],
+    "grid_rows": "9 SAM rows (vertical x country, 1 to 20 staff) and 6 TAM rows (all appointment-based businesses by country, 1 to 49 staff)",
+    "spend_per_buyer_from": "plans Starter $19, Growth $49, Business $99 a month, at the current plan mix",
+    "sizing_year": 2026,
+    "currency": "USD",
+    "window": "2025-10-01 to 2026-09-30",
+    "connectors_run": [
+      "dataforseo kw_google_ads_search_volume (3 calls: US, UK, CA)",
+      "google-search-console search_analytics (3 calls)",
+      "google-ads gaql (3 calls)",
+      "google-analytics get_report (1 call)"
+    ],
+    "pasted": [
+      "billing figures",
+      "published sources S1 to S8"
+    ]
+  },
+  "answer": {
+    "tam_usd": {
+      "low": 325092000,
+      "base": 499949000,
+      "high": 664285000
+    },
+    "sam_usd": {
+      "low": 114889000,
+      "base": 176684000,
+      "high": 250448000
+    },
+    "som_year3_usd": {
+      "low": 1999000,
+      "base": 2125000,
+      "high": 2197000
+    },
+    "som_year3_share_of_sam_pct": {
+      "low": 0.86,
+      "base": 0.92,
+      "high": 0.95
+    },
+    "share_of_sam_today_pct": 0.74,
+    "buyers": {
+      "tam": 923778,
+      "sam": 326467,
+      "customers_today": 2400
+    },
+    "bounds_note": "TAM and SAM low and high move every input to its low or high at once, so they are outer bounds, not likely outcomes. SOM cases change only the share-of-search path.",
+    "summary": "SAM is about $176.7m a year at today's prices ($114.9m to $250.4m), and the business holds 0.74% of it. On its own retention, conversion and share of search it reaches $2.1m by year 3 in the base case ($2.0m to $2.2m), 0.92% of a SAM that grows 9.5% a year."
+  },
+  "inputs": [
+    {
+      "input": "Annual spend per buyer (plan mix x price x 12)",
+      "base": 541.2,
+      "low": 487.08,
+      "high": 595.32,
+      "label": "given",
+      "evidence": "plan mix from billing at 2026-09-30, given by the user on 2026-10-28; list prices"
+    },
+    {
+      "input": "US business counts, SAM verticals",
+      "base": 272300,
+      "low": 231455.0,
+      "high": 313145.0,
+      "label": "sourced",
+      "evidence": "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+    },
+    {
+      "input": "US share with 1 to 20 staff (per vertical: salons 0.91, clinics 0.78, fitness studios and trainers 0.86)",
+      "base": "per vertical",
+      "low": "-15%",
+      "high": "+15%, capped at 1.0",
+      "label": "sourced",
+      "evidence": "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+    },
+    {
+      "input": "UK business counts, SAM verticals",
+      "base": 72900,
+      "low": 61965.0,
+      "high": 83835.0,
+      "label": "sourced",
+      "evidence": "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+    },
+    {
+      "input": "UK share with 1 to 20 staff (per vertical: salons 0.93, clinics 0.8, fitness studios and trainers 0.88)",
+      "base": "per vertical",
+      "low": "-15%",
+      "high": "+15%, capped at 1.0",
+      "label": "sourced",
+      "evidence": "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+    },
+    {
+      "input": "CA business counts, SAM verticals",
+      "base": 33300,
+      "low": 28305.0,
+      "high": 38295.0,
+      "label": "sourced",
+      "evidence": "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+    },
+    {
+      "input": "CA share with 1 to 20 staff (per vertical: salons 0.92, clinics 0.79, fitness studios and trainers 0.87)",
+      "base": "per vertical",
+      "low": "-15%",
+      "high": "+15%, capped at 1.0",
+      "label": "sourced",
+      "evidence": "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+    },
+    {
+      "input": "US appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+      "base": 612000,
+      "low": 520200.0,
+      "high": 703800.0,
+      "label": "sourced",
+      "evidence": "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+    },
+    {
+      "input": "UK appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+      "base": 168000,
+      "low": 142800.0,
+      "high": 193200.0,
+      "label": "sourced",
+      "evidence": "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+    },
+    {
+      "input": "CA appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+      "base": 71000,
+      "low": 60350.0,
+      "high": 81650.0,
+      "label": "sourced",
+      "evidence": "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+    },
+    {
+      "input": "AU appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+      "base": 88000,
+      "low": 74800.0,
+      "high": 101200.0,
+      "label": "sourced",
+      "evidence": "Australian business counts (invented), https://au-business-register.example/counts, published 2026-01-30, describes 2025"
+    },
+    {
+      "input": "IE appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+      "base": 14500,
+      "low": 12325.0,
+      "high": 16675.0,
+      "label": "sourced",
+      "evidence": "Irish business demography (invented), https://ie-business-register.example/demography, published 2025-11-12, describes 2024"
+    },
+    {
+      "input": "NZ appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+      "base": 16800,
+      "low": 14280.0,
+      "high": 19320.0,
+      "label": "sourced",
+      "evidence": "New Zealand business demography (invented), https://nz-business-register.example/demography, published 2026-02-18, describes 2025"
+    },
+    {
+      "input": "Published spend, small business scheduling software, US UK CA, 2024 (USD)",
+      "base": 121000000,
+      "low": 102850000.0,
+      "high": 139150000.0,
+      "label": "sourced",
+      "evidence": "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+    },
+    {
+      "input": "Market growth per year",
+      "base": 0.095,
+      "low": 0.08075,
+      "high": 0.10925,
+      "label": "sourced",
+      "evidence": "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+    },
+    {
+      "input": "Share of that spend from salons, clinics, fitness",
+      "base": 0.64,
+      "low": 0.544,
+      "high": 0.736,
+      "label": "sourced",
+      "evidence": "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+    },
+    {
+      "input": "Share of that spend from 1 to 20 staff",
+      "base": 0.7,
+      "low": 0.49,
+      "high": 0.91,
+      "label": "assumed",
+      "evidence": "businesses with 1 to 20 staff are about 85% of buyers in the registers but buy smaller plans, so a lower share of spend"
+    },
+    {
+      "input": "Share of SAM buyers paying for booking software today",
+      "base": 0.41,
+      "low": 0.3485,
+      "high": 0.4715,
+      "label": "sourced",
+      "evidence": "Small business technology survey (invented), https://smallbiz-tech-survey.example/2025-report, published 2026-02-10, describes 2025"
+    },
+    {
+      "input": "Share of businesses shopping for booking software in a year",
+      "base": 0.13,
+      "low": 0.1105,
+      "high": 0.1495,
+      "label": "sourced",
+      "evidence": "Small business technology survey (invented), https://smallbiz-tech-survey.example/2025-report, published 2026-02-10, describes 2025"
+    },
+    {
+      "input": "Searches per buying journey",
+      "base": 6,
+      "low": 4.2,
+      "high": 7.8,
+      "label": "assumed",
+      "evidence": "a buyer compares several phrases over a few sessions; no first-party measure exists"
+    },
+    {
+      "input": "Quebec share of Canadian businesses",
+      "base": 0.22,
+      "low": 0.187,
+      "high": 0.253,
+      "label": "sourced",
+      "evidence": "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+    },
+    {
+      "input": "US category searches in the window (10 terms, English)",
+      "base": 192070,
+      "low": 172863.0,
+      "high": 211277.0,
+      "label": "measured",
+      "evidence": "DataForSEO kw_google_ads_search_volume, location_code 2840, language en, monthly_searches 2025-10 to 2026-09"
+    },
+    {
+      "input": "UK category searches in the window (10 terms, English)",
+      "base": 56040,
+      "low": 50436.0,
+      "high": 61644.0,
+      "label": "measured",
+      "evidence": "DataForSEO kw_google_ads_search_volume, location_code 2826, language en, monthly_searches 2025-10 to 2026-09"
+    },
+    {
+      "input": "CA category searches in the window (10 terms, English)",
+      "base": 10000,
+      "low": 9000.0,
+      "high": 11000.0,
+      "label": "measured",
+      "evidence": "DataForSEO kw_google_ads_search_volume, location_code 2124, language en, monthly_searches 2025-10 to 2026-09"
+    },
+    {
+      "input": "Share of search today, as a fraction (organic + paid category clicks / category searches)",
+      "base": 0.0652,
+      "low": 0.05868,
+      "high": 0.07172,
+      "label": "measured",
+      "evidence": "Search Console search_analytics (query, country) and Google Ads gaql on the 3 category campaigns, 2025-10-01 to 2026-09-30"
+    },
+    {
+      "input": "Share of search trend, percentage points per year",
+      "base": 1.15,
+      "low": 1.04,
+      "high": 1.27,
+      "label": "measured",
+      "evidence": "last 3 months (2026-07-01 to 2026-09-30) minus first 3 months (2025-10-01 to 2025-12-31), x 12/9"
+    },
+    {
+      "input": "Sign-up rate, search sessions on product pages, as a fraction",
+      "base": 0.06579,
+      "low": 0.05921,
+      "high": 0.07237,
+      "label": "measured",
+      "evidence": "GA4 get_report (sessionDefaultChannelGroup, landingPage), 2025-10-01 to 2026-09-30: 8,695 sign-ups / 132,163 sessions"
+    },
+    {
+      "input": "Paying customers at window end",
+      "base": 2400,
+      "low": 2160.0,
+      "high": 2640.0,
+      "label": "given",
+      "evidence": "billing at 2026-09-30, given by the user on 2026-10-28"
+    },
+    {
+      "input": "New paying customers in the window",
+      "base": 1180,
+      "low": 1062.0,
+      "high": 1298.0,
+      "label": "given",
+      "evidence": "billing at 2026-09-30, given by the user on 2026-10-28"
+    },
+    {
+      "input": "Monthly churn",
+      "base": 0.021,
+      "low": 0.0189,
+      "high": 0.0231,
+      "label": "given",
+      "evidence": "billing, average of the last 12 months, given by the user on 2026-10-28"
+    },
+    {
+      "input": "Sign-up to paid rate",
+      "base": 0.21,
+      "low": 0.189,
+      "high": 0.231,
+      "label": "given",
+      "evidence": "billing at 2026-09-30, given by the user on 2026-10-28"
+    }
+  ],
+  "bottom_up": {
+    "annual_spend_per_buyer_usd": 541.2,
+    "annual_spend_math": "0.38 x $19 x 12 + 0.47 x $49 x 12 + 0.15 x $99 x 12 = $541.20",
+    "sam_rows": [
+      {
+        "vertical": "salons",
+        "country": "US",
+        "businesses": 118400,
+        "share_1_to_20_staff": 0.91,
+        "buyers": 107744,
+        "usd": 58311000,
+        "source": "S1"
+      },
+      {
+        "vertical": "clinics",
+        "country": "US",
+        "businesses": 92600,
+        "share_1_to_20_staff": 0.78,
+        "buyers": 72228,
+        "usd": 39090000,
+        "source": "S1"
+      },
+      {
+        "vertical": "fitness studios and trainers",
+        "country": "US",
+        "businesses": 61300,
+        "share_1_to_20_staff": 0.86,
+        "buyers": 52718,
+        "usd": 28531000,
+        "source": "S1"
+      },
+      {
+        "vertical": "salons",
+        "country": "UK",
+        "businesses": 45200,
+        "share_1_to_20_staff": 0.93,
+        "buyers": 42036,
+        "usd": 22750000,
+        "source": "S2"
+      },
+      {
+        "vertical": "clinics",
+        "country": "UK",
+        "businesses": 17900,
+        "share_1_to_20_staff": 0.8,
+        "buyers": 14320,
+        "usd": 7750000,
+        "source": "S2"
+      },
+      {
+        "vertical": "fitness studios and trainers",
+        "country": "UK",
+        "businesses": 9800,
+        "share_1_to_20_staff": 0.88,
+        "buyers": 8624,
+        "usd": 4667000,
+        "source": "S2"
+      },
+      {
+        "vertical": "salons",
+        "country": "CA",
+        "businesses": 14600,
+        "share_1_to_20_staff": 0.92,
+        "buyers": 13432,
+        "usd": 7269000,
+        "source": "S3"
+      },
+      {
+        "vertical": "clinics",
+        "country": "CA",
+        "businesses": 11300,
+        "share_1_to_20_staff": 0.79,
+        "buyers": 8927,
+        "usd": 4831000,
+        "source": "S3"
+      },
+      {
+        "vertical": "fitness studios and trainers",
+        "country": "CA",
+        "businesses": 7400,
+        "share_1_to_20_staff": 0.87,
+        "buyers": 6438,
+        "usd": 3484000,
+        "source": "S3"
+      }
+    ],
+    "sam_by_country": [
+      {
+        "country": "US",
+        "buyers": 232690,
+        "usd": 125932000
+      },
+      {
+        "country": "UK",
+        "buyers": 64980,
+        "usd": 35167000
+      },
+      {
+        "country": "CA",
+        "buyers": 28797,
+        "usd": 15585000
+      }
+    ],
+    "sam_total": {
+      "buyers": 326467,
+      "usd": 176684000
+    },
+    "tam_rows": [
+      {
+        "country": "US",
+        "businesses": 612000,
+        "share_1_to_49_staff": 0.95,
+        "buyers": 581400,
+        "usd": 314654000,
+        "source": "S1"
+      },
+      {
+        "country": "UK",
+        "businesses": 168000,
+        "share_1_to_49_staff": 0.96,
+        "buyers": 161280,
+        "usd": 87285000,
+        "source": "S2"
+      },
+      {
+        "country": "CA",
+        "businesses": 71000,
+        "share_1_to_49_staff": 0.95,
+        "buyers": 67450,
+        "usd": 36504000,
+        "source": "S3"
+      },
+      {
+        "country": "AU",
+        "businesses": 88000,
+        "share_1_to_49_staff": 0.95,
+        "buyers": 83600,
+        "usd": 45244000,
+        "source": "S6"
+      },
+      {
+        "country": "IE",
+        "businesses": 14500,
+        "share_1_to_49_staff": 0.96,
+        "buyers": 13920,
+        "usd": 7534000,
+        "source": "S7"
+      },
+      {
+        "country": "NZ",
+        "businesses": 16800,
+        "share_1_to_49_staff": 0.96,
+        "buyers": 16128,
+        "usd": 8728000,
+        "source": "S8"
+      }
+    ],
+    "tam_total": {
+      "buyers": 923778,
+      "usd": 499949000
+    }
+  },
+  "top_down": {
+    "figure_age_check": "describes 2024, 2 years before the sizing year: within 3 years, used for the base case",
+    "steps": [
+      {
+        "step": "published figure, 2024",
+        "usd": 121000000,
+        "source": "S5"
+      },
+      {
+        "step": "restated to 2026: x (1 + 0.095) ^ 2",
+        "usd": 145082000
+      },
+      {
+        "step": "x 0.64 salons, clinics and fitness (S5)",
+        "usd": 92852000
+      },
+      {
+        "step": "x 0.7 businesses with 1 to 20 staff (assumed)",
+        "usd": 64997000
+      },
+      {
+        "step": "/ 0.41 paying for booking software today (S4), to the full-adoption basis of bottom-up",
+        "usd": 158529000
+      }
+    ],
+    "sam_top_down_usd": 158529000,
+    "basis": "converted the published figure up to full potential (divided by adoption) rather than the bottom-up figure down"
+  },
+  "demand_check": {
+    "statement": "Search volume is a demand signal, not a market size. It checks the buyer counts; it is never turned into dollars here.",
+    "rows": [
+      {
+        "country": "US",
+        "in_market_from_buyers": 30250,
+        "in_market_from_search": 32012,
+        "ratio": 1.06,
+        "verdict": "agree"
+      },
+      {
+        "country": "UK",
+        "in_market_from_buyers": 8447,
+        "in_market_from_search": 9340,
+        "ratio": 1.11,
+        "verdict": "agree"
+      },
+      {
+        "country": "CA",
+        "in_market_from_buyers": 3744,
+        "in_market_from_search": 1667,
+        "ratio": 2.25,
+        "verdict": "flag: above 2.0, explain"
+      }
+    ],
+    "total": {
+      "in_market_from_buyers": 42441,
+      "in_market_from_search": 43018,
+      "ratio": 1.01,
+      "verdict": "agree"
+    },
+    "math": "buyers side = SAM buyers x 0.13; search side = category searches in the window / 6"
+  },
+  "agreement": [
+    {
+      "comparison": "SAM dollars: bottom-up vs top-down (full-adoption basis)",
+      "bottom_up": 176684000,
+      "other": 158529000,
+      "ratio": 1.11,
+      "verdict": "agree",
+      "explanation": "Within 1.5. The bottom-up base is reported as SAM; the top-down figure sits 10.3% below it."
+    },
+    {
+      "comparison": "In-market buyers per year: buyers x shopping share vs searches / searches per journey (total)",
+      "bottom_up": 42441,
+      "other": 43018,
+      "ratio": 1.01,
+      "verdict": "agree",
+      "explanation": "Within 1.5, so the SAM buyer count is consistent with search demand in total."
+    },
+    {
+      "comparison": "In-market buyers, US (country flag)",
+      "bottom_up": 30250,
+      "other": 32012,
+      "ratio": 1.06,
+      "verdict": "agree",
+      "explanation": "Within 1.5."
+    },
+    {
+      "comparison": "In-market buyers, UK (country flag)",
+      "bottom_up": 8447,
+      "other": 9340,
+      "ratio": 1.11,
+      "verdict": "agree",
+      "explanation": "Within 1.5."
+    },
+    {
+      "comparison": "In-market buyers, CA (country flag)",
+      "bottom_up": 3744,
+      "other": 1667,
+      "ratio": 2.25,
+      "verdict": "flag: above 2.0, explain",
+      "explanation": "Flag: the English term set misses French searches, and Quebec holds 22% of Canadian businesses (S3). Without Quebec the buyer side is 2,920 and the ratio falls to 1.75 (gap explained). The rest is likely English-speaking buyers using terms outside the list. Next step: one more paid DataForSEO call for Canada with French terms and language_code fr."
+    }
+  ],
+  "share_of_search": {
+    "definition": "share of category searches that end in a click to the business (organic + paid); a reach measure, not a market share",
+    "gsc_rule": "only queries that exactly match a listed category term count, so clicks and searches cover the same queries",
+    "gsc_rows_kept": 30,
+    "gsc_rows_dropped": 24,
+    "variant_queries_left_out": [
+      {
+        "query": "best appointment booking software",
+        "clicks": 384
+      },
+      {
+        "query": "best salon booking software",
+        "clicks": 317
+      }
+    ],
+    "rows": [
+      {
+        "country": "US",
+        "category_searches": 192070,
+        "organic_clicks": 5894,
+        "paid_clicks": 8839,
+        "organic_click_share_pct": 3.07,
+        "paid_click_share_pct": 4.6,
+        "share_of_search_pct": 7.67,
+        "first_3_months_pct": 6.95,
+        "last_3_months_pct": 8.23,
+        "trend_points_per_year": 1.71,
+        "search_impression_share_pct": 46,
+        "lost_to_budget_pct": 38,
+        "lost_to_rank_pct": 16
+      },
+      {
+        "country": "UK",
+        "category_searches": 56040,
+        "organic_clicks": 711,
+        "paid_clicks": 924,
+        "organic_click_share_pct": 1.27,
+        "paid_click_share_pct": 1.65,
+        "share_of_search_pct": 2.92,
+        "first_3_months_pct": 3.09,
+        "last_3_months_pct": 2.72,
+        "trend_points_per_year": -0.49,
+        "search_impression_share_pct": 58,
+        "lost_to_budget_pct": 9,
+        "lost_to_rank_pct": 33
+      },
+      {
+        "country": "CA",
+        "category_searches": 10000,
+        "organic_clicks": 230,
+        "paid_clicks": 230,
+        "organic_click_share_pct": 2.3,
+        "paid_click_share_pct": 2.3,
+        "share_of_search_pct": 4.6,
+        "first_3_months_pct": 4.13,
+        "last_3_months_pct": 4.86,
+        "trend_points_per_year": 0.98,
+        "search_impression_share_pct": 62,
+        "lost_to_budget_pct": 11,
+        "lost_to_rank_pct": 27
+      }
+    ],
+    "total": {
+      "category_searches": 258110,
+      "organic_clicks": 6835,
+      "paid_clicks": 9993,
+      "share_of_search_pct": 6.52,
+      "first_3_months_pct": 6.02,
+      "last_3_months_pct": 6.89,
+      "trend_points_per_year": 1.15
+    }
+  },
+  "som": {
+    "funnel_year0": {
+      "category_clicks": 16828,
+      "sign_up_rate_pct": 6.58,
+      "sign_up_rate_math": "8,695 sign-ups / 132,163 Organic Search and Paid Search sessions on product pages (all search landing pages: 3.3%, diluted by blog readers)",
+      "sign_up_to_paid_pct": 21.0,
+      "search_sourced_new_customers": 232,
+      "new_customers_in_window": 1180,
+      "other_channel_new_customers": 948,
+      "annual_retention_pct": 77.5,
+      "retention_math": "(1 - 0.021) ^ 12"
+    },
+    "cases": {
+      "low": {
+        "share_of_search_path": "flat at today's value",
+        "years": [
+          {
+            "year": 1,
+            "share_of_search_pct": 6.52,
+            "category_searches": 282630,
+            "search_sourced_new": 255,
+            "other_channel_new": 948,
+            "customers_end": 2919
+          },
+          {
+            "year": 2,
+            "share_of_search_pct": 6.52,
+            "category_searches": 309480,
+            "search_sourced_new": 279,
+            "other_channel_new": 948,
+            "customers_end": 3342
+          },
+          {
+            "year": 3,
+            "share_of_search_pct": 6.52,
+            "category_searches": 338881,
+            "search_sourced_new": 305,
+            "other_channel_new": 948,
+            "customers_end": 3694
+          }
+        ],
+        "som_year3_usd": 1999000,
+        "sam_year3_usd": 231974000,
+        "som_share_of_sam_pct": 0.86
+      },
+      "base": {
+        "share_of_search_path": "today's value plus the measured trend each year",
+        "years": [
+          {
+            "year": 1,
+            "share_of_search_pct": 7.67,
+            "category_searches": 282630,
+            "search_sourced_new": 300,
+            "other_channel_new": 948,
+            "customers_end": 2958
+          },
+          {
+            "year": 2,
+            "share_of_search_pct": 8.83,
+            "category_searches": 309480,
+            "search_sourced_new": 377,
+            "other_channel_new": 948,
+            "customers_end": 3460
+          },
+          {
+            "year": 3,
+            "share_of_search_pct": 9.98,
+            "category_searches": 338881,
+            "search_sourced_new": 467,
+            "other_channel_new": 948,
+            "customers_end": 3927
+          }
+        ],
+        "som_year3_usd": 2125000,
+        "sam_year3_usd": 231974000,
+        "som_share_of_sam_pct": 0.92
+      },
+      "high": {
+        "share_of_search_path": "base plus 1.45 points from winning back half of the impression share lost to budget",
+        "years": [
+          {
+            "year": 1,
+            "share_of_search_pct": 9.12,
+            "category_searches": 282630,
+            "search_sourced_new": 356,
+            "other_channel_new": 948,
+            "customers_end": 3008
+          },
+          {
+            "year": 2,
+            "share_of_search_pct": 10.28,
+            "category_searches": 309480,
+            "search_sourced_new": 439,
+            "other_channel_new": 948,
+            "customers_end": 3553
+          },
+          {
+            "year": 3,
+            "share_of_search_pct": 11.43,
+            "category_searches": 338881,
+            "search_sourced_new": 535,
+            "other_channel_new": 948,
+            "customers_end": 4059
+          }
+        ],
+        "som_year3_usd": 2197000,
+        "sam_year3_usd": 231974000,
+        "som_share_of_sam_pct": 0.95
+      }
+    },
+    "sanity_check": [
+      {
+        "case": "low",
+        "som_share_of_sam_pct": 0.86,
+        "year3_share_of_search_pct": 6.52,
+        "result": "below the year-3 share of search, so search reach can carry it"
+      },
+      {
+        "case": "base",
+        "som_share_of_sam_pct": 0.92,
+        "year3_share_of_search_pct": 9.98,
+        "result": "below the year-3 share of search, so search reach can carry it"
+      },
+      {
+        "case": "high",
+        "som_share_of_sam_pct": 0.95,
+        "year3_share_of_search_pct": 11.43,
+        "result": "below the year-3 share of search, so search reach can carry it"
+      }
+    ]
+  },
+  "sensitivity": {
+    "rule": "one input (or one source's group of inputs) at a time to its low and high, the rest at base; ranges by label: measured or given +/-10%, sourced +/-15%, assumed +/-30%",
+    "sam": [
+      {
+        "input": "US business counts",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15%",
+        "sam_at_low_usd_m": 157.8,
+        "sam_at_high_usd_m": 195.6,
+        "sam_swing_usd_m": 37.8
+      },
+      {
+        "input": "Annual spend per buyer",
+        "label": "given",
+        "low_value": "$487.08",
+        "high_value": "$595.32",
+        "sam_at_low_usd_m": 159.0,
+        "sam_at_high_usd_m": 194.4,
+        "sam_swing_usd_m": 35.3
+      },
+      {
+        "input": "US share with 1 to 20 staff",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15% (capped at 1.0)",
+        "sam_at_low_usd_m": 157.8,
+        "sam_at_high_usd_m": 192.6,
+        "sam_swing_usd_m": 34.8
+      },
+      {
+        "input": "UK business counts",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15%",
+        "sam_at_low_usd_m": 171.4,
+        "sam_at_high_usd_m": 182.0,
+        "sam_swing_usd_m": 10.6
+      },
+      {
+        "input": "UK share with 1 to 20 staff",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15% (capped at 1.0)",
+        "sam_at_low_usd_m": 171.4,
+        "sam_at_high_usd_m": 180.2,
+        "sam_swing_usd_m": 8.8
+      },
+      {
+        "input": "CA business counts",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15%",
+        "sam_at_low_usd_m": 174.3,
+        "sam_at_high_usd_m": 179.0,
+        "sam_swing_usd_m": 4.7
+      },
+      {
+        "input": "CA share with 1 to 20 staff",
+        "label": "sourced",
+        "low_value": "-15%",
+        "high_value": "+15% (capped at 1.0)",
+        "sam_at_low_usd_m": 174.3,
+        "sam_at_high_usd_m": 178.6,
+        "sam_swing_usd_m": 4.2
+      }
+    ],
+    "som_year3_base": [
+      {
+        "input": "Annual spend per buyer",
+        "label": "given",
+        "low_value": "$487.08",
+        "high_value": "$595.32",
+        "som_y3_at_low_usd_m": 1.91,
+        "som_y3_at_high_usd_m": 2.34,
+        "som_swing_usd_m": 0.43
+      },
+      {
+        "input": "New customers from other channels (given new customers minus search-sourced)",
+        "label": "given",
+        "low_value": "853 a year",
+        "high_value": "1,042 a year",
+        "som_y3_at_low_usd_m": 2.02,
+        "som_y3_at_high_usd_m": 2.23,
+        "som_swing_usd_m": 0.21
+      },
+      {
+        "input": "Monthly churn",
+        "label": "given",
+        "low_value": "1.89%",
+        "high_value": "2.31%",
+        "som_y3_at_low_usd_m": 2.23,
+        "som_y3_at_high_usd_m": 2.03,
+        "som_swing_usd_m": 0.19
+      },
+      {
+        "input": "Paying customers at window end",
+        "label": "given",
+        "low_value": "2,160",
+        "high_value": "2,640",
+        "som_y3_at_low_usd_m": 2.06,
+        "som_y3_at_high_usd_m": 2.19,
+        "som_swing_usd_m": 0.12
+      },
+      {
+        "input": "Share of search today",
+        "label": "measured",
+        "low_value": "5.87%",
+        "high_value": "7.17%",
+        "som_y3_at_low_usd_m": 2.09,
+        "som_y3_at_high_usd_m": 2.16,
+        "som_swing_usd_m": 0.06
+      },
+      {
+        "input": "Sign-up rate, search sessions",
+        "label": "measured",
+        "low_value": "5.92%",
+        "high_value": "7.24%",
+        "som_y3_at_low_usd_m": 2.11,
+        "som_y3_at_high_usd_m": 2.14,
+        "som_swing_usd_m": 0.04
+      },
+      {
+        "input": "Sign-up to paid rate",
+        "label": "given",
+        "low_value": "18.9%",
+        "high_value": "23.1%",
+        "som_y3_at_low_usd_m": 2.11,
+        "som_y3_at_high_usd_m": 2.14,
+        "som_swing_usd_m": 0.04
+      },
+      {
+        "input": "Market growth per year",
+        "label": "sourced",
+        "low_value": "8.08%",
+        "high_value": "10.92%",
+        "som_y3_at_low_usd_m": 2.11,
+        "som_y3_at_high_usd_m": 2.14,
+        "som_swing_usd_m": 0.03
+      },
+      {
+        "input": "Share of search trend",
+        "label": "measured",
+        "low_value": "1.038 points a year",
+        "high_value": "1.268 points a year",
+        "som_y3_at_low_usd_m": 2.11,
+        "som_y3_at_high_usd_m": 2.14,
+        "som_swing_usd_m": 0.03
+      }
+    ]
+  },
+  "findings": [
+    "Bottom-up SAM ($176.7m) and top-down ($158.5m) agree at a ratio of 1.11.",
+    "Search demand supports the buyer count in total (ratio 1.01), but Canada is flagged at 2.25: the English-only term set misses Quebec, and the gap narrows to 1.75 without it.",
+    "The UK has the lowest share of search (2.92% against 7.67% in the US) and it is falling (-0.49 points a year), with 33% of paid impression share lost to rank.",
+    "The US category campaign loses 38% of impression share to budget; winning back half of it is the high case.",
+    "US business counts move SAM the most ($37.8m swing). For year-3 SOM, annual spend per buyer, new customers from other channels, monthly churn and paying customers at window end each move it more than share of search today ($0.06m), because search brings about 20% of new customers."
+  ],
+  "research_next": [
+    {
+      "input": "US business counts",
+      "why": "largest SAM swing ($37.8m)",
+      "how": "check the register's count for each vertical against a second count (licensing boards for salons and clinics, gym association lists for fitness)"
+    },
+    {
+      "input": "Annual spend per buyer",
+      "why": "largest SOM swing ($0.43m) after the input above",
+      "how": "today's figure is exact from billing; check whether customers who joined in the last 90 days pick the same plan mix"
+    },
+    {
+      "input": "Searches per buying journey (assumed)",
+      "why": "assumed input the demand check rests on (range +/-30%)",
+      "how": "count distinct category queries per converting visitor in Search Console and Google Ads search terms over a quarter"
+    }
+  ],
+  "unknowns": [
+    "Canadian French-language search demand: not pulled (one paid call, offered).",
+    "Search Console clicks on non-brand variants of the category terms (best appointment booking software, best salon booking software: 701 clicks in the window) are left out of share of search, because the search volume pull did not include those phrases. Add them to the term list and the DataForSEO call to count them.",
+    "GA4 counts brand and category search sessions together, so the product-page sign-up rate may run a little high for category clicks.",
+    "Shopify and WooCommerce: not used; this is a subscription business, so customers and churn came from billing."
+  ],
+  "proposed_writes_not_run": [
+    {
+      "action": "create_sheet",
+      "payload": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "create_sheet",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "title": "Market sizing"
+      },
+      "status": "not run, offered after confirmation"
+    },
+    {
+      "action": "update_cells",
+      "payload": {
+        "platform": "google-sheets",
+        "workspace_id": "<WORKSPACE_ID>",
+        "brand_id": "<BRAND_ID>",
+        "action": "update_cells",
+        "spreadsheet_id": "<SPREADSHEET_ID>",
+        "sheet_id": "<NEW_SHEET_ID>",
+        "range": "A1:F100",
+        "values": [
+          [
+            "Input",
+            "Base",
+            "Low",
+            "High",
+            "Label",
+            "Evidence"
+          ],
+          [
+            "Annual spend per buyer (plan mix x price x 12)",
+            541.2,
+            487.08,
+            595.32,
+            "given",
+            "plan mix from billing at 2026-09-30, given by the user on 2026-10-28; list prices"
+          ],
+          [
+            "US business counts, SAM verticals",
+            272300,
+            231455.0,
+            313145.0,
+            "sourced",
+            "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+          ],
+          [
+            "US share with 1 to 20 staff (per vertical: salons 0.91, clinics 0.78, fitness studios and trainers 0.86)",
+            "per vertical",
+            "-15%",
+            "+15%, capped at 1.0",
+            "sourced",
+            "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+          ],
+          [
+            "UK business counts, SAM verticals",
+            72900,
+            61965.0,
+            83835.0,
+            "sourced",
+            "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+          ],
+          [
+            "UK share with 1 to 20 staff (per vertical: salons 0.93, clinics 0.8, fitness studios and trainers 0.88)",
+            "per vertical",
+            "-15%",
+            "+15%, capped at 1.0",
+            "sourced",
+            "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+          ],
+          [
+            "CA business counts, SAM verticals",
+            33300,
+            28305.0,
+            38295.0,
+            "sourced",
+            "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+          ],
+          [
+            "CA share with 1 to 20 staff (per vertical: salons 0.92, clinics 0.79, fitness studios and trainers 0.87)",
+            "per vertical",
+            "-15%",
+            "+15%, capped at 1.0",
+            "sourced",
+            "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+          ],
+          [
+            "US appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+            612000,
+            520200.0,
+            703800.0,
+            "sourced",
+            "US national business register (invented), https://us-business-register.example/establishments-by-size, published 2026-04-15, describes 2025"
+          ],
+          [
+            "UK appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+            168000,
+            142800.0,
+            193200.0,
+            "sourced",
+            "UK business population statistics (invented), https://uk-business-register.example/population-2025, published 2026-03-20, describes 2025"
+          ],
+          [
+            "CA appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+            71000,
+            60350.0,
+            81650.0,
+            "sourced",
+            "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+          ],
+          [
+            "AU appointment-based businesses (TAM), share 1 to 49 staff 0.95",
+            88000,
+            74800.0,
+            101200.0,
+            "sourced",
+            "Australian business counts (invented), https://au-business-register.example/counts, published 2026-01-30, describes 2025"
+          ],
+          [
+            "IE appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+            14500,
+            12325.0,
+            16675.0,
+            "sourced",
+            "Irish business demography (invented), https://ie-business-register.example/demography, published 2025-11-12, describes 2024"
+          ],
+          [
+            "NZ appointment-based businesses (TAM), share 1 to 49 staff 0.96",
+            16800,
+            14280.0,
+            19320.0,
+            "sourced",
+            "New Zealand business demography (invented), https://nz-business-register.example/demography, published 2026-02-18, describes 2025"
+          ],
+          [
+            "Published spend, small business scheduling software, US UK CA, 2024 (USD)",
+            121000000,
+            102850000.0,
+            139150000.0,
+            "sourced",
+            "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+          ],
+          [
+            "Market growth per year",
+            0.095,
+            0.08075,
+            0.10925,
+            "sourced",
+            "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+          ],
+          [
+            "Share of that spend from salons, clinics, fitness",
+            0.64,
+            0.544,
+            0.736,
+            "sourced",
+            "Scheduling software market report (invented analyst), https://market-analyst.example/scheduling-software-smb, published 2025-06-03, describes 2024"
+          ],
+          [
+            "Share of that spend from 1 to 20 staff",
+            0.7,
+            0.49,
+            0.91,
+            "assumed",
+            "businesses with 1 to 20 staff are about 85% of buyers in the registers but buy smaller plans, so a lower share of spend"
+          ],
+          [
+            "Share of SAM buyers paying for booking software today",
+            0.41,
+            0.3485,
+            0.4715,
+            "sourced",
+            "Small business technology survey (invented), https://smallbiz-tech-survey.example/2025-report, published 2026-02-10, describes 2025"
+          ],
+          [
+            "Share of businesses shopping for booking software in a year",
+            0.13,
+            0.1105,
+            0.1495,
+            "sourced",
+            "Small business technology survey (invented), https://smallbiz-tech-survey.example/2025-report, published 2026-02-10, describes 2025"
+          ],
+          [
+            "Searches per buying journey",
+            6,
+            4.2,
+            7.8,
+            "assumed",
+            "a buyer compares several phrases over a few sessions; no first-party measure exists"
+          ],
+          [
+            "Quebec share of Canadian businesses",
+            0.22,
+            0.187,
+            0.253,
+            "sourced",
+            "Canadian business counts (invented), https://ca-business-register.example/counts-2025, published 2026-02-27, describes 2025"
+          ],
+          [
+            "US category searches in the window (10 terms, English)",
+            192070,
+            172863.0,
+            211277.0,
+            "measured",
+            "DataForSEO kw_google_ads_search_volume, location_code 2840, language en, monthly_searches 2025-10 to 2026-09"
+          ],
+          [
+            "UK category searches in the window (10 terms, English)",
+            56040,
+            50436.0,
+            61644.0,
+            "measured",
+            "DataForSEO kw_google_ads_search_volume, location_code 2826, language en, monthly_searches 2025-10 to 2026-09"
+          ],
+          [
+            "CA category searches in the window (10 terms, English)",
+            10000,
+            9000.0,
+            11000.0,
+            "measured",
+            "DataForSEO kw_google_ads_search_volume, location_code 2124, language en, monthly_searches 2025-10 to 2026-09"
+          ],
+          [
+            "Share of search today, as a fraction (organic + paid category clicks / category searches)",
+            0.0652,
+            0.05868,
+            0.07172,
+            "measured",
+            "Search Console search_analytics (query, country) and Google Ads gaql on the 3 category campaigns, 2025-10-01 to 2026-09-30"
+          ],
+          [
+            "Share of search trend, percentage points per year",
+            1.15,
+            1.04,
+            1.27,
+            "measured",
+            "last 3 months (2026-07-01 to 2026-09-30) minus first 3 months (2025-10-01 to 2025-12-31), x 12/9"
+          ],
+          [
+            "Sign-up rate, search sessions on product pages, as a fraction",
+            0.06579,
+            0.05921,
+            0.07237,
+            "measured",
+            "GA4 get_report (sessionDefaultChannelGroup, landingPage), 2025-10-01 to 2026-09-30: 8,695 sign-ups / 132,163 sessions"
+          ],
+          [
+            "Paying customers at window end",
+            2400,
+            2160.0,
+            2640.0,
+            "given",
+            "billing at 2026-09-30, given by the user on 2026-10-28"
+          ],
+          [
+            "New paying customers in the window",
+            1180,
+            1062.0,
+            1298.0,
+            "given",
+            "billing at 2026-09-30, given by the user on 2026-10-28"
+          ],
+          [
+            "Monthly churn",
+            0.021,
+            0.0189,
+            0.0231,
+            "given",
+            "billing, average of the last 12 months, given by the user on 2026-10-28"
+          ],
+          [
+            "Sign-up to paid rate",
+            0.21,
+            0.189,
+            0.231,
+            "given",
+            "billing at 2026-09-30, given by the user on 2026-10-28"
+          ],
+          [
+            ""
+          ],
+          [
+            "Bottom-up SAM: vertical",
+            "Country",
+            "Businesses",
+            "Share 1 to 20 staff",
+            "Buyers",
+            "USD"
+          ],
+          [
+            "salons",
+            "US",
+            118400,
+            0.91,
+            107744,
+            58311000
+          ],
+          [
+            "clinics",
+            "US",
+            92600,
+            0.78,
+            72228,
+            39090000
+          ],
+          [
+            "fitness studios and trainers",
+            "US",
+            61300,
+            0.86,
+            52718,
+            28531000
+          ],
+          [
+            "salons",
+            "UK",
+            45200,
+            0.93,
+            42036,
+            22750000
+          ],
+          [
+            "clinics",
+            "UK",
+            17900,
+            0.8,
+            14320,
+            7750000
+          ],
+          [
+            "fitness studios and trainers",
+            "UK",
+            9800,
+            0.88,
+            8624,
+            4667000
+          ],
+          [
+            "salons",
+            "CA",
+            14600,
+            0.92,
+            13432,
+            7269000
+          ],
+          [
+            "clinics",
+            "CA",
+            11300,
+            0.79,
+            8927,
+            4831000
+          ],
+          [
+            "fitness studios and trainers",
+            "CA",
+            7400,
+            0.87,
+            6438,
+            3484000
+          ],
+          [
+            "Bottom-up TAM: country",
+            "Businesses",
+            "Share 1 to 49 staff",
+            "Buyers",
+            "USD"
+          ],
+          [
+            "US",
+            612000,
+            0.95,
+            581400,
+            314654000
+          ],
+          [
+            "UK",
+            168000,
+            0.96,
+            161280,
+            87285000
+          ],
+          [
+            "CA",
+            71000,
+            0.95,
+            67450,
+            36504000
+          ],
+          [
+            "AU",
+            88000,
+            0.95,
+            83600,
+            45244000
+          ],
+          [
+            "IE",
+            14500,
+            0.96,
+            13920,
+            7534000
+          ],
+          [
+            "NZ",
+            16800,
+            0.96,
+            16128,
+            8728000
+          ],
+          [
+            ""
+          ],
+          [
+            "Top-down step",
+            "USD"
+          ],
+          [
+            "published figure, 2024",
+            121000000
+          ],
+          [
+            "restated to 2026: x (1 + 0.095) ^ 2",
+            145082000
+          ],
+          [
+            "x 0.64 salons, clinics and fitness (S5)",
+            92852000
+          ],
+          [
+            "x 0.7 businesses with 1 to 20 staff (assumed)",
+            64997000
+          ],
+          [
+            "/ 0.41 paying for booking software today (S4), to the full-adoption basis of bottom-up",
+            158529000
+          ],
+          [
+            ""
+          ],
+          [
+            "Comparison",
+            "Bottom-up",
+            "Other",
+            "Ratio",
+            "Verdict",
+            "Explanation"
+          ],
+          [
+            "SAM dollars: bottom-up vs top-down (full-adoption basis)",
+            176684000,
+            158529000,
+            1.11,
+            "agree",
+            "Within 1.5. The bottom-up base is reported as SAM; the top-down figure sits 10.3% below it."
+          ],
+          [
+            "In-market buyers per year: buyers x shopping share vs searches / searches per journey (total)",
+            42441,
+            43018,
+            1.01,
+            "agree",
+            "Within 1.5, so the SAM buyer count is consistent with search demand in total."
+          ],
+          [
+            "In-market buyers, US (country flag)",
+            30250,
+            32012,
+            1.06,
+            "agree",
+            "Within 1.5."
+          ],
+          [
+            "In-market buyers, UK (country flag)",
+            8447,
+            9340,
+            1.11,
+            "agree",
+            "Within 1.5."
+          ],
+          [
+            "In-market buyers, CA (country flag)",
+            3744,
+            1667,
+            2.25,
+            "flag: above 2.0, explain",
+            "Flag: the English term set misses French searches, and Quebec holds 22% of Canadian businesses (S3). Without Quebec the buyer side is 2,920 and the ratio falls to 1.75 (gap explained). The rest is likely English-speaking buyers using terms outside the list. Next step: one more paid DataForSEO call for Canada with French terms and language_code fr."
+          ],
+          [
+            ""
+          ],
+          [
+            "Layer",
+            "Low (USD)",
+            "Base (USD)",
+            "High (USD)"
+          ],
+          [
+            "TAM",
+            325092000,
+            499949000,
+            664285000
+          ],
+          [
+            "SAM",
+            114889000,
+            176684000,
+            250448000
+          ],
+          [
+            "SOM, year 3",
+            1999000,
+            2125000,
+            2197000
+          ],
+          [
+            ""
+          ],
+          [
+            "SOM case",
+            "Year",
+            "Share of search (%)",
+            "Search-sourced new",
+            "Other-channel new",
+            "Customers at year end"
+          ],
+          [
+            "low",
+            1,
+            6.52,
+            255,
+            948,
+            2919
+          ],
+          [
+            "low",
+            2,
+            6.52,
+            279,
+            948,
+            3342
+          ],
+          [
+            "low",
+            3,
+            6.52,
+            305,
+            948,
+            3694
+          ],
+          [
+            "base",
+            1,
+            7.67,
+            300,
+            948,
+            2958
+          ],
+          [
+            "base",
+            2,
+            8.83,
+            377,
+            948,
+            3460
+          ],
+          [
+            "base",
+            3,
+            9.98,
+            467,
+            948,
+            3927
+          ],
+          [
+            "high",
+            1,
+            9.12,
+            356,
+            948,
+            3008
+          ],
+          [
+            "high",
+            2,
+            10.28,
+            439,
+            948,
+            3553
+          ],
+          [
+            "high",
+            3,
+            11.43,
+            535,
+            948,
+            4059
+          ],
+          [
+            ""
+          ],
+          [
+            "Sensitivity, SAM",
+            "Label",
+            "Input low (USD m)",
+            "Input high (USD m)",
+            "Swing (USD m)"
+          ],
+          [
+            "US business counts",
+            "sourced",
+            157.8,
+            195.6,
+            37.8
+          ],
+          [
+            "Annual spend per buyer",
+            "given",
+            159.0,
+            194.4,
+            35.3
+          ],
+          [
+            "US share with 1 to 20 staff",
+            "sourced",
+            157.8,
+            192.6,
+            34.8
+          ],
+          [
+            "UK business counts",
+            "sourced",
+            171.4,
+            182.0,
+            10.6
+          ],
+          [
+            "UK share with 1 to 20 staff",
+            "sourced",
+            171.4,
+            180.2,
+            8.8
+          ],
+          [
+            "CA business counts",
+            "sourced",
+            174.3,
+            179.0,
+            4.7
+          ],
+          [
+            "CA share with 1 to 20 staff",
+            "sourced",
+            174.3,
+            178.6,
+            4.2
+          ],
+          [
+            ""
+          ],
+          [
+            "Sensitivity, SOM year 3",
+            "Label",
+            "Input low (USD m)",
+            "Input high (USD m)",
+            "Swing (USD m)"
+          ],
+          [
+            "Annual spend per buyer",
+            "given",
+            1.91,
+            2.34,
+            0.43
+          ],
+          [
+            "New customers from other channels (given new customers minus search-sourced)",
+            "given",
+            2.02,
+            2.23,
+            0.21
+          ],
+          [
+            "Monthly churn",
+            "given",
+            2.23,
+            2.03,
+            0.19
+          ],
+          [
+            "Paying customers at window end",
+            "given",
+            2.06,
+            2.19,
+            0.12
+          ],
+          [
+            "Share of search today",
+            "measured",
+            2.09,
+            2.16,
+            0.06
+          ],
+          [
+            "Sign-up rate, search sessions",
+            "measured",
+            2.11,
+            2.14,
+            0.04
+          ],
+          [
+            "Sign-up to paid rate",
+            "given",
+            2.11,
+            2.14,
+            0.04
+          ],
+          [
+            "Market growth per year",
+            "sourced",
+            2.11,
+            2.14,
+            0.03
+          ],
+          [
+            "Share of search trend",
+            "measured",
+            2.11,
+            2.14,
+            0.03
+          ]
+        ],
+        "value_input_option": "USER_ENTERED"
+      },
+      "status": "not run, offered after confirmation: the inputs with labels, the bottom-up rows, the top-down steps, the agreement table, the three layers, the SOM years per case, and both sensitivity tables"
+    }
+  ]
+}

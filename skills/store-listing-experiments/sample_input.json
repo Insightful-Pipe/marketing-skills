@@ -1,0 +1,420 @@
+{
+  "note": "Example data: an invented running coach app with invented store traffic, tests and ad accounts, not a real business. Every number in expected_output.json follows from this input. Store rules were checked against Apple's and Google's documentation on 2026-10-30.",
+  "request": "Hey Claude, I just added the \"store-listing-experiments\" skill. Here are 28 days of App Store Connect and Play Console traffic, four tests we want to run, and the results of our last two tests. Tell me which tests can actually read, which past winners are real, and plan custom product pages and custom store listings for our app campaigns. A 6% lift is the smallest worth it, and we will wait 6 weeks at most.",
+  "app": {
+    "name": "Larkstep (invented example app)",
+    "apple_app_id": 6400000001,
+    "play_package": "com.larkstep.example",
+    "site": "https://larkstep.example",
+    "stores": [
+      "apple",
+      "google_play"
+    ]
+  },
+  "window": {
+    "start": "2026-09-30",
+    "end": "2026-10-27",
+    "days": 28
+  },
+  "user_targets": {
+    "smallest_lift_worth_it": 0.06,
+    "longest_wait_days": 42,
+    "spend_share_for_own_page": 0.1
+  },
+  "earliest_start": "2026-11-02",
+  "big_weeks_for_this_app": [
+    {
+      "name": "US Thanksgiving and Black Friday week",
+      "start": "2026-11-23",
+      "end": "2026-11-29"
+    },
+    {
+      "name": "New Year resolution week",
+      "start": "2026-12-28",
+      "end": "2027-01-03"
+    }
+  ],
+  "store_traffic": {
+    "apple_app_analytics": [
+      {
+        "localization": "en-US",
+        "impressions": 176400,
+        "first_time_downloads": 5800
+      },
+      {
+        "localization": "en-GB",
+        "impressions": 47600,
+        "first_time_downloads": 1520
+      },
+      {
+        "localization": "de-DE",
+        "impressions": 22400,
+        "first_time_downloads": 610
+      }
+    ],
+    "play_console_store_performance": [
+      {
+        "language": "en-US",
+        "default_language": true,
+        "own_localized_graphics": false,
+        "store_listing_visitors": 96600,
+        "store_listing_acquisitions": 26100
+      },
+      {
+        "language": "es-419",
+        "default_language": false,
+        "own_localized_graphics": false,
+        "store_listing_visitors": 16800,
+        "store_listing_acquisitions": 4200
+      },
+      {
+        "language": "de-DE",
+        "default_language": false,
+        "own_localized_graphics": true,
+        "store_listing_visitors": 3920,
+        "store_listing_acquisitions": 1020
+      }
+    ]
+  },
+  "planned_tests": [
+    {
+      "id": "T1",
+      "store": "apple",
+      "type": "product page optimization",
+      "asset": "screenshots",
+      "change": "first three screenshots lead with a race-day plan instead of the app tour",
+      "arms": 1,
+      "traffic_share": 0.5,
+      "locales": [
+        "en-US",
+        "en-GB"
+      ]
+    },
+    {
+      "id": "T2",
+      "store": "apple",
+      "type": "product page optimization",
+      "asset": "icon",
+      "change": "three new icons: shoe, track lane, coach whistle",
+      "arms": 3,
+      "traffic_share": 0.3,
+      "locales": [
+        "en-US",
+        "en-GB",
+        "de-DE"
+      ]
+    },
+    {
+      "id": "T3",
+      "store": "google_play",
+      "type": "localized experiment",
+      "asset": "short description",
+      "change": "two German short descriptions: plan-first and community-first",
+      "arms": 2,
+      "traffic_share": 0.5,
+      "locales": [
+        "de-DE"
+      ]
+    },
+    {
+      "id": "T4",
+      "store": "google_play",
+      "type": "default graphics experiment",
+      "asset": "feature graphic",
+      "change": "feature graphic shows a finish line and the 8-week plan instead of the logo",
+      "arms": 1,
+      "traffic_share": 0.5,
+      "locales": "default graphics scope"
+    }
+  ],
+  "finished_results": [
+    {
+      "id": "R1",
+      "store": "apple",
+      "asset": "app preview video",
+      "start": "2026-08-03",
+      "end": "2026-09-13",
+      "traffic_share": 0.4,
+      "planned_mde": 0.1,
+      "export": [
+        {
+          "arm": "Original",
+          "impressions": 201600,
+          "first_time_downloads": 6450
+        },
+        {
+          "arm": "Treatment A: runner's-view demo",
+          "impressions": 67200,
+          "first_time_downloads": 2346,
+          "console_improvement": "+9%",
+          "console_confidence": 99
+        },
+        {
+          "arm": "Treatment B: coach voice-over",
+          "impressions": 67200,
+          "first_time_downloads": 2195,
+          "console_improvement": "+2%",
+          "console_confidence": 66
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "store": "google_play",
+      "asset": "icon",
+      "experiment_type": "default graphics experiment",
+      "start": "2026-09-08",
+      "end": "2026-09-16",
+      "traffic_share": 0.2,
+      "planned_mde": 0.05,
+      "target_metric": "Unique user install clicks",
+      "confidence_set_in_console": 90,
+      "export": [
+        {
+          "arm": "Current listing",
+          "installers_scaled": 10400
+        },
+        {
+          "arm": "Variant: orange shoe icon",
+          "installers_scaled": 10830,
+          "console_performance_range": [
+            -0.021,
+            0.098
+          ],
+          "console_result": "More data needed"
+        }
+      ]
+    }
+  ],
+  "data_pulled": {
+    "app_campaigns_last_30_days": {
+      "google-ads": [
+        {
+          "campaign": "Larkstep | iOS | Installs",
+          "os": "iOS",
+          "ad_group": "Couch to 5K",
+          "cost": 3240,
+          "conversions": 410,
+          "headlines": [
+            "Run your first 5K in 8 weeks",
+            "Start on the couch, finish a 5K",
+            "A coach in your ear every run"
+          ]
+        },
+        {
+          "campaign": "Larkstep | iOS | Installs",
+          "os": "iOS",
+          "ad_group": "Marathon training",
+          "cost": 2180,
+          "conversions": 190,
+          "headlines": [
+            "Marathon plans that fit your week",
+            "Train for 26.2 with a real coach",
+            "Pace targets for every long run"
+          ]
+        },
+        {
+          "campaign": "Larkstep | iOS | Installs",
+          "os": "iOS",
+          "ad_group": "General",
+          "cost": 1450,
+          "conversions": 160,
+          "headlines": [
+            "Your running coach app",
+            "Plans for every runner",
+            "Track every run"
+          ]
+        },
+        {
+          "campaign": "Larkstep | Android | Installs",
+          "os": "Android",
+          "ad_group": "Couch to 5K",
+          "cost": 2060,
+          "conversions": 520,
+          "headlines": [
+            "Run your first 5K in 8 weeks",
+            "Start on the couch, finish a 5K",
+            "A coach in your ear every run"
+          ]
+        },
+        {
+          "campaign": "Larkstep | Android | Installs",
+          "os": "Android",
+          "ad_group": "Walking for weight loss",
+          "cost": 1380,
+          "conversions": 330,
+          "headlines": [
+            "Walk off the weight, one day at a time",
+            "Daily walks with a coach",
+            "Walking plans that fit your day"
+          ]
+        },
+        {
+          "campaign": "Larkstep | Android | Installs",
+          "os": "Android",
+          "ad_group": "General",
+          "cost": 900,
+          "conversions": 210,
+          "headlines": [
+            "Your running coach app",
+            "Plans for every runner",
+            "Track every run"
+          ]
+        }
+      ],
+      "facebook-ads": [
+        {
+          "campaign": "App installs | iOS",
+          "os": "iOS",
+          "ad_set": "Beginner runners 25-44",
+          "spend": 2750
+        },
+        {
+          "campaign": "App installs | iOS",
+          "os": "iOS",
+          "ad_set": "Marathon interests",
+          "spend": 1240
+        },
+        {
+          "campaign": "App installs | iOS",
+          "os": "iOS",
+          "ad_set": "Trail running interests",
+          "spend": 620
+        },
+        {
+          "campaign": "App installs | Android",
+          "os": "Android",
+          "ad_set": "Walkers, weight loss",
+          "spend": 1610
+        },
+        {
+          "campaign": "App installs | Android",
+          "os": "Android",
+          "ad_set": "Broad, Advantage+ audience",
+          "spend": 2300
+        }
+      ],
+      "tiktok-ads": [
+        {
+          "campaign": "App promotion | iOS",
+          "os": "iOS",
+          "ad_group": "5K challenge creators",
+          "spend": 1520
+        },
+        {
+          "campaign": "App promotion | Android",
+          "os": "Android",
+          "ad_group": "Walk off weight",
+          "spend": 940
+        },
+        {
+          "campaign": "App promotion | iOS",
+          "os": "iOS",
+          "ad_group": "Half marathon",
+          "spend": 310
+        }
+      ]
+    },
+    "store_search_top_apps": {
+      "couch to 5k": [
+        {
+          "store": "apple",
+          "title": "Competitor A: Tallowrun 5K",
+          "description_first_line": "Go from walking to running 5K in 9 weeks."
+        },
+        {
+          "store": "apple",
+          "title": "Competitor B: Quarrystart",
+          "description_first_line": "Interval timer for new runners."
+        },
+        {
+          "store": "google_play",
+          "title": "Competitor A: Tallowrun 5K",
+          "summary": "Walk to 5K in 9 weeks with audio cues"
+        }
+      ],
+      "marathon training plan": [
+        {
+          "store": "apple",
+          "title": "Competitor C: Longvane Marathon",
+          "description_first_line": "Elite marathon plans built by Olympians."
+        },
+        {
+          "store": "apple",
+          "title": "Competitor B: Quarrystart",
+          "description_first_line": "Interval timer for new runners."
+        },
+        {
+          "store": "google_play",
+          "title": "Competitor C: Longvane Marathon",
+          "summary": "Elite marathon plans and race-day pacing"
+        }
+      ],
+      "walking for weight loss": [
+        {
+          "store": "apple",
+          "title": "Competitor D: Brindle Walk",
+          "description_first_line": "Lose weight walking with a step counter."
+        },
+        {
+          "store": "google_play",
+          "title": "Competitor D: Brindle Walk",
+          "summary": "Step counter and walking plans for weight loss"
+        },
+        {
+          "store": "google_play",
+          "title": "Competitor E: Stepwren",
+          "summary": "Count steps and calories all day"
+        }
+      ]
+    },
+    "calls": [
+      "google-ads gaql (app campaign ad groups, cost, conversions)",
+      "google-ads gaql (app ad headlines)",
+      "facebook-ads get_campaigns",
+      "facebook-ads get_adsets_by_campaign",
+      "facebook-ads get_insights_adaccount (level adset)",
+      "tiktok-ads campaigns_metadata",
+      "tiktok-ads adgroups_metadata",
+      "tiktok-ads integrated_report_basic",
+      "apple-store search",
+      "google-play search"
+    ]
+  },
+  "theme_rules": {
+    "Beginner 5K": [
+      "5k",
+      "beginner"
+    ],
+    "Marathon training": [
+      "marathon"
+    ],
+    "Walking for weight loss": [
+      "walk"
+    ],
+    "Trail running": [
+      "trail"
+    ]
+  },
+  "keyword_themes": {
+    "Beginner 5K": [
+      "couch to 5k",
+      "5k training plan",
+      "beginner running plan",
+      "running plan"
+    ],
+    "Marathon training": [
+      "marathon training plan",
+      "half marathon plan",
+      "running plan"
+    ],
+    "Walking for weight loss": [
+      "walking for weight loss",
+      "walking app",
+      "daily step goal"
+    ],
+    "Trail running": [
+      "trail running app"
+    ]
+  }
+}

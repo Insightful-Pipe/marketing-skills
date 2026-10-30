@@ -1,0 +1,765 @@
+{
+  "request": "Hey Claude, I just added the \"heatmap-session-analyst\" skill. Use our Clarity history sheet and GA4 for the last 30 days, tell me which behaviour problems cost us the most sign-ups, and which recordings to watch for each.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "site": "https://www.example.com",
+  "run_date": "2026-10-28",
+  "accounts": {
+    "clarity": {
+      "account_id": "clarity-project-1",
+      "name": "Example Booking Software"
+    },
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "name": "Example Booking Software"
+    },
+    "google-sheets": {
+      "spreadsheet_id": "sheet-1",
+      "tab": "Clarity history"
+    }
+  },
+  "windows": {
+    "clarity": [
+      "2026-09-28",
+      "2026-10-27"
+    ],
+    "ga4": [
+      "2026-09-28",
+      "2026-10-27"
+    ]
+  },
+  "inputs": {
+    "conversion": "sign_up (the GA4 key event for a new account)",
+    "step_pages": [
+      "/signup/"
+    ],
+    "cta_positions": [
+      {
+        "page": "/",
+        "element": "Create your account button",
+        "position_pct_of_page_height": 55
+      }
+    ],
+    "notes_from_watched_recordings": [
+      {
+        "page": "/pricing/",
+        "filter_used": "Rage clicks, Visited URL contains /pricing/, Mobile",
+        "recordings_watched": 8,
+        "note": "Visitors tap the words Monthly and Yearly beside the billing switch. Only the small switch responds, so they tap the words three or four times, then scroll down without changing the prices."
+      },
+      {
+        "page": "/signup/",
+        "filter_used": "JavaScript errors on /signup/, Mobile",
+        "recordings_watched": 6,
+        "note": "On iPhones the Create account button does nothing after the phone number is typed with spaces. The error in Clarity is a phone formatting error from the phone input script, right after the tap."
+      }
+    ]
+  },
+  "data_pulled": {
+    "clarity_history_by_page_device": {
+      "source": "query_sheet_data on the history tab, summed per URL and device over 30 daily pulls",
+      "rows": [
+        {
+          "url": "https://www.example.com/",
+          "device": "Mobile",
+          "sessions": 9570,
+          "rage_click_sessions": 95,
+          "dead_click_sessions": 495,
+          "quick_back_sessions": 201,
+          "excessive_scroll_sessions": 252,
+          "script_error_sessions": 82,
+          "avg_scroll_depth_pct": 38.1
+        },
+        {
+          "url": "https://www.example.com/",
+          "device": "PC",
+          "sessions": 8282,
+          "rage_click_sessions": 64,
+          "dead_click_sessions": 363,
+          "quick_back_sessions": 165,
+          "excessive_scroll_sessions": 143,
+          "script_error_sessions": 60,
+          "avg_scroll_depth_pct": 60.7
+        },
+        {
+          "url": "https://www.example.com/",
+          "device": "Tablet",
+          "sessions": 552,
+          "rage_click_sessions": 4,
+          "dead_click_sessions": 24,
+          "quick_back_sessions": 11,
+          "excessive_scroll_sessions": 10,
+          "script_error_sessions": 4,
+          "avg_scroll_depth_pct": 61.4
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "device": "Mobile",
+          "sessions": 3455,
+          "rage_click_sessions": 235,
+          "dead_click_sessions": 186,
+          "quick_back_sessions": 72,
+          "excessive_scroll_sessions": 100,
+          "script_error_sessions": 30,
+          "avg_scroll_depth_pct": 51.6
+        },
+        {
+          "url": "https://www.example.com/pricing/?billing=yearly",
+          "device": "Mobile",
+          "sessions": 260,
+          "rage_click_sessions": 18,
+          "dead_click_sessions": 15,
+          "quick_back_sessions": 6,
+          "excessive_scroll_sessions": 7,
+          "script_error_sessions": 2,
+          "avg_scroll_depth_pct": 51.5
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "device": "PC",
+          "sessions": 4293,
+          "rage_click_sessions": 78,
+          "dead_click_sessions": 196,
+          "quick_back_sessions": 89,
+          "excessive_scroll_sessions": 77,
+          "script_error_sessions": 28,
+          "avg_scroll_depth_pct": 58.6
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "device": "Tablet",
+          "sessions": 248,
+          "rage_click_sessions": 5,
+          "dead_click_sessions": 11,
+          "quick_back_sessions": 5,
+          "excessive_scroll_sessions": 5,
+          "script_error_sessions": 2,
+          "avg_scroll_depth_pct": 57.1
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "device": "Mobile",
+          "sessions": 1809,
+          "rage_click_sessions": 18,
+          "dead_click_sessions": 103,
+          "quick_back_sessions": 41,
+          "excessive_scroll_sessions": 54,
+          "script_error_sessions": 194,
+          "avg_scroll_depth_pct": 71.8
+        },
+        {
+          "url": "https://www.example.com/signup/?plan=growth",
+          "device": "Mobile",
+          "sessions": 136,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 8,
+          "quick_back_sessions": 3,
+          "excessive_scroll_sessions": 4,
+          "script_error_sessions": 15,
+          "avg_scroll_depth_pct": 70.7
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "device": "PC",
+          "sessions": 1342,
+          "rage_click_sessions": 11,
+          "dead_click_sessions": 60,
+          "quick_back_sessions": 27,
+          "excessive_scroll_sessions": 23,
+          "script_error_sessions": 15,
+          "avg_scroll_depth_pct": 78.0
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "device": "Tablet",
+          "sessions": 67,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 3,
+          "quick_back_sessions": 1,
+          "excessive_scroll_sessions": 1,
+          "script_error_sessions": 1,
+          "avg_scroll_depth_pct": 76.9
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "device": "Mobile",
+          "sessions": 2147,
+          "rage_click_sessions": 20,
+          "dead_click_sessions": 147,
+          "quick_back_sessions": 46,
+          "excessive_scroll_sessions": 63,
+          "script_error_sessions": 19,
+          "avg_scroll_depth_pct": 48.6
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "device": "PC",
+          "sessions": 2191,
+          "rage_click_sessions": 18,
+          "dead_click_sessions": 371,
+          "quick_back_sessions": 46,
+          "excessive_scroll_sessions": 41,
+          "script_error_sessions": 15,
+          "avg_scroll_depth_pct": 55.4
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "device": "Tablet",
+          "sessions": 134,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 23,
+          "quick_back_sessions": 3,
+          "excessive_scroll_sessions": 3,
+          "script_error_sessions": 1,
+          "avg_scroll_depth_pct": 55.4
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "device": "Mobile",
+          "sessions": 1455,
+          "rage_click_sessions": 15,
+          "dead_click_sessions": 76,
+          "quick_back_sessions": 123,
+          "excessive_scroll_sessions": 41,
+          "script_error_sessions": 13,
+          "avg_scroll_depth_pct": 46.3
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "device": "PC",
+          "sessions": 1548,
+          "rage_click_sessions": 13,
+          "dead_click_sessions": 71,
+          "quick_back_sessions": 111,
+          "excessive_scroll_sessions": 27,
+          "script_error_sessions": 11,
+          "avg_scroll_depth_pct": 52.7
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "device": "Tablet",
+          "sessions": 93,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 4,
+          "quick_back_sessions": 7,
+          "excessive_scroll_sessions": 2,
+          "script_error_sessions": 1,
+          "avg_scroll_depth_pct": 54.0
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "device": "Mobile",
+          "sessions": 2441,
+          "rage_click_sessions": 25,
+          "dead_click_sessions": 271,
+          "quick_back_sessions": 56,
+          "excessive_scroll_sessions": 68,
+          "script_error_sessions": 23,
+          "avg_scroll_depth_pct": 44.8
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "device": "PC",
+          "sessions": 1146,
+          "rage_click_sessions": 9,
+          "dead_click_sessions": 68,
+          "quick_back_sessions": 24,
+          "excessive_scroll_sessions": 20,
+          "script_error_sessions": 8,
+          "avg_scroll_depth_pct": 57.5
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "device": "Tablet",
+          "sessions": 111,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 6,
+          "quick_back_sessions": 2,
+          "excessive_scroll_sessions": 2,
+          "script_error_sessions": 1,
+          "avg_scroll_depth_pct": 56.0
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "device": "Mobile",
+          "sessions": 7205,
+          "rage_click_sessions": 70,
+          "dead_click_sessions": 407,
+          "quick_back_sessions": 160,
+          "excessive_scroll_sessions": 696,
+          "script_error_sessions": 62,
+          "avg_scroll_depth_pct": 62.4
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "device": "PC",
+          "sessions": 2639,
+          "rage_click_sessions": 20,
+          "dead_click_sessions": 122,
+          "quick_back_sessions": 52,
+          "excessive_scroll_sessions": 166,
+          "script_error_sessions": 19,
+          "avg_scroll_depth_pct": 69.6
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "device": "Tablet",
+          "sessions": 304,
+          "rage_click_sessions": 2,
+          "dead_click_sessions": 14,
+          "quick_back_sessions": 6,
+          "excessive_scroll_sessions": 20,
+          "script_error_sessions": 2,
+          "avg_scroll_depth_pct": 69.5
+        },
+        {
+          "url": "https://www.example.com/integrations/",
+          "device": "Mobile",
+          "sessions": 361,
+          "rage_click_sessions": 4,
+          "dead_click_sessions": 20,
+          "quick_back_sessions": 8,
+          "excessive_scroll_sessions": 10,
+          "script_error_sessions": 3,
+          "avg_scroll_depth_pct": 41.2
+        },
+        {
+          "url": "https://www.example.com/integrations/",
+          "device": "PC",
+          "sessions": 819,
+          "rage_click_sessions": 6,
+          "dead_click_sessions": 39,
+          "quick_back_sessions": 17,
+          "excessive_scroll_sessions": 15,
+          "script_error_sessions": 6,
+          "avg_scroll_depth_pct": 47.0
+        },
+        {
+          "url": "https://www.example.com/integrations/",
+          "device": "Tablet",
+          "sessions": 24,
+          "rage_click_sessions": 0,
+          "dead_click_sessions": 1,
+          "quick_back_sessions": 0,
+          "excessive_scroll_sessions": 0,
+          "script_error_sessions": 0,
+          "avg_scroll_depth_pct": 46.4
+        },
+        {
+          "url": "https://www.example.com/templates/cancellation-policy/",
+          "device": "Mobile",
+          "sessions": 57,
+          "rage_click_sessions": 1,
+          "dead_click_sessions": 3,
+          "quick_back_sessions": 1,
+          "excessive_scroll_sessions": 2,
+          "script_error_sessions": 0,
+          "avg_scroll_depth_pct": 59.1
+        },
+        {
+          "url": "https://www.example.com/templates/cancellation-policy/",
+          "device": "PC",
+          "sessions": 36,
+          "rage_click_sessions": 0,
+          "dead_click_sessions": 2,
+          "quick_back_sessions": 1,
+          "excessive_scroll_sessions": 1,
+          "script_error_sessions": 0,
+          "avg_scroll_depth_pct": 67.3
+        },
+        {
+          "url": "https://www.example.com/templates/cancellation-policy/",
+          "device": "Tablet",
+          "sessions": 2,
+          "rage_click_sessions": 0,
+          "dead_click_sessions": 0,
+          "quick_back_sessions": 0,
+          "excessive_scroll_sessions": 0,
+          "script_error_sessions": 0,
+          "avg_scroll_depth_pct": 65.0
+        }
+      ]
+    },
+    "clarity_history_by_page_channel": {
+      "source": "query_sheet_data filtered to the flagged page and signal pairs; the channel question rotates through the five signals, so each has 6 days",
+      "rows": [
+        {
+          "url": "https://www.example.com/pricing/",
+          "signal": "rage_clicks",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 759,
+          "flagged_sessions": 29
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "signal": "rage_clicks",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 396,
+          "flagged_sessions": 15
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "signal": "rage_clicks",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 297,
+          "flagged_sessions": 13
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "signal": "rage_clicks",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 116,
+          "flagged_sessions": 5
+        },
+        {
+          "url": "https://www.example.com/pricing/",
+          "signal": "rage_clicks",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 83,
+          "flagged_sessions": 3
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "signal": "script_errors",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 309,
+          "flagged_sessions": 21
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "signal": "script_errors",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 161,
+          "flagged_sessions": 11
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "signal": "script_errors",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 121,
+          "flagged_sessions": 8
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "signal": "script_errors",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 47,
+          "flagged_sessions": 3
+        },
+        {
+          "url": "https://www.example.com/signup/",
+          "signal": "script_errors",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 33,
+          "flagged_sessions": 2
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 411,
+          "flagged_sessions": 49
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 214,
+          "flagged_sessions": 25
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 161,
+          "flagged_sessions": 19
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 63,
+          "flagged_sessions": 8
+        },
+        {
+          "url": "https://www.example.com/features/online-booking/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 45,
+          "flagged_sessions": 5
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "signal": "quick_backs",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 285,
+          "flagged_sessions": 14
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "signal": "quick_backs",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 149,
+          "flagged_sessions": 8
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "signal": "quick_backs",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 111,
+          "flagged_sessions": 19
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "signal": "quick_backs",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 43,
+          "flagged_sessions": 3
+        },
+        {
+          "url": "https://www.example.com/features/payments/",
+          "signal": "quick_backs",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 31,
+          "flagged_sessions": 2
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 340,
+          "flagged_sessions": 33
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 178,
+          "flagged_sessions": 17
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 133,
+          "flagged_sessions": 12
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 52,
+          "flagged_sessions": 5
+        },
+        {
+          "url": "https://www.example.com/industries/salons/",
+          "signal": "dead_clicks",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 37,
+          "flagged_sessions": 3
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "signal": "excessive_scrolling",
+          "days": 6,
+          "channel": "Organic Search",
+          "sessions": 934,
+          "flagged_sessions": 79
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "signal": "excessive_scrolling",
+          "days": 6,
+          "channel": "Direct",
+          "sessions": 487,
+          "flagged_sessions": 42
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "signal": "excessive_scrolling",
+          "days": 6,
+          "channel": "PaidSearch",
+          "sessions": 365,
+          "flagged_sessions": 30
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "signal": "excessive_scrolling",
+          "days": 6,
+          "channel": "Email",
+          "sessions": 142,
+          "flagged_sessions": 12
+        },
+        {
+          "url": "https://www.example.com/blog/reduce-no-shows/",
+          "signal": "excessive_scrolling",
+          "days": 6,
+          "channel": "Referral",
+          "sessions": 102,
+          "flagged_sessions": 9
+        }
+      ]
+    },
+    "ga4_G1_landing_pages": [
+      {
+        "landingPage": "/",
+        "sessions": 15800,
+        "keyEvents:sign_up": 529,
+        "sessionKeyEventRate:sign_up": 0.031
+      },
+      {
+        "landingPage": "/blog/reduce-no-shows/",
+        "sessions": 11200,
+        "keyEvents:sign_up": 48,
+        "sessionKeyEventRate:sign_up": 0.004
+      },
+      {
+        "landingPage": "/industries/salons/",
+        "sessions": 3600,
+        "keyEvents:sign_up": 140,
+        "sessionKeyEventRate:sign_up": 0.036
+      },
+      {
+        "landingPage": "/features/online-booking/",
+        "sessions": 2900,
+        "keyEvents:sign_up": 44,
+        "sessionKeyEventRate:sign_up": 0.014
+      },
+      {
+        "landingPage": "/pricing/",
+        "sessions": 2100,
+        "keyEvents:sign_up": 168,
+        "sessionKeyEventRate:sign_up": 0.074
+      },
+      {
+        "landingPage": "/features/payments/",
+        "sessions": 1450,
+        "keyEvents:sign_up": 19,
+        "sessionKeyEventRate:sign_up": 0.012
+      },
+      {
+        "landingPage": "/integrations/",
+        "sessions": 300,
+        "keyEvents:sign_up": 9,
+        "sessionKeyEventRate:sign_up": 0.027
+      },
+      {
+        "landingPage": "/templates/cancellation-policy/",
+        "sessions": 95,
+        "keyEvents:sign_up": 1,
+        "sessionKeyEventRate:sign_up": 0.011
+      },
+      {
+        "landingPage": "/signup/",
+        "sessions": 60,
+        "keyEvents:sign_up": 0,
+        "sessionKeyEventRate:sign_up": 0.0
+      }
+    ],
+    "ga4_G2_site": {
+      "sessions": 52000,
+      "keyEvents:sign_up": 1180,
+      "sessionKeyEventRate:sign_up": 0.0214
+    },
+    "ga4_G3_pages": [
+      {
+        "pagePath": "/",
+        "sessions": 21400,
+        "screenPageViews": 27178
+      },
+      {
+        "pagePath": "/blog/reduce-no-shows/",
+        "sessions": 11800,
+        "screenPageViews": 14986
+      },
+      {
+        "pagePath": "/pricing/",
+        "sessions": 9600,
+        "screenPageViews": 12192
+      },
+      {
+        "pagePath": "/features/online-booking/",
+        "sessions": 5200,
+        "screenPageViews": 6604
+      },
+      {
+        "pagePath": "/industries/salons/",
+        "sessions": 4300,
+        "screenPageViews": 5461
+      },
+      {
+        "pagePath": "/signup/",
+        "sessions": 3900,
+        "screenPageViews": 4953
+      },
+      {
+        "pagePath": "/features/payments/",
+        "sessions": 3600,
+        "screenPageViews": 4572
+      },
+      {
+        "pagePath": "/integrations/",
+        "sessions": 1400,
+        "screenPageViews": 1778
+      },
+      {
+        "pagePath": "/templates/cancellation-policy/",
+        "sessions": 110,
+        "screenPageViews": 140
+      }
+    ],
+    "pagespeed_core_web_vitals_mobile": [
+      {
+        "url": "https://www.example.com/pricing/",
+        "strategy": "mobile",
+        "lcp_s": 2.4,
+        "total_blocking_time_ms": 280
+      },
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "strategy": "mobile",
+        "lcp_s": 2.9,
+        "total_blocking_time_ms": 350
+      },
+      {
+        "url": "https://www.example.com/industries/salons/",
+        "strategy": "mobile",
+        "lcp_s": 4.6,
+        "total_blocking_time_ms": 720
+      }
+    ]
+  },
+  "calls": {
+    "clarity_query_dashboard": 0,
+    "google_sheets_reads": 3,
+    "ga4_get_report": 3,
+    "pagespeed_core_web_vitals": 3,
+    "writes": 0,
+    "why_no_clarity_call": "today's pull already ran on the schedule; this run reads the history"
+  },
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The Clarity rows are sums of 30 daily pulls kept in a Google Sheet."
+}

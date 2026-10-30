@@ -1,0 +1,582 @@
+{
+  "note": "Example data: an invented DTC skincare store with an invented Meta ad account (the one the other Meta skill samples use), not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"meta-ad-copy-writer\" skill. Find my best Meta ads and write five new primary texts and five headlines based on what's winning, then rewrite my reviews carousel card by card. Use only the facts below.",
+  "account": {
+    "name": "Example DTC skincare store",
+    "ad_account_id": "act_123456789",
+    "currency": "USD"
+  },
+  "date_range": "last_90d preset (2026-07-23 to 2026-10-20, 90 complete days before 2026-10-21)",
+  "what_the_ads_sell": "Hydra Serum, a hyaluronic acid serum, sold online to US shoppers who want a simple routine",
+  "result_that_counts": "purchase (the sales objective's result)",
+  "target_cost_per_result": "$45 per purchase",
+  "facts_given": [
+    "Hydra Serum: hyaluronic acid and ceramides, 30 ml, fragrance-free.",
+    "Used morning and night, one bottle lasts about 8 weeks.",
+    "4.8 stars from 2,300 reviews on our site.",
+    "A review we may quote: \"Finally a serum that doesn't pill under makeup.\"",
+    "Free shipping on orders over $50, and 30-day returns.",
+    "Returning customers get 15% off their next order; show it only in retargeting."
+  ],
+  "data_pulled": [
+    "get_insights_adaccount level=ad, last_90d (10 ads with delivery)",
+    "get_ad_creatives_by_ad for the 5 winners and losers (1 dynamic creative)",
+    "query_contexts actions_details for create_ad_creative (call_to_action_type_values only; nothing created)",
+    "get_campaigns for special_ad_categories",
+    "get_insights_adaccount level=ad, last_90d, action_breakdowns action_type, action_carousel_card_id and action_carousel_card_name (kept for Carousel - reviews, 3 cards)"
+  ],
+  "data": {
+    "ad_insights_last_90d": [
+      {
+        "ad_id": "120000000000200001",
+        "ad_name": "UGC video - glow routine",
+        "campaign_name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "adset_name": "Broad 25-54 | US",
+        "objective": "OUTCOME_SALES",
+        "spend": "4120.00",
+        "impressions": "290000",
+        "reach": "65909",
+        "frequency": "4.40",
+        "inline_link_clicks": "4180",
+        "inline_link_click_ctr": "1.4414",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "4180"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "98"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "0.99"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "42.04"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 42.04
+      },
+      {
+        "ad_id": "120000000000200002",
+        "ad_name": "Static - before/after",
+        "campaign_name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "adset_name": "Broad 25-54 | US",
+        "objective": "OUTCOME_SALES",
+        "spend": "1240.00",
+        "impressions": "90000",
+        "reach": "45000",
+        "frequency": "2.00",
+        "inline_link_clicks": "990",
+        "inline_link_click_ctr": "1.1000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "990"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "31"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.25"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "40.00"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 40.0
+      },
+      {
+        "ad_id": "120000000000200003",
+        "ad_name": "Carousel - bestsellers",
+        "campaign_name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "adset_name": "Interest - skincare",
+        "objective": "OUTCOME_SALES",
+        "spend": "2270.00",
+        "impressions": "150000",
+        "reach": "57692",
+        "frequency": "2.60",
+        "inline_link_clicks": "1430",
+        "inline_link_click_ctr": "0.9533",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "1430"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "46"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.59"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "49.35"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 49.35
+      },
+      {
+        "ad_id": "120000000000200004",
+        "ad_name": "Static - claims v2",
+        "campaign_name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "adset_name": "Interest - skincare",
+        "objective": "OUTCOME_SALES",
+        "spend": "210.00",
+        "impressions": "14000",
+        "reach": "11667",
+        "frequency": "1.20",
+        "inline_link_clicks": "98",
+        "inline_link_click_ctr": "0.7000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "98"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "2.14"
+          }
+        ],
+        "quality_ranking": "UNKNOWN",
+        "engagement_rate_ranking": "UNKNOWN",
+        "conversion_rate_ranking": "UNKNOWN"
+      },
+      {
+        "ad_id": "120000000000200005",
+        "ad_name": "UGC video - texture",
+        "campaign_name": "Prospecting | Sales | Hydra Serum | US | 2026-08",
+        "adset_name": "LAL 1% purchasers 180d",
+        "objective": "OUTCOME_SALES",
+        "spend": "3280.00",
+        "impressions": "220000",
+        "reach": "75862",
+        "frequency": "2.90",
+        "inline_link_clicks": "2640",
+        "inline_link_click_ctr": "1.2000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "2640"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "66"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.24"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "49.70"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 49.7
+      },
+      {
+        "ad_id": "120000000000200006",
+        "ad_name": "Static - serum hero",
+        "campaign_name": "PROSP_Broad_Serum",
+        "adset_name": "broad serum",
+        "objective": "OUTCOME_SALES",
+        "spend": "3920.00",
+        "impressions": "290000",
+        "reach": "93548",
+        "frequency": "3.10",
+        "inline_link_clicks": "3630",
+        "inline_link_click_ctr": "1.2517",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "3630"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "98"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.08"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "40.00"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "BELOW_AVERAGE_35",
+        "_cpr": 40.0
+      },
+      {
+        "ad_id": "120000000000200007",
+        "ad_name": "Carousel - reviews",
+        "campaign_name": "Retargeting | Sales | All Products | US | 2026-07",
+        "adset_name": "Site visitors 30d + ATC 14d",
+        "objective": "OUTCOME_SALES",
+        "spend": "4480.00",
+        "impressions": "200000",
+        "reach": "31746",
+        "frequency": "6.30",
+        "inline_link_clicks": "3600",
+        "inline_link_click_ctr": "1.8000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "3600"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "146"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.24"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "30.68"
+          }
+        ],
+        "quality_ranking": "ABOVE_AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "ABOVE_AVERAGE",
+        "_cpr": 30.68
+      },
+      {
+        "ad_id": "120000000000200008",
+        "ad_name": "Static - 15% off returning",
+        "campaign_name": "Retargeting | Sales | All Products | US | 2026-07",
+        "adset_name": "Site visitors 30d + ATC 14d",
+        "objective": "OUTCOME_SALES",
+        "spend": "800.00",
+        "impressions": "38000",
+        "reach": "10857",
+        "frequency": "3.50",
+        "inline_link_clicks": "740",
+        "inline_link_click_ctr": "1.9474",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "740"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "26"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "1.08"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "30.77"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "AVERAGE",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 30.77
+      },
+      {
+        "ad_id": "120000000000200009",
+        "ad_name": "New Sales Ad",
+        "campaign_name": "New Sales Campaign",
+        "adset_name": "New Sales Ad Set",
+        "objective": "OUTCOME_SALES",
+        "spend": "2210.00",
+        "impressions": "140000",
+        "reach": "63636",
+        "frequency": "2.20",
+        "inline_link_clicks": "980",
+        "inline_link_click_ctr": "0.7000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "980"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "27"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "2.26"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "81.85"
+          }
+        ],
+        "quality_ranking": "BELOW_AVERAGE_20",
+        "engagement_rate_ranking": "BELOW_AVERAGE_35",
+        "conversion_rate_ranking": "AVERAGE",
+        "_cpr": 81.85
+      },
+      {
+        "ad_id": "120000000000200010",
+        "ad_name": "Blog - 5 ingredient myths",
+        "campaign_name": "Prospecting | Traffic | Blog | US | 2026-09 - Copy",
+        "adset_name": "Blog readers | US",
+        "objective": "OUTCOME_TRAFFIC",
+        "spend": "1440.00",
+        "impressions": "153000",
+        "reach": "80526",
+        "frequency": "1.90",
+        "inline_link_clicks": "3210",
+        "inline_link_click_ctr": "2.0980",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "3210"
+          }
+        ],
+        "cost_per_action_type": [
+          {
+            "action_type": "link_click",
+            "value": "0.45"
+          }
+        ],
+        "quality_ranking": "AVERAGE",
+        "engagement_rate_ranking": "ABOVE_AVERAGE",
+        "conversion_rate_ranking": "UNKNOWN"
+      }
+    ],
+    "carousel_card_breakdown_last_90d": [
+      {
+        "ad_id": "120000000000200007",
+        "ad_name": "Carousel - reviews",
+        "spend": "4480.00",
+        "impressions": "200000",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "action_carousel_card_id": "6100000000000001",
+            "action_carousel_card_name": "Hydra Serum",
+            "value": "1580"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "action_carousel_card_id": "6100000000000001",
+            "action_carousel_card_name": "Hydra Serum",
+            "value": "61"
+          },
+          {
+            "action_type": "link_click",
+            "action_carousel_card_id": "6100000000000002",
+            "action_carousel_card_name": "Night routine",
+            "value": "760"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "action_carousel_card_id": "6100000000000002",
+            "action_carousel_card_name": "Night routine",
+            "value": "22"
+          },
+          {
+            "action_type": "link_click",
+            "action_carousel_card_id": "6100000000000003",
+            "action_carousel_card_name": "Read the reviews",
+            "value": "1260"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "action_carousel_card_id": "6100000000000003",
+            "action_carousel_card_name": "Read the reviews",
+            "value": "63"
+          }
+        ]
+      }
+    ],
+    "creatives_read": [
+      {
+        "ad_id": "120000000000200007",
+        "ad_name": "Carousel - reviews",
+        "id": "120000000000300007",
+        "name": "Carousel - reviews",
+        "title": "",
+        "body": "",
+        "call_to_action_type": "SHOP_NOW",
+        "object_type": "SHARE",
+        "object_story_spec": {
+          "page_id": "110000000000001",
+          "link_data": {
+            "message": "4.8 stars from 2,300 reviews. See why customers keep Hydra Serum in their routine.",
+            "name": "Rated 4.8 by real customers",
+            "link": "https://www.example.com/products/hydra-serum",
+            "child_attachments": [
+              {
+                "name": "Hydra Serum",
+                "link": "https://www.example.com/products/hydra-serum",
+                "image_hash": "e5f6070809101112",
+                "call_to_action": {
+                  "type": "SHOP_NOW"
+                }
+              },
+              {
+                "name": "Night routine",
+                "link": "https://www.example.com/products/hydra-serum",
+                "image_hash": "f607080910111213",
+                "call_to_action": {
+                  "type": "SHOP_NOW"
+                }
+              },
+              {
+                "name": "Read the reviews",
+                "link": "https://www.example.com/products/hydra-serum#reviews",
+                "image_hash": "0708091011121314",
+                "call_to_action": {
+                  "type": "SHOP_NOW"
+                }
+              }
+            ],
+            "multi_share_optimized": true,
+            "multi_share_end_card": true
+          }
+        }
+      },
+      {
+        "ad_id": "120000000000200008",
+        "ad_name": "Static - 15% off returning",
+        "id": "120000000000300008",
+        "name": "Static - 15% off returning",
+        "title": "15% off, this week only",
+        "body": "Welcome back: 15% off your next order. The code is already applied at checkout.",
+        "call_to_action_type": "GET_OFFER",
+        "object_type": "SHARE",
+        "link_url": "https://www.example.com/products/hydra-serum",
+        "image_hash": "a1b2c3d4e5f60708"
+      },
+      {
+        "ad_id": "120000000000200002",
+        "ad_name": "Static - before/after",
+        "id": "120000000000300002",
+        "name": "Static - before/after",
+        "title": "See the difference in 4 weeks",
+        "body": "Day 1 vs day 28: same light, same camera. Hydra Serum, morning and night.",
+        "call_to_action_type": "SHOP_NOW",
+        "object_type": "SHARE",
+        "link_url": "https://www.example.com/products/hydra-serum",
+        "image_hash": "b2c3d4e5f6070809"
+      },
+      {
+        "ad_id": "120000000000200006",
+        "ad_name": "Static - serum hero",
+        "id": "120000000000300006",
+        "name": "{{product.name}} 2026-08-15-6f1e",
+        "title": "",
+        "body": "",
+        "call_to_action_type": "SHOP_NOW",
+        "object_type": "SHARE",
+        "object_story_spec": {
+          "page_id": "110000000000001"
+        },
+        "asset_feed_spec": {
+          "bodies": [
+            {
+              "text": "Hydration that lasts 72 hours. Hyaluronic acid and ceramides in one lightweight serum."
+            },
+            {
+              "text": "One serum, morning and night: hyaluronic acid plus ceramides."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Hydra Serum"
+            },
+            {
+              "text": ""
+            }
+          ],
+          "descriptions": [
+            {
+              "text": ""
+            }
+          ],
+          "images": [
+            {
+              "hash": "c3d4e5f607080910"
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://www.example.com/products/hydra-serum"
+            }
+          ]
+        }
+      },
+      {
+        "ad_id": "120000000000200009",
+        "ad_name": "New Sales Ad",
+        "id": "120000000000300009",
+        "name": "{{product.name}} 2026-08-28-1a2b",
+        "title": "New Sales Ad",
+        "body": "Shop our skincare",
+        "call_to_action_type": "SHOP_NOW",
+        "object_type": "SHARE",
+        "link_url": "https://www.example.com/products/hydra-serum",
+        "image_hash": "d4e5f60708091011"
+      }
+    ],
+    "other_own_copy": {
+      "Static - claims v2": "Clinically shown to cut redness by 40%",
+      "UGC video - texture": "Lightweight, never greasy"
+    },
+    "call_to_action_type_values": [
+      "SHOP_NOW",
+      "LEARN_MORE",
+      "GET_OFFER",
+      "BUY_NOW",
+      "ORDER_NOW",
+      "SIGN_UP",
+      "SUBSCRIBE",
+      "CONTACT_US"
+    ],
+    "special_ad_categories_by_campaign": {
+      "120000000000000001": [],
+      "120000000000000002": [],
+      "120000000000000003": [],
+      "120000000000000004": [],
+      "120000000000000005": [],
+      "120000000000000006": []
+    }
+  }
+}

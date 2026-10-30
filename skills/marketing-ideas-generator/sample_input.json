@@ -1,0 +1,980 @@
+{
+  "note": "Example data: an invented small online tea shop with invented accounts, competitors and search figures, not a real business. Every number in expected_output.json follows from this input. The drafted long list (ideas, first-test cash and hours) is the skill's own step 2 work, kept here so every score can be traced.",
+  "request": "Hey Claude, I just added the \"marketing-ideas-generator\" skill. I run Example Tea Co., a small online loose-leaf tea shop. Give me marketing ideas for my small business and tell me which ten to try first. We have $500 a month for new things and about 8 hours a week. Our GA4, Search Console and DataForSEO are connected through the InsightfulPipe MCP.",
+  "business": {
+    "name": "Example Tea Co.",
+    "one_line": "A two-person online shop selling loose-leaf tea, samplers and teaware to home tea drinkers across the US",
+    "site": "https://www.exampletea.example",
+    "model": "online store",
+    "goal": "online orders (GA4 key event purchase)",
+    "budget_new_ideas_month": 500,
+    "hours_per_week": 8,
+    "already_tried": [
+      {
+        "id": "T1",
+        "what": "Boosted Facebook posts of new blends",
+        "result": "flopped",
+        "reason": "the boosts went to existing followers, who already buy by email"
+      },
+      {
+        "id": "T2",
+        "what": "Instagram giveaway for a new blend",
+        "result": "flopped",
+        "reason": "it brought followers who entered for the prize and never ordered"
+      },
+      {
+        "id": "T3",
+        "what": "Monthly new-blend email",
+        "result": "worked",
+        "reason": "the best-selling email every month"
+      }
+    ],
+    "off_limits": [
+      {
+        "id": "X1",
+        "rule": "no discounts deeper than 15%"
+      },
+      {
+        "id": "X2",
+        "rule": "nobody on camera"
+      },
+      {
+        "id": "X3",
+        "rule": "no cold calling"
+      }
+    ],
+    "competitors": [
+      {
+        "label": "Competitor A",
+        "kind": "an online tea retailer",
+        "domain": "competitor-a.example"
+      },
+      {
+        "label": "Competitor B",
+        "kind": "a tea and gift shop",
+        "domain": "competitor-b.example"
+      },
+      {
+        "label": "Competitor C",
+        "kind": "a small specialty tea brand",
+        "domain": "competitor-c.example"
+      }
+    ],
+    "owned_audience": {
+      "email_list": 2400,
+      "past_customers": 1900
+    },
+    "scope": "the whole business"
+  },
+  "run_date": "2026-10-28",
+  "window": {
+    "start": "2026-07-30",
+    "end": "2026-10-27",
+    "days": 90
+  },
+  "connected_sources": [
+    "google-analytics",
+    "google-search-console",
+    "dataforseo",
+    "ads-libraries"
+  ],
+  "data_pulled": {
+    "google_analytics_traffic_sources": [
+      {
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 9600,
+        "keyEvents:purchase": 270
+      },
+      {
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 4100,
+        "keyEvents:purchase": 131
+      },
+      {
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 3200,
+        "keyEvents:purchase": 26
+      },
+      {
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 1350,
+        "keyEvents:purchase": 81
+      },
+      {
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 820,
+        "keyEvents:purchase": 25
+      },
+      {
+        "sessionDefaultChannelGroup": "Organic Shopping",
+        "sessions": 640,
+        "keyEvents:purchase": 14
+      },
+      {
+        "sessionDefaultChannelGroup": "Unassigned",
+        "sessions": 60,
+        "keyEvents:purchase": 0
+      }
+    ],
+    "search_console_queries": [
+      {
+        "query": "example tea co",
+        "clicks": 1210,
+        "impressions": 1800,
+        "ctr": 67.2,
+        "position": 1.2
+      },
+      {
+        "query": "how to brew oolong tea",
+        "clicks": 40,
+        "impressions": 2400,
+        "ctr": 1.7,
+        "position": 14.2
+      },
+      {
+        "query": "best tea for sleep",
+        "clicks": 9,
+        "impressions": 1600,
+        "ctr": 0.6,
+        "position": 18.1
+      },
+      {
+        "query": "loose leaf tea sampler",
+        "clicks": 12,
+        "impressions": 1100,
+        "ctr": 1.1,
+        "position": 11.8
+      },
+      {
+        "query": "tea gift set for her",
+        "clicks": 3,
+        "impressions": 900,
+        "ctr": 0.3,
+        "position": 23.5
+      },
+      {
+        "query": "matcha whisk",
+        "clicks": 30,
+        "impressions": 300,
+        "ctr": 10.0,
+        "position": 6.0
+      },
+      {
+        "query": "corporate tea gifts",
+        "clicks": 0,
+        "impressions": 140,
+        "ctr": 0.0,
+        "position": 31.0
+      },
+      {
+        "query": "earl grey loose leaf",
+        "clicks": 2,
+        "impressions": 80,
+        "ctr": 2.5,
+        "position": 15.4
+      }
+    ],
+    "dataforseo_keyword_suggestions": {
+      "loose leaf tea": [
+        {
+          "keyword": "loose leaf tea sampler",
+          "search_volume": 1000
+        },
+        {
+          "keyword": "best loose leaf tea",
+          "search_volume": 2900
+        },
+        {
+          "keyword": "loose leaf tea subscription",
+          "search_volume": 590
+        },
+        {
+          "keyword": "how to brew loose leaf tea",
+          "search_volume": 1300
+        }
+      ],
+      "tea gift": [
+        {
+          "keyword": "tea gift set",
+          "search_volume": 6600
+        },
+        {
+          "keyword": "tea advent calendar",
+          "search_volume": 8100
+        },
+        {
+          "keyword": "tea gift set for her",
+          "search_volume": 1300
+        },
+        {
+          "keyword": "corporate tea gifts",
+          "search_volume": 210
+        }
+      ]
+    },
+    "dataforseo_search_volume": [
+      {
+        "keyword": "tea sampler",
+        "search_volume": 2900,
+        "cpc": 1.1
+      },
+      {
+        "keyword": "loose leaf tea sampler",
+        "search_volume": 1000,
+        "cpc": 1.35
+      },
+      {
+        "keyword": "tea gift set",
+        "search_volume": 6600,
+        "cpc": 1.05
+      },
+      {
+        "keyword": "tea gift set for her",
+        "search_volume": 1300,
+        "cpc": 0.95
+      },
+      {
+        "keyword": "corporate tea gifts",
+        "search_volume": 210,
+        "cpc": 2.4
+      },
+      {
+        "keyword": "office tea gifts",
+        "search_volume": 90,
+        "cpc": 3.1
+      },
+      {
+        "keyword": "how to brew oolong tea",
+        "search_volume": 880,
+        "cpc": 0.2
+      },
+      {
+        "keyword": "best tea for sleep",
+        "search_volume": 4400,
+        "cpc": 0.45
+      },
+      {
+        "keyword": "tea subscription",
+        "search_volume": 2400,
+        "cpc": 1.8
+      },
+      {
+        "keyword": "tea subscription box",
+        "search_volume": 1600,
+        "cpc": 1.9
+      },
+      {
+        "keyword": "tea subscription boxes",
+        "search_volume": 1600,
+        "cpc": 1.9
+      },
+      {
+        "keyword": "teapot with infuser",
+        "search_volume": 3600,
+        "cpc": 0.85
+      },
+      {
+        "keyword": "tea advent calendar",
+        "search_volume": 8100,
+        "cpc": 0.9
+      },
+      {
+        "keyword": "tea steeping time",
+        "search_volume": 1900,
+        "cpc": 0.15
+      }
+    ],
+    "dataforseo_same_search_pairs": [
+      [
+        "tea subscription box",
+        "tea subscription boxes"
+      ]
+    ],
+    "ad_libraries": {
+      "Competitor A": {
+        "domain": "competitor-a.example",
+        "meta_search_rows": [
+          {
+            "page_id": "100000000000001",
+            "name": "Competitor A",
+            "category": "Tea room",
+            "ig_username": "competitor_a_tea"
+          }
+        ],
+        "meta": [
+          {
+            "ad_archive_id": "900000000000011",
+            "start_date": 1781049600,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "Tea that turns up every month",
+            "body_text": "Three blends a month on a subscription you can pause any time.",
+            "link_description": "Start your subscription"
+          },
+          {
+            "ad_archive_id": "900000000000012",
+            "start_date": 1789862400,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "Not sure where to start?",
+            "body_text": "Our six-blend sampler has a cup of each.",
+            "link_description": "Try the sampler"
+          },
+          {
+            "ad_archive_id": "900000000000013",
+            "start_date": 1788220800,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "Free shipping over $40",
+            "body_text": "Stock up on your favourites with free shipping on orders over $40.",
+            "link_description": "Shop loose leaf"
+          },
+          {
+            "ad_archive_id": "900000000000014",
+            "start_date": 1785888000,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "VIDEO",
+            "title": "Slow down with a proper cup",
+            "body_text": "Hand-blended loose leaf from small farms.",
+            "link_description": "Shop now"
+          },
+          {
+            "ad_archive_id": "900000000000015",
+            "start_date": 1791936000,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "DCO",
+            "title": "{{product.name}}",
+            "body_text": "{{product.description}}",
+            "link_description": "{{product.price}}"
+          }
+        ],
+        "meta_cursor": null,
+        "google": [
+          {
+            "advertiserId": "AR000000000000000001",
+            "creativeId": "CR000000000000000011",
+            "format": "unknown",
+            "advertiserName": "Competitor A LLC",
+            "domain": "competitor-a.example",
+            "firstShown": null,
+            "lastShown": null
+          },
+          {
+            "advertiserId": "AR000000000000000001",
+            "creativeId": "CR000000000000000012",
+            "format": "unknown",
+            "advertiserName": "Competitor A LLC",
+            "domain": "competitor-a.example",
+            "firstShown": null,
+            "lastShown": null
+          }
+        ]
+      },
+      "Competitor B": {
+        "domain": "competitor-b.example",
+        "meta_search_rows": [
+          {
+            "page_id": "100000000000002",
+            "name": "Competitor B",
+            "category": "Gift shop",
+            "ig_username": "competitor_b_gifts"
+          }
+        ],
+        "meta": [
+          {
+            "ad_archive_id": "900000000000021",
+            "start_date": 1790812800,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "24 days of tea",
+            "body_text": "Our tea advent calendar is back: a new blend behind every door.",
+            "link_description": "Pre-order now"
+          },
+          {
+            "ad_archive_id": "900000000000022",
+            "start_date": 1786752000,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "The gift that gets opened twice",
+            "body_text": "A tea gift set with four blends and a glass infuser.",
+            "link_description": "Shop gift sets"
+          },
+          {
+            "ad_archive_id": "900000000000023",
+            "start_date": 1784505600,
+            "end_date": 1793145600,
+            "is_active": true,
+            "display_format": "IMAGE",
+            "title": "Tea and treats for every occasion",
+            "body_text": "Teas, mugs and little things for people you like.",
+            "link_description": "Visit the shop"
+          }
+        ],
+        "meta_cursor": null,
+        "google": [
+          {
+            "advertiserId": "AR000000000000000002",
+            "creativeId": "CR000000000000000021",
+            "format": "unknown",
+            "advertiserName": "Competitor B Gifts Inc.",
+            "domain": "competitor-b.example",
+            "firstShown": null,
+            "lastShown": null
+          },
+          {
+            "advertiserId": "AR000000000000000002",
+            "creativeId": "CR000000000000000022",
+            "format": "unknown",
+            "advertiserName": "Competitor B Gifts Inc.",
+            "domain": "competitor-b.example",
+            "firstShown": null,
+            "lastShown": null
+          },
+          {
+            "advertiserId": "AR000000000000000002",
+            "creativeId": "CR000000000000000023",
+            "format": "unknown",
+            "advertiserName": "Competitor B Gifts Inc.",
+            "domain": "competitor-b.example",
+            "firstShown": null,
+            "lastShown": null
+          }
+        ]
+      },
+      "Competitor C": {
+        "domain": "competitor-c.example",
+        "meta_search_rows": [
+          {
+            "page_id": "100000000000003",
+            "name": "Competitor C Sound",
+            "category": "Musician/band",
+            "ig_username": "competitorc_sound"
+          }
+        ],
+        "meta": [],
+        "meta_cursor": null,
+        "google": []
+      }
+    }
+  },
+  "drafted_long_list": [
+    {
+      "id": 1,
+      "name": "Restock reminder email 45 days after each order",
+      "source": "Owned audience",
+      "channel": "Email",
+      "first_test": "One automated email to each customer 45 days after their order, with their last blend and a reorder link",
+      "reach": [
+        "trigger",
+        "monthly_orders"
+      ],
+      "arrive": "Email",
+      "cash": 0,
+      "hours": 4
+    },
+    {
+      "id": 2,
+      "name": "A second monthly email: one brewing tip and one featured blend",
+      "source": "Double down",
+      "channel": "Email",
+      "first_test": "Two sends to the full list, a tip-led email mid-month next to the new-blend email",
+      "reach": [
+        "email",
+        "email_list",
+        1
+      ],
+      "arrive": "Email",
+      "cash": 0,
+      "hours": 4
+    },
+    {
+      "id": 3,
+      "name": "Ask the three blogs that already send buyers for a spot in their holiday gift guides",
+      "source": "Double down",
+      "channel": "Referral",
+      "first_test": "A short pitch with a sampler for each editor",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": "Referral",
+      "cash": 60,
+      "hours": 4
+    },
+    {
+      "id": 4,
+      "name": "Brewing guide: how to brew oolong, linked to the three oolongs",
+      "source": "Unmet demand",
+      "channel": "Organic Search",
+      "first_test": "One guide page with steeping times and a buy box",
+      "reach": [
+        "search",
+        [
+          "how to brew oolong tea"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 6
+    },
+    {
+      "id": 5,
+      "name": "Best tea for sleep guide that sells the bedtime blend",
+      "source": "Unmet demand",
+      "channel": "Organic Search",
+      "first_test": "One guide page comparing caffeine-free blends, with the bedtime blend first",
+      "reach": [
+        "search",
+        [
+          "best tea for sleep"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 10
+    },
+    {
+      "id": 6,
+      "name": "A loose-leaf sampler landing page",
+      "source": "Unmet demand",
+      "channel": "Organic Search",
+      "first_test": "A page for the existing 6-blend sampler, written for sampler searches",
+      "reach": [
+        "search",
+        [
+          "tea sampler",
+          "loose leaf tea sampler"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 8,
+      "rival": "sampler"
+    },
+    {
+      "id": 7,
+      "name": "Paid search test on gift-set searches",
+      "source": "Unmet demand",
+      "channel": "Google Ads (search)",
+      "first_test": "$300 over 4 weeks on gift-set phrases, sending clicks to the gift set page",
+      "reach": [
+        "paid",
+        [
+          "tea gift set",
+          "tea gift set for her"
+        ]
+      ],
+      "arrive": "Paid Search",
+      "cash": 300,
+      "hours": 6,
+      "rival": "gift set"
+    },
+    {
+      "id": 8,
+      "name": "Teapot with infuser buying guide",
+      "source": "Unmet demand",
+      "channel": "Organic Search",
+      "first_test": "One guide page for the four infuser teapots in stock",
+      "reach": [
+        "search",
+        [
+          "teapot with infuser"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 8
+    },
+    {
+      "id": 9,
+      "name": "Paid search test on sampler searches",
+      "source": "Unmet demand",
+      "channel": "Google Ads (search)",
+      "first_test": "$250 over 4 weeks on sampler phrases, sending clicks to the sampler page",
+      "reach": [
+        "paid",
+        [
+          "loose leaf tea sampler"
+        ]
+      ],
+      "arrive": "Paid Search",
+      "cash": 250,
+      "hours": 8,
+      "rival": "sampler"
+    },
+    {
+      "id": 10,
+      "name": "Monthly 3-blend tea subscription",
+      "source": "Rival moves and gaps",
+      "channel": "Organic Search",
+      "first_test": "A subscription page and checkout option for a 3-blend monthly box",
+      "reach": [
+        "search",
+        [
+          "tea subscription",
+          "tea subscription box",
+          "tea subscription boxes"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 150,
+      "hours": 16,
+      "rival": "subscription"
+    },
+    {
+      "id": 11,
+      "name": "A free-shipping threshold at $45, shown on every page",
+      "source": "Rival moves and gaps",
+      "channel": "Site",
+      "first_test": "A site banner and cart message for 4 weeks",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 2,
+      "rival": "shipping threshold"
+    },
+    {
+      "id": 12,
+      "name": "Promoted Pinterest pins for the gift sets",
+      "source": "Rival moves and gaps",
+      "channel": "Pinterest",
+      "first_test": "$200 over 4 weeks on six gift-set pins",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 200,
+      "hours": 6,
+      "rival": "gift set"
+    },
+    {
+      "id": 13,
+      "name": "Meta ads to a lookalike of past buyers",
+      "source": "Rival moves and gaps",
+      "channel": "Meta Ads",
+      "first_test": "$250 over 4 weeks to a 1% lookalike of past buyers, excluding current followers",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 250,
+      "hours": 6,
+      "rival": "prospecting",
+      "tried": "T1",
+      "changed": "it reaches new people who look like buyers and excludes followers, which is why the boosts failed"
+    },
+    {
+      "id": 14,
+      "name": "Short brewing videos for YouTube and Instagram Reels",
+      "source": "Rival moves and gaps",
+      "channel": "Video",
+      "first_test": "Four 30-second brewing videos",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 10,
+      "off_limits": "X2"
+    },
+    {
+      "id": 15,
+      "name": "Review request email with a photo prompt two weeks after delivery",
+      "source": "Owned audience",
+      "channel": "Email",
+      "first_test": "One automated email asking for a review and a photo of the cup",
+      "reach": [
+        "judgment",
+        3,
+        "the email asks for a review, not an order"
+      ],
+      "arrive": "Email",
+      "cash": 0,
+      "hours": 3
+    },
+    {
+      "id": 16,
+      "name": "Give a sampler, get a sampler referral offer",
+      "source": "Owned audience",
+      "channel": "Email",
+      "first_test": "A referral link in the order confirmation and one email to the list",
+      "reach": [
+        "judgment",
+        5,
+        "the email asks customers to share a referral link, not to order"
+      ],
+      "arrive": "Email",
+      "cash": 120,
+      "hours": 10,
+      "rival": "sampler"
+    },
+    {
+      "id": 17,
+      "name": "Another Instagram giveaway for the winter blend",
+      "source": "Owned audience",
+      "channel": "Instagram",
+      "first_test": "A follow-and-tag giveaway",
+      "reach": [
+        "judgment",
+        3,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 40,
+      "hours": 4,
+      "tried": "T2"
+    },
+    {
+      "id": 18,
+      "name": "Tea and shortbread gift box with a local bakery's online shop",
+      "source": "Borrowed audiences",
+      "channel": "Partner",
+      "first_test": "20 co-branded boxes sold on both shops",
+      "reach": [
+        "judgment",
+        5,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 150,
+      "hours": 12,
+      "rival": "gift set"
+    },
+    {
+      "id": 19,
+      "name": "Guest brewing guide in two cooking or wellness newsletters",
+      "source": "Borrowed audiences",
+      "channel": "Partner newsletters",
+      "first_test": "Pitch two newsletter editors a guide with a reader code",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 6
+    },
+    {
+      "id": 20,
+      "name": "An Etsy shop for the teaware range",
+      "source": "Borrowed audiences",
+      "channel": "Marketplace",
+      "first_test": "List the ten best-selling teaware items",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 40,
+      "hours": 20
+    },
+    {
+      "id": 21,
+      "name": "Year-end gift boxes for small offices",
+      "source": "Borrowed audiences",
+      "channel": "Organic Search",
+      "first_test": "A corporate gifts page with a 10-box minimum and an order form",
+      "reach": [
+        "search",
+        [
+          "corporate tea gifts",
+          "office tea gifts"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 10,
+      "rival": "gift set"
+    },
+    {
+      "id": 22,
+      "name": "A booth at a regional food festival",
+      "source": "Borrowed audiences",
+      "channel": "Events",
+      "first_test": "One weekend booth with tasting cups",
+      "reach": [
+        "judgment",
+        5,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 900,
+      "hours": 20
+    },
+    {
+      "id": 23,
+      "name": "A Product Hunt launch for the shop",
+      "source": "Borrowed audiences",
+      "channel": "Product Hunt",
+      "first_test": "One launch day",
+      "reach": [
+        "judgment",
+        3,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 8,
+      "misfit": "Product Hunt's audience looks for software and apps, not tea to buy"
+    },
+    {
+      "id": 24,
+      "name": "Wholesale to five local cafes",
+      "source": "Borrowed audiences",
+      "channel": "Wholesale",
+      "first_test": "Samples and a price sheet for five cafes, in person",
+      "reach": [
+        "judgment",
+        5,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 150,
+      "hours": 30
+    },
+    {
+      "id": 25,
+      "name": "A 24-day tea advent calendar on pre-order",
+      "source": "Offers and timing",
+      "channel": "Organic Search",
+      "first_test": "A pre-order page and 30 calendars packed from existing blends",
+      "reach": [
+        "search",
+        [
+          "tea advent calendar"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 400,
+      "hours": 20,
+      "rival": "advent calendar"
+    },
+    {
+      "id": 26,
+      "name": "Gift wrap and a handwritten note option for December",
+      "source": "Offers and timing",
+      "channel": "Site",
+      "first_test": "A checkout add-on for December",
+      "reach": [
+        "judgment",
+        3,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 80,
+      "hours": 4,
+      "rival": "gift set"
+    },
+    {
+      "id": 27,
+      "name": "Bedtime bundle: the sleep blend and an infuser at 10% off",
+      "source": "Offers and timing",
+      "channel": "Site",
+      "first_test": "One bundle product, featured in the next email",
+      "reach": [
+        "judgment",
+        4,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 3
+    },
+    {
+      "id": 28,
+      "name": "20% off everything for Black Friday",
+      "source": "Offers and timing",
+      "channel": "Site",
+      "first_test": "A sitewide code for four days",
+      "reach": [
+        "judgment",
+        5,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 0,
+      "hours": 3,
+      "off_limits": "X1"
+    },
+    {
+      "id": 29,
+      "name": "'Name our next blend' vote for the email list",
+      "source": "Wildcards",
+      "channel": "Email",
+      "first_test": "One email with a three-name vote; the winner launches next month",
+      "reach": [
+        "judgment",
+        3,
+        "the email asks for a vote, not an order"
+      ],
+      "arrive": "Email",
+      "cash": 0,
+      "hours": 3
+    },
+    {
+      "id": 30,
+      "name": "A steeping-time timer page for green, black and oolong",
+      "source": "Wildcards",
+      "channel": "Organic Search",
+      "first_test": "A small timer page with a card per tea type",
+      "reach": [
+        "search",
+        [
+          "tea steeping time"
+        ]
+      ],
+      "arrive": "Organic Search",
+      "cash": 0,
+      "hours": 14
+    },
+    {
+      "id": 31,
+      "name": "Tea and book pairing cards in every order, with a share code",
+      "source": "Wildcards",
+      "channel": "Packaging",
+      "first_test": "A run of 500 printed cards",
+      "reach": [
+        "judgment",
+        3,
+        "no measurable reach"
+      ],
+      "arrive": null,
+      "cash": 60,
+      "hours": 5
+    }
+  ],
+  "specificity_rewrites": [
+    {
+      "before": "Start a blog",
+      "after": "Brewing guide: how to brew oolong, linked to the three oolongs"
+    },
+    {
+      "before": "Run a referral program",
+      "after": "Give a sampler, get a sampler referral offer"
+    },
+    {
+      "before": "Post more on social media",
+      "after": "Promoted Pinterest pins for the gift sets"
+    }
+  ]
+}

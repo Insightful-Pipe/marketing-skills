@@ -1,0 +1,869 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "main_domain": "example.com",
+    "mailbox_host": "Google Workspace",
+    "weekly_target_new_prospects": 400,
+    "sequence": "4 emails on sending days 0, 3, 7, 14",
+    "start_date": "2026-11-02",
+    "calendar": "12 weeks"
+  },
+  "summary": "Stop cold email from example.com now: 600 cold emails from example.com in 4 weeks; 4 of 4 weeks had a hard bounce rate of 2% or more and 3 of 4 weeks a spam rate of 0.1% or more. 400 new prospects a week at 4 emails each is 320 sends a sending day, which needs 13 mailboxes on 5 cold domains plus 1 spare; 4 domains to buy. 3 DNS failures to fix before warm-up ends. Cold email starts 2026-11-16 and first meets the weekly target in week 7 (2026-12-14 to 2026-12-18).",
+  "do_this_first": [
+    {
+      "what": "Stop cold email from example.com now",
+      "why": "600 cold emails from example.com in 4 weeks; 4 of 4 weeks had a hard bounce rate of 2% or more and 3 of 4 weeks a spam rate of 0.1% or more"
+    },
+    {
+      "what": "Fix SPF on example.com",
+      "why": "2 SPF records at one name; receivers return a permanent error and SPF fails for all mail",
+      "fix": "replace both with one record: v=spf1 include:_spf.google.com include:mail.newsletter-tool.example ~all"
+    },
+    {
+      "what": "Fix SPF on bookwithexample.example",
+      "why": "a space after the colon breaks the include",
+      "fix": "v=spf1 include:_spf.google.com -all"
+    },
+    {
+      "what": "Fix MX on bookwithexample.example",
+      "why": "replies and bounce notices can't arrive",
+      "fix": "MX 1 smtp.google.com."
+    }
+  ],
+  "separation": {
+    "checks": [
+      {
+        "check": "A cold mailbox sits on the main domain",
+        "result": "pass",
+        "detail": "cold mailboxes are on examplebookingmail.example, bookwithexample.example; none on example.com"
+      },
+      {
+        "check": "A cold domain is a subdomain of the main domain",
+        "result": "pass",
+        "detail": "both cold domains are separately registered"
+      },
+      {
+        "check": "Cold mail sent from the main domain in the last 4 weeks",
+        "result": "stop now",
+        "detail": "600 cold emails from example.com in 4 weeks; 4 of 4 weeks had a hard bounce rate of 2% or more and 3 of 4 weeks a spam rate of 0.1% or more"
+      }
+    ],
+    "past_weeks": [
+      {
+        "week_start": "2026-10-05",
+        "sent": 150,
+        "hard_bounces": 5,
+        "hard_bounce_rate_pct": 3.33,
+        "spam_rate_pct": 0.08,
+        "flags": [
+          "hard bounce rate at or above 2%"
+        ]
+      },
+      {
+        "week_start": "2026-10-12",
+        "sent": 180,
+        "hard_bounces": 8,
+        "hard_bounce_rate_pct": 4.44,
+        "spam_rate_pct": 0.15,
+        "flags": [
+          "hard bounce rate at or above 2%",
+          "spam rate at or above 0.1%"
+        ]
+      },
+      {
+        "week_start": "2026-10-19",
+        "sent": 140,
+        "hard_bounces": 6,
+        "hard_bounce_rate_pct": 4.29,
+        "spam_rate_pct": 0.22,
+        "flags": [
+          "hard bounce rate at or above 2%",
+          "spam rate at or above 0.1%"
+        ]
+      },
+      {
+        "week_start": "2026-10-26",
+        "sent": 130,
+        "hard_bounces": 4,
+        "hard_bounce_rate_pct": 3.08,
+        "spam_rate_pct": 0.19,
+        "flags": [
+          "hard bounce rate at or above 2%",
+          "spam rate at or above 0.1%"
+        ]
+      }
+    ],
+    "action": "Stop all cold email from example.com today. It carries booking confirmations, invoices and password resets. Send nothing cold until the new domains finish warm-up."
+  },
+  "setup": {
+    "daily_sends_once_fully_ramped": 320,
+    "formula": "400 new a week x 4 emails / 5 sending days",
+    "cap_per_mailbox": {
+      "value": 25,
+      "basis": "practitioner convention"
+    },
+    "mailboxes_in_use": 13,
+    "capacity_at_full_cap": 325,
+    "cold_domains_in_use": 5,
+    "spare_domains": 1,
+    "spare_mailboxes": 3,
+    "total_mailboxes": 16,
+    "domains_already_bought": 2,
+    "domains_to_buy": 4,
+    "domains": [
+      {
+        "domain": "examplebookingmail.example",
+        "role": "in use",
+        "status": "already bought",
+        "mailboxes": [
+          "jordan@examplebookingmail.example",
+          "casey@examplebookingmail.example",
+          "riley@examplebookingmail.example"
+        ]
+      },
+      {
+        "domain": "bookwithexample.example",
+        "role": "in use",
+        "status": "already bought",
+        "mailboxes": [
+          "jordan@bookwithexample.example",
+          "casey@bookwithexample.example",
+          "riley@bookwithexample.example"
+        ]
+      },
+      {
+        "domain": "examplebookingteam.example",
+        "role": "in use",
+        "status": "to buy",
+        "mailboxes": [
+          "jordan@examplebookingteam.example",
+          "casey@examplebookingteam.example",
+          "riley@examplebookingteam.example"
+        ]
+      },
+      {
+        "domain": "examplebookings.example",
+        "role": "in use",
+        "status": "to buy",
+        "mailboxes": [
+          "jordan@examplebookings.example",
+          "casey@examplebookings.example"
+        ]
+      },
+      {
+        "domain": "examplescheduling.example",
+        "role": "in use",
+        "status": "to buy",
+        "mailboxes": [
+          "jordan@examplescheduling.example",
+          "casey@examplescheduling.example"
+        ]
+      },
+      {
+        "domain": "bookingbyexample.example",
+        "role": "spare (warmed, sends no cold email)",
+        "status": "to buy",
+        "mailboxes": [
+          "jordan@bookingbyexample.example",
+          "casey@bookingbyexample.example",
+          "riley@bookingbyexample.example"
+        ]
+      }
+    ],
+    "provider_limit_check": {
+      "limit": "Google Workspace: 2000 messages a day per user (500 on a trial account)",
+      "basis": "provider rule",
+      "plan_peak_per_mailbox": 25,
+      "share_of_limit_pct": 1.25,
+      "result": "pass"
+    },
+    "microsoft_high_volume_check": {
+      "rule": "Outlook.com requires SPF, DKIM and DMARC from domains sending over 5,000 a day",
+      "basis": "provider rule",
+      "max_cold_per_domain_per_day": 75,
+      "result": "below the threshold; SPF, DKIM and DMARC are still required on every cold domain"
+    }
+  },
+  "dns_check": [
+    {
+      "domain": "example.com",
+      "role": "main domain",
+      "records": [
+        {
+          "record": "SPF",
+          "found": "v=spf1 include:_spf.google.com ~all | v=spf1 include:mail.newsletter-tool.example ~all",
+          "result": "fail",
+          "why": "2 SPF records at one name; receivers return a permanent error and SPF fails for all mail",
+          "fix": "replace both with one record: v=spf1 include:_spf.google.com include:mail.newsletter-tool.example ~all",
+          "lookups_after_fix": 2
+        },
+        {
+          "record": "DKIM",
+          "name": "google._domainkey.example.com",
+          "found": "v=DKIM1; k=rsa; p=<392 characters>",
+          "key_bytes": 294,
+          "key_bits": 2048,
+          "result": "pass",
+          "why": "2048-bit key"
+        },
+        {
+          "record": "DMARC",
+          "found": "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com",
+          "result": "pass",
+          "why": "p=quarantine with reports"
+        },
+        {
+          "record": "MX",
+          "found": "1 smtp.google.com.",
+          "result": "pass",
+          "why": "points to Google Workspace"
+        }
+      ],
+      "tally": {
+        "pass": 3,
+        "warn": 0,
+        "fail": 1
+      },
+      "owner_note": "Main-domain fixes affect marketing and transactional mail; hand them to whoever owns that mail (email-deliverability-auditor, if installed)."
+    },
+    {
+      "domain": "examplebookingmail.example",
+      "role": "cold domain",
+      "records": [
+        {
+          "record": "SPF",
+          "found": "v=spf1 include:_spf.google.com include:spf.protection.outlook.com ~all",
+          "result": "warn",
+          "why": "include:spf.protection.outlook.com authorizes Microsoft 365, which this domain doesn't use, and spends a lookup",
+          "lookups": 2,
+          "fix": "v=spf1 include:_spf.google.com ~all",
+          "lookups_after_fix": 1
+        },
+        {
+          "record": "DKIM",
+          "name": "google._domainkey.examplebookingmail.example",
+          "found": "v=DKIM1; k=rsa; p=<216 characters>",
+          "key_bytes": 162,
+          "key_bits": 1024,
+          "result": "warn",
+          "why": "1024-bit key; Google recommends 2048",
+          "fix": "generate a new 2048-bit key in the Google Admin console (Apps, Gmail, Authenticate email), publish it, then start authentication again"
+        },
+        {
+          "record": "DMARC",
+          "found": "v=DMARC1; p=none",
+          "result": "warn",
+          "why": "no rua=, so nobody sees authentication failures",
+          "fix": "v=DMARC1; p=none; rua=mailto:dmarc-reports@examplebookingmail.example",
+          "note": "p=none is the accepted minimum; move to p=quarantine once reports show the cold mail passing"
+        },
+        {
+          "record": "MX",
+          "found": "1 smtp.google.com.",
+          "result": "pass",
+          "why": "points to Google Workspace"
+        },
+        {
+          "record": "Tracking",
+          "found": "track.examplebookingmail.example CNAME track.sendtool.example.",
+          "result": "pass",
+          "why": "custom tracking domain on the cold domain"
+        }
+      ],
+      "tally": {
+        "pass": 2,
+        "warn": 3,
+        "fail": 0
+      }
+    },
+    {
+      "domain": "bookwithexample.example",
+      "role": "cold domain",
+      "records": [
+        {
+          "record": "SPF",
+          "found": "v=spf1 include: _spf.google.com -all",
+          "result": "fail",
+          "why": "a space after the colon breaks the include",
+          "fix": "v=spf1 include:_spf.google.com -all"
+        },
+        {
+          "record": "DKIM",
+          "name": "google._domainkey.bookwithexample.example",
+          "found": "v=DKIM1; k=rsa; p=<392 characters>",
+          "key_bytes": 294,
+          "key_bits": 2048,
+          "result": "pass",
+          "why": "2048-bit key"
+        },
+        {
+          "record": "DMARC",
+          "found": "v=DMARC1; p=none; rua=mailto:dmarc-reports@example.com",
+          "result": "warn",
+          "why": "reports go to example.com; bookwithexample.example._report._dmarc.example.com is missing, so receivers drop the reports",
+          "fix": "add TXT bookwithexample.example._report._dmarc.example.com with value v=DMARC1",
+          "note": "p=none is the accepted minimum; move to p=quarantine once reports show the cold mail passing"
+        },
+        {
+          "record": "MX",
+          "found": "(none)",
+          "result": "fail",
+          "why": "replies and bounce notices can't arrive",
+          "fix": "MX 1 smtp.google.com."
+        },
+        {
+          "record": "Tracking",
+          "found": "the sending tool's shared tracking domain is in use",
+          "result": "warn",
+          "why": "click tracking runs on the sending tool's shared tracking domain",
+          "fix": "turn click tracking off, or add CNAME track.bookwithexample.example pointing to the tracking host the sending tool gives"
+        }
+      ],
+      "tally": {
+        "pass": 1,
+        "warn": 2,
+        "fail": 2
+      }
+    }
+  ],
+  "records_for_new_domains": {
+    "applies_to": [
+      "examplebookingteam.example",
+      "examplebookings.example",
+      "examplescheduling.example",
+      "bookingbyexample.example"
+    ],
+    "records": [
+      {
+        "type": "TXT",
+        "name": "@",
+        "value": "v=spf1 include:_spf.google.com ~all"
+      },
+      {
+        "type": "TXT",
+        "name": "google._domainkey",
+        "value": "the 2048-bit key from the Google Admin console"
+      },
+      {
+        "type": "TXT",
+        "name": "_dmarc",
+        "value": "v=DMARC1; p=none; rua=mailto:dmarc-reports@<domain>"
+      },
+      {
+        "type": "MX",
+        "name": "@",
+        "value": "1 smtp.google.com."
+      },
+      {
+        "type": "CNAME",
+        "name": "track",
+        "value": "the tracking host the sending tool gives (only with click tracking on)"
+      },
+      {
+        "type": "redirect",
+        "name": "@ and www",
+        "value": "301 to https://www.example.com/"
+      }
+    ]
+  },
+  "list_rules": {
+    "send": 1020,
+    "catch_all_batch": {
+      "count": 130,
+      "rule": "at most 10% of a day's new contacts",
+      "max_per_full_day": 8,
+      "used_before_list_runs_out": 113,
+      "left_for_next_batch": 17
+    },
+    "remove": {
+      "unknown": 30,
+      "invalid": 20,
+      "total": 50
+    },
+    "verified_on": "2026-11-09",
+    "days_from_verification_to_first_send": 7,
+    "verification_fresh": true,
+    "list_runs_out_on": "2026-12-14",
+    "reverify_unsent_on": "2026-12-09",
+    "unsent_contacts_to_reverify": 243,
+    "verify_next_list_from": "2026-11-30",
+    "opt_outs": "removed from every domain and mailbox the same day"
+  },
+  "ramp_calendar": {
+    "warm_up": "2026-11-02 to 2026-11-15: warm-up only, all 16 mailboxes",
+    "first_cold_email": "2026-11-16",
+    "mailboxes_sending_cold": 13,
+    "rule": "follow-ups first; a new contact starts only when all 4 of its steps fit under the cap on their days",
+    "weeks": [
+      {
+        "week": 1,
+        "dates": "2026-11-02 to 2026-11-06",
+        "phase": "warm-up only",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 0,
+        "capacity": 0,
+        "first_emails": 0,
+        "follow_ups": 0,
+        "total_sent": 0,
+        "target_first_emails": null,
+        "target_met": null
+      },
+      {
+        "week": 2,
+        "dates": "2026-11-09 to 2026-11-13",
+        "phase": "warm-up only",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 0,
+        "capacity": 0,
+        "first_emails": 0,
+        "follow_ups": 0,
+        "total_sent": 0,
+        "target_first_emails": null,
+        "target_met": null
+      },
+      {
+        "week": 3,
+        "dates": "2026-11-16 to 2026-11-20",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 5,
+        "capacity": 325,
+        "first_emails": 195,
+        "follow_ups": 130,
+        "total_sent": 325,
+        "target_first_emails": 400,
+        "target_met": false
+      },
+      {
+        "week": 4,
+        "dates": "2026-11-23 to 2026-11-27",
+        "phase": "cold",
+        "sending_days": 3,
+        "skipped": [
+          "2026-11-26",
+          "2026-11-27"
+        ],
+        "cap_per_mailbox": 10,
+        "capacity": 390,
+        "first_emails": 210,
+        "follow_ups": 130,
+        "total_sent": 340,
+        "target_first_emails": 240,
+        "target_met": false
+      },
+      {
+        "week": 5,
+        "dates": "2026-11-30 to 2026-12-04",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 15,
+        "capacity": 975,
+        "first_emails": 355,
+        "follow_ups": 520,
+        "total_sent": 875,
+        "target_first_emails": 400,
+        "target_met": false
+      },
+      {
+        "week": 6,
+        "dates": "2026-12-07 to 2026-12-11",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 20,
+        "capacity": 1300,
+        "first_emails": 325,
+        "follow_ups": 905,
+        "total_sent": 1230,
+        "target_first_emails": 400,
+        "target_met": false
+      },
+      {
+        "week": 7,
+        "dates": "2026-12-14 to 2026-12-18",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 25,
+        "capacity": 1625,
+        "first_emails": 400,
+        "follow_ups": 970,
+        "total_sent": 1370,
+        "target_first_emails": 400,
+        "target_met": true
+      },
+      {
+        "week": 8,
+        "dates": "2026-12-21 to 2026-12-25",
+        "phase": "cold",
+        "sending_days": 3,
+        "skipped": [
+          "2026-12-24",
+          "2026-12-25"
+        ],
+        "cap_per_mailbox": 25,
+        "capacity": 975,
+        "first_emails": 240,
+        "follow_ups": 675,
+        "total_sent": 915,
+        "target_first_emails": 240,
+        "target_met": true
+      },
+      {
+        "week": 9,
+        "dates": "2026-12-28 to 2027-01-01",
+        "phase": "cold",
+        "sending_days": 3,
+        "skipped": [
+          "2026-12-31",
+          "2027-01-01"
+        ],
+        "cap_per_mailbox": 25,
+        "capacity": 975,
+        "first_emails": 240,
+        "follow_ups": 690,
+        "total_sent": 930,
+        "target_first_emails": 240,
+        "target_met": true
+      },
+      {
+        "week": 10,
+        "dates": "2027-01-04 to 2027-01-08",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 25,
+        "capacity": 1625,
+        "first_emails": 400,
+        "follow_ups": 1155,
+        "total_sent": 1555,
+        "target_first_emails": 400,
+        "target_met": true
+      },
+      {
+        "week": 11,
+        "dates": "2027-01-11 to 2027-01-15",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 25,
+        "capacity": 1625,
+        "first_emails": 400,
+        "follow_ups": 1200,
+        "total_sent": 1600,
+        "target_first_emails": 400,
+        "target_met": true
+      },
+      {
+        "week": 12,
+        "dates": "2027-01-18 to 2027-01-22",
+        "phase": "cold",
+        "sending_days": 5,
+        "skipped": [],
+        "cap_per_mailbox": 25,
+        "capacity": 1625,
+        "first_emails": 400,
+        "follow_ups": 1200,
+        "total_sent": 1600,
+        "target_first_emails": 400,
+        "target_met": true
+      }
+    ],
+    "first_week_meeting_target": 7,
+    "first_week_at_full_cap": 7,
+    "first_emails_in_calendar": 3165
+  },
+  "stop_rules": [
+    {
+      "signal": "Spam rate (Postmaster Tools, per domain)",
+      "level": "0.1% or more",
+      "action": "hold: halve that domain's volume, no ramp step, and look again at who is on the list and what the email says",
+      "basis": "provider rule (Gmail's recommended limit for bulk senders)"
+    },
+    {
+      "signal": "Spam rate",
+      "level": "0.3% or more",
+      "action": "stop the domain; swap in the spare",
+      "basis": "provider rule (Gmail and Yahoo bulk-sender limit)"
+    },
+    {
+      "signal": "Authentication rejection (Outlook.com 550 5.7.515, Gmail 5.7.26)",
+      "level": "any",
+      "action": "stop the domain until SPF, DKIM and DMARC pass",
+      "basis": "provider rule (Microsoft and Google sender requirements)"
+    },
+    {
+      "signal": "Hard bounce rate, per mailbox per week",
+      "level": "1% or more",
+      "action": "hold the ramp",
+      "basis": "practitioner convention"
+    },
+    {
+      "signal": "Hard bounce rate",
+      "level": "2% or more",
+      "action": "pause the mailbox; run its unsent contacts through verification again before it resumes",
+      "basis": "practitioner convention"
+    },
+    {
+      "signal": "Domain listed on a blocklist that receivers check (for example Spamhaus DBL)",
+      "level": "any",
+      "action": "stop the domain; swap in the spare",
+      "basis": "practitioner convention"
+    },
+    {
+      "signal": "Mailbox locked or suspended by the host",
+      "level": "any",
+      "action": "stop the mailbox; find out why",
+      "basis": "host's terms"
+    }
+  ],
+  "current_status": [
+    {
+      "what": "example.com (past cold sending)",
+      "latest_week": "2026-10-26",
+      "hard_bounce_rate_pct": 3.08,
+      "spam_rate_pct": 0.19,
+      "status": "stop",
+      "why": "main domain; hard bounce rate at or above 2%, spam rate at or above 0.1%"
+    },
+    {
+      "what": "examplebookingmail.example",
+      "status": "not started",
+      "why": "no cold email sent yet, so no bounce or spam rate"
+    },
+    {
+      "what": "bookwithexample.example",
+      "status": "not started",
+      "why": "no cold email sent yet, so no bounce or spam rate"
+    }
+  ],
+  "basis_labels": {
+    "provider rule": "published by Google, Yahoo or Microsoft",
+    "practitioner convention": "a common starting point; change it to your own value"
+  },
+  "actions_offered": [
+    {
+      "action": "create_sheet",
+      "status": "not run (offered after confirmation)",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_sheet",
+        "spreadsheet_id": "EXAMPLE_SPREADSHEET_ID",
+        "title": "Ramp calendar"
+      }
+    },
+    {
+      "action": "update_cells",
+      "status": "not run (offered after confirmation)",
+      "body": {
+        "platform": "google-sheets",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "update_cells",
+        "spreadsheet_id": "EXAMPLE_SPREADSHEET_ID",
+        "sheet_id": "<sheet_id returned by create_sheet>",
+        "range": "A1:K13",
+        "values": [
+          [
+            "Week",
+            "Dates",
+            "Phase",
+            "Sending days",
+            "Cap per mailbox",
+            "Capacity",
+            "First emails",
+            "Follow-ups",
+            "Total sent",
+            "Target first emails",
+            "Target met"
+          ],
+          [
+            1,
+            "2026-11-02 to 2026-11-06",
+            "warm-up only",
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            "",
+            ""
+          ],
+          [
+            2,
+            "2026-11-09 to 2026-11-13",
+            "warm-up only",
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            "",
+            ""
+          ],
+          [
+            3,
+            "2026-11-16 to 2026-11-20",
+            "cold",
+            5,
+            5,
+            325,
+            195,
+            130,
+            325,
+            400,
+            "no"
+          ],
+          [
+            4,
+            "2026-11-23 to 2026-11-27",
+            "cold",
+            3,
+            10,
+            390,
+            210,
+            130,
+            340,
+            240,
+            "no"
+          ],
+          [
+            5,
+            "2026-11-30 to 2026-12-04",
+            "cold",
+            5,
+            15,
+            975,
+            355,
+            520,
+            875,
+            400,
+            "no"
+          ],
+          [
+            6,
+            "2026-12-07 to 2026-12-11",
+            "cold",
+            5,
+            20,
+            1300,
+            325,
+            905,
+            1230,
+            400,
+            "no"
+          ],
+          [
+            7,
+            "2026-12-14 to 2026-12-18",
+            "cold",
+            5,
+            25,
+            1625,
+            400,
+            970,
+            1370,
+            400,
+            "yes"
+          ],
+          [
+            8,
+            "2026-12-21 to 2026-12-25",
+            "cold",
+            3,
+            25,
+            975,
+            240,
+            675,
+            915,
+            240,
+            "yes"
+          ],
+          [
+            9,
+            "2026-12-28 to 2027-01-01",
+            "cold",
+            3,
+            25,
+            975,
+            240,
+            690,
+            930,
+            240,
+            "yes"
+          ],
+          [
+            10,
+            "2027-01-04 to 2027-01-08",
+            "cold",
+            5,
+            25,
+            1625,
+            400,
+            1155,
+            1555,
+            400,
+            "yes"
+          ],
+          [
+            11,
+            "2027-01-11 to 2027-01-15",
+            "cold",
+            5,
+            25,
+            1625,
+            400,
+            1200,
+            1600,
+            400,
+            "yes"
+          ],
+          [
+            12,
+            "2027-01-18 to 2027-01-22",
+            "cold",
+            5,
+            25,
+            1625,
+            400,
+            1200,
+            1600,
+            400,
+            "yes"
+          ]
+        ],
+        "value_input_option": "USER_ENTERED"
+      }
+    }
+  ],
+  "go_deeper": [
+    {
+      "skill": "cold-email-writer",
+      "for": "the emails themselves",
+      "if_installed": true
+    },
+    {
+      "skill": "prospect-list-builder",
+      "for": "the next list to verify",
+      "if_installed": true
+    },
+    {
+      "skill": "outbound-campaign-analyzer",
+      "for": "reply rates once sending starts",
+      "if_installed": true
+    },
+    {
+      "skill": "email-deliverability-auditor",
+      "for": "marketing and transactional mail on example.com",
+      "if_installed": true
+    }
+  ]
+}

@@ -1,0 +1,1347 @@
+{
+  "note": "Example data: an invented online tea and teaware store with an invented orders export, GA4 property and Klaviyo account, not a real business. Every number in expected_output.json follows from this input. The orders file is shown one row per order with its line items nested; a Shopify export repeats the order on one row per line item.",
+  "request": "Hey Claude, I just added the \"ecommerce-store-report\" skill. Build my September store report from this orders export and tell me the three biggest movements. Compare it with August and with last September.",
+  "store": {
+    "name": "Example Tea Co.",
+    "domain": "exampletea.example",
+    "platform": "Shopify",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "run_date": "2026-10-28",
+  "periods": {
+    "period": {
+      "start": "2026-09-01",
+      "end": "2026-09-30"
+    },
+    "prior": {
+      "start": "2026-08-01",
+      "end": "2026-08-31"
+    },
+    "last_year": {
+      "start": "2025-09-01",
+      "end": "2025-09-30"
+    }
+  },
+  "return_window_days": 30,
+  "orders_file": {
+    "name": "orders_export_exampletea.csv",
+    "columns": [
+      "order",
+      "created_at",
+      "customer",
+      "source",
+      "shipping_country",
+      "payment_method",
+      "financial_status",
+      "test",
+      "cancelled",
+      "discount_code",
+      "discount_amount",
+      "line_items"
+    ],
+    "line_items_format": "product x quantity @unit price, separated by semicolons",
+    "rows": [
+      "order,created_at,customer,source,shipping_country,payment_method,financial_status,test,cancelled,discount_code,discount_amount,line_items",
+      "#ET2403,2025-09-02 09:15 -0400,C1096,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2404,2025-09-02 14:35 -0400,C1505,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET2405,2025-09-02 15:57 -0400,C1567,web,US,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00",
+      "#ET2406,2025-09-02 21:32 -0400,C1653,web,US,Shop Pay,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00",
+      "#ET2407,2025-09-02 21:41 -0400,C1472,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2408,2025-09-03 15:34 -0400,C1459,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x2 @28.00",
+      "#ET2409,2025-09-03 15:42 -0400,C1613,web,AU,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Glass Teapot 600ml x1 @38.00",
+      "#ET2410,2025-09-04 08:17 -0400,C1658,web,CA,PayPal Express Checkout,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET2411,2025-09-04 08:27 -0400,C1656,web,CA,Shop Pay,paid,false,false,WELCOME10,3.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2412,2025-09-04 12:56 -0400,C1608,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET2413,2025-09-04 16:17 -0400,C1661,web,US,Shopify Payments,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET2414,2025-09-05 18:22 -0400,C1662,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET2415,2025-09-06 10:09 -0400,C1768,pos,US,Cash,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Chamomile Herbal 50g x1 @11.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2416,2025-09-06 11:37 -0400,C1772,pos,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET2417,2025-09-06 14:31 -0400,C1666,web,CA,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2418,2025-09-06 16:28 -0400,C1663,web,US,Shopify Payments,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET2419,2025-09-06 17:01 -0400,C1639,web,US,Shopify Payments,partially_refunded,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2420,2025-09-06 19:20 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET2421,2025-09-06 20:29 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2422,2025-09-06 21:46 -0400,C1665,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2423,2025-09-07 10:43 -0400,C1667,web,US,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET2424,2025-09-07 12:07 -0400,C1669,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2425,2025-09-07 18:30 -0400,C1678,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET2426,2025-09-07 18:41 -0400,C1671,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,8.20,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x1 @15.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET2427,2025-09-07 21:10 -0400,C1674,web,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2428,2025-09-08 09:19 -0400,C1682,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2429,2025-09-08 16:58 -0400,C1180,web,US,Shop Pay,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2430,2025-09-08 17:17 -0400,C1681,web,CA,Shopify Payments,paid,false,false,TEADAY12,5.52,Earl Grey Cream 100g x2 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2431,2025-09-08 18:17 -0400,C1680,web,GB,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2432,2025-09-08 19:50 -0400,C1493,web,GB,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Tea Gift Box x2 @45.00",
+      "#ET2433,2025-09-09 14:42 -0400,C1683,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET2434,2025-09-10 08:59 -0400,C1696,web,US,PayPal Express Checkout,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET2435,2025-09-10 10:14 -0400,C1115,web,GB,PayPal Express Checkout,paid,false,false,TEADAY12,4.56,Glass Teapot 600ml x1 @38.00",
+      "#ET2436,2025-09-10 11:44 -0400,C1695,web,US,Shopify Payments,partially_refunded,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2437,2025-09-10 13:01 -0400,C1183,web,US,Shop Pay,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2438,2025-09-10 13:16 -0400,C1693,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2439,2025-09-10 14:18 -0400,C1057,web,AU,PayPal Express Checkout,paid,false,false,,0.00,Tea Gift Box x1 @45.00",
+      "#ET2440,2025-09-10 14:47 -0400,C1519,web,US,PayPal Express Checkout,paid,true,false,,0.00,Earl Grey Cream 100g x2 @15.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2441,2025-09-10 15:35 -0400,C1689,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET2442,2025-09-10 18:09 -0400,C1686,web,US,PayPal Express Checkout,paid,false,false,TEADAY12,7.92,Glass Teapot 600ml x1 @38.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2443,2025-09-11 14:42 -0400,C1408,web,CA,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET2444,2025-09-11 15:22 -0400,C1436,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET2445,2025-09-12 10:39 -0400,C1249,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Glass Teapot 600ml x2 @38.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2446,2025-09-12 16:13 -0400,C1325,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00",
+      "#ET2447,2025-09-13 08:47 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET2448,2025-09-13 12:52 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2449,2025-09-13 13:18 -0400,C1173,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2450,2025-09-13 13:21 -0400,C1697,web,US,Shopify Payments,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET2451,2025-09-13 13:51 -0400,,pos,US,Cash,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Rooibos Vanilla 100g x1 @13.00; Tea Gift Box x1 @45.00",
+      "#ET2452,2025-09-13 15:29 -0400,C1699,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00",
+      "#ET2453,2025-09-13 20:16 -0400,C1703,web,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00",
+      "#ET2454,2025-09-14 09:12 -0400,C1778,pos,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00; Matcha Ceremonial 30g x1 @28.00; Tea Gift Box x1 @45.00",
+      "#ET2455,2025-09-14 12:47 -0400,C1258,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2456,2025-09-14 14:22 -0400,C1705,web,GB,Shopify Payments,paid,false,false,WELCOME10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2457,2025-09-14 17:57 -0400,C1180,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2458,2025-09-14 18:36 -0400,C1776,pos,US,Cash,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2459,2025-09-14 19:05 -0400,,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2460,2025-09-14 20:09 -0400,C1773,pos,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2461,2025-09-14 21:45 -0400,C1142,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET2462,2025-09-15 09:53 -0400,C1707,web,US,Shopify Payments,paid,false,false,WELCOME10,1.60,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2463,2025-09-16 11:19 -0400,C1709,web,AU,Shop Pay,paid,false,false,WELCOME10,6.40,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x2 @11.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET2464,2025-09-16 20:14 -0400,C1708,web,CA,Shopify Payments,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET2465,2025-09-17 11:18 -0400,C1722,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2466,2025-09-17 14:49 -0400,C1502,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET2467,2025-09-17 16:00 -0400,C1712,web,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2468,2025-09-17 16:14 -0400,C1716,web,US,Shop Pay,paid,false,false,WELCOME10,5.40,Matcha Ceremonial 30g x1 @28.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET2469,2025-09-17 21:15 -0400,C1715,web,GB,Shopify Payments,paid,false,false,WELCOME10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET2470,2025-09-17 21:22 -0400,C1719,web,US,Shopify Payments,paid,false,false,WELCOME10,2.50,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET2471,2025-09-18 08:14 -0400,C1726,web,AU,Shop Pay,paid,false,false,TEADAY12,5.52,Earl Grey Cream 100g x2 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2472,2025-09-18 13:28 -0400,C1269,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Tea Gift Box x1 @45.00",
+      "#ET2473,2025-09-18 16:24 -0400,C1451,web,GB,PayPal Express Checkout,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET2474,2025-09-19 14:27 -0400,C1729,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Glass Teapot 600ml x2 @38.00",
+      "#ET2475,2025-09-19 14:50 -0400,C1166,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2476,2025-09-20 10:06 -0400,,pos,US,Cash,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET2477,2025-09-20 17:40 -0400,C1732,web,CA,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET2478,2025-09-21 08:21 -0400,,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2479,2025-09-21 10:15 -0400,C1782,pos,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET2480,2025-09-21 11:56 -0400,C1249,pos,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x2 @28.00",
+      "#ET2481,2025-09-21 14:18 -0400,C1781,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Tea Gift Box x1 @45.00",
+      "#ET2482,2025-09-21 15:32 -0400,C1733,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2483,2025-09-21 20:02 -0400,C1784,pos,US,Cash,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00",
+      "#ET2484,2025-09-22 09:56 -0400,C1153,web,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET2485,2025-09-22 11:44 -0400,C1739,web,US,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Tea Gift Box x1 @45.00",
+      "#ET2486,2025-09-22 14:06 -0400,C1737,web,US,Shopify Payments,partially_refunded,false,false,WELCOME10,4.70,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET2487,2025-09-22 18:04 -0400,C1743,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2488,2025-09-22 18:22 -0400,C1045,web,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET2489,2025-09-23 16:01 -0400,C1744,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2490,2025-09-24 14:41 -0400,C1561,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET2491,2025-09-24 15:01 -0400,C1746,web,GB,Shopify Payments,paid,false,false,WELCOME10,3.20,Jasmine Green Tea 100g x2 @16.00",
+      "#ET2492,2025-09-25 09:44 -0400,C1026,web,AU,Shop Pay,partially_refunded,false,false,TEADAY12,3.48,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET2493,2025-09-25 14:32 -0400,C1751,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Tea Gift Box x1 @45.00",
+      "#ET2494,2025-09-25 15:21 -0400,C1748,web,US,PayPal Express Checkout,refunded,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2495,2025-09-27 12:20 -0400,C1760,web,US,Shopify Payments,paid,false,false,WELCOME10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2496,2025-09-27 12:21 -0400,C1335,pos,US,Cash,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Tea Gift Box x1 @45.00",
+      "#ET2497,2025-09-27 15:10 -0400,C1759,web,GB,Shopify Payments,paid,false,false,TEADAY12,16.08,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x2 @15.00; Tea Gift Box x2 @45.00",
+      "#ET2498,2025-09-27 20:02 -0400,C1755,web,US,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00",
+      "#ET2499,2025-09-27 20:18 -0400,C1787,pos,US,Shopify Payments,paid,false,false,,0.00,Tea Gift Box x1 @45.00",
+      "#ET2500,2025-09-28 12:41 -0400,C1791,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00; Glass Teapot 600ml x2 @38.00",
+      "#ET2501,2025-09-28 14:16 -0400,C1763,web,US,Shopify Payments,paid,false,false,TEADAY12,1.68,Breakfast Black Tea 100g x1 @14.00",
+      "#ET2502,2025-09-28 17:14 -0400,,pos,US,Cash,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x2 @16.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2503,2025-09-28 17:29 -0400,C1451,pos,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET2504,2025-09-28 18:42 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET2505,2025-09-29 09:55 -0400,C1766,web,US,Shop Pay,partially_refunded,false,false,WELCOME10,10.60,Breakfast Black Tea 100g x2 @14.00; Cast Iron Kettle x1 @65.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET2506,2025-09-29 11:23 -0400,C1530,web,US,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET2507,2025-09-30 11:49 -0400,C1767,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET2508,2025-09-30 16:42 -0400,C1138,web,US,Shopify Payments,paid,false,false,,0.00,Tea Gift Box x1 @45.00",
+      "#ET2509,2025-09-30 19:56 -0400,C1449,web,US,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3701,2026-08-01 08:25 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3702,2026-08-01 10:54 -0400,C2749,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3703,2026-08-01 13:38 -0400,C2594,web,AU,Shopify Payments,paid,false,false,WELCOME10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3704,2026-08-01 13:39 -0400,C2754,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3705,2026-08-01 15:51 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00",
+      "#ET3706,2026-08-01 16:53 -0400,C2589,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3707,2026-08-01 19:28 -0400,C2593,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3708,2026-08-01 21:28 -0400,C2753,pos,US,Cash,paid,false,false,,0.00,Glass Teapot 600ml x2 @38.00",
+      "#ET3709,2026-08-02 09:10 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3710,2026-08-02 17:37 -0400,C2598,web,US,Shopify Payments,paid,false,false,WELCOME10,2.80,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3711,2026-08-02 19:42 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3712,2026-08-02 20:55 -0400,C2601,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3713,2026-08-03 12:54 -0400,C2608,web,US,PayPal Express Checkout,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3714,2026-08-03 13:56 -0400,C2605,web,US,Shopify Payments,paid,false,false,WELCOME10,7.80,Cast Iron Kettle x1 @65.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3715,2026-08-03 17:21 -0400,C1787,web,AU,PayPal Express Checkout,paid,false,false,,0.00,Glass Teapot 600ml x2 @38.00",
+      "#ET3716,2026-08-04 11:26 -0400,C2620,web,GB,Shopify Payments,paid,false,false,WELCOME10,2.80,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3717,2026-08-04 12:14 -0400,C2611,web,US,Shop Pay,partially_refunded,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3718,2026-08-04 13:37 -0400,C2614,web,US,Shop Pay,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3719,2026-08-04 17:59 -0400,C2618,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3720,2026-08-05 15:21 -0400,C2428,web,CA,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3721,2026-08-05 21:05 -0400,C2623,web,US,PayPal Express Checkout,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00",
+      "#ET3722,2026-08-06 08:16 -0400,C2626,web,US,Shop Pay,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3723,2026-08-06 08:55 -0400,C2624,web,US,Shopify Payments,paid,false,false,SUMMER10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET3724,2026-08-06 12:37 -0400,C2625,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3725,2026-08-07 08:41 -0400,C2629,web,US,Shopify Payments,paid,false,false,WELCOME10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET3726,2026-08-07 09:18 -0400,C2460,web,CA,Shop Pay,paid,false,false,SUMMER10,5.60,Matcha Ceremonial 30g x2 @28.00",
+      "#ET3727,2026-08-07 11:27 -0400,C2630,web,US,Shopify Payments,paid,false,false,WELCOME10,3.20,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3728,2026-08-07 12:22 -0400,C2634,web,DE,PayPal Express Checkout,paid,false,false,,0.00,Tea Gift Box x2 @45.00",
+      "#ET3729,2026-08-08 08:06 -0400,C1465,web,US,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3730,2026-08-08 08:44 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3731,2026-08-08 09:20 -0400,C2758,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3732,2026-08-08 10:03 -0400,C2229,web,GB,Shopify Payments,paid,false,false,SUMMER10,7.90,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00",
+      "#ET3733,2026-08-08 12:01 -0400,,pos,US,Cash,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3734,2026-08-08 18:15 -0400,C2637,web,AU,Shopify Payments,partially_refunded,false,false,SUMMER10,7.00,Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3735,2026-08-09 10:08 -0400,C2638,web,US,Shopify Payments,paid,false,false,WELCOME10,10.30,Cast Iron Kettle x1 @65.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3736,2026-08-09 13:34 -0400,C2106,web,US,Shopify Payments,paid,false,false,SUMMER10,1.60,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3737,2026-08-09 14:30 -0400,C2642,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3738,2026-08-09 15:32 -0400,C2759,pos,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3739,2026-08-09 18:25 -0400,C2641,web,US,Shopify Payments,partially_refunded,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3740,2026-08-09 19:27 -0400,C2639,web,DE,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3741,2026-08-09 19:28 -0400,C1156,web,US,Shop Pay,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3742,2026-08-09 21:04 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Glass Teapot 600ml x1 @38.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3743,2026-08-09 21:28 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3744,2026-08-10 09:01 -0400,C2650,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3745,2026-08-10 11:23 -0400,C2057,web,US,Shop Pay,paid,false,false,SUMMER10,2.80,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3746,2026-08-10 11:40 -0400,C2645,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET3747,2026-08-10 15:29 -0400,C2646,web,AU,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x2 @15.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3748,2026-08-11 09:46 -0400,C2659,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3749,2026-08-11 12:19 -0400,C2278,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3750,2026-08-11 13:08 -0400,C2657,web,US,Shopify Payments,refunded,false,false,WELCOME10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET3751,2026-08-11 17:12 -0400,C2653,web,US,PayPal Express Checkout,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3752,2026-08-12 15:27 -0400,C2614,web,CA,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3753,2026-08-12 16:04 -0400,C2661,web,CA,Shopify Payments,partially_refunded,false,false,WELCOME10,9.40,Glass Teapot 600ml x1 @38.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3754,2026-08-12 18:17 -0400,C2662,web,US,Shopify Payments,paid,false,false,WELCOME10,1.30,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3755,2026-08-12 18:20 -0400,C2350,web,CA,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3756,2026-08-13 10:10 -0400,C2667,web,GB,PayPal Express Checkout,paid,false,false,,0.00,Tea Gift Box x1 @45.00",
+      "#ET3757,2026-08-13 10:42 -0400,C1269,web,CA,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x2 @16.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3758,2026-08-13 19:57 -0400,C2664,web,US,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00",
+      "#ET3759,2026-08-14 12:25 -0400,C2668,web,US,PayPal Express Checkout,paid,false,false,SUMMER10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET3760,2026-08-14 15:44 -0400,C2639,web,AU,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3761,2026-08-14 21:16 -0400,C1907,web,US,Shopify Payments,paid,false,false,SUMMER10,2.60,Rooibos Vanilla 100g x2 @13.00",
+      "#ET3762,2026-08-15 08:35 -0400,C1705,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x2 @11.00",
+      "#ET3763,2026-08-15 14:38 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3764,2026-08-15 14:41 -0400,,pos,US,Cash,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3765,2026-08-15 15:46 -0400,C2762,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3766,2026-08-15 19:41 -0400,,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3767,2026-08-15 21:48 -0400,C2669,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3768,2026-08-16 11:40 -0400,C2675,web,US,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3769,2026-08-16 12:56 -0400,C2672,web,GB,Shopify Payments,paid,false,false,SUMMER10,6.00,Earl Grey Cream 100g x1 @15.00; Tea Gift Box x1 @45.00",
+      "#ET3770,2026-08-16 14:12 -0400,C1918,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3771,2026-08-16 17:42 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Jasmine Green Tea 100g x1 @16.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3772,2026-08-16 18:39 -0400,C2677,web,US,Shop Pay,refunded,false,false,WELCOME10,1.60,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3773,2026-08-16 20:15 -0400,,pos,US,Cash,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00",
+      "#ET3774,2026-08-17 08:58 -0400,C2523,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3775,2026-08-17 15:41 -0400,C1791,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3776,2026-08-18 10:15 -0400,C2688,web,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3777,2026-08-18 10:48 -0400,C1451,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3778,2026-08-18 12:32 -0400,C2437,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Cast Iron Kettle x2 @65.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3779,2026-08-18 12:44 -0400,C2685,web,GB,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3780,2026-08-18 13:41 -0400,C2680,web,CA,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3781,2026-08-18 14:47 -0400,C1703,web,GB,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3782,2026-08-18 14:57 -0400,C2684,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3783,2026-08-19 08:34 -0400,C2691,web,CA,PayPal Express Checkout,partially_refunded,false,false,WELCOME10,10.30,Cast Iron Kettle x1 @65.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3784,2026-08-19 11:09 -0400,C1418,web,US,Shopify Payments,paid,false,false,SUMMER10,4.20,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3785,2026-08-19 14:09 -0400,C2973,web,US,Shopify Payments,voided,false,true,,0.00,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3786,2026-08-19 15:08 -0400,C2352,web,US,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3787,2026-08-19 18:36 -0400,C2692,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3788,2026-08-20 08:14 -0400,C2618,web,US,PayPal Express Checkout,partially_refunded,false,false,,0.00,Cast Iron Kettle x1 @65.00; Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3789,2026-08-20 12:17 -0400,C2699,web,US,Shopify Payments,partially_refunded,false,false,WELCOME10,5.20,Breakfast Black Tea 100g x1 @14.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3790,2026-08-20 16:40 -0400,C2693,web,US,Shopify Payments,paid,false,false,WELCOME10,11.10,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3791,2026-08-20 17:02 -0400,C2696,web,US,Shop Pay,paid,false,false,SUMMER10,2.80,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3792,2026-08-20 20:55 -0400,C2634,web,AU,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00; Tea Gift Box x1 @45.00",
+      "#ET3793,2026-08-21 09:32 -0400,C2702,web,US,Shopify Payments,paid,false,false,WELCOME10,4.50,Tea Gift Box x1 @45.00",
+      "#ET3794,2026-08-21 14:58 -0400,C2701,web,CA,Shopify Payments,refunded,false,false,WELCOME10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET3795,2026-08-21 20:40 -0400,C2705,web,US,Shopify Payments,partially_refunded,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3796,2026-08-22 15:44 -0400,C1715,web,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Jasmine Green Tea 100g x1 @16.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3797,2026-08-23 08:42 -0400,C2707,web,US,Shopify Payments,paid,false,false,SUMMER10,2.80,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3798,2026-08-23 09:42 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x2 @13.00",
+      "#ET3799,2026-08-23 11:34 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00",
+      "#ET3800,2026-08-23 14:39 -0400,C2711,web,US,PayPal Express Checkout,paid,false,false,SUMMER10,3.70,Chamomile Herbal 50g x1 @11.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3801,2026-08-23 15:58 -0400,,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3802,2026-08-23 18:12 -0400,C1182,web,CA,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3803,2026-08-23 19:45 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET3804,2026-08-23 21:25 -0400,C2714,web,GB,Shop Pay,paid,false,false,WELCOME10,8.90,Cast Iron Kettle x1 @65.00; Chamomile Herbal 50g x1 @11.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3805,2026-08-24 10:23 -0400,C2716,web,US,Shop Pay,paid,false,false,WELCOME10,2.80,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3806,2026-08-24 12:56 -0400,C2720,web,US,PayPal Express Checkout,paid,false,false,,0.00,Cast Iron Kettle x2 @65.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3807,2026-08-24 15:50 -0400,C2718,web,US,Shop Pay,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3808,2026-08-24 18:17 -0400,C1942,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3809,2026-08-25 08:51 -0400,C1759,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3810,2026-08-25 13:09 -0400,C2725,web,US,Shopify Payments,partially_refunded,false,false,,0.00,Cast Iron Kettle x2 @65.00; Chamomile Herbal 50g x1 @11.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3811,2026-08-25 21:21 -0400,C2723,web,US,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3812,2026-08-26 13:20 -0400,C1195,web,US,Shopify Payments,paid,false,false,,0.00,Tea Gift Box x2 @45.00",
+      "#ET3813,2026-08-26 19:01 -0400,C2729,web,CA,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3814,2026-08-27 15:48 -0400,C2406,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET3815,2026-08-28 21:46 -0400,C2733,web,US,PayPal Express Checkout,paid,false,false,SUMMER10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3816,2026-08-29 09:30 -0400,C2738,web,US,Shop Pay,paid,false,false,SUMMER10,6.50,Cast Iron Kettle x1 @65.00",
+      "#ET3817,2026-08-29 10:49 -0400,C2126,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3818,2026-08-29 13:34 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3819,2026-08-29 14:00 -0400,C2565,web,US,Shopify Payments,paid,false,false,SUMMER10,4.10,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3820,2026-08-29 16:37 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3821,2026-08-29 17:28 -0400,C2734,web,CA,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3822,2026-08-29 18:50 -0400,C1784,web,AU,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3823,2026-08-30 08:41 -0400,C2766,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3824,2026-08-30 10:00 -0400,C2182,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3825,2026-08-30 14:33 -0400,,pos,US,Cash,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x1 @65.00; Tea Gift Box x2 @45.00",
+      "#ET3826,2026-08-30 18:14 -0400,C2741,web,AU,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3827,2026-08-31 12:15 -0400,C2748,web,US,Shopify Payments,paid,false,false,WELCOME10,4.20,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3828,2026-08-31 12:16 -0400,C2744,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3829,2026-08-31 15:26 -0400,C2057,web,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3830,2026-08-31 18:36 -0400,C1283,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3831,2026-09-01 09:14 -0400,C2608,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3832,2026-09-01 18:01 -0400,C2769,web,CA,PayPal Express Checkout,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3833,2026-09-01 19:04 -0400,C2768,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3834,2026-09-01 19:27 -0400,C2767,web,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3835,2026-09-02 08:53 -0400,C1284,web,AU,PayPal Express Checkout,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3836,2026-09-02 09:51 -0400,C2776,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3837,2026-09-02 14:56 -0400,C2774,web,CA,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3838,2026-09-02 20:17 -0400,C2780,web,DE,Shopify Payments,paid,false,false,WELCOME10,5.40,Breakfast Black Tea 100g x1 @14.00; Cold Brew Sampler 6 pack x1 @24.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3839,2026-09-02 20:58 -0400,C2772,web,GB,PayPal Express Checkout,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3840,2026-09-03 10:47 -0400,C2782,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3841,2026-09-03 12:32 -0400,C1665,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3842,2026-09-03 21:52 -0400,C1511,web,US,Shop Pay,paid,true,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Glass Teapot 600ml x2 @38.00",
+      "#ET3843,2026-09-04 15:47 -0400,C2787,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET3844,2026-09-04 16:03 -0400,C2790,web,GB,Shop Pay,paid,false,false,WELCOME10,1.60,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3845,2026-09-04 16:58 -0400,C2784,web,US,Shopify Payments,paid,false,false,WELCOME10,11.60,Rooibos Vanilla 100g x2 @13.00; Tea Gift Box x2 @45.00",
+      "#ET3846,2026-09-05 08:31 -0400,C2031,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3847,2026-09-05 08:38 -0400,C1183,web,CA,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3848,2026-09-05 09:10 -0400,C2794,web,GB,Shopify Payments,paid,false,false,,0.00,Tea Gift Box x2 @45.00",
+      "#ET3849,2026-09-05 12:40 -0400,C1280,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3850,2026-09-05 17:09 -0400,C2960,pos,US,Cash,paid,false,false,,0.00,Cold Brew Sampler 6 pack x2 @24.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3851,2026-09-05 17:17 -0400,C2798,web,US,Shopify Payments,paid,false,false,WELCOME10,3.50,Chamomile Herbal 50g x1 @11.00; Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3852,2026-09-05 20:55 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3853,2026-09-06 11:16 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x2 @15.00",
+      "#ET3854,2026-09-06 12:02 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00; Chamomile Herbal 50g x2 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3855,2026-09-06 14:09 -0400,,pos,US,Cash,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Earl Grey Cream 100g x1 @15.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3856,2026-09-06 18:33 -0400,C2800,web,US,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3857,2026-09-06 19:28 -0400,C1193,web,CA,Shopify Payments,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3858,2026-09-06 21:45 -0400,C2963,pos,US,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3859,2026-09-07 10:09 -0400,C2611,web,GB,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3860,2026-09-07 13:50 -0400,C2804,web,AU,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00",
+      "#ET3861,2026-09-07 13:50 -0400,C2807,web,CA,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x2 @15.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3862,2026-09-08 11:31 -0400,C2813,web,US,Shopify Payments,paid,false,false,AUTUMN15,12.00,Cold Brew Sampler 6 pack x1 @24.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3863,2026-09-08 11:54 -0400,C2816,web,GB,PayPal Express Checkout,paid,false,false,AUTUMN15,2.25,Earl Grey Cream 100g x1 @15.00",
+      "#ET3864,2026-09-08 19:46 -0400,C2809,web,US,Shopify Payments,paid,false,false,AUTUMN15,3.60,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3865,2026-09-09 10:03 -0400,C1658,web,GB,Shopify Payments,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3866,2026-09-09 10:30 -0400,C2825,web,GB,Shopify Payments,partially_refunded,false,false,WELCOME10,10.00,Cold Brew Sampler 6 pack x1 @24.00; Glass Teapot 600ml x2 @38.00",
+      "#ET3867,2026-09-09 10:51 -0400,C2820,web,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3868,2026-09-09 12:28 -0400,C2822,web,US,Shopify Payments,paid,false,false,AUTUMN15,13.80,Cold Brew Sampler 6 pack x2 @24.00; Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3869,2026-09-09 12:59 -0400,C2142,web,US,Shop Pay,paid,false,false,AUTUMN15,2.10,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3870,2026-09-09 20:53 -0400,C2823,web,CA,PayPal Express Checkout,refunded,false,false,AUTUMN15,8.40,Matcha Ceremonial 30g x2 @28.00",
+      "#ET3871,2026-09-10 13:19 -0400,C2826,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3872,2026-09-10 16:14 -0400,C1251,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cold Brew Sampler 6 pack x2 @24.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3873,2026-09-10 17:28 -0400,C2475,web,CA,Shop Pay,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3874,2026-09-10 17:53 -0400,C1131,web,US,Shopify Payments,paid,false,false,AUTUMN15,3.75,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET3875,2026-09-10 20:12 -0400,C2828,web,US,Shop Pay,paid,false,false,,0.00,Rooibos Vanilla 100g x2 @13.00",
+      "#ET3876,2026-09-11 09:39 -0400,C2832,web,US,Shopify Payments,paid,false,false,AUTUMN15,3.75,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET3877,2026-09-11 14:11 -0400,C2840,web,CA,Shopify Payments,paid,false,false,AUTUMN15,2.40,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3878,2026-09-11 18:13 -0400,C2837,web,US,PayPal Express Checkout,paid,false,false,AUTUMN15,2.25,Earl Grey Cream 100g x1 @15.00",
+      "#ET3879,2026-09-11 19:15 -0400,C2836,web,CA,Shopify Payments,paid,false,false,AUTUMN15,4.50,Earl Grey Cream 100g x2 @15.00",
+      "#ET3880,2026-09-12 10:46 -0400,C2846,web,US,Shop Pay,paid,false,false,AUTUMN15,11.70,Chamomile Herbal 50g x2 @11.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3881,2026-09-12 13:16 -0400,C2844,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,2.90,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3882,2026-09-12 15:21 -0400,C2848,web,US,Shopify Payments,paid,false,false,AUTUMN15,11.40,Breakfast Black Tea 100g x1 @14.00; Cold Brew Sampler 6 pack x1 @24.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3883,2026-09-13 09:56 -0400,C2577,web,CA,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3884,2026-09-13 16:20 -0400,C2851,web,US,Shop Pay,paid,false,false,AUTUMN15,4.20,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3885,2026-09-14 10:11 -0400,C2375,web,US,Shopify Payments,paid,false,false,AUTUMN15,2.25,Earl Grey Cream 100g x1 @15.00",
+      "#ET3886,2026-09-14 12:03 -0400,C2860,web,CA,Shop Pay,paid,false,false,AUTUMN15,5.70,Glass Teapot 600ml x1 @38.00",
+      "#ET3887,2026-09-14 14:11 -0400,C2855,web,US,Shopify Payments,paid,false,false,WELCOME10,1.40,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3888,2026-09-14 19:36 -0400,C2859,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3889,2026-09-15 08:32 -0400,C2198,web,US,Shopify Payments,paid,false,false,AUTUMN15,8.40,Matcha Ceremonial 30g x2 @28.00",
+      "#ET3890,2026-09-15 08:39 -0400,C2862,web,US,Shopify Payments,paid,false,false,AUTUMN15,10.50,Breakfast Black Tea 100g x1 @14.00; Matcha Ceremonial 30g x2 @28.00",
+      "#ET3891,2026-09-15 16:47 -0400,C2641,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3892,2026-09-16 13:45 -0400,C1328,web,GB,Shopify Payments,paid,false,false,AUTUMN15,3.30,Chamomile Herbal 50g x2 @11.00",
+      "#ET3893,2026-09-16 16:38 -0400,C2971,web,GB,PayPal Express Checkout,voided,false,true,AUTUMN15,5.25,Chamomile Herbal 50g x1 @11.00; Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3894,2026-09-16 16:45 -0400,C2325,web,US,Shopify Payments,paid,false,false,AUTUMN15,11.55,Cold Brew Sampler 6 pack x1 @24.00; Earl Grey Cream 100g x1 @15.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3895,2026-09-16 16:57 -0400,C2866,web,AU,Shop Pay,paid,false,false,,0.00,Cold Brew Sampler 6 pack x2 @24.00",
+      "#ET3896,2026-09-16 21:58 -0400,C2867,web,US,Shopify Payments,paid,false,false,,0.00,Tea Gift Box x2 @45.00",
+      "#ET3897,2026-09-17 13:05 -0400,C2877,web,US,PayPal Express Checkout,paid,false,false,AUTUMN15,4.35,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3898,2026-09-17 13:39 -0400,C2873,web,US,PayPal Express Checkout,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Glass Teapot 600ml x1 @38.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3899,2026-09-17 15:12 -0400,C2069,web,US,Shop Pay,paid,false,false,AUTUMN15,6.15,Earl Grey Cream 100g x1 @15.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3900,2026-09-17 17:47 -0400,C2876,web,US,Shopify Payments,paid,false,false,AUTUMN15,2.10,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3901,2026-09-17 19:06 -0400,C2871,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Chamomile Herbal 50g x1 @11.00",
+      "#ET3902,2026-09-18 09:28 -0400,C1013,web,US,PayPal Express Checkout,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Glass Teapot 600ml x1 @38.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3903,2026-09-18 11:39 -0400,C2105,web,US,Shopify Payments,paid,false,false,AUTUMN15,11.70,Breakfast Black Tea 100g x2 @14.00; Cold Brew Sampler 6 pack x1 @24.00; Rooibos Vanilla 100g x2 @13.00",
+      "#ET3904,2026-09-18 13:17 -0400,C2883,web,US,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00; Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3905,2026-09-18 16:11 -0400,C2880,web,GB,Shop Pay,paid,false,false,AUTUMN15,1.65,Chamomile Herbal 50g x1 @11.00",
+      "#ET3906,2026-09-18 16:44 -0400,C2348,web,US,Shop Pay,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3907,2026-09-18 20:35 -0400,C1114,web,US,PayPal Express Checkout,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3908,2026-09-18 21:35 -0400,C2886,web,GB,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3909,2026-09-19 12:35 -0400,C2887,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Cold Brew Sampler 6 pack x1 @24.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3910,2026-09-19 13:33 -0400,C2888,web,US,Shopify Payments,paid,false,false,AUTUMN15,4.50,Earl Grey Cream 100g x2 @15.00",
+      "#ET3911,2026-09-19 20:56 -0400,C1165,web,US,Shopify Payments,refunded,false,false,AUTUMN15,3.60,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3912,2026-09-20 08:26 -0400,C2889,web,US,PayPal Express Checkout,paid,false,false,AUTUMN15,1.95,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3913,2026-09-20 09:42 -0400,C2890,web,US,Shopify Payments,paid,false,false,AUTUMN15,2.40,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3914,2026-09-20 10:14 -0400,C2189,web,AU,Shopify Payments,paid,false,false,AUTUMN15,7.20,Cold Brew Sampler 6 pack x2 @24.00",
+      "#ET3915,2026-09-20 12:07 -0400,C2893,web,CA,Shopify Payments,paid,false,false,,0.00,Matcha Ceremonial 30g x1 @28.00",
+      "#ET3916,2026-09-20 12:11 -0400,C2382,web,AU,Shopify Payments,paid,false,false,AUTUMN15,6.60,Jasmine Green Tea 100g x1 @16.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3917,2026-09-20 18:59 -0400,C2624,web,US,PayPal Express Checkout,paid,false,false,,0.00,Rooibos Vanilla 100g x1 @13.00",
+      "#ET3918,2026-09-20 21:00 -0400,C2832,web,US,Shopify Payments,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3919,2026-09-21 10:07 -0400,C2899,web,US,Shopify Payments,paid,false,false,AUTUMN15,8.40,Matcha Ceremonial 30g x2 @28.00",
+      "#ET3920,2026-09-21 12:00 -0400,C2714,web,CA,Shop Pay,paid,false,false,AUTUMN15,6.75,Tea Gift Box x1 @45.00",
+      "#ET3921,2026-09-21 18:48 -0400,C2895,web,CA,Shopify Payments,paid,false,false,AUTUMN15,5.55,Cold Brew Sampler 6 pack x1 @24.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3922,2026-09-21 19:36 -0400,C2901,web,US,Shopify Payments,paid,false,false,AUTUMN15,2.25,Earl Grey Cream 100g x1 @15.00",
+      "#ET3923,2026-09-22 13:51 -0400,C1080,web,US,PayPal Express Checkout,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3924,2026-09-22 13:58 -0400,C2911,web,CA,Shop Pay,paid,false,false,,0.00,Jasmine Green Tea 100g x1 @16.00",
+      "#ET3925,2026-09-22 17:36 -0400,C2972,web,CA,Shopify Payments,voided,false,true,WELCOME10,4.50,Tea Gift Box x1 @45.00",
+      "#ET3926,2026-09-22 20:21 -0400,C2904,web,CA,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3927,2026-09-22 20:25 -0400,C2908,web,US,Shopify Payments,paid,false,false,WELCOME10,3.10,Earl Grey Cream 100g x1 @15.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3928,2026-09-23 09:19 -0400,C2912,web,US,PayPal Express Checkout,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3929,2026-09-23 10:12 -0400,C2923,web,US,Shopify Payments,paid,false,false,WELCOME10,3.80,Glass Teapot 600ml x1 @38.00",
+      "#ET3930,2026-09-23 14:08 -0400,C1194,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3931,2026-09-23 17:06 -0400,C2918,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3932,2026-09-23 17:11 -0400,C2920,web,US,Shop Pay,paid,false,false,,0.00,Breakfast Black Tea 100g x2 @14.00",
+      "#ET3933,2026-09-23 17:47 -0400,C2913,web,AU,Shopify Payments,paid,false,false,,0.00,Cold Brew Sampler 6 pack x2 @24.00",
+      "#ET3934,2026-09-23 17:51 -0400,C2914,web,DE,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x2 @65.00",
+      "#ET3935,2026-09-24 08:25 -0400,C2924,web,US,Shop Pay,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Tea Gift Box x2 @45.00",
+      "#ET3936,2026-09-24 11:45 -0400,C2928,web,US,Shop Pay,paid,false,false,WELCOME10,4.60,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x2 @16.00",
+      "#ET3937,2026-09-25 12:42 -0400,C2247,web,DE,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3938,2026-09-25 13:42 -0400,C2929,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3939,2026-09-25 15:22 -0400,C2405,web,US,Shop Pay,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Earl Grey Cream 100g x1 @15.00",
+      "#ET3940,2026-09-25 19:57 -0400,C2932,web,US,Shopify Payments,paid,false,false,WELCOME10,2.40,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3941,2026-09-26 12:39 -0400,,pos,US,Cash,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Glass Teapot 600ml x1 @38.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3942,2026-09-26 14:58 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00",
+      "#ET3943,2026-09-26 18:11 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00",
+      "#ET3944,2026-09-26 19:40 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3945,2026-09-26 19:41 -0400,C2936,web,US,PayPal Express Checkout,paid,false,false,WELCOME10,15.70,Breakfast Black Tea 100g x1 @14.00; Cast Iron Kettle x2 @65.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3946,2026-09-26 21:43 -0400,,pos,US,Cash,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3947,2026-09-27 11:19 -0400,C2969,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3948,2026-09-27 11:35 -0400,C2939,web,US,Shop Pay,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3949,2026-09-27 11:58 -0400,,pos,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00",
+      "#ET3950,2026-09-27 12:31 -0400,C2965,pos,US,Cash,paid,false,false,,0.00,Cast Iron Kettle x1 @65.00",
+      "#ET3951,2026-09-27 13:01 -0400,,pos,US,Cash,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00",
+      "#ET3952,2026-09-27 13:31 -0400,C2937,web,CA,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x2 @11.00; Jasmine Green Tea 100g x1 @16.00",
+      "#ET3953,2026-09-27 15:22 -0400,C2723,web,US,Shop Pay,paid,false,false,,0.00,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3954,2026-09-28 14:39 -0400,C2944,web,CA,Shopify Payments,paid,false,false,,0.00,Cast Iron Kettle x2 @65.00",
+      "#ET3955,2026-09-28 16:31 -0400,C2940,web,US,Shopify Payments,paid,false,false,,0.00,Breakfast Black Tea 100g x1 @14.00; Tea Gift Box x2 @45.00",
+      "#ET3956,2026-09-28 19:01 -0400,C1375,web,US,Shopify Payments,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Tea Gift Box x1 @45.00",
+      "#ET3957,2026-09-29 12:48 -0400,C2946,web,US,Shopify Payments,paid,false,false,WELCOME10,3.20,Jasmine Green Tea 100g x2 @16.00",
+      "#ET3958,2026-09-29 12:52 -0400,C2536,web,US,Shopify Payments,paid,false,false,,0.00,Glass Teapot 600ml x1 @38.00; Rooibos Vanilla 100g x1 @13.00",
+      "#ET3959,2026-09-29 14:05 -0400,C1247,web,US,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00",
+      "#ET3960,2026-09-29 16:55 -0400,C2945,web,GB,Shopify Payments,refunded,false,false,WELCOME10,1.50,Earl Grey Cream 100g x1 @15.00",
+      "#ET3961,2026-09-29 21:11 -0400,C1368,shopify_draft_order,US,Bank transfer,pending,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3962,2026-09-30 08:27 -0400,C2955,web,US,Shopify Payments,paid,false,false,,0.00,Earl Grey Cream 100g x1 @15.00; Matcha Ceremonial 30g x1 @28.00",
+      "#ET3963,2026-09-30 09:05 -0400,C2949,web,CA,Shop Pay,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00; Glass Teapot 600ml x1 @38.00",
+      "#ET3964,2026-09-30 13:43 -0400,C2957,web,US,Shopify Payments,paid,false,false,,0.00,Cold Brew Sampler 6 pack x1 @24.00",
+      "#ET3965,2026-09-30 17:02 -0400,C1039,shopify_draft_order,US,Bank transfer,paid,false,false,,0.00,Breakfast Black Tea 100g x36 @8.40; Earl Grey Cream 100g x24 @9.00; Chamomile Herbal 50g x24 @6.60",
+      "#ET3966,2026-09-30 20:56 -0400,C2953,web,CA,Shopify Payments,paid,false,false,,0.00,Chamomile Herbal 50g x1 @11.00"
+    ]
+  },
+  "refunds_file": {
+    "name": "refunds_export_exampletea.csv",
+    "covers": "every refund processed from 2025-08-01 to 2026-10-27, on orders from any date",
+    "rows": [
+      {
+        "order": "#ET2401",
+        "order_date": "2025-08-21",
+        "refund_date": "2025-09-02",
+        "amount": 16.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET2402",
+        "order_date": "2025-08-27",
+        "refund_date": "2025-09-05",
+        "amount": 45.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET2419",
+        "order_date": "2025-09-06",
+        "refund_date": "2025-09-26",
+        "amount": 28.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET2505",
+        "order_date": "2025-09-29",
+        "refund_date": "2025-10-05",
+        "amount": 58.5,
+        "reason": "Wrong item sent"
+      },
+      {
+        "order": "#ET2436",
+        "order_date": "2025-09-10",
+        "refund_date": "2025-10-06",
+        "amount": 28.0,
+        "reason": "Wrong item sent"
+      },
+      {
+        "order": "#ET2492",
+        "order_date": "2025-09-25",
+        "refund_date": "2025-10-06",
+        "amount": 13.2,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET2486",
+        "order_date": "2025-09-22",
+        "refund_date": "2025-10-16",
+        "amount": 13.5,
+        "reason": "Wrong item sent"
+      },
+      {
+        "order": "#ET2494",
+        "order_date": "2025-09-25",
+        "refund_date": "2025-10-16",
+        "amount": 14.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3698",
+        "order_date": "2026-07-24",
+        "refund_date": "2026-08-03",
+        "amount": 38.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3699",
+        "order_date": "2026-07-29",
+        "refund_date": "2026-08-06",
+        "amount": 15.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3700",
+        "order_date": "2026-07-30",
+        "refund_date": "2026-08-11",
+        "amount": 28.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3734",
+        "order_date": "2026-08-08",
+        "refund_date": "2026-08-12",
+        "amount": 28.8,
+        "reason": "Arrived late"
+      },
+      {
+        "order": "#ET3717",
+        "order_date": "2026-08-04",
+        "refund_date": "2026-08-24",
+        "amount": 13.0,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3739",
+        "order_date": "2026-08-09",
+        "refund_date": "2026-09-02",
+        "amount": 38.0,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3750",
+        "order_date": "2026-08-11",
+        "refund_date": "2026-09-02",
+        "amount": 34.2,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3753",
+        "order_date": "2026-08-12",
+        "refund_date": "2026-09-02",
+        "amount": 34.2,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3783",
+        "order_date": "2026-08-19",
+        "refund_date": "2026-09-02",
+        "amount": 34.2,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3788",
+        "order_date": "2026-08-20",
+        "refund_date": "2026-09-02",
+        "amount": 38.0,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3789",
+        "order_date": "2026-08-20",
+        "refund_date": "2026-09-02",
+        "amount": 34.2,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3794",
+        "order_date": "2026-08-21",
+        "refund_date": "2026-09-02",
+        "amount": 34.2,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3795",
+        "order_date": "2026-08-21",
+        "refund_date": "2026-09-02",
+        "amount": 38.0,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3810",
+        "order_date": "2026-08-25",
+        "refund_date": "2026-09-03",
+        "amount": 38.0,
+        "reason": "Cracked in transit (batch 0826)"
+      },
+      {
+        "order": "#ET3772",
+        "order_date": "2026-08-16",
+        "refund_date": "2026-09-08",
+        "amount": 14.4,
+        "reason": "Wrong item sent"
+      },
+      {
+        "order": "#ET3870",
+        "order_date": "2026-09-09",
+        "refund_date": "2026-09-18",
+        "amount": 47.6,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3866",
+        "order_date": "2026-09-09",
+        "refund_date": "2026-09-20",
+        "amount": 68.4,
+        "reason": "Arrived late"
+      },
+      {
+        "order": "#ET3911",
+        "order_date": "2026-09-19",
+        "refund_date": "2026-10-13",
+        "amount": 20.4,
+        "reason": "Changed mind"
+      },
+      {
+        "order": "#ET3960",
+        "order_date": "2026-09-29",
+        "refund_date": "2026-10-18",
+        "amount": 13.5,
+        "reason": "Arrived late"
+      }
+    ]
+  },
+  "customer_first_orders": {
+    "source": "customers export, first order date per customer; order history starts 2024-09-01",
+    "first_order_date": {
+      "C1013": "2025-07-25",
+      "C1026": "2024-11-30",
+      "C1039": "2024-09-24",
+      "C1045": "2024-12-13",
+      "C1057": "2024-11-14",
+      "C1080": "2025-02-22",
+      "C1096": "2025-06-10",
+      "C1114": "2024-10-08",
+      "C1115": "2025-03-06",
+      "C1131": "2025-02-19",
+      "C1138": "2025-02-25",
+      "C1142": "2025-04-29",
+      "C1153": "2025-07-31",
+      "C1156": "2025-05-09",
+      "C1165": "2024-09-08",
+      "C1166": "2025-06-14",
+      "C1173": "2024-11-27",
+      "C1180": "2024-12-30",
+      "C1182": "2025-04-09",
+      "C1183": "2024-12-04",
+      "C1193": "2025-08-08",
+      "C1194": "2025-08-03",
+      "C1195": "2025-05-05",
+      "C1247": "2025-08-06",
+      "C1249": "2024-11-14",
+      "C1251": "2024-10-29",
+      "C1258": "2025-02-23",
+      "C1269": "2024-12-02",
+      "C1280": "2025-06-24",
+      "C1283": "2025-05-27",
+      "C1284": "2025-02-11",
+      "C1325": "2024-10-23",
+      "C1328": "2025-08-04",
+      "C1335": "2025-07-01",
+      "C1368": "2025-01-13",
+      "C1375": "2025-06-29",
+      "C1408": "2025-01-09",
+      "C1418": "2024-10-14",
+      "C1436": "2024-11-09",
+      "C1449": "2025-08-29",
+      "C1451": "2025-08-27",
+      "C1459": "2025-01-03",
+      "C1465": "2025-03-21",
+      "C1472": "2025-08-12",
+      "C1493": "2025-04-07",
+      "C1502": "2025-06-07",
+      "C1505": "2025-04-04",
+      "C1511": "2025-02-10",
+      "C1519": "2025-08-17",
+      "C1530": "2025-07-18",
+      "C1561": "2025-07-24",
+      "C1567": "2025-08-06",
+      "C1608": "2025-03-28",
+      "C1613": "2024-09-26",
+      "C1639": "2024-10-09",
+      "C1653": "2025-09-02",
+      "C1656": "2025-09-04",
+      "C1658": "2025-09-04",
+      "C1661": "2025-09-04",
+      "C1662": "2025-09-05",
+      "C1663": "2025-09-06",
+      "C1665": "2025-09-06",
+      "C1666": "2025-09-06",
+      "C1667": "2025-09-07",
+      "C1669": "2025-09-07",
+      "C1671": "2025-09-07",
+      "C1674": "2025-09-07",
+      "C1678": "2025-09-07",
+      "C1680": "2025-09-08",
+      "C1681": "2025-09-08",
+      "C1682": "2025-09-08",
+      "C1683": "2025-09-09",
+      "C1686": "2025-09-10",
+      "C1689": "2025-09-10",
+      "C1693": "2025-09-10",
+      "C1695": "2025-09-10",
+      "C1696": "2025-09-10",
+      "C1697": "2025-09-13",
+      "C1699": "2025-09-13",
+      "C1703": "2025-09-13",
+      "C1705": "2025-09-14",
+      "C1707": "2025-09-15",
+      "C1708": "2025-09-16",
+      "C1709": "2025-09-16",
+      "C1712": "2025-09-17",
+      "C1715": "2025-09-17",
+      "C1716": "2025-09-17",
+      "C1719": "2025-09-17",
+      "C1722": "2025-09-17",
+      "C1726": "2025-09-18",
+      "C1729": "2025-09-19",
+      "C1732": "2025-09-20",
+      "C1733": "2025-09-21",
+      "C1737": "2025-09-22",
+      "C1739": "2025-09-22",
+      "C1743": "2025-09-22",
+      "C1744": "2025-09-23",
+      "C1746": "2025-09-24",
+      "C1748": "2025-09-25",
+      "C1751": "2025-09-25",
+      "C1755": "2025-09-27",
+      "C1759": "2025-09-27",
+      "C1760": "2025-09-27",
+      "C1763": "2025-09-28",
+      "C1766": "2025-09-29",
+      "C1767": "2025-09-30",
+      "C1768": "2025-09-06",
+      "C1772": "2025-09-06",
+      "C1773": "2025-09-14",
+      "C1776": "2025-09-14",
+      "C1778": "2025-09-14",
+      "C1781": "2025-09-21",
+      "C1782": "2025-09-21",
+      "C1784": "2025-09-21",
+      "C1787": "2025-09-27",
+      "C1791": "2025-09-28",
+      "C1907": "2025-12-23",
+      "C1918": "2026-03-30",
+      "C1942": "2025-11-19",
+      "C2031": "2026-06-28",
+      "C2057": "2025-11-05",
+      "C2069": "2025-10-09",
+      "C2105": "2025-12-18",
+      "C2106": "2026-07-09",
+      "C2126": "2025-10-04",
+      "C2142": "2026-05-03",
+      "C2182": "2025-10-31",
+      "C2189": "2026-07-22",
+      "C2198": "2026-04-15",
+      "C2229": "2026-04-01",
+      "C2247": "2025-10-27",
+      "C2278": "2025-11-29",
+      "C2325": "2026-02-16",
+      "C2348": "2026-02-15",
+      "C2350": "2025-12-13",
+      "C2352": "2026-04-22",
+      "C2375": "2026-04-24",
+      "C2382": "2026-07-30",
+      "C2405": "2025-11-19",
+      "C2406": "2025-10-25",
+      "C2428": "2026-04-30",
+      "C2437": "2026-06-09",
+      "C2460": "2025-11-22",
+      "C2475": "2025-12-21",
+      "C2523": "2025-12-02",
+      "C2536": "2026-05-10",
+      "C2565": "2025-11-30",
+      "C2577": "2026-06-10",
+      "C2589": "2026-08-01",
+      "C2593": "2026-08-01",
+      "C2594": "2026-08-01",
+      "C2598": "2026-08-02",
+      "C2601": "2026-08-02",
+      "C2605": "2026-08-03",
+      "C2608": "2026-08-03",
+      "C2611": "2026-08-04",
+      "C2614": "2026-08-04",
+      "C2618": "2026-08-04",
+      "C2620": "2026-08-04",
+      "C2623": "2026-08-05",
+      "C2624": "2026-08-06",
+      "C2625": "2026-08-06",
+      "C2626": "2026-08-06",
+      "C2629": "2026-08-07",
+      "C2630": "2026-08-07",
+      "C2634": "2026-08-07",
+      "C2637": "2026-08-08",
+      "C2638": "2026-08-09",
+      "C2639": "2026-08-09",
+      "C2641": "2026-08-09",
+      "C2642": "2026-08-09",
+      "C2645": "2026-08-10",
+      "C2646": "2026-08-10",
+      "C2650": "2026-08-10",
+      "C2653": "2026-08-11",
+      "C2657": "2026-08-11",
+      "C2659": "2026-08-11",
+      "C2661": "2026-08-12",
+      "C2662": "2026-08-12",
+      "C2664": "2026-08-13",
+      "C2667": "2026-08-13",
+      "C2668": "2026-08-14",
+      "C2669": "2026-08-15",
+      "C2672": "2026-08-16",
+      "C2675": "2026-08-16",
+      "C2677": "2026-08-16",
+      "C2680": "2026-08-18",
+      "C2684": "2026-08-18",
+      "C2685": "2026-08-18",
+      "C2688": "2026-08-18",
+      "C2691": "2026-08-19",
+      "C2692": "2026-08-19",
+      "C2693": "2026-08-20",
+      "C2696": "2026-08-20",
+      "C2699": "2026-08-20",
+      "C2701": "2026-08-21",
+      "C2702": "2026-08-21",
+      "C2705": "2026-08-21",
+      "C2707": "2026-08-23",
+      "C2711": "2026-08-23",
+      "C2714": "2026-08-23",
+      "C2716": "2026-08-24",
+      "C2718": "2026-08-24",
+      "C2720": "2026-08-24",
+      "C2723": "2026-08-25",
+      "C2725": "2026-08-25",
+      "C2729": "2026-08-26",
+      "C2733": "2026-08-28",
+      "C2734": "2026-08-29",
+      "C2738": "2026-08-29",
+      "C2741": "2026-08-30",
+      "C2744": "2026-08-31",
+      "C2748": "2026-08-31",
+      "C2749": "2026-08-01",
+      "C2753": "2026-08-01",
+      "C2754": "2026-08-01",
+      "C2758": "2026-08-08",
+      "C2759": "2026-08-09",
+      "C2762": "2026-08-15",
+      "C2766": "2026-08-30",
+      "C2767": "2026-09-01",
+      "C2768": "2026-09-01",
+      "C2769": "2026-09-01",
+      "C2772": "2026-09-02",
+      "C2774": "2026-09-02",
+      "C2776": "2026-09-02",
+      "C2780": "2026-09-02",
+      "C2782": "2026-09-03",
+      "C2784": "2026-09-04",
+      "C2787": "2026-09-04",
+      "C2790": "2026-09-04",
+      "C2794": "2026-09-05",
+      "C2798": "2026-09-05",
+      "C2800": "2026-09-06",
+      "C2804": "2026-09-07",
+      "C2807": "2026-09-07",
+      "C2809": "2026-09-08",
+      "C2813": "2026-09-08",
+      "C2816": "2026-09-08",
+      "C2820": "2026-09-09",
+      "C2822": "2026-09-09",
+      "C2823": "2026-09-09",
+      "C2825": "2026-09-09",
+      "C2826": "2026-09-10",
+      "C2828": "2026-09-10",
+      "C2832": "2026-09-11",
+      "C2836": "2026-09-11",
+      "C2837": "2026-09-11",
+      "C2840": "2026-09-11",
+      "C2844": "2026-09-12",
+      "C2846": "2026-09-12",
+      "C2848": "2026-09-12",
+      "C2851": "2026-09-13",
+      "C2855": "2026-09-14",
+      "C2859": "2026-09-14",
+      "C2860": "2026-09-14",
+      "C2862": "2026-09-15",
+      "C2866": "2026-09-16",
+      "C2867": "2026-09-16",
+      "C2871": "2026-09-17",
+      "C2873": "2026-09-17",
+      "C2876": "2026-09-17",
+      "C2877": "2026-09-17",
+      "C2880": "2026-09-18",
+      "C2883": "2026-09-18",
+      "C2886": "2026-09-18",
+      "C2887": "2026-09-19",
+      "C2888": "2026-09-19",
+      "C2889": "2026-09-20",
+      "C2890": "2026-09-20",
+      "C2893": "2026-09-20",
+      "C2895": "2026-09-21",
+      "C2899": "2026-09-21",
+      "C2901": "2026-09-21",
+      "C2904": "2026-09-22",
+      "C2908": "2026-09-22",
+      "C2911": "2026-09-22",
+      "C2912": "2026-09-23",
+      "C2913": "2026-09-23",
+      "C2914": "2026-09-23",
+      "C2918": "2026-09-23",
+      "C2920": "2026-09-23",
+      "C2923": "2026-09-23",
+      "C2924": "2026-09-24",
+      "C2928": "2026-09-24",
+      "C2929": "2026-09-25",
+      "C2932": "2026-09-25",
+      "C2936": "2026-09-26",
+      "C2937": "2026-09-27",
+      "C2939": "2026-09-27",
+      "C2940": "2026-09-28",
+      "C2944": "2026-09-28",
+      "C2945": "2026-09-29",
+      "C2946": "2026-09-29",
+      "C2949": "2026-09-30",
+      "C2953": "2026-09-30",
+      "C2955": "2026-09-30",
+      "C2957": "2026-09-30",
+      "C2960": "2026-09-05",
+      "C2963": "2026-09-06",
+      "C2965": "2026-09-27",
+      "C2969": "2026-09-27",
+      "C2971": "2026-09-16",
+      "C2972": "2026-09-22",
+      "C2973": "2026-08-19"
+    }
+  },
+  "connected": {
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "pulls": {
+        "period": {
+          "call": {
+            "platform": "google-analytics",
+            "action": "get_report",
+            "property_id": "properties/123456789",
+            "dimensions": [
+              "sessionDefaultChannelGroup"
+            ],
+            "metrics": [
+              "sessions",
+              "ecommercePurchases",
+              "purchaseRevenue"
+            ],
+            "start_date": "2026-09-01",
+            "end_date": "2026-09-30"
+          },
+          "data": [
+            {
+              "sessionDefaultChannelGroup": "Organic Search",
+              "sessions": 3900,
+              "ecommercePurchases": 41,
+              "purchaseRevenue": 1610.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Direct",
+              "sessions": 1650,
+              "ecommercePurchases": 22,
+              "purchaseRevenue": 905.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Email",
+              "sessions": 780,
+              "ecommercePurchases": 19,
+              "purchaseRevenue": 812.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Social",
+              "sessions": 1420,
+              "ecommercePurchases": 12,
+              "purchaseRevenue": 431.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Organic Social",
+              "sessions": 610,
+              "ecommercePurchases": 5,
+              "purchaseRevenue": 176.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Referral",
+              "sessions": 260,
+              "ecommercePurchases": 3,
+              "purchaseRevenue": 102.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Search",
+              "sessions": 980,
+              "ecommercePurchases": 4,
+              "purchaseRevenue": 151.0
+            }
+          ]
+        },
+        "prior": {
+          "call": {
+            "platform": "google-analytics",
+            "action": "get_report",
+            "property_id": "properties/123456789",
+            "dimensions": [
+              "sessionDefaultChannelGroup"
+            ],
+            "metrics": [
+              "sessions",
+              "ecommercePurchases",
+              "purchaseRevenue"
+            ],
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31"
+          },
+          "data": [
+            {
+              "sessionDefaultChannelGroup": "Organic Search",
+              "sessions": 3500,
+              "ecommercePurchases": 33,
+              "purchaseRevenue": 1240.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Direct",
+              "sessions": 1580,
+              "ecommercePurchases": 20,
+              "purchaseRevenue": 790.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Email",
+              "sessions": 640,
+              "ecommercePurchases": 13,
+              "purchaseRevenue": 566.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Social",
+              "sessions": 1100,
+              "ecommercePurchases": 9,
+              "purchaseRevenue": 300.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Organic Social",
+              "sessions": 560,
+              "ecommercePurchases": 4,
+              "purchaseRevenue": 122.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Referral",
+              "sessions": 240,
+              "ecommercePurchases": 3,
+              "purchaseRevenue": 97.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Search",
+              "sessions": 900,
+              "ecommercePurchases": 5,
+              "purchaseRevenue": 182.0
+            }
+          ]
+        },
+        "last_year": {
+          "call": {
+            "platform": "google-analytics",
+            "action": "get_report",
+            "property_id": "properties/123456789",
+            "dimensions": [
+              "sessionDefaultChannelGroup"
+            ],
+            "metrics": [
+              "sessions",
+              "ecommercePurchases",
+              "purchaseRevenue"
+            ],
+            "start_date": "2025-09-01",
+            "end_date": "2025-09-30"
+          },
+          "data": [
+            {
+              "sessionDefaultChannelGroup": "Organic Search",
+              "sessions": 2900,
+              "ecommercePurchases": 28,
+              "purchaseRevenue": 1010.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Direct",
+              "sessions": 1300,
+              "ecommercePurchases": 17,
+              "purchaseRevenue": 640.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Email",
+              "sessions": 480,
+              "ecommercePurchases": 11,
+              "purchaseRevenue": 410.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Social",
+              "sessions": 700,
+              "ecommercePurchases": 5,
+              "purchaseRevenue": 170.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Organic Social",
+              "sessions": 420,
+              "ecommercePurchases": 3,
+              "purchaseRevenue": 96.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Referral",
+              "sessions": 210,
+              "ecommercePurchases": 2,
+              "purchaseRevenue": 61.0
+            },
+            {
+              "sessionDefaultChannelGroup": "Paid Search",
+              "sessions": 650,
+              "ecommercePurchases": 3,
+              "purchaseRevenue": 104.0
+            }
+          ]
+        }
+      }
+    },
+    "klaviyo": {
+      "conversion_metric": "Placed Order",
+      "pulls": {
+        "period": {
+          "calls": [
+            {
+              "platform": "klaviyo",
+              "action": "get_campaign_report",
+              "body": {
+                "data": {
+                  "type": "campaign-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2026-09-01T00:00:00Z",
+                      "end": "2026-10-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "platform": "klaviyo",
+              "action": "get_flow_report",
+              "body": {
+                "data": {
+                  "type": "flow-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2026-09-01T00:00:00Z",
+                      "end": "2026-10-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "campaigns": [
+            {
+              "campaign": "Autumn sale launch",
+              "recipients": 2410,
+              "conversions": 31,
+              "conversion_value": 1188.4
+            },
+            {
+              "campaign": "Cold brew is here",
+              "recipients": 2390,
+              "conversions": 14,
+              "conversion_value": 486.5
+            }
+          ],
+          "flows": [
+            {
+              "flow": "Welcome series",
+              "recipients": 610,
+              "conversions": 11,
+              "conversion_value": 352.1
+            },
+            {
+              "flow": "Abandoned checkout",
+              "recipients": 240,
+              "conversions": 9,
+              "conversion_value": 401.3
+            },
+            {
+              "flow": "Post-purchase",
+              "recipients": 520,
+              "conversions": 4,
+              "conversion_value": 98.0
+            }
+          ]
+        },
+        "prior": {
+          "calls": [
+            {
+              "platform": "klaviyo",
+              "action": "get_campaign_report",
+              "body": {
+                "data": {
+                  "type": "campaign-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2026-08-01T00:00:00Z",
+                      "end": "2026-09-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "platform": "klaviyo",
+              "action": "get_flow_report",
+              "body": {
+                "data": {
+                  "type": "flow-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2026-08-01T00:00:00Z",
+                      "end": "2026-09-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "campaigns": [
+            {
+              "campaign": "Summer restock",
+              "recipients": 2250,
+              "conversions": 17,
+              "conversion_value": 590.2
+            }
+          ],
+          "flows": [
+            {
+              "flow": "Welcome series",
+              "recipients": 540,
+              "conversions": 9,
+              "conversion_value": 288.0
+            },
+            {
+              "flow": "Abandoned checkout",
+              "recipients": 210,
+              "conversions": 7,
+              "conversion_value": 318.4
+            },
+            {
+              "flow": "Post-purchase",
+              "recipients": 470,
+              "conversions": 3,
+              "conversion_value": 71.5
+            }
+          ]
+        },
+        "last_year": {
+          "calls": [
+            {
+              "platform": "klaviyo",
+              "action": "get_campaign_report",
+              "body": {
+                "data": {
+                  "type": "campaign-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2025-09-01T00:00:00Z",
+                      "end": "2025-10-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "platform": "klaviyo",
+              "action": "get_flow_report",
+              "body": {
+                "data": {
+                  "type": "flow-values-report",
+                  "attributes": {
+                    "timeframe": {
+                      "start": "2025-09-01T00:00:00Z",
+                      "end": "2025-10-01T00:00:00Z"
+                    },
+                    "filter": "equals(send_channel,\"email\")",
+                    "statistics": [
+                      "recipients",
+                      "conversions",
+                      "conversion_value"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "campaigns": [
+            {
+              "campaign": "Tea day",
+              "recipients": 1800,
+              "conversions": 12,
+              "conversion_value": 402.0
+            }
+          ],
+          "flows": [
+            {
+              "flow": "Welcome series",
+              "recipients": 400,
+              "conversions": 6,
+              "conversion_value": 190.2
+            },
+            {
+              "flow": "Abandoned checkout",
+              "recipients": 150,
+              "conversions": 5,
+              "conversion_value": 214.8
+            }
+          ]
+        }
+      }
+    },
+    "google-sheets": {
+      "spreadsheet": "Example Tea monthly reports",
+      "spreadsheet_id": "1ExampleSpreadsheetId0ExampleTea"
+    }
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "note": "Example data: an invented online booking software company, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Which features should we push to existing customers this quarter, and plan the campaign for each.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "plans": [
+    "Starter",
+    "Growth",
+    "Business"
+  ],
+  "as_of": "2026-10-27",
+  "windows": {
+    "baseline": [
+      "2026-08-05",
+      "2026-09-01"
+    ],
+    "adoption": [
+      "2026-09-02",
+      "2026-09-29"
+    ],
+    "outcome": [
+      "2026-09-30",
+      "2026-10-27"
+    ]
+  },
+  "activity_bands": {
+    "new": "0 active days in the baseline window",
+    "light": "1 to 3",
+    "regular": "4 to 9",
+    "heavy": "10 or more"
+  },
+  "source": "BigQuery run_query of the SQL in SKILL.md on the product events table (invented rows)",
+  "features": [
+    {
+      "feature": "Recurring bookings",
+      "event_name": "recurring_booking_created",
+      "released": "2026-02-10",
+      "plans": "all",
+      "moment_before_use": "the client's second booking of the same service within 6 weeks",
+      "deep_link": "/app/bookings/new?repeat=1",
+      "current_announcements": [
+        "changelog entry on release day",
+        "one line in the March product update email"
+      ]
+    },
+    {
+      "feature": "Waitlist",
+      "event_name": "waitlist_spot_filled",
+      "released": "2026-04-14",
+      "plans": [
+        "Growth",
+        "Business"
+      ],
+      "moment_before_use": "a fully booked day on the calendar",
+      "deep_link": "/app/settings/waitlist",
+      "current_announcements": [
+        "changelog entry",
+        "help article"
+      ]
+    },
+    {
+      "feature": "Deposits",
+      "event_name": "deposit_collected",
+      "released": "2025-11-04",
+      "plans": "all",
+      "moment_before_use": "a no-show marked on an appointment",
+      "deep_link": "/app/settings/payments/deposits",
+      "current_announcements": [
+        "release email in November 2025",
+        "in-app banner for 2 weeks",
+        "help article"
+      ]
+    },
+    {
+      "feature": "Two-way calendar sync",
+      "event_name": "calendar_connected",
+      "released": "2025-06-17",
+      "plans": "all",
+      "moment_before_use": "a staff member added to the account",
+      "deep_link": "/app/settings/calendar",
+      "current_announcements": [
+        "setup checklist item for new accounts"
+      ]
+    },
+    {
+      "feature": "Intake forms",
+      "event_name": "intake_form_completed",
+      "released": "2026-03-24",
+      "plans": [
+        "Business"
+      ],
+      "moment_before_use": "a first-time client booked",
+      "deep_link": "/app/forms/new",
+      "current_announcements": [
+        "changelog entry"
+      ]
+    },
+    {
+      "feature": "Gift cards",
+      "event_name": "gift_card_sold",
+      "released": "2026-09-15",
+      "plans": "all",
+      "moment_before_use": "the booking page published",
+      "deep_link": "/app/settings/gift-cards",
+      "current_announcements": [
+        "release email on 2026-10-01",
+        "changelog entry"
+      ]
+    }
+  ],
+  "query_rows": [
+    {
+      "feature": "Recurring bookings",
+      "band": "new",
+      "active_o": 262,
+      "users_o": 24,
+      "triers_a": 30,
+      "triers_back_o": 22,
+      "triers_reused_o": 15,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Recurring bookings",
+      "band": "light",
+      "active_o": 618,
+      "users_o": 87,
+      "triers_a": 92,
+      "triers_back_o": 77,
+      "triers_reused_o": 58,
+      "adopters": 61,
+      "adopters_retained": 49,
+      "non_adopters": 472,
+      "non_adopters_retained": 274
+    },
+    {
+      "feature": "Recurring bookings",
+      "band": "regular",
+      "active_o": 884,
+      "users_o": 196,
+      "triers_a": 168,
+      "triers_back_o": 156,
+      "triers_reused_o": 121,
+      "adopters": 86,
+      "adopters_retained": 78,
+      "non_adopters": 642,
+      "non_adopters_retained": 514
+    },
+    {
+      "feature": "Recurring bookings",
+      "band": "heavy",
+      "active_o": 641,
+      "users_o": 225,
+      "triers_a": 214,
+      "triers_back_o": 209,
+      "triers_reused_o": 168,
+      "adopters": 71,
+      "adopters_retained": 68,
+      "non_adopters": 398,
+      "non_adopters_retained": 358
+    },
+    {
+      "feature": "Waitlist",
+      "band": "new",
+      "active_o": 118,
+      "users_o": 5,
+      "triers_a": 6,
+      "triers_back_o": 4,
+      "triers_reused_o": 3,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Waitlist",
+      "band": "light",
+      "active_o": 301,
+      "users_o": 25,
+      "triers_a": 31,
+      "triers_back_o": 24,
+      "triers_reused_o": 18,
+      "adopters": 26,
+      "adopters_retained": 20,
+      "non_adopters": 248,
+      "non_adopters_retained": 149
+    },
+    {
+      "feature": "Waitlist",
+      "band": "regular",
+      "active_o": 482,
+      "users_o": 72,
+      "triers_a": 77,
+      "triers_back_o": 70,
+      "triers_reused_o": 55,
+      "adopters": 45,
+      "adopters_retained": 40,
+      "non_adopters": 381,
+      "non_adopters_retained": 312
+    },
+    {
+      "feature": "Waitlist",
+      "band": "heavy",
+      "active_o": 402,
+      "users_o": 101,
+      "triers_a": 104,
+      "triers_back_o": 101,
+      "triers_reused_o": 84,
+      "adopters": 41,
+      "adopters_retained": 39,
+      "non_adopters": 302,
+      "non_adopters_retained": 275
+    },
+    {
+      "feature": "Deposits",
+      "band": "new",
+      "active_o": 262,
+      "users_o": 18,
+      "triers_a": 21,
+      "triers_back_o": 15,
+      "triers_reused_o": 4,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Deposits",
+      "band": "light",
+      "active_o": 618,
+      "users_o": 46,
+      "triers_a": 74,
+      "triers_back_o": 58,
+      "triers_reused_o": 17,
+      "adopters": 52,
+      "adopters_retained": 41,
+      "non_adopters": 455,
+      "non_adopters_retained": 266
+    },
+    {
+      "feature": "Deposits",
+      "band": "regular",
+      "active_o": 884,
+      "users_o": 74,
+      "triers_a": 112,
+      "triers_back_o": 98,
+      "triers_reused_o": 31,
+      "adopters": 70,
+      "adopters_retained": 60,
+      "non_adopters": 619,
+      "non_adopters_retained": 494
+    },
+    {
+      "feature": "Deposits",
+      "band": "heavy",
+      "active_o": 641,
+      "users_o": 69,
+      "triers_a": 93,
+      "triers_back_o": 88,
+      "triers_reused_o": 29,
+      "adopters": 47,
+      "adopters_retained": 44,
+      "non_adopters": 377,
+      "non_adopters_retained": 340
+    },
+    {
+      "feature": "Two-way calendar sync",
+      "band": "new",
+      "active_o": 262,
+      "users_o": 79,
+      "triers_a": 70,
+      "triers_back_o": 52,
+      "triers_reused_o": 47,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Two-way calendar sync",
+      "band": "light",
+      "active_o": 618,
+      "users_o": 197,
+      "triers_a": 96,
+      "triers_back_o": 64,
+      "triers_reused_o": 57,
+      "adopters": 31,
+      "adopters_retained": 19,
+      "non_adopters": 448,
+      "non_adopters_retained": 265
+    },
+    {
+      "feature": "Two-way calendar sync",
+      "band": "regular",
+      "active_o": 884,
+      "users_o": 371,
+      "triers_a": 197,
+      "triers_back_o": 166,
+      "triers_reused_o": 152,
+      "adopters": 41,
+      "adopters_retained": 33,
+      "non_adopters": 597,
+      "non_adopters_retained": 471
+    },
+    {
+      "feature": "Two-way calendar sync",
+      "band": "heavy",
+      "active_o": 641,
+      "users_o": 382,
+      "triers_a": 214,
+      "triers_back_o": 205,
+      "triers_reused_o": 198,
+      "adopters": 36,
+      "adopters_retained": 32,
+      "non_adopters": 381,
+      "non_adopters_retained": 342
+    },
+    {
+      "feature": "Intake forms",
+      "band": "new",
+      "active_o": 31,
+      "users_o": 2,
+      "triers_a": 2,
+      "triers_back_o": 2,
+      "triers_reused_o": 1,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Intake forms",
+      "band": "light",
+      "active_o": 69,
+      "users_o": 6,
+      "triers_a": 9,
+      "triers_back_o": 7,
+      "triers_reused_o": 6,
+      "adopters": 8,
+      "adopters_retained": 6,
+      "non_adopters": 55,
+      "non_adopters_retained": 33
+    },
+    {
+      "feature": "Intake forms",
+      "band": "regular",
+      "active_o": 121,
+      "users_o": 19,
+      "triers_a": 24,
+      "triers_back_o": 22,
+      "triers_reused_o": 19,
+      "adopters": 22,
+      "adopters_retained": 19,
+      "non_adopters": 85,
+      "non_adopters_retained": 66
+    },
+    {
+      "feature": "Intake forms",
+      "band": "heavy",
+      "active_o": 108,
+      "users_o": 22,
+      "triers_a": 25,
+      "triers_back_o": 25,
+      "triers_reused_o": 22,
+      "adopters": 21,
+      "adopters_retained": 20,
+      "non_adopters": 70,
+      "non_adopters_retained": 63
+    },
+    {
+      "feature": "Gift cards",
+      "band": "new",
+      "active_o": 262,
+      "users_o": 6,
+      "triers_a": 2,
+      "triers_back_o": 2,
+      "triers_reused_o": 1,
+      "adopters": 0,
+      "adopters_retained": 0,
+      "non_adopters": 0,
+      "non_adopters_retained": 0
+    },
+    {
+      "feature": "Gift cards",
+      "band": "light",
+      "active_o": 618,
+      "users_o": 15,
+      "triers_a": 6,
+      "triers_back_o": 5,
+      "triers_reused_o": 3,
+      "adopters": 6,
+      "adopters_retained": 5,
+      "non_adopters": 470,
+      "non_adopters_retained": 271
+    },
+    {
+      "feature": "Gift cards",
+      "band": "regular",
+      "active_o": 884,
+      "users_o": 31,
+      "triers_a": 14,
+      "triers_back_o": 13,
+      "triers_reused_o": 9,
+      "adopters": 14,
+      "adopters_retained": 13,
+      "non_adopters": 639,
+      "non_adopters_retained": 511
+    },
+    {
+      "feature": "Gift cards",
+      "band": "heavy",
+      "active_o": 641,
+      "users_o": 38,
+      "triers_a": 19,
+      "triers_back_o": 19,
+      "triers_reused_o": 15,
+      "adopters": 19,
+      "adopters_retained": 19,
+      "non_adopters": 401,
+      "non_adopters_retained": 360
+    }
+  ],
+  "past_push": {
+    "feature": "Automatic SMS reminders",
+    "push_date": "2026-06-09",
+    "channels": [
+      "in-app prompt",
+      "email",
+      "changelog entry"
+    ],
+    "non_users_at_start_of_28_days_before": 1726,
+    "first_used_in_28_days_before": 31,
+    "non_users_at_push": 1695,
+    "first_used_in_28_days_after": 152
+  },
+  "klaviyo": {
+    "lists": [
+      {
+        "id": "LstOwn01",
+        "name": "Account owners (all plans)",
+        "profile_count": 2875
+      }
+    ],
+    "recent_email_campaigns": [
+      {
+        "name": "October product update",
+        "status": "Sent",
+        "send_time": "2026-10-22T14:00:00Z",
+        "feature_email": true
+      },
+      {
+        "name": "New: sell gift cards from your booking page",
+        "status": "Sent",
+        "send_time": "2026-10-01T14:00:00Z",
+        "feature_email": true
+      },
+      {
+        "name": "Holiday hours reminder",
+        "status": "Draft",
+        "send_time": null,
+        "feature_email": false
+      }
+    ]
+  },
+  "user_targets": null,
+  "rules_used": {
+    "min_group_per_band": 20,
+    "min_share_of_non_adopters_in_usable_bands": 0.5,
+    "min_triers_for_stick_check": 30,
+    "stick_ratio_floor": 0.5,
+    "min_lift_points": 2.0,
+    "holdout_share": 0.1,
+    "default_net_conversion_without_past_push": 0.05,
+    "feature_email_gap_days": 14,
+    "stagger_days": 14,
+    "launch_date": "2026-11-03"
+  }
+}

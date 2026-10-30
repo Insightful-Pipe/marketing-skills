@@ -1,0 +1,2145 @@
+{
+  "note": "Example data: an invented three-location express car wash and invented rivals, not real businesses. Reviewer names were dropped when the rows were read, as the skill does. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"review-insights-analyzer\" skill. Analyze the last 12 months of Google reviews for our three car wash locations. What drives our 1-star and 5-star reviews, is anything getting worse, and what should we fix first? Here are Rival A's last 30 reviews too.",
+  "business": {
+    "name": "Example Car Wash",
+    "type": "express car wash with an unlimited membership",
+    "units": [
+      "Northgate",
+      "Riverside",
+      "Airport Road"
+    ],
+    "site": "https://www.example.com"
+  },
+  "run_date": "2026-10-28",
+  "window": {
+    "from": "2025-10-01",
+    "to": "2026-09-30",
+    "earlier_half": [
+      "2025-10-01",
+      "2026-03-31"
+    ],
+    "recent_half": [
+      "2026-04-01",
+      "2026-09-30"
+    ]
+  },
+  "sources": {
+    "own_reviews": "Google Business Profile get_reviews, one call per location, rows in the window only",
+    "rival_listings": "DataForSEO business_listings_search, one call (category car wash, 8 km around the three locations)",
+    "rival_reviews": "Rival A's 30 most recent Google reviews in the window, pasted by the user"
+  },
+  "reviews": [
+    {
+      "id": "r001",
+      "unit": "Riverside",
+      "date": "2025-10-05",
+      "stars": 2,
+      "text": "Half the vacuums were broken.",
+      "replied": false
+    },
+    {
+      "id": "r002",
+      "unit": "Riverside",
+      "date": "2025-10-05",
+      "stars": 4,
+      "text": "The attendant was friendly and helped me pick a package. Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r003",
+      "unit": "Airport Road",
+      "date": "2025-10-06",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r004",
+      "unit": "Airport Road",
+      "date": "2025-10-06",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r005",
+      "unit": "Northgate",
+      "date": "2025-10-08",
+      "stars": 3,
+      "text": "Waited 40 minutes in line. Good value for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r006",
+      "unit": "Riverside",
+      "date": "2025-10-08",
+      "stars": 5,
+      "text": "Free vacuums and mat cleaners are great.",
+      "replied": false
+    },
+    {
+      "id": "r007",
+      "unit": "Northgate",
+      "date": "2025-10-12",
+      "stars": 4,
+      "text": "Best wash I have had in town. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r008",
+      "unit": "Riverside",
+      "date": "2025-10-12",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r009",
+      "unit": "Riverside",
+      "date": "2025-10-12",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": false
+    },
+    {
+      "id": "r010",
+      "unit": "Riverside",
+      "date": "2025-10-12",
+      "stars": 4,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r011",
+      "unit": "Riverside",
+      "date": "2025-10-14",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Short line even on a Saturday.",
+      "replied": false
+    },
+    {
+      "id": "r012",
+      "unit": "Northgate",
+      "date": "2025-10-15",
+      "stars": 3,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r013",
+      "unit": "Northgate",
+      "date": "2025-10-17",
+      "stars": 5,
+      "text": "Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r014",
+      "unit": "Northgate",
+      "date": "2025-10-24",
+      "stars": 3,
+      "text": "Half the vacuums were broken. Fair price for what you get.",
+      "replied": false
+    },
+    {
+      "id": "r015",
+      "unit": "Northgate",
+      "date": "2025-10-26",
+      "stars": 4,
+      "text": "The attendant was friendly and helped me pick a package. Good value for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r016",
+      "unit": "Riverside",
+      "date": "2025-10-26",
+      "stars": 4,
+      "text": "Fair price for what you get. Wheels and windows were really clean.",
+      "replied": true
+    },
+    {
+      "id": "r017",
+      "unit": "Northgate",
+      "date": "2025-10-28",
+      "stars": 4,
+      "text": "Good value for the unlimited plan. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r018",
+      "unit": "Riverside",
+      "date": "2025-10-29",
+      "stars": 4,
+      "text": "Vacuum had no suction again. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r019",
+      "unit": "Riverside",
+      "date": "2025-10-30",
+      "stars": 4,
+      "text": "Friendly team at the entrance. Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r020",
+      "unit": "Riverside",
+      "date": "2025-10-30",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r021",
+      "unit": "Airport Road",
+      "date": "2025-11-02",
+      "stars": 4,
+      "text": "Missed spots all over the back. Vacuums have strong suction.",
+      "replied": true
+    },
+    {
+      "id": "r022",
+      "unit": "Airport Road",
+      "date": "2025-11-03",
+      "stars": 5,
+      "text": "Short line even on a Saturday. Staff were kind and quick to help.",
+      "replied": false
+    },
+    {
+      "id": "r023",
+      "unit": "Riverside",
+      "date": "2025-11-03",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r024",
+      "unit": "Northgate",
+      "date": "2025-11-04",
+      "stars": 1,
+      "text": "Missed spots all over the back.",
+      "replied": false
+    },
+    {
+      "id": "r025",
+      "unit": "Northgate",
+      "date": "2025-11-04",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r026",
+      "unit": "Airport Road",
+      "date": "2025-11-05",
+      "stars": 2,
+      "text": "Wheels were still dirty after the top package.",
+      "replied": true
+    },
+    {
+      "id": "r027",
+      "unit": "Airport Road",
+      "date": "2025-11-09",
+      "stars": 5,
+      "text": "Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r028",
+      "unit": "Airport Road",
+      "date": "2025-11-11",
+      "stars": 4,
+      "text": "The line wrapped around the block and barely moved. Wheels and windows were really clean.",
+      "replied": true
+    },
+    {
+      "id": "r029",
+      "unit": "Northgate",
+      "date": "2025-11-15",
+      "stars": 5,
+      "text": "Good value for the unlimited plan. Best wash I have had in town.",
+      "replied": false
+    },
+    {
+      "id": "r030",
+      "unit": "Northgate",
+      "date": "2025-11-15",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r031",
+      "unit": "Northgate",
+      "date": "2025-11-15",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r032",
+      "unit": "Riverside",
+      "date": "2025-11-15",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r033",
+      "unit": "Airport Road",
+      "date": "2025-11-16",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Free vacuums and mat cleaners are great.",
+      "replied": true
+    },
+    {
+      "id": "r034",
+      "unit": "Northgate",
+      "date": "2025-11-16",
+      "stars": 5,
+      "text": "Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r035",
+      "unit": "Airport Road",
+      "date": "2025-11-18",
+      "stars": 5,
+      "text": "Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r036",
+      "unit": "Riverside",
+      "date": "2025-11-18",
+      "stars": 3,
+      "text": "Vacuum had no suction again.",
+      "replied": true
+    },
+    {
+      "id": "r037",
+      "unit": "Riverside",
+      "date": "2025-11-19",
+      "stars": 3,
+      "text": "Prices went up again. The attendant was friendly and helped me pick a package.",
+      "replied": false
+    },
+    {
+      "id": "r038",
+      "unit": "Riverside",
+      "date": "2025-11-22",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r039",
+      "unit": "Airport Road",
+      "date": "2025-11-23",
+      "stars": 4,
+      "text": "The car came out spotless. Fair price for what you get.",
+      "replied": false
+    },
+    {
+      "id": "r040",
+      "unit": "Northgate",
+      "date": "2025-11-23",
+      "stars": 5,
+      "text": "Free vacuums and mat cleaners are great. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r041",
+      "unit": "Northgate",
+      "date": "2025-11-25",
+      "stars": 5,
+      "text": "Free vacuums and mat cleaners are great. The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r042",
+      "unit": "Northgate",
+      "date": "2025-11-26",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r043",
+      "unit": "Northgate",
+      "date": "2025-11-28",
+      "stars": 5,
+      "text": "Good value for the unlimited plan. The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r044",
+      "unit": "Northgate",
+      "date": "2025-11-29",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r045",
+      "unit": "Northgate",
+      "date": "2025-11-30",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r046",
+      "unit": "Airport Road",
+      "date": "2025-12-02",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r047",
+      "unit": "Airport Road",
+      "date": "2025-12-04",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": true
+    },
+    {
+      "id": "r048",
+      "unit": "Airport Road",
+      "date": "2025-12-05",
+      "stars": 3,
+      "text": "Waited 40 minutes in line.",
+      "replied": true
+    },
+    {
+      "id": "r049",
+      "unit": "Riverside",
+      "date": "2025-12-05",
+      "stars": 2,
+      "text": "Wheels were still dirty after the top package.",
+      "replied": true
+    },
+    {
+      "id": "r050",
+      "unit": "Riverside",
+      "date": "2025-12-06",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r051",
+      "unit": "Airport Road",
+      "date": "2025-12-12",
+      "stars": 2,
+      "text": "The line wrapped around the block and barely moved.",
+      "replied": true
+    },
+    {
+      "id": "r052",
+      "unit": "Northgate",
+      "date": "2025-12-12",
+      "stars": 5,
+      "text": "The car came out spotless. Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r053",
+      "unit": "Riverside",
+      "date": "2025-12-16",
+      "stars": 3,
+      "text": "Film left on the windshield after drying.",
+      "replied": true
+    },
+    {
+      "id": "r054",
+      "unit": "Riverside",
+      "date": "2025-12-17",
+      "stars": 4,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r055",
+      "unit": "Airport Road",
+      "date": "2025-12-18",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app. The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r056",
+      "unit": "Northgate",
+      "date": "2025-12-19",
+      "stars": 5,
+      "text": "Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r057",
+      "unit": "Riverside",
+      "date": "2025-12-19",
+      "stars": 5,
+      "text": "Best wash I have had in town. Good value for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r058",
+      "unit": "Airport Road",
+      "date": "2025-12-20",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Free vacuums and mat cleaners are great.",
+      "replied": true
+    },
+    {
+      "id": "r059",
+      "unit": "Riverside",
+      "date": "2025-12-20",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r060",
+      "unit": "Northgate",
+      "date": "2025-12-21",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r061",
+      "unit": "Airport Road",
+      "date": "2025-12-22",
+      "stars": 5,
+      "text": "Vacuums have strong suction.",
+      "replied": true
+    },
+    {
+      "id": "r062",
+      "unit": "Airport Road",
+      "date": "2025-12-25",
+      "stars": 3,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r063",
+      "unit": "Airport Road",
+      "date": "2025-12-26",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r064",
+      "unit": "Riverside",
+      "date": "2025-12-26",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r065",
+      "unit": "Riverside",
+      "date": "2025-12-27",
+      "stars": 4,
+      "text": "Wheels and windows were really clean.",
+      "replied": true
+    },
+    {
+      "id": "r066",
+      "unit": "Airport Road",
+      "date": "2025-12-28",
+      "stars": 5,
+      "text": "Friendly team at the entrance.",
+      "replied": true
+    },
+    {
+      "id": "r067",
+      "unit": "Airport Road",
+      "date": "2025-12-29",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r068",
+      "unit": "Airport Road",
+      "date": "2025-12-29",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r069",
+      "unit": "Airport Road",
+      "date": "2025-12-31",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r070",
+      "unit": "Northgate",
+      "date": "2025-12-31",
+      "stars": 3,
+      "text": "Missed spots all over the back. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r071",
+      "unit": "Northgate",
+      "date": "2025-12-31",
+      "stars": 5,
+      "text": "Staff were kind and quick to help.",
+      "replied": false
+    },
+    {
+      "id": "r072",
+      "unit": "Riverside",
+      "date": "2025-12-31",
+      "stars": 5,
+      "text": "Vacuums have strong suction.",
+      "replied": false
+    },
+    {
+      "id": "r073",
+      "unit": "Riverside",
+      "date": "2026-01-03",
+      "stars": 2,
+      "text": "Antenna snapped in the tunnel. Friendly team at the entrance.",
+      "replied": true
+    },
+    {
+      "id": "r074",
+      "unit": "Northgate",
+      "date": "2026-01-04",
+      "stars": 4,
+      "text": "Friendly team at the entrance. Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r075",
+      "unit": "Northgate",
+      "date": "2026-01-05",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. In and out in ten minutes.",
+      "replied": true
+    },
+    {
+      "id": "r076",
+      "unit": "Airport Road",
+      "date": "2026-01-06",
+      "stars": 5,
+      "text": "Friendly team at the entrance. Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r077",
+      "unit": "Airport Road",
+      "date": "2026-01-06",
+      "stars": 5,
+      "text": "The car came out spotless. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r078",
+      "unit": "Riverside",
+      "date": "2026-01-08",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package. In and out in ten minutes.",
+      "replied": false
+    },
+    {
+      "id": "r079",
+      "unit": "Northgate",
+      "date": "2026-01-14",
+      "stars": 5,
+      "text": "The car came out spotless. Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r080",
+      "unit": "Riverside",
+      "date": "2026-01-14",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r081",
+      "unit": "Riverside",
+      "date": "2026-01-14",
+      "stars": 5,
+      "text": "Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r082",
+      "unit": "Northgate",
+      "date": "2026-01-17",
+      "stars": 3,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r083",
+      "unit": "Northgate",
+      "date": "2026-01-21",
+      "stars": 3,
+      "text": "Too expensive for a basic wash.",
+      "replied": false
+    },
+    {
+      "id": "r084",
+      "unit": "Riverside",
+      "date": "2026-01-23",
+      "stars": 2,
+      "text": "The attendant was rude when I asked a question.",
+      "replied": true
+    },
+    {
+      "id": "r085",
+      "unit": "Northgate",
+      "date": "2026-01-25",
+      "stars": 5,
+      "text": "In and out in ten minutes.",
+      "replied": true
+    },
+    {
+      "id": "r086",
+      "unit": "Airport Road",
+      "date": "2026-01-26",
+      "stars": 2,
+      "text": "Waited 40 minutes in line.",
+      "replied": true
+    },
+    {
+      "id": "r087",
+      "unit": "Northgate",
+      "date": "2026-01-27",
+      "stars": 4,
+      "text": "Free vacuums and mat cleaners are great.",
+      "replied": true
+    },
+    {
+      "id": "r088",
+      "unit": "Northgate",
+      "date": "2026-01-28",
+      "stars": 4,
+      "text": "The car came out spotless. Membership is easy to manage in the app.",
+      "replied": false
+    },
+    {
+      "id": "r089",
+      "unit": "Riverside",
+      "date": "2026-01-28",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r090",
+      "unit": "Airport Road",
+      "date": "2026-01-29",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r091",
+      "unit": "Airport Road",
+      "date": "2026-01-30",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r092",
+      "unit": "Northgate",
+      "date": "2026-02-01",
+      "stars": 5,
+      "text": "Best wash I have had in town. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r093",
+      "unit": "Northgate",
+      "date": "2026-02-10",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r094",
+      "unit": "Northgate",
+      "date": "2026-02-11",
+      "stars": 5,
+      "text": "Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r095",
+      "unit": "Riverside",
+      "date": "2026-02-12",
+      "stars": 1,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r096",
+      "unit": "Northgate",
+      "date": "2026-02-17",
+      "stars": 4,
+      "text": "Free vacuums and mat cleaners are great.",
+      "replied": true
+    },
+    {
+      "id": "r097",
+      "unit": "Airport Road",
+      "date": "2026-02-18",
+      "stars": 3,
+      "text": "Prices went up again. The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r098",
+      "unit": "Airport Road",
+      "date": "2026-02-18",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r099",
+      "unit": "Riverside",
+      "date": "2026-02-20",
+      "stars": 3,
+      "text": "Half the vacuums were broken.",
+      "replied": true
+    },
+    {
+      "id": "r100",
+      "unit": "Airport Road",
+      "date": "2026-02-21",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r101",
+      "unit": "Northgate",
+      "date": "2026-02-23",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r102",
+      "unit": "Northgate",
+      "date": "2026-02-25",
+      "stars": 2,
+      "text": "Staff ignored me at the pay station.",
+      "replied": true
+    },
+    {
+      "id": "r103",
+      "unit": "Northgate",
+      "date": "2026-03-01",
+      "stars": 4,
+      "text": "Vacuums have strong suction. Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r104",
+      "unit": "Airport Road",
+      "date": "2026-03-02",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r105",
+      "unit": "Northgate",
+      "date": "2026-03-02",
+      "stars": 5,
+      "text": "Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r106",
+      "unit": "Riverside",
+      "date": "2026-03-06",
+      "stars": 2,
+      "text": "Vacuum had no suction again.",
+      "replied": false
+    },
+    {
+      "id": "r107",
+      "unit": "Northgate",
+      "date": "2026-03-07",
+      "stars": 5,
+      "text": "Best wash I have had in town. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r108",
+      "unit": "Riverside",
+      "date": "2026-03-07",
+      "stars": 5,
+      "text": "Best wash I have had in town. Vacuums have strong suction.",
+      "replied": false
+    },
+    {
+      "id": "r109",
+      "unit": "Northgate",
+      "date": "2026-03-10",
+      "stars": 5,
+      "text": "Free vacuums and mat cleaners are great. The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r110",
+      "unit": "Airport Road",
+      "date": "2026-03-13",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": false
+    },
+    {
+      "id": "r111",
+      "unit": "Riverside",
+      "date": "2026-03-14",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r112",
+      "unit": "Airport Road",
+      "date": "2026-03-15",
+      "stars": 5,
+      "text": "Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r113",
+      "unit": "Northgate",
+      "date": "2026-03-15",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r114",
+      "unit": "Northgate",
+      "date": "2026-03-19",
+      "stars": 5,
+      "text": "Vacuums have strong suction. Friendly team at the entrance.",
+      "replied": true
+    },
+    {
+      "id": "r115",
+      "unit": "Riverside",
+      "date": "2026-03-20",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r116",
+      "unit": "Northgate",
+      "date": "2026-03-23",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app. Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r117",
+      "unit": "Airport Road",
+      "date": "2026-03-27",
+      "stars": 5,
+      "text": "The car came out spotless. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r118",
+      "unit": "Riverside",
+      "date": "2026-03-29",
+      "stars": 5,
+      "text": "Vacuums have strong suction. The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r119",
+      "unit": "Riverside",
+      "date": "2026-03-31",
+      "stars": 5,
+      "text": "In and out in ten minutes. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r120",
+      "unit": "Airport Road",
+      "date": "2026-04-05",
+      "stars": 2,
+      "text": "Film left on the windshield after drying.",
+      "replied": true
+    },
+    {
+      "id": "r121",
+      "unit": "Northgate",
+      "date": "2026-04-07",
+      "stars": 2,
+      "text": "Staff ignored me at the pay station.",
+      "replied": true
+    },
+    {
+      "id": "r122",
+      "unit": "Northgate",
+      "date": "2026-04-08",
+      "stars": 2,
+      "text": "Billed twice in one month for the unlimited plan. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r123",
+      "unit": "Riverside",
+      "date": "2026-04-10",
+      "stars": 1,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r124",
+      "unit": "Riverside",
+      "date": "2026-04-10",
+      "stars": 2,
+      "text": "Too expensive for a basic wash.",
+      "replied": false
+    },
+    {
+      "id": "r125",
+      "unit": "Northgate",
+      "date": "2026-04-12",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r126",
+      "unit": "Northgate",
+      "date": "2026-04-14",
+      "stars": 1,
+      "text": "Charged again after I cancelled my membership.",
+      "replied": true
+    },
+    {
+      "id": "r127",
+      "unit": "Airport Road",
+      "date": "2026-04-19",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r128",
+      "unit": "Riverside",
+      "date": "2026-04-19",
+      "stars": 5,
+      "text": "Best wash I have had in town.",
+      "replied": false
+    },
+    {
+      "id": "r129",
+      "unit": "Airport Road",
+      "date": "2026-04-20",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package. Vacuums have strong suction.",
+      "replied": true
+    },
+    {
+      "id": "r130",
+      "unit": "Northgate",
+      "date": "2026-04-20",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r131",
+      "unit": "Northgate",
+      "date": "2026-04-22",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r132",
+      "unit": "Riverside",
+      "date": "2026-04-22",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r133",
+      "unit": "Northgate",
+      "date": "2026-04-27",
+      "stars": 4,
+      "text": "Best wash I have had in town. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r134",
+      "unit": "Northgate",
+      "date": "2026-04-27",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r135",
+      "unit": "Riverside",
+      "date": "2026-04-30",
+      "stars": 4,
+      "text": "In and out in ten minutes.",
+      "replied": false
+    },
+    {
+      "id": "r136",
+      "unit": "Northgate",
+      "date": "2026-05-03",
+      "stars": 5,
+      "text": "Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r137",
+      "unit": "Northgate",
+      "date": "2026-05-03",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r138",
+      "unit": "Riverside",
+      "date": "2026-05-04",
+      "stars": 5,
+      "text": "Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r139",
+      "unit": "Airport Road",
+      "date": "2026-05-06",
+      "stars": 5,
+      "text": "Fair price for what you get. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r140",
+      "unit": "Airport Road",
+      "date": "2026-05-07",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r141",
+      "unit": "Northgate",
+      "date": "2026-05-08",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r142",
+      "unit": "Northgate",
+      "date": "2026-05-09",
+      "stars": 1,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r143",
+      "unit": "Riverside",
+      "date": "2026-05-10",
+      "stars": 4,
+      "text": "Vacuum had no suction again. The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r144",
+      "unit": "Airport Road",
+      "date": "2026-05-11",
+      "stars": 3,
+      "text": "Waited 40 minutes in line. Membership is easy to manage in the app.",
+      "replied": false
+    },
+    {
+      "id": "r145",
+      "unit": "Airport Road",
+      "date": "2026-05-12",
+      "stars": 4,
+      "text": "Friendly team at the entrance. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r146",
+      "unit": "Riverside",
+      "date": "2026-05-12",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r147",
+      "unit": "Riverside",
+      "date": "2026-05-14",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app. Best wash I have had in town.",
+      "replied": false
+    },
+    {
+      "id": "r148",
+      "unit": "Airport Road",
+      "date": "2026-05-16",
+      "stars": 4,
+      "text": "Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r149",
+      "unit": "Northgate",
+      "date": "2026-05-16",
+      "stars": 2,
+      "text": "Waited 40 minutes in line.",
+      "replied": false
+    },
+    {
+      "id": "r150",
+      "unit": "Airport Road",
+      "date": "2026-05-17",
+      "stars": 5,
+      "text": "In and out in ten minutes.",
+      "replied": true
+    },
+    {
+      "id": "r151",
+      "unit": "Airport Road",
+      "date": "2026-05-18",
+      "stars": 2,
+      "text": "Wheels were still dirty after the top package.",
+      "replied": true
+    },
+    {
+      "id": "r152",
+      "unit": "Northgate",
+      "date": "2026-05-19",
+      "stars": 5,
+      "text": "Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r153",
+      "unit": "Northgate",
+      "date": "2026-05-19",
+      "stars": 5,
+      "text": "Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r154",
+      "unit": "Riverside",
+      "date": "2026-05-21",
+      "stars": 5,
+      "text": "Good value for the unlimited plan. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r155",
+      "unit": "Airport Road",
+      "date": "2026-05-23",
+      "stars": 1,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r156",
+      "unit": "Riverside",
+      "date": "2026-05-25",
+      "stars": 4,
+      "text": "The line wrapped around the block and barely moved. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r157",
+      "unit": "Northgate",
+      "date": "2026-05-26",
+      "stars": 2,
+      "text": "Charged again after I cancelled my membership. Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r158",
+      "unit": "Northgate",
+      "date": "2026-05-27",
+      "stars": 4,
+      "text": "Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r159",
+      "unit": "Riverside",
+      "date": "2026-05-30",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": false
+    },
+    {
+      "id": "r160",
+      "unit": "Airport Road",
+      "date": "2026-06-01",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": false
+    },
+    {
+      "id": "r161",
+      "unit": "Northgate",
+      "date": "2026-06-01",
+      "stars": 5,
+      "text": "Fair price for what you get. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r162",
+      "unit": "Airport Road",
+      "date": "2026-06-02",
+      "stars": 4,
+      "text": "The line wrapped around the block and barely moved. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r163",
+      "unit": "Northgate",
+      "date": "2026-06-02",
+      "stars": 2,
+      "text": "Charged again after I cancelled my membership. Short line even on a Saturday.",
+      "replied": false
+    },
+    {
+      "id": "r164",
+      "unit": "Riverside",
+      "date": "2026-06-03",
+      "stars": 4,
+      "text": "Wheels and windows were really clean. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r165",
+      "unit": "Airport Road",
+      "date": "2026-06-06",
+      "stars": 2,
+      "text": "No way to cancel the membership in the app. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r166",
+      "unit": "Riverside",
+      "date": "2026-06-06",
+      "stars": 4,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r167",
+      "unit": "Riverside",
+      "date": "2026-06-10",
+      "stars": 5,
+      "text": "The car came out spotless. In and out in ten minutes.",
+      "replied": true
+    },
+    {
+      "id": "r168",
+      "unit": "Riverside",
+      "date": "2026-06-10",
+      "stars": 3,
+      "text": "Vacuum had no suction again. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r169",
+      "unit": "Riverside",
+      "date": "2026-06-11",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r170",
+      "unit": "Riverside",
+      "date": "2026-06-11",
+      "stars": 4,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r171",
+      "unit": "Northgate",
+      "date": "2026-06-15",
+      "stars": 5,
+      "text": "Best wash I have had in town. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r172",
+      "unit": "Airport Road",
+      "date": "2026-06-17",
+      "stars": 1,
+      "text": "The brushes cracked my side mirror.",
+      "replied": false
+    },
+    {
+      "id": "r173",
+      "unit": "Airport Road",
+      "date": "2026-06-21",
+      "stars": 2,
+      "text": "Waited 40 minutes in line.",
+      "replied": false
+    },
+    {
+      "id": "r174",
+      "unit": "Northgate",
+      "date": "2026-06-26",
+      "stars": 5,
+      "text": "In and out in ten minutes. Wheels and windows were really clean.",
+      "replied": true
+    },
+    {
+      "id": "r175",
+      "unit": "Northgate",
+      "date": "2026-06-26",
+      "stars": 1,
+      "text": "Prices went up again.",
+      "replied": true
+    },
+    {
+      "id": "r176",
+      "unit": "Northgate",
+      "date": "2026-06-29",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": false
+    },
+    {
+      "id": "r177",
+      "unit": "Northgate",
+      "date": "2026-06-30",
+      "stars": 1,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r178",
+      "unit": "Northgate",
+      "date": "2026-07-01",
+      "stars": 5,
+      "text": "Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r179",
+      "unit": "Riverside",
+      "date": "2026-07-01",
+      "stars": 5,
+      "text": "The car came out spotless. Fair price for what you get.",
+      "replied": true
+    },
+    {
+      "id": "r180",
+      "unit": "Northgate",
+      "date": "2026-07-02",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r181",
+      "unit": "Airport Road",
+      "date": "2026-07-03",
+      "stars": 1,
+      "text": "No way to cancel the membership in the app.",
+      "replied": true
+    },
+    {
+      "id": "r182",
+      "unit": "Riverside",
+      "date": "2026-07-04",
+      "stars": 1,
+      "text": "Charged again after I cancelled my membership.",
+      "replied": false
+    },
+    {
+      "id": "r183",
+      "unit": "Riverside",
+      "date": "2026-07-04",
+      "stars": 5,
+      "text": "Wheels and windows were really clean. Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r184",
+      "unit": "Riverside",
+      "date": "2026-07-06",
+      "stars": 5,
+      "text": "Best wash I have had in town. Short line even on a Saturday.",
+      "replied": false
+    },
+    {
+      "id": "r185",
+      "unit": "Northgate",
+      "date": "2026-07-07",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r186",
+      "unit": "Northgate",
+      "date": "2026-07-07",
+      "stars": 2,
+      "text": "Billed twice in one month for the unlimited plan. Wheels and windows were really clean.",
+      "replied": false
+    },
+    {
+      "id": "r187",
+      "unit": "Riverside",
+      "date": "2026-07-09",
+      "stars": 1,
+      "text": "Charged again after I cancelled my membership.",
+      "replied": false
+    },
+    {
+      "id": "r188",
+      "unit": "Airport Road",
+      "date": "2026-07-12",
+      "stars": 3,
+      "text": "The line wrapped around the block and barely moved. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r189",
+      "unit": "Northgate",
+      "date": "2026-07-12",
+      "stars": 5,
+      "text": "In and out in ten minutes.",
+      "replied": true
+    },
+    {
+      "id": "r190",
+      "unit": "Airport Road",
+      "date": "2026-07-14",
+      "stars": 2,
+      "text": "Charged again after I cancelled my membership. Good value for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r191",
+      "unit": "Airport Road",
+      "date": "2026-07-14",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r192",
+      "unit": "Riverside",
+      "date": "2026-07-15",
+      "stars": 4,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r193",
+      "unit": "Northgate",
+      "date": "2026-07-19",
+      "stars": 4,
+      "text": "The car came out spotless. Free vacuums and mat cleaners are great.",
+      "replied": true
+    },
+    {
+      "id": "r194",
+      "unit": "Northgate",
+      "date": "2026-07-20",
+      "stars": 5,
+      "text": "Fair price for what you get.",
+      "replied": false
+    },
+    {
+      "id": "r195",
+      "unit": "Northgate",
+      "date": "2026-07-22",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Good value for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r196",
+      "unit": "Airport Road",
+      "date": "2026-07-23",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r197",
+      "unit": "Riverside",
+      "date": "2026-07-23",
+      "stars": 5,
+      "text": "Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r198",
+      "unit": "Northgate",
+      "date": "2026-07-24",
+      "stars": 2,
+      "text": "Prices went up again.",
+      "replied": false
+    },
+    {
+      "id": "r199",
+      "unit": "Riverside",
+      "date": "2026-07-26",
+      "stars": 5,
+      "text": "Good value for the unlimited plan. Short line even on a Saturday.",
+      "replied": true
+    },
+    {
+      "id": "r200",
+      "unit": "Riverside",
+      "date": "2026-08-01",
+      "stars": 1,
+      "text": "Half the vacuums were broken.",
+      "replied": false
+    },
+    {
+      "id": "r201",
+      "unit": "Riverside",
+      "date": "2026-08-05",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": true
+    },
+    {
+      "id": "r202",
+      "unit": "Airport Road",
+      "date": "2026-08-10",
+      "stars": 4,
+      "text": "Friendly team at the entrance.",
+      "replied": true
+    },
+    {
+      "id": "r203",
+      "unit": "Riverside",
+      "date": "2026-08-10",
+      "stars": 4,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r204",
+      "unit": "Riverside",
+      "date": "2026-08-21",
+      "stars": 4,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r205",
+      "unit": "Airport Road",
+      "date": "2026-08-22",
+      "stars": 5,
+      "text": "Vacuums have strong suction. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r206",
+      "unit": "Airport Road",
+      "date": "2026-08-22",
+      "stars": 3,
+      "text": "Waited 40 minutes in line. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r207",
+      "unit": "Airport Road",
+      "date": "2026-08-23",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r208",
+      "unit": "Airport Road",
+      "date": "2026-08-23",
+      "stars": 3,
+      "text": "Staff ignored me at the pay station.",
+      "replied": true
+    },
+    {
+      "id": "r209",
+      "unit": "Northgate",
+      "date": "2026-08-25",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": false
+    },
+    {
+      "id": "r210",
+      "unit": "Northgate",
+      "date": "2026-08-27",
+      "stars": 5,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r211",
+      "unit": "Riverside",
+      "date": "2026-08-28",
+      "stars": 4,
+      "text": "Film left on the windshield after drying. Vacuums have strong suction.",
+      "replied": true
+    },
+    {
+      "id": "r212",
+      "unit": "Northgate",
+      "date": "2026-08-29",
+      "stars": 5,
+      "text": "In and out in ten minutes. Vacuums have strong suction.",
+      "replied": false
+    },
+    {
+      "id": "r213",
+      "unit": "Riverside",
+      "date": "2026-08-29",
+      "stars": 2,
+      "text": "Charged again after I cancelled my membership. Vacuums have strong suction.",
+      "replied": false
+    },
+    {
+      "id": "r214",
+      "unit": "Riverside",
+      "date": "2026-08-29",
+      "stars": 2,
+      "text": "No way to cancel the membership in the app. The attendant was friendly and helped me pick a package.",
+      "replied": true
+    },
+    {
+      "id": "r215",
+      "unit": "Airport Road",
+      "date": "2026-08-31",
+      "stars": 5,
+      "text": "",
+      "replied": true
+    },
+    {
+      "id": "r216",
+      "unit": "Airport Road",
+      "date": "2026-08-31",
+      "stars": 5,
+      "text": "Best wash I have had in town.",
+      "replied": false
+    },
+    {
+      "id": "r217",
+      "unit": "Airport Road",
+      "date": "2026-09-03",
+      "stars": 5,
+      "text": "",
+      "replied": false
+    },
+    {
+      "id": "r218",
+      "unit": "Northgate",
+      "date": "2026-09-06",
+      "stars": 5,
+      "text": "Good value for the unlimited plan.",
+      "replied": false
+    },
+    {
+      "id": "r219",
+      "unit": "Northgate",
+      "date": "2026-09-06",
+      "stars": 5,
+      "text": "Staff were kind and quick to help. Free vacuums and mat cleaners are great.",
+      "replied": false
+    },
+    {
+      "id": "r220",
+      "unit": "Northgate",
+      "date": "2026-09-06",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r221",
+      "unit": "Airport Road",
+      "date": "2026-09-08",
+      "stars": 5,
+      "text": "In and out in ten minutes. Staff were kind and quick to help.",
+      "replied": true
+    },
+    {
+      "id": "r222",
+      "unit": "Northgate",
+      "date": "2026-09-08",
+      "stars": 3,
+      "text": "Missed spots all over the back.",
+      "replied": true
+    },
+    {
+      "id": "r223",
+      "unit": "Airport Road",
+      "date": "2026-09-11",
+      "stars": 2,
+      "text": "Half the vacuums were broken.",
+      "replied": false
+    },
+    {
+      "id": "r224",
+      "unit": "Airport Road",
+      "date": "2026-09-11",
+      "stars": 1,
+      "text": "No way to cancel the membership in the app.",
+      "replied": false
+    },
+    {
+      "id": "r225",
+      "unit": "Airport Road",
+      "date": "2026-09-16",
+      "stars": 4,
+      "text": "Too expensive for a basic wash. Short line even on a Saturday.",
+      "replied": false
+    },
+    {
+      "id": "r226",
+      "unit": "Riverside",
+      "date": "2026-09-17",
+      "stars": 4,
+      "text": "The attendant was friendly and helped me pick a package.",
+      "replied": false
+    },
+    {
+      "id": "r227",
+      "unit": "Northgate",
+      "date": "2026-09-18",
+      "stars": 3,
+      "text": "Film left on the windshield after drying. Membership is easy to manage in the app.",
+      "replied": true
+    },
+    {
+      "id": "r228",
+      "unit": "Riverside",
+      "date": "2026-09-20",
+      "stars": 5,
+      "text": "The car came out spotless.",
+      "replied": false
+    },
+    {
+      "id": "r229",
+      "unit": "Riverside",
+      "date": "2026-09-21",
+      "stars": 1,
+      "text": "Billed twice in one month for the unlimited plan.",
+      "replied": true
+    },
+    {
+      "id": "r230",
+      "unit": "Riverside",
+      "date": "2026-09-23",
+      "stars": 1,
+      "text": "Film left on the windshield after drying.",
+      "replied": true
+    },
+    {
+      "id": "r231",
+      "unit": "Northgate",
+      "date": "2026-09-25",
+      "stars": 4,
+      "text": "Friendly team at the entrance.",
+      "replied": false
+    },
+    {
+      "id": "r232",
+      "unit": "Riverside",
+      "date": "2026-09-26",
+      "stars": 3,
+      "text": "Half the vacuums were broken. Best wash I have had in town.",
+      "replied": true
+    },
+    {
+      "id": "r233",
+      "unit": "Northgate",
+      "date": "2026-09-29",
+      "stars": 5,
+      "text": "Friendly team at the entrance.",
+      "replied": true
+    },
+    {
+      "id": "r234",
+      "unit": "Northgate",
+      "date": "2026-09-29",
+      "stars": 3,
+      "text": "Vacuum had no suction again.",
+      "replied": true
+    },
+    {
+      "id": "r235",
+      "unit": "Riverside",
+      "date": "2026-09-29",
+      "stars": 2,
+      "text": "Half the vacuums were broken.",
+      "replied": true
+    },
+    {
+      "id": "r236",
+      "unit": "Northgate",
+      "date": "2026-09-30",
+      "stars": 5,
+      "text": "Membership is easy to manage in the app.",
+      "replied": true
+    }
+  ],
+  "listings": [
+    {
+      "title": "Example Car Wash Northgate",
+      "ours": true,
+      "rating": 4.4,
+      "votes_count": 612
+    },
+    {
+      "title": "Example Car Wash Riverside",
+      "ours": true,
+      "rating": 4.1,
+      "votes_count": 455
+    },
+    {
+      "title": "Example Car Wash Airport Road",
+      "ours": true,
+      "rating": 4.2,
+      "votes_count": 389
+    },
+    {
+      "title": "Rival A (express tunnel)",
+      "ours": false,
+      "rating": 4.5,
+      "votes_count": 720
+    },
+    {
+      "title": "Rival B (hand wash and detailing)",
+      "ours": false,
+      "rating": 4.7,
+      "votes_count": 210
+    },
+    {
+      "title": "Rival C (express tunnel)",
+      "ours": false,
+      "rating": 3.9,
+      "votes_count": 530
+    }
+  ],
+  "rival_reviews": {
+    "business": "Rival A (express tunnel)",
+    "rows": [
+      {
+        "id": "a01",
+        "date": "2025-10-17",
+        "stars": 5,
+        "text": "Wheels and windows were really clean. Friendly team at the entrance."
+      },
+      {
+        "id": "a02",
+        "date": "2025-10-20",
+        "stars": 2,
+        "text": "The line wrapped around the block and barely moved."
+      },
+      {
+        "id": "a03",
+        "date": "2025-10-23",
+        "stars": 4,
+        "text": "The attendant was friendly and helped me pick a package."
+      },
+      {
+        "id": "a04",
+        "date": "2025-10-24",
+        "stars": 1,
+        "text": "Film left on the windshield after drying."
+      },
+      {
+        "id": "a05",
+        "date": "2025-11-07",
+        "stars": 5,
+        "text": "Good value for the unlimited plan."
+      },
+      {
+        "id": "a06",
+        "date": "2025-11-07",
+        "stars": 4,
+        "text": "Wheels and windows were really clean. The attendant was friendly and helped me pick a package."
+      },
+      {
+        "id": "a07",
+        "date": "2025-11-13",
+        "stars": 5,
+        "text": "Friendly team at the entrance."
+      },
+      {
+        "id": "a08",
+        "date": "2025-11-27",
+        "stars": 4,
+        "text": "Friendly team at the entrance. Membership is easy to manage in the app."
+      },
+      {
+        "id": "a09",
+        "date": "2025-12-12",
+        "stars": 5,
+        "text": "Staff were kind and quick to help. Membership is easy to manage in the app."
+      },
+      {
+        "id": "a10",
+        "date": "2025-12-13",
+        "stars": 5,
+        "text": "Best wash I have had in town. Friendly team at the entrance."
+      },
+      {
+        "id": "a11",
+        "date": "2026-01-10",
+        "stars": 5,
+        "text": "Good value for the unlimited plan."
+      },
+      {
+        "id": "a12",
+        "date": "2026-01-17",
+        "stars": 5,
+        "text": "Best wash I have had in town."
+      },
+      {
+        "id": "a13",
+        "date": "2026-01-23",
+        "stars": 3,
+        "text": "Wheels were still dirty after the top package."
+      },
+      {
+        "id": "a14",
+        "date": "2026-03-25",
+        "stars": 3,
+        "text": "Wheels were still dirty after the top package."
+      },
+      {
+        "id": "a15",
+        "date": "2026-04-08",
+        "stars": 5,
+        "text": "Wheels and windows were really clean."
+      },
+      {
+        "id": "a16",
+        "date": "2026-04-22",
+        "stars": 5,
+        "text": "Good value for the unlimited plan."
+      },
+      {
+        "id": "a17",
+        "date": "2026-05-17",
+        "stars": 3,
+        "text": "Waited 40 minutes in line."
+      },
+      {
+        "id": "a18",
+        "date": "2026-05-28",
+        "stars": 5,
+        "text": "Staff were kind and quick to help."
+      },
+      {
+        "id": "a19",
+        "date": "2026-06-17",
+        "stars": 5,
+        "text": "The attendant was friendly and helped me pick a package. Membership is easy to manage in the app."
+      },
+      {
+        "id": "a20",
+        "date": "2026-06-21",
+        "stars": 5,
+        "text": "Friendly team at the entrance. Membership is easy to manage in the app."
+      },
+      {
+        "id": "a21",
+        "date": "2026-06-28",
+        "stars": 5,
+        "text": "The car came out spotless."
+      },
+      {
+        "id": "a22",
+        "date": "2026-07-19",
+        "stars": 4,
+        "text": "The attendant was friendly and helped me pick a package. Membership is easy to manage in the app."
+      },
+      {
+        "id": "a23",
+        "date": "2026-07-20",
+        "stars": 2,
+        "text": "Film left on the windshield after drying."
+      },
+      {
+        "id": "a24",
+        "date": "2026-07-25",
+        "stars": 5,
+        "text": "The car came out spotless. Friendly team at the entrance."
+      },
+      {
+        "id": "a25",
+        "date": "2026-08-07",
+        "stars": 3,
+        "text": "Wheels were still dirty after the top package."
+      },
+      {
+        "id": "a26",
+        "date": "2026-08-09",
+        "stars": 3,
+        "text": "The line wrapped around the block and barely moved."
+      },
+      {
+        "id": "a27",
+        "date": "2026-08-15",
+        "stars": 1,
+        "text": "Wheels were still dirty after the top package."
+      },
+      {
+        "id": "a28",
+        "date": "2026-08-23",
+        "stars": 5,
+        "text": "Good value for the unlimited plan."
+      },
+      {
+        "id": "a29",
+        "date": "2026-09-16",
+        "stars": 2,
+        "text": "Wheels were still dirty after the top package."
+      },
+      {
+        "id": "a30",
+        "date": "2026-09-28",
+        "stars": 5,
+        "text": "Best wash I have had in town."
+      }
+    ]
+  }
+}

@@ -1,0 +1,954 @@
+{
+  "header": {
+    "business": "Example Pet Food Store (invented example)",
+    "source": "uploaded orders CSV",
+    "cohorts": "2025-04 to 2026-09 by first-order month",
+    "orders_through": "2026-09-30",
+    "currency": "USD",
+    "time_zone": "America/Chicago"
+  },
+  "data_check": {
+    "rows_read": 2294,
+    "dropped": {
+      "test orders": 6,
+      "cancelled": 10,
+      "fully refunded": 12,
+      "no customer id or email (guest)": 5,
+      "zero value after refunds": 3
+    },
+    "partial_refunds_subtracted": 12,
+    "orders_kept": 2258,
+    "dropped_share_pct": 1.6,
+    "customers": 951,
+    "unmapped_sources": [],
+    "revenue_kept": 95343.82
+  },
+  "headline": {
+    "customers": 951,
+    "repeat_by_day_90_pct": 43.4,
+    "repeat_by_day_90_base": "732 customers with 90 days of history",
+    "median_days_to_second_order": 31,
+    "second_order_window_days": 45,
+    "cohorts_too_small_to_read": [
+      "2025-04"
+    ]
+  },
+  "findings": [
+    {
+      "title": "Most customers who come back do it inside 45 days",
+      "detail": "42.1% of customers with 180 days of history ordered again by day 90 and 44.9% by day 180. 80% of those second orders happened by day 45. Of the 344 customers still without a second order on day 45, only 14.0% ordered by day 180: this is where cohorts fall away, so the second-order nudge goes out on day 24, before day 45."
+    },
+    {
+      "title": "Meta Ads brings one-time buyers",
+      "detail": "22.3% of customers whose first order came from Meta Ads ordered again by day 90 (plus or minus 6.5 points), against 49.2% for everyone else (z = -6.03). Their first order averages $30.66 and their value by month 6 is $75.95 per customer. At the rest of the store's rate they would have brought 42 more repeat customers. 40.1% of them started with Rope toy bundle and Orthopedic pet bed, against 16.7% of everyone else, so look at what these ads offer before judging the channel on first-order ROAS."
+    },
+    {
+      "title": "Refill products have a clock; set the reminders from it",
+      "detail": "Dry dog food 12 kg: median 33 days, remind on day 29; Clumping cat litter 10 L: median 26 days, remind on day 22; Wet cat food 24-pack: median 20 days, remind on day 17; Flea and tick treatment, 3 doses: median 90 days, remind on day 83. Dental chews 30-pack: too irregular to time (p75 minus p25 is wider than the median); Rope toy bundle: too few repeats to time (under 30 intervals); Orthopedic pet bed: too few repeats to time (under 30 intervals)."
+    },
+    {
+      "title": "Rope toy bundle and Orthopedic pet bed rarely start a repeat customer",
+      "detail": "Rope toy bundle: 15.7% ordered again by day 90, against 47.3% for everyone else (z = -5.63); Orthopedic pet bed: 10.0% ordered again by day 90, against 47.0% for everyone else (z = -5.94). The best first product is Clumping cat litter 10 L at 58.7%. These buyers get the second-order nudge, pointed at a refill product. Flea and tick treatment, 3 doses is judged on day 180 because its median reorder interval is over 60 days: 56.4%, no clear difference."
+    },
+    {
+      "title": "Newer cohorts come back more often",
+      "detail": "Quarter pools 2026-04 to 2026-06 vs 2025-04 to 2025-06: 47.4% vs 34.1% ordered again by day 90 (z = 2.12), real change. Single monthly cohorts here are under 100 customers and swing by up to plus or minus 16.9 points, so compare quarter pools, not one month against the next."
+    }
+  ],
+  "cohort_table": [
+    {
+      "cohort": "2025-04",
+      "customers": 22,
+      "status": "too small to read (under 30 customers)"
+    },
+    {
+      "cohort": "2025-05",
+      "customers": 33,
+      "active_share_pct": {
+        "M1": 36.4,
+        "M2": 27.3,
+        "M3": 27.3,
+        "M4": 21.2,
+        "M5": 15.2,
+        "M6": 15.2,
+        "M7": 9.1,
+        "M8": 6.1,
+        "M9": 3.0,
+        "M10": 3.0,
+        "M11": 3.0,
+        "M12": 0.0
+      },
+      "repeat_by_day_90_pct": 42.4,
+      "repeat_by_day_90_margin_pp": 16.9,
+      "repeat_by_day_180_pct": 42.4,
+      "first_month_revenue": 1474.97,
+      "value_per_customer_M3": 89.22,
+      "revenue_kept_M3_pct": 29.2,
+      "value_per_customer_M6": 118.15,
+      "revenue_kept_M6_pct": 22.0,
+      "value_per_customer_M12": 135.38,
+      "revenue_kept_M12_pct": 0.0,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-06",
+      "customers": 36,
+      "active_share_pct": {
+        "M1": 22.2,
+        "M2": 16.7,
+        "M3": 11.1,
+        "M4": 19.4,
+        "M5": 5.6,
+        "M6": 11.1,
+        "M7": 8.3,
+        "M8": 5.6,
+        "M9": 5.6,
+        "M10": 2.8,
+        "M11": 5.6,
+        "M12": 0.0
+      },
+      "repeat_by_day_90_pct": 27.8,
+      "repeat_by_day_90_margin_pp": 14.6,
+      "repeat_by_day_180_pct": 36.1,
+      "first_month_revenue": 1575.98,
+      "value_per_customer_M3": 67.19,
+      "revenue_kept_M3_pct": 10.6,
+      "value_per_customer_M6": 84.48,
+      "revenue_kept_M6_pct": 12.5,
+      "value_per_customer_M12": 101.18,
+      "revenue_kept_M12_pct": 0.0,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-07",
+      "customers": 37,
+      "active_share_pct": {
+        "M1": 32.4,
+        "M2": 29.7,
+        "M3": 24.3,
+        "M4": 21.6,
+        "M5": 16.2,
+        "M6": 13.5,
+        "M7": 8.1,
+        "M8": 5.4,
+        "M9": 8.1,
+        "M10": 8.1,
+        "M11": 5.4,
+        "M12": 5.4
+      },
+      "repeat_by_day_90_pct": 45.9,
+      "repeat_by_day_90_margin_pp": 16.1,
+      "repeat_by_day_180_pct": 45.9,
+      "first_month_revenue": 1530.5,
+      "value_per_customer_M3": 84.46,
+      "revenue_kept_M3_pct": 23.4,
+      "value_per_customer_M6": 114.44,
+      "revenue_kept_M6_pct": 17.5,
+      "value_per_customer_M12": 137.4,
+      "revenue_kept_M12_pct": 6.0,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-08",
+      "customers": 37,
+      "active_share_pct": {
+        "M1": 24.3,
+        "M2": 21.6,
+        "M3": 18.9,
+        "M4": 8.1,
+        "M5": 5.4,
+        "M6": 2.7,
+        "M7": 2.7,
+        "M8": 2.7,
+        "M9": 0.0,
+        "M10": 0.0,
+        "M11": 2.7,
+        "M12": 0.0
+      },
+      "repeat_by_day_90_pct": 37.8,
+      "repeat_by_day_90_margin_pp": 15.6,
+      "repeat_by_day_180_pct": 40.5,
+      "first_month_revenue": 1635.39,
+      "value_per_customer_M3": 76.66,
+      "revenue_kept_M3_pct": 22.9,
+      "value_per_customer_M6": 86.36,
+      "revenue_kept_M6_pct": 3.7,
+      "value_per_customer_M12": 90.48,
+      "revenue_kept_M12_pct": 0.0,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-09",
+      "customers": 45,
+      "active_share_pct": {
+        "M1": 33.3,
+        "M2": 26.7,
+        "M3": 17.8,
+        "M4": 13.3,
+        "M5": 15.6,
+        "M6": 13.3,
+        "M7": 2.2,
+        "M8": 4.4,
+        "M9": 2.2,
+        "M10": 2.2,
+        "M11": 4.4,
+        "M12": 2.2
+      },
+      "repeat_by_day_90_pct": 37.8,
+      "repeat_by_day_90_margin_pp": 14.2,
+      "repeat_by_day_180_pct": 37.8,
+      "first_month_revenue": 1692.83,
+      "value_per_customer_M3": 71.52,
+      "revenue_kept_M3_pct": 19.3,
+      "value_per_customer_M6": 86.39,
+      "revenue_kept_M6_pct": 14.0,
+      "value_per_customer_M12": 96.15,
+      "revenue_kept_M12_pct": 4.4,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-10",
+      "customers": 46,
+      "active_share_pct": {
+        "M1": 37.0,
+        "M2": 32.6,
+        "M3": 32.6,
+        "M4": 28.3,
+        "M5": 19.6,
+        "M6": 15.2,
+        "M7": 4.3,
+        "M8": 4.3,
+        "M9": 4.3,
+        "M10": 4.3,
+        "M11": 2.2,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 47.8,
+      "repeat_by_day_90_margin_pp": 14.4,
+      "repeat_by_day_180_pct": 50.0,
+      "first_month_revenue": 2141.65,
+      "value_per_customer_M3": 99.79,
+      "revenue_kept_M3_pct": 39.0,
+      "value_per_customer_M6": 130.94,
+      "revenue_kept_M6_pct": 16.8,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-11",
+      "customers": 48,
+      "active_share_pct": {
+        "M1": 41.7,
+        "M2": 31.2,
+        "M3": 31.2,
+        "M4": 29.2,
+        "M5": 20.8,
+        "M6": 16.7,
+        "M7": 14.6,
+        "M8": 8.3,
+        "M9": 8.3,
+        "M10": 8.3,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 47.9,
+      "repeat_by_day_90_margin_pp": 14.1,
+      "repeat_by_day_180_pct": 52.1,
+      "first_month_revenue": 2031.08,
+      "value_per_customer_M3": 97.17,
+      "revenue_kept_M3_pct": 38.2,
+      "value_per_customer_M6": 125.26,
+      "revenue_kept_M6_pct": 16.1,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2025-12",
+      "customers": 53,
+      "active_share_pct": {
+        "M1": 20.8,
+        "M2": 18.9,
+        "M3": 13.2,
+        "M4": 9.4,
+        "M5": 7.5,
+        "M6": 5.7,
+        "M7": 3.8,
+        "M8": 3.8,
+        "M9": 3.8,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 30.2,
+      "repeat_by_day_90_margin_pp": 12.4,
+      "repeat_by_day_180_pct": 32.1,
+      "first_month_revenue": 2172.69,
+      "value_per_customer_M3": 63.8,
+      "revenue_kept_M3_pct": 16.4,
+      "value_per_customer_M6": 73.74,
+      "revenue_kept_M6_pct": 3.6,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-01",
+      "customers": 54,
+      "active_share_pct": {
+        "M1": 42.6,
+        "M2": 46.3,
+        "M3": 42.6,
+        "M4": 31.5,
+        "M5": 27.8,
+        "M6": 22.2,
+        "M7": 20.4,
+        "M8": 9.3,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 57.4,
+      "repeat_by_day_90_margin_pp": 13.2,
+      "repeat_by_day_180_pct": 64.8,
+      "first_month_revenue": 2103.25,
+      "value_per_customer_M3": 96.94,
+      "revenue_kept_M3_pct": 51.4,
+      "value_per_customer_M6": 133.03,
+      "revenue_kept_M6_pct": 28.2,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-02",
+      "customers": 58,
+      "active_share_pct": {
+        "M1": 39.7,
+        "M2": 31.0,
+        "M3": 22.4,
+        "M4": 22.4,
+        "M5": 15.5,
+        "M6": 13.8,
+        "M7": 8.6,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 46.6,
+      "repeat_by_day_90_margin_pp": 12.8,
+      "repeat_by_day_180_pct": 48.3,
+      "first_month_revenue": 2555.78,
+      "value_per_customer_M3": 90.84,
+      "revenue_kept_M3_pct": 23.3,
+      "value_per_customer_M6": 117.28,
+      "revenue_kept_M6_pct": 14.7,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-03",
+      "customers": 65,
+      "active_share_pct": {
+        "M1": 32.3,
+        "M2": 36.9,
+        "M3": 30.8,
+        "M4": 21.5,
+        "M5": 10.8,
+        "M6": 12.3,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 41.5,
+      "repeat_by_day_90_margin_pp": 12.0,
+      "repeat_by_day_180_pct": 43.1,
+      "first_month_revenue": 2560.58,
+      "value_per_customer_M3": 86.29,
+      "revenue_kept_M3_pct": 36.1,
+      "value_per_customer_M6": 107.31,
+      "revenue_kept_M6_pct": 11.8,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-04",
+      "customers": 62,
+      "active_share_pct": {
+        "M1": 29.0,
+        "M2": 24.2,
+        "M3": 29.0,
+        "M4": 19.4,
+        "M5": 12.9,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 41.9,
+      "repeat_by_day_90_margin_pp": 12.3,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 2506.29,
+      "value_per_customer_M3": 85.13,
+      "revenue_kept_M3_pct": 40.5,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-05",
+      "customers": 63,
+      "active_share_pct": {
+        "M1": 42.9,
+        "M2": 28.6,
+        "M3": 19.0,
+        "M4": 14.3,
+        "M5": null,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 52.4,
+      "repeat_by_day_90_margin_pp": 12.3,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 2782.93,
+      "value_per_customer_M3": 84.62,
+      "revenue_kept_M3_pct": 20.1,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-06",
+      "customers": 69,
+      "active_share_pct": {
+        "M1": 33.3,
+        "M2": 33.3,
+        "M3": 26.1,
+        "M4": null,
+        "M5": null,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": 47.8,
+      "repeat_by_day_90_margin_pp": 11.8,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 2688.07,
+      "value_per_customer_M3": 86.58,
+      "revenue_kept_M3_pct": 36.1,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-07",
+      "customers": 72,
+      "active_share_pct": {
+        "M1": 41.7,
+        "M2": 40.3,
+        "M3": null,
+        "M4": null,
+        "M5": null,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": null,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 3123.82,
+      "value_per_customer_M3": null,
+      "revenue_kept_M3_pct": null,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-08",
+      "customers": 77,
+      "active_share_pct": {
+        "M1": 35.1,
+        "M2": null,
+        "M3": null,
+        "M4": null,
+        "M5": null,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": null,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 3246.95,
+      "value_per_customer_M3": null,
+      "revenue_kept_M3_pct": null,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    },
+    {
+      "cohort": "2026-09",
+      "customers": 74,
+      "active_share_pct": {
+        "M1": null,
+        "M2": null,
+        "M3": null,
+        "M4": null,
+        "M5": null,
+        "M6": null,
+        "M7": null,
+        "M8": null,
+        "M9": null,
+        "M10": null,
+        "M11": null,
+        "M12": null
+      },
+      "repeat_by_day_90_pct": null,
+      "repeat_by_day_180_pct": null,
+      "first_month_revenue": 2920.04,
+      "value_per_customer_M3": null,
+      "revenue_kept_M3_pct": null,
+      "value_per_customer_M6": null,
+      "revenue_kept_M6_pct": null,
+      "value_per_customer_M12": null,
+      "revenue_kept_M12_pct": null,
+      "status": "read; under 100 customers, compare on quarter pools"
+    }
+  ],
+  "quarter_pools": [
+    {
+      "pool": "2025-04 to 2025-06",
+      "customers": 91,
+      "repeat_by_day_90_pct": 34.1,
+      "repeat_by_day_90_margin_pp": 9.7,
+      "median_days_to_second_order": 36,
+      "second_order_window_days": 56,
+      "after_window_reordered_by_day_180_pct": 11.1
+    },
+    {
+      "pool": "2025-07 to 2025-09",
+      "customers": 119,
+      "repeat_by_day_90_pct": 40.3,
+      "repeat_by_day_90_margin_pp": 8.8,
+      "median_days_to_second_order": 30,
+      "second_order_window_days": 50,
+      "after_window_reordered_by_day_180_pct": 10.3
+    },
+    {
+      "pool": "2025-10 to 2025-12",
+      "customers": 147,
+      "repeat_by_day_90_pct": 41.5,
+      "repeat_by_day_90_margin_pp": 8.0,
+      "median_days_to_second_order": 30,
+      "second_order_window_days": 42,
+      "after_window_reordered_by_day_180_pct": 13.7
+    },
+    {
+      "pool": "2026-01 to 2026-03",
+      "customers": 177,
+      "repeat_by_day_90_pct": 48.0,
+      "repeat_by_day_90_margin_pp": 7.4,
+      "median_days_to_second_order": 31,
+      "second_order_window_days": 44,
+      "after_window_reordered_by_day_180_pct": 17.3
+    },
+    {
+      "pool": "2026-04 to 2026-06",
+      "customers": 194,
+      "repeat_by_day_90_pct": 47.4,
+      "repeat_by_day_90_margin_pp": 7.0
+    },
+    {
+      "pool": "2026-07 to 2026-09",
+      "customers": 223,
+      "repeat_by_day_90_pct": null,
+      "why_blank": "not every customer has 90 days of history yet"
+    }
+  ],
+  "trend": {
+    "compared": "2026-04 to 2026-06 vs 2025-04 to 2025-06",
+    "repeat_by_day_90_pct": [
+      47.4,
+      34.1
+    ],
+    "difference_pp": 13.3,
+    "z": 2.12,
+    "verdict": "real change"
+  },
+  "second_order_timing": {
+    "customers_with_180_days": 537,
+    "second_order_by_day_pct": {
+      "30": 22.2,
+      "60": 39.3,
+      "90": 42.1,
+      "180": 44.9
+    },
+    "second_orders_within_180": 241,
+    "days_to_second_order": {
+      "p25": 24,
+      "median": 31,
+      "p75": 42
+    },
+    "second_order_window_days": 45,
+    "still_without_second_order_at_window": 344,
+    "of_those_reordered_by_day_180_pct": 14.0
+  },
+  "product_reorder_intervals": [
+    {
+      "product": "Dry dog food 12 kg",
+      "customers_who_bought_it": 326,
+      "reorder_intervals": 503,
+      "p25_days": 29,
+      "median_days": 33,
+      "p75_days": 39,
+      "spread_p75_minus_p25": 10,
+      "reminder_delay_days": 29,
+      "delay_rule": "p25",
+      "status": "timed"
+    },
+    {
+      "product": "Clumping cat litter 10 L",
+      "customers_who_bought_it": 202,
+      "reorder_intervals": 424,
+      "p25_days": 22,
+      "median_days": 26,
+      "p75_days": 31,
+      "spread_p75_minus_p25": 9,
+      "reminder_delay_days": 22,
+      "delay_rule": "p25",
+      "status": "timed"
+    },
+    {
+      "product": "Wet cat food 24-pack",
+      "customers_who_bought_it": 112,
+      "reorder_intervals": 252,
+      "p25_days": 17,
+      "median_days": 20,
+      "p75_days": 26,
+      "spread_p75_minus_p25": 9,
+      "reminder_delay_days": 17,
+      "delay_rule": "p25",
+      "status": "timed"
+    },
+    {
+      "product": "Flea and tick treatment, 3 doses",
+      "customers_who_bought_it": 65,
+      "reorder_intervals": 56,
+      "p25_days": 82,
+      "median_days": 90,
+      "p75_days": 100,
+      "spread_p75_minus_p25": 18,
+      "reminder_delay_days": 83,
+      "delay_rule": "median minus 7",
+      "status": "timed"
+    },
+    {
+      "product": "Dental chews 30-pack",
+      "customers_who_bought_it": 431,
+      "reorder_intervals": 210,
+      "p25_days": 28,
+      "median_days": 43,
+      "p75_days": 72,
+      "spread_p75_minus_p25": 44,
+      "status": "too irregular to time (p75 minus p25 is wider than the median)"
+    },
+    {
+      "product": "Rope toy bundle",
+      "customers_who_bought_it": 118,
+      "reorder_intervals": 0,
+      "status": "too few repeats to time (under 30 intervals)"
+    },
+    {
+      "product": "Orthopedic pet bed",
+      "customers_who_bought_it": 90,
+      "reorder_intervals": 0,
+      "status": "too few repeats to time (under 30 intervals)"
+    }
+  ],
+  "by_first_channel": [
+    {
+      "first_channel": "Google Ads",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 196,
+      "repeat_in_window_pct": 46.9,
+      "margin_pp": 7.0,
+      "rest_repeat_in_window_pct": 42.2,
+      "z_vs_rest": 1.15,
+      "first_order_value": 44.36,
+      "customers_with_6_months": 142,
+      "value_per_customer_M6": 110.74,
+      "label": "no clear difference"
+    },
+    {
+      "first_channel": "Meta Ads",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 157,
+      "repeat_in_window_pct": 22.3,
+      "margin_pp": 6.5,
+      "rest_repeat_in_window_pct": 49.2,
+      "z_vs_rest": -6.03,
+      "first_order_value": 30.66,
+      "customers_with_6_months": 114,
+      "value_per_customer_M6": 75.95,
+      "label": "brings one-time buyers"
+    },
+    {
+      "first_channel": "Organic search",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 134,
+      "repeat_in_window_pct": 53.7,
+      "margin_pp": 8.4,
+      "rest_repeat_in_window_pct": 41.1,
+      "z_vs_rest": 2.66,
+      "first_order_value": 42.93,
+      "customers_with_6_months": 95,
+      "value_per_customer_M6": 118.23,
+      "label": "brings repeat buyers"
+    },
+    {
+      "first_channel": "Direct",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 102,
+      "repeat_in_window_pct": 56.9,
+      "margin_pp": 9.6,
+      "rest_repeat_in_window_pct": 41.3,
+      "z_vs_rest": 2.95,
+      "first_order_value": 41.32,
+      "customers_with_6_months": 77,
+      "value_per_customer_M6": 134.55,
+      "label": "brings repeat buyers"
+    },
+    {
+      "first_channel": "Email",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 72,
+      "repeat_in_window_pct": 47.2,
+      "margin_pp": 11.5,
+      "rest_repeat_in_window_pct": 43.0,
+      "z_vs_rest": 0.68,
+      "first_order_value": 36.75,
+      "customers_with_6_months": 48,
+      "value_per_customer_M6": 105.6,
+      "label": "no clear difference"
+    },
+    {
+      "first_channel": "Referral",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 71,
+      "repeat_in_window_pct": 38.0,
+      "margin_pp": 11.3,
+      "rest_repeat_in_window_pct": 44.0,
+      "z_vs_rest": -0.97,
+      "first_order_value": 42.32,
+      "customers_with_6_months": 58,
+      "value_per_customer_M6": 107.07,
+      "label": "no clear difference"
+    }
+  ],
+  "one_time_buyer_sizing": [
+    {
+      "first_channel": "Meta Ads",
+      "customers_with_full_window": 157,
+      "repeat_customers_missing_vs_rest": 42,
+      "how": "157 customers x (49.2% - 22.3%) = 42 customers who would have ordered again by day 90 at the rest of the store's rate",
+      "first_product_is_a_one_time_product_pct": 40.1,
+      "same_share_for_everyone_else_pct": 16.7
+    }
+  ],
+  "by_first_product": [
+    {
+      "first_product": "Dry dog food 12 kg",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 222,
+      "repeat_in_window_pct": 55.0,
+      "margin_pp": 6.5,
+      "rest_repeat_in_window_pct": 38.4,
+      "z_vs_rest": 4.15,
+      "first_order_value": 58.24,
+      "customers_with_6_months": 159,
+      "value_per_customer_M6": 159.91,
+      "label": "brings repeat buyers"
+    },
+    {
+      "first_product": "Clumping cat litter 10 L",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 155,
+      "repeat_in_window_pct": 58.7,
+      "margin_pp": 7.8,
+      "rest_repeat_in_window_pct": 39.3,
+      "z_vs_rest": 4.32,
+      "first_order_value": 26.23,
+      "customers_with_6_months": 122,
+      "value_per_customer_M6": 96.1,
+      "label": "brings repeat buyers"
+    },
+    {
+      "first_product": "Wet cat food 24-pack",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 89,
+      "repeat_in_window_pct": 55.1,
+      "margin_pp": 10.3,
+      "rest_repeat_in_window_pct": 41.8,
+      "z_vs_rest": 2.36,
+      "first_order_value": 33.82,
+      "customers_with_6_months": 64,
+      "value_per_customer_M6": 133.69,
+      "label": "brings repeat buyers"
+    },
+    {
+      "first_product": "Rope toy bundle",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 89,
+      "repeat_in_window_pct": 15.7,
+      "margin_pp": 7.6,
+      "rest_repeat_in_window_pct": 47.3,
+      "z_vs_rest": -5.63,
+      "first_order_value": 19.77,
+      "customers_with_6_months": 62,
+      "value_per_customer_M6": 49.72,
+      "label": "brings one-time buyers"
+    },
+    {
+      "first_product": "Orthopedic pet bed",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 70,
+      "repeat_in_window_pct": 10.0,
+      "margin_pp": 7.0,
+      "rest_repeat_in_window_pct": 47.0,
+      "z_vs_rest": -5.94,
+      "first_order_value": 58.95,
+      "customers_with_6_months": 51,
+      "value_per_customer_M6": 80.92,
+      "label": "brings one-time buyers"
+    },
+    {
+      "first_product": "Dental chews 30-pack",
+      "repeat_window_days": 90,
+      "customers_with_full_window": 52,
+      "repeat_in_window_pct": 44.2,
+      "margin_pp": 13.5,
+      "rest_repeat_in_window_pct": 43.4,
+      "z_vs_rest": 0.12,
+      "first_order_value": 13.61,
+      "customers_with_6_months": 37,
+      "value_per_customer_M6": 23.83,
+      "label": "no clear difference"
+    },
+    {
+      "first_product": "Flea and tick treatment, 3 doses",
+      "repeat_window_days": 180,
+      "customers_with_full_window": 39,
+      "repeat_in_window_pct": 56.4,
+      "margin_pp": 15.6,
+      "rest_repeat_in_window_pct": 44.0,
+      "z_vs_rest": 1.5,
+      "first_order_value": 45.62,
+      "customers_with_6_months": 39,
+      "value_per_customer_M6": 88.65,
+      "label": "no clear difference"
+    }
+  ],
+  "triggers": [
+    {
+      "name": "Refill reminder: Dry dog food 12 kg",
+      "trigger": "Placed Order whose items include Dry dog food 12 kg",
+      "delay_days": 29,
+      "exit_when": "the customer places any order after entering the flow",
+      "why_this_delay": "median reorder interval 33 days, p25 29 days; delay = max(p25, median - 7) = 29",
+      "evidence": "503 reorder intervals from 326 customers"
+    },
+    {
+      "name": "Refill reminder: Clumping cat litter 10 L",
+      "trigger": "Placed Order whose items include Clumping cat litter 10 L",
+      "delay_days": 22,
+      "exit_when": "the customer places any order after entering the flow",
+      "why_this_delay": "median reorder interval 26 days, p25 22 days; delay = max(p25, median - 7) = 22",
+      "evidence": "424 reorder intervals from 202 customers"
+    },
+    {
+      "name": "Refill reminder: Wet cat food 24-pack",
+      "trigger": "Placed Order whose items include Wet cat food 24-pack",
+      "delay_days": 17,
+      "exit_when": "the customer places any order after entering the flow",
+      "why_this_delay": "median reorder interval 20 days, p25 17 days; delay = max(p25, median - 7) = 17",
+      "evidence": "252 reorder intervals from 112 customers"
+    },
+    {
+      "name": "Refill reminder: Flea and tick treatment, 3 doses",
+      "trigger": "Placed Order whose items include Flea and tick treatment, 3 doses",
+      "delay_days": 83,
+      "exit_when": "the customer places any order after entering the flow",
+      "why_this_delay": "median reorder interval 90 days, p25 82 days; delay = max(p25, median - 7) = 83",
+      "evidence": "56 reorder intervals from 65 customers"
+    },
+    {
+      "name": "Second-order nudge",
+      "trigger": "first Placed Order with none of the timed refill products",
+      "delay_days": 24,
+      "exit_when": "the customer places a second order",
+      "why_this_delay": "store-wide days to second order: median 31, p25 24; delay = max(p25, median - 7) = 24, inside the 45-day second-order window",
+      "evidence": "241 second orders within 180 days from 537 customers with 180 days of history"
+    }
+  ],
+  "klaviyo_build_notes": [
+    "Build each refill reminder as a flow triggered by the Placed Order metric with a trigger filter on the item, then a time delay of the days above, then the email.",
+    "Add the flow filter 'Placed Order zero times since starting this flow' so customers who already reordered never get the reminder.",
+    "Point the second-order nudge for Rope toy bundle and Orthopedic pet bed buyers at a refill product, since that is what repeat customers buy."
+  ],
+  "not_covered": [
+    "Win-back of lapsed customers and churn scoring: a separate job.",
+    "Margins: revenue is net of discounts and refunds, not of product cost, so value per customer is revenue, not profit."
+  ],
+  "go_deeper": [
+    {
+      "next_step": "Whether Meta Ads customers are worth their acquisition cost at month-6 value",
+      "skill": "ltv-cac-ratio-optimizer"
+    },
+    {
+      "next_step": "Whether the refill and second-order flows are live and healthy in Klaviyo",
+      "skill": "klaviyo-flow-auditor"
+    },
+    {
+      "next_step": "Writing the reminder and nudge emails",
+      "skill": "email-sequence-builder"
+    }
+  ],
+  "writes": "none run; the cohort table can be written to a Google Sheet after you confirm"
+}

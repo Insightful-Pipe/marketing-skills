@@ -1,0 +1,562 @@
+{
+  "mode": "proposal",
+  "title": "Proposal: paid media and local search for Brackenmer Dental Group",
+  "prepared_by": "Dunmerrow Digital (invented agency)",
+  "prepared_for": "Brackenmer Dental Group (invented)",
+  "date": "2026-10-28",
+  "valid_until": "2026-11-27",
+  "sections": {
+    "1_where_you_are_today": {
+      "in_your_words": [
+        {
+          "quote": "We spend about ten grand a month on Google and I honestly can't tell you what we get for it.",
+          "role": "owner",
+          "maps_to": "G1, G2"
+        },
+        {
+          "quote": "When someone new moves to town and searches for a dentist, I want all four offices to show up.",
+          "role": "owner",
+          "maps_to": "G3"
+        },
+        {
+          "quote": "Our current agency sends a 30-page PDF every month. Nobody reads it.",
+          "role": "office manager",
+          "maps_to": "G4"
+        }
+      ],
+      "baseline_table": [
+        {
+          "channel": "Google Ads",
+          "result_counted": "Booking request (Google Ads conversion)",
+          "spend_per_month_usd": 10500,
+          "results_per_month": 140,
+          "cost_per_result_usd": 75,
+          "note": "14% of spend went to search terms that never convert"
+        },
+        {
+          "channel": "Meta Ads",
+          "result_counted": "Lead form submission (Meta result)",
+          "spend_per_month_usd": 4500,
+          "results_per_month": 50,
+          "cost_per_result_usd": 90,
+          "note": "counted in Meta Ads, not in GA4; how many become booked visits is unknown"
+        },
+        {
+          "channel": "Organic search",
+          "clicks_per_month": 3200,
+          "note": "site-wide; location pages not measured yet"
+        }
+      ],
+      "window": "2026-07-30 to 2026-10-27 (90 days), monthly = 90-day total / 3"
+    },
+    "2_goals_and_kpis": [
+      {
+        "id": "G1",
+        "client_words": "40 more new-patient booking requests a month from ads",
+        "kpi": "Paid enquiries per month: Google Ads booking requests plus Meta lead form submissions",
+        "baseline": "190 a month (140 Google Ads booking requests + 50 Meta lead form submissions), 90-day average",
+        "baseline_source": "prospect audit: Google Ads conversion \"Booking request\" and Meta result \"Lead form submission\", 2026-07-30 to 2026-10-27",
+        "projection_range": "196 to 252 paid enquiries a month at $18,000 planned spend (estimate)",
+        "client_target": 230,
+        "target_check": "reachable, not promised: inside the projected range",
+        "source_of_truth": {
+          "google_ads_booking_requests": "GA4 booking_request key event, after the duplicate-fire fix in days 1 to 14",
+          "meta_lead_form_submissions": "Meta Ads results (instant form leads are submitted on Meta and never reach GA4)"
+        }
+      },
+      {
+        "id": "G2",
+        "client_words": "Lower cost per booking; we feel we are overpaying",
+        "kpi": "Blended cost per paid enquiry (booking request or lead form submission)",
+        "baseline": "$79 ($45,000 / 570 over 90 days)",
+        "baseline_source": "prospect audit",
+        "projection_range": "$71 to $92 (estimate: $18,000 / 252 and / 196)",
+        "target_check": "no number given by the client; the range is shown instead of a promise"
+      },
+      {
+        "id": "G3",
+        "client_words": "All four locations show up for 'dentist near me' searches",
+        "kpi": "Organic clicks to the four location pages per month",
+        "baseline": "not measured yet: the audit has site-wide clicks only (3,200 a month), not location pages",
+        "baseline_source": "measured in days 1 to 14 from Search Console, filtered to the four location pages",
+        "projection_range": "none: no target until the baseline exists",
+        "target_check": "baseline first"
+      },
+      {
+        "id": "G4",
+        "client_words": "A report the team actually reads",
+        "kpi": "None (a reporting requirement, not a metric)",
+        "baseline": "today: a 30-page monthly PDF",
+        "projection_range": "not applicable",
+        "target_check": "met by the reporting plan: a one-page monthly summary plus a live dashboard"
+      }
+    ],
+    "3_recommended_scope": [
+      {
+        "channel": "Google Ads",
+        "monthly_work": "Search term reviews and negatives weekly, bids and budgets weekly, ad tests monthly",
+        "hours": 19,
+        "sized_from": "3 + 0.75 x 9 campaigns + 0.1 x 64 ad groups + 1 x 2 started 1,000s of keywords (1,180) = 18.15, rounded up to 19"
+      },
+      {
+        "channel": "Meta Ads",
+        "monthly_work": "8 new ads, audience and lead form tests",
+        "hours": 13,
+        "sized_from": "3 + 0.75 x 4 campaigns + 0.25 x 11 ad sets + 0.5 x 8 new ads = 12.75, rounded up to 13"
+      },
+      {
+        "channel": "Local SEO (option B only)",
+        "monthly_work": "4 page optimisations, 2 local articles",
+        "hours": 18,
+        "sized_from": "4 + 1.5 x 4 pages + 4 x 2 articles = 18, rounded up to 18"
+      },
+      {
+        "channel": "Reporting",
+        "monthly_work": "One-page monthly summary, live dashboard, 2 calls",
+        "hours": 5,
+        "sized_from": "3 x 1 report + 1 x 2 meetings = 5, rounded up to 5"
+      }
+    ],
+    "4_first_90_days": [
+      {
+        "phase": "Access and baseline",
+        "days": "1 to 14",
+        "dates": "2026-11-16 to 2026-11-29",
+        "work": [
+          "Access to Google Ads, Meta, GA4 and Search Console",
+          "Fix the duplicate booking_request event",
+          "Measure location-page clicks (G3 baseline)",
+          "Add the wasted search terms as negatives"
+        ],
+        "client_needs_to": "Grant access by day 3; name one approver",
+        "gate": "Clean booking counts in GA4 for 7 days"
+      },
+      {
+        "phase": "Fix and rebuild",
+        "days": "15 to 45",
+        "dates": "2026-11-30 to 2026-12-30",
+        "work": [
+          "Restructure Google Ads around the four locations",
+          "Meta: call-back friendly lead form, first 8 new ads",
+          "Optimise the four location pages"
+        ],
+        "client_needs_to": "Approve ads within 2 business days",
+        "gate": "Blended cost per paid enquiry back at or under the $79 baseline"
+      },
+      {
+        "phase": "Test and scale",
+        "days": "46 to 90",
+        "dates": "2026-12-31 to 2027-02-13",
+        "work": [
+          "Shift budget toward the location campaigns with the lowest cost per booking request",
+          "2 local articles a month",
+          "Day-90 review against the G1 range"
+        ],
+        "client_needs_to": "Join the day-90 review",
+        "gate": "Paid enquiries inside the 196 to 252 range"
+      }
+    ],
+    "5_options_and_investment": [
+      {
+        "option": "A",
+        "name": "Paid media",
+        "pricing": "retainer",
+        "monthly_hours": 41,
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13
+          },
+          {
+            "line": "reporting",
+            "hours": 5
+          },
+          {
+            "line": "account management",
+            "hours": 4
+          }
+        ],
+        "monthly_fee_usd": 4550,
+        "fee_as_percent_of_ad_spend": 25.3,
+        "setup_project": {
+          "hours": 12,
+          "fee_usd": 1700,
+          "covers": "access, missing baselines and the tracking fix"
+        },
+        "first_90_days_total_usd": 15350
+      },
+      {
+        "option": "B",
+        "name": "Paid media and local SEO",
+        "pricing": "retainer",
+        "monthly_hours": 61,
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13
+          },
+          {
+            "line": "local-seo",
+            "hours": 18
+          },
+          {
+            "line": "reporting",
+            "hours": 5
+          },
+          {
+            "line": "account management",
+            "hours": 6
+          }
+        ],
+        "monthly_fee_usd": 6650,
+        "fee_as_percent_of_ad_spend": 36.9,
+        "setup_project": {
+          "hours": 14,
+          "fee_usd": 2000,
+          "covers": "access, missing baselines and the tracking fix"
+        },
+        "first_90_days_total_usd": 21950,
+        "recommended": true,
+        "why_recommended": "It is the only option that covers goal G3 (all four locations in local search); options A and C cover the paid goals only."
+      },
+      {
+        "option": "C",
+        "name": "Paid media, priced as a share of ad spend",
+        "pricing": "share_of_spend",
+        "monthly_hours": 41,
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13
+          },
+          {
+            "line": "reporting",
+            "hours": 5
+          },
+          {
+            "line": "account management",
+            "hours": 4
+          }
+        ],
+        "terms": {
+          "percent_of_ad_spend": 15,
+          "minimum_usd": 3900,
+          "percent_takes_over_above_spend_usd": 26000
+        },
+        "monthly_fee_usd": 3900,
+        "fee_as_percent_of_ad_spend": 21.7,
+        "setup_project": {
+          "hours": 12,
+          "fee_usd": 1700,
+          "covers": "access, missing baselines and the tracking fix"
+        },
+        "first_90_days_total_usd": 13400
+      }
+    ],
+    "6_assumptions_exclusions_changes": {
+      "assumptions": [
+        "Planned ad spend of $18,000 a month ($12,000 Google, $6,000 Meta)",
+        "Access to all accounts by day 3",
+        "Ad approvals within 2 business days",
+        "Projections are estimates from the last 90 days, not guarantees"
+      ],
+      "exclusions": [
+        "Ad spend (paid by the client directly to Google and Meta)",
+        "Website builds and new landing pages, including the cosmetic booking page (quoted separately on request)",
+        "Video shoots and photography",
+        "Paid tools and software licences",
+        "Channels not named in the chosen option"
+      ],
+      "change_requests": "Anything outside the chosen option gets a written estimate (hours x rate card) and starts only after written approval. Up to 2 revision rounds per deliverable are included."
+    },
+    "7_next_steps": [
+      "Choose an option by 2026-11-13",
+      "Sign and kick off on 2026-11-16",
+      "Send account access (Google Ads, Meta Business, GA4, Search Console) by day 3"
+    ]
+  },
+  "cover_email": {
+    "subject": "Brackenmer proposal: 3 options, decision by 2026-11-13",
+    "body": "Hi both, thanks for the call. Attached is the proposal. Short version: your ads bring in about 190 booking requests and lead form submissions a month at $79 each, and about 14% of Google spend goes to searches that never book. At $18,000 a month we estimate 196 to 252 of them a month. Option B is the only one that also works on local search for all four offices. Can you pick an option by 2026-11-13? Happy to walk through it on a call."
+  },
+  "internal_review_not_sent": {
+    "trap_check": [
+      {
+        "trap": "unlimited revisions",
+        "found_in": "agency boilerplate",
+        "line": "Our team provides unlimited revisions on all creative.",
+        "fix": "Cap at 2 revision rounds per deliverable; further rounds go through change requests."
+      },
+      {
+        "trap": "undefined optimization",
+        "found_in": "agency boilerplate",
+        "line": "We handle ongoing optimization of your campaigns.",
+        "fix": "Name the monthly work: search term reviews weekly, bid and budget checks weekly, 8 new Meta ads a month."
+      },
+      {
+        "trap": "undefined reporting",
+        "found_in": "agency boilerplate",
+        "line": "Monthly reporting included.",
+        "fix": "Name the report: one page, monthly by the 5th business day, the KPIs in section 2, plus a live dashboard."
+      },
+      {
+        "trap": "guaranteed results",
+        "found_in": "agency boilerplate",
+        "line": "We guarantee to double your leads within 90 days.",
+        "fix": "Remove. The audit projects 196 to 252 paid enquiries a month; doubling to 380 is above that range."
+      },
+      {
+        "trap": "proof claim with no evidence",
+        "found_in": "agency boilerplate",
+        "line": "Our clients average 4x return on ad spend.",
+        "fix": "Remove or replace with the one case study you have evidence for."
+      },
+      {
+        "trap": "always-on availability",
+        "found_in": "agency boilerplate",
+        "line": "You can reach your account team 24/7.",
+        "fix": "Replace with response times: 1 business day for email, same day for urgent ad issues."
+      },
+      {
+        "trap": "creative quantity missing",
+        "found_in": "agency boilerplate",
+        "line": "Creative for your ads is part of the package.",
+        "fix": "State the quantity: 8 new Meta ads a month (static or short video from client footage)."
+      },
+      {
+        "trap": "no exclusions",
+        "found_in": "agency boilerplate (missing)",
+        "line": null,
+        "fix": "Add the exclusions list in section 6."
+      },
+      {
+        "trap": "ad spend billing unclear",
+        "found_in": "agency boilerplate (missing)",
+        "line": null,
+        "fix": "State that ad spend is paid by the client straight to Google and Meta and is not part of the fee."
+      },
+      {
+        "trap": "client dependencies missing",
+        "found_in": "agency boilerplate (missing)",
+        "line": null,
+        "fix": "Add client duties: access by day 3, ad approvals within 2 business days."
+      },
+      {
+        "trap": "unscoped request from the call",
+        "found_in": "discovery notes",
+        "line": "a new online booking page for the cosmetic service line",
+        "fix": "Quote it as a separate project or list it under exclusions; it is in none of the options."
+      },
+      {
+        "trap": "account ownership unstated",
+        "found_in": "agency boilerplate",
+        "line": "You own your ad accounts and all creative we make for you.",
+        "missing": [
+          "analytics (the GA4 property and Search Console)"
+        ],
+        "fix": "Say the client also owns analytics (the GA4 property and Search Console), and keeps admin access to every account."
+      }
+    ],
+    "trap_check_passed": [
+      {
+        "trap": "tracking fix assumed",
+        "why": "the audit shows booking_request firing again on a confirmation page reload, and every option's setup project scopes the fix in days 1 to 14"
+      }
+    ],
+    "claims_needing_evidence": [
+      {
+        "trap": "guaranteed results",
+        "found_in": "agency boilerplate",
+        "line": "We guarantee to double your leads within 90 days.",
+        "fix": "Remove. The audit projects 196 to 252 paid enquiries a month; doubling to 380 is above that range."
+      },
+      {
+        "trap": "proof claim with no evidence",
+        "found_in": "agency boilerplate",
+        "line": "Our clients average 4x return on ad spend.",
+        "fix": "Remove or replace with the one case study you have evidence for."
+      }
+    ],
+    "proof_with_evidence_on_file": [
+      "Case study: an invented 3-location physiotherapy clinic, cost per booking from $88 to $69 over 6 months (signed client approval on file)"
+    ],
+    "pricing_and_floor_check": [
+      {
+        "option": "A",
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "reporting",
+            "hours": 5,
+            "role": "Analyst",
+            "rate_usd": 90
+          },
+          {
+            "line": "account management",
+            "hours": 4,
+            "role": "Strategist",
+            "rate_usd": 140
+          }
+        ],
+        "setup_math": "(8 + 2 x 2 channels) = 12 hours x $140 Strategist rate = $1,680, rounded up to $1,700",
+        "fee_math": "sum of hours x role rate = $4,530, rounded up to the next $50 = $4,550",
+        "effective_hourly_usd": 111,
+        "floor_usd": 95,
+        "clears_floor": true
+      },
+      {
+        "option": "B",
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "local-seo",
+            "hours": 18,
+            "role": "SEO specialist",
+            "rate_usd": 100
+          },
+          {
+            "line": "reporting",
+            "hours": 5,
+            "role": "Analyst",
+            "rate_usd": 90
+          },
+          {
+            "line": "account management",
+            "hours": 6,
+            "role": "Strategist",
+            "rate_usd": 140
+          }
+        ],
+        "setup_math": "(8 + 2 x 3 channels) = 14 hours x $140 Strategist rate = $1,960, rounded up to $2,000",
+        "fee_math": "sum of hours x role rate = $6,610, rounded up to the next $50 = $6,650",
+        "effective_hourly_usd": 109,
+        "floor_usd": 95,
+        "clears_floor": true
+      },
+      {
+        "option": "C",
+        "hours_by_line": [
+          {
+            "line": "google-ads",
+            "hours": 19,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "facebook-ads",
+            "hours": 13,
+            "role": "Paid media specialist",
+            "rate_usd": 110
+          },
+          {
+            "line": "reporting",
+            "hours": 5,
+            "role": "Analyst",
+            "rate_usd": 90
+          },
+          {
+            "line": "account management",
+            "hours": 4,
+            "role": "Strategist",
+            "rate_usd": 140
+          }
+        ],
+        "setup_math": "(8 + 2 x 2 channels) = 12 hours x $140 Strategist rate = $1,680, rounded up to $1,700",
+        "standard_terms": {
+          "percent": 15,
+          "minimum_usd": 3000,
+          "fee_at_planned_spend_usd": 3000,
+          "effective_hourly_usd": 73,
+          "below_floor": true
+        },
+        "minimum_raised": "At the standard 15% with a $3,000 minimum the fee is $3,000 for 41 hours, $73 an hour, under the $95 floor. Minimum raised to $95 x 41 hours = $3,895, rounded up to $3,900.",
+        "fee_math": "max($3,900 minimum, 15% x $18,000 planned spend = $2,700) = $3,900",
+        "effective_hourly_usd": 95,
+        "floor_usd": 95,
+        "clears_floor": true
+      }
+    ],
+    "projection_math": {
+      "google-ads": {
+        "baseline_90d_cost_usd": 31500,
+        "baseline_90d_results": 420,
+        "enough_to_project": true,
+        "baseline_cpa_usd": 75.0,
+        "baseline_results_per_month": 140,
+        "baseline_spend_per_month_usd": 10500,
+        "quantified_waste_share_pct": 14.0,
+        "best_case_cpa_usd": 64.5,
+        "worst_case_cpa_usd": 86.25,
+        "planned_spend_per_month_usd": 12000,
+        "results_per_month_low": 139,
+        "results_per_month_high": 186
+      },
+      "facebook-ads": {
+        "baseline_90d_cost_usd": 13500,
+        "baseline_90d_results": 150,
+        "enough_to_project": true,
+        "baseline_cpa_usd": 90.0,
+        "baseline_results_per_month": 50,
+        "baseline_spend_per_month_usd": 4500,
+        "quantified_waste_share_pct": 0.0,
+        "best_case_cpa_usd": 90.0,
+        "worst_case_cpa_usd": 103.5,
+        "planned_spend_per_month_usd": 6000,
+        "results_per_month_low": 57,
+        "results_per_month_high": 66
+      }
+    },
+    "points_to_confirm_with_a_lawyer": [
+      "Term and notice period",
+      "Payment terms and late fees",
+      "Who owns ad accounts, creative and data at the end",
+      "Confidentiality and patient data: no patient information is shared with the agency (check health privacy rules)",
+      "Liability cap",
+      "Non-solicitation of staff"
+    ]
+  },
+  "counts": {
+    "traps_checked": 13,
+    "traps_flagged": 12,
+    "traps_passed": [
+      "tracking fix assumed"
+    ],
+    "options": 3,
+    "goals": 4,
+    "goals_with_baseline": 2
+  }
+}

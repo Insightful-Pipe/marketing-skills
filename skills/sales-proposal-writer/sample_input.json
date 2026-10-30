@@ -1,0 +1,347 @@
+{
+  "note": "Example data: an invented online booking software company answering an RFP from an invented physiotherapy group, not real businesses. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"sales-proposal-writer\" skill. Here's an RFP from Harbor Physio Group for online booking across 14 clinics, our answer library and price list. Tell me if we should bid, and if yes, draft the answers.",
+  "mode": "RFP",
+  "run_date": "2026-10-28",
+  "seller": {
+    "name": "Example Booking Software",
+    "site": "https://www.example.com",
+    "product": "online booking, reminders and payments for salons, clinics, studios and personal trainers"
+  },
+  "rfp": {
+    "issuer": "Harbor Physio Group",
+    "issuer_site": "https://www.harbor-physio.example",
+    "title": "RFP 2026-07: Patient online booking and reminder system",
+    "issued": "2026-10-20",
+    "sections": {
+      "1.2": "Key dates: questions by 2026-11-06, responses due 2026-11-20 17:00 Eastern, award decision by 2026-12-15, contract start 2027-01-04.",
+      "1.3": "Submit one PDF through the Harbor procurement portal by 2026-11-20 17:00 Eastern.",
+      "1.4": "Send questions by email to the procurement office by 2026-11-06. Answers are shared with all bidders.",
+      "1.5": "The response must not exceed 25 pages, excluding Form B.",
+      "1.6": "Each answer in sections 3 and 4 must not exceed 150 words.",
+      "1.7": "Pricing must be given on Form B, signed by an officer of the bidder.",
+      "1.8": "Bidders may submit one alternate pricing proposal in addition to the base price.",
+      "2.1": "Harbor Physio Group runs 14 outpatient physiotherapy clinics with about 90 clinicians.",
+      "2.2": "We want to \"reduce missed appointments\", \"let patients book outside office hours\" and \"give the central team one view of every clinic's schedule\".",
+      "2.3": "The budget for the first three years is up to $75,000 including all one-time costs."
+    },
+    "goals": [
+      {
+        "goal": "reduce missed appointments",
+        "tag": "R 2.2"
+      },
+      {
+        "goal": "let patients book outside office hours",
+        "tag": "R 2.2"
+      },
+      {
+        "goal": "give the central team one view of every clinic's schedule",
+        "tag": "R 2.2"
+      }
+    ],
+    "clinics": 14,
+    "budget_3yr": 75000,
+    "due": "2026-11-20",
+    "due_time": "17:00 Eastern",
+    "questions_due": "2026-11-06",
+    "decision": "2026-12-15",
+    "contract_start": "2027-01-04",
+    "word_limit": 150,
+    "alternates_allowed": 1,
+    "requirements": [
+      {
+        "section": "3.1",
+        "type": "mandatory",
+        "text": "Patients must be able to book online 24/7 from web and mobile, without installing an app."
+      },
+      {
+        "section": "3.2",
+        "type": "mandatory",
+        "text": "The system shall send automated SMS and email reminders, with timing configurable per clinic."
+      },
+      {
+        "section": "3.3",
+        "type": "mandatory",
+        "text": "Central administration of all 14 clinics, each with its own calendars, staff and hours, is required."
+      },
+      {
+        "section": "3.4",
+        "type": "mandatory",
+        "text": "Staff must sign in through single sign-on with Microsoft Entra ID over SAML 2.0."
+      },
+      {
+        "section": "3.5",
+        "type": "mandatory",
+        "text": "Appointments must sync with our electronic health record, ChartBase EHR."
+      },
+      {
+        "section": "3.6",
+        "type": "mandatory",
+        "text": "The system shall take deposits and card payments at the time of booking."
+      },
+      {
+        "section": "3.7",
+        "type": "mandatory",
+        "text": "The vendor must sign a HIPAA Business Associate Agreement."
+      },
+      {
+        "section": "3.8",
+        "type": "mandatory",
+        "text": "The vendor shall commit to 99.9% monthly uptime, with service credits when it is missed."
+      },
+      {
+        "section": "3.9",
+        "type": "mandatory",
+        "text": "All 14 clinics must be live by 2027-03-01."
+      },
+      {
+        "section": "3.10",
+        "type": "mandatory",
+        "text": "The vendor shall provide an export of all appointment records in CSV on request."
+      },
+      {
+        "section": "4.1",
+        "type": "desirable",
+        "text": "A waitlist should automatically offer cancelled slots to waiting patients."
+      },
+      {
+        "section": "4.2",
+        "type": "desirable",
+        "text": "Clinicians should have two-way sync with Google and Outlook calendars."
+      },
+      {
+        "section": "4.3",
+        "type": "desirable",
+        "text": "A report of no-show rate by clinic is preferred."
+      },
+      {
+        "section": "4.4",
+        "type": "desirable",
+        "text": "Patients should complete digital intake forms before their first visit."
+      },
+      {
+        "section": "4.5",
+        "type": "desirable",
+        "text": "The booking page should meet WCAG 2.1 AA."
+      },
+      {
+        "section": "5.1",
+        "type": "mandatory",
+        "text": "Provide an itemised three-year total cost for 14 clinics, separating one-time and recurring costs, on Form B."
+      },
+      {
+        "section": "5.2",
+        "type": "mandatory",
+        "text": "Provide three references from healthcare customers with several locations."
+      }
+    ],
+    "submission_rules": [
+      "1.3",
+      "1.4",
+      "1.5",
+      "1.6",
+      "1.7",
+      "1.8"
+    ]
+  },
+  "offer": {
+    "O1": "Online booking page and a booking button for your website; works in any browser on phone or desktop, no app needed.",
+    "O2": "Automatic SMS and email reminders on a schedule each location sets; patients reply to confirm or cancel.",
+    "O3": "Business plan: one admin account for every location, each with its own calendars, staff, hours and services; up to 20 staff per location.",
+    "O4": "Deposits and card payments taken when the patient books.",
+    "O5": "Two-way sync with Google Calendar and Outlook calendars for each staff member.",
+    "O6": "Location reports with bookings, cancellations and no-shows by day; every report exports to CSV.",
+    "O7": "SAML 2.0 single sign-on add-on for Microsoft Entra ID, Okta and Google Workspace.",
+    "O8": "REST API and webhooks for new, changed and cancelled appointments; no prebuilt connectors to health record systems.",
+    "O9": "Standard rollout: 2 weeks of setup (sign-on, integrations, data import), then clinics go live in waves of up to 4 a week.",
+    "O10": "Waitlist auto-fill is on the roadmap for Q2 2027 and is not committed."
+  },
+  "answer_library": {
+    "source": "Google Sheet tab 'Answer library' (query_sheet_data)",
+    "rows": [
+      {
+        "id": "L1",
+        "question": "Can patients book online without an app?",
+        "answer": "Patients book from a booking page or a button on your website, on any device, at any hour. No app download is needed.",
+        "last_checked": "2026-08-14"
+      },
+      {
+        "id": "L2",
+        "question": "How do reminders work?",
+        "answer": "Automatic SMS and email reminders go out on a schedule each location sets, for example 48 hours and 2 hours before. Patients confirm or cancel by replying.",
+        "last_checked": "2026-07-02"
+      },
+      {
+        "id": "L3",
+        "question": "Do you support several locations?",
+        "answer": "On the Business plan, one admin account manages every location, each with its own calendars, staff, hours and services.",
+        "last_checked": "2026-05-19"
+      },
+      {
+        "id": "L4",
+        "question": "Will you sign a BAA?",
+        "answer": "We sign a HIPAA Business Associate Agreement with Business plan customers.",
+        "last_checked": "2025-03-12"
+      },
+      {
+        "id": "L5",
+        "question": "Do you support single sign-on?",
+        "answer": "SAML 2.0 single sign-on works with Microsoft Entra ID, Okta and Google Workspace as a paid add-on.",
+        "last_checked": "2026-09-03"
+      },
+      {
+        "id": "L6",
+        "question": "Do you integrate with EHR systems?",
+        "answer": "A REST API and webhooks send new, changed and cancelled appointments to other systems in real time. We have no prebuilt EHR connectors.",
+        "last_checked": "2026-06-25"
+      },
+      {
+        "id": "L7",
+        "question": "How is data secured?",
+        "answer": "Data is encrypted in transit and at rest and hosted in US data centres.",
+        "last_checked": "2026-04-30"
+      },
+      {
+        "id": "L8",
+        "question": "What reporting is included?",
+        "answer": "Location reports show bookings, cancellations and no-shows by day, and any report exports to CSV.",
+        "last_checked": "2026-02-11"
+      },
+      {
+        "id": "L9",
+        "question": "Can we export our data?",
+        "answer": "Admins can export all appointment records to CSV at any time, and we provide a full export within 5 business days on request.",
+        "last_checked": "2026-01-20"
+      },
+      {
+        "id": "L10",
+        "question": "Is the booking page accessible?",
+        "answer": "Our booking page was tested against WCAG 2.1 AA.",
+        "last_checked": "2024-06-20"
+      }
+    ]
+  },
+  "website_crawl": {
+    "links_found": [
+      "/",
+      "/pricing/",
+      "/features/online-booking/",
+      "/features/reminders/",
+      "/features/payments/",
+      "/customers/",
+      "/customers/marrowbrook-physio/",
+      "/customers/quintmoor-dental/",
+      "/security/",
+      "/integrations/",
+      "/blog/reduce-no-shows/",
+      "/demo/",
+      "/signup/"
+    ],
+    "pages_read": {
+      "/customers/marrowbrook-physio/": {
+        "h1": [
+          "How Marrowbrook Physio cut no-shows by 31% across 6 clinics"
+        ],
+        "h2": [
+          "The problem",
+          "What changed",
+          "Results"
+        ],
+        "meta_description": "Marrowbrook Physio moved 6 clinics to online booking and automatic reminders."
+      },
+      "/customers/quintmoor-dental/": {
+        "h1": [
+          "Quintmoor Dental Group moved 4 practices to online booking in 3 weeks"
+        ],
+        "h2": [
+          "Rollout",
+          "Results"
+        ],
+        "meta_description": "How a 4-practice dental group switched booking systems in 3 weeks."
+      },
+      "/security/": {
+        "h1": [
+          "Security and reliability"
+        ],
+        "h2": [
+          "99.9% uptime SLA",
+          "Encryption in transit and at rest",
+          "HIPAA-ready on the Business plan"
+        ],
+        "meta_description": "How we protect your data and keep booking online."
+      },
+      "/integrations/": {
+        "h1": [
+          "Integrations"
+        ],
+        "h2": [
+          "Google Calendar",
+          "Outlook",
+          "Card payments",
+          "REST API and webhooks"
+        ],
+        "meta_description": "Connect online booking to the tools you already use."
+      }
+    }
+  },
+  "price_list": {
+    "currency": "USD",
+    "items": {
+      "business_plan": {
+        "name": "Business plan, per clinic",
+        "unit": 99,
+        "billing": "monthly"
+      },
+      "sso": {
+        "name": "SAML single sign-on add-on, per account",
+        "unit": 150,
+        "billing": "monthly"
+      },
+      "onboarding": {
+        "name": "Onboarding and staff training, per clinic",
+        "unit": 400,
+        "billing": "one-time"
+      },
+      "api_setup": {
+        "name": "API integration setup (professional services)",
+        "unit": 2500,
+        "billing": "one-time"
+      },
+      "priority_support": {
+        "name": "Priority support (4-hour response, named manager)",
+        "unit": 300,
+        "billing": "monthly"
+      }
+    },
+    "discount": "None offered on this bid."
+  },
+  "references": [
+    {
+      "customer": "Marrowbrook Physio",
+      "industry": "healthcare",
+      "locations": 6,
+      "permission_to_name": true,
+      "page": "/customers/marrowbrook-physio/"
+    },
+    {
+      "customer": "Quintmoor Dental Group",
+      "industry": "healthcare",
+      "locations": 4,
+      "permission_to_name": true,
+      "page": "/customers/quintmoor-dental/"
+    },
+    {
+      "customer": "Wrenfield Hair Studio",
+      "industry": "salon",
+      "locations": 1,
+      "permission_to_name": true,
+      "page": null
+    }
+  ],
+  "user_answers": {
+    "relationship": "yes: we demoed to their operations director in September, before the RFP came out",
+    "open_field": "unknown: their current vendor is Competitor A and we can't tell whether the spec favours it",
+    "effort_days": 8,
+    "term_months": 36
+  }
+}

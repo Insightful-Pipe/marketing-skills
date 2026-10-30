@@ -1,0 +1,421 @@
+{
+  "header": {
+    "business": "Example Tea Company (invented example)",
+    "model": "online store, one-off orders",
+    "run_date": "2026-10-28",
+    "order_history": "2024-10-28 to 2026-10-27",
+    "orders": 17066,
+    "customers": 9159,
+    "return_window_days": 60,
+    "return_window_from": "84.1% of 7907 completed reorders came within 60 days (80th percentile, 15-day bins)",
+    "median_second_order_gap_days": 45,
+    "median_reorder_gap_days_repeat": 45
+  },
+  "stages": [
+    {
+      "stage": "subscriber",
+      "rule": "can receive email marketing and has 0 orders",
+      "people_now": 12320,
+      "entering_per_month": 978,
+      "entries_from": "average monthly sign-ups, Jul to Sep 2026 (Klaviyo Subscribed to List)"
+    },
+    {
+      "stage": "first-time buyer",
+      "rule": "exactly 1 order, placed in the last 60 days",
+      "people_now": 631,
+      "entering_per_month": 366,
+      "entries_from": "average monthly new customers, Jul to Sep 2026"
+    },
+    {
+      "stage": "repeat",
+      "rule": "2 or more orders, the last one in the last 60 days",
+      "people_now": 551,
+      "entering_per_month": 134,
+      "entries_from": "average monthly second orders, Jul to Sep 2026"
+    },
+    {
+      "stage": "at risk",
+      "rule": "last order 61 to 120 days ago",
+      "people_now": 755,
+      "entering_per_month": 391,
+      "entries_from": "customers whose last order is 61 to 90 days ago (crossed in the last 30 days)"
+    },
+    {
+      "stage": "lapsed",
+      "rule": "last order more than 120 days ago",
+      "people_now": 7222,
+      "entering_per_month": 344,
+      "entries_from": "customers whose last order is 121 to 150 days ago"
+    }
+  ],
+  "numbers_to_move": [
+    {
+      "stage": "subscriber",
+      "number": "sign-ups who place a first order within 30 days",
+      "baseline_pct": 7.0,
+      "from": "200 of 2864 sign-ups in the Jun to Aug 2026 cohorts",
+      "measured_in": "Klaviyo (Subscribed to List, then Placed Order)"
+    },
+    {
+      "stage": "first-time buyer",
+      "number": "first-time buyers who order again within 60 days",
+      "baseline_pct": 32.1,
+      "from": "2741 on-time second orders out of 3162 second orders plus 5366 one-order customers past 60 days",
+      "measured_in": "Shopify orders"
+    },
+    {
+      "stage": "repeat",
+      "number": "repeat buyers whose next order comes within 60 days",
+      "baseline_pct": 53.2,
+      "from": "3912 on-time reorders out of 4745 reorders plus 2611 repeat customers past 60 days",
+      "measured_in": "Shopify orders"
+    },
+    {
+      "stage": "at risk",
+      "number": "customers past 60 days who order before day 120",
+      "baseline_pct": 14.1,
+      "from": "1198 orders that came 61 to 120 days after the last, out of 1254 late reorders plus 7222 customers now past 120 days",
+      "measured_in": "Shopify orders"
+    },
+    {
+      "stage": "lapsed",
+      "number": "customers past 120 days who ever order again",
+      "baseline_pct": 0.8,
+      "from": "56 orders that came more than 120 days after the last, out of those plus 7222 customers now past 120 days",
+      "measured_in": "Shopify orders"
+    }
+  ],
+  "coverage_map": [
+    {
+      "stage": "subscriber",
+      "job": "welcome and first-order reason",
+      "channel": "email",
+      "trigger": "Subscribed to List",
+      "what_the_accounts_hold": "'Welcome series' live, 2730 recipients in 90 days",
+      "state": "covered"
+    },
+    {
+      "stage": "subscriber",
+      "job": "follow up a product view",
+      "channel": "email",
+      "trigger": "Viewed Product",
+      "what_the_accounts_hold": "'Browse abandonment' is draft, sends nothing",
+      "state": "not live"
+    },
+    {
+      "stage": "subscriber",
+      "job": "recover a started checkout",
+      "channel": "email",
+      "trigger": "Started Checkout",
+      "what_the_accounts_hold": "'Abandoned checkout' live, 629 recipients in 90 days",
+      "state": "covered"
+    },
+    {
+      "stage": "subscriber",
+      "job": "recover a started checkout",
+      "channel": "SMS",
+      "trigger": "Started Checkout, SMS consent",
+      "what_the_accounts_hold": "no SMS flow; 2860 profiles can receive SMS",
+      "state": "gap"
+    },
+    {
+      "stage": "first-time buyer",
+      "job": "help them use the first order",
+      "channel": "email",
+      "trigger": "Placed Order (first)",
+      "what_the_accounts_hold": "'Post-purchase thank you' live, 1502 recipients in 90 days, but first and repeat orders get the same email",
+      "state": "partial"
+    },
+    {
+      "stage": "first-time buyer",
+      "job": "second-order nudge",
+      "channel": "email",
+      "trigger": "first Placed Order, then no order for 45 days (the median second-order gap)",
+      "what_the_accounts_hold": "no flow",
+      "state": "gap"
+    },
+    {
+      "stage": "repeat",
+      "job": "reorder reminder",
+      "channel": "email",
+      "trigger": "Placed Order (2nd or later), then no order for 45 days (the median reorder gap)",
+      "what_the_accounts_hold": "no flow",
+      "state": "gap"
+    },
+    {
+      "stage": "repeat",
+      "job": "reorder reminder",
+      "channel": "SMS",
+      "trigger": "Placed Order (2nd or later), then no order for 45 days, SMS consent only",
+      "what_the_accounts_hold": "no SMS flow",
+      "state": "gap"
+    },
+    {
+      "stage": "repeat",
+      "job": "keep buyers out of prospecting ads",
+      "channel": "Meta Ads",
+      "trigger": "Purchase pixel event",
+      "what_the_accounts_hold": "'Purchasers 180 days' website audience, last updated 2026-10-27 (1 day before the run)",
+      "state": "covered"
+    },
+    {
+      "stage": "repeat",
+      "job": "keep buyers out of prospecting ads",
+      "channel": "Google Ads",
+      "trigger": "conversion tag",
+      "what_the_accounts_hold": "'All converters' site-tag list, open",
+      "state": "covered"
+    },
+    {
+      "stage": "at risk",
+      "job": "check-in at day 61",
+      "channel": "email",
+      "trigger": "no order for 60 days",
+      "what_the_accounts_hold": "no flow and no at-risk segment",
+      "state": "gap"
+    },
+    {
+      "stage": "at risk",
+      "job": "at-risk customer audience",
+      "channel": "Meta Ads",
+      "trigger": "customer list of the at-risk segment",
+      "what_the_accounts_hold": "'Customer list Nov 2025' is a customer list last updated 348 days ago, so it holds some at-risk customers mixed with current buyers",
+      "state": "partial"
+    },
+    {
+      "stage": "at risk",
+      "job": "at-risk customer audience",
+      "channel": "Google Ads",
+      "trigger": "customer list upload",
+      "what_the_accounts_hold": "no Customer Match list",
+      "state": "needs setup",
+      "first": "check the account can use Customer Match, then upload the at-risk segment"
+    },
+    {
+      "stage": "lapsed",
+      "job": "winback",
+      "channel": "email",
+      "trigger": "no order for 120 days",
+      "what_the_accounts_hold": "no flow and no lapsed segment",
+      "state": "gap"
+    },
+    {
+      "stage": "lapsed",
+      "job": "lapsed customer audience",
+      "channel": "Meta Ads",
+      "trigger": "customer list of the lapsed segment",
+      "what_the_accounts_hold": "'Customer list Nov 2025' is a customer list last updated 348 days ago, so it holds some lapsed customers mixed with current buyers",
+      "state": "partial"
+    },
+    {
+      "stage": "lapsed",
+      "job": "lapsed customer audience",
+      "channel": "Google Ads",
+      "trigger": "customer list upload",
+      "what_the_accounts_hold": "no Customer Match list; only site-tag lists ('All visitors', 'All converters')",
+      "state": "needs setup",
+      "first": "check the account can use Customer Match, then upload the lapsed segment"
+    }
+  ],
+  "push": "not applicable: no app and no web push",
+  "other_flows": [
+    {
+      "flow": "Back in stock",
+      "note": "not a stage job; keep it running"
+    }
+  ],
+  "gaps_summary": {
+    "jobs": 16,
+    "covered": 4,
+    "partial": 3,
+    "not_live": 1,
+    "gap": 6,
+    "needs_setup": 2,
+    "stages_with_nothing_live": []
+  },
+  "build_order_90_days": {
+    "rule": "reach per month = people entering the stage each month x the share the channel can reach (email 69% of customers and all subscribers, SMS 15%, paid 50% as the match rate is unknown) x 1 for a gap or a flow not live, 0.5 for partial cover; 2 builds per 30 days",
+    "builds": [
+      {
+        "rank": 1,
+        "when": "days 1 to 30 (2026-11-02 to 2026-12-01)",
+        "stage": "subscriber",
+        "build": "follow up a product view (email)",
+        "state_now": "not live",
+        "reach_per_month": 978
+      },
+      {
+        "rank": 2,
+        "when": "days 1 to 30 (2026-11-02 to 2026-12-01)",
+        "stage": "at risk",
+        "build": "check-in at day 61 (email)",
+        "state_now": "gap",
+        "reach_per_month": 270
+      },
+      {
+        "rank": 3,
+        "when": "days 31 to 60 (2026-12-02 to 2026-12-31)",
+        "stage": "first-time buyer",
+        "build": "second-order nudge (email)",
+        "state_now": "gap",
+        "reach_per_month": 253
+      },
+      {
+        "rank": 4,
+        "when": "days 31 to 60 (2026-12-02 to 2026-12-31)",
+        "stage": "lapsed",
+        "build": "winback (email)",
+        "state_now": "gap",
+        "reach_per_month": 237
+      },
+      {
+        "rank": 5,
+        "when": "days 61 to 90 (2027-01-01 to 2027-01-30)",
+        "stage": "at risk",
+        "build": "at-risk customer audience (Google Ads)",
+        "state_now": "needs setup",
+        "reach_per_month": 196,
+        "first": "check the account can use Customer Match, then upload the at-risk segment"
+      },
+      {
+        "rank": 6,
+        "when": "days 61 to 90 (2027-01-01 to 2027-01-30)",
+        "stage": "lapsed",
+        "build": "lapsed customer audience (Google Ads)",
+        "state_now": "needs setup",
+        "reach_per_month": 172,
+        "first": "check the account can use Customer Match, then upload the lapsed segment"
+      },
+      {
+        "rank": 7,
+        "when": "after day 90",
+        "stage": "subscriber",
+        "build": "recover a started checkout (SMS)",
+        "state_now": "gap",
+        "reach_per_month": 150
+      },
+      {
+        "rank": 8,
+        "when": "after day 90",
+        "stage": "first-time buyer",
+        "build": "help them use the first order (email)",
+        "state_now": "partial",
+        "reach_per_month": 126
+      },
+      {
+        "rank": 9,
+        "when": "after day 90",
+        "stage": "at risk",
+        "build": "at-risk customer audience (Meta Ads)",
+        "state_now": "partial",
+        "reach_per_month": 98
+      },
+      {
+        "rank": 10,
+        "when": "after day 90",
+        "stage": "repeat",
+        "build": "reorder reminder (email)",
+        "state_now": "gap",
+        "reach_per_month": 92
+      },
+      {
+        "rank": 11,
+        "when": "after day 90",
+        "stage": "lapsed",
+        "build": "lapsed customer audience (Meta Ads)",
+        "state_now": "partial",
+        "reach_per_month": 86
+      },
+      {
+        "rank": 12,
+        "when": "after day 90",
+        "stage": "repeat",
+        "build": "reorder reminder (SMS)",
+        "state_now": "gap",
+        "reach_per_month": 21
+      }
+    ]
+  },
+  "broadcast_rhythm": {
+    "now": {
+      "campaigns_90_days": 26,
+      "per_week": 2.0,
+      "to_engaged_segment": 19,
+      "to_whole_list": 7,
+      "unsubscribe_per_send_engaged_pct": 0.18,
+      "unsubscribe_per_send_whole_list_pct": 0.47
+    },
+    "outline": [
+      {
+        "who": "Engaged 90 days",
+        "how_often": "2 a week",
+        "why": "its sends average 0.18% unsubscribes, under the 0.3% starting limit, so the rhythm holds"
+      },
+      {
+        "who": "everyone else who can receive email",
+        "how_often": "at most 2 a month",
+        "why": "whole-list sends average 0.47% unsubscribes, 2.6 times the engaged rate"
+      },
+      {
+        "who": "anyone inside the at-risk check-in or winback flow",
+        "how_often": "no broadcasts until the flow ends",
+        "why": "the flow carries the message; a promotion on top teaches them to wait for discounts"
+      }
+    ],
+    "type_order_by_click_rate": [
+      {
+        "type": "brewing guide",
+        "click_rate_pct": 3.14
+      },
+      {
+        "type": "offer",
+        "click_rate_pct": 2.67
+      },
+      {
+        "type": "new tea",
+        "click_rate_pct": 2.33
+      }
+    ],
+    "mix": "lead with brewing guide and offer sends, and keep new tea sends to one in three",
+    "dated_calendar": "hand to email-campaign-calendar, if installed"
+  },
+  "measurement": [
+    {
+      "check": "GA4 key events",
+      "finding": "only purchase is a key event and no sign_up event reaches GA4",
+      "effect": "GA4 can't show which channels bring subscribers who later buy; the subscriber number is read in Klaviyo instead",
+      "fix": "send a sign_up event on the newsletter form and mark it as a key event"
+    },
+    {
+      "check": "Klaviyo triggers",
+      "finding": "Placed Order, Started Checkout, Viewed Product, Subscribed to List and Subscribed to SMS are all tracked",
+      "effect": "every email and SMS build in the order above can start now",
+      "fix": null
+    },
+    {
+      "check": "Paid audiences",
+      "finding": "Meta's only customer list was last updated 348 days ago and Google Ads has no Customer Match list",
+      "effect": "at-risk and lapsed customers can't be reached on paid until the stage segments are uploaded",
+      "fix": "upload or sync the at-risk and lapsed segments"
+    }
+  ],
+  "unknowns": [],
+  "go_deeper": [
+    {
+      "for": "writing each flow in the build order",
+      "skill": "email-sequence-builder"
+    },
+    {
+      "for": "revenue and health of each live flow",
+      "skill": "klaviyo-flow-auditor"
+    },
+    {
+      "for": "the dated campaign calendar",
+      "skill": "email-campaign-calendar, if installed"
+    },
+    {
+      "for": "the paid audiences for at-risk and lapsed customers",
+      "skill": "retargeting-sequence-designer"
+    }
+  ]
+}

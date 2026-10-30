@@ -1,0 +1,974 @@
+{
+  "summary": "Built the No-Show Calculator as one 13,447-byte HTML file with no outside requests. The formula is 9 steps; 6 worked examples, 2 invalid inputs and the rate helper were run through the file's own code and matched the hand math. Named after 'no show calculator' (110 searches a month) once the results page showed searchers mean the cost; GA4 events are ready, generate_lead isn't a key event yet, and the WordPress draft is built, not run.",
+  "header": {
+    "business": "Example Booking Software",
+    "tool": "No-Show Calculator",
+    "type": "savings and payback calculator",
+    "run_date": "2026-10-28",
+    "calls": {
+      "dataforseo": 3,
+      "google-analytics": 2,
+      "wordpress_reads": 2,
+      "writes_run": 0
+    },
+    "steps_run": [
+      "brief",
+      "formula",
+      "naming",
+      "file",
+      "worked examples",
+      "tracking",
+      "page copy",
+      "WordPress draft (built, not run)"
+    ]
+  },
+  "naming": {
+    "phrasings": [
+      {
+        "keyword": "no show rate calculator",
+        "monthly_searches": 170,
+        "cpc_usd": 0.0,
+        "counted": true,
+        "same_search_as": null,
+        "job": "step",
+        "why": "works out the no-show rate, which is one input of this tool (the rate helper)",
+        "use": "H2 and the rate helper"
+      },
+      {
+        "keyword": "no show calculator",
+        "monthly_searches": 110,
+        "cpc_usd": 2.1,
+        "counted": true,
+        "same_search_as": null,
+        "job": "main",
+        "why": "5 of the 6 tools on page 1 compute the cost of no-shows, so searchers mean the cost",
+        "use": "H1 and URL"
+      },
+      {
+        "keyword": "no show cost calculator",
+        "monthly_searches": 70,
+        "cpc_usd": 3.4,
+        "counted": true,
+        "same_search_as": null,
+        "job": "main",
+        "why": "the cost of no-shows, this tool's main result",
+        "use": "title tag"
+      },
+      {
+        "keyword": "cost of no shows calculator",
+        "monthly_searches": 70,
+        "cpc_usd": 3.4,
+        "counted": false,
+        "same_search_as": "no show cost calculator",
+        "job": "main",
+        "why": "same search as no show cost calculator",
+        "use": "covered by the title tag (same search)"
+      },
+      {
+        "keyword": "missed appointment cost calculator",
+        "monthly_searches": 30,
+        "cpc_usd": 2.9,
+        "counted": true,
+        "same_search_as": null,
+        "job": "main",
+        "why": "the cost of missed appointments",
+        "use": "meta description"
+      },
+      {
+        "keyword": "no show fee calculator",
+        "monthly_searches": 20,
+        "cpc_usd": 1.2,
+        "counted": true,
+        "same_search_as": null,
+        "job": "different",
+        "why": "what fee to charge for a no-show, a different job",
+        "use": "not this tool, a possible next build"
+      },
+      {
+        "keyword": "no show appointment calculator",
+        "monthly_searches": 10,
+        "cpc_usd": 1.8,
+        "counted": true,
+        "same_search_as": null,
+        "job": "ambiguous",
+        "why": "unclear job and less demand than the best main phrasing, so no SERP was spent on it",
+        "use": "not used"
+      },
+      {
+        "keyword": "appointment reminder roi calculator",
+        "monthly_searches": 0,
+        "cpc_usd": null,
+        "counted": true,
+        "same_search_as": null,
+        "job": "main",
+        "why": "the return on reminders, part of this tool's result",
+        "use": "body copy only (no measured demand)"
+      }
+    ],
+    "serp_check": {
+      "keyword": "no show calculator",
+      "tool_results": 6,
+      "tools_computing_the_main_result": 5,
+      "articles": 3,
+      "platforms": 1,
+      "verdict": "main"
+    },
+    "decision": {
+      "name": "No-Show Calculator",
+      "name_keyword": "no show calculator",
+      "title_keyword": "no show cost calculator",
+      "measured_demand_covered": 380,
+      "why": "'no show rate calculator' has the most searches (170) but names a step, so it becomes an H2 and the rate helper. 'no show calculator' was ambiguous and outranked the best cost phrasing, so one SERP settled it: 5 of 6 tools compute the cost."
+    },
+    "not_this_tool": [
+      "no show fee calculator"
+    ]
+  },
+  "formula": {
+    "variables": [
+      {
+        "name": "appts",
+        "label": "Appointments booked a week",
+        "unit": "appointments"
+      },
+      {
+        "name": "rate",
+        "label": "No-show rate",
+        "unit": "%"
+      },
+      {
+        "name": "value",
+        "label": "Average appointment value",
+        "unit": "USD"
+      },
+      {
+        "name": "weeks",
+        "label": "Weeks open a year",
+        "unit": "weeks"
+      },
+      {
+        "name": "staff",
+        "label": "Staff who take bookings",
+        "unit": "people"
+      },
+      {
+        "name": "rateBefore",
+        "label": "Median no-show rate before reminders",
+        "unit": "%",
+        "value": 12.0,
+        "source": "Example Booking Software customer data, January to September 2026, businesses that turned on reminders"
+      },
+      {
+        "name": "rateAfter",
+        "label": "Median no-show rate after reminders",
+        "unit": "%",
+        "value": 7.0,
+        "source": "Example Booking Software customer data, January to September 2026, businesses that turned on reminders"
+      }
+    ],
+    "steps": [
+      "Appointments a year: appts x weeks",
+      "Missed appointments a year: appointments a year x rate / 100",
+      "Revenue lost to no-shows: missed x value",
+      "Share reminders win back: (rateBefore - rateAfter) / rateBefore",
+      "Revenue won back: lost x (rateBefore - rateAfter) / rateBefore, multiplied before dividing",
+      "Plan that fits the staff: smallest plan whose staff limit covers staff",
+      "Plan cost a year: plan monthly price x 12",
+      "Net gain a year: won back - plan cost",
+      "Days to pay back (rounded up): ceil(plan cost / (won back / 365)), only when the net gain is 0 or more"
+    ],
+    "share_won_back": 0.4167,
+    "rounding": "full precision inside; money shown in whole dollars, missed appointments whole, the rate to 1 decimal, payback days rounded up",
+    "edge_rules": [
+      "empty or out-of-range input: list the problem, show no result",
+      "no-show rate 0: say there is nothing to win back, hide the email form",
+      "staff above the top plan: show the cost and the win-back, no price, point to sales",
+      "plan costs more than the win-back: say so instead of a payback figure"
+    ]
+  },
+  "inputs": [
+    {
+      "id": "appts",
+      "label": "Appointments booked a week",
+      "unit": "appointments",
+      "default": 60,
+      "min": 1,
+      "max": 2000,
+      "step": 1,
+      "help": "All staff together, an ordinary week."
+    },
+    {
+      "id": "rate",
+      "label": "No-show rate",
+      "unit": "%",
+      "default": 12,
+      "min": 0,
+      "max": 100,
+      "step": 0.1,
+      "help": "Share of booked appointments where the client didn't come and didn't cancel in time."
+    },
+    {
+      "id": "value",
+      "label": "Average appointment value",
+      "unit": "USD",
+      "default": 55,
+      "min": 1,
+      "max": 5000,
+      "step": 1,
+      "help": "What one appointment brings in, before costs."
+    },
+    {
+      "id": "weeks",
+      "label": "Weeks open a year",
+      "unit": "weeks",
+      "default": 48,
+      "min": 1,
+      "max": 52,
+      "step": 1,
+      "help": "Leave out holidays and closures."
+    },
+    {
+      "id": "staff",
+      "label": "Staff who take bookings",
+      "unit": "people",
+      "default": 3,
+      "min": 1,
+      "max": 500,
+      "step": 1,
+      "help": "Used to pick the plan that fits."
+    }
+  ],
+  "rate_helper": {
+    "inputs": {
+      "noshows": 14,
+      "booked": 120
+    },
+    "rate_pct": 11.7,
+    "js_check": "match"
+  },
+  "worked_examples": [
+    {
+      "name": "Hair salon, 3 staff (the page defaults)",
+      "inputs": {
+        "appts": 60,
+        "rate": 12,
+        "value": 55,
+        "weeks": 48,
+        "staff": 3
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "60 x 48",
+          "value": 2880
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "2,880 x 12%",
+          "value": 345.6
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "345.6 x $55",
+          "value": 19008.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "19,008.0 x (12 - 7) / 12",
+          "value": 7920.0
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "3 staff",
+          "value": "Growth"
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "49 x 12",
+          "value": 588
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "7,920.0 - 588",
+          "value": 7332.0
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "588 / (7,920.0 / 365)",
+          "value": 28
+        }
+      ],
+      "screen_shows": {
+        "headline": "No-shows cost you about $19,008 a year",
+        "missed": "346",
+        "lost": "$19,008",
+        "wonBack": "$7,920",
+        "plan": "Growth plan, $588 a year",
+        "payback": "Pays for itself in 28 days"
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    },
+    {
+      "name": "Solo personal trainer",
+      "inputs": {
+        "appts": 25,
+        "rate": 8,
+        "value": 70,
+        "weeks": 46,
+        "staff": 1
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "25 x 46",
+          "value": 1150
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "1,150 x 8%",
+          "value": 92.0
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "92.0 x $70",
+          "value": 6440.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "6,440.0 x (12 - 7) / 12",
+          "value": 2683.33
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "1 staff",
+          "value": "Starter"
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "19 x 12",
+          "value": 228
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "2,683.33 - 228",
+          "value": 2455.33
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "228 / (2,683.33 / 365)",
+          "value": 32
+        }
+      ],
+      "screen_shows": {
+        "headline": "No-shows cost you about $6,440 a year",
+        "missed": "92",
+        "lost": "$6,440",
+        "wonBack": "$2,683",
+        "plan": "Starter plan, $228 a year",
+        "payback": "Pays for itself in 32 days"
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    },
+    {
+      "name": "Physio clinic, 12 staff",
+      "inputs": {
+        "appts": 180,
+        "rate": 15,
+        "value": 95,
+        "weeks": 50,
+        "staff": 12
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "180 x 50",
+          "value": 9000
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "9,000 x 15%",
+          "value": 1350.0
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "1,350.0 x $95",
+          "value": 128250.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "128,250.0 x (12 - 7) / 12",
+          "value": 53437.5
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "12 staff",
+          "value": "Business"
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "99 x 12",
+          "value": 1188
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "53,437.5 - 1188",
+          "value": 52249.5
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "1188 / (53,437.5 / 365)",
+          "value": 9
+        }
+      ],
+      "screen_shows": {
+        "headline": "No-shows cost you about $128,250 a year",
+        "missed": "1,350",
+        "lost": "$128,250",
+        "wonBack": "$53,438",
+        "plan": "Business plan, $1,188 a year",
+        "payback": "Pays for itself in 9 days"
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    },
+    {
+      "name": "Edge: no no-shows",
+      "inputs": {
+        "appts": 40,
+        "rate": 0,
+        "value": 60,
+        "weeks": 48,
+        "staff": 2
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "40 x 48",
+          "value": 1920
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "1,920 x 0%",
+          "value": 0.0
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "0.0 x $60",
+          "value": 0.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "0.0 x (12 - 7) / 12",
+          "value": 0.0
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "2 staff",
+          "value": "Growth"
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "49 x 12",
+          "value": 588
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "0.0 - 588",
+          "value": -588.0
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "none: no plan, or the net gain is negative",
+          "value": null
+        }
+      ],
+      "screen_shows": {
+        "headline": "No no-shows, nothing to win back.",
+        "missed": "0",
+        "lost": "$0",
+        "wonBack": "$0",
+        "plan": null,
+        "payback": null
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    },
+    {
+      "name": "Edge: more staff than the top plan",
+      "inputs": {
+        "appts": 400,
+        "rate": 10,
+        "value": 80,
+        "weeks": 50,
+        "staff": 25
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "400 x 50",
+          "value": 20000
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "20,000 x 10%",
+          "value": 2000.0
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "2,000.0 x $80",
+          "value": 160000.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "160,000.0 x (12 - 7) / 12",
+          "value": 66666.67
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "25 staff",
+          "value": null
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "no self-serve plan",
+          "value": null
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "not shown",
+          "value": null
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "none: no plan, or the net gain is negative",
+          "value": null
+        }
+      ],
+      "screen_shows": {
+        "headline": "No-shows cost you about $160,000 a year",
+        "missed": "2,000",
+        "lost": "$160,000",
+        "wonBack": "$66,667",
+        "plan": "More staff than our self-serve plans: talk to us for a quote",
+        "payback": null
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    },
+    {
+      "name": "Edge: the plan costs more than reminders win back",
+      "inputs": {
+        "appts": 5,
+        "rate": 2,
+        "value": 30,
+        "weeks": 40,
+        "staff": 1
+      },
+      "steps": [
+        {
+          "step": 1,
+          "what": "Appointments a year",
+          "math": "5 x 40",
+          "value": 200
+        },
+        {
+          "step": 2,
+          "what": "Missed appointments a year",
+          "math": "200 x 2%",
+          "value": 4.0
+        },
+        {
+          "step": 3,
+          "what": "Revenue lost to no-shows",
+          "math": "4.0 x $30",
+          "value": 120.0
+        },
+        {
+          "step": 4,
+          "what": "Share reminders win back",
+          "math": "(12 - 7) / 12",
+          "value": 0.4167
+        },
+        {
+          "step": 5,
+          "what": "Revenue won back",
+          "math": "120.0 x (12 - 7) / 12",
+          "value": 50.0
+        },
+        {
+          "step": 6,
+          "what": "Plan that fits the staff",
+          "math": "1 staff",
+          "value": "Starter"
+        },
+        {
+          "step": 7,
+          "what": "Plan cost a year",
+          "math": "19 x 12",
+          "value": 228
+        },
+        {
+          "step": 8,
+          "what": "Net gain a year",
+          "math": "50.0 - 228",
+          "value": -178.0
+        },
+        {
+          "step": 9,
+          "what": "Days to pay back (rounded up)",
+          "math": "none: no plan, or the net gain is negative",
+          "value": null
+        }
+      ],
+      "screen_shows": {
+        "headline": "No-shows cost you about $120 a year",
+        "missed": "4",
+        "lost": "$120",
+        "wonBack": "$50",
+        "plan": "Starter plan, $228 a year",
+        "payback": "At these numbers the plan costs more than reminders win back"
+      },
+      "js_check": "match: compute() and display() in the file gave the same values and the same text"
+    }
+  ],
+  "invalid_inputs": [
+    {
+      "name": "Empty appointments field",
+      "inputs": {
+        "appts": null,
+        "rate": 12,
+        "value": 55,
+        "weeks": 48,
+        "staff": 3
+      },
+      "screen_shows": [
+        "Appointments booked a week: enter a number from 1 to 2,000."
+      ],
+      "result_shown": false,
+      "js_check": "match"
+    },
+    {
+      "name": "Rate above 100",
+      "inputs": {
+        "appts": 60,
+        "rate": 140,
+        "value": 55,
+        "weeks": 48,
+        "staff": 3
+      },
+      "screen_shows": [
+        "No-show rate: enter a number from 0 to 100."
+      ],
+      "result_shown": false,
+      "js_check": "match"
+    }
+  ],
+  "file": {
+    "filename": "no-show-calculator.html",
+    "bytes": 13447,
+    "checks": [
+      {
+        "check": "No external script, stylesheet, font or image",
+        "result": "pass",
+        "detail": "0 external references; the only network request is the email form POST to the endpoint, on submit"
+      },
+      {
+        "check": "Every input has a label",
+        "result": "pass",
+        "detail": "8 inputs, 8 labelled"
+      },
+      {
+        "check": "CSS scoped under #nsc",
+        "result": "pass",
+        "detail": "0 unscoped rules"
+      },
+      {
+        "check": "JavaScript in one function scope, no globals",
+        "result": "pass",
+        "detail": "wrapped in an immediately run function with strict mode"
+      },
+      {
+        "check": "Result read out to screen readers",
+        "result": "pass",
+        "detail": "result region aria-live polite; errors role alert"
+      },
+      {
+        "check": "Works at phone width",
+        "result": "pass",
+        "detail": "one column below 560px, two above; inputs full width"
+      },
+      {
+        "check": "File under 30 KB",
+        "result": "pass",
+        "detail": "13,447 bytes"
+      },
+      {
+        "check": "No personal data sent to GA4",
+        "result": "pass",
+        "detail": "events carry calculator_name, plan_fit and lead_source only"
+      },
+      {
+        "check": "Page wiring runs (submit, live update, rate helper, invalid input, email form, events)",
+        "result": "pass",
+        "detail": "the file's own script run in node against a stand-in page; start, complete and generate_lead each fired once, no email in any event"
+      }
+    ],
+    "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>No-Show Calculator</title>\n</head>\n<body>\n<!-- calculator:start  Paste everything from here to calculator:end into a Custom HTML block. -->\n<div id=\"nsc\">\n  <style>\n#nsc{--a:#2f6fde;--ink:#1d2433;--mute:#5b6475;--line:#d8dce4;--soft:#f3f6fb;--bad:#b42318;max-width:640px;margin:0 auto;padding:16px;box-sizing:border-box;font:16px/1.5 system-ui,-apple-system,\"Segoe UI\",Roboto,sans-serif;color:var(--ink)}\n#nsc *{box-sizing:border-box}\n#nsc h2{font-size:1.25rem;margin:0 0 12px}\n#nsc .nsc-grid{display:grid;gap:12px;grid-template-columns:1fr}\n@media (min-width:560px){#nsc .nsc-grid{grid-template-columns:1fr 1fr}}\n#nsc label{display:block;font-weight:600;font-size:.95rem}\n#nsc input{width:100%;padding:10px 12px;margin-top:4px;border:1px solid var(--line);border-radius:8px;font:inherit;color:inherit;background:#fff}\n#nsc input:focus{outline:2px solid var(--a);outline-offset:1px}\n#nsc small{display:block;color:var(--mute);font-size:.82rem;margin-top:2px}\n#nsc details{margin:12px 0;padding:10px 12px;background:var(--soft);border-radius:8px}\n#nsc summary{cursor:pointer;font-weight:600}\n#nsc button{margin-top:14px;padding:12px 18px;border:0;border-radius:8px;background:var(--a);color:#fff;font:inherit;font-weight:600;cursor:pointer;width:100%}\n#nsc .nsc-err{color:var(--bad);margin:10px 0 0;padding-left:18px}\n#nsc .nsc-out{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}\n#nsc .nsc-big{font-size:1.5rem;font-weight:700;margin:0 0 8px}\n#nsc dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin:0}\n#nsc dd{margin:0;font-weight:600;text-align:right}\n#nsc .nsc-note{color:var(--mute);font-size:.85rem;margin:10px 0 0}\n#nsc .nsc-cta{display:inline-block;margin-top:12px;color:var(--a);font-weight:600}\n  </style>\n  <form id=\"nsc-form\" novalidate>\n    <h2>What do no-shows cost you?</h2>\n    <div class=\"nsc-grid\">\n      <div class=\"nsc-field\">\n        <label for=\"nsc-appts\">Appointments booked a week</label>\n        <input id=\"nsc-appts\" name=\"appts\" type=\"number\" inputmode=\"decimal\" min=\"1\" max=\"2000\" step=\"1\" value=\"60\" aria-describedby=\"nsc-appts-help\">\n        <small id=\"nsc-appts-help\">All staff together, an ordinary week.</small>\n      </div>\n      <div class=\"nsc-field\">\n        <label for=\"nsc-rate\">No-show rate (%)</label>\n        <input id=\"nsc-rate\" name=\"rate\" type=\"number\" inputmode=\"decimal\" min=\"0\" max=\"100\" step=\"0.1\" value=\"12\" aria-describedby=\"nsc-rate-help\">\n        <small id=\"nsc-rate-help\">Share of booked appointments where the client didn't come and didn't cancel in time.</small>\n      </div>\n      <div class=\"nsc-field\">\n        <label for=\"nsc-value\">Average appointment value ($)</label>\n        <input id=\"nsc-value\" name=\"value\" type=\"number\" inputmode=\"decimal\" min=\"1\" max=\"5000\" step=\"1\" value=\"55\" aria-describedby=\"nsc-value-help\">\n        <small id=\"nsc-value-help\">What one appointment brings in, before costs.</small>\n      </div>\n      <div class=\"nsc-field\">\n        <label for=\"nsc-weeks\">Weeks open a year</label>\n        <input id=\"nsc-weeks\" name=\"weeks\" type=\"number\" inputmode=\"decimal\" min=\"1\" max=\"52\" step=\"1\" value=\"48\" aria-describedby=\"nsc-weeks-help\">\n        <small id=\"nsc-weeks-help\">Leave out holidays and closures.</small>\n      </div>\n      <div class=\"nsc-field\">\n        <label for=\"nsc-staff\">Staff who take bookings</label>\n        <input id=\"nsc-staff\" name=\"staff\" type=\"number\" inputmode=\"decimal\" min=\"1\" max=\"500\" step=\"1\" value=\"3\" aria-describedby=\"nsc-staff-help\">\n        <small id=\"nsc-staff-help\">Used to pick the plan that fits.</small>\n      </div>\n    </div>\n    <details>\n      <summary>Don't know your rate? Work it out from last month</summary>\n      <div class=\"nsc-grid\">\n        <div class=\"nsc-field\"><label for=\"nsc-noshows\">No-shows last month</label><input id=\"nsc-noshows\" type=\"number\" min=\"0\" max=\"100000\" step=\"1\"></div>\n        <div class=\"nsc-field\"><label for=\"nsc-booked\">Appointments booked last month</label><input id=\"nsc-booked\" type=\"number\" min=\"1\" max=\"100000\" step=\"1\"></div>\n      </div>\n      <button type=\"button\" id=\"nsc-rate-go\">Use this rate</button>\n    </details>\n    <ul class=\"nsc-err\" id=\"nsc-errs\" role=\"alert\"></ul>\n    <button type=\"submit\">Show my cost</button>\n  </form>\n  <div class=\"nsc-out\" id=\"nsc-out\" aria-live=\"polite\" hidden></div>\n  <form id=\"nsc-lead\" method=\"post\" target=\"nsc-sink\" hidden>\n    <label for=\"nsc-email\">Email me this breakdown</label>\n    <input id=\"nsc-email\" name=\"email\" type=\"email\" autocomplete=\"email\" required placeholder=\"you@yourbusiness.example\">\n    <input type=\"hidden\" name=\"result\"><input type=\"hidden\" name=\"inputs\"><input type=\"hidden\" name=\"source\" value=\"no_show_calculator\">\n    <small>We send the breakdown and one reminder template. Unsubscribe any time.</small>\n    <button type=\"submit\">Send it</button>\n    <p class=\"nsc-note nsc-thanks\" role=\"status\" hidden>Sent. Check your inbox.</p>\n  </form>\n  <iframe name=\"nsc-sink\" title=\"Form response\" hidden></iframe>\n  <script>\n(function () {\n  \"use strict\";\n/* calc:start (no DOM in this block, so it runs in node or the browser console on the worked examples) */\nvar CONFIG = {\n  name: \"no_show_calculator\",\n  currency: \"USD\",\n  locale: \"en-US\",\n  // Business data: Example Booking Software customer data, January to September 2026, businesses that turned on reminders, 1,840 businesses.\n  rateBefore: 12.0,\n  rateAfter: 7.0,\n  plans: [{\"name\": \"Starter\", \"maxStaff\": 1, \"monthly\": 19}, {\"name\": \"Growth\", \"maxStaff\": 5, \"monthly\": 49}, {\"name\": \"Business\", \"maxStaff\": 20, \"monthly\": 99}],\n  gate: \"open\",               // \"open\": full result, optional email. \"detail\": headline open, breakdown after email.\n  leadEndpoint: \"https://forms.example.com/f/no-show-breakdown\",  // \"\" turns the email form off\n  nextStep: { text: \"Start with the plan that fits\", url: \"https://www.example.com/pricing/\" }\n};\nvar FIELDS = [{\"id\": \"appts\", \"label\": \"Appointments booked a week\", \"unit\": \"appointments\", \"default\": 60, \"min\": 1, \"max\": 2000, \"step\": 1, \"help\": \"All staff together, an ordinary week.\"}, {\"id\": \"rate\", \"label\": \"No-show rate\", \"unit\": \"%\", \"default\": 12, \"min\": 0, \"max\": 100, \"step\": 0.1, \"help\": \"Share of booked appointments where the client didn't come and didn't cancel in time.\"}, {\"id\": \"value\", \"label\": \"Average appointment value\", \"unit\": \"USD\", \"default\": 55, \"min\": 1, \"max\": 5000, \"step\": 1, \"help\": \"What one appointment brings in, before costs.\"}, {\"id\": \"weeks\", \"label\": \"Weeks open a year\", \"unit\": \"weeks\", \"default\": 48, \"min\": 1, \"max\": 52, \"step\": 1, \"help\": \"Leave out holidays and closures.\"}, {\"id\": \"staff\", \"label\": \"Staff who take bookings\", \"unit\": \"people\", \"default\": 3, \"min\": 1, \"max\": 500, \"step\": 1, \"help\": \"Used to pick the plan that fits.\"}];\n\nfunction validate(v) {\n  var errs = [];\n  FIELDS.forEach(function (f) {\n    var x = v[f.id];\n    if (typeof x !== \"number\" || isNaN(x) || x < f.min || x > f.max) {\n      errs.push(f.label + \": enter a number from \" + f.min.toLocaleString(\"en-US\") + \" to \" + f.max.toLocaleString(\"en-US\") + \".\");\n    }\n  });\n  return errs;\n}\n\nfunction compute(v) {\n  var yearAppts = v.appts * v.weeks;                      // 1. appointments a year\n  var missed = yearAppts * v.rate / 100;                  // 2. missed appointments a year\n  var lost = missed * v.value;                            // 3. revenue lost to no-shows\n  // 4. share reminders win back = share(); 5. revenue won back, multiplied before dividing\n  var wonBack = lost * (CONFIG.rateBefore - CONFIG.rateAfter) / CONFIG.rateBefore;\n  var plan = null;                                        // 6. smallest plan that fits the staff\n  for (var i = 0; i < CONFIG.plans.length; i++) { if (v.staff <= CONFIG.plans[i].maxStaff) { plan = CONFIG.plans[i]; break; } }\n  var planYear = plan ? plan.monthly * 12 : null;         // 7. plan cost a year\n  var net = plan ? wonBack - planYear : null;             // 8. net gain a year\n  var paybackDays = plan && net >= 0 ? Math.ceil(planYear / (wonBack / 365)) : null;  // 9. days to pay back, rounded up; none when net < 0\n  return { yearAppts: yearAppts, missed: missed, lost: lost, wonBack: wonBack, plan: plan ? plan.name : null,\n           planYear: planYear, net: net, paybackDays: paybackDays };\n}\n\nfunction money(x) {\n  return new Intl.NumberFormat(CONFIG.locale, { style: \"currency\", currency: CONFIG.currency, maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(x);\n}\n\nfunction display(r) {\n  if (r.lost === 0) {\n    return { headline: \"No no-shows, nothing to win back.\", missed: \"0\", lost: money(0), wonBack: money(0), plan: null, payback: null };\n  }\n  var plan = r.plan ? r.plan + \" plan, \" + money(r.planYear) + \" a year\" : \"More staff than our self-serve plans: talk to us for a quote\";\n  var payback = null;\n  if (r.plan) { payback = r.net >= 0 ? \"Pays for itself in \" + r.paybackDays + \" days\" : \"At these numbers the plan costs more than reminders win back\"; }\n  return { headline: \"No-shows cost you about \" + money(r.lost) + \" a year\", missed: Math.round(r.missed).toLocaleString(CONFIG.locale),\n           lost: money(r.lost), wonBack: money(r.wonBack), plan: plan, payback: payback };\n}\n\nfunction share() {\n  return (CONFIG.rateBefore - CONFIG.rateAfter) / CONFIG.rateBefore;\n}\n\nfunction rateFrom(noShows, booked) {\n  return Math.round(1000 * noShows / booked) / 10;      // percent, 1 decimal\n}\n/* calc:end */\n\n  var root = document.getElementById(\"nsc\");\n  var form = root.querySelector(\"#nsc-form\");\n  var out = root.querySelector(\"#nsc-out\");\n  var errBox = root.querySelector(\"#nsc-errs\");\n  var lead = root.querySelector(\"#nsc-lead\");\n  var sent = { start: false, complete: false };\n  var last = null;\n\n  function track(name, params) {\n    params = params || {};\n    params.calculator_name = CONFIG.name;                // never the email or other personal data\n    if (typeof window.gtag === \"function\") { window.gtag(\"event\", name, params); return; }\n    window.dataLayer = window.dataLayer || [];\n    var o = { event: name }; for (var k in params) { o[k] = params[k]; }\n    window.dataLayer.push(o);\n  }\n  function started() { if (!sent.start) { sent.start = true; track(\"calculator_start\"); } }\n  function read() {\n    var v = {};\n    FIELDS.forEach(function (f) {\n      var s = root.querySelector(\"#nsc-\" + f.id).value.trim();\n      v[f.id] = s === \"\" ? NaN : Number(s);\n    });\n    return v;\n  }\n  function esc(s) { return String(s).replace(/[&<>\"]/g, function (c) { return { \"&\": \"&amp;\", \"<\": \"&lt;\", \">\": \"&gt;\", '\"': \"&quot;\" }[c]; }); }\n  function show() {\n    var v = read(), errs = validate(v);\n    errBox.innerHTML = errs.map(function (e) { return \"<li>\" + esc(e) + \"</li>\"; }).join(\"\");\n    if (errs.length) { out.hidden = true; lead.hidden = true; return; }\n    var r = compute(v), d = display(r);\n    last = { v: v, r: r, d: d };\n    var rows = r.lost === 0 ? \"\" :\n      \"<dl><dt>Missed appointments a year</dt><dd>\" + d.missed + \"</dd>\" +\n      \"<dt>Revenue lost to no-shows</dt><dd>\" + d.lost + \"</dd>\" +\n      \"<dt>Reminders could win back</dt><dd>\" + d.wonBack + \"</dd>\" +\n      \"<dt>Plan that fits</dt><dd>\" + esc(d.plan) + \"</dd></dl>\" +\n      (d.payback ? \"<p class='nsc-big' style='font-size:1.1rem;margin-top:10px'>\" + esc(d.payback) + \"</p>\" : \"\");\n    var detail = CONFIG.gate === \"detail\" && !lead.dataset.done ? \"<p class='nsc-note'>Enter your email below to see the full breakdown.</p>\" : rows;\n    out.innerHTML = \"<p class='nsc-big'>\" + esc(d.headline) + \"</p>\" + detail +\n      \"<p class='nsc-note'>Reminders win back \" + Math.round(100 * share()) +\n      \"% of no-shows here: across our customers the median no-show rate fell from \" + CONFIG.rateBefore + \"% to \" + CONFIG.rateAfter + \"% after reminders.</p>\" +\n      \"<a class='nsc-cta' href='\" + CONFIG.nextStep.url + \"'>\" + esc(CONFIG.nextStep.text) + \"</a>\";\n    out.hidden = false;\n    lead.hidden = !CONFIG.leadEndpoint || r.lost === 0;\n    if (!sent.complete) { sent.complete = true; track(\"calculator_complete\", { plan_fit: r.plan || \"none\" }); }\n  }\n\n  form.addEventListener(\"input\", function () { started(); if (last) { show(); } });\n  form.addEventListener(\"submit\", function (e) { e.preventDefault(); started(); show(); });\n  root.querySelector(\"#nsc-rate-go\").addEventListener(\"click\", function () {\n    var n = Number(root.querySelector(\"#nsc-noshows\").value), b = Number(root.querySelector(\"#nsc-booked\").value);\n    if (b > 0 && n >= 0 && n <= b) { root.querySelector(\"#nsc-rate\").value = String(rateFrom(n, b)); started(); if (last) { show(); } }\n  });\n  if (CONFIG.leadEndpoint) {\n    lead.action = CONFIG.leadEndpoint;\n    lead.addEventListener(\"submit\", function (e) {\n      var email = lead.querySelector(\"#nsc-email\");\n      if (!email.checkValidity() || !last) { e.preventDefault(); email.reportValidity(); return; }\n      lead.querySelector(\"[name=result]\").value = last.d.headline + \". Won back: \" + last.d.wonBack + \". \" + (last.d.plan || \"\");\n      lead.querySelector(\"[name=inputs]\").value = JSON.stringify(last.v);\n      track(\"generate_lead\", { lead_source: CONFIG.name });\n      lead.dataset.done = \"1\";\n      setTimeout(function () { lead.querySelector(\".nsc-thanks\").hidden = false; show(); }, 0);\n    });\n  }\n})();\n  </script>\n</div>\n<!-- calculator:end -->\n</body>\n</html>\n"
+  },
+  "embed": [
+    {
+      "where": "WordPress (this site)",
+      "how": "Add a Custom HTML block where the draft says, and paste everything from calculator:start to calculator:end.",
+      "needs": "an account with the unfiltered_html capability: Administrators and Editors on a single site, only Super Admins on Multisite. The brief says Administrator on a single site, so this works."
+    },
+    {
+      "where": "Another CMS or a plain site",
+      "how": "Paste the same block into an HTML embed or code block, or upload the file and show it in an iframe.",
+      "needs": "with an iframe, add your GA4 tag inside the file too, or the events won't reach GA4"
+    }
+  ],
+  "tracking": {
+    "events": [
+      {
+        "event": "calculator_start",
+        "fires": "first input change or first press of Show my cost, once per page view",
+        "params": [
+          "calculator_name"
+        ]
+      },
+      {
+        "event": "calculator_complete",
+        "fires": "first valid result shown, once per page view",
+        "params": [
+          "calculator_name",
+          "plan_fit"
+        ]
+      },
+      {
+        "event": "generate_lead",
+        "fires": "email form submitted with a valid address",
+        "params": [
+          "calculator_name",
+          "lead_source"
+        ]
+      }
+    ],
+    "sends_to": "gtag when the page has it, otherwise the GTM dataLayer (add a GA4 Event tag in GTM on a Custom Event trigger for these three names)",
+    "ga4_check": {
+      "events_last_28_days": 122656,
+      "event_names_seen": 9,
+      "name_clashes": [],
+      "key_events": [
+        "demo_booked",
+        "sign_up"
+      ],
+      "generate_lead_is_key_event": false,
+      "finding": "GA4 is receiving data and none of the three names is in use. generate_lead is not a key event: mark it as one in GA4 Admin once the first leads arrive, so calculator leads count next to sign_up and demo_booked."
+    },
+    "after_launch": [
+      "completion rate = calculator_complete / calculator_start",
+      "capture rate = generate_lead / calculator_complete"
+    ]
+  },
+  "email_capture": {
+    "mode": "open: the full result shows, the email is optional",
+    "endpoint": "https://forms.example.com/f/no-show-breakdown",
+    "fields_sent": [
+      "email",
+      "result",
+      "inputs",
+      "source"
+    ],
+    "how": "a normal form POST into a hidden iframe, so the visitor stays on the page; no backend of ours"
+  },
+  "page_copy": {
+    "url": "https://www.example.com/no-show-calculator/",
+    "title_tag": "No-Show Calculator: Cost of Missed Appointments",
+    "title_tag_chars": 47,
+    "meta_description": "A missed appointment cost calculator: see what no-shows cost your business a year, how much reminders win back and how fast they pay for themselves.",
+    "h1": "No-Show Calculator",
+    "intro": "Every no-show is a paid slot that earns nothing. Put in your weekly bookings, your no-show rate and what an appointment is worth, and see the yearly cost, what reminders could win back and the plan that fits your team.",
+    "how_to_use": [
+      "Enter your appointments a week, no-show rate, average appointment value, weeks open and staff.",
+      "Don't know your rate? Open the helper and enter last month's no-shows and bookings.",
+      "Press Show my cost. Change any number and the result updates."
+    ],
+    "h2s": [
+      "How the no-show calculator works",
+      "How to work out your no-show rate",
+      "Worked example: a 3-person salon",
+      "Where the reminder figure comes from",
+      "Questions"
+    ],
+    "method_in_words": [
+      "Appointments a year = appointments a week x weeks open.",
+      "Missed appointments = appointments a year x your no-show rate.",
+      "Revenue lost = missed appointments x average appointment value.",
+      "Won back = revenue lost x (12 - 7) / 12, about 42%: the share of no-shows reminders removed across our customers (12% fell to 7%).",
+      "Days to pay back = the plan's yearly cost / (won back / 365), rounded up."
+    ],
+    "rate_section": "No-show rate = no-shows / appointments booked x 100. Example: 14 no-shows out of 120 bookings is 11.7%.",
+    "worked_example": "A salon with 3 staff books 60 appointments a week, 48 weeks a year, at $55 each, and 12% don't show. That is 346 missed appointments and $19,008 a year. Reminders could win back $7,920, so the Growth plan ($588 a year) pays for itself in 28 days.",
+    "assumptions_and_sources": [
+      "Reminder effect: Example Booking Software customer data, January to September 2026, businesses that turned on reminders (1,840 businesses), median no-show rate 12% before and 7% after. Your result may differ.",
+      "Revenue is before costs. A slot that gets rebooked late still counts as lost here, so the figure is an upper bound for very busy books.",
+      "Plan prices are the current monthly list prices; the calculator uses the smallest plan that covers your staff."
+    ],
+    "faq": [
+      {
+        "q": "How do you calculate no-show rate?",
+        "a": "Divide no-shows by appointments booked in the same period and multiply by 100. Use a full month so one quiet week doesn't skew it. The helper inside the calculator does this for you."
+      },
+      {
+        "q": "What is an acceptable no-show rate?",
+        "a": "Compare yourself with businesses like yours rather than one industry figure. Across our customers the median was 12% before reminders and 7% after."
+      },
+      {
+        "q": "Do reminder texts reduce no-shows?",
+        "a": "In our customer data, yes: the median no-show rate fell from 12% to 7% after reminders were turned on, which is why the calculator wins back 42% of the cost."
+      },
+      {
+        "q": "How much do no-shows cost a business?",
+        "a": "Missed appointments a year times the average appointment value. The calculator works it out from your own numbers in a minute."
+      }
+    ],
+    "internal_links": [
+      {
+        "from": "https://www.example.com/blog/reduce-no-shows/",
+        "anchor": "no-show calculator",
+        "why": "WordPress search for 'no show' found this post"
+      },
+      {
+        "from": "https://www.example.com/blog/appointment-reminder-templates/",
+        "anchor": "no-show calculator",
+        "why": "WordPress search for 'no show' found this post"
+      },
+      {
+        "to": "https://www.example.com/features/reminders/",
+        "anchor": "automatic reminders",
+        "why": "the feature the result points to"
+      },
+      {
+        "to": "https://www.example.com/pricing/",
+        "anchor": "Start with the plan that fits",
+        "why": "the next step after the result (from the brief)"
+      }
+    ]
+  },
+  "wordpress": {
+    "slug_check": {
+      "slug": "no-show-calculator",
+      "pages_found": 0,
+      "free": true
+    },
+    "link_from": [
+      {
+        "id": 412,
+        "title": "How to reduce no-shows: 9 tactics that work",
+        "url": "https://www.example.com/blog/reduce-no-shows/"
+      },
+      {
+        "id": 388,
+        "title": "Appointment reminder text templates",
+        "url": "https://www.example.com/blog/appointment-reminder-templates/"
+      }
+    ],
+    "draft_payload": {
+      "status": "not run: offered after confirmation",
+      "body": {
+        "platform": "wordpress",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "create_page",
+        "title": "No-Show Calculator",
+        "slug": "no-show-calculator",
+        "status": "draft",
+        "excerpt": "A missed appointment cost calculator: see what no-shows cost your business a year, how much reminders win back and how fast they pay for themselves.",
+        "content": "<p>Every no-show is a paid slot that earns nothing. Put in your weekly bookings, your no-show rate and what an appointment is worth, and see the yearly cost, what reminders could win back and the plan that fits your team.</p>\n<p><strong>[Calculator goes here. Add a Custom HTML block and paste the calculator block from no-show-calculator.html, everything from calculator:start to calculator:end.]</strong></p>\n<h2>How the no-show calculator works</h2>\n<ol><li>Appointments a year = appointments a week x weeks open.</li><li>Missed appointments = appointments a year x your no-show rate.</li><li>Revenue lost = missed appointments x average appointment value.</li><li>Won back = revenue lost x (12 - 7) / 12, about 42%: the share of no-shows reminders removed across our customers (12% fell to 7%).</li><li>Days to pay back = the plan's yearly cost / (won back / 365), rounded up.</li></ol>\n<h2>How to work out your no-show rate</h2>\n<p>No-show rate = no-shows / appointments booked x 100. Example: 14 no-shows out of 120 bookings is 11.7%.</p>\n<h2>Worked example: a 3-person salon</h2>\n<p>A salon with 3 staff books 60 appointments a week, 48 weeks a year, at $55 each, and 12% don't show. That is 346 missed appointments and $19,008 a year. Reminders could win back $7,920, so the Growth plan ($588 a year) pays for itself in 28 days.</p>\n<h2>Where the reminder figure comes from</h2>\n<ul><li>Reminder effect: Example Booking Software customer data, January to September 2026, businesses that turned on reminders (1,840 businesses), median no-show rate 12% before and 7% after. Your result may differ.</li><li>Revenue is before costs. A slot that gets rebooked late still counts as lost here, so the figure is an upper bound for very busy books.</li><li>Plan prices are the current monthly list prices; the calculator uses the smallest plan that covers your staff.</li></ul>\n<h2>Questions</h2>\n<h3>How do you calculate no-show rate?</h3>\n<p>Divide no-shows by appointments booked in the same period and multiply by 100. Use a full month so one quiet week doesn't skew it. The helper inside the calculator does this for you.</p>\n<h3>What is an acceptable no-show rate?</h3>\n<p>Compare yourself with businesses like yours rather than one industry figure. Across our customers the median was 12% before reminders and 7% after.</p>\n<h3>Do reminder texts reduce no-shows?</h3>\n<p>In our customer data, yes: the median no-show rate fell from 12% to 7% after reminders were turned on, which is why the calculator wins back 42% of the cost.</p>\n<h3>How much do no-shows cost a business?</h3>\n<p>Missed appointments a year times the average appointment value. The calculator works it out from your own numbers in a minute.</p>\n"
+      }
+    },
+    "after_saving": [
+      "paste the calculator block into a Custom HTML block where the draft marks it",
+      "set the title tag and meta description in your SEO plugin: 'No-Show Calculator: Cost of Missed Appointments'",
+      "add the links from the posts listed above",
+      "preview on a phone, then publish yourself"
+    ]
+  },
+  "unknowns": [
+    "How often a visitor fills a no-show slot late is not modelled; the page says the cost is an upper bound for very busy books.",
+    "Demand for 'appointment reminder roi calculator' is 0 in the data, so it appears only in body copy."
+  ],
+  "go_deeper": [
+    "free-tool-strategy (whether this is the right tool to build, and how to promote it), if installed",
+    "form-cro (the email step), if installed",
+    "landing-page-auditor (the page after launch), if installed",
+    "conversion-tracking-auditor (the key event and GTM tag), if installed"
+  ]
+}

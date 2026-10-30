@@ -1,0 +1,326 @@
+{
+  "header": {
+    "site": "https://www.example.com",
+    "business": "Example Booking Software",
+    "clarity_source": "Google Sheet history tab, 30 daily pulls through the InsightfulPipe MCP (2026-09-28 to 2026-10-27)",
+    "ga4": {
+      "property_id": "properties/123456789",
+      "dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ]
+    },
+    "conversion": "sign_up",
+    "site_rate_pct": 2.14,
+    "site_baseline_pct": {
+      "Rage clicks": 1.4,
+      "Dead clicks": 5.9,
+      "Quick backs": 2.44,
+      "Excessive scrolling": 3.51,
+      "JavaScript errors": 1.17
+    },
+    "pages_in_clarity": 9,
+    "pages_graded": 8,
+    "urls_merged": [
+      "https://www.example.com/pricing/?billing=yearly merged into /pricing/",
+      "https://www.example.com/signup/?plan=growth merged into /signup/"
+    ]
+  },
+  "fix_list": [
+    {
+      "rank": 1,
+      "page": "/signup/",
+      "signal": "JavaScript errors",
+      "where": "Mobile, channel not concentrated",
+      "share_pct": 6.7,
+      "site_baseline_pct": 1.17,
+      "times_baseline": 5.7,
+      "flagged_sessions_clarity": 225,
+      "page_sessions_ga4_30d": 3900,
+      "rate_at_stake_pct": 30.26,
+      "rate_at_stake_basis": "step page",
+      "conversions_at_stake_30d_estimate": 79.2,
+      "confidence": "high"
+    },
+    {
+      "rank": 2,
+      "page": "/pricing/",
+      "signal": "Rage clicks",
+      "where": "Mobile, channel not concentrated",
+      "share_pct": 4.1,
+      "site_baseline_pct": 1.4,
+      "times_baseline": 2.9,
+      "flagged_sessions_clarity": 336,
+      "page_sessions_ga4_30d": 9600,
+      "rate_at_stake_pct": 7.4,
+      "rate_at_stake_basis": "own rate (at or above site)",
+      "conversions_at_stake_30d_estimate": 28.9,
+      "confidence": "high"
+    },
+    {
+      "rank": 3,
+      "page": "/blog/reduce-no-shows/",
+      "signal": "Excessive scrolling",
+      "where": "Mobile, channel not concentrated",
+      "share_pct": 8.7,
+      "site_baseline_pct": 3.51,
+      "times_baseline": 2.5,
+      "flagged_sessions_clarity": 882,
+      "page_sessions_ga4_30d": 11800,
+      "rate_at_stake_pct": 1.74,
+      "rate_at_stake_basis": "gap to site",
+      "conversions_at_stake_30d_estimate": 17.8,
+      "confidence": "high"
+    },
+    {
+      "rank": 4,
+      "page": "/industries/salons/",
+      "signal": "Dead clicks",
+      "where": "Mobile, channel not concentrated",
+      "share_pct": 9.3,
+      "site_baseline_pct": 5.9,
+      "times_baseline": 1.6,
+      "flagged_sessions_clarity": 345,
+      "page_sessions_ga4_30d": 4300,
+      "rate_at_stake_pct": 3.6,
+      "rate_at_stake_basis": "own rate (at or above site)",
+      "conversions_at_stake_30d_estimate": 14.4,
+      "confidence": "high"
+    },
+    {
+      "rank": 5,
+      "page": "/features/online-booking/",
+      "signal": "Dead clicks",
+      "where": "PC, channel not concentrated",
+      "share_pct": 12.1,
+      "site_baseline_pct": 5.9,
+      "times_baseline": 2.1,
+      "flagged_sessions_clarity": 541,
+      "page_sessions_ga4_30d": 5200,
+      "rate_at_stake_pct": 0.74,
+      "rate_at_stake_basis": "gap to site",
+      "conversions_at_stake_30d_estimate": 4.7,
+      "confidence": "high"
+    }
+  ],
+  "fix_details": [
+    {
+      "rank": 1,
+      "page": "/signup/",
+      "signal": "JavaScript errors",
+      "evidence": "225 of 3,354 Clarity sessions on /signup/ (6.7%) had a JavaScript error, 5.7 times the site's 1.17%. Mobile 10.7%, PC 1.1%.",
+      "estimate": "3,900 GA4 sessions × 6.7% × 30.26% (1,180 sign-ups ÷ 3,900 sessions that viewed the page) = 79.2 sign-ups in 30 days (estimate).",
+      "device": {
+        "mobile_share_pct": 10.7,
+        "pc_share_pct": 1.1,
+        "concentrated_on": "Mobile"
+      },
+      "channel": {
+        "top_channel": "Direct",
+        "top_channel_share_pct": 6.8,
+        "page_share_same_days_pct": 6.7,
+        "days": 6,
+        "concentrated_on": null
+      },
+      "recordings_to_watch": "Recordings > Filters > Page > JavaScript errors: the top error on this page; Path > Visited URL: contains /signup/; User info > Device: Mobile; Time frame: Last 30 days. Watch 5 to 10 and note what the visitor tried just before the signal.",
+      "heatmap_view": "Heatmaps > /signup/ > Click maps, with the same filter",
+      "check_after_fix": "JavaScript errors share on /signup/ on Mobile in the next 14 days of history, against 6.7% now.",
+      "likely_cause": "From your notes (6 recordings): On iPhones the Create account button does nothing after the phone number is typed with spaces. The error in Clarity is a phone formatting error from the phone input script, right after the tap.",
+      "what_to_do": "Fix the phone formatting error in the phone input script on iOS Safari (accept spaces and dashes, or strip them before checking), then re-test sign-up on an iPhone."
+    },
+    {
+      "rank": 2,
+      "page": "/pricing/",
+      "signal": "Rage clicks",
+      "evidence": "336 of 8,256 Clarity sessions on /pricing/ (4.1%) had rage clicks, 2.9 times the site's 1.4%. Mobile 6.8%, PC 1.8%.",
+      "estimate": "9,600 GA4 sessions × 4.1% × 7.4% (page converts at 7.4%, at or above the site's 2.14%) = 28.9 sign-ups in 30 days (estimate).",
+      "device": {
+        "mobile_share_pct": 6.8,
+        "pc_share_pct": 1.8,
+        "concentrated_on": "Mobile"
+      },
+      "channel": {
+        "top_channel": "PaidSearch",
+        "top_channel_share_pct": 4.4,
+        "page_share_same_days_pct": 3.9,
+        "days": 6,
+        "concentrated_on": null
+      },
+      "recordings_to_watch": "Recordings > Filters > User actions > Insights: Rage clicks; Path > Visited URL: contains /pricing/; User info > Device: Mobile; Time frame: Last 30 days. Watch 5 to 10 and note what the visitor tried just before the signal.",
+      "heatmap_view": "Heatmaps > /pricing/ > Click maps, with the same filter",
+      "check_after_fix": "Rage clicks share on /pricing/ on Mobile in the next 14 days of history, against 4.1% now.",
+      "likely_cause": "From your notes (8 recordings): Visitors tap the words Monthly and Yearly beside the billing switch. Only the small switch responds, so they tap the words three or four times, then scroll down without changing the prices.",
+      "what_to_do": "Make the words Monthly and Yearly part of the switch (one tap target around both labels and the switch), and show the price change right away.",
+      "speed": "Mobile LCP 2.4 s, Total Blocking Time 280 ms: not slow enough to explain the clicks."
+    },
+    {
+      "rank": 3,
+      "page": "/blog/reduce-no-shows/",
+      "signal": "Excessive scrolling",
+      "evidence": "882 of 10,148 Clarity sessions on /blog/reduce-no-shows/ (8.7%) had excessive scrolling, 2.5 times the site's 3.51%. Mobile 9.7%, PC 6.3%.",
+      "estimate": "11,800 GA4 sessions × 8.7% × 1.74% (site 2.14% minus page 0.4%) = 17.8 sign-ups in 30 days (estimate).",
+      "device": {
+        "mobile_share_pct": 9.7,
+        "pc_share_pct": 6.3,
+        "concentrated_on": "Mobile"
+      },
+      "channel": {
+        "top_channel": "Referral",
+        "top_channel_share_pct": 8.8,
+        "page_share_same_days_pct": 8.5,
+        "days": 6,
+        "concentrated_on": null
+      },
+      "recordings_to_watch": "Recordings > Filters > User actions > Insights: Excessive scrolling; Path > Visited URL: contains /blog/reduce-no-shows/; User info > Device: Mobile; Time frame: Last 30 days. Watch 5 to 10 and note what the visitor tried just before the signal.",
+      "heatmap_view": "Heatmaps > /blog/reduce-no-shows/ > Scroll maps, with the same filter",
+      "check_after_fix": "Excessive scrolling share on /blog/reduce-no-shows/ on Mobile in the next 14 days of history, against 8.7% now.",
+      "likely_cause": "Watch first. The two most likely causes: visitors hunting for one answer in a long page with no jump links; or the call to action sits far from where the reader decides.",
+      "what_to_do": "Watch the recordings below, confirm which cause it is, then fix that element.",
+      "note": "This page has the most flagged sessions in the fix list (882) but ranks here, because it converts at 0.4% and only the gap to the site rate is at stake."
+    },
+    {
+      "rank": 4,
+      "page": "/industries/salons/",
+      "signal": "Dead clicks",
+      "evidence": "345 of 3,698 Clarity sessions on /industries/salons/ (9.3%) had dead clicks, 1.6 times the site's 5.9%. Mobile 11.1%, PC 5.9%.",
+      "estimate": "4,300 GA4 sessions × 9.3% × 3.6% (page converts at 3.6%, at or above the site's 2.14%) = 14.4 sign-ups in 30 days (estimate).",
+      "device": {
+        "mobile_share_pct": 11.1,
+        "pc_share_pct": 5.9,
+        "concentrated_on": "Mobile"
+      },
+      "channel": {
+        "top_channel": "Organic Search",
+        "top_channel_share_pct": 9.7,
+        "page_share_same_days_pct": 9.5,
+        "days": 6,
+        "concentrated_on": null
+      },
+      "recordings_to_watch": "Recordings > Filters > User actions > Insights: Dead clicks; Path > Visited URL: contains /industries/salons/; User info > Device: Mobile; Time frame: Last 30 days. Watch 5 to 10 and note what the visitor tried just before the signal.",
+      "heatmap_view": "Heatmaps > /industries/salons/ > Click maps, with the same filter",
+      "check_after_fix": "Dead clicks share on /industries/salons/ on Mobile in the next 14 days of history, against 9.3% now.",
+      "likely_cause": "Watch first. The two most likely causes: images or cards styled like links that open nothing; or a slow script, so taps land before the page can respond.",
+      "what_to_do": "Fix mobile speed first (Total Blocking Time 720 ms, LCP 4.6 s), then watch the recordings to see whether the dead clicks remain.",
+      "speed": "Mobile LCP 4.6 s, Total Blocking Time 720 ms: fix speed first."
+    },
+    {
+      "rank": 5,
+      "page": "/features/online-booking/",
+      "signal": "Dead clicks",
+      "evidence": "541 of 4,472 Clarity sessions on /features/online-booking/ (12.1%) had dead clicks, 2.1 times the site's 5.9%. Mobile 6.8%, PC 16.9%.",
+      "estimate": "5,200 GA4 sessions × 12.1% × 0.74% (site 2.14% minus page 1.4%) = 4.7 sign-ups in 30 days (estimate).",
+      "device": {
+        "mobile_share_pct": 6.8,
+        "pc_share_pct": 16.9,
+        "concentrated_on": "PC"
+      },
+      "channel": {
+        "top_channel": "Organic Search",
+        "top_channel_share_pct": 11.9,
+        "page_share_same_days_pct": 11.9,
+        "days": 6,
+        "concentrated_on": null
+      },
+      "recordings_to_watch": "Recordings > Filters > User actions > Insights: Dead clicks; Path > Visited URL: contains /features/online-booking/; User info > Device: PC; Time frame: Last 30 days. Watch 5 to 10 and note what the visitor tried just before the signal.",
+      "heatmap_view": "Heatmaps > /features/online-booking/ > Click maps, with the same filter",
+      "check_after_fix": "Dead clicks share on /features/online-booking/ on PC in the next 14 days of history, against 12.1% now.",
+      "likely_cause": "Watch first. The two most likely causes: images or cards styled like links that open nothing; or a slow script, so taps land before the page can respond.",
+      "what_to_do": "Watch the recordings below, confirm which cause it is, then fix that element.",
+      "speed": "Mobile LCP 2.9 s, Total Blocking Time 350 ms: not slow enough to explain the clicks."
+    }
+  ],
+  "also_flagged": [
+    {
+      "rank": 6,
+      "page": "/features/payments/",
+      "signal": "Quick backs",
+      "where": "all devices, PaidSearch",
+      "share_pct": 7.8,
+      "site_baseline_pct": 2.44,
+      "times_baseline": 3.2,
+      "flagged_sessions_clarity": 241,
+      "page_sessions_ga4_30d": 3600,
+      "rate_at_stake_pct": 0.94,
+      "rate_at_stake_basis": "gap to site",
+      "conversions_at_stake_30d_estimate": 2.6,
+      "confidence": "high"
+    }
+  ],
+  "total_at_stake_estimate": {
+    "conversions_30d": 147.6,
+    "method": "each page's largest problem, added up; problems on one page overlap, so they are not summed"
+  },
+  "speed_checked": [
+    {
+      "page": "/pricing/",
+      "reason": "dead or rage click problem in the fix list"
+    },
+    {
+      "page": "/industries/salons/",
+      "reason": "dead or rage click problem in the fix list"
+    },
+    {
+      "page": "/features/online-booking/",
+      "reason": "dead or rage click problem in the fix list"
+    }
+  ],
+  "other_findings": [
+    {
+      "check": "Scroll depth against the call to action",
+      "page": "/",
+      "device": "Mobile",
+      "avg_scroll_depth_pct": 38.1,
+      "cta_position_pct": 55,
+      "result": "flag: the average visit stops above the Create your account button"
+    },
+    {
+      "check": "Scroll depth against the call to action",
+      "page": "/",
+      "device": "PC",
+      "avg_scroll_depth_pct": 60.7,
+      "cta_position_pct": 55,
+      "result": "fine: the average visit reaches the Create your account button"
+    },
+    {
+      "check": "Site-wide JavaScript errors",
+      "site_baseline_pct": 1.17,
+      "result": "under the 5% line, so page comparisons are fair"
+    }
+  ],
+  "not_graded": [
+    {
+      "page": "/templates/cancellation-policy/",
+      "clarity_sessions": 95,
+      "ga4_sessions_30d": 110,
+      "reason": "under 100 sessions"
+    }
+  ],
+  "history": {
+    "days_in_tab": 30,
+    "rows_after_summing": 59,
+    "rows_note": "the tab holds one row per day, URL, device or channel and signal; this run sums them per URL and device, and per URL and channel",
+    "next_pull": "the scheduled daily pull on 2026-10-29: 9 Clarity calls for the last 1 day, appended to the same tab"
+  },
+  "go_deeper": [
+    {
+      "for": "the pricing and signup pages as a whole",
+      "skill": "landing-page-auditor",
+      "if_installed": true
+    },
+    {
+      "for": "where the sign-up funnel loses people between steps",
+      "skill": "funnel-dropoff-diagnostician",
+      "if_installed": true
+    },
+    {
+      "for": "the sign-up form fields",
+      "skill": "form-cro",
+      "if_installed": true
+    },
+    {
+      "for": "testing the pricing switch change before rolling it out",
+      "skill": "ab-test-designer",
+      "if_installed": true
+    }
+  ]
+}

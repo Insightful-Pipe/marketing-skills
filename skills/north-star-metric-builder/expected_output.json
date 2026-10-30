@@ -1,0 +1,568 @@
+{
+  "header": {
+    "product": "Example Booking Software",
+    "model": "subscription software",
+    "stage": "live with 6 or more complete months of history (12 used)",
+    "sources": [
+      "billing history (pasted)",
+      "BigQuery GA4 export (SELECT only)",
+      "GA4 events and key events"
+    ],
+    "history_window": "2025-10 to 2026-09 (12 complete months)",
+    "dropped": "2026-10 (incomplete month) and the week of 2026-10-26 (incomplete week); neither is in the test or the baselines",
+    "baseline_weeks": "2026-09-28 to 2026-10-25 (4 complete Monday-to-Sunday weeks; the week of 2026-09-21 was pulled only to compute the first kept share)",
+    "unit": "business accounts (user_id)"
+  },
+  "the_pick": {
+    "north_star": "Online bookings completed through the booking page per week, counting every appointment a business's clients book online.",
+    "why": "It is the moment a business gets what it pays for: a client booked without a phone call. Over 10 month pairs, its monthly change lined up with next month's retention change at 0.73 and with next month's revenue change at 0.95, the highest average of the candidates that passed.",
+    "average_lead_correlation": 0.84,
+    "tie_break": null
+  },
+  "candidates": [
+    {
+      "id": "C1",
+      "candidate": "New accounts per month",
+      "rule_broken": "R2 Reach, not value",
+      "why": "Sign-ups rise with ad spend whether or not anyone takes a booking.",
+      "verdict": "rejected by rule"
+    },
+    {
+      "id": "C2",
+      "candidate": "Total accounts registered",
+      "rule_broken": "R1 Cumulative",
+      "why": "A total of every account ever created can't fall, so it can't warn you.",
+      "verdict": "rejected by rule"
+    },
+    {
+      "id": "C3",
+      "candidate": "MRR",
+      "rule_broken": "R3 The money itself",
+      "why": "MRR is the result the North Star should predict, so it becomes the revenue series in the test.",
+      "verdict": "rejected by rule"
+    },
+    {
+      "id": "C4",
+      "candidate": "Reminders sent per month",
+      "rule_broken": "R4 Product output",
+      "why": "The app sends reminders on its own for every booking; more reminders don't mean more value.",
+      "verdict": "rejected by rule"
+    },
+    {
+      "id": "C5",
+      "candidate": "Share of paying accounts taking online bookings",
+      "rule_broken": "R5 A rate alone",
+      "why": "The share can rise while paying accounts shrink. It stays in view through the booking-account input instead.",
+      "verdict": "rejected by rule"
+    },
+    {
+      "id": "C6",
+      "candidate": "Monthly active accounts",
+      "rule_broken": null,
+      "lead_correlation_with_next_month_retention": 0.24,
+      "retention_grade": "weak",
+      "lead_correlation_with_next_month_revenue": 0.13,
+      "revenue_grade": "none",
+      "same_month_correlation_retention": -0.06,
+      "same_month_correlation_revenue": -0.08,
+      "average_lead_correlation": 0.18,
+      "month_pairs": 10,
+      "verdict": "fails the history test"
+    },
+    {
+      "id": "C7",
+      "candidate": "Online bookings completed",
+      "rule_broken": null,
+      "lead_correlation_with_next_month_retention": 0.73,
+      "retention_grade": "leads",
+      "lead_correlation_with_next_month_revenue": 0.95,
+      "revenue_grade": "leads",
+      "same_month_correlation_retention": -0.03,
+      "same_month_correlation_revenue": -0.2,
+      "average_lead_correlation": 0.84,
+      "month_pairs": 10,
+      "verdict": "picked"
+    },
+    {
+      "id": "C8",
+      "candidate": "Accounts with 10 or more online bookings",
+      "rule_broken": null,
+      "lead_correlation_with_next_month_retention": 0.6,
+      "retention_grade": "leads",
+      "lead_correlation_with_next_month_revenue": 0.91,
+      "revenue_grade": "leads",
+      "same_month_correlation_retention": 0.14,
+      "same_month_correlation_revenue": -0.03,
+      "average_lead_correlation": 0.76,
+      "month_pairs": 10,
+      "verdict": "passes, not picked"
+    }
+  ],
+  "the_tree": {
+    "formulas": [
+      "bookings per week = booking accounts x booking page visits per booking account x booking conversion",
+      "booking accounts this week = booking accounts last week x weekly kept share + accounts starting this week"
+    ],
+    "add_up_check": {
+      "north_star_baseline": 41044,
+      "inputs_multiplied": "1727 x 78.7 x 30.2% = 41048",
+      "difference": "0.0%",
+      "result": "adds up (within 5%)"
+    },
+    "flow_check": {
+      "booking_accounts_baseline": 1727,
+      "from_kept_and_starting": "1746 x 90.3% + 150 = 1727",
+      "difference": "0.0%",
+      "result": "adds up (within 5%)"
+    }
+  },
+  "targets_basis": {
+    "north_star_growth_last_6_months": [
+      "4.1%",
+      "5.0%",
+      "2.1%",
+      "3.5%",
+      "4.2%",
+      "1.3%"
+    ],
+    "median_monthly_growth": "3.8%",
+    "north_star_13_week_growth": "11.8%",
+    "rate_gain_from_conversion": "1.6%",
+    "each_count_grows": "4.9%",
+    "tree_at_target": "1812 x 82.5 x 30.7% = 45891 (North Star target 45888)",
+    "note": "Targets are estimates from this business's own history, not forecasts."
+  },
+  "inputs": [
+    {
+      "metric": "Online bookings completed per week",
+      "level": "North Star",
+      "owner": "Leadership",
+      "unit": "count",
+      "baseline": 41044,
+      "target_week_13": 45888,
+      "change": "11.8%",
+      "target_formula": "baseline x (1 + median monthly growth of the last 6 complete months)^3 = baseline x (1 + 3.8%)^3",
+      "what_the_owner_changes": "Moves only through the inputs below.",
+      "weekly_source": "GA4 weekly events: booking_completed"
+    },
+    {
+      "metric": "Booking accounts per week (accounts with 1 or more online bookings)",
+      "level": "Node",
+      "owner": "Product lead",
+      "unit": "count",
+      "baseline": 1727,
+      "target_week_13": 1812,
+      "change": "4.9%",
+      "target_formula": "baseline x (1 + 4.9%), the growth the rates don't cover split evenly over the 2 counts",
+      "what_the_owner_changes": "Fed by the kept share and the starting accounts.",
+      "weekly_source": "BigQuery weekly query: value_accounts"
+    },
+    {
+      "metric": "Booking page visits per booking account per week",
+      "level": "Input",
+      "owner": "Growth marketing",
+      "unit": "per account",
+      "baseline": 78.7,
+      "target_week_13": 82.5,
+      "change": "4.9%",
+      "target_formula": "baseline x (1 + 4.9%), the same even split",
+      "what_the_owner_changes": "Get each business to share its booking link: Instagram button, Google Business Profile link, email signatures.",
+      "weekly_source": "GA4 weekly booking_page_view / BigQuery weekly value_accounts"
+    },
+    {
+      "metric": "Booking conversion (completed bookings / booking page visits)",
+      "level": "Input",
+      "owner": "Booking flow product team",
+      "unit": "%",
+      "baseline": 30.2,
+      "target_week_13": 30.7,
+      "change": "0.5 points",
+      "target_formula": "baseline + half the gap to the best complete month (2026-02, 31.2%)",
+      "what_the_owner_changes": "Fewer steps to book, deposits only where the business needs them, clearer time slots.",
+      "weekly_source": "GA4 weekly events: booking_completed / booking_page_view"
+    },
+    {
+      "metric": "Weekly kept share of booking accounts",
+      "level": "Input",
+      "owner": "Customer success",
+      "unit": "%",
+      "baseline": 90.3,
+      "target_week_13": 91.0,
+      "change": "0.7 points",
+      "target_formula": "baseline + half the gap to the best complete month (2026-01, 91.6%)",
+      "what_the_owner_changes": "Reach accounts whose bookings stop for a week; check-ins before a quiet season.",
+      "weekly_source": "BigQuery weekly query: kept_from_last_week / last week's value_accounts"
+    },
+    {
+      "metric": "Accounts starting to take online bookings per week",
+      "level": "Input",
+      "owner": "Onboarding team",
+      "unit": "count",
+      "baseline": 150,
+      "target_week_13": 167,
+      "change": "11.3%",
+      "target_formula": "N = (BT - B0 x r^13) x (1 - r) / (1 - r^13), with the target kept share",
+      "what_the_owner_changes": "Get new accounts to their first online booking: booking page set up and shared in week one.",
+      "weekly_source": "BigQuery weekly query: starting_this_week"
+    }
+  ],
+  "events": {
+    "tracking": [
+      {
+        "metric": "Online bookings completed per week",
+        "calculation": "count of booking_completed, Monday to Sunday",
+        "reads": [
+          "booking_completed"
+        ],
+        "computed_in": "GA4 events by date, added up into weeks",
+        "ready": "ready"
+      },
+      {
+        "metric": "Booking accounts per week (accounts with 1 or more online bookings)",
+        "calculation": "accounts with 1 or more booking_completed in the week",
+        "reads": [
+          "booking_completed"
+        ],
+        "computed_in": "BigQuery weekly query (value_accounts)",
+        "ready": "ready"
+      },
+      {
+        "metric": "Booking page visits per booking account per week",
+        "calculation": "booking_page_view / booking accounts",
+        "reads": [
+          "booking_page_view"
+        ],
+        "computed_in": "GA4 weekly count over the BigQuery value_accounts",
+        "ready": "ready"
+      },
+      {
+        "metric": "Booking conversion (completed bookings / booking page visits)",
+        "calculation": "booking_completed / booking_page_view",
+        "reads": [
+          "booking_completed",
+          "booking_page_view"
+        ],
+        "computed_in": "GA4 events by date, added up into weeks",
+        "ready": "ready"
+      },
+      {
+        "metric": "Weekly kept share of booking accounts",
+        "calculation": "kept_from_last_week / the week before's value_accounts",
+        "reads": [
+          "booking_completed"
+        ],
+        "computed_in": "BigQuery weekly query",
+        "ready": "ready"
+      },
+      {
+        "metric": "Accounts starting to take online bookings per week",
+        "calculation": "accounts with a booking this week and none the week before",
+        "reads": [
+          "booking_completed"
+        ],
+        "computed_in": "BigQuery weekly query (starting_this_week)",
+        "ready": "ready"
+      }
+    ],
+    "event_list": [
+      {
+        "event": "booking_completed",
+        "metrics_that_read_it": [
+          "Online bookings completed per week",
+          "Booking accounts per week (accounts with 1 or more online bookings)",
+          "Booking conversion (completed bookings / booking page visits)",
+          "Weekly kept share of booking accounts",
+          "Accounts starting to take online bookings per week"
+        ],
+        "recorded_now": true,
+        "fields_recorded": [
+          "deposit_taken",
+          "service_category"
+        ],
+        "optional_fields": [],
+        "key_event_already": true
+      },
+      {
+        "event": "booking_page_view",
+        "metrics_that_read_it": [
+          "Booking page visits per booking account per week",
+          "Booking conversion (completed bookings / booking page visits)"
+        ],
+        "recorded_now": true,
+        "fields_recorded": [
+          "page_location",
+          "service_category"
+        ],
+        "optional_fields": [
+          {
+            "field": "booking_source",
+            "why": "splits visits by the shared link (Instagram button, Google Business Profile, email signature), so Growth marketing can see which link moves visits per account",
+            "recorded_now": false
+          }
+        ],
+        "key_event_already": false
+      }
+    ],
+    "new_to_add": [
+      "booking_source on booking_page_view (optional)"
+    ],
+    "account_id_note": "The per-account rows (booking accounts, kept share, starting accounts) count business accounts by user_id, which the product already sets to its internal account id on every event. Keep it that way: never an email address or phone number.",
+    "key_event_note": "booking_completed is already a key event. The weekly check reads event counts, so it doesn't depend on that."
+  },
+  "weekly_check": {
+    "tab_title": "North Star weekly check",
+    "layout": "One column per metric; rows for owner, baseline, path at weeks 4 and 8, the week-13 target, then one row per week to fill in each Monday.",
+    "status_rule": "on track at or above the path. Counts and per-account numbers: watch up to 5% below the path, behind more than 5% below. Rates: watch up to 1 point below the path, behind more than 1 point below.",
+    "path_values": {
+      "Online bookings completed per week": {
+        "week_4": 42535,
+        "week_8": 44025,
+        "week_13": 45888
+      },
+      "Booking accounts per week (accounts with 1 or more online bookings)": {
+        "week_4": 1753,
+        "week_8": 1779,
+        "week_13": 1812
+      },
+      "Booking page visits per booking account per week": {
+        "week_4": 79.9,
+        "week_8": 81.1,
+        "week_13": 82.5
+      },
+      "Booking conversion (completed bookings / booking page visits)": {
+        "week_4": 30.3,
+        "week_8": 30.5,
+        "week_13": 30.7
+      },
+      "Weekly kept share of booking accounts": {
+        "week_4": 90.5,
+        "week_8": 90.7,
+        "week_13": 91.0
+      },
+      "Accounts starting to take online bookings per week": {
+        "week_4": 155,
+        "week_8": 160,
+        "week_13": 167
+      }
+    }
+  },
+  "offered_fix": {
+    "status": "not run (waits for the user's yes on the exact layout)",
+    "steps": [
+      {
+        "action": "list_sheets",
+        "body": {
+          "platform": "google-sheets",
+          "action": "list_sheets",
+          "spreadsheet_id": "<your spreadsheet id>"
+        }
+      },
+      {
+        "action": "create_sheet",
+        "body": {
+          "platform": "google-sheets",
+          "action": "create_sheet",
+          "spreadsheet_id": "<your spreadsheet id>",
+          "title": "North Star weekly check"
+        }
+      },
+      {
+        "action": "update_cells",
+        "body": {
+          "platform": "google-sheets",
+          "action": "update_cells",
+          "spreadsheet_id": "<your spreadsheet id>",
+          "sheet_id": "<sheet_id returned by create_sheet>",
+          "range": "A1:G19",
+          "values": [
+            [
+              "Row",
+              "Online bookings completed per week",
+              "Booking accounts per week (accounts with 1 or more online bookings)",
+              "Booking page visits per booking account per week",
+              "Booking conversion (completed bookings / booking page visits)",
+              "Weekly kept share of booking accounts",
+              "Accounts starting to take online bookings per week"
+            ],
+            [
+              "Owner",
+              "Leadership",
+              "Product lead",
+              "Growth marketing",
+              "Booking flow product team",
+              "Customer success",
+              "Onboarding team"
+            ],
+            [
+              "Baseline (4 weeks to 2026-10-25)",
+              41044,
+              1727,
+              78.7,
+              30.2,
+              90.3,
+              150
+            ],
+            [
+              "Path, week 4",
+              42535,
+              1753,
+              79.9,
+              30.3,
+              90.5,
+              155
+            ],
+            [
+              "Path, week 8",
+              44025,
+              1779,
+              81.1,
+              30.5,
+              90.7,
+              160
+            ],
+            [
+              "Target, week 13",
+              45888,
+              1812,
+              82.5,
+              30.7,
+              91.0,
+              167
+            ],
+            [
+              "Week of 2026-10-26",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-11-02",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-11-09",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-11-16",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-11-23",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-11-30",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-12-07",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-12-14",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-12-21",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2026-12-28",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2027-01-04",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2027-01-11",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Week of 2027-01-18",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          ],
+          "value_input_option": "USER_ENTERED"
+        }
+      }
+    ]
+  },
+  "unknowns_and_caveats": [
+    "The test covers 10 month pairs, above the 8-pair floor but still a signal, not proof of cause.",
+    "December 2025 (the quiet month) and January 2026 (the New Year rebound) move bookings, retention and revenue together for seasonal reasons; they help the correlation without proving the link.",
+    "March 2026 (the Instagram booking button launch) lifted bookings; check that retention gains after it hold once the launch effect fades.",
+    "Monthly active accounts lined up with next month's retention at 0.24 (weak) and with next month's revenue at 0.13 (none): logging in tracks the business's own activity, not its clients' bookings.",
+    "Retention and revenue come from pasted billing history, marked from your data and not checked against the billing system."
+  ],
+  "go_deeper": [
+    "onboarding-cro (if installed): raise the share of new accounts that take a first online booking in week one",
+    "ab-test-designer (if installed): test a booking-flow change aimed at booking conversion",
+    "ltv-cac-ratio-optimizer (if installed): check what a new booking account is worth against what it costs",
+    "marketing-plan-builder (if installed): the marketing plan behind the visits-per-account input"
+  ]
+}

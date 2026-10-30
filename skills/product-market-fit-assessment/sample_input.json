@@ -1,0 +1,690 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The survey export holds the three questions the report uses; the GA4 property tracks the web app only.",
+  "request": "Hey Claude, I just added the \"product-market-fit-assessment\" skill. Here is our product-market fit survey export. Do we have product-market fit, and who should we focus on?",
+  "product": {
+    "name": "Example Booking Software",
+    "one_line": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+    "for": "owners and front-desk managers of small service businesses with 1 to 20 staff, mostly in the US, UK and Canada",
+    "site": "https://www.example.com"
+  },
+  "run_date": "2026-10-28",
+  "survey": {
+    "source": "Google Sheets (Google Forms responses), read with get_sheet_peak and query_sheet_data",
+    "window": {
+      "start": "2026-10-05",
+      "end": "2026-10-18"
+    },
+    "usage_rule": "took at least 2 bookings in the 14 days before answering (column bookings_last_14d)",
+    "segment_columns": [
+      "business_type",
+      "team_size"
+    ],
+    "export_csv": [
+      "response_id,user_id,submitted_at,business_type,team_size,bookings_last_14d,q1_without_product,q2_main_benefit,q5_what_to_improve",
+      "R0001,u44527,2026-10-17,other,6-20,40,Not disappointed,people book themselves online,lower SMS cost",
+      "R0002,u41179,2026-10-14,clinic,1,58,Very disappointed,\"clients actually turn up now, no-shows dropped\",cheaper reminder texts",
+      "R0003,u41745,2026-10-16,clinic,2-5,28,Somewhat disappointed,the reminders mean far fewer no-shows,let patients fill intake forms before they arrive",
+      "R0004,u41925,2026-10-07,clinic,2-5,4,Not disappointed,the booking page takes bookings while we sleep,digital intake forms",
+      "R0005,u41294,2026-10-09,clinic,1,41,Not disappointed,calendar view for the whole team,digital intake forms",
+      "R0006,u44999,2026-10-14,clinic,1,0,\"N/A, I no longer use it\",,",
+      "R0007,u41106,2026-10-07,clinic,1,11,Very disappointed,the reminders mean far fewer no-shows,digital intake forms",
+      "R0008,u41682,2026-10-10,clinic,2-5,37,Somewhat disappointed,clients book at night without calling us,texts get expensive",
+      "R0009,u44893,2026-10-15,salon,2-5,1,Not disappointed,everyone's schedule in one calendar,pay reports for my staff",
+      "R0010,u43052,2026-10-08,salon,2-5,25,Not disappointed,everyone's schedule in one calendar,cheaper reminder texts",
+      "R0011,u43814,2026-10-15,fitness studio,2-5,36,Somewhat disappointed,the booking page takes bookings while we sleep,sell class packs",
+      "R0012,u42873,2026-10-05,salon,2-5,8,Not disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0013,u44141,2026-10-11,fitness studio,6-20,51,Not disappointed,I can see every chair in one place,texts get expensive",
+      "R0014,u43370,2026-10-13,fitness studio,1,46,Very disappointed,calendar view for the whole team,10-class passes",
+      "R0015,u41527,2026-10-07,clinic,2-5,20,Very disappointed,the reminders mean far fewer no-shows,send the new patient form with the booking",
+      "R0016,u44388,2026-10-13,other,2-5,50,Somewhat disappointed,everyone's schedule in one calendar,an app for my phone",
+      "R0017,u44602,2026-10-12,fitness studio,1,0,Not disappointed,everyone's schedule in one calendar,cheaper reminder texts",
+      "R0018,u44653,2026-10-07,other,1,0,Not disappointed,calendar view for the whole team,cheaper reminder texts",
+      "R0019,u41961,2026-10-12,clinic,2-5,4,Not disappointed,calendar view for the whole team,lower SMS cost",
+      "R0020,u41038,2026-10-08,clinic,1,36,Very disappointed,\"clients actually turn up now, no-shows dropped\",an app for my phone",
+      "R0021,u42791,2026-10-07,salon,2-5,45,Very disappointed,the reminders mean far fewer no-shows,pay reports for my staff",
+      "R0022,u41842,2026-10-14,clinic,2-5,24,Somewhat disappointed,the reminders mean far fewer no-shows,staff want a mobile app",
+      "R0023,u41098,2026-10-06,clinic,1,19,Very disappointed,the reminders mean far fewer no-shows,digital intake forms",
+      "R0024,u44188,2026-10-08,other,1,56,Somewhat disappointed,the booking page takes bookings while we sleep,lower SMS cost",
+      "R0025,u41712,2026-10-16,clinic,2-5,53,Somewhat disappointed,people book themselves online,let patients fill intake forms before they arrive",
+      "R0026,u43008,2026-10-08,salon,2-5,38,Somewhat disappointed,calendar view for the whole team,phone app to check the day",
+      "R0027,u42595,2026-10-07,salon,1,18,Not disappointed,everyone's schedule in one calendar,texts get expensive",
+      "R0028,u41564,2026-10-06,clinic,2-5,6,Very disappointed,deposits at booking so late cancels still pay,lower SMS cost",
+      "R0029,u44094,2026-10-10,fitness studio,6-20,27,Somewhat disappointed,everyone's schedule in one calendar,sell class packs",
+      "R0030,u42635,2026-10-09,salon,1,54,Not disappointed,everyone's schedule in one calendar,pay reports for my staff",
+      "R0031,u44228,2026-10-09,other,1,32,Somewhat disappointed,I can see every chair in one place,lower SMS cost",
+      "R0032,u42524,2026-10-16,salon,1,36,Somewhat disappointed,the booking page takes bookings while we sleep,lower SMS cost",
+      "R0033,u42317,2026-10-07,salon,1,47,Very disappointed,automatic texts cut our no-shows,commission report per stylist",
+      "R0034,u42165,2026-10-07,clinic,6-20,7,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",send the new patient form with the booking",
+      "R0035,u43384,2026-10-15,fitness studio,1,52,Very disappointed,I can see every chair in one place,memberships for regulars",
+      "R0036,u42755,2026-10-12,salon,2-5,27,Very disappointed,\"clients actually turn up now, no-shows dropped\",staff want a mobile app",
+      "R0037,u43103,2026-10-11,salon,2-5,27,Not disappointed,the booking page takes bookings while we sleep,cheaper reminder texts",
+      "R0038,u43130,2026-10-18,salon,6-20,42,Very disappointed,the reminders mean far fewer no-shows,pay reports for my staff",
+      "R0039,u44031,2026-10-08,fitness studio,6-20,58,Very disappointed,the booking page takes bookings while we sleep,memberships for regulars",
+      "R0040,u43093,2026-10-11,salon,2-5,42,Not disappointed,calendar view for the whole team,show what each stylist earned",
+      "R0041,u42451,2026-10-08,salon,1,23,Somewhat disappointed,the reminders mean far fewer no-shows,pay reports for my staff",
+      "R0042,u42928,2026-10-11,salon,2-5,9,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",commission report per stylist",
+      "R0043,u44961,2026-10-08,fitness studio,1,0,\"N/A, I no longer use it\",,",
+      "R0044,u43708,2026-10-15,fitness studio,1,13,Not disappointed,calendar view for the whole team,sell class packs",
+      "R0045,u42067,2026-10-17,clinic,6-20,8,Very disappointed,deposits at booking so late cancels still pay,let patients fill intake forms before they arrive",
+      "R0046,u41191,2026-10-15,clinic,1,40,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",let patients fill intake forms before they arrive",
+      "R0047,u41074,2026-10-17,clinic,1,48,Very disappointed,\"clients actually turn up now, no-shows dropped\",phone app to check the day",
+      "R0048,u42016,2026-10-13,clinic,6-20,6,Very disappointed,deposits at booking so late cancels still pay,digital intake forms",
+      "R0049,u42728,2026-10-07,salon,2-5,47,Very disappointed,clients book at night without calling us,phone app to check the day",
+      "R0050,u44988,2026-10-18,other,1,0,\"N/A, I no longer use it\",,",
+      "R0051,u41651,2026-10-18,clinic,2-5,38,Very disappointed,automatic texts cut our no-shows,let patients fill intake forms before they arrive",
+      "R0052,u42279,2026-10-05,salon,1,4,Very disappointed,people book themselves online,show what each stylist earned",
+      "R0053,u44462,2026-10-06,other,2-5,47,Not disappointed,people book themselves online,cheaper reminder texts",
+      "R0054,u41449,2026-10-06,clinic,2-5,14,Very disappointed,I take a deposit when they book,digital intake forms",
+      "R0055,u44348,2026-10-16,other,2-5,60,Very disappointed,\"clients actually turn up now, no-shows dropped\",texts get expensive",
+      "R0056,u41360,2026-10-06,clinic,2-5,42,Very disappointed,card on file and deposits,lower SMS cost",
+      "R0057,u43683,2026-10-18,fitness studio,1,7,Not disappointed,calendar view for the whole team,texts get expensive",
+      "R0058,u41656,2026-10-08,clinic,2-5,20,Very disappointed,\"clients actually turn up now, no-shows dropped\",send the new patient form with the booking",
+      "R0059,u43452,2026-10-13,fitness studio,1,8,Somewhat disappointed,clients book at night without calling us,memberships for regulars",
+      "R0060,u41401,2026-10-11,clinic,2-5,53,Very disappointed,\"clients actually turn up now, no-shows dropped\",an app for my phone",
+      "R0061,u44726,2026-10-18,other,2-5,1,Not disappointed,everyone's schedule in one calendar,cheaper reminder texts",
+      "R0062,u42527,2026-10-12,salon,1,49,Somewhat disappointed,calendar view for the whole team,pay reports for my staff",
+      "R0063,u41491,2026-10-09,clinic,2-5,49,Very disappointed,deposits at booking so late cancels still pay,let patients fill intake forms before they arrive",
+      "R0064,u43145,2026-10-10,salon,6-20,35,Very disappointed,the reminders mean far fewer no-shows,lower SMS cost",
+      "R0065,u43318,2026-10-09,salon,6-20,4,Not disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0066,u42964,2026-10-11,salon,2-5,13,Somewhat disappointed,the booking page takes bookings while we sleep,staff want a mobile app",
+      "R0067,u42703,2026-10-09,salon,1,21,Not disappointed,everyone's schedule in one calendar,pay reports for my staff",
+      "R0068,u44904,2026-10-18,clinic,1,0,Very disappointed,\"clients actually turn up now, no-shows dropped\",let patients fill intake forms before they arrive",
+      "R0069,u43561,2026-10-09,fitness studio,1,29,Somewhat disappointed,calendar view for the whole team,memberships for regulars",
+      "R0070,u44624,2026-10-15,clinic,1,1,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",cheaper reminder texts",
+      "R0071,u41137,2026-10-16,clinic,1,24,Very disappointed,\"clients actually turn up now, no-shows dropped\",let patients fill intake forms before they arrive",
+      "R0072,u43274,2026-10-11,salon,6-20,42,Somewhat disappointed,calendar view for the whole team,cheaper reminder texts",
+      "R0073,u43928,2026-10-10,fitness studio,2-5,22,Not disappointed,clients book at night without calling us,lower SMS cost",
+      "R0074,u42324,2026-10-05,salon,1,33,Somewhat disappointed,the reminders mean far fewer no-shows,show what each stylist earned",
+      "R0075,u41277,2026-10-10,clinic,1,44,Not disappointed,clients book at night without calling us,send the new patient form with the booking",
+      "R0076,u43067,2026-10-13,salon,2-5,39,Not disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0077,u43860,2026-10-17,fitness studio,2-5,23,Somewhat disappointed,people book themselves online,memberships for regulars",
+      "R0078,u44758,2026-10-07,salon,1,0,Not disappointed,clients book at night without calling us,pay reports for my staff",
+      "R0079,u42390,2026-10-07,salon,1,19,Somewhat disappointed,clients book at night without calling us,show what each stylist earned",
+      "R0080,u43298,2026-10-11,salon,6-20,18,Not disappointed,calendar view for the whole team,commission report per stylist",
+      "R0081,u43798,2026-10-14,fitness studio,2-5,32,Very disappointed,calendar view for the whole team,sell class packs",
+      "R0082,u42769,2026-10-13,salon,2-5,4,Very disappointed,the booking page takes bookings while we sleep,pay reports for my staff",
+      "R0083,u41137,2026-10-05,clinic,1,24,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",let patients fill intake forms before they arrive",
+      "R0084,u43677,2026-10-13,fitness studio,1,36,Not disappointed,calendar view for the whole team,10-class passes",
+      "R0085,u43718,2026-10-07,fitness studio,1,54,Not disappointed,I can see every chair in one place,cheaper reminder texts",
+      "R0086,u43979,2026-10-15,fitness studio,2-5,50,Not disappointed,I can see every chair in one place,cheaper reminder texts",
+      "R0087,u45016,2026-10-06,fitness studio,1,0,\"N/A, I no longer use it\",,",
+      "R0088,u41355,2026-10-09,clinic,2-5,4,Very disappointed,deposits at booking so late cancels still pay,phone app to check the day",
+      "R0089,u42838,2026-10-11,salon,2-5,38,Somewhat disappointed,clients book at night without calling us,commission report per stylist",
+      "R0090,u41496,2026-10-10,clinic,2-5,17,Very disappointed,automatic texts cut our no-shows,digital intake forms",
+      "R0091,u44118,2026-10-13,fitness studio,6-20,31,Not disappointed,everyone's schedule in one calendar,lower SMS cost",
+      "R0092,u42426,2026-10-10,salon,1,12,Somewhat disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0093,u42203,2026-10-12,clinic,6-20,17,Not disappointed,I can see every chair in one place,cheaper reminder texts",
+      "R0094,u44270,2026-10-08,other,1,17,Not disappointed,calendar view for the whole team,phone app to check the day",
+      "R0095,u44500,2026-10-13,other,2-5,2,Not disappointed,everyone's schedule in one calendar,cheaper reminder texts",
+      "R0096,u42810,2026-10-10,salon,2-5,18,Very disappointed,the booking page takes bookings while we sleep,an app for my phone",
+      "R0097,u43546,2026-10-12,fitness studio,1,18,Somewhat disappointed,I can see every chair in one place,10-class passes",
+      "R0098,u42917,2026-10-14,salon,2-5,20,Somewhat disappointed,the booking page takes bookings while we sleep,show what each stylist earned",
+      "R0099,u44991,2026-10-09,salon,2-5,0,\"N/A, I no longer use it\",,",
+      "R0100,u42604,2026-10-18,salon,1,46,Not disappointed,people book themselves online,an app for my phone",
+      "R0101,u41863,2026-10-15,clinic,2-5,32,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",cheaper reminder texts",
+      "R0102,u44951,2026-10-05,salon,1,0,\"N/A, I no longer use it\",,",
+      "R0103,u41644,2026-10-07,clinic,2-5,17,Very disappointed,card on file and deposits,phone app to check the day",
+      "R0104,u43806,2026-10-18,fitness studio,2-5,59,Somewhat disappointed,the booking page takes bookings while we sleep,10-class passes",
+      "R0105,u42121,2026-10-14,clinic,6-20,15,Somewhat disappointed,the reminders mean far fewer no-shows,cheaper reminder texts",
+      "R0106,u42468,2026-10-09,salon,1,42,Somewhat disappointed,I can see every chair in one place,show what each stylist earned",
+      "R0107,u44060,2026-10-12,fitness studio,6-20,25,Somewhat disappointed,people book themselves online,memberships for regulars",
+      "R0108,u41470,2026-10-07,clinic,2-5,50,Very disappointed,the reminders mean far fewer no-shows,staff want a mobile app",
+      "R0109,u41218,2026-10-14,clinic,1,10,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",an app for my phone",
+      "R0110,u43917,2026-10-05,fitness studio,2-5,25,Not disappointed,I can see every chair in one place,sell class packs",
+      "R0111,u42046,2026-10-05,clinic,6-20,3,Very disappointed,the reminders mean far fewer no-shows,lower SMS cost",
+      "R0112,u42127,2026-10-12,clinic,6-20,33,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",staff want a mobile app",
+      "R0113,u41782,2026-10-17,clinic,2-5,5,Somewhat disappointed,automatic texts cut our no-shows,send the new patient form with the booking",
+      "R0114,u42674,2026-10-10,salon,1,50,Not disappointed,everyone's schedule in one calendar,commission report per stylist",
+      "R0115,u42141,2026-10-06,clinic,6-20,26,Somewhat disappointed,the reminders mean far fewer no-shows,send the new patient form with the booking",
+      "R0116,u41592,2026-10-08,clinic,2-5,37,Very disappointed,\"clients actually turn up now, no-shows dropped\",texts get expensive",
+      "R0117,u42542,2026-10-06,salon,1,11,Somewhat disappointed,I can see every chair in one place,pay reports for my staff",
+      "R0118,u43472,2026-10-18,fitness studio,1,18,Somewhat disappointed,clients book at night without calling us,phone app to check the day",
+      "R0119,u41808,2026-10-16,clinic,2-5,27,Somewhat disappointed,the reminders mean far fewer no-shows,staff want a mobile app",
+      "R0120,u44536,2026-10-06,salon,1,1,Very disappointed,clients book at night without calling us,commission report per stylist",
+      "R0121,u43396,2026-10-12,fitness studio,1,11,Somewhat disappointed,calendar view for the whole team,memberships for regulars",
+      "R0122,u42359,2026-10-13,salon,1,14,Somewhat disappointed,automatic texts cut our no-shows,texts get expensive",
+      "R0123,u43432,2026-10-06,fitness studio,1,32,Somewhat disappointed,the booking page takes bookings while we sleep,memberships for regulars",
+      "R0124,u44825,2026-10-17,other,1,1,Somewhat disappointed,clients book at night without calling us,cheaper reminder texts",
+      "R0125,u41252,2026-10-17,clinic,1,6,Somewhat disappointed,automatic texts cut our no-shows,let patients fill intake forms before they arrive",
+      "R0126,u44564,2026-10-18,salon,1,1,Not disappointed,people book themselves online,commission report per stylist",
+      "R0127,u43966,2026-10-11,fitness studio,2-5,7,Not disappointed,calendar view for the whole team,texts get expensive",
+      "R0128,u42082,2026-10-08,clinic,6-20,16,Very disappointed,\"clients actually turn up now, no-shows dropped\",staff want a mobile app",
+      "R0129,u41808,2026-10-05,clinic,2-5,27,Not disappointed,the reminders mean far fewer no-shows,staff want a mobile app",
+      "R0130,u44013,2026-10-13,fitness studio,2-5,10,Not disappointed,calendar view for the whole team,10-class passes",
+      "R0131,u41903,2026-10-08,clinic,2-5,9,Somewhat disappointed,the reminders mean far fewer no-shows,phone app to check the day",
+      "R0132,u41551,2026-10-09,clinic,2-5,25,Very disappointed,the reminders mean far fewer no-shows,let patients fill intake forms before they arrive",
+      "R0133,u42500,2026-10-14,salon,1,37,Somewhat disappointed,clients book at night without calling us,pay reports for my staff",
+      "R0134,u41270,2026-10-07,clinic,1,59,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",digital intake forms",
+      "R0135,u42873,2026-10-12,salon,2-5,8,Somewhat disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0136,u44155,2026-10-18,other,1,9,Very disappointed,people book themselves online,texts get expensive",
+      "R0137,u43829,2026-10-05,fitness studio,2-5,12,Somewhat disappointed,people book themselves online,memberships for regulars",
+      "R0138,u41760,2026-10-18,clinic,2-5,2,Somewhat disappointed,the reminders mean far fewer no-shows,let patients fill intake forms before they arrive",
+      "R0139,u43099,2026-10-18,salon,2-5,58,Not disappointed,everyone's schedule in one calendar,commission report per stylist",
+      "R0140,u42899,2026-10-07,salon,2-5,16,Somewhat disappointed,automatic texts cut our no-shows,cheaper reminder texts",
+      "R0141,u41393,2026-10-18,clinic,2-5,26,Very disappointed,I take a deposit when they book,phone app to check the day",
+      "R0142,u43078,2026-10-05,salon,2-5,34,Not disappointed,the booking page takes bookings while we sleep,lower SMS cost",
+      "R0143,u43536,2026-10-09,fitness studio,1,31,Somewhat disappointed,the booking page takes bookings while we sleep,sell class packs",
+      "R0144,u43015,2026-10-13,salon,2-5,43,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",staff want a mobile app",
+      "R0145,u44876,2026-10-18,fitness studio,1,1,Not disappointed,I can see every chair in one place,10-class passes",
+      "R0146,u43840,2026-10-05,fitness studio,2-5,58,Somewhat disappointed,the booking page takes bookings while we sleep,10-class passes",
+      "R0147,u43768,2026-10-18,fitness studio,2-5,55,Very disappointed,clients book at night without calling us,memberships for regulars",
+      "R0148,u43601,2026-10-12,fitness studio,1,34,Somewhat disappointed,everyone's schedule in one calendar,sell class packs",
+      "R0149,u43336,2026-10-08,fitness studio,1,31,Very disappointed,the booking page takes bookings while we sleep,10-class passes",
+      "R0150,u44787,2026-10-14,fitness studio,1,0,Very disappointed,the booking page takes bookings while we sleep,memberships for regulars",
+      "R0151,u44512,2026-10-09,other,6-20,24,Somewhat disappointed,people book themselves online,texts get expensive",
+      "R0152,u43031,2026-10-16,salon,2-5,42,Somewhat disappointed,I can see every chair in one place,pay reports for my staff",
+      "R0153,u43660,2026-10-06,fitness studio,1,51,Not disappointed,I can see every chair in one place,10-class passes",
+      "R0154,u43004,2026-10-17,salon,2-5,60,Somewhat disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0155,u41632,2026-10-14,clinic,2-5,41,Very disappointed,automatic texts cut our no-shows,lower SMS cost",
+      "R0156,u44707,2026-10-16,fitness studio,2-5,0,Not disappointed,I can see every chair in one place,sell class packs",
+      "R0157,u43886,2026-10-07,fitness studio,2-5,43,Somewhat disappointed,I can see every chair in one place,10-class passes",
+      "R0158,u43639,2026-10-08,fitness studio,1,39,Not disappointed,calendar view for the whole team,phone app to check the day",
+      "R0159,u44310,2026-10-11,other,1,2,Not disappointed,the booking page takes bookings while we sleep,an app for my phone",
+      "R0160,u42844,2026-10-11,salon,2-5,41,Somewhat disappointed,clients book at night without calling us,show what each stylist earned",
+      "R0161,u41533,2026-10-06,clinic,2-5,13,Very disappointed,the reminders mean far fewer no-shows,digital intake forms",
+      "R0162,u42566,2026-10-06,salon,1,55,Not disappointed,clients book at night without calling us,lower SMS cost",
+      "R0163,u43621,2026-10-11,fitness studio,1,51,Not disappointed,people book themselves online,texts get expensive",
+      "R0164,u44976,2026-10-18,fitness studio,2-5,0,\"N/A, I no longer use it\",,",
+      "R0165,u44865,2026-10-12,salon,6-20,1,Not disappointed,clients book at night without calling us,texts get expensive",
+      "R0166,u44684,2026-10-11,salon,2-5,0,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",commission report per stylist",
+      "R0167,u43201,2026-10-05,salon,6-20,25,Somewhat disappointed,the reminders mean far fewer no-shows,phone app to check the day",
+      "R0168,u42886,2026-10-15,salon,2-5,41,Somewhat disappointed,\"clients actually turn up now, no-shows dropped\",phone app to check the day",
+      "R0169,u42561,2026-10-15,salon,1,29,Somewhat disappointed,everyone's schedule in one calendar,commission report per stylist",
+      "R0170,u43752,2026-10-14,fitness studio,2-5,54,Very disappointed,clients book at night without calling us,10-class passes",
+      "R0171,u41372,2026-10-12,clinic,2-5,32,Very disappointed,the reminders mean far fewer no-shows,an app for my phone",
+      "R0172,u42042,2026-10-09,clinic,6-20,3,Very disappointed,card on file and deposits,staff want a mobile app",
+      "R0173,u43656,2026-10-18,fitness studio,1,40,Not disappointed,calendar view for the whole team,lower SMS cost",
+      "R0174,u41161,2026-10-12,clinic,1,5,Very disappointed,\"clients actually turn up now, no-shows dropped\",an app for my phone",
+      "R0175,u43040,2026-10-13,salon,2-5,32,Somewhat disappointed,everyone's schedule in one calendar,show what each stylist earned",
+      "R0176,u44803,2026-10-08,clinic,6-20,0,Not disappointed,I can see every chair in one place,staff want a mobile app",
+      "R0177,u41330,2026-10-18,clinic,1,18,Not disappointed,I can see every chair in one place,digital intake forms",
+      "R0178,u43238,2026-10-18,salon,6-20,10,Somewhat disappointed,automatic texts cut our no-shows,an app for my phone",
+      "R0179,u44424,2026-10-15,other,2-5,36,Somewhat disappointed,people book themselves online,phone app to check the day",
+      "R0180,u42180,2026-10-15,clinic,6-20,31,Somewhat disappointed,people book themselves online,staff want a mobile app",
+      "R0181,u44911,2026-10-18,other,6-20,1,Not disappointed,calendar view for the whole team,lower SMS cost",
+      "R0182,u44612,2026-10-06,fitness studio,1,1,Somewhat disappointed,everyone's schedule in one calendar,memberships for regulars",
+      "R0183,u43167,2026-10-15,salon,6-20,25,Somewhat disappointed,I can see every chair in one place,pay reports for my staff",
+      "R0184,u42272,2026-10-05,salon,1,33,Very disappointed,clients book at night without calling us,an app for my phone",
+      "R0185,u41636,2026-10-18,clinic,2-5,4,Very disappointed,deposits at booking so late cancels still pay,digital intake forms",
+      "R0186,u43618,2026-10-17,fitness studio,1,30,Not disappointed,everyone's schedule in one calendar,10-class passes",
+      "R0187,u44257,2026-10-08,other,1,33,Somewhat disappointed,the booking page takes bookings while we sleep,lower SMS cost",
+      "R0188,u41428,2026-10-08,clinic,2-5,47,Very disappointed,automatic texts cut our no-shows,let patients fill intake forms before they arrive",
+      "R0189,u42210,2026-10-08,clinic,6-20,36,Not disappointed,calendar view for the whole team,digital intake forms",
+      "R0190,u42582,2026-10-11,salon,1,34,Not disappointed,the booking page takes bookings while we sleep,cheaper reminder texts",
+      "R0191,u41987,2026-10-12,clinic,6-20,46,Very disappointed,card on file and deposits,let patients fill intake forms before they arrive",
+      "R0192,u41210,2026-10-16,clinic,1,13,Somewhat disappointed,the reminders mean far fewer no-shows,digital intake forms",
+      "R0193,u42803,2026-10-07,salon,2-5,53,Very disappointed,the booking page takes bookings while we sleep,commission report per stylist",
+      "R0194,u44293,2026-10-13,other,1,58,Not disappointed,calendar view for the whole team,lower SMS cost",
+      "R0195,u42249,2026-10-17,salon,1,11,Very disappointed,automatic texts cut our no-shows,commission report per stylist",
+      "R0196,u42189,2026-10-16,clinic,6-20,3,Somewhat disappointed,the reminders mean far fewer no-shows,digital intake forms",
+      "R0197,u43498,2026-10-06,fitness studio,1,18,Somewhat disappointed,the booking page takes bookings while we sleep,memberships for regulars"
+    ]
+  },
+  "brand_terms": [
+    "example booking",
+    "examplebooking"
+  ],
+  "data_pulled": {
+    "ga4_cohorts": {
+      "property": "properties/123456789 (web app)",
+      "call": "get_report, dimensions cohort and cohortNthMonth, metrics cohortActiveUsers and cohortTotalUsers, monthly cohorts by firstSessionDate April to August 2026, endOffset to September 2026",
+      "rows": [
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0000",
+          "cohortActiveUsers": 1180,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0001",
+          "cohortActiveUsers": 484,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0002",
+          "cohortActiveUsers": 366,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0003",
+          "cohortActiveUsers": 295,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0004",
+          "cohortActiveUsers": 248,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-04",
+          "cohortNthMonth": "0005",
+          "cohortActiveUsers": 201,
+          "cohortTotalUsers": 1180
+        },
+        {
+          "cohort": "2026-05",
+          "cohortNthMonth": "0000",
+          "cohortActiveUsers": 1240,
+          "cohortTotalUsers": 1240
+        },
+        {
+          "cohort": "2026-05",
+          "cohortNthMonth": "0001",
+          "cohortActiveUsers": 533,
+          "cohortTotalUsers": 1240
+        },
+        {
+          "cohort": "2026-05",
+          "cohortNthMonth": "0002",
+          "cohortActiveUsers": 409,
+          "cohortTotalUsers": 1240
+        },
+        {
+          "cohort": "2026-05",
+          "cohortNthMonth": "0003",
+          "cohortActiveUsers": 347,
+          "cohortTotalUsers": 1240
+        },
+        {
+          "cohort": "2026-05",
+          "cohortNthMonth": "0004",
+          "cohortActiveUsers": 298,
+          "cohortTotalUsers": 1240
+        },
+        {
+          "cohort": "2026-06",
+          "cohortNthMonth": "0000",
+          "cohortActiveUsers": 1310,
+          "cohortTotalUsers": 1310
+        },
+        {
+          "cohort": "2026-06",
+          "cohortNthMonth": "0001",
+          "cohortActiveUsers": 603,
+          "cohortTotalUsers": 1310
+        },
+        {
+          "cohort": "2026-06",
+          "cohortNthMonth": "0002",
+          "cohortActiveUsers": 550,
+          "cohortTotalUsers": 1310
+        },
+        {
+          "cohort": "2026-06",
+          "cohortNthMonth": "0003",
+          "cohortActiveUsers": 511,
+          "cohortTotalUsers": 1310
+        },
+        {
+          "cohort": "2026-07",
+          "cohortNthMonth": "0000",
+          "cohortActiveUsers": 1390,
+          "cohortTotalUsers": 1390
+        },
+        {
+          "cohort": "2026-07",
+          "cohortNthMonth": "0001",
+          "cohortActiveUsers": 681,
+          "cohortTotalUsers": 1390
+        },
+        {
+          "cohort": "2026-07",
+          "cohortNthMonth": "0002",
+          "cohortActiveUsers": 612,
+          "cohortTotalUsers": 1390
+        },
+        {
+          "cohort": "2026-08",
+          "cohortNthMonth": "0000",
+          "cohortActiveUsers": 1460,
+          "cohortTotalUsers": 1460
+        },
+        {
+          "cohort": "2026-08",
+          "cohortNthMonth": "0001",
+          "cohortActiveUsers": 745,
+          "cohortTotalUsers": 1460
+        }
+      ]
+    },
+    "ga4_new_users_by_first_channel": {
+      "call": "get_report, dimensions yearMonth and firstUserDefaultChannelGroup, metric newUsers, 2026-04-01 to 2026-09-30",
+      "rows": [
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 520
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 380
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 120
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 40
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 10
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 30
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 820
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 420
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 60
+        },
+        {
+          "yearMonth": "202604",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 25
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 560
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 400
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 130
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 45
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 15
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 30
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 830
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 410
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 55
+        },
+        {
+          "yearMonth": "202605",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 30
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 610
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 430
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 150
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 50
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 20
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 35
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 800
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 390
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 50
+        },
+        {
+          "yearMonth": "202606",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 20
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 690
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 470
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 180
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 55
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 30
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 35
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 760
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 360
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 45
+        },
+        {
+          "yearMonth": "202607",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 25
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 740
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 510
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 200
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 60
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 40
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 40
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 750
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 340
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 45
+        },
+        {
+          "yearMonth": "202608",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 30
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Organic Search",
+          "newUsers": 800
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Direct",
+          "newUsers": 540
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Referral",
+          "newUsers": 230
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Organic Social",
+          "newUsers": 60
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "AI Assistant",
+          "newUsers": 55
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Email",
+          "newUsers": 45
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Paid Search",
+          "newUsers": 740
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Paid Social",
+          "newUsers": 330
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Cross-network",
+          "newUsers": 40
+        },
+        {
+          "yearMonth": "202609",
+          "firstUserDefaultChannelGroup": "Unassigned",
+          "newUsers": 25
+        }
+      ]
+    },
+    "search_console_brand_clicks": {
+      "site_url": "https://www.example.com/",
+      "call": "search_analytics, dimension date, one call per brand term with a query contains filter, 2026-04-01 to 2026-09-30, daily clicks summed by month",
+      "months": [
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09"
+      ],
+      "clicks_by_term": {
+        "example booking": [
+          430,
+          455,
+          490,
+          560,
+          600,
+          660
+        ],
+        "examplebooking": [
+          180,
+          195,
+          210,
+          230,
+          260,
+          290
+        ]
+      }
+    }
+  }
+}

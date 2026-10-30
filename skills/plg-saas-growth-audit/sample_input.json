@@ -1,0 +1,564 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The billing data is an uploaded Stripe export summarised by month; GA4, the ad platforms and the BigQuery product events are shown as if pulled live.",
+  "request": "Hey Claude, I just added the \"plg-saas-growth-audit\" skill. Audit our self-serve funnel from first visit to churn and tell me which leak costs us the most MRR. MRR growth has stalled since the summer.",
+  "business": {
+    "name": "Example Booking Software",
+    "product": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+    "audience": "owners and front-desk managers of small service businesses with 1 to 20 staff, mostly in the US, UK and Canada",
+    "site": "https://www.example.com",
+    "currency": "USD",
+    "plans": [
+      {
+        "name": "Starter",
+        "price_month": 19,
+        "annual_price": 190
+      },
+      {
+        "name": "Growth",
+        "price_month": 49,
+        "annual_price": 490
+      },
+      {
+        "name": "Business",
+        "price_month": 99,
+        "annual_price": 990
+      }
+    ],
+    "model": "free trial, no card",
+    "trial_days": 14,
+    "sales_involvement": "none for Starter and Growth; a demo page exists for Business, but most Business accounts start a trial",
+    "activation_event": "first_booking_received (a client books through the account's booking page)",
+    "activation_window_days": 7,
+    "paid_window_days": 21,
+    "signup_event": "account_created",
+    "paid_event": "subscription_started"
+  },
+  "targets_from_user": {
+    "cancellations_and_downgrades": 0.022
+  },
+  "recent_changes": [
+    {
+      "month": "2026-07",
+      "change": "Billing moved to a new Stripe account"
+    },
+    {
+      "month": "2026-08",
+      "change": "A new setup wizard replaced the old three-step setup"
+    }
+  ],
+  "windows": {
+    "history": [
+      "2026-04",
+      "2026-09"
+    ],
+    "data_end": "2026-10-27"
+  },
+  "sources": {
+    "google-analytics": "property properties/123456789 (connected)",
+    "google-ads": "customer 1234567890 (connected)",
+    "facebook-ads": "act_123456789 (connected)",
+    "linkedin-ads": "500000001 (connected)",
+    "bigquery": "product events table app_events.events (connected)",
+    "billing": "Stripe subscription export, uploaded as CSV and summarised by month; 14 internal or test accounts and 9 accounts on 100% coupons left out"
+  },
+  "data_pulled": {
+    "ga4_sessions_by_month_and_channel": [
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 18584
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 8508
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 6672
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 4725
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 2851
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2475
+      },
+      {
+        "yearMonth": "202604",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 5385
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 19189
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 9156
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 7246
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 5037
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 3184
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2568
+      },
+      {
+        "yearMonth": "202605",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 5420
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 19254
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 8820
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 7012
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 4920
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 3062
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2555
+      },
+      {
+        "yearMonth": "202606",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 4777
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 18096
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 8447
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 6413
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 4852
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 2818
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2346
+      },
+      {
+        "yearMonth": "202607",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 4628
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 20589
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 9863
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 7312
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 5192
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 3174
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2590
+      },
+      {
+        "yearMonth": "202608",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 4180
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 19883
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 9838
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 7734
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 5396
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 3119
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 2761
+      },
+      {
+        "yearMonth": "202609",
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 5369
+      }
+    ],
+    "ga4_sign_up_events_by_month": [
+      {
+        "yearMonth": "202604",
+        "eventName": "sign_up",
+        "eventCount": 1266
+      },
+      {
+        "yearMonth": "202605",
+        "eventName": "sign_up",
+        "eventCount": 1354
+      },
+      {
+        "yearMonth": "202606",
+        "eventName": "sign_up",
+        "eventCount": 1326
+      },
+      {
+        "yearMonth": "202607",
+        "eventName": "sign_up",
+        "eventCount": 1216
+      },
+      {
+        "yearMonth": "202608",
+        "eventName": "sign_up",
+        "eventCount": 1353
+      },
+      {
+        "yearMonth": "202609",
+        "eventName": "sign_up",
+        "eventCount": 1384
+      }
+    ],
+    "bigquery_cohort_funnel": [
+      {
+        "cohort_month": "2026-04",
+        "signups": 1333,
+        "activated": 512,
+        "paid": 177,
+        "activated_and_paid": 152
+      },
+      {
+        "cohort_month": "2026-05",
+        "signups": 1440,
+        "activated": 564,
+        "paid": 195,
+        "activated_and_paid": 170
+      },
+      {
+        "cohort_month": "2026-06",
+        "signups": 1381,
+        "activated": 522,
+        "paid": 185,
+        "activated_and_paid": 159
+      },
+      {
+        "cohort_month": "2026-07",
+        "signups": 1280,
+        "activated": 488,
+        "paid": 170,
+        "activated_and_paid": 145
+      },
+      {
+        "cohort_month": "2026-08",
+        "signups": 1455,
+        "activated": 499,
+        "paid": 180,
+        "activated_and_paid": 151
+      },
+      {
+        "cohort_month": "2026-09",
+        "signups": 1472,
+        "activated": 459,
+        "paid": 167,
+        "activated_and_paid": 136
+      }
+    ],
+    "referred_signups_by_month": [
+      {
+        "month": "2026-04",
+        "referred_signups": 61
+      },
+      {
+        "month": "2026-05",
+        "referred_signups": 66
+      },
+      {
+        "month": "2026-06",
+        "referred_signups": 63
+      },
+      {
+        "month": "2026-07",
+        "referred_signups": 63
+      },
+      {
+        "month": "2026-08",
+        "referred_signups": 64
+      },
+      {
+        "month": "2026-09",
+        "referred_signups": 62
+      }
+    ],
+    "audit_month_cohort_by_signup_channel": [
+      {
+        "signup_channel": "Organic Search",
+        "signups": 545,
+        "paid": 68
+      },
+      {
+        "signup_channel": "Direct",
+        "signups": 250,
+        "paid": 35
+      },
+      {
+        "signup_channel": "Paid Search (Google Ads)",
+        "signups": 205,
+        "paid": 27
+      },
+      {
+        "signup_channel": "Paid Social (Meta)",
+        "signups": 118,
+        "paid": 12
+      },
+      {
+        "signup_channel": "Paid Social (LinkedIn)",
+        "signups": 41,
+        "paid": 2
+      },
+      {
+        "signup_channel": "Referral",
+        "signups": 88,
+        "paid": 11
+      },
+      {
+        "signup_channel": "Email",
+        "signups": 74,
+        "paid": 9
+      },
+      {
+        "signup_channel": "Organic Social",
+        "signups": 151,
+        "paid": 3
+      }
+    ],
+    "ad_spend_by_month": [
+      {
+        "month": "2026-04",
+        "google_ads": 9100,
+        "meta_ads": 5100,
+        "linkedin_ads": 3900
+      },
+      {
+        "month": "2026-05",
+        "google_ads": 9400,
+        "meta_ads": 5300,
+        "linkedin_ads": 4100
+      },
+      {
+        "month": "2026-06",
+        "google_ads": 9300,
+        "meta_ads": 5200,
+        "linkedin_ads": 4200
+      },
+      {
+        "month": "2026-07",
+        "google_ads": 8900,
+        "meta_ads": 5000,
+        "linkedin_ads": 4300
+      },
+      {
+        "month": "2026-08",
+        "google_ads": 9600,
+        "meta_ads": 5300,
+        "linkedin_ads": 4500
+      },
+      {
+        "month": "2026-09",
+        "google_ads": 9800,
+        "meta_ads": 5400,
+        "linkedin_ads": 4600
+      }
+    ],
+    "billing_mrr_bridge": [
+      {
+        "month": "2026-04",
+        "starting_mrr": 148600,
+        "new_mrr": 6570,
+        "expansion_mrr": 2705,
+        "reactivation_mrr": 208,
+        "contraction_mrr": 609,
+        "cancelled_mrr": 3150,
+        "failed_payment_cancelled_mrr": 921,
+        "ending_mrr": 153403,
+        "customers_start": 3920,
+        "new_customers": 172,
+        "cancelled_customers": 83,
+        "failed_payment_cancelled_customers": 24,
+        "reactivated_customers": 5,
+        "customers_end": 3990
+      },
+      {
+        "month": "2026-05",
+        "starting_mrr": 153403,
+        "new_mrr": 7180,
+        "expansion_mrr": 2746,
+        "reactivation_mrr": 245,
+        "contraction_mrr": 598,
+        "cancelled_mrr": 3145,
+        "failed_payment_cancelled_mrr": 890,
+        "ending_mrr": 158941,
+        "customers_start": 3990,
+        "new_customers": 186,
+        "cancelled_customers": 83,
+        "failed_payment_cancelled_customers": 23,
+        "reactivated_customers": 6,
+        "customers_end": 4076
+      },
+      {
+        "month": "2026-06",
+        "starting_mrr": 158941,
+        "new_mrr": 7391,
+        "expansion_mrr": 2956,
+        "reactivation_mrr": 207,
+        "contraction_mrr": 668,
+        "cancelled_mrr": 3465,
+        "failed_payment_cancelled_mrr": 1049,
+        "ending_mrr": 164313,
+        "customers_start": 4076,
+        "new_customers": 190,
+        "cancelled_customers": 91,
+        "failed_payment_cancelled_customers": 28,
+        "reactivated_customers": 5,
+        "customers_end": 4152
+      },
+      {
+        "month": "2026-07",
+        "starting_mrr": 164313,
+        "new_mrr": 6782,
+        "expansion_mrr": 2810,
+        "reactivation_mrr": 246,
+        "contraction_mrr": 657,
+        "cancelled_mrr": 3434,
+        "failed_payment_cancelled_mrr": 1545,
+        "ending_mrr": 168515,
+        "customers_start": 4152,
+        "new_customers": 178,
+        "cancelled_customers": 91,
+        "failed_payment_cancelled_customers": 41,
+        "reactivated_customers": 6,
+        "customers_end": 4204
+      },
+      {
+        "month": "2026-08",
+        "starting_mrr": 168515,
+        "new_mrr": 6738,
+        "expansion_mrr": 2831,
+        "reactivation_mrr": 202,
+        "contraction_mrr": 725,
+        "cancelled_mrr": 3623,
+        "failed_payment_cancelled_mrr": 1988,
+        "ending_mrr": 171950,
+        "customers_start": 4204,
+        "new_customers": 175,
+        "cancelled_customers": 96,
+        "failed_payment_cancelled_customers": 52,
+        "reactivated_customers": 5,
+        "customers_end": 4236
+      },
+      {
+        "month": "2026-09",
+        "starting_mrr": 171950,
+        "new_mrr": 6734,
+        "expansion_mrr": 2717,
+        "reactivation_mrr": 241,
+        "contraction_mrr": 705,
+        "cancelled_mrr": 3800,
+        "failed_payment_cancelled_mrr": 2253,
+        "ending_mrr": 174884,
+        "customers_start": 4236,
+        "new_customers": 174,
+        "cancelled_customers": 100,
+        "failed_payment_cancelled_customers": 59,
+        "reactivated_customers": 6,
+        "customers_end": 4257
+      }
+    ]
+  }
+}

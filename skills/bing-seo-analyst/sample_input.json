@@ -1,0 +1,29 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"bing-seo-analyst\" skill. Analyse how my site does on Bing, compare it with Google, and tell me what to fix first. Our brand term is examplebooking. Treat examplebook on its own as a lookalike: it is a photo book company with a similar name.",
+  "site": "https://www.example.com/",
+  "sources": {
+    "bing-webmaster": "https://www.example.com/",
+    "google-search-console": "https://www.example.com/",
+    "dataforseo": "United States (location_code 2840), English"
+  },
+  "window": "2026-09-25 to 2026-10-22",
+  "prior_window": "2026-08-28 to 2026-09-24",
+  "window_rule": "the 4 latest weekly rows of get_query_stats, dated 2026-10-02, 2026-10-09, 2026-10-16, 2026-10-23; a row dated D covers D-7 to D-1",
+  "brand_terms": "examplebooking; lookalike word: examplebook; both given by the user in the request",
+  "seed_topics": "not given, so the top 3 non-brand Bing queries by impressions",
+  "data_pulled": [
+    "get_rank_and_traffic_stats (180 daily rows)",
+    "get_query_stats (417 weekly rows, 39 queries in the window)",
+    "get_page_stats (25 pages in the window)",
+    "get_page_query_stats for the 3 pages with the most Bing impressions",
+    "search_analytics by date, page and query for 2026-09-25 to 2026-10-22 (20 pages, 29 queries)",
+    "get_url_info for the 3 Bing-gap pages and the reference page https://www.example.com/industries/salons/",
+    "get_crawl_stats (180 daily rows), get_crawl_issues, get_crawl_settings, get_feeds, get_blocked_urls",
+    "get_link_counts and get_url_links (home and https://www.example.com/industries/salons/)",
+    "get_keyword_data, get_related_keywords and get_keyword_stats for the 3 seeds",
+    "DataForSEO serp_bing_organic for the 3 seeds (depth 10) and backlinks_summary: 4 paid calls",
+    "get_url_submission_quota (DailyQuota, checked before offering submit_url_batch)",
+    "a status check of each Bing-gap URL before any submission offer"
+  ]
+}

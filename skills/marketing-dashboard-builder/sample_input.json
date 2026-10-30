@@ -1,0 +1,5514 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The default example is the full Google Sheets dashboard; mode_examples holds the Looker Studio and month close examples for the same business.",
+  "request": "Hey Claude, I just added the \"marketing-dashboard-builder\" skill. Build our weekly marketing dashboard in the \"Example Booking marketing data\" sheet: Google Ads, Meta, LinkedIn and TikTok next to GA4 sign-ups and organic clicks, a daily spend log, October budget vs actual (Google Ads 12,000, Meta 6,000, LinkedIn 4,000 and TikTok 2,500 USD), and a check of the Q4 plan tab against what is live. Then write the weekly report to Notion under Marketing and post a summary in #marketing on Slack.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "result_that_matters": "sign-ups: GA4 key event sign_up, the property's only key event",
+  "windows": {
+    "week": "2026-10-19 to 2026-10-25",
+    "prior_week": "2026-10-12 to 2026-10-18",
+    "budget_period": "2026-10-01 to 2026-10-31, 27 days elapsed",
+    "daily_log": "2026-10-01 to 2026-10-27 (new log)",
+    "pull": "2026-10-01 to 2026-10-27"
+  },
+  "budgets_given_in_chat": {
+    "Google Ads": 12000.0,
+    "Meta Ads": 6000.0,
+    "LinkedIn Ads": 4000.0,
+    "TikTok Ads": 2500.0
+  },
+  "accounts": {
+    "Google Ads": {
+      "account": "Example Booking Software",
+      "id": "1234567890",
+      "currency": "USD",
+      "time_zone": "America/New_York"
+    },
+    "Meta Ads": {
+      "account": "Example Booking Software (Meta ad account)",
+      "id": "act_200000000000001",
+      "currency": "USD",
+      "time_zone": "America/New_York"
+    },
+    "LinkedIn Ads": {
+      "account": "Example Booking Software (LinkedIn ad account)",
+      "id": "500000001",
+      "currency": "USD",
+      "time_zone": "not returned by the call"
+    },
+    "TikTok Ads": {
+      "account": "Example Booking Software (TikTok ad account)",
+      "id": "7000000000000000001",
+      "currency": "USD",
+      "time_zone": "America/New_York"
+    }
+  },
+  "destination_reads": {
+    "google_sheets_list_sheets": [
+      {
+        "sheet_id": 0,
+        "title": "Sheet1"
+      },
+      {
+        "sheet_id": 1834567,
+        "title": "Q4 plan"
+      }
+    ],
+    "get_sheet_peak_Sheet1": {
+      "available_columns": [],
+      "rows": []
+    },
+    "query_sheet_data_Sheet1_Date": [],
+    "get_sheet_peak_plan": {
+      "available_columns": [
+        "Campaign",
+        "Platform",
+        "Status",
+        "Daily budget",
+        "Start date"
+      ],
+      "rows": [
+        [
+          "Brand Search",
+          "Google Ads",
+          "live",
+          90,
+          "2026-10-01"
+        ],
+        [
+          "Online Booking Search",
+          "Google Ads",
+          "live",
+          300,
+          "2026-10-01"
+        ]
+      ]
+    },
+    "query_sheet_data_plan": [
+      {
+        "Campaign": "Brand Search",
+        "Platform": "Google Ads",
+        "Status": "live",
+        "Daily budget": 90,
+        "Start date": "2026-10-01"
+      },
+      {
+        "Campaign": "Online Booking Search",
+        "Platform": "Google Ads",
+        "Status": "live",
+        "Daily budget": 300,
+        "Start date": "2026-10-01"
+      },
+      {
+        "Campaign": "Competitor Search",
+        "Platform": "Google Ads",
+        "Status": "live",
+        "Daily budget": 80,
+        "Start date": "2026-10-14"
+      },
+      {
+        "Campaign": "Prospecting, salon owners",
+        "Platform": "Meta Ads",
+        "Status": "live",
+        "Daily budget": "",
+        "Start date": "2026-10-01"
+      }
+    ],
+    "dashboard_tabs_found": "none of Dashboard, Daily, Weekly, Campaigns, Budget exists",
+    "notion_search_pages": [
+      {
+        "id": "<PAGE_ID_MARKETING>",
+        "title": "Marketing"
+      },
+      {
+        "id": "<PAGE_ID_HANDBOOK>",
+        "title": "Team handbook"
+      }
+    ],
+    "notion_parent_picked": "Marketing",
+    "slack_list_conversations": [
+      {
+        "id": "<CHANNEL_ID_GENERAL>",
+        "name": "general",
+        "is_member": true
+      },
+      {
+        "id": "<CHANNEL_ID_MARKETING>",
+        "name": "marketing",
+        "is_member": false
+      }
+    ],
+    "slack_channel_asked_for": "#marketing",
+    "airtable": "not connected"
+  },
+  "data_pulled": {
+    "google_ads_customer": {
+      "currency_code": "USD",
+      "time_zone": "America/New_York"
+    },
+    "google_ads_budgets": [
+      {
+        "campaign_id": "20000000001",
+        "name": "Brand Search",
+        "status": "ENABLED",
+        "channel": "SEARCH",
+        "budget": "customers/1234567890/campaignBudgets/30000000001",
+        "amount": 90.0,
+        "period": "DAILY"
+      },
+      {
+        "campaign_id": "20000000002",
+        "name": "Online Booking Search",
+        "status": "ENABLED",
+        "channel": "SEARCH",
+        "budget": "customers/1234567890/campaignBudgets/30000000002",
+        "amount": 350.0,
+        "period": "DAILY"
+      },
+      {
+        "campaign_id": "20000000003",
+        "name": "Spring Promo 2026",
+        "status": "PAUSED",
+        "channel": "SEARCH",
+        "budget": "customers/1234567890/campaignBudgets/30000000003",
+        "amount": 120.0,
+        "period": "DAILY"
+      }
+    ],
+    "campaign_daily_rows_header": [
+      "date",
+      "platform",
+      "account",
+      "campaign",
+      "currency",
+      "spend",
+      "impressions",
+      "clicks",
+      "conversions",
+      "conversion_value"
+    ],
+    "campaign_daily_rows": [
+      [
+        "2026-10-01",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        80.62,
+        372,
+        44,
+        8.6,
+        0
+      ],
+      [
+        "2026-10-01",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        327.13,
+        1753,
+        83,
+        5.1,
+        0
+      ],
+      [
+        "2026-10-01",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        244.39,
+        13216,
+        151,
+        5,
+        0
+      ],
+      [
+        "2026-10-01",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        73.09,
+        4261,
+        68,
+        6,
+        0
+      ],
+      [
+        "2026-10-01",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        126.17,
+        2447,
+        15,
+        1,
+        0
+      ],
+      [
+        "2026-10-01",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        90.55,
+        10588,
+        109,
+        3,
+        0
+      ],
+      [
+        "2026-10-02",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        70.04,
+        299,
+        35,
+        4.0,
+        0
+      ],
+      [
+        "2026-10-02",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        304.08,
+        1525,
+        71,
+        2.5,
+        0
+      ],
+      [
+        "2026-10-02",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        239.13,
+        12970,
+        155,
+        3,
+        0
+      ],
+      [
+        "2026-10-02",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        63.81,
+        4131,
+        62,
+        3,
+        0
+      ],
+      [
+        "2026-10-02",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        115.77,
+        2746,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-02",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        80.24,
+        6109,
+        87,
+        1,
+        0
+      ],
+      [
+        "2026-10-03",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.72,
+        389,
+        40,
+        7.8,
+        0
+      ],
+      [
+        "2026-10-03",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        312.86,
+        1728,
+        70,
+        3.6,
+        0
+      ],
+      [
+        "2026-10-03",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        218.94,
+        13148,
+        138,
+        4,
+        0
+      ],
+      [
+        "2026-10-03",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        65.51,
+        4257,
+        64,
+        3,
+        0
+      ],
+      [
+        "2026-10-03",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        131.69,
+        3166,
+        18,
+        1,
+        0
+      ],
+      [
+        "2026-10-03",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        75.92,
+        13697,
+        91,
+        1,
+        0
+      ],
+      [
+        "2026-10-04",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        69.2,
+        369,
+        40,
+        6.4,
+        0
+      ],
+      [
+        "2026-10-04",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        320.33,
+        1823,
+        83,
+        4.9,
+        0
+      ],
+      [
+        "2026-10-04",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        243.93,
+        14791,
+        158,
+        3,
+        0
+      ],
+      [
+        "2026-10-04",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        73.31,
+        3865,
+        63,
+        4,
+        0
+      ],
+      [
+        "2026-10-04",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        134.16,
+        2985,
+        17,
+        1,
+        0
+      ],
+      [
+        "2026-10-04",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        83.14,
+        6648,
+        94,
+        2,
+        0
+      ],
+      [
+        "2026-10-05",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        70.01,
+        400,
+        40,
+        5.4,
+        0
+      ],
+      [
+        "2026-10-05",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        305.31,
+        1802,
+        78,
+        4.7,
+        0
+      ],
+      [
+        "2026-10-05",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        204.93,
+        11616,
+        139,
+        5,
+        0
+      ],
+      [
+        "2026-10-05",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        65.6,
+        3773,
+        58,
+        5,
+        0
+      ],
+      [
+        "2026-10-05",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        123.66,
+        2775,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-05",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        81.32,
+        7127,
+        85,
+        1,
+        0
+      ],
+      [
+        "2026-10-06",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        83.56,
+        385,
+        44,
+        3.9,
+        0
+      ],
+      [
+        "2026-10-06",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        311.44,
+        1583,
+        78,
+        5.3,
+        0
+      ],
+      [
+        "2026-10-06",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        228.84,
+        12017,
+        138,
+        3,
+        0
+      ],
+      [
+        "2026-10-06",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        63.22,
+        3668,
+        55,
+        4,
+        0
+      ],
+      [
+        "2026-10-06",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        143.85,
+        3520,
+        20,
+        1,
+        0
+      ],
+      [
+        "2026-10-06",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        79.2,
+        7055,
+        82,
+        2,
+        0
+      ],
+      [
+        "2026-10-07",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        79.5,
+        405,
+        44,
+        6.9,
+        0
+      ],
+      [
+        "2026-10-07",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        336.49,
+        1828,
+        87,
+        3.9,
+        0
+      ],
+      [
+        "2026-10-07",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        203.14,
+        12389,
+        127,
+        2,
+        0
+      ],
+      [
+        "2026-10-07",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        77.79,
+        4713,
+        68,
+        3,
+        0
+      ],
+      [
+        "2026-10-07",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        133.03,
+        2456,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-07",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        83.45,
+        7327,
+        95,
+        2,
+        0
+      ],
+      [
+        "2026-10-08",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        73.35,
+        385,
+        41,
+        6.7,
+        0
+      ],
+      [
+        "2026-10-08",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        308.28,
+        1616,
+        72,
+        4.7,
+        0
+      ],
+      [
+        "2026-10-08",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        204.93,
+        12352,
+        126,
+        5,
+        0
+      ],
+      [
+        "2026-10-08",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        71.98,
+        4378,
+        71,
+        6,
+        0
+      ],
+      [
+        "2026-10-08",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        142.87,
+        2920,
+        19,
+        1,
+        0
+      ],
+      [
+        "2026-10-08",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        82.0,
+        7376,
+        97,
+        3,
+        0
+      ],
+      [
+        "2026-10-09",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        75.98,
+        421,
+        42,
+        5.5,
+        0
+      ],
+      [
+        "2026-10-09",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        297.49,
+        1641,
+        74,
+        5.2,
+        0
+      ],
+      [
+        "2026-10-09",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        210.48,
+        10456,
+        121,
+        4,
+        0
+      ],
+      [
+        "2026-10-09",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        68.41,
+        3849,
+        59,
+        5,
+        0
+      ],
+      [
+        "2026-10-09",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        134.55,
+        2863,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-09",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        92.23,
+        7107,
+        99,
+        2,
+        0
+      ],
+      [
+        "2026-10-10",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        79.07,
+        415,
+        45,
+        7.8,
+        0
+      ],
+      [
+        "2026-10-10",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        352.51,
+        1929,
+        81,
+        6.1,
+        0
+      ],
+      [
+        "2026-10-10",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        241.08,
+        13492,
+        151,
+        4,
+        0
+      ],
+      [
+        "2026-10-10",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        70.06,
+        3878,
+        64,
+        3,
+        0
+      ],
+      [
+        "2026-10-10",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        138.98,
+        3008,
+        18,
+        1,
+        0
+      ],
+      [
+        "2026-10-10",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        90.54,
+        13982,
+        94,
+        2,
+        0
+      ],
+      [
+        "2026-10-11",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        82.6,
+        361,
+        43,
+        4.5,
+        0
+      ],
+      [
+        "2026-10-11",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        290.43,
+        1417,
+        68,
+        5.0,
+        0
+      ],
+      [
+        "2026-10-11",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        221.15,
+        11048,
+        129,
+        5,
+        0
+      ],
+      [
+        "2026-10-11",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        69.68,
+        4218,
+        65,
+        4,
+        0
+      ],
+      [
+        "2026-10-11",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        143.1,
+        3482,
+        21,
+        1,
+        0
+      ],
+      [
+        "2026-10-11",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        75.78,
+        16607,
+        93,
+        2,
+        0
+      ],
+      [
+        "2026-10-12",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.46,
+        362,
+        38,
+        3.3,
+        0
+      ],
+      [
+        "2026-10-12",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        352.97,
+        1968,
+        84,
+        2.8,
+        0
+      ],
+      [
+        "2026-10-12",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        217.58,
+        14464,
+        146,
+        3,
+        0
+      ],
+      [
+        "2026-10-12",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        62.91,
+        3722,
+        61,
+        4,
+        0
+      ],
+      [
+        "2026-10-12",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        119.75,
+        2827,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-12",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        75.5,
+        20070,
+        82,
+        1,
+        0
+      ],
+      [
+        "2026-10-13",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        76.04,
+        322,
+        37,
+        6.4,
+        0
+      ],
+      [
+        "2026-10-13",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        306.05,
+        1701,
+        76,
+        3.5,
+        0
+      ],
+      [
+        "2026-10-13",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        253.36,
+        15378,
+        158,
+        3,
+        0
+      ],
+      [
+        "2026-10-13",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        68.69,
+        3645,
+        58,
+        4,
+        0
+      ],
+      [
+        "2026-10-13",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        122.12,
+        3062,
+        17,
+        1,
+        0
+      ],
+      [
+        "2026-10-13",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        94.43,
+        6428,
+        101,
+        1,
+        0
+      ],
+      [
+        "2026-10-14",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        72.0,
+        354,
+        39,
+        5.3,
+        0
+      ],
+      [
+        "2026-10-14",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        340.94,
+        1987,
+        86,
+        5.8,
+        0
+      ],
+      [
+        "2026-10-14",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        238.58,
+        13582,
+        137,
+        6,
+        0
+      ],
+      [
+        "2026-10-14",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        76.48,
+        4741,
+        70,
+        7,
+        0
+      ],
+      [
+        "2026-10-14",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        121.94,
+        2662,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-14",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        78.73,
+        18509,
+        93,
+        1,
+        0
+      ],
+      [
+        "2026-10-15",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        76.21,
+        338,
+        37,
+        6.3,
+        0
+      ],
+      [
+        "2026-10-15",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        313.67,
+        1750,
+        81,
+        5.0,
+        0
+      ],
+      [
+        "2026-10-15",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        245.46,
+        12879,
+        142,
+        6,
+        0
+      ],
+      [
+        "2026-10-15",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        70.4,
+        3993,
+        61,
+        6,
+        0
+      ],
+      [
+        "2026-10-15",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        131.6,
+        2428,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-15",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        93.82,
+        12171,
+        101,
+        0,
+        0
+      ],
+      [
+        "2026-10-16",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        73.89,
+        346,
+        39,
+        4.4,
+        0
+      ],
+      [
+        "2026-10-16",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        357.19,
+        1894,
+        92,
+        3.4,
+        0
+      ],
+      [
+        "2026-10-16",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        236.74,
+        11819,
+        138,
+        5,
+        0
+      ],
+      [
+        "2026-10-16",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        69.38,
+        3862,
+        66,
+        6,
+        0
+      ],
+      [
+        "2026-10-16",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        132.26,
+        3150,
+        19,
+        1,
+        0
+      ],
+      [
+        "2026-10-16",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        84.37,
+        14342,
+        93,
+        1,
+        0
+      ],
+      [
+        "2026-10-17",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        79.61,
+        391,
+        44,
+        8.1,
+        0
+      ],
+      [
+        "2026-10-17",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        309.59,
+        1429,
+        67,
+        4.4,
+        0
+      ],
+      [
+        "2026-10-17",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        250.01,
+        15187,
+        167,
+        5,
+        0
+      ],
+      [
+        "2026-10-17",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        67.02,
+        3206,
+        56,
+        4,
+        0
+      ],
+      [
+        "2026-10-17",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        114.66,
+        2545,
+        15,
+        1,
+        0
+      ],
+      [
+        "2026-10-17",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        84.95,
+        17713,
+        91,
+        1,
+        0
+      ],
+      [
+        "2026-10-18",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.33,
+        430,
+        43,
+        4.4,
+        0
+      ],
+      [
+        "2026-10-18",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        304.5,
+        1538,
+        69,
+        3.2,
+        0
+      ],
+      [
+        "2026-10-18",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        242.18,
+        14083,
+        146,
+        5,
+        0
+      ],
+      [
+        "2026-10-18",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        63.71,
+        3265,
+        55,
+        4,
+        0
+      ],
+      [
+        "2026-10-18",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        126.53,
+        2792,
+        18,
+        1,
+        0
+      ],
+      [
+        "2026-10-19",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        69.93,
+        324,
+        36,
+        5.2,
+        0
+      ],
+      [
+        "2026-10-19",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        319.58,
+        1265,
+        61,
+        3.3,
+        0
+      ],
+      [
+        "2026-10-19",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        222.37,
+        12741,
+        128,
+        3,
+        0
+      ],
+      [
+        "2026-10-19",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        67.84,
+        3786,
+        56,
+        4,
+        0
+      ],
+      [
+        "2026-10-19",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        119.0,
+        2343,
+        15,
+        1,
+        0
+      ],
+      [
+        "2026-10-20",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        82.53,
+        367,
+        44,
+        7.3,
+        0
+      ],
+      [
+        "2026-10-20",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        344.2,
+        1345,
+        55,
+        1.8,
+        0
+      ],
+      [
+        "2026-10-20",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        242.92,
+        13958,
+        146,
+        4,
+        0
+      ],
+      [
+        "2026-10-20",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        65.38,
+        3642,
+        58,
+        3,
+        0
+      ],
+      [
+        "2026-10-20",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        117.81,
+        2900,
+        17,
+        1,
+        0
+      ],
+      [
+        "2026-10-20",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        91.48,
+        26295,
+        113,
+        2,
+        0
+      ],
+      [
+        "2026-10-21",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.61,
+        323,
+        39,
+        6.2,
+        0
+      ],
+      [
+        "2026-10-21",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        309.94,
+        1141,
+        51,
+        3.6,
+        0
+      ],
+      [
+        "2026-10-21",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        217.03,
+        11688,
+        129,
+        5,
+        0
+      ],
+      [
+        "2026-10-21",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        67.62,
+        3761,
+        63,
+        5,
+        0
+      ],
+      [
+        "2026-10-21",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        143.83,
+        2976,
+        19,
+        1,
+        0
+      ],
+      [
+        "2026-10-21",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        76.93,
+        5918,
+        79,
+        1,
+        0
+      ],
+      [
+        "2026-10-22",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        76.78,
+        382,
+        38,
+        6.9,
+        0
+      ],
+      [
+        "2026-10-22",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        330.18,
+        1261,
+        53,
+        2.0,
+        0
+      ],
+      [
+        "2026-10-22",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        207.05,
+        12007,
+        134,
+        4,
+        0
+      ],
+      [
+        "2026-10-22",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        74.0,
+        4576,
+        75,
+        4,
+        0
+      ],
+      [
+        "2026-10-22",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        127.81,
+        2968,
+        19,
+        1,
+        0
+      ],
+      [
+        "2026-10-22",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        88.26,
+        9405,
+        100,
+        2,
+        0
+      ],
+      [
+        "2026-10-23",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.45,
+        366,
+        43,
+        7.8,
+        0
+      ],
+      [
+        "2026-10-23",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        359.48,
+        1301,
+        59,
+        3.0,
+        0
+      ],
+      [
+        "2026-10-23",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        250.37,
+        14223,
+        142,
+        4,
+        0
+      ],
+      [
+        "2026-10-23",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        69.38,
+        3746,
+        65,
+        5,
+        0
+      ],
+      [
+        "2026-10-23",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        133.94,
+        3347,
+        20,
+        1,
+        0
+      ],
+      [
+        "2026-10-23",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        91.25,
+        22778,
+        99,
+        1,
+        0
+      ],
+      [
+        "2026-10-24",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        78.37,
+        349,
+        42,
+        7.1,
+        0
+      ],
+      [
+        "2026-10-24",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        346.19,
+        1587,
+        65,
+        3.0,
+        0
+      ],
+      [
+        "2026-10-24",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        225.39,
+        12401,
+        141,
+        6,
+        0
+      ],
+      [
+        "2026-10-24",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        65.29,
+        3330,
+        55,
+        3,
+        0
+      ],
+      [
+        "2026-10-24",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        144.64,
+        3323,
+        21,
+        1,
+        0
+      ],
+      [
+        "2026-10-24",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        78.83,
+        17147,
+        90,
+        2,
+        0
+      ],
+      [
+        "2026-10-25",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        74.46,
+        390,
+        41,
+        4.1,
+        0
+      ],
+      [
+        "2026-10-25",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        360.58,
+        1427,
+        64,
+        4.3,
+        0
+      ],
+      [
+        "2026-10-25",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        251.7,
+        13782,
+        158,
+        4,
+        0
+      ],
+      [
+        "2026-10-25",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        62.77,
+        3805,
+        62,
+        3,
+        0
+      ],
+      [
+        "2026-10-25",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        137.29,
+        3216,
+        20,
+        1,
+        0
+      ],
+      [
+        "2026-10-25",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        85.26,
+        11737,
+        102,
+        0,
+        0
+      ],
+      [
+        "2026-10-26",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        71.86,
+        316,
+        38,
+        4.3,
+        0
+      ],
+      [
+        "2026-10-26",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        308.27,
+        1456,
+        59,
+        3.8,
+        0
+      ],
+      [
+        "2026-10-26",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        256.99,
+        13973,
+        146,
+        4,
+        0
+      ],
+      [
+        "2026-10-26",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        77.82,
+        4490,
+        77,
+        5,
+        0
+      ],
+      [
+        "2026-10-26",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        141.13,
+        3301,
+        19,
+        2,
+        0
+      ],
+      [
+        "2026-10-26",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        83.91,
+        9951,
+        93,
+        2,
+        0
+      ],
+      [
+        "2026-10-27",
+        "Google Ads",
+        "Example Booking Software",
+        "Brand Search",
+        "USD",
+        76.1,
+        420,
+        44,
+        4.7,
+        0
+      ],
+      [
+        "2026-10-27",
+        "Google Ads",
+        "Example Booking Software",
+        "Online Booking Search",
+        "USD",
+        312.09,
+        1072,
+        52,
+        3.8,
+        0
+      ],
+      [
+        "2026-10-27",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Prospecting, salon owners",
+        "USD",
+        237.03,
+        15149,
+        165,
+        7,
+        0
+      ],
+      [
+        "2026-10-27",
+        "Meta Ads",
+        "Example Booking Software (Meta ad account)",
+        "Retargeting, site visitors 30 days",
+        "USD",
+        70.11,
+        3924,
+        59,
+        3,
+        0
+      ],
+      [
+        "2026-10-27",
+        "LinkedIn Ads",
+        "Example Booking Software (LinkedIn ad account)",
+        "(account total)",
+        "USD",
+        128.43,
+        2901,
+        16,
+        1,
+        0
+      ],
+      [
+        "2026-10-27",
+        "TikTok Ads",
+        "Example Booking Software (TikTok ad account)",
+        "(account total)",
+        "USD",
+        79.96,
+        6152,
+        88,
+        2,
+        0
+      ]
+    ],
+    "tiktok_empty_days": [
+      "2026-10-18",
+      "2026-10-19"
+    ],
+    "ga4_daily": [
+      {
+        "date": "2026-10-01",
+        "sessions": 922,
+        "engagedSessions": 524,
+        "keyEvents": 18
+      },
+      {
+        "date": "2026-10-02",
+        "sessions": 1217,
+        "engagedSessions": 770,
+        "keyEvents": 12
+      },
+      {
+        "date": "2026-10-03",
+        "sessions": 1147,
+        "engagedSessions": 678,
+        "keyEvents": 13
+      },
+      {
+        "date": "2026-10-04",
+        "sessions": 1077,
+        "engagedSessions": 616,
+        "keyEvents": 17
+      },
+      {
+        "date": "2026-10-05",
+        "sessions": 917,
+        "engagedSessions": 526,
+        "keyEvents": 16
+      },
+      {
+        "date": "2026-10-06",
+        "sessions": 960,
+        "engagedSessions": 570,
+        "keyEvents": 16
+      },
+      {
+        "date": "2026-10-07",
+        "sessions": 1040,
+        "engagedSessions": 666,
+        "keyEvents": 12
+      },
+      {
+        "date": "2026-10-08",
+        "sessions": 1211,
+        "engagedSessions": 729,
+        "keyEvents": 17
+      },
+      {
+        "date": "2026-10-09",
+        "sessions": 939,
+        "engagedSessions": 522,
+        "keyEvents": 17
+      },
+      {
+        "date": "2026-10-10",
+        "sessions": 1143,
+        "engagedSessions": 647,
+        "keyEvents": 15
+      },
+      {
+        "date": "2026-10-11",
+        "sessions": 1128,
+        "engagedSessions": 689,
+        "keyEvents": 14
+      },
+      {
+        "date": "2026-10-12",
+        "sessions": 1090,
+        "engagedSessions": 614,
+        "keyEvents": 13
+      },
+      {
+        "date": "2026-10-13",
+        "sessions": 976,
+        "engagedSessions": 543,
+        "keyEvents": 12
+      },
+      {
+        "date": "2026-10-14",
+        "sessions": 1088,
+        "engagedSessions": 618,
+        "keyEvents": 18
+      },
+      {
+        "date": "2026-10-15",
+        "sessions": 957,
+        "engagedSessions": 538,
+        "keyEvents": 16
+      },
+      {
+        "date": "2026-10-16",
+        "sessions": 1122,
+        "engagedSessions": 692,
+        "keyEvents": 16
+      },
+      {
+        "date": "2026-10-17",
+        "sessions": 1211,
+        "engagedSessions": 739,
+        "keyEvents": 18
+      },
+      {
+        "date": "2026-10-18",
+        "sessions": 902,
+        "engagedSessions": 522,
+        "keyEvents": 14
+      },
+      {
+        "date": "2026-10-19",
+        "sessions": 1094,
+        "engagedSessions": 693,
+        "keyEvents": 11
+      },
+      {
+        "date": "2026-10-20",
+        "sessions": 1074,
+        "engagedSessions": 597,
+        "keyEvents": 14
+      },
+      {
+        "date": "2026-10-21",
+        "sessions": 964,
+        "engagedSessions": 535,
+        "keyEvents": 15
+      },
+      {
+        "date": "2026-10-22",
+        "sessions": 924,
+        "engagedSessions": 518,
+        "keyEvents": 14
+      },
+      {
+        "date": "2026-10-23",
+        "sessions": 1083,
+        "engagedSessions": 669,
+        "keyEvents": 14
+      },
+      {
+        "date": "2026-10-24",
+        "sessions": 941,
+        "engagedSessions": 596,
+        "keyEvents": 15
+      },
+      {
+        "date": "2026-10-25",
+        "sessions": 1101,
+        "engagedSessions": 704,
+        "keyEvents": 12
+      },
+      {
+        "date": "2026-10-26",
+        "sessions": 1030,
+        "engagedSessions": 629,
+        "keyEvents": 15
+      },
+      {
+        "date": "2026-10-27",
+        "sessions": 903,
+        "engagedSessions": 569,
+        "keyEvents": 15
+      }
+    ],
+    "search_console_daily": [
+      {
+        "date": "2026-10-01",
+        "clicks": 199,
+        "impressions": 5332
+      },
+      {
+        "date": "2026-10-02",
+        "clicks": 170,
+        "impressions": 5846
+      },
+      {
+        "date": "2026-10-03",
+        "clicks": 173,
+        "impressions": 5429
+      },
+      {
+        "date": "2026-10-04",
+        "clicks": 189,
+        "impressions": 6451
+      },
+      {
+        "date": "2026-10-05",
+        "clicks": 189,
+        "impressions": 6038
+      },
+      {
+        "date": "2026-10-06",
+        "clicks": 141,
+        "impressions": 6140
+      },
+      {
+        "date": "2026-10-07",
+        "clicks": 187,
+        "impressions": 6150
+      },
+      {
+        "date": "2026-10-08",
+        "clicks": 151,
+        "impressions": 6110
+      },
+      {
+        "date": "2026-10-09",
+        "clicks": 198,
+        "impressions": 6652
+      },
+      {
+        "date": "2026-10-10",
+        "clicks": 198,
+        "impressions": 6789
+      },
+      {
+        "date": "2026-10-11",
+        "clicks": 145,
+        "impressions": 6616
+      },
+      {
+        "date": "2026-10-12",
+        "clicks": 146,
+        "impressions": 5821
+      },
+      {
+        "date": "2026-10-13",
+        "clicks": 177,
+        "impressions": 6770
+      },
+      {
+        "date": "2026-10-14",
+        "clicks": 191,
+        "impressions": 5363
+      },
+      {
+        "date": "2026-10-15",
+        "clicks": 197,
+        "impressions": 6142
+      },
+      {
+        "date": "2026-10-16",
+        "clicks": 161,
+        "impressions": 7201
+      },
+      {
+        "date": "2026-10-17",
+        "clicks": 156,
+        "impressions": 6696
+      },
+      {
+        "date": "2026-10-18",
+        "clicks": 210,
+        "impressions": 5762
+      },
+      {
+        "date": "2026-10-19",
+        "clicks": 208,
+        "impressions": 5748
+      },
+      {
+        "date": "2026-10-20",
+        "clicks": 155,
+        "impressions": 5979
+      },
+      {
+        "date": "2026-10-21",
+        "clicks": 193,
+        "impressions": 6407
+      },
+      {
+        "date": "2026-10-22",
+        "clicks": 176,
+        "impressions": 5259
+      },
+      {
+        "date": "2026-10-23",
+        "clicks": 207,
+        "impressions": 6406
+      },
+      {
+        "date": "2026-10-24",
+        "clicks": 144,
+        "impressions": 5375
+      },
+      {
+        "date": "2026-10-25",
+        "clicks": 194,
+        "impressions": 7380
+      }
+    ],
+    "bing_daily_inside_window": [
+      {
+        "date": "2026-10-01",
+        "clicks": 19,
+        "impressions": 1040
+      },
+      {
+        "date": "2026-10-02",
+        "clicks": 29,
+        "impressions": 907
+      },
+      {
+        "date": "2026-10-03",
+        "clicks": 20,
+        "impressions": 930
+      },
+      {
+        "date": "2026-10-04",
+        "clicks": 33,
+        "impressions": 778
+      },
+      {
+        "date": "2026-10-05",
+        "clicks": 22,
+        "impressions": 971
+      },
+      {
+        "date": "2026-10-06",
+        "clicks": 34,
+        "impressions": 783
+      },
+      {
+        "date": "2026-10-07",
+        "clicks": 19,
+        "impressions": 956
+      },
+      {
+        "date": "2026-10-08",
+        "clicks": 25,
+        "impressions": 811
+      },
+      {
+        "date": "2026-10-09",
+        "clicks": 30,
+        "impressions": 919
+      },
+      {
+        "date": "2026-10-10",
+        "clicks": 18,
+        "impressions": 1058
+      },
+      {
+        "date": "2026-10-11",
+        "clicks": 24,
+        "impressions": 972
+      },
+      {
+        "date": "2026-10-12",
+        "clicks": 16,
+        "impressions": 773
+      },
+      {
+        "date": "2026-10-13",
+        "clicks": 19,
+        "impressions": 817
+      },
+      {
+        "date": "2026-10-14",
+        "clicks": 26,
+        "impressions": 943
+      },
+      {
+        "date": "2026-10-15",
+        "clicks": 35,
+        "impressions": 850
+      },
+      {
+        "date": "2026-10-16",
+        "clicks": 16,
+        "impressions": 718
+      },
+      {
+        "date": "2026-10-17",
+        "clicks": 26,
+        "impressions": 982
+      },
+      {
+        "date": "2026-10-18",
+        "clicks": 29,
+        "impressions": 753
+      },
+      {
+        "date": "2026-10-19",
+        "clicks": 27,
+        "impressions": 940
+      },
+      {
+        "date": "2026-10-20",
+        "clicks": 15,
+        "impressions": 817
+      },
+      {
+        "date": "2026-10-21",
+        "clicks": 35,
+        "impressions": 1085
+      },
+      {
+        "date": "2026-10-22",
+        "clicks": 30,
+        "impressions": 730
+      },
+      {
+        "date": "2026-10-23",
+        "clicks": 28,
+        "impressions": 753
+      },
+      {
+        "date": "2026-10-24",
+        "clicks": 32,
+        "impressions": 770
+      },
+      {
+        "date": "2026-10-25",
+        "clicks": 33,
+        "impressions": 716
+      },
+      {
+        "date": "2026-10-26",
+        "clicks": 23,
+        "impressions": 777
+      }
+    ]
+  },
+  "mode_examples": {
+    "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. This block covers the Looker Studio and month close modes for the same business as the default example.",
+    "looker_studio_dashboard": {
+      "request": "Hey Claude, I just added the \"marketing-dashboard-builder\" skill. Build a Looker Studio marketing dashboard for our Monday meeting with Google Ads, Meta, LinkedIn and TikTok spend next to GA4 sign-ups, and check the Looker Studio report we use now.",
+      "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+      "reader": "the founder and the marketing lead, Monday meeting",
+      "result_that_matters": "sign-ups (GA4 key event sign_up)",
+      "window": {
+        "start": "2026-10-12",
+        "end": "2026-10-25"
+      },
+      "accounts": {
+        "Google Ads": {
+          "account": "Example Booking Software",
+          "id": "1234567890",
+          "currency": "USD",
+          "time_zone": "America/New_York"
+        },
+        "Meta Ads": {
+          "account": "Example Booking Software (Meta ad account)",
+          "id": "act_200000000000001",
+          "currency": "USD",
+          "time_zone": "America/New_York"
+        },
+        "LinkedIn Ads": {
+          "account": "Example Booking Software (LinkedIn ad account)",
+          "id": "500000001",
+          "currency": "USD",
+          "time_zone": "not returned by the call"
+        },
+        "TikTok Ads": {
+          "account": "Example Booking Software (TikTok ad account)",
+          "id": "7000000000000000001",
+          "currency": "USD",
+          "time_zone": "America/New_York"
+        }
+      },
+      "destination": {
+        "google_sheets": "Example Booking marketing data (spreadsheet), tab LS_Daily does not exist yet",
+        "bigquery": "not used"
+      },
+      "data_pulled": {
+        "staged_rows_header": [
+          "Date",
+          "Platform",
+          "Account",
+          "Campaign",
+          "Currency",
+          "Spend",
+          "Impressions",
+          "Clicks",
+          "Conversions",
+          "Conversion value"
+        ],
+        "staged_rows": [
+          [
+            "2026-10-12",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.46,
+            362,
+            38,
+            3.3,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            352.97,
+            1968,
+            84,
+            2.8,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            217.58,
+            14464,
+            146,
+            3,
+            0
+          ],
+          [
+            "2026-10-12",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            62.91,
+            3722,
+            61,
+            4,
+            0
+          ],
+          [
+            "2026-10-12",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            119.75,
+            2827,
+            16,
+            1,
+            0
+          ],
+          [
+            "2026-10-12",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            75.5,
+            20070,
+            82,
+            1,
+            0
+          ],
+          [
+            "2026-10-13",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            76.04,
+            322,
+            37,
+            6.4,
+            0
+          ],
+          [
+            "2026-10-13",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            306.05,
+            1701,
+            76,
+            3.5,
+            0
+          ],
+          [
+            "2026-10-13",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            253.36,
+            15378,
+            158,
+            3,
+            0
+          ],
+          [
+            "2026-10-13",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            68.69,
+            3645,
+            58,
+            4,
+            0
+          ],
+          [
+            "2026-10-13",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            122.12,
+            3062,
+            17,
+            1,
+            0
+          ],
+          [
+            "2026-10-13",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            94.43,
+            6428,
+            101,
+            1,
+            0
+          ],
+          [
+            "2026-10-14",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            72.0,
+            354,
+            39,
+            5.3,
+            0
+          ],
+          [
+            "2026-10-14",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            340.94,
+            1987,
+            86,
+            5.8,
+            0
+          ],
+          [
+            "2026-10-14",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            238.58,
+            13582,
+            137,
+            6,
+            0
+          ],
+          [
+            "2026-10-14",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            76.48,
+            4741,
+            70,
+            7,
+            0
+          ],
+          [
+            "2026-10-14",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            121.94,
+            2662,
+            16,
+            1,
+            0
+          ],
+          [
+            "2026-10-14",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            78.73,
+            18509,
+            93,
+            1,
+            0
+          ],
+          [
+            "2026-10-15",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            76.21,
+            338,
+            37,
+            6.3,
+            0
+          ],
+          [
+            "2026-10-15",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            313.67,
+            1750,
+            81,
+            5.0,
+            0
+          ],
+          [
+            "2026-10-15",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            245.46,
+            12879,
+            142,
+            6,
+            0
+          ],
+          [
+            "2026-10-15",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            70.4,
+            3993,
+            61,
+            6,
+            0
+          ],
+          [
+            "2026-10-15",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            131.6,
+            2428,
+            16,
+            1,
+            0
+          ],
+          [
+            "2026-10-15",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            93.82,
+            12171,
+            101,
+            0,
+            0
+          ],
+          [
+            "2026-10-16",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            73.89,
+            346,
+            39,
+            4.4,
+            0
+          ],
+          [
+            "2026-10-16",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            357.19,
+            1894,
+            92,
+            3.4,
+            0
+          ],
+          [
+            "2026-10-16",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            236.74,
+            11819,
+            138,
+            5,
+            0
+          ],
+          [
+            "2026-10-16",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            69.38,
+            3862,
+            66,
+            6,
+            0
+          ],
+          [
+            "2026-10-16",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            132.26,
+            3150,
+            19,
+            1,
+            0
+          ],
+          [
+            "2026-10-16",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            84.37,
+            14342,
+            93,
+            1,
+            0
+          ],
+          [
+            "2026-10-17",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            79.61,
+            391,
+            44,
+            8.1,
+            0
+          ],
+          [
+            "2026-10-17",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            309.59,
+            1429,
+            67,
+            4.4,
+            0
+          ],
+          [
+            "2026-10-17",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            250.01,
+            15187,
+            167,
+            5,
+            0
+          ],
+          [
+            "2026-10-17",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            67.02,
+            3206,
+            56,
+            4,
+            0
+          ],
+          [
+            "2026-10-17",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            114.66,
+            2545,
+            15,
+            1,
+            0
+          ],
+          [
+            "2026-10-17",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            84.95,
+            17713,
+            91,
+            1,
+            0
+          ],
+          [
+            "2026-10-18",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.33,
+            430,
+            43,
+            4.4,
+            0
+          ],
+          [
+            "2026-10-18",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            304.5,
+            1538,
+            69,
+            3.2,
+            0
+          ],
+          [
+            "2026-10-18",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            242.18,
+            14083,
+            146,
+            5,
+            0
+          ],
+          [
+            "2026-10-18",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            63.71,
+            3265,
+            55,
+            4,
+            0
+          ],
+          [
+            "2026-10-18",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            126.53,
+            2792,
+            18,
+            1,
+            0
+          ],
+          [
+            "2026-10-19",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            69.93,
+            324,
+            36,
+            5.2,
+            0
+          ],
+          [
+            "2026-10-19",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            319.58,
+            1265,
+            61,
+            3.3,
+            0
+          ],
+          [
+            "2026-10-19",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            222.37,
+            12741,
+            128,
+            3,
+            0
+          ],
+          [
+            "2026-10-19",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            67.84,
+            3786,
+            56,
+            4,
+            0
+          ],
+          [
+            "2026-10-19",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            119.0,
+            2343,
+            15,
+            1,
+            0
+          ],
+          [
+            "2026-10-20",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            82.53,
+            367,
+            44,
+            7.3,
+            0
+          ],
+          [
+            "2026-10-20",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            344.2,
+            1345,
+            55,
+            1.8,
+            0
+          ],
+          [
+            "2026-10-20",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            242.92,
+            13958,
+            146,
+            4,
+            0
+          ],
+          [
+            "2026-10-20",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            65.38,
+            3642,
+            58,
+            3,
+            0
+          ],
+          [
+            "2026-10-20",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            117.81,
+            2900,
+            17,
+            1,
+            0
+          ],
+          [
+            "2026-10-20",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            91.48,
+            26295,
+            113,
+            2,
+            0
+          ],
+          [
+            "2026-10-21",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.61,
+            323,
+            39,
+            6.2,
+            0
+          ],
+          [
+            "2026-10-21",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            309.94,
+            1141,
+            51,
+            3.6,
+            0
+          ],
+          [
+            "2026-10-21",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            217.03,
+            11688,
+            129,
+            5,
+            0
+          ],
+          [
+            "2026-10-21",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            67.62,
+            3761,
+            63,
+            5,
+            0
+          ],
+          [
+            "2026-10-21",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            143.83,
+            2976,
+            19,
+            1,
+            0
+          ],
+          [
+            "2026-10-21",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            76.93,
+            5918,
+            79,
+            1,
+            0
+          ],
+          [
+            "2026-10-22",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            76.78,
+            382,
+            38,
+            6.9,
+            0
+          ],
+          [
+            "2026-10-22",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            330.18,
+            1261,
+            53,
+            2.0,
+            0
+          ],
+          [
+            "2026-10-22",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            207.05,
+            12007,
+            134,
+            4,
+            0
+          ],
+          [
+            "2026-10-22",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            74.0,
+            4576,
+            75,
+            4,
+            0
+          ],
+          [
+            "2026-10-22",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            127.81,
+            2968,
+            19,
+            1,
+            0
+          ],
+          [
+            "2026-10-22",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            88.26,
+            9405,
+            100,
+            2,
+            0
+          ],
+          [
+            "2026-10-23",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.45,
+            366,
+            43,
+            7.8,
+            0
+          ],
+          [
+            "2026-10-23",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            359.48,
+            1301,
+            59,
+            3.0,
+            0
+          ],
+          [
+            "2026-10-23",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            250.37,
+            14223,
+            142,
+            4,
+            0
+          ],
+          [
+            "2026-10-23",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            69.38,
+            3746,
+            65,
+            5,
+            0
+          ],
+          [
+            "2026-10-23",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            133.94,
+            3347,
+            20,
+            1,
+            0
+          ],
+          [
+            "2026-10-23",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            91.25,
+            22778,
+            99,
+            1,
+            0
+          ],
+          [
+            "2026-10-24",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            78.37,
+            349,
+            42,
+            7.1,
+            0
+          ],
+          [
+            "2026-10-24",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            346.19,
+            1587,
+            65,
+            3.0,
+            0
+          ],
+          [
+            "2026-10-24",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            225.39,
+            12401,
+            141,
+            6,
+            0
+          ],
+          [
+            "2026-10-24",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            65.29,
+            3330,
+            55,
+            3,
+            0
+          ],
+          [
+            "2026-10-24",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            144.64,
+            3323,
+            21,
+            1,
+            0
+          ],
+          [
+            "2026-10-24",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            78.83,
+            17147,
+            90,
+            2,
+            0
+          ],
+          [
+            "2026-10-25",
+            "Google Ads",
+            "Example Booking Software",
+            "Brand Search",
+            "USD",
+            74.46,
+            390,
+            41,
+            4.1,
+            0
+          ],
+          [
+            "2026-10-25",
+            "Google Ads",
+            "Example Booking Software",
+            "Online Booking Search",
+            "USD",
+            360.58,
+            1427,
+            64,
+            4.3,
+            0
+          ],
+          [
+            "2026-10-25",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Prospecting, salon owners",
+            "USD",
+            251.7,
+            13782,
+            158,
+            4,
+            0
+          ],
+          [
+            "2026-10-25",
+            "Meta Ads",
+            "Example Booking Software (Meta ad account)",
+            "Retargeting, site visitors 30 days",
+            "USD",
+            62.77,
+            3805,
+            62,
+            3,
+            0
+          ],
+          [
+            "2026-10-25",
+            "LinkedIn Ads",
+            "Example Booking Software (LinkedIn ad account)",
+            "(account total)",
+            "USD",
+            137.29,
+            3216,
+            20,
+            1,
+            0
+          ],
+          [
+            "2026-10-25",
+            "TikTok Ads",
+            "Example Booking Software (TikTok ad account)",
+            "(account total)",
+            "USD",
+            85.26,
+            11737,
+            102,
+            0,
+            0
+          ]
+        ],
+        "tiktok_empty_days": [
+          "2026-10-18",
+          "2026-10-19"
+        ],
+        "ga4_daily": [
+          {
+            "date": "2026-10-12",
+            "sessions": 1090,
+            "keyEvents:sign_up": 13
+          },
+          {
+            "date": "2026-10-13",
+            "sessions": 976,
+            "keyEvents:sign_up": 12
+          },
+          {
+            "date": "2026-10-14",
+            "sessions": 1088,
+            "keyEvents:sign_up": 18
+          },
+          {
+            "date": "2026-10-15",
+            "sessions": 957,
+            "keyEvents:sign_up": 16
+          },
+          {
+            "date": "2026-10-16",
+            "sessions": 1122,
+            "keyEvents:sign_up": 16
+          },
+          {
+            "date": "2026-10-17",
+            "sessions": 1211,
+            "keyEvents:sign_up": 18
+          },
+          {
+            "date": "2026-10-18",
+            "sessions": 902,
+            "keyEvents:sign_up": 14
+          },
+          {
+            "date": "2026-10-19",
+            "sessions": 1094,
+            "keyEvents:sign_up": 11
+          },
+          {
+            "date": "2026-10-20",
+            "sessions": 1074,
+            "keyEvents:sign_up": 14
+          },
+          {
+            "date": "2026-10-21",
+            "sessions": 964,
+            "keyEvents:sign_up": 15
+          },
+          {
+            "date": "2026-10-22",
+            "sessions": 924,
+            "keyEvents:sign_up": 14
+          },
+          {
+            "date": "2026-10-23",
+            "sessions": 1083,
+            "keyEvents:sign_up": 14
+          },
+          {
+            "date": "2026-10-24",
+            "sessions": 941,
+            "keyEvents:sign_up": 15
+          },
+          {
+            "date": "2026-10-25",
+            "sessions": 1101,
+            "keyEvents:sign_up": 12
+          }
+        ]
+      },
+      "current_looker_report": {
+        "described_by_user": true,
+        "date_range_shown": "2026-10-12 to 2026-10-25",
+        "data_sources": [
+          "Google Ads (Google's own connector)",
+          "Google Sheet 'TikTok export', pasted in by hand, rows below"
+        ],
+        "tiktok_export_rows": [
+          {
+            "Date": "2026-10-12",
+            "Impressions": 20070,
+            "Clicks": 82,
+            "CTR": 0.0041,
+            "Conversions": 1
+          },
+          {
+            "Date": "2026-10-13",
+            "Impressions": 6428,
+            "Clicks": 101,
+            "CTR": 0.0157,
+            "Conversions": 1
+          },
+          {
+            "Date": "2026-10-14",
+            "Impressions": 18509,
+            "Clicks": 93,
+            "CTR": 0.005,
+            "Conversions": 1
+          },
+          {
+            "Date": "2026-10-15",
+            "Impressions": 12171,
+            "Clicks": 101,
+            "CTR": 0.0083,
+            "Conversions": 0
+          },
+          {
+            "Date": "2026-10-16",
+            "Impressions": 14342,
+            "Clicks": 93,
+            "CTR": 0.0065,
+            "Conversions": 1
+          },
+          {
+            "Date": "2026-10-17",
+            "Impressions": 17713,
+            "Clicks": 91,
+            "CTR": 0.0051,
+            "Conversions": 1
+          }
+        ],
+        "scorecards": [
+          {
+            "name": "TikTok CTR",
+            "field": "CTR column of 'TikTok export'",
+            "aggregation": "AVG"
+          },
+          {
+            "name": "Total conversions",
+            "formula": "Google Ads Conversions + TikTok export Conversions",
+            "comparison": "none",
+            "period label": "none"
+          }
+        ],
+        "blend": {
+          "tables": [
+            "Google Ads",
+            "TikTok export"
+          ],
+          "join": "inner",
+          "key": "Date",
+          "used_by": "Spend by day chart"
+        },
+        "data_through_date_shown": false
+      }
+    },
+    "month_close": {
+      "request": "Hey Claude, I just added the \"marketing-dashboard-builder\" skill. Close September for finance: budget vs actual on every line with reasons, accruals, a reconciliation of ad spend against the invoices and card charges, and a re-forecast for the rest of 2026.",
+      "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+      "month": "2026-09",
+      "close_date": "2026-10-05",
+      "plan_currency": "USD",
+      "thresholds": {
+        "variance_flag": "beyond 10% and beyond 100 USD",
+        "reconciliation_tolerance": "the larger of 1% and 10 USD"
+      },
+      "rebilling": "not used: in-house team, no client re-billing",
+      "budget_plan_rows": [
+        {
+          "month": "2026-01",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Google Ads",
+          "type": "media",
+          "owner": "Paid search lead",
+          "budget": 12000.0
+        },
+        {
+          "month": "2026-01",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Meta Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 6000.0
+        },
+        {
+          "month": "2026-01",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-02",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-03",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-04",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-05",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-06",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-07",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-08",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-09",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-10",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-11",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-12",
+          "line": "LinkedIn Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 4000.0
+        },
+        {
+          "month": "2026-01",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-02",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-03",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-04",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-05",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-06",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-07",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-08",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 2500.0
+        },
+        {
+          "month": "2026-10",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 2500.0
+        },
+        {
+          "month": "2026-11",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 2500.0
+        },
+        {
+          "month": "2026-12",
+          "line": "TikTok Ads",
+          "type": "media",
+          "owner": "Paid social lead",
+          "budget": 2500.0
+        },
+        {
+          "month": "2026-01",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Agency retainer",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 3500.0
+        },
+        {
+          "month": "2026-01",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-02",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-03",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-04",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-05",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-06",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-07",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-08",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-09",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-10",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-11",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-12",
+          "line": "SEO freelancer",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1500.0
+        },
+        {
+          "month": "2026-01",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Software tools",
+          "type": "non-media",
+          "owner": "Marketing ops",
+          "budget": 900.0
+        },
+        {
+          "month": "2026-01",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 2500.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Trade show",
+          "type": "non-media",
+          "owner": "Head of marketing",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-01",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-02",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-03",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1200.0
+        },
+        {
+          "month": "2026-04",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-05",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-06",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1200.0
+        },
+        {
+          "month": "2026-07",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-08",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-09",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1200.0
+        },
+        {
+          "month": "2026-10",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-11",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 0.0
+        },
+        {
+          "month": "2026-12",
+          "line": "Video production",
+          "type": "non-media",
+          "owner": "Content lead",
+          "budget": 1200.0
+        }
+      ],
+      "actuals_jan_to_aug": [
+        {
+          "line": "Google Ads",
+          "month": "2026-01",
+          "actual": 12830.91
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-02",
+          "actual": 10933.55
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-03",
+          "actual": 12272.59
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-04",
+          "actual": 12325.24
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-05",
+          "actual": 12595.64
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-06",
+          "actual": 11074.4
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-07",
+          "actual": 12362.68
+        },
+        {
+          "line": "Google Ads",
+          "month": "2026-08",
+          "actual": 10903.35
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-01",
+          "actual": 6194.51
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-02",
+          "actual": 5446.23
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-03",
+          "actual": 5705.11
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-04",
+          "actual": 6189.83
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-05",
+          "actual": 6029.44
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-06",
+          "actual": 5548.4
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-07",
+          "actual": 5508.26
+        },
+        {
+          "line": "Meta Ads",
+          "month": "2026-08",
+          "actual": 5674.51
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-01",
+          "actual": 3631.0
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-02",
+          "actual": 4122.65
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-03",
+          "actual": 3860.66
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-04",
+          "actual": 3666.17
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-05",
+          "actual": 3971.0
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-06",
+          "actual": 3869.25
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-07",
+          "actual": 3650.42
+        },
+        {
+          "line": "LinkedIn Ads",
+          "month": "2026-08",
+          "actual": 4040.34
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-01",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-02",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-03",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-04",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-05",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-06",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-07",
+          "actual": 0.0
+        },
+        {
+          "line": "TikTok Ads",
+          "month": "2026-08",
+          "actual": 0.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-01",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-02",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-03",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-04",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-05",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-06",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-07",
+          "actual": 3500.0
+        },
+        {
+          "line": "Agency retainer",
+          "month": "2026-08",
+          "actual": 3500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-01",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-02",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-03",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-04",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-05",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-06",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-07",
+          "actual": 1500.0
+        },
+        {
+          "line": "SEO freelancer",
+          "month": "2026-08",
+          "actual": 1500.0
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-01",
+          "actual": 948.48
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-02",
+          "actual": 861.75
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-03",
+          "actual": 873.35
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-04",
+          "actual": 860.69
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-05",
+          "actual": 875.49
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-06",
+          "actual": 929.89
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-07",
+          "actual": 816.81
+        },
+        {
+          "line": "Software tools",
+          "month": "2026-08",
+          "actual": 930.96
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-01",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-02",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-03",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-04",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-05",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-06",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-07",
+          "actual": 0.0
+        },
+        {
+          "line": "Trade show",
+          "month": "2026-08",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-01",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-02",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-03",
+          "actual": 1200.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-04",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-05",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-06",
+          "actual": 1200.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-07",
+          "actual": 0.0
+        },
+        {
+          "line": "Video production",
+          "month": "2026-08",
+          "actual": 0.0
+        }
+      ],
+      "platform_spend_pulled": {
+        "Google Ads": {
+          "currency": "USD",
+          "time_zone": "America/New_York",
+          "month_total": 11583.49,
+          "daily": [
+            [
+              "2026-09-01",
+              391.04
+            ],
+            [
+              "2026-09-02",
+              341.13
+            ],
+            [
+              "2026-09-03",
+              352.91
+            ],
+            [
+              "2026-09-04",
+              340.69
+            ],
+            [
+              "2026-09-05",
+              348.45
+            ],
+            [
+              "2026-09-06",
+              408.95
+            ],
+            [
+              "2026-09-07",
+              362.3
+            ],
+            [
+              "2026-09-08",
+              373.05
+            ],
+            [
+              "2026-09-09",
+              398.75
+            ],
+            [
+              "2026-09-10",
+              358.57
+            ],
+            [
+              "2026-09-11",
+              436.75
+            ],
+            [
+              "2026-09-12",
+              387.35
+            ],
+            [
+              "2026-09-13",
+              408.02
+            ],
+            [
+              "2026-09-14",
+              358.27
+            ],
+            [
+              "2026-09-15",
+              390.6
+            ],
+            [
+              "2026-09-16",
+              364.26
+            ],
+            [
+              "2026-09-17",
+              419.07
+            ],
+            [
+              "2026-09-18",
+              421.01
+            ],
+            [
+              "2026-09-19",
+              400.67
+            ],
+            [
+              "2026-09-20",
+              378.82
+            ],
+            [
+              "2026-09-21",
+              343.56
+            ],
+            [
+              "2026-09-22",
+              429.06
+            ],
+            [
+              "2026-09-23",
+              380.01
+            ],
+            [
+              "2026-09-24",
+              378.4
+            ],
+            [
+              "2026-09-25",
+              436.37
+            ],
+            [
+              "2026-09-26",
+              453.68
+            ],
+            [
+              "2026-09-27",
+              381.05
+            ],
+            [
+              "2026-09-28",
+              372.08
+            ],
+            [
+              "2026-09-29",
+              399.98
+            ],
+            [
+              "2026-09-30",
+              368.64
+            ]
+          ]
+        },
+        "Meta Ads": {
+          "currency": "USD",
+          "time_zone": "America/New_York",
+          "month_total": 7000.74,
+          "daily": [
+            [
+              "2026-09-01",
+              131.54
+            ],
+            [
+              "2026-09-02",
+              155.8
+            ],
+            [
+              "2026-09-03",
+              161.89
+            ],
+            [
+              "2026-09-04",
+              148.51
+            ],
+            [
+              "2026-09-05",
+              127.92
+            ],
+            [
+              "2026-09-06",
+              161.65
+            ],
+            [
+              "2026-09-07",
+              139.28
+            ],
+            [
+              "2026-09-08",
+              148.91
+            ],
+            [
+              "2026-09-09",
+              142.41
+            ],
+            [
+              "2026-09-10",
+              156.2
+            ],
+            [
+              "2026-09-11",
+              138.07
+            ],
+            [
+              "2026-09-12",
+              132.82
+            ],
+            [
+              "2026-09-13",
+              142.42
+            ],
+            [
+              "2026-09-14",
+              164.08
+            ],
+            [
+              "2026-09-15",
+              313.63
+            ],
+            [
+              "2026-09-16",
+              342.76
+            ],
+            [
+              "2026-09-17",
+              322.04
+            ],
+            [
+              "2026-09-18",
+              324.7
+            ],
+            [
+              "2026-09-19",
+              286.28
+            ],
+            [
+              "2026-09-20",
+              328.63
+            ],
+            [
+              "2026-09-21",
+              307.34
+            ],
+            [
+              "2026-09-22",
+              279.37
+            ],
+            [
+              "2026-09-23",
+              343.08
+            ],
+            [
+              "2026-09-24",
+              289.72
+            ],
+            [
+              "2026-09-25",
+              327.34
+            ],
+            [
+              "2026-09-26",
+              289.82
+            ],
+            [
+              "2026-09-27",
+              302.78
+            ],
+            [
+              "2026-09-28",
+              274.18
+            ],
+            [
+              "2026-09-29",
+              289.16
+            ],
+            [
+              "2026-09-30",
+              328.41
+            ]
+          ]
+        },
+        "LinkedIn Ads": {
+          "currency": "USD (costInUsd)",
+          "time_zone": "not returned by the call",
+          "month_total": 3893.26,
+          "daily": [
+            [
+              "2026-09-01",
+              122.51
+            ],
+            [
+              "2026-09-02",
+              112.95
+            ],
+            [
+              "2026-09-03",
+              133.5
+            ],
+            [
+              "2026-09-04",
+              126.94
+            ],
+            [
+              "2026-09-05",
+              129.72
+            ],
+            [
+              "2026-09-06",
+              128.88
+            ],
+            [
+              "2026-09-07",
+              111.93
+            ],
+            [
+              "2026-09-08",
+              117.67
+            ],
+            [
+              "2026-09-09",
+              118.65
+            ],
+            [
+              "2026-09-10",
+              144.95
+            ],
+            [
+              "2026-09-11",
+              130.2
+            ],
+            [
+              "2026-09-12",
+              121.59
+            ],
+            [
+              "2026-09-13",
+              141.64
+            ],
+            [
+              "2026-09-14",
+              133.01
+            ],
+            [
+              "2026-09-15",
+              142.92
+            ],
+            [
+              "2026-09-16",
+              139.16
+            ],
+            [
+              "2026-09-17",
+              119.42
+            ],
+            [
+              "2026-09-18",
+              137.79
+            ],
+            [
+              "2026-09-19",
+              131.67
+            ],
+            [
+              "2026-09-20",
+              139.46
+            ],
+            [
+              "2026-09-21",
+              113.67
+            ],
+            [
+              "2026-09-22",
+              146.24
+            ],
+            [
+              "2026-09-23",
+              112.73
+            ],
+            [
+              "2026-09-24",
+              136.82
+            ],
+            [
+              "2026-09-25",
+              145.59
+            ],
+            [
+              "2026-09-26",
+              114.84
+            ],
+            [
+              "2026-09-27",
+              144.7
+            ],
+            [
+              "2026-09-28",
+              128.17
+            ],
+            [
+              "2026-09-29",
+              129.79
+            ],
+            [
+              "2026-09-30",
+              136.15
+            ]
+          ]
+        },
+        "TikTok Ads": {
+          "currency": "USD",
+          "time_zone": "America/New_York",
+          "month_totals": {
+            "spend": 1758.42,
+            "cash_spend": 1458.42,
+            "voucher_spend": 300.0
+          },
+          "daily": [
+            [
+              "2026-09-01",
+              0.0
+            ],
+            [
+              "2026-09-02",
+              0.0
+            ],
+            [
+              "2026-09-03",
+              0.0
+            ],
+            [
+              "2026-09-04",
+              0.0
+            ],
+            [
+              "2026-09-05",
+              0.0
+            ],
+            [
+              "2026-09-06",
+              0.0
+            ],
+            [
+              "2026-09-07",
+              0.0
+            ],
+            [
+              "2026-09-08",
+              0.0
+            ],
+            [
+              "2026-09-09",
+              0.0
+            ],
+            [
+              "2026-09-10",
+              0.0
+            ],
+            [
+              "2026-09-11",
+              96.63
+            ],
+            [
+              "2026-09-12",
+              88.56
+            ],
+            [
+              "2026-09-13",
+              73.74
+            ],
+            [
+              "2026-09-14",
+              74.98
+            ],
+            [
+              "2026-09-15",
+              82.08
+            ],
+            [
+              "2026-09-16",
+              81.63
+            ],
+            [
+              "2026-09-17",
+              86.72
+            ],
+            [
+              "2026-09-18",
+              79.53
+            ],
+            [
+              "2026-09-19",
+              81.1
+            ],
+            [
+              "2026-09-20",
+              97.26
+            ],
+            [
+              "2026-09-21",
+              90.84
+            ],
+            [
+              "2026-09-22",
+              96.79
+            ],
+            [
+              "2026-09-23",
+              86.66
+            ],
+            [
+              "2026-09-24",
+              97.4
+            ],
+            [
+              "2026-09-25",
+              94.58
+            ],
+            [
+              "2026-09-26",
+              84.83
+            ],
+            [
+              "2026-09-27",
+              93.31
+            ],
+            [
+              "2026-09-28",
+              96.94
+            ],
+            [
+              "2026-09-29",
+              92.53
+            ],
+            [
+              "2026-09-30",
+              82.31
+            ]
+          ]
+        }
+      },
+      "media_invoices_and_charges": {
+        "Google Ads": {
+          "doc": "monthly invoice",
+          "received": "2026-10-02",
+          "period": "2026-09",
+          "lines": [
+            {
+              "item": "September advertising",
+              "amount": 11583.49
+            },
+            {
+              "item": "Invalid activity credit for 2026-08",
+              "amount": -38.4
+            }
+          ],
+          "tax": 0.0
+        },
+        "Meta Ads": {
+          "doc": "card charges (threshold billing)",
+          "charges": [
+            {
+              "date": "2026-09-01",
+              "covers": [
+                "2026-08-29",
+                "2026-08-31"
+              ],
+              "amount": 410.25
+            },
+            {
+              "date": "2026-09-08",
+              "covers": [
+                "2026-09-01",
+                "2026-09-07"
+              ],
+              "amount": 1026.59
+            },
+            {
+              "date": "2026-09-15",
+              "covers": [
+                "2026-09-08",
+                "2026-09-14"
+              ],
+              "amount": 1024.91
+            },
+            {
+              "date": "2026-09-22",
+              "covers": [
+                "2026-09-15",
+                "2026-09-21"
+              ],
+              "amount": 2225.38
+            },
+            {
+              "date": "2026-09-28",
+              "covers": [
+                "2026-09-22",
+                "2026-09-27"
+              ],
+              "amount": 1832.11
+            },
+            {
+              "date": "2026-10-02",
+              "covers": [
+                "2026-09-28",
+                "2026-10-01"
+              ],
+              "amount": 1204.15
+            }
+          ]
+        },
+        "LinkedIn Ads": {
+          "doc": "monthly invoice",
+          "received": "2026-10-03",
+          "period": "2026-09",
+          "gross": 4204.72,
+          "tax": 311.46
+        },
+        "TikTok Ads": {
+          "doc": "card charges",
+          "received": "2026-10-01",
+          "period": "2026-09",
+          "charged": 1458.42
+        }
+      },
+      "non_media_documents": [
+        {
+          "line": "Agency retainer",
+          "doc": "invoice",
+          "period": "2026-09",
+          "net": 3500.0,
+          "received": "2026-09-30",
+          "note": "September retainer"
+        },
+        {
+          "line": "SEO freelancer",
+          "doc": "agreement",
+          "period": "2026-09",
+          "agreed": 1500.0,
+          "received": null,
+          "note": "September articles delivered; invoice expected mid-October"
+        },
+        {
+          "line": "Software tools",
+          "doc": "invoice",
+          "period": "2026-09",
+          "net": 640.0,
+          "received": "2026-09-03",
+          "note": "scheduling and design tools"
+        },
+        {
+          "line": "Software tools",
+          "doc": "invoice",
+          "period": "2026-09",
+          "net": 260.0,
+          "received": "2026-09-05",
+          "note": "email tool"
+        },
+        {
+          "line": "Software tools",
+          "doc": "invoice",
+          "period": "2026-09",
+          "net": 146.2,
+          "received": "2026-09-14",
+          "note": "2 seats added from 2026-09-12, prorated"
+        },
+        {
+          "line": "Trade show",
+          "doc": "invoice",
+          "period": "2026-09",
+          "net": 3100.0,
+          "received": "2026-09-20",
+          "note": "booth upgraded to a corner stand"
+        }
+      ]
+    }
+  }
+}

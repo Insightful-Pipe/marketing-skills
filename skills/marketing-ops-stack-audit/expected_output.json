@@ -1,0 +1,1108 @@
+{
+  "header": {
+    "business": "Example Booking Software",
+    "run_date": "2026-10-28",
+    "pages_checked": [
+      "/",
+      "/pricing/",
+      "/signup/",
+      "/demo/"
+    ],
+    "business_model": "self-serve software with a demo form",
+    "grade": 42,
+    "rating": "at risk",
+    "monthly_stack_cost_usd": 2944
+  },
+  "scorecard": [
+    {
+      "area": "1. What loads",
+      "result": "fail",
+      "key_number": "3 fail and 3 warn findings across 23 tools",
+      "why": "Hotjar still loads after it was cancelled, and Google Analytics 4 and LinkedIn Ads load twice; TikTok Ads (loads, ads stopped), Drift (not loading), Pinterest Tag (loads, not in the ledger)",
+      "deduction": -12
+    },
+    {
+      "area": "2. Overlap",
+      "result": "fail",
+      "key_number": "overlap cost $700/month, 23.8% of $2944",
+      "why": "2 jobs have two tools: live chat (Intercom and Drift); SEO (Semrush and Ahrefs)",
+      "deduction": -12
+    },
+    {
+      "area": "3. Data links",
+      "result": "fail",
+      "key_number": "7 flowing, 2 stale, 0 missing, 1 unknown",
+      "why": "billing to email is stale since 2026-08-19; billing and CRM to Google Ads is stale since 2026-09-02",
+      "deduction": -12
+    },
+    {
+      "area": "4. Ownership and cost",
+      "result": "fail",
+      "key_number": "2 tools with no owner; 3 per-seat tools under 70% seat use; 1 notice window closed",
+      "why": "Zapier has no owner and carries a stale link; Cookiebot has no owner; low seat use on Calendly, Canva, Buffer; Calendly's notice window has closed",
+      "deduction": -12
+    },
+    {
+      "area": "5. Site weight",
+      "result": "warn",
+      "key_number": "1214 ms third-party main-thread time on the home page (mobile)",
+      "why": "the tools marked Cancel, Consolidate or Remove account for 247 ms of it",
+      "deduction": -5
+    },
+    {
+      "area": "6. Process",
+      "result": "warn",
+      "key_number": "3 of 6 answers are yes",
+      "why": "not yes: there is a written list of tools with an owner for each (no); access is removed from every tool within a week when someone leaves (no); someone reviewed the stack as a whole in the last 12 months (don't know)",
+      "deduction": -5
+    }
+  ],
+  "grade_math": "100 - 12 x 4 fails - 5 x 2 warn = 42",
+  "top_findings": [
+    {
+      "tool": "Drift",
+      "where": "contract",
+      "evidence": "on 0 of 4 key pages; GTM tag 'Drift widget' is paused; renewal 2026-11-30, decide by 2026-10-31",
+      "verdict": "Cancel",
+      "what": "paid $500/month, not loading, 0 seats used; Intercom does the same job; the notice window closes in 3 days",
+      "tier": 1
+    },
+    {
+      "tool": "Google Analytics 4",
+      "where": "twice on /pricing/",
+      "evidence": "on 4 of 4 key pages; live GTM tag 'Google tag - G-EXAMPLE01' (googtag), 'GA4 event - sign_up' (gaawe); twice on /pricing/",
+      "verdict": "Fix",
+      "what": "the same id loads twice, so what it records on those pages can be counted twice",
+      "tier": 1
+    },
+    {
+      "tool": "LinkedIn Ads",
+      "where": "twice on /, /pricing/, /signup/, /demo/",
+      "evidence": "on 4 of 4 key pages; live GTM tag 'LinkedIn Insight' (bzi); twice on /, /pricing/, /signup/, /demo/",
+      "verdict": "Fix",
+      "what": "the same id loads twice, so what it records on those pages can be counted twice",
+      "tier": 1
+    },
+    {
+      "tool": "Zapier",
+      "where": "billing to email",
+      "evidence": "Klaviyo metric 'Subscription Paid' (API); latest event 2026-08-19T16:02:41+00:00, 70 days before the run",
+      "verdict": "Fix",
+      "what": "Subscription Paid is stale: Klaviyo has had nothing since 2026-08-19",
+      "tier": 1
+    },
+    {
+      "tool": "Zapier and HubSpot",
+      "where": "billing and CRM to Google Ads",
+      "evidence": "Google Ads gaql: last conversion by conversion date 2026-09-02, 56 days before the run; 0 in the last 30 days",
+      "verdict": "Fix",
+      "what": "Paid customer (HubSpot import) is stale: Google Ads has had nothing since 2026-09-02",
+      "tier": 1
+    }
+  ],
+  "ledger": [
+    {
+      "tool": "Google Tag Manager",
+      "job": "tag management",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Google Analytics 4",
+      "job": "web analytics",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "active",
+      "load_status": "loads twice",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'Google tag - G-EXAMPLE01' (googtag), 'GA4 event - sign_up' (gaawe); twice on /pricing/",
+      "verdict": "Fix",
+      "why": "twice on /pricing/"
+    },
+    {
+      "tool": "Google Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "live GTM tag 'Google Ads - Trial start' (awct)",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Meta Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'Meta Pixel - base' (html)",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "LinkedIn Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "believed_status": "active",
+      "load_status": "loads twice",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'LinkedIn Insight' (bzi); twice on /, /pricing/, /signup/, /demo/",
+      "verdict": "Fix",
+      "why": "twice on /, /pricing/, /signup/, /demo/"
+    },
+    {
+      "tool": "TikTok Ads",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Sam Patel (paid media)",
+      "believed_status": "paused",
+      "load_status": "loads, ads stopped",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'TikTok Pixel - base' (html)",
+      "verdict": "Remove",
+      "why": "loads, ads stopped (remove the pixel; the ad account stays)"
+    },
+    {
+      "tool": "HubSpot",
+      "job": "CRM",
+      "monthly_cost_usd": 800,
+      "seats_paid": 5,
+      "seats_used": 4,
+      "owner": "Lee Chen (sales ops)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages",
+      "verdict": "Fix",
+      "why": "carries a stale link: billing and CRM to Google Ads"
+    },
+    {
+      "tool": "Klaviyo",
+      "job": "email marketing",
+      "monthly_cost_usd": 400,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Maya Brooks (lifecycle)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Stripe",
+      "job": "billing",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Finance",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 1 of 4 key pages",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Zapier",
+      "job": "integration and automation",
+      "monthly_cost_usd": 70,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "none",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Fix",
+      "why": "carries a stale link: billing to email, billing and CRM to Google Ads; no owner"
+    },
+    {
+      "tool": "Hotjar",
+      "job": "session replay and heatmaps",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "cancelled",
+      "load_status": "loads, believed cancelled",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'Hotjar' (hjtc)",
+      "verdict": "Remove",
+      "why": "loads, believed cancelled"
+    },
+    {
+      "tool": "Microsoft Clarity",
+      "job": "session replay and heatmaps",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'Clarity' (html)",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Intercom",
+      "job": "live chat",
+      "monthly_cost_usd": 360,
+      "seats_paid": 6,
+      "seats_used": 5,
+      "owner": "Ravi Shah (support)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages",
+      "verdict": "Keep",
+      "why": "in use, loads where it should, has an owner"
+    },
+    {
+      "tool": "Drift",
+      "job": "live chat",
+      "monthly_cost_usd": 500,
+      "seats_paid": 3,
+      "seats_used": 0,
+      "owner": "Lee Chen (sales ops)",
+      "believed_status": "active",
+      "load_status": "not loading",
+      "load_evidence": "on 0 of 4 key pages; GTM tag 'Drift widget' is paused",
+      "verdict": "Cancel",
+      "why": "paid $500/month, not loading, 0 seats used; Intercom does the same job"
+    },
+    {
+      "tool": "Calendly",
+      "job": "scheduling",
+      "monthly_cost_usd": 48,
+      "seats_paid": 4,
+      "seats_used": 2,
+      "owner": "Lee Chen (sales ops)",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 1 of 4 key pages",
+      "verdict": "Fix",
+      "why": "uses 50.0% of its seats"
+    },
+    {
+      "tool": "Semrush",
+      "job": "SEO",
+      "monthly_cost_usd": 250,
+      "seats_paid": 2,
+      "seats_used": 2,
+      "owner": "Nora Kim (content)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Keep",
+      "why": "in use, has an owner"
+    },
+    {
+      "tool": "Ahrefs",
+      "job": "SEO",
+      "monthly_cost_usd": 200,
+      "seats_paid": 1,
+      "seats_used": 1,
+      "owner": "Nora Kim (content)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Consolidate",
+      "why": "overlaps Semrush in SEO; move its users to Semrush"
+    },
+    {
+      "tool": "Canva",
+      "job": "design",
+      "monthly_cost_usd": 120,
+      "seats_paid": 10,
+      "seats_used": 4,
+      "owner": "Nora Kim (content)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Fix",
+      "why": "uses 40.0% of its seats"
+    },
+    {
+      "tool": "Notion",
+      "job": "docs and project management",
+      "monthly_cost_usd": 96,
+      "seats_paid": 12,
+      "seats_used": 11,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Keep",
+      "why": "in use, has an owner"
+    },
+    {
+      "tool": "Cookiebot",
+      "job": "consent",
+      "monthly_cost_usd": 40,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "none",
+      "believed_status": "active",
+      "load_status": "loads",
+      "load_evidence": "on 4 of 4 key pages",
+      "verdict": "Fix",
+      "why": "no owner"
+    },
+    {
+      "tool": "Buffer",
+      "job": "social scheduling",
+      "monthly_cost_usd": 60,
+      "seats_paid": 3,
+      "seats_used": 1,
+      "owner": "Nora Kim (content)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Fix",
+      "why": "uses 33.3% of its seats"
+    },
+    {
+      "tool": "Looker Studio",
+      "job": "attribution and reporting",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "Dana Ortiz (marketing ops)",
+      "believed_status": "active",
+      "load_status": "back office",
+      "load_evidence": "no site script by design",
+      "verdict": "Keep",
+      "why": "in use, has an owner"
+    },
+    {
+      "tool": "Pinterest Tag",
+      "job": "paid ads",
+      "monthly_cost_usd": 0,
+      "seats_paid": null,
+      "seats_used": null,
+      "owner": "none",
+      "believed_status": "not in the ledger",
+      "load_status": "loads, not in the ledger",
+      "load_evidence": "on 4 of 4 key pages; live GTM tag 'Pinterest Tag - spring test' (html); you said Pinterest Ads was never used",
+      "verdict": "Remove",
+      "why": "loads, not in the ledger"
+    }
+  ],
+  "ga4_ids": [
+    {
+      "measurement_id": "G-EXAMPLE01",
+      "in_property": true
+    }
+  ],
+  "technology_database_check": [
+    "domain_technologies lists Drift, but no key page loads it and its only GTM tag is paused; the page read and the container win"
+  ],
+  "overlaps": [
+    {
+      "job": "live chat",
+      "tools": [
+        "Intercom",
+        "Drift"
+      ],
+      "keep": "Intercom",
+      "why": "more seats used (5 against 0)",
+      "losers": [
+        "Drift"
+      ],
+      "losers_monthly_cost_usd": 500
+    },
+    {
+      "job": "SEO",
+      "tools": [
+        "Semrush",
+        "Ahrefs"
+      ],
+      "keep": "Semrush",
+      "why": "more seats used (2 against 1)",
+      "losers": [
+        "Ahrefs"
+      ],
+      "losers_monthly_cost_usd": 200
+    }
+  ],
+  "data_link_map": [
+    {
+      "link": "site to web analytics",
+      "from": "website",
+      "to": "Google Analytics 4",
+      "event": "page views (G-EXAMPLE01)",
+      "carried_by": [
+        "Google Tag Manager"
+      ],
+      "status": "flowing",
+      "last_event": null,
+      "evidence": "loads on 4 of 4 key pages (page read); twice on /pricing/"
+    },
+    {
+      "link": "site to Google Ads",
+      "from": "website",
+      "to": "Google Ads",
+      "event": "Trial start (GTM)",
+      "carried_by": [
+        "Google Tag Manager"
+      ],
+      "status": "flowing",
+      "last_event": "2026-10-27",
+      "evidence": "Google Ads gaql: last conversion by conversion date 2026-10-27, 1 days before the run; 215 in the last 30 days"
+    },
+    {
+      "link": "site to Meta Ads",
+      "from": "website",
+      "to": "Meta Ads",
+      "event": "Meta Pixel",
+      "carried_by": [
+        "Google Tag Manager"
+      ],
+      "status": "flowing",
+      "last_event": null,
+      "evidence": "loads on 4 of 4 key pages (page read)"
+    },
+    {
+      "link": "site to LinkedIn Ads",
+      "from": "website",
+      "to": "LinkedIn Ads",
+      "event": "LinkedIn Insight Tag",
+      "carried_by": [
+        "Google Tag Manager"
+      ],
+      "status": "flowing",
+      "last_event": null,
+      "evidence": "loads on 4 of 4 key pages (page read); twice on /, /pricing/, /signup/, /demo/"
+    },
+    {
+      "link": "GA4 to Google Ads",
+      "from": "Google Analytics 4",
+      "to": "Google Ads",
+      "event": "GA4 sign_up (import)",
+      "carried_by": [
+        "(direct)"
+      ],
+      "status": "flowing",
+      "last_event": "2026-10-27",
+      "evidence": "Google Ads gaql: last conversion by conversion date 2026-10-27, 1 days before the run; 187 in the last 30 days"
+    },
+    {
+      "link": "sign-up to email",
+      "from": "app",
+      "to": "Klaviyo",
+      "event": "Started Trial",
+      "carried_by": [
+        "(direct)"
+      ],
+      "status": "flowing",
+      "last_event": "2026-10-27",
+      "evidence": "Klaviyo metric 'Started Trial' (API); latest event 2026-10-27T21:14:09+00:00, 1 days before the run"
+    },
+    {
+      "link": "billing to email",
+      "from": "Stripe",
+      "to": "Klaviyo",
+      "event": "Subscription Paid",
+      "carried_by": [
+        "Zapier"
+      ],
+      "status": "stale",
+      "last_event": "2026-08-19",
+      "evidence": "Klaviyo metric 'Subscription Paid' (API); latest event 2026-08-19T16:02:41+00:00, 70 days before the run"
+    },
+    {
+      "link": "billing and CRM to Google Ads",
+      "from": "Stripe and HubSpot",
+      "to": "Google Ads",
+      "event": "Paid customer (HubSpot import)",
+      "carried_by": [
+        "Zapier",
+        "HubSpot"
+      ],
+      "status": "stale",
+      "last_event": "2026-09-02",
+      "evidence": "Google Ads gaql: last conversion by conversion date 2026-09-02, 56 days before the run; 0 in the last 30 days"
+    },
+    {
+      "link": "demo form to CRM",
+      "from": "/demo/ form",
+      "to": "HubSpot",
+      "event": "new contact",
+      "carried_by": [
+        "(direct)"
+      ],
+      "status": "flowing",
+      "last_event": null,
+      "evidence": "user's answer (HubSpot has no connector)"
+    },
+    {
+      "link": "demo bookings to CRM",
+      "from": "Calendly",
+      "to": "HubSpot",
+      "event": "meeting booked",
+      "carried_by": [
+        "Calendly"
+      ],
+      "status": "unknown",
+      "last_event": null,
+      "evidence": "no connector for HubSpot or Calendly, and the user doesn't know"
+    }
+  ],
+  "seats": [
+    {
+      "tool": "Intercom",
+      "seats_paid": 6,
+      "seats_used": 5,
+      "seat_use_pct": 83.3,
+      "unused_seat_cost_usd": 60,
+      "cost_per_seat_used_usd": 72.0
+    },
+    {
+      "tool": "Calendly",
+      "seats_paid": 4,
+      "seats_used": 2,
+      "seat_use_pct": 50.0,
+      "unused_seat_cost_usd": 24,
+      "cost_per_seat_used_usd": 24.0
+    },
+    {
+      "tool": "Semrush",
+      "seats_paid": 2,
+      "seats_used": 2,
+      "seat_use_pct": 100.0,
+      "unused_seat_cost_usd": 0,
+      "cost_per_seat_used_usd": 125.0
+    },
+    {
+      "tool": "Canva",
+      "seats_paid": 10,
+      "seats_used": 4,
+      "seat_use_pct": 40.0,
+      "unused_seat_cost_usd": 72,
+      "cost_per_seat_used_usd": 30.0
+    },
+    {
+      "tool": "Notion",
+      "seats_paid": 12,
+      "seats_used": 11,
+      "seat_use_pct": 91.7,
+      "unused_seat_cost_usd": 8,
+      "cost_per_seat_used_usd": 8.73
+    },
+    {
+      "tool": "Buffer",
+      "seats_paid": 3,
+      "seats_used": 1,
+      "seat_use_pct": 33.3,
+      "unused_seat_cost_usd": 40,
+      "cost_per_seat_used_usd": 60.0
+    },
+    {
+      "tool": "HubSpot",
+      "seats_paid": 5,
+      "seats_used": 4,
+      "seat_use_pct": 80.0,
+      "unused_seat_cost_usd": null,
+      "cost_per_seat_used_usd": 200.0
+    },
+    {
+      "tool": "Drift",
+      "seats_paid": 3,
+      "seats_used": 0,
+      "seat_use_pct": 0.0,
+      "unused_seat_cost_usd": null,
+      "cost_per_seat_used_usd": null
+    },
+    {
+      "tool": "Ahrefs",
+      "seats_paid": 1,
+      "seats_used": 1,
+      "seat_use_pct": 100.0,
+      "unused_seat_cost_usd": null,
+      "cost_per_seat_used_usd": 200.0
+    }
+  ],
+  "cost_by_job_usd": {
+    "live chat": 860,
+    "CRM": 800,
+    "SEO": 450,
+    "email marketing": 400,
+    "design": 120,
+    "docs and project management": 96,
+    "integration and automation": 70,
+    "social scheduling": 60,
+    "scheduling": 48,
+    "consent": 40
+  },
+  "renewals_next_90_days": [
+    {
+      "tool": "Calendly",
+      "renewal": "2026-11-15",
+      "notice_days": 30,
+      "decide_by": "2026-10-16",
+      "days_left": -12,
+      "monthly_cost_usd": 48,
+      "note": "notice window closed"
+    },
+    {
+      "tool": "Drift",
+      "renewal": "2026-11-30",
+      "notice_days": 30,
+      "decide_by": "2026-10-31",
+      "days_left": 3,
+      "monthly_cost_usd": 500,
+      "note": "due within 14 days"
+    },
+    {
+      "tool": "Ahrefs",
+      "renewal": "2026-12-15",
+      "notice_days": 14,
+      "decide_by": "2026-12-01",
+      "days_left": 34,
+      "monthly_cost_usd": 200,
+      "note": ""
+    },
+    {
+      "tool": "Buffer",
+      "renewal": "2026-12-01",
+      "notice_days": 0,
+      "decide_by": "2026-12-01",
+      "days_left": 34,
+      "monthly_cost_usd": 60,
+      "note": ""
+    },
+    {
+      "tool": "Canva",
+      "renewal": "2027-01-10",
+      "notice_days": 30,
+      "decide_by": "2026-12-11",
+      "days_left": 44,
+      "monthly_cost_usd": 120,
+      "note": ""
+    },
+    {
+      "tool": "Zapier",
+      "renewal": "2027-01-05",
+      "notice_days": 0,
+      "decide_by": "2027-01-05",
+      "days_left": 69,
+      "monthly_cost_usd": 70,
+      "note": ""
+    },
+    {
+      "tool": "Cookiebot",
+      "renewal": "2027-01-20",
+      "notice_days": 0,
+      "decide_by": "2027-01-20",
+      "days_left": 84,
+      "monthly_cost_usd": 40,
+      "note": ""
+    }
+  ],
+  "site_weight": {
+    "page": "/",
+    "strategy": "mobile",
+    "third_party_main_thread_ms": 1214,
+    "main_thread_ms_from_tools_leaving": 247,
+    "entities": [
+      {
+        "entity": "Google Tag Manager",
+        "tool": "Google Tag Manager",
+        "transfer_kb": 403,
+        "main_thread_ms": 420,
+        "verdict": "Keep"
+      },
+      {
+        "entity": "Intercom",
+        "tool": "Intercom",
+        "transfer_kb": 196,
+        "main_thread_ms": 160,
+        "verdict": "Keep"
+      },
+      {
+        "entity": "Hotjar",
+        "tool": "Hotjar",
+        "transfer_kb": 77,
+        "main_thread_ms": 121,
+        "verdict": "Remove"
+      },
+      {
+        "entity": "Facebook",
+        "tool": "Meta Ads",
+        "transfer_kb": 116,
+        "main_thread_ms": 110,
+        "verdict": "Keep"
+      },
+      {
+        "entity": "TikTok",
+        "tool": "TikTok Ads",
+        "transfer_kb": 59,
+        "main_thread_ms": 95,
+        "verdict": "Remove"
+      },
+      {
+        "entity": "HubSpot",
+        "tool": "HubSpot",
+        "transfer_kb": 88,
+        "main_thread_ms": 80,
+        "verdict": "Fix"
+      },
+      {
+        "entity": "Clarity",
+        "tool": "Microsoft Clarity",
+        "transfer_kb": 28,
+        "main_thread_ms": 70,
+        "verdict": "Keep"
+      },
+      {
+        "entity": "Klaviyo",
+        "tool": "Klaviyo",
+        "transfer_kb": 112,
+        "main_thread_ms": 55,
+        "verdict": "Keep"
+      },
+      {
+        "entity": "LinkedIn Ads",
+        "tool": "LinkedIn Ads",
+        "transfer_kb": 19,
+        "main_thread_ms": 45,
+        "verdict": "Fix"
+      },
+      {
+        "entity": "Pinterest",
+        "tool": "Pinterest Tag",
+        "transfer_kb": 21,
+        "main_thread_ms": 31,
+        "verdict": "Remove"
+      },
+      {
+        "entity": "Cookiebot",
+        "tool": "Cookiebot",
+        "transfer_kb": 44,
+        "main_thread_ms": 25,
+        "verdict": "Fix"
+      }
+    ]
+  },
+  "savings": {
+    "cancel_and_consolidate": [
+      {
+        "tool": "Drift",
+        "verdict": "Cancel",
+        "monthly_cost_usd": 500
+      },
+      {
+        "tool": "Ahrefs",
+        "verdict": "Consolidate",
+        "monthly_cost_usd": 200
+      }
+    ],
+    "seat_cuts": [
+      {
+        "tool": "Intercom",
+        "unused_seats": 1,
+        "monthly_saving_usd": 60
+      },
+      {
+        "tool": "Calendly",
+        "unused_seats": 2,
+        "monthly_saving_usd": 24
+      },
+      {
+        "tool": "Canva",
+        "unused_seats": 6,
+        "monthly_saving_usd": 72
+      },
+      {
+        "tool": "Notion",
+        "unused_seats": 1,
+        "monthly_saving_usd": 8
+      },
+      {
+        "tool": "Buffer",
+        "unused_seats": 2,
+        "monthly_saving_usd": 40
+      }
+    ],
+    "monthly_total_usd": 904,
+    "basis": "monthly, at the prices in the ledger"
+  },
+  "plan": [
+    {
+      "step": 1,
+      "what": "Give notice on Drift before 2026-10-31 (renewal 2026-11-30); export its conversation history first",
+      "tool": "Drift",
+      "who": "Lee Chen (sales ops)",
+      "monthly_saving_usd": 500,
+      "decide_by": "2026-10-31",
+      "depends_on": null
+    },
+    {
+      "step": 2,
+      "what": "Remove the old gtag snippet (G-EXAMPLE01) from the /pricing/ page template; the GTM Google tag already loads it",
+      "tool": "Google Analytics 4",
+      "who": "a developer",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 3,
+      "what": "Remove the hard-coded LinkedIn Insight Tag (partner id 5550001) from the site footer and keep the GTM tag 'LinkedIn Insight'",
+      "tool": "LinkedIn Ads",
+      "who": "a developer",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 4,
+      "what": "Name an owner for Zapier, then repair the Stripe paid invoice to Klaviyo zap; Klaviyo has had no Subscription Paid since 2026-08-19",
+      "tool": "Zapier",
+      "who": "the new Zapier owner",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": "an owner for Zapier"
+    },
+    {
+      "step": 5,
+      "what": "Repair the Stripe paid invoice to HubSpot won deal zap, then check that HubSpot's Customer stage reaches Google Ads again ('Paid customer (HubSpot import)' last recorded 2026-09-02)",
+      "tool": "HubSpot",
+      "who": "Lee Chen (sales ops)",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": "step 4"
+    },
+    {
+      "step": 6,
+      "what": "Pause the GTM tag 'TikTok Pixel - base'; re-enable it if TikTok ads restart",
+      "tool": "TikTok Ads",
+      "who": "I can do this now (pause the GTM tag)",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 7,
+      "what": "Pause the GTM tag 'Hotjar'; confirm the Hotjar account is closed and its recordings deleted",
+      "tool": "Hotjar",
+      "who": "I can do this now (pause the GTM tag)",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 8,
+      "what": "Pause the GTM tag 'Pinterest Tag - spring test' (you never ran Pinterest ads, and nobody listed it)",
+      "tool": "Pinterest Tag",
+      "who": "I can do this now (pause the GTM tag)",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 9,
+      "what": "Move Ahrefs users and saved projects to Semrush, then give notice before 2026-12-01 (renewal 2026-12-15)",
+      "tool": "Ahrefs",
+      "who": "Nora Kim (content)",
+      "monthly_saving_usd": 200,
+      "decide_by": "2026-12-01",
+      "depends_on": null
+    },
+    {
+      "step": 10,
+      "what": "Cut 1 unused Intercom seat",
+      "tool": "Intercom",
+      "who": "Ravi Shah (support)",
+      "monthly_saving_usd": 60,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 11,
+      "what": "Cut 2 unused Calendly seats (the notice window for this renewal has closed; cut at the next one)",
+      "tool": "Calendly",
+      "who": "Lee Chen (sales ops)",
+      "monthly_saving_usd": 24,
+      "decide_by": "2026-10-16",
+      "depends_on": null
+    },
+    {
+      "step": 12,
+      "what": "Cut 6 unused Canva seats",
+      "tool": "Canva",
+      "who": "Nora Kim (content)",
+      "monthly_saving_usd": 72,
+      "decide_by": "2026-12-11",
+      "depends_on": null
+    },
+    {
+      "step": 13,
+      "what": "Cut 1 unused Notion seat",
+      "tool": "Notion",
+      "who": "Dana Ortiz (marketing ops)",
+      "monthly_saving_usd": 8,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 14,
+      "what": "Cut 2 unused Buffer seats",
+      "tool": "Buffer",
+      "who": "Nora Kim (content)",
+      "monthly_saving_usd": 40,
+      "decide_by": "2026-12-01",
+      "depends_on": null
+    },
+    {
+      "step": 15,
+      "what": "Name an owner for Cookiebot",
+      "tool": "Cookiebot",
+      "who": "the marketing lead",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 16,
+      "what": "Keep this audit's ledger as the tool register and update it at every purchase or cancellation",
+      "tool": "process",
+      "who": "the marketing lead",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 17,
+      "what": "Add every tool in the ledger to the leaver checklist, with its owner removing access within a week",
+      "tool": "process",
+      "who": "the marketing lead",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    },
+    {
+      "step": 18,
+      "what": "Rerun this audit every quarter and before each renewal in the ledger",
+      "tool": "process",
+      "who": "the marketing lead",
+      "monthly_saving_usd": 0,
+      "decide_by": null,
+      "depends_on": null
+    }
+  ],
+  "tool_scorecard": {
+    "job": "product analytics",
+    "weights": {
+      "Must-haves met": 30,
+      "Connects to this stack": 25,
+      "Cost against budget": 15,
+      "Data access": 10,
+      "Admin and security": 10,
+      "Effect on the stack": 10
+    },
+    "candidates": [
+      {
+        "candidate": "Product analytics tool A (analytics-a.example)",
+        "scores": {
+          "Must-haves met": 5,
+          "Connects to this stack": 3,
+          "Cost against budget": 5,
+          "Data access": 5,
+          "Admin and security": 2,
+          "Effect on the stack": 3
+        },
+        "weighted_score": 80.0,
+        "notes": [
+          "no native link to Klaviyo",
+          "data region unconfirmed, scored as no until the vendor confirms"
+        ]
+      },
+      {
+        "candidate": "Product analytics tool B (analytics-b.example)",
+        "scores": {
+          "Must-haves met": 3,
+          "Connects to this stack": 5,
+          "Cost against budget": 2,
+          "Data access": 3,
+          "Admin and security": 5,
+          "Effect on the stack": 1
+        },
+        "weighted_score": 67.0,
+        "notes": [
+          "misses must-have: user-level export",
+          "its session replay and heatmaps overlaps a tool you keep"
+        ]
+      }
+    ],
+    "what_would_change_it": "Product analytics tool A (analytics-a.example) leads by 13.0 points. Confirming its data region would add 2.0 (to 82.0). Product analytics tool B (analytics-b.example) would gain 12.0 by meeting user-level export and 6.0 at a price within the $400 budget (to 85.0), which would put it ahead."
+  },
+  "unknowns": [
+    "demo bookings to CRM: no connector for HubSpot or Calendly, and the user doesn't know",
+    "Shopify: not used by this business, so no store webhooks or app scripts were checked"
+  ],
+  "go_deeper": "gtm-container-auditor for a full container clean-up, conversion-tracking-auditor for the Google Ads import, klaviyo-flow-auditor once Subscription Paid flows again, utm-auditor for campaign tagging (if installed)",
+  "offered_actions": [
+    {
+      "action": "google-tag-manager update_tag",
+      "tag": "TikTok Pixel - base",
+      "body": {
+        "account_id": "6000000001",
+        "container_id": "20000001",
+        "gtm_workspace_id": "<the workspace the user picks, from get_workspaces>",
+        "tag_id": "9",
+        "name": "TikTok Pixel - base",
+        "type": "html",
+        "parameter": "<current value from get_tags>",
+        "firingTriggerId": "<current value from get_tags>",
+        "paused": true
+      },
+      "status": "not run: offered after confirmation"
+    },
+    {
+      "action": "google-tag-manager update_tag",
+      "tag": "Hotjar",
+      "body": {
+        "account_id": "6000000001",
+        "container_id": "20000001",
+        "gtm_workspace_id": "<the workspace the user picks, from get_workspaces>",
+        "tag_id": "11",
+        "name": "Hotjar",
+        "type": "hjtc",
+        "parameter": "<current value from get_tags>",
+        "firingTriggerId": "<current value from get_tags>",
+        "paused": true
+      },
+      "status": "not run: offered after confirmation"
+    },
+    {
+      "action": "google-tag-manager update_tag",
+      "tag": "Pinterest Tag - spring test",
+      "body": {
+        "account_id": "6000000001",
+        "container_id": "20000001",
+        "gtm_workspace_id": "<the workspace the user picks, from get_workspaces>",
+        "tag_id": "10",
+        "name": "Pinterest Tag - spring test",
+        "type": "html",
+        "parameter": "<current value from get_tags>",
+        "firingTriggerId": "<current value from get_tags>",
+        "paused": true
+      },
+      "status": "not run: offered after confirmation"
+    }
+  ]
+}

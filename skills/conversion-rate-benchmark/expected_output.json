@@ -1,0 +1,521 @@
+{
+  "header": {
+    "site": "https://www.outfitters.example",
+    "store": "Example Outfitters",
+    "conversion": "purchase (GA4 transactions)",
+    "measure": "per session",
+    "date_range": "2026-09-28 to 2026-10-27",
+    "prior_range": "2026-08-29 to 2026-09-27",
+    "currency": "USD",
+    "sessions": 61000,
+    "purchases": 1230,
+    "revenue": 101646.48,
+    "average_order_value": 82.64,
+    "cro_project_bar": 3049,
+    "cro_project_bar_rule": "3% of the period's revenue (default)",
+    "revenue_at_stake_note": "An estimate: sessions x (benchmark - rate) x average order value, assuming order value holds. Computed from unrounded figures and rounded at the end.",
+    "rate_per_user_note": "Every per-user rate sums users across report rows, so a person seen on two devices or channels counts twice."
+  },
+  "trust_checks": [
+    {
+      "check": "Conversion fires",
+      "result": "pass",
+      "detail": "1,230 purchases recorded in GA4 in the period."
+    },
+    {
+      "check": "Store orders vs GA4",
+      "result": "pass",
+      "detail": "The store recorded 1,304 orders and GA4 1,230 purchases, 5.7% fewer in GA4, inside the 10% limit. Every GA4 rate below is understated by about that much; the comparisons use GA4 as recorded."
+    },
+    {
+      "check": "\"(not set)\" channel",
+      "result": "pass",
+      "detail": "0.0% of sessions are \"(not set)\" or Unassigned."
+    }
+  ],
+  "answer": "The store converts 2.02% of sessions, below the 2.77% fashion average (DY-FASHION: Dynamic Yield, June 2026, as quoted by Shopify). Estimated at this store's device mix (81.0% of desktop and mobile sessions are mobile, against the 69.9% Contentsquare reports across all sites, assumed for the fashion row), the fair comparison is about 2.56%, so the store is 0.54 points behind, worth about $27,473 in the period; the gap sits on mobile, while desktop is within range.",
+  "site_total": [
+    {
+      "segment": "Site total vs DY-FASHION as published",
+      "sessions": 61000,
+      "conversions": 1230,
+      "rate_per_session_pct": 2.02,
+      "interval_95_pct": [
+        1.91,
+        2.13
+      ],
+      "rate_per_user_pct": 2.5,
+      "benchmark": {
+        "id": "DY-FASHION",
+        "figure_pct": 2.77
+      },
+      "gap_points": -0.75,
+      "role": "reference: the published figure before the device estimate; the site total's verdict is on the next row"
+    },
+    {
+      "segment": "Site total vs DY-FASHION estimated at this site's device mix",
+      "sessions": 61000,
+      "conversions": 1230,
+      "rate_per_session_pct": 2.02,
+      "interval_95_pct": [
+        1.91,
+        2.13
+      ],
+      "rate_per_user_pct": 2.5,
+      "benchmark": {
+        "id": "DY-FASHION adjusted (estimate)",
+        "figure_pct": 2.56
+      },
+      "gap_points": -0.54,
+      "revenue_at_stake": 27473,
+      "verdict": "CRO project",
+      "estimate_note": "The adjusted figure is an estimate: it assumes the fashion row has the device blend Contentsquare reports across all websites (69.9% mobile) and Contentsquare's retail desktop to mobile ratio."
+    }
+  ],
+  "device_mix_adjustment": {
+    "formula": "DY-FASHION x (site mobile share x CS-MOB + site desktop share x CS-DESK) / (0.699 x CS-MOB + 0.301 x CS-DESK)",
+    "estimate": true,
+    "assumptions": [
+      "The fashion row (DY-FASHION) has the device blend Contentsquare reports across all websites in 2026: 69.9% mobile, 30.1% desktop (CS-MIX). Neither Dynamic Yield nor Shopify publishes a device mix for the fashion figure.",
+      "Fashion's desktop to mobile ratio matches Contentsquare's retail rows (CS-DESK 3.7%, CS-MOB 2.0%)."
+    ],
+    "benchmark_mobile_share_pct": 69.9,
+    "benchmark_mobile_share_source": "CS-MIX, assumed for the fashion row",
+    "site_mobile_share_pct": 81.0,
+    "site_desktop_share_pct": 19.0,
+    "tablet_sessions_left_out": 1661,
+    "factor": 0.9247,
+    "raw_benchmark_pct": 2.77,
+    "adjusted_benchmark_pct": 2.56,
+    "gap_raw_points": -0.75,
+    "gap_adjusted_points": -0.54,
+    "reading": "If the fashion row has Contentsquare's all-site device blend, the heavier mobile mix explains about 0.21 of the 0.75 point gap to the published average, and the remaining 0.54 points are the store's own. If fashion shoppers are more mobile than the all-site blend, more of the gap is mix; if less, more of it is the store's."
+  },
+  "benchmark_comparison": [
+    {
+      "segment": "Site total vs DY-FASHION estimated at this site's device mix",
+      "row": "DY-FASHION adjusted (estimate)",
+      "figure_pct": 2.56,
+      "source_and_year": "Dynamic Yield, June 2026, estimated at this store's device mix with Contentsquare 2026 rows (CS-DESK, CS-MOB, CS-MIX assumed)",
+      "rate_per_session_pct": 2.02,
+      "gap_points": -0.54,
+      "revenue_at_stake": 27473,
+      "verdict": "CRO project"
+    },
+    {
+      "segment": "Mobile",
+      "row": "CS-MOB",
+      "figure_pct": 2.0,
+      "source_and_year": "Contentsquare retail data, 2026",
+      "rate_per_session_pct": 1.58,
+      "gap_points": -0.42,
+      "revenue_at_stake": 16744,
+      "verdict": "CRO project"
+    },
+    {
+      "segment": "Desktop",
+      "row": "CS-DESK",
+      "figure_pct": 3.7,
+      "source_and_year": "Contentsquare retail data, 2026",
+      "rate_per_session_pct": 3.83,
+      "gap_points": 0.13,
+      "revenue_at_stake": null,
+      "verdict": "within range"
+    }
+  ],
+  "devices": [
+    {
+      "segment": "Mobile",
+      "sessions": 48081,
+      "conversions": 759,
+      "rate_per_session_pct": 1.58,
+      "interval_95_pct": [
+        1.47,
+        1.69
+      ],
+      "rate_per_user_pct": 1.95,
+      "share_of_sessions_pct": 78.8,
+      "benchmark": {
+        "id": "CS-MOB",
+        "figure_pct": 2.0
+      },
+      "gap_points": -0.42,
+      "revenue_at_stake": 16744,
+      "verdict": "CRO project"
+    },
+    {
+      "segment": "Desktop",
+      "sessions": 11258,
+      "conversions": 431,
+      "rate_per_session_pct": 3.83,
+      "interval_95_pct": [
+        3.49,
+        4.2
+      ],
+      "rate_per_user_pct": 4.86,
+      "share_of_sessions_pct": 18.5,
+      "benchmark": {
+        "id": "CS-DESK",
+        "figure_pct": 3.7
+      },
+      "gap_points": 0.13,
+      "verdict": "within range"
+    },
+    {
+      "segment": "Tablet",
+      "sessions": 1661,
+      "conversions": 40,
+      "rate_per_session_pct": 2.41,
+      "interval_95_pct": [
+        1.77,
+        3.26
+      ],
+      "rate_per_user_pct": 3.01,
+      "share_of_sessions_pct": 2.7,
+      "verdict": "not benchmarked",
+      "why_not_benchmarked": "No tablet row in the source table."
+    }
+  ],
+  "channels": [
+    {
+      "segment": "Email",
+      "sessions": 4200,
+      "conversions": 272,
+      "rate_per_session_pct": 6.48,
+      "interval_95_pct": [
+        5.77,
+        7.26
+      ],
+      "rate_per_user_pct": 10.19,
+      "share_of_sessions_pct": 6.9,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 6.63,
+      "prior_share_of_sessions_pct": 7.9,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Direct",
+      "sessions": 9000,
+      "conversions": 266,
+      "rate_per_session_pct": 2.96,
+      "interval_95_pct": [
+        2.63,
+        3.33
+      ],
+      "rate_per_user_pct": 3.95,
+      "share_of_sessions_pct": 14.8,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 3.03,
+      "prior_share_of_sessions_pct": 16.9,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Referral",
+      "sessions": 1500,
+      "conversions": 32,
+      "rate_per_session_pct": 2.13,
+      "interval_95_pct": [
+        1.52,
+        3.0
+      ],
+      "rate_per_user_pct": 2.68,
+      "share_of_sessions_pct": 2.5,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 2.26,
+      "prior_share_of_sessions_pct": 2.8,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Paid Search",
+      "sessions": 8800,
+      "conversions": 183,
+      "rate_per_session_pct": 2.08,
+      "interval_95_pct": [
+        1.8,
+        2.4
+      ],
+      "rate_per_user_pct": 2.51,
+      "share_of_sessions_pct": 14.4,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 2.17,
+      "prior_share_of_sessions_pct": 16.5,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Organic Search",
+      "sessions": 21000,
+      "conversions": 392,
+      "rate_per_session_pct": 1.87,
+      "interval_95_pct": [
+        1.69,
+        2.06
+      ],
+      "rate_per_user_pct": 2.3,
+      "share_of_sessions_pct": 34.4,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 1.91,
+      "prior_share_of_sessions_pct": 39.5,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Organic Social",
+      "sessions": 2500,
+      "conversions": 18,
+      "rate_per_session_pct": 0.72,
+      "interval_95_pct": [
+        0.46,
+        1.14
+      ],
+      "rate_per_user_pct": 0.85,
+      "share_of_sessions_pct": 4.1,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 0.75,
+      "prior_share_of_sessions_pct": 4.4,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    },
+    {
+      "segment": "Paid Social",
+      "sessions": 14000,
+      "conversions": 67,
+      "rate_per_session_pct": 0.48,
+      "interval_95_pct": [
+        0.38,
+        0.61
+      ],
+      "rate_per_user_pct": 0.55,
+      "share_of_sessions_pct": 23.0,
+      "verdict": "not benchmarked",
+      "prior_rate_per_session_pct": 0.49,
+      "prior_share_of_sessions_pct": 11.9,
+      "why_not_benchmarked": "No source in the table publishes store-wide rates by channel; compared with its own prior period only."
+    }
+  ],
+  "visitor_type": [
+    {
+      "segment": "New visitors",
+      "sessions": 44636,
+      "conversions": 590,
+      "rate_per_session_pct": 1.32,
+      "interval_95_pct": [
+        1.22,
+        1.43
+      ],
+      "rate_per_user_pct": 1.48,
+      "share_of_sessions_pct": 73.2,
+      "verdict": "not benchmarked",
+      "why_not_benchmarked": "No new or returning row in the source table."
+    },
+    {
+      "segment": "Returning visitors",
+      "sessions": 16364,
+      "conversions": 640,
+      "rate_per_session_pct": 3.91,
+      "interval_95_pct": [
+        3.62,
+        4.22
+      ],
+      "rate_per_user_pct": 6.84,
+      "share_of_sessions_pct": 26.8,
+      "verdict": "not benchmarked",
+      "why_not_benchmarked": "No new or returning row in the source table."
+    }
+  ],
+  "landing_page_types": [
+    {
+      "segment": "Collection",
+      "sessions": 20130,
+      "conversions": 513,
+      "rate_per_session_pct": 2.55,
+      "interval_95_pct": [
+        2.34,
+        2.78
+      ],
+      "rate_per_user_pct": 3.31,
+      "share_of_sessions_pct": 33.0,
+      "verdict": "not benchmarked",
+      "grouping_rule": "path starts with /collections/",
+      "landing_pages": 4,
+      "why_not_benchmarked": "No row in the source table splits store-wide rates by landing page type."
+    },
+    {
+      "segment": "Product",
+      "sessions": 17080,
+      "conversions": 292,
+      "rate_per_session_pct": 1.71,
+      "interval_95_pct": [
+        1.53,
+        1.92
+      ],
+      "rate_per_user_pct": 2.22,
+      "share_of_sessions_pct": 28.0,
+      "verdict": "not benchmarked",
+      "grouping_rule": "path starts with /products/",
+      "landing_pages": 4,
+      "why_not_benchmarked": "No row in the source table splits store-wide rates by landing page type."
+    },
+    {
+      "segment": "Home",
+      "sessions": 12810,
+      "conversions": 255,
+      "rate_per_session_pct": 1.99,
+      "interval_95_pct": [
+        1.76,
+        2.25
+      ],
+      "rate_per_user_pct": 2.59,
+      "share_of_sessions_pct": 21.0,
+      "verdict": "not benchmarked",
+      "grouping_rule": "path is /",
+      "landing_pages": 1,
+      "why_not_benchmarked": "No row in the source table splits store-wide rates by landing page type."
+    },
+    {
+      "segment": "Content",
+      "sessions": 6710,
+      "conversions": 32,
+      "rate_per_session_pct": 0.48,
+      "interval_95_pct": [
+        0.34,
+        0.67
+      ],
+      "rate_per_user_pct": 0.62,
+      "share_of_sessions_pct": 11.0,
+      "verdict": "not benchmarked",
+      "grouping_rule": "path starts with /blog/",
+      "landing_pages": 2,
+      "why_not_benchmarked": "No row in the source table splits store-wide rates by landing page type."
+    },
+    {
+      "segment": "Other",
+      "sessions": 4270,
+      "conversions": 138,
+      "rate_per_session_pct": 3.23,
+      "interval_95_pct": [
+        2.74,
+        3.81
+      ],
+      "rate_per_user_pct": 4.2,
+      "share_of_sessions_pct": 7.0,
+      "verdict": "not benchmarked",
+      "grouping_rule": "any other path (/pages/, /cart/)",
+      "landing_pages": 2,
+      "why_not_benchmarked": "No row in the source table splits store-wide rates by landing page type."
+    }
+  ],
+  "mix_vs_rate_since_prior": {
+    "prior_rate_per_session_pct": 2.3,
+    "rate_per_session_pct": 2.02,
+    "change_points": -0.287,
+    "mix_effect_points": -0.231,
+    "rate_effect_points": -0.056,
+    "mix_share_of_change_pct": 81,
+    "by_channel": [
+      {
+        "channel": "Organic Search",
+        "mix_effect_points": -0.096,
+        "rate_effect_points": -0.014
+      },
+      {
+        "channel": "Email",
+        "mix_effect_points": -0.067,
+        "rate_effect_points": -0.01
+      },
+      {
+        "channel": "Direct",
+        "mix_effect_points": -0.065,
+        "rate_effect_points": -0.011
+      },
+      {
+        "channel": "Paid Search",
+        "mix_effect_points": -0.046,
+        "rate_effect_points": -0.013
+      },
+      {
+        "channel": "Referral",
+        "mix_effect_points": -0.009,
+        "rate_effect_points": -0.003
+      },
+      {
+        "channel": "Organic Social",
+        "mix_effect_points": -0.002,
+        "rate_effect_points": -0.001
+      },
+      {
+        "channel": "Paid Social",
+        "mix_effect_points": 0.054,
+        "rate_effect_points": -0.003
+      }
+    ],
+    "verdict": "traffic, not CRO",
+    "reading": "The store rate fell 0.29 points against the prior 30 days. 81% of that is mix: Paid Social grew from 11.9% to 23.0% of sessions at a 0.48% rate, so every higher-converting channel lost share. The drop is a targeting question for the paid social team, not a site problem; the gap to the benchmark is the site's."
+  },
+  "what_the_mix_hides": "Email converts 6.48% of sessions and returning visitors 3.91%, against 0.48% for Paid Social and 1.32% for new visitors. A single industry average blends all of these, which is why the store is judged on its own device mix and channels are judged against their own history.",
+  "cro_projects": [
+    {
+      "rank": 1,
+      "segment": "Site total vs DY-FASHION estimated at this site's device mix",
+      "revenue_at_stake": 27473,
+      "evidence": "2.02% per session on 61,000 sessions, interval 1.91 to 2.13%, against DY-FASHION adjusted (estimate) 2.56%.",
+      "where_to_start": "The overall case. Desktop is within range, so the store-wide gap sits on mobile: start with the mobile project.",
+      "overlaps_with": "Mobile (the same sessions; the two figures are never added)"
+    },
+    {
+      "rank": 2,
+      "segment": "Mobile",
+      "revenue_at_stake": 16744,
+      "evidence": "1.58% per session on 48,081 sessions, interval 1.47 to 1.69%, against CS-MOB 2.0%.",
+      "where_to_start": "Mobile product and cart pages: run the funnel by device to find the step where mobile falls away, then test the fix.",
+      "overlaps_with": "the site total (the same sessions; the two figures are never added)"
+    }
+  ],
+  "overlap_note": "The store-wide gap ($27,473) and the mobile gap ($16,744) cover the same sessions; they are not added together.",
+  "too_small_to_judge": [],
+  "not_benchmarked": [
+    "Channels: no source in the table publishes store-wide rates by channel, so each is compared with its prior period.",
+    "New and returning visitors: no row in the table.",
+    "Landing page types: no row in the table.",
+    "Tablet: no row in the table (1,661 sessions)."
+  ],
+  "sources": [
+    {
+      "id": "DY-FASHION",
+      "figure_pct": 2.77,
+      "statistic": "average",
+      "data_period": "June 2026",
+      "source": "Dynamic Yield, as quoted in Shopify, \"Ecommerce conversion rate\" guide (updated 2026-08-22), shopify.com/blog/ecommerce-conversion-rate",
+      "read_date": "2026-10-30"
+    },
+    {
+      "id": "CS-DESK",
+      "figure_pct": 3.7,
+      "statistic": "not stated",
+      "data_period": "2026",
+      "source": "Contentsquare retail data, as quoted in Shopify, \"Ecommerce conversion rate\" guide (updated 2026-08-22), shopify.com/blog/ecommerce-conversion-rate",
+      "read_date": "2026-10-30"
+    },
+    {
+      "id": "CS-MOB",
+      "figure_pct": 2.0,
+      "statistic": "not stated",
+      "data_period": "2026",
+      "source": "Contentsquare retail data, as quoted in Shopify, \"Ecommerce conversion rate\" guide (updated 2026-08-22), shopify.com/blog/ecommerce-conversion-rate",
+      "read_date": "2026-10-30"
+    },
+    {
+      "id": "CS-MIX",
+      "figure_pct": 69.9,
+      "statistic": "share of visits",
+      "data_period": "2026",
+      "source": "Contentsquare Digital Experience Benchmark Report, as quoted in Shopify, \"Ecommerce conversion rate\" guide (updated 2026-08-22), shopify.com/blog/ecommerce-conversion-rate",
+      "read_date": "2026-10-30"
+    }
+  ],
+  "source_conflicts": [
+    "Shopify's guide gives other Dynamic Yield figures in its FAQ for two other industries (food and beverage, luxury and jewelry). The fashion figure used here is from the guide's main table."
+  ],
+  "go_deeper": [
+    "funnel-dropoff-diagnostician (if installed): find the mobile step that loses buyers",
+    "ab-test-designer (if installed): test the mobile fix before rolling it out",
+    "ga4-weekly-report (if installed): track the mobile rate after the change"
+  ]
+}

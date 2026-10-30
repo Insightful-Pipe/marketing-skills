@@ -1,0 +1,667 @@
+{
+  "note": "Example data: an invented online tea store with invented accounts, not a real business. Every number in expected_output.json follows from this input. The order tables summarise a simulated 24-month order history, binned the way the skill bins a real one.",
+  "request": "Hey Claude, I just added the \"email-lifecycle-strategy\" skill. Build our email and retention strategy: who is in each customer stage, what each stage gets today, what is missing, and what to build in the next 90 days. We can build about two flows a month.",
+  "business": {
+    "name": "Example Tea Company (invented example)",
+    "site": "https://www.tea-shop.example",
+    "model": "online store, one-off orders",
+    "offer": "loose-leaf tea and teaware; a 100 g pouch lasts most customers about a month",
+    "app": false,
+    "currency": "USD"
+  },
+  "run_date": "2026-10-28",
+  "plan_start": "2026-11-02",
+  "capacity_builds_per_30_days": 2,
+  "user_answers": {
+    "post_purchase_flow_splits_first_and_repeat_orders": false,
+    "push": "no app and no web push"
+  },
+  "data_pulled": {
+    "shopify_orders": {
+      "window": "2024-10-28 to 2026-10-27",
+      "orders": 17066,
+      "customers": 9159,
+      "orders_last_90_days": 2177,
+      "gap_tables": {
+        "bins_days": [
+          "1-15",
+          "16-30",
+          "31-45",
+          "46-60",
+          "61-75",
+          "76-90",
+          "91-105",
+          "106-120",
+          "121-135",
+          "136-150",
+          "151-165",
+          "166-180",
+          "181-195",
+          "196-210",
+          "211-225",
+          "226-240",
+          "241-255",
+          "256-270",
+          "271-285",
+          "286-300",
+          "301-315",
+          "316-330",
+          "331-345",
+          "346-360",
+          "361-375",
+          "376-390",
+          "391-405",
+          "406-420",
+          "421-435",
+          "436-450",
+          "451-465",
+          "466-480",
+          "481-495",
+          "496-510",
+          "511-525",
+          "526-540",
+          "541-555",
+          "556-570",
+          "571-585",
+          "586-600",
+          "601-615",
+          "616-630",
+          "631-645",
+          "646-660",
+          "661-675",
+          "676-690",
+          "691-705",
+          "706-720",
+          "721-735"
+        ],
+        "completed_gaps_after_first_order": [
+          257,
+          1160,
+          862,
+          462,
+          217,
+          107,
+          47,
+          25,
+          12,
+          6,
+          3,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "completed_gaps_after_second_or_later_order": [
+          188,
+          1429,
+          1471,
+          824,
+          460,
+          192,
+          93,
+          57,
+          15,
+          7,
+          3,
+          3,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_gaps_one_order_customers": [
+          186,
+          176,
+          137,
+          132,
+          110,
+          123,
+          119,
+          108,
+          121,
+          108,
+          111,
+          104,
+          121,
+          110,
+          128,
+          130,
+          105,
+          111,
+          99,
+          117,
+          151,
+          131,
+          156,
+          151,
+          120,
+          110,
+          114,
+          108,
+          114,
+          108,
+          118,
+          115,
+          117,
+          123,
+          114,
+          123,
+          112,
+          102,
+          109,
+          124,
+          118,
+          113,
+          116,
+          116,
+          135,
+          148,
+          150,
+          140,
+          85
+        ],
+        "open_gaps_repeat_customers": [
+          167,
+          162,
+          100,
+          122,
+          85,
+          73,
+          59,
+          78,
+          64,
+          51,
+          86,
+          62,
+          64,
+          65,
+          74,
+          92,
+          61,
+          67,
+          90,
+          61,
+          73,
+          69,
+          67,
+          79,
+          61,
+          65,
+          73,
+          57,
+          63,
+          64,
+          67,
+          43,
+          59,
+          63,
+          70,
+          79,
+          48,
+          54,
+          42,
+          52,
+          44,
+          42,
+          25,
+          42,
+          37,
+          21,
+          17,
+          3,
+          0
+        ]
+      },
+      "new_customers_by_month": {
+        "2026-07": 359,
+        "2026-08": 384,
+        "2026-09": 356
+      },
+      "second_orders_by_month": {
+        "2026-07": 143,
+        "2026-08": 132,
+        "2026-09": 127
+      }
+    },
+    "klaviyo": {
+      "metrics_tracked": [
+        "Placed Order",
+        "Started Checkout",
+        "Viewed Product",
+        "Active on Site",
+        "Subscribed to List",
+        "Subscribed to SMS",
+        "Subscribed to Back in Stock",
+        "Received Email",
+        "Clicked Email",
+        "Received SMS"
+      ],
+      "flows": [
+        {
+          "name": "Welcome series",
+          "status": "live",
+          "trigger_type": "Added to List",
+          "trigger": "Newsletter list",
+          "channel": "email",
+          "messages": 3,
+          "recipients_90d": 2730,
+          "click_rate": 0.061
+        },
+        {
+          "name": "Abandoned checkout",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Started Checkout",
+          "channel": "email",
+          "messages": 2,
+          "recipients_90d": 629,
+          "click_rate": 0.083
+        },
+        {
+          "name": "Browse abandonment",
+          "status": "draft",
+          "trigger_type": "Metric",
+          "trigger": "Viewed Product",
+          "channel": "email",
+          "messages": 1,
+          "recipients_90d": 0,
+          "click_rate": null
+        },
+        {
+          "name": "Post-purchase thank you",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Placed Order",
+          "channel": "email",
+          "messages": 1,
+          "recipients_90d": 1502,
+          "click_rate": 0.047
+        },
+        {
+          "name": "Back in stock",
+          "status": "live",
+          "trigger_type": "Metric",
+          "trigger": "Subscribed to Back in Stock",
+          "channel": "email",
+          "messages": 1,
+          "recipients_90d": 410,
+          "click_rate": 0.139
+        }
+      ],
+      "segments": [
+        {
+          "name": "Engaged 90 days",
+          "definition": "opened or clicked email, or was active on site, in the last 90 days",
+          "members": 7410
+        },
+        {
+          "name": "Purchased at least once",
+          "definition": "Placed Order at least once over all time",
+          "members": 9159
+        },
+        {
+          "name": "VIP 4+ orders",
+          "definition": "Placed Order at least 4 times over all time",
+          "members": 690
+        },
+        {
+          "name": "Email consented",
+          "definition": "can receive email marketing",
+          "members": 18640
+        },
+        {
+          "name": "Email consented buyers",
+          "definition": "can receive email marketing and Placed Order at least once over all time",
+          "members": 6320
+        },
+        {
+          "name": "SMS consented",
+          "definition": "can receive SMS marketing",
+          "members": 2860
+        }
+      ],
+      "sign_ups_by_month": {
+        "2026-07": 948,
+        "2026-08": 1004,
+        "2026-09": 981
+      },
+      "sign_up_cohorts": [
+        {
+          "month": "2026-06",
+          "sign_ups": 912,
+          "first_order_within_30_days": 63
+        },
+        {
+          "month": "2026-07",
+          "sign_ups": 948,
+          "first_order_within_30_days": 64
+        },
+        {
+          "month": "2026-08",
+          "sign_ups": 1004,
+          "first_order_within_30_days": 73
+        }
+      ],
+      "campaigns_last_90_days": [
+        {
+          "send_date": "2026-07-31",
+          "type": "new tea",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0115,
+          "unsubscribe_rate": 0.0047
+        },
+        {
+          "send_date": "2026-08-04",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0305,
+          "unsubscribe_rate": 0.0015
+        },
+        {
+          "send_date": "2026-08-07",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.027,
+          "unsubscribe_rate": 0.0015
+        },
+        {
+          "send_date": "2026-08-11",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0237,
+          "unsubscribe_rate": 0.0016
+        },
+        {
+          "send_date": "2026-08-14",
+          "type": "brewing guide",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0154,
+          "unsubscribe_rate": 0.0046
+        },
+        {
+          "send_date": "2026-08-18",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0283,
+          "unsubscribe_rate": 0.0016
+        },
+        {
+          "send_date": "2026-08-21",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0229,
+          "unsubscribe_rate": 0.002
+        },
+        {
+          "send_date": "2026-08-25",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0328,
+          "unsubscribe_rate": 0.002
+        },
+        {
+          "send_date": "2026-08-28",
+          "type": "offer",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0144,
+          "unsubscribe_rate": 0.0051
+        },
+        {
+          "send_date": "2026-09-01",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0222,
+          "unsubscribe_rate": 0.0022
+        },
+        {
+          "send_date": "2026-09-04",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0302,
+          "unsubscribe_rate": 0.0016
+        },
+        {
+          "send_date": "2026-09-08",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0255,
+          "unsubscribe_rate": 0.0017
+        },
+        {
+          "send_date": "2026-09-11",
+          "type": "new tea",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0145,
+          "unsubscribe_rate": 0.0044
+        },
+        {
+          "send_date": "2026-09-15",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0313,
+          "unsubscribe_rate": 0.002
+        },
+        {
+          "send_date": "2026-09-18",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0265,
+          "unsubscribe_rate": 0.0019
+        },
+        {
+          "send_date": "2026-09-22",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0223,
+          "unsubscribe_rate": 0.0015
+        },
+        {
+          "send_date": "2026-09-25",
+          "type": "brewing guide",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0159,
+          "unsubscribe_rate": 0.0048
+        },
+        {
+          "send_date": "2026-09-29",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0267,
+          "unsubscribe_rate": 0.0018
+        },
+        {
+          "send_date": "2026-10-02",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0243,
+          "unsubscribe_rate": 0.0019
+        },
+        {
+          "send_date": "2026-10-06",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0302,
+          "unsubscribe_rate": 0.0021
+        },
+        {
+          "send_date": "2026-10-09",
+          "type": "offer",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0156,
+          "unsubscribe_rate": 0.0045
+        },
+        {
+          "send_date": "2026-10-13",
+          "type": "new tea",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0243,
+          "unsubscribe_rate": 0.0019
+        },
+        {
+          "send_date": "2026-10-16",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0325,
+          "unsubscribe_rate": 0.0021
+        },
+        {
+          "send_date": "2026-10-20",
+          "type": "offer",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.0262,
+          "unsubscribe_rate": 0.0023
+        },
+        {
+          "send_date": "2026-10-23",
+          "type": "new tea",
+          "audience": "Newsletter list",
+          "recipients": 17900,
+          "click_rate": 0.0117,
+          "unsubscribe_rate": 0.0046
+        },
+        {
+          "send_date": "2026-10-27",
+          "type": "brewing guide",
+          "audience": "Engaged 90 days",
+          "recipients": 7400,
+          "click_rate": 0.032,
+          "unsubscribe_rate": 0.0016
+        }
+      ]
+    },
+    "google_analytics": {
+      "key_events": [
+        "purchase"
+      ],
+      "events_last_90_days": {
+        "view_item": 43335,
+        "add_to_cart": 6278,
+        "begin_checkout": 3038,
+        "purchase": 2025
+      }
+    },
+    "meta_ads_custom_audiences": [
+      {
+        "name": "Website visitors 30 days",
+        "subtype": "WEBSITE",
+        "retention_days": 30,
+        "time_updated": "2026-10-27"
+      },
+      {
+        "name": "Purchasers 180 days",
+        "subtype": "WEBSITE",
+        "retention_days": 180,
+        "time_updated": "2026-10-27"
+      },
+      {
+        "name": "Customer list Nov 2025",
+        "subtype": "CUSTOM",
+        "retention_days": null,
+        "time_updated": "2025-11-14"
+      }
+    ],
+    "google_ads_user_lists": [
+      {
+        "name": "All visitors",
+        "type": "RULE_BASED",
+        "membership_status": "OPEN"
+      },
+      {
+        "name": "All converters",
+        "type": "RULE_BASED",
+        "membership_status": "OPEN"
+      }
+    ]
+  }
+}

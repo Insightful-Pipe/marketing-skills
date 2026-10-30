@@ -1,0 +1,319 @@
+{
+  "report": "Form CRO audit",
+  "form_page": "https://www.example.com/demo/",
+  "form_type": "demo request (read from the heading, the fields and the form action; assumed)",
+  "date_range": {
+    "used": "2026-09-28 to 2026-10-27",
+    "why": "The form page had 1,417 sessions in 30 days, so no wider window was needed."
+  },
+  "property": "Example Booking Software GA4 property (properties/123456789), web stream www.example.com",
+  "grade": 42,
+  "grade_math": "6 graded areas: 0 pass, 5 warn, 1 fail, so 5 of 12 points. None left out.",
+  "scorecard": [
+    {
+      "area": "1. Measurement",
+      "result": "warn",
+      "key_number": "343 lead key events for 173 demo submissions",
+      "why": "Form tracking is on, but form_submit and demo_request are both key events and both fire on each demo request; form_submit also counts the 71 newsletter signups on the blog as leads."
+    },
+    {
+      "area": "2. Funnel",
+      "result": "warn",
+      "key_number": "33.4% start rate, 36.6% completion",
+      "why": "People start the form (473 starts from 1,417 sessions), but under 40% of starts end in a submit, and mobile completes at 49% of the desktop rate."
+    },
+    {
+      "area": "3. Field load",
+      "result": "fail",
+      "key_number": "8 of 8 visible fields required",
+      "why": "A demo form passes at up to 5 required fields and fails at 8 or more."
+    },
+    {
+      "area": "4. Input quality and structure",
+      "result": "warn",
+      "key_number": "1 of 8 fields set autocomplete",
+      "why": "Labels and dropdowns are right. Phone is type=text, every field is required, and Phone (field 3) comes before Work email (field 4)."
+    },
+    {
+      "area": "5. Submit and trust",
+      "result": "warn",
+      "key_number": "button 'Submit'",
+      "why": "The heading above the form and the privacy line are good; the button text is generic and nothing says what happens after a submit."
+    },
+    {
+      "area": "6. Page and mobile",
+      "result": "warn",
+      "key_number": "color-contrast fails on the Submit button",
+      "why": "The form starts above the fold on mobile, but the two name fields sit side by side there and the grey button fails contrast."
+    }
+  ],
+  "measurement_detail": {
+    "web_streams": "1 web stream, www.example.com, matches the form's site",
+    "form_interactions_enabled": true,
+    "form_key_events": [
+      {
+        "event": "form_submit",
+        "counting": "ONCE_PER_EVENT",
+        "fired_on_form_page": 173,
+        "fired_site_wide": 244
+      },
+      {
+        "event": "demo_request (custom, sent by the Tag Manager trigger 'Demo form submit')",
+        "counting": "ONCE_PER_EVENT",
+        "fired_on_form_page": 170,
+        "fired_site_wide": 170
+      }
+    ],
+    "other_key_events": "sign_up (512) and purchase (96), not tied to this form",
+    "test_key_events": "qa_test_lead is a key event named as a test and never fired; archive it in GA4 admin",
+    "form_id_or_name_dimension": "not registered (fine: the demo page has one form; the newsletter box is on blog pages)",
+    "checks": {
+      "form_tracking": "pass",
+      "form_event_arrives": "pass",
+      "starts_without_submits": "pass",
+      "key_event": "pass",
+      "double_counting": "warn",
+      "which_form": "pass"
+    }
+  },
+  "funnel": {
+    "graded": true,
+    "form_page_sessions": 1417,
+    "engaged_sessions": 882,
+    "form_start": 473,
+    "form_submit": 173,
+    "demo_request": 170,
+    "start_rate_pct": 33.4,
+    "completion_rate_pct": 36.6,
+    "by_device": [
+      {
+        "device": "desktop",
+        "sessions": 802,
+        "form_start": 291,
+        "form_submit": 131,
+        "completion_pct": 45.0
+      },
+      {
+        "device": "mobile",
+        "sessions": 571,
+        "form_start": 168,
+        "form_submit": 37,
+        "completion_pct": 22.0
+      },
+      {
+        "device": "tablet",
+        "sessions": 44,
+        "form_start": 14,
+        "form_submit": 5,
+        "completion_pct": 35.7
+      }
+    ],
+    "mobile_completion_vs_desktop_pct": 49,
+    "checks": {
+      "start_rate": "pass",
+      "completion": "warn",
+      "device_gap": "warn"
+    },
+    "note": "Completion uses form_submit; demo_request (170) agrees within 3 events. GA4 doesn't report which field people stop at."
+  },
+  "field_table": [
+    {
+      "field": "First name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "merge",
+      "reason": "Merge First and Last name into one Full name field; split only if your emails or CRM need it (treat it as a test)."
+    },
+    {
+      "field": "Last name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "merge",
+      "reason": "Merged into Full name."
+    },
+    {
+      "field": "Phone number",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "make optional",
+      "reason": "Nobody phones leads, so it isn't needed before you can help. Keep it optional with the reason next to it (\"for a text reminder before your demo\"), switch it to type=tel and accept international numbers."
+    },
+    {
+      "field": "Work email",
+      "type": "email",
+      "required": true,
+      "autocomplete": "email",
+      "verdict": "keep",
+      "reason": "Needed to reply and book the demo. Already type=email with autocomplete=email; move it up to follow the name."
+    },
+    {
+      "field": "Business name",
+      "type": "text",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "make optional",
+      "reason": "Many salon and studio owners sign up with a personal email, so the domain won't always give the business. Keep the field, optional, rather than cutting it."
+    },
+    {
+      "field": "Type of business",
+      "type": "select",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "keep",
+      "reason": "Sales routes on it. The dropdown is well built: a Select prompt first and an Other choice.",
+      "choices": "6 choices after a 'Select...' prompt; last choice 'Other'"
+    },
+    {
+      "field": "Team size",
+      "type": "select",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "keep",
+      "reason": "Sales routes on it and it points to the right plan. With 4 choices, radio buttons are faster than a dropdown.",
+      "choices": "4 choices after a 'Select...' prompt; last choice '21 or more'"
+    },
+    {
+      "field": "What would you like to see in the demo?",
+      "type": "textarea",
+      "required": true,
+      "autocomplete": "none",
+      "verdict": "make optional",
+      "reason": "Sales reads it, but a required free-text box is the costliest field on a demo form. Keep it, optional, with a hint such as \"Which services do you take bookings for?\""
+    }
+  ],
+  "field_summary": {
+    "visible_fields": 8,
+    "required_now": 8,
+    "after": "8 required → 4 required, 3 optional (7 visible)",
+    "phone_field": true,
+    "multi_step": "Not needed after the cuts: 4 required fields is short enough for one step."
+  },
+  "input_checks": {
+    "labels": "pass",
+    "input_types": "warn",
+    "autofill": "warn",
+    "required_marking": "warn",
+    "dropdowns": "pass",
+    "field_order": "warn"
+  },
+  "submit_and_trust": {
+    "submit_text": "Submit",
+    "privacy_line": "We never share your details. Privacy policy",
+    "heading_before_form": "H1: Book a demo",
+    "button_placement": "The button is the last thing in the form, right after the privacy line, and the screenshot shows it left-aligned under the last field on both desktop and mobile.",
+    "effort_cue": null,
+    "effort_cue_note": "Note only: neither the heading nor the end of the form says how much is asked. After the changes, a line such as '4 quick questions' would be true; don't claim a time nobody has measured.",
+    "proof_near_form": "Note only: the page has a 'Trusted by salons, clinics and studios' heading, but nothing sits near the button. A short, true customer quote next to it is worth a test.",
+    "checks": {
+      "button_text": "warn",
+      "button_placement": "pass",
+      "context_above": "pass",
+      "what_happens_next": "warn",
+      "privacy_line": "pass"
+    }
+  },
+  "page_and_mobile": {
+    "screenshot_mobile": "The heading and the first two fields show without scrolling. First name and Last name sit side by side at about 160px wide each; every other field is full width. The grey Submit button sits under the privacy line.",
+    "accessibility_failing_on_form": [
+      "color-contrast"
+    ],
+    "ignored_not_on_form": [
+      "image-alt"
+    ],
+    "checks": {
+      "above_the_fold": "pass",
+      "layout": "warn",
+      "accessibility": "warn"
+    }
+  },
+  "mobile_load_note": "Note only: with 8 visible fields, consider asking fewer on mobile and collecting the rest later (the thank-you page or the first email). The changes above already take it to 4 required.",
+  "top_fixes": [
+    {
+      "rank": 1,
+      "fix": "Keep one key event for a demo request",
+      "detail": "Keep demo_request as the key event and turn off key event marking for form_submit in GA4 admin. Today one demo request counts twice, and the 71 blog newsletter signups count as leads too: 414 lead key events from the two forms for 173 demo requests and 71 signups.",
+      "evidence": "list_key_events; get_report F2 and F4 (2026-09-28 to 2026-10-27); Tag Manager trigger 'Demo form submit' sends demo_request",
+      "who": "in GA4 admin (removing a key event isn't an action this skill has)"
+    },
+    {
+      "rank": 2,
+      "fix": "Make Phone, Business name and the message optional, and merge the two name fields",
+      "detail": "That takes the form from 8 required fields to 4 required and 3 optional, inside the pass range for a demo form. Nobody phones leads, and the message box gets a hint instead of a requirement.",
+      "evidence": "page reader: 8 of 8 visible fields are required; your answer: demos are booked by email",
+      "who": "on the site"
+    },
+    {
+      "rank": 3,
+      "fix": "Fix the mobile inputs: one full-width name field, Phone as type=tel, Work email moved up",
+      "detail": "Mobile completes at 22.0% against 45.0% on desktop. Narrow side-by-side fields and a text keyboard for the phone number are the mobile-only friction the page shows. Put name and email first.",
+      "evidence": "F2 by device: mobile 37 submits from 168 starts; desktop 131 from 291; screenshot (mobile); page reader field order",
+      "who": "on the site"
+    },
+    {
+      "rank": 4,
+      "fix": "Add autocomplete to the other fields",
+      "detail": "name, tel and organization let phones and browsers fill the form in one tap. Only Work email has it now.",
+      "evidence": "page reader: 1 of 8 fields set autocomplete",
+      "who": "on the site"
+    },
+    {
+      "rank": 5,
+      "fix": "Rename the button and say what happens next",
+      "detail": "'Book my demo' instead of 'Submit', a darker button that passes contrast, and one line above it on who replies and how soon. Use only promises the team keeps; showing a calendar to pick a slot straight after the submit is worth a test.",
+      "evidence": "page reader: submit text 'Submit', text_end holds only the privacy line; PageSpeed color-contrast on the button",
+      "who": "on the site"
+    }
+  ],
+  "test_plan": {
+    "volume_note": "The form logged 173 submissions in 30 days, above about 100 a month, so an A/B test can reach a clear answer. Test one change at a time, starting with the field cuts.",
+    "hypotheses": [
+      "If we make Phone, Business name and the message optional and merge the name fields, then completion rate will rise from 36.6%, because 8 required fields fail the demo-form range and 3 of them can be optional without losing what sales routes on.",
+      "If we put every field full width on mobile and make Phone type=tel, then mobile completion will move closer to desktop, because mobile completes at 49% of the desktop rate on the same form.",
+      "If we change 'Submit' to 'Book my demo' and add a 'what happens next' line, then completion will rise, because the button and the text around it don't say what a submit gets."
+    ],
+    "watch_quality": "About 1 in 4 demos becomes a paying customer today. Track that rate next to completions: optional fields can bring in weaker leads, and the business type and team size questions stay required for that reason."
+  },
+  "check_by_hand": [
+    "Submit the empty form on a phone: does it jump to the first error, and does each message say how to fix it, next to the field?",
+    "Type a wrong email: is it flagged when leaving the field, not on every keystroke? Does a valid answer show it was accepted?",
+    "Type name+test@gmail.com and name@gmial.com: is the alias accepted, and is the typo caught with a suggestion?",
+    "Type an international number (+44 20 7946 0000) in Phone: is it accepted, and formatted as you type?",
+    "After an error, is everything typed still there?",
+    "After a submit: is there a clear success state, and does the button show it is working while it waits?"
+  ],
+  "unknowns": [
+    "Which field people stop at: GA4 doesn't report it, and no Clarity project is connected.",
+    "Lead quality by field: the lead-to-customer rate was given as an overall figure, not per form version."
+  ],
+  "go_deeper": [
+    {
+      "need": "the page around the form",
+      "skill": "landing-page-auditor"
+    },
+    {
+      "need": "designing the field-cut test",
+      "skill": "ab-test-designer"
+    },
+    {
+      "need": "site-wide tracking",
+      "skill": "conversion-tracking-auditor (if installed)"
+    }
+  ],
+  "offered_fixes_not_run": [
+    {
+      "action": "create_key_event",
+      "status": "not needed: demo_request is already a key event; the fix is un-marking form_submit in GA4 admin"
+    },
+    {
+      "action": "update_enhanced_measurement_settings",
+      "status": "not needed: formInteractionsEnabled is already true"
+    },
+    {
+      "action": "create_custom_dimension",
+      "status": "not needed while the demo page has one form; offer form_id if a second form is added there"
+    }
+  ]
+}

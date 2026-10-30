@@ -1,0 +1,300 @@
+{
+  "note": "Example data: an invented language-learning subscription app for iOS and Android, not a real business or app. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"paywall-screen-optimizer\" skill. Our paywall converts about 6% of the people who see it. GA4 is connected and the screenshots are attached. Find the placements losing the most starts, check the screens against the App Store and Google Play rules, and write tests we can actually run.",
+  "app": {
+    "name": "Example Language App",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "billing": "App Store and Google Play subscriptions",
+    "currency": "USD"
+  },
+  "run_date": "2026-10-29",
+  "window": {
+    "start": "2026-10-01",
+    "end": "2026-10-28",
+    "days": 28
+  },
+  "events": {
+    "view": "paywall_view",
+    "start": "subscription_start",
+    "placement_parameter": "placement",
+    "plan_parameter": "plan"
+  },
+  "plans": {
+    "annual": {
+      "name": "Premium Annual",
+      "price": 59.99,
+      "period": "year",
+      "trial_days": 7,
+      "first_charge": 59.99,
+      "first_charge_note": "billed when the 7-day trial ends"
+    },
+    "monthly": {
+      "name": "Premium Monthly",
+      "price": 12.99,
+      "period": "month",
+      "trial_days": 0,
+      "first_charge": 12.99,
+      "first_charge_note": "billed at purchase"
+    }
+  },
+  "placements_named_by_user": [
+    {
+      "placement": "onboarding_end",
+      "trigger": "After the first lesson result in onboarding",
+      "screen": "Standard"
+    },
+    {
+      "placement": "daily_limit",
+      "trigger": "The third free lesson of the day is finished",
+      "screen": "Limit"
+    },
+    {
+      "placement": "locked_feature",
+      "trigger": "Tap on offline lessons or speaking practice",
+      "screen": "Standard"
+    },
+    {
+      "placement": "settings_upgrade",
+      "trigger": "Upgrade button in Settings",
+      "screen": "Standard"
+    },
+    {
+      "placement": "streak_banner",
+      "trigger": "Banner after a 7-day streak",
+      "screen": "Standard"
+    },
+    {
+      "placement": "word_review_limit",
+      "trigger": "Review list passes 50 saved words",
+      "screen": "Standard"
+    }
+  ],
+  "screens": {
+    "Standard": {
+      "headline": "Learn faster with Premium",
+      "plans_in_order": [
+        {
+          "plan": "annual",
+          "preselected": true,
+          "largest_price_text": "$5.00/month",
+          "smaller_price_text": "$59.99 billed yearly",
+          "badge": "Save 61%"
+        },
+        {
+          "plan": "monthly",
+          "preselected": false,
+          "largest_price_text": "$12.99/month",
+          "smaller_price_text": null,
+          "badge": null
+        }
+      ],
+      "includes_line": "Premium Annual or Premium Monthly: every course, offline lessons, speaking practice, no ads",
+      "trial_line": "7 days free, then $59.99 per year. Renews automatically until cancelled.",
+      "trial_line_readable_without_tap": true,
+      "button": "Continue",
+      "close": "X appears after 3 seconds",
+      "links": [
+        "Restore purchases",
+        "Terms of Use",
+        "Privacy Policy"
+      ],
+      "manage_cancel_line": "Cancel anytime in App Store or Google Play settings"
+    },
+    "Limit": {
+      "headline": "You've finished today's 3 free lessons",
+      "plans_in_order": [
+        {
+          "plan": "annual",
+          "preselected": true,
+          "largest_price_text": "$59.99/year",
+          "smaller_price_text": "$5.00/month",
+          "badge": "Save 65%"
+        },
+        {
+          "plan": "monthly",
+          "preselected": false,
+          "largest_price_text": "$12.99/month",
+          "smaller_price_text": null,
+          "badge": null
+        }
+      ],
+      "includes_line": "Premium Annual or Premium Monthly: unlimited lessons, offline lessons, speaking practice, no ads",
+      "trial_line": "7 days free, then $59.99 per year. Renews automatically until cancelled.",
+      "trial_line_readable_without_tap": true,
+      "button": "Start 7-day free trial",
+      "close": "X visible from the first frame",
+      "links": [
+        "Terms of Use",
+        "Privacy Policy"
+      ],
+      "manage_cancel_line": "Cancel anytime in App Store or Google Play settings"
+    }
+  },
+  "data_pulled": {
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "list_data_streams": [
+        {
+          "type": "IOS_APP_DATA_STREAM",
+          "displayName": "Example Language App iOS"
+        },
+        {
+          "type": "ANDROID_APP_DATA_STREAM",
+          "displayName": "Example Language App Android"
+        }
+      ],
+      "list_custom_dimensions": [
+        {
+          "parameterName": "placement",
+          "displayName": "Paywall placement",
+          "scope": "EVENT"
+        },
+        {
+          "parameterName": "plan",
+          "displayName": "Plan",
+          "scope": "EVENT"
+        }
+      ],
+      "list_key_events": [
+        {
+          "eventName": "subscription_start",
+          "countingMethod": "ONCE_PER_EVENT"
+        }
+      ],
+      "get_report_views_and_starts_by_placement": [
+        {
+          "eventName": "paywall_view",
+          "customEvent:placement": "onboarding_end",
+          "totalUsers": 18400,
+          "eventCount": 19136
+        },
+        {
+          "eventName": "paywall_view",
+          "customEvent:placement": "daily_limit",
+          "totalUsers": 9600,
+          "eventCount": 22176
+        },
+        {
+          "eventName": "paywall_view",
+          "customEvent:placement": "locked_feature",
+          "totalUsers": 5200,
+          "eventCount": 8424
+        },
+        {
+          "eventName": "paywall_view",
+          "customEvent:placement": "settings_upgrade",
+          "totalUsers": 1150,
+          "eventCount": 1288
+        },
+        {
+          "eventName": "paywall_view",
+          "customEvent:placement": "streak_banner",
+          "totalUsers": 380,
+          "eventCount": 399
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "onboarding_end",
+          "totalUsers": 1030,
+          "eventCount": 1030
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "daily_limit",
+          "totalUsers": 430,
+          "eventCount": 430
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "locked_feature",
+          "totalUsers": 104,
+          "eventCount": 104
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "settings_upgrade",
+          "totalUsers": 161,
+          "eventCount": 161
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "streak_banner",
+          "totalUsers": 11,
+          "eventCount": 11
+        },
+        {
+          "eventName": "subscription_start",
+          "customEvent:placement": "(not set)",
+          "totalUsers": 18,
+          "eventCount": 18
+        }
+      ],
+      "get_report_unique_totals": [
+        {
+          "eventName": "paywall_view",
+          "totalUsers": 29850
+        },
+        {
+          "eventName": "subscription_start",
+          "totalUsers": 1748
+        }
+      ],
+      "get_report_starts_by_placement_and_plan": [
+        {
+          "customEvent:placement": "onboarding_end",
+          "customEvent:plan": "annual",
+          "eventCount": 824
+        },
+        {
+          "customEvent:placement": "onboarding_end",
+          "customEvent:plan": "monthly",
+          "eventCount": 206
+        },
+        {
+          "customEvent:placement": "daily_limit",
+          "customEvent:plan": "annual",
+          "eventCount": 301
+        },
+        {
+          "customEvent:placement": "daily_limit",
+          "customEvent:plan": "monthly",
+          "eventCount": 129
+        },
+        {
+          "customEvent:placement": "locked_feature",
+          "customEvent:plan": "annual",
+          "eventCount": 78
+        },
+        {
+          "customEvent:placement": "locked_feature",
+          "customEvent:plan": "monthly",
+          "eventCount": 26
+        },
+        {
+          "customEvent:placement": "settings_upgrade",
+          "customEvent:plan": "annual",
+          "eventCount": 97
+        },
+        {
+          "customEvent:placement": "settings_upgrade",
+          "customEvent:plan": "monthly",
+          "eventCount": 64
+        },
+        {
+          "customEvent:placement": "streak_banner",
+          "customEvent:plan": "annual",
+          "eventCount": 8
+        },
+        {
+          "customEvent:placement": "streak_banner",
+          "customEvent:plan": "monthly",
+          "eventCount": 3
+        }
+      ]
+    },
+    "clarity": "not connected"
+  }
+}

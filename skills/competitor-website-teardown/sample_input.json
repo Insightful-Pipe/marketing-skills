@@ -1,0 +1,848 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The two competitors, Slotharbor and Bookvane, are invented as well.",
+  "request": "Hey Claude, I just added the \"competitor-website-teardown\" skill. Tear down slotharbor.example and bookvane.example against example.com: structure, pricing pages, speed and YouTube. Our channel ID is UC0000000000000000000eb1 and Bookvane's is UC0000000000000000000bv1. Slotharbor has no YouTube channel I know of.",
+  "sites": {
+    "yours": "example.com",
+    "competitors": [
+      "slotharbor.example",
+      "bookvane.example"
+    ]
+  },
+  "market": {
+    "location_code": 2840,
+    "language_code": "en"
+  },
+  "run_date": "2026-10-28",
+  "urls_checked": [
+    {
+      "site": "example.com",
+      "page": "home",
+      "requested": "https://example.com/",
+      "final_url": "https://www.example.com/",
+      "status": 200,
+      "redirects": 1
+    },
+    {
+      "site": "example.com",
+      "page": "pricing",
+      "requested": "https://www.example.com/pricing",
+      "final_url": "https://www.example.com/pricing/",
+      "status": 200,
+      "redirects": 1
+    },
+    {
+      "site": "slotharbor.example",
+      "page": "home",
+      "requested": "https://slotharbor.example/",
+      "final_url": "https://www.slotharbor.example/",
+      "status": 200,
+      "redirects": 1
+    },
+    {
+      "site": "slotharbor.example",
+      "page": "pricing",
+      "requested": "https://www.slotharbor.example/pricing",
+      "final_url": "https://www.slotharbor.example/pricing",
+      "status": 200,
+      "redirects": 0
+    },
+    {
+      "site": "bookvane.example",
+      "page": "home",
+      "requested": "https://bookvane.example/",
+      "final_url": "https://bookvane.example/",
+      "status": 200,
+      "redirects": 0
+    },
+    {
+      "site": "bookvane.example",
+      "page": "pricing",
+      "requested": "https://bookvane.example/pricing",
+      "final_url": "https://bookvane.example/pricing",
+      "status": 200,
+      "redirects": 0
+    }
+  ],
+  "data_pulled": [
+    "labs_bulk_traffic_estimation (1 call, 3 domains)",
+    "labs_relevant_pages (1 call per site, top 100 pages each, ordered by estimated visits)",
+    "onpage_instant_pages (1 call per home page)",
+    "onpage_content_parsing (1 call per pricing page, plus 1 JavaScript retry: bookvane.example)",
+    "DataForSEO calls in total: 11",
+    "crawler status-code-checker (6 URLs)",
+    "pagespeed-insights core-web-vitals, mobile (home and pricing page per site; slotharbor.example home timed out once and answered on the first retry)",
+    "youtube-data get_channels (1 call, 2 channel IDs), get_playlistitems (1 per channel), get_videos (1 per channel)"
+  ],
+  "results": {
+    "bulk_traffic": [
+      {
+        "target": "example.com",
+        "organic_etv": 4810,
+        "organic_count": 3060,
+        "paid_etv": 640
+      },
+      {
+        "target": "slotharbor.example",
+        "organic_etv": 21300,
+        "organic_count": 9420,
+        "paid_etv": 1870
+      },
+      {
+        "target": "bookvane.example",
+        "organic_etv": 7590,
+        "organic_count": 4170,
+        "paid_etv": 0
+      }
+    ],
+    "relevant_pages": [
+      {
+        "target": "example.com",
+        "total_count": 46,
+        "returned": 46,
+        "pages": {
+          "/": 1460,
+          "/login/": 338,
+          "/pricing/": 214,
+          "/templates/cancellation-policy/": 214,
+          "/blog/reduce-no-shows/": 161,
+          "/blog/salon-booking-tips/": 139,
+          "/templates/booking-policy/": 136,
+          "/blog/appointment-reminder-templates/": 125,
+          "/integrations/": 115,
+          "/templates/intake-form/": 102,
+          "/signup/": 96,
+          "/blog/deposit-policy/": 94,
+          "/blog/scheduling-app-comparison/": 92,
+          "/integrations/google-calendar/": 90,
+          "/blog/front-desk-checklist/": 76,
+          "/features/online-booking/": 75,
+          "/templates/deposit-agreement/": 68,
+          "/integrations/stripe/": 65,
+          "/features/reminders/": 63,
+          "/blog/best-way-to-start-a-mobile-grooming-business/": 62,
+          "/blog/easy-ways-to-reduce-no-shows/": 54,
+          "/templates/gift-card-terms/": 52,
+          "/features/payments/": 48,
+          "/blog/steps-to-fill-last-minute-cancellations/": 47,
+          "/integrations/zoom/": 44,
+          "/blog/ways-to-price-a-haircut/": 40,
+          "/blog/how-to-fill-last-minute-cancellations/": 38,
+          "/integrations/mailchimp/": 38,
+          "/features/calendar-sync/": 38,
+          "/templates/consent-form/": 34,
+          "/industries/salons/": 33,
+          "/blog/best-way-to-price-a-haircut/": 29,
+          "/integrations/quickbooks/": 26,
+          "/blog/easy-ways-to-run-a-waitlist/": 24,
+          "/industries/clinics/": 24,
+          "/blog/steps-to-take-deposits/": 22,
+          "/blog/ways-to-set-a-cancellation-fee/": 20,
+          "/industries/fitness/": 20,
+          "/blog/how-to-take-deposits/": 18,
+          "/demo/": 15,
+          "/blog/best-way-to-set-a-cancellation-fee/": 14,
+          "/blog/easy-ways-to-grow-a-salon-client-list/": 12,
+          "/blog/steps-to-schedule-group-classes/": 10,
+          "/blog/ways-to-write-a-booking-policy/": 10,
+          "/blog/how-to-schedule-group-classes/": 8,
+          "/blog/best-way-to-write-a-booking-policy/": 7
+        }
+      },
+      {
+        "target": "slotharbor.example",
+        "total_count": 640,
+        "returned": 100,
+        "pages": {
+          "/": 3120,
+          "/login": 905,
+          "/tools/no-show-cost-calculator": 611,
+          "/blog/how-to-reduce-no-shows/": 559,
+          "/blog/best-way-to-fill-last-minute-cancellations/": 492,
+          "/blog/easy-ways-to-price-a-haircut/": 486,
+          "/blog/steps-to-run-a-waitlist/": 485,
+          "/tools/booking-link-generator": 439,
+          "/pricing": 418,
+          "/blog/ways-to-take-deposits/": 417,
+          "/blog/how-to-run-a-waitlist/": 413,
+          "/blog/best-way-to-take-deposits/": 406,
+          "/blog/easy-ways-to-set-a-cancellation-fee/": 389,
+          "/blog/steps-to-grow-a-salon-client-list/": 374,
+          "/tools/salon-price-calculator": 344,
+          "/blog/ways-to-schedule-group-classes/": 338,
+          "/blog/how-to-grow-a-salon-client-list/": 312,
+          "/blog/best-way-to-schedule-group-classes/": 310,
+          "/blog/easy-ways-to-write-a-booking-policy/": 290,
+          "/blog/steps-to-send-appointment-reminders/": 277,
+          "/blog/ways-to-open-a-massage-studio/": 275,
+          "/blog/how-to-send-appointment-reminders/": 267,
+          "/blog/best-way-to-open-a-massage-studio/": 255,
+          "/blog/easy-ways-to-manage-walk-ins/": 241,
+          "/tools/qr-code-generator": 238,
+          "/blog/steps-to-book-recurring-appointments/": 230,
+          "/blog/ways-to-train-front-desk-staff/": 219,
+          "/blog/how-to-book-recurring-appointments/": 201,
+          "/blog/best-way-to-train-front-desk-staff/": 199,
+          "/blog/easy-ways-to-get-more-google-reviews/": 194,
+          "/blog/steps-to-start-a-mobile-grooming-business/": 183,
+          "/blog/ways-to-reduce-no-shows/": 183,
+          "/blog/how-to-start-a-mobile-grooming-business/": 170,
+          "/tools/business-name-generator": 165,
+          "/blog/best-way-to-reduce-no-shows/": 162,
+          "/templates/salon-price-list": 153,
+          "/blog/easy-ways-to-fill-last-minute-cancellations/": 149,
+          "/blog/steps-to-price-a-haircut/": 148,
+          "/blog/ways-to-run-a-waitlist/": 145,
+          "/tools/tip-calculator": 133,
+          "/blog/how-to-price-a-haircut/": 131,
+          "/blog/best-way-to-run-a-waitlist/": 126,
+          "/blog/easy-ways-to-take-deposits/": 119,
+          "/blog/steps-to-set-a-cancellation-fee/": 115,
+          "/blog/ways-to-grow-a-salon-client-list/": 108,
+          "/blog/how-to-set-a-cancellation-fee/": 106,
+          "/templates/cancellation-policy": 104,
+          "/integrations": 102,
+          "/blog/best-way-to-grow-a-salon-client-list/": 100,
+          "/blog/easy-ways-to-schedule-group-classes/": 98,
+          "/blog/steps-to-write-a-booking-policy/": 98,
+          "/blog/ways-to-send-appointment-reminders/": 93,
+          "/templates/client-intake-form": 89,
+          "/blog/how-to-write-a-booking-policy/": 81,
+          "/blog/best-way-to-send-appointment-reminders/": 78,
+          "/blog/easy-ways-to-open-a-massage-studio/": 77,
+          "/integrations/google-calendar": 74,
+          "/salons": 74,
+          "/blog/steps-to-manage-walk-ins/": 71,
+          "/templates/gift-certificate": 69,
+          "/blog/ways-to-book-recurring-appointments/": 66,
+          "/blog/how-to-manage-walk-ins/": 62,
+          "/blog/best-way-to-book-recurring-appointments/": 61,
+          "/blog/easy-ways-to-train-front-desk-staff/": 59,
+          "/blog/steps-to-get-more-google-reviews/": 57,
+          "/blog/ways-to-start-a-mobile-grooming-business/": 57,
+          "/blog/how-to-get-more-google-reviews/": 56,
+          "/spas": 54,
+          "/templates/waiver-form": 50,
+          "/blog/best-way-to-start-a-mobile-grooming-business/": 49,
+          "/blog/easy-ways-to-reduce-no-shows/": 47,
+          "/fitness": 47,
+          "/blog/steps-to-fill-last-minute-cancellations/": 46,
+          "/blog/ways-to-price-a-haircut/": 46,
+          "/integrations/square": 46,
+          "/blog/how-to-fill-last-minute-cancellations/": 44,
+          "/blog/best-way-to-price-a-haircut/": 42,
+          "/blog/easy-ways-to-run-a-waitlist/": 41,
+          "/templates/class-schedule": 41,
+          "/clinics": 38,
+          "/blog/steps-to-take-deposits/": 35,
+          "/integrations/outlook": 34,
+          "/blog/ways-to-set-a-cancellation-fee/": 33,
+          "/blog/how-to-take-deposits/": 32,
+          "/blog/best-way-to-set-a-cancellation-fee/": 31,
+          "/templates/staff-rota": 31,
+          "/blog/easy-ways-to-grow-a-salon-client-list/": 30,
+          "/blog/steps-to-schedule-group-classes/": 29,
+          "/blog/ways-to-write-a-booking-policy/": 29,
+          "/features/online-booking": 29,
+          "/blog/how-to-schedule-group-classes/": 28,
+          "/templates/booking-confirmation-email": 25,
+          "/blog/best-way-to-write-a-booking-policy/": 24,
+          "/blog/easy-ways-to-send-appointment-reminders/": 23,
+          "/integrations/instagram": 23,
+          "/blog/steps-to-open-a-massage-studio/": 22,
+          "/features/payments": 22,
+          "/blog/ways-to-manage-walk-ins/": 21,
+          "/integrations/zapier": 17,
+          "/about": 17
+        }
+      },
+      {
+        "target": "bookvane.example",
+        "total_count": 73,
+        "returned": 73,
+        "pages": {
+          "/": 2610,
+          "/signin": 384,
+          "/apps/google-calendar": 272,
+          "/pricing": 262,
+          "/apps/outlook-calendar": 248,
+          "/apps/stripe": 226,
+          "/apps/paypal": 205,
+          "/apps/square": 175,
+          "/apps/zoom": 158,
+          "/blog/easy-ways-to-schedule-group-classes/": 149,
+          "/blog/steps-to-write-a-booking-policy/": 146,
+          "/apps/google-meet": 137,
+          "/blog/ways-to-send-appointment-reminders/": 131,
+          "/blog/how-to-write-a-booking-policy/": 122,
+          "/apps/mailchimp": 120,
+          "/apps/klaviyo": 107,
+          "/blog/best-way-to-send-appointment-reminders/": 96,
+          "/blog/easy-ways-to-open-a-massage-studio/": 89,
+          "/blog/steps-to-manage-walk-ins/": 88,
+          "/apps/quickbooks": 86,
+          "/apps/xero": 79,
+          "/blog/ways-to-book-recurring-appointments/": 72,
+          "/apps/zapier": 70,
+          "/blog/how-to-manage-walk-ins/": 63,
+          "/help/getting-started": 63,
+          "/blog/best-way-to-book-recurring-appointments/": 62,
+          "/features": 62,
+          "/apps/instagram": 60,
+          "/apps/facebook": 57,
+          "/blog/easy-ways-to-train-front-desk-staff/": 54,
+          "/help/booking-page": 54,
+          "/salons": 52,
+          "/apps/google-business-profile": 50,
+          "/blog/steps-to-get-more-google-reviews/": 48,
+          "/blog/ways-to-start-a-mobile-grooming-business/": 43,
+          "/blog/how-to-get-more-google-reviews/": 41,
+          "/apps/wix": 41,
+          "/tutors": 41,
+          "/help/reminders": 40,
+          "/apps/squarespace": 37,
+          "/help/payments": 35,
+          "/blog/best-way-to-start-a-mobile-grooming-business/": 34,
+          "/therapists": 34,
+          "/blog/easy-ways-to-reduce-no-shows/": 33,
+          "/blog/steps-to-fill-last-minute-cancellations/": 31,
+          "/apps/wordpress": 30,
+          "/help/staff-accounts": 28,
+          "/blog/ways-to-price-a-haircut/": 27,
+          "/apps/hubspot": 27,
+          "/help/calendar-sync": 27,
+          "/about": 26,
+          "/blog/how-to-fill-last-minute-cancellations/": 23,
+          "/apps/slack": 23,
+          "/apps/twilio": 22,
+          "/help/cancellations": 22,
+          "/customers": 21,
+          "/blog/best-way-to-price-a-haircut/": 20,
+          "/blog/easy-ways-to-run-a-waitlist/": 20,
+          "/apps/apple-calendar": 20,
+          "/help/import-clients": 19,
+          "/blog/steps-to-take-deposits/": 18,
+          "/apps/microsoft-teams": 18,
+          "/blog/ways-to-set-a-cancellation-fee/": 16,
+          "/apps/shopify": 16,
+          "/help/embed-widget": 16,
+          "/help/billing": 14,
+          "/blog/how-to-take-deposits/": 13,
+          "/blog/best-way-to-set-a-cancellation-fee/": 12,
+          "/blog/easy-ways-to-grow-a-salon-client-list/": 11,
+          "/blog/steps-to-schedule-group-classes/": 11,
+          "/blog/ways-to-write-a-booking-policy/": 8,
+          "/blog/how-to-schedule-group-classes/": 8,
+          "/blog/best-way-to-write-a-booking-policy/": 7
+        }
+      }
+    ],
+    "home_pages": [
+      {
+        "url": "https://www.example.com/",
+        "title": "Online booking software for small businesses | Example Booking Software",
+        "description": "Let clients book online, send automatic reminders and take deposits. Plans from $19 a month.",
+        "h1": [
+          "Online booking software for small service businesses"
+        ],
+        "h2": [
+          "Your booking page, live in ten minutes",
+          "Reminders that cut no-shows",
+          "Take deposits when clients book",
+          "Two-way sync with the calendar you use",
+          "Built for salons, clinics, studios and trainers",
+          "Frequently asked questions"
+        ],
+        "plain_text_word_count": 1180,
+        "internal_links_count": 46,
+        "scripts_count": 21
+      },
+      {
+        "url": "https://www.slotharbor.example/",
+        "title": "Slotharbor | Booking and scheduling app for salons, spas and studios",
+        "description": "Online booking, payments and reminders in one app. Free plan for one calendar.",
+        "h1": [
+          "Fill your calendar. Skip the phone tag."
+        ],
+        "h2": [
+          "Trusted by 40,000 salons, spas and studios",
+          "See it in action",
+          "Start free, upgrade when you grow",
+          "Payments, reminders and waitlists",
+          "What our customers say",
+          "Frequently asked questions"
+        ],
+        "plain_text_word_count": 1640,
+        "internal_links_count": 88,
+        "scripts_count": 34
+      },
+      {
+        "url": "https://bookvane.example/",
+        "title": "Bookvane: appointment booking for solo pros and small teams",
+        "description": "A booking page clients love, reminders that work and payouts in two days.",
+        "h1": [
+          "Booking that just works"
+        ],
+        "h2": [
+          "See what your clients see",
+          "Used by 9,000 tutors, therapists and stylists",
+          "Plans that grow with your bookings",
+          "Connect the apps you already use",
+          "Frequently asked questions"
+        ],
+        "plain_text_word_count": 860,
+        "internal_links_count": 39,
+        "scripts_count": 12
+      }
+    ],
+    "pricing_pages": [
+      {
+        "url": "https://www.example.com/pricing/",
+        "calls": 1,
+        "plan_headings": [
+          "Starter",
+          "Growth",
+          "Business"
+        ],
+        "price_text": [
+          "$19/month",
+          "$49/month",
+          "$99/month"
+        ],
+        "plan_notes": [
+          "1 staff calendar",
+          "Up to 5 staff calendars",
+          "Up to 20 staff calendars"
+        ],
+        "table_rows": 14,
+        "headers": [
+          "Simple pricing for every size of business",
+          "Compare plans",
+          "Try free for 14 days, no card needed"
+        ],
+        "text": [
+          "Every plan includes unlimited bookings. Pay for the staff calendars you need."
+        ]
+      },
+      {
+        "url": "https://www.slotharbor.example/pricing",
+        "calls": 1,
+        "plan_headings": [
+          "Free",
+          "Team",
+          "Multi-location"
+        ],
+        "price_text": [
+          "$0",
+          "$24 per staff member/month",
+          "Talk to sales"
+        ],
+        "plan_notes": [
+          "1 calendar, Slotharbor branding",
+          "Billed per staff member",
+          "Book a call with our team"
+        ],
+        "table_rows": 22,
+        "headers": [
+          "Pricing",
+          "Save 20% with annual billing",
+          "Free plan for 1 calendar",
+          "Compare every feature",
+          "What no-shows cost you vs. what Slotharbor costs",
+          "Can I switch plans at any time?",
+          "Is there a contract?",
+          "Do you charge booking fees?",
+          "Can I cancel anytime?",
+          "What payment methods do you accept?",
+          "Is my client data secure?",
+          "Do you offer discounts for nonprofits?",
+          "Can I import my clients?",
+          "How does billing per staff member work?"
+        ],
+        "text": [
+          "A salon that loses four bookings a week to no-shows loses more than a year of Slotharbor."
+        ]
+      },
+      {
+        "url": "https://bookvane.example/pricing",
+        "calls": 2,
+        "first_call": "no currency amount in the page text; retried with enable_javascript true",
+        "plan_headings": [
+          "Basic",
+          "Plus",
+          "Pro"
+        ],
+        "price_text": [
+          "$29/month",
+          "$59/month",
+          "$119/month"
+        ],
+        "plan_notes": [
+          "Up to 150 bookings a month",
+          "Up to 600 bookings a month",
+          "Unlimited bookings"
+        ],
+        "table_rows": 0,
+        "headers": [
+          "Plans and pricing",
+          "Get 2 months free when you pay yearly",
+          "Start a trial",
+          "Quick answer: how much does Bookvane cost?",
+          "How are bookings counted?",
+          "What happens if I go over my bookings?",
+          "Can I change plans later?",
+          "Do clients pay a fee?",
+          "Can I cancel anytime?",
+          "Do you support teams?"
+        ],
+        "text": [
+          "Bookvane costs $29 to $119 a month, depending on how many bookings you take."
+        ]
+      }
+    ],
+    "core_web_vitals": [
+      {
+        "url": "https://www.example.com/",
+        "site": "example.com",
+        "page": "home",
+        "attempts": [
+          {
+            "performanceScore": 0.71,
+            "lcp_ms": 3420,
+            "cls": 0.02,
+            "tbt_ms": 262
+          }
+        ]
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "site": "example.com",
+        "page": "pricing",
+        "attempts": [
+          {
+            "performanceScore": 0.47,
+            "lcp_ms": 5630,
+            "cls": 0.18,
+            "tbt_ms": 486
+          }
+        ]
+      },
+      {
+        "url": "https://www.slotharbor.example/",
+        "site": "slotharbor.example",
+        "page": "home",
+        "attempts": [
+          {
+            "error": "timed out"
+          },
+          {
+            "performanceScore": 0.63,
+            "lcp_ms": 3880,
+            "cls": 0.05,
+            "tbt_ms": 412
+          }
+        ]
+      },
+      {
+        "url": "https://www.slotharbor.example/pricing",
+        "site": "slotharbor.example",
+        "page": "pricing",
+        "attempts": [
+          {
+            "performanceScore": 0.58,
+            "lcp_ms": 4410,
+            "cls": 0.01,
+            "tbt_ms": 528
+          }
+        ]
+      },
+      {
+        "url": "https://bookvane.example/",
+        "site": "bookvane.example",
+        "page": "home",
+        "attempts": [
+          {
+            "performanceScore": 0.86,
+            "lcp_ms": 2280,
+            "cls": 0.03,
+            "tbt_ms": 148
+          }
+        ]
+      },
+      {
+        "url": "https://bookvane.example/pricing",
+        "site": "bookvane.example",
+        "page": "pricing",
+        "attempts": [
+          {
+            "performanceScore": 0.79,
+            "lcp_ms": 2690,
+            "cls": 0.0,
+            "tbt_ms": 306
+          }
+        ]
+      }
+    ],
+    "youtube_channels": [
+      {
+        "site": "example.com",
+        "channel_id": "UC0000000000000000000eb1",
+        "title": "Example Booking Software",
+        "publishedAt": "2017-03-14",
+        "subscriberCount": 4230,
+        "hiddenSubscriberCount": false,
+        "viewCount": 612400,
+        "videoCount": 286
+      },
+      {
+        "site": "bookvane.example",
+        "channel_id": "UC0000000000000000000bv1",
+        "title": "Bookvane",
+        "publishedAt": "2023-05-02",
+        "subscriberCount": 2870,
+        "hiddenSubscriberCount": false,
+        "viewCount": 241900,
+        "videoCount": 131
+      }
+    ],
+    "youtube_uploads_last_90_days": [
+      {
+        "site": "example.com",
+        "videos": [
+          {
+            "title": "Set up your booking page in 10 minutes",
+            "published": "2026-10-26",
+            "duration": "PT4M16S",
+            "views": 122
+          },
+          {
+            "title": "Take deposits at booking",
+            "published": "2026-10-19",
+            "duration": "PT5M40S",
+            "views": 127
+          },
+          {
+            "title": "Turn on SMS reminders",
+            "published": "2026-10-12",
+            "duration": "PT6M58S",
+            "views": 58
+          },
+          {
+            "title": "Sync Google Calendar both ways",
+            "published": "2026-10-05",
+            "duration": "PT3M26S",
+            "views": 57
+          },
+          {
+            "title": "Add staff and their hours",
+            "published": "2026-09-28",
+            "duration": "PT3M49S",
+            "views": 274
+          },
+          {
+            "title": "Run a waitlist for cancellations",
+            "published": "2026-09-21",
+            "duration": "PT5M12S",
+            "views": 337
+          },
+          {
+            "title": "Embed booking on your website",
+            "published": "2026-09-14",
+            "duration": "PT3M12S",
+            "views": 2140
+          },
+          {
+            "title": "Sell class packs",
+            "published": "2026-09-07",
+            "duration": "PT5M13S",
+            "views": 239
+          },
+          {
+            "title": "Send a review request after visits",
+            "published": "2026-08-31",
+            "duration": "PT4M34S",
+            "views": 335
+          },
+          {
+            "title": "Set buffer time between appointments",
+            "published": "2026-08-24",
+            "duration": "PT6M20S",
+            "views": 281
+          },
+          {
+            "title": "Book recurring clients",
+            "published": "2026-08-17",
+            "duration": "PT6M24S",
+            "views": 420
+          },
+          {
+            "title": "Read your no-show report",
+            "published": "2026-08-10",
+            "duration": "PT3M15S",
+            "views": 358
+          },
+          {
+            "title": "Set up a cancellation fee",
+            "published": "2026-08-03",
+            "duration": "PT4M24S",
+            "views": 397
+          }
+        ]
+      },
+      {
+        "site": "bookvane.example",
+        "videos": [
+          {
+            "title": "5 booking page mistakes that cost you clients",
+            "published": "2026-10-26",
+            "duration": "PT7M54S",
+            "views": 514
+          },
+          {
+            "title": "How tutors fill their week",
+            "published": "2026-10-23",
+            "duration": "PT9M18S",
+            "views": 333
+          },
+          {
+            "title": "Our new client app tour",
+            "published": "2026-10-19",
+            "duration": "PT9M12S",
+            "views": 367
+          },
+          {
+            "title": "Deposits without the awkward talk",
+            "published": "2026-10-16",
+            "duration": "PT11M29S",
+            "views": 461
+          },
+          {
+            "title": "A day at a two-chair salon",
+            "published": "2026-10-12",
+            "duration": "PT7M6S",
+            "views": 443
+          },
+          {
+            "title": "Pricing your first massage menu",
+            "published": "2026-10-09",
+            "duration": "PT10M38S",
+            "views": 412
+          },
+          {
+            "title": "The 3-text reminder sequence",
+            "published": "2026-10-05",
+            "duration": "PT8M8S",
+            "views": 363
+          },
+          {
+            "title": "How to handle late clients",
+            "published": "2026-10-02",
+            "duration": "PT11M45S",
+            "views": 468
+          },
+          {
+            "title": "Bookvane vs paper diary",
+            "published": "2026-09-28",
+            "duration": "PT12M52S",
+            "views": 1111
+          },
+          {
+            "title": "Getting paid in two days",
+            "published": "2026-09-25",
+            "duration": "PT7M6S",
+            "views": 1430
+          },
+          {
+            "title": "Moving your clients in an afternoon",
+            "published": "2026-09-21",
+            "duration": "PT13M21S",
+            "views": 871
+          },
+          {
+            "title": "Group sessions made simple",
+            "published": "2026-09-18",
+            "duration": "PT11M36S",
+            "views": 779
+          },
+          {
+            "title": "What to put on your booking page",
+            "published": "2026-09-14",
+            "duration": "PT13M21S",
+            "views": 5380
+          },
+          {
+            "title": "How therapists cut no-shows",
+            "published": "2026-09-11",
+            "duration": "PT12M49S",
+            "views": 1338
+          },
+          {
+            "title": "Ask us anything: payments",
+            "published": "2026-09-07",
+            "duration": "PT7M52S",
+            "views": 1066
+          },
+          {
+            "title": "Waitlists that fill gaps",
+            "published": "2026-09-04",
+            "duration": "PT9M9S",
+            "views": 828
+          },
+          {
+            "title": "Setting your hours for the holidays",
+            "published": "2026-08-31",
+            "duration": "PT7M39S",
+            "views": 677
+          },
+          {
+            "title": "Ten minute setup challenge",
+            "published": "2026-08-28",
+            "duration": "PT7M25S",
+            "views": 930
+          },
+          {
+            "title": "Client notes that save time",
+            "published": "2026-08-24",
+            "duration": "PT12M35S",
+            "views": 1266
+          },
+          {
+            "title": "Your first 100 bookings",
+            "published": "2026-08-21",
+            "duration": "PT11M46S",
+            "views": 1189
+          },
+          {
+            "title": "Booking links for Instagram",
+            "published": "2026-08-17",
+            "duration": "PT8M31S",
+            "views": 1282
+          },
+          {
+            "title": "Tips for mobile stylists",
+            "published": "2026-08-14",
+            "duration": "PT7M59S",
+            "views": 1219
+          },
+          {
+            "title": "Weekly schedule template walkthrough",
+            "published": "2026-08-10",
+            "duration": "PT7M20S",
+            "views": 1392
+          },
+          {
+            "title": "Rebooking at checkout",
+            "published": "2026-08-07",
+            "duration": "PT7M12S",
+            "views": 1122
+          },
+          {
+            "title": "How we built the new calendar",
+            "published": "2026-08-03",
+            "duration": "PT11M33S",
+            "views": 1087
+          }
+        ]
+      }
+    ]
+  }
+}

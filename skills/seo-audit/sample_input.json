@@ -1,0 +1,1311 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Large tables are stored as one comma-separated line per row, in the order of 'columns'.",
+  "request": "Hey Claude, I just added the \"seo-audit\" skill. Audit example.com and tell me the five fixes that matter most.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "run_date": "2026-10-28",
+  "site": "example.com",
+  "search_console_property": "https://www.example.com/",
+  "date_range": "2026-09-28 to 2026-10-25",
+  "pages_that_matter": "not given, so the About page and the 7 pages with the most impressions were used",
+  "multi_language": "no",
+  "data_pulled": [
+    "crawler: robots-txt-checker, ssl-certificate-checker, security-headers-checker, status-code-checker (30 URLs: 4 host variants, 16 GA4 landing pages (the top 15 by sessions plus ties; the home page is also a host variant), the top 10 Search Console URLs not in the sitemap and 1 stale redirect error; every audit-set page was already on these lists), meta-tags-checker (gate)",
+    "google-search-console: search_analytics by page (158 rows, 154 pages once #fragment rows and trailing-slash twins are merged), check_indexing_issues (top 20), sitemaps_list, batch_url_inspection (30 URLs)",
+    "bing-webmaster: get_crawl_stats (data keeps the last 14 days), get_crawl_issues, get_blocked_urls",
+    "google-analytics: get_report by landingPage and channel (153 rows)",
+    "dataforseo: onpage_instant_pages (9 calls: the audit set and one city page), backlinks_summary (1 call): 10 calls",
+    "pagespeed-insights: core-web-vitals on 5 templates, accessibility-seo on the home page, resource-optimizations on the slowest template (/blog/reduce-no-shows/)",
+    "sitemap.xml read with a web fetch (177 URLs)"
+  ],
+  "data": {
+    "crawler_robots_txt_checker": {
+      "url": "https://www.example.com/robots.txt",
+      "rules": [
+        {
+          "user_agent": "*",
+          "allow": [
+            "/"
+          ],
+          "disallow": [
+            "/app/",
+            "/account/"
+          ]
+        }
+      ],
+      "sitemaps": [
+        "https://www.example.com/sitemap.xml"
+      ]
+    },
+    "crawler_ssl_certificate_checker": {
+      "valid": true,
+      "valid_to": "2027-01-09",
+      "days_left": 73
+    },
+    "crawler_security_headers_checker": {
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "content-security-policy": true,
+      "x-content-type-options": "nosniff"
+    },
+    "crawler_meta_tags_checker_gate": {
+      "url": "https://www.example.com/",
+      "status_code": 200,
+      "title": "Online Booking Software for Small Businesses | Example Booking",
+      "title_tag_count": 1
+    },
+    "search_console_by_page": {
+      "date_range": "2026-09-28 to 2026-10-25",
+      "row_limit": 1000,
+      "rows": {
+        "columns": [
+          "page",
+          "clicks",
+          "impressions",
+          "position"
+        ],
+        "rows": [
+          "https://www.example.com/features/online-booking/,262,21000,12.4",
+          "https://www.example.com/,4310,18500,6.1",
+          "https://www.example.com/industries/salons/,184,14200,10.2",
+          "https://www.example.com/blog/reduce-no-shows/,495,10738,5.1",
+          "https://www.example.com/templates/cancellation-policy/,79,6600,6.8",
+          "https://www.example.com/blog/appointment-reminder-templates/,57,6177,3.2",
+          "https://www.example.com/blog/scheduling-app-comparison/,118,4900,8.1",
+          "https://www.example.com/pricing/,581,4888,2.4",
+          "https://www.example.com/features/reminders/,142,4400,9.0",
+          "https://www.example.com/blog/holiday-schedule-tips/,72,3751,10.4",
+          "https://www.example.com/blog/receptionist-scripts/,30,3697,22.3",
+          "https://www.example.com/blog/new-year-promotions/,125,3670,8.0",
+          "https://www.example.com/blog/personal-trainer-scheduling-tips/,81,3585,9.0",
+          "https://www.example.com/blog/deposit-policy/,75,3474,11.9",
+          "https://www.example.com/blog/gift-card-ideas-for-salons/,86,3455,8.6",
+          "https://www.example.com/features/intake-forms/,38,3400,20.6",
+          "https://www.example.com/blog/physio-clinic-front-desk/,50,3368,17.4",
+          "https://www.example.com/blog/clinic-opening-checklist/,63,3328,9.9",
+          "https://www.example.com/blog/client-retention-for-salons/,57,3327,12.1",
+          "https://www.example.com/blog/salon-pricing-guide/,79,3326,10.4",
+          "https://www.example.com/blog/phone-vs-online-booking/,38,3174,15.9",
+          "https://www.example.com/blog/class-capacity-limits/,33,3104,20.0",
+          "https://www.example.com/blog/intake-forms-for-physio/,38,3087,18.9",
+          "https://www.example.com/blog/staff-rota-tips/,81,3062,8.2",
+          "https://www.example.com/blog/salon-marketing-ideas/,69,3052,10.0",
+          "https://www.example.com/blog/back-to-school-bookings/,71,3035,11.2",
+          "https://www.example.com/blog/barbershop-walk-ins/,87,3028,8.0",
+          "https://www.example.com/blog/how-to-raise-prices/,72,2949,8.2",
+          "https://www.example.com/blog/mobile-booking-tips/,91,2935,7.0",
+          "https://www.example.com/blog/website-booking-button/,46,2933,14.3",
+          "https://www.example.com/blog/how-to-run-a-workshop/,35,2868,18.9",
+          "https://www.example.com/blog/how-to-handle-late-clients/,37,2766,16.5",
+          "https://www.example.com/blog/recurring-appointments/,66,2746,10.0",
+          "https://www.example.com/blog/private-sessions-pricing/,48,2743,11.8",
+          "https://www.example.com/blog/slow-season-ideas/,29,2724,22.1",
+          "https://www.example.com/blog/reminder-timing-guide/,29,2651,17.2",
+          "https://www.example.com/blog/massage-therapist-booking-tips/,39,2616,13.2",
+          "https://www.example.com/signup/,410,2600,2.9",
+          "https://www.example.com/blog/waitlist-best-practices/,29,2568,21.3",
+          "https://www.example.com/blog/salon-booking-tips/,33,2558,14.9",
+          "https://www.example.com/blog/salon-consultation-forms/,63,2498,10.6",
+          "https://www.example.com/features/payments/,30,2479,19.6",
+          "https://www.example.com/blog/spa-membership-ideas/,125,2445,4.8",
+          "https://www.example.com/industries/nail-salons/,100,2277,4.8",
+          "https://www.example.com/blog/deposits-vs-prepayment/,58,2242,8.9",
+          "https://www.example.com/blog/group-class-scheduling/,37,2227,15.1",
+          "https://www.example.com/blog/reviews-for-small-businesses/,76,2212,6.6",
+          "https://www.example.com/industries/yoga-studios/,19,2194,23.1",
+          "https://www.example.com/features/class-booking/,33,2152,16.4",
+          "https://www.example.com/blog/calendar-sync-guide/,17,2126,21.6",
+          "https://www.example.com/blog/late-cancellation-fees/,18,2035,20.3",
+          "https://www.example.com/features/waitlist/,22,1999,17.8",
+          "https://www.example.com/industries/tutors/,54,1992,8.1",
+          "https://www.example.com/blog/how-to-write-a-cancellation-policy/,39,1964,9.8",
+          "https://www.example.com/blog/sms-vs-email-reminders/,33,1911,12.6",
+          "https://www.example.com/blog/black-friday-for-salons/,32,1906,11.0",
+          "https://www.example.com/industries/spas/,24,1848,18.4",
+          "https://www.example.com/blog/summer-hours-tips/,34,1847,11.6",
+          "https://www.example.com/blog/time-zone-bookings/,47,1825,9.3",
+          "https://www.example.com/blog/booking-buffer-times/,33,1788,12.8",
+          "https://www.example.com/blog/tutor-scheduling-tips/,20,1775,17.8",
+          "https://www.example.com/blog/no-show-policy/,21,1710,7.4",
+          "https://www.example.com/blog/hiring-a-receptionist/,31,1675,10.9",
+          "https://www.example.com/blog/google-business-profile-booking/,34,1509,11.3",
+          "https://www.example.com/features/staff-scheduling/,72,1429,5.6",
+          "https://www.example.com/blog/text-message-etiquette/,77,1373,4.6",
+          "https://www.example.com/blog/front-desk-checklist/,13,1372,20.4",
+          "https://www.example.com/integrations/,21,1367,15.4",
+          "https://www.example.com/blog/fill-last-minute-gaps/,17,1355,17.9",
+          "https://www.example.com/blog/referral-program-ideas/,24,1345,13.1",
+          "https://www.example.com/integrations/instagram/,37,1336,8.8",
+          "https://www.example.com/industries/massage/,33,1335,9.1",
+          "https://www.example.com/blog/online-payments-for-clinics/,21,1312,12.6",
+          "https://www.example.com/blog/multi-location-scheduling/,12,1287,18.9",
+          "https://www.example.com/blog/loyalty-cards-vs-memberships/,35,1283,8.2",
+          "https://www.example.com/integrations/google-calendar/,19,1236,15.5",
+          "https://www.example.com/integrations/facebook/,37,1230,7.5",
+          "https://www.example.com/industries/clinics/,16,1176,18.0",
+          "https://www.example.com/industries/fitness/,47,1171,6.8",
+          "https://www.example.com/blog/first-time-client-offers/,23,1168,12.3",
+          "https://www.example.com/blog/studio-opening-checklist/,14,1165,15.9",
+          "https://www.example.com/industries/photographers/,13,1148,20.8",
+          "https://www.example.com/blog/no-show-fee-wording/,13,1129,19.5",
+          "https://www.example.com/blog/reduce-no-shows/#deposits,26,1062,5.4",
+          "https://www.example.com/industries/barbershops/,28,1028,7.5",
+          "https://www.example.com/blog/rebooking-at-checkout/,13,1025,19.2",
+          "https://www.example.com/blog/clinic-waitlist-tips/,10,1020,20.5",
+          "https://www.example.com/integrations/outlook-calendar/,16,1001,15.1",
+          "https://www.example.com/features/calendar-sync/,9,989,21.1",
+          "https://www.example.com/blog/accessible-booking-pages/,15,958,14.0",
+          "https://www.example.com/blog/appointment-reminder-templates/#sms-templates,7,923,3.5",
+          "https://www.example.com/about/,62,900,2.2",
+          "https://www.example.com/blog/2024/no-show-tips/,9,900,9.1",
+          "https://www.example.com/blog/double-booking/,28,851,6.6",
+          "https://www.example.com/blog/client-data-privacy/,12,802,17.3",
+          "https://www.example.com/templates/consultation-form/,29,802,7.8",
+          "https://www.example.com/industries/physio/,29,788,6.4",
+          "https://www.example.com/templates/gift-certificate/,17,778,9.2",
+          "https://www.example.com/templates/booking-confirmation-email/,6,726,23.6",
+          "https://www.example.com/demo/,58,700,3.4",
+          "https://www.example.com/templates/deposit-policy/,14,691,9.9",
+          "https://www.example.com/features/text-reminders/,6,640,11.2",
+          "https://www.example.com/industries/personal-trainers/,28,579,5.5",
+          "https://www.example.com/contact/,7,571,15.8",
+          "https://www.example.com/blog/instagram-booking-link/,29,552,5.4",
+          "https://www.example.com/blog/gift-card-season/,15,539,7.6",
+          "https://www.example.com/blog/contactless-check-in/,9,528,14.9",
+          "https://www.example.com/blog/booking-page-best-practices/,8,524,13.9",
+          "https://www.example.com/blog/salon-opening-checklist/,10,502,12.1",
+          "https://www.example.com/blog/client-intake-form-tips/,9,492,14.5",
+          "https://www.example.com/templates/no-show-policy-template/,11,461,9.8",
+          "https://www.example.com/booking-software/,3,450,18.4",
+          "https://www.example.com/integrations/google-business-profile/,8,385,12.3",
+          "https://www.example.com/blog/2024/salon-tips/,4,380,12.0",
+          "https://www.example.com/security/,11,374,7.3",
+          "https://www.example.com/customers/,10,356,9.0",
+          "https://www.example.com/blog/booking-widget-guide/,6,345,12.7",
+          "https://www.example.com/integrations/webhooks/,5,344,16.0",
+          "https://www.example.com/pricing,31,312,2.7",
+          "https://www.example.com/blog/2024/reminder-templates/,2,310,8.8",
+          "https://www.example.com/blog/valentines-day-salon-ideas/,4,268,16.5",
+          "https://www.example.com/blog/seasonal-promotions/,3,257,15.3",
+          "https://www.example.com/blog/yoga-studio-class-packs/,3,220,13.7",
+          "https://www.example.com/pricing/old/,6,200,4.1",
+          "https://www.example.com/blog/no-show-policy/#fees,0,190,7.7",
+          "https://www.example.com/blog/2024/deposit-guide/,1,180,13.5",
+          "https://www.example.com/blog/tag/reminders/,0,150,22.0",
+          "https://www.example.com/templates/intake-form/,2,134,17.8",
+          "https://www.example.com/signup/trial/,3,120,6.3",
+          "https://www.example.com/blog/reduce-admin-time/,4,92,6.7",
+          "https://www.example.com/blog/2024/front-desk/,1,90,10.1",
+          "https://www.example.com/blog/2024/waitlist/,0,60,14.2",
+          "https://www.example.com/blog/how-to-take-online-bookings/,0,55,23.8",
+          "https://www.example.com/locations/charlotte/,0,55,40.8",
+          "https://www.example.com/locations/minneapolis/,0,52,31.6",
+          "https://www.example.com/locations/austin/,0,51,33.6",
+          "https://www.example.com/locations/houston/,0,48,32.7",
+          "https://www.example.com/locations/seattle/,0,48,25.0",
+          "https://www.example.com/locations/boston/,0,46,28.3",
+          "https://www.example.com/locations/orlando/,0,46,20.6",
+          "https://www.example.com/locations/san-jose/,0,42,28.4",
+          "https://www.example.com/blog/2024/class-packs/,0,40,17.5",
+          "https://www.example.com/locations/dallas/,0,36,20.0",
+          "https://www.example.com/locations/chicago/,0,35,46.9",
+          "https://www.example.com/locations/nashville/,0,35,27.8",
+          "https://www.example.com/locations/denver/,0,34,42.0",
+          "https://www.example.com/locations/kansas-city/,0,34,44.6",
+          "https://www.example.com/locations/sacramento/,0,34,40.9",
+          "https://www.example.com/locations/las-vegas/,0,32,20.0",
+          "https://www.example.com/blog/2024/gift-cards/,0,30,19.0",
+          "https://www.example.com/locations/salt-lake-city/,0,24,23.1",
+          "https://www.example.com/locations/miami/,0,22,32.7",
+          "https://www.example.com/locations/portland/,0,21,29.8",
+          "https://www.example.com/locations/tampa/,0,18,27.7",
+          "https://www.example.com/locations/phoenix/,0,14,26.4",
+          "https://www.example.com/locations/san-diego/,0,14,36.5",
+          "https://www.example.com/locations/raleigh/,0,13,46.1",
+          "https://www.example.com/locations/atlanta/,0,5,27.2"
+        ]
+      }
+    },
+    "search_console_check_indexing_issues": [
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/features/online-booking/",
+        "user_canonical": "https://www.example.com/features/online-booking/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0125
+      },
+      {
+        "url": "https://www.example.com/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/",
+        "user_canonical": null,
+        "rich_results_detected_items": [],
+        "ctr": 0.233
+      },
+      {
+        "url": "https://www.example.com/industries/salons/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/industries/salons/",
+        "user_canonical": "https://www.example.com/industries/salons/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.013
+      },
+      {
+        "url": "https://www.example.com/blog/reduce-no-shows/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/reduce-no-shows/",
+        "user_canonical": "https://www.example.com/blog/reduce-no-shows/",
+        "rich_results_detected_items": [
+          "Breadcrumbs",
+          "FAQ"
+        ],
+        "ctr": 0.0461
+      },
+      {
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/templates/cancellation-policy/",
+        "user_canonical": "https://www.example.com/templates/cancellation-policy/",
+        "rich_results_detected_items": [
+          "Breadcrumbs",
+          "FAQ"
+        ],
+        "ctr": 0.012
+      },
+      {
+        "url": "https://www.example.com/blog/appointment-reminder-templates/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/appointment-reminder-templates/",
+        "user_canonical": "https://www.example.com/blog/appointment-reminder-templates/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0092
+      },
+      {
+        "url": "https://www.example.com/blog/scheduling-app-comparison/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/scheduling-app-comparison/",
+        "user_canonical": "https://www.example.com/blog/scheduling-app-comparison/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0241
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/pricing/",
+        "user_canonical": "https://www.example.com/pricing/",
+        "rich_results_detected_items": [
+          "FAQ"
+        ],
+        "ctr": 0.1189
+      },
+      {
+        "url": "https://www.example.com/features/reminders/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/features/reminders/",
+        "user_canonical": "https://www.example.com/features/reminders/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0323
+      },
+      {
+        "url": "https://www.example.com/blog/holiday-schedule-tips/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/holiday-schedule-tips/",
+        "user_canonical": "https://www.example.com/blog/holiday-schedule-tips/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0192
+      },
+      {
+        "url": "https://www.example.com/blog/receptionist-scripts/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/receptionist-scripts/",
+        "user_canonical": "https://www.example.com/blog/receptionist-scripts/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0081
+      },
+      {
+        "url": "https://www.example.com/blog/new-year-promotions/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/new-year-promotions/",
+        "user_canonical": "https://www.example.com/blog/new-year-promotions/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0341
+      },
+      {
+        "url": "https://www.example.com/blog/personal-trainer-scheduling-tips/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/personal-trainer-scheduling-tips/",
+        "user_canonical": "https://www.example.com/blog/personal-trainer-scheduling-tips/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0226
+      },
+      {
+        "url": "https://www.example.com/blog/deposit-policy/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/deposit-policy/",
+        "user_canonical": "https://www.example.com/blog/deposit-policy/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0216
+      },
+      {
+        "url": "https://www.example.com/blog/gift-card-ideas-for-salons/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/gift-card-ideas-for-salons/",
+        "user_canonical": "https://www.example.com/blog/gift-card-ideas-for-salons/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0249
+      },
+      {
+        "url": "https://www.example.com/features/intake-forms/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/features/intake-forms/",
+        "user_canonical": "https://www.example.com/features/intake-forms/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0112
+      },
+      {
+        "url": "https://www.example.com/blog/physio-clinic-front-desk/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/physio-clinic-front-desk/",
+        "user_canonical": "https://www.example.com/blog/physio-clinic-front-desk/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0148
+      },
+      {
+        "url": "https://www.example.com/blog/clinic-opening-checklist/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/clinic-opening-checklist/",
+        "user_canonical": "https://www.example.com/blog/clinic-opening-checklist/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0189
+      },
+      {
+        "url": "https://www.example.com/blog/client-retention-for-salons/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/client-retention-for-salons/",
+        "user_canonical": "https://www.example.com/blog/client-retention-for-salons/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0171
+      },
+      {
+        "url": "https://www.example.com/blog/salon-pricing-guide/",
+        "coverage_state": "Submitted and indexed",
+        "google_canonical": "https://www.example.com/blog/salon-pricing-guide/",
+        "user_canonical": "https://www.example.com/blog/salon-pricing-guide/",
+        "rich_results_detected_items": [
+          "Breadcrumbs"
+        ],
+        "ctr": 0.0238
+      }
+    ],
+    "search_console_sitemaps_list": [
+      {
+        "path": "https://www.example.com/sitemap.xml",
+        "submitted": 177,
+        "indexed": 0,
+        "lastDownloaded": "2026-10-26"
+      }
+    ],
+    "sitemap_xml": {
+      "url": "https://www.example.com/sitemap.xml",
+      "paths": [
+        "/",
+        "/pricing/",
+        "/signup/",
+        "/demo/",
+        "/about/",
+        "/integrations/",
+        "/contact/",
+        "/security/",
+        "/customers/",
+        "/features/online-booking/",
+        "/features/reminders/",
+        "/features/payments/",
+        "/features/calendar-sync/",
+        "/features/waitlist/",
+        "/features/class-booking/",
+        "/features/intake-forms/",
+        "/features/staff-scheduling/",
+        "/industries/salons/",
+        "/industries/barbershops/",
+        "/industries/spas/",
+        "/industries/massage/",
+        "/industries/clinics/",
+        "/industries/physio/",
+        "/industries/fitness/",
+        "/industries/yoga-studios/",
+        "/industries/personal-trainers/",
+        "/industries/tutors/",
+        "/industries/nail-salons/",
+        "/industries/tattoo-studios/",
+        "/industries/photographers/",
+        "/industries/dog-groomers/",
+        "/integrations/google-calendar/",
+        "/integrations/outlook-calendar/",
+        "/integrations/instagram/",
+        "/integrations/facebook/",
+        "/integrations/google-business-profile/",
+        "/integrations/webhooks/",
+        "/blog/reduce-no-shows/",
+        "/blog/appointment-reminder-templates/",
+        "/blog/scheduling-app-comparison/",
+        "/blog/salon-booking-tips/",
+        "/blog/deposit-policy/",
+        "/blog/front-desk-checklist/",
+        "/blog/salon-marketing-ideas/",
+        "/blog/clinic-waitlist-tips/",
+        "/blog/double-booking/",
+        "/blog/client-intake-form-tips/",
+        "/blog/how-to-take-online-bookings/",
+        "/blog/gift-card-ideas-for-salons/",
+        "/blog/slow-season-ideas/",
+        "/blog/late-cancellation-fees/",
+        "/blog/rebooking-at-checkout/",
+        "/blog/booking-page-best-practices/",
+        "/blog/group-class-scheduling/",
+        "/blog/personal-trainer-scheduling-tips/",
+        "/blog/physio-clinic-front-desk/",
+        "/blog/massage-therapist-booking-tips/",
+        "/blog/spa-membership-ideas/",
+        "/blog/barbershop-walk-ins/",
+        "/blog/tutor-scheduling-tips/",
+        "/blog/yoga-studio-class-packs/",
+        "/blog/instagram-booking-link/",
+        "/blog/google-business-profile-booking/",
+        "/blog/sms-vs-email-reminders/",
+        "/blog/how-to-write-a-cancellation-policy/",
+        "/blog/salon-pricing-guide/",
+        "/blog/how-to-raise-prices/",
+        "/blog/client-retention-for-salons/",
+        "/blog/reviews-for-small-businesses/",
+        "/blog/staff-rota-tips/",
+        "/blog/multi-location-scheduling/",
+        "/blog/booking-buffer-times/",
+        "/blog/how-to-handle-late-clients/",
+        "/blog/seasonal-promotions/",
+        "/blog/referral-program-ideas/",
+        "/blog/loyalty-cards-vs-memberships/",
+        "/blog/contactless-check-in/",
+        "/blog/online-payments-for-clinics/",
+        "/blog/deposits-vs-prepayment/",
+        "/blog/waitlist-best-practices/",
+        "/blog/fill-last-minute-gaps/",
+        "/blog/first-time-client-offers/",
+        "/blog/salon-consultation-forms/",
+        "/blog/intake-forms-for-physio/",
+        "/blog/reduce-admin-time/",
+        "/blog/calendar-sync-guide/",
+        "/blog/time-zone-bookings/",
+        "/blog/recurring-appointments/",
+        "/blog/class-capacity-limits/",
+        "/blog/how-to-run-a-workshop/",
+        "/blog/private-sessions-pricing/",
+        "/blog/salon-opening-checklist/",
+        "/blog/clinic-opening-checklist/",
+        "/blog/studio-opening-checklist/",
+        "/blog/hiring-a-receptionist/",
+        "/blog/receptionist-scripts/",
+        "/blog/phone-vs-online-booking/",
+        "/blog/booking-widget-guide/",
+        "/blog/website-booking-button/",
+        "/blog/mobile-booking-tips/",
+        "/blog/no-show-fee-wording/",
+        "/blog/reminder-timing-guide/",
+        "/blog/text-message-etiquette/",
+        "/blog/holiday-schedule-tips/",
+        "/blog/summer-hours-tips/",
+        "/blog/back-to-school-bookings/",
+        "/blog/new-year-promotions/",
+        "/blog/valentines-day-salon-ideas/",
+        "/blog/gift-card-season/",
+        "/blog/black-friday-for-salons/",
+        "/blog/client-data-privacy/",
+        "/blog/accessible-booking-pages/",
+        "/blog/switching-booking-software/",
+        "/blog/booking-software-checklist/",
+        "/blog/membership-pricing/",
+        "/blog/class-waitlists/",
+        "/blog/studio-cancellation-rules/",
+        "/templates/cancellation-policy/",
+        "/templates/intake-form/",
+        "/templates/booking-confirmation-email/",
+        "/templates/deposit-policy/",
+        "/templates/no-show-policy-template/",
+        "/templates/consultation-form/",
+        "/templates/gift-certificate/",
+        "/templates/price-list/",
+        "/templates/staff-schedule/",
+        "/templates/waiver-form/",
+        "/templates/rebooking-card/",
+        "/templates/class-timetable/",
+        "/locations/austin/",
+        "/locations/denver/",
+        "/locations/chicago/",
+        "/locations/seattle/",
+        "/locations/boston/",
+        "/locations/atlanta/",
+        "/locations/miami/",
+        "/locations/dallas/",
+        "/locations/houston/",
+        "/locations/phoenix/",
+        "/locations/portland/",
+        "/locations/nashville/",
+        "/locations/charlotte/",
+        "/locations/raleigh/",
+        "/locations/tampa/",
+        "/locations/orlando/",
+        "/locations/san-diego/",
+        "/locations/san-jose/",
+        "/locations/sacramento/",
+        "/locations/las-vegas/",
+        "/locations/salt-lake-city/",
+        "/locations/minneapolis/",
+        "/locations/kansas-city/",
+        "/locations/st-louis/",
+        "/locations/columbus/",
+        "/locations/cleveland/",
+        "/locations/pittsburgh/",
+        "/locations/philadelphia/",
+        "/locations/baltimore/",
+        "/locations/richmond/",
+        "/locations/new-orleans/",
+        "/locations/albuquerque/",
+        "/locations/tucson/",
+        "/locations/omaha/",
+        "/locations/milwaukee/",
+        "/locations/indianapolis/",
+        "/locations/detroit/",
+        "/locations/buffalo/",
+        "/locations/toronto/",
+        "/locations/vancouver/",
+        "/locations/calgary/",
+        "/locations/montreal/",
+        "/locations/ottawa/",
+        "/locations/london/",
+        "/locations/manchester/",
+        "/locations/birmingham/",
+        "/locations/leeds/",
+        "/locations/glasgow/"
+      ]
+    },
+    "search_console_batch_url_inspection": {
+      "columns": [
+        "url",
+        "coverage_state",
+        "last_crawl_time"
+      ],
+      "rows": [
+        "https://www.example.com/locations/st-louis/,Crawled - currently not indexed,2026-10-03T00:20:00Z",
+        "https://www.example.com/locations/columbus/,Crawled - currently not indexed,2026-10-04T01:21:00Z",
+        "https://www.example.com/locations/cleveland/,Crawled - currently not indexed,2026-10-05T02:22:00Z",
+        "https://www.example.com/locations/pittsburgh/,Crawled - currently not indexed,2026-10-06T03:23:00Z",
+        "https://www.example.com/locations/philadelphia/,Crawled - currently not indexed,2026-10-07T04:24:00Z",
+        "https://www.example.com/locations/baltimore/,Crawled - currently not indexed,2026-10-08T05:25:00Z",
+        "https://www.example.com/locations/richmond/,Crawled - currently not indexed,2026-10-09T06:26:00Z",
+        "https://www.example.com/locations/new-orleans/,Crawled - currently not indexed,2026-10-10T07:27:00Z",
+        "https://www.example.com/locations/albuquerque/,URL is unknown to Google,",
+        "https://www.example.com/locations/tucson/,URL is unknown to Google,",
+        "https://www.example.com/locations/omaha/,Submitted and indexed,2026-10-13T01:20:00Z",
+        "https://www.example.com/locations/milwaukee/,Submitted and indexed,2026-10-14T02:21:00Z",
+        "https://www.example.com/locations/indianapolis/,Submitted and indexed,2026-10-15T03:22:00Z",
+        "https://www.example.com/locations/detroit/,Submitted and indexed,2026-10-16T04:23:00Z",
+        "https://www.example.com/locations/buffalo/,Submitted and indexed,2026-10-17T05:24:00Z",
+        "https://www.example.com/locations/toronto/,Submitted and indexed,2026-10-18T06:25:00Z",
+        "https://www.example.com/locations/vancouver/,Submitted and indexed,2026-10-19T07:26:00Z",
+        "https://www.example.com/locations/calgary/,Submitted and indexed,2026-10-20T08:27:00Z",
+        "https://www.example.com/locations/montreal/,Submitted and indexed,2026-10-21T00:28:00Z",
+        "https://www.example.com/locations/ottawa/,Submitted and indexed,2026-10-22T01:29:00Z",
+        "https://www.example.com/templates/price-list/,Crawled - currently not indexed,2026-10-03T02:20:00Z",
+        "https://www.example.com/templates/staff-schedule/,Crawled - currently not indexed,2026-10-04T03:21:00Z",
+        "https://www.example.com/templates/waiver-form/,Discovered - currently not indexed,",
+        "https://www.example.com/templates/rebooking-card/,Submitted and indexed,2026-10-06T05:23:00Z",
+        "https://www.example.com/templates/class-timetable/,Submitted and indexed,2026-10-07T06:24:00Z",
+        "https://www.example.com/blog/switching-booking-software/,Redirect error,2026-06-30T04:11:09Z",
+        "https://www.example.com/blog/booking-software-checklist/,Submitted and indexed,2026-10-09T08:26:00Z",
+        "https://www.example.com/blog/membership-pricing/,Submitted and indexed,2026-10-10T00:27:00Z",
+        "https://www.example.com/industries/tattoo-studios/,Submitted and indexed,2026-10-11T01:28:00Z",
+        "https://www.example.com/industries/dog-groomers/,Submitted and indexed,2026-10-12T02:29:00Z"
+      ]
+    },
+    "bing_get_crawl_stats": {
+      "columns": [
+        "Date",
+        "InIndex",
+        "Code4xx",
+        "Code5xx",
+        "CrawledPages"
+      ],
+      "rows": [
+        "/Date(1791936000000)/,190,9,0,140",
+        "/Date(1792022400000)/,190,10,0,147",
+        "/Date(1792108800000)/,191,11,0,154",
+        "/Date(1792195200000)/,191,9,0,161",
+        "/Date(1792281600000)/,192,10,0,168",
+        "/Date(1792368000000)/,192,11,0,140",
+        "/Date(1792454400000)/,193,9,0,147",
+        "/Date(1792540800000)/,193,10,0,154",
+        "/Date(1792627200000)/,194,11,0,161",
+        "/Date(1792713600000)/,194,9,0,168",
+        "/Date(1792800000000)/,195,10,0,140",
+        "/Date(1792886400000)/,195,11,0,147",
+        "/Date(1792972800000)/,196,9,0,154",
+        "/Date(1793059200000)/,196,10,0,161"
+      ]
+    },
+    "bing_get_crawl_issues": [],
+    "bing_get_blocked_urls": [],
+    "ga4_landing_page_by_channel": {
+      "date_range": "2026-09-28 to 2026-10-25",
+      "rows": {
+        "columns": [
+          "landingPage",
+          "sessionDefaultChannelGroup",
+          "sessions",
+          "keyEvents"
+        ],
+        "rows": [
+          "/,Direct,4100,246",
+          "/,Organic Search,3620,217",
+          "/,Paid Search,1900,114",
+          "/pricing/,Direct,980,118",
+          "/features/online-booking/,Paid Search,840,17",
+          "/signup/,Paid Search,720,274",
+          "(not set),Direct,640,13",
+          "/pricing/,Paid Search,610,73",
+          "/pricing/,Organic Search,560,67",
+          "/signup/,Direct,460,175",
+          "/blog/reduce-no-shows/,Organic Search,450,9",
+          "/industries/salons/,Paid Search,430,9",
+          "/,Referral,420,25",
+          "/lp/salon-offer/,Paid Search,410,0",
+          "/signup/,Organic Search,350,133",
+          "/demo/,Paid Search,280,87",
+          "/,Email,260,16",
+          "/features/reminders/,Paid Search,230,5",
+          "/features/online-booking/,Organic Search,225,4",
+          "/integrations/instagram/,Social,190,4",
+          "/blog/scheduling-app-comparison/,Referral,180,4",
+          "/industries/salons/,Organic Search,160,3",
+          "/pricing/,Email,140,17",
+          "/templates/cancellation-policy/,Referral,140,3",
+          "/blog/appointment-reminder-templates/,Social,120,2",
+          "/blog/reduce-no-shows/,Email,120,2",
+          "/features/payments/,Paid Search,120,2",
+          "/features/reminders/,Organic Search,120,2",
+          "/features/text-reminders/,Referral,115,2",
+          "/blog/new-year-promotions/,Organic Search,112,2",
+          "/customers/,Direct,111,2",
+          "/blog/spa-membership-ideas/,Organic Search,103,2",
+          "/blog/scheduling-app-comparison/,Organic Search,101,2",
+          "/industries/nail-salons/,Organic Search,84,2",
+          "/about/,Direct,80,2",
+          "/blog/barbershop-walk-ins/,Organic Search,76,2",
+          "/blog/gift-card-ideas-for-salons/,Organic Search,76,2",
+          "/blog/mobile-booking-tips/,Organic Search,71,1",
+          "/industries/clinics/,Paid Search,71,1",
+          "/blog/salon-booking-tips/,Organic Search,70,1",
+          "/features/online-booking/,Direct,70,1",
+          "/blog/personal-trainer-scheduling-tips/,Organic Search,68,1",
+          "/blog/salon-pricing-guide/,Organic Search,68,1",
+          "/blog/staff-rota-tips/,Organic Search,68,1",
+          "/templates/cancellation-policy/,Organic Search,68,1",
+          "/blog/no-show-policy/,Referral,67,1",
+          "/blog/reviews-for-small-businesses/,Organic Search,66,1",
+          "/blog/text-message-etiquette/,Organic Search,66,1",
+          "/blog/how-to-raise-prices/,Organic Search,65,1",
+          "/demo/,Direct,64,20",
+          "/blog/salon-booking-tips/,Social,62,1",
+          "/features/staff-scheduling/,Organic Search,61,1",
+          "/industries/clinics/,Organic Search,61,1",
+          "/blog/holiday-schedule-tips/,Organic Search,60,1",
+          "/blog/back-to-school-bookings/,Organic Search,59,1",
+          "/blog/deposit-policy/,Organic Search,59,1",
+          "/blog/recurring-appointments/,Organic Search,59,1",
+          "/blog/clinic-opening-checklist/,Organic Search,57,1",
+          "/blog/salon-consultation-forms/,Organic Search,56,1",
+          "/blog/appointment-reminder-templates/,Organic Search,55,1",
+          "/blog/salon-marketing-ideas/,Organic Search,54,1",
+          "/about/,Organic Search,53,1",
+          "/demo/,Organic Search,50,16",
+          "/blog/client-retention-for-salons/,Organic Search,49,1",
+          "/blog/deposits-vs-prepayment/,Organic Search,49,1",
+          "/industries/tutors/,Organic Search,46,1",
+          "/blog/physio-clinic-front-desk/,Organic Search,45,1",
+          "/blog/time-zone-bookings/,Organic Search,42,1",
+          "/blog/private-sessions-pricing/,Organic Search,41,1",
+          "/industries/fitness/,Organic Search,41,1",
+          "/features/payments/,Organic Search,40,1",
+          "/templates/cancellation-policy/,Social,40,1",
+          "/blog/website-booking-button/,Organic Search,39,1",
+          "/blog/how-to-write-a-cancellation-policy/,Organic Search,35,1",
+          "/blog/reduce-no-shows/,Referral,35,1",
+          "/blog/how-to-handle-late-clients/,Organic Search,33,1",
+          "/integrations/facebook/,Organic Search,33,1",
+          "/blog/group-class-scheduling/,Organic Search,31,1",
+          "/blog/how-to-run-a-workshop/,Organic Search,31,1",
+          "/blog/massage-therapist-booking-tips/,Organic Search,31,1",
+          "/blog/intake-forms-for-physio/,Organic Search,30,1",
+          "/blog/loyalty-cards-vs-memberships/,Organic Search,30,1",
+          "/blog/phone-vs-online-booking/,Organic Search,30,1",
+          "/blog/scheduling-app-comparison/,Email,30,1",
+          "/features/intake-forms/,Organic Search,30,1",
+          "/industries/massage/,Organic Search,30,1",
+          "/integrations/instagram/,Organic Search,30,1",
+          "/blog/google-business-profile-booking/,Organic Search,29,1",
+          "/blog/summer-hours-tips/,Organic Search,29,1",
+          "/blog/class-capacity-limits/,Organic Search,27,1",
+          "/blog/hiring-a-receptionist/,Organic Search,27,1",
+          "/blog/booking-buffer-times/,Organic Search,26,1",
+          "/blog/receptionist-scripts/,Organic Search,26,1",
+          "/blog/sms-vs-email-reminders/,Organic Search,26,1",
+          "/features/class-booking/,Organic Search,26,1",
+          "/blog/black-friday-for-salons/,Organic Search,25,0",
+          "/blog/slow-season-ideas/,Organic Search,25,0",
+          "/blog/waitlist-best-practices/,Organic Search,25,0",
+          "/blog/double-booking/,Organic Search,24,0",
+          "/blog/instagram-booking-link/,Organic Search,24,0",
+          "/blog/reminder-timing-guide/,Organic Search,24,0",
+          "/industries/personal-trainers/,Organic Search,24,0",
+          "/industries/physio/,Organic Search,24,0",
+          "/industries/barbershops/,Organic Search,23,0",
+          "/templates/consultation-form/,Organic Search,23,0",
+          "/blog/referral-program-ideas/,Organic Search,22,0",
+          "/customers/,Referral,22,0",
+          "/industries/salons/,Referral,22,0",
+          "/industries/spas/,Organic Search,21,0",
+          "/blog/first-time-client-offers/,Organic Search,19,0",
+          "/features/waitlist/,Organic Search,19,0",
+          "/blog/no-show-policy/,Organic Search,18,0",
+          "/blog/online-payments-for-clinics/,Organic Search,18,0",
+          "/integrations/,Organic Search,17,0",
+          "/blog/late-cancellation-fees/,Organic Search,16,0",
+          "/blog/tutor-scheduling-tips/,Organic Search,16,0",
+          "/integrations/google-calendar/,Organic Search,16,0",
+          "/blog/fill-last-minute-gaps/,Organic Search,15,0",
+          "/industries/yoga-studios/,Organic Search,15,0",
+          "/templates/gift-certificate/,Organic Search,15,0",
+          "/blog/calendar-sync-guide/,Organic Search,14,0",
+          "/integrations/outlook-calendar/,Organic Search,14,0",
+          "/blog/accessible-booking-pages/,Organic Search,13,0",
+          "/blog/gift-card-season/,Organic Search,12,0",
+          "/blog/front-desk-checklist/,Organic Search,11,0",
+          "/blog/no-show-fee-wording/,Organic Search,11,0",
+          "/blog/rebooking-at-checkout/,Organic Search,11,0",
+          "/blog/studio-opening-checklist/,Organic Search,11,0",
+          "/templates/deposit-policy/,Organic Search,11,0",
+          "/blog/client-data-privacy/,Organic Search,10,0",
+          "/industries/photographers/,Organic Search,10,0",
+          "/templates/no-show-policy-template/,Organic Search,10,0",
+          "/blog/multi-location-scheduling/,Organic Search,9,0",
+          "/security/,Organic Search,9,0",
+          "/blog/clinic-waitlist-tips/,Organic Search,8,0",
+          "/blog/contactless-check-in/,Organic Search,8,0",
+          "/blog/salon-opening-checklist/,Organic Search,8,0",
+          "/features/calendar-sync/,Organic Search,8,0",
+          "/blog/client-intake-form-tips/,Organic Search,7,0",
+          "/integrations/google-business-profile/,Organic Search,7,0",
+          "/blog/booking-page-best-practices/,Organic Search,6,0",
+          "/contact/,Organic Search,6,0",
+          "/blog/booking-widget-guide/,Organic Search,5,0",
+          "/features/text-reminders/,Organic Search,5,0",
+          "/templates/booking-confirmation-email/,Organic Search,5,0",
+          "/features/reminders/),Referral,4,0",
+          "/integrations/webhooks/,Organic Search,4,0",
+          "/blog/reduce-admin-time/,Organic Search,3,0",
+          "/blog/seasonal-promotions/,Organic Search,3,0",
+          "/blog/valentines-day-salon-ideas/,Organic Search,3,0",
+          "/blog/yoga-studio-class-packs/,Organic Search,3,0",
+          "/templates/intake-form/,Organic Search,2,0",
+          "/blog/2024/front-desk/,Organic Search,1,0"
+        ]
+      }
+    },
+    "dataforseo_backlinks_summary": {
+      "target": "example.com",
+      "referring_domains": 410,
+      "rank": 214,
+      "backlinks": 6900,
+      "backlinks_spam_score": 6,
+      "broken_backlinks": 0,
+      "referring_links_tld": {
+        "com": 3980,
+        "org": 620,
+        "net": 480,
+        "co.uk": 410,
+        "ca": 330,
+        "io": 260,
+        "other": 820
+      }
+    },
+    "pagespeed_core_web_vitals_mobile": [
+      {
+        "url": "https://www.example.com/",
+        "lcp_s": 2.2,
+        "cls": 0.02,
+        "tbt_ms": 180
+      },
+      {
+        "url": "https://www.example.com/blog/reduce-no-shows/",
+        "lcp_s": 3.7,
+        "cls": 0.04,
+        "tbt_ms": 240
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "lcp_s": 2.6,
+        "cls": 0.12,
+        "tbt_ms": 150
+      },
+      {
+        "url": "https://www.example.com/industries/salons/",
+        "lcp_s": 3.1,
+        "cls": 0.03,
+        "tbt_ms": 320
+      },
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "lcp_s": 2.4,
+        "cls": 0.01,
+        "tbt_ms": 210
+      }
+    ],
+    "pagespeed_accessibility_seo_home": {
+      "url": "https://www.example.com/",
+      "seo_failing_audits": [],
+      "heading_order": "fail",
+      "hreflang": "pass"
+    },
+    "pagespeed_resource_optimizations": {
+      "url": "https://www.example.com/blog/reduce-no-shows/",
+      "opportunities": [
+        {
+          "title": "Properly size images",
+          "savings": "Est savings of 380 KiB"
+        },
+        {
+          "title": "Serve images in next-gen formats",
+          "savings": "Est savings of 240 KiB"
+        },
+        {
+          "title": "Reduce unused JavaScript",
+          "savings": "Est savings of 90 KiB"
+        }
+      ]
+    },
+    "dataforseo_onpage_instant_pages": [
+      {
+        "url": "https://www.example.com/about/",
+        "status_code": 200,
+        "meta": {
+          "title": "About Example Booking Software and Our Team",
+          "title_length": 43,
+          "description": "Who builds Example Booking Software, why we started, and how to reach the team.",
+          "description_length": 79,
+          "htags": {
+            "h1_count": 2
+          },
+          "canonical": "https://www.example.com/about/",
+          "content": {
+            "plain_text_word_count": 520
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "status_code": 200,
+        "meta": {
+          "title": "Online Booking System for Small Businesses: Take Bookings 24/7 | Example Booking",
+          "title_length": 80,
+          "description": "Give clients a booking page they can use day or night. Services, staff, prices and deposits in one place, synced to your calendar.",
+          "description_length": 130,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/features/online-booking/",
+          "content": {
+            "plain_text_word_count": 1120
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/",
+        "status_code": 200,
+        "meta": {
+          "title": "Online Booking Software for Small Businesses | Example Booking",
+          "title_length": 62,
+          "description": "Online booking, automatic reminders and deposits for salons, clinics, studios and trainers. Let clients book 24/7, cut no-shows with text reminders, and get paid up front. Plans from $19 a month.",
+          "description_length": 195,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/",
+          "content": {
+            "plain_text_word_count": 940
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/industries/salons/",
+        "status_code": 200,
+        "meta": {
+          "title": "Salon Booking App and Software | Example Booking",
+          "title_length": 48,
+          "description": "Online booking, reminders and deposits for hair, nail and beauty salons. Clients book 24/7 and every stylist works from one calendar.",
+          "description_length": 133,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/industries/salons/",
+          "content": {
+            "plain_text_word_count": 660
+          }
+        },
+        "checks": {
+          "no_image_alt": true
+        }
+      },
+      {
+        "url": "https://www.example.com/blog/reduce-no-shows/",
+        "status_code": 200,
+        "meta": {
+          "title": "How to Reduce No-Shows: 9 Tactics That Work (With Templates) | Example Booking",
+          "title_length": 78,
+          "description": "Nine tactics that cut no-shows for salons, clinics and studios: reminders, deposits, a clear cancellation window and a waitlist.",
+          "description_length": 128,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/blog/reduce-no-shows/",
+          "content": {
+            "plain_text_word_count": 2640
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/blog/appointment-reminder-templates/",
+        "status_code": 200,
+        "meta": {
+          "title": "Appointment Reminder Text Templates | Example Booking",
+          "title_length": 53,
+          "description": "14 appointment reminder texts you can copy for salons, clinics and studios, with timing tips.",
+          "description_length": 93,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/blog/appointment-reminder-templates/",
+          "content": {
+            "plain_text_word_count": 2120
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "status_code": 200,
+        "meta": {
+          "title": "Cancellation Policy Template (Free and Editable) for Salons, Clinics and Studios",
+          "title_length": 80,
+          "description": "A free cancellation policy template with a 24-hour window, late fees and no-show rules you can edit and add to your booking page.",
+          "description_length": 129,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/templates/cancellation-policy/",
+          "content": {
+            "plain_text_word_count": 450
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "status_code": 200,
+        "meta": {
+          "title": "Pricing | Example Booking",
+          "title_length": 25,
+          "description": "Three plans by team size: Starter $19, Growth $49 and Business $99 a month. Every plan has unlimited bookings.",
+          "description_length": 110,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/pricing/",
+          "content": {
+            "plain_text_word_count": 380
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      },
+      {
+        "url": "https://www.example.com/locations/denver/",
+        "status_code": 200,
+        "meta": {
+          "title": "Booking Software in Denver | Example Booking",
+          "title_length": 44,
+          "description": "Online booking software for Denver salons, clinics and studios.",
+          "description_length": 63,
+          "htags": {
+            "h1_count": 1
+          },
+          "canonical": "https://www.example.com/locations/denver/",
+          "content": {
+            "plain_text_word_count": 140
+          }
+        },
+        "checks": {
+          "no_image_alt": false
+        }
+      }
+    ],
+    "crawler_status_code_checker": [
+      {
+        "url": "http://example.com/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://example.com/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "http://www.example.com/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/signup/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/industries/salons/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/reduce-no-shows/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/lp/salon-offer/",
+        "status_code": 404,
+        "redirect_chain": [],
+        "final_status": 404
+      },
+      {
+        "url": "https://www.example.com/demo/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/features/reminders/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/scheduling-app-comparison/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/integrations/instagram/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/appointment-reminder-templates/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/features/payments/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/customers/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/about/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/no-show-policy/",
+        "status_code": 404,
+        "redirect_chain": [],
+        "final_status": 404
+      },
+      {
+        "url": "https://www.example.com/blog/2024/no-show-tips/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/blog/reduce-no-shows/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/features/text-reminders/",
+        "status_code": 404,
+        "redirect_chain": [],
+        "final_status": 404
+      },
+      {
+        "url": "https://www.example.com/booking-software/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/features/online-booking",
+          "https://www.example.com/features/online-booking/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/2024/salon-tips/",
+        "status_code": 302,
+        "redirect_chain": [
+          "https://www.example.com/blog/salon-booking-tips/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/2024/reminder-templates/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/blog/appointment-reminder-templates/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/pricing/old/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/pricing/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/2024/deposit-guide/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/blog/deposit-policy/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/tag/reminders/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/blog/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/signup/trial/",
+        "status_code": 301,
+        "redirect_chain": [
+          "https://www.example.com/signup/"
+        ],
+        "final_status": 200
+      },
+      {
+        "url": "https://www.example.com/blog/switching-booking-software/",
+        "status_code": 200,
+        "redirect_chain": [],
+        "final_status": 200
+      }
+    ]
+  }
+}

@@ -1,0 +1,928 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"b2b-lead-gen-audit\" skill. We sell online booking software to salons, clinics and fitness studios. Audit our lead generation for the last 90 days across GA4, Search Console, LinkedIn Ads and Google Ads. Our leads are trial sign-ups, demo requests and the contact-sales form, our target cost per lead is $60, and we sell to businesses with 1 to 50 staff. CRM numbers for the same 90 days are below.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "business_type": "B2B (default preset)",
+  "lead_events": [
+    "sign_up",
+    "demo_request",
+    "generate_lead"
+  ],
+  "what_you_sell_words": [
+    "booking software",
+    "booking app",
+    "booking system",
+    "scheduling software",
+    "scheduling app",
+    "appointment software",
+    "appointment app",
+    "online booking"
+  ],
+  "brand_terms": [
+    "example booking",
+    "examplebooking",
+    "exampel booking"
+  ],
+  "target_cost_per_lead": 60.0,
+  "buyer": {
+    "seniorities": "not given, so the defaults are used: manager, director, VP, CXO, partner, owner",
+    "company_sizes": [
+      "SIZE_1",
+      "SIZE_2_TO_10",
+      "SIZE_11_TO_50"
+    ]
+  },
+  "crm_numbers": {
+    "leads": 1140,
+    "qualified": 380,
+    "won": 118,
+    "median_first_response_minutes": 35,
+    "by_source": {
+      "Google Ads": {
+        "leads": 410,
+        "qualified": 150
+      },
+      "Organic search": {
+        "leads": 430,
+        "qualified": 150
+      },
+      "LinkedIn Ads": {
+        "leads": 62,
+        "qualified": 9
+      },
+      "Other": {
+        "leads": 238,
+        "qualified": 71
+      }
+    }
+  },
+  "accounts": {
+    "ga4_property": "properties/123456789",
+    "search_console": "https://www.example.com/",
+    "linkedin_ads": "500000001",
+    "google_ads": "1234567890",
+    "facebook_ads": "not connected",
+    "callrail": "not connected"
+  },
+  "window": "2026-07-30 to 2026-10-27",
+  "history_range": "2025-09-28 to 2026-10-27",
+  "search_console_through": "2026-10-24",
+  "data_pulled": [
+    "GA4 get_property, list_key_events (4), list_data_streams (2 web streams), get_enhanced_measurement_settings",
+    "GA4 events in the window (12 event names) and over the history range (13)",
+    "GA4 form_start / form_submit by page over the history range (10 rows)",
+    "GA4 hosts (3), Google organic sessions to 2026-10-24",
+    "GA4 channels (8) and lead sessions by channel (8)",
+    "GA4 landing pages (81 rows) and lead sessions by landing page",
+    "Search Console by date (87 rows) and by query (3,600 rows)",
+    "LinkedIn get_campaigns (6), get_analytics for the window (3 rows with delivery), get_conversions (2 rules)",
+    "LinkedIn seniority (10 rows) and company size (9 rows) on the 3 campaigns that spent",
+    "Google Ads gaql campaign report (5 rows)",
+    "GA4 sessions from linkedin and google / cpc in the window, by campaign"
+  ],
+  "data": {
+    "ga4": {
+      "property": {
+        "name": "properties/123456789",
+        "displayName": "Example Booking Software",
+        "createTime": "2022-03-14",
+        "timeZone": "America/New_York",
+        "currencyCode": "USD"
+      },
+      "key_events": [
+        {
+          "eventName": "sign_up",
+          "key_event_id": "10000000011",
+          "countingMethod": "ONCE_PER_EVENT"
+        },
+        {
+          "eventName": "demo_request",
+          "key_event_id": "10000000012",
+          "countingMethod": "ONCE_PER_SESSION"
+        },
+        {
+          "eventName": "signup_qa_test",
+          "key_event_id": "10000000013",
+          "countingMethod": "ONCE_PER_EVENT"
+        },
+        {
+          "eventName": "subscription_started",
+          "key_event_id": "10000000014",
+          "countingMethod": "ONCE_PER_EVENT"
+        }
+      ],
+      "web_streams": [
+        {
+          "data_stream_id": "3000000001",
+          "displayName": "Example Booking Software web",
+          "defaultUri": "https://www.example.com"
+        },
+        {
+          "data_stream_id": "3000000002",
+          "displayName": "Staging",
+          "defaultUri": "https://staging.example.com"
+        }
+      ],
+      "enhanced_measurement": {
+        "formInteractionsEnabled": true
+      },
+      "events_window": {
+        "page_view": {
+          "eventCount": 184200,
+          "sessions": 61800
+        },
+        "session_start": {
+          "eventCount": 61800,
+          "sessions": 61800
+        },
+        "user_engagement": {
+          "eventCount": 97400,
+          "sessions": 37900
+        },
+        "scroll": {
+          "eventCount": 52100,
+          "sessions": 24600
+        },
+        "click": {
+          "eventCount": 8900,
+          "sessions": 6100
+        },
+        "form_start": {
+          "eventCount": 3940,
+          "sessions": 3120
+        },
+        "form_submit": {
+          "eventCount": 2310,
+          "sessions": 2060
+        },
+        "sign_up": {
+          "eventCount": 1010,
+          "sessions": 985
+        },
+        "subscription_started": {
+          "eventCount": 162,
+          "sessions": 160
+        },
+        "demo_request": {
+          "eventCount": 214,
+          "sessions": 214
+        },
+        "generate_lead": {
+          "eventCount": 58,
+          "sessions": 57
+        },
+        "file_download": {
+          "eventCount": 640,
+          "sessions": 590
+        }
+      },
+      "events_history": {
+        "page_view": {
+          "eventCount": 781000,
+          "sessions": 262000
+        },
+        "session_start": {
+          "eventCount": 262000,
+          "sessions": 262000
+        },
+        "user_engagement": {
+          "eventCount": 409000,
+          "sessions": 158000
+        },
+        "scroll": {
+          "eventCount": 219000,
+          "sessions": 103000
+        },
+        "click": {
+          "eventCount": 37600,
+          "sessions": 25800
+        },
+        "form_start": {
+          "eventCount": 16010,
+          "sessions": 12900
+        },
+        "form_submit": {
+          "eventCount": 9189,
+          "sessions": 8100
+        },
+        "sign_up": {
+          "eventCount": 4180,
+          "sessions": 4070
+        },
+        "subscription_started": {
+          "eventCount": 655,
+          "sessions": 648
+        },
+        "demo_request": {
+          "eventCount": 880,
+          "sessions": 880
+        },
+        "generate_lead": {
+          "eventCount": 171,
+          "sessions": 168
+        },
+        "file_download": {
+          "eventCount": 2700,
+          "sessions": 2480
+        },
+        "signup_qa_test": {
+          "eventCount": 6,
+          "sessions": 6
+        }
+      },
+      "forms_by_page_history": {
+        "/signup/": {
+          "form_start": 11820,
+          "form_submit": 7400,
+          "start_sessions": 10920
+        },
+        "/demo/": {
+          "form_start": 2150,
+          "form_submit": 960,
+          "start_sessions": 2030
+        },
+        "/pricing/": {
+          "form_start": 1020,
+          "form_submit": 171,
+          "start_sessions": 940
+        },
+        "/blog/reduce-no-shows/": {
+          "form_start": 640,
+          "form_submit": 407,
+          "start_sessions": 610
+        },
+        "/templates/cancellation-policy/": {
+          "form_start": 380,
+          "form_submit": 251,
+          "start_sessions": 371
+        }
+      },
+      "hosts": {
+        "www.example.com": 61550,
+        "staging.example.com": 210,
+        "localhost": 40
+      },
+      "google_organic_sessions_to_search_console_end": 22450,
+      "channels": {
+        "Organic Search": {
+          "sessions": 26400,
+          "engagedSessions": 16200
+        },
+        "Direct": {
+          "sessions": 13360,
+          "engagedSessions": 6500
+        },
+        "Paid Search": {
+          "sessions": 9450,
+          "engagedSessions": 5960
+        },
+        "Referral": {
+          "sessions": 4300,
+          "engagedSessions": 2790
+        },
+        "Email": {
+          "sessions": 3800,
+          "engagedSessions": 2650
+        },
+        "Organic Social": {
+          "sessions": 2160,
+          "engagedSessions": 990
+        },
+        "Paid Social": {
+          "sessions": 1230,
+          "engagedSessions": 610
+        },
+        "Unassigned": {
+          "sessions": 1100,
+          "engagedSessions": 220
+        }
+      },
+      "lead_sessions_by_channel": {
+        "Organic Search": {
+          "sessions": 520,
+          "eventCount": 548
+        },
+        "Paid Search": {
+          "sessions": 395,
+          "eventCount": 422
+        },
+        "Direct": {
+          "sessions": 160,
+          "eventCount": 174
+        },
+        "Email": {
+          "sessions": 62,
+          "eventCount": 65
+        },
+        "Referral": {
+          "sessions": 30,
+          "eventCount": 32
+        },
+        "Paid Social": {
+          "sessions": 28,
+          "eventCount": 29
+        },
+        "Organic Social": {
+          "sessions": 9,
+          "eventCount": 9
+        },
+        "Unassigned": {
+          "sessions": 3,
+          "eventCount": 3
+        }
+      },
+      "landing_pages": {
+        "/": {
+          "sessions": 14200,
+          "engagedSessions": 7900,
+          "lead_sessions": 262
+        },
+        "/blog/reduce-no-shows/": {
+          "sessions": 7800,
+          "engagedSessions": 3100,
+          "lead_sessions": 18
+        },
+        "/pricing/": {
+          "sessions": 6100,
+          "engagedSessions": 4300,
+          "lead_sessions": 240
+        },
+        "/blog/appointment-reminder-templates/": {
+          "sessions": 5200,
+          "engagedSessions": 2000,
+          "lead_sessions": 0
+        },
+        "/features/online-booking/": {
+          "sessions": 3900,
+          "engagedSessions": 2500,
+          "lead_sessions": 120
+        },
+        "/industries/salons/": {
+          "sessions": 3600,
+          "engagedSessions": 2300,
+          "lead_sessions": 150
+        },
+        "/signup/": {
+          "sessions": 3300,
+          "engagedSessions": 2600,
+          "lead_sessions": 190
+        },
+        "/templates/cancellation-policy/": {
+          "sessions": 3100,
+          "engagedSessions": 1400,
+          "lead_sessions": 0
+        },
+        "/industries/clinics/": {
+          "sessions": 2500,
+          "engagedSessions": 1500,
+          "lead_sessions": 88
+        },
+        "/features/calendar-sync/": {
+          "sessions": 2300,
+          "engagedSessions": 1400,
+          "lead_sessions": 41
+        },
+        "/demo/": {
+          "sessions": 1900,
+          "engagedSessions": 1250,
+          "lead_sessions": 64
+        },
+        "/industries/fitness/": {
+          "sessions": 1700,
+          "engagedSessions": 1000,
+          "lead_sessions": 51
+        },
+        "/features/reminders/": {
+          "sessions": 1300,
+          "engagedSessions": 800,
+          "lead_sessions": 38
+        },
+        "/blog/deposit-policy/": {
+          "sessions": 1100,
+          "engagedSessions": 430,
+          "lead_sessions": 4
+        },
+        "/integrations/": {
+          "sessions": 900,
+          "engagedSessions": 520,
+          "lead_sessions": 17
+        },
+        "/blog/front-desk-checklist/": {
+          "sessions": 700,
+          "engagedSessions": 280,
+          "lead_sessions": 2
+        },
+        "(not set)": {
+          "sessions": 620,
+          "engagedSessions": 30,
+          "lead_sessions": 0
+        }
+      },
+      "landing_pages_rest": {
+        "rows": 64,
+        "sessions": 1580,
+        "engaged_sessions": 610,
+        "lead_sessions": 12,
+        "largest_row_sessions": 90
+      },
+      "linkedin_sessions": [
+        {
+          "sessionSourceMedium": "linkedin / paid_social",
+          "sessionCampaignName": "clinics_demo_us_ca",
+          "sessions": 860,
+          "engagedSessions": 450
+        },
+        {
+          "sessionSourceMedium": "linkedin / paid_social",
+          "sessionCampaignName": "retargeting_site_90d",
+          "sessions": 370,
+          "engagedSessions": 160
+        }
+      ],
+      "google_cpc_sessions": [
+        {
+          "sessionCampaignName": "Brand",
+          "sessions": 2240,
+          "engagedSessions": 1690
+        },
+        {
+          "sessionCampaignName": "Non-brand | Salon software",
+          "sessions": 2860,
+          "engagedSessions": 1730
+        },
+        {
+          "sessionCampaignName": "Non-brand | Clinic scheduling",
+          "sessions": 1890,
+          "engagedSessions": 1150
+        },
+        {
+          "sessionCampaignName": "Non-brand | Fitness booking",
+          "sessions": 1130,
+          "engagedSessions": 660
+        },
+        {
+          "sessionCampaignName": "Performance Max | Trial",
+          "sessions": 1330,
+          "engagedSessions": 730
+        }
+      ]
+    },
+    "search_console": {
+      "property_totals_to_search_console_end": {
+        "clicks": 25800,
+        "impressions": 694000
+      },
+      "query_rows_with_1500_plus_impressions": [
+        {
+          "query": "example booking",
+          "clicks": 5200,
+          "impressions": 9800,
+          "position": 1.1
+        },
+        {
+          "query": "example booking login",
+          "clicks": 3400,
+          "impressions": 5600,
+          "position": 1.0
+        },
+        {
+          "query": "example booking software",
+          "clicks": 2100,
+          "impressions": 4300,
+          "position": 1.0
+        },
+        {
+          "query": "examplebooking",
+          "clicks": 620,
+          "impressions": 1500,
+          "position": 1.2
+        },
+        {
+          "query": "example booking pricing",
+          "clicks": 410,
+          "impressions": 1600,
+          "position": 1.1
+        },
+        {
+          "query": "salon booking software",
+          "clicks": 310,
+          "impressions": 21000,
+          "position": 6.8
+        },
+        {
+          "query": "booking software for small business",
+          "clicks": 240,
+          "impressions": 18500,
+          "position": 7.9
+        },
+        {
+          "query": "online booking system",
+          "clicks": 120,
+          "impressions": 16200,
+          "position": 11.4
+        },
+        {
+          "query": "appointment scheduling software",
+          "clicks": 150,
+          "impressions": 14800,
+          "position": 9.2
+        },
+        {
+          "query": "clinic appointment software",
+          "clicks": 210,
+          "impressions": 9400,
+          "position": 5.6
+        },
+        {
+          "query": "fitness class booking app",
+          "clicks": 180,
+          "impressions": 8700,
+          "position": 6.1
+        },
+        {
+          "query": "best scheduling app for salons",
+          "clicks": 260,
+          "impressions": 6900,
+          "position": 4.4
+        },
+        {
+          "query": "appointment reminder software",
+          "clicks": 140,
+          "impressions": 6100,
+          "position": 8.3
+        },
+        {
+          "query": "physio booking software",
+          "clicks": 190,
+          "impressions": 4200,
+          "position": 3.9
+        },
+        {
+          "query": "booking app for personal trainers",
+          "clicks": 95,
+          "impressions": 3900,
+          "position": 12.7
+        },
+        {
+          "query": "salon scheduling app",
+          "clicks": 420,
+          "impressions": 3600,
+          "position": 2.4
+        },
+        {
+          "query": "how to choose a scheduling app",
+          "clicks": 160,
+          "impressions": 3100,
+          "position": 2.6
+        },
+        {
+          "query": "massage booking software",
+          "clicks": 140,
+          "impressions": 2900,
+          "position": 2.8
+        },
+        {
+          "query": "booking software pricing",
+          "clicks": 60,
+          "impressions": 2400,
+          "position": 9.8
+        },
+        {
+          "query": "yoga studio booking app",
+          "clicks": 65,
+          "impressions": 2200,
+          "position": 15.1
+        },
+        {
+          "query": "booking system with sms reminders",
+          "clicks": 70,
+          "impressions": 1800,
+          "position": 3.1
+        },
+        {
+          "query": "deposit booking software",
+          "clicks": 55,
+          "impressions": 1500,
+          "position": 5.2
+        },
+        {
+          "query": "how to reduce no shows",
+          "clicks": 820,
+          "impressions": 22000,
+          "position": 3.4
+        },
+        {
+          "query": "appointment reminder text template",
+          "clicks": 690,
+          "impressions": 15500,
+          "position": 2.2
+        },
+        {
+          "query": "cancellation policy template",
+          "clicks": 520,
+          "impressions": 12400,
+          "position": 3.0
+        },
+        {
+          "query": "salon booking tips",
+          "clicks": 340,
+          "impressions": 9800,
+          "position": 4.1
+        },
+        {
+          "query": "deposit policy for salons",
+          "clicks": 180,
+          "impressions": 5300,
+          "position": 5.5
+        },
+        {
+          "query": "front desk checklist",
+          "clicks": 140,
+          "impressions": 4800,
+          "position": 7.2
+        },
+        {
+          "query": "no show fee wording",
+          "clicks": 110,
+          "impressions": 3900,
+          "position": 6.0
+        },
+        {
+          "query": "receptionist jobs",
+          "clicks": 12,
+          "impressions": 2100,
+          "position": 24.0
+        }
+      ],
+      "other_query_rows": {
+        "rows": 3570,
+        "brand": {
+          "rows": 140,
+          "clicks": 410,
+          "impressions": 3600,
+          "impressions_at_top_3": 3300
+        },
+        "intent": {
+          "rows": 1380,
+          "clicks": 1240,
+          "impressions": 101000,
+          "impressions_at_top_3": 14800,
+          "within_reach": {
+            "rows": 214,
+            "impressions": 61000,
+            "clicks": 610,
+            "rule": "positions 4-20 and 100 to 1,499 impressions"
+          }
+        },
+        "other": {
+          "rows": 2050,
+          "clicks": 1690,
+          "impressions": 128000
+        }
+      }
+    },
+    "linkedin_ads": {
+      "campaigns": [
+        {
+          "id": "600000001",
+          "name": "Lead Gen Form | Salon and spa owners | US",
+          "objective": "LEAD_GENERATION",
+          "status": "ACTIVE",
+          "analytics": {
+            "costInUsd": "4180.5512",
+            "impressions": 268000,
+            "clicks": 1520,
+            "landingPageClicks": 0,
+            "oneClickLeadFormOpens": 640,
+            "oneClickLeads": 34,
+            "externalWebsiteConversions": 0
+          }
+        },
+        {
+          "id": "600000002",
+          "name": "Website demo | Clinics | US and CA",
+          "objective": "WEBSITE_CONVERSION",
+          "status": "ACTIVE",
+          "analytics": {
+            "costInUsd": "3042.1798",
+            "impressions": 154000,
+            "clicks": 1060,
+            "landingPageClicks": 980,
+            "oneClickLeadFormOpens": 0,
+            "oneClickLeads": 0,
+            "externalWebsiteConversions": 19
+          }
+        },
+        {
+          "id": "600000003",
+          "name": "Retargeting | Site visitors 90 days",
+          "objective": "WEBSITE_CONVERSION",
+          "status": "ACTIVE",
+          "analytics": {
+            "costInUsd": "1388.4031",
+            "impressions": 61000,
+            "clicks": 470,
+            "landingPageClicks": 440,
+            "oneClickLeadFormOpens": 0,
+            "oneClickLeads": 0,
+            "externalWebsiteConversions": 12
+          }
+        },
+        {
+          "id": "600000004",
+          "name": "Fitness studios | Lead Gen Form | UK",
+          "objective": "LEAD_GENERATION",
+          "status": "PAUSED",
+          "analytics": "no delivery in the window"
+        },
+        {
+          "id": "600000005",
+          "name": "Webinar promo | 2025-11",
+          "objective": "WEBSITE_CONVERSION",
+          "status": "ARCHIVED",
+          "analytics": "no delivery in the window"
+        },
+        {
+          "id": "600000006",
+          "name": "Brand awareness | Video | 2025",
+          "objective": "BRAND_AWARENESS",
+          "status": "ARCHIVED",
+          "analytics": "no delivery in the window"
+        }
+      ],
+      "conversions": [
+        {
+          "name": "Demo request thank-you",
+          "type": "LEAD",
+          "url_rule": "https://www.example.com/demo/thanks/",
+          "match": "EXACT",
+          "campaigns": [
+            "600000002",
+            "600000003"
+          ]
+        },
+        {
+          "name": "Trial sign-up complete",
+          "type": "SIGN_UP",
+          "url_rule": "https://www.example.com/signup/welcome/",
+          "match": "EXACT",
+          "campaigns": [
+            "600000002",
+            "600000003"
+          ]
+        }
+      ],
+      "seniority": [
+        {
+          "seniority": "owner",
+          "clicks": 640,
+          "impressions": 71000,
+          "costInUsd": 1690.2
+        },
+        {
+          "seniority": "senior",
+          "clicks": 610,
+          "impressions": 98000,
+          "costInUsd": 1710.55
+        },
+        {
+          "seniority": "entry",
+          "clicks": 540,
+          "impressions": 92000,
+          "costInUsd": 1402.1
+        },
+        {
+          "seniority": "manager",
+          "clicks": 420,
+          "impressions": 64000,
+          "costInUsd": 1180.9
+        },
+        {
+          "seniority": "director",
+          "clicks": 110,
+          "impressions": 21000,
+          "costInUsd": 402.3
+        },
+        {
+          "seniority": "training",
+          "clicks": 95,
+          "impressions": 18000,
+          "costInUsd": 240.75
+        },
+        {
+          "seniority": "CXO",
+          "clicks": 70,
+          "impressions": 12000,
+          "costInUsd": 260.1
+        },
+        {
+          "seniority": "unpaid",
+          "clicks": 30,
+          "impressions": 7000,
+          "costInUsd": 70.4
+        },
+        {
+          "seniority": "VP",
+          "clicks": 25,
+          "impressions": 6000,
+          "costInUsd": 98.0
+        },
+        {
+          "seniority": "partner",
+          "clicks": 20,
+          "impressions": 3500,
+          "costInUsd": 71.25
+        }
+      ],
+      "company_size": [
+        {
+          "company_size": "SIZE_2_TO_10",
+          "clicks": 980,
+          "impressions": 171000
+        },
+        {
+          "company_size": "SIZE_11_TO_50",
+          "clicks": 720,
+          "impressions": 132000
+        },
+        {
+          "company_size": "SIZE_1",
+          "clicks": 310,
+          "impressions": 61000
+        },
+        {
+          "company_size": "SIZE_51_TO_200",
+          "clicks": 260,
+          "impressions": 50000
+        },
+        {
+          "company_size": "SIZE_201_TO_500",
+          "clicks": 120,
+          "impressions": 23000
+        },
+        {
+          "company_size": "SIZE_501_TO_1000",
+          "clicks": 60,
+          "impressions": 14000
+        },
+        {
+          "company_size": "SIZE_1001_TO_5000",
+          "clicks": 55,
+          "impressions": 15000
+        },
+        {
+          "company_size": "SIZE_10001_OR_MORE",
+          "clicks": 35,
+          "impressions": 9000
+        },
+        {
+          "company_size": "SIZE_5001_TO_10000",
+          "clicks": 20,
+          "impressions": 5000
+        }
+      ]
+    },
+    "google_ads": [
+      {
+        "campaign": "Brand",
+        "advertising_channel_type": "SEARCH",
+        "cost_micros": 1850400000,
+        "clicks": 2350,
+        "impressions": 5900,
+        "conversions": 148.0
+      },
+      {
+        "campaign": "Non-brand | Salon software",
+        "advertising_channel_type": "SEARCH",
+        "cost_micros": 7420100000,
+        "clicks": 3100,
+        "impressions": 61000,
+        "conversions": 121.0
+      },
+      {
+        "campaign": "Non-brand | Clinic scheduling",
+        "advertising_channel_type": "SEARCH",
+        "cost_micros": 5260750000,
+        "clicks": 2050,
+        "impressions": 44000,
+        "conversions": 84.0
+      },
+      {
+        "campaign": "Non-brand | Fitness booking",
+        "advertising_channel_type": "SEARCH",
+        "cost_micros": 2980300000,
+        "clicks": 1240,
+        "impressions": 29000,
+        "conversions": 41.0
+      },
+      {
+        "campaign": "Performance Max | Trial",
+        "advertising_channel_type": "PERFORMANCE_MAX",
+        "cost_micros": 2190000000,
+        "clicks": 1480,
+        "impressions": 98000,
+        "conversions": 37.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,803 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"ga4-property-audit\" skill. Audit my GA4 property and tell me whether I can trust its numbers.",
+  "property": {
+    "name": "Example Booking Software",
+    "id": "123456789",
+    "time_zone": "America/New_York",
+    "currency": "USD"
+  },
+  "date_range": "2026-09-27 to 2026-10-26 (30 days ending 2 days before the run on 2026-10-28); spike check 2026-10-13 to 2026-10-27",
+  "answers": {
+    "conversions": "not given, so the defined key events are used",
+    "own_domains": "example.com (sign-up runs on www.example.com/signup/)",
+    "office_locations": "not given"
+  },
+  "data_pulled": [
+    "get_property, get_data_retention_settings, list_google_ads_links, list_bigquery_links",
+    "list_data_streams (2 web streams), get_enhanced_measurement_settings (main stream)",
+    "list_key_events (4), list_custom_dimensions (7), list_custom_metrics (2)",
+    "get_report: total (21,550 sessions), streams, hostnames (1), source/medium (14 rows), channels (8), page referrers (9 rows), events (14 names), countries (13 rows), daily, testDataFilterName, custom dimension and metric usage",
+    "search_analytics by date (29 days, 2026-09-27 to 2026-10-25: Search Console had no row yet for 2026-10-26), then source/medium and total sessions re-pulled for 2026-09-27 to 2026-10-25 so both sides cover the same dates",
+    "Tag Manager: get_accounts, get_containers, get_workspaces, get_tags, get_triggers"
+  ],
+  "data": {
+    "property": {
+      "displayName": "Example Booking Software",
+      "timeZone": "America/New_York",
+      "currencyCode": "USD",
+      "industryCategory": "TECHNOLOGY",
+      "createTime": "2023-03-14"
+    },
+    "google_ads_links": [
+      {
+        "customerId": "1234567890",
+        "adsPersonalizationEnabled": true
+      }
+    ],
+    "bigquery_links": [],
+    "data_retention": {
+      "eventDataRetention": "TWO_MONTHS",
+      "resetUserDataOnNewActivity": true
+    },
+    "data_streams": [
+      {
+        "id": "4100000001",
+        "type": "WEB_DATA_STREAM",
+        "displayName": "Example Booking Software - Web",
+        "defaultUri": "https://www.example.com",
+        "measurementId": "G-AB12CD34EF"
+      },
+      {
+        "id": "4100000002",
+        "type": "WEB_DATA_STREAM",
+        "displayName": "Staging - do not use",
+        "defaultUri": "https://staging.example.com",
+        "measurementId": "G-ZZ98YY76XX"
+      }
+    ],
+    "enhanced_measurement_main_stream": {
+      "streamEnabled": true,
+      "scrollsEnabled": true,
+      "outboundClicksEnabled": true,
+      "siteSearchEnabled": true,
+      "videoEngagementEnabled": true,
+      "fileDownloadsEnabled": true,
+      "formInteractionsEnabled": true,
+      "pageChangesEnabled": true
+    },
+    "key_events": [
+      {
+        "eventName": "sign_up",
+        "countingMethod": "ONCE_PER_SESSION",
+        "createTime": "2023-03-20",
+        "name": "properties/123456789/keyEvents/900000001"
+      },
+      {
+        "eventName": "book_demo",
+        "countingMethod": "ONCE_PER_EVENT",
+        "createTime": "2024-01-09",
+        "name": "properties/123456789/keyEvents/900000002"
+      },
+      {
+        "eventName": "generate_lead",
+        "countingMethod": "ONCE_PER_SESSION",
+        "createTime": "2024-01-09",
+        "name": "properties/123456789/keyEvents/900000003"
+      },
+      {
+        "eventName": "test_signup_20260612",
+        "countingMethod": "ONCE_PER_EVENT",
+        "createTime": "2026-06-12",
+        "name": "properties/123456789/keyEvents/900000004"
+      }
+    ],
+    "custom_dimensions": [
+      {
+        "parameterName": "page_type",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "plan_name",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "signup_method",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "cta_location",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "blog_category",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "promo_code",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "business_type",
+        "scope": "USER"
+      }
+    ],
+    "custom_metrics": [
+      {
+        "parameterName": "staff_count",
+        "scope": "EVENT"
+      },
+      {
+        "parameterName": "widget_load_ms",
+        "scope": "EVENT"
+      }
+    ],
+    "total": {
+      "sessions": 21550,
+      "engagedSessions": 12345,
+      "totalUsers": 15870,
+      "eventCount": 157376,
+      "keyEvents": 1242
+    },
+    "streams": [
+      {
+        "streamId": "4100000001",
+        "streamName": "Example Booking Software - Web",
+        "eventCount": 157376,
+        "sessions": 21550
+      }
+    ],
+    "hostnames": [
+      {
+        "hostName": "www.example.com",
+        "sessions": 21550,
+        "eventCount": 157376
+      }
+    ],
+    "source_medium": [
+      {
+        "sessionSource": "google",
+        "sessionMedium": "organic",
+        "sessions": 8240,
+        "engagedSessions": 5026,
+        "averageSessionDuration": 96.0,
+        "keyEvents": 573
+      },
+      {
+        "sessionSource": "(direct)",
+        "sessionMedium": "(none)",
+        "sessions": 4310,
+        "engagedSessions": 2241,
+        "averageSessionDuration": 88.0,
+        "keyEvents": 260
+      },
+      {
+        "sessionSource": "google",
+        "sessionMedium": "cpc",
+        "sessions": 3120,
+        "engagedSessions": 1778,
+        "averageSessionDuration": 74.0,
+        "keyEvents": 224
+      },
+      {
+        "sessionSource": "klaviyo",
+        "sessionMedium": "email",
+        "sessions": 1050,
+        "engagedSessions": 693,
+        "averageSessionDuration": 121.0,
+        "keyEvents": 39
+      },
+      {
+        "sessionSource": "klaviyo",
+        "sessionMedium": "newsletter",
+        "sessions": 980,
+        "engagedSessions": 617,
+        "averageSessionDuration": 115.0,
+        "keyEvents": 32
+      },
+      {
+        "sessionSource": "linkedin",
+        "sessionMedium": "paid_social",
+        "sessions": 940,
+        "engagedSessions": 414,
+        "averageSessionDuration": 52.0,
+        "keyEvents": 19
+      },
+      {
+        "sessionSource": "tiktok",
+        "sessionMedium": "paid_social",
+        "sessions": 720,
+        "engagedSessions": 274,
+        "averageSessionDuration": 41.0,
+        "keyEvents": 8
+      },
+      {
+        "sessionSource": "bing",
+        "sessionMedium": "organic",
+        "sessions": 610,
+        "engagedSessions": 360,
+        "averageSessionDuration": 92.0,
+        "keyEvents": 10
+      },
+      {
+        "sessionSource": "facebook.com",
+        "sessionMedium": "referral",
+        "sessions": 410,
+        "engagedSessions": 201,
+        "averageSessionDuration": 63.0,
+        "keyEvents": 3
+      },
+      {
+        "sessionSource": "accounts.google.com",
+        "sessionMedium": "referral",
+        "sessions": 390,
+        "engagedSessions": 316,
+        "averageSessionDuration": 142.0,
+        "keyEvents": 68
+      },
+      {
+        "sessionSource": "app-marketplace.example",
+        "sessionMedium": "marketplace",
+        "sessions": 260,
+        "engagedSessions": 151,
+        "averageSessionDuration": 84.0,
+        "keyEvents": 3
+      },
+      {
+        "sessionSource": "l.instagram.com",
+        "sessionMedium": "referral",
+        "sessions": 230,
+        "engagedSessions": 108,
+        "averageSessionDuration": 58.0,
+        "keyEvents": 1
+      },
+      {
+        "sessionSource": "partner-blog.example",
+        "sessionMedium": "referral",
+        "sessions": 150,
+        "engagedSessions": 82,
+        "averageSessionDuration": 79.0,
+        "keyEvents": 1
+      },
+      {
+        "sessionSource": "salon-podcast.example",
+        "sessionMedium": "podcast",
+        "sessions": 140,
+        "engagedSessions": 84,
+        "averageSessionDuration": 101.0,
+        "keyEvents": 1
+      }
+    ],
+    "channels": [
+      {
+        "sessionDefaultChannelGroup": "Organic Search",
+        "sessions": 8850,
+        "engagedSessions": 5386,
+        "keyEvents": 583
+      },
+      {
+        "sessionDefaultChannelGroup": "Direct",
+        "sessions": 4310,
+        "engagedSessions": 2241,
+        "keyEvents": 260
+      },
+      {
+        "sessionDefaultChannelGroup": "Paid Search",
+        "sessions": 3120,
+        "engagedSessions": 1778,
+        "keyEvents": 224
+      },
+      {
+        "sessionDefaultChannelGroup": "Paid Social",
+        "sessions": 1660,
+        "engagedSessions": 688,
+        "keyEvents": 27
+      },
+      {
+        "sessionDefaultChannelGroup": "Unassigned",
+        "sessions": 1380,
+        "engagedSessions": 852,
+        "keyEvents": 36
+      },
+      {
+        "sessionDefaultChannelGroup": "Email",
+        "sessions": 1050,
+        "engagedSessions": 693,
+        "keyEvents": 39
+      },
+      {
+        "sessionDefaultChannelGroup": "Organic Social",
+        "sessions": 640,
+        "engagedSessions": 309,
+        "keyEvents": 4
+      },
+      {
+        "sessionDefaultChannelGroup": "Referral",
+        "sessions": 540,
+        "engagedSessions": 398,
+        "keyEvents": 69
+      }
+    ],
+    "page_referrers": [
+      {
+        "pageReferrer": "https://www.google.com/",
+        "eventCount": 25210
+      },
+      {
+        "pageReferrer": "https://www.example.com/",
+        "eventCount": 21980
+      },
+      {
+        "pageReferrer": "(not set)",
+        "eventCount": 14630
+      },
+      {
+        "pageReferrer": "https://accounts.google.com/",
+        "eventCount": 1170
+      },
+      {
+        "pageReferrer": "https://www.bing.com/",
+        "eventCount": 1840
+      },
+      {
+        "pageReferrer": "https://www.linkedin.com/",
+        "eventCount": 2330
+      },
+      {
+        "pageReferrer": "https://www.facebook.com/",
+        "eventCount": 1210
+      },
+      {
+        "pageReferrer": "https://app-marketplace.example/",
+        "eventCount": 760
+      },
+      {
+        "pageReferrer": "https://partner-blog.example/",
+        "eventCount": 440
+      }
+    ],
+    "events": [
+      {
+        "eventName": "page_view",
+        "eventCount": 64120,
+        "totalUsers": 15870,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "session_start",
+        "eventCount": 21550,
+        "totalUsers": 15870,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "user_engagement",
+        "eventCount": 30410,
+        "totalUsers": 11960,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "first_visit",
+        "eventCount": 12740,
+        "totalUsers": 12740,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "scroll",
+        "eventCount": 18420,
+        "totalUsers": 8930,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "click",
+        "eventCount": 2130,
+        "totalUsers": 1610,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "form_start",
+        "eventCount": 1620,
+        "totalUsers": 1290,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "view_search_results",
+        "eventCount": 540,
+        "totalUsers": 410,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "file_download",
+        "eventCount": 380,
+        "totalUsers": 340,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "booking_widget_preview",
+        "eventCount": 2950,
+        "totalUsers": 2210,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "pricing_toggle",
+        "eventCount": 1240,
+        "totalUsers": 980,
+        "keyEvents": 0
+      },
+      {
+        "eventName": "sign_up",
+        "eventCount": 668,
+        "totalUsers": 631,
+        "keyEvents": 642
+      },
+      {
+        "eventName": "book_demo",
+        "eventCount": 412,
+        "totalUsers": 361,
+        "keyEvents": 412
+      },
+      {
+        "eventName": "generate_lead",
+        "eventCount": 196,
+        "totalUsers": 181,
+        "keyEvents": 188
+      }
+    ],
+    "custom_dimension_events_with_a_value": {
+      "page_type": 61200,
+      "plan_name": 2380,
+      "signup_method": 668,
+      "cta_location": 4210,
+      "blog_category": 19840,
+      "promo_code": 0,
+      "business_type": 9150
+    },
+    "custom_metric_totals": {
+      "staff_count": 2410,
+      "widget_load_ms": 1180400
+    },
+    "countries": [
+      {
+        "country": "United States",
+        "sessions": 11180,
+        "engagedSessions": 6708,
+        "averageSessionDuration": 94.0
+      },
+      {
+        "country": "United Kingdom",
+        "sessions": 3910,
+        "engagedSessions": 2268,
+        "averageSessionDuration": 91.0
+      },
+      {
+        "country": "Canada",
+        "sessions": 2620,
+        "engagedSessions": 1546,
+        "averageSessionDuration": 90.0
+      },
+      {
+        "country": "Australia",
+        "sessions": 1340,
+        "engagedSessions": 764,
+        "averageSessionDuration": 86.0
+      },
+      {
+        "country": "India",
+        "sessions": 610,
+        "engagedSessions": 250,
+        "averageSessionDuration": 48.0
+      },
+      {
+        "country": "Ireland",
+        "sessions": 420,
+        "engagedSessions": 235,
+        "averageSessionDuration": 83.0
+      },
+      {
+        "country": "Germany",
+        "sessions": 300,
+        "engagedSessions": 132,
+        "averageSessionDuration": 57.0
+      },
+      {
+        "country": "New Zealand",
+        "sessions": 280,
+        "engagedSessions": 154,
+        "averageSessionDuration": 80.0
+      },
+      {
+        "country": "Philippines",
+        "sessions": 240,
+        "engagedSessions": 94,
+        "averageSessionDuration": 44.0
+      },
+      {
+        "country": "South Africa",
+        "sessions": 190,
+        "engagedSessions": 95,
+        "averageSessionDuration": 72.0
+      },
+      {
+        "country": "Netherlands",
+        "sessions": 160,
+        "engagedSessions": 75,
+        "averageSessionDuration": 61.0
+      },
+      {
+        "country": "(not set)",
+        "sessions": 30,
+        "engagedSessions": 6,
+        "averageSessionDuration": 12.0
+      },
+      {
+        "country": "Other (38 countries)",
+        "sessions": 270,
+        "engagedSessions": 113,
+        "averageSessionDuration": 50.0
+      }
+    ],
+    "daily_spike_window": [
+      {
+        "date": "2026-10-13",
+        "sessions": 842,
+        "engagedSessions": 509
+      },
+      {
+        "date": "2026-10-14",
+        "sessions": 899,
+        "engagedSessions": 508
+      },
+      {
+        "date": "2026-10-15",
+        "sessions": 856,
+        "engagedSessions": 489
+      },
+      {
+        "date": "2026-10-16",
+        "sessions": 866,
+        "engagedSessions": 515
+      },
+      {
+        "date": "2026-10-17",
+        "sessions": 470,
+        "engagedSessions": 282
+      },
+      {
+        "date": "2026-10-18",
+        "sessions": 437,
+        "engagedSessions": 264
+      },
+      {
+        "date": "2026-10-19",
+        "sessions": 832,
+        "engagedSessions": 503
+      },
+      {
+        "date": "2026-10-20",
+        "sessions": 812,
+        "engagedSessions": 486
+      },
+      {
+        "date": "2026-10-21",
+        "sessions": 820,
+        "engagedSessions": 488
+      },
+      {
+        "date": "2026-10-22",
+        "sessions": 856,
+        "engagedSessions": 498
+      },
+      {
+        "date": "2026-10-23",
+        "sessions": 781,
+        "engagedSessions": 468
+      },
+      {
+        "date": "2026-10-24",
+        "sessions": 414,
+        "engagedSessions": 250
+      },
+      {
+        "date": "2026-10-25",
+        "sessions": 442,
+        "engagedSessions": 254
+      },
+      {
+        "date": "2026-10-26",
+        "sessions": 792,
+        "engagedSessions": 463
+      },
+      {
+        "date": "2026-10-27",
+        "sessions": 730,
+        "engagedSessions": 343
+      }
+    ],
+    "test_data_filters": [
+      {
+        "testDataFilterName": "(not set)",
+        "eventCount": 157376
+      }
+    ],
+    "search_console_clicks_by_date": [
+      {
+        "date": "2026-09-27",
+        "clicks": 224
+      },
+      {
+        "date": "2026-09-28",
+        "clicks": 421
+      },
+      {
+        "date": "2026-09-29",
+        "clicks": 502
+      },
+      {
+        "date": "2026-09-30",
+        "clicks": 490
+      },
+      {
+        "date": "2026-10-01",
+        "clicks": 508
+      },
+      {
+        "date": "2026-10-02",
+        "clicks": 461
+      },
+      {
+        "date": "2026-10-03",
+        "clicks": 246
+      },
+      {
+        "date": "2026-10-04",
+        "clicks": 222
+      },
+      {
+        "date": "2026-10-05",
+        "clicks": 416
+      },
+      {
+        "date": "2026-10-06",
+        "clicks": 395
+      },
+      {
+        "date": "2026-10-07",
+        "clicks": 421
+      },
+      {
+        "date": "2026-10-08",
+        "clicks": 460
+      },
+      {
+        "date": "2026-10-09",
+        "clicks": 394
+      },
+      {
+        "date": "2026-10-10",
+        "clicks": 210
+      },
+      {
+        "date": "2026-10-11",
+        "clicks": 242
+      },
+      {
+        "date": "2026-10-12",
+        "clicks": 449
+      },
+      {
+        "date": "2026-10-13",
+        "clicks": 475
+      },
+      {
+        "date": "2026-10-14",
+        "clicks": 499
+      },
+      {
+        "date": "2026-10-15",
+        "clicks": 480
+      },
+      {
+        "date": "2026-10-16",
+        "clicks": 415
+      },
+      {
+        "date": "2026-10-17",
+        "clicks": 230
+      },
+      {
+        "date": "2026-10-18",
+        "clicks": 223
+      },
+      {
+        "date": "2026-10-19",
+        "clicks": 453
+      },
+      {
+        "date": "2026-10-20",
+        "clicks": 408
+      },
+      {
+        "date": "2026-10-21",
+        "clicks": 475
+      },
+      {
+        "date": "2026-10-22",
+        "clicks": 510
+      },
+      {
+        "date": "2026-10-23",
+        "clicks": 446
+      },
+      {
+        "date": "2026-10-24",
+        "clicks": 206
+      },
+      {
+        "date": "2026-10-25",
+        "clicks": 245
+      }
+    ],
+    "ga4_sessions_to_search_console_end": {
+      "google_organic_sessions": 7950,
+      "total_sessions": 20758
+    },
+    "tag_manager": {
+      "account": "Example Booking Software",
+      "container": {
+        "name": "www.example.com",
+        "publicId": "GTM-A1B2C3D"
+      },
+      "workspace": "Default Workspace",
+      "tags": [
+        {
+          "name": "Google tag - G-AB12CD34EF",
+          "type": "googtag",
+          "tagId": "G-AB12CD34EF",
+          "paused": false,
+          "firing": [
+            "Initialization - All Pages"
+          ]
+        },
+        {
+          "name": "GA4 event - sign_up",
+          "type": "gaawe",
+          "measurementId": "G-AB12CD34EF",
+          "paused": false,
+          "firing": [
+            "Sign-up complete"
+          ]
+        },
+        {
+          "name": "GA4 event - book_demo",
+          "type": "gaawe",
+          "measurementId": "G-AB12CD34EF",
+          "paused": false,
+          "firing": [
+            "Demo form submit"
+          ]
+        },
+        {
+          "name": "GA4 event - generate_lead",
+          "type": "gaawe",
+          "measurementId": "G-AB12CD34EF",
+          "paused": false,
+          "firing": [
+            "Contact sales submit"
+          ]
+        },
+        {
+          "name": "GA4 event - chat_open",
+          "type": "gaawe",
+          "measurementId": "G-AB12CD34EF",
+          "paused": false,
+          "firing": []
+        }
+      ],
+      "triggers": [
+        "Initialization - All Pages",
+        "Sign-up complete",
+        "Demo form submit",
+        "Contact sales submit"
+      ]
+    }
+  }
+}

@@ -1,0 +1,690 @@
+{
+  "header": {
+    "site": "https://www.example.com",
+    "market": "United States, English",
+    "currency": "USD",
+    "path": "connected",
+    "sources_read": [
+      "Search Console (3 calls)",
+      "GA4 (2 calls)",
+      "DataForSEO (1 call)"
+    ],
+    "windows": {
+      "L3": "2026-07-01 to 2026-09-30",
+      "Y3_backtest": "2025-07-01 to 2025-09-30",
+      "history": "2025-07-01 to 2026-09-30",
+      "forecast": "2026-11 to 2028-10 (24 months)"
+    },
+    "start_month": "2026-11",
+    "confidence": "medium",
+    "confidence_checks": [
+      {
+        "check": "Own curve in every bucket a base final position uses",
+        "result": "pass",
+        "detail": "buckets used: 4-5, 6-10; none pooled"
+      },
+      {
+        "check": "30+ organic leads on non-home landing pages in L3",
+        "result": "pass",
+        "detail": "381 sign_up events"
+      },
+      {
+        "check": "Backtest ran and is within 15%",
+        "result": "fail",
+        "detail": "error +15.8%"
+      },
+      {
+        "check": "Measured demand for every target",
+        "result": "pass",
+        "detail": "10 of 10 keywords have DataForSEO volumes"
+      }
+    ]
+  },
+  "answer": [
+    "Base case: about 8,958 extra clicks, 204 sign-ups and 45 paying customers in the first 12 months, rising to 1,268 extra clicks a month by month 12.",
+    "Base break-even: month 23 (2028-09). Range: month 16 (2028-02) in the stretch case, not within 24 months in the conservative case.",
+    "12-month extra clicks range from 3,006 (conservative) to 20,015 (stretch). Over 24 months the base case nets $5,985 after $30,600 of cost."
+  ],
+  "assumptions": [
+    {
+      "input": "Click curve",
+      "value": "see click_curve",
+      "tag": "measured",
+      "source": "Search Console L3 query rows, brand left out"
+    },
+    {
+      "input": "Sessions per click",
+      "value": 0.91,
+      "tag": "measured",
+      "source": "GA4 organic sessions 24,603 / Search Console clicks 27,036, L3"
+    },
+    {
+      "input": "Organic conversion rate (non-home pages)",
+      "value": "2.5%",
+      "tag": "measured",
+      "source": "381 sign_up / 15,254 sessions, Organic Search, L3, home page left out"
+    },
+    {
+      "input": "Sign-up to paying customer",
+      "value": "22%",
+      "tag": "from you",
+      "source": "billing system, sign-ups and first payments over the last 6 months"
+    },
+    {
+      "input": "Monthly revenue per customer",
+      "value": 41.5,
+      "tag": "from you",
+      "source": "plan prices weighted by the plan mix of new customers (50% Starter, 35% Growth, 15% Business)"
+    },
+    {
+      "input": "Monthly churn",
+      "value": "3%",
+      "tag": "from you",
+      "source": "billing system, cancellations over the last 6 months"
+    },
+    {
+      "input": "Gross margin",
+      "value": "85%",
+      "tag": "from you",
+      "source": "finance team, last full year"
+    },
+    {
+      "input": "Cost",
+      "value": "$1,800 in month 1, then $2,400 a month for months 1 to 12",
+      "tag": "from you",
+      "source": "the consultant's and the developer's quotes"
+    },
+    {
+      "input": "Demand and seasonality",
+      "value": "index from 0.81 (December) to 1.18 (January)",
+      "tag": "measured",
+      "source": "DataForSEO monthly_searches, the 10 targets pooled"
+    },
+    {
+      "input": "Final positions",
+      "value": "goal (stretch), goal + 2 (base), goal + 5 (conservative), never worse than today",
+      "tag": "assumption",
+      "source": "SKILL.md step 4"
+    },
+    {
+      "input": "Ramp",
+      "value": "existing pages 3, 4, 6 months; new pages 6, 9, 12 months (stretch, base, conservative)",
+      "tag": "assumption",
+      "source": "SKILL.md step 4"
+    },
+    {
+      "input": "Rankings hold after they are reached",
+      "value": "through month 24",
+      "tag": "assumption",
+      "source": "SKILL.md step 4"
+    },
+    {
+      "input": "Conservative CTR cut",
+      "value": 0.86,
+      "tag": "measured",
+      "source": "backtest: 1 / (1 + 0.158)"
+    }
+  ],
+  "click_curve": {
+    "window": "2026-07-01 to 2026-09-30",
+    "brand_queries_left_out": [
+      "example booking",
+      "examplebooking login",
+      "example booking pricing",
+      "example.com booking"
+    ],
+    "buckets": [
+      {
+        "bucket": "1",
+        "queries": 3,
+        "impressions": 3900,
+        "clicks": 1103,
+        "ctr_pct": 17.1,
+        "tag": "pooled with 2"
+      },
+      {
+        "bucket": "2",
+        "queries": 6,
+        "impressions": 14000,
+        "clicks": 1958,
+        "ctr_pct": 14.0,
+        "tag": "own"
+      },
+      {
+        "bucket": "3",
+        "queries": 5,
+        "impressions": 7500,
+        "clicks": 736,
+        "ctr_pct": 9.8,
+        "tag": "own"
+      },
+      {
+        "bucket": "4-5",
+        "queries": 6,
+        "impressions": 14200,
+        "clicks": 807,
+        "ctr_pct": 5.7,
+        "tag": "own"
+      },
+      {
+        "bucket": "6-10",
+        "queries": 9,
+        "impressions": 24400,
+        "clicks": 573,
+        "ctr_pct": 2.3,
+        "tag": "own"
+      },
+      {
+        "bucket": "11-20",
+        "queries": 10,
+        "impressions": 33900,
+        "clicks": 260,
+        "ctr_pct": 0.8,
+        "tag": "own"
+      }
+    ]
+  },
+  "backtest": {
+    "window": "2025-07-01 to 2025-09-30 (same months a year earlier)",
+    "older_curve": [
+      {
+        "bucket": "1",
+        "ctr_pct": 21.0,
+        "tag": "pooled with 2"
+      },
+      {
+        "bucket": "2",
+        "ctr_pct": 17.7,
+        "tag": "own"
+      },
+      {
+        "bucket": "3",
+        "ctr_pct": 12.4,
+        "tag": "own"
+      },
+      {
+        "bucket": "4-5",
+        "ctr_pct": 6.9,
+        "tag": "own"
+      },
+      {
+        "bucket": "6-10",
+        "ctr_pct": 3.1,
+        "tag": "own"
+      },
+      {
+        "bucket": "11-20",
+        "ctr_pct": 1.0,
+        "tag": "own"
+      }
+    ],
+    "rows_tested": 39,
+    "predicted_clicks": 6297,
+    "actual_clicks": 5437,
+    "error_pct": 15.8,
+    "finding": "The year-old curve predicts 6,297 clicks for the L3 positions and impressions; the site got 5,437. Clicks per position fell 13.7% in a year, so the conservative case multiplies CTR by 0.86, assuming the same fall again."
+  },
+  "targets": [
+    {
+      "keyword": "online booking system",
+      "page": "https://www.example.com/features/online-booking/",
+      "ships": "2026-11",
+      "volume": 7952,
+      "peak_month": "September 2026",
+      "current_position": 11.6,
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 412,
+      "base_extra_clicks_months_1_12": 3475
+    },
+    {
+      "keyword": "salon booking software",
+      "page": "https://www.example.com/industries/salons/",
+      "ships": "2026-11",
+      "volume": 5357,
+      "peak_month": "January 2026",
+      "current_position": 12.8,
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 277,
+      "base_extra_clicks_months_1_12": 2272
+    },
+    {
+      "keyword": "appointment reminder app",
+      "page": "https://www.example.com/features/reminders/",
+      "ships": "2026-12",
+      "volume": 2935,
+      "peak_month": "September 2026",
+      "current_position": 8.4,
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 103,
+      "base_extra_clicks_months_1_12": 671
+    },
+    {
+      "keyword": "clinic scheduling software",
+      "page": "https://www.example.com/industries/clinics/",
+      "ships": "2026-12",
+      "volume": 2367,
+      "peak_month": "January 2026",
+      "current_position": 15.4,
+      "final_position": {
+        "conservative": 9,
+        "base": 6,
+        "stretch": 4
+      },
+      "base_extra_clicks_month_12": 39,
+      "base_extra_clicks_months_1_12": 296
+    },
+    {
+      "keyword": "class booking software",
+      "page": "https://www.example.com/industries/fitness/",
+      "ships": "2027-01",
+      "volume": 1896,
+      "peak_month": "September 2026",
+      "current_position": 13.7,
+      "final_position": {
+        "conservative": 9,
+        "base": 6,
+        "stretch": 4
+      },
+      "base_extra_clicks_month_12": 32,
+      "base_extra_clicks_months_1_12": 237
+    },
+    {
+      "keyword": "appointment scheduling software",
+      "page": "new: https://www.example.com/appointment-scheduling-software/",
+      "ships": "2026-11",
+      "volume": 6677,
+      "peak_month": "January 2026",
+      "current_position": "not in the top 20",
+      "final_position": {
+        "conservative": 10,
+        "base": 7,
+        "stretch": 5
+      },
+      "base_extra_clicks_month_12": 165,
+      "base_extra_clicks_months_1_12": 1077
+    },
+    {
+      "keyword": "best scheduling app for small business",
+      "page": "new: https://www.example.com/blog/best-scheduling-apps/",
+      "ships": "2026-12",
+      "volume": 3624,
+      "peak_month": "January 2026",
+      "current_position": "not in the top 20",
+      "final_position": {
+        "conservative": 9,
+        "base": 6,
+        "stretch": 4
+      },
+      "base_extra_clicks_month_12": 90,
+      "base_extra_clicks_months_1_12": 511
+    },
+    {
+      "keyword": "massage booking software",
+      "page": "new: https://www.example.com/industries/massage/",
+      "ships": "2027-01",
+      "volume": 1610,
+      "peak_month": "January 2026",
+      "current_position": "not in the top 20",
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 96,
+      "base_extra_clicks_months_1_12": 247
+    },
+    {
+      "keyword": "booking software for personal trainers",
+      "page": "new: https://www.example.com/industries/personal-trainers/",
+      "ships": "2027-02",
+      "volume": 888,
+      "peak_month": "January 2026",
+      "current_position": "not in the top 20",
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 22,
+      "base_extra_clicks_months_1_12": 84
+    },
+    {
+      "keyword": "tattoo booking software",
+      "page": "new: https://www.example.com/industries/tattoo/",
+      "ships": "2027-03",
+      "volume": 1288,
+      "peak_month": "January 2026",
+      "current_position": "not in the top 20",
+      "final_position": {
+        "conservative": 8,
+        "base": 5,
+        "stretch": 3
+      },
+      "base_extra_clicks_month_12": 32,
+      "base_extra_clicks_months_1_12": 89
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "conservative",
+      "extra_clicks_12m": 3006,
+      "leads_12m": 68,
+      "customers_12m": 15,
+      "revenue_12m": 2982,
+      "contribution_12m": 2535,
+      "cost_12m": 30600,
+      "return_12m_pct": -91.7,
+      "contribution_24m": 13586,
+      "cost_24m": 30600,
+      "net_24m": -17014,
+      "paying_customers_month_24": 36,
+      "break_even": "not within 24 months"
+    },
+    {
+      "scenario": "base",
+      "extra_clicks_12m": 8958,
+      "leads_12m": 204,
+      "customers_12m": 45,
+      "revenue_12m": 8075,
+      "contribution_12m": 6864,
+      "cost_12m": 30600,
+      "return_12m_pct": -77.6,
+      "contribution_24m": 36585,
+      "cost_24m": 30600,
+      "net_24m": 5985,
+      "paying_customers_month_24": 93,
+      "break_even": "month 23 (2028-09)"
+    },
+    {
+      "scenario": "stretch",
+      "extra_clicks_12m": 20015,
+      "leads_12m": 455,
+      "customers_12m": 100,
+      "revenue_12m": 18069,
+      "contribution_12m": 15359,
+      "cost_12m": 30600,
+      "return_12m_pct": -49.8,
+      "contribution_24m": 78686,
+      "cost_24m": 30600,
+      "net_24m": 48086,
+      "paying_customers_month_24": 194,
+      "break_even": "month 16 (2028-02)"
+    }
+  ],
+  "month_by_month": [
+    {
+      "month": 1,
+      "calendar": "2026-11",
+      "season_index": 1.03,
+      "base_extra_clicks": 0,
+      "base_leads": 0,
+      "base_new_customers": 0,
+      "base_contribution": 0,
+      "cost": 4200,
+      "net_to_date": {
+        "conservative": -4200,
+        "base": -4200,
+        "stretch": -4200
+      }
+    },
+    {
+      "month": 2,
+      "calendar": "2026-12",
+      "season_index": 0.81,
+      "base_extra_clicks": 144,
+      "base_leads": 3,
+      "base_new_customers": 1,
+      "base_contribution": 25,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -6594,
+        "base": -6575,
+        "stretch": -6563
+      }
+    },
+    {
+      "month": 3,
+      "calendar": "2027-01",
+      "season_index": 1.18,
+      "base_extra_clicks": 341,
+      "base_leads": 8,
+      "base_new_customers": 2,
+      "base_contribution": 85,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -8951,
+        "base": -8890,
+        "stretch": -8866
+      }
+    },
+    {
+      "month": 4,
+      "calendar": "2027-02",
+      "season_index": 1.08,
+      "base_extra_clicks": 327,
+      "base_leads": 7,
+      "base_new_customers": 2,
+      "base_contribution": 140,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -11259,
+        "base": -11150,
+        "stretch": -10893
+      }
+    },
+    {
+      "month": 5,
+      "calendar": "2027-03",
+      "season_index": 1.04,
+      "base_extra_clicks": 856,
+      "base_leads": 19,
+      "base_new_customers": 4,
+      "base_contribution": 287,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -13522,
+        "base": -13263,
+        "stretch": -12624
+      }
+    },
+    {
+      "month": 6,
+      "calendar": "2027-04",
+      "season_index": 1.0,
+      "base_extra_clicks": 925,
+      "base_leads": 21,
+      "base_new_customers": 5,
+      "base_contribution": 441,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -15740,
+        "base": -15222,
+        "stretch": -14040
+      }
+    },
+    {
+      "month": 7,
+      "calendar": "2027-05",
+      "season_index": 0.98,
+      "base_extra_clicks": 907,
+      "base_leads": 21,
+      "base_new_customers": 5,
+      "base_contribution": 588,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -17910,
+        "base": -17034,
+        "stretch": -15115
+      }
+    },
+    {
+      "month": 8,
+      "calendar": "2027-06",
+      "season_index": 0.89,
+      "base_extra_clicks": 924,
+      "base_leads": 21,
+      "base_new_customers": 5,
+      "base_contribution": 733,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -20035,
+        "base": -18700,
+        "stretch": -15869
+      }
+    },
+    {
+      "month": 9,
+      "calendar": "2027-07",
+      "season_index": 0.87,
+      "base_extra_clicks": 952,
+      "base_leads": 22,
+      "base_new_customers": 5,
+      "base_contribution": 879,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -22116,
+        "base": -20221,
+        "stretch": -16298
+      }
+    },
+    {
+      "month": 10,
+      "calendar": "2027-08",
+      "season_index": 0.94,
+      "base_extra_clicks": 1051,
+      "base_leads": 24,
+      "base_new_customers": 5,
+      "base_contribution": 1038,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -24152,
+        "base": -21583,
+        "stretch": -16372
+      }
+    },
+    {
+      "month": 11,
+      "calendar": "2027-09",
+      "season_index": 1.12,
+      "base_extra_clicks": 1264,
+      "base_leads": 29,
+      "base_new_customers": 6,
+      "base_contribution": 1230,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -26133,
+        "base": -22753,
+        "stretch": -16006
+      }
+    },
+    {
+      "month": 12,
+      "calendar": "2027-10",
+      "season_index": 1.05,
+      "base_extra_clicks": 1268,
+      "base_leads": 29,
+      "base_new_customers": 6,
+      "base_contribution": 1417,
+      "cost": 2400,
+      "net_to_date": {
+        "conservative": -28065,
+        "base": -23736,
+        "stretch": -15241
+      }
+    }
+  ],
+  "months_13_to_24_by_quarter": [
+    {
+      "months": "13 to 15",
+      "calendar": "2027-11 to 2028-01",
+      "base_extra_clicks": 3806,
+      "base_leads": 87,
+      "base_contribution": 5276,
+      "cost": 0,
+      "net_to_date_end": {
+        "conservative": -26229,
+        "base": -18460,
+        "stretch": -3672
+      }
+    },
+    {
+      "months": "16 to 18",
+      "calendar": "2028-02 to 2028-04",
+      "base_extra_clicks": 3990,
+      "base_leads": 91,
+      "base_contribution": 6893,
+      "cost": 0,
+      "net_to_date_end": {
+        "conservative": -23701,
+        "base": -11568,
+        "stretch": 11100
+      }
+    },
+    {
+      "months": "19 to 21",
+      "calendar": "2028-05 to 2028-07",
+      "base_extra_clicks": 3505,
+      "base_leads": 80,
+      "base_contribution": 8176,
+      "cost": 0,
+      "net_to_date_end": {
+        "conservative": -20617,
+        "base": -3392,
+        "stretch": 28406
+      }
+    },
+    {
+      "months": "22 to 24",
+      "calendar": "2028-08 to 2028-10",
+      "base_extra_clicks": 3974,
+      "base_leads": 90,
+      "base_contribution": 9377,
+      "cost": 0,
+      "net_to_date_end": {
+        "conservative": -17014,
+        "base": 5985,
+        "stretch": 48086
+      }
+    }
+  ],
+  "what_has_to_be_true": "Break-even within 12 months in the base case needs 4.5 times the base value ($30,600 of cost against $6,864 of contribution). No realistic change in sign-up rate, plan mix or churn closes a gap that size, so judge this plan on its 24-month result: base break-even in month 23 (2028-09).",
+  "concentration": {
+    "top_3_keywords": [
+      "online booking system",
+      "salon booking software",
+      "appointment scheduling software"
+    ],
+    "share_of_base_extra_clicks_months_1_12_pct": 76.2,
+    "verdict": "The case rests on a few rankings: if one of these stalls, the base case moves toward the conservative one."
+  },
+  "unknowns": [
+    "Rankings after month 24 and any ranking losses are not modelled.",
+    "Sign-ups from searches outside the 10 targets (related long-tail searches the new pages may also win) are not counted, which leans the forecast low."
+  ],
+  "go_deeper": [
+    {
+      "next_step": "Move the 5 existing pages up",
+      "skill": "striking-distance-optimizer"
+    },
+    {
+      "next_step": "Brief the 5 new pages",
+      "skill": "content-brief-writer"
+    },
+    {
+      "next_step": "Track clicks against this forecast each month",
+      "skill": "seo-performance-report"
+    }
+  ]
+}

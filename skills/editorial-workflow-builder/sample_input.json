@@ -1,0 +1,1653 @@
+{
+  "request": "Hey Claude, I just added the \"editorial-workflow-builder\" skill. Our blog keeps slipping. Design our content workflow from idea to published, tell us who approves what, and how many new posts and refreshes we can really ship a month. WordPress, Search Console, GA4 and Google Sheets are connected.",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "site": "https://www.example.com",
+  "run_date": "2026-10-28",
+  "windows": {
+    "history_months": [
+      "2025-10",
+      "2026-09"
+    ],
+    "results": [
+      "2026-07-30",
+      "2026-10-27"
+    ]
+  },
+  "inputs_from_user": {
+    "team": [
+      {
+        "name": "Maya",
+        "role": "content lead",
+        "title": "Content lead",
+        "hours_per_week": 16
+      },
+      {
+        "name": "Leo",
+        "role": "writer",
+        "title": "Staff writer",
+        "hours_per_week": 24
+      },
+      {
+        "name": "Ana",
+        "role": "writer",
+        "title": "Freelance writer",
+        "hours_per_week": 6
+      },
+      {
+        "name": "Sam",
+        "role": "SEO",
+        "title": "SEO specialist",
+        "hours_per_week": 8
+      },
+      {
+        "name": "Noor",
+        "role": "claims reviewer",
+        "title": "Product marketing manager",
+        "hours_per_week": 3
+      },
+      {
+        "name": "Kai",
+        "role": "designer",
+        "title": "Designer",
+        "hours_per_week": 6
+      }
+    ],
+    "content_in_scope": "blog articles and their refreshes",
+    "current_steps": "Ideas come up in a Monday chat thread. Sam picks a keyword. Leo or Ana write in Google Docs, then paste the piece into WordPress as a draft and set it to Pending. Maya edits every piece, then every piece goes to Noor in product marketing, who reviews on Fridays. Sam adds Kai's images and the meta description and publishes. Refreshes happen when someone notices an old post. Writers use an AI assistant for outlines; nobody wrote down what else it is used for.",
+    "hours_per_task": [
+      {
+        "stage": "Idea",
+        "task": "pick ideas from the Monday thread",
+        "role": "content lead",
+        "new": 0.25,
+        "refresh": 0.0
+      },
+      {
+        "stage": "Briefed",
+        "task": "keyword research and brief",
+        "role": "SEO",
+        "new": 1.5,
+        "refresh": 1.0
+      },
+      {
+        "stage": "Briefed",
+        "task": "approve the brief",
+        "role": "content lead",
+        "new": 0.5,
+        "refresh": 0.0
+      },
+      {
+        "stage": "Writing",
+        "task": "write or update the draft",
+        "role": "writer",
+        "new": 8.0,
+        "refresh": 3.0
+      },
+      {
+        "stage": "Editing",
+        "task": "edit",
+        "role": "content lead",
+        "new": 2.5,
+        "refresh": 1.0
+      },
+      {
+        "stage": "Claims check",
+        "task": "check product claims",
+        "role": "claims reviewer",
+        "new": 0.5,
+        "refresh": 0.25
+      },
+      {
+        "stage": "Ready to publish",
+        "task": "images",
+        "role": "designer",
+        "new": 2.0,
+        "refresh": 0.5
+      },
+      {
+        "stage": "Ready to publish",
+        "task": "upload to WordPress, meta and links",
+        "role": "SEO",
+        "new": 1.0,
+        "refresh": 0.5
+      },
+      {
+        "stage": "30-day check",
+        "task": "check clicks and key events",
+        "role": "SEO",
+        "new": 0.25,
+        "refresh": 0.25
+      }
+    ],
+    "hours_note": "the team's own estimates; nobody has timed them",
+    "turnaround_targets_working_days": {
+      "Briefed": 2,
+      "Writing": 5,
+      "Editing": 2,
+      "Claims check": 2,
+      "Ready to publish": 1
+    },
+    "targets_given_by_team": [
+      "Writing",
+      "Editing",
+      "Claims check"
+    ],
+    "sign_off_needed_for": [
+      "product claims (features, pricing, integrations)",
+      "named customers in a story or quote"
+    ],
+    "possible_backups": {
+      "Writing": "the other writer",
+      "Editing": "Sam",
+      "Claims check": "Maya"
+    },
+    "ai_policy": "No written policy. The team uses an AI assistant for outlines. Never paste customer data into it.",
+    "goal_metric": "GA4 key events from blog pages",
+    "buffer": 0.15,
+    "wordpress_authors": {
+      "11": "Leo",
+      "12": "Ana",
+      "13": "Maya"
+    },
+    "tracker": "none with stage dates; work is tracked in a chat thread",
+    "status_board_spreadsheet": "Content operations (spreadsheet the user named for the board)"
+  },
+  "accounts": {
+    "wordpress": {
+      "site": "https://www.example.com"
+    },
+    "google-search-console": {
+      "site_url": "https://www.example.com/"
+    },
+    "google-analytics": {
+      "property_id": "properties/123456789",
+      "name": "Example Booking Software"
+    },
+    "google-sheets": {
+      "spreadsheet_id": "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789example"
+    }
+  },
+  "data_pulled": {
+    "wordpress_get_posts": {
+      "note": "status publish, draft, pending and future; fields id, title, status, author, date, modified, link",
+      "rows": [
+        {
+          "id": 2001,
+          "title": "Simple rules for dog grooming schedules",
+          "status": "publish",
+          "author": 11,
+          "date": "2023-03-17T09:00:00",
+          "modified": "2026-05-06T15:10:00",
+          "link": "https://www.example.com/blog/dog-grooming-schedules/"
+        },
+        {
+          "id": 2002,
+          "title": "Checklist: choose a scheduling app",
+          "status": "publish",
+          "author": 12,
+          "date": "2023-05-22T09:00:00",
+          "modified": "2026-01-24T15:10:00",
+          "link": "https://www.example.com/blog/choose-a-scheduling-app/"
+        },
+        {
+          "id": 2003,
+          "title": "Checklist: booking links on Instagram",
+          "status": "publish",
+          "author": 11,
+          "date": "2023-06-09T09:00:00",
+          "modified": "2026-09-09T11:20:00",
+          "link": "https://www.example.com/blog/booking-links-on-instagram/"
+        },
+        {
+          "id": 2004,
+          "title": "Simple rules for booking page design",
+          "status": "publish",
+          "author": 11,
+          "date": "2023-07-23T09:00:00",
+          "modified": "2026-03-17T15:10:00",
+          "link": "https://www.example.com/blog/booking-page-design/"
+        },
+        {
+          "id": 2005,
+          "title": "How to handle slow Mondays",
+          "status": "publish",
+          "author": 11,
+          "date": "2023-08-21T09:00:00",
+          "modified": "2026-06-08T15:10:00",
+          "link": "https://www.example.com/blog/slow-mondays/"
+        },
+        {
+          "id": 2006,
+          "title": "Checklist: trial class follow-up",
+          "status": "publish",
+          "author": 11,
+          "date": "2023-09-02T09:00:00",
+          "modified": "2026-04-22T15:10:00",
+          "link": "https://www.example.com/blog/trial-class-follow-up/"
+        },
+        {
+          "id": 2007,
+          "title": "Ideas for reduce no-shows",
+          "status": "publish",
+          "author": 12,
+          "date": "2023-11-01T09:00:00",
+          "modified": "2023-11-06T16:30:00",
+          "link": "https://www.example.com/blog/reduce-no-shows/"
+        },
+        {
+          "id": 2008,
+          "title": "Simple rules for after-hours bookings",
+          "status": "publish",
+          "author": 12,
+          "date": "2023-12-21T09:00:00",
+          "modified": "2026-05-11T15:10:00",
+          "link": "https://www.example.com/blog/after-hours-bookings/"
+        },
+        {
+          "id": 2009,
+          "title": "Templates for busy season hiring",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-01-26T09:00:00",
+          "modified": "2024-01-27T16:30:00",
+          "link": "https://www.example.com/blog/busy-season-hiring/"
+        },
+        {
+          "id": 2010,
+          "title": "Better SMS vs email reminders",
+          "status": "publish",
+          "author": 12,
+          "date": "2024-03-23T09:00:00",
+          "modified": "2026-05-18T15:10:00",
+          "link": "https://www.example.com/blog/sms-vs-email-reminders/"
+        },
+        {
+          "id": 2011,
+          "title": "How to handle salon booking tips",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-04-10T09:00:00",
+          "modified": "2024-04-12T16:30:00",
+          "link": "https://www.example.com/blog/salon-booking-tips/"
+        },
+        {
+          "id": 2012,
+          "title": "Fixing taking deposits online",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-05-12T09:00:00",
+          "modified": "2024-05-13T16:30:00",
+          "link": "https://www.example.com/blog/taking-deposits-online/"
+        },
+        {
+          "id": 2013,
+          "title": "Better multi-location scheduling",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-06-11T09:00:00",
+          "modified": "2024-06-14T16:30:00",
+          "link": "https://www.example.com/blog/multi-location-scheduling/"
+        },
+        {
+          "id": 2014,
+          "title": "Ideas for barbershop queues",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-07-05T09:00:00",
+          "modified": "2024-07-05T16:30:00",
+          "link": "https://www.example.com/blog/barbershop-queues/"
+        },
+        {
+          "id": 2015,
+          "title": "A guide to online payments at booking",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-08-02T09:00:00",
+          "modified": "2026-05-02T15:10:00",
+          "link": "https://www.example.com/blog/online-payments-at-booking/"
+        },
+        {
+          "id": 2016,
+          "title": "Templates for buffer time between clients",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-09-23T09:00:00",
+          "modified": "2024-09-26T16:30:00",
+          "link": "https://www.example.com/blog/buffer-time-between-clients/"
+        },
+        {
+          "id": 2017,
+          "title": "A guide to virtual consultations",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-10-02T09:00:00",
+          "modified": "2024-10-03T16:30:00",
+          "link": "https://www.example.com/blog/virtual-consultations/"
+        },
+        {
+          "id": 2018,
+          "title": "Fixing photography session booking",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-11-22T09:00:00",
+          "modified": "2024-11-25T16:30:00",
+          "link": "https://www.example.com/blog/photography-session-booking/"
+        },
+        {
+          "id": 2019,
+          "title": "Checklist: prepaid packages",
+          "status": "publish",
+          "author": 11,
+          "date": "2024-12-23T09:00:00",
+          "modified": "2024-12-23T16:30:00",
+          "link": "https://www.example.com/blog/prepaid-packages/"
+        },
+        {
+          "id": 2020,
+          "title": "Better class pass partners",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-01-06T09:00:00",
+          "modified": "2025-01-07T16:30:00",
+          "link": "https://www.example.com/blog/class-pass-partners/"
+        },
+        {
+          "id": 2021,
+          "title": "Fixing new client welcome texts",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-02-05T09:00:00",
+          "modified": "2026-08-18T11:20:00",
+          "link": "https://www.example.com/blog/new-client-welcome-texts/"
+        },
+        {
+          "id": 2022,
+          "title": "Ideas for salon retail upsells",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-03-15T09:00:00",
+          "modified": "2025-03-17T16:30:00",
+          "link": "https://www.example.com/blog/salon-retail-upsells/"
+        },
+        {
+          "id": 2023,
+          "title": "A guide to no-show fees",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-04-12T09:00:00",
+          "modified": "2026-06-21T15:10:00",
+          "link": "https://www.example.com/blog/no-show-fees/"
+        },
+        {
+          "id": 2024,
+          "title": "Templates for service menu pricing",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-05-26T09:00:00",
+          "modified": "2025-05-28T16:30:00",
+          "link": "https://www.example.com/blog/service-menu-pricing/"
+        },
+        {
+          "id": 2025,
+          "title": "Getting started with appointment reminder templates",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-06-14T09:00:00",
+          "modified": "2025-06-17T16:30:00",
+          "link": "https://www.example.com/blog/appointment-reminder-templates/"
+        },
+        {
+          "id": 2026,
+          "title": "Checklist: staff rotas",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-07-17T09:00:00",
+          "modified": "2025-07-19T16:30:00",
+          "link": "https://www.example.com/blog/staff-rotas/"
+        },
+        {
+          "id": 2027,
+          "title": "Checklist: personal trainer scheduling",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-10-17T09:00:00",
+          "modified": "2025-10-21T16:30:00",
+          "link": "https://www.example.com/blog/personal-trainer-scheduling/"
+        },
+        {
+          "id": 2028,
+          "title": "Ideas for calendar sync with Google",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-10-18T09:00:00",
+          "modified": "2025-10-21T16:30:00",
+          "link": "https://www.example.com/blog/calendar-sync-with-google/"
+        },
+        {
+          "id": 2029,
+          "title": "What works for review requests after visits",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-10-22T09:00:00",
+          "modified": "2025-10-24T16:30:00",
+          "link": "https://www.example.com/blog/review-requests-after-visits/"
+        },
+        {
+          "id": 2030,
+          "title": "Checklist: chair rental salons",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-10-23T09:00:00",
+          "modified": "2026-10-14T11:20:00",
+          "link": "https://www.example.com/blog/chair-rental-salons/"
+        },
+        {
+          "id": 2031,
+          "title": "Fixing waitlists that fill gaps",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-11-01T09:00:00",
+          "modified": "2026-04-21T10:00:00",
+          "link": "https://www.example.com/blog/waitlists-that-fill-gaps/"
+        },
+        {
+          "id": 2032,
+          "title": "What works for staff commission tracking",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-11-09T09:00:00",
+          "modified": "2026-05-12T10:00:00",
+          "link": "https://www.example.com/blog/staff-commission-tracking/"
+        },
+        {
+          "id": 2033,
+          "title": "Templates for rescheduling rules",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-11-10T09:00:00",
+          "modified": "2025-11-15T16:30:00",
+          "link": "https://www.example.com/blog/rescheduling-rules/"
+        },
+        {
+          "id": 2034,
+          "title": "Templates for booking form fields",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-11-13T09:00:00",
+          "modified": "2025-11-15T16:30:00",
+          "link": "https://www.example.com/blog/booking-form-fields/"
+        },
+        {
+          "id": 2035,
+          "title": "What works for repeat client rate",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-11-21T09:00:00",
+          "modified": "2025-11-23T16:30:00",
+          "link": "https://www.example.com/blog/repeat-client-rate/"
+        },
+        {
+          "id": 2036,
+          "title": "A guide to front desk scripts",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-12-07T09:00:00",
+          "modified": "2025-12-08T16:30:00",
+          "link": "https://www.example.com/blog/front-desk-scripts/"
+        },
+        {
+          "id": 2037,
+          "title": "A guide to refund requests",
+          "status": "publish",
+          "author": 11,
+          "date": "2025-12-14T09:00:00",
+          "modified": "2025-12-16T16:30:00",
+          "link": "https://www.example.com/blog/refund-requests/"
+        },
+        {
+          "id": 2038,
+          "title": "Templates for Google booking button",
+          "status": "publish",
+          "author": 12,
+          "date": "2025-12-23T09:00:00",
+          "modified": "2025-12-24T16:30:00",
+          "link": "https://www.example.com/blog/google-booking-button/"
+        },
+        {
+          "id": 2039,
+          "title": "What works for nail salon timing",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-01-11T09:00:00",
+          "modified": "2026-01-15T16:30:00",
+          "link": "https://www.example.com/blog/nail-salon-timing/"
+        },
+        {
+          "id": 2040,
+          "title": "Better first-visit discounts",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-01-13T09:00:00",
+          "modified": "2026-01-16T16:30:00",
+          "link": "https://www.example.com/blog/first-visit-discounts/"
+        },
+        {
+          "id": 2041,
+          "title": "Getting started with trainer cancellations",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-01-14T09:00:00",
+          "modified": "2026-01-16T16:30:00",
+          "link": "https://www.example.com/blog/trainer-cancellations/"
+        },
+        {
+          "id": 2042,
+          "title": "Better front desk checklist",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-01-22T09:00:00",
+          "modified": "2026-01-22T16:30:00",
+          "link": "https://www.example.com/blog/front-desk-checklist/"
+        },
+        {
+          "id": 2043,
+          "title": "Ideas for massage therapist booking",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-01-27T09:00:00",
+          "modified": "2026-01-28T16:30:00",
+          "link": "https://www.example.com/blog/massage-therapist-booking/"
+        },
+        {
+          "id": 2044,
+          "title": "Simple rules for spa packages",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-01-28T09:00:00",
+          "modified": "2026-01-31T16:30:00",
+          "link": "https://www.example.com/blog/spa-packages/"
+        },
+        {
+          "id": 2045,
+          "title": "Fixing deposit policy",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-02-09T09:00:00",
+          "modified": "2026-02-12T16:30:00",
+          "link": "https://www.example.com/blog/deposit-policy/"
+        },
+        {
+          "id": 2046,
+          "title": "Templates for package and membership pricing",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-02-14T09:00:00",
+          "modified": "2026-02-19T16:30:00",
+          "link": "https://www.example.com/blog/package-and-membership-pricing/"
+        },
+        {
+          "id": 2047,
+          "title": "Checklist: booking deposits for groups",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-03-04T09:00:00",
+          "modified": "2026-03-09T16:30:00",
+          "link": "https://www.example.com/blog/booking-deposits-for-groups/"
+        },
+        {
+          "id": 2048,
+          "title": "What works for walk-ins and online slots",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-03-05T09:00:00",
+          "modified": "2026-03-10T16:30:00",
+          "link": "https://www.example.com/blog/walk-ins-and-online-slots/"
+        },
+        {
+          "id": 2049,
+          "title": "A guide to patient reminders and privacy",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-03-21T09:00:00",
+          "modified": "2026-03-25T16:30:00",
+          "link": "https://www.example.com/blog/patient-reminders-and-privacy/"
+        },
+        {
+          "id": 2050,
+          "title": "Checklist: online booking for physio clinics",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-03-28T09:00:00",
+          "modified": "2026-03-28T16:30:00",
+          "link": "https://www.example.com/blog/online-booking-for-physio-clinics/"
+        },
+        {
+          "id": 2051,
+          "title": "Fixing tutoring session booking",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-04-11T09:00:00",
+          "modified": "2026-04-12T16:30:00",
+          "link": "https://www.example.com/blog/tutoring-session-booking/"
+        },
+        {
+          "id": 2052,
+          "title": "Ideas for tattoo studio deposits",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-04-15T09:00:00",
+          "modified": "2026-04-19T16:30:00",
+          "link": "https://www.example.com/blog/tattoo-studio-deposits/"
+        },
+        {
+          "id": 2053,
+          "title": "How to handle client notes and history",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-04-15T09:00:00",
+          "modified": "2026-04-19T16:30:00",
+          "link": "https://www.example.com/blog/client-notes-and-history/"
+        },
+        {
+          "id": 2054,
+          "title": "Better booking analytics",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-04-16T09:00:00",
+          "modified": "2026-04-19T16:30:00",
+          "link": "https://www.example.com/blog/booking-analytics/"
+        },
+        {
+          "id": 2055,
+          "title": "Getting started with holiday season scheduling",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-05-14T09:00:00",
+          "modified": "2026-05-17T16:30:00",
+          "link": "https://www.example.com/blog/holiday-season-scheduling/"
+        },
+        {
+          "id": 2056,
+          "title": "Getting started with booking page photos",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-05-16T09:00:00",
+          "modified": "2026-05-16T16:30:00",
+          "link": "https://www.example.com/blog/booking-page-photos/"
+        },
+        {
+          "id": 2057,
+          "title": "Templates for first booking emails",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-05-22T09:00:00",
+          "modified": "2026-05-25T16:30:00",
+          "link": "https://www.example.com/blog/first-booking-emails/"
+        },
+        {
+          "id": 2058,
+          "title": "A guide to client birthdays",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-06-25T09:00:00",
+          "modified": "2026-06-27T16:30:00",
+          "link": "https://www.example.com/blog/client-birthdays/"
+        },
+        {
+          "id": 2059,
+          "title": "Simple rules for clinic phone overload",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-06-26T09:00:00",
+          "modified": "2026-06-28T16:30:00",
+          "link": "https://www.example.com/blog/clinic-phone-overload/"
+        },
+        {
+          "id": 2060,
+          "title": "Better fitness challenge sign-ups",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-07-04T09:00:00",
+          "modified": "2026-07-09T16:30:00",
+          "link": "https://www.example.com/blog/fitness-challenge-sign-ups/"
+        },
+        {
+          "id": 2061,
+          "title": "Better booking confirmation emails",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-07-09T09:00:00",
+          "modified": "2026-07-12T16:30:00",
+          "link": "https://www.example.com/blog/booking-confirmation-emails/"
+        },
+        {
+          "id": 2062,
+          "title": "A guide to mobile stylists and travel time",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-07-14T09:00:00",
+          "modified": "2026-07-16T16:30:00",
+          "link": "https://www.example.com/blog/mobile-stylists-and-travel-time/"
+        },
+        {
+          "id": 2063,
+          "title": "Better gift cards for salons",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-07-16T09:00:00",
+          "modified": "2026-07-20T16:30:00",
+          "link": "https://www.example.com/blog/gift-cards-for-salons/"
+        },
+        {
+          "id": 2064,
+          "title": "Templates for intake forms",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-07-28T09:00:00",
+          "modified": "2026-08-02T16:30:00",
+          "link": "https://www.example.com/blog/intake-forms/"
+        },
+        {
+          "id": 2065,
+          "title": "Checklist: late arrival policy",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-08-20T09:00:00",
+          "modified": "2026-08-23T16:30:00",
+          "link": "https://www.example.com/blog/late-arrival-policy/"
+        },
+        {
+          "id": 2066,
+          "title": "How to handle clinic waiting rooms",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-08-22T09:00:00",
+          "modified": "2026-08-27T16:30:00",
+          "link": "https://www.example.com/blog/clinic-waiting-rooms/"
+        },
+        {
+          "id": 2067,
+          "title": "Better weather cancellations",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-08-26T09:00:00",
+          "modified": "2026-08-27T16:30:00",
+          "link": "https://www.example.com/blog/weather-cancellations/"
+        },
+        {
+          "id": 2068,
+          "title": "A guide to peak hour pricing",
+          "status": "publish",
+          "author": 12,
+          "date": "2026-09-07T09:00:00",
+          "modified": "2026-09-12T16:30:00",
+          "link": "https://www.example.com/blog/peak-hour-pricing/"
+        },
+        {
+          "id": 2069,
+          "title": "Getting started with recurring appointments",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-09-08T09:00:00",
+          "modified": "2026-09-08T16:30:00",
+          "link": "https://www.example.com/blog/recurring-appointments/"
+        },
+        {
+          "id": 2070,
+          "title": "Better group class capacity",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-09-19T09:00:00",
+          "modified": "2026-09-23T16:30:00",
+          "link": "https://www.example.com/blog/group-class-capacity/"
+        },
+        {
+          "id": 2071,
+          "title": "Ideas for double bookings",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-10-06T09:00:00",
+          "modified": "2026-10-06T16:30:00",
+          "link": "https://www.example.com/blog/double-bookings/"
+        },
+        {
+          "id": 2072,
+          "title": "A guide to cancellation policy wording",
+          "status": "publish",
+          "author": 11,
+          "date": "2026-10-20T09:00:00",
+          "modified": "2026-10-20T16:30:00",
+          "link": "https://www.example.com/blog/cancellation-policy-wording/"
+        },
+        {
+          "id": 2073,
+          "title": "A guide to studio timetable changes",
+          "status": "draft",
+          "author": 11,
+          "date": "2026-10-25T09:00:00",
+          "modified": "2026-10-25T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2074,
+          "title": "A guide to booking FAQs page",
+          "status": "draft",
+          "author": 12,
+          "date": "2026-10-22T09:00:00",
+          "modified": "2026-10-22T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2075,
+          "title": "Fixing reactivation messages",
+          "status": "draft",
+          "author": 11,
+          "date": "2026-10-16T09:00:00",
+          "modified": "2026-10-16T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2076,
+          "title": "Checklist: accessibility on booking pages",
+          "status": "draft",
+          "author": 12,
+          "date": "2026-10-03T09:00:00",
+          "modified": "2026-10-03T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2077,
+          "title": "A guide to holiday closures",
+          "status": "draft",
+          "author": 11,
+          "date": "2026-09-17T09:00:00",
+          "modified": "2026-09-17T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2078,
+          "title": "Better class booking for yoga studios",
+          "status": "draft",
+          "author": 13,
+          "date": "2026-08-31T09:00:00",
+          "modified": "2026-08-31T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2079,
+          "title": "How to handle lunch break blocks",
+          "status": "draft",
+          "author": 11,
+          "date": "2026-07-30T09:00:00",
+          "modified": "2026-07-30T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2080,
+          "title": "Templates for dental hygiene recalls",
+          "status": "pending",
+          "author": 11,
+          "date": "2026-10-24T09:00:00",
+          "modified": "2026-10-24T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2081,
+          "title": "Simple rules for team calendars",
+          "status": "pending",
+          "author": 12,
+          "date": "2026-10-19T09:00:00",
+          "modified": "2026-10-19T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2082,
+          "title": "Better rebooking at checkout",
+          "status": "pending",
+          "author": 11,
+          "date": "2026-10-17T09:00:00",
+          "modified": "2026-10-17T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2083,
+          "title": "A guide to time zone bookings",
+          "status": "pending",
+          "author": 11,
+          "date": "2026-10-12T09:00:00",
+          "modified": "2026-10-12T16:30:00",
+          "link": null
+        },
+        {
+          "id": 2084,
+          "title": "Better seasonal promotions for spas",
+          "status": "future",
+          "author": 11,
+          "date": "2026-11-03T09:00:00",
+          "modified": "2026-10-27T16:30:00",
+          "link": null
+        }
+      ]
+    },
+    "search_console_search_analytics_page": {
+      "dimensions": [
+        "page"
+      ],
+      "rows": [
+        {
+          "page": "https://www.example.com/blog/dog-grooming-schedules/",
+          "clicks": 209,
+          "impressions": 7145
+        },
+        {
+          "page": "https://www.example.com/blog/choose-a-scheduling-app/",
+          "clicks": 236,
+          "impressions": 12367
+        },
+        {
+          "page": "https://www.example.com/blog/booking-links-on-instagram/",
+          "clicks": 138,
+          "impressions": 5054
+        },
+        {
+          "page": "https://www.example.com/blog/booking-page-design/",
+          "clicks": 239,
+          "impressions": 14671
+        },
+        {
+          "page": "https://www.example.com/blog/slow-mondays/",
+          "clicks": 238,
+          "impressions": 7504
+        },
+        {
+          "page": "https://www.example.com/blog/trial-class-follow-up/",
+          "clicks": 127,
+          "impressions": 6033
+        },
+        {
+          "page": "https://www.example.com/blog/reduce-no-shows/",
+          "clicks": 103,
+          "impressions": 2892
+        },
+        {
+          "page": "https://www.example.com/blog/after-hours-bookings/",
+          "clicks": 223,
+          "impressions": 7691
+        },
+        {
+          "page": "https://www.example.com/blog/busy-season-hiring/",
+          "clicks": 123,
+          "impressions": 3377
+        },
+        {
+          "page": "https://www.example.com/blog/sms-vs-email-reminders/",
+          "clicks": 126,
+          "impressions": 5311
+        },
+        {
+          "page": "https://www.example.com/blog/salon-booking-tips/",
+          "clicks": 134,
+          "impressions": 7451
+        },
+        {
+          "page": "https://www.example.com/blog/taking-deposits-online/",
+          "clicks": 81,
+          "impressions": 3938
+        },
+        {
+          "page": "https://www.example.com/blog/online-payments-at-booking/",
+          "clicks": 200,
+          "impressions": 6013
+        },
+        {
+          "page": "https://www.example.com/blog/buffer-time-between-clients/",
+          "clicks": 121,
+          "impressions": 7550
+        },
+        {
+          "page": "https://www.example.com/blog/virtual-consultations/",
+          "clicks": 39,
+          "impressions": 1497
+        },
+        {
+          "page": "https://www.example.com/blog/class-pass-partners/",
+          "clicks": 31,
+          "impressions": 1322
+        },
+        {
+          "page": "https://www.example.com/blog/new-client-welcome-texts/",
+          "clicks": 120,
+          "impressions": 4389
+        },
+        {
+          "page": "https://www.example.com/blog/salon-retail-upsells/",
+          "clicks": 133,
+          "impressions": 4586
+        },
+        {
+          "page": "https://www.example.com/blog/no-show-fees/",
+          "clicks": 224,
+          "impressions": 6078
+        },
+        {
+          "page": "https://www.example.com/blog/service-menu-pricing/",
+          "clicks": 87,
+          "impressions": 4368
+        },
+        {
+          "page": "https://www.example.com/blog/appointment-reminder-templates/",
+          "clicks": 101,
+          "impressions": 4516
+        },
+        {
+          "page": "https://www.example.com/blog/staff-rotas/",
+          "clicks": 53,
+          "impressions": 2315
+        },
+        {
+          "page": "https://www.example.com/blog/personal-trainer-scheduling/",
+          "clicks": 42,
+          "impressions": 2437
+        },
+        {
+          "page": "https://www.example.com/blog/calendar-sync-with-google/",
+          "clicks": 140,
+          "impressions": 8489
+        },
+        {
+          "page": "https://www.example.com/blog/review-requests-after-visits/",
+          "clicks": 46,
+          "impressions": 2722
+        },
+        {
+          "page": "https://www.example.com/blog/chair-rental-salons/",
+          "clicks": 227,
+          "impressions": 10782
+        },
+        {
+          "page": "https://www.example.com/blog/waitlists-that-fill-gaps/",
+          "clicks": 101,
+          "impressions": 5588
+        },
+        {
+          "page": "https://www.example.com/blog/staff-commission-tracking/",
+          "clicks": 83,
+          "impressions": 3464
+        },
+        {
+          "page": "https://www.example.com/blog/rescheduling-rules/",
+          "clicks": 170,
+          "impressions": 9262
+        },
+        {
+          "page": "https://www.example.com/blog/booking-form-fields/",
+          "clicks": 141,
+          "impressions": 4016
+        },
+        {
+          "page": "https://www.example.com/blog/repeat-client-rate/",
+          "clicks": 173,
+          "impressions": 6216
+        },
+        {
+          "page": "https://www.example.com/blog/front-desk-scripts/",
+          "clicks": 176,
+          "impressions": 10573
+        },
+        {
+          "page": "https://www.example.com/blog/refund-requests/",
+          "clicks": 134,
+          "impressions": 7614
+        },
+        {
+          "page": "https://www.example.com/blog/google-booking-button/",
+          "clicks": 62,
+          "impressions": 1830
+        },
+        {
+          "page": "https://www.example.com/blog/nail-salon-timing/",
+          "clicks": 162,
+          "impressions": 6506
+        },
+        {
+          "page": "https://www.example.com/blog/first-visit-discounts/",
+          "clicks": 130,
+          "impressions": 5238
+        },
+        {
+          "page": "https://www.example.com/blog/trainer-cancellations/",
+          "clicks": 94,
+          "impressions": 5600
+        },
+        {
+          "page": "https://www.example.com/blog/front-desk-checklist/",
+          "clicks": 75,
+          "impressions": 4782
+        },
+        {
+          "page": "https://www.example.com/blog/massage-therapist-booking/",
+          "clicks": 91,
+          "impressions": 2805
+        },
+        {
+          "page": "https://www.example.com/blog/spa-packages/",
+          "clicks": 46,
+          "impressions": 1561
+        },
+        {
+          "page": "https://www.example.com/blog/deposit-policy/",
+          "clicks": 161,
+          "impressions": 9438
+        },
+        {
+          "page": "https://www.example.com/blog/package-and-membership-pricing/",
+          "clicks": 82,
+          "impressions": 3301
+        },
+        {
+          "page": "https://www.example.com/blog/booking-deposits-for-groups/",
+          "clicks": 144,
+          "impressions": 4734
+        },
+        {
+          "page": "https://www.example.com/blog/walk-ins-and-online-slots/",
+          "clicks": 105,
+          "impressions": 6529
+        },
+        {
+          "page": "https://www.example.com/blog/patient-reminders-and-privacy/",
+          "clicks": 70,
+          "impressions": 3589
+        },
+        {
+          "page": "https://www.example.com/blog/online-booking-for-physio-clinics/",
+          "clicks": 79,
+          "impressions": 4690
+        },
+        {
+          "page": "https://www.example.com/blog/tutoring-session-booking/",
+          "clicks": 74,
+          "impressions": 2908
+        },
+        {
+          "page": "https://www.example.com/blog/tattoo-studio-deposits/",
+          "clicks": 162,
+          "impressions": 5490
+        },
+        {
+          "page": "https://www.example.com/blog/client-notes-and-history/",
+          "clicks": 146,
+          "impressions": 6818
+        },
+        {
+          "page": "https://www.example.com/blog/booking-analytics/",
+          "clicks": 154,
+          "impressions": 7623
+        },
+        {
+          "page": "https://www.example.com/blog/holiday-season-scheduling/",
+          "clicks": 121,
+          "impressions": 6136
+        },
+        {
+          "page": "https://www.example.com/blog/booking-page-photos/",
+          "clicks": 43,
+          "impressions": 2656
+        },
+        {
+          "page": "https://www.example.com/blog/first-booking-emails/",
+          "clicks": 84,
+          "impressions": 4246
+        },
+        {
+          "page": "https://www.example.com/blog/client-birthdays/",
+          "clicks": 62,
+          "impressions": 1724
+        },
+        {
+          "page": "https://www.example.com/blog/clinic-phone-overload/",
+          "clicks": 165,
+          "impressions": 7851
+        },
+        {
+          "page": "https://www.example.com/blog/fitness-challenge-sign-ups/",
+          "clicks": 133,
+          "impressions": 5374
+        },
+        {
+          "page": "https://www.example.com/blog/booking-confirmation-emails/",
+          "clicks": 163,
+          "impressions": 6903
+        },
+        {
+          "page": "https://www.example.com/blog/mobile-stylists-and-travel-time/",
+          "clicks": 45,
+          "impressions": 2038
+        },
+        {
+          "page": "https://www.example.com/blog/gift-cards-for-salons/",
+          "clicks": 118,
+          "impressions": 4658
+        },
+        {
+          "page": "https://www.example.com/blog/intake-forms/",
+          "clicks": 42,
+          "impressions": 2473
+        },
+        {
+          "page": "https://www.example.com/blog/late-arrival-policy/",
+          "clicks": 20,
+          "impressions": 1274
+        },
+        {
+          "page": "https://www.example.com/blog/clinic-waiting-rooms/",
+          "clicks": 20,
+          "impressions": 1482
+        },
+        {
+          "page": "https://www.example.com/blog/weather-cancellations/",
+          "clicks": 25,
+          "impressions": 969
+        },
+        {
+          "page": "https://www.example.com/blog/peak-hour-pricing/",
+          "clicks": 22,
+          "impressions": 1130
+        },
+        {
+          "page": "https://www.example.com/blog/recurring-appointments/",
+          "clicks": 12,
+          "impressions": 852
+        },
+        {
+          "page": "https://www.example.com/blog/group-class-capacity/",
+          "clicks": 52,
+          "impressions": 1698
+        },
+        {
+          "page": "https://www.example.com/blog/double-bookings/",
+          "clicks": 45,
+          "impressions": 1560
+        },
+        {
+          "page": "https://www.example.com/blog/cancellation-policy-wording/",
+          "clicks": 43,
+          "impressions": 2369
+        },
+        {
+          "page": "https://www.example.com/",
+          "clicks": 5200,
+          "impressions": 61000
+        }
+      ]
+    },
+    "ga4_list_key_events": [
+      "sign_up",
+      "demo_request"
+    ],
+    "ga4_pages_landingPage": {
+      "metrics": [
+        "sessions",
+        "keyEvents"
+      ],
+      "rows": [
+        {
+          "landingPage": "/blog/dog-grooming-schedules",
+          "sessions": 366,
+          "keyEvents": 11
+        },
+        {
+          "landingPage": "/blog/choose-a-scheduling-app",
+          "sessions": 325,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/booking-links-on-instagram",
+          "sessions": 209,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/booking-page-design",
+          "sessions": 316,
+          "keyEvents": 10
+        },
+        {
+          "landingPage": "/blog/slow-mondays",
+          "sessions": 438,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/trial-class-follow-up",
+          "sessions": 240,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/reduce-no-shows",
+          "sessions": 206,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/after-hours-bookings",
+          "sessions": 365,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/busy-season-hiring",
+          "sessions": 189,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/sms-vs-email-reminders",
+          "sessions": 233,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/salon-booking-tips",
+          "sessions": 237,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/taking-deposits-online",
+          "sessions": 154,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/online-payments-at-booking",
+          "sessions": 276,
+          "keyEvents": 7
+        },
+        {
+          "landingPage": "/blog/buffer-time-between-clients",
+          "sessions": 187,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/virtual-consultations",
+          "sessions": 91,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/class-pass-partners",
+          "sessions": 84,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/new-client-welcome-texts",
+          "sessions": 199,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/salon-retail-upsells",
+          "sessions": 226,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/no-show-fees",
+          "sessions": 327,
+          "keyEvents": 8
+        },
+        {
+          "landingPage": "/blog/service-menu-pricing",
+          "sessions": 117,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/appointment-reminder-templates",
+          "sessions": 153,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/staff-rotas",
+          "sessions": 83,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/personal-trainer-scheduling",
+          "sessions": 92,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/calendar-sync-with-google",
+          "sessions": 185,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/review-requests-after-visits",
+          "sessions": 95,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/chair-rental-salons",
+          "sessions": 318,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/waitlists-that-fill-gaps",
+          "sessions": 194,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/staff-commission-tracking",
+          "sessions": 153,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/rescheduling-rules",
+          "sessions": 292,
+          "keyEvents": 9
+        },
+        {
+          "landingPage": "/blog/booking-form-fields",
+          "sessions": 228,
+          "keyEvents": 8
+        },
+        {
+          "landingPage": "/blog/repeat-client-rate",
+          "sessions": 235,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/front-desk-scripts",
+          "sessions": 320,
+          "keyEvents": 7
+        },
+        {
+          "landingPage": "/blog/refund-requests",
+          "sessions": 189,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/google-booking-button",
+          "sessions": 106,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/nail-salon-timing",
+          "sessions": 242,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/first-visit-discounts",
+          "sessions": 176,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/trainer-cancellations",
+          "sessions": 174,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/front-desk-checklist",
+          "sessions": 141,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/massage-therapist-booking",
+          "sessions": 142,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/spa-packages",
+          "sessions": 100,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/deposit-policy",
+          "sessions": 270,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/package-and-membership-pricing",
+          "sessions": 166,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/booking-deposits-for-groups",
+          "sessions": 223,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/walk-ins-and-online-slots",
+          "sessions": 161,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/patient-reminders-and-privacy",
+          "sessions": 136,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/online-booking-for-physio-clinics",
+          "sessions": 157,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/tutoring-session-booking",
+          "sessions": 121,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/tattoo-studio-deposits",
+          "sessions": 252,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/client-notes-and-history",
+          "sessions": 255,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/booking-analytics",
+          "sessions": 215,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/holiday-season-scheduling",
+          "sessions": 190,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/booking-page-photos",
+          "sessions": 99,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/first-booking-emails",
+          "sessions": 139,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/client-birthdays",
+          "sessions": 97,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/clinic-phone-overload",
+          "sessions": 274,
+          "keyEvents": 5
+        },
+        {
+          "landingPage": "/blog/fitness-challenge-sign-ups",
+          "sessions": 227,
+          "keyEvents": 4
+        },
+        {
+          "landingPage": "/blog/booking-confirmation-emails",
+          "sessions": 256,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/mobile-stylists-and-travel-time",
+          "sessions": 102,
+          "keyEvents": 3
+        },
+        {
+          "landingPage": "/blog/gift-cards-for-salons",
+          "sessions": 202,
+          "keyEvents": 6
+        },
+        {
+          "landingPage": "/blog/intake-forms",
+          "sessions": 74,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/late-arrival-policy",
+          "sessions": 63,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/clinic-waiting-rooms",
+          "sessions": 42,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/weather-cancellations",
+          "sessions": 57,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/peak-hour-pricing",
+          "sessions": 47,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/recurring-appointments",
+          "sessions": 47,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/group-class-capacity",
+          "sessions": 78,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/blog/double-bookings",
+          "sessions": 91,
+          "keyEvents": 2
+        },
+        {
+          "landingPage": "/blog/cancellation-policy-wording",
+          "sessions": 62,
+          "keyEvents": 1
+        },
+        {
+          "landingPage": "/",
+          "sessions": 9400,
+          "keyEvents": 610
+        },
+        {
+          "landingPage": "/pricing",
+          "sessions": 3100,
+          "keyEvents": 420
+        },
+        {
+          "landingPage": "(not set)",
+          "sessions": 870,
+          "keyEvents": 6
+        }
+      ]
+    }
+  },
+  "note": "Example data: an invented online booking software company and its blog team with invented accounts, not a real business. Every number in expected_output.json follows from this input. WordPress dates, Search Console and GA4 rows are simulated in the shapes the InsightfulPipe MCP returns."
+}

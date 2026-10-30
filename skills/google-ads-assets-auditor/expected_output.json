@@ -1,0 +1,1284 @@
+{
+  "header": {
+    "account": "Example home services company",
+    "customer_id": "123-456-7890",
+    "currency": "USD",
+    "date_range": "2026-09-21 to 2026-10-20",
+    "today": "2026-10-21",
+    "campaigns": 7,
+    "assets_read": 34,
+    "spend_in_scope": 14040
+  },
+  "grid_key": "C n: n assets on the campaign itself. A n: inherits n usable account assets. + G: some ad groups have their own. gap: none usable. n/a: doesn't fit this business or lives in Performance Max asset groups.",
+  "grid": [
+    {
+      "campaign": "Furnace Repair | Search",
+      "type": "SEARCH",
+      "spend": 3480,
+      "cells": {
+        "sitelink": "C 2 (warn)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "C 1 (pass)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "gap (opportunity)",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "Plumbing | Search",
+      "type": "SEARCH",
+      "spend": 2340,
+      "cells": {
+        "sitelink": "A 8 + G (pass)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "C 1 (pass)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "n/a",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "PMax | All services",
+      "type": "PERFORMANCE_MAX",
+      "spend": 2280,
+      "cells": {
+        "sitelink": "A 8 (pass)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "gap (gap)",
+        "location": "n/a",
+        "image": "n/a",
+        "business_name_logo": "n/a",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "n/a",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "AC Repair | Search",
+      "type": "SEARCH",
+      "spend": 2010,
+      "cells": {
+        "sitelink": "A 8 (pass)",
+        "callout": "C 4 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "gap (gap)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "C 0 usable (ended)",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "Water Heaters | Search",
+      "type": "SEARCH",
+      "spend": 1740,
+      "cells": {
+        "sitelink": "A 8 (pass)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "C 1 (pass)",
+        "call": "C 1 (pass)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "n/a",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "AC Installation | Search",
+      "type": "SEARCH",
+      "spend": 1650,
+      "cells": {
+        "sitelink": "A 8 (pass)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "gap (gap)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "n/a",
+        "lead_form": "n/a"
+      }
+    },
+    {
+      "campaign": "Brand | Search",
+      "type": "SEARCH",
+      "spend": 540,
+      "cells": {
+        "sitelink": "A 8 (pass)",
+        "callout": "A 6 (pass)",
+        "structured_snippet": "A 1 (pass)",
+        "call": "C 1 (pass)",
+        "location": "n/a",
+        "image": "A 2 (warn)",
+        "business_name_logo": "A 2 (pass)",
+        "price": "A 0 usable (opportunity)",
+        "promotion": "n/a",
+        "lead_form": "n/a"
+      }
+    }
+  ],
+  "fixes": [
+    {
+      "priority": "1 broken now",
+      "fix": "Replace the disapproved price asset (DESTINATION_NOT_WORKING)",
+      "evidence": "Disapproved at account level, so it serves nowhere; one offering links to https://example.com/pricing/drain-cleaning, which returns 404",
+      "spend_affected": 14040,
+      "who": "I can add the new price asset now; remove the old one in Google Ads",
+      "rank": 1
+    },
+    {
+      "priority": "1 broken now",
+      "fix": "Fix the Financing Options sitelink (dead)",
+      "evidence": "https://example.com/financing returns 404; the sitelink took 277 clicks (about $1,324) and 0 conversions in 30 days on 6 campaigns",
+      "spend_affected": 10560,
+      "who": "once you confirm the new page, I can add the corrected sitelink at account level; remove the old one in Google Ads",
+      "rank": 2
+    },
+    {
+      "priority": "1 broken now",
+      "fix": "Fix the Customer Reviews sitelink (redirect chain)",
+      "evidence": "https://example.com/reviews takes 2 redirects to reach https://example.com/about/reviews; the sitelink took 293 clicks (about $1,463) and 21 conversions in 30 days on 6 campaigns",
+      "spend_affected": 10560,
+      "who": "I can add the corrected sitelink at account level now; remove the old one in Google Ads",
+      "rank": 3
+    },
+    {
+      "priority": "2 wrong now",
+      "fix": "Replace the '2025 Rates Locked In' callout",
+      "evidence": "names 2025, a past year; still served 46,655 impressions on 6 campaigns",
+      "spend_affected": 12030,
+      "who": "I can add the new callout now; remove the old one in Google Ads",
+      "rank": 4
+    },
+    {
+      "priority": "2 wrong now",
+      "fix": "Remove the ended AC Tune-Up promotion on AC Repair | Search",
+      "evidence": "ended 2026-09-15; 0 impressions in the window",
+      "spend_affected": 2010,
+      "who": "do this in Google Ads",
+      "rank": 5
+    },
+    {
+      "priority": "3 override trap",
+      "fix": "Give Furnace Repair | Search a full sitelink set",
+      "evidence": "2 sitelinks of its own hide 8 usable ones above it",
+      "spend_affected": 3480,
+      "who": "I can add sitelinks to the campaign now",
+      "rank": 6
+    },
+    {
+      "priority": "3 override trap",
+      "fix": "Give Plumbing | Search > Drain cleaning a full sitelink set",
+      "evidence": "2 sitelinks of its own hide 8 usable ones above it",
+      "spend_affected": 470,
+      "who": "I can add sitelinks to the ad group now (draft below), or remove its own 2 in Google Ads so it inherits",
+      "rank": 7
+    },
+    {
+      "priority": "4 gap",
+      "fix": "Add a landscape (1.91:1) image to 6 campaigns",
+      "evidence": "image is 'warn' on Furnace Repair | Search, Plumbing | Search, AC Repair | Search, Water Heaters | Search, AC Installation | Search, Brand | Search",
+      "spend_affected": 11760,
+      "who": "upload a landscape image in Google Ads (the MCP has no image asset action)",
+      "rank": 8
+    },
+    {
+      "priority": "4 gap",
+      "fix": "Add a call asset to 3 campaigns",
+      "evidence": "call is 'gap' on PMax | All services, AC Repair | Search, AC Installation | Search",
+      "spend_affected": 5940,
+      "who": "I can add an account-level call asset now, with the number your other campaigns already use; campaigns with their own call asset keep theirs",
+      "rank": 9
+    },
+    {
+      "priority": "5 weak asset",
+      "fix": "Remove the Drain Cleaning sitelink from Plumbing | Search > Drain cleaning",
+      "evidence": "it opens https://example.com/drain-cleaning, the page its ads already open",
+      "spend_affected": null,
+      "who": "remove it in Google Ads; the ad group draft above replaces it",
+      "rank": 10
+    },
+    {
+      "priority": "6 Google-generated",
+      "fix": "Keep: 'Maintenance Plans' (sitelink)",
+      "evidence": "CTR 2.0% against a peer median of 1.47%; 56 conversions; verdict strong",
+      "spend_affected": null,
+      "who": "nothing to do",
+      "rank": 11
+    },
+    {
+      "priority": "6 Google-generated",
+      "fix": "Replace with an advertiser version: 'About Us' (sitelink)",
+      "evidence": "CTR 0.19% against a peer median of 1.47%; 5 conversions; verdict weak",
+      "spend_affected": null,
+      "who": "draft below; Google-generated assets are switched off in Google Ads",
+      "rank": 12
+    },
+    {
+      "priority": "6 Google-generated",
+      "fix": "Keep: 'Serving Denver Metro' (callout)",
+      "evidence": "CTR 3.04% against a peer median of 3.12%; 143 conversions; verdict ok",
+      "spend_affected": null,
+      "who": "nothing to do",
+      "rank": 13
+    },
+    {
+      "priority": "7 opportunity",
+      "fix": "Add a promotion for the furnace tune-up offer to Furnace Repair | Search",
+      "evidence": "you gave a $20 tune-up discount through 2026-11-30; no live promotion in the account",
+      "spend_affected": 3480,
+      "who": "do this in Google Ads (the MCP has no promotion action)",
+      "rank": 14
+    }
+  ],
+  "asset_results": [
+    {
+      "type": "sitelink",
+      "serving_on": "account",
+      "peer_median_ctr_pct": 1.47,
+      "assets": [
+        {
+          "asset": "Maintenance Plans",
+          "asset_id": "9000000007",
+          "source": "Google",
+          "impressions": 42107,
+          "clicks": 841,
+          "ctr_pct": 2.0,
+          "conversions": 56,
+          "cost": 3681.96,
+          "verdict": "strong"
+        },
+        {
+          "asset": "Furnace Repair",
+          "asset_id": "9000000001",
+          "source": "advertiser",
+          "impressions": 31892,
+          "clicks": 662,
+          "ctr_pct": 2.08,
+          "conversions": 47,
+          "cost": 3172.6,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Emergency Plumber",
+          "asset_id": "9000000004",
+          "source": "advertiser",
+          "impressions": 42088,
+          "clicks": 724,
+          "ctr_pct": 1.72,
+          "conversions": 45,
+          "cost": 3338.1,
+          "verdict": "ok"
+        },
+        {
+          "asset": "AC Repair",
+          "asset_id": "9000000002",
+          "source": "advertiser",
+          "impressions": 36328,
+          "clicks": 598,
+          "ctr_pct": 1.65,
+          "conversions": 40,
+          "cost": 2830.06,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Water Heaters",
+          "asset_id": "9000000003",
+          "source": "advertiser",
+          "impressions": 34365,
+          "clicks": 444,
+          "ctr_pct": 1.29,
+          "conversions": 30,
+          "cost": 2180.63,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Customer Reviews",
+          "asset_id": "9000000006",
+          "source": "advertiser",
+          "impressions": 34036,
+          "clicks": 293,
+          "ctr_pct": 0.86,
+          "conversions": 21,
+          "cost": 1462.68,
+          "verdict": "ok"
+        },
+        {
+          "asset": "About Us",
+          "asset_id": "9000000008",
+          "source": "Google",
+          "impressions": 39327,
+          "clicks": 76,
+          "ctr_pct": 0.19,
+          "conversions": 5,
+          "cost": 369.73,
+          "verdict": "weak"
+        },
+        {
+          "asset": "Financing Options",
+          "asset_id": "9000000005",
+          "source": "advertiser",
+          "impressions": 41923,
+          "clicks": 277,
+          "ctr_pct": 0.66,
+          "conversions": 0,
+          "cost": 1324.49,
+          "verdict": "weak"
+        }
+      ]
+    },
+    {
+      "type": "sitelink",
+      "serving_on": "Furnace Repair | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "Furnace Tune-Up",
+          "asset_id": "9000000021",
+          "source": "advertiser",
+          "impressions": 3839,
+          "clicks": 88,
+          "ctr_pct": 2.29,
+          "conversions": 14,
+          "cost": 775.29,
+          "verdict": "no verdict: fewer than 3 peers"
+        },
+        {
+          "asset": "Emergency Heating",
+          "asset_id": "9000000022",
+          "source": "advertiser",
+          "impressions": 3499,
+          "clicks": 56,
+          "ctr_pct": 1.6,
+          "conversions": 8,
+          "cost": 493.37,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "sitelink",
+      "serving_on": "Plumbing | Search > Drain cleaning",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "Drain Cleaning",
+          "asset_id": "9000000033",
+          "source": "advertiser",
+          "impressions": 680,
+          "clicks": 14,
+          "ctr_pct": 2.06,
+          "conversions": 2,
+          "cost": 112.97,
+          "verdict": "weak: opens the ad's own page"
+        },
+        {
+          "asset": "Leak Repair",
+          "asset_id": "9000000034",
+          "source": "advertiser",
+          "impressions": 658,
+          "clicks": 7,
+          "ctr_pct": 1.06,
+          "conversions": 1,
+          "cost": 56.48,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "serving_on": "account",
+      "peer_median_ctr_pct": 3.12,
+      "assets": [
+        {
+          "asset": "Open 7 Days a Week",
+          "asset_id": "9000000011",
+          "source": "advertiser",
+          "impressions": 43985,
+          "clicks": 1396,
+          "ctr_pct": 3.17,
+          "conversions": 165,
+          "cost": 7678.91,
+          "verdict": "strong"
+        },
+        {
+          "asset": "No Overtime Charges",
+          "asset_id": "9000000012",
+          "source": "advertiser",
+          "impressions": 44349,
+          "clicks": 1382,
+          "ctr_pct": 3.12,
+          "conversions": 144,
+          "cost": 7521.24,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Serving Denver Metro",
+          "asset_id": "9000000014",
+          "source": "Google",
+          "impressions": 45302,
+          "clicks": 1379,
+          "ctr_pct": 3.04,
+          "conversions": 143,
+          "cost": 6993.02,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Licensed Technicians",
+          "asset_id": "9000000010",
+          "source": "advertiser",
+          "impressions": 36789,
+          "clicks": 1247,
+          "ctr_pct": 3.39,
+          "conversions": 139,
+          "cost": 6887.67,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Upfront Pricing",
+          "asset_id": "9000000009",
+          "source": "advertiser",
+          "impressions": 38546,
+          "clicks": 1201,
+          "ctr_pct": 3.12,
+          "conversions": 128,
+          "cost": 6536.71,
+          "verdict": "ok"
+        },
+        {
+          "asset": "2025 Rates Locked In",
+          "asset_id": "9000000013",
+          "source": "advertiser",
+          "impressions": 46655,
+          "clicks": 1064,
+          "ctr_pct": 2.28,
+          "conversions": 103,
+          "cost": 5599.65,
+          "verdict": "ok"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "serving_on": "AC Repair | Search",
+      "peer_median_ctr_pct": 4.47,
+      "assets": [
+        {
+          "asset": "Upfront AC Prices",
+          "asset_id": "9000000026",
+          "source": "advertiser",
+          "impressions": 3140,
+          "clicks": 160,
+          "ctr_pct": 5.1,
+          "conversions": 19,
+          "cost": 1351.26,
+          "verdict": "strong"
+        },
+        {
+          "asset": "Licensed Cooling Techs",
+          "asset_id": "9000000025",
+          "source": "advertiser",
+          "impressions": 2929,
+          "clicks": 137,
+          "ctr_pct": 4.68,
+          "conversions": 14,
+          "cost": 1157.02,
+          "verdict": "ok"
+        },
+        {
+          "asset": "Same-Day AC Repair",
+          "asset_id": "9000000023",
+          "source": "advertiser",
+          "impressions": 3267,
+          "clicks": 138,
+          "ctr_pct": 4.22,
+          "conversions": 13,
+          "cost": 1165.46,
+          "verdict": "ok"
+        },
+        {
+          "asset": "All AC Brands Repaired",
+          "asset_id": "9000000024",
+          "source": "advertiser",
+          "impressions": 2436,
+          "clicks": 104,
+          "ctr_pct": 4.27,
+          "conversions": 12,
+          "cost": 878.32,
+          "verdict": "ok"
+        }
+      ]
+    },
+    {
+      "type": "structured_snippet",
+      "serving_on": "account",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "Service catalog",
+          "asset_id": "9000000015",
+          "source": "advertiser",
+          "impressions": 30761,
+          "clicks": 956,
+          "ctr_pct": 3.11,
+          "conversions": 109,
+          "cost": 5492.85,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "structured_snippet",
+      "serving_on": "Water Heaters | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "Types",
+          "asset_id": "9000000028",
+          "source": "advertiser",
+          "impressions": 1303,
+          "clicks": 75,
+          "ctr_pct": 5.76,
+          "conversions": 10,
+          "cost": 636.59,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "serving_on": "Brand | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "call",
+          "asset_id": "9000000029",
+          "source": "advertiser",
+          "impressions": 683,
+          "clicks": 157,
+          "ctr_pct": 22.99,
+          "conversions": 25,
+          "cost": 206.78,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "serving_on": "Furnace Repair | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "call",
+          "asset_id": "9000000030",
+          "source": "advertiser",
+          "impressions": 2288,
+          "clicks": 142,
+          "ctr_pct": 6.21,
+          "conversions": 24,
+          "cost": 1251.04,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "serving_on": "Water Heaters | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "call",
+          "asset_id": "9000000031",
+          "source": "advertiser",
+          "impressions": 1115,
+          "clicks": 60,
+          "ctr_pct": 5.38,
+          "conversions": 9,
+          "cost": 509.27,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "serving_on": "Plumbing | Search",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "call",
+          "asset_id": "9000000032",
+          "source": "advertiser",
+          "impressions": 1796,
+          "clicks": 85,
+          "ctr_pct": 4.73,
+          "conversions": 11,
+          "cost": 685.86,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "serving_on": "account",
+      "peer_median_ctr_pct": null,
+      "assets": [
+        {
+          "asset": "Technician at a furnace",
+          "asset_id": "9000000018",
+          "source": "advertiser",
+          "impressions": 7792,
+          "clicks": 451,
+          "ctr_pct": 5.79,
+          "conversions": 56,
+          "cost": 3091.43,
+          "verdict": "no verdict: fewer than 3 peers"
+        },
+        {
+          "asset": "Van in a driveway",
+          "asset_id": "9000000019",
+          "source": "advertiser",
+          "impressions": 7201,
+          "clicks": 408,
+          "ctr_pct": 5.67,
+          "conversions": 47,
+          "cost": 2678.15,
+          "verdict": "no verdict: fewer than 3 peers"
+        }
+      ]
+    }
+  ],
+  "link_check": [
+    {
+      "url": "https://example.com/about",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/about",
+      "result": "ok",
+      "used_by": [
+        "About Us"
+      ]
+    },
+    {
+      "url": "https://example.com/ac-repair",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/ac-repair",
+      "result": "ok",
+      "used_by": [
+        "AC Repair",
+        "AC Tune-Up",
+        "price"
+      ]
+    },
+    {
+      "url": "https://example.com/drain-cleaning",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/drain-cleaning",
+      "result": "ok",
+      "used_by": [
+        "Drain Cleaning"
+      ]
+    },
+    {
+      "url": "https://example.com/emergency-heating",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/emergency-heating",
+      "result": "ok",
+      "used_by": [
+        "Emergency Heating"
+      ]
+    },
+    {
+      "url": "https://example.com/emergency-plumber",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/emergency-plumber",
+      "result": "ok",
+      "used_by": [
+        "Emergency Plumber"
+      ]
+    },
+    {
+      "url": "https://example.com/financing",
+      "status": 404,
+      "redirects": 0,
+      "final_url": "https://example.com/financing",
+      "result": "dead",
+      "used_by": [
+        "Financing Options"
+      ]
+    },
+    {
+      "url": "https://example.com/furnace-repair",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/furnace-repair",
+      "result": "ok",
+      "used_by": [
+        "Furnace Repair",
+        "price"
+      ]
+    },
+    {
+      "url": "https://example.com/furnace-tune-up",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/furnace-tune-up",
+      "result": "ok",
+      "used_by": [
+        "Furnace Tune-Up"
+      ]
+    },
+    {
+      "url": "https://example.com/leak-repair",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/leak-repair",
+      "result": "ok",
+      "used_by": [
+        "Leak Repair"
+      ]
+    },
+    {
+      "url": "https://example.com/maintenance-plans",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/maintenance-plans",
+      "result": "ok",
+      "used_by": [
+        "Maintenance Plans"
+      ]
+    },
+    {
+      "url": "https://example.com/pricing/drain-cleaning",
+      "status": 404,
+      "redirects": 0,
+      "final_url": "https://example.com/pricing/drain-cleaning",
+      "result": "dead",
+      "used_by": [
+        "price"
+      ]
+    },
+    {
+      "url": "https://example.com/reviews",
+      "status": 200,
+      "redirects": 2,
+      "final_url": "https://example.com/about/reviews",
+      "result": "redirect chain",
+      "used_by": [
+        "Customer Reviews"
+      ]
+    },
+    {
+      "url": "https://example.com/water-heaters",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/water-heaters",
+      "result": "ok",
+      "used_by": [
+        "Water Heaters"
+      ]
+    },
+    {
+      "url": "https://example.com/about/reviews",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/about/reviews",
+      "result": "ok",
+      "used_by": [
+        "drafted replacement (final address of https://example.com/reviews)"
+      ]
+    },
+    {
+      "url": "https://example.com/heat-pumps",
+      "status": 200,
+      "redirects": 0,
+      "final_url": "https://example.com/heat-pumps",
+      "result": "ok",
+      "used_by": [
+        "drafted replacement"
+      ]
+    }
+  ],
+  "replacements": [
+    {
+      "for": "Financing Options sitelink (dead link, account level)",
+      "campaign": "account",
+      "action": "confirm the new financing page (or that financing has ended); then I can add the corrected sitelink at account level, and you remove the old one in Google Ads",
+      "draft": {
+        "final_url": "[confirm] the page that replaced https://example.com/financing",
+        "link_text": {
+          "text": "Financing Options",
+          "chars": 17,
+          "limit": 25,
+          "source": "asset: current sitelink text"
+        },
+        "description1": {
+          "text": "Spread the cost of a new unit",
+          "chars": 29,
+          "limit": 35,
+          "source": "asset: current sitelink description"
+        },
+        "description2": {
+          "text": "Financing available",
+          "chars": 19,
+          "limit": 35,
+          "source": "ad: Financing Available"
+        }
+      }
+    },
+    {
+      "for": "Customer Reviews sitelink (redirect chain)",
+      "campaign": "account",
+      "action": "add_sitelinks at account level with the final address (the text stays), in one call with the Drain Cleaning sitelink below; then remove the old one in Google Ads",
+      "draft": {
+        "final_url": "https://example.com/about/reviews",
+        "link_text": {
+          "text": "Customer Reviews",
+          "chars": 16,
+          "limit": 25,
+          "source": "asset: current sitelink text"
+        },
+        "description1": {
+          "text": "4.9 stars from 1,200 reviews",
+          "chars": 28,
+          "limit": 35,
+          "source": "site: /about/reviews description"
+        },
+        "description2": {
+          "text": "Read reviews from neighbors",
+          "chars": 27,
+          "limit": 35,
+          "source": "asset: current sitelink description"
+        }
+      }
+    },
+    {
+      "for": "2025 Rates Locked In callout (past year, account level)",
+      "campaign": "account",
+      "action": "add_callout_asset at account level (it needs at least 2, so a second sourced callout goes with it), then remove the old one in Google Ads",
+      "draft": {
+        "callouts": [
+          {
+            "text": "Same-Day Service",
+            "chars": 16,
+            "limit": 25,
+            "source": "ad: Same-Day Service in Denver"
+          },
+          {
+            "text": "Family Owned Since 2004",
+            "chars": 23,
+            "limit": 25,
+            "source": "ad: Family Owned Since 2004"
+          }
+        ]
+      }
+    },
+    {
+      "for": "About Us sitelink (Google-generated, weak)",
+      "campaign": "account",
+      "action": "add_sitelinks at account level, in one call with the corrected Customer Reviews sitelink; switch off Google-generated sitelinks in Google Ads if you want only your own",
+      "draft": {
+        "final_url": "https://example.com/drain-cleaning",
+        "link_text": {
+          "text": "Drain Cleaning",
+          "chars": 14,
+          "limit": 25,
+          "source": "site: /drain-cleaning title and description"
+        },
+        "description1": {
+          "text": "Clogged drains cleared same day",
+          "chars": 31,
+          "limit": 35,
+          "source": "site: /drain-cleaning title and description"
+        },
+        "description2": {
+          "text": "Upfront prices",
+          "chars": 14,
+          "limit": 35,
+          "source": "site: /drain-cleaning title and description"
+        }
+      }
+    },
+    {
+      "for": "Furnace Repair | Search override trap (2 own sitelinks hide the account set)",
+      "campaign": "Furnace Repair | Search",
+      "action": "add_sitelinks to the campaign, so it carries 5 of its own",
+      "draft": [
+        {
+          "final_url": "https://example.com/maintenance-plans",
+          "link_text": {
+            "text": "Maintenance Plans",
+            "chars": 17,
+            "limit": 25,
+            "source": "site: /maintenance-plans description"
+          },
+          "description1": {
+            "text": "Two tune-ups a year",
+            "chars": 19,
+            "limit": 35,
+            "source": "site: /maintenance-plans description"
+          },
+          "description2": {
+            "text": "Priority booking for members",
+            "chars": 28,
+            "limit": 35,
+            "source": "site: /maintenance-plans description"
+          }
+        },
+        {
+          "final_url": "https://example.com/heat-pumps",
+          "link_text": {
+            "text": "Heat Pumps",
+            "chars": 10,
+            "limit": 25,
+            "source": "site: /heat-pumps title and description"
+          },
+          "description1": {
+            "text": "Heat pump installs",
+            "chars": 18,
+            "limit": 35,
+            "source": "site: /heat-pumps title and description"
+          },
+          "description2": {
+            "text": "Rebate help and upfront prices",
+            "chars": 30,
+            "limit": 35,
+            "source": "site: /heat-pumps title and description"
+          }
+        },
+        {
+          "final_url": "https://example.com/about/reviews",
+          "link_text": {
+            "text": "Customer Reviews",
+            "chars": 16,
+            "limit": 25,
+            "source": "asset: current sitelink text"
+          },
+          "description1": {
+            "text": "4.9 stars from 1,200 reviews",
+            "chars": 28,
+            "limit": 35,
+            "source": "site: /about/reviews description"
+          },
+          "description2": {
+            "text": "Read reviews from neighbors",
+            "chars": 27,
+            "limit": 35,
+            "source": "asset: current sitelink description"
+          }
+        }
+      ]
+    },
+    {
+      "for": "Plumbing | Search > Drain cleaning override trap (2 own sitelinks hide the account set; one opens the ad's own page)",
+      "campaign": "Plumbing | Search > Drain cleaning",
+      "action": "add_sitelinks to the ad group, then remove its Drain Cleaning sitelink in Google Ads, so it carries 4 that each open a different page",
+      "draft": [
+        {
+          "final_url": "https://example.com/emergency-plumber",
+          "link_text": {
+            "text": "Emergency Plumber",
+            "chars": 17,
+            "limit": 25,
+            "source": "asset: Emergency Plumber sitelink"
+          },
+          "description1": {
+            "text": "Live dispatcher day or night",
+            "chars": 28,
+            "limit": 35,
+            "source": "asset: Emergency Plumber sitelink"
+          },
+          "description2": {
+            "text": "No overtime charges",
+            "chars": 19,
+            "limit": 35,
+            "source": "asset: Emergency Plumber sitelink"
+          }
+        },
+        {
+          "final_url": "https://example.com/maintenance-plans",
+          "link_text": {
+            "text": "Maintenance Plans",
+            "chars": 17,
+            "limit": 25,
+            "source": "site: /maintenance-plans description"
+          },
+          "description1": {
+            "text": "Two tune-ups a year",
+            "chars": 19,
+            "limit": 35,
+            "source": "site: /maintenance-plans description"
+          },
+          "description2": {
+            "text": "Priority booking for members",
+            "chars": 28,
+            "limit": 35,
+            "source": "site: /maintenance-plans description"
+          }
+        },
+        {
+          "final_url": "https://example.com/about/reviews",
+          "link_text": {
+            "text": "Customer Reviews",
+            "chars": 16,
+            "limit": 25,
+            "source": "asset: current sitelink text"
+          },
+          "description1": {
+            "text": "4.9 stars from 1,200 reviews",
+            "chars": 28,
+            "limit": 35,
+            "source": "site: /about/reviews description"
+          },
+          "description2": {
+            "text": "Read reviews from neighbors",
+            "chars": 27,
+            "limit": 35,
+            "source": "asset: current sitelink description"
+          }
+        }
+      ]
+    },
+    {
+      "for": "Price asset (disapproved: Destination not working)",
+      "campaign": "account",
+      "action": "add_price_asset with the drain cleaning offering pointed at a live page, then remove the old one in Google Ads",
+      "draft": {
+        "price_type": "SERVICES",
+        "currency": "USD",
+        "offerings": [
+          {
+            "header": {
+              "text": "Furnace Tune-Up",
+              "chars": 15,
+              "limit": 25,
+              "source": "user: current prices"
+            },
+            "description": {
+              "text": "Safety check and clean",
+              "chars": 22,
+              "limit": 25,
+              "source": "asset: current price asset"
+            },
+            "price": 89,
+            "unit": "NONE",
+            "final_url": "https://example.com/furnace-repair"
+          },
+          {
+            "header": {
+              "text": "AC Tune-Up",
+              "chars": 10,
+              "limit": 25,
+              "source": "user: current prices"
+            },
+            "description": {
+              "text": "Coil clean and test",
+              "chars": 19,
+              "limit": 25,
+              "source": "asset: current price asset"
+            },
+            "price": 89,
+            "unit": "NONE",
+            "final_url": "https://example.com/ac-repair"
+          },
+          {
+            "header": {
+              "text": "Drain Cleaning",
+              "chars": 14,
+              "limit": 25,
+              "source": "user: current prices"
+            },
+            "description": {
+              "text": "Clogged drain cleared",
+              "chars": 21,
+              "limit": 25,
+              "source": "site: /drain-cleaning description"
+            },
+            "price": 129,
+            "unit": "NONE",
+            "final_url": "https://example.com/drain-cleaning"
+          }
+        ]
+      }
+    },
+    {
+      "for": "Furnace tune-up offer (no live promotion in the account; the AC Tune-Up promotion on AC Repair | Search ended 2026-09-15)",
+      "campaign": "Furnace Repair | Search",
+      "action": "the MCP has no promotion action: add this one to the campaign in Google Ads, and remove the ended AC Tune-Up promotion there",
+      "draft": {
+        "promotion_item": {
+          "text": "Furnace Tune-Up",
+          "chars": 15,
+          "limit": 20,
+          "source": "user: current offer"
+        },
+        "money_off": 20,
+        "currency": "USD",
+        "end_date": "2026-11-30",
+        "final_url": "https://example.com/furnace-repair"
+      }
+    }
+  ],
+  "unknowns": [],
+  "offered_actions": [
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_sitelinks",
+      "level": "ACCOUNT",
+      "sitelinks": [
+        {
+          "link_text": "Customer Reviews",
+          "final_url": "https://example.com/about/reviews",
+          "description1": "4.9 stars from 1,200 reviews",
+          "description2": "Read reviews from neighbors"
+        },
+        {
+          "link_text": "Drain Cleaning",
+          "final_url": "https://example.com/drain-cleaning",
+          "description1": "Clogged drains cleared same day",
+          "description2": "Upfront prices"
+        }
+      ],
+      "status": "not run"
+    },
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_callout_asset",
+      "level": "ACCOUNT",
+      "callout_texts": [
+        "Same-Day Service",
+        "Family Owned Since 2004"
+      ],
+      "status": "not run"
+    },
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_sitelinks",
+      "level": "CAMPAIGN",
+      "campaign_id": "210000000002",
+      "sitelinks": [
+        {
+          "link_text": "Maintenance Plans",
+          "final_url": "https://example.com/maintenance-plans",
+          "description1": "Two tune-ups a year",
+          "description2": "Priority booking for members"
+        },
+        {
+          "link_text": "Heat Pumps",
+          "final_url": "https://example.com/heat-pumps",
+          "description1": "Heat pump installs",
+          "description2": "Rebate help and upfront prices"
+        },
+        {
+          "link_text": "Customer Reviews",
+          "final_url": "https://example.com/about/reviews",
+          "description1": "4.9 stars from 1,200 reviews",
+          "description2": "Read reviews from neighbors"
+        }
+      ],
+      "status": "not run"
+    },
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_sitelinks",
+      "level": "AD_GROUP",
+      "ad_group_id": "410000000011",
+      "sitelinks": [
+        {
+          "link_text": "Emergency Plumber",
+          "final_url": "https://example.com/emergency-plumber",
+          "description1": "Live dispatcher day or night",
+          "description2": "No overtime charges"
+        },
+        {
+          "link_text": "Maintenance Plans",
+          "final_url": "https://example.com/maintenance-plans",
+          "description1": "Two tune-ups a year",
+          "description2": "Priority booking for members"
+        },
+        {
+          "link_text": "Customer Reviews",
+          "final_url": "https://example.com/about/reviews",
+          "description1": "4.9 stars from 1,200 reviews",
+          "description2": "Read reviews from neighbors"
+        }
+      ],
+      "status": "not run"
+    },
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_price_asset",
+      "price_type": "SERVICES",
+      "language_code": "en",
+      "offerings": [
+        {
+          "header": "Furnace Tune-Up",
+          "description": "Safety check and clean",
+          "final_url": "https://example.com/furnace-repair",
+          "price": 89,
+          "currency_code": "USD",
+          "unit": "NONE"
+        },
+        {
+          "header": "AC Tune-Up",
+          "description": "Coil clean and test",
+          "final_url": "https://example.com/ac-repair",
+          "price": 89,
+          "currency_code": "USD",
+          "unit": "NONE"
+        },
+        {
+          "header": "Drain Cleaning",
+          "description": "Clogged drain cleared",
+          "final_url": "https://example.com/drain-cleaning",
+          "price": 129,
+          "currency_code": "USD",
+          "unit": "NONE"
+        }
+      ],
+      "status": "not run"
+    },
+    {
+      "platform": "google-ads",
+      "workspace_id": 1,
+      "brand_id": 1,
+      "account_id": "1234567890",
+      "action": "add_call_asset",
+      "phone_number": "(303) 555-0142",
+      "phone_country": "US",
+      "status": "not run"
+    }
+  ]
+}

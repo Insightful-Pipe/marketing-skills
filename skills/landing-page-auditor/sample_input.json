@@ -1,0 +1,666 @@
+{
+  "request": "Hey Claude, I just added the \"landing-page-auditor\" skill. Audit our top landing page and tell me why it isn't converting. The page should get people to sign up.",
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input.",
+  "run_date": "2026-10-28",
+  "site": "https://www.example.com/",
+  "sources": {
+    "google-analytics": "properties/123456789",
+    "google-search-console": "https://www.example.com/",
+    "google-ads": "1234567890",
+    "dataforseo": "connected",
+    "screenshot": "connected",
+    "pagespeed-insights": "connected",
+    "clarity": "not connected"
+  },
+  "inputs": {
+    "page": "not given: the skill picked the landing page with the most sessions",
+    "the_one_action": "sign up (given by the user; also the first hero CTA)",
+    "page_type": "not given: inferred from the URL and the traffic mix"
+  },
+  "windows": {
+    "tracking_check": "2026-09-28 to 2026-10-27 (30 days through yesterday)",
+    "ga4": "2026-09-29 to 2026-10-26 (28 days ending 2 days back)",
+    "search_console": "2026-09-28 to 2026-10-25 (28 days ending 3 days back)",
+    "google_ads": "LAST_30_DAYS"
+  },
+  "data_pulled": {
+    "daily_check": [
+      {
+        "date": "2026-09-28",
+        "sessions": 2071,
+        "engagedSessions": 1294
+      },
+      {
+        "date": "2026-09-29",
+        "sessions": 1983,
+        "engagedSessions": 1223
+      },
+      {
+        "date": "2026-09-30",
+        "sessions": 2098,
+        "engagedSessions": 1231
+      },
+      {
+        "date": "2026-10-01",
+        "sessions": 2083,
+        "engagedSessions": 1279
+      },
+      {
+        "date": "2026-10-02",
+        "sessions": 2099,
+        "engagedSessions": 1221
+      },
+      {
+        "date": "2026-10-03",
+        "sessions": 1736,
+        "engagedSessions": 1042
+      },
+      {
+        "date": "2026-10-04",
+        "sessions": 1642,
+        "engagedSessions": 957
+      },
+      {
+        "date": "2026-10-05",
+        "sessions": 2189,
+        "engagedSessions": 1306
+      },
+      {
+        "date": "2026-10-06",
+        "sessions": 1914,
+        "engagedSessions": 1121
+      },
+      {
+        "date": "2026-10-07",
+        "sessions": 1914,
+        "engagedSessions": 1165
+      },
+      {
+        "date": "2026-10-08",
+        "sessions": 2158,
+        "engagedSessions": 1346
+      },
+      {
+        "date": "2026-10-09",
+        "sessions": 1972,
+        "engagedSessions": 1212
+      },
+      {
+        "date": "2026-10-10",
+        "sessions": 1705,
+        "engagedSessions": 990
+      },
+      {
+        "date": "2026-10-11",
+        "sessions": 1821,
+        "engagedSessions": 1112
+      },
+      {
+        "date": "2026-10-12",
+        "sessions": 2120,
+        "engagedSessions": 1330
+      },
+      {
+        "date": "2026-10-13",
+        "sessions": 2038,
+        "engagedSessions": 1213
+      },
+      {
+        "date": "2026-10-14",
+        "sessions": 2033,
+        "engagedSessions": 1266
+      },
+      {
+        "date": "2026-10-15",
+        "sessions": 2164,
+        "engagedSessions": 1342
+      },
+      {
+        "date": "2026-10-16",
+        "sessions": 1892,
+        "engagedSessions": 1101
+      },
+      {
+        "date": "2026-10-17",
+        "sessions": 1737,
+        "engagedSessions": 1084
+      },
+      {
+        "date": "2026-10-18",
+        "sessions": 1642,
+        "engagedSessions": 961
+      },
+      {
+        "date": "2026-10-19",
+        "sessions": 2185,
+        "engagedSessions": 1327
+      },
+      {
+        "date": "2026-10-20",
+        "sessions": 2108,
+        "engagedSessions": 1299
+      },
+      {
+        "date": "2026-10-21",
+        "sessions": 2183,
+        "engagedSessions": 1270
+      },
+      {
+        "date": "2026-10-22",
+        "sessions": 2174,
+        "engagedSessions": 1301
+      },
+      {
+        "date": "2026-10-23",
+        "sessions": 2008,
+        "engagedSessions": 1201
+      },
+      {
+        "date": "2026-10-24",
+        "sessions": 1777,
+        "engagedSessions": 1048
+      },
+      {
+        "date": "2026-10-25",
+        "sessions": 1736,
+        "engagedSessions": 1029
+      },
+      {
+        "date": "2026-10-26",
+        "sessions": 1998,
+        "engagedSessions": 1169
+      },
+      {
+        "date": "2026-10-27",
+        "sessions": 2032,
+        "engagedSessions": 0
+      }
+    ],
+    "landing_pages_top5": [
+      {
+        "page": "https://www.example.com/features/online-booking/",
+        "sessions": 9800,
+        "engaged": 5880,
+        "key_events": 406,
+        "avg_session_duration_s": 94
+      },
+      {
+        "page": "https://www.example.com/",
+        "sessions": 8900,
+        "engaged": 5520,
+        "key_events": 455,
+        "avg_session_duration_s": 121
+      },
+      {
+        "page": "https://www.example.com/pricing/",
+        "sessions": 3300,
+        "engaged": 2310,
+        "key_events": 268,
+        "avg_session_duration_s": 133
+      },
+      {
+        "page": "https://www.example.com/blog/reduce-no-shows/",
+        "sessions": 3100,
+        "engaged": 1550,
+        "key_events": 12,
+        "avg_session_duration_s": 148
+      },
+      {
+        "page": "https://www.example.com/industries/salons/",
+        "sessions": 2200,
+        "engaged": 1450,
+        "key_events": 118,
+        "avg_session_duration_s": 102
+      }
+    ],
+    "rows_without_a_landing_page": 640,
+    "site_by_device": {
+      "desktop": {
+        "sessions": 19800,
+        "engaged": 13300
+      },
+      "mobile": {
+        "sessions": 24100,
+        "engaged": 13250
+      },
+      "tablet": {
+        "sessions": 1300,
+        "engaged": 730
+      }
+    },
+    "key_events": [
+      "sign_up",
+      "purchase",
+      "demo_request"
+    ],
+    "page_events": [
+      {
+        "event": "page_view",
+        "count": 12400,
+        "users": 8350
+      },
+      {
+        "event": "session_start",
+        "count": 9800,
+        "users": 8350
+      },
+      {
+        "event": "first_visit",
+        "count": 6900,
+        "users": 6900
+      },
+      {
+        "event": "user_engagement",
+        "count": 10800,
+        "users": 5300
+      },
+      {
+        "event": "scroll",
+        "count": 2650,
+        "users": 2380
+      },
+      {
+        "event": "click",
+        "count": 1310,
+        "users": 1180
+      }
+    ],
+    "click_rows_on_page": [
+      {
+        "linkUrl": "https://app.example.com/signup",
+        "outbound": true,
+        "eventCount": 1240
+      },
+      {
+        "linkUrl": "https://app.example.com/login",
+        "outbound": true,
+        "eventCount": 70
+      }
+    ],
+    "scroll_90_by_device": {
+      "desktop": {
+        "scrolled_users": 1050,
+        "viewing_users": 2900
+      },
+      "mobile": {
+        "scrolled_users": 1270,
+        "viewing_users": 5250
+      }
+    },
+    "page_by_source": [
+      {
+        "sessionSourceMedium": "google / cpc",
+        "channel": "Paid Search",
+        "sessions": 5690,
+        "engaged": 3240,
+        "key_events": 205
+      },
+      {
+        "sessionSourceMedium": "google / organic",
+        "channel": "Organic Search",
+        "sessions": 2350,
+        "engaged": 1620,
+        "key_events": 118
+      },
+      {
+        "sessionSourceMedium": "(direct) / (none)",
+        "channel": "Direct",
+        "sessions": 980,
+        "engaged": 590,
+        "key_events": 52
+      },
+      {
+        "sessionSourceMedium": "partner-directory.example / referral",
+        "channel": "Referral",
+        "sessions": 410,
+        "engaged": 270,
+        "key_events": 21
+      },
+      {
+        "sessionSourceMedium": "facebook / social",
+        "channel": "Organic Social",
+        "sessions": 370,
+        "engaged": 160,
+        "key_events": 10
+      }
+    ],
+    "page_by_device": {
+      "mobile": {
+        "sessions": 6180,
+        "engaged": 3520
+      },
+      "desktop": {
+        "sessions": 3420,
+        "engaged": 2240
+      },
+      "tablet": {
+        "sessions": 200,
+        "engaged": 120
+      }
+    },
+    "next_pages_sessions": [
+      {
+        "page": "https://www.example.com/features/online-booking/",
+        "sessions": 9800
+      },
+      {
+        "page": "https://www.example.com/pricing/",
+        "sessions": 2050
+      },
+      {
+        "page": "/signup",
+        "sessions": 1180
+      },
+      {
+        "page": "https://www.example.com/",
+        "sessions": 900
+      },
+      {
+        "page": "https://www.example.com/features/reminders/",
+        "sessions": 610
+      },
+      {
+        "page": "https://www.example.com/industries/salons/",
+        "sessions": 420
+      },
+      {
+        "page": "https://www.example.com/features/payments/",
+        "sessions": 380
+      },
+      {
+        "page": "https://www.example.com/demo/",
+        "sessions": 340
+      },
+      {
+        "page": "https://www.example.com/integrations/",
+        "sessions": 260
+      },
+      {
+        "page": "https://www.example.com/blog/reduce-no-shows/",
+        "sessions": 120
+      }
+    ],
+    "paid_confirmation": [
+      {
+        "sessionCampaignName": "Search | Online booking | Generic",
+        "sessionGoogleAdsCustomerId": "1234567890",
+        "sessions": 3590,
+        "engaged": 2110
+      },
+      {
+        "sessionCampaignName": "Search | Salons",
+        "sessionGoogleAdsCustomerId": "1234567890",
+        "sessions": 2100,
+        "engaged": 1130
+      }
+    ],
+    "search_console_queries": [
+      {
+        "query": "online booking system",
+        "clicks": 260,
+        "impressions": 6100
+      },
+      {
+        "query": "appointment booking software",
+        "clicks": 190,
+        "impressions": 4900
+      },
+      {
+        "query": "online booking for small business",
+        "clicks": 120,
+        "impressions": 2300
+      },
+      {
+        "query": "booking page for my business",
+        "clicks": 85,
+        "impressions": 1600
+      },
+      {
+        "query": "free online booking system",
+        "clicks": 80,
+        "impressions": 3100
+      },
+      {
+        "query": "example booking software",
+        "clicks": 70,
+        "impressions": 140
+      },
+      {
+        "query": "online scheduling app",
+        "clicks": 60,
+        "impressions": 1900
+      },
+      {
+        "query": "booking app with deposits",
+        "clicks": 45,
+        "impressions": 700
+      },
+      {
+        "query": "salon booking system",
+        "clicks": 30,
+        "impressions": 1500
+      },
+      {
+        "query": "example booking online booking",
+        "clicks": 20,
+        "impressions": 40
+      }
+    ],
+    "google_ads_landing_page_view": [
+      {
+        "url": "https://www.example.com/features/online-booking/",
+        "clicks": 5930,
+        "cost_micros": 9870000000,
+        "conversions": 214.0
+      },
+      {
+        "url": "https://www.example.com/pricing/",
+        "clicks": 640,
+        "cost_micros": 1150000000,
+        "conversions": 41.0
+      }
+    ],
+    "google_ads_ads": [
+      {
+        "ad_group": "Online booking",
+        "final_urls": [
+          "https://www.example.com/features/online-booking/"
+        ],
+        "clicks": 3710,
+        "impressions": 61200,
+        "headlines": [
+          "Online Booking System",
+          "Your Own Online Booking Page",
+          "Reminders and Deposits Built In",
+          "Take Bookings 24/7"
+        ]
+      },
+      {
+        "ad_group": "Salons",
+        "final_urls": [
+          "https://www.example.com/features/online-booking/"
+        ],
+        "clicks": 2220,
+        "impressions": 39800,
+        "headlines": [
+          "Salon Booking Software",
+          "Set Up in 10 Minutes",
+          "Cut No-Shows With Reminders",
+          "Built for Hair and Beauty Salons"
+        ]
+      }
+    ],
+    "google_ads_keywords": [
+      {
+        "ad_group": "Online booking",
+        "keyword": "online booking system",
+        "post_click_quality_score": "AVERAGE",
+        "clicks": 1480
+      },
+      {
+        "ad_group": "Online booking",
+        "keyword": "appointment booking software",
+        "post_click_quality_score": "AVERAGE",
+        "clicks": 1210
+      },
+      {
+        "ad_group": "Online booking",
+        "keyword": "online scheduling app",
+        "post_click_quality_score": "ABOVE_AVERAGE",
+        "clicks": 640
+      },
+      {
+        "ad_group": "Salons",
+        "keyword": "salon booking software",
+        "post_click_quality_score": "BELOW_AVERAGE",
+        "clicks": 1050
+      },
+      {
+        "ad_group": "Salons",
+        "keyword": "hair salon booking system",
+        "post_click_quality_score": "BELOW_AVERAGE",
+        "clicks": 640
+      },
+      {
+        "ad_group": "Salons",
+        "keyword": "salon appointment app",
+        "post_click_quality_score": "BELOW_AVERAGE",
+        "clicks": 410
+      }
+    ],
+    "page_reader": {
+      "seq": [
+        [
+          "h1",
+          "Booking software that works as hard as you do"
+        ],
+        [
+          "cta",
+          "Start free",
+          "https://app.example.com/signup"
+        ],
+        [
+          "cta",
+          "Book a demo",
+          "/demo/"
+        ],
+        [
+          "h2",
+          "Your booking page, open around the clock"
+        ],
+        [
+          "h2",
+          "Reminders that cut no-shows"
+        ],
+        [
+          "h2",
+          "Take deposits when clients book"
+        ],
+        [
+          "h2",
+          "How it works"
+        ],
+        [
+          "h3",
+          "1. Add your services and hours"
+        ],
+        [
+          "h3",
+          "2. Share your booking link"
+        ],
+        [
+          "h3",
+          "3. Get booked"
+        ],
+        [
+          "cta",
+          "Start free",
+          "https://app.example.com/signup"
+        ],
+        [
+          "h2",
+          "Works with the tools you already use"
+        ],
+        [
+          "h2",
+          "What our customers say"
+        ],
+        [
+          "h2",
+          "Frequently asked questions"
+        ],
+        [
+          "h2",
+          "Start taking bookings today"
+        ],
+        [
+          "cta",
+          "Start free",
+          "https://app.example.com/signup"
+        ]
+      ],
+      "sub": "Example Booking Software gives salons, clinics and studios a booking page, automatic reminders and online payments in one place.",
+      "nav": 12,
+      "links": 64,
+      "forms": 0,
+      "inputs": 0,
+      "imgs": 23,
+      "noalt": 0,
+      "vid": 1,
+      "words": 1340,
+      "proof": {
+        "testimonial": "What our customers say",
+        "rating": "4.8/5",
+        "logos": null,
+        "count": null,
+        "works_with": "Works with",
+        "security": null,
+        "guarantee": "cancel anytime",
+        "faq": "Frequently asked"
+      },
+      "rating_context": "'4.8/5 from salon and studio owners' under the customer quotes, near the bottom of the page",
+      "guarantee_context": "an FAQ answer about monthly plans, not a guarantee",
+      "meta": {
+        "title": "Online booking page | Example Booking Software",
+        "plain_text_word_count": 980,
+        "checks": {
+          "no_h1_tag": false,
+          "has_render_blocking_resources": true,
+          "no_image_alt": false,
+          "title_too_long": false
+        }
+      }
+    },
+    "screenshot_capture": {
+      "desktop": "H1, subheadline and both CTAs show in the first screen beside a product screenshot.",
+      "mobile": "The first screen shows the logo, a menu button, the H1 over three lines and the subheadline; the hero image fills the rest, and the Start free button sits just below the first screen. Nothing covers the content and there is no horizontal scroll."
+    },
+    "pagespeed_core_web_vitals_mobile": {
+      "lcp_s": 3.4,
+      "cls": 0.04,
+      "tbt_ms": 310
+    },
+    "pagespeed_accessibility_failing_audits": [
+      "target-size"
+    ]
+  },
+  "calls": [
+    "google-analytics get_report: daily tracking check",
+    "google-analytics get_report: landing pages",
+    "google-analytics get_report: site by device",
+    "google-analytics list_key_events",
+    "google-analytics get_report: page events",
+    "google-analytics get_report: page events by device (scroll)",
+    "google-analytics get_report: click events on the page",
+    "google-analytics get_report: page by channel and source",
+    "google-analytics get_report: page by device",
+    "google-analytics get_report: next pages",
+    "google-analytics get_report: paid confirmation",
+    "google-search-console search_analytics: queries for the page",
+    "google-ads gaql: landing_page_view, ad_group_ad and keyword_view",
+    "dataforseo onpage_instant_pages with custom_js (1 billed call)",
+    "screenshot capture (desktop and mobile)",
+    "pagespeed-insights core-web-vitals (mobile)",
+    "pagespeed-insights accessibility-seo (mobile)"
+  ]
+}

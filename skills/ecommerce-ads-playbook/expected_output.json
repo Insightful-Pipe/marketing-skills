@@ -1,0 +1,453 @@
+{
+  "mode": "Mode 2: store growth audit",
+  "header": {
+    "store": "Harbor & Pine Candle Co. (invented example)",
+    "platform": "Shopify",
+    "currency": "USD",
+    "window": "2026-07-30 to 2026-10-27 (90 days)",
+    "orders_kept": 1085,
+    "orders_dropped": {
+      "cancelled or voided": 23,
+      "test": 4
+    },
+    "grade": 68,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "1. Sales base and refunds",
+      "result": "pass",
+      "key_number": "refund share 3.8%",
+      "line": "warn over 8%, fail over 15%",
+      "deduction": 0
+    },
+    {
+      "area": "2. Conversion by channel",
+      "result": "pass",
+      "key_number": "site rate 1.86%; no channel with 10% of sessions under half of it",
+      "line": "warn when a channel with 10% or more of sessions converts under half the site rate",
+      "deduction": 0
+    },
+    {
+      "area": "3. Mobile vs desktop",
+      "result": "warn",
+      "key_number": "mobile converts at 0.44 of desktop (1.36% vs 3.11%)",
+      "line": "pass at 0.60 or more, warn 0.40 to under 0.60",
+      "deduction": 5
+    },
+    {
+      "area": "4. First vs returning buyers",
+      "result": "pass",
+      "key_number": "returning share 23.7%",
+      "line": "pass at 20% or more",
+      "deduction": 0
+    },
+    {
+      "area": "5. Products: top sellers and dead stock",
+      "result": "warn",
+      "key_number": "10 of 34 in-stock active products sold nothing (29.4%)",
+      "line": "dead products: warn over 20%, fail over 40%; Merchant Center disapproved: warn over 5%",
+      "deduction": 5
+    },
+    {
+      "area": "6. Discount dependence",
+      "result": "warn",
+      "key_number": "45.3% of orders discounted; discounts 11.3% of gross sales",
+      "line": "orders: warn over 30%; share of gross: warn over 10%",
+      "deduction": 5
+    },
+    {
+      "area": "7. Template speed",
+      "result": "warn",
+      "key_number": "collection LCP 3.2 s, CLS 0.06, INP 190 ms; product LCP 3.7 s, CLS 0.14, INP 230 ms",
+      "line": "Google's lines: LCP 2.5 s / 4.0 s, CLS 0.1 / 0.25, INP 200 / 500 ms",
+      "deduction": 5
+    },
+    {
+      "area": "8. Tracking health",
+      "result": "pass",
+      "key_number": "GA4 purchases 1002 vs store orders 1085 (ratio 0.92)",
+      "line": "pass 0.85 to 1.05",
+      "deduction": 0
+    },
+    {
+      "area": "9. Email capture and core flows",
+      "result": "fail",
+      "key_number": "abandoned checkout flow is draft; browse abandonment flow is missing",
+      "line": "fail when welcome or abandoned checkout is not live; warn for the other three",
+      "deduction": 12
+    },
+    {
+      "area": "10. Trust: reviews and policies",
+      "result": "pass",
+      "key_number": "17 of 20 top product pages show reviews; refund and shipping policies published",
+      "line": "reviews: pass at 80% or more",
+      "deduction": 0
+    }
+  ],
+  "grade_math": "100 - 5 (3) - 5 (5) - 5 (6) - 5 (7) - 12 (9) = 68",
+  "top_fixes_priced": [
+    {
+      "fix": "Close the mobile conversion gap, starting with the product template on mobile (LCP 3.7 s, CLS 0.14, INP 230 ms) and then the collection template",
+      "areas": [
+        "3. Mobile vs desktop",
+        "7. Template speed"
+      ],
+      "money_at_stake_per_30_days": 3325,
+      "formula": "mobile sessions 37600 x (0.60 x desktop rate 3.11% minus mobile rate 1.36%) x AOV $53.2 = $9,976 in 90 days, x 30 / 90",
+      "evidence": "GA4 export by device; PageSpeed field data for the product and collection templates",
+      "counted_once": "areas 3 and 7 share this money"
+    },
+    {
+      "fix": "Turn on the abandoned checkout flow (it is in draft in Klaviyo)",
+      "areas": [
+        "9. Email capture and core flows"
+      ],
+      "money_at_stake_per_30_days": 2091,
+      "formula": "abandoned checkout value $125,478.00 in 90 days x 5% (assumed recovery for a first flow) = $6,274, x 30 / 90",
+      "evidence": "Shopify abandoned checkouts report: 1780 checkouts; Klaviyo flow list"
+    },
+    {
+      "fix": "Cut discount dependence: the sitewide FALL30 code carried 279 of the 492 discounted orders; run fewer sitewide sales and keep codes for first orders and bundles",
+      "areas": [
+        "6. Discount dependence"
+      ],
+      "money_at_stake_per_30_days": 278,
+      "formula": "discounts $7,341.50 minus 10% of gross sales $65,066.00 = $835 in 90 days, x 30 / 90",
+      "evidence": "orders export, discount codes; this is margin given away, not lost revenue"
+    }
+  ],
+  "fixes_not_priced": [
+    {
+      "fix": "Decide on the 10 in-stock products that sold nothing in 90 days (accessories 3, reed diffusers 2, wax melts 2, room sprays 2, seasonal candles 1): bundle, reprice, feature or retire each one, and leave them out of Shopping and catalog ads until they sell",
+      "areas": [
+        "5. Products: top sellers and dead stock"
+      ],
+      "result": "warn"
+    },
+    {
+      "fix": "Add a browse abandonment flow (viewed a product, no cart)",
+      "areas": [
+        "9. Email capture and core flows"
+      ],
+      "result": "warn"
+    }
+  ],
+  "unknowns": [],
+  "area_detail": [
+    {
+      "area": "1. Sales base and refunds",
+      "detail": {
+        "orders_kept": 1085,
+        "gross_sales": 65066.0,
+        "discounts": 7341.5,
+        "refunds": 2166.5,
+        "net_sales": 55558.0,
+        "aov": 53.2
+      }
+    },
+    {
+      "area": "2. Conversion by channel",
+      "detail": {
+        "site_sessions": 53760,
+        "site_purchases": 1002,
+        "site_conversion_rate_pct": 1.86,
+        "half_site_rate_pct": 0.93,
+        "channels": [
+          {
+            "channel": "Organic Search",
+            "sessions": 16220,
+            "session_share_pct": 30.2,
+            "purchases": 302,
+            "conversion_rate_pct": 1.86,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Paid Search",
+            "sessions": 11080,
+            "session_share_pct": 20.6,
+            "purchases": 231,
+            "conversion_rate_pct": 2.08,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Paid Social",
+            "sessions": 10860,
+            "session_share_pct": 20.2,
+            "purchases": 128,
+            "conversion_rate_pct": 1.18,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Direct",
+            "sessions": 7600,
+            "session_share_pct": 14.1,
+            "purchases": 155,
+            "conversion_rate_pct": 2.04,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Email",
+            "sessions": 4540,
+            "session_share_pct": 8.4,
+            "purchases": 146,
+            "conversion_rate_pct": 3.22,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Organic Social",
+            "sessions": 1980,
+            "session_share_pct": 3.7,
+            "purchases": 15,
+            "conversion_rate_pct": 0.76,
+            "under_half_site_rate": false
+          },
+          {
+            "channel": "Referral",
+            "sessions": 1480,
+            "session_share_pct": 2.8,
+            "purchases": 25,
+            "conversion_rate_pct": 1.69,
+            "under_half_site_rate": false
+          }
+        ]
+      }
+    },
+    {
+      "area": "3. Mobile vs desktop",
+      "detail": {
+        "desktop": {
+          "sessions": 14460,
+          "purchases": 449,
+          "conversion_rate_pct": 3.11
+        },
+        "mobile": {
+          "sessions": 37600,
+          "purchases": 513,
+          "conversion_rate_pct": 1.36
+        },
+        "tablet": {
+          "sessions": 1700,
+          "purchases": 40,
+          "conversion_rate_pct": 2.35
+        }
+      }
+    },
+    {
+      "area": "4. First vs returning buyers",
+      "detail": {
+        "first_order_revenue": 44047.9,
+        "returning_revenue": 13676.6,
+        "first_time_buyers": 829,
+        "first_time_buyers_who_reordered_in_window": 50,
+        "reorder_rate_pct": 6.0
+      }
+    },
+    {
+      "area": "5. Products: top sellers and dead stock",
+      "detail": {
+        "active_products": 37,
+        "active_in_stock": 34,
+        "out_of_stock_listed_separately": [
+          "Fig & Amber candle 14oz",
+          "Maple Bourbon candle 8oz",
+          "Brass candle tray"
+        ],
+        "dead_products_by_type": {
+          "Seasonal candles": [
+            "Spiced Cranberry candle 8oz"
+          ],
+          "Reed diffusers": [
+            "Lavender Field reed diffuser",
+            "Citrus Grove reed diffuser"
+          ],
+          "Wax melts": [
+            "Vanilla Bean wax melts",
+            "Harbor Fog wax melts"
+          ],
+          "Room sprays": [
+            "Linen Breeze room spray",
+            "Citrus Grove room spray"
+          ],
+          "Accessories": [
+            "Candle snuffer",
+            "Match cloche",
+            "Candle care kit"
+          ]
+        },
+        "top_10_by_revenue": [
+          {
+            "title": "Sea Salt & Cedar candle 8oz",
+            "units": 257,
+            "gross_sales": 7196
+          },
+          {
+            "title": "Pumpkin Chai candle 8oz",
+            "units": 174,
+            "gross_sales": 5220
+          },
+          {
+            "title": "Pine & Smoke candle 8oz",
+            "units": 184,
+            "gross_sales": 5152
+          },
+          {
+            "title": "Sea Salt & Cedar candle 14oz",
+            "units": 117,
+            "gross_sales": 4914
+          },
+          {
+            "title": "Fall Favorites gift box",
+            "units": 66,
+            "gross_sales": 4752
+          },
+          {
+            "title": "Harbor Fog candle 8oz",
+            "units": 169,
+            "gross_sales": 4732
+          },
+          {
+            "title": "Discovery set, 6 minis",
+            "units": 95,
+            "gross_sales": 4560
+          },
+          {
+            "title": "Coastal Trio gift set",
+            "units": 65,
+            "gross_sales": 4160
+          },
+          {
+            "title": "Harbor Fog candle 14oz",
+            "units": 78,
+            "gross_sales": 3276
+          },
+          {
+            "title": "Lavender Field candle 8oz",
+            "units": 103,
+            "gross_sales": 2884
+          }
+        ],
+        "top_10_share_of_gross_sales_pct": 72.0,
+        "merchant_center_disapproved": "1 of 37 (2.7%)"
+      }
+    },
+    {
+      "area": "6. Discount dependence",
+      "detail": {
+        "discounted_orders": 492,
+        "orders": 1085,
+        "codes": [
+          {
+            "code": "FALL30",
+            "orders": 279,
+            "discount": 4849.8
+          },
+          {
+            "code": "WELCOME15",
+            "orders": 98,
+            "discount": 963.0
+          },
+          {
+            "code": "Buy 2 candles, 15% off (automatic)",
+            "orders": 76,
+            "discount": 920.7
+          },
+          {
+            "code": "VIP25",
+            "orders": 39,
+            "discount": 608.0
+          }
+        ]
+      }
+    },
+    {
+      "area": "7. Template speed",
+      "detail": [
+        {
+          "template": "home",
+          "data": "field",
+          "lcp_s": 2.3,
+          "cls": 0.03,
+          "inp_ms": 160,
+          "result": "pass"
+        },
+        {
+          "template": "collection",
+          "data": "field",
+          "lcp_s": 3.2,
+          "cls": 0.06,
+          "inp_ms": 190,
+          "result": "warn"
+        },
+        {
+          "template": "product",
+          "data": "field",
+          "lcp_s": 3.7,
+          "cls": 0.14,
+          "inp_ms": 230,
+          "result": "warn"
+        }
+      ]
+    },
+    {
+      "area": "8. Tracking health",
+      "detail": {
+        "ga4_purchases": 1002,
+        "store_orders": 1085,
+        "ratio": 0.92
+      }
+    },
+    {
+      "area": "9. Email capture and core flows",
+      "detail": {
+        "core_flows": {
+          "welcome": "live",
+          "abandoned checkout": "draft",
+          "browse abandonment": "missing",
+          "post-purchase": "live",
+          "win-back": "live"
+        },
+        "signup_form_submit_rate_pct": 2.5,
+        "abandoned_checkouts": {
+          "count": 1780,
+          "total_value": 125478.0
+        }
+      }
+    },
+    {
+      "area": "10. Trust: reviews and policies",
+      "detail": {
+        "top_20_without_reviews": [
+          "Pumpkin Chai candle 8oz",
+          "Fall Favorites gift box",
+          "Apple Orchard candle 8oz"
+        ],
+        "policies": [
+          "Privacy policy",
+          "Refund policy",
+          "Shipping policy",
+          "Terms of service"
+        ],
+        "merchant_center_return_policy": "set (30 days, free returns on damaged items)"
+      }
+    }
+  ],
+  "hand_off_to_mode_1": {
+    "aov": 53.2,
+    "site_conversion_rate_pct": 1.86,
+    "returning_share_pct": 23.7,
+    "discounted_order_share_pct": 45.3,
+    "discount_share_of_gross_pct": 11.3,
+    "refund_share_pct": 3.8
+  },
+  "go_deeper": [
+    "ga4-ecommerce-funnel, if installed: where mobile shoppers drop between product view, cart and checkout",
+    "landing-page-auditor, if installed: the product and collection templates on mobile",
+    "klaviyo-flow-auditor, if installed: the abandoned checkout flow before it goes live",
+    "shopping-feed-optimizer, if installed: the disapproved gift set and the dead products in the feed"
+  ],
+  "notes": [
+    "Priced fixes are in revenue because the gross margin is not known; the discount fix is discount dollars.",
+    "A buyer whose last order was more than 12 months before the window counts as a first-time buyer."
+  ]
+}

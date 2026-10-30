@@ -1,0 +1,553 @@
+{
+  "note": "Example data: an invented subscription pilates and home workout app, not a real business or app. Every number in expected_output.json follows from this input.",
+  "request": "Audit our app install attribution before we move budget for Q4. We use AppsFlyer. I want to know which numbers we can trust, per network and platform.",
+  "app": {
+    "name": "Example Pilates Coach",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "android_package": "com.example.pilatescoach",
+    "site": "https://pilatescoach.example",
+    "business_model": "subscription with a 3-day trial, monthly 9.99 or annual 59.99",
+    "key_events": {
+      "af_complete_registration": "onboarding completed",
+      "af_start_trial": "trial started",
+      "af_subscribe": "paid subscription started or renewed"
+    }
+  },
+  "run_date": "2026-10-30",
+  "window": {
+    "start": "2026-08-21",
+    "end": "2026-09-17",
+    "days": 28,
+    "why": "28 install days that ended at least 42 days before the run date, so every third postback has arrived"
+  },
+  "currency": "USD",
+  "time_zones": {
+    "ad networks and AppsFlyer": "America/New_York",
+    "store consoles": "as stated on each console export; the user checked both cover the same 28 dates"
+  },
+  "sources": {
+    "connectors": {
+      "google-ads": [
+        "gaql (conversion actions)",
+        "gaql (App campaigns)",
+        "gaql (all_conversions by conversion action)"
+      ],
+      "facebook-ads": [
+        "get_adsets",
+        "get_insights_adaccount"
+      ],
+      "tiktok-ads": [
+        "adgroups_metadata",
+        "integrated_report_basic"
+      ],
+      "snapchat-ads": [
+        "get_campaigns",
+        "get_adsquads",
+        "get_campaign_stats"
+      ],
+      "google-analytics": [
+        "list_data_streams",
+        "get_report"
+      ]
+    },
+    "exports": [
+      "AppsFlyer integration settings (pasted)",
+      "AppsFlyer aggregate installs by network and platform",
+      "AppsFlyer cohort by days 0 to 2 state",
+      "AppsFlyer SKAdNetwork postback report",
+      "AppsFlyer conversion value schema",
+      "App Store Connect first-time downloads",
+      "Play Console users acquired",
+      "Apple Ads campaign report",
+      "Snapchat attribution setting (pasted)"
+    ]
+  },
+  "google_ads_customer_id": "5550101234",
+  "partner_setup": {
+    "partner": "AppsFlyer",
+    "networks": {
+      "google-ads": {
+        "integrated": true,
+        "click_window_days": 7,
+        "view_through": false,
+        "events_sent": {
+          "install": false,
+          "af_complete_registration": false,
+          "af_start_trial": false,
+          "af_subscribe": true
+        }
+      },
+      "meta": {
+        "integrated": true,
+        "click_window_days": 7,
+        "view_through": false,
+        "events_sent": {
+          "install": false,
+          "af_complete_registration": false,
+          "af_start_trial": false,
+          "af_subscribe": true
+        }
+      },
+      "tiktok": {
+        "integrated": true,
+        "click_window_days": 7,
+        "view_through": true,
+        "view_window_hours": 24,
+        "events_sent": {
+          "install": false,
+          "af_complete_registration": false,
+          "af_start_trial": false
+        }
+      },
+      "snapchat": {
+        "integrated": true,
+        "click_window_days": 7,
+        "view_through": false,
+        "events_sent": {
+          "install": false,
+          "af_start_trial": false
+        }
+      },
+      "apple-ads": {
+        "integrated": true,
+        "adservices_attribution": true
+      }
+    },
+    "events_sent_note": "events_sent lists every event the partner sends to that network; true means revenue is sent with it."
+  },
+  "event_map": {
+    "install": {
+      "google-ads": [
+        "1002",
+        "1003"
+      ],
+      "snapchat": "APP_INSTALLS",
+      "meta": "APP_INSTALLS",
+      "tiktok": "INSTALL"
+    },
+    "af_start_trial": {
+      "google-ads": [
+        "1004"
+      ],
+      "meta": "START_TRIAL",
+      "tiktok": "START_TRIAL",
+      "snapchat": "START_TRIAL"
+    },
+    "af_subscribe": {
+      "meta": "SUBSCRIBE",
+      "tiktok": "SUBSCRIBE",
+      "snapchat": "SUBSCRIBE"
+    }
+  },
+  "network_attribution": {
+    "google-ads": "30-day click on first-open actions",
+    "meta": "7-day click and 1-day view",
+    "tiktok": "7-day click and 1-day view",
+    "snapchat": "28-day swipe and 1-day view",
+    "apple-ads": "tap-through, 30 days"
+  },
+  "google_conversion_actions": [
+    {
+      "id": "1001",
+      "name": "Android first open (Firebase)",
+      "type": "FIREBASE_ANDROID_FIRST_OPEN",
+      "category": "DOWNLOAD",
+      "primary_for_goal": true,
+      "include_in_conversions_metric": true
+    },
+    {
+      "id": "1002",
+      "name": "Android install (AppsFlyer)",
+      "type": "THIRD_PARTY_APP_ANALYTICS_ANDROID_FIRST_OPEN",
+      "category": "DOWNLOAD",
+      "primary_for_goal": true,
+      "include_in_conversions_metric": true
+    },
+    {
+      "id": "1003",
+      "name": "iOS install (AppsFlyer)",
+      "type": "THIRD_PARTY_APP_ANALYTICS_IOS_FIRST_OPEN",
+      "category": "DOWNLOAD",
+      "primary_for_goal": true,
+      "include_in_conversions_metric": true
+    },
+    {
+      "id": "1004",
+      "name": "Android af_start_trial (AppsFlyer)",
+      "type": "THIRD_PARTY_APP_ANALYTICS_ANDROID_CUSTOM",
+      "category": "DEFAULT",
+      "primary_for_goal": false,
+      "include_in_conversions_metric": false
+    },
+    {
+      "id": "1005",
+      "name": "Android start_trial (Firebase)",
+      "type": "FIREBASE_ANDROID_CUSTOM",
+      "category": "DEFAULT",
+      "primary_for_goal": false,
+      "include_in_conversions_metric": false
+    }
+  ],
+  "campaigns": [
+    {
+      "network": "google-ads",
+      "id": "21001",
+      "name": "AND | Installs | US",
+      "platform": "android",
+      "spend": 9800.0,
+      "bidding_goal": "OPTIMIZE_INSTALLS_TARGET_INSTALL_COST",
+      "selected_conversion_actions": [],
+      "all_conversions_by_action": {
+        "1001": 3920,
+        "1002": 3880
+      }
+    },
+    {
+      "network": "google-ads",
+      "id": "21002",
+      "name": "iOS | Installs | US",
+      "platform": "ios",
+      "spend": 4200.0,
+      "bidding_goal": "OPTIMIZE_INSTALLS_TARGET_INSTALL_COST",
+      "selected_conversion_actions": [
+        "1003"
+      ],
+      "all_conversions_by_action": {
+        "1003": 1020
+      }
+    },
+    {
+      "network": "meta",
+      "id": "32001",
+      "name": "AND | Trial | Broad",
+      "platform": "android",
+      "spend": 11500.0,
+      "custom_event_type": "START_TRIAL",
+      "object_store_url": "https://play.google.com/store/apps/details?id=com.example.pilatescoach",
+      "mobile_app_install": {
+        "value": 4600,
+        "7d_click": 3980,
+        "1d_view": 620
+      }
+    },
+    {
+      "network": "meta",
+      "id": "32002",
+      "name": "iOS | Trial | SKAN",
+      "platform": "ios",
+      "spend": 8200.0,
+      "custom_event_type": "START_TRIAL",
+      "object_store_url": "https://apps.apple.com/app/id0000000001",
+      "mobile_app_install": {
+        "value": 2950,
+        "skan_click": 1500,
+        "skan_view": 120
+      }
+    },
+    {
+      "network": "tiktok",
+      "id": "43001",
+      "name": "AND | Subscribe | Broad",
+      "platform": "android",
+      "spend": 6400.0,
+      "optimization_event": "SUBSCRIBE",
+      "operating_systems": [
+        "ANDROID"
+      ],
+      "app_install": 2450
+    },
+    {
+      "network": "tiktok",
+      "id": "43002",
+      "name": "iOS | Trial | Pilates interests",
+      "platform": "ios",
+      "spend": 900.0,
+      "optimization_event": "START_TRIAL",
+      "operating_systems": [
+        "IOS"
+      ],
+      "app_install": 160
+    },
+    {
+      "network": "tiktok",
+      "id": "43003",
+      "name": "iOS | Trial | Yoga interests",
+      "platform": "ios",
+      "spend": 750.0,
+      "optimization_event": "START_TRIAL",
+      "operating_systems": [
+        "IOS"
+      ],
+      "app_install": 130
+    },
+    {
+      "network": "tiktok",
+      "id": "43004",
+      "name": "iOS | Trial | Lookalike 1%",
+      "platform": "ios",
+      "spend": 600.0,
+      "optimization_event": "START_TRIAL",
+      "operating_systems": [
+        "IOS"
+      ],
+      "app_install": 100
+    },
+    {
+      "network": "tiktok",
+      "id": "43005",
+      "name": "iOS | Trial | Broad",
+      "platform": "ios",
+      "spend": 3400.0,
+      "optimization_event": "START_TRIAL",
+      "operating_systems": [
+        "IOS"
+      ],
+      "app_install": 900
+    },
+    {
+      "network": "snapchat",
+      "id": "54001",
+      "name": "iOS | Installs",
+      "platform": "ios",
+      "spend": 3600.0,
+      "optimization_goal": "APP_INSTALLS",
+      "ios_installs": 1480,
+      "conversion_total_installs_sk_ad_network": 610
+    },
+    {
+      "network": "apple-ads",
+      "id": "65001",
+      "name": "Brand | Exact",
+      "platform": "ios",
+      "spend": 2100.0,
+      "installs": 1150
+    },
+    {
+      "network": "apple-ads",
+      "id": "65002",
+      "name": "Category | Discovery",
+      "platform": "ios",
+      "spend": 2600.0,
+      "installs": 860
+    }
+  ],
+  "partner_installs": {
+    "android": {
+      "by_network": {
+        "google-ads": 3850,
+        "meta": 3700,
+        "tiktok": 2300
+      },
+      "organic": 8900
+    },
+    "ios": {
+      "by_network": {
+        "google-ads": 980,
+        "meta": 1750,
+        "tiktok": 1225,
+        "snapchat": 640,
+        "apple-ads": 1920
+      },
+      "organic": 6100
+    }
+  },
+  "store_consoles": {
+    "ios_app_store_connect_first_time_downloads": 14200,
+    "android_play_console_users_acquired": 19400
+  },
+  "ga4": {
+    "streams": [
+      "IOS_APP_DATA_STREAM",
+      "ANDROID_APP_DATA_STREAM",
+      "WEB_DATA_STREAM"
+    ],
+    "first_open": {
+      "ios": 12050,
+      "android": 18400
+    }
+  },
+  "schema": {
+    "fine_values": {
+      "0": "installed, nothing else in days 0 to 2",
+      "1": "onboarding completed",
+      "2": "1 or 2 workouts completed",
+      "3": "trial started",
+      "4": "3 or more workouts, no trial",
+      "5": "trial started and 3 or more workouts",
+      "10": "purchase revenue 0.01 to 9.99",
+      "11": "purchase revenue 10.00 to 29.99",
+      "12": "purchase revenue 30.00 to 59.99",
+      "13": "purchase revenue 60.00 to 99.99",
+      "14": "purchase revenue 100.00 or more"
+    },
+    "revenue_range_values": [
+      "10",
+      "11",
+      "12",
+      "13",
+      "14"
+    ],
+    "coarse_postback_1": {
+      "low": [
+        "0",
+        "1"
+      ],
+      "medium": [
+        "2",
+        "3",
+        "4"
+      ],
+      "high": [
+        "5",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    "coarse_postback_2": {
+      "low": "any session",
+      "medium": "3 or more workouts",
+      "high": "5 or more workouts"
+    },
+    "coarse_postback_3": {
+      "low": "any session",
+      "medium": "8 or more workouts",
+      "high": "af_subscribe (renewal)"
+    }
+  },
+  "cohort": [
+    {
+      "fine_value": "0",
+      "users": 9000,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 180.0,
+      "d7_retention": 0.06
+    },
+    {
+      "fine_value": "1",
+      "users": 4200,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 420.0,
+      "d7_retention": 0.14
+    },
+    {
+      "fine_value": "2",
+      "users": 3100,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 930.0,
+      "d7_retention": 0.31
+    },
+    {
+      "fine_value": "3",
+      "users": 1600,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 31200.0,
+      "rev_d8_35": 2400.0,
+      "d7_retention": 0.52
+    },
+    {
+      "fine_value": "4",
+      "users": 1300,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 3900.0,
+      "d7_retention": 0.58
+    },
+    {
+      "fine_value": "5",
+      "users": 700,
+      "rev_d0_2": 0.0,
+      "rev_d3_7": 22400.0,
+      "rev_d8_35": 1100.0,
+      "d7_retention": 0.71
+    },
+    {
+      "fine_value": "10",
+      "users": 120,
+      "rev_d0_2": 1198.8,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 1198.8,
+      "d7_retention": 0.62
+    },
+    {
+      "fine_value": "12",
+      "users": 140,
+      "rev_d0_2": 8398.6,
+      "rev_d3_7": 0.0,
+      "rev_d8_35": 0.0,
+      "d7_retention": 0.74
+    }
+  ],
+  "postback_1_by_campaign": {
+    "21002": {
+      "no_value": 60,
+      "coarse": 140,
+      "fine": 760
+    },
+    "32002": {
+      "no_value": 70,
+      "coarse": 230,
+      "fine": 1400
+    },
+    "43002": {
+      "no_value": 96,
+      "coarse": 30,
+      "fine": 14
+    },
+    "43003": {
+      "no_value": 81,
+      "coarse": 22,
+      "fine": 7
+    },
+    "43004": {
+      "no_value": 70,
+      "coarse": 15,
+      "fine": 5
+    },
+    "43005": {
+      "no_value": 90,
+      "coarse": 160,
+      "fine": 570
+    },
+    "54001": {
+      "no_value": 120,
+      "coarse": 150,
+      "fine": 330
+    }
+  },
+  "postback_1_fine_value_counts": {
+    "0": 1382,
+    "1": 642,
+    "2": 474,
+    "3": 244,
+    "4": 198,
+    "5": 107,
+    "10": 18,
+    "11": 0,
+    "12": 21,
+    "13": 0,
+    "14": 0
+  },
+  "postbacks_2_and_3": {
+    "postback_2": {
+      "none": 1310,
+      "low": 1150,
+      "medium": 640,
+      "high": 410
+    },
+    "postback_3": {
+      "none": 1890,
+      "low": 820,
+      "medium": 380,
+      "high": 360
+    }
+  }
+}

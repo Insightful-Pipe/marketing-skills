@@ -1,0 +1,821 @@
+{
+  "note": "Example data: an invented online houseplant store, invented survey results, invented outlets and invented search rows, not a real business, publication or person. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"digital-pr-link-campaign\" skill. We ran a plant owner survey and have our Shopify orders. Plan a digital PR campaign to earn links from news sites, launching November 10. Reply to the reporter requests I pasted too.",
+  "business": "Example Houseplant Store",
+  "domain": "houseplantstore.example",
+  "plan_date": "2026-10-28",
+  "plan_time": "2026-10-28 10:00 ET",
+  "asset_url": "https://houseplantstore.example/research/plant-survival-survey-2026",
+  "pages_that_need_authority": [
+    "https://houseplantstore.example/collections/low-light-plants",
+    "https://houseplantstore.example/guides/how-often-to-water-houseplants"
+  ],
+  "competitors": [
+    "competitor-plants-a.example",
+    "competitor-plants-b.example"
+  ],
+  "beat_topic_words": [
+    "plant",
+    "houseplant"
+  ],
+  "spokesperson": "Spokesperson, Example Houseplant Store",
+  "spokesperson_is_licensed_vet": false,
+  "launch_date": "2026-11-10",
+  "country": "US",
+  "data": {
+    "survey": {
+      "source": "pasted survey results",
+      "who": "US adults who own at least one houseplant",
+      "method": "online panel",
+      "fielded": [
+        "2026-09-08",
+        "2026-09-19"
+      ],
+      "total_answers": 1200,
+      "questions": {
+        "lost_a_plant_past_12_months": {
+          "by_age": [
+            {
+              "group": "18 to 29",
+              "n": 300,
+              "yes": 201
+            },
+            {
+              "group": "30 to 44",
+              "n": 360,
+              "yes": 214
+            },
+            {
+              "group": "45 to 59",
+              "n": 300,
+              "yes": 156
+            },
+            {
+              "group": "60 and over",
+              "n": 240,
+              "yes": 96
+            }
+          ]
+        },
+        "main_cause_of_the_loss": {
+          "asked_of": "owners who lost a plant",
+          "answers": [
+            {
+              "answer": "Overwatering",
+              "count": 287
+            },
+            {
+              "answer": "Underwatering",
+              "count": 161
+            },
+            {
+              "answer": "Not enough light",
+              "count": 128
+            },
+            {
+              "answer": "Pests",
+              "count": 58
+            },
+            {
+              "answer": "Left alone while traveling",
+              "count": 33
+            }
+          ]
+        },
+        "yearly_spend_on_plants_usd": {
+          "all_respondents": {
+            "n": 1200,
+            "average": 96.0
+          },
+          "by_state_smallest_group": {
+            "group": "Alaska",
+            "n": 14,
+            "average": 212.0
+          }
+        }
+      }
+    },
+    "store": {
+      "source": "shopify get_orders, added up by period and product tag (totals only)",
+      "periods": [
+        {
+          "label": "Oct 2024 to Sep 2025",
+          "start": "2024-10-01",
+          "end": "2025-09-30",
+          "orders": 6840,
+          "orders_with_tag": {
+            "low-light": 1231,
+            "pet-safe": 622
+          }
+        },
+        {
+          "label": "Oct 2025 to Sep 2026",
+          "start": "2025-10-01",
+          "end": "2026-09-30",
+          "orders": 8120,
+          "orders_with_tag": {
+            "low-light": 2517,
+            "pet-safe": 828
+          }
+        }
+      ]
+    }
+  },
+  "calls": {
+    "content_analysis_search": [
+      {
+        "pair": "houseplants + survey",
+        "body": {
+          "keyword": "\"houseplants\"",
+          "keyword_fields": {
+            "title": "survey"
+          },
+          "page_type": [
+            "news",
+            "blogs"
+          ],
+          "search_mode": "as_is",
+          "limit": 100,
+          "filters": [
+            [
+              "content_info.date_published",
+              ">",
+              "2025-10-28"
+            ],
+            "and",
+            [
+              "main_domain",
+              "not_like",
+              "%newswire%"
+            ],
+            "and",
+            [
+              "spam_score",
+              "<",
+              30
+            ]
+          ],
+          "order_by": [
+            "domain_rank,desc"
+          ]
+        },
+        "rows": [
+          {
+            "domain": "homegardenweekly.example",
+            "main_domain": "homegardenweekly.example",
+            "domain_rank": 612,
+            "spam_score": 8,
+            "url": "https://homegardenweekly.example/survey-most-renters-keep-at-least-five",
+            "content_info": {
+              "title": "Survey: most renters keep at least five houseplants",
+              "date_published": "2026-09-30 09:00:00 +00:00",
+              "author_listed": true
+            },
+            "credits_source_domain": "gardenpollco.example"
+          },
+          {
+            "domain": "homegardenweekly.example",
+            "main_domain": "homegardenweekly.example",
+            "domain_rank": 612,
+            "spam_score": 3,
+            "url": "https://homegardenweekly.example/plant-parents-spend-more-on-pots-than",
+            "content_info": {
+              "title": "Plant parents spend more on pots than plants, survey says",
+              "date_published": "2026-05-12 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "homegardenweekly.example",
+            "main_domain": "homegardenweekly.example",
+            "domain_rank": 612,
+            "spam_score": 8,
+            "url": "https://homegardenweekly.example/survey-ranks-the-hardest-houseplants-to-keep",
+            "content_info": {
+              "title": "Survey ranks the hardest houseplants to keep alive",
+              "date_published": "2026-01-20 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "apartmentlivingdaily.example",
+            "main_domain": "apartmentlivingdaily.example",
+            "domain_rank": 548,
+            "spam_score": 5,
+            "url": "https://apartmentlivingdaily.example/small-space-survey-plants-are-the-top-decor",
+            "content_info": {
+              "title": "Small-space survey: plants are the top decor buy",
+              "date_published": "2026-08-14 09:00:00 +00:00",
+              "author_listed": true
+            },
+            "credits_source_domain": "plantinsureco.example"
+          },
+          {
+            "domain": "apartmentlivingdaily.example",
+            "main_domain": "apartmentlivingdaily.example",
+            "domain_rank": 548,
+            "spam_score": 6,
+            "url": "https://apartmentlivingdaily.example/survey-renters-say-plants-make-a-flat",
+            "content_info": {
+              "title": "Survey: renters say plants make a flat feel like home",
+              "date_published": "2025-12-02 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "greenthumbjournal.example",
+            "main_domain": "greenthumbjournal.example",
+            "domain_rank": 501,
+            "spam_score": 0,
+            "url": "https://greenthumbjournal.example/survey-of-plant-owners-finds-watering-confusion",
+            "content_info": {
+              "title": "Survey of plant owners finds watering confusion is common",
+              "date_published": "2026-10-02 09:00:00 +00:00",
+              "author_listed": true
+            },
+            "credits_source_domain": "plantsurveyunit.example"
+          },
+          {
+            "domain": "greenthumbjournal.example",
+            "main_domain": "greenthumbjournal.example",
+            "domain_rank": 501,
+            "spam_score": 11,
+            "url": "https://greenthumbjournal.example/houseplant-survey-one-in-five-owners-name",
+            "content_info": {
+              "title": "Houseplant survey: one in five owners name their plants",
+              "date_published": "2026-03-15 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "citylifestylenews.example",
+            "main_domain": "citylifestylenews.example",
+            "domain_rank": 577,
+            "spam_score": 12,
+            "url": "https://citylifestylenews.example/survey-city-dwellers-turn-to-houseplants-for",
+            "content_info": {
+              "title": "Survey: city dwellers turn to houseplants for calm",
+              "date_published": "2026-07-21 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "genzmoneyblog.example",
+            "main_domain": "genzmoneyblog.example",
+            "domain_rank": 433,
+            "spam_score": 8,
+            "url": "https://genzmoneyblog.example/what-young-adults-spend-on-plants-survey",
+            "content_info": {
+              "title": "What young adults spend on plants: survey results",
+              "date_published": "2026-09-09 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "plantcareforum-news.example",
+            "main_domain": "plantcareforum-news.example",
+            "domain_rank": 389,
+            "spam_score": 9,
+            "url": "https://plantcareforum-news.example/reader-survey-the-plant-everyone-kills-first",
+            "content_info": {
+              "title": "Reader survey: the plant everyone kills first",
+              "date_published": "2026-06-30 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "weekendhomemag.example",
+            "main_domain": "weekendhomemag.example",
+            "domain_rank": 455,
+            "spam_score": 4,
+            "url": "https://weekendhomemag.example/survey-says-winter-is-the-hardest-season",
+            "content_info": {
+              "title": "Survey says winter is the hardest season for plants",
+              "date_published": "2026-02-10 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "regionaltribune.example",
+            "main_domain": "regionaltribune.example",
+            "domain_rank": 520,
+            "spam_score": 10,
+            "url": "https://regionaltribune.example/local-survey-plant-shops-see-more-first-time",
+            "content_info": {
+              "title": "Local survey: plant shops see more first-time buyers",
+              "date_published": "2025-12-18 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "wellnessathomereview.example",
+            "main_domain": "wellnessathomereview.example",
+            "domain_rank": 410,
+            "spam_score": 4,
+            "url": "https://wellnessathomereview.example/survey-links-indoor-plants-to-better-work-from-home",
+            "content_info": {
+              "title": "Survey links indoor plants to better work-from-home mood",
+              "date_published": "2026-04-02 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "localnews-one.example",
+            "main_domain": "localnews-one.example",
+            "domain_rank": 340,
+            "spam_score": 1,
+            "url": "https://localnews-one.example/survey-finds-three-in-four-plant-parents",
+            "content_info": {
+              "title": "Survey finds three in four plant parents talk to their plants",
+              "date_published": "2026-10-13 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "localnews-two.example",
+            "main_domain": "localnews-two.example",
+            "domain_rank": 338,
+            "spam_score": 5,
+            "url": "https://localnews-two.example/survey-finds-three-in-four-plant-parents",
+            "content_info": {
+              "title": "Survey finds three in four plant parents talk to their plants",
+              "date_published": "2026-10-13 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "localnews-three.example",
+            "main_domain": "localnews-three.example",
+            "domain_rank": 336,
+            "spam_score": 4,
+            "url": "https://localnews-three.example/survey-finds-three-in-four-plant-parents",
+            "content_info": {
+              "title": "Survey finds three in four plant parents talk to their plants",
+              "date_published": "2026-10-13 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "localnews-four.example",
+            "main_domain": "localnews-four.example",
+            "domain_rank": 331,
+            "spam_score": 6,
+            "url": "https://localnews-four.example/survey-finds-three-in-four-plant-parents",
+            "content_info": {
+              "title": "Survey finds three in four plant parents talk to their plants",
+              "date_published": "2026-10-14 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "gardenprnews.example",
+            "main_domain": "gardenprnews.example",
+            "domain_rank": 402,
+            "spam_score": 2,
+            "url": "https://gardenprnews.example/garden-brand-survey-reveals-favourite-plant-colours",
+            "content_info": {
+              "title": "Garden brand survey reveals favourite plant colours",
+              "date_published": "2026-06-01 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "newsroom.gardensupplyco.example",
+            "main_domain": "gardensupplyco.example",
+            "domain_rank": 455,
+            "spam_score": 10,
+            "url": "https://newsroom.gardensupplyco.example/survey-plant-lovers-want-refillable-fertiliser",
+            "content_info": {
+              "title": "Survey: plant lovers want refillable fertiliser",
+              "date_published": "2026-04-20 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "cityrentersguide.example",
+            "main_domain": "cityrentersguide.example",
+            "domain_rank": 395,
+            "spam_score": 2,
+            "url": "https://cityrentersguide.example/survey-renters-want-more-storage-space-in",
+            "content_info": {
+              "title": "Survey: renters want more storage space in kitchens",
+              "date_published": "2026-05-05 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "competitor-plants-a.example",
+            "main_domain": "competitor-plants-a.example",
+            "domain_rank": 300,
+            "spam_score": 2,
+            "url": "https://competitor-plants-a.example/our-survey-the-plants-customers-kill-most",
+            "content_info": {
+              "title": "Our survey: the plants customers kill most",
+              "date_published": "2026-07-01 09:00:00 +00:00",
+              "author_listed": true
+            }
+          }
+        ]
+      },
+      {
+        "pair": "houseplants + data",
+        "body": {
+          "keyword": "\"houseplants\"",
+          "keyword_fields": {
+            "title": "data"
+          },
+          "page_type": [
+            "news",
+            "blogs"
+          ],
+          "search_mode": "as_is",
+          "limit": 100,
+          "filters": [
+            [
+              "content_info.date_published",
+              ">",
+              "2025-10-28"
+            ],
+            "and",
+            [
+              "main_domain",
+              "not_like",
+              "%newswire%"
+            ],
+            "and",
+            [
+              "spam_score",
+              "<",
+              30
+            ]
+          ],
+          "order_by": [
+            "domain_rank,desc"
+          ]
+        },
+        "rows": [
+          {
+            "domain": "homegardenweekly.example",
+            "main_domain": "homegardenweekly.example",
+            "domain_rank": 612,
+            "spam_score": 1,
+            "url": "https://homegardenweekly.example/data-shows-snake-plants-top-online-plant",
+            "content_info": {
+              "title": "Data shows snake plants top online plant orders",
+              "date_published": "2026-04-11 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "retailtrendsdigest.example",
+            "main_domain": "retailtrendsdigest.example",
+            "domain_rank": 470,
+            "spam_score": 0,
+            "url": "https://retailtrendsdigest.example/online-plant-shops-data-points-to-a",
+            "content_info": {
+              "title": "Online plant shops: data points to a shift to low-light varieties",
+              "date_published": "2026-08-03 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "lifestyle.metrowire-a.example",
+            "main_domain": "metrowire-a.example",
+            "domain_rank": 360,
+            "spam_score": 4,
+            "url": "https://lifestyle.metrowire-a.example/new-data-shows-succulent-sales-climb-in",
+            "content_info": {
+              "title": "New data shows succulent sales climb in spring",
+              "date_published": "2026-03-02 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "lifestyle.metrowire-b.example",
+            "main_domain": "metrowire-b.example",
+            "domain_rank": 359,
+            "spam_score": 2,
+            "url": "https://lifestyle.metrowire-b.example/new-data-shows-succulent-sales-climb-in",
+            "content_info": {
+              "title": "New data shows succulent sales climb in spring",
+              "date_published": "2026-03-02 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "lifestyle.metrowire-c.example",
+            "main_domain": "metrowire-c.example",
+            "domain_rank": 357,
+            "spam_score": 10,
+            "url": "https://lifestyle.metrowire-c.example/new-data-shows-succulent-sales-climb-in",
+            "content_info": {
+              "title": "New data shows succulent sales climb in spring",
+              "date_published": "2026-03-03 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "towndaily-one.example",
+            "main_domain": "towndaily-one.example",
+            "domain_rank": 330,
+            "spam_score": 5,
+            "url": "https://towndaily-one.example/data-garden-centres-report-busiest-weekend-of",
+            "content_info": {
+              "title": "Data: garden centres report busiest weekend of the year",
+              "date_published": "2026-05-17 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "towndaily-two.example",
+            "main_domain": "towndaily-two.example",
+            "domain_rank": 329,
+            "spam_score": 11,
+            "url": "https://towndaily-two.example/data-garden-centres-report-busiest-weekend-of",
+            "content_info": {
+              "title": "Data: garden centres report busiest weekend of the year",
+              "date_published": "2026-05-17 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "towndaily-three.example",
+            "main_domain": "towndaily-three.example",
+            "domain_rank": 326,
+            "spam_score": 7,
+            "url": "https://towndaily-three.example/data-garden-centres-report-busiest-weekend-of",
+            "content_info": {
+              "title": "Data: garden centres report busiest weekend of the year",
+              "date_published": "2026-05-18 09:00:00 +00:00",
+              "author_listed": false
+            }
+          },
+          {
+            "domain": "commutedata.example",
+            "main_domain": "commutedata.example",
+            "domain_rank": 444,
+            "spam_score": 8,
+            "url": "https://commutedata.example/data-commute-times-rise-in-five-metro",
+            "content_info": {
+              "title": "Data: commute times rise in five metro areas",
+              "date_published": "2026-02-21 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "budgetfacts.example",
+            "main_domain": "budgetfacts.example",
+            "domain_rank": 421,
+            "spam_score": 6,
+            "url": "https://budgetfacts.example/data-grocery-prices-by-state-in-2026",
+            "content_info": {
+              "title": "Data: grocery prices by state in 2026",
+              "date_published": "2026-06-12 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "sportsnumbers.example",
+            "main_domain": "sportsnumbers.example",
+            "domain_rank": 405,
+            "spam_score": 5,
+            "url": "https://sportsnumbers.example/data-shows-record-crowds-at-autumn-games",
+            "content_info": {
+              "title": "Data shows record crowds at autumn games",
+              "date_published": "2026-09-02 09:00:00 +00:00",
+              "author_listed": true
+            }
+          },
+          {
+            "domain": "einpresswire-garden.example",
+            "main_domain": "einpresswire-garden.example",
+            "domain_rank": 380,
+            "spam_score": 1,
+            "url": "https://einpresswire-garden.example/data-reveals-top-selling-garden-tools",
+            "content_info": {
+              "title": "Data reveals top-selling garden tools",
+              "date_published": "2026-07-07 09:00:00 +00:00",
+              "author_listed": false
+            }
+          }
+        ]
+      }
+    ],
+    "link_extractor": {
+      "homegardenweekly.example": {
+        "url": "https://homegardenweekly.example/survey-most-renters-keep-at-least-five",
+        "status": "ok",
+        "hrefs": [
+          "/",
+          "/news/",
+          "/gardens/",
+          "/indoor-plants/",
+          "https://gardenpollco.example/2026-renters-plant-report",
+          "https://www.facebook.com/homegardenweekly-example",
+          "https://x.com/homegardenweekly-example",
+          "/about/",
+          "/contact/"
+        ]
+      },
+      "apartmentlivingdaily.example": {
+        "url": "https://apartmentlivingdaily.example/small-space-survey-plants-are-the-top-decor",
+        "status": "ok",
+        "hrefs": [
+          "/",
+          "/decor/",
+          "/small-spaces/",
+          "https://apartmentlivingdaily.example/newsletter/",
+          "https://www.instagram.com/apartmentlivingdaily-example",
+          "https://www.pinterest.com/apartmentlivingdaily-example",
+          "/privacy/"
+        ]
+      },
+      "greenthumbjournal.example": {
+        "url": "https://greenthumbjournal.example/survey-of-plant-owners-finds-watering-confusion",
+        "status": "error",
+        "error": "timeout after 60 seconds"
+      }
+    },
+    "backlinks_referring_domains_baseline": {
+      "body": {
+        "target": "houseplantstore.example",
+        "include_subdomains": true,
+        "exclude_internal_backlinks": true,
+        "limit": 1000,
+        "filters": [
+          [
+            "first_seen",
+            ">",
+            "2026-07-30 00:00:00 +00:00"
+          ]
+        ]
+      },
+      "rows": [
+        {
+          "domain": "linkingsite-01.example",
+          "first_seen": "2026-08-07 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-17.example",
+          "first_seen": "2026-08-09 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-24.example",
+          "first_seen": "2026-08-09 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-15.example",
+          "first_seen": "2026-08-10 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-21.example",
+          "first_seen": "2026-08-11 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-14.example",
+          "first_seen": "2026-08-16 00:00:00 +00:00",
+          "backlinks": 5
+        },
+        {
+          "domain": "linkingsite-08.example",
+          "first_seen": "2026-08-19 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-20.example",
+          "first_seen": "2026-08-19 00:00:00 +00:00",
+          "backlinks": 2
+        },
+        {
+          "domain": "linkingsite-09.example",
+          "first_seen": "2026-08-23 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-11.example",
+          "first_seen": "2026-08-23 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-26.example",
+          "first_seen": "2026-08-26 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-12.example",
+          "first_seen": "2026-09-02 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-05.example",
+          "first_seen": "2026-09-07 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-02.example",
+          "first_seen": "2026-09-12 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-06.example",
+          "first_seen": "2026-09-17 00:00:00 +00:00",
+          "backlinks": 5
+        },
+        {
+          "domain": "linkingsite-18.example",
+          "first_seen": "2026-09-19 00:00:00 +00:00",
+          "backlinks": 4
+        },
+        {
+          "domain": "linkingsite-22.example",
+          "first_seen": "2026-09-22 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-10.example",
+          "first_seen": "2026-09-27 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-16.example",
+          "first_seen": "2026-09-30 00:00:00 +00:00",
+          "backlinks": 2
+        },
+        {
+          "domain": "linkingsite-03.example",
+          "first_seen": "2026-10-02 00:00:00 +00:00",
+          "backlinks": 2
+        },
+        {
+          "domain": "linkingsite-13.example",
+          "first_seen": "2026-10-11 00:00:00 +00:00",
+          "backlinks": 2
+        },
+        {
+          "domain": "linkingsite-19.example",
+          "first_seen": "2026-10-14 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-07.example",
+          "first_seen": "2026-10-16 00:00:00 +00:00",
+          "backlinks": 6
+        },
+        {
+          "domain": "linkingsite-04.example",
+          "first_seen": "2026-10-17 00:00:00 +00:00",
+          "backlinks": 2
+        },
+        {
+          "domain": "linkingsite-27.example",
+          "first_seen": "2026-10-17 00:00:00 +00:00",
+          "backlinks": 3
+        },
+        {
+          "domain": "linkingsite-25.example",
+          "first_seen": "2026-10-22 00:00:00 +00:00",
+          "backlinks": 1
+        },
+        {
+          "domain": "linkingsite-23.example",
+          "first_seen": "2026-10-24 00:00:00 +00:00",
+          "backlinks": 3
+        }
+      ]
+    }
+  },
+  "reporter_requests": [
+    {
+      "id": "R1",
+      "outlet": "genzmoneyblog.example",
+      "received": "2026-10-28 08:15 ET",
+      "deadline": "2026-10-30 17:00 ET",
+      "text": "Writing about the hobbies adults under 30 are picking up and dropping. Looking for data on how younger people care for houseplants, and what goes wrong. Brands with original data welcome.",
+      "needs": "data on younger plant owners",
+      "businesses_allowed": true
+    },
+    {
+      "id": "R2",
+      "outlet": "petcarequarterly.example",
+      "received": "2026-10-28 07:40 ET",
+      "deadline": "2026-11-02 12:00 ET",
+      "text": "Seeking licensed veterinarians to explain which common houseplants are toxic to cats. Experts only, no brands.",
+      "needs": "licensed veterinarian",
+      "businesses_allowed": false
+    },
+    {
+      "id": "R3",
+      "outlet": "citylifestylenews.example",
+      "received": "2026-10-27 16:00 ET",
+      "deadline": "2026-10-28 09:00 ET",
+      "text": "Quick turnaround: any surveys on how many plants people kill in a year? Need it this morning.",
+      "needs": "survey data on plant losses",
+      "businesses_allowed": true
+    }
+  ]
+}

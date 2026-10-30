@@ -1,0 +1,748 @@
+{
+  "header": {
+    "business": "Quillmoor Coffee Co. (invented)",
+    "period": "2026-09-01 to 2026-09-30",
+    "currency": "USD",
+    "time_zones": "Google Ads America/Chicago; Microsoft Ads read in Central time; Shopify orders carry -05:00 (America/Chicago); GA4 property America/New_York, as the user said",
+    "result_reconciled": "purchase",
+    "mapping": {
+      "ga4_key_event": "purchase",
+      "google_ads": "counted actions in category PURCHASE: Google Shopping App Purchase, Purchase (GTM)",
+      "meta": "offsite_conversion.fb_pixel_purchase (7d_click compared, 1d_view shown apart)",
+      "microsoft_ads": "Conversions as reported"
+    },
+    "value_basis": "GA4 purchase revenue is the order subtotal plus shipping, without tax (Mode 2 value check); store sales are compared on that basis"
+  },
+  "source_list": [
+    {
+      "source": "Google Ads (Quillmoor Coffee Co.)",
+      "status": "active"
+    },
+    {
+      "source": "Meta ad account",
+      "status": "active"
+    },
+    {
+      "source": "Microsoft Ads (Quillmoor Coffee Co.)",
+      "status": "active"
+    },
+    {
+      "source": "GA4 property",
+      "status": "active"
+    },
+    {
+      "source": "Shopify store quillmoor-coffee",
+      "status": "active"
+    },
+    {
+      "source": "Google Tag Manager web container (Mode 2 install check)",
+      "status": "active"
+    }
+  ],
+  "source_list_notes": [
+    "LinkedIn and TikTok: not connected for this business and not used, so not reconciled.",
+    "No other ad platform sent paid sessions in GA4."
+  ],
+  "reconciliation": [
+    {
+      "platform": "Google Ads",
+      "spend": 5615,
+      "clicks_to_site": 8020,
+      "ga4_paid_sessions": 6897,
+      "leg_a": {
+        "ratio": "0.86",
+        "band": "0.7 to 1.2",
+        "status": "match"
+      },
+      "platform_purchases_claimed": 165.0,
+      "web_comparable": 164.0,
+      "ga4_purchase_key_events": 60,
+      "leg_b": {
+        "raw_ratio": "2.75",
+        "comparable_ratio": "2.73",
+        "band": "0.8 to 1.25",
+        "status": "investigate"
+      },
+      "platform_value": 8790,
+      "web_comparable_value": 8736,
+      "ga4_revenue": 3048,
+      "leg_c": {
+        "raw_ratio": "2.88",
+        "comparable_ratio": "2.87",
+        "band": "0.8 to 1.25",
+        "status": "investigate"
+      },
+      "parts_removed": {
+        "click-date shift (conversions minus conversions by conversion date)": 1.0,
+        "view-through counted": 0
+      }
+    },
+    {
+      "platform": "Meta",
+      "spend": 4650,
+      "clicks_to_site": 7180,
+      "ga4_paid_sessions": 4523,
+      "leg_a": {
+        "ratio": "0.63",
+        "band": "0.5 to 1.2",
+        "status": "match"
+      },
+      "platform_purchases_claimed": 81.0,
+      "web_comparable": 49.0,
+      "ga4_purchase_key_events": 54,
+      "leg_b": {
+        "raw_ratio": "1.50",
+        "comparable_ratio": "0.91",
+        "band": "0.8 to 1.25",
+        "status": "explained"
+      },
+      "platform_value": 3993,
+      "web_comparable_value": 2415,
+      "ga4_revenue": 2579,
+      "leg_c": {
+        "raw_ratio": "1.55",
+        "comparable_ratio": "0.94",
+        "band": "0.8 to 1.25",
+        "status": "explained"
+      },
+      "parts_removed": {
+        "1d_view purchases": 32.0
+      }
+    },
+    {
+      "platform": "Microsoft Ads",
+      "spend": 812,
+      "clicks_to_site": 1160,
+      "ga4_paid_sessions": 940,
+      "leg_a": {
+        "ratio": "0.81",
+        "band": "0.7 to 1.2",
+        "status": "match"
+      },
+      "platform_purchases_claimed": 12.0,
+      "web_comparable": 12.0,
+      "ga4_purchase_key_events": 11,
+      "leg_b": {
+        "raw_ratio": "1.09",
+        "comparable_ratio": "1.09",
+        "band": "0.8 to 1.25",
+        "status": "match"
+      },
+      "platform_value": 670,
+      "web_comparable_value": 670,
+      "ga4_revenue": 567,
+      "leg_c": {
+        "raw_ratio": "1.18",
+        "comparable_ratio": "1.18",
+        "band": "0.8 to 1.25",
+        "status": "match"
+      },
+      "parts_removed": {}
+    }
+  ],
+  "over_claim": {
+    "sum_of_platform_purchases": 258.0,
+    "ga4_paid_purchase_key_events": 125,
+    "ratio": "2.06",
+    "warning": "platforms claim the same buyers, so this sum is not a total; it shows how much more the platforms claim than GA4 credits to paid traffic"
+  },
+  "store_line": {
+    "ga4_purchase_revenue": 11160,
+    "ga4_transactions": 249,
+    "store_net_online_sales": 14895,
+    "store_basis": "current_total_price minus current_total_tax (shipping kept, tax out), valid web orders",
+    "store_online_orders": 326,
+    "leg_c_ga4_to_store": {
+      "ratio": "0.75",
+      "band": "0.85 to 1.02",
+      "status": "investigate"
+    },
+    "next": "investigate: the order-level check below finds where the missing revenue goes"
+  },
+  "gaps_explained": [
+    {
+      "platform": "Meta",
+      "leg": "B",
+      "raw_ratio": "1.50",
+      "comparable_ratio": "0.91",
+      "parts": "32 of Meta's 81 purchases are 1-day view-through, which GA4 never credits to Meta"
+    },
+    {
+      "platform": "Meta",
+      "leg": "C",
+      "raw_ratio": "1.55",
+      "comparable_ratio": "0.94",
+      "parts": "$1,577 of Meta's $3,993 purchase value is 1-day view-through"
+    }
+  ],
+  "investigate": [
+    {
+      "platform": "Google Ads",
+      "spend": 5615,
+      "legs": "B and C",
+      "finding": "Google Ads claims 2.73 times the purchases GA4 credits to Google (2.87 times the value), with no view-through and only 1 conversion of click-date shift to remove",
+      "likely_cause": "two counted purchase actions report the same purchase (see the install check)",
+      "check": "keep one purchase action counted and compare next month"
+    }
+  ],
+  "new_vs_returning": [
+    {
+      "platform": "Google Ads",
+      "sessions": 6897,
+      "new_share_pct": {
+        "sessions": 68.0,
+        "key_events": 33.3,
+        "revenue": 31.0
+      },
+      "spend_that_reached_returning_visitors_estimate": 1797,
+      "estimate_assumption": "a returning visitor's session cost the same as a new one's",
+      "store_first_order_share_pct": 62.2,
+      "store_rule": "customer.orders_count is 1, on orders carrying this platform's click id"
+    },
+    {
+      "platform": "Meta",
+      "sessions": 4523,
+      "new_share_pct": {
+        "sessions": 81.0,
+        "key_events": 33.3,
+        "revenue": 33.5
+      },
+      "spend_that_reached_returning_visitors_estimate": 884,
+      "estimate_assumption": "a returning visitor's session cost the same as a new one's",
+      "store_first_order_share_pct": 49.4,
+      "store_rule": "customer.orders_count is 1, on orders carrying this platform's click id"
+    },
+    {
+      "platform": "Microsoft Ads",
+      "sessions": 940,
+      "new_share_pct": {
+        "sessions": 61.0,
+        "key_events": 36.4,
+        "revenue": 41.8
+      },
+      "spend_that_reached_returning_visitors_estimate": 317,
+      "estimate_assumption": "a returning visitor's session cost the same as a new one's",
+      "store_first_order_share_pct": 48.1,
+      "store_rule": "customer.orders_count is 1, on orders carrying this platform's click id"
+    }
+  ],
+  "which_number": [
+    "Bids and budgets inside one platform: that platform's own number (for Google Ads, only after one purchase action is left counted).",
+    "Comparing platforms: GA4 for Meta and Microsoft Ads (legs A and B match or explained); Google Ads only after its investigate item is fixed.",
+    "Revenue, ROAS and finance: Shopify net sales."
+  ],
+  "not_graded": [
+    "None: every leg had data on both sides above the floors."
+  ],
+  "order_level_check": {
+    "header": {
+      "store": "quillmoor-coffee",
+      "match_key": "order name without # (same as order_number); store id matched 0 GA4 ids",
+      "ids_matched_on_next_day": 10,
+      "value_basis": "subtotal plus shipping",
+      "valid_orders": 326,
+      "ga4_purchase_ids_in_window": 239,
+      "dropped_as_other_period": 5
+    },
+    "capture": {
+      "overall_rate_pct": 70.2,
+      "matched": 229,
+      "valid_orders": 326,
+      "normal_rate_pct": 74.0,
+      "normal_set_by": [
+        "device desktop (69.4%)",
+        "device mobile (69.4%)",
+        "device tablet (80.0%)",
+        "payment method shopify_payments (78.5%)",
+        "payment method paypal (83.6%)",
+        "payment method klarna (13.0%)"
+      ],
+      "bug_threshold_pct": 44.4,
+      "order_value": 15458,
+      "normal_gap_expected_loss": 4020,
+      "revenue_unmeasured_beyond_normal_total": 2434,
+      "total_rule": "the bug findings' orders counted once"
+    },
+    "segments": {
+      "device": [
+        {
+          "segment": "mobile",
+          "orders": 180,
+          "matched_in_ga4": 125,
+          "capture_rate_pct": 69.4,
+          "grade": "normal"
+        },
+        {
+          "segment": "desktop",
+          "orders": 121,
+          "matched_in_ga4": 84,
+          "capture_rate_pct": 69.4,
+          "grade": "normal"
+        },
+        {
+          "segment": "tablet",
+          "orders": 25,
+          "matched_in_ga4": 20,
+          "capture_rate_pct": 80.0,
+          "grade": "normal"
+        }
+      ],
+      "payment_method": [
+        {
+          "segment": "shopify_payments",
+          "orders": 219,
+          "matched_in_ga4": 172,
+          "capture_rate_pct": 78.5,
+          "grade": "normal"
+        },
+        {
+          "segment": "paypal",
+          "orders": 61,
+          "matched_in_ga4": 51,
+          "capture_rate_pct": 83.6,
+          "grade": "normal"
+        },
+        {
+          "segment": "klarna",
+          "orders": 46,
+          "matched_in_ga4": 6,
+          "capture_rate_pct": 13.0,
+          "grade": "bug",
+          "revenue_unmeasured_beyond_normal": 1458
+        }
+      ],
+      "ad_platform": [
+        {
+          "segment": "Google Ads",
+          "orders": 82,
+          "matched_in_ga4": 61,
+          "capture_rate_pct": 74.4,
+          "grade": "normal",
+          "ga4_credits_platform_pct_of_matched": 93.4
+        },
+        {
+          "segment": "Meta",
+          "orders": 79,
+          "matched_in_ga4": 56,
+          "capture_rate_pct": 70.9,
+          "grade": "normal",
+          "ga4_credits_platform_pct_of_matched": 91.1
+        },
+        {
+          "segment": "Microsoft Ads",
+          "orders": 27,
+          "matched_in_ga4": 13,
+          "capture_rate_pct": 48.1,
+          "grade": "normal",
+          "ga4_credits_platform_pct_of_matched": 84.6
+        },
+        {
+          "segment": "no ad click",
+          "orders": 138,
+          "matched_in_ga4": 99,
+          "capture_rate_pct": 71.7,
+          "grade": "normal"
+        }
+      ]
+    },
+    "days": [
+      {
+        "date": "2026-09-01",
+        "orders": 13,
+        "matched": 11,
+        "capture_rate_pct": 84.6,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-02",
+        "orders": 14,
+        "matched": 13,
+        "capture_rate_pct": 92.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-03",
+        "orders": 7,
+        "matched": 5,
+        "capture_rate_pct": 71.4,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-04",
+        "orders": 14,
+        "matched": 13,
+        "capture_rate_pct": 92.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-05",
+        "orders": 11,
+        "matched": 6,
+        "capture_rate_pct": 54.5,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-06",
+        "orders": 9,
+        "matched": 4,
+        "capture_rate_pct": 44.4,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-07",
+        "orders": 12,
+        "matched": 10,
+        "capture_rate_pct": 83.3,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-08",
+        "orders": 13,
+        "matched": 9,
+        "capture_rate_pct": 69.2,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-09",
+        "orders": 8,
+        "matched": 6,
+        "capture_rate_pct": 75.0,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-10",
+        "orders": 7,
+        "matched": 7,
+        "capture_rate_pct": 100.0,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-11",
+        "orders": 13,
+        "matched": 12,
+        "capture_rate_pct": 92.3,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-12",
+        "orders": 8,
+        "matched": 6,
+        "capture_rate_pct": 75.0,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-13",
+        "orders": 11,
+        "matched": 8,
+        "capture_rate_pct": 72.7,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-14",
+        "orders": 13,
+        "matched": 10,
+        "capture_rate_pct": 76.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-15",
+        "orders": 12,
+        "matched": 10,
+        "capture_rate_pct": 83.3,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-16",
+        "orders": 8,
+        "matched": 7,
+        "capture_rate_pct": 87.5,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-17",
+        "orders": 7,
+        "matched": 1,
+        "capture_rate_pct": 14.3,
+        "grade": "bug"
+      },
+      {
+        "date": "2026-09-18",
+        "orders": 12,
+        "matched": 3,
+        "capture_rate_pct": 25.0,
+        "grade": "bug"
+      },
+      {
+        "date": "2026-09-19",
+        "orders": 14,
+        "matched": 0,
+        "capture_rate_pct": 0.0,
+        "grade": "bug"
+      },
+      {
+        "date": "2026-09-20",
+        "orders": 12,
+        "matched": 7,
+        "capture_rate_pct": 58.3,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-21",
+        "orders": 11,
+        "matched": 7,
+        "capture_rate_pct": 63.6,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-22",
+        "orders": 9,
+        "matched": 7,
+        "capture_rate_pct": 77.8,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-23",
+        "orders": 12,
+        "matched": 10,
+        "capture_rate_pct": 83.3,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-24",
+        "orders": 13,
+        "matched": 8,
+        "capture_rate_pct": 61.5,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-25",
+        "orders": 8,
+        "matched": 7,
+        "capture_rate_pct": 87.5,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-26",
+        "orders": 10,
+        "matched": 6,
+        "capture_rate_pct": 60.0,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-27",
+        "orders": 9,
+        "matched": 8,
+        "capture_rate_pct": 88.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-28",
+        "orders": 13,
+        "matched": 10,
+        "capture_rate_pct": 76.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-29",
+        "orders": 11,
+        "matched": 10,
+        "capture_rate_pct": 90.9,
+        "grade": "normal"
+      },
+      {
+        "date": "2026-09-30",
+        "orders": 12,
+        "matched": 8,
+        "capture_rate_pct": 66.7,
+        "grade": "normal"
+      }
+    ],
+    "bug_days": [
+      {
+        "from": "2026-09-17",
+        "to": "2026-09-19",
+        "orders": 33,
+        "matched": 4,
+        "capture_rate_pct": 12.1,
+        "revenue_unmeasured_beyond_normal": 1181
+      }
+    ],
+    "duplicates_and_extras": {
+      "duplicates": {
+        "orders": 11,
+        "extra_purchases": 11,
+        "extra_revenue": 563,
+        "devices": [
+          "mobile"
+        ],
+        "example_ids": [
+          "3225",
+          "3252",
+          "3301",
+          "3318",
+          "3325"
+        ]
+      },
+      "ga4_purchases_not_valid_orders": [
+        {
+          "group": "test orders",
+          "ga4_purchases": 3,
+          "ga4_revenue": 81
+        },
+        {
+          "group": "cancelled orders",
+          "ga4_purchases": 2,
+          "ga4_revenue": 45
+        },
+        {
+          "group": "unknown ids",
+          "ga4_purchases": 0,
+          "ga4_revenue": 0
+        }
+      ],
+      "purchases_with_no_id": {
+        "purchases": 4,
+        "revenue": 128
+      }
+    },
+    "value_checks": {
+      "basis": "subtotal plus shipping",
+      "orders_checked": 229,
+      "value_missing": {
+        "orders": 5,
+        "payment_methods": [
+          "paypal"
+        ],
+        "example_ids": [
+          "3213",
+          "3214",
+          "3215",
+          "3273",
+          "3296"
+        ]
+      },
+      "value_off": 0,
+      "tax_missing": 0,
+      "items_off": 0,
+      "currency_issues": 0,
+      "revenue_misstated": 202
+    },
+    "refunds": {
+      "refunded_orders": 19,
+      "reached_ga4": 0,
+      "missing_in_ga4": 19,
+      "refunded_amount_missing": 599,
+      "note": "refund amounts include tax, as Shopify records them"
+    },
+    "install_check": {
+      "script_tags": {
+        "analytics_or_ad_tags_on_order_status_or_all": [
+          "https://www.googletagmanager.com/gtag/js, display_scope all, created 2023-03-14"
+        ],
+        "meaning": "no longer runs on the Thank you and Order status pages since 26 August 2026; still loads on the storefront until storefront script tags end"
+      },
+      "gtm_live_version_purchase_tags": [
+        "GA4 - purchase (gaawe)",
+        "Google Ads - Purchase (awct)"
+      ],
+      "ga4_purchase_senders_in_gtm": 1,
+      "google_ads_counted_purchase_actions": [
+        "Google Shopping App Purchase",
+        "Purchase (GTM)"
+      ],
+      "asked": {
+        "how GTM loads at checkout": "through a custom pixel under Settings > Customer events (reported by the user)",
+        "store apps that send purchases": "Google & YouTube app (sends purchases to Google Ads); Facebook & Instagram app (sends purchases to Meta) (reported by the user)",
+        "server-side sends": "none (reported by the user)"
+      }
+    },
+    "fixes_ranked_by_revenue": [
+      {
+        "rank": 1,
+        "finding": "Klarna orders reach GA4 far less often than other orders",
+        "evidence": "6 of 46 Klarna orders matched (13.0%) against a normal rate of 74.0%",
+        "revenue_figure": 1458,
+        "figure_kind": "revenue unmeasured beyond normal",
+        "likely_cause": "buyers finish payment on Klarna's pages and part of them never come back to the Thank you page, where the browser purchase event fires",
+        "check_after_fix": "Klarna capture rate over the next 14 days, against the normal rate"
+      },
+      {
+        "rank": 2,
+        "finding": "Capture fell on 17 to 19 September for every kind of order",
+        "evidence": "4 of 33 orders matched (12.1%) over the three days, 76.8% on the other days; every device (desktop, mobile) and payment method (klarna, paypal, shopify_payments) with orders those days was hit",
+        "revenue_figure": 1181,
+        "figure_kind": "revenue unmeasured beyond normal",
+        "likely_cause": "a change to the site, the custom pixel or an app on 17 September that was undone or fixed on 20 September",
+        "check_after_fix": "the theme, app and GTM version history for 17 and 20 September; daily capture stays near the normal rate"
+      },
+      {
+        "rank": 3,
+        "finding": "Refunds never reach GA4",
+        "evidence": "19 refunded orders, none with a GA4 refund (the refund call returned no rows)",
+        "revenue_figure": 599,
+        "figure_kind": "refunded revenue GA4 still reports",
+        "likely_cause": "nothing sends refund events to GA4",
+        "check_after_fix": "refundAmount on the next refunded orders"
+      },
+      {
+        "rank": 4,
+        "finding": "Purchases counted twice in GA4",
+        "evidence": "11 orders sent the purchase twice, adding 11 purchases; all on mobile, and the GTM container has 1 GA4 purchase tag",
+        "revenue_figure": 563,
+        "figure_kind": "extra revenue in GA4",
+        "likely_cause": "the Thank you page reopening or reloading on phones (one sender, so not a second tag)",
+        "check_after_fix": "ids with transactions above 1 over the next 14 days"
+      },
+      {
+        "rank": 5,
+        "finding": "PayPal purchases reaching GA4 with no value",
+        "evidence": "5 matched orders arrived with purchase revenue 0, all paid with paypal",
+        "revenue_figure": 202,
+        "figure_kind": "revenue misstated",
+        "likely_cause": "the value the purchase event reads is empty on the PayPal return path",
+        "check_after_fix": "GA4 value against the order's subtotal plus shipping on the next PayPal orders"
+      },
+      {
+        "rank": 6,
+        "finding": "Purchases sent without an order id",
+        "evidence": "4 purchases on the (not set) row",
+        "revenue_figure": 128,
+        "figure_kind": "revenue that can't be matched or deduplicated",
+        "likely_cause": "a second path that fires the purchase event without transaction_id",
+        "check_after_fix": "the (not set) row stays empty"
+      },
+      {
+        "rank": 7,
+        "finding": "Test orders counted as purchases in GA4",
+        "evidence": "3 test orders reached GA4",
+        "revenue_figure": 81,
+        "figure_kind": "revenue GA4 should not have",
+        "likely_cause": "test orders placed on the live store fire the same purchase event",
+        "check_after_fix": "use a development store or exclude test traffic before the next test"
+      },
+      {
+        "rank": 8,
+        "finding": "Cancelled orders still counted in GA4",
+        "evidence": "2 cancelled orders had sent a purchase",
+        "revenue_figure": 45,
+        "figure_kind": "revenue GA4 still reports",
+        "likely_cause": "orders are cancelled after the purchase event fired, and no refund event follows",
+        "check_after_fix": "a refund event sent on cancellation"
+      }
+    ],
+    "platform_side": [
+      {
+        "finding": "Google Ads counts each purchase twice",
+        "evidence": "2 counted purchase actions: Google Shopping App Purchase, Purchase (GTM)",
+        "revenue_figure": 4208,
+        "figure_kind": "Google Ads conversion value from the counted purchase action other than the largest (platform value, not store revenue)",
+        "likely_cause": "the Google & YouTube app and the GTM conversion tag both report purchases, and both actions are counted",
+        "check_after_fix": "one counted purchase action; Google leg B back inside the band next month"
+      }
+    ],
+    "not_priced": [
+      "Old Google tag installed as a script tag (https://www.googletagmanager.com/gtag/js, display_scope all, created 2023-03-14): remove it; its Order status part stopped on 26 August 2026, and on the storefront it loads one more copy of the Google tag beside the app and GTM."
+    ],
+    "note_on_overlap": "Findings can overlap (4 Klarna orders fell on 17 to 19 September and are in both of the first two), so the figures are never added; on the 75 orders in either finding, counted once, the revenue unmeasured beyond normal is $2,434."
+  }
+}

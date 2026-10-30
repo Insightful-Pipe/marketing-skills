@@ -1,0 +1,484 @@
+{
+  "note": "Example data: an invented online booking software company and an invented speaker, events, search results and counts, not a real business, person or event. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"speaker-proposal-writer\" skill. Find conferences in the first half of 2027 where salon, clinic and studio owners will hear me talk about cutting no-shows, tell me which are worth it, and write the proposals.",
+  "today": "2026-10-28",
+  "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+  "brief": {
+    "speaker": {
+      "name": "Dana Example",
+      "role": "Co-founder and head of customer success",
+      "company": "Example Booking Software",
+      "background": "Ran the front desk of a three-chair salon for six years before co-founding the company",
+      "past_talks": [
+        {
+          "event": "Example Salon Owners Meetup",
+          "date": "2026-04-15",
+          "city": "Toronto",
+          "title": "Reminders that clients actually read",
+          "recording": "none"
+        }
+      ]
+    },
+    "topic": "Cutting no-shows for appointment businesses: deposits, no-show fees and reminders",
+    "topic_words": [
+      "no-show",
+      "no show",
+      "deposit",
+      "reminder",
+      "cancel",
+      "policy"
+    ],
+    "buyer": "Owners and front-desk managers of salons, clinics and studios with 1 to 20 staff",
+    "window": {
+      "from": "2027-01-01",
+      "to": "2027-06-30"
+    },
+    "travel": "US and Canada, plus virtual events (home city Toronto)",
+    "capacity_talks": 3,
+    "cash_budget_usd": 4000,
+    "benchmark_cost_per_signup_usd": 85,
+    "benchmark_source": "Google Ads cost per sign-up, last 90 days, as the user stated it"
+  },
+  "proof_counts_pasted": [
+    {
+      "id": "deposit",
+      "label": "Bookings that took a deposit",
+      "cases": 48200,
+      "events": 1302,
+      "event_name": "no-shows",
+      "source": "Product booking table, all customer accounts",
+      "dates": "2026-01-01 to 2026-06-30"
+    },
+    {
+      "id": "no_deposit",
+      "label": "Bookings without a deposit",
+      "cases": 131500,
+      "events": 9995,
+      "event_name": "no-shows",
+      "source": "Product booking table, all customer accounts",
+      "dates": "2026-01-01 to 2026-06-30"
+    },
+    {
+      "id": "two_reminders",
+      "label": "Bookings that got two reminders (24 hours and 2 hours before)",
+      "cases": 61000,
+      "events": 2257,
+      "event_name": "no-shows",
+      "source": "Product booking table, no-deposit bookings",
+      "dates": "2026-01-01 to 2026-06-30"
+    },
+    {
+      "id": "one_reminder",
+      "label": "Bookings that got one reminder (24 hours before)",
+      "cases": 70500,
+      "events": 4512,
+      "event_name": "no-shows",
+      "source": "Product booking table, no-deposit bookings",
+      "dates": "2026-01-01 to 2026-06-30"
+    },
+    {
+      "id": "waitlist",
+      "label": "Clinics that turned on waitlist refill: empty slots per month, before and after",
+      "cases": 22,
+      "before": 1180,
+      "after": 814,
+      "source": "Customer success notes",
+      "dates": "2026-03 vs 2026-06"
+    }
+  ],
+  "businesses_in_counts": 1240,
+  "accounts": {
+    "workspace_id": 1,
+    "brand_id": 1,
+    "dataforseo": "connected",
+    "google_search_console": "https://www.example.com/",
+    "google_analytics": "properties/123456789"
+  },
+  "data_pulled": [
+    "DataForSEO serp_google_organic x3 (call searches, depth 20): call for speakers salon conference 2027; call for proposals practice management 2027; speaker application fitness business 2027",
+    "DataForSEO onpage_content_parsing x5: E1, E2, E3, E9, E10 (E10 empty)",
+    "DataForSEO serp_google_organic x1 (how to reduce no-shows, people_also_ask_click_depth 1)",
+    "DataForSEO labs_keyword_suggestions x1 (reduce no shows)",
+    "Search Console search_analytics x3 (query contains no show, deposit, reminder; 2026-07-30 to 2026-10-27)",
+    "GA4 get_report x1 (past talk link, 2026-04-15 to 2026-05-15)"
+  ],
+  "paid_dataforseo_calls": 10,
+  "candidate_events": [
+    {
+      "id": "E1",
+      "event": "Chairside Salon Summit 2027",
+      "found_by": "search 1",
+      "url": "https://chairside-summit.example/speak/",
+      "city": "Chicago",
+      "virtual": false,
+      "event_date": "2027-03-10",
+      "page_read": "onpage_content_parsing: OK",
+      "call_closes": "2026-12-04",
+      "close_source": "event page",
+      "kind": "talk call",
+      "room_size_stated": 120,
+      "attendance": 900,
+      "tracks": 6,
+      "buyer_share": 0.7,
+      "buyer_share_source": "event sponsor pack: 70% salon owners and managers",
+      "travel_usd": 520,
+      "hotel_usd": 330,
+      "fee_usd": 0,
+      "fee_note": "registration waived for speakers",
+      "recorded_published": true,
+      "days_away": 2,
+      "fields": {
+        "title": {
+          "limit": 80,
+          "unit": "characters"
+        },
+        "abstract": {
+          "limit": 900,
+          "unit": "characters"
+        },
+        "outcomes": {
+          "count": 3
+        },
+        "bio": {
+          "limit": 500,
+          "unit": "characters",
+          "person": "third"
+        },
+        "level": {
+          "options": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ]
+        }
+      }
+    },
+    {
+      "id": "E2",
+      "event": "Patient Desk Forum 2027 (virtual)",
+      "found_by": "search 2",
+      "url": "https://patientdeskforum.example/cfp/",
+      "city": "virtual",
+      "virtual": true,
+      "event_date": "2027-02-17",
+      "page_read": "onpage_content_parsing: OK",
+      "call_closes": "2026-11-06",
+      "close_source": "event page",
+      "kind": "talk call",
+      "live_per_session_stated": 300,
+      "buyer_share": 0.4,
+      "buyer_share_source": "user estimate (the event publishes no breakdown)",
+      "travel_usd": 0,
+      "hotel_usd": 0,
+      "fee_usd": 0,
+      "fee_note": "no fee",
+      "recorded_published": true,
+      "virtual_hours": 3,
+      "fields": {
+        "title": {
+          "limit": 12,
+          "unit": "words"
+        },
+        "abstract": {
+          "limit": 150,
+          "unit": "words"
+        },
+        "outcomes": {
+          "count": 2
+        },
+        "bio": {
+          "limit": 75,
+          "unit": "words",
+          "person": "first"
+        },
+        "track": {
+          "options": [
+            "Patient access",
+            "Billing",
+            "Front desk tools"
+          ]
+        }
+      }
+    },
+    {
+      "id": "E3",
+      "event": "Studio Owners Assembly 2027",
+      "found_by": "search 3",
+      "url": "https://studio-assembly.example/call-for-speakers/",
+      "search_note": "The search result's domain was google.com with a google.com/goto link; the event's own page was found by the result title.",
+      "city": "Austin",
+      "virtual": false,
+      "event_date": "2027-04-22",
+      "page_read": "onpage_content_parsing: OK",
+      "call_closes": "2026-12-10",
+      "close_source": "event page",
+      "kind": "talk call",
+      "attendance": 400,
+      "tracks": 4,
+      "buyer_share": 0.85,
+      "buyer_share_source": "event attendee breakdown: 85% studio owners",
+      "travel_usd": 780,
+      "hotel_usd": 620,
+      "fee_usd": 0,
+      "fee_note": "registration waived for speakers",
+      "recorded_published": false,
+      "days_away": 2
+    },
+    {
+      "id": "E4",
+      "event": "Example Growth Expo 2027",
+      "found_by": "search 1",
+      "url": "https://growth-expo.example/speak/",
+      "city": "Las Vegas",
+      "event_date": "2027-02-02",
+      "kind": "speaker package",
+      "page_snippet": "Speaking packages from 2,500 USD include a 20 minute stage slot and a booth"
+    },
+    {
+      "id": "E5",
+      "event": "Example Journal of Service Operations: call for papers",
+      "found_by": "search 2",
+      "url": "https://jso-journal.example/cfp/",
+      "city": "n/a",
+      "kind": "paper call with fee",
+      "page_snippet": "Accepted papers are presented at the 2027 symposium; article processing charge applies"
+    },
+    {
+      "id": "E6",
+      "event": "Example Speaker Calls List 2027",
+      "found_by": "search 1",
+      "url": "https://speaker-calls.example/2027/",
+      "city": "n/a",
+      "kind": "listing page",
+      "lists": [
+        "E1",
+        "E3"
+      ]
+    },
+    {
+      "id": "E7",
+      "event": "Chairside Salon Summit 2026: call for speakers",
+      "found_by": "search 1",
+      "url": "https://chairside-summit.example/2026/speak/",
+      "city": "Chicago",
+      "event_date": "2026-03-11",
+      "kind": "old edition"
+    },
+    {
+      "id": "E8",
+      "event": "Example Beauty Trade Week 2027",
+      "found_by": "search 1",
+      "url": "https://beautytradeweek.example/speakers/",
+      "city": "London",
+      "event_date": "2027-05-16",
+      "kind": "talk call",
+      "outside_travel": true
+    },
+    {
+      "id": "E9",
+      "event": "Example Clinic Tech Day 2027",
+      "found_by": "search 2",
+      "url": "https://clinictechday.example/speak/",
+      "city": "Boston",
+      "virtual": false,
+      "event_date": "2027-03-03",
+      "page_read": "onpage_content_parsing: OK",
+      "call_closes": "2026-10-15",
+      "close_source": "event page",
+      "kind": "talk call"
+    },
+    {
+      "id": "E10",
+      "event": "Example Fitness Leaders Day 2027",
+      "found_by": "search 3",
+      "url": "https://fitleadersday.example/apply/",
+      "city": "San Diego",
+      "virtual": false,
+      "event_date": "2027-05-06",
+      "page_read": "onpage_content_parsing: Page content is empty (also with enable_javascript true)",
+      "call_closes": "2026-12-01",
+      "close_source": "search snippet only",
+      "kind": "talk call",
+      "room_size_stated": 80,
+      "room_size_source": "search snippet",
+      "buyer_share": 0.5,
+      "buyer_share_source": "user estimate",
+      "travel_usd": 690,
+      "hotel_usd": 610,
+      "fee_usd": 0,
+      "fee_note": "snippet says speakers attend at no charge",
+      "recorded_published": true,
+      "recorded_source": "search snippet",
+      "days_away": 2
+    },
+    {
+      "id": "E11",
+      "event": "Example Allied Practice Conference 2027",
+      "found_by": "user (pasted call page)",
+      "url": "https://alliedpractice.example/call/",
+      "city": "Denver",
+      "virtual": false,
+      "event_date": "2027-05-20",
+      "call_closes": "2027-01-08",
+      "close_source": "pasted call page",
+      "kind": "talk call",
+      "room_size_stated": 150,
+      "buyer_share": null,
+      "buyer_share_source": "unknown: no attendee breakdown and no user estimate",
+      "travel_usd": 640,
+      "hotel_usd": 560,
+      "fee_usd": 0,
+      "fee_note": "registration waived for speakers",
+      "recorded_published": false,
+      "days_away": 2
+    },
+    {
+      "id": "E12",
+      "event": "Example Salon Owners Meetup, January 2027",
+      "found_by": "user (pasted call page)",
+      "url": "https://salonmeetup.example/next/",
+      "city": "Toronto",
+      "virtual": false,
+      "event_date": "2027-01-20",
+      "call_closes": "2026-11-02",
+      "close_source": "pasted call page",
+      "kind": "talk call",
+      "room_size_stated": 60,
+      "buyer_share": 0.8,
+      "buyer_share_source": "organizer's member list: 80% salon owners",
+      "travel_usd": 60,
+      "hotel_usd": 0,
+      "fee_usd": 0,
+      "fee_note": "no fee",
+      "recorded_published": false,
+      "evening_hours": 3,
+      "heard_before": true,
+      "fields": {
+        "title": {
+          "limit": 70,
+          "unit": "characters"
+        },
+        "description": {
+          "limit": 300,
+          "unit": "characters"
+        },
+        "bio": {
+          "limit": 50,
+          "unit": "words",
+          "person": "third"
+        }
+      }
+    }
+  ],
+  "past_talk": {
+    "event": "Example Salon Owners Meetup",
+    "date": "2026-04-15",
+    "room_size": 60,
+    "buyer_share": 0.8,
+    "buyer_share_source": "organizer's member list",
+    "cash_cost_usd": 60,
+    "ga4_window": [
+      "2026-04-15",
+      "2026-05-15"
+    ],
+    "ga4_rows": [
+      {
+        "sessionSource": "example-salon-meetup",
+        "sessionMedium": "talk",
+        "sessionCampaignName": "reminders-talk",
+        "sessions": 41,
+        "totalUsers": 37,
+        "keyEvents:sign_up": 4
+      },
+      {
+        "sessionSource": "Example-Salon-Meetup",
+        "sessionMedium": "talk",
+        "sessionCampaignName": "reminders-talk",
+        "sessions": 6,
+        "totalUsers": 6,
+        "keyEvents:sign_up": 1
+      },
+      {
+        "sessionSource": "example_salon_meetup",
+        "sessionMedium": "Talk",
+        "sessionCampaignName": "reminders-talk",
+        "sessions": 5,
+        "totalUsers": 5,
+        "keyEvents:sign_up": 1
+      }
+    ]
+  },
+  "people_also_ask": [
+    "How do you reduce no-shows?",
+    "What is a good no-show rate?",
+    "Should you charge a no-show fee?",
+    "How long should patients wait in a waiting room?",
+    "What is the average wait time at a doctor's office?",
+    "How do I improve patient flow?"
+  ],
+  "keyword_suggestions": [
+    {
+      "keyword": "how to reduce no shows",
+      "search_volume": 320
+    },
+    {
+      "keyword": "how to reduce no shows in salon",
+      "search_volume": 40
+    },
+    {
+      "keyword": "what is a no show fee",
+      "search_volume": 210
+    },
+    {
+      "keyword": "should i charge a no show fee",
+      "search_volume": null
+    },
+    {
+      "keyword": "how to write a cancellation policy",
+      "search_volume": 590
+    },
+    {
+      "keyword": "when to send appointment reminders",
+      "search_volume": 90
+    },
+    {
+      "keyword": "what is a good no show rate",
+      "search_volume": 70
+    },
+    {
+      "keyword": "no show fee template",
+      "search_volume": 140
+    },
+    {
+      "keyword": "reduce no shows",
+      "search_volume": 260
+    }
+  ],
+  "search_console_queries": [
+    {
+      "query": "how to reduce no shows at a salon",
+      "impressions": 410
+    },
+    {
+      "query": "how much deposit to charge for appointments",
+      "impressions": 260
+    },
+    {
+      "query": "when to send appointment reminder text",
+      "impressions": 180
+    },
+    {
+      "query": "salon no show policy template",
+      "impressions": 150
+    }
+  ],
+  "customer_questions": [
+    "Will a deposit scare new clients away?",
+    "How many reminders is too many?",
+    "What do I do with clients who no-show twice?",
+    "Should I charge a no-show fee or take a deposit?",
+    "Do reminder texts actually work?",
+    "How do I get my front desk to enforce the policy?",
+    "Can I see bookings on my phone?"
+  ]
+}

@@ -1,0 +1,876 @@
+{
+  "header": {
+    "store": "Example Botanicals",
+    "as_of": "2026-10-30",
+    "window_12m": "2025-10-01 to 2026-09-30",
+    "window_prev_12m": "2024-10-01 to 2025-09-30",
+    "currency": "USD",
+    "mode": "review and redesign",
+    "sources": [
+      "Shopify orders",
+      "points app export",
+      "Klaviyo"
+    ]
+  },
+  "baseline": {
+    "customers_12m": 801,
+    "orders_12m": 1558,
+    "revenue_12m": 93520.44,
+    "aov": 60.03,
+    "orders_per_customer": 1.95,
+    "repeat_rate_pct": 44.6,
+    "repeat_buyers": 357,
+    "mean_orders_of_repeat_buyers": 3.12,
+    "repeat_rate_prev_12m_pct": 48.0,
+    "customers_prev_12m": 740,
+    "revenue_share_top_5_pct": 21.9,
+    "revenue_share_top_25_pct": 55.3
+  },
+  "spend_percentiles_12m": {
+    "P50": 76.35,
+    "P75": 136.2,
+    "P90": 225.0,
+    "P95": 295.97
+  },
+  "current_program_review": {
+    "members": 652,
+    "members_with_order_12m": 542,
+    "member_share_of_customers_pct": 67.7,
+    "member_share_of_revenue_pct": 75.6,
+    "points_earned_12m": 114271,
+    "points_redeemed_12m": 42900,
+    "points_expired_12m": 7073,
+    "redemption_rate_pct": 37.5,
+    "reward_cost_12m": 2145.0,
+    "app_fees_12m": 1188.0,
+    "program_cost_12m": 3333.0,
+    "outstanding_points": 123142,
+    "liability_at_face": 6157.1,
+    "liability_at_measured_redemption": 2311.52,
+    "tier_mix_now": {
+      "Member": {
+        "members": 419,
+        "share_pct": 64.3
+      },
+      "Gold": {
+        "members": 233,
+        "share_pct": 35.7
+      }
+    },
+    "gold_share_12m_ago_pct": 16.4,
+    "tier_movement": {
+      "up": 132,
+      "down": 0,
+      "stayed": 470,
+      "new": 50
+    },
+    "gold_threshold_check": {
+      "threshold": "$250 lifetime spend",
+      "customers_spending_250_in_12m_pct": 8.1,
+      "gold_members_with_order_12m": 208,
+      "gold_share_of_customers_pct": 26.0
+    },
+    "face_reward_rate_on_member_spend_pct": 8.1,
+    "measured_reward_cost_rate_pct": 3.03,
+    "give_back_budget_rate_pct": 6.2,
+    "member_repeat_rate_pct": 50.0,
+    "non_member_repeat_rate_pct": 33.2,
+    "member_gap_pts_upper_bound": 16.8,
+    "break_even": {
+      "contribution_per_extra_order": 35.4,
+      "extra_orders_needed": 95,
+      "extra_repeat_buyers_needed": 45,
+      "repeat_rate_lift_needed_pts": 5.6
+    },
+    "verdict": "pays on the evidence"
+  },
+  "findings": [
+    {
+      "finding": "Gold is too easy to reach and never resets",
+      "evidence": "Gold needs $250 of lifetime spend, so 35.7% of members are Gold (up from 16.4% a year ago) and 0 members moved down in 12 months. Only 8.1% of customers spend $250 in a year."
+    },
+    {
+      "finding": "The program gives back more than the margin budget",
+      "evidence": "At face value it returns 8.1% of member spend against a budget of 6.2% (10% of a 62% margin). Measured redemption of 37.5% keeps the real cost at 3.03%, so what closes the gap is breakage, not the design."
+    },
+    {
+      "finding": "Points are a liability on the books",
+      "evidence": "123,142 points are outstanding: $6,157.10 at face, $2,311.52 at the measured redemption rate."
+    },
+    {
+      "finding": "The top customers have no tier of their own",
+      "evidence": "The top 5% of customers bring 21.9% of revenue and start at $295.97 a year, but earn the same as a $250 lifetime customer."
+    }
+  ],
+  "proposed_program": {
+    "thresholds": {
+      "middle_tier": {
+        "name": "Gold",
+        "percentile": 75,
+        "raw": 136.2,
+        "threshold": 125
+      },
+      "vip_tier": {
+        "name": "VIP",
+        "percentile": 95,
+        "raw": 295.97,
+        "threshold": 300
+      },
+      "qualifies_on": "rolling 12-month qualifying spend",
+      "tiers": [
+        {
+          "tier": "Member",
+          "from": 0,
+          "customers": 572,
+          "share_of_customers_pct": 71.4,
+          "spend_12m": 38133.02,
+          "share_of_revenue_pct": 40.8
+        },
+        {
+          "tier": "Gold",
+          "from": 125,
+          "customers": 189,
+          "share_of_customers_pct": 23.6,
+          "spend_12m": 35243.96,
+          "share_of_revenue_pct": 37.7
+        },
+        {
+          "tier": "VIP",
+          "from": 300,
+          "customers": 40,
+          "share_of_customers_pct": 5.0,
+          "spend_12m": 20143.46,
+          "share_of_revenue_pct": 21.5
+        }
+      ],
+      "near_tier": {
+        "Gold": {
+          "customers": 76,
+          "from": 100.0
+        },
+        "VIP": {
+          "customers": 32,
+          "from": 240.0
+        }
+      },
+      "kept_gold_for_12_months": {
+        "active": 75,
+        "no_order_in_12m": 25
+      }
+    },
+    "earn_and_redeem": {
+      "earn": "1 point per $1 of qualifying spend",
+      "multipliers": {
+        "Member": 1.0,
+        "Gold": 1.5,
+        "VIP": 2.0
+      },
+      "spend_weighted_multiplier": 1.434,
+      "give_back_budget_pct": 6.2,
+      "base_reward_rate_pct": 4,
+      "redeem": "100 points = $4 off",
+      "reward_rate_by_tier_pct": {
+        "Member": 4.0,
+        "Gold": 6.0,
+        "VIP": 8.0
+      },
+      "face_reward_rate_blended_pct": 5.74,
+      "existing_balances": "converted at x1.25 so each balance keeps its dollar value",
+      "points_expire": "12 months after the member's last order, with a reminder 30 days before"
+    },
+    "perks": {
+      "Member": [
+        "points"
+      ],
+      "Gold": [
+        "1.5x points",
+        "early access to launches"
+      ],
+      "VIP": [
+        "2x points",
+        "free express shipping",
+        "early access to launches"
+      ]
+    },
+    "paid_membership": "not modelled: the owner does not want one"
+  },
+  "cost_and_break_even": {
+    "assumption": "today's members keep buying what they bought in the last 12 months, sorted into the new tiers, with current Gold members who fall short kept at Gold for the first year; rewards redeemed at the measured 37.5%",
+    "member_spend_by_first_year_tier": {
+      "Member": 18947.21,
+      "Gold": 33075.23,
+      "VIP": 18681.63
+    },
+    "rewards_at_face": 4236.93,
+    "rewards_expected": 1590.64,
+    "vip_member_orders": 269,
+    "perk_cost": 1614.0,
+    "app_fees": 1188.0,
+    "expected_cost_12m": 4392.64,
+    "ceiling_cost_12m": 8294.15,
+    "ceiling_assumption": "every customer joins and redeems every point",
+    "change_vs_today": 1059.64,
+    "break_even": {
+      "contribution_per_extra_order": 35.87,
+      "extra_orders_needed": 123,
+      "extra_repeat_buyers_needed": 59,
+      "repeat_rate_lift_needed_pts": 7.4
+    },
+    "member_gap_pts_upper_bound": 16.8,
+    "verdict": "pays on the evidence",
+    "test": "Launch to 90% of customers and keep a random 10% on today's program for 90 days; compare repeat rate and orders per customer before rolling out to everyone."
+  },
+  "comparison": {
+    "today": {
+      "cost_12m": 3333.0,
+      "extra_orders_needed": 95,
+      "repeat_rate_lift_needed_pts": 5.6,
+      "verdict": "pays on the evidence"
+    },
+    "redesign": {
+      "cost_12m": 4392.64,
+      "extra_orders_needed": 123,
+      "repeat_rate_lift_needed_pts": 7.4,
+      "verdict": "pays on the evidence"
+    }
+  },
+  "klaviyo_check": {
+    "loyalty_metrics_found": [
+      "Earned Points",
+      "Redeemed Reward",
+      "Tier Changed"
+    ],
+    "loyalty_integration": "Example Points App",
+    "existing_loyalty_flows": [
+      {
+        "name": "Rewards: points balance",
+        "status": "draft"
+      }
+    ],
+    "existing_vip_segment": {
+      "name": "VIP: spent over $500",
+      "matches_new_vip": false,
+      "action": "Update its rule to 12-month spend of $300 or more, or retire it, so there is one VIP definition."
+    },
+    "plan": "Build the tier emails on the app's Tier Changed metric and finish the draft points balance flow instead of starting a second one."
+  },
+  "emails": [
+    {
+      "email": "Launch",
+      "trigger": "one send on launch day",
+      "audience": "customers from the last 24 months who accept marketing",
+      "audience_count": 772,
+      "subject": "Example Botanicals Rewards now has Gold and VIP",
+      "preview": "See your tier and what it earns",
+      "body": "Our rewards now have three tiers. Members earn 4% back in points, Gold earns 6% from $125 a year, and VIP earns 8% from $300 a year, plus free express shipping on every order. That is a change for today's members: Members earned 5% and Gold 10% before, and Gold now goes by the last 12 months of spend, not lifetime. Your tier is in your account now, points you already hold keep their dollar value, and if you're Gold today you keep Gold for at least 12 months."
+    },
+    {
+      "email": "Welcome",
+      "trigger": "joins the program",
+      "audience": "new members",
+      "audience_count": 39,
+      "audience_basis": "members who joined in the last 12 months and accept marketing",
+      "subject": "Welcome to Rewards: here's how points work",
+      "preview": "100 points = $4 off, and they add up fast",
+      "body": "You earn 1 point for every $1 you spend on products. Every 100 points is $4 off. Spend $125 in a year to reach Gold and earn faster."
+    },
+    {
+      "email": "Gold reached",
+      "trigger": "Tier Changed to Gold",
+      "audience": "customers placed in Gold at launch",
+      "audience_count": 149,
+      "subject": "You're Gold now",
+      "preview": "Every order earns 1.5x points from today",
+      "body": "You spent $125 or more with us in the last 12 months, so every order now earns 1.5 points per $1. Keep it by spending $125 in any 12 months."
+    },
+    {
+      "email": "VIP reached",
+      "trigger": "Tier Changed to VIP",
+      "audience": "customers placed in VIP at launch",
+      "audience_count": 31,
+      "subject": "Welcome to VIP",
+      "preview": "Double points and free express shipping",
+      "body": "You're one of our top customers. Every order now earns 2 points per $1 and ships express for free. VIP lasts while you spend $300 in any 12 months."
+    },
+    {
+      "email": "Near-tier nudge",
+      "trigger": "12-month spend reaches 80% of the next tier",
+      "audience": "near Gold and near VIP",
+      "audience_count": 91,
+      "audience_split": {
+        "near_gold": 68,
+        "near_vip": 23
+      },
+      "subject": "You're close to your next tier",
+      "preview": "A little more unlocks faster points",
+      "body": "You're within reach of the next tier. The email shows each customer's own gap in dollars and what the tier adds. No discount code."
+    },
+    {
+      "email": "Points balance reminder",
+      "trigger": "monthly, and 30 days before points expire",
+      "audience": "members holding 100 points or more",
+      "audience_count": 399,
+      "rewards_ready_to_use_usd": 3784,
+      "subject": "You have rewards waiting",
+      "preview": "Your points are worth money off today",
+      "body": "Shows the member's balance in dollars, how to use it at checkout, and the date the points expire."
+    }
+  ],
+  "tier_lists": {
+    "VIP": {
+      "count": 40,
+      "customer_ids": [
+        "EB-2007",
+        "EB-2017",
+        "EB-2072",
+        "EB-2115",
+        "EB-2121",
+        "EB-2141",
+        "EB-2154",
+        "EB-2178",
+        "EB-2188",
+        "EB-2265",
+        "EB-2306",
+        "EB-2320",
+        "EB-2346",
+        "EB-2377",
+        "EB-2381",
+        "EB-2384",
+        "EB-2399",
+        "EB-2404",
+        "EB-2426",
+        "EB-2467",
+        "EB-2508",
+        "EB-2513",
+        "EB-2543",
+        "EB-2553",
+        "EB-2584",
+        "EB-2604",
+        "EB-2611",
+        "EB-2672",
+        "EB-2690",
+        "EB-2693",
+        "EB-2805",
+        "EB-2816",
+        "EB-2819",
+        "EB-2835",
+        "EB-2863",
+        "EB-2890",
+        "EB-2899",
+        "EB-2960",
+        "EB-2973",
+        "EB-2997"
+      ]
+    },
+    "Gold": {
+      "count": 189,
+      "customer_ids": [
+        "EB-2012",
+        "EB-2016",
+        "EB-2020",
+        "EB-2023",
+        "EB-2024",
+        "EB-2028",
+        "EB-2030",
+        "EB-2031",
+        "EB-2032",
+        "EB-2046",
+        "EB-2049",
+        "EB-2051",
+        "EB-2055",
+        "EB-2061",
+        "EB-2066",
+        "EB-2070",
+        "EB-2071",
+        "EB-2081",
+        "EB-2085",
+        "EB-2087",
+        "EB-2093",
+        "EB-2097",
+        "EB-2104",
+        "EB-2107",
+        "EB-2111",
+        "EB-2112",
+        "EB-2116",
+        "EB-2117",
+        "EB-2125",
+        "EB-2131",
+        "EB-2132",
+        "EB-2146",
+        "EB-2151",
+        "EB-2156",
+        "EB-2157",
+        "EB-2162",
+        "EB-2172",
+        "EB-2183",
+        "EB-2184",
+        "EB-2199",
+        "EB-2202",
+        "EB-2218",
+        "EB-2221",
+        "EB-2226",
+        "EB-2233",
+        "EB-2234",
+        "EB-2236",
+        "EB-2241",
+        "EB-2242",
+        "EB-2244",
+        "EB-2256",
+        "EB-2264",
+        "EB-2269",
+        "EB-2272",
+        "EB-2277",
+        "EB-2282",
+        "EB-2288",
+        "EB-2308",
+        "EB-2315",
+        "EB-2316",
+        "EB-2323",
+        "EB-2342",
+        "EB-2343",
+        "EB-2344",
+        "EB-2358",
+        "EB-2359",
+        "EB-2361",
+        "EB-2362",
+        "EB-2364",
+        "EB-2389",
+        "EB-2396",
+        "EB-2397",
+        "EB-2400",
+        "EB-2401",
+        "EB-2409",
+        "EB-2413",
+        "EB-2414",
+        "EB-2417",
+        "EB-2423",
+        "EB-2425",
+        "EB-2442",
+        "EB-2447",
+        "EB-2453",
+        "EB-2457",
+        "EB-2458",
+        "EB-2462",
+        "EB-2464",
+        "EB-2465",
+        "EB-2469",
+        "EB-2470",
+        "EB-2473",
+        "EB-2474",
+        "EB-2477",
+        "EB-2478",
+        "EB-2482",
+        "EB-2484",
+        "EB-2489",
+        "EB-2496",
+        "EB-2498",
+        "EB-2501",
+        "EB-2509",
+        "EB-2510",
+        "EB-2514",
+        "EB-2515",
+        "EB-2533",
+        "EB-2534",
+        "EB-2544",
+        "EB-2549",
+        "EB-2555",
+        "EB-2561",
+        "EB-2563",
+        "EB-2567",
+        "EB-2580",
+        "EB-2582",
+        "EB-2595",
+        "EB-2613",
+        "EB-2629",
+        "EB-2631",
+        "EB-2634",
+        "EB-2640",
+        "EB-2642",
+        "EB-2647",
+        "EB-2651",
+        "EB-2653",
+        "EB-2654",
+        "EB-2657",
+        "EB-2659",
+        "EB-2661",
+        "EB-2681",
+        "EB-2682",
+        "EB-2688",
+        "EB-2695",
+        "EB-2698",
+        "EB-2702",
+        "EB-2717",
+        "EB-2719",
+        "EB-2723",
+        "EB-2732",
+        "EB-2744",
+        "EB-2746",
+        "EB-2759",
+        "EB-2760",
+        "EB-2761",
+        "EB-2767",
+        "EB-2773",
+        "EB-2780",
+        "EB-2787",
+        "EB-2792",
+        "EB-2796",
+        "EB-2802",
+        "EB-2806",
+        "EB-2807",
+        "EB-2810",
+        "EB-2811",
+        "EB-2814",
+        "EB-2815",
+        "EB-2822",
+        "EB-2826",
+        "EB-2841",
+        "EB-2858",
+        "EB-2865",
+        "EB-2869",
+        "EB-2871",
+        "EB-2872",
+        "EB-2877",
+        "EB-2887",
+        "EB-2901",
+        "EB-2909",
+        "EB-2914",
+        "EB-2921",
+        "EB-2925",
+        "EB-2930",
+        "EB-2934",
+        "EB-2937",
+        "EB-2943",
+        "EB-2948",
+        "EB-2951",
+        "EB-2953",
+        "EB-2958",
+        "EB-2967",
+        "EB-2969",
+        "EB-2972",
+        "EB-2979",
+        "EB-2982",
+        "EB-2987",
+        "EB-2990",
+        "EB-2991",
+        "EB-2995",
+        "EB-2996"
+      ]
+    },
+    "Member": {
+      "count": 497,
+      "customer_ids": "every other customer with an order in the last 12 months"
+    },
+    "near_VIP": [
+      {
+        "customer_id": "EB-2822",
+        "spend_12m": 295.97,
+        "gap": 4.03
+      },
+      {
+        "customer_id": "EB-2085",
+        "spend_12m": 295.57,
+        "gap": 4.43
+      },
+      {
+        "customer_id": "EB-2654",
+        "spend_12m": 292.08,
+        "gap": 7.92
+      },
+      {
+        "customer_id": "EB-2413",
+        "spend_12m": 291.85,
+        "gap": 8.15
+      },
+      {
+        "customer_id": "EB-2051",
+        "spend_12m": 286.19,
+        "gap": 13.81
+      },
+      {
+        "customer_id": "EB-2814",
+        "spend_12m": 285.42,
+        "gap": 14.58
+      },
+      {
+        "customer_id": "EB-2236",
+        "spend_12m": 284.51,
+        "gap": 15.49
+      },
+      {
+        "customer_id": "EB-2030",
+        "spend_12m": 284.04,
+        "gap": 15.96
+      },
+      {
+        "customer_id": "EB-2796",
+        "spend_12m": 283.37,
+        "gap": 16.63
+      },
+      {
+        "customer_id": "EB-2244",
+        "spend_12m": 280.62,
+        "gap": 19.38
+      },
+      {
+        "customer_id": "EB-2277",
+        "spend_12m": 280.51,
+        "gap": 19.49
+      },
+      {
+        "customer_id": "EB-2256",
+        "spend_12m": 275.23,
+        "gap": 24.77
+      },
+      {
+        "customer_id": "EB-2343",
+        "spend_12m": 275.02,
+        "gap": 24.98
+      },
+      {
+        "customer_id": "EB-2465",
+        "spend_12m": 273.5,
+        "gap": 26.5
+      },
+      {
+        "customer_id": "EB-2567",
+        "spend_12m": 272.55,
+        "gap": 27.45
+      },
+      {
+        "customer_id": "EB-2787",
+        "spend_12m": 269.36,
+        "gap": 30.64
+      },
+      {
+        "customer_id": "EB-2226",
+        "spend_12m": 264.48,
+        "gap": 35.52
+      },
+      {
+        "customer_id": "EB-2759",
+        "spend_12m": 262.2,
+        "gap": 37.8
+      },
+      {
+        "customer_id": "EB-2634",
+        "spend_12m": 254.3,
+        "gap": 45.7
+      },
+      {
+        "customer_id": "EB-2953",
+        "spend_12m": 254.04,
+        "gap": 45.96
+      },
+      {
+        "customer_id": "EB-2401",
+        "spend_12m": 252.85,
+        "gap": 47.15
+      },
+      {
+        "customer_id": "EB-2409",
+        "spend_12m": 252.03,
+        "gap": 47.97
+      },
+      {
+        "customer_id": "EB-2061",
+        "spend_12m": 251.94,
+        "gap": 48.06
+      },
+      {
+        "customer_id": "EB-2995",
+        "spend_12m": 251.78,
+        "gap": 48.22
+      },
+      {
+        "customer_id": "EB-2364",
+        "spend_12m": 250.29,
+        "gap": 49.71
+      },
+      {
+        "customer_id": "EB-2563",
+        "spend_12m": 249.26,
+        "gap": 50.74
+      },
+      {
+        "customer_id": "EB-2826",
+        "spend_12m": 247.94,
+        "gap": 52.06
+      },
+      {
+        "customer_id": "EB-2514",
+        "spend_12m": 246.3,
+        "gap": 53.7
+      },
+      {
+        "customer_id": "EB-2534",
+        "spend_12m": 245.12,
+        "gap": 54.88
+      },
+      {
+        "customer_id": "EB-2117",
+        "spend_12m": 243.97,
+        "gap": 56.03
+      },
+      {
+        "customer_id": "EB-2681",
+        "spend_12m": 242.98,
+        "gap": 57.02
+      },
+      {
+        "customer_id": "EB-2104",
+        "spend_12m": 240.48,
+        "gap": 59.52
+      }
+    ],
+    "near_Gold": {
+      "count": 76,
+      "gap_range": [
+        0.2,
+        24.84
+      ]
+    },
+    "kept_Gold_12_months": [
+      "EB-2010",
+      "EB-2015",
+      "EB-2018",
+      "EB-2044",
+      "EB-2058",
+      "EB-2064",
+      "EB-2076",
+      "EB-2086",
+      "EB-2101",
+      "EB-2105",
+      "EB-2114",
+      "EB-2129",
+      "EB-2134",
+      "EB-2143",
+      "EB-2155",
+      "EB-2160",
+      "EB-2168",
+      "EB-2176",
+      "EB-2177",
+      "EB-2192",
+      "EB-2201",
+      "EB-2210",
+      "EB-2212",
+      "EB-2220",
+      "EB-2222",
+      "EB-2228",
+      "EB-2232",
+      "EB-2253",
+      "EB-2266",
+      "EB-2270",
+      "EB-2283",
+      "EB-2284",
+      "EB-2289",
+      "EB-2292",
+      "EB-2294",
+      "EB-2309",
+      "EB-2310",
+      "EB-2324",
+      "EB-2335",
+      "EB-2341",
+      "EB-2347",
+      "EB-2349",
+      "EB-2352",
+      "EB-2365",
+      "EB-2379",
+      "EB-2398",
+      "EB-2410",
+      "EB-2412",
+      "EB-2420",
+      "EB-2430",
+      "EB-2433",
+      "EB-2456",
+      "EB-2460",
+      "EB-2471",
+      "EB-2472",
+      "EB-2526",
+      "EB-2545",
+      "EB-2550",
+      "EB-2552",
+      "EB-2557",
+      "EB-2564",
+      "EB-2579",
+      "EB-2581",
+      "EB-2623",
+      "EB-2626",
+      "EB-2636",
+      "EB-2638",
+      "EB-2639",
+      "EB-2641",
+      "EB-2655",
+      "EB-2667",
+      "EB-2696",
+      "EB-2701",
+      "EB-2721",
+      "EB-2735",
+      "EB-2766",
+      "EB-2784",
+      "EB-2795",
+      "EB-2817",
+      "EB-2818",
+      "EB-2831",
+      "EB-2846",
+      "EB-2852",
+      "EB-2860",
+      "EB-2862",
+      "EB-2866",
+      "EB-2868",
+      "EB-2874",
+      "EB-2889",
+      "EB-2894",
+      "EB-2896",
+      "EB-2904",
+      "EB-2906",
+      "EB-2912",
+      "EB-2915",
+      "EB-2952",
+      "EB-2959",
+      "EB-2964",
+      "EB-2976",
+      "EB-2983"
+    ]
+  },
+  "actions_offered": [
+    {
+      "fix": "Tag customers with their new tier in Shopify",
+      "platform": "shopify",
+      "action": "update_customer",
+      "count": 329,
+      "status": "not run, needs your yes",
+      "example_payload": {
+        "action": "update_customer",
+        "shop_name": "examplebotanicals",
+        "customer_id": "<SHOPIFY_CUSTOMER_ID>",
+        "body": {
+          "tags": "loyalty-vip"
+        }
+      },
+      "note": "Send the customer's existing tags plus the new one: Shopify replaces the whole tag list."
+    },
+    {
+      "fix": "Save the six emails as Klaviyo templates",
+      "platform": "klaviyo",
+      "action": "create_email_template",
+      "count": 6,
+      "status": "not run, needs your yes",
+      "example_payload": {
+        "action": "create_email_template",
+        "body": {
+          "data": {
+            "type": "template",
+            "attributes": {
+              "name": "Rewards: VIP reached",
+              "editor_type": "CODE",
+              "html": "<html>...</html>"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "unknowns": [
+    "Whether members buy more because of the program or join because they already buy more: the 16.8-point member gap is an upper bound until the 10% holdout reads out."
+  ]
+}

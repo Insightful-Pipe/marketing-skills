@@ -1,0 +1,403 @@
+{
+  "header": {
+    "store": "Ottermere Trail Supply",
+    "platform": "Shopify",
+    "plan": "Shopify (not Plus)",
+    "window": "2026-09-29 to 2026-10-28",
+    "time_zone": "America/Denver",
+    "currency": "USD",
+    "sources": [
+      "GA4",
+      "Shopify",
+      "PageSpeed Insights",
+      "5 screenshots"
+    ],
+    "not_connected": [
+      "Microsoft Clarity"
+    ],
+    "aov": 87.89,
+    "aov_basis": "709 online orders, $62,313.70"
+  },
+  "tracking_check": {
+    "online_orders_shopify": 709,
+    "pos_orders_left_out": 14,
+    "ga4_transactions": 652,
+    "capture_pct": 92.0,
+    "result": "warn",
+    "meaning": "GA4 records 92.0% of online orders, so its Pay step rate reads a little low; dollar figures use Shopify's orders and order value",
+    "where_leavers_stopped": {
+      "ga4_share_before_delivery_pct": 53.9,
+      "shopify_share_before_delivery_pct": 56.2,
+      "difference_points": 2.3,
+      "shopify_stages": {
+        "contact": 210,
+        "address": 150,
+        "delivery": 280
+      },
+      "verdict": "agree",
+      "meaning": "Both sources put about the same share of leavers before the delivery choice, so the checkout drop-off is real, not a tagging gap"
+    }
+  },
+  "funnel": {
+    "total_sessions": 20640,
+    "steps": [
+      {
+        "step": "Cart to checkout",
+        "from_event": "add_to_cart",
+        "to_event": "begin_checkout",
+        "sessions_entering": 2060,
+        "sessions_passing": 1134,
+        "step_rate_pct": 55.0,
+        "shoppers_lost": 926,
+        "revenue_lost": 46506.13,
+        "by_device_rate_pct": {
+          "desktop": 60.6,
+          "mobile": 51.8,
+          "tablet": 62.2
+        }
+      },
+      {
+        "step": "Contact and delivery",
+        "from_event": "begin_checkout",
+        "to_event": "add_shipping_info",
+        "sessions_entering": 1134,
+        "sessions_passing": 872,
+        "step_rate_pct": 76.9,
+        "shoppers_lost": 262,
+        "revenue_lost": 17111.86,
+        "by_device_rate_pct": {
+          "desktop": 80.2,
+          "mobile": 74.7,
+          "tablet": 78.6
+        }
+      },
+      {
+        "step": "Payment details",
+        "from_event": "add_shipping_info",
+        "to_event": "add_payment_info",
+        "sessions_entering": 872,
+        "sessions_passing": 739,
+        "step_rate_pct": 84.7,
+        "shoppers_lost": 133,
+        "revenue_lost": 10249.9,
+        "by_device_rate_pct": {
+          "desktop": 87.0,
+          "mobile": 83.2,
+          "tablet": 86.4
+        }
+      },
+      {
+        "step": "Pay",
+        "from_event": "add_payment_info",
+        "to_event": "purchase",
+        "sessions_entering": 739,
+        "sessions_passing": 648,
+        "step_rate_pct": 87.7,
+        "shoppers_lost": 91,
+        "revenue_lost": 7997.95,
+        "by_device_rate_pct": {
+          "desktop": 93.7,
+          "mobile": 83.1,
+          "tablet": 94.7
+        }
+      }
+    ],
+    "cart_abandonment_pct": 68.5,
+    "checkout_abandonment_pct": 42.9,
+    "segment_gaps": [
+      {
+        "segment": "mobile Safari",
+        "step": "Pay",
+        "sessions_entering": 262,
+        "segment_rate_pct": 74.8,
+        "rest_of_site_rate_pct": 94.8,
+        "gap_points": 19.9,
+        "revenue_lost": 4593.84,
+        "tracking_check": {
+          "ga4_purchase_sessions": 196,
+          "shopify_orders": 212,
+          "segment_recorded_pct": 92.5,
+          "site_recorded_pct": 92.2,
+          "verdict": "real drop-off"
+        }
+      }
+    ],
+    "device_flags_explained_by_browser": [
+      {
+        "segment": "mobile",
+        "step": "Pay",
+        "explained_by": [
+          "mobile Safari"
+        ]
+      }
+    ]
+  },
+  "beside_the_research": {
+    "store_cart_abandonment_pct": 68.5,
+    "research_average_pct": 70.22,
+    "source": "Baymard Institute, cart abandonment rate list, updated 2025-09-22",
+    "reading": "Close to the research average, so the store isn't broken overall; the money is in the steps and screens below. The research average spans many stores and definitions, so it is context, not a grade."
+  },
+  "delivery_cost": {
+    "rates": "Standard $6.95 under $75.00, free from $75.00; Express $14.95",
+    "abandoned_reaching_delivery": 280,
+    "abandoned_paying_shipping": 238,
+    "abandoned_paying_shipping_pct": 85.0,
+    "orders_paying_shipping": 390,
+    "orders_paying_shipping_pct": 55.0,
+    "ratio": 1.55,
+    "result": "fail",
+    "near_threshold_abandoned": 137,
+    "near_threshold_value": 8913.31,
+    "near_threshold_band": "$56.25 to $74.99",
+    "reading": "Of the shoppers who left after a delivery option was chosen, 85.0% were being charged shipping, against 55.0% of buyers; the cart never says shipping is free from $75.00, and 137 abandoned checkouts sat within 25% of it"
+  },
+  "screen_review": [
+    {
+      "check": "cart_total_cost",
+      "screen": "Cart",
+      "result": "fail",
+      "evidence": "cart-iphone.png and cart-desktop.png say 'shipping calculated at checkout' and show no free-shipping threshold, though the store ships free from $75.00",
+      "step": "Cart to checkout",
+      "research_reason": "Extra costs too high",
+      "research_share_pct": 40,
+      "plan": {
+        "where": "Cart page theme edit",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "check": "cart_express",
+      "screen": "Cart",
+      "result": "fail",
+      "evidence": "cart-iphone.png and cart-desktop.png have one 'Check out' button and no express pay buttons; they appear only on the first checkout screen",
+      "step": "Cart to checkout",
+      "research_reason": "Checkout too long or complicated",
+      "research_share_pct": 17,
+      "plan": {
+        "where": "Theme setting for dynamic checkout buttons on the cart",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "check": "guest",
+      "screen": "Contact",
+      "result": "pass",
+      "evidence": "checkout-contact-iphone.png: a 'Sign in' link, but no account is needed to continue",
+      "step": "Contact and delivery",
+      "research_reason": "Had to create an account",
+      "research_share_pct": 18,
+      "plan": {
+        "where": "Settings, Checkout",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "check": "fields",
+      "screen": "Contact",
+      "result": "warn",
+      "evidence": "checkout-contact-iphone.png: phone is required and company is shown; address suggestions are on",
+      "step": "Contact and delivery",
+      "research_reason": "Checkout too long or complicated",
+      "research_share_pct": 17,
+      "plan": {
+        "where": "Settings, Checkout: make phone and company optional or hidden",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "check": "delivery_speed",
+      "screen": "Delivery",
+      "result": "fail",
+      "evidence": "checkout-delivery-iphone.png: 'Standard $6.95' and 'Express $14.95' with no dates or number of days",
+      "step": "Contact and delivery",
+      "research_reason": "Delivery too slow",
+      "research_share_pct": 20,
+      "plan": {
+        "where": "Settings, Shipping and delivery: add transit times to the rate names or use calculated rates",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "check": "payment_methods",
+      "screen": "Payment",
+      "result": "warn",
+      "evidence": "checkout-payment-iphone.png: cards, PayPal, Shop Pay and Google Pay, but no Apple Pay on an iPhone",
+      "step": "Payment details",
+      "research_reason": "Not enough payment methods",
+      "research_share_pct": 9,
+      "plan": {
+        "where": "Settings, Payments: turn on Apple Pay under Shopify Payments wallets",
+        "allowed": "Any plan, with Shopify Payments"
+      }
+    },
+    {
+      "check": "reassurance",
+      "screen": "Payment",
+      "result": "fail",
+      "evidence": "checkout-payment-iphone.png: nothing next to 'Pay now' about returns, secure payment or help; policies only in the footer",
+      "step": "Pay",
+      "research_reason": "Didn't trust the site with card details",
+      "research_share_pct": 19,
+      "plan": {
+        "where": "A block next to 'Pay now' needs a checkout UI extension on the payment step",
+        "allowed": "Shopify Plus only; on this plan, put the returns and secure-payment lines on the cart page instead"
+      }
+    },
+    {
+      "check": "errors",
+      "screen": "Payment",
+      "result": "not seen",
+      "evidence": "No error screenshot was provided",
+      "step": "Pay",
+      "research_reason": "Site had errors or crashed",
+      "research_share_pct": 17,
+      "plan": {
+        "where": "Shopify writes the checkout error messages",
+        "allowed": "Not editable on any plan"
+      }
+    },
+    {
+      "check": "discount_field",
+      "screen": "Order summary",
+      "result": "warn",
+      "evidence": "checkout-contact-iphone.png: the discount code box is open at the top of the order summary",
+      "step": null,
+      "research_reason": null,
+      "research_share_pct": null,
+      "plan": {
+        "where": "The box is part of Shopify's checkout layout; a discount link (/discount/CODE) applies a code before checkout so shoppers don't go hunting",
+        "allowed": "Any plan, for discount links"
+      }
+    },
+    {
+      "check": "mobile_speed",
+      "screen": "Cart",
+      "result": "warn",
+      "evidence": "PageSpeed mobile: cart LCP 3.9 s (good is 2.5 s or less), CLS 0.04",
+      "step": null,
+      "research_reason": null,
+      "research_share_pct": null,
+      "plan": {
+        "where": "Theme and app scripts on the cart page",
+        "allowed": "Any plan"
+      }
+    }
+  ],
+  "top_fixes": [
+    {
+      "kind": "screen",
+      "check": "cart_total_cost",
+      "result": "fail",
+      "step": "Cart to checkout",
+      "step_revenue_lost": 46506.13,
+      "addressable_revenue": 18602.45,
+      "basis": "Cart to checkout revenue lost $46,506.13 x 40% (Extra costs too high)",
+      "plan": {
+        "where": "Cart page theme edit",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "kind": "screen",
+      "check": "cart_express",
+      "result": "fail",
+      "step": "Cart to checkout",
+      "step_revenue_lost": 46506.13,
+      "addressable_revenue": 7906.04,
+      "basis": "Cart to checkout revenue lost $46,506.13 x 17% (Checkout too long or complicated)",
+      "plan": {
+        "where": "Theme setting for dynamic checkout buttons on the cart",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "kind": "segment gap",
+      "check": "mobile Safari at Pay",
+      "result": "fail",
+      "step": "Pay",
+      "addressable_revenue": 4593.84,
+      "basis": "(94.8% - 74.8%) x 262 sessions x AOV $87.89",
+      "plan": {
+        "where": "Reproduce on the device and browser, then fix the script or app that breaks",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "kind": "screen",
+      "check": "delivery_speed",
+      "result": "fail",
+      "step": "Contact and delivery",
+      "step_revenue_lost": 17111.86,
+      "addressable_revenue": 3422.37,
+      "basis": "Contact and delivery revenue lost $17,111.86 x 20% (Delivery too slow)",
+      "plan": {
+        "where": "Settings, Shipping and delivery: add transit times to the rate names or use calculated rates",
+        "allowed": "Any plan"
+      }
+    },
+    {
+      "kind": "screen",
+      "check": "fields",
+      "result": "warn",
+      "step": "Contact and delivery",
+      "step_revenue_lost": 17111.86,
+      "addressable_revenue": 2909.02,
+      "basis": "Contact and delivery revenue lost $17,111.86 x 17% (Checkout too long or complicated)",
+      "plan": {
+        "where": "Settings, Checkout: make phone and company optional or hidden",
+        "allowed": "Any plan"
+      }
+    }
+  ],
+  "ranked_without_dollars": [
+    "discount_field",
+    "mobile_speed"
+  ],
+  "tests": [
+    {
+      "fix": "cart_total_cost",
+      "control": "Cart as now: 'Taxes and shipping calculated at checkout'",
+      "variant": "Under the subtotal: 'Free shipping from $75.00. You're $X away.' with a progress bar, and 'Standard shipping $6.95' when the cart is under $75.00",
+      "metric": "Cart to checkout step rate",
+      "baseline_pct": 55.0,
+      "minimum_lift_relative_pct": 10,
+      "target_pct": 60.6,
+      "sessions_per_arm": 1261,
+      "sessions_entering_per_day": 68.7,
+      "days_needed": 37,
+      "run_days": 42,
+      "type": "A/B test"
+    },
+    {
+      "fix": "cart_express",
+      "control": "Cart as now: one 'Check out' button",
+      "variant": "Shop Pay, PayPal and Google Pay buttons under the 'Check out' button on the cart",
+      "metric": "Cart to checkout step rate",
+      "baseline_pct": 55.0,
+      "minimum_lift_relative_pct": 10,
+      "target_pct": 60.6,
+      "sessions_per_arm": 1261,
+      "sessions_entering_per_day": 68.7,
+      "days_needed": 37,
+      "run_days": 42,
+      "type": "A/B test",
+      "runs_after": "cart_total_cost",
+      "why": "Same step as an earlier test; run it after that one ends so the two don't mix"
+    },
+    {
+      "fix": "mobile Safari at Pay",
+      "type": "fix and confirm",
+      "why": "A gap this size on one browser is a fault to fix, not an idea to test",
+      "confirm_by": "the segment's Pay rate over the next 14 days against the rest of the site"
+    }
+  ],
+  "not_checked": [
+    "Error messages: no error screenshot (Shopify writes them on every plan, so this is a check, not a fix)",
+    "Rage clicks and dead clicks: Microsoft Clarity not connected"
+  ],
+  "rules_applied": [
+    "Figures overlap (the Safari gap sits inside the Pay step); never add them into a total",
+    "Addressable revenue = revenue lost at the step x the largest research share among the check's reasons; an upper-bound estimate that assumes this store's leavers give reasons in the research proportions"
+  ]
+}

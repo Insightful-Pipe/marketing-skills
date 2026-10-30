@@ -1,0 +1,1917 @@
+{
+  "note": "Example data: an invented online store selling home coffee brewing gear, with invented outlets, writers, channels and orders, not a real business. Every number in expected_output.json follows from this input.",
+  "request": "Hey Claude, I just added the \"gift-guide-seeding-planner\" skill. Plan our holiday 2026 gift guide and product seeding push. Here is our product list with prices, unit costs, stock and last season's peak units, and a Shopify orders export for last season's placement windows. My margin floor is 55%, the sample budget is $400, and each parcel costs about $12 to pack and post. Lead times I use: print 16 weeks before on-sale, online guides 8 weeks, newsletters and blogs 4 weeks, YouTube 5 weeks. GA4 and our seeding log sheet are connected too. Here are last season's guides and the YouTube channels I follow.",
+  "store": {
+    "name": "Example Coffee Gear Co.",
+    "site": "https://www.examplecoffeegear.example",
+    "platform": "Shopify (not connected; exports pasted)",
+    "category": "home coffee brewing gear",
+    "currency": "USD"
+  },
+  "run_date": "2026-08-10",
+  "season": "Winter holidays 2026",
+  "peak_window": [
+    "2026-11-15",
+    "2026-12-20"
+  ],
+  "last_season_peak_window": [
+    "2025-11-15",
+    "2025-12-20"
+  ],
+  "settings": {
+    "margin_floor": 0.55,
+    "sample_budget": 400.0,
+    "per_parcel_cost": 12.0,
+    "sample_reserve_units": 10,
+    "brackets": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "lead_times_weeks": {
+      "print magazine": 16,
+      "online publication": 8,
+      "newsletter or blog": 4,
+      "YouTube": 5
+    },
+    "lead_time_source": "the user's own lead times, given in the request"
+  },
+  "data_pulled": {
+    "products": {
+      "source": "pasted by the user: a product list with price, unit cost, stock, last season's peak units, and the product page facts",
+      "rows": [
+        {
+          "id": "P1",
+          "name": "Ridge Hand Grinder",
+          "price": 89.0,
+          "unit_cost": 27.0,
+          "stock": 640,
+          "last_peak_units": 210,
+          "handle": "ridge-hand-grinder",
+          "page_facts": [
+            "40 click grind settings, from espresso to cold brew",
+            "Stainless steel conical burrs",
+            "Folds to 17 cm for travel"
+          ],
+          "in_the_box": [
+            "Grinder",
+            "Cleaning brush",
+            "Travel pouch"
+          ]
+        },
+        {
+          "id": "P2",
+          "name": "Gooseneck Electric Kettle",
+          "price": 104.0,
+          "unit_cost": 46.0,
+          "stock": 420,
+          "last_peak_units": 150
+        },
+        {
+          "id": "P3",
+          "name": "Ceramic Pour-Over Dripper",
+          "price": 32.0,
+          "unit_cost": 9.0,
+          "stock": 1150,
+          "last_peak_units": 380
+        },
+        {
+          "id": "P4",
+          "name": "Brew Scale with Timer",
+          "price": 54.0,
+          "unit_cost": 19.0,
+          "stock": 500,
+          "last_peak_units": 170
+        },
+        {
+          "id": "P5",
+          "name": "Cold Brew Bottle",
+          "price": 28.0,
+          "unit_cost": 11.0,
+          "stock": 150,
+          "last_peak_units": 320
+        },
+        {
+          "id": "P6",
+          "name": "Pour-Over Gift Set",
+          "price": 49.0,
+          "unit_cost": 21.0,
+          "stock": 300,
+          "last_peak_units": null,
+          "launched": "2026-06-01",
+          "last_90_day_units": 95
+        },
+        {
+          "id": "P7",
+          "name": "Insulated Travel Mug",
+          "price": 36.0,
+          "unit_cost": 20.0,
+          "stock": 800,
+          "last_peak_units": 260
+        },
+        {
+          "id": "P8",
+          "name": "Espresso Tamper",
+          "price": 45.0,
+          "unit_cost": 14.0,
+          "stock": 95,
+          "last_peak_units": 70
+        }
+      ]
+    },
+    "target_guides_2025": {
+      "source": "pasted by the user, with Google ranks the user gave for each guide's query",
+      "rows": [
+        {
+          "id": "T1",
+          "outlet": "The Daily Brew Review",
+          "domain": "dailybrewreview.example",
+          "type": "online publication",
+          "guide": "The 27 best gifts for coffee lovers, tested",
+          "writer": "Maya Castellanos",
+          "published_2025": "2025-11-06",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": 3,
+          "rank_query": "best gifts for coffee lovers",
+          "placed_us": true
+        },
+        {
+          "id": "T2",
+          "outlet": "Home Kitchen Monthly",
+          "domain": "homekitchenmonthly.example",
+          "type": "print magazine",
+          "guide": "Holiday gift guide: for the coffee obsessed",
+          "writer": "Leo Brandt",
+          "published_2025": "2025-11-04",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": null,
+          "rank_query": null,
+          "placed_us": false
+        },
+        {
+          "id": "T3",
+          "outlet": "Gadget Desk",
+          "domain": "gadgetdesk.example",
+          "type": "online publication",
+          "guide": "Gifts under $100 for people who have everything",
+          "writer": "Priya Okafor",
+          "published_2025": "2025-11-20",
+          "bracket": 100,
+          "covers_category": true,
+          "google_rank": 12,
+          "rank_query": "gifts under $100",
+          "placed_us": false
+        },
+        {
+          "id": "T4",
+          "outlet": "Weekend Table",
+          "domain": "weekendtable.example",
+          "type": "newsletter or blog",
+          "guide": "Stocking stuffers under $50 for food lovers",
+          "writer": "Sam Whitlock",
+          "published_2025": "2025-12-01",
+          "bracket": 50,
+          "covers_category": false,
+          "google_rank": 18,
+          "rank_query": "stocking stuffers for food lovers",
+          "placed_us": false
+        },
+        {
+          "id": "T5",
+          "outlet": "Brew Notes",
+          "domain": "brewnotes.example",
+          "type": "newsletter or blog",
+          "guide": "Best pour-over gear gifts of 2025",
+          "writer": "Ana Ruiz",
+          "published_2025": "2025-11-25",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": 6,
+          "rank_query": "pour over coffee gifts",
+          "placed_us": false
+        },
+        {
+          "id": "T6",
+          "outlet": "City Lifestyle Daily",
+          "domain": "citylifestyledaily.example",
+          "type": "online publication",
+          "guide": "Gifts under $50 for everyone on your list",
+          "writer": "Jordan Pike",
+          "published_2025": "2025-11-13",
+          "bracket": 50,
+          "covers_category": false,
+          "google_rank": 9,
+          "rank_query": "gifts under $50",
+          "placed_us": false
+        },
+        {
+          "id": "T7",
+          "outlet": "Outdoor Kit Weekly",
+          "domain": "outdoorkitweekly.example",
+          "type": "online publication",
+          "guide": "Camping coffee gifts under $100",
+          "writer": "Rae Lindqvist",
+          "published_2025": "2025-10-02",
+          "bracket": 100,
+          "covers_category": true,
+          "google_rank": 4,
+          "rank_query": "camping coffee gifts",
+          "placed_us": false
+        },
+        {
+          "id": "T8",
+          "outlet": "Morning Ritual Magazine",
+          "domain": "morningritualmag.example",
+          "type": "print magazine",
+          "guide": "The coffee lover's holiday list",
+          "writer": "Nina Patel",
+          "published_2025": "2025-12-02",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": null,
+          "rank_query": null,
+          "placed_us": false
+        },
+        {
+          "id": "T9",
+          "outlet": "Tech and Home Guide",
+          "domain": "techandhomeguide.example",
+          "type": "online publication",
+          "guide": "Best kitchen gadget gifts of 2025",
+          "writer": "Chris Moreau",
+          "published_2025": "2025-11-18",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": 15,
+          "rank_query": "kitchen gadget gifts",
+          "placed_us": false
+        },
+        {
+          "id": "T10",
+          "outlet": "Fresh Grounds",
+          "domain": "freshgrounds.example",
+          "type": "newsletter or blog",
+          "guide": "Gift picks for home baristas",
+          "writer": "Ellis Grant",
+          "published_2025": "2025-12-04",
+          "bracket": null,
+          "covers_category": true,
+          "google_rank": null,
+          "rank_query": null,
+          "placed_us": true
+        }
+      ]
+    },
+    "reviewers": {
+      "source": "pasted by the user: channels and their recent category reviews, views as of the run date",
+      "rows": [
+        {
+          "channel": "Bean Lab",
+          "subscribers": 410000,
+          "category_reviews": [
+            {
+              "date": "2026-07-02",
+              "views": 120000
+            },
+            {
+              "date": "2026-04-10",
+              "views": 95000
+            },
+            {
+              "date": "2026-01-15",
+              "views": 210000
+            }
+          ]
+        },
+        {
+          "channel": "Pour Theory",
+          "subscribers": 182000,
+          "category_reviews": [
+            {
+              "date": "2026-07-28",
+              "views": 64000
+            },
+            {
+              "date": "2026-06-30",
+              "views": 51000
+            },
+            {
+              "date": "2026-05-19",
+              "views": 88000
+            }
+          ]
+        },
+        {
+          "channel": "Slow Sip",
+          "subscribers": 38000,
+          "category_reviews": [
+            {
+              "date": "2026-07-20",
+              "views": 22000
+            },
+            {
+              "date": "2026-06-08",
+              "views": 18000
+            },
+            {
+              "date": "2026-05-01",
+              "views": 25000
+            }
+          ]
+        },
+        {
+          "channel": "Kettle and Kit",
+          "subscribers": 95000,
+          "category_reviews": [
+            {
+              "date": "2025-12-10",
+              "views": 140000
+            },
+            {
+              "date": "2025-10-02",
+              "views": 76000
+            },
+            {
+              "date": "2025-08-19",
+              "views": 59000
+            }
+          ]
+        },
+        {
+          "channel": "Home Barista Hour",
+          "subscribers": 61000,
+          "category_reviews": [
+            {
+              "date": "2026-08-01",
+              "views": 41000
+            },
+            {
+              "date": "2026-06-21",
+              "views": 37000
+            },
+            {
+              "date": "2026-03-02",
+              "views": 30000
+            }
+          ]
+        },
+        {
+          "channel": "Grind Size",
+          "subscribers": 12000,
+          "category_reviews": [
+            {
+              "date": "2026-07-30",
+              "views": 9500
+            },
+            {
+              "date": "2026-07-01",
+              "views": 7200
+            },
+            {
+              "date": "2026-06-02",
+              "views": 8100
+            }
+          ]
+        }
+      ]
+    },
+    "sample_log_2025": {
+      "source": "the user's seeding log sheet",
+      "rows": [
+        {
+          "recipient": "Maya Castellanos",
+          "outlet": "The Daily Brew Review",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-09-15"
+        },
+        {
+          "recipient": "Leo Brandt",
+          "outlet": "Home Kitchen Monthly",
+          "product": "P1",
+          "units": 2,
+          "sent": "2025-07-22"
+        },
+        {
+          "recipient": "Priya Okafor",
+          "outlet": "Gadget Desk",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-09-29"
+        },
+        {
+          "recipient": "Chris Moreau",
+          "outlet": "Tech and Home Guide",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-09-24"
+        },
+        {
+          "recipient": "Ellis Grant",
+          "outlet": "Fresh Grounds",
+          "product": "P3",
+          "units": 2,
+          "sent": "2025-11-03"
+        },
+        {
+          "recipient": "Pour Theory (YouTube)",
+          "outlet": "Pour Theory",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-10-20"
+        },
+        {
+          "recipient": "Bean Lab (YouTube)",
+          "outlet": "Bean Lab",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-10-20"
+        },
+        {
+          "recipient": "Slow Sip (YouTube)",
+          "outlet": "Slow Sip",
+          "product": "P1",
+          "units": 1,
+          "sent": "2025-10-21"
+        }
+      ]
+    },
+    "placements_2025": {
+      "source": "the user's seeding log sheet",
+      "rows": [
+        {
+          "id": "L1",
+          "outlet": "The Daily Brew Review",
+          "domain": "dailybrewreview.example",
+          "product": "P1",
+          "live": "2025-11-06",
+          "code": null,
+          "link_tag": null
+        },
+        {
+          "id": "L2",
+          "outlet": "Pour Theory",
+          "domain": "youtube.com",
+          "product": "P1",
+          "live": "2025-11-21",
+          "code": "POURTHEORY10",
+          "link_tag": "ref=pourtheory"
+        },
+        {
+          "id": "L3",
+          "outlet": "Fresh Grounds",
+          "domain": "freshgrounds.example",
+          "product": "P3",
+          "live": "2025-12-04",
+          "code": null,
+          "link_tag": null
+        }
+      ]
+    },
+    "orders_in_placement_windows": {
+      "source": "pasted by the user: a Shopify orders export for last season's placement windows, with referring site, landing page, discount codes, line items and total",
+      "rows": [
+        {
+          "id": 5001,
+          "created_at": "2025-11-23",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5002,
+          "created_at": "2025-11-16",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5003,
+          "created_at": "2025-11-07",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5004,
+          "created_at": "2025-11-22",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5005,
+          "created_at": "2025-11-14",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5006,
+          "created_at": "2025-11-09",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5007,
+          "created_at": "2025-11-19",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5008,
+          "created_at": "2025-11-27",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5009,
+          "created_at": "2025-11-08",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5010,
+          "created_at": "2025-11-10",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5011,
+          "created_at": "2025-12-05",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5012,
+          "created_at": "2025-11-23",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5013,
+          "created_at": "2025-11-16",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5014,
+          "created_at": "2025-11-07",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5015,
+          "created_at": "2025-11-18",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5016,
+          "created_at": "2025-11-21",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5017,
+          "created_at": "2025-11-25",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5018,
+          "created_at": "2025-11-27",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5019,
+          "created_at": "2025-11-18",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5020,
+          "created_at": "2025-11-26",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5021,
+          "created_at": "2025-11-26",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5022,
+          "created_at": "2025-11-20",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5023,
+          "created_at": "2025-11-11",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5024,
+          "created_at": "2025-11-21",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5025,
+          "created_at": "2025-11-12",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5026,
+          "created_at": "2025-11-24",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5027,
+          "created_at": "2025-11-09",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5028,
+          "created_at": "2025-11-13",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5029,
+          "created_at": "2025-12-05",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5030,
+          "created_at": "2025-11-21",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5031,
+          "created_at": "2025-12-04",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5032,
+          "created_at": "2025-11-08",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5033,
+          "created_at": "2025-11-29",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5034,
+          "created_at": "2025-11-17",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5035,
+          "created_at": "2025-11-26",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            },
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 121.0
+        },
+        {
+          "id": 5036,
+          "created_at": "2025-11-19",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5037,
+          "created_at": "2025-11-13",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5038,
+          "created_at": "2025-11-09",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5039,
+          "created_at": "2025-12-09",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5040,
+          "created_at": "2025-12-19",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5041,
+          "created_at": "2025-12-07",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5042,
+          "created_at": "2025-12-07",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5043,
+          "created_at": "2025-11-29",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5044,
+          "created_at": "2025-12-12",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5045,
+          "created_at": "2025-12-11",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5046,
+          "created_at": "2025-11-22",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5047,
+          "created_at": "2025-12-13",
+          "referring_site": "https://youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5048,
+          "created_at": "2025-12-02",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5049,
+          "created_at": "2025-12-06",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5050,
+          "created_at": "2025-12-05",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5051,
+          "created_at": "2025-11-25",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5052,
+          "created_at": "2025-12-01",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5053,
+          "created_at": "2025-12-17",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5054,
+          "created_at": "2025-11-21",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5055,
+          "created_at": "2025-11-22",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5056,
+          "created_at": "2025-12-03",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5057,
+          "created_at": "2025-12-17",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5058,
+          "created_at": "2025-11-30",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5059,
+          "created_at": "2025-12-13",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5060,
+          "created_at": "2025-12-17",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5061,
+          "created_at": "2025-12-02",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5062,
+          "created_at": "2025-12-13",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5063,
+          "created_at": "2025-12-16",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5064,
+          "created_at": "2025-12-04",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5065,
+          "created_at": "2025-11-23",
+          "referring_site": "",
+          "landing_site": "/",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5066,
+          "created_at": "2026-01-01",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5067,
+          "created_at": "2025-12-08",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            },
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 86.0
+        },
+        {
+          "id": 5068,
+          "created_at": "2025-12-09",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            },
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 86.0
+        },
+        {
+          "id": 5069,
+          "created_at": "2025-12-13",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5070,
+          "created_at": "2025-12-28",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            },
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 86.0
+        },
+        {
+          "id": 5071,
+          "created_at": "2025-12-31",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5072,
+          "created_at": "2025-12-13",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5073,
+          "created_at": "2025-12-31",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            },
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 86.0
+        },
+        {
+          "id": 5074,
+          "created_at": "2025-12-14",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5075,
+          "created_at": "2025-12-25",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            }
+          ],
+          "total_price": 32.0
+        },
+        {
+          "id": 5076,
+          "created_at": "2025-12-08",
+          "referring_site": "https://freshgrounds.example/",
+          "landing_site": "/products/ceramic-pour-over-dripper",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P3",
+              "quantity": 1
+            },
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 86.0
+        },
+        {
+          "id": 5077,
+          "created_at": "2025-11-29",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5078,
+          "created_at": "2025-11-26",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [
+            "POURTHEORY10"
+          ],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 80.1
+        },
+        {
+          "id": 5079,
+          "created_at": "2025-11-23",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5080,
+          "created_at": "2025-11-22",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5081,
+          "created_at": "2025-12-03",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5082,
+          "created_at": "2025-11-22",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5083,
+          "created_at": "2025-11-22",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/products/ridge-hand-grinder?ref=pourtheory",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5084,
+          "created_at": "2025-12-15",
+          "referring_site": "https://dailybrewreview.example/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        },
+        {
+          "id": 5085,
+          "created_at": "2025-11-25",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P2",
+              "quantity": 1
+            }
+          ],
+          "total_price": 104.0
+        },
+        {
+          "id": 5086,
+          "created_at": "2025-12-10",
+          "referring_site": "https://www.youtube.com/",
+          "landing_site": "/",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P4",
+              "quantity": 1
+            }
+          ],
+          "total_price": 54.0
+        },
+        {
+          "id": 5087,
+          "created_at": "2025-12-08",
+          "referring_site": "https://www.google.com/",
+          "landing_site": "/products/ridge-hand-grinder",
+          "discount_codes": [],
+          "line_items": [
+            {
+              "product": "P1",
+              "quantity": 1
+            }
+          ],
+          "total_price": 89.0
+        }
+      ]
+    },
+    "ga4_referrals": {
+      "source": "GA4 get_report, dimensions sessionSource, sessionMedium, landingPage; metrics sessions, ecommercePurchases, purchaseRevenue",
+      "rows": [
+        {
+          "window": [
+            "2025-11-06",
+            "2025-12-05"
+          ],
+          "sessionSource": "dailybrewreview.example",
+          "sessionMedium": "referral",
+          "landingPage": "/products/ridge-hand-grinder",
+          "sessions": 1180,
+          "ecommercePurchases": 37,
+          "purchaseRevenue": 3457.65
+        },
+        {
+          "window": [
+            "2025-11-06",
+            "2025-12-05"
+          ],
+          "sessionSource": "dailybrewreview.example",
+          "sessionMedium": "referral",
+          "landingPage": "/",
+          "sessions": 95,
+          "ecommercePurchases": 2,
+          "purchaseRevenue": 186.9
+        },
+        {
+          "window": [
+            "2025-11-21",
+            "2025-12-20"
+          ],
+          "sessionSource": "youtube.com",
+          "sessionMedium": "referral",
+          "landingPage": "/",
+          "sessions": 640,
+          "ecommercePurchases": 14,
+          "purchaseRevenue": 1308.3
+        },
+        {
+          "window": [
+            "2025-11-21",
+            "2025-12-20"
+          ],
+          "sessionSource": "youtube.com",
+          "sessionMedium": "referral",
+          "landingPage": "/products/ridge-hand-grinder",
+          "sessions": 410,
+          "ecommercePurchases": 9,
+          "purchaseRevenue": 841.05
+        },
+        {
+          "window": [
+            "2025-12-04",
+            "2026-01-02"
+          ],
+          "sessionSource": "freshgrounds.example",
+          "sessionMedium": "referral",
+          "landingPage": "/products/ceramic-pour-over-dripper",
+          "sessions": 260,
+          "ecommercePurchases": 9,
+          "purchaseRevenue": 302.4
+        },
+        {
+          "window": [
+            "2025-12-04",
+            "2026-01-02"
+          ],
+          "sessionSource": "freshgrounds.example",
+          "sessionMedium": "referral",
+          "landingPage": "/collections/gifts",
+          "sessions": 40,
+          "ecommercePurchases": 1,
+          "purchaseRevenue": 33.6
+        },
+        {
+          "window": [
+            "2025-11-06",
+            "2025-12-05"
+          ],
+          "sessionSource": "google",
+          "sessionMedium": "organic",
+          "landingPage": "/",
+          "sessions": 5200,
+          "ecommercePurchases": 61,
+          "purchaseRevenue": 4310.0
+        }
+      ]
+    },
+    "seeding_log_sheet": {
+      "source": "Google Sheets get_sheet_peak",
+      "spreadsheet": "Seeding log",
+      "sheet_id": "0",
+      "rows_used": 13,
+      "available_columns": [
+        "Date",
+        "Recipient",
+        "Outlet",
+        "Type",
+        "Product",
+        "Units",
+        "Retail value",
+        "Landed cost",
+        "Disclosure owed",
+        "Status"
+      ]
+    }
+  }
+}

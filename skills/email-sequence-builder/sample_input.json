@@ -1,0 +1,853 @@
+{
+  "request": "Hey Claude, I just added the \"email-sequence-builder\" skill. Read my Klaviyo account and build an onboarding sequence for new trial sign-ups. Product facts are on https://www.example.com/. The goal is the first booking through their booking page during the 14-day trial. Seven emails at most, no discounts. Our trial users are in the US, UK and Canada.",
+  "account": {
+    "platform": "klaviyo",
+    "name": "Example Booking Software",
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "industry": "Software / SaaS",
+    "currency": "USD",
+    "time_zone": "America/New_York"
+  },
+  "read_on": "2026-10-28",
+  "brief": {
+    "job": "Onboarding (product sign-up)",
+    "entry": "new trials (the app sends the Started Trial metric)",
+    "goal": "the first booking through the booking page during the 14-day trial",
+    "limits": "7 emails at most, no discounts",
+    "voice": "not given: plain, friendly, second person",
+    "where_recipients_live": "US, UK and Canada"
+  },
+  "product_source": {
+    "pages": [
+      "https://www.example.com/",
+      "https://www.example.com/blog/reduce-no-shows/",
+      "https://www.example.com/features/calendar-sync/",
+      "https://www.example.com/features/online-booking/",
+      "https://www.example.com/features/payments/",
+      "https://www.example.com/features/reminders/",
+      "https://www.example.com/pricing/",
+      "https://www.example.com/templates/cancellation-policy/"
+    ],
+    "read_with": "a plain page fetch of each page",
+    "facts": {
+      "booking page in minutes": {
+        "page": "https://www.example.com/features/online-booking/",
+        "line": "Your booking page is ready in minutes: pick your services, set your hours and share the link."
+      },
+      "book now button": {
+        "page": "https://www.example.com/features/online-booking/",
+        "line": "Add a Book now button to your website with one line of code, or put the link in your Instagram bio."
+      },
+      "book any time": {
+        "page": "https://www.example.com/",
+        "line": "Clients book online 24/7, so you stop answering the phone to fill the diary."
+      },
+      "two-way sync": {
+        "page": "https://www.example.com/features/calendar-sync/",
+        "line": "Two-way sync with Google Calendar: busy times block bookings, and every new booking lands in your calendar."
+      },
+      "reminder timing": {
+        "page": "https://www.example.com/features/reminders/",
+        "line": "Reminders go out by text and email 24 hours and 2 hours before each appointment."
+      },
+      "confirm or reschedule": {
+        "page": "https://www.example.com/features/reminders/",
+        "line": "Clients can confirm or reschedule straight from the reminder."
+      },
+      "deposits": {
+        "page": "https://www.example.com/features/payments/",
+        "line": "Ask for a deposit or the full price when clients book."
+      },
+      "cancellation window": {
+        "page": "https://www.example.com/features/payments/",
+        "line": "Set a cancellation window; a late cancellation keeps the deposit."
+      },
+      "users": {
+        "page": "https://www.example.com/",
+        "line": "Used by 4,200 salons, clinics and studios."
+      },
+      "unlimited bookings": {
+        "page": "https://www.example.com/pricing/",
+        "line": "Every plan includes unlimited bookings."
+      },
+      "plans": {
+        "page": "https://www.example.com/pricing/",
+        "line": "Starter for one person, Growth for teams of up to 5, Business for up to 20 staff."
+      },
+      "trial": {
+        "page": "https://www.example.com/pricing/",
+        "line": "Try any plan for 14 days. Your booking page stays live when you choose a plan."
+      },
+      "no-show guide": {
+        "page": "https://www.example.com/blog/reduce-no-shows/",
+        "line": "How to reduce no-shows: 9 tactics that work"
+      },
+      "policy template": {
+        "page": "https://www.example.com/templates/cancellation-policy/",
+        "line": "Cancellation policy template"
+      }
+    }
+  },
+  "data_pulled": [
+    "get_account_details (1 account)",
+    "get_metrics (16 metrics)",
+    "get_flows, not archived (5 flows)",
+    "get_flow_report, last 90 days, conversion metric Received First Booking (5 rows for Trial onboarding)",
+    "get_campaigns, email (21 campaigns)",
+    "get_campaign_report, last 365 days (21 rows)",
+    "get_lists (6 lists)",
+    "get_segments (4 segments)",
+    "get_email_templates with html (3 templates)",
+    "get_coupons (1 coupon)"
+  ],
+  "data": {
+    "account_details": {
+      "contact_information": {
+        "default_sender_name": "Example Booking Software",
+        "default_sender_email": "hello@example.com",
+        "reply_to": "support@example.com",
+        "organization_name": "Example Booking Software",
+        "street_address": "100 Example Street, Springfield, ST 00000, United States",
+        "website_url": "https://www.example.com"
+      },
+      "timezone": "America/New_York",
+      "preferred_currency": "USD",
+      "industry": "Software / SaaS"
+    },
+    "metrics": [
+      {
+        "name": "Received Email",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Opened Email",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Clicked Email",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Bounced Email",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Marked Email as Spam",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Unsubscribed from Email Marketing",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Subscribed to List",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Active on Site",
+        "integration": "Klaviyo"
+      },
+      {
+        "name": "Placed Order",
+        "integration": "API"
+      },
+      {
+        "name": "Started Trial",
+        "integration": "API"
+      },
+      {
+        "name": "Requested Demo",
+        "integration": "API"
+      },
+      {
+        "name": "Connected Calendar",
+        "integration": "API"
+      },
+      {
+        "name": "Published Booking Page",
+        "integration": "API"
+      },
+      {
+        "name": "Received First Booking",
+        "integration": "API"
+      },
+      {
+        "name": "Cancelled Subscription",
+        "integration": "API"
+      },
+      {
+        "name": "Registered for Webinar",
+        "integration": "API"
+      }
+    ],
+    "flows": [
+      {
+        "id": "WqT4nA",
+        "name": "Newsletter welcome",
+        "status": "live",
+        "trigger_type": "Added to List",
+        "trigger": "Newsletter"
+      },
+      {
+        "id": "Hk2PzR",
+        "name": "Trial onboarding",
+        "status": "live",
+        "trigger_type": "Metric",
+        "trigger": "Started Trial"
+      },
+      {
+        "id": "Bv8LmC",
+        "name": "Demo follow-up",
+        "status": "live",
+        "trigger_type": "Metric",
+        "trigger": "Requested Demo"
+      },
+      {
+        "id": "Jp5XcE",
+        "name": "New customer: first 30 days",
+        "status": "live",
+        "trigger_type": "Metric",
+        "trigger": "Placed Order"
+      },
+      {
+        "id": "Ry3QsD",
+        "name": "Win-back: cancelled accounts",
+        "status": "draft",
+        "trigger_type": "Metric",
+        "trigger": "Cancelled Subscription"
+      }
+    ],
+    "flow_report_rows": [
+      {
+        "flow_id": "Hk2PzR",
+        "flow_name": "Trial onboarding",
+        "flow_message_id": "Hk2PzR-m1",
+        "flow_message_name": "Welcome to your trial",
+        "sends_on_day": 0,
+        "statistics": {
+          "recipients": 2310,
+          "delivered": 2301,
+          "click_rate": 0.0982,
+          "conversion_rate": 0.1347,
+          "unsubscribe_rate": 0.0022,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "flow_id": "Hk2PzR",
+        "flow_name": "Trial onboarding",
+        "flow_message_id": "Hk2PzR-m2",
+        "flow_message_name": "Connect your calendar",
+        "sends_on_day": 2,
+        "statistics": {
+          "recipients": 2240,
+          "delivered": 2233,
+          "click_rate": 0.0712,
+          "conversion_rate": 0.0918,
+          "unsubscribe_rate": 0.0027,
+          "spam_complaint_rate": 0.0004
+        }
+      },
+      {
+        "flow_id": "Hk2PzR",
+        "flow_name": "Trial onboarding",
+        "flow_message_id": "Hk2PzR-m3",
+        "flow_message_name": "Turn on reminders",
+        "sends_on_day": 4,
+        "statistics": {
+          "recipients": 0,
+          "delivered": 0,
+          "click_rate": 0.0,
+          "conversion_rate": 0.0,
+          "unsubscribe_rate": 0.0,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "flow_id": "Hk2PzR",
+        "flow_name": "Trial onboarding",
+        "flow_message_id": "Hk2PzR-m4",
+        "flow_message_name": "Take deposits",
+        "sends_on_day": 7,
+        "statistics": {
+          "recipients": 2050,
+          "delivered": 2044,
+          "click_rate": 0.0289,
+          "conversion_rate": 0.0298,
+          "unsubscribe_rate": 0.0132,
+          "spam_complaint_rate": 0.0005
+        }
+      },
+      {
+        "flow_id": "Hk2PzR",
+        "flow_name": "Trial onboarding",
+        "flow_message_id": "Hk2PzR-m5",
+        "flow_message_name": "Your trial ends in 3 days",
+        "sends_on_day": 11,
+        "statistics": {
+          "recipients": 1960,
+          "delivered": 1954,
+          "click_rate": 0.064,
+          "conversion_rate": 0.0225,
+          "unsubscribe_rate": 0.0046,
+          "spam_complaint_rate": 0.0
+        }
+      }
+    ],
+    "campaigns": [
+      {
+        "id": "01K6200C",
+        "name": "9 ways to cut no-shows before the holidays",
+        "status": "Sent",
+        "send_time": "2025-11-04T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6241C",
+        "name": "New: two-way calendar sync",
+        "status": "Sent",
+        "send_time": "2025-11-25T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6282C",
+        "name": "Reminder text templates you can copy",
+        "status": "Sent",
+        "send_time": "2025-12-11T20:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6323C",
+        "name": "How a clinic filled its cancellation gaps",
+        "status": "Sent",
+        "send_time": "2025-12-30T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6364C",
+        "name": "Deposit policies clients accept",
+        "status": "Sent",
+        "send_time": "2026-01-13T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6405C",
+        "name": "September product update",
+        "status": "Sent",
+        "send_time": "2026-01-29T20:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6446C",
+        "name": "Front desk checklist for busy Mondays",
+        "status": "Sent",
+        "send_time": "2026-02-17T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6487C",
+        "name": "Webinar replay: fewer no-shows",
+        "status": "Sent",
+        "send_time": "2026-03-03T15:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6528C",
+        "name": "Salon pricing and booking tips",
+        "status": "Sent",
+        "send_time": "2026-03-26T19:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6569C",
+        "name": "October product update",
+        "status": "Sent",
+        "send_time": "2026-04-07T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6610C",
+        "name": "Class booking: what studios asked for",
+        "status": "Sent",
+        "send_time": "2026-04-28T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6651C",
+        "name": "How to get more online reviews",
+        "status": "Sent",
+        "send_time": "2026-05-14T19:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6692C",
+        "name": "Summer schedule tips for studios",
+        "status": "Sent",
+        "send_time": "2026-06-02T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6733C",
+        "name": "August product update",
+        "status": "Sent",
+        "send_time": "2026-06-16T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6774C",
+        "name": "What to do when a client cancels late",
+        "status": "Sent",
+        "send_time": "2026-07-02T19:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6815C",
+        "name": "Spring cleaning for your services list",
+        "status": "Sent",
+        "send_time": "2026-07-21T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6856C",
+        "name": "Holiday hours: set them once",
+        "status": "Sent",
+        "send_time": "2026-08-04T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6897C",
+        "name": "New year booking checklist",
+        "status": "Sent",
+        "send_time": "2026-08-20T19:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6938C",
+        "name": "How trainers fill early mornings",
+        "status": "Sent",
+        "send_time": "2026-09-08T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K6979C",
+        "name": "January product update",
+        "status": "Sent",
+        "send_time": "2026-09-29T14:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      },
+      {
+        "id": "01K7020C",
+        "name": "Spa booking ideas for quiet weekdays",
+        "status": "Sent",
+        "send_time": "2026-10-15T19:00:00+00:00",
+        "audiences": {
+          "included": [
+            "Newsletter"
+          ]
+        }
+      }
+    ],
+    "campaign_report_rows": [
+      {
+        "campaign_id": "01K6200C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9057,
+          "delivered": 9010,
+          "click_rate": 0.0451,
+          "conversion_rate": 0.0036,
+          "unsubscribe_rate": 0.003,
+          "spam_complaint_rate": 0.0002
+        }
+      },
+      {
+        "campaign_id": "01K6241C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 8910,
+          "delivered": 8864,
+          "click_rate": 0.0261,
+          "conversion_rate": 0.0015,
+          "unsubscribe_rate": 0.0021,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6282C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9860,
+          "delivered": 9780,
+          "click_rate": 0.0472,
+          "conversion_rate": 0.0028,
+          "unsubscribe_rate": 0.0032,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6323C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9585,
+          "delivered": 9544,
+          "click_rate": 0.0437,
+          "conversion_rate": 0.003,
+          "unsubscribe_rate": 0.0028,
+          "spam_complaint_rate": 0.0003
+        }
+      },
+      {
+        "campaign_id": "01K6364C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9250,
+          "delivered": 9177,
+          "click_rate": 0.022,
+          "conversion_rate": 0.0017,
+          "unsubscribe_rate": 0.0026,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6405C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9229,
+          "delivered": 9166,
+          "click_rate": 0.0241,
+          "conversion_rate": 0.0019,
+          "unsubscribe_rate": 0.0028,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "campaign_id": "01K6446C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9319,
+          "delivered": 9252,
+          "click_rate": 0.0372,
+          "conversion_rate": 0.0027,
+          "unsubscribe_rate": 0.0034,
+          "spam_complaint_rate": 0.0003
+        }
+      },
+      {
+        "campaign_id": "01K6487C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9697,
+          "delivered": 9656,
+          "click_rate": 0.0333,
+          "conversion_rate": 0.0025,
+          "unsubscribe_rate": 0.0018,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "campaign_id": "01K6528C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9243,
+          "delivered": 9193,
+          "click_rate": 0.0387,
+          "conversion_rate": 0.0031,
+          "unsubscribe_rate": 0.0032,
+          "spam_complaint_rate": 0.0003
+        }
+      },
+      {
+        "campaign_id": "01K6569C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9086,
+          "delivered": 9033,
+          "click_rate": 0.021,
+          "conversion_rate": 0.001,
+          "unsubscribe_rate": 0.0018,
+          "spam_complaint_rate": 0.0002
+        }
+      },
+      {
+        "campaign_id": "01K6610C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9742,
+          "delivered": 9691,
+          "click_rate": 0.0253,
+          "conversion_rate": 0.002,
+          "unsubscribe_rate": 0.003,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6651C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9761,
+          "delivered": 9675,
+          "click_rate": 0.0375,
+          "conversion_rate": 0.0018,
+          "unsubscribe_rate": 0.0022,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "campaign_id": "01K6692C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9307,
+          "delivered": 9268,
+          "click_rate": 0.04,
+          "conversion_rate": 0.0026,
+          "unsubscribe_rate": 0.0018,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6733C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 10014,
+          "delivered": 9949,
+          "click_rate": 0.0184,
+          "conversion_rate": 0.0014,
+          "unsubscribe_rate": 0.0019,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6774C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9607,
+          "delivered": 9559,
+          "click_rate": 0.0214,
+          "conversion_rate": 0.0012,
+          "unsubscribe_rate": 0.0031,
+          "spam_complaint_rate": 0.0002
+        }
+      },
+      {
+        "campaign_id": "01K6815C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9137,
+          "delivered": 9057,
+          "click_rate": 0.0178,
+          "conversion_rate": 0.0011,
+          "unsubscribe_rate": 0.0018,
+          "spam_complaint_rate": 0.0003
+        }
+      },
+      {
+        "campaign_id": "01K6856C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9289,
+          "delivered": 9245,
+          "click_rate": 0.0187,
+          "conversion_rate": 0.0012,
+          "unsubscribe_rate": 0.0019,
+          "spam_complaint_rate": 0.0001
+        }
+      },
+      {
+        "campaign_id": "01K6897C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9532,
+          "delivered": 9482,
+          "click_rate": 0.0374,
+          "conversion_rate": 0.0025,
+          "unsubscribe_rate": 0.0029,
+          "spam_complaint_rate": 0.0002
+        }
+      },
+      {
+        "campaign_id": "01K6938C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9639,
+          "delivered": 9556,
+          "click_rate": 0.0379,
+          "conversion_rate": 0.0027,
+          "unsubscribe_rate": 0.0025,
+          "spam_complaint_rate": 0.0003
+        }
+      },
+      {
+        "campaign_id": "01K6979C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9883,
+          "delivered": 9811,
+          "click_rate": 0.0257,
+          "conversion_rate": 0.0011,
+          "unsubscribe_rate": 0.002,
+          "spam_complaint_rate": 0.0
+        }
+      },
+      {
+        "campaign_id": "01K7020C",
+        "campaign_message_name": "Main",
+        "statistics": {
+          "recipients": 9298,
+          "delivered": 9220,
+          "click_rate": 0.027,
+          "conversion_rate": 0.0011,
+          "unsubscribe_rate": 0.0019,
+          "spam_complaint_rate": 0.0001
+        }
+      }
+    ],
+    "lists": [
+      {
+        "name": "Newsletter",
+        "opt_in_process": "single_opt_in"
+      },
+      {
+        "name": "Trial sign-ups",
+        "opt_in_process": "single_opt_in"
+      },
+      {
+        "name": "Demo requests",
+        "opt_in_process": "single_opt_in"
+      },
+      {
+        "name": "Customers",
+        "opt_in_process": "single_opt_in"
+      },
+      {
+        "name": "Webinar registrants 2026",
+        "opt_in_process": "single_opt_in"
+      },
+      {
+        "name": "QA seed list",
+        "opt_in_process": "single_opt_in"
+      }
+    ],
+    "segments": [
+      {
+        "name": "Trials in progress",
+        "definition": "Started Trial at least once in the last 14 days, and Placed Order zero times over all time"
+      },
+      {
+        "name": "Active customers",
+        "definition": "Placed Order at least once over all time, and Cancelled Subscription zero times since the last Placed Order"
+      },
+      {
+        "name": "UK and Canada",
+        "definition": "Location country is United Kingdom or Canada"
+      },
+      {
+        "name": "Engaged 90 days",
+        "definition": "Opened Email at least once in the last 90 days, or Clicked Email at least once in the last 90 days"
+      }
+    ],
+    "templates": [
+      {
+        "name": "House template 2026",
+        "editor_type": "CODE",
+        "html": "<html><body><!-- logo, body --><p style=\"font-size:12px\">{{ organization.name }}, {{ organization.full_address }}<br>{% manage_preferences %} | {% unsubscribe %}</p></body></html>"
+      },
+      {
+        "name": "Newsletter layout",
+        "editor_type": "SYSTEM_DRAGGABLE",
+        "html": "<html><body><!-- two columns --><p style=\"font-size:12px\">{{ organization.name }}, {{ organization.full_address }}<br>{% manage_preferences %} | {% unsubscribe %}</p></body></html>"
+      },
+      {
+        "name": "test - plain text",
+        "editor_type": "CODE",
+        "html": "<html><body>test</body></html>"
+      }
+    ],
+    "coupons": [
+      {
+        "external_id": "ANNUAL15",
+        "description": "15% off the first year of an annual plan"
+      }
+    ]
+  },
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The product pages quoted are the invented company's pages."
+}

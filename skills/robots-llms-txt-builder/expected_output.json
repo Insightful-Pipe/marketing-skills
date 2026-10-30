@@ -1,0 +1,517 @@
+{
+  "header": {
+    "host": "https://www.example.com",
+    "run_date": "2026-10-30",
+    "sources": "robots.txt read with the crawler, the live sitemap, a crawl export the owner pasted, Search Console page clicks and sitemaps, Bing sitemaps and crawl issues",
+    "click_window": "2026-07-30 to 2026-10-27",
+    "ai_crawler_list_checked": "2026-10-30",
+    "test_list": "29 URLs on www.example.com x 14 crawlers = 406 tests; 1 sitemap URL on the wrong protocol listed separately",
+    "summary": "The live robots.txt has 2 fails and 12 warnings. The cancellation policy template, with 830 clicks in 90 days, has been blocked for Googlebot since 2026-10-06 by 'Disallow: /templates'. The draft fixes it and passes all 4 gate checks."
+  },
+  "whats_live": {
+    "robots_txt": "309 bytes (well under Google's 500 KiB), 6 groups, 1 Sitemap line (/sitemap.xml, not an absolute URL).",
+    "sitemap": "22 URLs, every lastmod set to 2026-10-28, the build date, so engines learn to ignore it. Search Console last downloaded it 2026-10-26 with 0 errors; its indexed field reads 0 because the API no longer fills it. Bing last crawled it 2026-10-26, status Success, 22 URLs.",
+    "llms_txt": "None at /llms.txt.",
+    "bing_crawl_issues": "None reported.",
+    "findings": [
+      {
+        "result": "fail",
+        "finding": "Page with clicks blocked for a search engine",
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "crawler": "Googlebot",
+        "decided_by": "group '*', Disallow: /templates",
+        "clicks_90d": 830
+      },
+      {
+        "result": "fail",
+        "finding": "Sitemap URL blocked for a search engine",
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "crawler": "Googlebot",
+        "decided_by": "group '*', Disallow: /templates",
+        "clicks_90d": 830
+      },
+      {
+        "result": "warn",
+        "finding": "Private path crawlable for a search engine",
+        "url": "https://www.example.com/app/calendar",
+        "crawler": "Bingbot",
+        "decided_by": "group 'Bingbot', no matching rule",
+        "clicks_90d": 0
+      },
+      {
+        "result": "warn",
+        "finding": "Private path crawlable for a search engine",
+        "url": "https://www.example.com/api/v1/bookings",
+        "crawler": "Bingbot",
+        "decided_by": "group 'Bingbot', no matching rule",
+        "clicks_90d": 0
+      },
+      {
+        "result": "warn",
+        "finding": "Private path crawlable for a search engine",
+        "url": "https://www.example.com/search?q=haircut",
+        "crawler": "Bingbot",
+        "decided_by": "group 'Bingbot', no matching rule",
+        "clicks_90d": 0
+      },
+      {
+        "result": "warn",
+        "finding": "Private path crawlable for a search engine",
+        "url": "https://www.example.com/templates-staging/cancellation-policy/",
+        "crawler": "Bingbot",
+        "decided_by": "group 'Bingbot', no matching rule",
+        "clicks_90d": 0
+      },
+      {
+        "result": "warn",
+        "finding": "Named group drops the * disallows",
+        "crawler": "Bingbot",
+        "detail": "the 'Bingbot' group has no Disallow lines, so Bingbot may crawl 4 of 4 private example URLs",
+        "urls_opened": [
+          "https://www.example.com/app/calendar",
+          "https://www.example.com/api/v1/bookings",
+          "https://www.example.com/search?q=haircut",
+          "https://www.example.com/templates-staging/cancellation-policy/"
+        ]
+      },
+      {
+        "result": "warn",
+        "finding": "Crawler does not match the owner's policy",
+        "crawler": "ClaudeBot",
+        "purpose": "Model training",
+        "policy": "block",
+        "live": "allowed",
+        "decided_by": "group '*', no matching rule"
+      },
+      {
+        "result": "warn",
+        "finding": "Crawler does not match the owner's policy",
+        "crawler": "Applebot-Extended",
+        "purpose": "Model training",
+        "policy": "block",
+        "live": "allowed",
+        "decided_by": "group '*', no matching rule"
+      },
+      {
+        "result": "warn",
+        "finding": "Crawler does not match the owner's policy",
+        "crawler": "CCBot",
+        "purpose": "Model training",
+        "policy": "block",
+        "live": "allowed",
+        "decided_by": "group '*', no matching rule"
+      },
+      {
+        "result": "warn",
+        "finding": "Crawler does not match the owner's policy",
+        "crawler": "Meta-ExternalAgent",
+        "purpose": "Model training",
+        "policy": "block",
+        "live": "allowed",
+        "decided_by": "group '*', no matching rule"
+      },
+      {
+        "result": "warn",
+        "finding": "Crawler does not match the owner's policy",
+        "crawler": "ChatGPT-User",
+        "purpose": "User fetch",
+        "policy": "allow",
+        "live": "blocked",
+        "decided_by": "group 'ChatGPT-User', Disallow: /"
+      },
+      {
+        "result": "warn",
+        "finding": "Retired token",
+        "crawler": "anthropic-ai",
+        "detail": "not on Anthropic's current crawler list (ClaudeBot, Claude-User, Claude-SearchBot), so it has no effect"
+      },
+      {
+        "result": "warn",
+        "finding": "Sitemap line is not an absolute URL",
+        "detail": "'Sitemap: /sitemap.xml' must be a full URL such as https://www.example.com/sitemap.xml"
+      },
+      {
+        "result": "note",
+        "finding": "Crawl-delay in a group Googlebot follows",
+        "detail": "Crawl-delay: 5 in the '*' group; Google ignores it"
+      }
+    ]
+  },
+  "ai_crawler_policy": [
+    {
+      "purpose": "Model training",
+      "owner_choice": "block",
+      "tokens": [
+        "GPTBot",
+        "ClaudeBot",
+        "Google-Extended",
+        "Applebot-Extended",
+        "CCBot",
+        "Meta-ExternalAgent"
+      ],
+      "caveat": "Blocking these does not remove the site from the same vendors' search or answers; GPTBot is not what ChatGPT search uses"
+    },
+    {
+      "purpose": "AI search index",
+      "owner_choice": "allow",
+      "tokens": [
+        "OAI-SearchBot",
+        "Claude-SearchBot",
+        "PerplexityBot"
+      ],
+      "caveat": "Blocking these removes the site from that assistant's search results and citations"
+    },
+    {
+      "purpose": "User fetch",
+      "owner_choice": "allow",
+      "tokens": [
+        "ChatGPT-User",
+        "Claude-User",
+        "Perplexity-User"
+      ],
+      "caveat": "ChatGPT-User: OpenAI says robots.txt rules may not apply; Perplexity-User: Perplexity says it generally ignores robots.txt"
+    },
+    {
+      "purpose": "Search engines",
+      "owner_choice": "allow",
+      "tokens": [
+        "Googlebot",
+        "Bingbot"
+      ],
+      "caveat": "Googlebot also feeds AI Overviews and AI Mode; blocking Google-Extended does not change that"
+    }
+  ],
+  "robots_txt": {
+    "draft": "# robots.txt for www.example.com\n# Written 2026-10-30. AI crawler list checked 2026-10-30.\n\n# Everyone: keep the app, API, internal search and staging copies out.\nUser-agent: *\nDisallow: /app/\nDisallow: /api/\nDisallow: /search\nDisallow: /templates-staging/\n\n# Bing honours Crawl-delay; kept at the owner's request. A named group ignores '*', so the private paths repeat.\nUser-agent: Bingbot\nCrawl-delay: 10\nDisallow: /app/\nDisallow: /api/\nDisallow: /search\nDisallow: /templates-staging/\n\n# Model training: blocked (owner policy).\nUser-agent: GPTBot\nUser-agent: ClaudeBot\nUser-agent: Google-Extended\nUser-agent: Applebot-Extended\nUser-agent: CCBot\nUser-agent: Meta-ExternalAgent\nDisallow: /\n\n# AI search index: allowed, with the same private paths as everyone.\nUser-agent: OAI-SearchBot\nUser-agent: Claude-SearchBot\nUser-agent: PerplexityBot\nDisallow: /app/\nDisallow: /api/\nDisallow: /search\nDisallow: /templates-staging/\n\n# User fetch: allowed, with the same private paths as everyone.\nUser-agent: ChatGPT-User\nUser-agent: Claude-User\nUser-agent: Perplexity-User\nDisallow: /app/\nDisallow: /api/\nDisallow: /search\nDisallow: /templates-staging/\n\nSitemap: https://www.example.com/sitemap.xml\n",
+    "diff": [
+      "--- robots.txt (live)",
+      "+++ robots.txt (draft)",
+      "@@ -0,0 +1,4 @@",
+      "+# robots.txt for www.example.com",
+      "+# Written 2026-10-30. AI crawler list checked 2026-10-30.",
+      "+",
+      "+# Everyone: keep the app, API, internal search and staging copies out.",
+      "@@ -2 +5,0 @@",
+      "-Crawl-delay: 5",
+      "@@ -6 +9 @@",
+      "-Disallow: /templates",
+      "+Disallow: /templates-staging/",
+      "@@ -7,0 +11 @@",
+      "+# Bing honours Crawl-delay; kept at the owner's request. A named group ignores '*', so the private paths repeat.",
+      "@@ -9,0 +14,4 @@",
+      "+Disallow: /app/",
+      "+Disallow: /api/",
+      "+Disallow: /search",
+      "+Disallow: /templates-staging/",
+      "@@ -10,0 +19 @@",
+      "+# Model training: blocked (owner policy).",
+      "@@ -11,0 +21,5 @@",
+      "+User-agent: ClaudeBot",
+      "+User-agent: Google-Extended",
+      "+User-agent: Applebot-Extended",
+      "+User-agent: CCBot",
+      "+User-agent: Meta-ExternalAgent",
+      "@@ -13,0 +28,10 @@",
+      "+# AI search index: allowed, with the same private paths as everyone.",
+      "+User-agent: OAI-SearchBot",
+      "+User-agent: Claude-SearchBot",
+      "+User-agent: PerplexityBot",
+      "+Disallow: /app/",
+      "+Disallow: /api/",
+      "+Disallow: /search",
+      "+Disallow: /templates-staging/",
+      "+",
+      "+# User fetch: allowed, with the same private paths as everyone.",
+      "@@ -15 +39,6 @@",
+      "-Disallow: /",
+      "+User-agent: Claude-User",
+      "+User-agent: Perplexity-User",
+      "+Disallow: /app/",
+      "+Disallow: /api/",
+      "+Disallow: /search",
+      "+Disallow: /templates-staging/",
+      "@@ -17,7 +46 @@",
+      "-User-agent: anthropic-ai",
+      "-Disallow: /",
+      "-",
+      "-User-agent: Google-Extended",
+      "-Disallow: /",
+      "-",
+      "-Sitemap: /sitemap.xml",
+      "+Sitemap: https://www.example.com/sitemap.xml"
+    ],
+    "size_bytes": 1189
+  },
+  "retest": {
+    "search_engine_changes": [
+      {
+        "crawler": "Googlebot",
+        "url": "https://www.example.com/templates/cancellation-policy/",
+        "change": "now allowed",
+        "decided_by": "group '*', no matching rule",
+        "clicks_90d": 830
+      },
+      {
+        "crawler": "Bingbot",
+        "url": "https://www.example.com/app/calendar",
+        "change": "now blocked",
+        "decided_by": "group 'Bingbot', Disallow: /app/",
+        "clicks_90d": 0
+      },
+      {
+        "crawler": "Bingbot",
+        "url": "https://www.example.com/api/v1/bookings",
+        "change": "now blocked",
+        "decided_by": "group 'Bingbot', Disallow: /api/",
+        "clicks_90d": 0
+      },
+      {
+        "crawler": "Bingbot",
+        "url": "https://www.example.com/search?q=haircut",
+        "change": "now blocked",
+        "decided_by": "group 'Bingbot', Disallow: /search",
+        "clicks_90d": 0
+      },
+      {
+        "crawler": "Bingbot",
+        "url": "https://www.example.com/templates-staging/cancellation-policy/",
+        "change": "now blocked",
+        "decided_by": "group 'Bingbot', Disallow: /templates-staging/",
+        "clicks_90d": 0
+      }
+    ],
+    "by_crawler": {
+      "Googlebot": {
+        "purpose": "Search engines",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "Bingbot": {
+        "purpose": "Search engines",
+        "newly_blocked": 4,
+        "newly_allowed": 0,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "GPTBot": {
+        "purpose": "Model training",
+        "newly_blocked": 0,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "ClaudeBot": {
+        "purpose": "Model training",
+        "newly_blocked": 24,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "Google-Extended": {
+        "purpose": "Model training",
+        "newly_blocked": 0,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "Applebot-Extended": {
+        "purpose": "Model training",
+        "newly_blocked": 24,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "CCBot": {
+        "purpose": "Model training",
+        "newly_blocked": 24,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "Meta-ExternalAgent": {
+        "purpose": "Model training",
+        "newly_blocked": 24,
+        "newly_allowed": 0,
+        "now": "allowed on 0 of 29 test URLs"
+      },
+      "OAI-SearchBot": {
+        "purpose": "AI search index",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "Claude-SearchBot": {
+        "purpose": "AI search index",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "PerplexityBot": {
+        "purpose": "AI search index",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "ChatGPT-User": {
+        "purpose": "User fetch",
+        "newly_blocked": 0,
+        "newly_allowed": 25,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "Claude-User": {
+        "purpose": "User fetch",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      },
+      "Perplexity-User": {
+        "purpose": "User fetch",
+        "newly_blocked": 0,
+        "newly_allowed": 1,
+        "now": "allowed on 25 of 29 test URLs"
+      }
+    },
+    "gate": [
+      {
+        "check": "No page with clicks in the 90 days is blocked for Googlebot or Bingbot",
+        "result": "pass",
+        "detail": "22 pages with clicks tested for both crawlers"
+      },
+      {
+        "check": "Every must-block example URL is blocked for every crawler the policy covers",
+        "result": "pass",
+        "detail": "4 example URLs x 14 crawlers"
+      },
+      {
+        "check": "Every URL in the new sitemap is allowed for Googlebot and Bingbot",
+        "result": "pass",
+        "detail": "21 sitemap URLs"
+      },
+      {
+        "check": "Every llms.txt link is allowed for the AI search and user-fetch bots the owner allows",
+        "result": "pass",
+        "detail": "19 links x 6 crawlers"
+      }
+    ]
+  },
+  "sitemap": {
+    "file": "sitemap.xml",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://www.example.com/</loc><lastmod>2026-10-14</lastmod></url>\n  <url><loc>https://www.example.com/pricing/</loc><lastmod>2026-10-01</lastmod></url>\n  <url><loc>https://www.example.com/signup/</loc><lastmod>2026-06-12</lastmod></url>\n  <url><loc>https://www.example.com/demo/</loc><lastmod>2026-05-20</lastmod></url>\n  <url><loc>https://www.example.com/features/online-booking/</loc><lastmod>2026-09-22</lastmod></url>\n  <url><loc>https://www.example.com/features/reminders/</loc><lastmod>2026-09-22</lastmod></url>\n  <url><loc>https://www.example.com/features/payments/</loc><lastmod>2026-08-30</lastmod></url>\n  <url><loc>https://www.example.com/features/calendar-sync/</loc></url>\n  <url><loc>https://www.example.com/industries/salons/</loc><lastmod>2026-07-18</lastmod></url>\n  <url><loc>https://www.example.com/industries/clinics/</loc><lastmod>2026-07-18</lastmod></url>\n  <url><loc>https://www.example.com/integrations/</loc><lastmod>2026-10-09</lastmod></url>\n  <url><loc>https://www.example.com/blog/reduce-no-shows/</loc><lastmod>2026-09-30</lastmod></url>\n  <url><loc>https://www.example.com/blog/salon-booking-tips/</loc><lastmod>2026-04-11</lastmod></url>\n  <url><loc>https://www.example.com/blog/appointment-reminder-templates/</loc><lastmod>2026-08-03</lastmod></url>\n  <url><loc>https://www.example.com/blog/deposit-policy/</loc><lastmod>2026-03-27</lastmod></url>\n  <url><loc>https://www.example.com/blog/scheduling-app-comparison/</loc><lastmod>2026-10-02</lastmod></url>\n  <url><loc>https://www.example.com/blog/front-desk-checklist/</loc><lastmod>2025-12-08</lastmod></url>\n  <url><loc>https://www.example.com/templates/cancellation-policy/</loc><lastmod>2026-06-30</lastmod></url>\n  <url><loc>https://www.example.com/industries/fitness/</loc><lastmod>2026-09-05</lastmod></url>\n  <url><loc>https://www.example.com/help/getting-started/</loc><lastmod>2026-10-20</lastmod></url>\n  <url><loc>https://www.example.com/help/calendar-sync-setup/</loc></url>\n</urlset>\n",
+    "url_count": 21,
+    "with_lastmod": 19,
+    "without_lastmod": [
+      "https://www.example.com/features/calendar-sync/",
+      "https://www.example.com/help/calendar-sync-setup/"
+    ],
+    "dropped": [
+      {
+        "url": "https://www.example.com/signup/thank-you/",
+        "reason": "carries noindex",
+        "clicks_90d": 0
+      },
+      {
+        "url": "https://www.example.com/blog/old-no-show-tips/",
+        "reason": "redirects (301) to https://www.example.com/blog/reduce-no-shows/",
+        "clicks_90d": 0
+      },
+      {
+        "url": "https://www.example.com/blog/2019-holiday-hours/",
+        "reason": "returns 404",
+        "clicks_90d": 0
+      },
+      {
+        "url": "http://www.example.com/pricing/",
+        "reason": "wrong host or protocol (the site is https://www.example.com)",
+        "clicks_90d": 0
+      },
+      {
+        "url": "https://www.example.com/pricing/?ref=partner",
+        "reason": "parameter URL; its canonical is https://www.example.com/pricing/",
+        "clicks_90d": 12
+      }
+    ],
+    "added_pages_with_clicks": [
+      {
+        "url": "https://www.example.com/industries/fitness/",
+        "clicks_90d": 190
+      },
+      {
+        "url": "https://www.example.com/help/getting-started/",
+        "clicks_90d": 230
+      },
+      {
+        "url": "https://www.example.com/help/calendar-sync-setup/",
+        "clicks_90d": 95
+      }
+    ],
+    "engines_comparison": "Search Console and Bing both read 22 URLs from the live sitemap. The new one has 21: 18 of the live URLs kept, 4 live URLs dropped, 3 pages with clicks added; 1 more candidate from Search Console was left out."
+  },
+  "llms_txt": {
+    "file": "llms.txt",
+    "content": "# Example Booking Software\n\n> Example Booking Software is online booking, reminders and payments for salons, clinics, studios and personal trainers. It is for owners and front-desk managers of small service businesses with 1 to 20 staff, mostly in the US, UK and Canada.\n\n## Product\n\n- [Online booking software for small businesses](https://www.example.com/): Online booking, reminders and payments for salons, clinics, studios and personal trainers.\n- [Pricing](https://www.example.com/pricing/): Monthly plans by team size, with what each plan includes.\n- [Online booking page](https://www.example.com/features/online-booking/): A booking page clients use to pick a service, staff member and time.\n- [Automatic SMS and email reminders](https://www.example.com/features/reminders/): Automatic SMS and email reminders that cut no-shows.\n- [Deposits and online payments](https://www.example.com/features/payments/): Take deposits and full payments when clients book.\n- [Two-way calendar sync](https://www.example.com/features/calendar-sync/): Two-way sync with Google, Outlook and Apple calendars.\n- [Integrations](https://www.example.com/integrations/): The calendars, payment and marketing tools it connects to.\n\n## Who it's for\n\n- [Booking software for salons](https://www.example.com/industries/salons/): How salons use online booking for stylists, services and deposits.\n- [Appointment scheduling for clinics](https://www.example.com/industries/clinics/): Appointment scheduling, intake and reminders for small clinics.\n- [Class booking for studios and trainers](https://www.example.com/industries/fitness/): Class and session booking for studios and personal trainers.\n\n## Help\n\n- [Getting started](https://www.example.com/help/getting-started/): Set up services, staff, hours and the booking page in the first hour.\n- [Set up calendar sync](https://www.example.com/help/calendar-sync-setup/): Connect a calendar and fix sync conflicts.\n\n## Guides\n\n- [How to reduce no-shows: 9 tactics that work](https://www.example.com/blog/reduce-no-shows/): Nine tactics that cut no-shows, with reminder timing and deposit rules.\n- [Appointment reminder text templates](https://www.example.com/blog/appointment-reminder-templates/): Copy-ready SMS and email reminder templates.\n- [Cancellation policy template](https://www.example.com/templates/cancellation-policy/): A cancellation policy template to adapt and publish.\n- [12 salon booking tips to fill your calendar](https://www.example.com/blog/salon-booking-tips/): Twelve ways salons fill gaps in the calendar.\n\n## Optional\n\n- [How to write a deposit policy clients accept](https://www.example.com/blog/deposit-policy/): How to set and word a deposit policy clients accept.\n- [How to choose a scheduling app](https://www.example.com/blog/scheduling-app-comparison/): What to compare when choosing a scheduling app.\n- [Front desk checklist for small clinics](https://www.example.com/blog/front-desk-checklist/): A daily front desk checklist for small clinics.\n",
+    "links": 19,
+    "sections": {
+      "Product": 7,
+      "Who it's for": 3,
+      "Help": 2,
+      "Guides": 4,
+      "Optional": 3
+    },
+    "left_out": [
+      {
+        "url": "https://www.example.com/signup/",
+        "reason": "form page (sign-up, demo or thank-you)"
+      },
+      {
+        "url": "https://www.example.com/demo/",
+        "reason": "form page (sign-up, demo or thank-you)"
+      },
+      {
+        "url": "https://www.example.com/signup/thank-you/",
+        "reason": "failed the sitemap checks: carries noindex"
+      },
+      {
+        "url": "https://www.example.com/blog/old-no-show-tips/",
+        "reason": "failed the sitemap checks: redirects (301) to https://www.example.com/blog/reduce-no-shows/"
+      },
+      {
+        "url": "https://www.example.com/blog/2019-holiday-hours/",
+        "reason": "failed the sitemap checks: returns 404"
+      },
+      {
+        "url": "http://www.example.com/pricing/",
+        "reason": "failed the sitemap checks: wrong host or protocol (the site is https://www.example.com)"
+      },
+      {
+        "url": "https://www.example.com/pricing/?ref=partner",
+        "reason": "failed the sitemap checks: parameter URL; its canonical is https://www.example.com/pricing/"
+      }
+    ],
+    "plain_truth": "Google says AI Overviews and AI Mode need no llms.txt. The file costs little and some assistants and coding agents read it; it is not access control and no engine documents it as a ranking factor."
+  },
+  "how_to_ship": [
+    "Put robots.txt, sitemap.xml and llms.txt in the Next.js public folder (or generate the first two from app/robots.ts and app/sitemap.ts), then deploy.",
+    "Open https://www.example.com/robots.txt and https://www.example.com/sitemap.xml after the deploy and check they match these files.",
+    "Submit the sitemap in Search Console. Bing can be told through this skill after you confirm (submit_sitemap).",
+    "Run this skill again in a week to read lastDownloaded and any sitemap errors."
+  ],
+  "unknowns": [
+    "ChatGPT-User and Perplexity-User may fetch pages even where robots.txt says no; only a firewall rule on their published IP ranges enforces a block. The owner allows them, so nothing to do.",
+    "llms-full.txt was not requested, so it was not written."
+  ],
+  "go_deeper": [
+    "seo-audit for the rest of technical SEO, if installed",
+    "ai-search-visibility to see whether assistants cite the site after the change, if installed",
+    "indexing-monitor to watch indexing of the new sitemap, if installed"
+  ],
+  "offered_after_confirmation": [
+    {
+      "action": "submit_sitemap",
+      "platform": "bing-webmaster",
+      "status": "not run",
+      "body": {
+        "platform": "bing-webmaster",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "action": "submit_sitemap",
+        "site_url": "https://www.example.com/",
+        "feed_url": "https://www.example.com/sitemap.xml"
+      }
+    }
+  ]
+}

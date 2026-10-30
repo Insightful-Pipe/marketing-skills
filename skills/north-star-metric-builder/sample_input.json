@@ -1,0 +1,542 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The BigQuery and GA4 rows are shown after sorting by month or week, with BigQuery's positional string values read as numbers and GA4's daily event counts added up into Monday-to-Sunday weeks.",
+  "request": "Hey Claude, I just added the \"north-star-metric-builder\" skill. Help me choose a North Star metric for Example Booking Software and break it into input metrics my teams can own. Our GA4 export is in BigQuery, and here is our billing history.",
+  "business": {
+    "name": "Example Booking Software",
+    "description": "online booking, reminders and payments for salons, clinics, studios and personal trainers",
+    "customers": "owners and front-desk managers of small service businesses with 1 to 20 staff, mostly in the US, UK and Canada",
+    "model": "subscription software",
+    "stage": "live with 6 or more complete months of history (12 used)",
+    "value_moment": "a client books an appointment through the business's booking page",
+    "plans": [
+      {
+        "name": "Starter",
+        "price_month": 19
+      },
+      {
+        "name": "Growth",
+        "price_month": 49
+      },
+      {
+        "name": "Business",
+        "price_month": 99
+      }
+    ]
+  },
+  "run_date": "2026-10-28",
+  "sources": [
+    {
+      "source": "billing history",
+      "how": "pasted by the user",
+      "unit": "paying business accounts"
+    },
+    {
+      "source": "BigQuery",
+      "how": "GA4 export through the InsightfulPipe MCP, run_query (SELECT only)",
+      "unit": "business accounts (user_id is set to the account id)",
+      "dataset": "analytics_123456789"
+    },
+    {
+      "source": "GA4",
+      "how": "InsightfulPipe MCP, events and list_key_events",
+      "property_id": "properties/123456789"
+    }
+  ],
+  "from_user": {
+    "goal_90_days": null,
+    "teams": [
+      "Leadership",
+      "Growth marketing",
+      "Booking flow product team",
+      "Customer success",
+      "Onboarding team"
+    ],
+    "notes": [
+      "December is our quiet month; January brings New Year bookings back.",
+      "We launched the Instagram booking button in March 2026."
+    ],
+    "currently_reported": [
+      "New accounts per month",
+      "Monthly active accounts",
+      "MRR"
+    ]
+  },
+  "candidates_proposed": [
+    {
+      "id": "C1",
+      "name": "New accounts per month",
+      "counts": "accounts created (sign_up)",
+      "window": "month",
+      "whose_action": "a visitor signing up"
+    },
+    {
+      "id": "C2",
+      "name": "Total accounts registered",
+      "counts": "every account ever created",
+      "window": null,
+      "whose_action": "a visitor signing up"
+    },
+    {
+      "id": "C3",
+      "name": "MRR",
+      "counts": "monthly recurring revenue",
+      "window": "month",
+      "whose_action": "a business paying"
+    },
+    {
+      "id": "C4",
+      "name": "Reminders sent per month",
+      "counts": "SMS and email reminders the app sends",
+      "window": "month",
+      "whose_action": "the app"
+    },
+    {
+      "id": "C5",
+      "name": "Share of paying accounts taking online bookings",
+      "counts": "accounts with 1 or more online bookings / paying accounts",
+      "window": "month",
+      "whose_action": "a business's clients"
+    },
+    {
+      "id": "C6",
+      "name": "Monthly active accounts",
+      "counts": "business accounts with any event in the month",
+      "window": "month",
+      "whose_action": "a business user logging in"
+    },
+    {
+      "id": "C7",
+      "name": "Online bookings completed",
+      "counts": "booking_completed events",
+      "window": "week (tested by month)",
+      "whose_action": "a business's client booking"
+    },
+    {
+      "id": "C8",
+      "name": "Accounts with 10 or more online bookings",
+      "counts": "business accounts with 10+ booking_completed events",
+      "window": "month",
+      "whose_action": "a business's clients booking"
+    }
+  ],
+  "data_pulled": {
+    "billing_history": [
+      {
+        "month": "2025-10",
+        "paying_at_start": 1850,
+        "still_paying_at_end": 1771,
+        "new_paying": 120,
+        "mrr": 83393
+      },
+      {
+        "month": "2025-11",
+        "paying_at_start": 1891,
+        "still_paying_at_end": 1812,
+        "new_paying": 115,
+        "mrr": 85441
+      },
+      {
+        "month": "2025-12",
+        "paying_at_start": 1927,
+        "still_paying_at_end": 1844,
+        "new_paying": 129,
+        "mrr": 88834
+      },
+      {
+        "month": "2026-01",
+        "paying_at_start": 1973,
+        "still_paying_at_end": 1820,
+        "new_paying": 137,
+        "mrr": 87048
+      },
+      {
+        "month": "2026-02",
+        "paying_at_start": 1957,
+        "still_paying_at_end": 1905,
+        "new_paying": 113,
+        "mrr": 91761
+      },
+      {
+        "month": "2026-03",
+        "paying_at_start": 2018,
+        "still_paying_at_end": 1952,
+        "new_paying": 117,
+        "mrr": 95959
+      },
+      {
+        "month": "2026-04",
+        "paying_at_start": 2069,
+        "still_paying_at_end": 2007,
+        "new_paying": 135,
+        "mrr": 101007
+      },
+      {
+        "month": "2026-05",
+        "paying_at_start": 2142,
+        "still_paying_at_end": 2056,
+        "new_paying": 114,
+        "mrr": 103936
+      },
+      {
+        "month": "2026-06",
+        "paying_at_start": 2170,
+        "still_paying_at_end": 2090,
+        "new_paying": 121,
+        "mrr": 107614
+      },
+      {
+        "month": "2026-07",
+        "paying_at_start": 2211,
+        "still_paying_at_end": 2105,
+        "new_paying": 111,
+        "mrr": 108351
+      },
+      {
+        "month": "2026-08",
+        "paying_at_start": 2216,
+        "still_paying_at_end": 2124,
+        "new_paying": 118,
+        "mrr": 110563
+      },
+      {
+        "month": "2026-09",
+        "paying_at_start": 2242,
+        "still_paying_at_end": 2152,
+        "new_paying": 127,
+        "mrr": 113339
+      }
+    ],
+    "bigquery_monthly": [
+      {
+        "month": "2025-10",
+        "active_accounts": 2380,
+        "value_events": 118400,
+        "accounts_with_value": 1473,
+        "accounts_with_10_plus": 1160
+      },
+      {
+        "month": "2025-11",
+        "active_accounts": 2340,
+        "value_events": 122588,
+        "accounts_with_value": 1496,
+        "accounts_with_10_plus": 1178
+      },
+      {
+        "month": "2025-12",
+        "active_accounts": 2358,
+        "value_events": 116213,
+        "accounts_with_value": 1444,
+        "accounts_with_10_plus": 1137
+      },
+      {
+        "month": "2026-01",
+        "active_accounts": 2455,
+        "value_events": 124464,
+        "accounts_with_value": 1511,
+        "accounts_with_10_plus": 1190
+      },
+      {
+        "month": "2026-02",
+        "active_accounts": 2513,
+        "value_events": 131931,
+        "accounts_with_value": 1595,
+        "accounts_with_10_plus": 1256
+      },
+      {
+        "month": "2026-03",
+        "active_accounts": 2652,
+        "value_events": 140902,
+        "accounts_with_value": 1675,
+        "accounts_with_10_plus": 1319
+      },
+      {
+        "month": "2026-04",
+        "active_accounts": 2636,
+        "value_events": 146669,
+        "accounts_with_value": 1739,
+        "accounts_with_10_plus": 1369
+      },
+      {
+        "month": "2026-05",
+        "active_accounts": 2555,
+        "value_events": 154038,
+        "accounts_with_value": 1802,
+        "accounts_with_10_plus": 1419
+      },
+      {
+        "month": "2026-06",
+        "active_accounts": 2684,
+        "value_events": 157314,
+        "accounts_with_value": 1821,
+        "accounts_with_10_plus": 1434
+      },
+      {
+        "month": "2026-07",
+        "active_accounts": 2729,
+        "value_events": 162794,
+        "accounts_with_value": 1852,
+        "accounts_with_10_plus": 1458
+      },
+      {
+        "month": "2026-08",
+        "active_accounts": 2714,
+        "value_events": 169571,
+        "accounts_with_value": 1918,
+        "accounts_with_10_plus": 1510
+      },
+      {
+        "month": "2026-09",
+        "active_accounts": 2783,
+        "value_events": 171830,
+        "accounts_with_value": 1955,
+        "accounts_with_10_plus": 1539
+      },
+      {
+        "month": "2026-10",
+        "active_accounts": 2587,
+        "value_events": 153019,
+        "accounts_with_value": 1877,
+        "accounts_with_10_plus": 970,
+        "note": "partial month (2026-10-01 to 2026-10-27)"
+      }
+    ],
+    "bigquery_weekly_kept_share_by_month": [
+      {
+        "month": "2025-10",
+        "avg_weekly_kept_share": 0.9033
+      },
+      {
+        "month": "2025-11",
+        "avg_weekly_kept_share": 0.9082
+      },
+      {
+        "month": "2025-12",
+        "avg_weekly_kept_share": 0.8746
+      },
+      {
+        "month": "2026-01",
+        "avg_weekly_kept_share": 0.9158
+      },
+      {
+        "month": "2026-02",
+        "avg_weekly_kept_share": 0.9098
+      },
+      {
+        "month": "2026-03",
+        "avg_weekly_kept_share": 0.9116
+      },
+      {
+        "month": "2026-04",
+        "avg_weekly_kept_share": 0.8981
+      },
+      {
+        "month": "2026-05",
+        "avg_weekly_kept_share": 0.905
+      },
+      {
+        "month": "2026-06",
+        "avg_weekly_kept_share": 0.897
+      },
+      {
+        "month": "2026-07",
+        "avg_weekly_kept_share": 0.9028
+      },
+      {
+        "month": "2026-08",
+        "avg_weekly_kept_share": 0.9051
+      },
+      {
+        "month": "2026-09",
+        "avg_weekly_kept_share": 0.8954
+      },
+      {
+        "month": "2026-10",
+        "avg_weekly_kept_share": 0.8959,
+        "note": "partial month (2026-10-01 to 2026-10-27)"
+      }
+    ],
+    "ga4_monthly_events": [
+      {
+        "month": "2025-10",
+        "sign_up": 512,
+        "booking_page_view": 395581
+      },
+      {
+        "month": "2025-11",
+        "sign_up": 489,
+        "booking_page_view": 405866
+      },
+      {
+        "month": "2025-12",
+        "sign_up": 547,
+        "booking_page_view": 394132
+      },
+      {
+        "month": "2026-01",
+        "sign_up": 584,
+        "booking_page_view": 406157
+      },
+      {
+        "month": "2026-02",
+        "sign_up": 481,
+        "booking_page_view": 423052
+      },
+      {
+        "month": "2026-03",
+        "sign_up": 496,
+        "booking_page_view": 452982
+      },
+      {
+        "month": "2026-04",
+        "sign_up": 576,
+        "booking_page_view": 494635
+      },
+      {
+        "month": "2026-05",
+        "sign_up": 483,
+        "booking_page_view": 496916
+      },
+      {
+        "month": "2026-06",
+        "sign_up": 515,
+        "booking_page_view": 521278
+      },
+      {
+        "month": "2026-07",
+        "sign_up": 473,
+        "booking_page_view": 530010
+      },
+      {
+        "month": "2026-08",
+        "sign_up": 500,
+        "booking_page_view": 568258
+      },
+      {
+        "month": "2026-09",
+        "sign_up": 539,
+        "booking_page_view": 558735
+      },
+      {
+        "month": "2026-10",
+        "sign_up": 415,
+        "booking_page_view": 503676,
+        "note": "partial month (2026-10-01 to 2026-10-27)"
+      }
+    ],
+    "bigquery_weekly": [
+      {
+        "week_start": "2026-09-21",
+        "value_accounts": 1790,
+        "kept_from_last_week": null,
+        "starting_this_week": null
+      },
+      {
+        "week_start": "2026-09-28",
+        "value_accounts": 1733,
+        "kept_from_last_week": 1605,
+        "starting_this_week": 128
+      },
+      {
+        "week_start": "2026-10-05",
+        "value_accounts": 1735,
+        "kept_from_last_week": 1572,
+        "starting_this_week": 163
+      },
+      {
+        "week_start": "2026-10-12",
+        "value_accounts": 1727,
+        "kept_from_last_week": 1572,
+        "starting_this_week": 155
+      },
+      {
+        "week_start": "2026-10-19",
+        "value_accounts": 1714,
+        "kept_from_last_week": 1560,
+        "starting_this_week": 154
+      }
+    ],
+    "ga4_weekly_events": [
+      {
+        "week_start": "2026-09-21",
+        "booking_completed": 39931,
+        "booking_page_view": 128021
+      },
+      {
+        "week_start": "2026-09-28",
+        "booking_completed": 40857,
+        "booking_page_view": 135511
+      },
+      {
+        "week_start": "2026-10-05",
+        "booking_completed": 40954,
+        "booking_page_view": 137429
+      },
+      {
+        "week_start": "2026-10-12",
+        "booking_completed": 40855,
+        "booking_page_view": 134124
+      },
+      {
+        "week_start": "2026-10-19",
+        "booking_completed": 41511,
+        "booking_page_view": 136713
+      }
+    ],
+    "ga4_events_last_28_days": [
+      {
+        "event_name": "page_view",
+        "parameters": [
+          "page_location",
+          "page_title"
+        ]
+      },
+      {
+        "event_name": "session_start",
+        "parameters": []
+      },
+      {
+        "event_name": "first_visit",
+        "parameters": []
+      },
+      {
+        "event_name": "user_engagement",
+        "parameters": []
+      },
+      {
+        "event_name": "sign_up",
+        "parameters": [
+          "method",
+          "plan"
+        ]
+      },
+      {
+        "event_name": "login",
+        "parameters": [
+          "method"
+        ]
+      },
+      {
+        "event_name": "booking_page_view",
+        "parameters": [
+          "page_location",
+          "service_category"
+        ]
+      },
+      {
+        "event_name": "booking_completed",
+        "parameters": [
+          "service_category",
+          "deposit_taken"
+        ]
+      }
+    ],
+    "ga4_key_events": [
+      "sign_up",
+      "booking_completed"
+    ],
+    "bigquery_weekly_kept_share_note": "The weekly query run over the whole history window: each week's kept share is kept_from_last_week divided by the week before's value_accounts, and the weeks are averaged by the month each one starts in.",
+    "bigquery_weekly_note": "Weekly query from 2026-09-21 to 2026-10-25: the first week is pulled only so the next one has a week before it; the current week (from 2026-10-26) is incomplete and left out.",
+    "ga4_weekly_events_note": "GA4 events action with eventName and date for 2026-09-21 to 2026-10-25, the days added up into Monday-to-Sunday weeks, keeping the two events the tree uses.",
+    "ga4_events_last_28_days_note": "Event names from the GA4 events action; parameters from event_params in the BigQuery export."
+  }
+}

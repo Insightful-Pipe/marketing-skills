@@ -1,0 +1,1001 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. The sample shows both runs of one test: the design on 2026-09-03 (it used only the 12 baseline weeks) and the read-out on 2026-10-28.",
+  "request": {
+    "design": "Hey Claude, I just added the \"seo-split-test\" skill. We have about 50 'booking software for <business type>' pages under /booking-software/. We want to add 'deposits and SMS reminders' to their titles. Design a test so we know if it helps. Even an 8% lift in clicks would be worth it.",
+    "read_out": "The test you designed has run its planned weeks. Read it. One thing: we rewrote the intro on the driving instructors page on 2026-09-29 for a partner campaign."
+  },
+  "account": {
+    "business": "Example Booking Software, an online booking and scheduling app for small service businesses (invented example)",
+    "search_console_property": "https://www.example.com/",
+    "ga4_property": "properties/123456789",
+    "wordpress": "not connected"
+  },
+  "settings": {
+    "template_pattern": "/booking-software/",
+    "target_lift_pct": 8.0,
+    "pages_edited_anyway": [],
+    "change": {
+      "element": "title tag",
+      "before_template": "Online booking software for <business type> | Example Booking Software",
+      "after_template": "Booking software for <business type> with deposits and SMS reminders"
+    }
+  },
+  "dates": {
+    "design_run": "2026-09-03",
+    "baseline": [
+      "2026-06-08",
+      "2026-08-30"
+    ],
+    "launch": "2026-09-08",
+    "recrawl_check": "2026-09-15",
+    "read_out_run": "2026-10-28",
+    "last_day_of_data_at_read_out": "2026-10-25",
+    "week_starts": [
+      "2026-06-08",
+      "2026-06-15",
+      "2026-06-22",
+      "2026-06-29",
+      "2026-07-06",
+      "2026-07-13",
+      "2026-07-20",
+      "2026-07-27",
+      "2026-08-03",
+      "2026-08-10",
+      "2026-08-17",
+      "2026-08-24",
+      "2026-08-31",
+      "2026-09-07",
+      "2026-09-14",
+      "2026-09-21",
+      "2026-09-28",
+      "2026-10-05",
+      "2026-10-12",
+      "2026-10-19"
+    ]
+  },
+  "data_pulled": {
+    "pull_1_search_console_daily_by_page": {
+      "body": {
+        "platform": "google-search-console",
+        "action": "search_analytics",
+        "workspace_id": 1,
+        "brand_id": 1,
+        "site_url": "https://www.example.com/",
+        "dimensions": [
+          "date",
+          "page"
+        ],
+        "start_date": "2026-06-08",
+        "end_date": "2026-10-28",
+        "row_limit": 25000,
+        "dimension_filter_groups": [
+          {
+            "filters": [
+              {
+                "dimension": "page",
+                "operator": "includingRegex",
+                "expression": "/booking-software/"
+              }
+            ]
+          }
+        ]
+      },
+      "rows_returned": 6995,
+      "jump_link_rows_dropped": 485,
+      "page_days_with_no_row_filled_as_zero": 70,
+      "shape": "daily rows summed into Monday to Sunday weeks; position is impression-weighted per week",
+      "pages": [
+        {
+          "url": "https://www.example.com/booking-software/salons/",
+          "title_before": "Online booking software for salons | Example Booking Software",
+          "clicks": [694, 647, 684, 779, 610, 705, 647, 648, 744, 568, 648, 536, 612, 638, 651, 598, 672, 722, 560, 582],
+          "impressions": [15295, 14401, 14491, 16606, 14312, 15442, 13795, 15387, 16072, 14195, 14904, 11586, 13893, 13874, 15032, 14421, 15535, 16064, 13732, 13101],
+          "position": [8.77, 8.96, 8.93, 9.02, 8.92, 8.79, 8.82, 8.85, 9.04, 8.77, 9.04, 8.86, 8.91, 8.91, 8.98, 8.95, 8.7, 8.72, 8.99, 8.93]
+        },
+        {
+          "url": "https://www.example.com/booking-software/barbershops/",
+          "title_before": "Online booking software for barbershops | Example Booking Software",
+          "clicks": [21, 30, 28, 19, 32, 30, 26, 42, 35, 25, 24, 32, 26, 26, 33, 28, 24, 25, 33, 35],
+          "impressions": [496, 664, 659, 545, 608, 561, 558, 761, 649, 538, 600, 745, 632, 614, 688, 562, 567, 565, 615, 613],
+          "position": [12.0, 12.06, 12.07, 11.79, 11.72, 11.87, 11.82, 11.8, 12.04, 11.72, 11.62, 11.82, 12.0, 11.83, 11.76, 11.91, 11.82, 11.92, 11.76, 11.99]
+        },
+        {
+          "url": "https://www.example.com/booking-software/nail-salons/",
+          "title_before": "Online booking software for nail salons | Example Booking Software",
+          "clicks": [54, 60, 60, 80, 61, 56, 63, 74, 52, 55, 42, 64, 60, 69, 59, 72, 57, 47, 59, 52],
+          "impressions": [965, 914, 1035, 1106, 994, 932, 928, 1286, 1023, 897, 881, 958, 1172, 1059, 967, 1039, 881, 889, 858, 911],
+          "position": [9.04, 9.33, 9.27, 9.13, 9.43, 8.94, 9.16, 9.17, 9.23, 9.0, 9.57, 9.36, 9.2, 9.04, 9.07, 9.4, 9.27, 9.3, 9.16, 9.43]
+        },
+        {
+          "url": "https://www.example.com/booking-software/day-spas/",
+          "title_before": "Online booking software for day spas | Example Booking Software",
+          "clicks": [45, 43, 38, 54, 50, 56, 61, 56, 59, 47, 58, 49, 56, 55, 44, 65, 31, 39, 47, 44],
+          "impressions": [1140, 1189, 1157, 1298, 1262, 1343, 1254, 1405, 1153, 1173, 1148, 1259, 1205, 1135, 1156, 1431, 971, 1053, 959, 1011],
+          "position": [4.75, 4.83, 4.64, 4.49, 4.57, 4.38, 4.73, 4.75, 4.67, 4.75, 4.79, 4.64, 4.52, 4.77, 4.58, 4.7, 4.58, 4.64, 4.79, 4.69]
+        },
+        {
+          "url": "https://www.example.com/booking-software/massage-therapists/",
+          "title_before": "Online booking software for massage therapists | Example Booking Software",
+          "clicks": [8, 8, 9, 10, 5, 9, 5, 11, 9, 8, 10, 10, 10, 10, 19, 12, 15, 8, 13, 7],
+          "impressions": [367, 365, 319, 348, 335, 398, 351, 337, 344, 322, 358, 324, 376, 352, 360, 409, 305, 297, 279, 313],
+          "position": [10.31, 10.21, 10.05, 10.17, 9.93, 10.05, 10.16, 10.18, 10.09, 10.27, 10.46, 10.18, 10.09, 10.21, 10.05, 10.19, 10.12, 10.43, 10.17, 9.96]
+        },
+        {
+          "url": "https://www.example.com/booking-software/physiotherapists/",
+          "title_before": "Online booking software for physiotherapists | Example Booking Software",
+          "clicks": [89, 89, 120, 122, 94, 119, 120, 111, 77, 115, 91, 118, 110, 108, 136, 110, 88, 113, 82, 82],
+          "impressions": [2397, 2328, 2616, 2497, 2403, 2464, 2730, 2820, 2248, 2352, 2695, 2659, 2346, 2335, 2734, 2417, 2464, 2346, 2144, 1890],
+          "position": [10.02, 9.97, 10.14, 10.36, 10.1, 10.15, 10.03, 10.32, 10.03, 9.86, 10.07, 10.33, 10.21, 9.86, 10.14, 10.07, 9.99, 10.14, 10.08, 10.06]
+        },
+        {
+          "url": "https://www.example.com/booking-software/chiropractors/",
+          "title_before": "Online booking software for chiropractors | Example Booking Software",
+          "clicks": [85, 79, 81, 131, 80, 85, 63, 72, 87, 74, 81, 100, 100, 91, 86, 97, 80, 71, 82, 86],
+          "impressions": [2901, 2787, 2465, 3243, 2836, 2852, 2793, 2547, 2842, 2642, 2797, 3010, 3082, 2679, 2858, 2613, 2540, 2246, 2304, 2592],
+          "position": [6.74, 6.76, 6.98, 6.9, 6.84, 6.55, 6.8, 7.04, 6.66, 6.81, 7.02, 6.76, 6.96, 6.76, 6.72, 7.07, 6.68, 7.16, 6.8, 6.77]
+        },
+        {
+          "url": "https://www.example.com/booking-software/dental-practices/",
+          "title_before": "Online booking software for dental practices | Example Booking Software",
+          "clicks": [67, 63, 73, 69, 67, 59, 66, 49, 82, 72, 64, 74, 66, 49, 64, 71, 70, 49, 52, 62],
+          "impressions": [1275, 1228, 1312, 1275, 1187, 1128, 1089, 1019, 1282, 1168, 1198, 1248, 1186, 1025, 1119, 1091, 1274, 975, 986, 952],
+          "position": [10.86, 11.09, 11.34, 10.97, 11.12, 11.0, 11.04, 11.22, 10.86, 11.0, 10.92, 11.26, 11.02, 11.24, 10.97, 10.93, 11.04, 11.14, 11.07, 11.08]
+        },
+        {
+          "url": "https://www.example.com/booking-software/optometrists/",
+          "title_before": "Online booking software for optometrists | Example Booking Software",
+          "clicks": [27, 25, 14, 29, 13, 19, 21, 12, 26, 26, 17, 15, 17, 24, 29, 22, 24, 21, 27, 15],
+          "impressions": [476, 532, 573, 482, 470, 492, 500, 415, 417, 503, 489, 461, 400, 503, 477, 486, 496, 440, 376, 390],
+          "position": [6.36, 6.48, 6.26, 6.56, 6.46, 6.45, 6.48, 6.58, 6.38, 6.58, 6.3, 6.33, 6.51, 6.48, 6.64, 6.53, 6.61, 6.04, 6.48, 6.38]
+        },
+        {
+          "url": "https://www.example.com/booking-software/dog-groomers/",
+          "title_before": "Online booking software for dog groomers | Example Booking Software",
+          "clicks": [106, 70, 89, 75, 77, 114, 88, 82, 73, 100, 90, 100, 79, 80, 100, 63, 80, 95, 87, 74],
+          "impressions": [1644, 1242, 1541, 1459, 1302, 1349, 1355, 1269, 1317, 1418, 1423, 1625, 1365, 1478, 1519, 1183, 1305, 1325, 1386, 1223],
+          "position": [4.27, 3.9, 4.19, 3.85, 4.13, 4.06, 4.14, 3.87, 3.78, 3.97, 4.0, 3.91, 4.07, 3.92, 3.87, 4.14, 3.76, 3.86, 4.18, 4.24]
+        },
+        {
+          "url": "https://www.example.com/booking-software/pet-sitters/",
+          "title_before": "Online booking software for pet sitters | Example Booking Software",
+          "clicks": [33, 48, 41, 52, 38, 40, 39, 48, 48, 36, 45, 42, 46, 44, 51, 50, 46, 61, 53, 47],
+          "impressions": [857, 886, 806, 886, 820, 854, 820, 864, 909, 862, 877, 854, 982, 964, 864, 955, 787, 830, 739, 707],
+          "position": [11.59, 11.52, 11.55, 11.4, 11.51, 11.44, 11.19, 11.56, 11.27, 11.19, 11.53, 11.42, 11.59, 11.33, 11.15, 11.57, 11.41, 11.39, 11.68, 11.43]
+        },
+        {
+          "url": "https://www.example.com/booking-software/tattoo-studios/",
+          "title_before": "Online booking software for tattoo studios | Example Booking Software",
+          "clicks": [46, 30, 40, 41, 42, 59, 33, 33, 41, 28, 34, 36, 40, 41, 50, 34, 25, 51, 27, 33],
+          "impressions": [986, 926, 1018, 998, 1070, 1249, 961, 1004, 1064, 853, 995, 1000, 1144, 1050, 1093, 944, 954, 1114, 827, 815],
+          "position": [9.8, 10.06, 9.97, 10.13, 9.99, 10.07, 9.98, 9.96, 9.77, 10.48, 10.2, 9.88, 10.0, 10.17, 9.81, 10.16, 10.24, 9.94, 9.87, 9.93]
+        },
+        {
+          "url": "https://www.example.com/booking-software/yoga-studios/",
+          "title_before": "Online booking software for yoga studios | Example Booking Software",
+          "clicks": [26, 37, 34, 32, 30, 34, 42, 31, 24, 29, 30, 30, 31, 22, 36, 26, 29, 32, 30, 22],
+          "impressions": [754, 838, 675, 721, 828, 782, 856, 745, 704, 727, 738, 689, 640, 767, 603, 591, 672, 675, 531, 534],
+          "position": [9.44, 9.24, 9.63, 9.57, 9.67, 9.73, 9.71, 10.05, 9.68, 9.41, 9.6, 9.7, 9.97, 9.81, 9.88, 9.55, 9.68, 9.49, 9.75, 9.9]
+        },
+        {
+          "url": "https://www.example.com/booking-software/pilates-studios/",
+          "title_before": "Online booking software for pilates studios | Example Booking Software",
+          "clicks": [45, 37, 40, 43, 31, 30, 42, 37, 33, 33, 35, 35, 29, 34, 36, 30, 40, 35, 40, 22],
+          "impressions": [997, 1080, 1077, 1095, 1041, 1186, 1083, 1027, 1053, 1021, 900, 863, 1071, 947, 891, 1060, 992, 796, 769, 695],
+          "position": [9.66, 9.11, 9.21, 9.38, 9.24, 9.29, 9.31, 9.41, 8.93, 9.27, 9.36, 9.06, 9.56, 9.26, 9.4, 9.4, 9.38, 9.1, 9.24, 9.22]
+        },
+        {
+          "url": "https://www.example.com/booking-software/personal-trainers/",
+          "title_before": "Online booking software for personal trainers | Example Booking Software",
+          "clicks": [13, 22, 21, 24, 18, 17, 19, 17, 15, 19, 15, 15, 21, 21, 22, 14, 23, 16, 12, 16],
+          "impressions": [396, 494, 495, 495, 471, 476, 448, 487, 537, 482, 460, 468, 579, 557, 500, 487, 521, 432, 432, 361],
+          "position": [10.71, 10.61, 10.66, 10.75, 10.81, 10.7, 10.65, 10.62, 10.92, 10.6, 10.4, 10.86, 10.54, 10.5, 10.44, 10.93, 10.86, 10.29, 10.67, 10.63]
+        },
+        {
+          "url": "https://www.example.com/booking-software/dance-studios/",
+          "title_before": "Online booking software for dance studios | Example Booking Software",
+          "clicks": [13, 16, 15, 8, 13, 14, 16, 12, 16, 18, 14, 21, 11, 16, 16, 14, 12, 11, 10, 12],
+          "impressions": [454, 410, 479, 499, 506, 412, 452, 474, 428, 531, 512, 461, 492, 444, 510, 453, 502, 372, 373, 343],
+          "position": [8.22, 8.22, 8.32, 8.44, 7.84, 8.23, 8.32, 8.04, 8.3, 8.0, 8.4, 7.97, 8.18, 8.12, 8.16, 8.17, 8.27, 8.27, 8.0, 8.08]
+        },
+        {
+          "url": "https://www.example.com/booking-software/music-teachers/",
+          "title_before": "Online booking software for music teachers | Example Booking Software",
+          "clicks": [86, 83, 92, 99, 96, 86, 77, 91, 103, 106, 108, 76, 91, 93, 113, 114, 86, 98, 94, 86],
+          "impressions": [1367, 1338, 1454, 1374, 1391, 1273, 1404, 1583, 1456, 1447, 1583, 1422, 1631, 1520, 1591, 1575, 1299, 1392, 1273, 1448],
+          "position": [11.07, 11.25, 11.04, 11.25, 10.99, 11.02, 11.02, 11.08, 11.15, 10.75, 11.05, 11.19, 10.94, 11.08, 11.14, 11.09, 11.26, 11.26, 11.36, 10.99]
+        },
+        {
+          "url": "https://www.example.com/booking-software/tutors/",
+          "title_before": "Online booking software for tutors | Example Booking Software",
+          "clicks": [54, 39, 39, 65, 36, 59, 45, 47, 41, 31, 59, 34, 49, 49, 59, 48, 52, 43, 43, 31],
+          "impressions": [1079, 923, 1186, 1067, 952, 1023, 993, 1032, 881, 894, 1028, 976, 904, 921, 1000, 973, 1068, 877, 859, 730],
+          "position": [8.43, 8.46, 8.76, 8.31, 8.38, 8.51, 8.71, 8.43, 8.48, 8.49, 8.68, 8.4, 8.54, 8.5, 8.76, 8.39, 8.63, 8.99, 8.93, 8.61]
+        },
+        {
+          "url": "https://www.example.com/booking-software/driving-instructors/",
+          "title_before": "Online booking software for driving instructors | Example Booking Software",
+          "clicks": [77, 76, 59, 83, 59, 84, 73, 73, 65, 86, 61, 65, 61, 73, 79, 77, 67, 59, 79, 67],
+          "impressions": [1264, 1234, 1231, 1330, 1391, 1397, 1297, 1263, 1194, 1192, 1248, 1155, 1187, 1342, 1429, 1341, 989, 1173, 1296, 1096],
+          "position": [8.44, 8.15, 8.31, 8.69, 8.42, 8.37, 8.36, 8.51, 8.29, 8.41, 8.57, 8.52, 8.55, 8.8, 8.48, 8.48, 8.7, 8.59, 8.43, 8.45]
+        },
+        {
+          "url": "https://www.example.com/booking-software/photographers/",
+          "title_before": "Online booking software for photographers | Example Booking Software",
+          "clicks": [117, 96, 87, 95, 110, 88, 107, 98, 97, 132, 118, 118, 87, 122, 115, 90, 106, 77, 91, 81],
+          "impressions": [2198, 1981, 1839, 1818, 1861, 2041, 2079, 1965, 1650, 2374, 2053, 1967, 1734, 2015, 2028, 1615, 1736, 1369, 1620, 1641],
+          "position": [8.65, 8.53, 8.5, 8.57, 8.74, 8.76, 8.57, 8.46, 8.79, 8.36, 8.78, 8.38, 8.84, 8.61, 8.5, 8.71, 8.67, 8.73, 8.12, 8.44]
+        },
+        {
+          "url": "https://www.example.com/booking-software/makeup-artists/",
+          "title_before": "Online booking software for makeup artists | Example Booking Software",
+          "clicks": [40, 44, 38, 30, 44, 42, 42, 40, 30, 36, 29, 28, 47, 50, 42, 37, 38, 44, 46, 33],
+          "impressions": [1675, 1386, 1300, 1216, 1331, 1282, 1418, 1609, 1332, 1524, 1297, 1163, 1328, 1308, 1397, 1176, 1203, 1207, 1251, 1131],
+          "position": [5.58, 5.39, 5.45, 5.76, 5.65, 5.54, 5.48, 5.5, 5.47, 5.74, 5.38, 5.48, 5.59, 5.46, 5.48, 5.52, 5.64, 5.38, 5.36, 5.37]
+        },
+        {
+          "url": "https://www.example.com/booking-software/lash-technicians/",
+          "title_before": "Online booking software for lash technicians | Example Booking Software",
+          "clicks": [53, 47, 49, 51, 47, 47, 54, 38, 66, 52, 35, 68, 57, 69, 45, 67, 51, 42, 51, 52],
+          "impressions": [1345, 1523, 1166, 1488, 1456, 1374, 1242, 1274, 1358, 1562, 1339, 1588, 1662, 1729, 1316, 1484, 1290, 1196, 1372, 1387],
+          "position": [9.22, 9.39, 9.46, 8.93, 9.08, 9.13, 9.34, 9.11, 9.25, 9.53, 9.14, 9.24, 9.15, 9.5, 9.25, 9.26, 9.33, 9.03, 8.97, 9.42]
+        },
+        {
+          "url": "https://www.example.com/booking-software/estheticians/",
+          "title_before": "Online booking software for estheticians | Example Booking Software",
+          "clicks": [74, 83, 69, 66, 78, 93, 79, 77, 76, 106, 68, 68, 66, 68, 96, 102, 93, 68, 73, 66],
+          "impressions": [1414, 1578, 1427, 1399, 1512, 1418, 1308, 1681, 1410, 1611, 1504, 1288, 1192, 1290, 1618, 1562, 1516, 1266, 1272, 1212],
+          "position": [4.7, 4.86, 4.47, 4.61, 4.75, 4.55, 4.85, 4.91, 4.74, 4.92, 4.78, 4.72, 4.65, 4.56, 4.59, 4.67, 4.72, 4.44, 4.63, 4.48]
+        },
+        {
+          "url": "https://www.example.com/booking-software/acupuncturists/",
+          "title_before": "Online booking software for acupuncturists | Example Booking Software",
+          "clicks": [29, 18, 19, 33, 29, 31, 20, 30, 20, 25, 40, 28, 23, 20, 31, 25, 17, 17, 16, 14],
+          "impressions": [469, 561, 537, 508, 581, 567, 452, 555, 517, 525, 582, 593, 551, 556, 584, 513, 439, 425, 459, 407],
+          "position": [4.96, 5.04, 5.08, 5.12, 5.09, 5.15, 5.08, 5.19, 5.13, 5.03, 4.9, 5.03, 5.05, 4.75, 4.91, 5.27, 5.13, 5.03, 4.89, 5.05]
+        },
+        {
+          "url": "https://www.example.com/booking-software/counsellors/",
+          "title_before": "Online booking software for counsellors | Example Booking Software",
+          "clicks": [59, 72, 73, 70, 60, 52, 76, 81, 79, 67, 73, 86, 73, 74, 86, 66, 62, 58, 72, 66],
+          "impressions": [1254, 1271, 1352, 1312, 1225, 1426, 1444, 1577, 1574, 1258, 1361, 1396, 1394, 1530, 1656, 1340, 1278, 1127, 1377, 1079],
+          "position": [6.99, 6.91, 6.96, 7.22, 7.01, 7.32, 6.88, 7.48, 7.0, 7.19, 7.28, 7.33, 7.31, 7.29, 7.32, 7.1, 7.25, 7.21, 7.35, 7.24]
+        },
+        {
+          "url": "https://www.example.com/booking-software/life-coaches/",
+          "title_before": "Online booking software for life coaches | Example Booking Software",
+          "clicks": [64, 73, 89, 73, 105, 58, 72, 86, 76, 97, 98, 80, 78, 85, 83, 90, 52, 81, 70, 84],
+          "impressions": [1583, 1631, 1662, 1545, 1818, 1529, 1489, 1506, 1584, 2023, 1658, 1592, 1423, 1617, 1804, 1597, 1352, 1507, 1246, 1375],
+          "position": [10.04, 10.08, 10.21, 9.99, 10.12, 10.29, 10.15, 10.19, 10.02, 10.08, 9.99, 10.3, 10.47, 10.0, 10.41, 10.26, 10.35, 10.06, 10.09, 10.09]
+        },
+        {
+          "url": "https://www.example.com/booking-software/nutritionists/",
+          "title_before": "Online booking software for nutritionists | Example Booking Software",
+          "clicks": [29, 57, 34, 31, 48, 33, 35, 36, 31, 32, 35, 49, 34, 29, 25, 33, 30, 45, 24, 28],
+          "impressions": [1037, 1090, 1201, 1009, 941, 1053, 1023, 1142, 1147, 1198, 1027, 1091, 892, 1026, 1051, 925, 1051, 1017, 877, 1011],
+          "position": [7.17, 7.23, 6.99, 7.31, 7.33, 7.17, 7.17, 6.83, 6.96, 7.16, 7.34, 7.14, 7.26, 7.22, 6.85, 7.21, 7.2, 7.17, 7.29, 7.21]
+        },
+        {
+          "url": "https://www.example.com/booking-software/car-detailers/",
+          "title_before": "Online booking software for car detailers | Example Booking Software",
+          "clicks": [27, 39, 31, 39, 46, 46, 36, 30, 35, 42, 40, 34, 31, 25, 32, 44, 32, 26, 28, 32],
+          "impressions": [800, 994, 835, 909, 953, 869, 788, 885, 924, 950, 975, 873, 752, 731, 831, 850, 748, 806, 723, 716],
+          "position": [7.14, 7.19, 7.17, 6.91, 6.87, 6.79, 6.96, 7.1, 6.73, 7.07, 7.36, 7.21, 6.99, 6.88, 7.09, 6.9, 7.12, 6.91, 6.84, 6.94]
+        },
+        {
+          "url": "https://www.example.com/booking-software/cleaning-services/",
+          "title_before": "Online booking software for cleaning services | Example Booking Software",
+          "clicks": [32, 26, 38, 27, 21, 28, 28, 29, 28, 29, 28, 40, 29, 20, 13, 22, 26, 15, 22, 28],
+          "impressions": [482, 483, 464, 488, 467, 465, 446, 468, 429, 482, 490, 470, 467, 461, 431, 469, 439, 378, 417, 367],
+          "position": [7.82, 8.17, 7.69, 8.03, 8.04, 7.76, 7.97, 7.83, 7.69, 7.96, 8.05, 7.67, 7.88, 7.7, 7.68, 8.08, 7.95, 7.82, 7.71, 8.02]
+        },
+        {
+          "url": "https://www.example.com/booking-software/handymen/",
+          "title_before": "Online booking software for handymen | Example Booking Software",
+          "clicks": [86, 111, 83, 95, 94, 95, 111, 132, 90, 106, 76, 106, 122, 92, 98, 94, 97, 68, 83, 83],
+          "impressions": [1486, 1638, 1621, 1460, 1569, 1568, 1769, 1923, 1553, 1628, 1551, 1726, 2116, 1650, 1536, 1545, 1467, 1320, 1379, 1413],
+          "position": [8.39, 8.53, 8.43, 8.43, 8.63, 8.52, 8.35, 8.44, 8.53, 8.3, 8.33, 8.63, 8.53, 8.72, 8.64, 8.52, 8.43, 8.6, 8.78, 8.32]
+        },
+        {
+          "url": "https://www.example.com/booking-software/escape-rooms/",
+          "title_before": "Online booking software for escape rooms | Example Booking Software",
+          "clicks": [136, 136, 118, 160, 131, 143, 135, 142, 139, 166, 112, 115, 144, 155, 148, 161, 166, 144, 114, 127],
+          "impressions": [2154, 2428, 2275, 2363, 2261, 2226, 2088, 2474, 2256, 2492, 2295, 1966, 2188, 2425, 2314, 2608, 2184, 2060, 1612, 1785],
+          "position": [9.39, 9.02, 9.3, 8.98, 9.11, 9.06, 9.39, 9.26, 8.77, 9.02, 9.19, 9.36, 8.95, 8.95, 9.07, 9.33, 9.34, 9.47, 8.96, 9.38]
+        },
+        {
+          "url": "https://www.example.com/booking-software/golf-instructors/",
+          "title_before": "Online booking software for golf instructors | Example Booking Software",
+          "clicks": [64, 49, 50, 38, 43, 50, 47, 43, 62, 53, 55, 56, 54, 53, 49, 38, 58, 65, 52, 38],
+          "impressions": [1380, 1257, 1122, 1050, 1067, 1049, 1156, 1216, 1331, 1227, 1129, 1128, 1326, 1096, 1365, 1070, 1157, 1176, 1096, 927],
+          "position": [8.89, 8.92, 8.93, 8.88, 9.0, 8.81, 8.77, 8.68, 8.84, 8.83, 8.89, 9.08, 8.96, 9.05, 8.57, 8.99, 8.96, 8.92, 8.63, 8.83]
+        },
+        {
+          "url": "https://www.example.com/booking-software/swim-schools/",
+          "title_before": "Online booking software for swim schools | Example Booking Software",
+          "clicks": [40, 32, 40, 47, 44, 33, 33, 35, 35, 40, 35, 31, 37, 51, 38, 35, 30, 30, 28, 29],
+          "impressions": [584, 498, 616, 636, 680, 629, 535, 572, 550, 626, 606, 611, 601, 681, 593, 571, 466, 476, 420, 459],
+          "position": [10.98, 11.23, 10.84, 11.1, 11.3, 10.96, 11.07, 10.96, 10.79, 11.21, 11.15, 10.97, 11.34, 10.85, 11.21, 10.99, 11.02, 10.96, 11.08, 10.91]
+        },
+        {
+          "url": "https://www.example.com/booking-software/martial-arts-schools/",
+          "title_before": "Online booking software for martial arts schools | Example Booking Software",
+          "clicks": [21, 17, 29, 19, 27, 23, 32, 28, 38, 21, 14, 19, 28, 24, 30, 18, 30, 24, 20, 18],
+          "impressions": [601, 580, 687, 611, 657, 635, 579, 649, 803, 608, 583, 620, 689, 724, 760, 621, 608, 705, 661, 516],
+          "position": [11.03, 11.0, 10.99, 11.01, 10.89, 11.03, 11.0, 10.89, 10.89, 10.87, 10.99, 11.28, 10.84, 11.06, 11.09, 11.11, 11.07, 11.05, 10.81, 11.1]
+        },
+        {
+          "url": "https://www.example.com/booking-software/climbing-gyms/",
+          "title_before": "Online booking software for climbing gyms | Example Booking Software",
+          "clicks": [42, 46, 35, 48, 43, 42, 40, 43, 46, 41, 45, 43, 41, 44, 45, 37, 42, 41, 36, 31],
+          "impressions": [1397, 1418, 1489, 1306, 1319, 1242, 1233, 1264, 1231, 1353, 1295, 1292, 1304, 1435, 1178, 1482, 1328, 1255, 1161, 1070],
+          "position": [11.45, 11.44, 11.54, 11.88, 11.53, 11.79, 11.86, 11.63, 11.73, 11.72, 11.62, 11.44, 11.36, 11.22, 11.64, 11.74, 11.42, 11.8, 12.07, 11.55]
+        },
+        {
+          "url": "https://www.example.com/booking-software/piercing-studios/",
+          "title_before": "Online booking software for piercing studios | Example Booking Software",
+          "clicks": [113, 109, 136, 109, 116, 117, 95, 98, 106, 103, 106, 108, 117, 99, 106, 138, 103, 101, 76, 91],
+          "impressions": [2189, 2469, 2407, 2086, 2196, 2406, 1984, 1977, 2005, 1939, 1964, 2088, 1789, 2012, 2124, 2280, 1953, 1890, 1502, 1608],
+          "position": [8.29, 8.11, 8.26, 8.27, 8.24, 8.02, 8.08, 8.2, 8.25, 8.39, 8.21, 8.2, 8.09, 8.09, 7.99, 8.45, 8.33, 8.29, 8.36, 8.14]
+        },
+        {
+          "url": "https://www.example.com/booking-software/brow-bars/",
+          "title_before": "Online booking software for brow bars | Example Booking Software",
+          "clicks": [73, 70, 70, 61, 57, 84, 64, 81, 56, 67, 72, 82, 72, 61, 74, 73, 66, 81, 64, 50],
+          "impressions": [1215, 1060, 1037, 996, 1028, 1260, 1270, 1372, 977, 1061, 1064, 1078, 1108, 968, 985, 988, 962, 1042, 889, 778],
+          "position": [10.26, 10.47, 10.16, 10.13, 10.25, 10.19, 10.27, 10.12, 10.12, 10.29, 10.15, 10.25, 10.39, 10.23, 10.19, 10.21, 10.07, 10.24, 10.43, 10.02]
+        },
+        {
+          "url": "https://www.example.com/booking-software/med-spas/",
+          "title_before": "Online booking software for med spas | Example Booking Software",
+          "clicks": [22, 24, 23, 19, 21, 23, 30, 24, 25, 22, 25, 29, 28, 25, 26, 28, 22, 22, 31, 16],
+          "impressions": [508, 450, 498, 467, 493, 430, 469, 516, 447, 514, 471, 495, 537, 440, 480, 456, 435, 432, 429, 425],
+          "position": [10.63, 10.69, 10.31, 10.8, 10.75, 10.88, 10.76, 10.61, 10.4, 10.5, 10.66, 10.66, 10.59, 10.65, 10.76, 10.53, 10.55, 10.65, 10.54, 10.25]
+        },
+        {
+          "url": "https://www.example.com/booking-software/tanning-salons/",
+          "title_before": "Online booking software for tanning salons | Example Booking Software",
+          "clicks": [80, 63, 67, 75, 63, 71, 83, 61, 77, 57, 68, 67, 83, 57, 82, 58, 66, 55, 56, 52],
+          "impressions": [1310, 1171, 1092, 1236, 1247, 1254, 1299, 1144, 1271, 1065, 1227, 1155, 1303, 1058, 1119, 1226, 1159, 976, 1045, 856],
+          "position": [4.06, 4.27, 4.24, 3.89, 4.16, 4.48, 4.37, 4.45, 4.4, 4.28, 4.3, 4.34, 3.86, 4.41, 4.37, 3.99, 4.42, 4.53, 4.15, 4.35]
+        },
+        {
+          "url": "https://www.example.com/booking-software/consultants/",
+          "title_before": "Online booking software for consultants | Example Booking Software",
+          "clicks": [93, 66, 85, 98, 91, 82, 87, 101, 114, 103, 80, 114, 115, 104, 137, 102, 92, 68, 85, 110],
+          "impressions": [1690, 1609, 1726, 1820, 1725, 1676, 1706, 1937, 2023, 1698, 1600, 2042, 2184, 2108, 2181, 1790, 1572, 1453, 1456, 1561],
+          "position": [5.22, 5.35, 5.1, 5.15, 5.35, 5.07, 5.18, 5.11, 5.49, 5.06, 4.9, 5.32, 5.15, 5.18, 5.03, 5.43, 5.47, 5.4, 5.23, 5.36]
+        },
+        {
+          "url": "https://www.example.com/booking-software/tour-operators/",
+          "title_before": "Online booking software for tour operators | Example Booking Software",
+          "clicks": [29, 39, 34, 36, 29, 39, 46, 44, 35, 37, 29, 38, 29, 27, 33, 39, 39, 53, 45, 51],
+          "impressions": [1050, 969, 933, 992, 994, 957, 1087, 1114, 1128, 1071, 982, 1134, 1080, 1013, 1049, 867, 863, 1037, 998, 921],
+          "position": [5.82, 5.89, 5.97, 5.57, 5.5, 5.6, 5.7, 5.85, 5.45, 5.48, 5.65, 5.61, 5.48, 5.79, 5.58, 5.53, 5.43, 5.67, 5.61, 5.67]
+        },
+        {
+          "url": "https://www.example.com/booking-software/bike-repair-shops/",
+          "title_before": "Online booking software for bike repair shops | Example Booking Software",
+          "clicks": [74, 63, 74, 73, 82, 54, 60, 80, 64, 55, 48, 64, 73, 82, 61, 81, 74, 76, 80, 56],
+          "impressions": [1357, 1315, 1143, 1392, 1249, 1177, 1118, 1274, 1194, 1119, 1039, 1146, 1370, 1345, 1252, 1111, 1164, 1090, 1132, 968],
+          "position": [11.25, 11.26, 11.36, 11.21, 11.29, 11.14, 11.31, 10.92, 11.06, 11.36, 11.0, 11.33, 11.27, 11.29, 10.97, 11.11, 11.17, 11.44, 11.51, 11.11]
+        },
+        {
+          "url": "https://www.example.com/booking-software/hair-removal-clinics/",
+          "title_before": "Online booking software for hair removal clinics | Example Booking Software",
+          "clicks": [45, 44, 39, 38, 45, 42, 50, 50, 46, 44, 50, 38, 49, 24, 36, 41, 37, 39, 22, 29],
+          "impressions": [1128, 1087, 1107, 1057, 1158, 986, 967, 1052, 1053, 1203, 1290, 1075, 1094, 886, 931, 1033, 954, 977, 922, 804],
+          "position": [5.28, 4.91, 4.97, 5.3, 5.14, 4.76, 5.41, 4.84, 4.78, 5.09, 4.99, 4.98, 5.09, 4.94, 5.13, 5.06, 4.96, 4.93, 5.17, 5.07]
+        },
+        {
+          "url": "https://www.example.com/booking-software/speech-therapists/",
+          "title_before": "Online booking software for speech therapists | Example Booking Software",
+          "clicks": [56, 47, 46, 48, 55, 40, 51, 50, 45, 37, 30, 47, 33, 47, 55, 40, 51, 49, 41, 35],
+          "impressions": [1200, 1200, 1132, 1160, 1235, 1058, 1266, 1354, 1183, 1157, 1133, 1233, 1227, 1384, 1279, 1086, 1377, 1335, 941, 913],
+          "position": [7.22, 7.25, 7.14, 6.99, 7.15, 7.01, 6.9, 6.83, 7.32, 7.04, 6.97, 7.09, 7.26, 6.97, 7.0, 7.05, 6.98, 7.47, 7.02, 7.32]
+        },
+        {
+          "url": "https://www.example.com/booking-software/notaries/",
+          "title_before": "Online booking software for notaries | Example Booking Software",
+          "clicks": [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2, 1, 0],
+          "impressions": [11, 16, 9, 7, 9, 9, 10, 12, 8, 11, 11, 12, 7, 10, 11, 4, 13, 8, 11, 8],
+          "position": [9.38, 9.09, 8.74, 8.99, 9.25, 9.4, 8.8, 8.97, 9.29, 9.41, 8.69, 9.07, 9.07, 9.1, 9.11, 9.25, 9.1, 9.22, 9.03, 9.14]
+        },
+        {
+          "url": "https://www.example.com/booking-software/bowling-alleys/",
+          "title_before": "Online booking software for bowling alleys | Example Booking Software",
+          "clicks": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          "impressions": [10, 10, 14, 10, 4, 16, 20, 10, 7, 13, 15, 6, 16, 15, 9, 7, 6, 8, 8, 15],
+          "position": [11.45, 11.56, 11.27, 11.35, 11.28, 11.37, 11.26, 11.43, 11.29, 11.15, 11.23, 11.42, 11.38, 11.29, 11.37, 11.07, 11.12, 11.11, 11.34, 11.28]
+        },
+        {
+          "url": "https://www.example.com/booking-software/art-classes/",
+          "title_before": "Online booking software for art classes | Example Booking Software",
+          "clicks": [16, 27, 14, 26, 26, 19, 21, 18, 23, 28, 18, 26, 20, 11, 25, 26, 21, 16, 17, 22],
+          "impressions": [609, 573, 573, 541, 552, 520, 552, 528, 533, 517, 563, 610, 508, 439, 550, 568, 523, 478, 414, 466],
+          "position": [9.31, 9.51, 9.72, 9.52, 9.55, 9.32, 9.48, 9.6, 9.41, 10.01, 9.61, 9.62, 9.47, 9.74, 9.47, 9.76, 9.42, 9.68, 9.56, 9.24]
+        }
+      ]
+    },
+    "pull_2_site_clicks_by_week": [8304, 8202, 8272, 8474, 8201, 8484, 8239, 8272, 8510, 8335, 8111, 8224, 8272, 8278, 8529, 8079, 7806, 7562, 7264, 6955],
+    "pull_3_recrawl_check": {
+      "date": "2026-09-15",
+      "pages": [
+        {
+          "url": "https://www.example.com/booking-software/escape-rooms/",
+          "last_crawl_time": "2026-09-10"
+        },
+        {
+          "url": "https://www.example.com/booking-software/photographers/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/consultants/",
+          "last_crawl_time": "2026-09-12"
+        },
+        {
+          "url": "https://www.example.com/booking-software/music-teachers/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/chiropractors/",
+          "last_crawl_time": "2026-09-11"
+        },
+        {
+          "url": "https://www.example.com/booking-software/estheticians/",
+          "last_crawl_time": "2026-09-10"
+        },
+        {
+          "url": "https://www.example.com/booking-software/brow-bars/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/dental-practices/",
+          "last_crawl_time": "2026-09-11"
+        },
+        {
+          "url": "https://www.example.com/booking-software/bike-repair-shops/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/day-spas/",
+          "last_crawl_time": "2026-09-10"
+        },
+        {
+          "url": "https://www.example.com/booking-software/speech-therapists/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/tutors/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/pet-sitters/",
+          "last_crawl_time": "2026-09-10"
+        },
+        {
+          "url": "https://www.example.com/booking-software/tattoo-studios/",
+          "last_crawl_time": "2026-09-14"
+        },
+        {
+          "url": "https://www.example.com/booking-software/car-detailers/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/pilates-studios/",
+          "last_crawl_time": "2026-09-09"
+        },
+        {
+          "url": "https://www.example.com/booking-software/tour-operators/",
+          "last_crawl_time": "2026-09-12"
+        },
+        {
+          "url": "https://www.example.com/booking-software/barbershops/",
+          "last_crawl_time": "2026-08-30"
+        },
+        {
+          "url": "https://www.example.com/booking-software/martial-arts-schools/",
+          "last_crawl_time": "2026-09-11"
+        },
+        {
+          "url": "https://www.example.com/booking-software/med-spas/",
+          "last_crawl_time": "2026-09-10"
+        },
+        {
+          "url": "https://www.example.com/booking-software/optometrists/",
+          "last_crawl_time": "2026-08-30"
+        },
+        {
+          "url": "https://www.example.com/booking-software/massage-therapists/",
+          "last_crawl_time": "2026-09-09"
+        }
+      ]
+    },
+    "pull_3_inspection_at_read_out": [
+      {
+        "url": "https://www.example.com/booking-software/escape-rooms/",
+        "last_crawl_time": "2026-10-24T09:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/escape-rooms/",
+        "user_canonical": "https://www.example.com/booking-software/escape-rooms/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/photographers/",
+        "last_crawl_time": "2026-10-22T08:15:00Z",
+        "google_canonical": "https://www.example.com/booking-software/photographers/",
+        "user_canonical": "https://www.example.com/booking-software/photographers/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/consultants/",
+        "last_crawl_time": "2026-10-18T02:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/consultants/",
+        "user_canonical": "https://www.example.com/booking-software/consultants/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/music-teachers/",
+        "last_crawl_time": "2026-10-27T08:12:00Z",
+        "google_canonical": "https://www.example.com/booking-software/music-teachers/",
+        "user_canonical": "https://www.example.com/booking-software/music-teachers/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/chiropractors/",
+        "last_crawl_time": "2026-10-19T04:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/chiropractors/",
+        "user_canonical": "https://www.example.com/booking-software/chiropractors/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/estheticians/",
+        "last_crawl_time": "2026-10-16T08:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/estheticians/",
+        "user_canonical": "https://www.example.com/booking-software/estheticians/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/brow-bars/",
+        "last_crawl_time": "2026-10-19T08:13:00Z",
+        "google_canonical": "https://www.example.com/booking-software/brow-bars/",
+        "user_canonical": "https://www.example.com/booking-software/brow-bars/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/dental-practices/",
+        "last_crawl_time": "2026-10-17T03:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/dental-practices/",
+        "user_canonical": "https://www.example.com/booking-software/dental-practices/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/bike-repair-shops/",
+        "last_crawl_time": "2026-10-17T03:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/bike-repair-shops/",
+        "user_canonical": "https://www.example.com/booking-software/bike-repair-shops/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/day-spas/",
+        "last_crawl_time": "2026-10-21T01:15:00Z",
+        "google_canonical": "https://www.example.com/booking-software/day-spas/",
+        "user_canonical": "https://www.example.com/booking-software/day-spas/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/speech-therapists/",
+        "last_crawl_time": "2026-10-15T02:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/speech-therapists/",
+        "user_canonical": "https://www.example.com/booking-software/speech-therapists/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/tutors/",
+        "last_crawl_time": "2026-10-15T01:12:00Z",
+        "google_canonical": "https://www.example.com/booking-software/tutors/",
+        "user_canonical": "https://www.example.com/booking-software/tutors/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/pet-sitters/",
+        "last_crawl_time": "2026-10-15T01:12:00Z",
+        "google_canonical": "https://www.example.com/booking-software/pet-sitters/",
+        "user_canonical": "https://www.example.com/booking-software/pet-sitters/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/tattoo-studios/",
+        "last_crawl_time": "2026-10-20T07:15:00Z",
+        "google_canonical": "https://www.example.com/booking-software/tattoo-studios/",
+        "user_canonical": "https://www.example.com/booking-software/tattoo-studios/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/car-detailers/",
+        "last_crawl_time": "2026-10-15T07:13:00Z",
+        "google_canonical": "https://www.example.com/booking-software/car-detailers/",
+        "user_canonical": "https://www.example.com/booking-software/car-detailers/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/pilates-studios/",
+        "last_crawl_time": "2026-10-16T08:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/pilates-studios/",
+        "user_canonical": "https://www.example.com/booking-software/pilates-studios/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/tour-operators/",
+        "last_crawl_time": "2026-10-22T02:10:00Z",
+        "google_canonical": "https://www.example.com/booking-software/tour-operators/",
+        "user_canonical": "https://www.example.com/booking-software/tour-operators/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/barbershops/",
+        "last_crawl_time": "2026-10-25T08:11:00Z",
+        "google_canonical": "https://www.example.com/booking-software/barbershops/",
+        "user_canonical": "https://www.example.com/booking-software/barbershops/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/martial-arts-schools/",
+        "last_crawl_time": "2026-10-23T07:15:00Z",
+        "google_canonical": "https://www.example.com/booking-software/martial-arts-schools/",
+        "user_canonical": "https://www.example.com/booking-software/martial-arts-schools/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/med-spas/",
+        "last_crawl_time": "2026-10-23T07:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/med-spas/",
+        "user_canonical": "https://www.example.com/booking-software/med-spas/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/optometrists/",
+        "last_crawl_time": "2026-10-21T06:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/optometrists/",
+        "user_canonical": "https://www.example.com/booking-software/optometrists/",
+        "coverage_state": "Submitted and indexed"
+      },
+      {
+        "url": "https://www.example.com/booking-software/massage-therapists/",
+        "last_crawl_time": "2026-10-18T07:14:00Z",
+        "google_canonical": "https://www.example.com/booking-software/massage-therapists/",
+        "user_canonical": "https://www.example.com/booking-software/massage-therapists/",
+        "coverage_state": "Submitted and indexed"
+      }
+    ],
+    "pull_4_ga4_organic_by_landing_page": [
+      {
+        "landing_page": "/booking-software/salons/",
+        "baseline_sessions": 6377,
+        "baseline_key_events": 232,
+        "window_sessions": 2553,
+        "window_key_events": 72
+      },
+      {
+        "landing_page": "/booking-software/barbershops/",
+        "baseline_sessions": 281,
+        "baseline_key_events": 16,
+        "window_sessions": 118,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/nail-salons/",
+        "baseline_sessions": 572,
+        "baseline_key_events": 17,
+        "window_sessions": 237,
+        "window_key_events": 11
+      },
+      {
+        "landing_page": "/booking-software/day-spas/",
+        "baseline_sessions": 509,
+        "baseline_key_events": 6,
+        "window_sessions": 189,
+        "window_key_events": 6
+      },
+      {
+        "landing_page": "/booking-software/massage-therapists/",
+        "baseline_sessions": 83,
+        "baseline_key_events": 2,
+        "window_sessions": 47,
+        "window_key_events": 3
+      },
+      {
+        "landing_page": "/booking-software/physiotherapists/",
+        "baseline_sessions": 1016,
+        "baseline_key_events": 34,
+        "window_sessions": 378,
+        "window_key_events": 13
+      },
+      {
+        "landing_page": "/booking-software/chiropractors/",
+        "baseline_sessions": 812,
+        "baseline_key_events": 21,
+        "window_sessions": 349,
+        "window_key_events": 15
+      },
+      {
+        "landing_page": "/booking-software/dental-practices/",
+        "baseline_sessions": 659,
+        "baseline_key_events": 23,
+        "window_sessions": 248,
+        "window_key_events": 6
+      },
+      {
+        "landing_page": "/booking-software/optometrists/",
+        "baseline_sessions": 199,
+        "baseline_key_events": 8,
+        "window_sessions": 93,
+        "window_key_events": 4
+      },
+      {
+        "landing_page": "/booking-software/dog-groomers/",
+        "baseline_sessions": 867,
+        "baseline_key_events": 34,
+        "window_sessions": 324,
+        "window_key_events": 10
+      },
+      {
+        "landing_page": "/booking-software/pet-sitters/",
+        "baseline_sessions": 420,
+        "baseline_key_events": 15,
+        "window_sessions": 198,
+        "window_key_events": 6
+      },
+      {
+        "landing_page": "/booking-software/tattoo-studios/",
+        "baseline_sessions": 355,
+        "baseline_key_events": 11,
+        "window_sessions": 145,
+        "window_key_events": 6
+      },
+      {
+        "landing_page": "/booking-software/yoga-studios/",
+        "baseline_sessions": 312,
+        "baseline_key_events": 14,
+        "window_sessions": 117,
+        "window_key_events": 2
+      },
+      {
+        "landing_page": "/booking-software/pilates-studios/",
+        "baseline_sessions": 348,
+        "baseline_key_events": 10,
+        "window_sessions": 137,
+        "window_key_events": 4
+      },
+      {
+        "landing_page": "/booking-software/personal-trainers/",
+        "baseline_sessions": 176,
+        "baseline_key_events": 4,
+        "window_sessions": 62,
+        "window_key_events": 2
+      },
+      {
+        "landing_page": "/booking-software/dance-studios/",
+        "baseline_sessions": 142,
+        "baseline_key_events": 4,
+        "window_sessions": 50,
+        "window_key_events": 4
+      },
+      {
+        "landing_page": "/booking-software/music-teachers/",
+        "baseline_sessions": 874,
+        "baseline_key_events": 35,
+        "window_sessions": 384,
+        "window_key_events": 11
+      },
+      {
+        "landing_page": "/booking-software/tutors/",
+        "baseline_sessions": 438,
+        "baseline_key_events": 9,
+        "window_sessions": 172,
+        "window_key_events": 3
+      },
+      {
+        "landing_page": "/booking-software/driving-instructors/",
+        "baseline_sessions": 695,
+        "baseline_key_events": 25,
+        "window_sessions": 284,
+        "window_key_events": 13
+      },
+      {
+        "landing_page": "/booking-software/photographers/",
+        "baseline_sessions": 1018,
+        "baseline_key_events": 36,
+        "window_sessions": 359,
+        "window_key_events": 11
+      },
+      {
+        "landing_page": "/booking-software/makeup-artists/",
+        "baseline_sessions": 349,
+        "baseline_key_events": 7,
+        "window_sessions": 158,
+        "window_key_events": 2
+      },
+      {
+        "landing_page": "/booking-software/lash-technicians/",
+        "baseline_sessions": 484,
+        "baseline_key_events": 17,
+        "window_sessions": 203,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/estheticians/",
+        "baseline_sessions": 754,
+        "baseline_key_events": 25,
+        "window_sessions": 338,
+        "window_key_events": 12
+      },
+      {
+        "landing_page": "/booking-software/acupuncturists/",
+        "baseline_sessions": 261,
+        "baseline_key_events": 6,
+        "window_sessions": 71,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/counsellors/",
+        "baseline_sessions": 686,
+        "baseline_key_events": 14,
+        "window_sessions": 257,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/life-coaches/",
+        "baseline_sessions": 773,
+        "baseline_key_events": 28,
+        "window_sessions": 307,
+        "window_key_events": 10
+      },
+      {
+        "landing_page": "/booking-software/nutritionists/",
+        "baseline_sessions": 365,
+        "baseline_key_events": 14,
+        "window_sessions": 117,
+        "window_key_events": 3
+      },
+      {
+        "landing_page": "/booking-software/car-detailers/",
+        "baseline_sessions": 360,
+        "baseline_key_events": 11,
+        "window_sessions": 137,
+        "window_key_events": 3
+      },
+      {
+        "landing_page": "/booking-software/cleaning-services/",
+        "baseline_sessions": 288,
+        "baseline_key_events": 9,
+        "window_sessions": 95,
+        "window_key_events": 4
+      },
+      {
+        "landing_page": "/booking-software/handymen/",
+        "baseline_sessions": 934,
+        "baseline_key_events": 20,
+        "window_sessions": 347,
+        "window_key_events": 13
+      },
+      {
+        "landing_page": "/booking-software/escape-rooms/",
+        "baseline_sessions": 1302,
+        "baseline_key_events": 58,
+        "window_sessions": 569,
+        "window_key_events": 24
+      },
+      {
+        "landing_page": "/booking-software/golf-instructors/",
+        "baseline_sessions": 488,
+        "baseline_key_events": 14,
+        "window_sessions": 197,
+        "window_key_events": 5
+      },
+      {
+        "landing_page": "/booking-software/swim-schools/",
+        "baseline_sessions": 367,
+        "baseline_key_events": 6,
+        "window_sessions": 124,
+        "window_key_events": 2
+      },
+      {
+        "landing_page": "/booking-software/martial-arts-schools/",
+        "baseline_sessions": 214,
+        "baseline_key_events": 12,
+        "window_sessions": 91,
+        "window_key_events": 1
+      },
+      {
+        "landing_page": "/booking-software/climbing-gyms/",
+        "baseline_sessions": 418,
+        "baseline_key_events": 20,
+        "window_sessions": 152,
+        "window_key_events": 6
+      },
+      {
+        "landing_page": "/booking-software/piercing-studios/",
+        "baseline_sessions": 1068,
+        "baseline_key_events": 33,
+        "window_sessions": 420,
+        "window_key_events": 13
+      },
+      {
+        "landing_page": "/booking-software/brow-bars/",
+        "baseline_sessions": 678,
+        "baseline_key_events": 25,
+        "window_sessions": 265,
+        "window_key_events": 11
+      },
+      {
+        "landing_page": "/booking-software/med-spas/",
+        "baseline_sessions": 230,
+        "baseline_key_events": 7,
+        "window_sessions": 103,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/tanning-salons/",
+        "baseline_sessions": 668,
+        "baseline_key_events": 20,
+        "window_sessions": 225,
+        "window_key_events": 11
+      },
+      {
+        "landing_page": "/booking-software/consultants/",
+        "baseline_sessions": 907,
+        "baseline_key_events": 47,
+        "window_sessions": 378,
+        "window_key_events": 13
+      },
+      {
+        "landing_page": "/booking-software/tour-operators/",
+        "baseline_sessions": 351,
+        "baseline_key_events": 15,
+        "window_sessions": 175,
+        "window_key_events": 1
+      },
+      {
+        "landing_page": "/booking-software/bike-repair-shops/",
+        "baseline_sessions": 651,
+        "baseline_key_events": 21,
+        "window_sessions": 299,
+        "window_key_events": 5
+      },
+      {
+        "landing_page": "/booking-software/hair-removal-clinics/",
+        "baseline_sessions": 431,
+        "baseline_key_events": 12,
+        "window_sessions": 139,
+        "window_key_events": 7
+      },
+      {
+        "landing_page": "/booking-software/speech-therapists/",
+        "baseline_sessions": 448,
+        "baseline_key_events": 19,
+        "window_sessions": 182,
+        "window_key_events": 2
+      },
+      {
+        "landing_page": "/booking-software/notaries/",
+        "baseline_sessions": 2,
+        "baseline_key_events": 0,
+        "window_sessions": 3,
+        "window_key_events": 0
+      },
+      {
+        "landing_page": "/booking-software/bowling-alleys/",
+        "baseline_sessions": 0,
+        "baseline_key_events": 0,
+        "window_sessions": 1,
+        "window_key_events": 1
+      },
+      {
+        "landing_page": "/booking-software/art-classes/",
+        "baseline_sessions": 210,
+        "baseline_key_events": 6,
+        "window_sessions": 82,
+        "window_key_events": 4
+      }
+    ]
+  }
+}

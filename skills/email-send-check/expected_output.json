@@ -1,0 +1,306 @@
+{
+  "note": "Computed from sample_input.json, following SKILL.md's six checks.",
+  "header": {
+    "email": "Deposits launch, Starter upgrade",
+    "platform": "Klaviyo",
+    "status": "Draft",
+    "audience": {
+      "included": [
+        "All customers"
+      ],
+      "excluded": [
+        "Cancelled in last 90 days"
+      ],
+      "included_size": 4820,
+      "intended": [
+        "Starter plan customers"
+      ],
+      "intended_size": 2960
+    },
+    "send_time_utc": "2026-10-29T10:00:00+00:00",
+    "send_time_local": {
+      "America/New_York": {
+        "local_time": "Thu 2026-10-29 06:00",
+        "share_pct": 46,
+        "night": true
+      },
+      "America/Los_Angeles": {
+        "local_time": "Thu 2026-10-29 03:00",
+        "share_pct": 22,
+        "night": true
+      },
+      "Europe/London": {
+        "local_time": "Thu 2026-10-29 10:00",
+        "share_pct": 18,
+        "night": false
+      },
+      "America/Toronto": {
+        "local_time": "Thu 2026-10-29 06:00",
+        "share_pct": 14,
+        "night": true
+      }
+    },
+    "verdict": "Hold",
+    "counts": {
+      "blockers": 2,
+      "fixes": 8,
+      "notes": 5,
+      "unknowns": 2
+    }
+  },
+  "blockers": [
+    {
+      "check": "3. Personal-data tags",
+      "what": "The subject line uses {{ first_name }} with no fallback.",
+      "evidence": "Subject: \"{{ first_name }}, deposits are here\". A profile with no first name sees \", deposits are here\" in the inbox.",
+      "change": "Use \"{{ first_name|default:'Hi there' }}, deposits are here\", or drop the name from the subject.",
+      "id": "B1"
+    },
+    {
+      "check": "6. Audience",
+      "what": "The campaign goes to \"All customers\" (4,820 profiles), not \"Starter plan customers\" (2,960).",
+      "evidence": "get_campaign audiences.included = ['SgAllCu']; get_segment_report total_members: 4,820 and 2,960.",
+      "change": "Swap the included audience to \"Starter plan customers\" in Klaviyo. Otherwise up to 1,860 customers on Growth or Business get an upgrade offer for a plan they already have.",
+      "id": "B2"
+    }
+  ],
+  "fixes": [
+    {
+      "check": "1. Links",
+      "what": "\"How deposits work\" redirects from /features/payments/ to /features/deposits/ and the redirect drops utm_campaign, utm_medium, utm_source.",
+      "evidence": "status-code-checker: 301 https://www.example.com/features/payments/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610 then 200 https://www.example.com/features/deposits/.",
+      "change": "Link straight to https://www.example.com/features/deposits/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610.",
+      "id": "F1"
+    },
+    {
+      "check": "1. Links",
+      "what": "\"Write a deposit policy clients accept\" returns 404.",
+      "evidence": "status-code-checker on https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610: 404, no redirect.",
+      "change": "Point it at https://www.example.com/blog/deposit-policy/, which status-code-checker shows answering 200, keeping the agreed tags.",
+      "id": "F2"
+    },
+    {
+      "check": "2. Tracking tags",
+      "what": "\"Book a 15-minute walkthrough\" carries utm_source=Klaviyo, utm_medium=newsletter instead of the agreed values.",
+      "evidence": "source Klaviyo and medium newsletter both miss GA4's Email rule (email, e-mail, e_mail or e mail), so the visit lands outside Email; utm_source=Klaviyo differs only by case from the klaviyo GA4 already records, so it would split the reports; GA4 already shows 38 sessions as klaviyo / newsletter in Unassigned over the last 30 days.",
+      "change": "Use utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610.",
+      "id": "F3"
+    },
+    {
+      "check": "1. Landing pages",
+      "what": "/features/deposits/ takes 4.6 s to show its main content on a phone (LCP, lab test).",
+      "evidence": "core-web-vitals mobile: LCP 4620 ms, performance score 0.52.",
+      "change": "Speed the page up before the send, or point the link at a faster page that covers deposits.",
+      "id": "F4"
+    },
+    {
+      "check": "4. Build",
+      "what": "Image /email/deposits-hero.png (600 px wide) has no alt text.",
+      "evidence": "<img src=\"https://www.example.com/email/deposits-hero.png\" width=\"600\">",
+      "change": "Add alt=\"Deposits now in your booking page: clients pay when they book\".",
+      "id": "F5"
+    },
+    {
+      "check": "4. Build",
+      "what": "The template has no plain-text part.",
+      "evidence": "get_email_templates: text is null.",
+      "change": "Save the plain-text version below with the template, unless your Klaviyo setup generates it from the HTML; tell me which.",
+      "id": "F6"
+    },
+    {
+      "check": "4. Build",
+      "what": "The outer table is fixed at 640 px, wider than a 600 px email layout.",
+      "evidence": "<table ... width=\"640\">",
+      "change": "Set width=\"600\" and add style=\"max-width:600px;width:100%\" so it shrinks on a phone.",
+      "id": "F7"
+    },
+    {
+      "check": "6. Timing",
+      "what": "Fixed send at 10:00 UTC, not the 10:00 New York time asked for. It lands at America/New_York 06:00 (46%), America/Los_Angeles 03:00 (22%), America/Toronto 06:00 (14%).",
+      "evidence": "get_campaign send_strategy: static, is_local false, 2026-10-29T10:00:00+00:00.",
+      "change": "Set it to 14:00 UTC (10:00 New York), or turn on local-time sending at 10:00.",
+      "id": "F8"
+    }
+  ],
+  "link_table": [
+    {
+      "text": "See Growth plan pricing",
+      "link": "https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+      "status": 200,
+      "redirect_hops": 0,
+      "final_page": "https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+      "tags_kept": "yes",
+      "result": "pass",
+      "mobile_lcp_s": 2.1
+    },
+    {
+      "text": "How deposits work",
+      "link": "https://www.example.com/features/payments/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+      "status": 200,
+      "redirect_hops": 1,
+      "final_page": "https://www.example.com/features/deposits/",
+      "tags_kept": "no: lost utm_campaign, utm_medium, utm_source",
+      "result": "fix",
+      "mobile_lcp_s": 4.6
+    },
+    {
+      "text": "Write a deposit policy clients accept",
+      "link": "https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+      "status": 404,
+      "redirect_hops": 0,
+      "final_page": "https://www.example.com/blog/deposit-policy-template/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610",
+      "tags_kept": "n/a (404)",
+      "result": "fix",
+      "mobile_lcp_s": null
+    },
+    {
+      "text": "Book a 15-minute walkthrough",
+      "link": "https://www.example.com/demo?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610",
+      "status": 200,
+      "redirect_hops": 1,
+      "final_page": "https://www.example.com/demo/?utm_source=Klaviyo&utm_medium=newsletter&utm_campaign=deposits_launch_202610",
+      "tags_kept": "yes",
+      "result": "fix",
+      "mobile_lcp_s": 2.5
+    },
+    {
+      "text": "Follow us on LinkedIn",
+      "link": "https://www.linkedin.com/company/example-booking-software",
+      "status": 403,
+      "redirect_hops": 0,
+      "final_page": "https://www.linkedin.com/company/example-booking-software",
+      "result": "unknown",
+      "tags_kept": "not tagged (another site)",
+      "mobile_lcp_s": null
+    }
+  ],
+  "tags_table": [
+    {
+      "tag": "{{ first_name }}",
+      "where": "subject",
+      "fallback": "none",
+      "result": "blocker"
+    },
+    {
+      "tag": "{{ first_name|default:'there' }}",
+      "where": "body",
+      "fallback": "there",
+      "result": "pass"
+    },
+    {
+      "tag": "{{ organization.name }}",
+      "where": "body",
+      "fallback": "filled by the account",
+      "result": "pass"
+    },
+    {
+      "tag": "{{ organization.full_address }}",
+      "where": "body",
+      "fallback": "filled by the account",
+      "result": "pass"
+    }
+  ],
+  "passed": [
+    "All own-site links share one utm_campaign (deposits_launch_202610).",
+    "GA4's primary channel group is the default one; recorded Email pairs in the last 30 days: klaviyo / email.",
+    "Mobile LCP under 2.5 s on /pricing/, /demo/.",
+    "Every personal-data tag in the body has a fallback or is filled by the account.",
+    "2 of 3 images have suitable alt text (the 1 px spacer may have an empty one).",
+    "HTML is 2,193 bytes (2.1 KB), far under Gmail's 102 KB clipping point.",
+    "Preview text is set and differs from the subject.",
+    "Viewport meta tag is present.",
+    "Unsubscribe link present ({% unsubscribe %}), plus a preferences link.",
+    "Postal address tag present and the account has a street address on file (Boston, MA).",
+    "Exclusion in place: Cancelled in last 90 days (310 profiles)."
+  ],
+  "notes": [
+    "Klaviyo's own UTM tracking is off for this campaign, so the tags written on the links are the ones that count.",
+    "No color-scheme meta and no dark-mode styles: mail apps will invert the colours themselves. Check that the logo still reads on a dark background in a test send.",
+    "Klaviyo adds the one-click unsubscribe header itself.",
+    "Smart sending is on: anyone emailed in the last few hours is skipped, so delivered will be below the segment size.",
+    "Status is Draft: nothing goes out until someone schedules it."
+  ],
+  "unknowns": [
+    "\"Follow us on LinkedIn\" (https://www.linkedin.com/company/example-booking-software): the crawler got 403, which usually means the site blocks bots. Open it yourself before sending.",
+    "Sending domain: the Klaviyo API doesn't show whether a branded sending domain is set up. Check it in Klaviyo's domain settings."
+  ],
+  "not_checked": [
+    "How the email looks in Outlook, the Gmail apps and Apple Mail: described from the HTML, not rendered. Send a preview from Klaviyo to your own address after the fixes.",
+    "Link-extractor was not used: links were read from the template HTML."
+  ],
+  "offers_not_run": [
+    {
+      "what": "Save the corrected template (links F1 to F3, alt text, 600 px width) with its plain-text part",
+      "action": "update_email_template",
+      "status": "not run, waiting for your yes",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "update_email_template",
+        "template_id": "TmDep1",
+        "body": {
+          "data": {
+            "type": "template",
+            "id": "TmDep1",
+            "attributes": {
+              "html": "<!doctype html>\n<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Deposits are here</title></head>\n<body style=\"margin:0;background:#f4f5f7;\">\n<div style=\"display:none;max-height:0;overflow:hidden;\">Take a deposit when clients book, and cut no-shows.</div>\n<table role=\"presentation\" width=\"600\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;max-width:600px;width:100%;\">\n<tr><td style=\"padding:24px;\"><img src=\"https://www.example.com/email/logo.png\" width=\"160\" alt=\"Example Booking Software\"></td></tr>\n<tr><td><img src=\"https://www.example.com/email/deposits-hero.png\" width=\"600\" alt=\"Deposits now in your booking page: clients pay when they book\"></td></tr>\n<tr><td style=\"padding:24px;font-family:Arial,sans-serif;font-size:16px;color:#1d2433;\">\n<p>Hi {{ first_name|default:'there' }},</p>\n<p>Deposits are live. Ask clients for a deposit when they book, and the no-show that used to cost you an afternoon now pays for it.</p>\n<p>Deposits come with the Growth plan. Move up from Starter in two clicks and keep everything you have set up.</p>\n<p><a href=\"https://www.example.com/pricing/?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=deposits_launch_202610\" style=\"background:#2f6fed;color:#ffffff;padding:12px 20px;text-decoration:none;\">See Growth plan pricing</a></p>\n<p><a href=\"https://www.example.com/features/deposits/?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=deposits_launch_202610\">How deposits work</a></p>\n<p><a href=\"https://www.example.com/blog/deposit-policy/?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=deposits_launch_202610\">Write a deposit policy clients accept</a></p>\n<p><a href=\"https://www.example.com/demo/?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=deposits_launch_202610\">Book a 15-minute walkthrough</a></p>\n<img src=\"https://www.example.com/email/spacer.gif\" width=\"1\" height=\"1\" alt=\"\">\n</td></tr>\n<tr><td style=\"padding:24px;font-family:Arial,sans-serif;font-size:12px;color:#6b7280;\">\n<a href=\"https://www.linkedin.com/company/example-booking-software\">Follow us on LinkedIn</a><br>\n{{ organization.name }}, {{ organization.full_address }}<br>\n{% unsubscribe %} | {% manage_preferences %}\n</td></tr>\n</table></body></html>\n",
+              "text": "Hi {{ first_name|default:'there' }},\nDeposits are live. Ask clients for a deposit when they book, and the no-show that used to cost you an afternoon now pays for it.\nDeposits come with the Growth plan. Move up from Starter in two clicks and keep everything you have set up.\nSee Growth plan pricing (https://www.example.com/pricing/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610)\nHow deposits work (https://www.example.com/features/deposits/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610)\nWrite a deposit policy clients accept (https://www.example.com/blog/deposit-policy/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610)\nBook a 15-minute walkthrough (https://www.example.com/demo/?utm_source=klaviyo&utm_medium=email&utm_campaign=deposits_launch_202610)\nFollow us on LinkedIn (https://www.linkedin.com/company/example-booking-software)\n{{ organization.name }}, {{ organization.full_address }}\n{% unsubscribe %} | {% manage_preferences %}"
+            }
+          }
+        }
+      },
+      "html_bytes_after": 2299
+    },
+    {
+      "what": "Put the corrected template on this campaign's email",
+      "action": "assign_template_to_campaign_message",
+      "status": "not run, waiting for your yes",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "assign_template_to_campaign_message",
+        "body": {
+          "data": {
+            "type": "campaign-message",
+            "id": "01EXAMPLEMESSAGE00000000001",
+            "relationships": {
+              "template": {
+                "data": {
+                  "type": "template",
+                  "id": "TmDep1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "what": "Give the subject line its fallback (B1)",
+      "action": "update_campaign_message",
+      "status": "not run, waiting for your yes",
+      "payload": {
+        "platform": "klaviyo",
+        "action": "update_campaign_message",
+        "message_id": "01EXAMPLEMESSAGE00000000001",
+        "body": {
+          "data": {
+            "type": "campaign-message",
+            "id": "01EXAMPLEMESSAGE00000000001",
+            "attributes": {
+              "definition": {
+                "channel": "email",
+                "content": {
+                  "subject": "{{ first_name|default:'Hi there' }}, deposits are here"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "what": "Audience (B2) and send time (F8)",
+      "action": null,
+      "status": "change these in Klaviyo yourself: this skill never changes audiences or schedules"
+    }
+  ]
+}

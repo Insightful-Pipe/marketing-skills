@@ -1,0 +1,154 @@
+{
+  "header": {
+    "property": "Example Booking Software",
+    "property_id": "123456789",
+    "time_zone": "America/New_York",
+    "currency": "USD",
+    "date_range": "2026-09-27 to 2026-10-26",
+    "sessions": 21550,
+    "engaged_sessions": 12345,
+    "engagement_rate_pct": 57.3,
+    "key_events": 1242,
+    "grade": 80,
+    "rating": "needs work"
+  },
+  "scorecard": [
+    {
+      "area": "Property settings",
+      "result": "pass",
+      "key_number": "1 Google Ads link, no BigQuery export",
+      "why": "Time zone America/New_York and currency USD match the business. Google Ads customer id 123-456-7890 is linked; confirm it is yours. Raw events are not exported to BigQuery, so GA4 is the only copy."
+    },
+    {
+      "area": "Streams and tag coverage",
+      "result": "warn",
+      "key_number": "7,950 GA4 Google organic sessions vs 11,126 Search Console clicks (71.5%), 2026-09-27 to 2026-10-25",
+      "why": "From 2026-09-27 to 2026-10-25 (Search Console's last day), GA4 recorded 71.5% of the visits Google sent, under the 80% line. The Google tag for G-AB12CD34EF fires on all pages in Tag Manager. 1 of 2 web streams ('Staging - do not use') sent no events, and the tag 'GA4 event - chat_open' has no firing trigger. Hostnames are clean."
+    },
+    {
+      "area": "Retention and privacy",
+      "result": "warn",
+      "key_number": "event data kept two months",
+      "why": "Explorations and funnels can only look back two months. Reset on new activity is on; ads personalisation is on for 1 of 1 Google Ads link."
+    },
+    {
+      "area": "Key events",
+      "result": "warn",
+      "key_number": "1,242 key events from 21,550 sessions",
+      "why": "3 of 4 key events fire. book_demo counts every submit (412 events from 361 users), and test_signup_20260612 is a test event that never fired."
+    },
+    {
+      "area": "Event coverage",
+      "result": "pass",
+      "key_number": "14 event names, 3 business events",
+      "why": "Automatic events all fire, and scroll, click, view_search_results, file_download, form_start show from enhanced measurement. sign_up, book_demo and generate_lead fire. Custom event names are lowercase and say what they record."
+    },
+    {
+      "area": "Custom definitions",
+      "result": "pass",
+      "key_number": "8 of 9 receive values",
+      "why": "7 custom dimensions and 2 custom metrics; only promo_code got no values in 30 days. No test definitions, no copies of built-ins, well inside the quotas."
+    },
+    {
+      "area": "Attribution quality",
+      "result": "warn",
+      "key_number": "Unassigned 6.4% of sessions, accounts.google.com 1.8%",
+      "why": "1,380 sessions are Unassigned because their medium is one GA4 doesn't recognise (klaviyo / newsletter 980, app-marketplace.example / marketplace 260, salon-podcast.example / podcast 140). accounts.google.com takes credit for 68 key events (5.5%) from visitors who sign up with Google. No (not set) or self-referral sessions inside the window."
+    },
+    {
+      "area": "Traffic quality",
+      "result": "pass",
+      "key_number": "0 bot-like countries, 0 spikes",
+      "why": "No country with 10 or more sessions is under 10% engaged and under 2 seconds. The busiest day from 2026-10-13 to 2026-10-27 had 899 sessions against a median of 812. The internal traffic filter can't be read through the API (see unknowns)."
+    }
+  ],
+  "grade_math": "100 - 12 x 0 fails - 5 x 4 warns = 80",
+  "top_5_fixes": [
+    {
+      "rank": 1,
+      "fix": "Find out why GA4 misses about 3 in 10 Google visits",
+      "what_it_fixes": "every report: 7,950 Google organic sessions recorded against 11,126 Google clicks, 3,176 visits short, 2026-09-27 to 2026-10-25",
+      "evidence": "search_analytics: 11,126 clicks over 29 days, 2026-09-27 to 2026-10-25 (the last day it returns); get_report sessionSource/sessionMedium for the same dates: google / organic = 7,950 sessions",
+      "next_step": "Check whether the consent banner defaults analytics to denied and how many visitors accept, and whether the Google tag loads on every page template, including the blog and the industry pages. A consent choice is the visitor's; if that is the cause, accept lower counts or rely on modelled data rather than bypassing it.",
+      "who": "the site code and consent banner"
+    },
+    {
+      "rank": 2,
+      "fix": "Tag email, marketplace and podcast links with mediums GA4 recognises",
+      "what_it_fixes": "1,380 Unassigned sessions (6.4%) and their 36 key events",
+      "evidence": "get_report sessionDefaultChannelGroup: Unassigned 1,380 of 21,550 sessions; sessionSource/sessionMedium: klaviyo / newsletter 980, app-marketplace.example / marketplace 260, salon-podcast.example / podcast 140",
+      "next_step": "Change the Klaviyo newsletter template to utm_medium=email, and tag the marketplace listing and podcast links with utm_medium=referral. Old links keep their tags, so fix them at the source.",
+      "who": "Klaviyo and the link owners; utm-auditor can list every broken tag"
+    },
+    {
+      "rank": 3,
+      "fix": "Count book_demo once per session",
+      "what_it_fixes": "412 book_demo key events (33.2% of all key events), up to 51 of them repeats",
+      "evidence": "list_key_events: book_demo countingMethod ONCE_PER_EVENT; get_report eventName: book_demo 412 events from 361 users",
+      "next_step": "Switch book_demo to ONCE_PER_SESSION, and update any Google Ads conversion imported from it.",
+      "who": "I can do this now (update_key_event)"
+    },
+    {
+      "rank": 4,
+      "fix": "List accounts.google.com as an unwanted referral",
+      "what_it_fixes": "390 sessions and 68 key events credited to a sign-in page",
+      "evidence": "get_report sessionSource/sessionMedium: accounts.google.com / referral 390 sessions, 68 key events; pageReferrer: 1,170 events referred by https://accounts.google.com/",
+      "next_step": "Add accounts.google.com to the web stream's unwanted referrals, so visitors who sign up with Google keep the source that brought them.",
+      "who": "do this in GA4 Admin (data stream > Configure tag settings > List unwanted referrals)"
+    },
+    {
+      "rank": 5,
+      "fix": "Raise event data retention to 14 months",
+      "what_it_fixes": "explorations and funnels limited to two months of history",
+      "evidence": "get_data_retention_settings: eventDataRetention TWO_MONTHS",
+      "next_step": "After a yes, set event_data_retention to FOURTEEN_MONTHS with update_data_retention_settings, then re-read it. If actions_details does not return that action for this connection, set it in GA4 Admin > Data collection and modification > Data retention. It is not retroactive.",
+      "who": "I can do this now (update_data_retention_settings) when the connection allows it; otherwise do this in GA4 Admin"
+    }
+  ],
+  "everything_else": {
+    "Streams and tag coverage": [
+      "Delete the test stream with no data: Staging - do not use (https://staging.example.com).",
+      "Give 'GA4 event - chat_open' a firing trigger or remove it; chat_open never fired in the window."
+    ],
+    "Key events": [
+      "Delete the test key event test_signup_20260612 in GA4 Admin; it never fired and pollutes conversion reports."
+    ],
+    "Event coverage": [
+      "Enhanced measurement is on for video_start but none fired in 21,550 sessions; the site may have no embedded videos, so this is information only."
+    ],
+    "Custom definitions": [
+      "Archive promo_code, which received no values in 30 days, or start sending it with the sign-up event."
+    ],
+    "Property settings": [
+      "Ads personalisation is on for 1 of 1 Google Ads link; check that matches the consent banner.",
+      "Consider a BigQuery link if you want raw events kept beyond GA4's retention."
+    ]
+  },
+  "unknowns": [
+    {
+      "check": "Internal traffic filter",
+      "why": "The API cannot read active data filters. No filter is in testing state (testDataFilterName is (not set) on every event). Confirm in GA4 Admin > Data filters that an internal traffic filter exists and is Active."
+    }
+  ],
+  "fixes_offered": [
+    {
+      "action": "update_key_event",
+      "change": "counting_method ONCE_PER_SESSION on book_demo (key_event_id 900000002)",
+      "status": "offered, waiting for a yes"
+    }
+  ],
+  "go_deeper": [
+    {
+      "area": "UTM tagging behind the Unassigned traffic",
+      "skill": "utm-auditor"
+    },
+    {
+      "area": "Conversion tracking across ad platforms",
+      "skill": "conversion-tracking-auditor"
+    },
+    {
+      "area": "Weekly GA4 reporting once the data is clean",
+      "skill": "ga4-weekly-report"
+    }
+  ]
+}

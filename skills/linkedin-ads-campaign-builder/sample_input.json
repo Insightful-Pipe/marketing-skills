@@ -1,0 +1,469 @@
+{
+  "note": "Example data: an invented online booking software company with invented accounts, not a real business. Every number in expected_output.json follows from this input. Nothing was created: every payload in expected_output.json is a draft marked \"not run\".",
+  "request": "Hey Claude, I just added the \"linkedin-ads-campaign-builder\" skill. Build a LinkedIn campaign that sends US clinic owners and practice managers at clinics with 2 to 50 staff to our clinics page. $60 a day for 30 days from Monday, website visits. Write the intro text and headlines too.",
+  "account": {
+    "name": "Example Booking Software",
+    "id": "500000001",
+    "currency": "USD",
+    "organization": "urn:li:organization:10000001"
+  },
+  "brief": {
+    "offer": "online booking, reminders and deposits for clinics (Example Booking Software)",
+    "audience": "US clinic owners, partners and practice managers at clinics with 2 to 50 staff",
+    "goal": "website visits",
+    "landing_page": "https://www.example.com/industries/clinics/",
+    "daily_budget": 60,
+    "days": 30,
+    "start": "2026-11-02",
+    "end": "2026-12-02",
+    "structure": "one campaign",
+    "facts_allowed": {
+      "F1": "Patients book online 24/7 from your booking page or your website.",
+      "F2": "Automatic SMS and email reminders go out before every appointment.",
+      "F3": "Take a deposit or the full payment when the patient books.",
+      "F4": "Two-way calendar sync keeps every practitioner's calendar up to date.",
+      "F5": "Each practitioner gets their own calendar and booking link.",
+      "F6": "The Business plan covers up to 20 staff for $99 a month."
+    },
+    "image": "not given yet, so the image upload is drafted with a placeholder"
+  },
+  "run_date": "2026-10-28",
+  "history_dates": "2025-10-28 to 2026-10-27",
+  "data_pulled": [
+    "get_accounts (kept the 1 matching row)",
+    "get_campaign_groups (6)",
+    "get_campaigns (8)",
+    "get_creatives (15, with review status)",
+    "get_conversions (2)",
+    "get_lead_forms (2)",
+    "get_analytics by CAMPAIGN (4 campaigns with spend)",
+    "get_analytics by PLACEMENT_NAME (3 placements)",
+    "get_budget_pricing CPC and CPM on the draft targeting",
+    "crawler status-code-checker on the landing page"
+  ],
+  "reads": {
+    "get_accounts": {
+      "id": "500000001",
+      "name": "Example Booking Software",
+      "currency": "USD",
+      "status": "ACTIVE",
+      "servingStatuses": [
+        "RUNNABLE"
+      ],
+      "reference": "urn:li:organization:10000001",
+      "type": "BUSINESS"
+    },
+    "get_campaign_groups": [
+      {
+        "id": "620000011",
+        "name": "Clinics - Demo requests - 2026-03",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "620000012",
+        "name": "Salons - Website visits - 2026-06",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "620000013",
+        "name": "Fitness - Trial sign-ups - 2026-08",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "620000014",
+        "name": "Retargeting - Demo - 2026-09",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "620000015",
+        "name": "New Campaign Group",
+        "status": "DRAFT"
+      },
+      {
+        "id": "620000016",
+        "name": "ZZ test group",
+        "status": "ARCHIVED"
+      }
+    ],
+    "get_campaigns": [
+      {
+        "id": "630000101",
+        "group": "620000011",
+        "name": "Clinics | Demo requests | US practice managers | 2026-03",
+        "objectiveType": "WEBSITE_CONVERSION",
+        "status": "PAUSED",
+        "offsiteDeliveryEnabled": false,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ],
+          "industries": [
+            "urn:li:industry:13",
+            "urn:li:industry:124",
+            "urn:li:industry:125"
+          ],
+          "titles": [
+            "urn:li:title:2101",
+            "urn:li:title:2102"
+          ],
+          "skills": [
+            "urn:li:skill:5101",
+            "urn:li:skill:5102"
+          ],
+          "staffCountRanges": [
+            "urn:li:staffCountRange:(2,10)",
+            "urn:li:staffCountRange:(11,50)"
+          ],
+          "exclude.employers": [
+            "urn:li:organization:10000001"
+          ]
+        }
+      },
+      {
+        "id": "630000102",
+        "group": "620000012",
+        "name": "Salons | Website visits | US salon owners | 2026-06",
+        "objectiveType": "WEBSITE_VISIT",
+        "status": "PAUSED",
+        "offsiteDeliveryEnabled": true,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ],
+          "industries": [
+            "urn:li:industry:91"
+          ],
+          "seniorities": [
+            "urn:li:seniority:9",
+            "urn:li:seniority:10"
+          ],
+          "exclude.employers": [
+            "urn:li:organization:10000001"
+          ]
+        }
+      },
+      {
+        "id": "630000103",
+        "group": "620000013",
+        "name": "Fitness | Trial sign-ups | US studio owners | 2026-08",
+        "objectiveType": "WEBSITE_CONVERSION",
+        "status": "ACTIVE",
+        "offsiteDeliveryEnabled": false,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ],
+          "industries": [
+            "urn:li:industry:124"
+          ],
+          "seniorities": [
+            "urn:li:seniority:9",
+            "urn:li:seniority:10"
+          ],
+          "exclude.employers": [
+            "urn:li:organization:10000001"
+          ]
+        }
+      },
+      {
+        "id": "630000104",
+        "group": "620000014",
+        "name": "Retargeting | Site visitors 90d | Demo | 2026-09",
+        "objectiveType": "WEBSITE_CONVERSION",
+        "status": "ACTIVE",
+        "offsiteDeliveryEnabled": false,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ],
+          "audienceMatchingSegments": [
+            "urn:li:adSegment:930001"
+          ],
+          "exclude.employers": [
+            "urn:li:organization:10000001"
+          ]
+        }
+      },
+      {
+        "id": "630000105",
+        "group": "620000015",
+        "name": "Website visits - Feb 9, 2026",
+        "objectiveType": "WEBSITE_VISIT",
+        "status": "DRAFT",
+        "offsiteDeliveryEnabled": true,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ]
+        }
+      },
+      {
+        "id": "630000106",
+        "group": "620000015",
+        "name": "Lead generation - Apr 20, 2026",
+        "objectiveType": "LEAD_GENERATION",
+        "status": "DRAFT",
+        "offsiteDeliveryEnabled": false,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ]
+        }
+      },
+      {
+        "id": "630000107",
+        "group": "620000016",
+        "name": "ZZTEST pricing check",
+        "objectiveType": "WEBSITE_VISIT",
+        "status": "ARCHIVED",
+        "offsiteDeliveryEnabled": true,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ]
+        }
+      },
+      {
+        "id": "630000108",
+        "group": "620000016",
+        "name": "Campaign test - delete me",
+        "objectiveType": "WEBSITE_VISIT",
+        "status": "ARCHIVED",
+        "offsiteDeliveryEnabled": true,
+        "targeting_facets": {
+          "locations": [
+            "urn:li:geo:103644278"
+          ]
+        }
+      }
+    ],
+    "get_creatives": [
+      {
+        "name": "Clinics | Intro A",
+        "campaign": "630000101",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Clinics | Intro B",
+        "campaign": "630000101",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Clinics | Intro C",
+        "campaign": "630000101",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Salons | Intro A",
+        "campaign": "630000102",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Salons | Intro B",
+        "campaign": "630000102",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Salons | Intro C",
+        "campaign": "630000102",
+        "review_status": "REJECTED",
+        "rejection_reasons": [
+          "MISSING_URL_FOR_WEBSITE_OBJECTIVE"
+        ]
+      },
+      {
+        "name": "Fitness | Intro A",
+        "campaign": "630000103",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Fitness | Intro B",
+        "campaign": "630000103",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Fitness | Intro C",
+        "campaign": "630000103",
+        "review_status": "NEEDS_REVIEW",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Retargeting | Demo A",
+        "campaign": "630000104",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "Retargeting | Demo B",
+        "campaign": "630000104",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      },
+      {
+        "name": "",
+        "campaign": "630000105",
+        "review_status": "REJECTED",
+        "rejection_reasons": [
+          "MISSING_URL_FOR_WEBSITE_OBJECTIVE"
+        ]
+      },
+      {
+        "name": "",
+        "campaign": "630000105",
+        "review_status": "REJECTED",
+        "rejection_reasons": [
+          "MISSING_URL_FOR_WEBSITE_OBJECTIVE"
+        ]
+      },
+      {
+        "name": "test creative",
+        "campaign": "630000107",
+        "review_status": "REJECTED",
+        "rejection_reasons": [
+          "TEST_ADS"
+        ]
+      },
+      {
+        "name": "ZZ debug image",
+        "campaign": "630000108",
+        "review_status": "APPROVED",
+        "rejection_reasons": []
+      }
+    ],
+    "get_conversions": [
+      {
+        "id": "640000001",
+        "name": "Demo booked",
+        "type": "BOOK_APPOINTMENT",
+        "conversionMethod": "INSIGHT_TAG_URL_MATCH_RULES",
+        "enabled": true,
+        "campaigns": [
+          "630000101",
+          "630000104"
+        ]
+      },
+      {
+        "id": "640000002",
+        "name": "Trial started",
+        "type": "SIGN_UP",
+        "conversionMethod": "INSIGHT_TAG_URL_MATCH_RULES",
+        "enabled": true,
+        "campaigns": [
+          "630000103"
+        ]
+      }
+    ],
+    "get_lead_forms": [
+      {
+        "id": "650000001",
+        "name": "Clinic front desk checklist",
+        "state": "PUBLISHED"
+      },
+      {
+        "id": "650000002",
+        "name": "test form",
+        "state": "DRAFT"
+      }
+    ],
+    "get_analytics_by_campaign": {
+      "630000101": {
+        "impressions": 61200,
+        "clicks": 412,
+        "landingPageClicks": 398,
+        "costInUsd": "4860.40",
+        "externalWebsiteConversions": 29,
+        "oneClickLeads": 0,
+        "videoViews": 0
+      },
+      "630000102": {
+        "impressions": 118400,
+        "clicks": 1630,
+        "landingPageClicks": 1512,
+        "costInUsd": "2140.00",
+        "externalWebsiteConversions": 0,
+        "oneClickLeads": 0,
+        "videoViews": 0
+      },
+      "630000103": {
+        "impressions": 38900,
+        "clicks": 301,
+        "landingPageClicks": 288,
+        "costInUsd": "3275.60",
+        "externalWebsiteConversions": 18,
+        "oneClickLeads": 0,
+        "videoViews": 0
+      },
+      "630000104": {
+        "impressions": 14300,
+        "clicks": 156,
+        "landingPageClicks": 149,
+        "costInUsd": "980.20",
+        "externalWebsiteConversions": 11,
+        "oneClickLeads": 0,
+        "videoViews": 0
+      }
+    },
+    "get_analytics_by_placement": {
+      "LINKEDIN": {
+        "impressions": 147600,
+        "clicks": 1105,
+        "costInUsd": "9843.80"
+      },
+      "OFFSITE": {
+        "impressions": 79100,
+        "clicks": 1288,
+        "costInUsd": "1308.50"
+      },
+      "OFFSITE_IN_STREAM": {
+        "impressions": 6100,
+        "clicks": 106,
+        "costInUsd": "103.90"
+      }
+    },
+    "get_budget_pricing": {
+      "CPC": {
+        "suggestedBid": {
+          "min": "9.20",
+          "default": "13.60",
+          "max": "21.40"
+        },
+        "bidLimits": {
+          "min": "2.00",
+          "max": "200.00"
+        },
+        "dailyBudgetLimits": {
+          "min": "10.00",
+          "max": "100000.00"
+        }
+      },
+      "CPM": {
+        "suggestedBid": {
+          "min": "64.00",
+          "default": "96.00",
+          "max": "152.00"
+        },
+        "bidLimits": {
+          "min": "2.00",
+          "max": "200.00"
+        },
+        "dailyBudgetLimits": {
+          "min": "10.00",
+          "max": "100000.00"
+        }
+      }
+    },
+    "status_code_checker": {
+      "url": "https://www.example.com/industries/clinics/",
+      "status_code": 200,
+      "redirects": 0,
+      "final_url": "https://www.example.com/industries/clinics/"
+    }
+  }
+}
