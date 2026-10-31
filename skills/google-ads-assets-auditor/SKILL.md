@@ -199,7 +199,7 @@ How to read the numbers:
 
 **Dead or slow links.** Collect every unique final URL from the sitelinks, price offerings and promotions. Run each through `query_data` with `platform="crawler"` and `action="status-code-checker"` and the `url`. Read `status_code` (the status of the last page reached), `redirect_count` and `final_url`:
 - a 4xx or 5xx status is **dead**: the sitelink spends clicks on an error page;
-- a `redirect_count` of 2 or more is a **redirect chain**: it works but is slow, and one hop can break. A single hop (http to https, or an added slash) is fine;
+- a `redirect_count` of 2 or more is a **redirect chain**: it works but is slow, and one hop can break. A single hop (to the secure version of the page, or an added slash) is fine;
 - a redirect that ends on the home page usually means the page was removed: treat it as dead unless the home page is the intended target.
 
 Check every page a drafted sitelink or price offering in step 6 will open the same way, before the draft is shown.

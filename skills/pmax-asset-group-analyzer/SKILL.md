@@ -337,8 +337,8 @@ Also run the conversion action query from section 1 and the audience and user li
 |---|---|---|
 | R1 | Tracking | pass with at least one enabled counted conversion action, fail with none |
 | R2 | Volume | the chosen offer's Search campaign had 30 or more conversions in the window (warn 15 to 29, fail under 15) |
-| R3 | Values | pass when the offer's conversion value is above 0. Warn when it is 0: the draft must then bid on conversions, not value |
-| R4 | Brand | warn when a brand Search campaign exists: brand exclusions must go on the PMax campaign before it goes live (a Google Ads step). Pass when there is none |
+| R3 | Values | passes if the offer's conversion value is above 0. Warn when it is 0: the draft must then bid on conversions, not value |
+| R4 | Brand | warn when a brand Search campaign exists: brand exclusions must go on the PMax campaign before it goes live (a Google Ads step). Passes if there is none |
 | R5 | Images | count usable images by ratio (within 1%): 1.91:1 at 600×314 or larger, 1:1 at 300×300 or larger, 4:5 at 480×600 or larger. A 1:1 image at 128×128 or larger can be the logo; the API doesn't label logos, so ask which one. No landscape image or no logo candidate is a fail; under the "aim for" counts in section 3 is a warn |
 | R6 | Signals | pass with at least one customer or site-visitor list of 1,000 or more members (`size_for_search` or `size_for_display`). Warn when lists are smaller or missing; demographic-only audiences don't count. Never a blocker: the draft can start on search themes |
 | R7 | Geography | the Search campaign's positive locations. A region or city needs a follow-up step, because the create action takes country codes only. Report it as **follow-up needed**, not a fail |
