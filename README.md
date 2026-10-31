@@ -21,9 +21,11 @@ Each folder in [`skills/`](skills/) holds:
 /plugin install marketing-skills@insightfulpipe
 ```
 
-### Claude Code: one skill
+Claude Code keeps its list of skill descriptions within a size limit, so with every skill installed Claude sees the names of all of them but the full description of only some. A skill may then not start by itself from a plain request: call it by name (for example `/google-ads-account-audit`), or install just the skills you need, below.
 
-Copy a folder from [`skills/`](skills/) to `~/.claude/skills/` to use it in every project, or to `.claude/skills/` inside one project.
+### Claude Code: the skills you need
+
+Copy the folders you want from [`skills/`](skills/) to `~/.claude/skills/` to use them in every project, or to `.claude/skills/` inside one project. With fewer skills installed, Claude sees each one's full description and picks the right one from a plain request.
 
 ### Claude.ai and Claude Desktop
 
