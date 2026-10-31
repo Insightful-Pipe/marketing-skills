@@ -1,6 +1,6 @@
 ---
 name: customer-segmentation-rfm
-description: Runs an RFM analysis on a store's order history and turns it into email list segmentation. Scores every buyer on recency, frequency and monetary value with cut-offs from the store's own customers, names the segments (best customers, big spenders gone quiet, loyal, new, slipping, dormant and more), sizes each one's share of revenue, adds engagement tiers for subscribers who never bought, checks how each segment responds to email, and sets each segment's message, offer rule and sending frequency. Works from a pasted or uploaded orders export, or pulls orders from Shopify, WooCommerce, Magento, BigQuery or Google Sheets and email activity from Klaviyo or Mailchimp through the InsightfulPipe MCP. Use when someone asks for RFM analysis, RFM segmentation, customer segments, email list segmentation, who their best or lapsed buyers are, or how often to email each group. After the user confirms, it writes each segment to a static Klaviyo list or a Mailchimp segment, and hands over a customer-list CSV for ad audiences.
+description: Scores every buyer by RFM from Shopify, WooCommerce, Magento, BigQuery or CSV orders, names segments with revenue shares, and sets each segment's offer and email frequency. Use when asked for RFM analysis, customer segments, email list segmentation or who the best buyers are.
 ---
 
 # RFM and Customer Segment Builder

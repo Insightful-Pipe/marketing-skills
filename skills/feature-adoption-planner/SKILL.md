@@ -1,6 +1,6 @@
 ---
 name: feature-adoption-planner
-description: Plans feature adoption campaigns for existing users of a software product. Measures each feature's 28-day adoption rate from product events (an upload, BigQuery, or GA4), checks whether people who tried it kept using it, compares how many new adopters stayed active against matched non-users, and only then picks the features worth promoting. For each one it plans the in-app prompt, email and changelog entry, sets a target from the account's own last feature push, holds out a control group and dates two read-outs. Use when someone asks how to increase feature adoption, which features to announce or push, why customers don't use a feature, or wants a product adoption strategy or user adoption plan. Drafts Klaviyo or Mailchimp emails only after the user confirms, and never sends them.
+description: Plans feature adoption campaigns for existing software users. Measures 28-day adoption and retention lift from product events, BigQuery or GA4, and plans the in-app prompt, email and holdout. Use when asked how to increase feature adoption, which features to announce, or why users ignore a feature.
 ---
 
 # Feature Adoption Planner

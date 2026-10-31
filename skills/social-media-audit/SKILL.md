@@ -1,6 +1,6 @@
 ---
 name: social-media-audit
-description: Runs a social media audit across every profile a brand runs, in one pass. Pulls Facebook Pages, Instagram, LinkedIn Pages, TikTok, X, Pinterest and YouTube through the InsightfulPipe MCP, plus GA4 social traffic, or works from profile URLs and exported stats. Grades six areas per network (account inventory and profile setup, posting cadence and gaps, engagement against follower-tier thresholds, follower growth, public comment response time, and the traffic and key events each network sends), scores the whole presence out of 100 and ends with a fix list ranked by impact and effort. Use when someone asks for a social media audit, a social audit template filled in, a health check of their social accounts, or is taking over a brand's social channels. Reads only and changes nothing.
+description: Audits every social profile a brand runs on Facebook, Instagram, LinkedIn, TikTok, X, Pinterest and YouTube plus GA4 social traffic. Grades setup, cadence, engagement, growth and reply time, scores out of 100 and ranks fixes. Use when asked for a social media audit or a social account health check.
 ---
 
 # Social Media Audit

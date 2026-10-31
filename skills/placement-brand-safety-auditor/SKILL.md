@@ -1,6 +1,6 @@
 ---
 name: placement-brand-safety-auditor
-description: Audits where ads ran outside the main feeds (TikTok Ad Network, formerly Pangle; Microsoft Audience Network; LinkedIn Audience Network; and any DSP's domain and app report) and builds the block lists and inventory settings for each platform. Finds placements that spend with nothing back, apps that draw accidental taps, sites that look made for advertising, and content the brand must not appear next to, using stated spend, click and CTR thresholds and, when the ad URLs carry the placement, GA4 visit quality. Works from pasted exports; with the InsightfulPipe MCP it also pulls the network splits and settings itself. Use when someone asks about brand safety, ad placement quality, Pangle or TikTok Ad Network waste, Microsoft or LinkedIn Audience Network results, a placement exclusion or block list, or junk clicks from apps. Offers to update the TikTok Ad Network block list, set Microsoft site exclusions or turn LinkedIn Audience Network off, only after the user confirms.
+description: Audits ads served outside the main feed on TikTok Ad Network (Pangle), Microsoft Audience Network, LinkedIn Audience Network and DSPs, flagging junk apps, accidental taps and unsafe sites, and builds block lists. Use for brand safety, a placement exclusion list or junk clicks from apps.
 ---
 
 # Ad Placement and Brand Safety Auditor

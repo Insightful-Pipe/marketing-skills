@@ -1,6 +1,6 @@
 ---
 name: reviews-and-comments-responder
-description: Finds every review, comment and mention that still needs an answer and drafts short replies in your brand voice. Reads Google Business Profile reviews, Facebook Page, Instagram and Meta ad comments, X mentions, YouTube comments, LinkedIn Page comments and Google Play and App Store reviews live through the InsightfulPipe MCP, or works from what you paste (TikTok ad comments are always pasted; X and LinkedIn reads untested). Sorts everything by urgency and sentiment, picks YouTube comments to pin or heart, groups app review bug reports by app version, and moderates Meta ad comments with a buyer doubts report ranked by ad spend. Use for an unanswered reviews queue, help replying to reviews, comments or YouTube comments, how to respond to App Store or Google Play reviews, X (Twitter) mentions management, Facebook ad comment moderation, hiding spam on ads, or what buyers doubt in their ad comments. Posts a reply or hides a comment only after the user approves that item; app store replies are pasted by the user.
+description: Drafts replies to unanswered Google reviews, Facebook, Instagram, YouTube, LinkedIn and Meta ad comments, X mentions and App Store and Google Play reviews, ranked by urgency, and flags spam. Use when asked to reply to reviews or comments, for an unanswered reviews queue, or to moderate ad comments.
 ---
 
 # Reviews and Comments Responder

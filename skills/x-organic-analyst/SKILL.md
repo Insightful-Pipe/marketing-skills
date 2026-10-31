@@ -1,6 +1,6 @@
 ---
 name: x-organic-analyst
-description: Analyses an X (Twitter) account's own organic posts, replies and audience, from the X analytics CSV export or pasted posts, or live through the InsightfulPipe X Organic MCP. Measures impressions, engagements, profile clicks, link clicks and the follower trend by format (text, link, image, video, thread, quote, reply), topic and posting hour, compares every post with the account's own rolling median, keeps replies apart from original posts, ties link posts to GA4 sessions from X, and turns the winners into post and thread drafts. Use when someone asks for Twitter analytics, an X analytics report, which tweets or threads work, why reach dropped, which posts send profile clicks or site visits, how to grow on X, or wants new posts built on their best ones. Posts nothing until the user confirms the exact text.
+description: Analyses an X (Twitter) account's organic posts from live data, the analytics CSV or pasted posts, compares formats, topics and hours with its own median, and drafts posts and threads from the winners. Use when asked for Twitter analytics, which tweets work or how to grow on X.
 ---
 
 # X Organic Analyst

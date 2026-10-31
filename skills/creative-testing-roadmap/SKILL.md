@@ -1,6 +1,6 @@
 ---
 name: creative-testing-roadmap
-description: Builds a creative testing roadmap from live ad data through the InsightfulPipe MCP. Pulls your ads, their copy, formats, age and results on Google Ads, Meta, TikTok or LinkedIn, finds which angles, hooks and formats are working, missing or unproven, works out how many tests your traffic can actually decide, and turns that into a phased plan with test briefs, a hook bank built from your own approved claims, a production schedule and decision rules. Use when someone asks what creative to test next, wants a testing calendar or roadmap, or wants to improve ad creative systematically. Can create the variant ads paused, and pause losers, only after the user confirms.
+description: Plans a quarter of creative tests from your Google Ads, Meta, TikTok or LinkedIn ads, finding winning angles and hooks and sizing the tests your traffic can decide, with briefs and a hook bank. Use when asked what creative to test next, for a testing calendar or a creative test plan.
 ---
 
 # Creative Testing Roadmap

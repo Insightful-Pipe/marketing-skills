@@ -1,6 +1,6 @@
 ---
 name: press-release-writer
-description: Writes a press release for one piece of news (a product launch, funding round, partnership, hire, milestone, award or data story) or a media advisory for an event, from the facts the user pastes. Decides first whether the news deserves a release at all, gives every number a verdict, checking it against GA4, Shopify or the user's own sheet through the InsightfulPipe MCP when connected, and uses DataForSEO content analysis to see which announcements in the category the news actually covered in the last year. Delivers headline and subhead options, a dateline, a 40 to 60 word lead, a 400 to 600 word body with two quotes that carry a view, boilerplate, media contact, a reactive Q&A and a dated embargo and distribution plan (exclusive, direct pitch or wire). Use when someone asks for a press release, news release, press release template, media advisory, launch or funding announcement, or how to write a press release. Saves the release as a WordPress draft only after the user confirms.
+description: Writes a press release or media advisory for one piece of news, such as a launch, funding round, hire or data story, checking each number in GA4, Shopify or Google Sheets. Use when asked for a press release, news release or funding announcement. Not for pitch emails (use media-pitch-writer)
 ---
 
 # Press Release Writer

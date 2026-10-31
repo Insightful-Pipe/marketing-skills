@@ -1,6 +1,6 @@
 ---
 name: ad-creative-brief-generator
-description: Writes ad creative briefs from live data through the InsightfulPipe MCP. Pulls the ads and lines that already win in Google Ads or Meta, the words customers search with, the landing page and brand look, and competitor ads from the public ad libraries, then brainstorms angles scored on that evidence and writes one brief per angle for static, video, UGC or agency production, with a character-counted copy kit (platform copy, a product ad and micro ads). Use when someone asks for a creative brief, ad brief, UGC or agency brief, ad angles, product ads, short ads or high-converting ad copy. Read only; it never changes an account.
+description: Writes ad creative briefs for static, video, UGC and agency work from winning Google Ads or Meta lines, search terms, landing page and competitor ads, with scored angles and a copy kit. Use when asked for a creative brief, UGC brief or ad angles. Not for full scripts (use video-ad-script-writer)
 ---
 
 # Ad Creative Brief Generator

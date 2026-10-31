@@ -1,6 +1,6 @@
 ---
 name: content-decay-refresh
-description: Finds the pages losing Google clicks on live Search Console data through the InsightfulPipe MCP, works out why each one is falling (lost rank, lower click-through, another page of yours taking its queries, a redirect, or fewer people searching), checks whether a Google ranking update lines up with the drop, and returns a ranked refresh list with the numbers behind every line. Use when someone asks which pages need a refresh, why organic clicks are dropping, whether a core or spam update hit their site, or wants a content refresh plan from Search Console and GA4. Its AI Overview impact check measures how much of a click drop comes from Google AI Overviews rather than lost rankings or demand, query by query against queries with no overview. Use it when impressions are up but clicks are down, or for AI Overviews' impact on traffic or an AI Overview CTR drop, also from a pasted two-period Search Console export. With WordPress connected, it can apply an approved title or content change after the user confirms.
+description: Finds pages losing Google clicks in Search Console, works out why (lost rank, lower CTR, cannibalisation, redirect or demand), checks update timing and AI Overview impact, and ranks a refresh list. Use when asked which pages to refresh, why organic clicks dropped or if AI Overviews took clicks.
 ---
 
 # Content Decay and Refresh Planner

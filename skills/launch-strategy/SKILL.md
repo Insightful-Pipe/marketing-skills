@@ -1,6 +1,6 @@
 ---
 name: launch-strategy
-description: Plans a product, feature, book, webinar or promotion launch from the business's own live data through the InsightfulPipe MCP, or from numbers the user gives. Pulls a traffic and brand-search baseline and past spikes, checks readiness, and dates a phased plan back from launch day across owned, rented, borrowed and paid channels, with a run of show and targets from the account's own numbers. Also writes release notes, a changelog entry, an in-app note and a product update email from a list of shipped changes; picks the go-to-market motion (self-serve, sales, partners, community or a mix) from deal value, conversion and acquisition cost; plans the first 90 days of an Amazon launch from Seller Central exports; and plans a webinar series and run of show, then scores the attendee export and writes each tier's follow-up. Use for a launch plan, GTM, Product Hunt, waitlist, release notes, product update email, product-led vs sales-led, Amazon launch or webinar planning and follow-up. Writes only after a yes.
+description: Plans a product, feature, book or webinar launch from your GA4 baseline and past traffic spikes, with a readiness check and dated phases. Also writes release notes and weighs product-led vs sales-led. Use when asked for a launch plan, GTM, Product Hunt, an Amazon launch or webinar follow-up.
 ---
 
 # Launch Strategy

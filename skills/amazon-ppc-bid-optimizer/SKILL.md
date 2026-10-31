@@ -1,6 +1,6 @@
 ---
 name: amazon-ppc-bid-optimizer
-description: Sets Amazon Sponsored Products keyword and product-target bids to hit a target ACOS or TACOS, from the seller's own targeting and placement reports. Works out each bid from a stated formula (target CPC = average order value x conversion rate x target ACOS), limits how far one change can move a bid, holds targets with too few clicks to judge, sets top-of-search, rest-of-search and product-page placement adjustments from each placement's own ACOS, replays the last 30 days at the new bids, plans bids and budgets for peak days from the seller's own last peak, and returns a bulk file for the user to upload. Use when someone asks how to set Amazon PPC bids, wants Amazon PPC bid optimization or bid management, asks what to bid to hit a target ACOS, wants placement bid adjustments set, or wants a Prime Day or Black Friday bid plan. Works from pasted or uploaded exports, or from a Google Sheet through the InsightfulPipe MCP, and changes nothing in the account.
+description: Sets Amazon Sponsored Products keyword, product target and placement bids to hit a target ACOS or TACOS, in capped weekly steps with a bulk file to upload. Use when asked how to set Amazon PPC bids, what to bid for a target ACOS, placement adjustments, or a Prime Day bid plan.
 ---
 
 # Amazon PPC Bid Optimizer

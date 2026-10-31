@@ -1,6 +1,6 @@
 ---
 name: google-ads-assets-auditor
-description: Audits every Google Ads asset (extension) across the account. Builds a grid of sitelinks, callouts, structured snippets, call, location, price, promotion, image, business name, logo and lead form assets against every Search and Performance Max campaign, shows which campaigns inherit account-level assets and which have gaps, ranks each asset by its own clicks and conversions, catches disapproved, stale, broken-link and Google-generated assets, and drafts sourced replacements counted against Google's character limits. Runs live through the InsightfulPipe MCP (Google Ads plus the site crawler for sitelink URLs) or on a pasted assets report. Use when someone asks to audit, review or clean up Google Ads extensions or assets, asks which campaigns are missing sitelinks or callouts, wants sitelink extension examples for their own account, or asks why an asset is disapproved or not showing. Adds new assets only after the user confirms.
+description: Audits every Google Ads asset or extension by campaign, from sitelinks, callouts and snippets to call, price and image assets, flags gaps, override traps, disapproved, stale and broken-link assets, and drafts replacements. Use when asked to audit extensions or find missing sitelinks or callouts.
 ---
 
 # Google Ads Extensions and Assets Auditor

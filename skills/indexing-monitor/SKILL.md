@@ -1,6 +1,6 @@
 ---
 name: indexing-monitor
-description: Checks which pages Google and Bing have indexed, on live Search Console and Bing Webmaster data through the InsightfulPipe MCP. Reads the live XML sitemap and compares it with the copy each engine last downloaded, confirms Google indexing from impressions and batch URL inspection, groups the pages that aren't indexed by reason, follows new pages, checks Bing's index and crawl errors, finds pages the engines know that are missing from the sitemap, and plans what to submit within Bing's daily quota. Use when someone asks why pages aren't indexed, whether new pages are indexed yet, for a URL inspection batch, a page indexing or index coverage report, a sitemap check, or what to submit to Google, Bing or IndexNow. Can submit a sitemap to Google or Bing and URLs to Bing only after the user confirms.
+description: Checks which pages Google and Bing have indexed using Search Console URL inspection, sitemaps and Bing Webmaster data, groups not-indexed pages by reason, tracks new pages and plans Bing submissions. Use when pages aren't indexed, or for an index coverage report, a sitemap check or IndexNow.
 ---
 
 # Indexing and Sitemap Monitor

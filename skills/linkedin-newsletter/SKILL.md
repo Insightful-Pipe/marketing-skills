@@ -1,6 +1,6 @@
 ---
 name: linkedin-newsletter
-description: Plans and writes a LinkedIn newsletter for a company Page or a founder's profile. Picks the newsletter's themes from the posts the audience already rewards (LinkedIn Pages through the InsightfulPipe MCP, or pasted posts) and from what people search for (Search Console), then sets the name, promise and description, a cadence the team can keep, a dated plan for the first 12 editions, the full first edition with its promo post, and a subscriber growth plan. Reviews published editions from pasted newsletter analytics, since the LinkedIn API returns no newsletter stats. Use when someone asks how to start a LinkedIn newsletter, wants LinkedIn newsletter ideas, a name or an edition plan, wants an edition written, or asks why a LinkedIn newsletter is not growing. Works with no connection from what the user pastes. Can publish an edition's promo post only after the user approves the exact text; it never publishes the edition itself.
+description: Plans and writes a LinkedIn newsletter for a company Page or founder profile, picking themes from top posts and search questions, with a name, cadence, 12-edition plan, edition 1 and its promo post. Use when asked how to start a LinkedIn newsletter, for newsletter ideas, or why one isn't growing.
 ---
 
 # LinkedIn Newsletter Planner

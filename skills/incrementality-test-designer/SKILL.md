@@ -1,6 +1,6 @@
 ---
 name: incrementality-test-designer
-description: Designs an incrementality test (geo holdout, audience holdout or platform conversion lift) from live ad data through the InsightfulPipe MCP. Pulls weekly conversions by metro from Google Ads (and GA4 or Meta when connected), checks whether a test is even possible at this volume, searches every holdout split of the usable metros, sizes it from the account's own week-to-week noise, back-tests it on past weeks, and writes a dated test plan with pre-agreed decision rules. Use when someone asks whether their ads actually cause sales or leads, wants a lift, holdout, geo or matched-market test, asks if brand search or retargeting is worth it, or wants to know their incremental CPA. Offers the location exclusions and budget trims that start the test, run only after the user confirms.
+description: Designs incrementality tests before launch, geo holdout, audience holdout or platform lift, from Google Ads, GA4 and Meta data, sized from your own volume, with a dated plan. Use when asking if ads really cause sales, for a geo or matched market test, or if brand search or retargeting pays.
 ---
 
 # Incrementality Test Designer

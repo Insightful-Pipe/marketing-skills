@@ -1,6 +1,6 @@
 ---
 name: newsletter-podcast-ads-planner
-description: Plans and judges paid ads in other people's newsletters and podcasts. Checks media-kit claims against proof (and YouTube views for video podcasts), prices every quote on delivered and matched audience, sets a break-even and counter price from your own target cost per order, writes the stop-or-rebook rule before you buy, builds tagged links, codes, vanity URLs and call tracking, and writes the blurb or host-read points from your winning Google Ads and Meta lines. After a run it reads GA4, Shopify or WooCommerce codes, CallRail calls and branded search lift to decide rebook, retest or stop. Works from pasted media kits and quotes; the InsightfulPipe MCP connectors are an upgrade. Use when someone asks how to advertise in newsletters, what podcast advertising costs, whether a newsletter ad rate is fair, which sponsorship to book, or whether a placement worked.
+description: Plans and judges sponsor slots in newsletters and podcasts, checking media kits, pricing quotes on matched audience, setting a counter price and rebook rule, and writing the blurb or host read. Use when asking how to advertise in newsletters, what podcast ads cost or whether a placement worked.
 ---
 
 # Newsletter and Podcast Ads Planner

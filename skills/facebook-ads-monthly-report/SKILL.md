@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-monthly-report
-description: Writes a monthly or weekly Meta (Facebook and Instagram) Ads report from live account data through the InsightfulPipe MCP, and a quarterly creative strategy review on request. Pulls the period and the one before itself, tracks goals, explains what drove the change, breaks results down by campaign, audience, placement and creative, lists what changed in the account, and ends with the next period's plan. The weekly mode compares the week with last week and the account's own four-week average, reads what each change in the account did, names the ads that won and the ads wearing out, and marks the recent days whose results can still rise. Use when someone asks for a monthly or weekly Facebook or Meta Ads report, a client report, a month-over-month or week-over-week review, an explanation of why cost per result moved, or a quarterly review of which creative worked. Offers to pause a fatigued ad or set an ad set budget only after the user confirms.
+description: Writes monthly or weekly Facebook and Meta Ads reports with goal tracking, what drove cost per result, campaign, audience, placement and creative breakdowns, and next period's plan. Use when asked for a Meta Ads client report, month-over-month or week-over-week review, or quarterly creative review.
 ---
 
 # Facebook Ads Monthly Report

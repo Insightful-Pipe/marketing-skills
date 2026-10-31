@@ -1,6 +1,6 @@
 ---
 name: content-pre-publish-qa
-description: Editorial QA and fact check for a finished article, guide or report before it goes live. Lists every claim and statistic and compares each with its source and date, checks quotes word for word, status-checks every link with the InsightfulPipe crawler, catches out-of-date years, prices and product names, checks the byline, dates and required disclosures, the call to action and related reading (picked from the site's own pages that earn Search Console clicks on the topic) and the brand's style rules. Returns a verdict and a fix list with each corrected line shown before and after. Works from a pasted or uploaded draft, or reads the WordPress draft directly. Use when someone asks to fact-check an article, proofread or QA a blog post before publishing, run an editorial checklist, or check a draft's sources and links. Changes nothing without the user's yes and never publishes; with a yes on the exact text it can save the corrected draft back to WordPress.
+description: Fact-checks and QAs a finished article, guide or report before publishing, checking claims against sources, quotes, links, stale years and prices, byline and disclosures, with before and after fixes. Use when asking to fact-check a post, proofread before publishing, or check sources and links.
 ---
 
 # Editorial QA and Fact Check

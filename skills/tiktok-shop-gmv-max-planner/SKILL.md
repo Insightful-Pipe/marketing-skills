@@ -1,6 +1,6 @@
 ---
 name: tiktok-shop-gmv-max-planner
-description: Plans and reviews TikTok Shop ads run as GMV Max (Product GMV Max and LIVE GMV Max). Works out each product's break-even and target ROI from its real margin, groups products into campaigns because the ROI target is a campaign setting, sets the starting budget and the ramp, and runs a weekly read of gross revenue, cost, ROI and cost per order by product, creator video and LIVE session, with a scale, hold, fix or pull verdict per product. Reads stores, campaigns, settings and the GMV Max report live through the TikTok Ads connector in the InsightfulPipe MCP, or works from a pasted GMV Max report and Seller Center export. Use when someone asks to set up, plan, fix or review GMV Max campaigns, choose a TikTok Shop ROI target, decide which products to put in GMV Max, or asks why TikTok Shop ads lose money. Drafts new campaigns and budget changes as exact payloads it sends only after the user confirms.
+description: Plans and reviews TikTok Shop GMV Max ads, setting ROI targets from product margins, grouping products into campaigns, ramping budgets and giving weekly scale, fix or pull verdicts. Use when asked to set up GMV Max, pick a TikTok Shop ROI target, or why TikTok Shop ads lose money.
 ---
 
 # TikTok Shop GMV Max Planner

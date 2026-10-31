@@ -1,6 +1,6 @@
 ---
 name: content-performance-analyst
-description: Analyses content performance across the blog, social pages and email, and what that content earns, on live data through the InsightfulPipe MCP or from pasted exports. Pulls GA4 blog posts, site sections, outbound clicks, downloads and video plays, per-post results from Facebook, Instagram, LinkedIn, YouTube, Pinterest, TikTok and X, and Klaviyo campaigns, then compares the channels and names the organic posts worth promoting as ads. Also builds the monthly (or weekly or quarterly) social media report with month-over-month and year-over-year trends, goals, top and bottom posts, a narrative and next month's targets, and a content ROI report with leads, closed-won revenue, cost per piece and payback by article, format and topic. Use when someone asks how their content, blog posts, social posts or newsletters perform, wants a social media analytics report for a boss or client, or asks what their content marketing returns. Changes nothing without a yes (GA4 tracking settings, saving the report to Google Sheets).
+description: Analyses blog, social and email content performance from GA4, Facebook, Instagram, LinkedIn, YouTube, TikTok and Klaviyo, with a monthly social media report and a content ROI report. Use when asking how blog or social posts perform, for a social report for a boss or client, or what content returns.
 ---
 
 # Content Performance Analyst

@@ -1,6 +1,6 @@
 ---
 name: ga4-ecommerce-funnel
-description: Analyses a store's GA4 ecommerce on live data through the InsightfulPipe MCP. Checks first that the ecommerce events actually fire, then builds the purchase funnel, checkout drop-off by device, cart abandonment, product performance, revenue by traffic source and the monthly average order value trend, compares the funnel and cart abandonment with the previous 30 days, and ranks the funnel and checkout leaks by revenue at stake. Use when someone asks where shoppers drop off, why sales or AOV changed, which products or channels make the money, or how bad cart and checkout abandonment is in GA4. When the events aren't there, it says so plainly and gives the setup plan instead of a report. Offers one fix (mark purchase as a key event) only after the user confirms.
+description: Analyses a store's GA4 ecommerce, with the purchase funnel, checkout drop-off by device, cart abandonment, product and channel revenue and the AOV trend, after checking the events fire. Use when asked where shoppers drop off, about cart abandonment, or why AOV changed.
 ---
 
 # GA4 Ecommerce Funnel Analyst

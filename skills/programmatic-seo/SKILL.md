@@ -1,6 +1,6 @@
 ---
 name: programmatic-seo
-description: Plans programmatic SEO pages (one template filled from data, one page per variable such as a city, trade, integration or competitor) on live data through the InsightfulPipe MCP. Finds the search pattern, measures demand for every permutation, reads the SERPs, tears down the sites already ranking with the same kind of page, checks your own Search Console, then gives a build or don't-build verdict and a page template with the data field behind every section. Use when someone mentions programmatic SEO, pSEO, template pages, location pages, comparison or alternatives pages at scale, integration pages, "[x] for [y]" pages, keyword permutations or building hundreds of pages, or asks why existing template pages don't rank or index.
+description: Plans programmatic SEO pages, one template per city, trade, integration or competitor, by sizing demand per permutation and reading SERPs and incumbents, then gives a build verdict and template. Use when someone mentions pSEO, location pages, alternatives pages at scale or unindexed template pages.
 ---
 
 # Programmatic SEO

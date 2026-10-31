@@ -1,6 +1,6 @@
 ---
 name: agency-performance-review
-description: "Helps a business judge its marketing agency or freelancer, or pick a new one. Review mode grades the current agency on five checks (results against the agreed goals, how often anyone works the accounts, whether its reports match the platforms and GA4, measured wasted spend and tracking breaks, and the contracted deliverables), gives the agency a fair read for budget cuts, seasonality and tracking the business owns, and writes the review meeting agenda plus an improvement or exit plan. Choose mode writes the agency brief or RFP on the business's real baseline and a weighted scorecard for comparing pitches. Use when someone asks how to evaluate a marketing agency, whether their PPC agency is doing a good job, for an agency performance review, an agency scorecard, a marketing agency RFP, or how to choose a marketing agency. Works from the contract and pasted reports; reads Google Ads change history, Meta activity, GA4, Search Console, LinkedIn and Microsoft Ads through the InsightfulPipe MCP. Read-only."
+description: Grades the agency or freelancer a business pays against the contract, from Google Ads, Meta, GA4 and agency reports, then writes the review agenda and a fix or exit plan, or an agency RFP and scorecard. Use when asking is my PPC agency doing a good job, or how to choose a marketing agency.
 ---
 
 # Marketing Agency Performance Review

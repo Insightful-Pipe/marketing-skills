@@ -1,6 +1,6 @@
 ---
 name: tiktok-organic-analyst
-description: Analyses an organic TikTok account on live data through the InsightfulPipe MCP. Pulls the profile and every public video itself, finds the hooks, topics, lengths and hashtags that beat the account's own median, grades momentum, posting consistency and shareability, writes a monthly report, and turns the winners into a content strategy, video ideas and ready-to-film scripts. Use when someone asks how their TikTok is doing, which videos or hooks work, what drives followers, for a TikTok monthly report, a TikTok content strategy, short-form video ideas or scripts based on their top videos. It only reads and never posts.
+description: Analyses an organic TikTok account against its own median video, finds the hooks, topics, lengths and hashtags that win, then writes a monthly report, strategy, video ideas and scripts. Use when asked how a TikTok is doing or for TikTok video ideas. Not for TikTok Ads (use tiktok-ads-analyzer)
 ---
 
 # TikTok Organic Analyst

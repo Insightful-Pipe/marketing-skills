@@ -1,6 +1,6 @@
 ---
 name: marketing-ops-stack-audit
-description: Audits a marketing technology stack and the marketing ops process around it. Starts from the tool list and what each tool costs, then checks what really loads on the site's key pages and in the Google Tag Manager container, so it finds tools the team thought were cancelled, paid tools that never load, tags loaded twice and pixels for ads that stopped. Checks data links from the receiving side (offline conversion imports in Google Ads, purchase or payment events in Klaviyo, order webhooks in Shopify), weighs third-party scripts with PageSpeed, grades six areas and writes a costed consolidation and integration plan, plus a weighted scorecard for choosing a new tool on request. Use when someone asks to audit or clean up a martech stack, find overlapping or unused tools, cut software spend, map how marketing data flows between tools, or choose a tool that fits the stack. Works from a pasted tool list alone; InsightfulPipe MCP connectors add the live checks. Pauses a dead GTM tag only after the user confirms.
+description: Audits a martech stack against what really loads on the site and in Google Tag Manager, finding unused or cancelled tools, duplicate pixels, broken data links and overlapping spend, then grades it with a savings plan. Use to audit a martech stack, cut software spend or choose a new tool.
 ---
 
 # Marketing Ops and Martech Stack Audit

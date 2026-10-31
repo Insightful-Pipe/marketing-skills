@@ -1,6 +1,6 @@
 ---
 name: customer-ugc-program
-description: Builds a user-generated content strategy for earned, unpaid customer photos and videos. Finds posts customers already made and ranks them by engagement, times the photo ask from the store's own order and fulfilment dates (Shopify) and the post-purchase flow (Klaviyo), picks where to ask (email, packaging insert, Stories, comments and DMs), writes permission requests with an explicit scope, keeps a consent log that gates every repost, sizes a repost calendar from the account's own posting cadence, and measures whether customer content beats brand content on the account's own Instagram and Facebook numbers, all through the InsightfulPipe MCP. Works from pasted posts and exports with no connection. Use when someone asks how to get user generated content, build a UGC program, ask permission to repost on Instagram, keep a UGC consent log, plan customer reposts, or check whether customer photos perform. Writes the consent log to a Google Sheet or reposts a consented post only after the user confirms.
+description: Plans an earned, unpaid customer UGC program for Instagram and Facebook, timing the photo ask from Shopify and Klaviyo, writing permission requests and a consent log, and testing customer against brand posts. Use when asked how to get user generated content or ask permission to repost.
 ---
 
 # Customer UGC Strategy Planner

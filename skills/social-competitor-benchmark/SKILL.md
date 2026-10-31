@@ -1,6 +1,6 @@
 ---
 name: social-competitor-benchmark
-description: Runs a social media competitor analysis that compares your accounts with up to five named rivals on each network (Instagram, Facebook, LinkedIn, YouTube, X, TikTok, Pinterest) over one window. Reports followers and growth, posts per week, format mix, median engagements and median engagement rate per post, each rival's top posts and winning themes, and which rivals also pay to run content in the Meta, TikTok and LinkedIn ad libraries. Ends with the gaps and up to five tests worth running. Reads your own accounts and rival YouTube channels and X accounts live through the InsightfulPipe MCP, rival Instagram Business accounts when Instagram is connected with Facebook login, and anything else from a pasted table, marking every pasted figure. Works with no connection from pasted numbers. Use when someone asks to benchmark social accounts against competitors, compare Instagram accounts, see what rivals post and what works for them, or fill a social media competitor analysis template. Read only.
+description: Benchmarks your social accounts against up to five rivals on Instagram, Facebook, LinkedIn, YouTube, X, TikTok and Pinterest, comparing followers, posting rhythm, formats, engagement rate, top posts and rival ads. Use when asked for a social media competitor analysis or what rivals post that works.
 ---
 
 # Social Media Competitor Benchmark

@@ -1,6 +1,6 @@
 ---
 name: ad-creative-scorer
-description: Grades one draft ad (a video, image, storyboard, script or set of frames, plus its copy) before it goes live, for one platform and placement. Scores stop power, offer clarity, proof, call to action, sound-off viewing, format fit, safe zones, text length and feed fit out of 100, runs a policy check, and returns the three edits that raise the grade most with the points each one adds. When Meta, TikTok, LinkedIn or Snapchat Ads is connected through the InsightfulPipe MCP, it calibrates the weights and the bar on the account's own best and worst ads, so a high grade means high for this account. Can grade a competitor's ad from the public ad libraries the same way. Use when someone asks to review, score, check, grade or analyze an ad or ad creative before launch, wants an ad creative checklist applied, or asks how their ad compares with a competitor's. Changes nothing in any account.
+description: Grades one draft video or image ad out of 100 before launch for a Meta, TikTok, LinkedIn or Snapchat placement, with a policy check and the three edits worth the most points. Use when asked to review, score or grade an ad creative, or compare it with a competitor ad.
 ---
 
 # Ad Creative Scorer

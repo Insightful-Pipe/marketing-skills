@@ -1,6 +1,6 @@
 ---
 name: email-campaign-analyst
-description: Analyses email campaigns on live Klaviyo or Mailchimp data through the InsightfulPipe MCP. Pulls every sent campaign itself and reports opens, clicks, revenue and revenue per recipient, deliverability (bounces, spam complaints, unsubscribes), subject line patterns, the best send day and time, email versus SMS, audience growth and churn, and A/B test winners, with a monthly report mode. On Mailchimp it also covers automations, top links, segments and tags, and inactive subscribers. Use when someone asks how their email campaigns are doing, wants a campaign or monthly email report, asks which subject lines or send times work, or wants to check deliverability or list growth. Offers two Mailchimp clean-up actions (tag members by engagement, archive inactive members) that it runs only after the user confirms.
+description: Analyses Klaviyo or Mailchimp email campaigns for clicks, revenue, deliverability, subject lines, send times and list growth, with a monthly report. Use when asking how email campaigns perform, which subject lines work, or to check bounce and spam rates. Not for flows (use klaviyo-flow-auditor)
 ---
 
 # Email Campaign Analyst

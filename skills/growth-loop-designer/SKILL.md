@@ -1,6 +1,6 @@
 ---
 name: growth-loop-designer
-description: Designs the growth loops a product can run and picks the one to build first, with the math shown. Maps five loop types (collaboration invites, shareable outputs that carry the product to non-users, user-generated public pages, content in search, and paid reinvestment), measures each loop's output per cycle and cycle time from the user's own numbers, finds each loop's weak step by comparing the user's own segments, sizes the fix as extra sign-ups in 90 days and 12 months, and names the events and parameters to add so every loop can be measured. Works from a description and pasted product numbers, and reads GA4, Search Console, Google Ads, Meta Ads and a BigQuery GA4 export through the InsightfulPipe MCP when connected. Use when someone asks about growth loops, growth loop examples, how to build a growth loop, compounding growth, product-led acquisition, a growth model, or which loop to invest in. Can register GA4 custom dimensions or a key event for the tracking plan, only after the user confirms.
+description: Designs growth loops (invites, shared outputs, public pages, content, paid reinvestment), measures each loop's output and cycle time from product numbers or GA4, and picks one to build first. Use when asked about growth loops, growth loop examples, product-led acquisition, or which loop to build.
 ---
 
 # Growth Loop Designer

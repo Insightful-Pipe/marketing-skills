@@ -1,6 +1,6 @@
 ---
 name: app-attribution-auditor
-description: Audits mobile app install attribution before anyone moves app budget. Checks the measurement partner (MMP) setup per ad network, whether every campaign optimizes on an in-app event its network actually receives, Google Ads first opens counted twice, the SKAdNetwork and AdAttributionKit conversion value schema tested against the app's own revenue and retention by day (fine values in the first postback, coarse values in SKAN 4 postbacks 2 and 3), which iOS campaigns sit under Apple's privacy thresholds, and how far installs differ between App Store Connect, Play Console, the MMP, GA4 and each network. Use when someone asks for an app attribution audit, an AppsFlyer, Adjust, Branch or Singular review, a SKAN conversion value schema review, why app install numbers do not match, or whether app campaign numbers can be trusted. Works from pasted exports; with the InsightfulPipe MCP it reads Google Ads, Meta, TikTok, Snapchat and GA4 itself. Offers two Google Ads conversion fixes, run only after the user confirms.
+description: Audits mobile app install attribution across AppsFlyer, Adjust, Branch or Singular, SKAdNetwork conversion values, Google Ads, Meta, TikTok and GA4. Use when app install numbers do not match, for a SKAN schema review, or to check whether app campaign data can be trusted before moving budget.
 ---
 
 # App Install Attribution Auditor

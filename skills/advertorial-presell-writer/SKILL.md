@@ -1,6 +1,6 @@
 ---
 name: advertorial-presell-writer
-description: Writes an advertorial or presell page, the editorial-style page between an ad and a product page, as a story, a numbered listicle or a short reasons-why presell, with the headline, lead, problem, discovery, proof, product reveal, answers to doubts, the click-through and the advertising label it must carry, plus the ad lines that lead into it. Picks the angle from evidence (the user's own winning ads, rivals' longest-running ads in the public ad libraries and the pages they link to, and customers' review words), maps every claim to a proof item and checks the page against the FTC's native advertising and review rules. On a live presell it reads GA4 and store orders through the InsightfulPipe MCP and says where readers drop. Works from a pasted brief with no connection. Use when someone asks for an advertorial, a presell or bridge page, a native ad landing page, advertorial examples for their product, or why a presell isn't converting. Offers a hidden Shopify draft page only after the user confirms.
+description: Writes advertorial and presell pages, the story, listicle or reasons-why page between a Meta, TikTok or native ad and the product page, plus the lead-in ads and an FTC label check. Use when asked for an advertorial, a bridge page, a native ad landing page, or why a presell isn't converting.
 ---
 
 # Advertorial and Presell Page Writer

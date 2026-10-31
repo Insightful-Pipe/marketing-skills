@@ -1,6 +1,6 @@
 ---
 name: pr-coverage-report
-description: Media monitoring and PR measurement in one skill. Finds news, trade and blog coverage of a brand, its products and spokespeople (through DataForSEO content analysis, or from a pasted coverage list or monitoring export), logs each story with outlet tier, read sentiment, message pull-through and who was quoted, and alerts on negative top-tier stories, false claims and mention spikes. Then builds the monthly or campaign PR report with share of voice against named competitors and business outcomes (referral visits and key events from GA4, branded search lift against a baseline from Search Console, new referring domains, presence in AI answers), ending with what worked, what to stop and next month's targets. Use when someone asks to monitor media coverage, track press mentions, measure PR results, build a PR report or report template, or asks what a press campaign achieved. Refuses advertising value equivalents (AVE). Saves the log to Google Sheets only after the user confirms.
+description: Monitors press coverage of your brand and builds the monthly or campaign PR report with outlet tiers, sentiment, message pull-through, share of voice, GA4 referrals, branded search lift from Search Console and AI answer mentions. Use to track press mentions, measure PR results or build a PR report.
 ---
 
 # Media Coverage Monitor and PR Report

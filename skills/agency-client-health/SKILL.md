@@ -1,6 +1,6 @@
 ---
 name: agency-client-health
-description: Monitors the health of every client an agency manages, live through the InsightfulPipe MCP. Groups the connected ad, analytics and search accounts into clients, compares the last 30 days with the 30 before, scores seven health checks and flags which clients may leave. Also runs a multi-client budget pacing board (month-to-date spend against each client's budget sheet, a month-end projection from the last 7 days, red, amber or green against a per-client tolerance, campaigns gone dark, the daily budget needed) and a marketing account access and offboarding audit (who can get into each ad, analytics, store and email account, former staff or agencies still in, single owners, unknown manager links, and a removal checklist). Use for a portfolio health overview, churn risk, ppc budget pacing across clients, an onboarding or takeover audit, or removing an agency's or employee's access. Pacing and access also run on pasted data. Budget changes on Google Ads and Meta only after confirmation; it never removes users.
+description: Scores the health of every agency client across Google Ads, Meta, GA4 and Search Console, flags churn risk, paces budgets across clients and audits account access. Use when asked for a client health check, which clients may churn, PPC budget pacing for all clients, or offboarding an agency.
 ---
 
 # Agency Client Health Monitor

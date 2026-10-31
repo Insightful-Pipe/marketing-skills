@@ -1,6 +1,6 @@
 ---
 name: gift-guide-seeding-planner
-description: Plans product seeding and gift guide PR for an online store. Picks which products to put forward from price, margin, stock and last season's sales, matches them to the price brackets gift guides use, finds last season's guides, the writers behind them and YouTube reviewers with recent views, builds a dated pitch calendar from each outlet's lead time, drafts the pitch and a one-page product sheet, plans who gets a sample inside a budget, logs every sample with the disclosure owed, and measures what each placement sold. Use when someone asks how to get a product into gift guides or holiday roundups, how to get products reviewed by bloggers, journalists or YouTubers, or wants a product seeding plan. Works from a pasted product list and target publications; reads Shopify, WooCommerce, Magento, DataForSEO, YouTube, GA4 and Google Sheets through the InsightfulPipe MCP when connected. Drafts only and sends nothing.
+description: Plans gift guide PR and product seeding for an online store, picking products by margin and stock from Shopify or WooCommerce, timing pitches to each outlet's lead time and budgeting samples for editors and YouTube reviewers. Use for getting into holiday gift guides or getting products reviewed.
 ---
 
 # Gift Guide and Product Seeding Planner

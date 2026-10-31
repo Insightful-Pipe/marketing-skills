@@ -1,6 +1,6 @@
 ---
 name: social-listening-monitor
-description: Runs a weekly social listening report for a brand. Reads what people say about the brand, its products, named rivals and category phrases on X, YouTube and Reddit, plus comments on the brand's own Facebook and Instagram posts, from a pasted mention list or alerts CSV or live through the InsightfulPipe MCP. Scores sentiment with the quote behind every call, measures share of voice against rivals from counts, flags a spike only when a week passes twice its 8-week average, and lists the complaints that need an answer and the conversations worth joining, each with a draft reply. Use when someone asks for social listening, brand mentions on social media, share of voice, what people say about us or a competitor, or a social media listening report. Posts a reply only after the user confirms it.
+description: Runs a weekly social listening report on X, YouTube, Reddit and your own Facebook and Instagram comments, with brand mentions, share of voice, sentiment, spikes and draft replies to complaints. Use when asked for social listening, share of voice or what people say about us or a competitor.
 ---
 
 # Social Listening and Share of Voice Report

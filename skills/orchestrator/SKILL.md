@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: The router for the InsightfulPipe marketing skills. Reads which sources the user has connected through the InsightfulPipe MCP, runs a short live snapshot (GA4, Search Console, Google Ads, Meta, LinkedIn Ads) to find the real bottleneck, answers plain-English questions across that data, and sends the user to the right skills in the right order, live ones first and coming-soon ones marked. Use when someone says "where do I start", "help me with my marketing", "which skill should I use", "what should I do first", asks a broad question that spans several platforms, or wants to put routine marketing work on a schedule.
+description: Diagnoses the real marketing bottleneck from connected GA4, Search Console, Google Ads, Meta and LinkedIn Ads data, then returns an ordered plan of skills to run. Use when asked where do I start, which skill should I use, help me with my marketing, or a question across channels.
 ---
 
 # Marketing Orchestrator

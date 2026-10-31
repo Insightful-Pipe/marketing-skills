@@ -1,6 +1,6 @@
 ---
 name: pricing-strategy
-description: Builds a pricing strategy on live market data through the InsightfulPipe MCP. Reads rivals' pricing pages, prices each rival at your customer sizes, measures how searchers shop on price, adds your Search Console, GA4 and Stripe signals, and applies stated rules to recommend a value metric, entry offer, tiers, price points, value ladder and annual discount, with a validation plan. Three more modes design an offer (guarantee, extras, terms, a true reason to act now) from buyers' real objections and rival offers and check it still makes money per sale, set prices by country from purchasing power parity and your conversion by country, and plan sunset, discontinued product, policy, rebrand and price change announcements with affected customers sized and the reaction tracked. Use when someone asks what to charge, how to tier, free plan or trial, how to build an irresistible offer or a money back guarantee, regional pricing by country, or how to announce a price increase, sunset or rebrand.
+description: Recommends what to charge from rival pricing pages and price searches, setting value metric, tiers, price points and annual discount. Also designs offers and guarantees, prices by country and plans price increase or sunset notices. Use when asked what to charge, how to tier or how to raise prices.
 ---
 
 # Pricing Strategy

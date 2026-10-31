@@ -1,6 +1,6 @@
 ---
 name: keyword-research-clustering
-description: Researches keywords for a topic on live data through the InsightfulPipe MCP. Expands seed terms with DataForSEO, pulls volume, difficulty, CPC and intent, groups the keywords into clusters checked against real SERPs and your own Search Console data, compares trends, and turns the clusters into a ranked page plan. Use when someone asks for keyword research, a keyword shortlist, keyword clustering or topic groups, search intent, a Google Trends comparison, marketplace (Amazon) keyword ideas, SEO opportunities or a keyword plan for a site. Also use for local keyword research, local SEO keywords or near me keywords for a business that serves named places, with volume per city, map-pack checks, the Business Profile's own search keywords, and one home per keyword (profile category, service page or location page), even with nothing connected. Can write the cluster table to a Google Sheet after the user confirms.
+description: Researches keywords for a topic with volume, difficulty, CPC and intent, clusters them by SERP overlap and Search Console data, and ranks a page plan. Also covers local keywords per city. Use when asked for keyword research, keyword clustering, search intent, near me keywords or a keyword plan.
 ---
 
 # Keyword Research and Clustering

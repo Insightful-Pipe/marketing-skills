@@ -1,6 +1,6 @@
 ---
 name: backlink-auditor
-description: Audits a site's backlink profile on live data through the InsightfulPipe MCP. Pulls referring domains, anchors, spam scores, new and lost links, broken pages and competitor links from DataForSEO, grades six areas, and turns the domains that link to your competitors but not to you into a tiered outreach plan with email drafts and digital PR ideas. Three focused modes, which also work from pasted URLs, an export or a description, cover link reclamation (unlinked brand mentions checked live, links to your 404s and redirects, and broken link building on other sites' dead pages), a directory submission shortlist with listing copy and a tracker, and local link building. Use when someone asks for a backlink audit, toxic or lost links, a disavow decision, a referring domain gap, link building prospects, an outreach plan, digital PR ideas, unlinked mentions, broken link building, which directories to submit a website to, or local backlinks. Saves lists to a Google Sheet only after the user confirms.
+description: Audits backlinks for spam, lost and broken links, decides on disavow, and turns domains linking to competitors but not you into an outreach plan. Covers unlinked mentions, broken link building, directories and local links. Use when asked for a backlink audit, toxic links or link building prospects.
 ---
 
 # Backlink Auditor and Outreach Planner

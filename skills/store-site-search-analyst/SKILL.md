@@ -1,6 +1,6 @@
 ---
 name: store-site-search-analyst
-description: Analyses an online store's site search. Reads what shoppers type into the search box, matches every term against the catalogue and classes it (exact product, collection, found, found but sold out, only in descriptions, not on sale, misspelling, synonym or not carried) with the matched products as evidence. Compares how searchers buy against other shoppers, finds top searches whose shoppers rarely buy, and ranks fixes by searchers times the gap to the store's average buy rate. Writes out synonyms, redirects for exact-product and collection searches, products to pin for each top search, tag and title changes, and searches for products the store does not sell. Works from a pasted search report and a products export, or pulls GA4 search terms and the Shopify, WooCommerce or Magento catalogue through the InsightfulPipe MCP. Use for site search analytics, searches with no results, Shopify search not finding products, or what shoppers search for. Adds tags or changes titles only after the user confirms.
+description: Analyses a store's GA4 or Shopify site search terms against its catalogue, classing failed searches as misspellings, synonyms, sold out or not carried, and ranks fixes with synonyms, redirects and pins. Use for site search analytics, searches with no results, or Shopify search not finding products.
 ---
 
 # Store Site Search Analyst

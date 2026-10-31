@@ -1,6 +1,6 @@
 ---
 name: marketplace-expansion-planner
-description: Plans which online marketplaces a brand should sell on next (Amazon, Walmart, eBay, Etsy, TikTok Shop or a regional marketplace) and in what order. Computes the margin after fees and fulfilment for every product on every channel from the store's own price, cost and shipping, flags products that would lose money or fall under the brand's margin floor before they are listed, checks channel rules, demand, shelf prices, MAP and price-parity conflicts, then ranks the channels with the first products to list. Use when someone asks "should I sell on Amazon", which marketplaces to sell on, how to go multichannel, or whether a product line can survive marketplace fees. Works from a pasted product list and fee table; with Shopify, WooCommerce, Magento or DataForSEO connected through the InsightfulPipe MCP it pulls products, costs, sales and search demand itself, and it saves the plan to Google Sheets only after the user confirms.
+description: Plans which marketplaces to sell on next (Amazon, Walmart, eBay, Etsy, TikTok Shop) from each product's margin after fees, channel rules, demand and MAP conflicts, with a rollout order. Use when asked should I sell on Amazon, which marketplaces to sell on, or how to go multichannel.
 ---
 
 # Marketplace Expansion Planner

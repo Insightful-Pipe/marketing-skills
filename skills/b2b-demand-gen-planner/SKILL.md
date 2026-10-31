@@ -1,6 +1,6 @@
 ---
 name: b2b-demand-gen-planner
-description: Plans a B2B demand generation and lead generation program backwards from a revenue target, on the business's own numbers. Works out the deals, opportunities, SQLs, MQLs and leads the target needs from the team's own win rate, deal size and stage rates, sizes each channel from its real cost per lead and per opportunity, splits the work between buyers already in market, future demand and outbound (with its own math for contacts, meetings, SDRs, mailboxes and list burn), warns when the target needs more pipeline than in-market search can supply, and ends with a 90-day plan, offers, checkpoints, CAC and payback. Use when someone asks how many leads they need to hit a revenue target, for a B2B demand gen or lead gen strategy, a pipeline plan or channel budget split, or how many SDRs they need. Works from pasted CRM numbers; reads ad accounts, GA4, Search Console, DataForSEO and Google Sheets through the InsightfulPipe MCP. Writes to a sheet only after the user confirms.
+description: Plans B2B demand generation backwards from a revenue target, working out deals, SQLs, MQLs and leads from your own CRM rates, then splits channels and outbound into a 90-day plan. Use when asked how many leads we need, for a pipeline plan, a channel budget split or how many SDRs to hire.
 ---
 
 # B2B Demand Generation Planner

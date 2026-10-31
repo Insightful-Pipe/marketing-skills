@@ -1,6 +1,6 @@
 ---
 name: influencer-campaign-manager
-description: Plans and measures influencer campaigns, on live data through the InsightfulPipe MCP or from what you paste. Finds YouTube creators who already rank for your buyers' topics, vets each one on real views, likes and comments, reads their audience's comments, and sets a baseline from your GA4. Writes the brief, outreach email, proposal, disclosed captions, scripts, giveaway rules and a UTM plan, then measures the campaign. Gifting mode plans influencer gifting and product seeding (who gets a parcel, the note and soft ask, follow-ups, a code and link per creator, posting rate, cost per posted piece, and when a gifted creator earns a paid deal). Co-marketing mode finds companies that sell to the same buyer, scores the overlap, picks the joint campaign and drafts the pitch and a one-page proposal. Also writes a creator's media kit. Use when someone asks to find, vet, brief, gift or seed influencers, plan a creator, sponsorship or co-marketing campaign, or report on one. Writes nothing until the user confirms.
+description: Plans and measures influencer campaigns, finding and scoring YouTube creators who rank for your topics, writing briefs, outreach, disclosed captions and UTMs, plus gifting, product seeding and co-marketing modes. Use when asked to find, brief or gift influencers, or report on a creator campaign.
 ---
 
 # Influencer Campaign Manager

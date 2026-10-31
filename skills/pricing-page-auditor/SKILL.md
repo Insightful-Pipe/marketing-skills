@@ -1,6 +1,6 @@
 ---
 name: pricing-page-auditor
-description: Audits a pricing page on live data through the InsightfulPipe MCP. Pulls the page's GA4 behaviour itself (how many visitors reach pricing, where they come from, how long they read, how far they scroll, what they open next, whether plan clicks and sign-ups are measured, mobile versus desktop), reads the page, scores eight pillars (tier architecture, anchoring, value hierarchy, visual guidance, trust, urgency, objection handling, CTA clarity), compares it with a competitor's page, and returns a graded report with tier-by-tier notes, pricing psychology ideas, rewrites and A/B tests. Use when someone asks why visitors don't upgrade, wants a pricing page audit or a pricing page behaviour report, wants more annual sign-ups, or wants their pricing page compared with a competitor's. Offers two GA4 tracking fixes it runs only after the user confirms.
+description: Audits a pricing page from GA4 behaviour (reach, scroll, next pages, plan clicks) and eight pillars like tier architecture, anchoring and CTA clarity, with rewrites and A/B tests. Use when visitors don't upgrade, to get more annual sign-ups, or to compare with a competitor's pricing page.
 ---
 
 # Pricing Page Auditor

@@ -1,6 +1,6 @@
 ---
 name: month-end-report-generator
-description: Writes the month-end Google Ads report from live data through the InsightfulPipe MCP. Pulls the month, the month before, the same month last year, campaigns, impression share, lead mix, devices, day and hour, and the change history itself, grades results against goals, explains what drove them, and plans next month. Also outlines a quarterly business review deck with speaker notes. Use when someone asks for a monthly report, month-over-month summary, client report, executive summary, QBR or quarterly review for a Google Ads account.
+description: Writes the month-end Google Ads report against last month, last year and goals, with a graded scorecard, campaign tiers, changes that worked and next month's plan, plus a quarterly review deck outline. Use when asked for a monthly report, client report, QBR or quarterly review.
 ---
 
 # Month-End Report Generator

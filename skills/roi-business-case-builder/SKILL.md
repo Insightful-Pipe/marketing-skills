@@ -1,6 +1,6 @@
 ---
 name: roi-business-case-builder
-description: Builds the ROI business case for one buyer in one deal. Takes the buyer's own numbers, the seller's price and the assumptions, tags every number with its source, models time saved, revenue gained (at margin) and costs avoided with an adoption ramp, and returns low, expected and high results, payback on total value and on cash alone, NPV at the buyer's rate, a one-at-a-time sensitivity table with break-even, a one-page business case the buyer's champion can take to finance, and the spreadsheet behind it with live formulas. Works from pasted discovery notes with no connection. With the InsightfulPipe MCP it can read public signals about the buyer (page speed, active ads, search traffic estimates for sellers of marketing services) and write the spreadsheet to Google Sheets after the user confirms. Use when someone asks for a business case, an ROI case or value case for a prospect, how to show ROI to a customer, a business case template for software, or help getting a deal approved by the buyer's finance team.
+description: Builds the ROI business case for one buyer in one deal from their own numbers, with low, expected and high results, payback, NPV, sensitivity and a one-page case for finance plus a live formula spreadsheet. Use for a business case, an ROI or value case for a prospect, or getting a deal past finance.
 ---
 
 # ROI Business Case Builder

@@ -1,6 +1,6 @@
 ---
 name: google-ads-account-restructure-planner
-description: Plans a Google Ads account restructure and writes the step-by-step migration. Reads the account through the InsightfulPipe MCP (or a pasted campaign and ad group export), adds up what each proposed campaign would have had in conversions and spend over the last 90 days so every new campaign clears the volume its bid strategy needs, keeps brand and non-brand apart, and says what merges into what, which negatives, shared lists and sitelinks carry over, how budgets and targets move, what to check in weeks 1 to 4 and the exact point to roll back. Use when someone asks to consolidate or simplify Google Ads campaigns, fix an account with too many small campaigns, review Google Ads account structure or campaign structure best practices, or plan a merge or split. Builds the new ad groups and ads paused, and changes nothing until the user confirms each step.
+description: Plans a Google Ads restructure that merges or splits Search campaigns so each clears its bid strategy volume, keeps brand apart and writes a week-by-week migration with a rollback line. Use when asked to consolidate campaigns, fix too many small campaigns, or review account structure.
 ---
 
 # Google Ads Account Restructure Planner

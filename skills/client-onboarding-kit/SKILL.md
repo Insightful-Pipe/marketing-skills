@@ -1,6 +1,6 @@
 ---
 name: client-onboarding-kit
-description: Builds a marketing agency's client onboarding kit for week one of a new account. Writes the intake questionnaire fitted to the services sold and pre-filled from the signed proposal, the access request list with the least-privilege role to grant on each platform and where the client clicks (Google Ads, Merchant Center, GA4, Tag Manager, Search Console, Meta, TikTok, LinkedIn, Microsoft Ads, Pinterest, Shopify, Klaviyo and more), the kickoff call agenda, a communication plan, a RACI and a 30-60-90 day plan. Then checks through the InsightfulPipe MCP which requested accounts are connected and return data, pulls a 30-day baseline for the plan, and drafts the chaser for what is missing. Also builds the handover pack when a client leaves. Use for client onboarding checklists, templates, questionnaires, kickoff agendas, how to give an agency access, or an offboarding handover. Works from a pasted proposal or SOW with no connection. Changes nothing, never asks for passwords and never grants or removes access itself.
+description: Builds an agency's client onboarding kit with intake questionnaire, least-privilege access requests for Google Ads, GA4, Meta, Shopify and Klaviyo, kickoff agenda, 30-60-90 plan and offboarding handover. Use when asking for a client onboarding checklist or how to give an agency access.
 ---
 
 # Client Onboarding Kit

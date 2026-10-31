@@ -1,6 +1,6 @@
 ---
 name: paid-media-math
-description: Break-even ROAS and target CPA calculator for paid media. Turns a business's own margins, repeat orders and goals into the numbers ads are judged by, with every formula shown. It works out contribution margin, break-even ROAS and ACOS, the highest CPA the business can afford on the first order and over a payback window, MER and blended CAC across every channel, the reverse funnel from a revenue or lead goal to the budget it needs, whether a target someone handed over can be reached, and what a test costs before it can give an answer. Works from typed numbers with nothing connected; through the InsightfulPipe MCP it fills the inputs from Shopify, WooCommerce, Magento, Google Ads, Meta, Microsoft Ads, LinkedIn Ads, TikTok Ads, GA4 or CallRail, and flags every live target ROAS, target CPA or cost cap that sits below break-even. Use when someone asks for break-even ROAS, a target CPA, how much to spend to hit a goal, whether a ROAS target is realistic, or what a test will cost. Changes nothing in any account.
+description: Calculates break-even ROAS, ACOS, target CPA, payback CPA, MER and blended CAC from your margins and repeat orders, plus the budget a revenue goal needs, whether a ROAS target is realistic and what a test costs. Use when asking for break-even ROAS, a target CPA or how much to spend to hit a goal.
 ---
 
 # Break-Even ROAS and Target CPA Calculator

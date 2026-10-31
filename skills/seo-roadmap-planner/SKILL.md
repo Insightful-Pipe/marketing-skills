@@ -1,6 +1,6 @@
 ---
 name: seo-roadmap-planner
-description: Builds a 3, 6 and 12-month SEO strategy and roadmap from the site's own numbers. Reads Search Console, GA4, DataForSEO competitor data, Bing Webmaster and robots.txt through the InsightfulPipe MCP, or works from pasted exports or a short questionnaire. Diagnoses the stage (new, growing, plateaued or declining), sizes each workstream (technical, existing pages, new pages, links, AI search) in clicks and leads, orders the work by clicks per hour inside the team's hours, and sets owners, milestones and a monthly scorecard. Use when someone asks for an SEO strategy, SEO roadmap, SEO plan for a new website, a 12-month or quarterly SEO plan, SEO goals or forecasts, or what to work on first in SEO. Offers to save the roadmap and scorecard to a Google Sheet only after the user confirms.
+description: Builds a 3, 6 and 12-month SEO roadmap from Search Console, GA4 and Bing, diagnoses whether the site is new, growing, plateaued or declining, and fits the work into the team's hours with goals and a monthly scorecard. Use when asked for an SEO strategy, SEO roadmap or what to work on first in SEO.
 ---
 
 # SEO Roadmap Planner

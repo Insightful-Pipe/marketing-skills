@@ -1,6 +1,6 @@
 ---
 name: sales-call-script-writer
-description: Writes reusable sales call guides from the team's own evidence, a cold calling script with openers, a voicemail and a gatekeeper line, a discovery call guide whose questions each fill a named qualification field (BANT, MEDDICC or the team's own CRM fields), and a sales demo script per persona, each timed to the booked call length and branched on the replies the team really hears in its call notes. A review mode scores a pasted call transcript against the guide and quotes the line behind every score. Works from pasted or uploaded offers, ICPs, call notes and transcripts with nothing connected; with the InsightfulPipe MCP it can also read the site through the crawler, buyer questions from Search Console and call transcripts from CallRail. Use when someone asks for a cold call script, voicemail script, discovery call questions, a demo script or flow, a call guide for new reps, or wants a sales call scored or coached. It changes nothing in any account.
+description: Writes sales call guides from your own call notes, including a cold calling script with voicemail and gatekeeper lines, a discovery guide tied to BANT or MEDDICC fields and a demo flow per persona, and scores call transcripts. Use for a cold call script, discovery call questions or a demo script.
 ---
 
 # Sales Call Script Writer

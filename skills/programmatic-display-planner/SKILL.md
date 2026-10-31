@@ -1,6 +1,6 @@
 ---
 name: programmatic-display-planner
-description: Plans a programmatic display and video campaign bought through a DSP, then reviews it once it runs. Picks the DSP that fits the budget on all-in cost (platform fee and add-on CPMs), sizes retargeting from GA4 users and caps it at what the pool can absorb under the frequency cap, chooses open auction, private marketplace or programmatic guaranteed deals per line, writes viewability (MRC), invalid traffic, frequency and supply-path rules that keep out made-for-advertising sites, and sets KPI ceilings from the account's own Google Ads and Meta costs. Afterwards it reads the DSP delivery export line by line, checks clicks against GA4 sessions, and marks each line keep, retune, fix supply, cut or too early. Works from a pasted brief, quotes and export; the InsightfulPipe MCP connectors for GA4, Google Ads and Meta are an upgrade. Use when someone asks how to buy programmatic ads, for a programmatic advertising strategy or display campaign plan, which DSP to pick, or how a running DSP campaign is doing.
+description: Plans programmatic display and video buys through a DSP, sets viewability and supply rules, then grades running lines on GA4. Use when asked how to buy programmatic ads, which DSP to pick, or how a DSP campaign is doing. Not for CTV (use ctv-streaming-ads-planner).
 ---
 
 # Programmatic Display and Video Planner

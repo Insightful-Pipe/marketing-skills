@@ -1,6 +1,6 @@
 ---
 name: checkout-cro-auditor
-description: Audits an online store's checkout to find why shoppers leave between the cart and payment, and ranks the fixes by the revenue at stake. Measures each step (cart, checkout start, contact and delivery, payment, purchase) by device and browser in GA4, checks the store's own orders and abandoned checkouts in Shopify, WooCommerce or Magento so a tracking gap is not mistaken for drop-off, reviews the cart and checkout screens from screenshots, sets the findings beside published abandonment research, and writes tests sized to the store's traffic. Says which fixes the store's Shopify plan allows. Works from a pasted funnel export and screenshots when nothing is connected. Use when someone asks for checkout optimization, a checkout audit, why carts are abandoned, how to reduce checkout abandonment or what checkout page best practices their store is missing. Read-only; it never changes the store.
+description: Audits an online store checkout step by step in GA4, checks Shopify, WooCommerce or Magento orders and checkout screenshots, and ranks fixes by revenue at stake. Use when asked for a checkout audit, why carts are abandoned, or how to reduce checkout abandonment.
 ---
 
 # Checkout Optimization Auditor

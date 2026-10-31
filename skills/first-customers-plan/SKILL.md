@@ -1,6 +1,6 @@
 ---
 name: first-customers-plan
-description: Plans how a product that has not sold yet wins its first paying customers, and the road to the first 100. Scores the candidate segments on evidence (the questions buyers search, the communities and creators that rank for the problem, the channels rivals pay for in public ad libraries, and who the founder can reach this week), picks one, lists where those buyers gather and ask for help, and turns the founder's real weekly hours into a 30-day founder-led plan with weekly targets, partner deals and one launch moment. Every channel gets a numeric stop rule set in week one. Use when someone asks how to get their first customers, their first 10 or 100 customers or users, how to find early customers for a startup or new service, or which channel to start with. Works from what the user pastes; with the InsightfulPipe MCP it also pulls DataForSEO, ad library, GA4 and Search Console data, runs a weekly check that drops channels missing the bar, and offers a Google Sheets tracker tab only after the user confirms.
+description: Plans how a product with no sales yet wins its first 10 to 100 paying customers, scoring segments on search demand, communities and rival ads, then building a 30-day founder-led plan from your weekly hours. Use when asked how to get first customers or users, or which channel to start with.
 ---
 
 # First 100 Customers Plan

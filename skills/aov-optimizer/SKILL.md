@@ -1,6 +1,6 @@
 ---
 name: aov-optimizer
-description: Finds out how to increase average order value for an online store from its own orders. Splits AOV into items per order and price per item, shows the spread of order values, finds the products, channels and discount codes that pull AOV up or down, then prices each lever in margin dollars before recommending it (free-shipping threshold, gift with purchase or tiered offer, add-ons, upsells, minimums on promo codes). Every threshold is set from the store's own order-value distribution, shipping fee and carrier cost, with a low, base and high case and the top-up rate it needs to break even. Works from an orders export (Shopify, WooCommerce, Magento or any sheet), or pulls the orders through the InsightfulPipe MCP (plus shipping zones and coupons on Shopify and WooCommerce). Use when someone asks how to raise AOV, where to set a free shipping threshold or whether a spend-and-get offer pays. Offers one change (a coupon minimum or a tier coupon on WooCommerce) only after the user confirms.
+description: Finds how to raise average order value from Shopify, WooCommerce or Magento orders, pricing shipping thresholds, gift with purchase, tiers, add-ons and code minimums in margin. Use when asked how to increase AOV, where to set a shipping threshold, or if a spend and get offer pays. Not for bundles.
 ---
 
 # Average Order Value Optimizer

@@ -1,6 +1,6 @@
 ---
 name: competitor-price-tracker
-description: Tracks an online store's prices against named competitors and marketplace sellers, product by product. Matches identical products by GTIN, brand and MPN or a confirmed title, compares landed prices (item price plus shipping, minus automatic discounts), free-shipping thresholds and live promotions, flags products priced well above or well below the market, and sets a price position and one repricing rule (match, beat, premium or hold) per product group, with a floor from the store's own costs so no rule prices below the minimum margin. Works from pasted price lists, rival product pages and an Amazon export. With the InsightfulPipe MCP it reads the catalogue and costs from Shopify, WooCommerce or Magento, and Merchant Center price benchmarks and the sellers shown next to the store. Use when someone asks to track or monitor competitor prices, find overpriced products or set ecommerce repricing rules. Pushes new prices and a Google Sheets price log only after the user confirms.
+description: Tracks a store's prices against named competitors and Amazon sellers by matched GTIN, compares landed prices and promotions, and sets match, beat, premium or hold repricing rules above a cost floor. Use when asked to monitor competitor prices, find overpriced products or set repricing rules.
 ---
 
 # Competitor Price Tracker

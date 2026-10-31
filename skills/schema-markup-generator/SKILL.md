@@ -1,6 +1,6 @@
 ---
 name: schema-markup-generator
-description: Audits and writes schema markup on live data through the InsightfulPipe MCP, or from pasted page source. Reads which rich results a site earns in Google Search Console (search appearance, product snippets, merchant listings), checks what Google detected on each key page with URL Inspection, reads the JSON-LD on the page, then writes the missing or broken JSON-LD (Organization, Breadcrumb, Article, Product, Software app, Video, LocalBusiness, FAQ, HowTo) from facts the page, the user or a connected source backs. Two extra modes. Video SEO gets videos on your own pages into Google's video results with VideoObject and key moments from real video facts, a video sitemap and a fix for each reason in the Video indexing report. Location pages writes one LocalBusiness block per location, matched field by field to the Google Business Profile. Use for a structured data or schema audit, a page with no rich results, JSON-LD for a page, video SEO or a video not indexed, or LocalBusiness schema for one or many locations.
+description: Audits structured data against the rich results Google Search Console reports and writes missing or broken JSON-LD for Organization, Breadcrumb, Article, Product, VideoObject and LocalBusiness. Use when asked for a schema audit, JSON-LD for a page, a video not indexed, or LocalBusiness schema.
 ---
 
 # Schema Markup Generator

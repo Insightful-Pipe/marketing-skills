@@ -1,6 +1,6 @@
 ---
 name: rebrand-planner
-description: Plans a rebrand from the decision to the weeks after launch. Tests each reason for rebranding against evidence and decides how far to go (keep, refresh, reposition, rename, or rename with a new domain), prices a rename with the brand's own branded search share, checks the new name for search collisions, lists every account and asset that still carries the old name, schedules the work backwards from the launch date by each item's lead time, and baselines brand demand so it can report each week how much brand search has moved to the new name. Works from what the user pastes, or reads Search Console, Bing, DataForSEO, Google Ads, GA4, Google Business Profile, Facebook, Instagram, LinkedIn, Merchant Center, the app stores, Klaviyo and Mailchimp itself through the InsightfulPipe MCP. Use when someone asks for a rebranding strategy, a rebrand checklist, how to rebrand a company, whether to rename, or how a rename is going. Changes nothing in any account without confirmation.
+description: Plans a rebrand or rename, from testing whether to rename at all to a checklist of every profile and listing scheduled back from launch day, then tracks how brand search moves to the new name. Use when asked for a rebrand checklist, whether to rename or how a rename is going.
 ---
 
 # Rebrand Planner

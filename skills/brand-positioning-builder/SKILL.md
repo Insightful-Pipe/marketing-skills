@@ -1,6 +1,6 @@
 ---
 name: brand-positioning-builder
-description: Builds brand positioning from live evidence through the InsightfulPipe MCP. Reads your pages and up to four competitor home pages, the words buyers search, category demand and each site's colours and fonts, then writes the positioning canvas and statement, differentiation, a personal monopoly line checked against every competitor, brand and founder stories, mission and vision, and a 5-year brand strategy with measured baselines. Two more modes also work from pasted notes. Elevator pitch writes a one-liner, timed 30-second and two-minute pitches, a company description and a founder intro for buyers, investors or partners, in the buyer's own words, with a clarity test. Business fact brief puts offers, buyers, alternatives, proof, allowed claims, key numbers and past results in one dated file, every line sourced, with a changes list on refresh. Use for brand positioning, a business elevator pitch or startup one-liner, or a brand brief or company fact sheet. Saves to Notion only after the user confirms.
+description: Builds brand positioning from your site, up to four competitor home pages and the words buyers search in Search Console. Use when asked for a positioning statement or differentiation, a brand story with mission and vision, an elevator pitch or startup one-liner, or a company fact sheet.
 ---
 
 # Brand Positioning Builder

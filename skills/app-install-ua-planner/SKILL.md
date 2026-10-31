@@ -1,6 +1,6 @@
 ---
 name: app-install-ua-planner
-description: Plans paid user acquisition for a live mobile app across Apple Ads, Google App campaigns, Meta, TikTok, Snapchat and AppLovin. Works out the highest cost per install and the day 7 ROAS target the app can afford from its own cohort revenue curve, scores every network and platform on what the next dollar buys, and writes a 4-week budget and ramp plan with the network to open next, the in-app event each campaign should optimize for, the creative each network needs and the measurement gaps to close. Use when someone asks for a mobile app user acquisition strategy, an app install campaign plan, how to lower CPI for app installs, where to put the next app ad dollar, or whether to add a new ad network. Works from a pasted cohort report and spend figures; with the InsightfulPipe MCP it reads live app campaign results from Google Ads, Meta, TikTok and Snapchat and the App Store and Google Play listings. Changes nothing in any ad account.
+description: Plans paid user acquisition for a live mobile app across Apple Ads, Google App campaigns, Meta, TikTok, Snapchat and AppLovin, setting max CPI, day 7 ROAS targets and a 4 week budget. Use when asked for an app UA strategy, how to lower CPI, or where the next app ad dollar should go.
 ---
 
 # App Install (User Acquisition) Campaign Planner

@@ -1,6 +1,6 @@
 ---
 name: agency-pricing-calculator
-description: Works out what an agency or freelancer should charge for marketing services (PPC, paid social, social media management, SEO, content, email). Turns the team's own pay, overhead and billable hours into a loaded hourly cost per role, sizes the client's monthly workload in hours from real account size (campaigns, ad groups or ad sets, keywords, ads, spend, posts a month), pulled through the InsightfulPipe MCP when the accounts are connected, prices hourly, retainer, project, percentage of ad spend and performance models with the margin of each at the client's actual spend, finds the spend where a percentage fee flips from under- to over-charging, sets the minimum fee for small accounts, and returns a rate card and a client quote with break-even points. Works from typed numbers with nothing connected. Use when someone asks how much to charge for social media management, PPC management pricing, how to price an agency retainer, which agency pricing model to use, or whether a client fee is profitable.
+description: Prices PPC, paid social, social media and SEO work for an agency or freelancer from team costs and account size, comparing retainer, hourly and percent of ad spend, with a rate card. Use when asking how much to charge for social media management, PPC management pricing, or retainer pricing.
 ---
 
 # Agency Pricing Calculator

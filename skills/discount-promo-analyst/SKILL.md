@@ -1,6 +1,6 @@
 ---
 name: discount-promo-analyst
-description: Measures discount code performance and every sale an online store ran, from its own orders. For each code it shows orders, revenue, the margin given away, how much went to customers who usually pay full price, new versus returning buyers and whether code-acquired buyers come back. It judges each sitewide sale against a before-and-after baseline, finds codes that leaked to coupon sites, tracks a growing reliance on discounts, and designs the next offer (type, depth, audience, length, guardrails and a holdout). Works from an orders export (Shopify, WooCommerce, Magento or any sheet), or pulls orders, price rules and coupons through the InsightfulPipe MCP, with GA4 for coupon-site referrals and Klaviyo for unique codes. Use when someone asks whether their discounts are profitable, which promo codes work, if a code leaked, or what their next promotion should be. Creates a WooCommerce coupon, Klaviyo unique codes or a Merchant Center promotion only after the user confirms.
+description: Measures discount codes and sitewide sales from a store's own orders, showing margin given away, who used each code, codes leaked to coupon sites and whether a sale paid, then designs the next offer. Use when asked if discounts are profitable, which promo codes work, or if a code leaked.
 ---
 
 # Discount and Promotion Analyst

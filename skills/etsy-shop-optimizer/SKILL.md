@@ -1,6 +1,6 @@
 ---
 name: etsy-shop-optimizer
-description: Audits a whole Etsy shop for Etsy SEO and sales from the shop's own listings CSV and Stats. Sorts every listing into not found, found but not chosen, earning or too little data using the shop's own median views and order rate, ranks the listings worth fixing by the orders and revenue at stake, then checks tags, titles, photos, descriptions, categories and attributes, price and shipping against similar listings, sections, About, logo and policies. When DataForSEO is connected through the InsightfulPipe MCP it measures Google search demand for every current tag and candidate term, as a proxy because Etsy publishes no search volumes. Use when someone asks for an Etsy shop audit, Etsy SEO help, why Etsy listings get no views or no sales, or which listings to fix first. Hands title and tag rewriting to product-description-writer when installed. Changes nothing in the shop.
+description: Audits an Etsy shop from its listings CSV and Stats, ranking the listings that lose the most orders and checking tags, titles, photos, price, shipping and shop pages. Use when asked for an Etsy shop audit, Etsy SEO help, or why Etsy listings get no views or no sales.
 ---
 
 # Etsy SEO and Shop Audit

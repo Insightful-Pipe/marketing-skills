@@ -1,6 +1,6 @@
 ---
 name: seo-forecast
-description: Forecasts what an SEO plan will deliver and when it pays back. Takes target keywords with the rank each should reach, projects monthly clicks, leads, customers and revenue with ramp time and seasonality, gives conservative, base and stretch scenarios, and finds the break-even month against the cost of the work. Uses the site's own click-through rate by position from Search Console and its own organic conversion rate from GA4 through the InsightfulPipe MCP, backtests the click model on the site's history, and pulls keyword volumes and seasonality from DataForSEO. Works from a pasted keyword list and goals when nothing is connected. Use when someone asks for an SEO forecast, SEO traffic or revenue projection, SEO ROI calculator, SEO business case, whether an SEO budget or agency quote will pay off, or how long SEO takes to break even.
+description: Forecasts SEO traffic, leads, revenue and the break-even month for a target keyword plan, using the site's own Search Console click curve and GA4 conversion rate, in three scenarios. Use when asked for an SEO forecast, SEO ROI, an SEO business case or whether an agency quote will pay off.
 ---
 
 # SEO Forecast and ROI Calculator

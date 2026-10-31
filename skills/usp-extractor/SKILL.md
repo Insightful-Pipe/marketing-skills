@@ -1,6 +1,6 @@
 ---
 name: usp-extractor
-description: Finds a business's unique selling proposition from live evidence through the InsightfulPipe MCP. Reads your own page and every live Google Ads line, measures which selling points buyers respond to, search for and mention, reads the competitors that rank for your main service, scores USP candidates on credible, relevant, unique, sustainable and memorable and writes the primary USP, two alternatives, page and ad messaging, "unlike" lines in the competitors' own words and the claims to stop making. Its message testing mode checks 2 to 5 value propositions or positioning lines before a rewrite; it picks the cheapest method that can decide (five-second test, preference or single-variant survey, ad or page split), sizes it, writes the variants and reads out the winner with confidence intervals. Use when someone asks what makes them different, for a USP or value proposition, how to position against competitors, or how to test messaging. Offers USP callouts and paused test ads, run only after the user confirms.
+description: Finds your unique selling proposition by scoring Google Ads response, search terms, reviews and competitor pages, then writes the USP, ad and page messaging and claims to drop, plus message tests. Use when asked what makes us different, for a value proposition, or positioning against competitors.
 ---
 
 # USP Extractor

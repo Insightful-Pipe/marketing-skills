@@ -1,6 +1,6 @@
 ---
 name: image-seo-alt-text
-description: Image SEO audit and alt text generator. Looks at each image on a site's key pages, writes alt text from what the picture shows and what the page is about, skips decorative images and never stuffs keywords. Finds missing or useless alt text, camera and hash file names, oversized or old-format files, missing width and height and a lazy-loaded hero image, ranks every fix by the Google Images and web clicks the page gets in Search Console, and writes image sitemap entries where they help. Works from uploaded images or pasted image URLs with nothing connected; with the InsightfulPipe MCP it reads the Web Crawler, PageSpeed and Search Console itself. Use when someone asks for alt text, an image SEO audit, why images get no Google Images traffic, heavy images slowing a page, or an image sitemap. Offers to set WordPress media alt text, only after the user confirms.
+description: Writes alt text by looking at each image and audits image SEO, flagging missing or stuffed alt, camera file names, heavy files and lazy-loaded hero images, ranked by Google Images clicks. Use when asked for alt text, an image SEO audit or an image sitemap, or images get no Google Images traffic.
 ---
 
 # Image SEO and Alt Text Generator

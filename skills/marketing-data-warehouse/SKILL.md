@@ -1,6 +1,6 @@
 ---
 name: marketing-data-warehouse
-description: Sets up and checks a marketing data warehouse. Designs one daily cross-channel table (date, platform, account, campaign, currency, spend, impressions, clicks, conversions, value) with joins to GA4 and to orders or CRM deals, writes the staging views, the union view and the scheduled MERGE for the user to save, checks loaded tables for missing days, duplicate rows, currency and time-zone mismatches, reconciles every day against each ad platform's own totals pulled live through the InsightfulPipe MCP, and turns plain-English questions into SQL with the result explained. Runs read-only queries on BigQuery through the connector, and writes SQL for Snowflake, Redshift, Postgres, MySQL, SQL Server or any warehouse from a pasted schema. Use when someone asks to build or fix a marketing data warehouse, combine ad data in BigQuery, write SQL for marketing analytics, check why warehouse numbers differ from Google Ads or Meta, or answer a marketing question in SQL. Never creates, changes or deletes tables itself.
+description: Designs and checks a cross-channel marketing data warehouse, writes staging, union and MERGE SQL, finds missing days and duplicates and reconciles spend with ad platforms. Use when combining ad data in BigQuery, writing marketing SQL or warehouse spend won't match Google Ads. Not for GA4 export SQL.
 ---
 
 # Marketing Data Warehouse and SQL Builder

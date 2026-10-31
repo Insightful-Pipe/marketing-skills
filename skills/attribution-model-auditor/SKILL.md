@@ -1,6 +1,6 @@
 ---
 name: attribution-model-auditor
-description: Audits how conversions are attributed across Google Ads, Meta, LinkedIn, Microsoft Ads, TikTok and GA4 on live data through the InsightfulPipe MCP. Reads every platform's attribution windows, models and counting rules itself, splits click from view credit, measures how long people really take to convert, compares GA4's property model with first-touch and last-touch views, checks how far the platforms' sum sits from the real count, grades six areas and recommends a model, windows and a source of truth. Use when someone asks whether their attribution setup is right, why platform numbers don't match each other or GA4, which attribution model or window to use, or what an attribution model means. Offers window and primary-action changes in Google Ads that it runs only after the user confirms.
+description: Audits attribution windows, models and click vs view credit across Google Ads, Meta, LinkedIn, Microsoft Ads, TikTok and GA4, then recommends a model and source of truth. Use when platform numbers don't match each other or GA4, or asking which attribution model or window to use.
 ---
 
 # Attribution Model Auditor

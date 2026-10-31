@@ -1,6 +1,6 @@
 ---
 name: email-lifecycle-strategy
-description: Writes the email and lifecycle marketing strategy for a business, from the first sign-up or purchase onward. Sets a measurable rule for each customer stage (subscriber, first-time buyer, repeat, at risk, lapsed) from the business's own reorder gaps, maps what each stage gets today by email, SMS, push and paid retargeting, names the stages and jobs nothing covers, orders the builds for the next 90 days by the people they reach, outlines the broadcast rhythm, and picks one number per stage with its baseline. Works from a description or pasted results; reads Klaviyo or Mailchimp flows and campaigns, Shopify or WooCommerce orders, GA4 key events, Meta custom audiences and Google Ads user lists through the InsightfulPipe MCP when they are connected. Use when someone asks for an email marketing strategy, a customer retention strategy, a lifecycle marketing plan or map, which flows to build next, or why customers stop buying. Changes nothing in any account.
+description: Writes an email and lifecycle marketing strategy, setting customer stages from Shopify or WooCommerce reorder gaps, mapping Klaviyo or Mailchimp flows, SMS, push and ads per stage, and ordering 90-day builds. Use when asked for a retention strategy, lifecycle map or which flows to build next.
 ---
 
 # Email and Lifecycle Marketing Strategy

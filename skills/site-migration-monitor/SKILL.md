@@ -1,6 +1,6 @@
 ---
 name: site-migration-monitor
-description: Protects organic traffic through a site migration or launch, on live data through the InsightfulPipe MCP or from pasted crawl exports and URL lists. Before a move it baselines every URL with Search Console clicks, GA4 visits or backlinks, crawls up to 50 priority old URLs, drafts the redirect map and runs the checklist. Its launch check compares a redesign's test build with the live site page by page on the URLs that earn clicks (titles, headings, text, canonicals, noindex, links, markup), or runs the go-live SEO checklist for a new website. Its redirect map builder matches each old URL to its best new page when there is no clean rule, flags chains, loops and 410s, and exports for Apache, Nginx, Cloudflare, Shopify or CSV. After the move it checks redirects, new pages, robots.txt, sitemaps, Google and Bing pickup and traffic. Use for a domain change, redesign, replatform, URL restructure, HTTPS switch or new site launch, or a traffic drop after one. Offers Bing submits after the user confirms.
+description: Protects organic traffic in a site migration, redesign or replatform with a Search Console baseline, a launch check, a 301 redirect map and day 1 to 90 checks of redirects, sitemaps and traffic. Use when asked about a domain change, a migration SEO checklist or a traffic drop after a redesign.
 ---
 
 # Site Migration SEO Monitor

@@ -1,6 +1,6 @@
 ---
 name: email-campaign-calendar
-description: Plans the broadcast side of email marketing for the next quarter and answers how often to send marketing emails. Sets engagement tiers, picks each tier's send frequency from the account's own fatigue signals (unsubscribes and spam complaints per send, and revenue per recipient, at each sends-per-week level the list has already run), sets the mix of promotional, product, story and content sends from their own results, builds a dated email marketing calendar with a one-line brief per send, sizes one frequency test, and designs an email preference center so people can choose less mail instead of unsubscribing. Works from a description and a campaign export; reads Klaviyo or Mailchimp, GA4 and WordPress through the InsightfulPipe MCP when connected. Use when someone asks for an email calendar, a send frequency or cadence plan, how often to email their list, or a preference center. Writes the calendar to Google Sheets and saves draft campaigns only after the user confirms; never schedules or sends.
+description: Plans a quarter of Klaviyo or Mailchimp email broadcasts, setting send frequency per engagement tier from the list's own unsubscribes, complaints and revenue, then builds a dated calendar and preference center. Use when asked for an email calendar, cadence plan or how often to email the list.
 ---
 
 # Email Marketing Calendar and Send Frequency Planner

@@ -1,6 +1,6 @@
 ---
 name: store-launch-checklist
-description: Checks a new online store before it launches and gives every item a pass, fail, unknown or not-applicable result with its evidence and the fix. Covers domain and HTTPS, policy pages, test orders and live payments, taxes, shipping zones, product data, GA4 and Tag Manager tracking, consent, search basics, mobile speed, email capture and the welcome flow, and Google Merchant Center. Works from what the user pastes or describes, or reads Shopify, WooCommerce or Magento, the site crawler, PageSpeed, GA4, Tag Manager, Klaviyo and Merchant Center through the InsightfulPipe MCP. Cross-checks the sources against each other (refund policy against the Merchant Center return window, countries sold to against shipping zones, the test order against the GA4 purchase event) and ends with a verdict on whether to take orders and whether to start promotion. Use when someone asks for a Shopify launch checklist, an ecommerce launch checklist, how to launch a Shopify store, or what to check before opening an online store.
+description: Checks a new store before launch, marking each item pass, fail or unknown with evidence across domain, policies, payments, taxes, shipping, products, GA4, speed, email and Merchant Center, then a go or no-go. Use when asked for a Shopify launch checklist or what to check before opening a store.
 ---
 
 # Online Store Launch Checklist

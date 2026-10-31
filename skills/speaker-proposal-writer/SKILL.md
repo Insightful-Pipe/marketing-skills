@@ -1,6 +1,6 @@
 ---
 name: speaker-proposal-writer
-description: Gets a founder or expert booked to speak at conferences. Finds events with open calls for speakers and their deadlines, drops pay-to-speak and stale calls, ranks the rest by buyers in the room and cost per expected sign-up, then writes the talk title, abstract, learning outcomes and speaker bio in each event's own format and limits, shapes the talk around the questions the audience searches for, and plans the UTM link, content and follow-up that turn the talk into leads. Works from what the user pastes; with the InsightfulPipe MCP it searches calls and question data through DataForSEO, reads Search Console queries and tracks talk visits and sign-ups in GA4. Use when someone asks how to get speaking engagements, wants a conference speaker proposal, a CFP submission, a talk abstract or a speaker bio, or asks which conferences to apply to.
+description: Finds conferences with open calls for speakers, ranks them by buyers in the room, and writes the talk title, abstract and speaker bio to each event's limits. Use when asked how to get speaking engagements, for a CFP submission or talk abstract. Not for podcasts (use podcast-guest-pitching)
 ---
 
 # Conference Speaker Proposal Writer

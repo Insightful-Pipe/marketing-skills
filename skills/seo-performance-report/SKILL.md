@@ -1,6 +1,6 @@
 ---
 name: seo-performance-report
-description: Builds an organic search performance report from live Google Search Console data through the InsightfulPipe MCP. Pulls clicks, impressions, CTR and position itself, compares the last 28 days with the 28 before and the same period last year (or one calendar month with the month before), separates real changes from noise, and explains what drove them by brand vs non-brand searches, device, country, site section (directory), page and query, plus Image, Video, News, Discover and Google News results and a month-by-month trend over the 16 months Search Console keeps. Use when someone asks for an SEO report, a month-over-month or year-over-year SEO summary, branded vs non-branded traffic, device or country SEO performance, how a blog or other folder is doing, or how the site performs in image, video, Discover or News results. It only reads and changes nothing.
+description: Reports Google Search Console results month over month and year over year, splitting clicks by brand vs non-brand, device, country, folder, page and query, plus Discover, News, image and video. Use when asked for an SEO report, a monthly SEO summary or branded vs non-branded traffic.
 ---
 
 # SEO Performance Report

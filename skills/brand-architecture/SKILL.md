@@ -1,6 +1,6 @@
 ---
 name: brand-architecture
-description: Plans brand architecture from measured brand equity. Decides how a company's brands and products relate (master brand, sub-brand, endorsed brand or separate brand, the branded house vs house of brands choice), whether a new product should carry the parent name, and the naming system for products, plan tiers and features, then says what each choice means for the website, ads and social accounts. Works from a pasted brand and product list; with the InsightfulPipe MCP it also reads search demand for every name and how often names are searched together (Search Console, DataForSEO), traffic and key events by site section or domain (GA4), what name searches convert at (Google Ads) and audience mix (Meta Ads). Use when someone asks about brand architecture, a branded house or house of brands, sub-brands, endorsed brands, naming a new product or tier, folding in an acquired brand, or whether a product needs its own brand. Hands any domain or URL move to SEO with the numbers.
+description: Plans brand architecture from name search demand, GA4 and Google Ads data. Use when choosing a branded house vs house of brands, sub-brands or endorsed brands, naming a new product or plan tier, or folding in an acquired brand. Not for a rename rollout (use rebrand-planner).
 ---
 
 # Brand Architecture Planner

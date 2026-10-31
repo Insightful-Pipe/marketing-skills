@@ -1,6 +1,6 @@
 ---
 name: spend-pacing-monitor
-description: Checks Google Ads spend pacing on live data through the InsightfulPipe MCP. Pulls month-to-date spend, daily budgets, budget edits, impression share lost to budget and weekly cost per conversion by campaign, projects where the month will land against your target or the budget ceiling, says which campaigns are capped, can't spend or have stopped, and drafts a daily budget plan it applies only after you confirm. Use when someone asks "am I on track this month", "will I overspend or underspend", "which campaign stopped spending", how cost per conversion is trending by campaign, or how to set daily budgets for the rest of the month.
+description: Checks Google Ads month-to-date spend pacing, projects where the month will land against a target or budget ceiling, flags capped or stopped campaigns and drafts rest-of-month daily budgets. Use when asked am I on track this month, will I overspend or underspend, or which campaign stopped spending.
 ---
 
 # Spend Pacing Monitor

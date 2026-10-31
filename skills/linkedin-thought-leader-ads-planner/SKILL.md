@@ -1,6 +1,6 @@
 ---
 name: linkedin-thought-leader-ads-planner
-description: Plans LinkedIn Thought Leader Ads. Ranks posts by founders, employees and partner creators against each author's own usual engagement rate, checks format eligibility, reach, age and fit with the campaign themes, and drafts the boost with targeting, a bid from LinkedIn's suggested bids, a budget per post, a 14-day run and a day-7 stop rule. Works from pasted post stats or LinkedIn exports, and reads the connected member's totals and the company Page's posts through the InsightfulPipe MCP when LinkedIn Pages is connected. Use when someone asks which employee or founder posts to boost on LinkedIn, how to run or budget Thought Leader Ads, or how to sponsor a creator's post. Creates the campaign group and paused campaigns through LinkedIn Ads only after the user confirms, and writes the Campaign Manager steps and the permission request for each author.
+description: Plans LinkedIn Thought Leader Ads by ranking founder, employee and creator posts against each author's usual engagement rate, then drafts the bid, budget per post and a day-7 stop rule. Use when asked which employee posts to boost, how to budget Thought Leader Ads or how to sponsor a creator.
 ---
 
 # LinkedIn Thought Leader Ads Planner

@@ -1,6 +1,6 @@
 ---
 name: site-structure-planner
-description: Plans a website's structure for SEO from real search demand. Turns keyword clusters into sections and hub pages, sets URL and slug rules, plans the header menu, footer and breadcrumbs, measures current click depth and orphaned pages with a crawl, and decides subfolder vs subdomain vs separate domain for each case. Outputs a section tree, a URL map and, for an existing site, the 301 redirect map with the clicks and key events at stake on every moved URL. Works for a new site from a pasted keyword or page list; with the InsightfulPipe MCP it reads Search Console, GA4 and a site crawl itself, so ranking URLs keep their address unless the URL itself is broken. Use when someone asks for a site structure, website architecture for SEO, an SEO friendly URL structure, a URL map or sitemap plan, which pages a section needs, where a new section or product should live, subdomain vs subfolder, or how to reorganise a growing site without losing rankings. It changes nothing on the site.
+description: Plans a website's SEO architecture from keyword demand, with sections, hubs, URL and slug rules, menus, breadcrumbs, click depth and orphans, keeping ranking URLs in place. Use when asked for a site structure, an SEO friendly URL structure, subdomain vs subfolder or where a new section should live.
 ---
 
 # Site Structure Planner

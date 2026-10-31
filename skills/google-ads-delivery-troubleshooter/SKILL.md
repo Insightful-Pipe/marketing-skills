@@ -1,6 +1,6 @@
 ---
 name: google-ads-delivery-troubleshooter
-description: Finds out why Google Ads campaigns, ad groups, keywords or ads aren't showing or can't spend their budget. Through the InsightfulPipe MCP it reads the account itself (account and billing status, the reasons Google gives behind every "Eligible (limited)" or "Not eligible" status, ad policy review, keyword reasons such as rarely served, negatives that block keywords, location, schedule and device settings, bid strategy status and impression share lost to budget and rank), sorts every item into can't serve, serves with limits, losing auctions or out of demand, and ranks the real blockers by the money at stake with the fix for each. Works from pasted status messages, screenshots or a status export when nothing is connected. Use when someone asks why their Google Ads are not showing, what "Eligible (limited)" means, why a campaign is not spending its budget, or why impressions or spend suddenly dropped. Offers a few fixes it runs only after the user confirms.
+description: Finds why Google Ads campaigns, keywords or ads are not showing or not spending, reading status reasons, billing, policy, blocking negatives, settings and lost share, ranked by money at stake. Use when ads are not showing, a campaign says Eligible (limited), or the budget goes unspent.
 ---
 
 # Google Ads Delivery Troubleshooter

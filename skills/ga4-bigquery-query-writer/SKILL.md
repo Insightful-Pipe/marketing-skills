@@ -1,6 +1,6 @@
 ---
 name: ga4-bigquery-query-writer
-description: Writes, explains, fixes and runs BigQuery SQL on the GA4 export and the Google Ads transfer tables, for questions the GA4 interface can't answer well. Covers sessions built from raw events, landing pages and page paths, ordered funnels inside a session, first-touch, last non-direct, linear and position-based attribution across sessions, cohort lifetime value, and cost per purchase by Google Ads campaign. Reads the user's own dataset, table sizes and schema first, limits every query to the daily tables it needs, shows the dry-run scan estimate, runs a single SELECT only after the user says yes, then checks the result against GA4's own totals and explains each gap. Use when someone asks for GA4 BigQuery queries or SQL examples, wants to query the GA4 export, count sessions in BigQuery, build an unsampled funnel, path or cohort, join GA4 with ad cost, or asks why BigQuery and GA4 numbers differ. Works with no connection from a pasted schema or results, and always hands back the SQL.
+description: Writes, explains, fixes and runs BigQuery SQL on the GA4 export for sessions, page paths, ordered funnels, multi-touch attribution, cohort LTV and Google Ads cost per purchase. Use when asked for GA4 BigQuery queries or why BigQuery and GA4 numbers differ.
 ---
 
 # GA4 BigQuery Query Writer

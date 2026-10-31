@@ -1,6 +1,6 @@
 ---
 name: email-deliverability-auditor
-description: Audits why marketing email lands in spam or bounces and what to repair first. Checks SPF, DKIM and DMARC and whether they align with the From domain, the Gmail, Yahoo and Microsoft bulk-sender rules (one-click unsubscribe, spam rate limits), bounces and complaints by mailbox provider, mail still going to people who stopped engaging, shared versus own sending domain, BIMI readiness and a ramp-up schedule for a new domain or IP, and ends with a dated repair sequence naming who does each step and the re-check that proves it worked. Works from pasted DNS records, test-send headers, bounce messages and Postmaster Tools exports, looks up DNS itself in a shell, and reads Mailchimp per-domain results and domain status or Klaviyo bounce and complaint events through the InsightfulPipe MCP. Use when someone asks why their emails go to spam, wants an SPF DKIM DMARC check or an email deliverability audit, or needs a warm-up plan. Offers to add a Mailchimp sending domain for verification only after the user confirms.
+description: Audits email deliverability, checking SPF, DKIM and DMARC alignment, Gmail, Yahoo and Microsoft bulk-sender rules, and bounces and complaints by mailbox provider, then writes a dated repair plan and warm-up schedule. Use when emails go to spam, for an SPF DKIM DMARC check or a domain warm-up plan.
 ---
 
 # Email Deliverability Auditor

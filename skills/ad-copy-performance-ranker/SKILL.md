@@ -1,6 +1,6 @@
 ---
 name: ad-copy-performance-ranker
-description: Ranks Google Ads responsive search ads and their individual headlines and descriptions on live data through the InsightfulPipe MCP. Pulls every RSA, the clicks and conversions each line earns, Google's own line ratings and the combinations Google serves, then ranks ads against the account's non-brand baseline, runs fair head-to-heads inside each ad group, checks ad strength against real results, finds the winning copy angles, audits every description for length, a call to action and a reason to choose, and flags weak, off-topic and wrongly pinned lines. Use when someone asks which ads or headlines work, wants to rank or audit ad copy, asks whether ad strength matters, or wants headline ideas from their best ads. Can create a paused challenger ad or pause a clear loser, only after the user confirms.
+description: Ranks Google Ads responsive search ads and each headline and description by clicks and conversions, with head-to-heads per ad group and an ad strength reality check. Use when asking which ads or headlines work, to audit ad copy, or if ad strength matters. Not for new ads (use rsa-ad-copy-writer)
 ---
 
 # Ad Copy Performance Ranker

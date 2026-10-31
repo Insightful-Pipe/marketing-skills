@@ -1,6 +1,6 @@
 ---
 name: linkedin-page-analyst
-description: Analyses a LinkedIn company page on live data through the InsightfulPipe MCP, or from the page's analytics exports. Reports follower growth (organic and paid), who the followers are by job function, seniority, industry, company size and country, page views and visitors, and which posts, formats, topics and weekdays earn impressions, clicks and engagement against the page's own median. Tests whether new followers match the target buyer instead of counting heads, adds the site visits and key events each post sends through GA4, prices paid followers from LinkedIn Ads, and checks the page setup. Also reads a founder's personal post analytics from a pasted export. Use when someone asks for LinkedIn company page analytics, a LinkedIn page audit or report, why their page isn't growing, how to grow LinkedIn company page followers, or which LinkedIn posts work. Reads only; it never posts or edits.
+description: Analyses a LinkedIn company page from connected data or exports, covering follower growth, whether followers fit the target buyer, page views, top posts, formats and days, GA4 visits per post and page setup. Use when asked for LinkedIn page analytics, a page audit or how to grow page followers.
 ---
 
 # LinkedIn Page Analyst

@@ -1,6 +1,6 @@
 ---
 name: tiktok-ads-analyzer
-description: Analyzes a TikTok Ads account on live data through the InsightfulPipe MCP. Pulls campaigns, ad groups, ads and reports itself, then grades the creative funnel (hook rate, 6-second hold, completion, CTR), reports cost per result and ROAS per optimization goal, ranks the top creatives, compares Spark Ads with ad-only posts, Smart+ with manual campaigns and bid strategies, breaks results down by age, gender, region, placement (Pangle included) and device, explains cost-per-result spikes, checks pixel, lead and shop setups, and forecasts month-end spend. Use when someone asks to analyze, review or report on TikTok ads or TikTok ROAS, asks why TikTok costs rose, which TikTok creatives or audiences win, or wants a monthly TikTok client report. Offers to pause losing ads or change an ad group budget only after the user confirms.
+description: Analyzes TikTok Ads results, grading hook rate, 6-second hold, CTR, cost per result and ROAS by creative, audience, placement and Pangle, and explains cost spikes. Use when asked to review TikTok ads, why TikTok costs rose, Spark Ads vs dark posts, or for a monthly TikTok client report.
 ---
 
 # TikTok Ads Analyzer

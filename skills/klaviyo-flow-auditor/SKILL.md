@@ -1,6 +1,6 @@
 ---
 name: klaviyo-flow-auditor
-description: Audits email automation on live data through the InsightfulPipe MCP, or from pasted exports. On Klaviyo it checks which core flows exist (welcome, abandoned cart, browse abandonment, post-purchase, winback, sunset), each flow's revenue, clicks, unsubscribes, bounces and complaints, lists and segments, and unengaged and bounced profiles, then builds a re-engagement plan. It also reviews abandoned cart recovery (the recovery rate measured from the store's own checkouts and orders, recoveries by channel, and the cart and checkout flows step by step), and runs an email marketing audit for Mailchimp or any platform's exports with a money view that sizes each missing or weak flow from the account's own trigger volume. Use when someone asks to audit Klaviyo or Mailchimp flows or email automation, run an email marketing audit, check abandoned cart recovery, find missing flows and what they are worth, report on unengaged subscribers or plan a winback. Fixes run only after the user confirms.
+description: Audits Klaviyo and Mailchimp flows for missing or weak automations, unengaged profiles and abandoned cart recovery measured from Shopify orders. Use when asked for an email marketing audit, missing flows and their worth, or a winback plan. Not for writing flows (use email-sequence-builder).
 ---
 
 # Klaviyo Flow Auditor

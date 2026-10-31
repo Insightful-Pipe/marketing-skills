@@ -1,6 +1,6 @@
 ---
 name: repo-readme-optimizer
-description: Writes or audits the README and repo details (About line, website field, topics, social preview) of a product, open-source tool, SDK, plugin or MCP server so the repo page works as a landing page for people, Google and AI assistants. Works from a pasted README, a public repo URL or a short brief. When DataForSEO, Search Console or GA4 is connected through the InsightfulPipe MCP, it picks the wording from real search volume, from the repos Google and AI answers already show for the category, from the questions people search, and from which README links send visitors. Use when someone asks to write a README, improve or review a GitHub README, wants a README template, asks how to write a good README or for README best practices, or wants a repo to rank or get cited.
+description: Writes or audits a GitHub README and repo card (About line, topics, social preview) for an open-source tool, SDK, plugin or MCP server so it ranks in Google and gets cited by AI assistants. Use when asked to write a README, review a GitHub README, README best practices or make a repo rank.
 ---
 
 # README and Repo Page Optimizer

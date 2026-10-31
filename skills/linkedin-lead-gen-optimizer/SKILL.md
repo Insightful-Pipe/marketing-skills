@@ -1,6 +1,6 @@
 ---
 name: linkedin-lead-gen-optimizer
-description: Reviews and improves LinkedIn Lead Gen Form campaigns on live data through the InsightfulPipe MCP. Reads every form's questions and settings, measures form open and completion rates by campaign, ad and form, works out cost per lead by campaign and by seniority, job function, company size and industry, grades lead quality from work-email share, audience mix and the user's lead export or CRM statuses, and compares lead forms with the website path. Use when someone asks why LinkedIn leads are expensive or poor, wants a lead gen form completion rate analysis, cost per lead by campaign or audience, a lead quality review from form answers, or wants a new Lead Gen Form campaign drafted. Builds the new form, campaign and ad as exact payloads it creates only after the user confirms.
+description: Reviews LinkedIn Lead Gen Forms for form design, open to completion drop-off, cost per lead by campaign and audience, and lead quality from work email share or CRM statuses. Use when LinkedIn leads are expensive or poor, or asked for form completion rates or a new Lead Gen Form campaign.
 ---
 
 # LinkedIn Lead Gen Form Optimizer

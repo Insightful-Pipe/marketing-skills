@@ -1,6 +1,6 @@
 ---
 name: ad-demand-test-planner
-description: Plans and reads a small paid smoke test that checks demand for an offer, or which message sells it, before anyone builds or repositions. Picks the channel (Google Search, Meta, LinkedIn or Reddit) from real reach and cost, sets pass and kill lines from the user's own economics before launch, sizes visits, budget and run time per variant, writes the variants, the waitlist page brief and an honest note for people who sign up for something that doesn't exist yet, then reads the finished test into go, real but short, or stop. Use when someone asks for a smoke test, wants to validate a business idea with ads, test product demand with Facebook ads, test messages or price points with ads before launch, or asks how much to spend on a demand test and how to read it. Works from what the user describes or pastes; with the InsightfulPipe MCP it pulls Keyword Planner bids, Meta reach estimates and costs, LinkedIn suggested bids and GA4 results itself. It never creates or launches campaigns.
+description: Plans and reads a paid smoke test on Google Search, Meta, LinkedIn or Reddit that checks demand, a message or a price before you build, with pass and kill lines, budget and a waitlist page brief. Use when validating a business idea with ads, testing product demand or sizing a demand test.
 ---
 
 # Ad Smoke Test Planner

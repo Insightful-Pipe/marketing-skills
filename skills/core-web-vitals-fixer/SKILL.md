@@ -1,6 +1,6 @@
 ---
 name: core-web-vitals-fixer
-description: Finds and fixes Core Web Vitals problems on live data through the InsightfulPipe MCP. Picks the pages that matter from Search Console, groups them by template, reads real-user LCP, INP and CLS from PageSpeed Insights, diagnoses the worst template with Lighthouse, and writes ranked LCP, CLS and INP fix plans, plus image and JavaScript/third-party bloat findings, a speed-vs-bounce and speed-vs-ad-conversion check from GA4 or Google Ads, and a week-over-week regression check. Use when someone asks why their site is slow, how to pass Core Web Vitals, how to fix LCP, CLS or INP, which templates are slowest, which scripts or images slow a page, whether speed hurts bounce rate or ad conversions, or wants a weekly speed monitor. Can draft the code changes when the site's code is open, applied only after the user confirms.
+description: Diagnoses Core Web Vitals by page template with PageSpeed Insights and Lighthouse on your top Search Console pages, and writes ranked LCP, INP and CLS fix plans plus image and script bloat findings. Use when a site is slow, to pass Core Web Vitals, fix LCP, CLS or INP, or for a weekly speed check.
 ---
 
 # Core Web Vitals Fixer

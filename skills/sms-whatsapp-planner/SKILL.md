@@ -1,6 +1,6 @@
 ---
 name: sms-whatsapp-planner
-description: Plans and writes an SMS marketing program, with WhatsApp where it fits. Decides which moments go by text instead of email, sets campaign cadence, writes the keyword and two-step opt-in, writes every message with its characters, encoding, segments and cost per send, and runs a compliance pass on consent wording, quiet hours, STOP and HELP, US 10DLC, toll-free or short code registration and the WhatsApp template category of each message. Works from a brief or a pasted SMS export with no connection. With the InsightfulPipe MCP it sizes the plan to the real SMS-consented audience in Klaviyo or Shopify, uses the account's own email vs SMS revenue per recipient and SMS spend, and checks each text against the live email flows so nobody gets a text and an email about the same cart within the hour. Use when someone asks for an SMS or text message marketing strategy, SMS flows, text message examples, a WhatsApp marketing strategy, or whether a moment should be a text or an email. Changes nothing.
+description: Plans SMS and WhatsApp marketing for Klaviyo or any SMS platform, picks text or email per moment, writes opt-ins and every text with segment counts and cost per send, and checks 10DLC compliance. Use when asked for an SMS marketing strategy, SMS flows, text message examples or WhatsApp marketing.
 ---
 
 # SMS and WhatsApp Marketing Planner

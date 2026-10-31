@@ -1,6 +1,6 @@
 ---
 name: north-star-metric-builder
-description: Chooses a North Star metric that counts the value customers get from the product, tests every candidate against the business's own month-by-month retention and revenue, rejects vanity counts with written rules, and breaks the winner into 3 to 5 input metrics with owners, baselines, 13-week targets and the events needed to track them weekly. Works from a pasted history or a plain description (including pre-launch products), and reads GA4 or a BigQuery export through the InsightfulPipe MCP when connected. Use when someone asks for a north star metric, north star metric examples, how to choose a north star metric, a metric tree, input metrics, a one-metric-that-matters, or which product metric to grow. Offers to put a weekly check in a new Google Sheets tab, only after the user confirms.
+description: Chooses a North Star metric by testing candidates against your retention and revenue history from GA4, BigQuery or pasted data, then builds 3 to 5 input metrics with owners and 13-week targets. Use when asked for a north star metric, a metric tree, input metrics, or which product metric to grow.
 ---
 
 # North Star Metric Builder

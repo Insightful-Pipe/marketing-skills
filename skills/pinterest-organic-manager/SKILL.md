@@ -1,6 +1,6 @@
 ---
 name: pinterest-organic-manager
-description: Manages an organic Pinterest business account on live data through the InsightfulPipe MCP. Pulls the profile, every board and pin, account and pin analytics for up to 90 days, and Pinterest Trends itself, then scores five areas (reach and engagement, pin hygiene, board hygiene, freshness, format mix), ranks pins and boards by saves and outbound clicks, compares formats, reports device and source splits, finds trending keywords for the user's niche, builds a seasonal pin calendar, and writes keyword-led pin titles, descriptions and alt text. Use when someone asks to analyze, audit, report on or grow an organic Pinterest account, find top pins or boards, plan seasonal pins, find Pinterest keywords, or turn a blog post or topic into pins and boards. Drafts pins, boards and sections as exact payloads it runs only after the user confirms.
+description: Audits an organic Pinterest account, ranks pins and boards by saves and outbound clicks, finds Pinterest Trends keywords, plans seasonal pins and writes pin copy. Use when asked for a Pinterest audit, Pinterest keywords or a pin from a blog post. Not for Pinterest Ads (use pinterest-ads-manager)
 ---
 
 # Pinterest Organic Manager

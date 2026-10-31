@@ -1,6 +1,6 @@
 ---
 name: heatmap-session-analyst
-description: Turns Microsoft Clarity or Hotjar behaviour data into a short, ranked list of page fixes. Reads rage clicks, dead clicks, quick backs, excessive scrolling, JavaScript errors and scroll depth by page, device and traffic channel, lines each page up with its GA4 sessions and conversion rate, ranks every problem by the conversions it probably costs, and names the exact Clarity recording filter and heatmap view to watch for each one. Works from the Clarity connector through the InsightfulPipe MCP (with a Google Sheet that stacks Clarity's 3-day window into a longer history), or from a pasted Clarity or Hotjar export, heatmap screenshots and notes from watched recordings. Use when someone asks for heatmap analysis, session recording analysis, what rage clicks or dead clicks mean, which recordings to watch, or why visitors get stuck on a page. Changes nothing on the site, in Clarity or in GA4; the only write is appending rows to the user's own Sheet, after they confirm.
+description: Ranks Microsoft Clarity or Hotjar rage clicks, dead clicks, quick backs and scroll depth by the GA4 conversions each costs, and names the Clarity recording filters to watch. Use when asked for heatmap analysis, session recording analysis, what rage clicks mean, or why visitors get stuck.
 ---
 
 # Heatmap and Session Recording Analyst

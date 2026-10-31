@@ -1,6 +1,6 @@
 ---
 name: chatgpt-ads-analyzer
-description: Analyzes a ChatGPT Ads (OpenAI Ads) account on live data through the InsightfulPipe MCP. Pulls account status, campaign, ad group and ad delivery, conversions, pixel and event health, custom audiences, lead forms and lifetime budget pacing itself, can set ChatGPT Ads beside Google Search Ads for the same dates, grades nine areas and ranks what to fix first. Use when someone asks how their ChatGPT ads are doing, wants a ChatGPT Ads report, asks whether their OpenAI pixel or conversions work, or wants to compare ChatGPT Ads with Google Ads. Offers budget, bid and pause changes only after the user confirms.
+description: Audits a ChatGPT Ads (OpenAI Ads) account, grading campaigns, ads, conversions, pixel health, audiences, lead forms and budget pacing, then ranks fixes. Use when asking how my ChatGPT ads are doing, for a ChatGPT Ads report, whether the OpenAI pixel works, or ChatGPT Ads vs Google Ads.
 ---
 
 # ChatGPT Ads Performance Analyzer

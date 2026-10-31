@@ -1,6 +1,6 @@
 ---
 name: product-market-fit-assessment
-description: Measures how close a product is to product-market fit by combining the Sean Ellis survey with behaviour. Scores the share of qualified users who would be very disappointed without the product against the 40% bar, with a 95% margin of error and a warning below about 40 answers, finds the segment where the score clears the bar, codes what those users value and what holds the rest back, then checks whether retention cohorts flatten, brand search grows and earned channels bring a rising share of new users. Works from a pasted or uploaded survey export and cohort numbers, and through the InsightfulPipe MCP reads Google Sheets, GA4, Search Console, BigQuery, Shopify and WooCommerce itself. Use when someone asks whether they have product-market fit, how to measure it, how to run or read a PMF survey or the Sean Ellis test, or which customers to focus on before scaling.
+description: Measures product-market fit with the Sean Ellis survey against the 40% bar and its margin of error, finds the segment that has fit, then checks retention cohorts and brand search. Use when asked do we have product-market fit, how to run a PMF survey or who to focus on before scaling.
 ---
 
 # Product-Market Fit Assessment

@@ -1,6 +1,6 @@
 ---
 name: social-search-optimizer
-description: TikTok SEO and Instagram SEO for short videos and profiles. Finds the phrases people search on TikTok and Instagram from pasted in-app search suggestions and Creator Search Insights topics plus Google US volumes (with tiktok and instagram variants) through DataForSEO, maps where each phrase must appear (spoken early, on-screen text, caption first line, hashtag, profile name, bio, alt text), audits the account's own recent videos and flags the ones that get views but carry no search phrase, then writes search-ready captions, on-screen text and spoken first lines. Works from pasted captions and suggestions, or reads TikTok and Instagram through the InsightfulPipe MCP. Use when someone asks about TikTok SEO, Instagram SEO, ranking in TikTok or Instagram search, keywords for Reels or TikToks, or why their videos aren't found in search. Reads only and never posts or edits.
+description: Optimizes TikTok and Instagram videos and profiles for in-app search. Finds the phrases people search, flags videos with views but no search phrase and rewrites their captions. Use when asked about TikTok SEO, Instagram SEO or keywords for Reels. Not for YouTube (use youtube-seo-optimizer)
 ---
 
 # Social Search Optimizer (TikTok and Instagram SEO)

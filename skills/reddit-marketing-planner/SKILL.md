@@ -1,6 +1,6 @@
 ---
 name: reddit-marketing-planner
-description: Plans organic Reddit marketing for a brand, plus Quora, Hacker News and niche forums. Finds the communities where buyers ask for help, reads each one's self-promotion rules and pace from what the user pastes, lists the Reddit and forum threads that already rank in Google and get cited in AI answers for the brand's keywords (DataForSEO through the InsightfulPipe MCP), writes native comments, posts, a Quora answer and an AMA plan that are checked rule by rule against each community's rules, and measures Reddit, Quora and Hacker News visits and key events in GA4. Works from pasted rules and threads with no connection at all. Use when someone asks for a Reddit marketing strategy, how to market on Reddit, which subreddits to join, how to answer Reddit threads without getting banned, forum or Quora marketing, a Show HN or AMA plan, or how much traffic Reddit sends. Drafts only and never posts.
+description: Plans Reddit marketing plus Quora, Hacker News and forums. Finds ranking threads, checks each subreddit's promotion rules and drafts replies, posts and AMA plans. Use when asked how to market on Reddit, which subreddits to join or for a Show HN plan. Not for Reddit Ads (use reddit-ads-manager)
 ---
 
 # Reddit and Forum Marketing Planner

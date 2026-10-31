@@ -1,6 +1,6 @@
 ---
 name: expansion-revenue-planner
-description: "Plans SaaS expansion revenue from the business's own billing and usage data. Computes net revenue retention (NRR, or net dollar retention) and gross revenue retention (GRR) with the math shown, by plan and signup cohort, and splits expansion into upgrades, seats and add-ons. Scores every paying account for upgrade readiness (seat limit, usage allowance, locked feature clicks, growth), prices each next step from the price list, and plans each upgrade moment: in-product prompt, email, account-manager step, a floor target from the account's own past expansion rate, and a read-out date. Checks which upgrade emails already run in Klaviyo or Mailchimp. Works from pasted or uploaded exports, and pulls live data through the InsightfulPipe MCP when BigQuery, Stripe, Klaviyo, Mailchimp or GA4 is connected. Use when someone asks how to calculate net revenue retention, how to increase expansion revenue or NRR, for a SaaS upsell strategy, or which customers to upsell. Read only; it changes nothing."
+description: Calculates SaaS net revenue retention (NRR) and GRR from Stripe or billing exports, scores which paying accounts are ready to upgrade, add seats or buy add-ons, and plans the upgrade prompts and emails. Use when asked how to increase NRR or expansion revenue, or which customers to upsell.
 ---
 
 # Expansion Revenue Planner

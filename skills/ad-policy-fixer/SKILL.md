@@ -1,6 +1,6 @@
 ---
 name: ad-policy-fixer
-description: Fixes rejected, disapproved and stuck ads, and restricted ad accounts, on LinkedIn, TikTok, Microsoft Ads (Bing), Pinterest, Snapchat, X, ChatGPT (OpenAI) Ads and Reddit. Lists every ad that is rejected or stuck in review across the connected platforms in one pass, names the policy each one most likely broke and where that reason came from, rewrites only the line that tripped review while keeping the offer, checks housing, employment, credit, health, alcohol, gambling and political ads against their targeting limits, and drafts the review request or the appeal to lift an account restriction. Use when someone says their LinkedIn, TikTok, Bing, Pinterest, Snapchat, X, ChatGPT or Reddit ad was rejected, not approved, disapproved or stuck in review, or their ad account on one of those platforms is suspended or restricted. Works from a pasted notice or screenshot, or reads the accounts through the InsightfulPipe MCP. Never promises approval; edits or replaces an ad only after the user confirms.
+description: Fixes rejected, disapproved or stuck ads and restricted ad accounts on LinkedIn, TikTok, Microsoft Ads (Bing), Pinterest, Snapchat, X, ChatGPT ads and Reddit, rewriting the line that tripped review and drafting the appeal. Use when an ad was not approved or an ad account is suspended.
 ---
 
 # Ad Rejection Fixer

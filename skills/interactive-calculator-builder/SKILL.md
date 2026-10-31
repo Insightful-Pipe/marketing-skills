@@ -1,6 +1,6 @@
 ---
 name: interactive-calculator-builder
-description: Builds a working calculator a website can give away (ROI, savings, cost, payback, sizing or price estimate) as one embeddable HTML file with no backend. Writes the formula out step by step, checks it against worked examples by running the file's own code, adds labelled inputs with limits, a result screen, optional email capture and GA4 events for start, finish and lead, then writes the page copy around it. With the InsightfulPipe MCP it names the tool after the phrasings people search (DataForSEO), checks GA4 key events and event names, and finds the WordPress slug and pages to link from. Use when someone wants to build an ROI calculator for their website, an interactive calculator for lead generation, a savings or quote estimator, or asks how to build a calculator for their site. Saves the page copy as a WordPress draft only after the user confirms.
+description: Builds a working ROI, savings, cost or quote calculator as one embeddable HTML file, with the formula checked against worked examples, GA4 events, optional email capture and page copy. Use when asked to build an ROI calculator, a lead generation calculator, or a price estimator for a website.
 ---
 
 # Interactive Calculator Builder

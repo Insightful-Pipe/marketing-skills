@@ -1,6 +1,6 @@
 ---
 name: sponsorship-proposal-writer
-description: Writes a sponsorship proposal, sponsorship deck and sponsor outreach for an event, nonprofit, club, conference or show, priced from the audience the user can prove. Builds a dated, sourced audience ledger from GA4, Klaviyo or Mailchimp, Facebook, Instagram, LinkedIn and YouTube through the InsightfulPipe MCP (or from pasted numbers, labelled as such), prices package tiers from what past sponsors paid, finds likely sponsors among brands already advertising to that audience in the public ad libraries, then writes the deck outline, a one-page proposal letter, outreach emails with follow-ups and a post-event sponsor report template. Use when someone asks how to get sponsors for an event, for a sponsorship proposal template, a sponsorship deck, sponsorship packages or tiers, what to charge sponsors, or a sponsor pitch email. Read only; it changes nothing in any account.
+description: Writes a sponsorship deck, priced package tiers and sponsor pitch emails for an event, nonprofit or club, using audience proof from GA4, Klaviyo, Mailchimp and social. Use when asked how to get sponsors or what to charge sponsors. Not for buying a sponsorship (use event-sponsorship-roi)
 ---
 
 # Sponsorship Proposal Writer

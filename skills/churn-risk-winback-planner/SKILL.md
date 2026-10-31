@@ -1,6 +1,6 @@
 ---
 name: churn-risk-winback-planner
-description: Customer churn analysis and win-back planning from the business's own buying rhythm. Measures the repurchase gap per product line from Shopify, WooCommerce or Magento orders, a BigQuery table, Klaviyo order events or a pasted orders, billing or usage export, sets the day a customer counts as lapsed for each line instead of a stock 90 days, lists who is past it and who is close, puts a figure on what they used to spend, and plans the comeback for each group (reason to return, whether an incentive is justified and how much the customer's past gross margin can pay for, channel, timing, and when to stop). Reads Klaviyo or Mailchimp first to see whether a win-back flow already runs and what it earns. Use when someone asks who has churned or lapsed, how to win back lost customers, for win-back campaign ideas, a lapsed-buyer list, or why their win-back flow underperforms. Works with no connection from a pasted export. Writes a static Klaviyo list or Mailchimp segment only after the user confirms.
+description: Finds lapsed and at-risk customers from Shopify, WooCommerce, Magento or BigQuery orders by each product line's repurchase gap, then plans margin-capped win-back touches and checks any Klaviyo win-back flow. Use when asked who has churned, how to win back customers or for a lapsed-buyer list.
 ---
 
 # Churn Risk and Win-back Planner

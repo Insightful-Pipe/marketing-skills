@@ -1,6 +1,6 @@
 ---
 name: paywall-screen-optimizer
-description: Reviews and improves the paywall screen of a subscription app or SaaS product, the screen where a free user is asked to pay. Lists every placement that shows it (onboarding, a usage limit, a locked feature, an upgrade button), measures each placement's view-to-start rate from GA4 app or web events through the InsightfulPipe MCP or from pasted counts, ranks placements by starts lost against the product's own median, checks each screen against Apple App Store and Google Play subscription disclosure rules (billed amount, trial terms, restore, terms links, true savings claims), reviews the default plan, annual against monthly framing, trial wording and the close option, then writes test variants for the weakest placements and sizes each test from that placement's own weekly views. Use when someone asks about paywall optimization, paywall A/B testing, paywall design best practices, an upgrade screen or feature gate that doesn't convert, or an app paywall rejected in review. Changes nothing in any account.
+description: Reviews subscription app and SaaS paywall screens by placement, ranks where starts are lost from GA4 or pasted counts, checks App Store and Google Play disclosure rules, and writes test variants. Use when asked about paywall optimization, paywall A/B testing, or a paywall rejected in review.
 ---
 
 # Paywall Screen Optimizer

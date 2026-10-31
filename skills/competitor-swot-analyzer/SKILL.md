@@ -1,6 +1,6 @@
 ---
 name: competitor-swot-analyzer
-description: Builds a competitor SWOT, positioning read and sales battlecard from live public data through the InsightfulPipe MCP, and monitors competitors. Pulls the search landscape, who ranks for whose "vs" and "alternative" searches, positioning, messaging, pricing and proof, and company momentum for you and up to three competitors, then turns it into a SWOT per competitor, ad and vs page angles, a launch watch and honest feedback on your own position. Its change watch mode reruns the same checks weekly or monthly, saves a dated snapshot and reports only what changed (prices and plans, pages, new ads and offers, ranking moves, AI answer mentions, app and map ratings, launches), each marked respond, watch or ignore. Use when someone asks for a SWOT, competitor research, competitor monitoring, a competitive intelligence report, how to track competitors, how to position against a rival, a battlecard, comparison page angles, what a competitor changed or launched, or a red-team review of their own business.
+description: Builds a competitor SWOT, positioning read and sales battlecard from public search, pricing and company data for you and up to three rivals, and runs a weekly or monthly change watch. Use when you need competitor research, competitor monitoring, a battlecard or vs page angles.
 ---
 
 # Competitor SWOT Analyzer

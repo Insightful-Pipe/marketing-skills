@@ -1,6 +1,6 @@
 ---
 name: copy-transcreation
-description: Localizes and transcreates marketing copy and content for another market and language, rewriting, not translating. Works from pasted copy, and through the InsightfulPipe MCP finds the words each market searches (Search Console queries by country, Google Ads and Microsoft Ads search terms from campaigns in that language, DataForSEO volumes per locale), ranks which pages and articles to adapt first by Search Console impressions per country, moved up by GA4 key events from that country, keeps a locked list of names and terms, counts every ad line against Google Ads and Microsoft Ads limits, puts prices, dates, numbers and units in local form, flags claims that need a local check and gives a back-translation plus a native-reviewer checklist. Use when someone asks to localize, transcreate or translate a landing page, ads, emails, taglines, CTAs, UI strings, blog posts or guides for another country, or which content to localize first. Offers a paused search ad or a WordPress draft only after the user confirms.
+description: Localizes and transcreates landing pages, Google Ads and Microsoft Ads, emails, taglines, UI strings and blog posts for another country in the words that market searches, with back-translations. Use when asked to localize, transcreate or translate copy, or which content to localize first.
 ---
 
 # Content Localization and Transcreation

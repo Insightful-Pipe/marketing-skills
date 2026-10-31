@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-account-auditor
-description: Audits a Meta (Facebook and Instagram) Ads account on live data through the InsightfulPipe MCP. Pulls account status, billing and spend caps, ad review history, pixels, campaigns, ad sets, audiences, ads, creative formats and 30-day insights itself, grades eight areas (billing, policy, tracking, structure, audiences, budget, creative, naming), and returns a consolidation plan, a naming-convention audit and the top fixes ranked by money at stake. Use when someone asks to audit, health-check or take over a Meta Ads account, asks why CPA keeps rising, wants to know if the account is ready to scale, or wants campaigns renamed to a convention. Offers renames and pauses as actions it runs only after the user confirms.
+description: Audits a whole Meta Ads account for Facebook and Instagram across billing, policy, pixel tracking, structure, audiences, budget, creative fatigue and naming, with fixes ranked by money at stake. Use when asked to audit or health-check Meta Ads, why CPA keeps rising, or taking over an account.
 ---
 
 # Facebook Ads Account Auditor

@@ -1,6 +1,6 @@
 ---
 name: keyword-cannibalization-fixer
-description: Finds keyword cannibalization on live Google Search Console data through the InsightfulPipe MCP. Pulls query and page data itself, finds queries split across two or more of your pages, groups them into page pairs, checks redirects and Google's chosen canonical for each URL, maps every important query to the one page that should own it, flags pages that rank for too many unrelated queries, and writes a fix plan (merge and redirect, differentiate, or relink) for each conflict. Use when someone asks about keyword cannibalization, pages competing with each other, the wrong page ranking, a query-to-page map, or why rankings swap between URLs.
+description: Finds keyword cannibalization in Google Search Console, where two of your pages split one query, picks the owner page and writes a merge, differentiate or relink fix plus a query-to-page map. Use when asked about pages competing with each other, the wrong page ranking or URLs swapping rankings.
 ---
 
 # Keyword Cannibalization Fixer

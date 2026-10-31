@@ -1,6 +1,6 @@
 ---
 name: linkedin-outreach-writer
-description: Writes LinkedIn prospecting messages for a prospect list, from pasted posts and news or a CSV. For each prospect it drafts the connection request note, the first message after they accept, two follow-ups a few business days apart, and an InMail for people you can't connect with, and for the top accounts a dated plan to comment on their posts before asking for anything. Every message opens from something the person or their company actually posted, announced or changed, with its link and date; a prospect with no fresh opener goes on a research list, never a template. Counts every draft against LinkedIn's character limit for its type (200 or 300 for a note), paces invitations by week, and outputs a daily list to send by hand, as LinkedIn's User Agreement bans automation tools. Use when someone asks for a LinkedIn connection request message, LinkedIn prospecting messages or an outreach message template. With the InsightfulPipe MCP it puts companies already clicking your LinkedIn ads first. Never sends.
+description: Writes LinkedIn prospecting messages per prospect, including connection notes, first messages, follow-ups and InMails, each opening from a dated post or news and checked against LinkedIn character limits, with a daily list to send by hand. Use for a LinkedIn connection request message or InMail.
 ---
 
 # LinkedIn Prospecting Message Writer

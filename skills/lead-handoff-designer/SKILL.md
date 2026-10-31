@@ -1,6 +1,6 @@
 ---
 name: lead-handoff-designer
-description: Designs the marketing to sales lead handoff from the team's own CRM lead export. Sets MQL vs SQL stage rules, lead routing rules, the response-time agreement (sales and marketing SLA), what happens to rejected and stalled leads, the meeting booking and no-show steps, and the weekly table both teams review, with every time target computed from the team's own conversion data instead of outside studies (a labelled default where the data can't). Sizes the leaks between MQL and opportunity (untouched, late, stalled and no-show leads) in leads and pipeline value, lost or at risk, and maps each stage to a GA4 lead event with a value. Use when someone asks to define MQL and SQL, write a lead handoff or SLA, set lead routing or speed-to-lead rules, fix leads that sales never works, or cut meeting no-shows. Works from a pasted or uploaded export; reads it from Google Sheets, GA4 and CallRail through the InsightfulPipe MCP when connected. Offers a new sheet tab and GA4 key events only after the user confirms.
+description: Designs the marketing to sales lead handoff from your CRM lead export, setting MQL vs SQL rules, lead routing, a response time SLA, rejected lead recycling and no-show steps. Use to define MQL and SQL, write a sales SLA or fix speed to lead. Not for scoring (use lead-scoring-model-builder).
 ---
 
 # MQL to SQL Handoff Designer

@@ -1,6 +1,6 @@
 ---
 name: loyalty-vip-program-designer
-description: Designs a customer loyalty program, or reviews and redesigns one that already runs (points, spend tiers, a VIP tier, an optional paid membership), from the store's own order data. Sets tier thresholds from the real 12-month spend distribution, sizes the reward rate to a share of gross margin, costs the program from earn rate, measured or expected redemption and perk costs, and states the lift in repeat rate it needs to break even. For a running program it reads redemption, expiry, outstanding points and tier movement from the loyalty app's export. Writes the launch and member emails after checking Klaviyo for loyalty flows and VIP segments, and hands over tier lists. Use when someone asks how to create a loyalty program, for customer loyalty program ideas, a VIP customer program, or whether their rewards program pays. Works from Shopify, WooCommerce or Magento orders through the InsightfulPipe MCP, or from a pasted orders CSV. Tags customers or saves email templates only after the user confirms.
+description: Designs or reviews a points and VIP tier loyalty program from Shopify, WooCommerce or Magento orders, placing tiers on real spend, sizing rewards to gross margin and showing the repeat lift needed to break even. Use when asked to create a loyalty program, VIP tier or whether rewards pay.
 ---
 
 # Loyalty and VIP Program Designer

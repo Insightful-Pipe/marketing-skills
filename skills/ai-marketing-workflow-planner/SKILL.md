@@ -1,6 +1,6 @@
 ---
 name: ai-marketing-workflow-planner
-description: Plans how a marketing team uses AI and automation. Takes the team's recurring tasks from a pasted task list, time log, calendar export or process notes, scores each on frequency, time, risk and data access, and decides automate, assist or keep human by stated rules. Checks every task against what is really connected through the InsightfulPipe MCP (which platforms, read or Read and Write access, which actions) so the plan only promises automations that can run, and puts every step that publishes, sends, spends or changes an account behind a named approver. Counts hours saved from the team's own time log, writes a build spec per automation (trigger, inputs, steps, review gate, error handling, owner, off switch) and a short AI use policy. Use when someone asks how to use AI in a marketing team, what marketing tasks to automate with AI, for an AI marketing automation plan, or for an AI policy for a marketing team. Works from a paste alone. Saves the plan to Google Sheets only after the user confirms.
+description: Plans which marketing tasks to automate with AI, which Claude drafts for approval and which stay human, scored from your task list and time log, with build specs, hours saved and an AI use policy. Use when asked what marketing tasks to automate, for an AI automation plan or an AI policy.
 ---
 
 # AI Marketing Workflow Planner

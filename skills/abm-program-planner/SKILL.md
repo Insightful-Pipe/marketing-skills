@@ -1,6 +1,6 @@
 ---
 name: abm-program-planner
-description: Plans an account-based marketing (ABM) program across channels from the user's own evidence. Scores the target accounts on fit learned from past won and lost deals, open pipeline and company-level LinkedIn ad engagement, splits them into one-to-one, one-to-few and one-to-many tiers sized by the sales team, maps the buying committee each tier must reach, sets the plays per tier (ads, outbound, direct mail, events, personalised pages, sales touches), caps spend per account by what a win is worth, prices LinkedIn from the Campaign Manager audience forecast and suggested CPM bid (pasted, or the bid live when connected), and builds an engagement score with shown weights tested on past deals. Ends with measures on target accounts against everyone else. Use when someone asks for an ABM strategy, plan or template, how to run an ABM campaign, which accounts to target, or an expansion plan for customers. Works from pasted lists and exports alone. Offers a Google Ads Customer Match list only after the user confirms.
+description: Plans an account-based marketing (ABM) program from your target account list and closed deals. Scores and tiers accounts, maps buying committees, and sets plays and LinkedIn spend per tier. Use when asked for an ABM strategy, which accounts to target or a customer expansion plan.
 ---
 
 # ABM Program Planner

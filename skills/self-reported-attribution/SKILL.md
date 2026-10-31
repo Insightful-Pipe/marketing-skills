@@ -1,6 +1,6 @@
 ---
 name: self-reported-attribution
-description: Runs self-reported attribution end to end. Writes or fixes the "how did you hear about us" survey question and answer list for checkout or signup, codes every answer (free text included) into channels with a coding table, gives each channel's share of customers and of revenue with a margin of error, and joins the answers to GA4 orders customer by customer to show what tracking misses, such as podcasts, friends, AI assistants, communities and video watched without a click. Then it sets the shares against what Meta and Google Ads claim. Works from a pasted survey export, or pulls answers from Shopify, WooCommerce, Magento or Google Sheets and orders from GA4 through the InsightfulPipe MCP. Use when someone wants a how did you hear about us question, post-purchase or signup survey answers analysed, dark social explained, or to know which channels tracking under-credits. Flags answer-order bias in an existing question. Can save the coded answers to a new Google Sheets tab after the user confirms.
+description: Writes or fixes a how did you hear about us question, codes every answer into channels with margins of error, and matches answers to GA4 orders to show what tracking misses, against Meta and Google Ads claims. Use for HDYHAU or post-purchase survey analysis, dark social or under-credited channels.
 ---
 
 # How Did You Hear About Us Survey Analyst

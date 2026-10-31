@@ -1,6 +1,6 @@
 ---
 name: ad-landing-page-match-scorer
-description: Scores how well every active ad matches the page it sends people to, on live data through the InsightfulPipe MCP. Pulls the ads, keywords, sitelinks, Google's landing page rating and conversion rate by page itself, captures each landing page on desktop and mobile, reads its headings and speed, and scores headline, offer, keyword, visual and audience match out of 100 plus the post-click experience (speed, mobile, trust, conversion path). Use when someone asks why ads get clicks but no conversions, why landing page experience or Quality Score is low, whether ads and pages say the same thing, or wants screenshots of the landing page behind every active ad. Can repoint an ad to a better page or add deep-linked sitelinks, only after the user confirms.
+description: Scores each active Google Ads or Meta ad against its landing page for headline, offer, keyword and audience match plus mobile speed, ranked by spend. Use when ads get clicks but no conversions, landing page experience or Quality Score is low, or ads and pages say different things.
 ---
 
 # Ad to Landing Page Match Scorer

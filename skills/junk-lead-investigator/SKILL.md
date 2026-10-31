@@ -1,6 +1,6 @@
 ---
 name: junk-lead-investigator
-description: Finds where spam, fake and poor-fit leads come from and how to stop them. Grades every lead in the user's CRM export or form tool against concrete signs (a submit faster than the form's typed fields allow, no scroll or click before it, a country the campaign doesn't target, bursts, night submits above the source's own night traffic, invalid email or phone), sorts each lead into bot or script, accidental tap, real but wrong fit, qualified or can't tell, then traces each group to the campaign, network or placement, landing page and form that let it in and puts a spend figure on each source. Ranks fixes across the form (honeypot, timer, validation, a qualifying question), the targeting and what counts as a conversion. Use when someone says their ads bring spam leads, fake form submissions, bot or junk leads, or leads that never answer. Works from a pasted lead list or through the InsightfulPipe MCP, and changes nothing until the user confirms.
+description: Finds where spam, bot and poor-fit leads come from, grading each lead in a CRM or form export and tracing junk to campaign, placement, page and form, then ranks form, targeting and conversion fixes. Use when ads bring spam leads, fake form submissions or leads that never answer. Not for click fraud.
 ---
 
 # Junk Lead and Form Spam Investigator

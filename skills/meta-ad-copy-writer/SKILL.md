@@ -1,6 +1,6 @@
 ---
 name: meta-ad-copy-writer
-description: Writes new Meta (Facebook and Instagram) ad copy from the ads that already win. Pulls ad-level results and the exact primary text, headlines and CTAs of the top ads through the InsightfulPipe MCP, names the angle and hook behind each winner, then writes primary text variations and headlines that keep the winning angle and test one change at a time. For new or thin accounts it reads competitors' longest-running ads in the Meta Ad Library instead. Also writes carousel and collection ads card by card (the card order, a headline and description per card, the opening card, whether Meta may reorder the cards, and the cover and product tiles of a collection) from card-level results or from pasted copy and a product list. Use when someone asks for Facebook ads copy, Instagram ad copy, primary text, headlines, ad variations, "more ads like our best one", Facebook carousel ad copy, Instagram carousel ads or a collection ad. Can create the new copy as a paused creative only after the user confirms.
+description: Writes Facebook and Instagram ad copy, primary text, headlines and carousel or collection cards, from the angles behind your winning Meta ads or competitors' Ad Library ads. Use when asked for Facebook ad copy, Instagram ad copy, headline variations or more ads like our best one.
 ---
 
 # Meta Ad Copy Writer

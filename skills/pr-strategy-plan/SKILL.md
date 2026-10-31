@@ -1,6 +1,6 @@
 ---
 name: pr-strategy-plan
-description: Builds a 6 or 12 month public relations strategy and PR plan from the company's own evidence. Turns business goals into PR goals with measures, scores candidate stories on six newsworthiness tests with an evidence gate and keeps the 3 to 5 the company can credibly tell, tiers outlets by who covered the category and named competitors in the last 12 months, and lays out a monthly calendar of announcements, pitches, bylines, awards, speaking and reactive slots with spokespeople, hours and priced resourcing options (in-house, freelancer, agency). Through the InsightfulPipe MCP it reads past coverage results from GA4 referrals, branded search from Search Console and category coverage from DataForSEO; with nothing connected it works from a pasted brief. Use for a PR strategy, PR plan or PR plan template, how to get press coverage, story angles, founder or executive press visibility, or PR on no budget. Writes the calendar to Google Sheets only after the user confirms.
+description: Builds a 6 or 12 month PR strategy from your own evidence, scoring story angles for newsworthiness, tiering outlets that cover your category and laying out a monthly calendar with spokespeople, hours and costs. Use for a PR plan, how to get press coverage, founder visibility or PR on no budget.
 ---
 
 # PR Strategy Plan

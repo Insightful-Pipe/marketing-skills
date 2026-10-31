@@ -1,6 +1,6 @@
 ---
 name: international-paid-expansion-planner
-description: Plans an international PPC and paid social expansion. Ranks which countries to open next in Google Ads and Meta from the demand the business already gets there (GA4 and Search Console by country, store orders by shipping country, ad spill-over), local search volume and CPC (Keyword Planner or DataForSEO by location) and Meta audience size, then plans each market's test (language, which ads and landing pages to localise, currency, campaign setup, budget per market, launch waves) and the results each market must hit to stay on. Use when someone asks for an international PPC strategy, which country to advertise in next, expanding ads to new countries, an international paid social strategy, or running Google Ads or Meta ads in several countries. Works from pasted data with nothing connected. Can put the plan into a Google Sheet only after the user confirms.
+description: Ranks which countries to open next in Google Ads and Meta from each market's existing demand, search volume, CPC and audience size, then plans each market test, budget, localisation and stop rules. Use for an international PPC strategy, which country to advertise in next or expanding ads abroad.
 ---
 
 # International Paid Expansion Planner

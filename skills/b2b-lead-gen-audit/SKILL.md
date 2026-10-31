@@ -1,6 +1,6 @@
 ---
 name: b2b-lead-gen-audit
-description: Audits a lead generation business end to end on live data through the InsightfulPipe MCP, for B2B companies, real estate agents and law firms. Reads GA4, Search Console and the ad accounts (LinkedIn Ads, Google Ads, Meta) itself, then grades seven areas (lead tracking, lead sources, search demand, lead pages and forms, paid cost per lead, audience fit, and lead quality and follow-up). Ranks the fixes by how many leads or how much spend they touch. Use when someone asks for a lead gen audit, asks why leads dropped or cost too much, wants to know where leads come from, or is taking over a B2B, real estate or legal services account. Offers two GA4 key event fixes (mark a firing lead event as a key event, count a lead once per session), run only after the user confirms.
+description: Audits lead generation for B2B companies, real estate agents and law firms across GA4, Search Console, LinkedIn Ads, Google Ads and Meta, from tracking to cost per lead. Use when asked for a lead gen audit, why leads dropped, where leads come from or why cost per lead is high.
 ---
 
 # B2B Lead Generation Audit

@@ -1,6 +1,6 @@
 ---
 name: ugc-brief-generator
-description: Writes UGC creator briefs and timed video ad scripts from the hooks and ads that actually worked in your Meta (and TikTok) account, pulled live through the InsightfulPipe MCP. Finds the best hooks by 3-second view rate and the best converters by cost per result, reads their copy, checks where viewers drop off, and adds competitors' video ads from the Meta Ad Library, ranked by how long they've run. Use when someone asks for a UGC brief, creator brief, UGC script or video ad script based on their best hooks, wants to brief new creators, refresh tired creator ads or scale a winning angle with more creators. Changes nothing in the ad account.
+description: Writes UGC creator briefs and timed video ad scripts from the top hooks and converters in Meta Ads (and TikTok), with Meta Ad Library references. Use when asking for a UGC brief, creator brief or UGC script, or to refresh tired creator ads. Not for ranking ads (use meta-ads-creative-ranker)
 ---
 
 # UGC Brief Generator

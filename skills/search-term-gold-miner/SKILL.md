@@ -1,6 +1,6 @@
 ---
 name: search-term-gold-miner
-description: Mines Google Ads search terms on live data through the InsightfulPipe MCP. Pulls the search terms report, a 90-day lookback, keywords, every negative list, hidden-term insights and Keyword Planner ideas itself, then sorts terms into gold, garbage and grey zone, scores waste and opportunity, runs an n-gram analysis, and returns safe negatives, exact-match keywords to add, ad group themes and new keyword ideas. Use when someone wants to review search terms, find wasted spend, build a negative keyword list, promote converting queries to keywords or expand from what already converts. Adds keywords and negatives only after the user confirms.
+description: Mines Google Ads search terms into gold, garbage and grey zone with n-grams and returns safe negatives, exact keywords to promote and keyword ideas. Use when asked to review search terms, find wasted spend or promote winning queries. Not for negative list rollout (use negative-keyword-implementer)
 ---
 
 # Search Term Gold Miner

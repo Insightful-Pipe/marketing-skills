@@ -1,6 +1,6 @@
 ---
 name: consent-mode-auditor
-description: Audits Google Consent Mode v2 and the cookie banner on a live site. Reads a browser HAR or Tag Assistant paste to see what fires before a choice, decodes the default and updated state of all four consent signals (ad_storage, analytics_storage, ad_user_data, ad_personalization), checks region settings, then estimates the share of visitors who decline and what that costs in GA4 sessions and Google Ads conversions, checks Google's modelling thresholds, flags personal data in page URLs and suggests banner changes that lift acceptance within the rules. Works from pasted exports alone; with the InsightfulPipe MCP it also reads the live GTM container, GA4, Search Console and Google Ads. Use when someone asks for a consent mode v2 checker, wants to set up or verify consent mode, sees GA4 or Google Ads data drop in Europe or the UK, or asks how much data the cookie banner costs. Adds a consent requirement to a GTM tag only after the user confirms.
+description: Audits Google Consent Mode v2 and the cookie banner from HAR files or Tag Assistant, checks what fires before consent, and estimates the GA4 sessions and Google Ads conversions lost to declines. Use when asked for a consent mode v2 check or when data drops in Europe or the UK.
 ---
 
 # Consent Mode Auditor

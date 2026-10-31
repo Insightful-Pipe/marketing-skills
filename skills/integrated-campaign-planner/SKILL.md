@@ -1,6 +1,6 @@
 ---
 name: integrated-campaign-planner
-description: Plans one integrated marketing campaign across every channel a business uses (ads, its own site, email and social accounts, press and creators), sized from the account's own numbers through the InsightfulPipe MCP. Writes the brief, the central idea and message, what each channel does in each phase, the asset list with specs and due dates, a dated calendar, the budget per channel, KPIs and a read-out template. Budgets and forecasts come from the account's own CPMs, CPCs and cost per result in Google Ads, Meta, LinkedIn, TikTok and Pinterest, recipients per send and click rates in Klaviyo or Mailchimp, reach per post on Instagram, Facebook and LinkedIn Pages, and sign-ups per channel in GA4. Works from a pasted brief when nothing is connected. Use for a seasonal push, brand campaign, product push or always-on theme, a marketing campaign plan or template, or to read out a finished campaign. Writes the calendar to Google Sheets and drafts posts, emails and paused ad campaigns only after the user confirms.
+description: Plans one campaign across ads, email, social, press and creators, sizing each channel budget from your Google Ads, Meta, LinkedIn, TikTok, Klaviyo and GA4 numbers. Use when asked for an integrated campaign plan, a product push, a brand campaign or a read-out. Not for launches (use launch-strategy).
 ---
 
 # Integrated Campaign Planner

@@ -1,6 +1,6 @@
 ---
 name: seo-content-planner
-description: Builds a site's SEO content plan on live data through the InsightfulPipe MCP, runs a content audit, and turns customer questions into decision-stage content. Maps pillars and topic coverage from Search Console, the sitemap, GA4 and DataForSEO, finds queries with no page, competitor gaps, glossary terms and evidence-backed contrarian angles, sorts content pages into keep, refresh, merge or prune, and ranks it into a 12-week calendar. The audit gives every article 12 months of clicks, key events and referring domains, flags for old years, dead links and missing authors, and a keep, update, merge, redirect or remove verdict. Use for a content plan or strategy, pillars or topic clusters, a topical authority or entity map, content ideas, glossary or definition pages, contrarian angles, what to write next, pages to prune or merge, a content audit or inventory, or content ideas from sales calls, tickets or reviews. Can save results to a Google Sheet or apply approved WordPress title, excerpt, category and tag edits.
+description: Plans a 12-week SEO content calendar from Search Console, GA4 and competitor gaps, with pillars, glossary pages, a content audit and ideas from sales calls or tickets. Use when asked for a content plan or strategy, topic clusters, what to write next, or which posts to prune or merge.
 ---
 
 # SEO Content Planner

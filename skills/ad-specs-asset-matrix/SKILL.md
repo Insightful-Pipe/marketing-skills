@@ -1,6 +1,6 @@
 ---
 name: ad-specs-asset-matrix
-description: Builds the ad specs and asset matrix for one campaign across Meta, TikTok, LinkedIn, Pinterest, Snapchat, X and Google Ads, then checks the files you supply against it. Reads which platforms and placements the campaign really runs through the InsightfulPipe MCP (or takes them from you), lists every asset each placement needs from a dated spec table (aspect ratio, pixel size, length, file size and type, text limits, safe zone), collapses that into the fewest master files to produce, and marks every placement covered, cropped, failing or missing, with the missing ratios that would leave a placement empty ranked first. Use when someone asks for ad specs or ad sizes for LinkedIn, TikTok, Meta, Pinterest, Snapchat, X or Google, a social media ad sizes list, a deliverables list for a designer, or whether their files are ready to upload. Read only; it never changes an account.
+description: Builds the ad specs and sizes matrix for one campaign across Meta, TikTok, LinkedIn, Pinterest, Snapchat, X and Google Ads, then checks your files and copy against it. Use when asked for ad sizes, social media ad specs, a designer deliverables list, or if files are ready to upload.
 ---
 
 # Ad Specs and Asset Matrix

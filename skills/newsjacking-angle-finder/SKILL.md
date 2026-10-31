@@ -1,6 +1,6 @@
 ---
 name: newsjacking-angle-finder
-description: Finds news stories and trends a brand can credibly comment on within hours (reactive PR, newsjacking) and drafts the response. Works from pasted links and a topic list; with X connected through the InsightfulPipe MCP it also finds fresh stories from X news search and X trends, and DataForSEO (daily phrase counts on news and blog pages, Google Trends news interest), Search Console (the brand's own themes) and GA4 (quotable facts) add momentum, topic ranking and facts. Screens every story against brand-safety rules first (tragedy, politics, legal cases, a competitor's trouble), scores the rest on fit and timing, and for each kept story writes the angle, a two or three sentence expert comment with one fact from the brand's own data, who to send it to, and when the window closes. Use when someone asks what news they can jump on, wants reactive PR or newsjacking ideas, asks for a daily PR story check, or pastes a headline and asks whether to comment. Drafts only, it never posts or sends anything.
+description: Finds news stories and X trends a brand can comment on within hours, screens out tragedy, politics and legal cases, scores fit and timing, and drafts an expert comment with one of your own facts. Use for newsjacking or reactive PR ideas, what news to jump on, or whether to comment on a headline.
 ---
 
 # Newsjacking and Reactive PR Finder

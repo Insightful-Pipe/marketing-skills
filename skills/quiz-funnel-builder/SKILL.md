@@ -1,6 +1,6 @@
 ---
 name: quiz-funnel-builder
-description: Designs a quiz funnel for a product recommendation quiz, a lead generation quiz or a self-assessment scorecard. Builds the outcomes from real customer groups (best-selling product groups in Shopify or WooCommerce, segments in Klaviyo or Mailchimp, audiences in GA4) instead of invented personas, writes the questions and scoring, checks every answer path so each outcome is reachable and none swallows the quiz, places the email screen by the quiz's goal, writes a result page and three follow-up emails per outcome, and specifies the events that track starts, each question, opt-in and completion. Hands over the quiz as a JSON data file for any quiz tool, or as one HTML file. Works from a description or pasted data, or reads the groups through the InsightfulPipe MCP. Use when someone asks for a quiz funnel, a lead gen quiz, a product finder or recommendation quiz, a scorecard or assessment quiz, or quiz follow-up emails. Creates GA4 dimensions, Klaviyo lists and email templates only after the user confirms.
+description: Builds a quiz funnel (product recommendation quiz, lead gen quiz or scorecard) from real customer groups in Shopify, WooCommerce, Klaviyo or GA4, with every answer path checked, result pages and follow-up emails. Use when asked for a quiz funnel, a product finder quiz, or an assessment quiz.
 ---
 
 # Quiz Funnel Builder

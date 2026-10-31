@@ -1,6 +1,6 @@
 ---
 name: instagram-growth-analyst
-description: Builds a monthly Instagram analytics report for a business or creator account from live insights through the InsightfulPipe MCP, or from a Meta Business Suite export when nothing is connected. Covers reach, views, profile visits, link taps, follower growth and who the followers are, then compares every Reel, carousel, single image and Story on engagement per 1,000 accounts reached, saves, shares, follows, reach beyond the follower base and Reel watch time. Names the formats, topics, hooks, Reel lengths and posting days that beat the account's own median (at least 5 posts before a verdict) and ends with next month's moves. Adds Threads and GA4 Instagram referrals when connected. Use when someone asks for an Instagram analytics report, an Instagram insights analysis, how to grow Instagram followers, why reach or followers dropped, or which posts work best. Reads only and changes nothing.
+description: Builds a monthly Instagram report from account insights or a Meta Business Suite export, scoring Reels, carousels, images and Stories per 1,000 reached against its own median, with next month's moves. Use when asked for an Instagram analytics report, how to grow followers or which posts work.
 ---
 
 # Instagram Growth Analyst

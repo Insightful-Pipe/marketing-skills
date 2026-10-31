@@ -1,6 +1,6 @@
 ---
 name: html-email-template-builder
-description: Builds a responsive HTML email template that holds up in Gmail, Outlook, Apple Mail and Yahoo, from pasted copy, a screenshot or design, an existing email, or a brand's site. Codes table layout, inline styles, Outlook fallbacks, dark-mode-safe colours and accessible markup, writes the plain-text version, then measures the result against a concrete check list (600px body, bulletproof buttons, under Gmail's 102KB clipping size, role=presentation tables, lang attribute, alt text, contrast, body text no smaller than 14px). Works with no connection; through the InsightfulPipe MCP it pulls brand colours, fonts and logo from the live site with the crawler's brand extractor, reads Klaviyo or Mailchimp footer details, and saves a Klaviyo or Mailchimp template only after the user confirms. Use when someone asks for an HTML email template, a responsive email template, how to code an HTML email, a design turned into email HTML, or a fix for an email that breaks in Outlook, gets clipped in Gmail or fails in dark mode.
+description: Codes responsive HTML email templates for Gmail, Outlook, Apple Mail and dark mode from copy, a design or a broken email, with plain text and a 15-point check, saved to Klaviyo or Mailchimp on a yes. Use when asked for an HTML email template or to fix Outlook breakage or Gmail clipping.
 ---
 
 # HTML Email Template Builder

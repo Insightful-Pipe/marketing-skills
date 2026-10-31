@@ -1,6 +1,6 @@
 ---
 name: youtube-demand-gen-campaign-builder
-description: Builds a Google Ads YouTube (Video), Demand Gen or Display campaign for a stated goal. Picks the campaign type and bidding (views, reach or conversions), checks the budget against Google's guidance (at least 10x target CPA, or $100 a day on Maximize conversions), chooses formats (skippable in-stream, in-feed, Shorts, bumpers, Demand Gen image and video), audiences (a custom segment drafted from the account's own converting search terms, your data lists checked for size first), exclusions and content suitability, picks videos from the channel's own retention in YouTube Analytics, and checks every video, image and line of text against its format's specs. Works from a brief and video links alone, or on live data through the InsightfulPipe MCP. Use when someone asks how to set up YouTube ads, a Demand Gen campaign or a Display campaign, or wants a video or image campaign planned from a brief. Drafts every payload paused and creates only after the user confirms.
+description: Plans a Google Ads YouTube, Demand Gen or Display campaign from a goal and budget, choosing bidding, audiences, videos by retention and exclusions, and checking asset specs. Use when asked to set up YouTube ads, Demand Gen or Display campaigns. Not for audits (use display-video-demand-gen-auditor)
 ---
 
 # YouTube, Demand Gen and Display Campaign Builder

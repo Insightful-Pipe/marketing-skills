@@ -1,6 +1,6 @@
 ---
 name: on-page-seo-optimizer
-description: Optimizes one existing page, or a finished draft before it goes live, for one target query. Compares it with the live Google top 10 and the page's own Search Console queries through the InsightfulPipe MCP, checks intent, the subtopics most ranking pages cover that this page misses, title, H1, heading order, intro, internal links in and out, image alt text, markup and length as a range, then writes every edit as before and after text in a fixed order of impact. Use when someone asks to optimize a page for a keyword, run an on-page SEO check, do an SEO content optimization pass, or check a draft before publishing. Works from a pasted page or draft and a target keyword when nothing is connected. Pushes approved content edits to WordPress only after the user confirms.
+description: Optimizes one page or draft for one keyword against the Google top 10 and its Search Console queries, writing each edit as before and after text. Use when asked to optimize a page for a keyword, an on-page SEO check or a draft check before publishing. Not for new pages (use content-brief-writer).
 ---
 
 # On-Page SEO Optimizer

@@ -1,6 +1,6 @@
 ---
 name: keyword-performance-analyzer
-description: Analyzes Google Ads keywords on live data through the InsightfulPipe MCP. Pulls keywords, Quality Score, search terms, conversion values, location targets and serving status itself, then sorts keywords into stars, bleeders and Quality Score victims, checks value profitability and ROAS against target, match type mix, match type migration (Migrate to Exact) and cannibalisation, duplicate keywords, ad group theme drift, low search volume keywords and broad match readiness. Use when someone asks which keywords make or lose money, wants a keyword health check, asks about duplicates, match types, low-volume keywords or moving to broad match, or wants to pause keywords above target CPA or below target ROAS. Pauses keywords or changes manual bids only after the user confirms.
+description: Analyzes Google Ads keywords into stars, bleeders and Quality Score victims, checking CPA or ROAS, match types, Migrate to Exact, duplicates, cannibalisation, low search volume and broad match readiness. Use for a keyword health check, which keywords lose money, or pausing keywords above target CPA.
 ---
 
 # Keyword Performance Analyzer

@@ -1,6 +1,6 @@
 ---
 name: blended-roas-report
-description: Works out blended ROAS, customer acquisition cost and full-cost marketing ROI across every connected ad platform through the InsightfulPipe MCP, or from numbers the user pastes. Pulls spend and platform-claimed results from Google, Meta, LinkedIn, TikTok, Microsoft, Pinterest, Snapchat, X and OpenAI Ads, matches them to GA4 sessions, key events and revenue by source, and reports blended ROAS, blended CAC, cost per result or CAC by channel, spend share against result share, month-to-date pacing, head-to-heads (Google vs Meta, Google vs Microsoft, Meta vs TikTok prospecting, LinkedIn vs Google for B2B leads), and a marketing ROI report for finance and the board that adds agency fees, tools, content, events and team time to ad spend, with ROI on revenue and gross margin by quarter and channel and the payback period. Use when someone asks what their ads really return, what a customer costs by channel, whether spend is on pace, which of two platforms works better, or how to calculate marketing ROI.
+description: Calculates blended ROAS, CAC and full-cost marketing ROI across Google Ads, Meta, LinkedIn, TikTok and other ad platforms against GA4 or store revenue. Use when asked what my ads really return, CAC by channel, Google Ads vs Meta, or marketing ROI for the board.
 ---
 
 # Blended ROAS and CAC Report

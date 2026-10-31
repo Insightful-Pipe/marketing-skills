@@ -1,6 +1,6 @@
 ---
 name: spokesperson-interview-prep
-description: Prepares a spokesperson for one specific media interview, podcast, panel or broadcast. Researches the interviewer's recent work (pasted links, or live through the InsightfulPipe MCP with YouTube Data episode lists and descriptions, DataForSEO news and blog coverage and episode subtitles), sets the goal and three key messages, backs each message with dated proof points (pasted figures, or the brand's own GA4 numbers with what each one really measures), predicts 15 to 20 likely questions including at least four hostile ones, writes answers that answer first and then steer back to a message within a length that fits the format, lists lines to avoid, and produces a one-page briefing sheet. Then runs a mock interview in chat in the interviewer's style and scores every answer. Use when someone asks for media training, interview prep, podcast guest prep, a press briefing, likely questions and answers, key messages for an interview, or practice for a tough or hostile interview. Reads only.
+description: Prepares a spokesperson for one media interview, podcast, panel or TV or radio slot. Researches the interviewer, sets three key messages, writes answers to likely and hostile questions, then runs a scored mock interview. Use when asked for media training, interview prep or podcast guest prep.
 ---
 
 # Media Interview Prep

@@ -1,6 +1,6 @@
 ---
 name: inventory-planner
-description: Plans an online store's marketing around its stock. From stock levels, unit costs and the store's own sales it gives every variant its days of cover, sell-out date and reorder-by date and a class, from out of stock to dead stock. It holds items that cannot ship back from Shopping, Performance Max, Meta catalog ads and scheduled emails, finds ad spend on out-of-stock items, and moves excess inventory with ads (only where the ad cost per sale fits the item's margin), email, collection placement and a markdown ladder that never goes below a floor built from cost. Works from stock and sales exports (Shopify, WooCommerce, Magento or any sheet), or pulls them through the InsightfulPipe MCP with Google Ads, Merchant Center, Meta Ads and Klaviyo. Use when someone asks how to sell excess inventory or dead stock, how to prevent stockouts, or what to stop advertising. Changes ads, prices or collections only after the user confirms, and never edits stock counts.
+description: Plans marketing around stock, with days of cover and reorder-by dates per variant, holding low stock out of Shopping, Performance Max, Meta catalog ads and emails, and marking down excess above a cost floor. Use when asked how to sell dead stock, prevent stockouts or what to stop advertising.
 ---
 
 # Stock-Out and Excess Inventory Planner

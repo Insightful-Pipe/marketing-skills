@@ -1,6 +1,6 @@
 ---
 name: employee-advocacy-program
-description: Plans, launches and runs an employee advocacy program on LinkedIn and X. Picks starter topics from what the company page's own posts earn, picks the first volunteers with a fit score, writes the posting guidelines and a weekly post kit of prompts each person rewrites in their own voice, gives every participant their own UTM-tagged link, and reports posts, reach, link visits and sign-ups per person against a stated participation target. Use when someone asks to start, plan, relaunch or review an employee advocacy program, employee social media advocacy, or staff posting on LinkedIn for the brand. Works from pasted stats with no connection; reads LinkedIn Pages and GA4 through the InsightfulPipe MCP when connected. Hands the best posts to the LinkedIn Ads skills for Thought Leader Ads.
+description: Plans and runs an employee advocacy program on LinkedIn and X, with topics from the company page's best posts, a volunteer cohort, guidelines, weekly prompt kits, a tracked link per person and a per-person scorecard. Use when asked to start or review employee advocacy or staff posting on LinkedIn.
 ---
 
 # Employee Advocacy Program Planner

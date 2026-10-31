@@ -1,6 +1,6 @@
 ---
 name: marketing-plan-builder
-description: Builds a marketing plan from the channels you actually run, reading GA4, Search Console, Google Ads, Meta, LinkedIn Ads, Klaviyo and YouTube through the InsightfulPipe MCP. Checks tracking first, finds where growth is stuck, scores every move with ICE and fits the work to your hours. Use when someone asks for a 30-day, 90-day or 12-month marketing plan, an annual marketing plan or a marketing calendar (dated from up to two years of the business's own seasonality, with budget and team hours by month), a weekly task list, a marketing strategy, task prioritisation, marketing OKRs, a retrospective, a scale plan, growth advice, or help with a marketing problem or a sudden drop in conversions. Also reads DataForSEO monthly search volumes and Shopify or WooCommerce sales by month for the annual calendar, and works from pasted numbers when nothing is connected. Offers to save the plan or calendar to Google Sheets or Notion, and to mark a conversion event in GA4, only after the user confirms.
+description: Builds a marketing plan from GA4, Search Console, Google Ads, Meta and Klaviyo numbers, checks tracking first and fits ICE-scored work to your hours. Use when asked for a 30-day, 90-day or annual marketing plan, a marketing calendar, a weekly task list, marketing OKRs or why conversions dropped.
 ---
 
 # Marketing Plan Builder

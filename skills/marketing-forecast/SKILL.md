@@ -1,6 +1,6 @@
 ---
 name: marketing-forecast
-description: Forecasts leads, spend and revenue from the account's own monthly history in two modes, the next two months or a 12-month annual forecast by month and by channel for budget season, from live Google Ads, Meta Ads, LinkedIn Ads, Microsoft Ads, GA4 or store data through the InsightfulPipe MCP, or from pasted monthly history. It backtests simple models on the account's own past months, picks the most accurate one that can run, gives low, expected and high ranges with their real hit rate, reads history across a tracking change like-for-like, shows the gap to the plan's targets, and explains in plain words how each model works. Use when someone asks to forecast or project leads, conversions, sales or revenue for next month or next year, needs a marketing forecast for budget planning, asks what a budget will buy, or wants a forecasting model explained.
+description: Forecasts leads, spend and revenue for the next two months or a 12-month plan year by channel, from Google Ads, Meta, LinkedIn, Microsoft Ads, GA4 or pasted history, with backtested models and ranges. Use when asking to project next month's leads, a budget season forecast or what a budget will buy.
 ---
 
 # Marketing Forecast

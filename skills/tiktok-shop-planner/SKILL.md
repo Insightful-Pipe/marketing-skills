@@ -1,6 +1,6 @@
 ---
 name: tiktok-shop-planner
-description: Plans how to sell on TikTok Shop, for a launch or for growth. Picks hero products from the store's own sales, margin and stock and from the brand's TikTok video results, drafts listing titles and image lists, sets launch prices and promotions, sets open and target affiliate commission and a creator sample budget that the margin after TikTok's fee can pay for, builds a weekly LIVE schedule, says when each product is ready for Shop ads and at what break-even ROI, and defines the weekly scorecard (sales by video, LIVE, affiliates and product card). Works from Seller Center exports, a store export or a pasted product list, and reads Shopify, WooCommerce, TikTok and TikTok Ads data through the InsightfulPipe MCP when connected. Use when someone asks how to sell on TikTok Shop, what affiliate commission to offer, which products to launch with, or how to grow a TikTok Shop that is already open. Changes nothing anywhere.
+description: Plans a TikTok Shop launch or growth push, picking hero products and setting launch prices, affiliate commission, creator samples and a LIVE schedule from each product's margin. Use when asked how to sell on TikTok Shop, what affiliate commission to offer, or which products to launch.
 ---
 
 # TikTok Shop Launch and Growth Planner

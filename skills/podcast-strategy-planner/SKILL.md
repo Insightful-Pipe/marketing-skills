@@ -1,6 +1,6 @@
 ---
 name: podcast-strategy-planner
-description: Builds a podcast marketing strategy and a dated 12-episode plan for a brand podcast, or reviews a running one. Judges every episode against the show's own medians on reach (30-day downloads and YouTube views) and hold (completion and average view %), with lead signals counted per theme. With the InsightfulPipe MCP connected it reads YouTube Analytics itself (each episode's first-30-day views, average view duration and subscribers gained, and traffic sources of the top and bottom episodes), sizes themes with Google search volume and YouTube search trends from DataForSEO, and checks episode pages in GA4 and Search Console; audio numbers come from exports. Ends with a verdict and keep-or-drop rule per theme, target length, a pace the team can hold, growth moves and a scoreboard. Use for a podcast marketing strategy, how to grow a podcast, a podcast launch plan, which topics or guests work, or whether a company podcast is worth keeping. Works with nothing connected; changes nothing without confirmation.
+description: Builds a podcast marketing strategy and a dated 12-episode plan, or reviews a running show, judging themes and guests against its own download and YouTube Analytics medians. Use when asking how to grow a podcast, for a podcast launch plan, which topics work, or if a podcast is worth keeping.
 ---
 
 # Podcast Strategy Planner

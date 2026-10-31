@@ -1,6 +1,6 @@
 ---
 name: pinterest-ads-manager
-description: Reviews and manages a Pinterest Ads account on live data through the InsightfulPipe MCP. Pulls campaigns, ad groups, ads, keywords, the Pinterest tag, audiences, catalogs and analytics itself, scores seven areas (delivery and budget pacing, tag health, cost per outbound click trend, creative formats, keyword vs interest targeting, actalike audiences, shopping product groups), builds a seasonal calendar from Pinterest Trends and rewrites ad titles and descriptions. Use when someone asks to analyze, audit, report on or manage Pinterest ads, check the Pinterest tag, compare pin formats or targeting, plan seasonal campaigns, or draft a Pinterest campaign. Drafts campaigns, ad groups and ads that the InsightfulPipe connection creates paused, with their keywords, and runs them only after the user confirms the exact payload.
+description: Audits and manages Pinterest Ads, scoring tag health, pacing, cost per outbound click, pin formats, keyword vs interest targeting and audiences, plans launches from Pinterest Trends and drafts paused campaigns. Use when asked to audit Pinterest ads, check the Pinterest tag or plan seasonal ads.
 ---
 
 # Pinterest Ads Manager

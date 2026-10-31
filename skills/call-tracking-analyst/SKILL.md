@@ -1,6 +1,6 @@
 ---
 name: call-tracking-analyst
-description: Builds a call tracking report from a CallRail account through the InsightfulPipe MCP or from any pasted call log CSV. Grades every phone call with stated rules (answered, first-time caller, at least as long as the business's own qualifying length), reports phone leads by source, campaign and keyword, answered and missed calls by hour and day, first-time against repeat callers, call length and tagged outcomes, and puts a lead and revenue figure on missed calls in each time block. Ties good calls back to Google Ads, GA4 and Google Business Profile and checks that call conversions are counted once and with the right minimum call length (Google Ads counts calls from ads over 60 seconds by default). Use when someone asks for a call tracking report, how many leads their phone calls bring, which ads or keywords make the phone ring, when calls get missed, or whether Google Ads counts calls correctly. Masks caller numbers. Tags qualified calls in CallRail or texts missed callers only after the user confirms.
+description: Analyses phone calls from CallRail or any call log CSV, grading real leads by source, campaign and keyword, pricing missed calls by hour, and checking Google Ads call conversions. Use when asked for a call tracking report, which ads make the phone ring, or when calls get missed.
 ---
 
 # Call Tracking Analyst

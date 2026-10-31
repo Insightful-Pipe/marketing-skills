@@ -1,6 +1,6 @@
 ---
 name: local-competitor-gap
-description: Local SEO competitor analysis for a business that loses the Google map pack. Finds the listings that outrank it for each service keyword, then measures each difference side by side (primary and secondary categories, rating and review count, review pace across runs, photo count, opening hours, attributes, claimed status, and the website's location page, LocalBusiness markup, name, address and phone) and ranks the gaps by likely impact. Flags rival listings that appear to break Google's Business Profile guidelines only with evidence, and names the reporting route. Runs on live data through the InsightfulPipe MCP (DataForSEO, Google Business Profile, Web Crawler) or on pasted listing details. Use when someone asks why competitors rank higher on Google Maps, wants a Google Maps or Business Profile competitor analysis, asks which categories rivals use, or wants to check a rival listing for spam. Read only; it changes nothing.
+description: Compares a local business with the Google Maps listings that outrank it in the map pack on categories, reviews, photos, hours and website, and ranks the gaps by impact. Use when asked why competitors rank higher on Google Maps, which categories rivals use, or to check a rival listing for spam.
 ---
 
 # Local Competitor Gap Analysis

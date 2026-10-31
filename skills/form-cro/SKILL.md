@@ -1,6 +1,6 @@
 ---
 name: form-cro
-description: Audits lead, contact, demo, quote and checkout forms on live data through the InsightfulPipe MCP. Reads every field on the live page itself (type, label, required, autocomplete, dropdown choices, submit text), pulls the form's GA4 funnel (page sessions, form_start, form_submit, by device) and checks that form tracking and key events can be trusted, then scores six areas and returns a field-by-field keep, cut, merge or make-optional table with ranked fixes and test ideas. Use when someone asks to optimise a form, raise form completions, cut form friction or abandonment, shorten a demo or contact form, or decide on a multi-step form. For signup and registration flows use signup-flow-cro. Offers three GA4 tracking fixes it runs only after the user confirms.
+description: Audits lead, contact, demo and quote forms field by field and checks the GA4 form_start to form_submit funnel, giving keep, cut or make optional verdicts. Use when asked to optimize a form, shorten a demo form, or cut form abandonment. Not for signup (use signup-flow-cro).
 ---
 
 # Form CRO

@@ -1,6 +1,6 @@
 ---
 name: analyst-relations-planner
-description: Plans industry analyst relations for a B2B tech company. Finds which analyst firms, evaluations and named analysts cover the category and which competitors they place, scores each firm, then times a 12-month plan of briefings and inquiry calls to each evaluation's cycle, builds a dated proof ledger, outlines the briefing deck, drafts questionnaire answers within their word limits and sets a citation tracking baseline. Use when someone asks for an analyst relations strategy or AR plan, how to get into analyst reports or an evaluation, an analyst briefing deck, or help answering an analyst questionnaire. Works from what the user pastes; DataForSEO content analysis and GA4 through the InsightfulPipe MCP are optional upgrades. Read only, and it never contacts an analyst.
+description: Plans B2B analyst relations, scoring the analyst firms and evaluations that cover your category and timing a year of briefings, inquiry calls, a briefing deck and questionnaire answers. Use when asked for an AR plan, how to get into an analyst report, a briefing deck or questionnaire help.
 ---
 
 # Analyst Relations Planner

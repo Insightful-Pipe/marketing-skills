@@ -1,6 +1,6 @@
 ---
 name: quality-score-fixer
-description: Diagnoses and fixes low Google Ads Quality Score on live data through the InsightfulPipe MCP. Pulls each keyword's Quality Score and its three parts (expected CTR, ad relevance, landing page experience), the responsive search ads behind them with ad strength and pinned headlines, and every final URL with its load, speed and conversion rate, then names the one fix each keyword needs and ranks the fixes by the spend they touch. Use when someone asks why Quality Score is low, how to raise it, why CPCs are high or ads lose rank, wants an ad strength or pinning review, or wants to check landing pages and broken final URLs. Offers new ads and ad edits as actions it runs only after the user confirms.
+description: Diagnoses low Google Ads Quality Score by expected CTR, ad relevance and landing page experience, then ranks fixes across keyword to ad match, ad strength, pinned headlines and broken final URLs. Use when asked why Quality Score is low, how to raise it, or why CPCs are high and ads lose rank.
 ---
 
 # Quality Score Fixer

@@ -1,6 +1,6 @@
 ---
 name: review-generation-planner
-description: Plans how a local business or an online store earns more reviews, the right way. Measures the business's Google review count, monthly pace and rating against named local rivals, sets a dated target and the pace and share of customers needed to reach it, and for stores checks review coverage by product against units sold and against Google's current minimums for product ratings and store ratings. Then picks when to ask and the channels (SMS, email, QR card, receipt) and writes the request templates, after checking the current practice against Google's review policy and the FTC rule on fake reviews. Use when someone asks how to get more Google reviews, how to ask customers for reviews, for a review request template, or why rivals have more reviews. Works from a description or pasted exports; reads Google Business Profile, DataForSEO business listings, WooCommerce, Shopify and Klaviyo through the InsightfulPipe MCP when connected. Saves the request email as a Klaviyo template only after the user confirms.
+description: Plans how to get more Google reviews and product reviews, setting a target and monthly pace against local rivals, checking asks against Google review policy and the FTC rule, and writing SMS, email and QR card requests. Use when asked how to get more Google reviews or for a review request template.
 ---
 
 # Review Generation Planner

@@ -1,6 +1,6 @@
 ---
 name: trial-to-paid-optimizer
-description: Works out why free trial users don't pay and plans the fix for the whole trial. Measures trial-to-paid conversion from a billing or subscription export (Stripe, Paddle, Chargebee, RevenueCat) or from Stripe through the InsightfulPipe MCP, splits trials by whether they activated and by acquisition source, compares the rate with published card-required and no-card benchmarks, checks the day-by-day touches (email from Klaviyo or Mailchimp, in-app, calls), decides trial length and type (card up front, no card, reverse trial) and when a person should step in, then sets a target rate and a test plan sized to the product's own trial volume. Use when someone asks about free trial conversion rate, trial-to-paid, why trials don't convert, SaaS free trial best practices, trial length, card or no card, or how to improve free trial conversion. Changes nothing in any account.
+description: Finds why free trial users don't pay from Stripe, Paddle or Chargebee exports, splits trials by activation and source, checks trial emails, length and card rule, and sets a target with tests. Use when asked about free trial conversion rate, trial-to-paid, trial length, or card or no card.
 ---
 
 # Free Trial Conversion Optimizer

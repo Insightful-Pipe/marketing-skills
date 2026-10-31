@@ -1,6 +1,6 @@
 ---
 name: brand-product-naming
-description: Runs a naming project for a company, product, feature or plan. Writes a naming brief and weighted criteria, builds a long list of 30 names in five styles, scores every name on fit, how it sounds, whether people can spell it after hearing it, length, meaning in each key language and distance from competitor names, then checks the shortlist for clashes with names already in use. Through the InsightfulPipe MCP it reads Google results and monthly searches for each name (DataForSEO), App Store and Google Play listings, domain status and WHOIS records, and X handles (billed to the user's own X developer account, so it asks first). Works from a pasted brief with no connection. Use when someone asks to name or rename a business, brand, startup, product, app, feature or pricing plan, wants a business name generator that checks its own ideas, or asks how to name a product. Never says a name is legally clear; it hands off a trademark and registrar checklist.
+description: Names or renames a company, product, app, feature or pricing plan, scoring 30 ideas and checking the shortlist against Google results, App Store, Google Play, domains and X handles. Use when someone says name my business, rename our app, or wants a business name generator. Not a trademark search.
 ---
 
 # Brand and Product Naming

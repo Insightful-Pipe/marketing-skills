@@ -1,6 +1,6 @@
 ---
 name: google-ads-click-fraud-check
-description: Checks whether a Google Ads account is paying for fake or accidental clicks. Reads Google's own invalid click count and rate by campaign and day first, then finds where the billed clicks cluster in suspect places (search partners, Performance Max and Display apps and sites, people outside the target area, night hours, one device type), proves or clears each one with GA4 engagement for the same paid visits, ranks the fixes by the money at stake, and drafts an invalid click investigation request for Google with the evidence. Use when someone asks about click fraud, invalid clicks, bot or competitor clicks, a click spike with no leads, or whether they need a click fraud tool. Works on live data through the InsightfulPipe MCP or on pasted Google Ads and GA4 reports, and changes settings only after the user confirms.
+description: Checks a Google Ads account for click fraud, reading invalid clicks first, then testing search partner, placement, off-area, night and device clicks against GA4 engagement. Use when asking about click fraud, competitor or bot clicks, a click spike with no leads, or a report to send Google.
 ---
 
 # Google Ads Click Fraud Check

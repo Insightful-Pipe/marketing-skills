@@ -1,6 +1,6 @@
 ---
 name: meta-bid-strategy-advisor
-description: Chooses the bid strategy for every Meta (Facebook and Instagram) campaign and ad set (highest volume, cost per result goal, bid cap, highest value or ROAS goal), sets each cap or ROAS floor from the account's own day-by-day cost per result, and shows on how many past days the cap would have sat below the real cost. Checks that each ad set gets enough weekly results for its strategy, flags caps that choke delivery, holds changes after recent edits, and plans value rules for segments worth more or less to the business. Works from a pasted Ads Manager export, or reads the account itself through the InsightfulPipe MCP. Use when someone asks which Meta bid strategy to use, cost cap vs bid cap, what cost per result goal or ROAS goal to set, or why a capped campaign stopped spending. Changes a cap amount or a campaign's bid strategy only after the user confirms.
+description: Chooses the Meta Ads bid strategy for each Facebook and Instagram campaign and sets cost cap, bid cap or ROAS goal amounts from your own daily cost per result. Use when asking which Meta bid strategy to use, cost cap vs bid cap, what ROAS goal to set, or why a capped campaign stopped spending.
 ---
 
 # Meta Ads Bid Strategy and Cost Cap Advisor

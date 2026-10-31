@@ -1,6 +1,6 @@
 ---
 name: amazon-ads-audit
-description: Audits an Amazon Ads account (Sponsored Products, Sponsored Brands, Sponsored Display and Amazon DSP) from the seller's own exports. Works out break-even ACOS for every product from its price, cost and Amazon fees, splits brand from non-brand ACOS, tracks TACOS month by month, finds search terms that spend without orders, placements and campaigns above break-even, campaigns that run out of budget while profitable, and the listing problems that hold ads back (stock, Buy Box, rating, conversion). Leaves the latest 7 or 14 days out because Amazon keeps crediting orders after a click, and ranks the fixes by the money at stake each month. Use when someone asks for an Amazon PPC audit, why their ACOS is high, how to lower ACOS on Amazon, whether their Amazon ads make money, or wants an Amazon advertising audit checklist run on their account. Works from pasted or uploaded bulk sheets and reports, or from a Google Sheet through the InsightfulPipe MCP, and changes nothing in the account.
+description: Audits an Amazon Ads account (Sponsored Products, Brands, Display, DSP) from your exports against each product's break-even ACOS, with TACOS, brand split, wasted search terms and listing health. Use when asked for an Amazon PPC audit, why is my ACOS high, or do my Amazon ads make money.
 ---
 
 # Amazon Ads Audit

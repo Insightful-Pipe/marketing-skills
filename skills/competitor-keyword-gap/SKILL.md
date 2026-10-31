@@ -1,6 +1,6 @@
 ---
 name: competitor-keyword-gap
-description: Finds the keywords and topics your competitors rank for and you don't, on live data through the InsightfulPipe MCP. Pulls DataForSEO keyword gaps, shared keywords, competitors' top pages, domain rank and referring domains itself, checks every gap against your own Search Console and sitemap, groups the gaps into topics and says which pages to build or upgrade. Use when someone asks for a competitor keyword gap, a content gap, the topics or keywords a competitor ranks for, a competitor's top pages, where a competitor outranks them, or a domain authority comparison. Can save the gap table to a Google Sheet after the user confirms.
+description: Finds the keywords and topics competitors rank for on Google and you don't, checks each gap against your Search Console, compares domain rank and referring domains, and says which pages to build or upgrade. Use when asked for a competitor keyword gap, a content gap or a competitor's top pages.
 ---
 
 # Competitor Keyword and Content Gap

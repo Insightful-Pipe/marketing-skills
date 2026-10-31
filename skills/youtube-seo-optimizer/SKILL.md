@@ -1,6 +1,6 @@
 ---
 name: youtube-seo-optimizer
-description: Audits and rewrites YouTube video titles, descriptions, chapters and tags on live data through the InsightfulPipe MCP. Reads your channel's videos, views and traffic sources itself, scores each video's metadata, researches the keyword with YouTube Trends, Google demand and the live YouTube results, finds the words competing videos use that yours don't, writes chapters from the transcript, and drafts new metadata. Use when someone asks to optimize a YouTube video or channel for search, audit titles and descriptions, research YouTube keywords, compare tags with competitors, write titles, descriptions or chapters, or find video topic ideas. Offers to apply the new title, description and tags to one video at a time, only after the user confirms.
+description: Audits and rewrites YouTube titles, descriptions, chapters and tags from search demand and top-ranking videos, applying the update after you confirm. Use when asked to optimize a YouTube video for search, research YouTube keywords or write tags. Not for content plans (use youtube-topic-finder).
 ---
 
 # YouTube SEO Optimizer

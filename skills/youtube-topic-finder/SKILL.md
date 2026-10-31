@@ -1,6 +1,6 @@
 ---
 name: youtube-topic-finder
-description: Finds YouTube video ideas with proven demand and beatable competition, and plans a channel's next quarter from them. Pulls rival and nearby channels' recent uploads through the InsightfulPipe MCP (YouTube Data by channel ID), spots their outlier videos against each channel's own median, reads the questions viewers ask in comments, checks your own winners in YouTube Analytics, and measures Google volume, YouTube interest and the age of the videos that rank now with DataForSEO. Scores every idea, cites the videos and comments behind it, groups ideas into series, plans which ones to test as Shorts first, and gives a first 10-video plan for a new channel. Also works from a pasted list of channels, videos or comments. Use when someone asks for YouTube video ideas, a YouTube content strategy or content plan, what to make next, how to find YouTube video topics, what rival channels' best videos have in common, or what to post first on a new channel. Read only.
+description: Finds YouTube video ideas from rival channels' outlier videos, viewer comment questions and search demand, scores each one and plans a 13-week slate of long videos and Shorts. Use when asked for YouTube video ideas, a YouTube content plan, what to make next or a new channel's first 10 videos.
 ---
 
 # YouTube Video Idea Finder

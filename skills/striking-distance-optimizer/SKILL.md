@@ -1,6 +1,6 @@
 ---
 name: striking-distance-optimizer
-description: Finds the Google searches a site almost wins and fixes the titles and meta descriptions that lose clicks. On live Search Console data through the InsightfulPipe MCP, it lists keywords at positions 8 to 20, pages with impressions but too few clicks for their position, the titles to rewrite first and long-tail phrases worth a section or a new page. A second mode audits titles, meta descriptions and Open Graph and X card tags across the site, from the crawler, a crawl export or a pasted list, flags missing, duplicated, cut-off and Google-rewritten titles by pixel width and the title Google shows, writes replacements from each page's queries, and reads click-through before and after a change. Use for striking-distance keywords, quick SEO wins, page-two keywords, low-CTR pages, which titles to rewrite, long-tail ideas, a title tag or meta description audit or generator, Google rewriting titles, or social preview tags. Can update a WordPress title only after the user confirms.
+description: Finds Google Search Console keywords at positions 8 to 20 and low-CTR pages, then rewrites the titles and meta descriptions losing clicks, with a sitewide title tag, meta description and Open Graph audit. Use when asked for quick SEO wins, page two keywords, low CTR pages or a title tag audit.
 ---
 
 # Striking-Distance Keyword Optimizer

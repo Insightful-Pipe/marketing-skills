@@ -1,6 +1,6 @@
 ---
 name: competitor-email-teardown
-description: Email marketing competitor analysis from real inboxes. Measures the emails each rival sends after someone signs up (minutes to the first email, emails in the first 14 days, regular sends a week, signup offer, discount depth and whether it climbs, subject line patterns, the promotional, product and content mix, and how early a sale is announced), sets them beside the user's own program read live from Klaviyo or Mailchimp through the InsightfulPipe MCP or from the user's own seed inbox, and returns what to adopt, what to avoid and three tests sized on the account's own volume. Works from dated inbox exports the user pastes or uploads. Use when someone asks to analyze, benchmark, track or tear down competitors' emails, newsletters, welcome series or email promotions. Never signs up for anything and changes nothing.
+description: Benchmarks rival email programs from inbox exports, measuring welcome speed, frequency, signup offers, discounts, subject lines and sale timing against your Klaviyo or Mailchimp program, with three sized tests. Use when asked to analyze, track or tear down competitor emails or welcome series.
 ---
 
 # Competitor Email Teardown

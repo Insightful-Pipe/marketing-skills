@@ -1,6 +1,6 @@
 ---
 name: ad-creative-fatigue-detector
-description: Finds ad creatives that are wearing out on Meta, Google Ads, TikTok, LinkedIn, Snapchat and X by pulling ad-level history itself through the InsightfulPipe MCP. Compares each ad's best period with its latest one, checks the drop against noise and against the rest of its campaign, adds frequency, CPM and age, and gives every ad a fatigue score, a status, a runway estimate and a refresh-or-replace call, plus a rotation plan. Use when someone asks whether their ads are fatigued, why CTR or results are sliding on older ads, which creatives to rotate or refresh first, or wants a weekly creative health check. Can pause a fatigued ad, only after the user confirms.
+description: Finds worn-out ads on Meta, Google Ads, TikTok, LinkedIn, Snapchat and X by comparing each live ad's peak and recent CTR, frequency and CPM, then scores fatigue and plans rotation. Use when asked about ad fatigue, CTR dropping on older ads, or which creatives to refresh first.
 ---
 
 # Ad Creative Fatigue Detector

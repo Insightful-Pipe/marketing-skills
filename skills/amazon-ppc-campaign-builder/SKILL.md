@@ -1,6 +1,6 @@
 ---
 name: amazon-ppc-campaign-builder
-description: Builds the Amazon PPC campaign structure for a new or relaunched product, or Amazon ads for a book. Seeds keywords from the listing, a Brand Analytics or Search Query Performance export and pasted competitor listings, and sorts them into exact, phrase, broad and auto Sponsored Products campaigns, competitor ASIN and category targeting, brand defense, and Sponsored Brands where eligible. Sets each starting bid from break-even ACOS, the launch cap and Amazon's suggested range, splits the budget so every campaign gets enough clicks to judge, adds the negatives that stop campaigns overlapping, and writes an upload-ready bulk sheet with a review schedule. Use when someone asks how to set up an Amazon Sponsored Products campaign, for an Amazon PPC launch strategy or campaign structure, Amazon ads for books or KDP ads, or a bulk file to launch a product. Works from pasted or uploaded data or a Google Sheet through the InsightfulPipe MCP, and uploads nothing to Amazon.
+description: Builds the Amazon PPC structure for a new product or book, with exact, phrase, broad, auto, competitor ASIN and brand defense campaigns, bids from break-even ACOS and a bulk sheet. Use when asked to set up Sponsored Products campaigns, an Amazon PPC launch strategy, or KDP ads.
 ---
 
 # Amazon PPC Campaign Builder

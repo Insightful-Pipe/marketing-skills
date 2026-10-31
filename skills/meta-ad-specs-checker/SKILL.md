@@ -1,6 +1,6 @@
 ---
 name: meta-ad-specs-checker
-description: Checks every Facebook and Instagram image and video ad against the placements it will run in (Facebook Feed, Instagram Feed, Facebook and Instagram Stories, Instagram and Facebook Reels) using Meta's current ad specs. Reads each image's size and each video's shape and length from the ad account through the InsightfulPipe MCP, or from files and screenshots the user uploads, then grades shape, resolution, length, primary text and headline cut-off, and whether captions, logos and buttons sit inside the Stories and Reels safe zones. Returns the exact crop to make, the version to add or the placement to switch off, with preview links for the cells to check by eye. Use when someone asks about Facebook ad sizes, Meta ad specs, Instagram Reels or Stories safe zones, why an ad looks cropped or letterboxed, or wants creatives checked before launch. Offers a placement change it runs only after the user confirms.
+description: Checks Facebook and Instagram image and video ads against Meta ad specs for Feed, Stories and Reels, grading size, aspect ratio, video length, text cut-off and safe zones, with the exact crop to make. Use when asking about Facebook ad sizes, Reels or Stories safe zones, or why an ad looks cropped.
 ---
 
 # Meta Ad Specs and Safe Zone Checker

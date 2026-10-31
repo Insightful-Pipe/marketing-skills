@@ -1,6 +1,6 @@
 ---
 name: app-screenshot-video-brief
-description: Plans the App Store and Google Play screenshot set, captions, frame order, app preview video, icon notes and Google Play feature graphic for one app, and writes a designer-ready brief. Decides what the first three frames must say (they are what search results show) from evidence, not taste - the benefits the app's 4 and 5 star reviewers name, the complaints in its 1 to 3 star reviews, what rival apps say in their own first frames, and the keywords the listing targets. States each store's documented sizes and counts, checks every caption against the store rules, and ends with the one store test to run on the new set. Works from uploaded screenshots and a description alone, or reads listings and reviews through the InsightfulPipe MCP. Use when someone asks for app store screenshot ideas or best practices, a screenshot brief, captions for store screenshots, an app preview video plan, or a feature graphic. Brief only, it generates no images and changes nothing in the stores.
+description: Writes a designer brief for App Store and Google Play screenshots, captions, app preview video and feature graphic, choosing the first three frames from reviews and rival listings. Use when asked for app store screenshot ideas, screenshot captions or an app preview video plan. Makes no images.
 ---
 
 # App Store Screenshot and Preview Video Brief

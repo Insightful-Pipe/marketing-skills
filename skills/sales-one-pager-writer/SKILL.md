@@ -1,6 +1,6 @@
 ---
 name: sales-one-pager-writer
-description: Writes one-page sales sheets, namely a product or solution one pager per persona or industry with three to five benefit blocks, a why-us-versus-the-alternative sheet with a sourced comparison table, and a customer-result sheet that leads with before-and-after results. Each has one headline for one reader, sourced proof and one call to action, plus a layout spec a designer can follow. Ranks the benefits by what buyers actually search for and respond to, from Search Console queries and the winning Google Ads and LinkedIn Ads lines when the InsightfulPipe MCP is connected, or from pasted exports and call notes when it isn't. Keeps every number and quote in a proof ledger, holds each block to a word budget and checks that the copy fits one printed page. Use when someone asks for a sales one pager, a product one pager, a one-page sales sheet, a sell sheet, a solution brief, a one pager template or B2B one pager examples, or a page reps can send after a call. Read only.
+description: Writes a one-page sales sheet for one persona or industry, a solution brief, why-us comparison or customer result sheet, with sourced proof, benefits ranked by buyer evidence and a print layout spec. Use when asked for a sales one pager, sell sheet, product one pager or a page reps send after calls.
 ---
 
 # Sales One-Pager Writer

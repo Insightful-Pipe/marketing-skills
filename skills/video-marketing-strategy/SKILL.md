@@ -1,6 +1,6 @@
 ---
 name: video-marketing-strategy
-description: Plans an organic video marketing strategy across YouTube (long-form and Shorts), Instagram Reels, TikTok, Facebook and LinkedIn from the account's own results. Reads past posts live through the InsightfulPipe MCP (plus GA4) or pasted exports, measures where video already beats static posts on each network, compares networks on watch minutes instead of views (each network counts a view differently), gives each network a role, and builds pillars, named series, a cadence sized to the team's weekly hours, a 4-week batch-filming and repurposing calendar, and KPIs defined the way each network counts them with the account's own baselines and targets. Use when someone asks for a video marketing strategy, video content strategy or video marketing plan template, which networks to make video for, how often to post Shorts, Reels or TikToks, or how to plan YouTube and short-form together. Works from a description of the team with no connection. Reads only; it never posts.
+description: Plans an organic video program across YouTube, Shorts, Instagram Reels, TikTok, Facebook and LinkedIn from past results, with network roles, series, a cadence sized to team hours, a 4-week calendar and KPIs. Use when asked for a video marketing strategy or how often to post Shorts, Reels or TikToks.
 ---
 
 # Video Content Program Planner

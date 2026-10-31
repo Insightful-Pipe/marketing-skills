@@ -1,6 +1,6 @@
 ---
 name: b2b-lead-enrichment
-description: Cleans, enriches and scores a B2B lead list through the InsightfulPipe MCP, watches target accounts for buying signals every week, and writes a pre-call account research brief. Reads leads from Google Sheets, Airtable or a pasted list, removes duplicates and personal addresses, enriches each company once (industry, headquarters, size, funding, tech stack, leadership), scores ICP fit out of 100 with the evidence, maps decision-makers and drafts a short cold email sequence. The weekly watch re-checks target accounts for dated public changes (ad library activity, open roles, new product or pricing pages, app releases, announced leadership hires, news), LinkedIn Ads company engagement and pasted intent or visitor exports, lets old signals fade and shows what changed. Use to clean, enrich, score or prioritise leads or accounts, track buying signals, trigger events or B2B intent data, research a prospect before a sales call, or write first-touch outreach. Writes to Sheets or Airtable only after confirmation.
+description: Cleans, enriches and scores B2B lead lists from Google Sheets, Airtable or a paste for ICP fit, maps decision makers, drafts cold emails and watches target accounts for buying signals. Use when you need to enrich leads, prioritise accounts, track intent signals or prep for a sales call.
 ---
 
 # B2B Lead Enrichment and Scoring

@@ -1,6 +1,6 @@
 ---
 name: video-ad-script-writer
-description: Writes ready-to-shoot video ad scripts for TikTok, Reels, Meta feed, YouTube and LinkedIn, plus video sales letters and product demos, from live data pulled through the InsightfulPipe MCP. Reads hook rate, hold rate and cost per ThruPlay or 6-second view from your Meta and TikTok video ads, the search terms and ad lines that win in Google Ads, and YouTube retention curves, then writes timed scripts with voiceover, visuals, on-screen text, hook variants and a test plan. Use when someone asks for a video ad script, TikTok or YouTube ad script, UGC talking points, a VSL or demo script, a hook and hold report, or a review of a script they already have. It changes nothing in any account.
+description: Writes timed video ad scripts for TikTok, Reels, YouTube, Meta and LinkedIn, plus VSLs and demos, built on Meta and TikTok hook and hold rates and Google Ads search terms. Use when asked for a video ad script, UGC talking points, a hook and hold report, or a script review.
 ---
 
 # Video Ad Script Writer

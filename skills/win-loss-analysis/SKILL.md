@@ -1,6 +1,6 @@
 ---
 name: win-loss-analysis
-description: Runs a win-loss analysis. Reads a CRM export of won, lost and no-decision deals with call notes and buyer interviews, computes win rates by competitor, segment, company size, deal size, lead source and sales-cycle length with the deal count beside each (under 20 decided deals is marked directional), compares time to close and discount depth for won and lost deals, puts the logged reason next to what the buyer said, and ranks the main reasons for losing with a fix for product, pricing, messaging or sales. Returns themes to use against each competitor, a channel check of CRM lead source against GA4, Google Ads, LinkedIn Ads and CallRail lead counts, a buyer interview guide and a deal log template. Use when someone asks for a win loss analysis, why deals are lost, win rate by competitor, win loss interview questions or a win loss analysis template. Works from a pasted export with no connection; reads Google Sheets, BigQuery and the ad platforms through the InsightfulPipe MCP when connected.
+description: Runs a win-loss analysis on a CRM deal export and call notes, with win rates by competitor, segment, deal size and lead source, ranked loss reasons and a fix per team. Use when asked why deals are lost, win rate by competitor, win loss interview questions or a win loss template.
 ---
 
 # Win-Loss Analysis

@@ -1,6 +1,6 @@
 ---
 name: ad-delivery-troubleshooter
-description: Finds why a campaign on LinkedIn Ads, TikTok Ads, Microsoft Ads, Pinterest Ads, Snapchat Ads, X Ads, OpenAI Ads or Reddit Ads is not delivering, gets no impressions, or spends a small part of its budget. Walks the delivery chain from account and billing down to review status, budget and bid floors, audience size, schedule, overlapping campaigns and conversion events, then ranks the causes as confirmed, likely or possible, each with its evidence and fix. Works from screenshots and pasted error text, and reads the status, review, budget and bid fields itself when the platform is connected through the InsightfulPipe MCP. Use when someone says ads are not spending, not delivering, stuck, in review, have no impressions or spend far under budget on those platforms. Offers bid, budget and schedule fixes that it runs only after the user confirms.
+description: Finds why LinkedIn, TikTok, Microsoft Ads, Pinterest, Snapchat, X, OpenAI or Reddit ads are not delivering, checking billing, status, review, budget, bid, audience and schedule. Use when ads are not spending, get no impressions or spend far under budget. Not for rejected ads (use ad-policy-fixer).
 ---
 
 # Ad Delivery Troubleshooter

@@ -1,6 +1,6 @@
 ---
 name: facebook-page-analyst
-description: Analyses an organic Facebook Page on live data through the InsightfulPipe MCP. Pulls page insights, posts, post insights and comments itself, then builds a monthly page report, a reach trend explanation, a top posts leaderboard, a post type comparison, a best time to post analysis, a follower report, a negative feedback and hides report, and a response time review. Use when someone asks how their Facebook Page is doing, why reach dropped, which posts or formats work, when to post, who follows the page, or how fast the page answers people. Offers comment replies and comment hiding as actions it runs only after the user confirms.
+description: Analyses an organic Facebook Page from its connected insights, posts and comments, with a monthly report, reach trend, top posts, post types, best time to post, followers, negative feedback and comment response time. Use when asked how a Facebook Page is doing, why reach dropped or when to post.
 ---
 
 # Facebook Page Analyst

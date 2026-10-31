@@ -1,6 +1,6 @@
 ---
 name: developer-oss-growth
-description: Builds a developer marketing strategy and a 90-day growth plan for a developer tool, API or open-source project, with monthly targets. Measures docs as the main acquisition page, the repository (stars, visitors, contributors, issue response), developer communities and launch sites, and the route from users of the open project to a paid hosted or team plan, then sets targets from the project's own history and models paying accounts from its own cohort rates. Works from pasted numbers and exports (GitHub has no connector, so stars, repository traffic and contributors are pasted), and pulls docs traffic and signups from GA4, docs search queries from Search Console and developer search demand from DataForSEO through the InsightfulPipe MCP when connected. Use when someone asks for developer marketing, open source marketing, how to get GitHub stars that turn into users, how to grow a dev tool or API, or how to turn open-source users into paying teams. Read only; it changes nothing.
+description: Plans developer marketing and a 90-day growth plan for a dev tool, API or open-source project, tracing docs traffic, GitHub stars and signup cohorts through to paid team plans. Use when asked for open source marketing, GitHub stars that turn into users, or how to grow a dev tool.
 ---
 
 # Developer Tool Growth Plan

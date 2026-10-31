@@ -1,6 +1,6 @@
 ---
 name: apple-ads-manager
-description: Audits and builds Apple Ads (formerly Apple Search Ads) search results campaigns for an iOS app. Checks the split into brand, category, competitor and discovery campaigns, exact match against Search Match and broad, tap-through rate, conversion rate and cost per install by keyword, negatives that keep discovery and exact campaigns apart, custom product pages as ad variations, and which converting search terms to move from discovery into exact. Sets a cost-per-install ceiling per campaign from the app's own day-7 or day-30 net revenue per install, reads the App Store listing and recent reviews to find keywords the listing never mentions, and plans a brand pause test. Use when someone asks to audit, set up, restructure or optimize Apple Ads or Apple Search Ads, or asks about Apple Search Ads campaign structure, strategy or keyword bidding. Works from Apple Ads exports; with the InsightfulPipe MCP it also reads App Store listings and reviews and the Firebase export in BigQuery. Changes nothing in Apple Ads.
+description: Audits and builds Apple Ads (Apple Search Ads) campaigns for an iOS app, covering brand, category, competitor and discovery structure, keyword bids, negatives, search terms and CPI ceilings from app revenue. Use when asked to audit, set up or optimize Apple Search Ads or its keyword bidding.
 ---
 
 # Apple Ads Manager

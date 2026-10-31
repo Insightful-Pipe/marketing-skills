@@ -1,6 +1,6 @@
 ---
 name: marketing-sop-builder
-description: Writes a marketing SOP (standard operating procedure) for a recurring process such as monthly reporting, campaign launch, tracking QA, client onboarding or content publishing. Turns a described process, meeting notes, a screen-recording transcript or an old SOP into purpose, trigger and frequency, owners and approvers, tools and access, timed steps with a check each, a quality gate, fixes for when it breaks, common mistakes and a one-page checklist. When Google Ads, Meta Ads, GA4 or Google Tag Manager is connected through the InsightfulPipe MCP, it checks every step against the live account (the conversion actions, campaign names, tags, key events, pixels and budgets that really exist) and marks which steps another skill can schedule or assist. Also builds a team SOP library and operating rhythm. Works from a paste alone. Use when someone asks for a marketing SOP template, how to write an SOP for marketing, process documentation or a launch checklist. Saves to Notion only after the user confirms.
+description: Writes a marketing SOP and one-page checklist for a recurring process like campaign launch, monthly reporting or tracking QA, checking each step against connected Google Ads, Meta, GA4 and GTM. Use for a marketing SOP template, process documentation or a launch checklist.
 ---
 
 # Marketing SOP Builder

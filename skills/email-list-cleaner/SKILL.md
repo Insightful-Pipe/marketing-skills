@@ -1,6 +1,6 @@
 ---
 name: email-list-cleaner
-description: Cleans an email contact file before it is imported or mailed. Works on an uploaded CSV or Excel file, pasted rows or a Google Sheet tab, and checks every row for broken syntax, duplicates (including case and Gmail dot or plus variants), misspelt domains, role addresses, throwaway domains, domains with no mail server, missing consent records, bought or scraped sources and contacts quiet for longer than the chosen window. With the InsightfulPipe MCP it also checks the file against Klaviyo or Mailchimp so addresses already unsubscribed, bounced or suppressed there are not imported again. Returns keep, re-confirm and remove files with a reason on every row. Use when someone asks to clean, scrub, verify, dedupe or prepare an email list or contact export, or to remove invalid emails before an import. Writes the three files to Google Sheets, suppresses in Klaviyo or tags in Mailchimp only after the user confirms.
+description: Cleans an email contact CSV, Excel file or Google Sheet before import, flagging bad syntax, duplicates, typo and throwaway domains, dead mail servers, role addresses and missing consent, plus Klaviyo or Mailchimp suppressions. Use when asked to clean, scrub, dedupe or verify an email list.
 ---
 
 # Email List Cleaner

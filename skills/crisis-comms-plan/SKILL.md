@@ -1,6 +1,6 @@
 ---
 name: crisis-comms-plan
-description: Writes a crisis communications plan before anything goes wrong, sized to the business. Builds a scored risk register (product failure, data breach, outage, executive misconduct, social backlash, recall, legal action and the business's own risks), three response levels with numeric triggers from the business's own baselines, the crisis team with backups and a sign-off chain, a time-boxed first-hour checklist, a pre-approved holding statement per scenario, a channel playbook, the real scheduled posts, emails, flows and ads to pause, and a dated drill schedule. Works from a pasted company description. With the InsightfulPipe MCP it reads GA4 channel reach, Search Console branded search, Mailchimp list sizes, Klaviyo campaigns and flows, Facebook and Instagram followers, the social scheduler queue and running Meta and Google Ads campaigns. Reads only. Use when someone asks for a crisis communication plan, template, example or strategy, holding statements, or wants to prepare for a PR crisis.
+description: Writes a crisis communications plan before anything goes wrong, with a risk register, numeric response levels, sign-off chain, holding statements and a pause list of posts, emails and ads. Use for a crisis plan template or holding statements. Not for a live crisis (use crisis-response-kit)
 ---
 
 # Crisis Communications Plan

@@ -1,6 +1,6 @@
 ---
 name: event-marketing-plan
-description: Builds a dated marketing plan for one in-person event (a trade show stand, a customer day the business hosts, or a dinner or roundtable for target accounts). Sets lead, meeting, opportunity and pipeline targets from the business's own past events (a pasted CRM export, Google Sheets or BigQuery), checks the budget against the cost per opportunity of its best other channel, shows which target accounts already engage with its LinkedIn ads, reads past event links in GA4, and writes the outreach timeline, stand plan and talk track, lead scoring, a tagged link and QR plan, the invitation and follow-up emails, and the day 30 and day 90 readouts. Works from pasted details; InsightfulPipe MCP connectors are an upgrade. Use for an event marketing strategy or plan template, a trade show or expo plan, booth planning, event lead follow-up, or whether an event is worth the money. Only after the user confirms, it drafts Klaviyo or Mailchimp emails, adds a lead sheet tab and publishes an approved LinkedIn page post.
+description: Builds a dated marketing plan for one trade show stand, hosted customer day or target-account dinner, with targets from your past events, a budget verdict, outreach timeline, booth plan, lead scoring and follow-up emails. Use when asked for a trade show plan, booth planning or event lead follow-up.
 ---
 
 # Event and Trade Show Marketing Plan

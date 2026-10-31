@@ -1,6 +1,6 @@
 ---
 name: bulk-utm-links
-description: Bulk UTM builder and campaign naming sheet. Turns a launch, newsletter, social calendar, influencer or partner list, QR codes and print into tagged links in one go, reusing the source, medium and campaign spellings GA4 already records so new links don't split report rows, and shows the GA4 default channel each link will land in before it goes out. Also writes matching campaign, ad set and ad names for Google Ads, Meta, LinkedIn, TikTok and Microsoft Ads, and a rename map for live campaigns. Works from a pasted list with nothing connected; with the InsightfulPipe MCP it reads GA4, the team's Google Sheet and the ad accounts. Use when someone asks for UTM links, a UTM builder, bulk or many tagged links, QR code links, links for influencers or partners, or a campaign naming convention for new campaigns. Writes rows to the Google Sheet and renames campaigns only after the user confirms the exact list.
+description: Builds UTM links in bulk for launches, newsletters, creators, partners and QR codes, reusing GA4 spellings and showing each link's channel, plus matching campaign names for ad platforms. Use when asked for a UTM builder, tagged links or a naming convention. Not for audits (use utm-auditor)
 ---
 
 # Bulk UTM Link Builder

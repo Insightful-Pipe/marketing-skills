@@ -1,6 +1,6 @@
 ---
 name: marketing-proposal-writer
-description: Writes a client-ready marketing proposal from discovery notes, a call transcript, a prospect audit or an RFP. Anchors every goal to a real baseline, sizes the hours from the account's own campaign, ad set, keyword and content counts, prices two or three options (retainer, project, share of ad spend or performance-linked) against the agency's rate card and floor rate, and projects results from the account's own cost per result as a range, never a promise. Flags scope traps and claims the agency cannot back. Also writes the matching statement of work and answers a marketing-services RFP or tender. Use when an agency or freelancer asks for a marketing proposal, a proposal template, a digital marketing agency proposal, a scope of work or SOW, a retainer quote or help with a marketing RFP. Works from pasted text; reads Google Ads, Meta Ads, GA4, Search Console and a Sheets rate card through the InsightfulPipe MCP once access exists, and writes to a sheet only after the user confirms.
+description: Writes a marketing proposal, statement of work or RFP response from discovery notes or an audit, with baselines, hours sized from Google Ads and Meta counts, options priced from your rate card and projected ranges. Use when asking for an agency proposal, a scope of work or SOW, or a marketing RFP.
 ---
 
 # Marketing Proposal Writer

@@ -1,6 +1,6 @@
 ---
 name: microsoft-ads-account-audit
-description: Runs a full Microsoft Advertising (Bing Ads) account audit on live data through the InsightfulPipe MCP. Pulls UET tags, conversion goals, search terms, Quality Score, impression share, extensions, bidding, budgets, search partner and Audience Network traffic, devices, locations and schedule itself, scores eight areas, and ranks the fixes. Use when someone asks to audit, review, health-check or take over a Microsoft Ads account, check what a Google Ads import missed, compare Microsoft and Google CPCs, or wants a monthly executive summary of Microsoft Ads. Offers a few fixes (negatives, extensions) as actions it runs only after the user confirms.
+description: Audits a Microsoft Ads (Bing Ads) account and grades eight areas, from UET tracking and wasted spend to Quality Score, extensions and impression share, with ranked fixes. Use when asked to audit or health-check Microsoft Ads, check a Google Ads import, compare CPCs or get a monthly summary.
 ---
 
 # Microsoft Ads Account Audit

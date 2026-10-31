@@ -1,6 +1,6 @@
 ---
 name: ai-answer-source-placement
-description: Plans LLM seeding from evidence. Finds the outside pages that ChatGPT, Google AI Overviews and the organic top 10 lean on for a category's buying questions (best-of lists, review platforms, comparison articles, Reddit and forum threads, YouTube videos, GitHub lists, wikis, marketplaces), checks page by page which ones name rivals but not the user, rates each with stated rules on its way in, freshness and spam score, ordered by how often the answers cite it and by domain rank, and turns the shortlist into a placement plan with editor pitches and listing corrections. Works from pasted AI answers or a URL list, or pulls the cited pages itself through DataForSEO on the InsightfulPipe MCP. Use when someone asks how to get recommended by ChatGPT, which sources ChatGPT or AI Overviews cite for their category, LLM seeding, getting into best-of lists, or where competitors get mentioned and they don't. Keeps earned and paid placements apart, refuses fake reviews, sock puppets and paid followed links, and sends nothing.
+description: Finds the third-party pages ChatGPT and Google AI Overviews cite for your category, like best-of lists, Reddit threads and YouTube videos, that name rivals but not you, and plans pitches to get on them. Use when asked how to get recommended by ChatGPT, for LLM seeding or getting into best-of lists.
 ---
 
 # AI Answer Source Placement Planner

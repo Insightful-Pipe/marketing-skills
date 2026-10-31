@@ -1,6 +1,6 @@
 ---
 name: ai-search-visibility
-description: Tracks how visible a website is in AI search on live data through the InsightfulPipe MCP. Pulls AI assistant referrals from GA4, question and zero-click queries from Search Console and Bing, mentions in Google AI Overviews and ChatGPT against competitors from DataForSEO, and crawler, llms.txt and schema readiness, then scores six areas, ranks five actions and drafts an FAQ from real questions. A brand answer accuracy check asks ChatGPT, Gemini, Claude, Perplexity and AI Overviews about the brand, checks each claim against its own pages and writes a correction plan with a rerun date. Prompt research builds a list of 30 to 100 prompts to track, sized with AI search volume. Use for AEO, GEO, AI Overviews, being cited by ChatGPT, Claude, Perplexity or Gemini, AI referral traffic, share of voice in AI answers, AI brand monitoring, what ChatGPT says about a brand, wrong AI answers about a company, which prompts to track, AI search volume, snippets, zero-click searches or llms.txt.
+description: Scores AI search visibility from GA4 AI referrals, Search Console questions, AI Overview and ChatGPT mentions and llms.txt, checks if assistants get brand facts right and builds prompts to track. Use when asked about AEO, GEO, AI share of voice, AI referral traffic or what ChatGPT says about us.
 ---
 
 # AI Search Visibility (AEO) Tracker

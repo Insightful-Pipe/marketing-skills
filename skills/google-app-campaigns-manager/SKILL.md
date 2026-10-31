@@ -1,6 +1,6 @@
 ---
 name: google-app-campaigns-manager
-description: Plans and reviews Google App campaigns (formerly UAC) for installs, in-app actions, value or pre-registration. Reads the app's own Google Play and App Store listing, rating and reviews so ad text matches the listing and weak listing elements are flagged, checks budget and in-app event volume against Google's published guidance per bidding goal before choosing action-based bidding, sets the target cost per install or per action, writes the headlines and descriptions and lists every image and video size, and on a running campaign reads results by network and by asset to say what to cut, add or scale. Use when someone asks to plan, launch, review or scale a Google App campaign or app install campaign, or asks whether to move from installs to in-app actions or tROAS. Works from a store link and a target cost per install with no connection; with the InsightfulPipe MCP it reads Google Ads, GA4 and both stores itself. Drafts everything paused and changes nothing until the user confirms.
+description: Plans and reviews Google App campaigns (UAC) for installs, in-app actions, value or pre-registration, checking budget and event volume, writing assets from the store listing and reading network and asset results. Use when planning, reviewing or scaling an app install campaign or moving to tROAS.
 ---
 
 # Google App Campaigns Planner and Reviewer

@@ -1,6 +1,6 @@
 ---
 name: marketing-ideas-generator
-description: Generates a long list of marketing ideas for one specific business (channels, campaigns, partnerships, content, offers and low-budget tactics), drops the ones that don't fit its business model, budget, team hours or past results, and ranks the rest with ICE scores built from the business's own evidence. Works from what the user describes; with the InsightfulPipe MCP it also reads the channels that already convert in GA4, search questions in Search Console, search demand from DataForSEO and which offers competitors keep running in the Meta Ad Library. Use when someone asks for marketing ideas, marketing ideas for a small business, creative marketing ideas, growth or promotion ideas, or a ranked shortlist of tactics that fit their budget and team. Returns the ten ideas worth trying first, scored on evidence, with a test plan and a stop rule for each. Offers to save the shortlist to Google Sheets only after the user confirms.
+description: Generates marketing ideas for one business, cuts what its budget, hours and model can't carry, and ranks the rest by ICE score with a test plan. Use when asked for marketing ideas, small business marketing ideas or creative low-budget tactics. Not for a dated plan (use marketing-plan-builder)
 ---
 
 # Marketing Ideas Generator

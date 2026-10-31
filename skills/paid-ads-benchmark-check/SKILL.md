@@ -1,6 +1,6 @@
 ---
 name: paid-ads-benchmark-check
-description: Answers "are my ad numbers good?" for Google Ads, Meta (Facebook and Instagram), LinkedIn, TikTok, Microsoft Ads, Pinterest, Snapchat and X. Pulls CTR, CPC, CPM, conversion rate, cost per lead or sale and ROAS itself through the InsightfulPipe MCP (or reads pasted numbers), splits brand from non-brand search, prospecting from retargeting and lead from sales objectives, then compares each segment first with the account's own 6-month median and then with a dated published benchmark that names its publisher, period and sample size. Declines the comparison when the definitions, objective, audience or country differ, and says when no fair benchmark exists. Ends with the two or three gaps worth the most money and the skill that fixes each. Use when someone asks whether their CTR, CPC, CPM, cost per lead, CPA or ROAS is good, what a good CTR for Facebook ads is, for Google Ads or LinkedIn Ads benchmarks by industry, or how their ads compare with the industry average.
+description: Checks whether CTR, CPC, CPM, conversion rate, cost per lead, CPA and ROAS are good on Google Ads, Meta, LinkedIn, TikTok and Microsoft Ads, against your own 6-month median and dated industry benchmarks. Use when asking are my ad numbers good, what a good Facebook CTR is or for industry benchmarks.
 ---
 
 # Paid Ads Benchmark Check

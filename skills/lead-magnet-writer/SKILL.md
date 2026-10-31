@@ -1,6 +1,6 @@
 ---
 name: lead-magnet-writer
-description: Writes a finished lead magnet, ready to hand out, plus its opt-in page copy and delivery email. The asset is one of four formats (a checklist, a fill-in template or spreadsheet layout, a one-page quick-reference guide, or a 3 to 5 lesson email course). Picks the angle from the questions buyers already search (Search Console queries, DataForSEO suggestions and People Also Ask) and the pages that already pull the right visitors (GA4), through the InsightfulPipe MCP, and works from a pasted brief when nothing is connected. Adds the GA4 generate_lead event that counts opt-ins. Use when someone asks to create, write or generate a lead magnet, an opt-in freebie, a content upgrade, a gated checklist, template, cheat sheet or email course, or a lead magnet template, or to turn a topic from free-tool-strategy into the actual asset. Saves the delivery email as a Klaviyo or Mailchimp template, and marks the opt-in event as a GA4 key event, only after the user confirms.
+description: Writes a finished lead magnet (checklist, fill-in template, one-page guide or email course) with opt-in copy and a delivery email, picking the angle from Search Console and GA4. Use when asked to create a lead magnet, opt-in freebie, content upgrade or cheat sheet. Not for quizzes or calculators.
 ---
 
 # Lead Magnet Writer

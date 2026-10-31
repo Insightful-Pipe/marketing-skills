@@ -1,6 +1,6 @@
 ---
 name: gtm-container-auditor
-description: Audits a Google Tag Manager container on live data through the InsightfulPipe MCP or from a pasted export, and builds the event tracking it is missing. Checks that the site loads the container, finds dead tags, triggers and variables, reviews trigger logic, Consent Mode, naming, versions and workspace conflicts, scores seven areas and checks server-side tagging readiness. Use when someone asks to audit, clean up or review a GTM container, check consent or firing triggers, compare versions or check workspaces before publishing. Use build mode when someone asks how to track button or link clicks, form submissions (including embedded booking and form widgets), video, scroll depth, file downloads, cross-domain journeys or purchases in GTM, or wants a dataLayer push example. Build mode skips what GA4 already tracks, keeps to GA4 event limits, writes the dataLayer code, tags, triggers and variables, and gives a preview check per event. Creates anything only after a yes, in a workspace draft, and never publishes.
+description: Audits a Google Tag Manager container for dead tags, trigger logic, consent settings, naming, versions and workspace conflicts, and builds missing GA4 event tracking with dataLayer code. Use when asked to audit or clean up GTM, or how to track clicks, forms or scroll in GTM.
 ---
 
 # GTM Container Auditor

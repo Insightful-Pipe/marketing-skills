@@ -1,6 +1,6 @@
 ---
 name: local-business-marketing-report
-description: Builds a local business marketing report on live data through the InsightfulPipe MCP, or a 90-day marketing plan for one location. The report reads a business's Google Business Profile (profile, reviews, photos, posts, views, calls, directions, website clicks, keywords) and Search Console, adds Google Ads calls and store visits when the user confirms the ad account is theirs, scores six areas and ends with a 30/60/90-day local SEO plan. The plan mode works from a description of the business, area, hours and budget, or from Business Profile, CallRail, GA4 and DataForSEO data, and fits review work, partnerships, events, local groups, flyers, local press, seasonal pushes and slow-day offers to the owner's time and cash, each with a break-even and a tracking code. Use for a local business report, local SEO audit, multi-location report, restaurant marketing plan, local marketing ideas or how to market a local business. Offers review replies, posts, CallRail trackers and Sheets tabs only after the user confirms.
+description: Builds a local business marketing report from Google Business Profile and Search Console with a 30/60/90-day local SEO plan, or a 90-day marketing plan for one location. Use when asked for a local SEO audit, a restaurant marketing plan, local marketing ideas or how to market a local business.
 ---
 
 # Local Business Marketing Report

@@ -1,6 +1,6 @@
 ---
 name: marketing-dashboard-builder
-description: Builds a live marketing dashboard in Google Sheets or Looker Studio, a weekly report page in Notion, a weekly summary in Slack or a campaign tracker in Airtable, from data pulled through the InsightfulPipe MCP or from pasted exports. Writes a spec first, checks the destination so nothing gets overwritten, and drafts the tabs, formulas, budget pacing, plan-versus-live campaign check and every write payload. For Looker Studio it stages one clean daily table in Sheets, writes the calculated fields and blends, gives the build steps, and reviews an existing one for wrong formulas. It also closes the marketing month, with budget vs actual for media and non-media lines, variance reasons, accruals, a re-forecast and ad spend reconciliation against invoices. Use when someone asks for a marketing dashboard, a KPI or spend tracker sheet, a Looker Studio dashboard or template, a marketing budget tracker, budget vs actual, a month-end close, spend reconciliation or a weekly report. Writes only after the user confirms.
+description: Builds marketing dashboards in Google Sheets or Looker Studio, weekly report pages in Notion, Slack summaries and Airtable trackers, plus budget vs actual and the month-end close. Use when asked for a marketing dashboard, a Looker Studio template, a spend tracker sheet, or budget vs actual.
 ---
 
 # Marketing Dashboard Builder

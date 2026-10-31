@@ -1,6 +1,6 @@
 ---
 name: influencer-vetting
-description: Vets Instagram, TikTok and YouTube creators before a deal and works as a fake follower checker. Reads YouTube channels live through the InsightfulPipe MCP (subscribers, recent uploads, views, likes and comments) and Instagram and TikTok creators from pasted stats, insights screenshots and comment samples. Checks engagement against the follower tier, reach beyond followers, comment quality, sudden follower jumps, audience country and age fit, brand safety of recent posts, sponsorship load and competitor deals, and sponsored against organic results, cites the number behind every flag, and ranks the shortlist with a verdict per creator. Use when someone asks to vet, audit or screen influencers or creators, check for fake followers or bought engagement, or choose between creators before paying one. Read only; it changes nothing.
+description: Vets Instagram, TikTok and YouTube creators as a fake follower checker, testing engagement by tier, reach, comment quality, follower jumps, audience fit, brand safety and competitor deals, then ranks them. Use when asked to vet influencers, check fake followers or pick a creator before paying.
 ---
 
 # Influencer Vetting and Fake Follower Checker

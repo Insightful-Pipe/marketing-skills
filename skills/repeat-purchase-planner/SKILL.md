@@ -1,6 +1,6 @@
 ---
 name: repeat-purchase-planner
-description: Plans how an online store turns first-time buyers into repeat buyers, from its own order history. Measures the repeat customer rate and the second-order rate inside a return window set from the store's own data, finds which first products lead to a second order and which are dead ends, works out each product's reorder interval (only with 20 or more repeat buyers), picks the items that suit subscribe and save and checks cadence, shipment size and discount against margin and expected retention, times replenishment reminders for the email flows, prices inserts and a second-order code by the lift each needs to break even, and sets a target second-order rate. Works from an orders export, or pulls orders through the InsightfulPipe MCP from Shopify, WooCommerce, Magento or Klaviyo. Use when someone asks how to increase repeat purchase rate, whether to start a subscribe and save program, or when to send refill reminders. Offers one change (a WooCommerce second-order coupon) only after the user confirms.
+description: Plans how a store turns first-time buyers into repeat buyers from its own orders, finding gateway products, reorder intervals, subscribe and save candidates and refill reminder timing. Use when asked how to increase repeat purchase rate, if subscribe and save pays, or when to send refill reminders.
 ---
 
 # Repeat Purchase and Subscribe-and-Save Planner

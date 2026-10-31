@@ -1,6 +1,6 @@
 ---
 name: cancel-flow-dunning-planner
-description: "Subscription churn plan for SaaS and subscription businesses: splits lost revenue into customers who chose to leave and customers lost to failed payments, measuring the involuntary churn share, failure types and days to recover from a Stripe, Chargebee, Paddle, Recharge or app-store export or Stripe through InsightfulPipe, ranks exit reasons by lost monthly revenue, and checks any save offer in use against who was still paying 90 days later. Then designs the cancellation flow (one optional reason question, one answer per reason, every discount capped by plan gross margin, a cancel button on every screen), the dunning plan (retry window from the business's own recoveries, card-update emails, in-app notices) and renewal reminders, writes every message, and checks the flow against US, California and German cancellation rules. Use for churn prevention, dunning emails, failed payment recovery or a cancel flow review. Works from a pasted export; loads email drafts into Klaviyo only after the user confirms."
+description: Plans subscription cancel flows and dunning from Stripe, Chargebee, Paddle or Recharge exports, splitting churn into cancellations and failed payments, and writes save offers and card-update emails. Use when asked about involuntary churn, dunning emails, failed payment recovery or a cancel flow.
 ---
 
 # Subscription Cancel Flow and Dunning Planner

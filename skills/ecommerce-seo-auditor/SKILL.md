@@ -1,6 +1,6 @@
 ---
 name: ecommerce-seo-auditor
-description: Runs an ecommerce SEO audit of an online store on Shopify, WooCommerce, Magento or a custom cart. Finds duplicate product paths, variant and filter URLs, faceted navigation crawl traps, sorting and pagination problems, discontinued and out-of-stock product pages, thin category or collection pages, internal search pages in Google's index, gaps in product and merchant listing markup, and product images without alt text, then ranks the fixes by the organic revenue at stake. Works from a product export and a Search Console export with no connection, or reads the catalogue, Search Console, GA4 and the crawler live through the InsightfulPipe MCP. Use when someone asks for a Shopify SEO audit, an ecommerce or online store SEO audit, help with faceted navigation SEO, filter or variant URLs in Google, out-of-stock or discontinued product pages, or thin collection pages. Drafts category intros and redirects, and writes an intro only after the user confirms.
+description: Audits ecommerce SEO for Shopify, WooCommerce or Magento, covering duplicate product URLs, faceted navigation and filter URLs, out-of-stock and discontinued products, thin collection pages and product markup, ranked by revenue. Use when asked for a Shopify SEO audit or faceted navigation SEO.
 ---
 
 # Ecommerce SEO Auditor

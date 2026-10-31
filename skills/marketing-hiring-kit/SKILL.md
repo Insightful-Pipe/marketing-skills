@@ -1,6 +1,6 @@
 ---
 name: marketing-hiring-kit
-description: Builds a complete kit to hire one marketer (PPC, paid social, SEO, content, email, marketing ops, head of marketing or a freelancer) at a given level. It writes a first-year outcomes scorecard set from the business's own baselines, a job description with a check for biased or exclusionary wording, a structured interview loop with what strong and weak answers sound like, a paid take-home built from the company's own data with every name and number masked, plus an answer key and points rubric, reference-check questions, and a 30-60-90 onboarding plan. The same scorecard drives later reviews. Use when someone is hiring a marketer, writing a marketing job description, needs marketing interview questions, wants a marketing take-home assignment, or is setting goals for a new marketing hire. Works from a description alone; with Google Ads, Meta Ads, GA4 or Search Console connected through the InsightfulPipe MCP it pulls real baselines and the take-home data itself. Changes nothing in any account.
+description: Builds a kit to hire one marketer (PPC, paid social, SEO, content, email, ops or head of marketing) with a first-year scorecard, a job description bias check, interview questions, a paid take-home and a 30-60-90 plan. Use when hiring a marketer or writing a marketing job description.
 ---
 
 # Marketing Hiring Kit

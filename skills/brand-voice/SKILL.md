@@ -1,6 +1,6 @@
 ---
 name: brand-voice
-description: Builds a brand voice and tone guide, a messaging house and a copy check from the brand's own live copy through the InsightfulPipe MCP, and audits a website's messaging across its key pages. Reads ad text with its clicks (Google Ads, Meta), organic posts (Facebook, Instagram, LinkedIn Page), site pages, GA4 landing pages, the words customers search with and how rivals sound in Google. Writes voice pillars, we are / we are not, tone by context, style and vocabulary rules, a messaging house with proof points, rewrites and a scored check of live ads and posts. The website messaging audit checks that prices, numbers, names and promises match across pages and ads, flags out-of-date facts, mixed calls to action, jargon and headlines that miss what visitors searched, and ranks fixes by traffic with the exact sentences. Use for a brand voice, tone of voice or style guide, a messaging framework, generic AI drafts, a check of live copy, or a website copy or messaging audit. Reads only; never edits an ad, post or page.
+description: Builds a brand voice and tone guide and a messaging house from your Google Ads, Meta ads, social posts and site copy, then checks live copy against it. Use when you need a style guide, a messaging framework or a website messaging audit. Not for writing new copy (use copywriting)
 ---
 
 # Brand Voice

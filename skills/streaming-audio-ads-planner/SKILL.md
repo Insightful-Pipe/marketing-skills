@@ -1,6 +1,6 @@
 ---
 name: streaming-audio-ads-planner
-description: Plans and reads out Spotify and streaming audio ad buys (Spotify Ads Manager music and podcast ad sets, streaming radio sellers, programmatic audio through a DSP). Prices every quote as an effective CPM after fees, checks each seller can run a measurable test, splits the budget, plans reach and frequency per audience, sets the 30-second spot and companion specs with a spoken vanity URL and one offer code per line, records an 8-week regional baseline (GA4 new users and first-time purchasers, Google Ads brand impressions) with a noise floor, and writes the scale, retest or stop rule before launch. After the flight it checks delivery against the plan, counts code orders from Shopify or WooCommerce, and reads lift in test regions against control regions. Works from pasted quotes and exports; InsightfulPipe MCP connectors are an upgrade. Use when someone asks how to advertise on Spotify, what Spotify ads cost, how to plan programmatic audio advertising, or whether an audio flight worked.
+description: Plans Spotify and programmatic audio ad buys with effective CPMs, a 30-second spot, offer codes and control regions, then reads lift. Use when asked how to advertise on Spotify, what Spotify ads cost, or if an audio flight worked. Not for host-read ads (use newsletter-podcast-ads-planner).
 ---
 
 # Spotify and Streaming Audio Ads Planner

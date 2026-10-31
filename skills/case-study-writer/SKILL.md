@@ -1,6 +1,6 @@
 ---
 name: case-study-writer
-description: Writes a case study from real, measured results through the InsightfulPipe MCP. In data mode it pulls the before and after itself from Google Search Console and, optionally, GA4 and Google Ads, tests whether the result is real against the rest of the site and the trend already under way, then drafts the case study, a social version and slide bullets with every number in a claims ledger. Interview mode needs no connection and is a customer story interview kit for results that live in the customer's own systems. It writes the request asking a customer for a case study, a pre-interview form for the numbers and case study interview questions in story order, then the case study, a quote set for the customer to approve and a sales paragraph, each number tied to a form answer, a transcript line or a connected pull. Also turns a testimonial into a short story with the customer's exact words. Use for case studies, customer success stories and templates, proof points, or checking what a change achieved.
+description: Writes case studies and customer success stories from measured before and after results in Search Console, GA4 or Google Ads, or from a customer interview kit, with every number traced. Use when you want a case study, proof points, a testimonial turned into a story, or to check if a change worked.
 ---
 
 # Case Study Writer

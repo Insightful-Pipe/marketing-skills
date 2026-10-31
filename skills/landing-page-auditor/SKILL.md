@@ -1,6 +1,6 @@
 ---
 name: landing-page-auditor
-description: Audits a landing page, homepage, sales page or any key page for conversion on live data through the InsightfulPipe MCP. Picks the page from GA4, checks that its conversion is measured, reads who arrives (channels, devices, Search Console queries, Google Ads ads and landing page experience), takes the page apart (structure, CTAs, proof, copy), renders it on desktop and mobile and checks speed, then scores seven conversion pillars and ranks the fixes by ICE with rewrites, a page structure and test ideas. Use when someone asks why a page isn't converting, wants a landing page, sales page or website content review, a mobile rendering check of key pages, or a structure for a new landing page.
+description: Audits a landing page, homepage or sales page for conversion using GA4, Search Console, Google Ads and desktop and mobile renders, scoring seven pillars and ranking fixes with rewrites. Use when a page isn't converting, or for a landing page review, mobile check or new page structure.
 ---
 
 # Landing Page Auditor

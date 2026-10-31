@@ -1,6 +1,6 @@
 ---
 name: google-ads-scripts-rules-writer
-description: Writes, explains, fixes and safety-checks Google Ads scripts and automated rules for guard jobs like a monthly budget cap, broken final URL checks, keywords that spend with no conversions, search terms to Google Sheets and spend jump alerts. With the Google Ads MCP connected through InsightfulPipe it reads the account first, so names, labels, budgets and thresholds come from the account's own data, and it runs every GAQL query inside the script live before handing it over. A script that can change anything starts switched off, logs what it would change in preview, caps the changes per run and comes with an undo note. Use when someone asks for a Google Ads script or automated rule, wants a script explained or debugged, pastes a script error, or asks how to cap spend, catch broken pages or get search terms into a sheet automatically. Works from a pasted script or error with no connection at all. It never schedules or authorises a script and never creates a rule; the user pastes them into Google Ads.
+description: Writes, explains and fixes Google Ads scripts and automated rules for budget caps, broken URL checks, zero-conversion keywords, search terms to Sheets and spend jump alerts. Use when asking for a Google Ads script or rule, or pasting a script error. Not for GAQL reports (use gaql-report-builder).
 ---
 
 # Google Ads Scripts and Automated Rules Writer

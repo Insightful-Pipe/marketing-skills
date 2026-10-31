@@ -1,6 +1,6 @@
 ---
 name: conversion-reconciliation
-description: Reconciles what each ad platform claims against GA4 and the store, through the InsightfulPipe MCP or from exports. Pulls clicks, conversions and value from Google Ads, Meta, LinkedIn, TikTok and Microsoft Ads, GA4 sessions, key events and revenue, and store orders, grades three legs per platform (clicks to sessions, conversions to key events, value to revenue to sales), explains each gap by the parts that can never match, and splits paid spend between new and returning visitors. Its order-level mode matches Shopify, WooCommerce or Magento orders to GA4 purchases by order id, gives a capture rate per device, payment method, day and ad platform, finds missing, duplicate and test purchases, wrong values and refunds GA4 never got, checks how purchase tracking is installed, and ranks fixes by revenue. Use when Google Ads or Meta shows more conversions than GA4, GA4 revenue does not match Shopify, Shopify GA4 purchase tracking is not working, GA4 has duplicate purchase events, or which conversion number to trust.
+description: Reconciles conversions and revenue between Google Ads, Meta, LinkedIn, TikTok, GA4 and Shopify, WooCommerce or Magento orders, explaining each gap and finding missing or duplicate purchases. Use when ads show more conversions than GA4, GA4 revenue does not match Shopify, or which number to trust.
 ---
 
 # Ad Platform vs GA4 vs Store Reconciliation

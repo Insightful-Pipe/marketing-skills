@@ -1,6 +1,6 @@
 ---
 name: social-live-stream-planner
-description: Plans a brand live stream or live audio session on YouTube Live, TikTok LIVE, Instagram Live, Facebook Live, LinkedIn Live or X Spaces from topic to replay. Builds the run of show with engagement prompts and the offer timed to the minutes where the brand's past stream replays lost viewers (YouTube retention curves through the InsightfulPipe MCP, or pasted stats), writes the moderation plan and the platform setup checklist, drafts the promotion posts per network and checks them against the scheduler queue, then after the stream compares views, watch time, average view duration and peak concurrent viewers with past streams and plans the replay and clips. Use when someone asks to plan a live stream, a YouTube Live, a TikTok LIVE, an Instagram Live, a LinkedIn Live or an X Space for a brand, to promote one, or to review how one did. Works from a pasted brief and stats with no connection; saves promotion posts as scheduler drafts only after the user confirms.
+description: Plans a brand live stream on YouTube Live, TikTok LIVE, Instagram Live, Facebook Live, LinkedIn Live or X Spaces. Times prompts and the offer to where past streams lost viewers, writes moderation, setup and promo posts, then reviews results. Use when asked to plan, promote or review a live stream.
 ---
 
 # Live Stream Marketing Planner

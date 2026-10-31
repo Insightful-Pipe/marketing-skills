@@ -1,6 +1,6 @@
 ---
 name: javascript-seo-rendering-check
-description: Checks what search engines and AI crawlers can read on a JavaScript site. For each page template it compares the raw HTML (before JavaScript runs) with the rendered page across visible text, key facts, internal links, title, description, canonical, meta robots and structured data, flags content that only appears after a click or scroll, probes for soft 404s and reads Google's URL Inspection, then grades Google and AI crawlers separately, since most AI crawlers don't run JavaScript. It recommends the rendering fix (static, revalidated, server-side or a prerender stopgap) and the change to make in the framework, such as Next.js, Nuxt, Angular, SvelteKit, Astro or a React or Vue app. Works from a URL list or pasted HTML with no connection, or pulls Search Console, PageSpeed, the crawler and DataForSEO through the InsightfulPipe MCP. Use for JavaScript SEO or React SEO questions, "can Google crawl my JavaScript", a single-page app that isn't indexed, or content ChatGPT or Claude can't see. Changes nothing.
+description: Checks what Google and AI crawlers can read on a JavaScript site by comparing raw and rendered HTML per template, then names the rendering fix for Next.js, Nuxt, React, Angular or Vue. Use when asked about JavaScript SEO, React SEO, can Google crawl my JavaScript, or a single-page app not indexed.
 ---
 
 # JavaScript SEO Rendering Check

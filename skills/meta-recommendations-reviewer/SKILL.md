@@ -1,6 +1,6 @@
 ---
 name: meta-recommendations-reviewer
-description: Reviews the recommendations Meta shows in Ads Manager (the opportunity score list) and gives each one a verdict of apply, test first, skip or your call, decided by the account's own numbers instead of the points Meta attaches. Covers budget raises, merging ad sets, Advantage+ audience and placements, creative fatigue, Advantage+ creative and generative features, optimization goal changes and Conversions API. Works from a pasted list or screenshot plus an Ads Manager report, or checks each one live through the InsightfulPipe MCP (ad set results, 7-day volume, budget use, placement history, edit history, audience size). Use when someone asks whether to apply Meta ads recommendations, what their Meta opportunity score means, or which Facebook Ads Manager recommendations to dismiss. Applies budget steps, ad set merges, Advantage+ audience and ad pauses only after the user confirms each change, and turns the rest into Ads Manager steps and A/B test plans.
+description: Reviews Meta Ads Manager recommendations and the opportunity score, giving each card an apply, test first, skip or your call verdict from the account's own numbers, not Meta's points. Use when asking whether to apply Meta recommendations, what opportunity score means, or which cards to dismiss.
 ---
 
 # Meta Recommendations Reviewer

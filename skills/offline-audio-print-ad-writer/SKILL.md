@@ -1,6 +1,6 @@
 ---
 name: offline-audio-print-ad-writer
-description: Writes ad copy for the channels outside the ad platforms, with a way to respond built into every piece. Radio and TV spots timed to 15, 30 or 60 seconds, podcast host reads, newsletter sponsorships, print ads, billboards and transit, flyers and door hangers, and direct mail postcards and letters. Before writing, it reads how past offline pieces did through the InsightfulPipe MCP (CallRail calls by tracking number, GA4 sessions from vanity URLs and QR codes, Shopify or WooCommerce orders by promo code, brand searches in Search Console and Business Profile actions during each flight) and says which offer and line to repeat. Word limits are counted, not guessed, and every run ends with a response tracking plan. Works from a pasted brief with nothing connected. Use when someone asks for a radio ad script, a podcast ad read, direct mail or postcard copy, a billboard, a print ad, a flyer, or which offline ad worked.
+description: Writes radio and TV spots, podcast host reads, newsletter sponsorships, print ads, billboards, flyers and direct mail postcards, word counted per format, each with a promo code or tracking number. Use when asked for a radio ad script, a podcast ad read, postcard copy, or which offline ad worked.
 ---
 
 # Radio, Podcast, Print and Direct Mail Ad Writer

@@ -1,6 +1,6 @@
 ---
 name: content-calendar-scheduler
-description: Builds a social media content calendar from live data through the InsightfulPipe MCP and schedules it. Reads the scheduled queue to find gaps, clashes, failed posts and stale drafts, works out each account's real posting cadence and best times from its own post history, reviews a calendar kept in Google Sheets, Notion or Airtable, turns blog posts, announcements and past top posts into per-network slots, plans a year of holidays and awareness days filtered by Google Trends search interest and by how the account posted on those days last year, and checks every slot against what each network's scheduler needs. Use when someone asks for a content calendar or social plan, a social media holidays calendar or national days to post for, wants a week of posts scheduled, wants to know the best time to post, wants the queue checked, or wants posts moved, cross-posted, recycled or cancelled. Schedules, reschedules and cancels posts (a cancel returns the post to draft) only after the user confirms the exact list.
+description: Builds a social media content calendar and schedules posts to Facebook, Instagram, TikTok and LinkedIn from each account's own history, with best times and a holidays calendar. Use when you want posts scheduled, the queue checked or the best time to post. Not for writing posts (use social-content)
 ---
 
 # Content Calendar Builder and Scheduler

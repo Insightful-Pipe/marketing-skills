@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-launch-checklist
-description: Checks a Meta (Facebook and Instagram) Ads campaign before it goes live, and finds why a live one is not spending or not delivering, on live data through the InsightfulPipe MCP or from screenshots. Launch mode reads the account, campaign, ad sets, ads, creatives, pixel, minimum budgets, audience estimate, media specs and landing page, runs a three-tier checklist and returns READY, READY WITH FIXES or NOT READY. Delivery mode rules out account, payment and spending limit blockers before ad-level ones, then checks dates, review status, the budget floor, bid or cost caps, audience size and overlap, and works out learning limited from weekly results and recent edits. Use when someone is about to launch, relaunch or switch on a Meta campaign, asks for a launch or pre-flight checklist, or says their Facebook ads are not spending, not delivering, stuck in review or learning limited. Offers date, budget, bid cap, spending limit, name, UTM and targeting fixes as exact payloads it runs only after the user confirms.
+description: Checks one Meta Ads campaign before launch with a pre-flight checklist and a READY or NOT READY verdict, and diagnoses Facebook ads that are not spending, not delivering, stuck in review or learning limited. Use when about to launch or relaunch a Facebook campaign or when ads stop delivering.
 ---
 
 # Facebook Ads Launch Checklist

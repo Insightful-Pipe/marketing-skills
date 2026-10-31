@@ -1,6 +1,6 @@
 ---
 name: meta-automated-rules-builder
-description: Designs the automated rules a Meta (Facebook and Instagram) ad account should run, tests them on the account's own history, and writes them ready to enter in Ads Manager. Covers stop rules for ads that spend without results or at too high a cost, a budget raise for steady ad sets, frequency and CPM alarms, and an overspend guard. Every line scales with the account's target cost per result, and the spend line is picked by replaying four settings on 13 weeks of daily ad data to show which past winners each would have turned off. Also reviews the rules the account already runs for conflicts, compounding raises and missing caps. Works from a pasted daily export or live data through the InsightfulPipe MCP. Use when someone asks for Facebook or Meta automated rules, rules to pause ads, rules to scale ad sets, overspend protection, or wants their current rules checked. Pauses ads that already break a rule only after the user confirms.
+description: Builds Meta Ads automated rules (stop losing ads, raise budgets, frequency and CPM alarms, overspend guard) set from your target cost per result and replayed on 13 weeks of history. Use when asking for Facebook automated rules, rules to pause ads or scale ad sets, or a check of existing rules.
 ---
 
 # Meta Ads Automated Rules Builder

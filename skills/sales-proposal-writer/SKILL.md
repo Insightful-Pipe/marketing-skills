@@ -1,6 +1,6 @@
 ---
 name: sales-proposal-writer
-description: Writes B2B sales proposals and RFP responses where every claim traces to a source. Proposal mode turns discovery notes into the buyer's problem in their own words, outcomes, scope, a timeline checked against their date, two or three priced options with the math shown, proof and dated next steps. RFP mode reads the request, builds a requirement-by-requirement compliance table (met, partly met, not met, unknown), scores whether to bid with mandatory knockouts, and only then drafts answers from your past answers, website and offer. Gaps are flagged, never filled. Use when someone asks for a sales proposal, a proposal template, a quote write-up, an RFP or RFI or tender response, a bid or no-bid call, or a compliance matrix. Works from pasted notes and documents; with the InsightfulPipe MCP it can read an answer library in Google Sheets and proof pages from your site.
+description: Writes B2B sales proposals with priced options from discovery notes, and RFP responses with a compliance matrix and a bid or no-bid score before any answer, every claim tagged to a source. Use when asked for a sales proposal, a quote write-up, an RFP, RFI or tender response, or a bid decision.
 ---
 
 # Sales Proposal and RFP Response Writer

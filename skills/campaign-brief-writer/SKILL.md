@@ -1,6 +1,6 @@
 ---
 name: campaign-brief-writer
-description: Writes a one-page marketing campaign brief that a team, agency or freelancer can work from, starting from a pasted request, email or meeting notes. Sets one measurable objective, the audience, the single message and its proof, the offer, mandatories, budget, deadline and dated milestones, deliverables, KPIs with baselines and targets, the tracking it needs, owners and sign-off. With the InsightfulPipe MCP it fills the baselines from comparable past campaigns in Google Ads, Meta Ads, LinkedIn Ads and Klaviyo and from GA4, flags a target that needs more budget than the brief allows, and checks that the conversion tracking the KPIs rely on exists and still fires. Also scores a brief someone else wrote, part by part, with the questions to send back, and turns the format into a request intake form. Use for a marketing brief, campaign brief template or example, an agency brief, or how to write or review a marketing brief. Adds the intake form to Google Sheets only after the user confirms.
+description: Writes a one-page marketing campaign brief from a request or meeting notes, with one objective, KPIs baselined on past Google Ads, Meta, LinkedIn Ads and Klaviyo campaigns, a budget check and milestones. Use for a campaign brief template, an agency brief or reviewing a brief.
 ---
 
 # Marketing Campaign Brief Writer

@@ -1,6 +1,6 @@
 ---
 name: marketing-claims-checker
-description: Checks marketing claims for compliance before they go out. Lists every claim in a page, ad set, email or product listing (numbers, superlatives, free and price offers, guarantees, reviews and endorsements, health, money and credit, environmental, rival comparisons, certifications, urgency), says what proof each one needs and whether the copy shows it, names the rule it may break (US FTC substantiation, endorsement and review rules, the UK CAP Code, EU unfair commercial practices rules, housing, employment, credit and health limits, and each ad platform's policy), and gives a keep, fix or remove verdict with a compliant rewrite. Builds one claims ledger across every channel, so an unproven number is fixed everywhere at once. Works from pasted copy, or reads live ad text, pages, email templates and product text through the InsightfulPipe MCP. Use for advertising claim substantiation, an ad copy compliance checklist, or a claims review before launch. Never gives legal sign-off; it marks what needs a lawyer.
+description: Checks claims in ads, landing pages, emails and product listings against FTC, UK CAP Code, EU and Google Ads or Meta policy rules, with a keep, fix or remove verdict and a compliant rewrite for each. Use for claim substantiation, an ad compliance checklist, or a claims review before launch.
 ---
 
 # Marketing Claims Compliance Checker

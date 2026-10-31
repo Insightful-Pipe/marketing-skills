@@ -1,6 +1,6 @@
 ---
 name: market-research
-description: Researches a market, an industry or a product category on live public data through the InsightfulPipe MCP (search demand, five-year and weekly trends, rising and early keywords, searcher age and gender, the domains that own the results, the channels and social networks buyers meet, active Meta ads and demand by country), graded on demand, momentum, commercial value and openness. Use for market research, target market or industry analysis, market size, product or industry trends, hidden trends, trending products, distribution channels, which social networks to use or which countries to expand into. Store mode is for an online store asking what products to add or push, trending products to sell or ecommerce product research. It finds best sellers the store lacks (Merchant Center), rising and seasonal product searches, and site searches for items it does not stock (GA4, Shopify, WooCommerce), from exports or a described category with nothing connected. Can save the tables to a Google Sheet once confirmed.
+description: Researches a market, industry or product category from public search data, covering demand, trends, rising keywords, who owns results, channels and countries, plus a store mode for products to add. Use when asked for market research, industry trends, trending products or target market analysis.
 ---
 
 # Market and Trend Research

@@ -1,6 +1,6 @@
 ---
 name: scaling-roadmap-builder
-description: Builds a phased plan to scale Google Ads spend on live data through the InsightfulPipe MCP. Pulls six months of trend, impression share lost to budget and rank, Google's budget simulations, conversion setup, landing pages, search terms and Keyword Planner ideas itself, checks whether the account is ready to scale, finds where the next dollar is cheapest, and lays out phases with budgets, actions, success criteria, pause triggers and a projected growth curve. Use when someone wants to grow a Google Ads account, raise spend, asks "how do I go from $X to $Y a month?", or wants to know if they are ready to scale. Offers budget changes and new keywords as actions it runs only after the user confirms.
+description: Plans how to scale Google Ads spend in phases, checking readiness, marginal CPA headroom and new keywords, with daily budgets and pause triggers. Use when asked to grow an account, go from X to Y a month or if you are ready to scale. Not for a fixed budget split (use budget-allocation-optimizer)
 ---
 
 # Scaling Roadmap Builder

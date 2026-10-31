@@ -1,6 +1,6 @@
 ---
 name: in-app-events-featuring-planner
-description: Plans App Store in-app events, Google Play promotional content and seasonal listing refreshes for the months ahead, and drafts the App Store featuring nominations worth sending. Times each roadmap moment to the months the app's category is searched most (12 months of Google search volume, labelled a web proxy), checks which moments qualify as events on each store, writes every event card inside Apple's and Google's limits with characters counted, dates every deadline, gives each nomination a nominate or skip reason, and measures whether past events lifted downloads from a daily App Store Connect or Play Console export. Use when someone asks about App Store in-app events, how to get featured on the App Store, Google Play promotional content or LiveOps, a seasonal store calendar, or whether their last event worked. Works from a pasted or described roadmap; with the InsightfulPipe MCP it reads search demand from DataForSEO and rival listings from the App Store and Google Play. Submits nothing.
+description: Plans App Store in-app events, Google Play promotional content and featuring nominations on a dated calendar timed to seasonal demand, with event cards in store limits. Use when asked how to get featured on the App Store, about in-app events or Google Play LiveOps, or if a past event worked.
 ---
 
 # In-App Events and Featuring Planner

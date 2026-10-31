@@ -1,6 +1,6 @@
 ---
 name: log-file-crawl-analyzer
-description: Analyzes server and CDN access logs for SEO and crawl budget. Verifies Googlebot, Bingbot and AI crawler hits (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot and others) against the IP lists Google, Bing, OpenAI, Anthropic and Perplexity publish, so fake bots never count, then shows where verified crawling goes by template, status code, parameter URLs, redirects and orphans, how often money pages are crawled compared with junk, and which crawled pages earn no clicks. Joins the sitemap, Search Console clicks and Bing crawl stats through the InsightfulPipe MCP when connected, and ends with crawl-waste fixes ranked by the bot hits each one frees. Use when someone uploads access logs (Apache, Nginx, Cloudflare, Fastly, CloudFront, IIS), asks for log file analysis, crawl budget optimization, Googlebot crawl stats analysis, fake Googlebot checks or what AI bots crawl. Works from the log alone. Offers one Bing ignore-parameter setting it adds only after the user confirms.
+description: Analyzes server and CDN access logs for crawl budget, verifying Googlebot, Bingbot and AI crawlers like GPTBot and ClaudeBot against published IP lists, then ranks crawl waste fixes. Use when asked for log file analysis, crawl budget optimization, fake Googlebot checks or what AI bots crawl.
 ---
 
 # Server Log and Crawl Budget Analyzer

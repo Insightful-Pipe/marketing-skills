@@ -1,6 +1,6 @@
 ---
 name: retention-cohort-analyst
-description: Builds a customer retention cohort analysis from orders, subscriptions or an app retention export. Groups customers by first-order month, first channel and first product, then measures repeat rate, days to the second order, revenue kept and value per customer by month 3, 6 and 12, marks cohorts too small to read, tests whether gaps are real, and turns the measured reorder timing into refill reminders and second-order nudges with exact delays. Use when someone asks how to calculate customer retention rate, wants a cohort retention analysis or customer cohort analysis, asks how many customers come back and when, which channels or first products bring one-time buyers, or when to send a replenishment email. Works from an uploaded or pasted file with no connection, and pulls orders through the InsightfulPipe MCP from Shopify, WooCommerce, Magento, BigQuery, Google Sheets or Klaviyo when connected. Changes nothing; it writes the cohort table to a Google Sheet only after the user confirms.
+description: Builds customer retention cohorts from Shopify, WooCommerce, Magento or subscription orders, with repeat rate, days to second order and refill reminder delays. Use when asked for a cohort analysis, customer retention rate or replenishment timing. Not for win-back (use churn-risk-winback-planner)
 ---
 
 # Customer Retention Cohort Analyst

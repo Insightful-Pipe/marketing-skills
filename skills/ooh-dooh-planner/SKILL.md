@@ -1,6 +1,6 @@
 ---
 name: ooh-dooh-planner
-description: Plans a billboard, transit and digital out-of-home (DOOH) buy from the business's own demand. Rolls GA4 purchases or leads by city into markets (with Search Console for the country split and Business Profile actions for stores, through the InsightfulPipe MCP, or from pasted orders by city or ZIP), prices each media owner's quote by all-in CPM and weekly GRPs, funds markets by purchases per $1,000 only when a dark control market tracks them, adds programmatic DOOH inside the funded markets, checks every draft for word count, contrast, letter height and response key, and writes the matched-market lift plan (control, fit, placebo, smallest readable lift, break-even lift) before any money is committed. Ends with a dated calendar. Use when someone asks for a billboard advertising plan, a DOOH or out-of-home strategy, which cities or boards to buy, how to split an OOH budget, or how to measure billboard ads. Read only; it books and changes nothing.
+description: Plans billboard, transit and digital out-of-home (DOOH) buys from your own demand by city, pricing quotes by all-in CPM and GRPs, funding only measurable markets, checking the creative and writing the lift plan. Use for a billboard advertising plan, an OOH strategy or how to measure billboard ads.
 ---
 
 # Billboard and Out-of-Home Advertising Planner

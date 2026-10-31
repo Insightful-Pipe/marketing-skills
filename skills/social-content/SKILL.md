@@ -1,6 +1,6 @@
 ---
 name: social-content
-description: Plans, writes and checks organic social media content from the brand's own post history through the InsightfulPipe MCP. Reads past posts and their views on a Facebook Page, Instagram, TikTok, LinkedIn, Threads and X, finds which pillars, formats, hooks, hashtags, video lengths and posting days beat the account's usual, then builds a strategy, content mix, cadence, two-week plan and editable drafts (posts, captions, Reel and TikTok scripts, Stories, carousels, X threads). Also does hashtag research (grades the tags already used, sizes new ones, says how many to use per network, rotates sets), checks a draft before it goes out against the account's own top posts and each network's limits and media specs, and adds Bluesky and Mastodon. Use for a social media strategy, content plan or calendar, captions, hashtags, Reel scripts, LinkedIn posts, X threads, Instagram hashtag research, a LinkedIn post checker or tweet checker, or Bluesky marketing. Publishes a post only after the user confirms the exact post.
+description: Plans and writes organic social posts from your Facebook, Instagram, TikTok, LinkedIn, Threads and X history, with captions, Reel scripts, threads and hashtags. Use when asked for a social media strategy, content plan, captions or a post checker. Not for scheduling (use content-calendar-scheduler).
 ---
 
 # Social Content

@@ -1,6 +1,6 @@
 ---
 name: google-ads-bulk-updater
-description: Changes a price, offer, year, phone number, final URL, tracking template or final URL suffix everywhere it lives in a Google Ads account at once, after a price rise, a site move or a new tracking setup. Finds every match in ads, paths, keyword URLs, sitelinks, callouts, snippets, price, promotion and call assets, Performance Max asset groups and URL options, including paused items. Checks each new line for length, policy problems and grammar, runs every new URL through the crawler, and returns a before-and-after sheet that says how each edit is made and what it does to review and history. Use when someone asks to bulk edit Google Ads, find and replace in ads, change final URLs in bulk, update a price or phone number across ads, or swap a tracking template. Works live through the InsightfulPipe MCP or from a Google Ads Editor export, and applies edits only after the user confirms.
+description: Finds and replaces a price, offer, year, phone number, final URL or tracking template everywhere in a Google Ads account, paused items included, checks lengths, policy and new URLs, and gives a before-and-after sheet. Use when asked to bulk edit ads, find and replace in ads, or swap final URLs.
 ---
 
 # Google Ads Bulk Ad and URL Updater

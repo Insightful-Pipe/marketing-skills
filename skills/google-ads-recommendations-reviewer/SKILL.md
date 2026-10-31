@@ -1,6 +1,6 @@
 ---
 name: google-ads-recommendations-reviewer
-description: Reviews every open Google Ads recommendation and gives each one an accept, adapt or dismiss verdict tested on the account's own numbers, not on Google's estimated uplift. Also lists which recommendation types are set to auto-apply, finds the changes auto-apply already made in change history and judges their results, checks the automation settings that edit the account on their own (automatically created assets, final URL expansion, image and video enhancements, Demand Gen asset automation, Display expansion, search partners), and explains what optimization score measures and what it doesn't. Use when someone asks whether to accept Google Ads recommendations, how to turn off auto-applied recommendations, why their optimization score is low, or what Google changed in the account by itself. Works from a pasted recommendations list or screenshot, or live through the InsightfulPipe MCP. Changes nothing until the user confirms each change.
+description: Reviews open Google Ads recommendations with an accept, adapt or dismiss verdict tested on the account's own numbers, plus auto-apply and asset automation settings. Use when asking whether to accept recommendations, how to turn off auto-apply, or why optimization score is low.
 ---
 
 # Google Ads Recommendations Reviewer

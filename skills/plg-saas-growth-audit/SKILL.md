@@ -1,6 +1,6 @@
 ---
 name: plg-saas-growth-audit
-description: Audits a self-serve SaaS business from first visit to paying, growing and leaving (visit to signup, activation, trial or free plan to paid, expansion, cancellations, failed payments and referral), puts a monthly recurring revenue (MRR) figure on each stage's leak, and ranks the fixes. Works from pasted numbers or billing and product exports, and pulls live data through the InsightfulPipe MCP when GA4, Google Ads, Meta Ads, LinkedIn Ads, BigQuery or Stripe is connected. Compares stages with sourced SaaS benchmarks where one exists, uses the business's own best months as targets, and hands each fix to the skill that does it. Use when someone asks for a product-led growth (PLG) audit, a SaaS growth audit or strategy, PLG metrics, why MRR growth stalled, where a self-serve funnel leaks money, or which growth problem to fix first. Read only; it changes nothing.
+description: Audits a self-serve SaaS funnel from visit to signup, activation, paid, expansion, churn and failed payments, puts an MRR figure on each leak from GA4, Stripe or exports, and ranks the fixes. Use when asked for a PLG audit, a SaaS growth audit, PLG metrics, or why MRR growth stalled.
 ---
 
 # PLG and SaaS Growth Audit

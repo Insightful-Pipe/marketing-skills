@@ -1,6 +1,6 @@
 ---
 name: local-citation-nap-audit
-description: Runs a local citation and NAP consistency audit. Takes the business name, address, phone, website and hours from the live Google Business Profile (or from what the user pastes), reads the LocalBusiness markup on the site, the Facebook page, and the listings it finds by searching the name, the phone and any old details, then grades every field on every listing, flags duplicate Maps entries, and ranks the fixes with duplicates and wrong phone numbers first. Ends with the directories that rank for the business's own category and city where it is not listed yet. Use when someone asks for a NAP consistency check, a local citation audit, a local citations list, why a business shows the wrong phone or old address, or what directories a local business should be on. Read only; every fix is listed for the user to make.
+description: Audits local citations and NAP consistency, comparing name, address, phone, website and hours on each listing with the Google Business Profile, and flags duplicate Maps listings. Use when asked for a NAP check, a local citation audit, a wrong phone or old address, or which directories to join.
 ---
 
 # Local Citation and NAP Audit

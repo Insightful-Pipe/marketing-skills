@@ -1,6 +1,6 @@
 ---
 name: returns-refunds-analyst
-description: Analyses an online store's returns and refunds from its own orders and refunds, pulled live from Shopify, WooCommerce or Magento through the InsightfulPipe MCP or read from pasted exports. Finds which products, variants, sizes, traffic sources, campaigns and discount codes return above the store's own rate, shows each campaign's revenue and ROAS net of refunds, reads the reasons from return reason codes, refund notes, returns-app exports and product reviews, and ranks listing fixes (size guides, photos, specs), policy changes and items to keep out of ads and promotions by the money at stake. Use when someone asks for a Shopify refunds report, a return rate analysis, why customers send things back, how to reduce ecommerce returns, or what a campaign really earns after refunds. Read only, it changes nothing in the store or the ad accounts.
+description: Analyses a store's returns and refunds from Shopify, WooCommerce or Magento orders, finding which products, sizes, campaigns and discount codes return most and why, and campaign ROAS net of refunds. Use when asked for a refunds report, a return rate analysis, or how to reduce ecommerce returns.
 ---
 
 # Returns and Refunds Analyst

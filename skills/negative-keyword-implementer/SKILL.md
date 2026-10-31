@@ -1,6 +1,6 @@
 ---
 name: negative-keyword-implementer
-description: Finds, checks and adds Google Ads negative keywords on live data through the InsightfulPipe MCP. Reads every negative already in force (campaign, ad group and shared lists), finds negatives that block your own keywords, builds new negatives from the last 30 days of search terms or from a list you give it, applies a negative list to campaigns that are missing it, builds a starter negative keyword list for a new campaign with no search terms yet (every negative backed by a Keyword Planner idea with real volume, never a generic list), and adds them with add_negative_keywords only after you confirm. Use when someone wants to add negatives, clean up search terms, check for negative keyword conflicts, roll a negative list out to more campaigns, or needs a negative keyword list for a Google Ads campaign before launch.
+description: Adds Google Ads negative keywords safely, checking existing negatives for conflicts with live keywords, building new ones from search terms, rolling lists to campaigns and making starter lists from Keyword Planner. Use when adding negatives, checking conflicts, or needing a pre-launch negative list.
 ---
 
 # Negative Keyword Implementer

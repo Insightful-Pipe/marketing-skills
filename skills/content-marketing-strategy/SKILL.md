@@ -1,6 +1,6 @@
 ---
 name: content-marketing-strategy
-description: Builds a content marketing strategy a team can run for a year, plus a dated 90-day editorial calendar across every format (articles, guides, templates, comparisons, customer stories, video, newsletter, webinars). Starts from what already works, reading GA4 key events by landing page, Search Console clicks by section, WordPress publish dates, Klaviyo sends and YouTube views through the InsightfulPipe MCP, or from a pasted sitemap, post list and analytics export when nothing is connected. Tags every existing piece by buying stage and audience so gaps are counted, sets the pace from the team's real 12-month output, checks each theme's search demand with DataForSEO, and fits the plan to the team's hours and budget. Use when someone asks for a content strategy, a content marketing plan, an editorial calendar, content themes or pillars, or what content to make next year. Writes the calendar to Google Sheets only after the user confirms.
+description: Builds a yearly content marketing strategy and a dated 90-day editorial calendar from what already converts in GA4 and Search Console, with themes, formats, gaps by buying stage and a pace the team can keep. Use when asking for a content strategy, content pillars, or an editorial calendar.
 ---
 
 # Content Strategy Builder

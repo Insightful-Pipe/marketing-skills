@@ -1,6 +1,6 @@
 ---
 name: social-trend-scout
-description: Finds this week's social media trends in a brand's niche and says which ones to act on. Reads X trends and post counts, Pinterest Trends, YouTube uploads and Google search interest (through DataForSEO) live through the InsightfulPipe MCP, plus a pasted TikTok trend list, checks each trend's slope so the ones that already peaked are skipped, scores the rest on brand fit, staying power and effort, caps the list to what the team can make, and writes a post or video concept per network for each trend worth acting on, borrowing from the account's own past winners. Use when someone asks for social media trends, TikTok trends this week, trending topics, sounds or hashtags to jump on, how to find trending topics for social media, or what to post this week. Works from pasted lists with no connection. Reads only; it never posts.
+description: Finds this week's social media trends in a brand's niche from X, Pinterest Trends, YouTube, Google Trends and pasted TikTok lists, skips peaked trends and writes post concepts for the ones worth acting on. Use when asked for TikTok trends this week, trending topics or what to post this week.
 ---
 
 # Social Media Trend Finder

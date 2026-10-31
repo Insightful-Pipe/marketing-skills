@@ -1,6 +1,6 @@
 ---
 name: cross-channel-attribution-analyst
-description: Works out which marketing channels really bring customers in and which only collect the credit at the end, on live data through the InsightfulPipe MCP. Pulls GA4's first-touch, last-non-direct and property-model credit for the same outcome, and the conversion value each channel brings when the outcome carries one, maps who opens journeys and who closes them, reads spend, claimed conversions and claimed value from Google Ads, Meta, LinkedIn, Microsoft Ads and TikTok, and turns it into a CPA and ROAS range per channel, undervalued and over-credited channels, a capped budget test and a data-quality grade. Use when someone asks which channel is really working, whether last-click is misleading them, why the platforms' numbers disagree with GA4, or where to move budget across channels. Can mark the outcome event as a GA4 key event, only after the user confirms.
+description: Compares first-touch, last-click and GA4 model credit per channel against spend and claims from Google Ads, Meta, LinkedIn, Microsoft Ads and TikTok, with CPA and ROAS ranges and a budget test. Use when asking which channel really works, whether last-click misleads you, or where to move budget.
 ---
 
 # Cross-Channel Attribution Analyst

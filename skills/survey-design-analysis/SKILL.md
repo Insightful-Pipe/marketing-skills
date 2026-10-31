@@ -1,6 +1,6 @@
 ---
 name: survey-design-analysis
-description: Designs a customer survey around one decision and analyses the answers with real statistics. Writes neutral questions, balanced answer scales and skip logic, checks every question against a bias list, and sets how many completes and invites are needed. Then cleans the responses, checks who answered against the customer base, and reports percentages with margins of error, NPS with its confidence range, segment cross-tabs with significance tests adjusted for the number of tests, MaxDiff rankings scored by counts with a tie test, coded open answers and a one-page findings summary. Use when someone asks for customer survey questions, an NPS, cancellation or feature survey, a survey sample size, or how to analyze survey results. Works from a pasted draft or uploaded CSV, and through the InsightfulPipe MCP reads answers from Google Sheets, Mailchimp or BigQuery and builds the send list from Klaviyo, Mailchimp, Shopify or WooCommerce. Drafts an invite only after the user confirms, and never sends it.
+description: Designs customer surveys around one decision with a bias check and sample size, then analyses answers with margins of error, NPS ranges, significance tests, MaxDiff and coded open answers. Use for customer survey questions, an NPS survey, survey sample size or analysing survey results.
 ---
 
 # Customer Survey Builder and Analyzer

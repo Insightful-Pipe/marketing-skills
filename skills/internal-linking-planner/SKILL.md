@@ -1,6 +1,6 @@
 ---
 name: internal-linking-planner
-description: Plans internal links on live data through the InsightfulPipe MCP. Finds pages ranking 4 to 20 in Google Search Console, finds the pages on the same topic that don't link to them yet, suggests anchors taken from each page's own queries, reviews anchor text, flags links to redirects, and measures click depth when the site can be crawled. Use when someone asks for internal linking opportunities, an internal link audit, an anchor text report, a click depth report, or which posts should link to which. On WordPress it offers to add the links after the user confirms each one.
+description: Plans internal links from Google Search Console data, matching pages ranking 4 to 20 with on-topic donor pages, anchors from real queries, anchor text fixes and click depth. Use when asked for internal linking opportunities, an internal link audit or which posts should link to which.
 ---
 
 # Internal Linking Planner

@@ -1,6 +1,6 @@
 ---
 name: content-distribution-planner
-description: Plans how one finished piece (blog post, guide, report, case study, episode) reaches its readers in its first 30 days. Ranks the brand's own channels, borrowed reach (communities, the businesses named in the piece, partners, republished copies) and paid boosts by what actually sent engaged visits and key events to its past pieces, sizes any boost from the account's own cost per engaged visit, and delivers a dated 30-day promotion calendar with a copy brief and tagged link per slot, plus the numbers to check on day 7 and day 30. Works from a pasted channel list and past results, or live through the InsightfulPipe MCP (GA4, Search Console, Klaviyo, Mailchimp, LinkedIn Pages, Facebook Pages, Meta Ads, LinkedIn Ads, Social Media Scheduler). Use when someone asks how to promote a blog post, wants a content distribution strategy or promotion plan for one piece, or asks whether a post is worth boosting. Books social slots as drafts in the scheduler only after the user confirms.
+description: Plans how to promote one finished blog post, guide or report over its first 30 days, ranking your channels by what past pieces earned in GA4 and sizing any paid boost. Use when asking how to promote a blog post, for a content distribution plan, or whether a post is worth boosting.
 ---
 
 # Content Distribution Planner

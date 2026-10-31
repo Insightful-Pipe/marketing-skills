@@ -1,6 +1,6 @@
 ---
 name: strategy-frameworks
-description: Runs Porter's Five Forces, a PESTLE analysis and an Ansoff growth matrix on one real market for a business, and ends each framework with what it changes in the marketing plan. Every box carries dated evidence and is marked measured, from you, or assumption. Rivalry, new entrants, buyer power and substitutes are scored from named signals with stated thresholds (vendors on page one, paid ads, visibility share, newly ranking and newly registered domains, price-led, comparison and switching searches, CPC trend), and Ansoff moves are ranked by reachable search demand. Works from what you paste or describe; with the InsightfulPipe MCP it pulls DataForSEO, the Meta ad library and your Search Console itself. Use when someone asks for a Five Forces analysis, a PESTLE or PEST analysis, an Ansoff matrix, an industry or market attractiveness analysis, or where to grow next. Read only.
+description: Runs Porter's Five Forces, PESTLE and an Ansoff matrix on one real market, scoring each force from search and ad evidence and ending with marketing plan changes. Use when asked for a Five Forces analysis, a PESTLE or PEST analysis, an Ansoff matrix or where to grow next.
 ---
 
 # Five Forces, PESTLE and Ansoff Analysis

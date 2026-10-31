@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-budget-allocator
-description: Reallocates Meta (Facebook and Instagram) ad budgets on live data through the InsightfulPipe MCP. Pulls campaigns, ad sets, budgets, two 30-day windows of results, frequency, CPM and recent budget edits itself, maps spend by objective, compares campaign budgets (CBO) with ad set budgets, grades every budget on cost per result, saturation and marginal cost, and returns dollar moves with a step-by-step rollout and the impact to expect. Use when someone asks how to split, shift, cut, scale or rebalance Facebook or Meta ad budget, which ad sets deserve more money, or whether to use campaign or ad set budgets. Offers the budget changes as update actions it runs only after the user confirms.
+description: Reallocates Facebook and Meta Ads budget between campaigns and ad sets in 20% steps, graded on cost per result, saturation and marginal cost. Use when asked to split, shift, cut or rebalance Meta ad budget, or compare CBO and ABO results. Not for scaling plans (use facebook-ads-scaling-roadmap).
 ---
 
 # Facebook Ads Budget Allocator

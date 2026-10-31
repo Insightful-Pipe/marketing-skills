@@ -1,6 +1,6 @@
 ---
 name: vertical-growth-audit
-description: Runs a growth audit for one business in one vertical (travel and booking, events and tickets, education and courses, two-sided marketplaces, mobile games, nonprofits, or creators) on live data through the InsightfulPipe MCP. Reads public data itself (category demand and seasonality, search traffic by funnel stage, conversion-page speed, ad library activity, app store health) and, when the business's own GA4 and ad accounts are connected, grades the vertical's conversion funnel, cost per result and, for nonprofits, Google Ad Grants compliance. Use when someone asks for a travel booking funnel audit, a course enrolment funnel review, an event ticket sales report, a marketplace supply and demand check, a mobile game user acquisition report, a nonprofit or Ad Grants review, or a creator growth audit. Read only.
+description: Audits growth for travel, events, education, marketplace, mobile game, nonprofit or creator businesses from search demand, page speed, ad libraries and GA4. Use when asked for a booking or enrolment funnel audit, a ticket sales report or an Ad Grants review. Not for ASO (use app-growth-audit).
 ---
 
 # Vertical Growth Audit

@@ -1,6 +1,6 @@
 ---
 name: tiktok-competitor-ads-research
-description: Researches competitors' TikTok ads in the TikTok Ad Library and the top ads in a category in TikTok Creative Center Top Ads, through the InsightfulPipe MCP or from pasted ad links. Separates a competitor's own ads from other accounts' posts that mention it, then reports run length, reach bands, caption hooks and angles, video vs image mix, video length, landing pages, CTAs, objectives and targeting by country and age, labels every finding with its source and region, and sets it all beside your own TikTok ad results. Use when someone asks what competitors run on TikTok, wants to search the TikTok ad library, see TikTok top ads for a category, build a TikTok swipe file or compare their TikTok ads with a competitor's. Read only.
+description: Researches competitor TikTok ads in the TikTok Ad Library and Creative Center Top Ads, with run length, hooks, angles, formats, landing pages and targeting beside your own ads. Read only. Use when asked what competitors run on TikTok, to search the TikTok ad library or build a TikTok swipe file.
 ---
 
 # TikTok Competitor Ads Research

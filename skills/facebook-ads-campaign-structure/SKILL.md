@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-campaign-structure
-description: Designs or restructures a Meta (Facebook and Instagram) Ads account on live data through the InsightfulPipe MCP, plans how much a new campaign needs to spend, and builds a campaign, ad sets and ads from a brief. Reads the campaigns, ad sets, ads, results, pixel, audiences, Pages, lead forms and creative assets itself, checks fragmentation against the 50-events-a-week learning rule, picks a structure that fits the budget, sets CBO or ABO budgets, naming and exclusions, and writes a migration plan. Its budget planner turns price, margin and close rate into break-even and target costs, a weekly budget per ad set and Meta's minimum for the currency. Use to set up or clean up a Meta account, choose CBO or ABO, standardise naming, work out a starting or minimum Facebook ads budget, or turn a brief into a ready structure. Creates the campaign, ad sets, creatives and ads (always PAUSED) only after the user confirms the exact payloads.
+description: Designs or restructures a Facebook and Meta Ads account into campaigns and ad sets that can exit learning, picks CBO or ABO and naming, plans a starting budget, and builds paused campaigns from a brief. Use when setting up or cleaning up a Meta account or asking how much to spend on Facebook ads.
 ---
 
 # Facebook Ads Campaign Structure

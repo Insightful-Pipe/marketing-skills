@@ -1,6 +1,6 @@
 ---
 name: customer-advocacy-program
-description: Plans a B2B customer advocacy and reference program from the user's customer export. Scores every account for reference readiness on satisfaction, product usage, tenure and recent renewal, finds the segments where sales lacks proof for open deals, and gives each ready customer one first ask (reference call bench, case study, quote and logo approval). Rations asks with a points budget so no customer is overused and matches advocates to a specific deal. Sizes the gap on G2, Capterra or another review site against named rivals, keeps review invitations separate from the reference pool so they never depend on a score, checks current practice against review-site and FTC rules, and drafts the asks and a tracker of who was asked, what they did and which deals they joined. Use for a customer advocacy program, customer reference program, reference calls, how to get more G2 reviews or advocate burnout. Saves the tracker to Google Sheets and the asks as Klaviyo or Mailchimp templates only after the user confirms.
+description: Plans a B2B customer advocacy and reference program from your customer export. Scores reference readiness, rations asks so no customer burns out, matches advocates to deals and plans compliant G2 review invites. Use for a customer reference program, reference calls or getting more G2 reviews.
 ---
 
 # Customer Advocacy Program Planner

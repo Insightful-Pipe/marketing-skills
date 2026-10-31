@@ -1,6 +1,6 @@
 ---
 name: dm-automation-flow-designer
-description: Designs comment-to-DM automation flows for Instagram, Facebook Messenger and X. Picks the trigger posts and trigger word from the account's own comments, writes the DM sequence that delivers a lead magnet or link and asks for an email, keeps every follow-up inside Meta's 24-hour messaging window and opt-in rules, tags every link with UTMs for GA4 and has the DM tool pass a dm- source to Klaviyo, so each step from comment to lead can be counted, and hands each flow over as a step-by-step spec for whichever DM tool the user runs. Use when someone asks for Instagram DM automation, an Instagram auto DM, a "comment GUIDE to get the link" flow, a Messenger comment reply flow, keyword DMs on X, or wants to measure a DM funnel. Works from pasted comments with no connection. Sends X DMs only after the user confirms the list and the text.
+description: Designs comment-to-DM automation flows for Instagram, Facebook Messenger and X, picking the trigger post and keyword from real comments and keeping DMs inside Meta's 24-hour window, with UTMs for GA4. Use when asked for an Instagram auto DM, a comment keyword to get the link flow, or a DM funnel.
 ---
 
 # Instagram DM Automation Designer

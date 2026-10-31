@@ -1,6 +1,6 @@
 ---
 name: meta-lead-ads-optimizer
-description: Reviews Facebook and Instagram lead ads and every Meta instant form behind them, then ranks forms, ad sets and ads by cost per qualified lead instead of cost per lead. Reads each form's questions and thank-you screen, checks its type (more volume or higher intent), works out cost per lead by form, ad set and ad, joins the leads to the user's CRM stages (reached, qualified, booked, won), checks speed to lead and junk leads, and tests Meta's published requirements for conversion leads optimization. Works from a pasted leads CSV, an Ads Manager report and a CRM export, or live through the InsightfulPipe MCP. Use when someone asks why Facebook leads are poor or expensive, how to improve Facebook lead quality, which instant form or audience brings leads that close, or for Meta instant form best practices applied to their own forms. Rewrites weak forms and drafts a new instant form it creates only after the user confirms.
+description: Optimizes Facebook and Instagram lead ads and Meta instant forms, ranking forms, ad sets and ads on cost per qualified lead from your CRM stages, and rewrites weak forms. Use when Facebook leads are junk or expensive, to improve lead quality, or to find which instant form brings sales.
 ---
 
 # Facebook Lead Ads and Instant Form Optimizer

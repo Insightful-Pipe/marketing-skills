@@ -1,6 +1,6 @@
 ---
 name: ecommerce-ads-playbook
-description: E-commerce growth skill with two modes. Mode 1 builds a full-funnel advertising strategy for an online store (Google Shopping, Performance Max, Meta catalog and Advantage+ sales campaigns, TikTok, budgets by spend level, ROAS checked against contribution margin). Mode 2 runs an ecommerce store growth audit on any cart (Shopify, WooCommerce, Magento or an orders and products export) covering conversion by channel and device, AOV, first vs returning buyers, dead products, discount dependence, refunds, template speed, tracking, email capture and core flows, reviews and policies, scores ten areas and ranks the fixes by money at stake. Use Mode 1 for e-commerce or DTC ads, how to advertise a store, structure Shopping or Meta campaigns, or split an e-commerce ad budget. Use Mode 2 when someone asks for a Shopify store audit, an ecommerce store audit checklist, how to audit their online store, or why the store is not growing. Mode 2 is read-only and works from pasted exports when nothing is connected.
+description: Plans ecommerce ads across Google Shopping, Performance Max, Meta catalog and TikTok with budgets and margin-checked ROAS, and audits a Shopify, WooCommerce or Magento store. Use when asked how to advertise a store, split a DTC ad budget, run a Shopify store audit or why sales are flat.
 ---
 
 # E-Commerce Ads Playbook

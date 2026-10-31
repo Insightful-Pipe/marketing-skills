@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-scaling-roadmap
-description: Builds a phased Meta (Facebook and Instagram) Ads scaling roadmap on live data through the InsightfulPipe MCP. Reads the account itself (results by ad over two 30-day windows, 12 weeks of spend history, pixel, custom audiences, live ads and recent edits), checks whether the account is ready to scale, lists the winning ads worth scaling, sets the pace and a week-by-week budget path to the target, estimates the cost per result at the new spend, and plans audience expansion, creative volume, rollback triggers and phases over 30 to 90 days. Use when someone wants to raise Facebook or Meta ad spend, double or triple a budget, find which ads to scale, duplicate a winning ad set with a new budget, or asks why costs blow up every time they scale. Offers budget raises and winner duplicates as actions it runs only after the user confirms.
+description: Builds a phased Facebook and Meta Ads scaling roadmap with a readiness check, winning ads to scale, a week-by-week budget path to a target spend, expected cost per result, and rollback triggers. Use when asked to scale Meta ads, double or triple ad spend, or why costs blow up when scaling.
 ---
 
 # Facebook Ads Scaling Roadmap

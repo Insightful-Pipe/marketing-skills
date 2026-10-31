@@ -1,6 +1,6 @@
 ---
 name: linkedin-abm-reporting
-description: Builds a LinkedIn Ads ABM and pipeline report from live data through the InsightfulPipe MCP. Pulls which companies saw the ads, how deep each one was reached, which seniorities and job functions saw them, how matched-audience and retargeting campaigns compare with prospecting, and a month-by-month funnel from reach to leads, checked against GA4 and the user's CRM numbers. Use when someone asks for an ABM report, account penetration, company list engagement, matched audience or retargeting performance, or a monthly B2B pipeline report for LinkedIn Ads. Offers to turn off audience expansion or LinkedIn Audience Network on ABM campaigns, only after the user confirms.
+description: Builds a LinkedIn Ads ABM report showing target account coverage, buying committee reach by seniority, matched audience and retargeting results, and a monthly funnel to pipeline. Use when asked for an ABM report, account penetration, company list engagement or a monthly B2B pipeline report.
 ---
 
 # LinkedIn ABM and Pipeline Reporting

@@ -1,6 +1,6 @@
 ---
 name: meta-ads-performance-analyzer
-description: Analyzes Meta Ads (Facebook and Instagram) performance on live data through the InsightfulPipe MCP. Pulls campaigns, ad sets, ads, daily trends and breakdowns by placement, age, gender, country, region, device and hour itself, grades account health, tiers campaigns, compares Advantage+ with manual placements, finds winning and fatigued creatives, explains cost-per-result spikes and spend anomalies, infers learning-phase status, compares 1-day and 7-day attribution, value vs conversion optimisation, the add-to-cart and checkout funnel and lead form costs, and returns a prioritised action plan. Use when someone asks how their Meta ads are doing, why Meta performance dropped, which campaigns, ads or audiences to scale or cut, or for any Meta breakdown report. Offers pauses and budget changes it runs only after the user confirms.
+description: Analyzes Meta Ads performance across Facebook and Instagram campaigns, ad sets, ads and breakdowns, with a health score, campaign tiers, creative fatigue, cost spikes and an action plan. Use when asking how my Meta ads are doing, why Facebook ads performance dropped, or what to scale or cut.
 ---
 
 # Meta Ads Performance Analyzer

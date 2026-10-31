@@ -1,6 +1,6 @@
 ---
 name: ltv-cac-ratio-optimizer
-description: Analyzes customer lifetime value (LTV) and customer acquisition cost (CAC) to optimize advertising profitability. Calculates true acquisition economics, identifies high-value customer segments, and recommends bid/budget strategies based on customer value. Triggers when user asks about "LTV," "CAC," "customer lifetime value," "unit economics," "payback period," or wants to move beyond ROAS to profitability-based advertising.
+description: Calculates LTV, CAC, the LTV to CAC ratio and payback period from your customer and spend data, by channel, cohort and first product, then sets max CPA and ROAS targets and budget shifts. Use when asking about customer lifetime value, unit economics, payback period or profit beyond ROAS.
 ---
 
 # LTV:CAC Ratio Optimizer

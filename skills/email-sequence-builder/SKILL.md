@@ -1,6 +1,6 @@
 ---
 name: email-sequence-builder
-description: Plans and writes email sequences and flows (welcome, lead nurture, onboarding, cart and browse abandonment, post-purchase, winback, launch, event and transactional emails, plus back in stock, low stock, price drop, replenishment and birthday flows) from live data through the InsightfulPipe MCP, and writes subject lines and preview text for a single email. Reads Klaviyo or Mailchimp first (triggers tracked, live flows, past clicks, consent, footer) and, for store flows, Shopify, WooCommerce or Magento orders and stock to pick the products and time refill reminders from real reorder gaps. Use when someone asks for an email sequence, drip, welcome or onboarding series, abandoned cart, winback, back in stock, price drop or replenishment emails, an email subject line generator, preview text, launch or transactional copy, or CAN-SPAM and GDPR checks. Also works from pasted emails and exports. Saves drafts as templates or a draft campaign only after the user confirms; never sends.
+description: Plans and writes Klaviyo or Mailchimp email sequences and flows, from welcome, onboarding and nurture to abandoned cart, winback, back in stock and replenishment, plus subject lines and preview text. Use when you need a drip, a welcome series, abandoned cart emails or a subject line generator.
 ---
 
 # Email Sequence Builder

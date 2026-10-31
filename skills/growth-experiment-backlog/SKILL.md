@@ -1,6 +1,6 @@
 ---
 name: growth-experiment-backlog
-description: Builds and keeps a growth experiment backlog. Finds the weakest step in the funnel from GA4 (with Google Ads, Meta Ads and Search Console for acquisition ideas) or from pasted numbers, writes a hypothesis per idea, scores every idea with ICE or RICE on stated rules, sizes each test against the step's real weekly traffic and drops the ones that can't reach 80% power at the chosen minimum lift in time, plans a six-week experiment sprint, and keeps a results log of wins, losses and lessons that feeds back into the scores. Use when someone asks for a growth experiment template, an experiment backlog or roadmap, ICE scoring or a RICE framework for growth ideas, a test sprint, growth hacking ideas for their own funnel, or wants finished tests logged and read. Offers to write the backlog and the log to Google Sheets only after the user confirms.
+description: Builds a growth experiment backlog from the weakest funnel step in GA4 or pasted numbers, scores ideas with ICE or RICE, drops tests the traffic cannot power, plans a six-week sprint and logs results. Use when asked for an experiment roadmap, ICE scoring, a test sprint, or whether an A/B test won.
 ---
 
 # Growth Experiment Backlog

@@ -1,6 +1,6 @@
 ---
 name: email-send-check
-description: Proofs a built campaign or flow email just before it goes out and returns Go, Go after fixes or Hold with a numbered fix list. Requests every link to catch 404s, redirect chains and redirects that strip UTM tags, checks each link lands on the right page, times landing pages on a phone, and compares the UTM values with the source and medium pairs GA4 already records so the send lands in the Email channel. Also checks personal-data tag fallbacks, image alt text, Gmail's 102KB clipping point, the plain-text part, unsubscribe and postal address, phone and dark-mode build, and that the audience is the intended segment with the right exclusions and send time zone. Works from pasted HTML or a screenshot with nothing connected; through the InsightfulPipe MCP it reads the Mailchimp draft and send checklist, or the Klaviyo campaign, template and segment size. Use when someone asks to QA, proof or test an email before sending, or wants an email QA or pre-send checklist run. It never sends to the list or schedules.
+description: Proofs a finished Klaviyo or Mailchimp campaign or flow email before it sends, checking links, UTM tags against GA4, merge tag fallbacks, alt text, Gmail clipping, footer and audience, then rules Go, Go after fixes or Hold. Use when asked to QA, proof or test an email before sending.
 ---
 
 # Email Send Check

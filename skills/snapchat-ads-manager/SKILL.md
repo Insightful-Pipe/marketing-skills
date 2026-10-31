@@ -1,6 +1,6 @@
 ---
 name: snapchat-ads-manager
-description: Reviews and manages a Snapchat Ads account on live data through the InsightfulPipe MCP. Pulls campaigns, ad squads, ads, creatives, audiences and stats itself, scores eight areas (delivery, Snap Pixel and Conversions API, swipe-ups, video completion, placements, audiences, cost per result trend, Dynamic Product Ads), writes the monthly client report, and drafts new headlines and scripts from the ads that work. Use when someone asks to analyze, audit, report on or manage Snapchat ads, check swipe-up rate or the Snap Pixel, or build or pause Snapchat campaigns. Builds campaigns, ad squads, creatives and ads (always paused) and pauses weak ads only after the user confirms the exact payload.
+description: Audits and manages Snapchat Ads, scoring delivery, the Snap Pixel, swipe-up rate, video completion, placements, audiences and Dynamic Product Ads, writes client reports and builds paused campaigns. Use when asked to audit Snapchat ads, check swipe-ups or the Snap Pixel, or draft a Snap campaign.
 ---
 
 # Snapchat Ads Manager

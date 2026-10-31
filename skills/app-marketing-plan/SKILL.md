@@ -1,6 +1,6 @@
 ---
 name: app-marketing-plan
-description: Writes a marketing plan for a mobile app from pre-launch to scale. Covers store category and positioning, Google Play pre-registration or App Store pre-order, a soft-launch market, ASO, paid user acquisition, creators, referral and web-to-app, dated back from launch day, with monthly install, retention and cost-per-install targets. Sets the most the app can pay per install from its real or assumed revenue per user, with the math shown. Use when someone asks how to market an app, how to increase app downloads, for an app launch marketing plan, an app go-to-market plan, a pre-registration or soft launch plan, or an app user acquisition budget. Works from a description for apps that are not live yet; with the InsightfulPipe MCP it sizes the category from live App Store and Google Play search and, once the app is live, reads its GA4 app data and app-install campaigns. Changes nothing in any store or ad account.
+description: Writes a mobile app marketing plan from pre-launch to scale, covering ASO, Google Play pre-registration, App Store pre-order, soft launch, paid UA, creators and referral, dated back from launch day. Use when asked how to market an app, how to increase app downloads, or for an app launch plan.
 ---
 
 # App Marketing Plan

@@ -1,6 +1,6 @@
 ---
 name: social-giveaway-planner
-description: Plans, draws and measures a brand-run social media giveaway or contest on Instagram, Facebook, TikTok or X. Picks the entry mechanic from the goal, checks every element against each network's promotion rules (Instagram giveaway rules, Meta's Page promotion rules, X's contest guidelines, TikTok's guidelines), writes the official rules and launch posts, and records a follower baseline. At the close it reads the comments or replies through the InsightfulPipe MCP where the connection allows, or a pasted export, removes late entries, duplicates and likely bots with a reason each, and draws the winners with a list fingerprint and a recorded seed, so anyone given the entry list can rerun the draw. Thirty days later it compares followers and engagement with the pre-giveaway trend, and store orders and social traffic with the 28 days before launch, and works out the cost per follower kept. Use for how to run a giveaway on Instagram, giveaway rules, or picking a winner from comments. Replies to winners only on a yes.
+description: Plans, draws and measures a social media giveaway or contest on Instagram, Facebook, TikTok or X. Checks entry rules, writes official rules, removes bots before the draw and reports followers kept. Use when asked how to run an Instagram giveaway, for giveaway rules or to pick a winner from comments.
 ---
 
 # Social Media Giveaway Planner

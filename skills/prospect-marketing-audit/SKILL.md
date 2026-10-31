@@ -1,6 +1,6 @@
 ---
 name: prospect-marketing-audit
-description: Audits a prospect's digital marketing from public data alone, before any account access, so an agency can open a pitch with proof. Reads the prospect's ads in the Meta, Google, Microsoft, LinkedIn and TikTok ad libraries, its search footprint, mobile speed, on-page basics and broken URLs, which analytics and ad tags load, and (for a local business) its Google rating and review count against nearby rivals. Grades six areas, picks the three to five findings worth leading with, sizes each in units the public data supports, and writes the audit summary, a short outreach email and a call talk track. Use when someone asks for a prospect audit, a pre-pitch or pre-sales audit, a digital marketing audit of a company they don't work with yet, or "what's wrong with this company's marketing" from a URL. Works from a URL and pasted findings, or on live data through the InsightfulPipe MCP. Read only.
+description: Audits a prospect's marketing from public data alone, checking Meta and Google ad libraries, page speed, tags, search footprint and Google reviews, then writes a cold email and call talk track. Use when asking for a prospect or pre-pitch audit, or what's wrong with this company's marketing.
 ---
 
 # Prospect Marketing Audit

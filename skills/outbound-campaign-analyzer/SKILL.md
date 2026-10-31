@@ -1,6 +1,6 @@
 ---
 name: outbound-campaign-analyzer
-description: Analyzes cold email and outbound sequence results from any sending tool's export or pasted step numbers. Splits the campaign by step, variant, segment and sending mailbox (sent, bounced, human replies, positive replies, meetings), puts a 95% confidence range on every rate, and decides whether each weak part has a delivery, list, message or offer problem, what to change first, and how many sends the next test needs. Use when someone asks why their cold emails get no replies, whether their cold email reply rate is good, which variant or mailbox is winning, or wants a readout of an outbound campaign. Judges on replies and meetings, never opens. Reads the export from Google Sheets through the InsightfulPipe MCP when connected, and writes the readout to a new tab only after the user confirms.
+description: Analyzes cold email campaign results from a sending tool export by step, variant, segment and mailbox, with confidence ranges, to find delivery, list, message or offer problems. Use when cold emails get no replies, to judge a reply rate, call an A/B test winner or read out an outbound campaign.
 ---
 
 # Cold Email Campaign Analyzer

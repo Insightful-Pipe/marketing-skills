@@ -1,6 +1,6 @@
 ---
 name: multi-location-marketing-plan
-description: Builds a franchise marketing plan or multi-location marketing strategy for a brand with many locations. Tiers every location by its own Business Profile views, actions and reviews against the network median, splits the brand fund between a brand layer and the locations by demand and results (with co-op match and a reserve for locations that must fix basics first), sets Business Profile rules for naming, categories, posts and who may edit, checks location pages, sets review targets, writes local ad templates, franchisee approval rules and a monthly location scorecard. Works from a pasted location list, or reads Google Business Profile, Search Console, GA4, Google Ads and Meta Ads through the InsightfulPipe MCP. Use for a franchise marketing plan, local marketing for franchises, a chain or multi-location marketing strategy, a co-op budget split or a franchise scorecard. Writes the scorecard to Google Sheets or publishes brand posts only after the user confirms.
+description: Builds a franchise or multi-location marketing plan, tiering locations by Google Business Profile views and actions, splitting the brand fund and co-op, and setting profile rules, ad templates and a scorecard. Use when asked for a franchise marketing plan, a chain strategy or a co-op budget split.
 ---
 
 # Multi-Location and Franchise Marketing Plan

@@ -1,6 +1,6 @@
 ---
 name: marketing-audit
-description: Runs a full marketing audit of a business in one pass and returns a scorecard for ten areas (positioning and customer, offer and pricing, measurement, channel mix, website conversion, search and content, paid media, email and retention, social, brand and reputation). Reads GA4, Search Console, every connected ad platform, Klaviyo or Mailchimp, social pages, Google Business Profile and PageSpeed through the InsightfulPipe MCP, or works from pasted facts and exports with no connection. Applies stated tests (more than 60% of key events from one channel, key events that never fire or fire on almost every visit, brand share of search clicks, cost per result against target), marks what it cannot measure as not measured, and ranks the ten fixes worth the most. Use when someone asks for a marketing audit, audit template or checklist, a marketing health check or scorecard, or wants a strategy or plan checked against the data. Saves the scorecard to Google Sheets or marks a GA4 key event only after the user confirms.
+description: Audits marketing across ten areas from GA4, Search Console, ad platforms, Klaviyo, social and reviews, scores it out of 100 and ranks the top ten fixes. Use when asked for a marketing audit, health check or scorecard, or to test a plan against data. Not for planning (use marketing-plan-builder).
 ---
 
 # Marketing Audit

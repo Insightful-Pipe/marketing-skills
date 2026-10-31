@@ -1,6 +1,6 @@
 ---
 name: youtube-script-writer
-description: Writes long-form YouTube video scripts and their Shorts cut-downs around the points where your own channel's viewers leave. Through the InsightfulPipe MCP it reads audience retention curves from YouTube Analytics, video lengths and chapters from YouTube, and the phrases worth ranking for from YouTube results and Google volumes (DataForSEO), then returns a timed beat table with spoken lines, B-roll and on-screen text, an opening that pays off the title and thumbnail by 0:30, re-hooks before your usual drop points, valid chapters, a data-placed sponsor read, the end call to action, and 2 to 3 Shorts. Also reviews a draft script line by line. Works from a pasted transcript, outline or YouTube Studio retention readings when nothing is connected. Use when someone asks for a YouTube script, a YouTube script template, help writing a YouTube video, a video outline with chapters, a sponsor read placement, Shorts from a long video, or a review of a script draft. It changes nothing on the channel.
+description: Writes timed YouTube video scripts with hooks, re-hooks, chapters, sponsor read placement and Shorts cut-downs, built around where your viewers left past videos, and reviews drafts line by line. Use when asked for a YouTube script, a video outline with chapters or a script review.
 ---
 
 # YouTube Video Script Writer

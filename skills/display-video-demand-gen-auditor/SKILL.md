@@ -1,6 +1,6 @@
 ---
 name: display-video-demand-gen-auditor
-description: Audits Google Ads Display, YouTube (Video) and Demand Gen campaigns on live data through the InsightfulPipe MCP. Pulls every placement your ads showed on, your existing exclusions, ads, audiences, video view rates and quartiles, network splits and Demand Gen settings itself, builds a paste-ready placement exclusion list from spend and click evidence, reports view rate by video ad, and reviews Demand Gen bidding, budget, channels and creative depth. Use when someone asks where their display or YouTube money goes, which placements or apps to exclude, why a video's view rate is low, or whether a Demand Gen campaign is set up to work. Offers to pause ads, ad groups or campaigns and to switch Display expansion off in Search campaigns, run only after the user confirms.
+description: Audits running Google Ads Display, YouTube and Demand Gen campaigns, builds a paste-ready placement exclusion list from spend and clicks, reports video view rates and reviews Demand Gen setup. Use when asking which placements or apps to exclude, why view rate is low, or where display money goes.
 ---
 
 # Display, YouTube and Demand Gen Auditor

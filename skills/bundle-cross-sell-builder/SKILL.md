@@ -1,6 +1,6 @@
 ---
 name: bundle-cross-sell-builder
-description: Finds which products a store's customers buy together and turns the strong pairs into product bundles, "pairs well with" placements, post-purchase offers and cross-sell emails. Runs market basket analysis on the store's own orders (support, confidence and lift on multi-item orders, with at least 15 shared orders and a confidence-interval check before a pair is trusted), flags substitutes that should never be bundled, prices each bundle on a discount ladder against unit cost and a margin floor, and shows how many more bundle orders each discount needs to pay for itself. Times each cross-sell email from the store's own repeat orders and writes the copy. Works from an orders export (Shopify, WooCommerce, Magento or any sheet), or pulls orders through the InsightfulPipe MCP from Shopify, WooCommerce, Magento, BigQuery or Klaviyo. Use when someone asks what to bundle, how to price a bundle, or what to cross-sell. Drafts a bundle product, cross-sells or an email template only after the user confirms.
+description: Runs market basket analysis on a store's orders to find products bought together, then prices bundles against margin and plans pairs well with picks, post-purchase offers and cross-sell emails. Use when asked what to bundle, how to price a bundle, frequently bought together, or what to cross-sell.
 ---
 
 # Product Bundle and Cross-Sell Builder

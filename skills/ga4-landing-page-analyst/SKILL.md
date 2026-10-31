@@ -1,6 +1,6 @@
 ---
 name: ga4-landing-page-analyst
-description: Analyses every landing page in a GA4 property on live data through the InsightfulPipe MCP. Pulls sessions, engagement, key events, traffic source, scroll, 404 hits and site search itself, compares the period with the one before, finds the pages that leak visitors or money, and checks paid and organic landing pages against each other (with Google Ads cost and Search Console clicks when they are connected). Use when someone asks which landing pages work, where visitors drop off, which pages convert by ad source, how paid or organic landing pages perform, what visitors search for, or which pages return 404. Offers two tracking fixes (mark a key event, turn on scroll or site search tracking) that it runs only after the user confirms.
+description: Analyses GA4 landing pages for engagement, key events and leaks, paid vs organic fit with Google Ads cost and Search Console clicks, scroll depth, 404 pages and site search. Use when asked which landing pages work, which convert by traffic source, or which pages return 404.
 ---
 
 # GA4 Landing Page Analyst

@@ -1,6 +1,6 @@
 ---
 name: app-rating-prompt-planner
-description: Plans when an iOS or Android app should show the store's own rating prompt (the App Store review request and the Google Play in-app review card), from the app's real review mix by version and the success events it already sends to GA4. Checks the current prompt logic against both stores' rules (system prompt only, no question before the prompt, no routing unhappy users away from the store, no button, no rewards), picks the trigger moments and app-side limits, keeps an always-available feedback route that never stands in front of the prompt, sets a rating target from the app's own best version, and runs a before-and-after check on every release. Use when someone asks how to get more app store ratings, when to show an in-app review prompt, for app rating prompt best practices, why ratings dropped after an update, or whether their rating dialog breaks store rules. Works from pasted reviews and an event list; with the InsightfulPipe MCP it reads App Store, Google Play and GA4 data itself. Changes nothing.
+description: Plans when an iOS or Android app should show the App Store review request or Google Play in-app review card, checks the prompt against store rules and compares reviews by version. Use when asked how to get more app ratings, when to show a review prompt, or why ratings dropped after an update.
 ---
 
 # App Rating Prompt Planner

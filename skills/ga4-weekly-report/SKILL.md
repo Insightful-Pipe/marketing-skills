@@ -1,6 +1,6 @@
 ---
 name: ga4-weekly-report
-description: Builds a weekly (or monthly) Google Analytics 4 report from live data through the InsightfulPipe MCP. Pulls sessions, users, engagement, key events, channels and pages itself, compares the week with the week before and the same week last year, separates real changes from noise, explains what drove each change, flags daily anomalies and tracking gaps, ranks pages by engagement time, and adds a today-so-far snapshot. Use when someone asks for a GA4 weekly report, a week-over-week or year-over-year comparison, a traffic anomaly check, a key event (conversion) breakdown, an engagement review, or a monthly executive summary. Offers key event fixes it runs only after the user confirms.
+description: Builds a GA4 weekly or monthly report with week over week and year over year change, real vs noise verdicts, channel and page drivers, daily anomalies and key events. Use when asked for a GA4 weekly report, a WoW or YoY comparison, a traffic anomaly check or a monthly summary.
 ---
 
 # GA4 Weekly Report

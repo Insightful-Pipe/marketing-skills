@@ -1,6 +1,6 @@
 ---
 name: meta-boost-post-picker
-description: Picks which organic Facebook and Instagram posts and Reels are worth paying to promote, and how. Ranks posts on shares, saves, comments, profile visits and clicks relative to each post's reach (views on Facebook) against the account's own usual post, weighted by the goal the money is for, then sets the route (the Boost button or an Ads Manager ad that reuses the same post), goal, audience, daily budget and length for each pick. Reviews past boosts against Ads Manager ads on cost per result for the same goal. Works from pasted Meta Business Suite and Ads Manager exports, or pulls posts and paid history itself through the InsightfulPipe MCP. Use when someone asks which post to boost, whether to boost a post on Facebook or Instagram, how to boost a post on Instagram, boost post vs Ads Manager, or why their boosts don't bring customers. Builds the paused ad from the existing post only after the user confirms.
+description: Picks which organic Facebook and Instagram posts and Reels are worth boosting, ranked on shares, saves and clicks against your usual post, then sets goal, audience, budget and route. Use when asking which post to boost, how to boost a post on Instagram, or Boost button vs Ads Manager.
 ---
 
 # Facebook and Instagram Boost Post Picker

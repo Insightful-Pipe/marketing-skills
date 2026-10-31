@@ -1,6 +1,6 @@
 ---
 name: audience-overlap-analyzer
-description: Finds where your own Meta and Google Ads targeting reaches the same people, on live data through the InsightfulPipe MCP. Reads ad sets, custom audiences, lookalikes, delivery, search terms, keywords, locations and audience segments itself, measures overlap with Meta's reach estimates and deduplicated reach, checks each audience for saturation, scores every overlapping pair, and builds an exclusion and consolidation plan. Use when someone asks whether their audiences or campaigns compete, why frequency or CPM is climbing, whether a custom audience or lookalike overlaps another, or whether an audience is exhausted. Offers exclusions, pausing a duplicate ad set and cross-campaign negatives as actions it runs only after the user confirms.
+description: Finds where your Meta and Google Ads targeting reaches the same people, scores overlapping ad sets, lookalikes and campaigns, and plans exclusions and merges. Use when audiences overlap, frequency or CPM keeps climbing, an audience looks saturated, or campaigns fight over one search term.
 ---
 
 # Audience Overlap Analyzer

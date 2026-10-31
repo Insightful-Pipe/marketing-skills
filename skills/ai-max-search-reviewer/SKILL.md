@@ -1,6 +1,6 @@
 ---
 name: ai-max-search-reviewer
-description: Decides whether a Google Ads Search campaign should turn on AI Max for Search, then reviews it once it runs. Splits search terms by match source, judges the terms and landing pages AI Max added against the campaign's own keyword CPA or ROAS with a minimum conversion count, checks the headlines it generated against the website, finds brand and cross-campaign overlap, lists brand and URL exclusions, writes the switch-off steps in advance, and plans the move from Dynamic Search Ads. Use when someone asks about AI Max, AI Max vs broad match, whether to turn AI Max on, what AI Max is doing to a campaign, or how to move DSA campaigns to AI Max. Works from a pasted search terms export, or live through the InsightfulPipe MCP. Adds negatives or promotes winning terms to keywords only after the user confirms.
+description: Decides whether a Google Ads Search campaign should turn on AI Max, then reviews it by match source, added search terms, landing pages and generated headlines, and plans the DSA move. Use when asking about AI Max, AI Max vs broad match, whether to turn it on, or moving Dynamic Search Ads to AI Max.
 ---
 
 # AI Max for Search Reviewer

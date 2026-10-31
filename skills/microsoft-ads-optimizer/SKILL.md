@@ -1,6 +1,6 @@
 ---
 name: microsoft-ads-optimizer
-description: Finds and drafts the changes a Microsoft Advertising (Bing Ads) search account needs, on live data through the InsightfulPipe MCP. Covers negative keywords from real search terms, keywords to pause, budget changes and responsive search ads, plus a new search campaign built from a brief. Use when someone asks to optimize, clean up or fix a Microsoft Ads account, add negatives, pause bad keywords, change budgets, write RSAs or launch a Bing search campaign. Every change is shown as an exact payload and runs only after the user confirms.
+description: Drafts Microsoft Ads (Bing Ads) search changes as exact payloads, such as negatives from search terms, keywords to pause, budgets and RSAs, run only on a yes. Use when asked to optimize Bing Ads, add negatives or build a search campaign. Not for a graded audit (use microsoft-ads-account-audit).
 ---
 
 # Microsoft Ads Optimizer

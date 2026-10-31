@@ -1,6 +1,6 @@
 ---
 name: app-store-conversion-analyst
-description: Reads App Store Connect App Analytics and Google Play Console store listing reports (impressions, page views or visitors, downloads, by source, country and device) and finds where store visitors fail to install. Gives each source its own conversion rate (App Store search, browse, web and app referrers, Play search, explore, ads and referrals), splits a change in the blended rate into traffic mix and real rate change so a drop that is only a mix shift is not mistaken for a broken listing, separates paid from organic installs, and ranks listing fixes by the installs they would add. Use when someone asks about App Store Connect analytics, their app store conversion rate, why app downloads or installs fell, how to improve app store conversion, or how many installs are organic. Works from pasted or uploaded exports; with the InsightfulPipe MCP it also pulls app-campaign installs from Google Ads, Meta, TikTok and Snapchat and reads rival listings from the App Store and Google Play. Changes nothing.
+description: Analyzes App Store Connect and Google Play Console store listing exports to find why visitors do not install, splitting conversion by source, mix shift from real drops and paid from organic. Use when app downloads fell, for app store conversion rate questions, or how many installs are organic.
 ---
 
 # App Store Conversion Analyst

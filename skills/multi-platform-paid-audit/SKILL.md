@@ -1,6 +1,6 @@
 ---
 name: multi-platform-paid-audit
-description: Audits every ad platform a business runs in one pass and returns one paid media scorecard. Reads Google, Meta, Microsoft, LinkedIn, TikTok, Pinterest, Snapchat, X and OpenAI Ads plus GA4 through the InsightfulPipe MCP (or works from each platform's export), lays out how each platform defines and counts a conversion, compares each platform's budget share with its share of results on the site's own count, and checks structure, creative age, audiences bought twice and settings that differ across platforms for no reason. Each platform's score counts in proportion to its spend, and the fixes are ranked by the money at stake. Runs the installed one-platform audit skills instead of repeating them. Use for a paid media audit, a PPC audit checklist across platforms, a paid social audit, or when someone asks which ad platform is wasting money. Changes nothing unless the user confirms a pause.
+description: Audits all your ad platforms (Google, Meta, Microsoft, LinkedIn, TikTok, Pinterest, Snapchat, X, OpenAI Ads) in one spend-weighted scorecard judged on your GA4 or store count, with fixes ranked by money at stake. Use for a paid media audit, a paid social audit or which ad platform wastes money.
 ---
 
 # Multi-Platform Paid Media Audit

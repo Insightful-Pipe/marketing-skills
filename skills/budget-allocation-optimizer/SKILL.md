@@ -1,6 +1,6 @@
 ---
 name: budget-allocation-optimizer
-description: Moves Google Ads budget between campaigns to get more conversions from the same total, on live data through the InsightfulPipe MCP. Pulls each campaign's budget, spend, conversions, impression share lost to budget, the budgets actually in force each day, Google's own budget simulations and budget recommendations itself, estimates the cost of the next conversion (marginal CPA) in each campaign, and returns specific moves with amounts, the conversions gained and lost, risks and a week-by-week rollout. Use when someone asks where to put their budget, how to split a fixed monthly total, which campaigns are limited by budget or overfunded, or whether to move money between campaigns. Offers the new daily budgets as changes it applies only after the user confirms each one.
+description: Moves Google Ads budget between campaigns for more conversions from the same total, using marginal CPA, budget simulations and impression share lost to budget. Use when asking where to put budget, how to split a fixed monthly total, or which campaigns are budget limited or overfunded.
 ---
 
 # Budget Allocation Optimizer

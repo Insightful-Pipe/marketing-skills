@@ -1,6 +1,6 @@
 ---
 name: offline-media-lift-analyst
-description: Measures the lift from media that gets no clicks (TV, connected TV, radio, billboards and transit, events and sponsorships) and reads out geo holdout tests after they finish. Builds what would have happened from regions, countries or past weeks the campaign did not touch, keeps only the comparison series that moved with the outcome before the flight, and reports the extra orders, leads or visits with a 95% interval, the chance the lift is above zero, a placebo back-test and the cost per extra outcome against break-even. Works from a pasted weekly series by region, or pulls it through the InsightfulPipe MCP from GA4, Search Console, Google Ads, Shopify, WooCommerce, BigQuery or Google Sheets. Use when someone asks whether a TV, radio, CTV, billboard or event campaign worked, how to measure offline marketing, how to read a geo lift or matched market test, or wants a causal impact analysis of a flight. Read only; it changes nothing.
+description: Measures lift from TV, CTV, radio, billboards, events and sponsorships, and reads out finished geo holdout tests, with a 95% interval, a placebo check and cost per extra order or lead. Use when asking did our TV or billboard campaign work, for a geo lift readout or causal impact analysis.
 ---
 
 # Offline Media Lift Analyst

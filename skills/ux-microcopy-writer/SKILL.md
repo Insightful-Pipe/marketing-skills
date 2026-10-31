@@ -1,6 +1,6 @@
 ---
 name: ux-microcopy-writer
-description: Writes and audits UX microcopy (buttons, links and nav labels, form labels and hints, error and validation messages, empty states, success, confirmation and thank-you messages, delete dialogs, 404 pages, tooltips and onboarding checklist steps). Finds the confusing words from behaviour first when the InsightfulPipe MCP is connected (Microsoft Clarity dead clicks, rage clicks and quick backs by page, GA4 form starts without submits, 404 views and site search terms, and the live button, link and label text read from the page), keeps one UI glossary so each thing has one name, and returns every string with its state, a character limit and the reason. Works from pasted strings, a locale file, screenshots or a URL with no connection. Use when someone asks for button copy, error messages, empty states, form labels, tooltips, a 404 page, confirmation text, onboarding checklist wording, UX writing, a UI glossary or a microcopy review. Changes nothing in the product or on the site.
+description: Writes and audits UX microcopy for buttons, form labels, error messages, empty states, tooltips and 404 pages, with every state, a character limit and one UI glossary. Use when asked for button copy, error messages, UX writing, or a microcopy review. Not for localizing (use copy-transcreation).
 ---
 
 # UX Microcopy Writer

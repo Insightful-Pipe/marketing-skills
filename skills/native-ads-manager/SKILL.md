@@ -1,6 +1,6 @@
 ---
 name: native-ads-manager
-description: Plans and reviews native ads on Taboola, Outbrain and similar content-recommendation networks from the network's own exports. Grades every publisher site or section on cost per conversion against the user's target, with a minimum number of clicks before any site is blocked or boosted, and writes the block list and site bid changes. Joins native clicks to GA4 through the site macro in the tracking code to catch sites that send accidental clicks, checks the tracking code and the conversion count, finds the headline and thumbnail patterns that earn clicks and buyers in the user's own item report, and drafts the next test grid. For a new campaign it writes the launch plan and the brief for the presell page. Use when someone asks for a Taboola or Outbrain review, a weekly native ads read, which sites to block, new native headlines, or a native advertising campaign plan. It changes nothing in either network.
+description: Reviews and plans Taboola and Outbrain native ads from their exports, grading each publisher site to block, bid down or boost, checking tracking and GA4 accidental clicks, and writing the next headline test. Use for a Taboola or Outbrain review, which sites to block or a native ads campaign plan.
 ---
 
 # Native Ads Manager

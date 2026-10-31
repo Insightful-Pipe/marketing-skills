@@ -1,6 +1,6 @@
 ---
 name: meta-advantage-plus-auditor
-description: Audits Meta Advantage+ campaigns, Advantage+ creative enhancements and catalog (dynamic product) ads on live data through the InsightfulPipe MCP. Works out which campaigns really run in Advantage+ from their budget, audience and placement settings, compares their results with manual campaigns, lists the creative enhancements switched on in the top 25 ads by spend and what they did, and checks catalogs, product sets and catalog ad spend by product. Use when someone asks to review Advantage+ shopping or sales campaigns, asks whether creative enhancements help or hurt, or wants a catalog sales or dynamic ads review. Offers to switch on Advantage+ audience or pause a catalog ad only after the user confirms.
+description: Audits Meta Advantage+ sales campaigns, Advantage+ creative enhancements and catalog ad health, checking which campaigns truly run as Advantage+ and how they compare with manual. Use when reviewing Advantage+ shopping campaigns, asking if creative enhancements help, or for a dynamic ads review.
 ---
 
 # Meta Advantage+ and Catalog Auditor

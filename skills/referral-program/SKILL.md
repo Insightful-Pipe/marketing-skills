@@ -1,6 +1,6 @@
 ---
 name: referral-program
-description: Designs, grows and audits customer referral, affiliate and partner programs from the business's own data through the InsightfulPipe MCP or from pasted data. The default design run measures word of mouth and senders (GA4), tracking, brand and program searches (Search Console) and email (Klaviyo), then sets the program type, reward and commission ceiling from the user's economics, incentives, sharing, tracking, fraud rules, K-factor targets and a 90-day plan. Recruit mode finds and scores affiliates from Google results, competitor backlinks and YouTube reviewers and drafts outreach and an onboarding pack. Audit mode checks each partner against store orders and GA4 for new customers, coupon leaks, brand bidding and disclosure. B2B mode designs reseller, agency and tech partner tiers, margins, deal registration and MDF. Use for referral, refer-a-friend, affiliate or partner programs, recruiting affiliates, affiliate KPIs or a channel partner program. Writes to GA4, Klaviyo or Sheets only after the user confirms.
+description: Designs referral, affiliate and partner programs from your GA4 and email data, with rewards, commission, tracking and fraud rules. Also recruits affiliates, audits partners for coupon leaks and brand bidding, and builds reseller tiers. Use for a refer-a-friend, affiliate or channel partner program.
 ---
 
 # Referral Program

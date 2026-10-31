@@ -1,6 +1,6 @@
 ---
 name: retargeting-sequence-designer
-description: Designs retargeting ad sequences from live data through the InsightfulPipe MCP. Sizes each retargeting pool from GA4, checks the pixel, audiences and links retargeting depends on, grades the Meta funnel (TOF, MOF, BOF), checks where email flows and paid retargeting hit the same people, then builds tiers, windows, messages, frequency, exclusions and a budget split. Also plans LinkedIn, TikTok, Pinterest, Snapchat, X and Reddit retargeting, sizing visitor, video viewer, engager, lead form and customer list pools per platform and flagging pools under each platform's minimum. Use when someone wants to bring back visitors, wants a remarketing or retargeting plan, asks how their retargeting funnel performs, asks whether email and paid retargeting overlap, or wants retargeting on LinkedIn, TikTok, Pinterest, Snapchat, X or Reddit. Offers to create GA4 audiences, add exclusions to Meta ad sets and attach Google Ads lists, only after the user confirms.
+description: Designs retargeting ad sequences sized from GA4, checking the Meta pixel, Google Ads lists and Klaviyo overlap, then sets tiers, windows, messages, frequency, exclusions and budget. Use when asked for a remarketing plan, to bring back visitors, or LinkedIn, TikTok or Pinterest retargeting.
 ---
 
 # Retargeting Sequence Designer

@@ -1,6 +1,6 @@
 ---
 name: media-pitch-writer
-description: Writes a personal media pitch for each journalist, editor or producer on a list, for one story, with two subject lines each. Each pitch names something the writer's outlet ran recently, with the link and date on record; a writer with no recent on-topic piece is held, never given a fake compliment. Decides when an exclusive or an embargo fits and schedules around it, and writes two follow-ups that each add something new. Covers news and data pitches, op-eds and contributed articles, broadcast segments, local news and replies to reporters' calls for expert sources. Every number comes from a proof ledger (GA4, Shopify or a pasted export) with its method, and every draft gets a check (about 150 words, one story, no attachments, one clear ask, spam triggers). Keeps a tracker of drafted, sent, replied, declined and covered. Use when someone asks for a media pitch template, how to pitch a journalist or a PR pitch email. Drafts only and never sends; the tracker goes to Google Sheets after the user confirms.
+description: Writes a personal media pitch per journalist, editor or producer for one story, each tied to a recent article, with subject lines, exclusive or embargo terms, two follow-ups and a tracker. Use for a media pitch template, how to pitch a journalist, a PR pitch email or a reply to a source request.
 ---
 
 # Media Pitch Writer

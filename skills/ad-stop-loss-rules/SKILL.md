@@ -1,6 +1,6 @@
 ---
 name: ad-stop-loss-rules
-description: Designs stop-loss rules for new ads before money is spent, on TikTok, LinkedIn, Microsoft Ads, Snapchat, Pinterest, X or several at once. Sets the spend at which an ad with no result, or too few results for its spend, gets switched off, tied to the target cost per result with a probability check, plus a click-rate floor and an overspend cap. Replays the rules on the last 90 days to show which past winners they would have stopped, then sets them up as a TikTok automated rule or a daily check, and pauses only after the user confirms. Use when someone asks when to turn off an ad, how much to spend before killing an ad, for kill rules, stop-loss rules or TikTok automated rules, or wants new ad tests to stop losing money on their own.
+description: Sets stop-loss kill rules for new ads on TikTok, LinkedIn, Microsoft Ads, Snapchat, Pinterest and X from your target CPA, back-tests them on 90 days of history and lists ads to pause today. Use when asking when to kill an ad, how much to spend before turning it off, or for TikTok automated rules.
 ---
 
 # Ad Stop-Loss Rules Designer

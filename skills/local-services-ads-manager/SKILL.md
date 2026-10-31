@@ -1,6 +1,6 @@
 ---
 name: local-services-ads-manager
-description: Reviews Google Local Services Ads for a service business (plumbers, HVAC, electricians, roofers, lawyers and other pay-per-lead categories). Works from the Local Services lead export, or pulls leads, credits, budget and bids live through the InsightfulPipe MCP, and joins them with CallRail call outcomes and Google Business Profile reviews so cost per booked job, not cost per lead, decides the budget. Reports leads and cost by job type and area, charged and credited leads, the share of calls answered, rating and review count against nearby rivals from DataForSEO Maps data, budget use, bidding mode, hours and service areas. Use when someone asks to review, audit, optimize or take over Local Services Ads or Google Guaranteed ads, asks why leads cost so much, or wants feedback drafted for bad leads. Changes a budget or tags calls only after the user confirms.
+description: Reviews Google Local Services Ads by cost per booked job, with leads by job type and area, missed charged calls, budget use, bids and lead feedback drafts for credits. Use when asked to audit or optimize Local Services Ads or Google Guaranteed, why leads cost so much, or what to do about spam leads.
 ---
 
 # Local Services Ads Manager

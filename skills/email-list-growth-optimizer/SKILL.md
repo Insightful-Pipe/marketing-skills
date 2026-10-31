@@ -1,6 +1,6 @@
 ---
 name: email-list-growth-optimizer
-description: Shows how to grow your email and SMS list from the numbers you already have. Measures list growth per 1,000 site sessions and by source (each popup, flyout and embedded form, checkout opt-in, and other adds such as lead ads, with imports kept out), grades every sign-up form on its offer, trigger and timing, fields, mobile behaviour, consent wording and welcome path, flags mobile popups that cover the page on arrival, and writes a 90-day plan with paste-ready form variants and tests sized to each form's own traffic. Works from pasted form settings, screenshots and exports, or reads Klaviyo or Mailchimp, GA4 and Shopify through the InsightfulPipe MCP. Use when someone asks how to grow an email list, why sign-ups are flat, whether a popup or signup form is working, for email popup best practices or signup form ideas, or how many buyers opt in at checkout. Offers one fix (setting a reviewed welcome flow live in Klaviyo) that it runs only after the user confirms.
+description: Grades every popup, flyout, embedded form and checkout opt-in on sign-ups per 1,000 sessions from Klaviyo or Mailchimp, GA4 and Shopify data, then writes paste-ready form variants and a 90-day test plan. Use when asked how to grow an email list, why sign-ups are flat or if a popup works.
 ---
 
 # Email List Growth Optimizer

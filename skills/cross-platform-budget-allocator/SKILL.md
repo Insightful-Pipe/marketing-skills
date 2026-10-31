@@ -1,6 +1,6 @@
 ---
 name: cross-platform-budget-allocator
-description: Splits an ad budget across Google, Meta, Microsoft, LinkedIn, TikTok, Pinterest, Snapchat, X and OpenAI Ads on live data through the InsightfulPipe MCP, and plans the whole marketing budget. Reads each platform's spend, results, budgets, recent edits, saturation signals and Google's budget simulations, estimates what the next dollar buys, and returns a split with scenarios, projections, a weekly rollout and rebalancing triggers. For a marketing budget plan it sets the total three ways (the revenue goal with the business's own close rates and costs, a sourced benchmark share of revenue, the last 12 months), splits it into people, agencies, tools, content, events, paid media, tests and contingency, phases it by month from the business's own seasonality, and sets in-year reallocation rules. Use for splitting budget between ad platforms or campaigns, next quarter's budget, a channel to test, how much to spend on marketing, or a marketing budget plan. Changes budgets or writes a Google Sheet only after a yes.
+description: Splits ad budget across Google Ads, Meta, Microsoft, LinkedIn, TikTok and other platforms by what the next dollar buys, and plans the yearly marketing budget. Use when asked how to split budget between platforms, next quarter's ad budget, or how much to spend on marketing.
 ---
 
 # Cross-Platform Budget Allocator

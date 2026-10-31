@@ -1,6 +1,6 @@
 ---
 name: tiktok-ads-campaign-builder
-description: Builds and runs TikTok Ads campaigns on live data through the InsightfulPipe MCP. Turns a brief into a full campaign, ad group and ad plan with TikTok captions, CTAs and video hooks, reusing the account's own identity, videos, pixel and tracking links, then drafts the exact payloads. Also finds fatigued creatives to pause and winning ad groups to scale, using week-over-week ad and ad group results. Use when someone asks to create or launch a TikTok ad campaign, write TikTok ad captions or CTAs, pause tired TikTok ads, or scale TikTok ad groups that win. Everything is created switched off, and any change runs only after the user confirms the exact payload.
+description: Builds TikTok Ads campaigns from a brief, with targeting, captions, CTAs, video hooks and exact payloads created switched off once you confirm, and flags fatigued ads to pause and ad groups to scale. Use when asked to launch a TikTok campaign, write TikTok ad captions or pause tired TikTok ads.
 ---
 
 # TikTok Ads Campaign Builder

@@ -1,6 +1,6 @@
 ---
 name: signup-flow-cro
-description: Audits a signup or registration flow on live data through the InsightfulPipe MCP. Checks whether GA4 can see the signup at all, measures the pages that carry the signup button and the funnel through sign_up to the first key action, tears down the rendered signup page (sign-in options, fields, password rules, clicks to the first field, distractions, bot protection, labels, load time), and ranks the fixes by the visitors each step touches. Use when someone asks to improve signup conversion, reduce signup drop-off, review a registration or create-account page, choose signup methods (Google, Microsoft, LinkedIn, email, magic link), decide on email verification or a card at signup, or set up signup tracking. Offers GA4 tracking fixes it runs only after the user confirms.
+description: Audits a signup or registration flow, checks GA4 sees sign_up, measures the funnel and tears down the signup page fields, SSO and password rules. Use when asked to improve signup conversion, reduce signup drop-off, or review a create account page. Not for onboarding (use onboarding-cro).
 ---
 
 # Signup Flow CRO

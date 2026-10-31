@@ -1,6 +1,6 @@
 ---
 name: app-growth-audit
-description: Audits a mobile app's growth on live public data through the InsightfulPipe MCP, and writes its store listing. The audit pulls both store listings, the newest reviews and the app's search rank for its keywords, compares it with up to three competitor apps, and grades listing metadata, ratings, release impact, review themes and keyword visibility, plus App campaigns and app analytics when the owner's accounts are connected. The ASO keyword and metadata writer checks every candidate term live in both stores' search, scores it on relevance and winnability, picks the categories, writes the App Store name, subtitle, keyword field and promotional text and the Google Play title, short and full description inside each limit, and reruns the rank check after the release. Use for an app store audit, ASO review, app store keywords, ASO keyword research, writing an app store description, what users complain about or ask for in reviews, whether a release hurt ratings, or an app growth report. Never edits a listing.
+description: Audits a mobile app on the App Store and Google Play against up to three rivals, grading ratings, review themes, release impact and keyword rank, then writes ASO keywords and listing text. Use when asked for an app store audit, ASO keyword research or what reviews complain about.
 ---
 
 # App Growth Audit

@@ -1,6 +1,6 @@
 ---
 name: meta-click-to-message-ads
-description: Plans, builds and reviews Meta click-to-message ads, the Facebook and Instagram ads whose button opens a WhatsApp, Messenger or Instagram Direct chat instead of a website. Picks the chat app, writes the ad, the greeting, the WhatsApp prefilled message and the conversation starters, sets reply-time and hand-off rules around who answers and when, and defines the outcome labels the team logs per chat. Reviews live ads by joining Meta's conversations started and spend by ad (through the InsightfulPipe MCP or a pasted Ads Manager export) with the user's chat or CRM outcome export, so each ad is graded on cost per qualified chat and cost per sale against the user's own target. Use when someone asks about click-to-WhatsApp ads, Facebook Messenger ads, Instagram Direct message ads, messaging campaigns, cost per conversation, or cheap chats with few sales. Drafts the campaign, ad set, creative and ad as paused payloads and creates them, or pauses a losing ad, only after the user confirms.
+description: Plans and reviews Meta click-to-message ads that open WhatsApp, Messenger or Instagram Direct, writing greetings and starters and grading each ad on cost per qualified chat and per sale. Use when asking about click-to-WhatsApp ads, Messenger ads, cost per conversation, or cheap chats with few sales.
 ---
 
 # Click-to-WhatsApp and Messenger Ads Planner

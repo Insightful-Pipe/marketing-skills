@@ -1,6 +1,6 @@
 ---
 name: review-insights-analyzer
-description: Analyzes customer reviews for a local business or an online store and turns them into numbers to act on. Codes every review into themes with praise or complaint, then shows which themes drive 1-star and 5-star ratings, complaint rates by location or product, whether each complaint is rising, how much the average rating would move if it were fixed, and who should fix it (operations, the listing, a web page or the product). Reads Google reviews for every Business Profile location and WooCommerce product reviews through the InsightfulPipe MCP, or works from pasted or exported reviews from Google, Amazon, Yelp, Trustpilot, Tripadvisor or a review app. Adds rivals' rating and review count from business listings, and compares themes with a rival when its reviews are pasted. Use for customer review analysis, Amazon review analysis, review sentiment analysis, what customers complain about, or why a location's rating is dropping. Read-only; it never replies to or changes reviews.
+description: Analyzes Google, Amazon, Yelp or WooCommerce reviews, coding them into themes that drive 1-star and 5-star ratings, with trends by location or product and what each fix is worth. Read only. Use when asked for review sentiment analysis, what customers complain about, or why a rating is dropping.
 ---
 
 # Review Insights Analyzer

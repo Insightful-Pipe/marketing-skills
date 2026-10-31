@@ -1,6 +1,6 @@
 ---
 name: seo-split-test
-description: Designs and reads SEO split tests (SEO A/B tests) on groups of similar pages, on live Google Search Console data through the InsightfulPipe MCP or on a pasted page list and clicks export. Splits pages of one template into matched test and control groups, checks the groups are balanced before launch, sets the run length from the site's own week-to-week noise, then reads the result with a difference-in-differences comparison against the control so seasonality and Google updates are not credited to the change. Also judges a change already made to a set of pages, such as a sitewide title rewrite, against untouched pages. Use when someone asks to plan, size or read an SEO test, SEO experiment, title or meta description test, schema or content test, or asks whether a title rewrite worked. Checks recrawl, canonicals and rich results with URL inspection, adds GA4 organic sessions when connected, and can roll out or revert the change on WordPress only after the user confirms.
+description: Designs and reads SEO split tests on similar pages from Search Console, with matched test and control groups, a run length from the site's own noise and a controlled verdict. Use when asked to plan or read an SEO test or if a title rewrite worked. Not for visitor A/B tests (use ab-test-designer)
 ---
 
 # SEO Split Test Designer

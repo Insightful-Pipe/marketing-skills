@@ -1,6 +1,6 @@
 ---
 name: ga4-channel-performance
-description: Reports GA4 channel and source/medium performance on live data through the InsightfulPipe MCP, adds ad spend from Google Ads, Meta, LinkedIn, Microsoft Ads and TikTok to build a cost and ROI table, reviews every referrer for bot bursts, internal and ad-network referrals, and investigates Direct traffic spikes down to the landing page, country, browser and hour. Use when someone asks how each channel performs, which source or medium pays back its spend, whether referral traffic is real, why Direct traffic jumped, or why so much traffic is Direct or Unassigned. Offers one fix (a custom channel group that gives AI assistant referrers their own channel) that it runs only after the user confirms.
+description: Reports GA4 channel and source/medium performance with spend from Google Ads, Meta, LinkedIn, Microsoft Ads and TikTok for cost and ROAS, and checks referral quality and Direct spikes. Use when asked how each channel performs, why Direct jumped, or whether referrals are real.
 ---
 
 # GA4 Channel and Referral Performance

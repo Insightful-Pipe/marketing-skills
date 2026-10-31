@@ -1,6 +1,6 @@
 ---
 name: impression-share-analyst
-description: Analyzes Google Ads search impression share on live data through the InsightfulPipe MCP. Pulls impression share, budget-lost and rank-lost share, top and absolute-top share, a 12-week trend, device splits and keyword detail, sorts every campaign into budget-limited, rank-limited or healthy, sizes what more budget could buy, and reads a pasted Auction Insights export. Its weekly brand defense monitor works from pasted exports alone and covers rivals in the brand auction, brand CPC and share by week, rival ads that put your brand name in their ad text (versus bidding on it, which Google allows), brand searches leaking into non-brand campaigns, and a trademark complaint draft for the owner to file. Use when someone asks why share dropped, whether to raise a budget or a bid, how often ads show at the top, who they compete with, whether competitors bid on their brand name or how to stop them. Offers budget, CPC-ceiling and negative-keyword changes it runs only after the user confirms.
+description: Analyzes Google Ads search impression share lost to budget or rank, with a 12-week trend, top of page detail, Auction Insights exports and a weekly brand defense monitor with trademark complaint drafts. Use when share dropped, deciding budget or bid, or a competitor bids on my brand name.
 ---
 
 # Impression Share and Auction Insights Analyst

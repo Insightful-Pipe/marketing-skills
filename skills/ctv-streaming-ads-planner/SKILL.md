@@ -1,6 +1,6 @@
 ---
 name: ctv-streaming-ads-planner
-description: Plans connected TV (CTV) and streaming TV ad buys and sets up how to measure them. Compares the three ways to buy (YouTube on TV screens through Google Ads, a streaming service's own self-serve tool, programmatic CTV through a DSP) as effective CPMs after fees, qualifies each route, splits the budget with household reach ceilings, works out combined reach and the frequency per-seller caps miss, specs the 15- and 30-second cuts with a QR code and short URL per route, and records an 8-week regional baseline (new customers, Direct new users, brand-campaign impressions as branded searches) with control regions, noise floors, the break-even lift and a scale, retest or stop rule written before launch. After the flight it checks delivery, QR sessions and lift against control. Works from pasted quotes and exports; the InsightfulPipe MCP adds Google Ads, GA4 and Search Console. Use for a CTV advertising strategy, how to buy connected TV ads, OTT or streaming TV ads, or how to measure CTV ads.
+description: Plans connected TV and streaming TV ad buys across YouTube on TV screens, streaming services and programmatic CTV, pricing quotes after fees, splitting budget by household reach and setting a regional lift test. Use for a CTV advertising strategy, OTT ads or how to measure CTV ads.
 ---
 
 # CTV and Streaming TV Ads Planner

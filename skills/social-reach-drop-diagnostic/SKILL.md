@@ -1,6 +1,6 @@
 ---
 name: social-reach-drop-diagnostic
-description: Explains a sudden fall in reach, views or followers on Instagram, TikTok, Facebook, LinkedIn, X or YouTube. Compares the last 30 days with the account's own 90-day baseline using medians, confirms whether the drop is real, then tests eight causes against the evidence each one leaves (fewer posts, a format shift, a viral post inflating the baseline, a change in where views come from, links and hashtags, failed scheduled posts, restriction signs, and seasonality or a platform-wide dip) and ends with a recovery plan. Pulls posts, daily totals and YouTube's traffic sources itself through the InsightfulPipe MCP and checks the Social Media Scheduler for failed posts; with nothing connected it works from a pasted 120-day post export. Use when someone says their reach dropped, views are low, followers fell or engagement died, or asks for an Instagram or TikTok shadowban check. Says plainly that no platform API exposes a shadowban flag. Offers to reschedule failed posts only after the user confirms.
+description: Diagnoses a sudden drop in reach, views or followers on Instagram, TikTok, Facebook, LinkedIn, X or YouTube against the account's own baseline, tests eight causes and gives a recovery plan. Use when reach dropped, views are low, followers fell or someone asks for a shadowban check.
 ---
 
 # Social Reach Drop Diagnostic

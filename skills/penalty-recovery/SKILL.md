@@ -1,6 +1,6 @@
 ---
 name: penalty-recovery
-description: Works out why a site lost Google visibility and plans the way back. Sorts the case first (a manual action, a security issue, a core or spam update, or a cause outside Google such as a tracking break, a noindex or lower demand), dates the drop from Search Console data against the message date, the Google update dates and the site's own changes, builds the cleanup list from real backlink and page data, drafts a disavow file only for a confirmed link problem, and writes the reconsideration or security review request. Works from the pasted Manual actions or Security issues message and a Search Console performance export, and pulls Search Console, DataForSEO backlinks, crawler checks and GA4 itself when they are connected through the InsightfulPipe MCP. Use when someone asks about a Google penalty, a manual action, a reconsideration request, a hacked site warning, a disavow file, negative SEO, or a sudden sitewide traffic drop after a Google update. Changes nothing on the site or in Search Console.
+description: Diagnoses a Google penalty or sudden traffic drop, telling manual actions, hacked sites, core or spam updates and non-Google causes apart, then plans the cleanup and writes the reconsideration request. Use when asked about a manual action, a disavow file, negative SEO or a Google update drop.
 ---
 
 # Google Penalty Recovery Planner

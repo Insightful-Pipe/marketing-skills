@@ -1,6 +1,6 @@
 ---
 name: blog-visuals-planner
-description: Plans every visual a blog post or report needs (featured image, charts, diagrams, screenshots, tables, an infographic) and writes the spec for each one, with chart data taken only from numbers in the piece, a pasted table, a Google Sheet or GA4, the chart type picked from the shape of the data, alt text that states the finding, captions with the source, and file names. Checks every result the text states before charting it (including numbers credited to the wrong group), lists claims that need data first, and ranks existing posts by how many readers fall short of the blog's median scroll rate (GA4 scroll events and engagement time) and how heavy their images are (PageSpeed). Use when someone asks what images or charts a post needs, how to turn a post's data into charts, how to create an infographic from a post, what alt text or captions to write, or which old posts need better visuals. Works from pasted text with no connection; can write alt text and captions to WordPress media only after the user confirms.
+description: Plans the charts, diagrams, screenshots and featured image a blog post needs, with chart specs, alt text and captions built only from sourced numbers, and ranks old posts by GA4 scroll drop-off. Use when asking what images a post needs, turning post data into charts, or planning an infographic.
 ---
 
 # Blog Charts and Visuals Planner

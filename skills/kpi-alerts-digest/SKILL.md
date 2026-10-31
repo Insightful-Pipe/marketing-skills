@@ -1,6 +1,6 @@
 ---
 name: kpi-alerts-digest
-description: Runs a daily marketing health check and a week-over-week anomaly scan across every connected ad, analytics and search source through the InsightfulPipe MCP, then drafts a KPI digest and alert messages for Slack or Telegram, a weekly client update, a report-review reminder, a campaign launch note, a channel poll or a Notion meeting page. Use when someone asks for a daily KPI digest, a morning health check, anomaly or ROAS-drop alerts, a weekly update for a client channel, or wants marketing numbers posted to Slack, Telegram or Notion. It posts, reminds or creates pages only after the user confirms the exact message.
+description: Runs a daily marketing health check and week-over-week anomaly scan across ad accounts, GA4 and Search Console, then drafts a short KPI digest or alert for Slack, Telegram or Notion. Use when asked for a daily KPI digest, ROAS drop alerts, or a morning check posted to Slack.
 ---
 
 # KPI Alerts and Daily Digest

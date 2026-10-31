@@ -1,6 +1,6 @@
 ---
 name: product-merchandising-analyst
-description: Ranks every product and collection in an online store on item views, add-to-cart rate, purchase rate, revenue and margin, then says what to feature on the home page, how to sort each collection, which product pages need work and which products to review for retirement. Joins store sales and unit cost with GA4 item views and add-to-carts (and Merchant Center clicks when connected), so a product is judged on demand and conversion, not on sales alone, and never called weak before it has enough views. Works from a product sales export and a GA4 item report, or pulls Shopify, WooCommerce, Magento, GA4 and Merchant Center through the InsightfulPipe MCP. Use when someone asks for a product performance analysis, a best sellers report, an ecommerce merchandising strategy, what to put on the home page or how to sort a collection. Offers collection sort, home page and product tag changes on Shopify (tags on WooCommerce) only after the user confirms.
+description: Ranks a store's products and collections on GA4 item views, add-to-cart rate, purchase rate and margin, then picks home page products, sorts each collection and flags product pages to fix. Use when asked for a product performance analysis, a best sellers report, or how to sort a collection.
 ---
 
 # Product Merchandising Analyst

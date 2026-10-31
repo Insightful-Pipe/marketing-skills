@@ -1,6 +1,6 @@
 ---
 name: sales-deck-builder
-description: Writes a B2B sales deck slide by slide, with a headline, body, source line and speaker notes on every slide. Opens on the goal the buyer gave you, then covers what stands in the way, what waiting costs (from the buyer's own numbers), the closest customer who reached that goal, each blocker paired with the capability and proof that removes it, an optional contrast with the alternative, the open questions and the one decision you ask for. Every claim passes a proof ledger and claims check, so no unsourced, dated, unpermitted or overstated claim reaches a slide. Through the InsightfulPipe MCP it reads competitors' live ads and pages, case study pages and proof sheets, and for agencies before and after results from client Google Ads, Meta Ads and GA4 accounts. Adds persona or industry versions and a .pptx file when asked. Use when asked for a sales deck, a sales presentation outline, a filled-in sales deck template, or to fix an old deck. Not for investor pitch decks. Changes nothing in any account.
+description: Writes a B2B sales deck slide by slide from the buyer's goal, with headlines, speaker notes and a checked source for every claim, plus an optional .pptx. Use when asked for a sales deck, a sales presentation outline, a sales deck template or to fix an old deck. Not for investor pitch decks.
 ---
 
 # Sales Deck Writer

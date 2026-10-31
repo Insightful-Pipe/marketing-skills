@@ -1,6 +1,6 @@
 ---
 name: google-ads-account-audit
-description: Runs a full Google Ads account audit on live data through the InsightfulPipe MCP. Pulls conversion setup, search terms, Quality Score, impression share, ads, assets, bidding, budgets and settings itself, scores eight areas, and ranks the fixes by monthly dollar impact. Use when someone asks to audit, review, health-check or take over a Google Ads account, or asks why performance dropped and wants the whole picture. Offers a few fixes (negatives, sitelinks, callouts) as actions it runs only after the user confirms.
+description: Runs a full Google Ads account audit across tracking, wasted spend, structure, Quality Score, ads, assets, bidding, settings and change history, scores eight areas and ranks fixes by monthly money at stake. Use when asked to audit, health check or take over an account, or why performance dropped.
 ---
 
 # Google Ads Account Audit

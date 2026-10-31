@@ -1,6 +1,6 @@
 ---
 name: engagement-rate-calculator
-description: Calculates social media engagement rate for an account, a single post or a creator in every common way (by reach, by views, by impressions, by followers, per post and per day), shows all the formulas side by side, says which one answers the question asked, and compares each result with a published benchmark that uses the same formula, with its source and date. Works from pasted numbers, or pulls Instagram, Facebook Pages, LinkedIn Pages, TikTok, X, YouTube and Pinterest through the InsightfulPipe MCP. Use when someone asks for an engagement rate calculator, how to calculate engagement rate, what a good engagement rate on Instagram or TikTok is, or why two reports show different engagement rates for the same account. Gives no verdict on fewer than 10 posts and changes nothing.
+description: Calculates engagement rate for Instagram, TikTok, Facebook, LinkedIn, X, YouTube or Pinterest by reach, views, impressions, followers and per day, side by side, against same-formula benchmarks. Use when asked how to calculate engagement rate, what a good rate is, or why two reports differ.
 ---
 
 # Engagement Rate Calculator

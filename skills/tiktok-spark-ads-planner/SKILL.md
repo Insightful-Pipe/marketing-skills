@@ -1,6 +1,6 @@
 ---
 name: tiktok-spark-ads-planner
-description: Plans TikTok Spark Ads from posts that already earned attention. Ranks the brand's own TikToks and creators' posts by shares, comments, likes and watched-full rate per view against the account's usual, sets an explicit bar (top quarter and a score of at least 1.20), keeps a log of every creator's Spark authorization code and when it runs out, and plans the Spark ad group (goal, audience, daily budget, schedule, expected results) with the exact ad group and ad payloads. Works from pasted post stats and a TikTok Studio export, or live through the InsightfulPipe MCP with TikTok Pages and TikTok Ads connected. Use when someone asks which TikToks to boost or run as Spark Ads, how to run Spark Ads, what to do with a creator's Spark code, or how to budget a Spark campaign. Creates the ad group and ads, disabled, only after the user confirms.
+description: Plans TikTok Spark Ads by ranking your own and creator posts on shares, comments, likes and watched-full rate against your usual, logging creator Spark codes and drafting the ad group and budget. Use when asked which TikToks to boost, what to do with a Spark code or how to budget Spark Ads.
 ---
 
 # TikTok Spark Ads Planner

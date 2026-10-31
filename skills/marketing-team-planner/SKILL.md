@@ -1,6 +1,6 @@
 ---
 name: marketing-team-planner
-description: Designs the marketing team for a company's stage, goal and people budget. Weights each channel by where results come from today (GA4, Search Console, Google Ads, Meta Ads and LinkedIn Ads through the InsightfulPipe MCP, or the user's own description), sizes the monthly hours each channel needs, bundles them into roles, prices every role in-house, freelance and agency with the user's own salaries, rates and quotes, picks one per role by stated rules, fits the budget, sets the hiring order with triggers and draws the org chart. Use when someone asks how to structure a marketing team, who to hire first in marketing, whether to use an agency or hire in-house, in-house vs agency vs freelancer costs, when to hire a head of marketing, or how the team should grow over the next 18 months. Reads only; it changes nothing in any account.
+description: Designs a marketing team structure from where results come from in GA4, Search Console and ad accounts, pricing each role in-house, freelance or agency with your rates, then a hiring order. Use when asking who to hire first, in-house vs agency, or how to structure a marketing team.
 ---
 
 # Marketing Team Structure Planner

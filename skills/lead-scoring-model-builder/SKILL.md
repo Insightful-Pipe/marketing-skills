@@ -1,6 +1,6 @@
 ---
 name: lead-scoring-model-builder
-description: Builds a lead scoring model from your own won and lost leads. Measures how much each company trait and each action before the sales decision (pricing or demo visits, email clicks, webinars, trials) lifts the win rate, turns that lift into points, takes points off for bad fit, fits a decay rule, picks the MQL threshold from a backtest and checks it on later leads the model never saw. Writes the rules ready to set up in a CRM and audits an existing model the same way. Use when someone asks to build, fix, audit or set up lead scoring, an MQL threshold, a lead scoring template or a product-qualified lead (PQL) score for trial users. Works from a CRM export or a Google Sheet; can pull per-lead behaviour from the GA4 BigQuery export, Klaviyo or Mailchimp through the InsightfulPipe MCP. Changes nothing until the user confirms.
+description: Builds a lead scoring model from your own won and lost leads, turning traits and actions into points, fitting decay and picking the MQL threshold from a backtest. Also audits an existing model and builds PQL scores. Use when asked to build, fix or audit lead scoring or set an MQL threshold.
 ---
 
 # Lead Scoring Model from Deal History

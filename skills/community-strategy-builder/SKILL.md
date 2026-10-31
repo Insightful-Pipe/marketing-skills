@@ -1,6 +1,6 @@
 ---
 name: community-strategy-builder
-description: Plans and scores a brand community on Slack, Discord, Circle, Telegram or a forum. Picks the platform with a score built from where the audience already gathers, writes the channel layout, the welcome path for new members, house rules, moderation roles with a reply rota, and a 90-day programme of recurring events. Then scores the community every month from a member and message export (or the Slack connector) on participation ratio, 30-day new-member retention, median time to first reply and the share of questions answered within 24 hours, against stated thresholds or your own targets. Tags every community link with a UTM so GA4 shows the visits, sign-ups and key events the community sends. Use when someone asks for a community building strategy, online community management, how to grow a Discord or Slack community, or a community health check. Works from a plain description of the audience when there is no export. Posts to Slack or Telegram only after the user confirms.
+description: Plans and scores a brand community on Slack, Discord, Circle, Telegram or a forum, with channels, welcome path, rules, reply rota, 90-day events and a monthly health scorecard. Use when asked for a community building strategy, how to grow a Discord or Slack community, or a community health check.
 ---
 
 # Community Strategy Builder

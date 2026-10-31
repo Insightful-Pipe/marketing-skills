@@ -1,6 +1,6 @@
 ---
 name: rsa-ad-copy-writer
-description: Writes Google Ads ad copy from the account's own evidence, live through the InsightfulPipe MCP or from a paste. Default mode writes responsive search ads. It reads the ad group's converting keywords and search terms, what each current line served and converted, and the landing page, then writes 15 headlines and 4 descriptions inside the limits that only claim what the business already claims, and reviews sitelinks, callouts and other assets. A second mode builds dynamic keyword insertion, ad customizers, countdowns and location insertion, rendering every version to catch lines that break limits or read badly, plus the customizer sheet. A third writes Performance Max, Demand Gen and responsive display ad text, search themes and a shot list, replacing weak assets. Use when someone asks to write or improve RSA, PMax, Demand Gen or display ad copy, add keyword insertion, ad customizers or a sale countdown, or add sitelinks and callouts. Creates ads and assets (paused) only after the user confirms.
+description: Writes Google Ads responsive search ad headlines and descriptions from converting keywords and the landing page, plus sitelinks, callouts, keyword insertion, customizers and PMax or Demand Gen text. Use when asked to write RSA copy or headlines. Not for ranking ads (use ad-copy-performance-ranker)
 ---
 
 # Responsive Search Ad Copy Writer

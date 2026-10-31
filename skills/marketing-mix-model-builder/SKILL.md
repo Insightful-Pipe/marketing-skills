@@ -1,6 +1,6 @@
 ---
 name: marketing-mix-model-builder
-description: Builds a marketing mix model (MMM) from weekly spend by channel and weekly total sales or leads, with carryover and diminishing returns, then reports each channel's return as a range, its response curve and the budget split the model points to. Works from a pasted weekly CSV, or pulls weekly spend through the InsightfulPipe MCP from Google Ads, Meta, Microsoft Ads, LinkedIn, TikTok and Pinterest, and the outcome from Shopify, GA4, WooCommerce, Magento, BigQuery or Google Sheets. Refuses to fit when the data can't carry a model (too few weeks, flat spend, channels that move together, more channels than the weeks can separate), checks itself on 13 held-out weeks, calibrates with lift tests the user has run, and exports a dataset ready for Meridian or Robyn. Use when someone asks for marketing mix modeling or media mix modeling, which channels really drive sales, what each channel returns beyond platform attribution, or how to split a budget across channels on a fitted model. Changes nothing in any account.
+description: Builds a marketing mix model from weekly channel spend and total sales or leads, with carryover, diminishing returns and lift test calibration, giving ROI ranges, response curves and a budget split. Use for MMM or media mix modeling, which channels really drive sales, or Meridian and Robyn exports.
 ---
 
 # Marketing Mix Model Builder

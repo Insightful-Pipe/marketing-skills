@@ -1,6 +1,6 @@
 ---
 name: google-ads-hacked-account-recovery
-description: Checks a Google Ads account for signs that someone else took control (unknown users or invitations, unknown manager account links, new campaigns, budget raises, edited final URLs or tracking templates, spend spikes, spend in countries you don't sell to, billing changes) and sets out the lock-down in order. Reads users with their access level and date added, invitations, manager links, billing setup, 30-day change history with who made each change, URLs and spend by day and country through the InsightfulPipe MCP, or works from a pasted Access and security page and change history export. Compares everything with the user's own list of who should have access, ties each finding to the dated change, user or link behind it, and totals the unauthorised spend and evidence for Google's compromised-account form. Use when someone says their Google Ads account was hacked, sees unauthorized charges, finds an unknown manager account linked, or wants a takeover check. Pauses or restores only after the user confirms.
+description: Checks a Google Ads account for takeover signs such as unknown users, manager links, new campaigns, edited URLs, spend spikes and billing changes, then sets out the lock-down and refund evidence. Use when the account was hacked, charges look unauthorized, or an unknown manager account is linked.
 ---
 
 # Google Ads Hacked Account Check and Recovery

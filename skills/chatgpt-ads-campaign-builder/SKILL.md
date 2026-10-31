@@ -1,6 +1,6 @@
 ---
 name: chatgpt-ads-campaign-builder
-description: Builds a ChatGPT Ads (OpenAI Ads) campaign from a brief on live data through the InsightfulPipe MCP. Reads the ad account, existing campaigns, pixels, event settings, audiences and lead forms first, then drafts the campaign, ad groups with context hints, chat card ad copy variations, conversion pixel and event setup, a customer-list audience and a lead form, each as an exact payload. Use when someone asks to launch, set up, draft or build ads in ChatGPT, add an ad group or ad, write ChatGPT ad copy, set up the OpenAI pixel, upload a customer list or create a lead form. Creates nothing until the user confirms, and campaigns, ad groups and ads are created paused.
+description: Builds a ChatGPT Ads (OpenAI Ads) campaign from a brief, with ad groups, context hints, chat card ad copy, pixel, customer list audience and lead form as exact payloads, created paused after a yes. Use when asked to launch ads in ChatGPT, write ChatGPT ad copy or set up the OpenAI pixel.
 ---
 
 # ChatGPT Ads Campaign Builder

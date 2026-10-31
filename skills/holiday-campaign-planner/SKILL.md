@@ -1,6 +1,6 @@
 ---
 name: holiday-campaign-planner
-description: Plans a holiday or seasonal campaign (Black Friday, Cyber Monday, December, the Christmas lull, or any season named) from last year's history, pulled through the InsightfulPipe MCP from GA4, Search Console, Klaviyo and Google Ads or pasted as exports. Measures each holiday window's lift against a trend-adjusted baseline, gives a 13-week outlook and readiness check, and builds a dated promotion calendar with budget by phase. Two more modes. A year-round retail promotion calendar with dates by rule per country and a discount depth cap, sale gap and full-price floor set from the store's past promotions. A Meta Ads Black Friday and holiday plan from last year's fourth quarter by week (CPM, cost per purchase, frequency, winning ads), with budget steps, creative and offer dates and the January wind-down. Use for a Black Friday plan, seasonality forecast, retail promotional calendar, ecommerce marketing calendar or Black Friday Facebook ads strategy. Writes only after the user confirms.
+description: Plans Black Friday, Cyber Monday and holiday campaigns from last season's GA4, Search Console, Klaviyo and Google Ads history, plus a year-round retail promotion calendar and a Meta Ads holiday budget plan. Use when asked for a Black Friday plan, seasonality forecast or ecommerce promo calendar.
 ---
 
 # Holiday Campaign Planner

@@ -1,6 +1,6 @@
 ---
 name: paid-organic-overlap
-description: Compares what you pay for in Google Ads with where you already rank organically, on live data through the InsightfulPipe MCP. Pulls your search terms, Search Console queries (or DataForSEO rankings when Search Console isn't connected for the ad's domain) and a live results-page check itself, sorts every paid term by organic rank, prices each one by its incremental cost per conversion, and names the terms worth a bid-down or pause test, the ones to keep paying for, the SEO gaps ads are covering and the organic terms worth a paid test. Use when someone asks whether they are paying for clicks they would get for free, which keywords to bid down because they rank #1, how paid and organic search overlap, or how to split search budget between SEO and ads. Offers negative keywords, keyword bid cuts and a brand CPC ceiling it runs only after the user confirms.
+description: Compares Google Ads search terms with Search Console rankings to find keywords you pay for but already rank first for, pricing each by incremental CPA. Use when asked am I paying for clicks I already get organically, which keywords to bid down, or how to split search budget between SEO and ads.
 ---
 
 # Paid vs Organic Search Overlap

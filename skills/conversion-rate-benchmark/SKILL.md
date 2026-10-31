@@ -1,6 +1,6 @@
 ---
 name: conversion-rate-benchmark
-description: Answers "is my conversion rate good?" for a website or online store. Calculates the rates properly (per session and per user, by channel, device, new against returning visitors and landing page type), compares each one only with a dated, sourced benchmark of the same definition, estimates the industry figure at the site's own device mix (with its assumption stated), splits any change into traffic-mix and real-rate effects, puts a revenue figure on every gap and says which gaps justify a CRO project. Works from pasted sessions and conversions, or pulls them live from GA4 through the InsightfulPipe MCP, with a Shopify or WooCommerce order check. Use when someone asks what a good conversion rate is, how their ecommerce or landing page conversion rate compares with the industry average, or whether a CRO project is worth it. Read only; it changes nothing.
+description: Benchmarks a website or store conversion rate against dated, sourced industry figures by channel, device and landing page type, from GA4 or pasted numbers, and prices each gap. Use when asked is my conversion rate good, how it compares with the industry average, or if a CRO project is worth it.
 ---
 
 # Website Conversion Rate Benchmark

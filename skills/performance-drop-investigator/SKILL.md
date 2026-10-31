@@ -1,6 +1,6 @@
 ---
 name: performance-drop-investigator
-description: Investigates why a marketing number moved, on live data through the InsightfulPipe MCP or from pasted exports. Sizes and dates the change, rules out broken tracking first, splits the change into its parts (impressions, click rate, conversion rate, pages, queries, campaigns, devices), grades every likely cause as confirmed, likely, ruled out or can't tell, and says what to do. Use when someone asks what changed and why, why traffic, leads, sales or ROAS dropped, why Google Ads cost per conversion (CPA) went up or ROAS fell (it waits out conversion lag, then puts a dollar figure on click cost, conversion rate, campaign mix, new search terms, auction pressure, Quality Score, landing pages and account edits), for a post-mortem on a campaign that failed, or for the impact of a pricing change, website redesign, relaunch or other dated change.
+description: Investigates why a marketing number dropped across Search Console, GA4, Google Ads, Meta and LinkedIn, ruling out broken tracking first and grading each cause. Use when asked why traffic or leads dropped, why Google Ads CPA went up, for a campaign post-mortem, or a redesign's impact.
 ---
 
 # Performance Drop Investigator

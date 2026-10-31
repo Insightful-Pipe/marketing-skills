@@ -1,6 +1,6 @@
 ---
 name: original-research-report
-description: Plans and writes an original research report, industry report or benchmark report from a company's own data. Picks a question worth answering, plans the data (aggregated product data, a survey, public figures), sizes the sample, runs the numbers with a 95% range on every figure, drops findings that miss the precision gate or the adjusted significance test, checks each headline against what already ranks so it is new, and delivers 5 to 10 headline findings, chart specs, a methods section, a report outline and a one-page stat sheet for press, social and sales. Use when someone asks for an industry report, a state-of report, a data study, a benchmark report, a year-in-review report, a survey report, or how to write one. Works from a pasted survey export or data extract; through the InsightfulPipe MCP it can query aggregates in BigQuery or Google Sheets, check stat-seeking searches in Search Console and the live top 10 in DataForSEO. Writes chart data to a new Sheets tab only after the user confirms.
+description: Plans and writes an original research, benchmark or industry report from your own product or survey data, with a 95% range on every figure, findings gated for precision and significance, chart specs, methods and a press stat sheet. Use when asking for a state-of report, data study or survey report.
 ---
 
 # Original Research Report Builder

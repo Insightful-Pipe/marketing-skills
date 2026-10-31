@@ -1,6 +1,6 @@
 ---
 name: store-listing-experiments
-description: Plans, sizes and reads App Store product page optimization tests and Google Play store listing experiments (icon, screenshots, preview video, feature graphic, descriptions), and plans Apple custom product pages and Google Play custom store listings matched to the app's ad groups and keyword themes. Sizes every test from the app's own daily store traffic and conversion rate with the power math shown, applies each store's current limits, and turns down tests that cannot reach a readable result. Reads finished results from a pasted App Store Connect or Play Console export. Pulls app campaigns from Google Ads, Meta Ads and TikTok Ads and public listings from the App Store and Google Play when connected; otherwise works from exports and a description. Use when someone asks to plan or size an app store A/B test, product page optimization or store listing experiment, asks whether a store test won, or wants custom product pages or custom store listings for app campaigns. Changes nothing in either store.
+description: Plans, sizes and reads App Store product page optimization tests and Google Play store listing experiments, and plans custom product pages and custom store listings for app ad groups. Use when asked to size an app store A/B test, whether a store test won, or for custom product pages.
 ---
 
 # Store Listing Experiments and Custom Pages

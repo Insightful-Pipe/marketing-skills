@@ -1,6 +1,6 @@
 ---
 name: brand-impersonation-response
-description: Finds and responds to brand impersonation (scam ads, lookalike domains, fake sites in brand search and fake social profiles using a brand's name or logo). Through the InsightfulPipe MCP it searches the Meta, Microsoft, TikTok and LinkedIn ad libraries by keyword and Google's by advertiser name for ads that don't come from the brand, lists lookalike domains with their creation date and registrar from DataForSEO WHOIS data, checks brand searches for lookalike sites and paid ads from other domains, and reads Search Console for rising scam or fake queries. Also works from pasted URLs and tickets. Rules out the brand's own pages, resellers and fan pages, ranks each suspect by risk to customers with a points table, and drafts the platform, registrar, host and phishing reports with the evidence each form needs, plus a customer warning, a support reply and a monitoring routine. Use when someone reports a fake site, scam ad or fake profile using their brand. Read only; files nothing and gives no legal advice.
+description: Finds scam ads, lookalike domains, fake sites and fake profiles using your brand in the Meta, Google, TikTok, LinkedIn and Microsoft ad libraries, ranks them by risk and drafts the takedown reports. Use when someone reports a fake website, scam ad or fake profile using their brand.
 ---
 
 # Brand Impersonation Response

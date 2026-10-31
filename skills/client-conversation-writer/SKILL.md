@@ -1,6 +1,6 @@
 ---
 name: client-conversation-writer
-description: Writes the client messages agencies and freelance marketers dread, built on the account's own numbers. Covers a missed-target or performance-drop update, a request for more ad budget, pushback on a risky client idea, a scope change or extra-fee note, a renewal or upsell pitch, a reply to an upset client, and the agenda and talking points for the next client call. Pulls the facts itself through the InsightfulPipe MCP (Google Ads, Meta Ads, GA4, Search Console, LinkedIn Ads) or reads a pasted report, grades every possible cause, states only the confirmed ones as causes, sizes a budget ask from the account's marginal return, and fits length and wording to the reader and the channel. Use when someone asks how to tell a client bad news, for an email to a client about poor campaign performance, how to ask a client for a bigger ad budget, how to say no to a client, how to bill out-of-scope work, or to prep a client call. Writes drafts only and never sends.
+description: Writes hard client emails, Slack notes and call agendas from Google Ads, Meta and GA4 numbers, for missed targets, budget asks, pushback, out-of-scope fees, renewals and upset clients. Drafts only. Use when asking how to tell a client bad news, ask for more ad budget, or say no to a client.
 ---
 
 # Client Conversation Writer

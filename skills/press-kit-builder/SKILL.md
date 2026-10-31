@@ -1,6 +1,6 @@
 ---
 name: press-kit-builder
-description: Builds a company press kit and newsroom page, or audits the press page a company already has. Writes the fact sheet, boilerplate in three lengths (25, 50 and 100 words), press bios for founders and executives, product descriptions, key numbers with an as-of date and a source each, a logo and image checklist with usage rules, spokespeople and the media contact, an as-covered-in list and a release archive. Works from pasted facts and links. Through the InsightfulPipe MCP it can also crawl the live press page for broken asset links, a missing contact, undated items and markup, build the coverage list from DataForSEO content analysis and backlinks, and check traffic and order claims against GA4 or Shopify. Use when someone asks for a press kit, media kit for journalists, newsroom or press page, company boilerplate, an About-the-company paragraph or a press page audit. Saves a WordPress draft only after the user confirms.
+description: Builds a company press kit or newsroom page, or audits the press page you have. Writes the fact sheet, boilerplate in 25, 50 and 100 words, press bios and a logo checklist, with every number dated. Use when asked for a press kit, media kit for journalists, company boilerplate or a press page audit.
 ---
 
 # Press Kit Builder

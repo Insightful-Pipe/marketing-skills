@@ -1,6 +1,6 @@
 ---
 name: market-sizing
-description: Calculates market size as TAM, SAM and SOM three ways and shows the math. Bottom-up from buyers times annual spend, top-down from dated published figures restated to the sizing year, and a demand check from search volume by country through DataForSEO. Narrows the total to the verticals, countries and size bands the business serves, then sizes the share it can win in three years from its own numbers (customers, retention, GA4 conversion rates, share of search from Search Console and Google Ads impression share, or Shopify and WooCommerce orders). Labels every input as sourced with link and date, measured, given or assumed, makes the methods agree within a stated ratio or explains the gap, and gives low, base and high cases with a sensitivity table. Works from pasted figures with no connection, and writes the model to Google Sheets only after the user confirms. Use when someone asks for TAM SAM SOM, how to calculate market size, a market sizing example, or what share of a market they can win.
+description: Calculates TAM, SAM and SOM three ways (bottom-up, top-down, search demand by country) with every input labelled, then sizes the three-year share you can win from GA4, Search Console, Google Ads or Shopify data. Use when asked for TAM SAM SOM, how to calculate market size or what share we can win.
 ---
 
 # Market Sizing (TAM, SAM, SOM)

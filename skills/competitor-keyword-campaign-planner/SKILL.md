@@ -1,6 +1,6 @@
 ---
 name: competitor-keyword-campaign-planner
-description: Plans a Google Ads competitor campaign that bids on rival brand names. Rates each rival go, test or skip from its search volume and CPC, whether it defends its own name, and which rivals your own search terms show buyers already comparing you with, then drafts the campaign paused with one ad group per rival and intent, negatives for login, support and job searches, comparison ads that keep rival trademarks out of the ad text, a comparison landing page brief, a budget forecast and honest Quality Score, CPC and conversion rate expectations. Works from a list of rival names alone, or on live data through the InsightfulPipe MCP (Google Ads Keyword Planner, search terms and DataForSEO results pages). Use when someone asks to bid on competitor keywords, build a competitor or conquest campaign, target a rival's brand name, or asks whether they can bid on competitor brand names. Creates nothing until the user confirms.
+description: Plans a Google Ads competitor campaign on rival brand names, rating each rival go, test or skip and drafting paused ad groups, negatives, comparison ads without rival trademarks and a landing page brief. Use when asked to bid on competitor keywords, build a conquest campaign, or if that is allowed.
 ---
 
 # Competitor Keyword Campaign Planner

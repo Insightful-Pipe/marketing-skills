@@ -1,6 +1,6 @@
 ---
 name: google-ads-audience-analyzer
-description: Analyzes Google Ads audiences on live data through the InsightfulPipe MCP. Pulls audience segments and their observation or targeting setting, remarketing list sizes, Customer Match lists and age, gender, income and parental status performance itself, checks what Google's personalized advertising policy allows for the business, tests each segment against its own campaign, and ranks the actions by spend involved. Use when someone asks how their audiences, remarketing lists, Customer Match lists or demographics perform in Google Ads, or which segments to exclude or watch. Offers demographic exclusions and observation lists as actions it runs only after the user confirms.
+description: Analyzes Google Ads audience segments, remarketing lists, Customer Match and age, gender, income and parental status against each campaign, after a personalized ads policy check. Use when asking how audiences or demographics perform, if lists are big enough, or which segments to exclude.
 ---
 
 # Google Ads Audience Analyzer

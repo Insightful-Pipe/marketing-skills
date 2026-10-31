@@ -1,6 +1,6 @@
 ---
 name: blog-lead-conversion-planner
-description: Plans how to turn blog readers into leads. Ranks every article by the leads it falls short of (GA4 sessions and key events by landing page, against the blog's own rate or the user's target), reads why people came from each article's Search Console queries, matches it to an offer the business really has (sign-up or trial, demo, a template or checklist download, the newsletter, a related guide), writes the in-article calls to action with where each one sits, checks in GA4 and Google Tag Manager whether CTA clicks are tracked before judging them, and sets a blog-to-lead rate and review point per article. Works from a pasted GA4 export and article list when nothing is connected. Use when someone asks how to get leads from a blog, which posts should convert better, what content upgrade or call to action fits a post, or wants blog CTA examples for their own articles. Inserts the CTAs into a WordPress post only after the user confirms the exact change.
+description: Plans blog calls to action and content upgrades from GA4 and Search Console, ranking articles by the leads they miss and matching each to an offer you already have. Use when blog posts get traffic but no leads, which posts should convert better, or what CTA fits a post.
 ---
 
 # Blog Lead Conversion Planner

@@ -1,6 +1,6 @@
 ---
 name: website-personalization-planner
-description: Plans website and landing page personalization from measured data, on live data through the InsightfulPipe MCP or from a pasted segment report. Finds the visitor groups that convert well below the rest of a page (traffic source, ad campaign or keyword theme, country, device, new or returning, and industry for B2B from LinkedIn), keeps only groups with a measured gap and enough traffic to test, writes the headline, subhead, offer, proof and CTA each group should see using the words that group searched, and sets the targeting rule (URL parameter, allowlisted dynamic text, geo or device), the rule order, the holdout sized from the group's own traffic, and the safe default for everyone else. Use when someone asks for a website personalization strategy, personalized or dynamic landing pages, dynamic text replacement, or which audiences should see a different version of a page. Can register the GA4 dimension for the readout and add the variant parameter to a Google Ads campaign, only after the user confirms.
+description: Plans website and landing page personalization from GA4, Google Ads and LinkedIn data, picking visitor groups that convert below the rest, writing their headline and CTA, and sizing holdouts. Use when asked for a personalization strategy, personalized landing pages, or dynamic text replacement.
 ---
 
 # Website Personalization Planner

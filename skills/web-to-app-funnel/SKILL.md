@@ -1,6 +1,6 @@
 ---
 name: web-to-app-funnel
-description: Plans a web-to-app (web2app) funnel that sells a mobile app subscription on the web before the install, then hands the buyer into the app. Checks the current App Store and Google Play rules on outside purchases at run time, models the store fee saved against the drop-off the extra web steps add using the user's own prices and funnel rates, and only then designs the funnel (ad, landing page, quiz, web paywall, checkout, account, download and login handoff) with the GA4, Meta, Google Ads and TikTok events each step needs and the way to tie a web purchase to the later app login. Use when someone asks about a web2app or web to app funnel, selling app subscriptions on the web, a web paywall or web checkout for an app, avoiding the app store fee, or whether to link out from the app to web checkout. Works from pasted numbers; reads GA4, Google Ads, Meta, TikTok and Stripe through the InsightfulPipe MCP when connected. Creates tracking only after the user confirms.
+description: Plans a web2app funnel that sells app subscriptions on the web before install, weighing the store fee saved against drop-off, checking App Store and Google Play rules, and mapping GA4, Meta, Google Ads and TikTok events. Use when asked about web to app, a web paywall, or avoiding the app store fee.
 ---
 
 # Web-to-App Funnel Planner

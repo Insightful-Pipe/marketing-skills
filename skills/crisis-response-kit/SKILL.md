@@ -1,6 +1,6 @@
 ---
 name: crisis-response-kit
-description: "Handles a PR crisis that is happening now. Reads the situation first, rates severity from numbers (mention rate against the same hours on earlier days, comments on your own posts, news coverage, share of customers affected, downtime, branded search, and hard triggers such as personal data or safety), then writes the holding statement first, the full statement and apology once facts are confirmed, the customer email, a staff note, social replies by comment type, a reactive Q&A for spokespeople and correction requests for inaccurate articles. Lists the posts, emails and ads to pause, sets update times and ends with a post-incident review. Also covers one negative article or one viral complaint. Works from a pasted description; with the InsightfulPipe MCP it reads X, Facebook, Instagram, DataForSEO coverage, Search Console and the scheduled queue, and pauses or posts only after a yes on each item. Use when someone asks how to respond to a PR crisis, negative press or backlash, or needs a holding statement."
+description: Handles a PR crisis happening now. Rates severity from mentions, coverage and branded search, writes the holding statement, apology, customer email and social replies, and lists what to pause. Use for negative press, backlash or a viral complaint. Not for planning ahead (use crisis-comms-plan)
 ---
 
 # Crisis Response Kit

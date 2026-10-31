@@ -1,6 +1,6 @@
 ---
 name: newsletter
-description: Writes email newsletters from what you actually published and what your readers actually clicked. Pulls the month's posts, their traffic (GA4, Search Console or public search estimates) and past issue results (Klaviyo or Mailchimp) through the InsightfulPipe MCP, picks the lead story and supporting items by a stated rule, and drafts the issue in one of nine formats with subject lines, preview text, tagged links and checks. Also generates issue ideas, reviews a sent issue, plans cross-promotion, turns posts into an email course, and plans a new newsletter's launch (promise, format, cadence, platform, targets) and revenue (sponsor slots priced from its own delivered and unique clicks, a media kit, a paid tier, affiliates). Use for a newsletter, a weekly or monthly roundup, newsletter ideas, a review, growth or swaps, an email course, starting a newsletter, monetizing one, or getting sponsors. Saves a draft campaign only after the user confirms; it never sends.
+description: Writes email newsletter issues from your published posts, GA4 or Search Console traffic and past Klaviyo or Mailchimp clicks, with subject lines and preview text. Use when asked for a monthly roundup, newsletter ideas, a sent issue review, launching a newsletter or pricing sponsor slots.
 ---
 
 # Newsletter

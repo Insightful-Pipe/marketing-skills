@@ -1,6 +1,6 @@
 ---
 name: ai-shopping-visibility
-description: Checks whether a store's own products are named when shoppers ask ChatGPT, Google AI Overviews, Perplexity and other assistants what to buy, and finds the data reason behind every miss. Runs the category's buying questions, reads the ChatGPT product cards (product, store, price) and the products an AI Overview names, matches every answer to the catalogue, then checks each product that should have been named against its feed, Product markup, page and store price and stock, reviews and merchant listings in Search Console, and ranks the fixes. Works from a pasted product list or feed export and pasted AI answers, or pulls DataForSEO, Shopify, WooCommerce, Magento, Merchant Center, Search Console and the crawler through the InsightfulPipe MCP. Use for ChatGPT shopping SEO, how to get products recommended by ChatGPT, AI shopping visibility, products missing from AI answers, or a reseller winning the ChatGPT card for your product. Read-only, it drafts feed rows and markup for approval.
+description: Checks which of a store's products ChatGPT shopping cards and Google AI Overviews name for buying questions, then traces each miss to feed, Merchant Center, markup, price or stock data in Shopify, WooCommerce or Magento. Use when asked about ChatGPT shopping SEO or products missing from AI answers.
 ---
 
 # AI Shopping Visibility Audit

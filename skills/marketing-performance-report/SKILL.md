@@ -1,6 +1,6 @@
 ---
 name: marketing-performance-report
-description: Builds a marketing performance report from every connected source through the InsightfulPipe MCP, or from pasted exports. Finds the ad, analytics, search and email accounts itself, pulls this period and the last one, checks whether the numbers can be trusted before writing a word, and delivers the shape the reader needs, a weekly report, a monthly client report, an executive one-pager, a stand-up brief, a quarterly business review (QBR), annual or board deck with one chart per slide, a campaign wrap-up graded against the brief, or a batch of white-label reports for every client in an agency's book, in plain English or as a narrative. Use when someone asks for a marketing report, a weekly or monthly update, a client report, a KPI summary, a QBR or annual review deck, board slides on marketing, a post-campaign analysis or campaign recap, monthly reports for all clients, a team stand-up brief, or wants a report restyled as slides or explained in plain words.
+description: Writes marketing reports across ad platforms, GA4, Search Console and Klaviyo, from weekly updates and monthly client reports to QBR or board decks, campaign wrap-ups and batch agency reports. Use when asked for a marketing report, a monthly client report, a QBR deck, or a campaign recap.
 ---
 
 # Marketing Performance Report

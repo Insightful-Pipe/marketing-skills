@@ -1,6 +1,6 @@
 ---
 name: retail-media-planner
-description: Plans and reviews retail media ads beyond Amazon (Walmart Connect, Instacart Ads, Target's Roundel, and any other retail network the brand runs) from each network's own export. Reads how each export counts sales (attribution window, model, advertised versus other items, view-through, in-store), puts every network on one scale, works out break-even ROAS per retailer from the brand's own wholesale price and cost, grades each network, splits next period's budget from the brand's real sales by retailer, and says which items to push, fix, hold for stock or add, which search terms to copy to other networks and which to negate. Use when someone asks how to split a retail media budget, whether Walmart advertising, Instacart ads or Roundel is working, which network deserves more money, or wants one report across retailers. Works from pasted or uploaded exports; reads them from Google Sheets or BigQuery when connected through the InsightfulPipe MCP, and saves the plan to a sheet only after the user confirms.
+description: Compares retail media beyond Amazon (Walmart Connect, Instacart Ads, Target Roundel) by rebuilding every network's ROAS on one attribution scale against break-even, then splits the budget. Use when asked how to split a retail media budget, or whether Walmart or Instacart ads work.
 ---
 
 # Retail Media Planner

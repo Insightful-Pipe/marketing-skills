@@ -1,6 +1,6 @@
 ---
 name: email-platform-setup-migration
-description: Plans an email platform migration (ESP migration) or a first setup, such as Mailchimp to Klaviyo, Klaviyo to Mailchimp, or any platform from exports. It inventories lists, segments, flows, templates, forms, custom fields, suppressions and consent on the old platform, decides what to keep, rebuild or retire, maps every field and subscriber status to the new platform, checks that store events (viewed product, started checkout, placed order) and the product catalog arrive on the new platform before flows are rebuilt, and writes a dated cut-over plan with go or no-go gates so nobody is emailed twice, missed, or re-subscribed after opting out. Use when someone asks to switch email marketing platforms, migrate an email list to a new provider, plan a Mailchimp to Klaviyo migration, needs an email platform migration checklist, or is setting up an email platform for the first time. Creates lists, templates, fields or suppressions only after the user confirms.
+description: Plans an email platform migration such as Mailchimp to Klaviyo, or a first setup, with inventory, field and consent mapping, suppressions imported first, store event checks and a dated cut-over plan. Use when switching email platforms, migrating an email list or needing an ESP migration checklist.
 ---
 
 # Email Platform Setup and Migration Planner

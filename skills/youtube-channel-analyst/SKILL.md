@@ -1,6 +1,6 @@
 ---
 name: youtube-channel-analyst
-description: Runs a monthly YouTube channel review on live data through the InsightfulPipe MCP, covering views, watch time, retention curves, Shorts versus long-form, which videos and formats win subscribers, revenue and RPM, playback locations, devices, cards and upload history, graded with the five actions worth doing next. Its title and thumbnail test mode takes a YouTube Studio export of impressions and CTR by traffic source, ranks videos against the channel's own median CTR per source, separates packaging problems from content problems using retention, writes three title and thumbnail concepts per video, and sets up a Test & Compare A/B test. Use for a YouTube channel report or monthly review, why views or subscribers changed, where viewers drop off, Shorts versus long videos, upload consistency, titles or thumbnails that undersell a video, YouTube thumbnail ideas, improving YouTube click-through rate, or a YouTube thumbnail A/B test. Offers title and description edits it runs only after the user confirms.
+description: Reviews a YouTube channel month over month from YouTube Analytics, covering views, watch time, retention drop-offs, Shorts versus long-form, subscribers and RPM, and ranks thumbnails by CTR from a Studio export. Use when asked for a YouTube channel report, why views dropped or a thumbnail A/B test.
 ---
 
 # YouTube Channel Analyst

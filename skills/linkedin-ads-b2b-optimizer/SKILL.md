@@ -1,6 +1,6 @@
 ---
 name: linkedin-ads-b2b-optimizer
-description: Optimizes LinkedIn Ads for B2B lead generation and account-based marketing on live data through the InsightfulPipe MCP. Pulls campaigns, ads, placements and the seniority, job title, job function, company size and industry breakdowns itself, works out cost per qualified lead by seniority, finds the audiences worth paying for and the ones leaking spend, checks bids and budgets against LinkedIn's live suggested bids, flags low-CTR ads, and plans the next campaign structure (objectives, targeting, formats, lead forms, content, budget). Use when someone asks to optimize LinkedIn Ads, lower cost per lead, see which titles, seniorities, company sizes or industries perform, pause weak LinkedIn ads, fix LinkedIn bids or budgets, plan a LinkedIn ABM or B2B lead gen program, or decide how much to spend on LinkedIn. Pauses ads and changes bids, budgets, targeting or Audience Network only after the user confirms the exact change.
+description: Optimizes LinkedIn Ads for B2B by finding which seniorities, job titles, company sizes and industries earn qualified leads, then fixes bids, budgets, weak ads and targeting. Use when asked to lower LinkedIn cost per lead, see which titles perform, fix bids or plan LinkedIn spend.
 ---
 
 # LinkedIn Ads B2B Optimizer

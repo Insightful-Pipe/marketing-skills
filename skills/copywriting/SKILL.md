@@ -1,6 +1,6 @@
 ---
 name: copywriting
-description: Writes, reviews and rewrites conversion copy from live evidence through the InsightfulPipe MCP. Pulls buyers' search words (Google Ads search terms, Search Console), the ad lines that win, the page's copy and competitors' claims, runs a 10-point copy review, then writes website copy, headlines, taglines, product names, hooks, ads and emails, each line tied to its evidence. Also humanizes an AI draft (counts machine-text habits per 100 words before and after, edits toward a voice profile measured from the brand's best posts, pages and ads, checks every claim, never adds length) and mines voice of customer copy from reviews and comments (Google, app stores, WooCommerce, social, YouTube or a pasted CSV) into a phrase bank counted by distinct person for headline, benefit, objection and proof slots. Use to write, rewrite, critique or proofread copy, a headline, tagline, hook or CTA, to make AI writing sound human, or to turn reviews into copy. Offers a paused challenger search ad only after the user confirms.
+description: Writes and rewrites conversion copy, headlines, taglines, hooks, CTAs, ads and emails from Google Ads search terms, Search Console and winning ad lines, and humanizes AI drafts. Use when you need copy written, critiqued or proofread, AI writing made to sound human, or reviews turned into copy.
 ---
 
 # Copywriting

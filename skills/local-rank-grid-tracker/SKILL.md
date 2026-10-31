@@ -1,6 +1,6 @@
 ---
 name: local-rank-grid-tracker
-description: Local rank tracker by area. Checks where a local business shows in Google's local pack (the three-listing map pack in search results) for its service keywords from each town, neighbourhood or ZIP code it serves, with pack and organic positions kept apart. Maps strong, partial and gap areas, names the rivals that hold each area, cross-checks the keywords against the Business Profile's own search-keyword impressions, and compares with the last saved run to show what changed after profile or site work. Runs on live results through the InsightfulPipe MCP (DataForSEO), with Google Business Profile and Google Sheets as upgrades, or on a pasted rank export. Use when someone asks to check local rankings by city or ZIP code, run a map pack or Google Maps rank check across a service area, or track local rankings after Business Profile changes. Caps searches per run and saves history only after the user confirms.
+description: Tracks local map pack rankings by area, checking each service keyword from every town, neighborhood or ZIP code served, and maps strong and gap areas and who holds them. Use when asked to check local rankings by city or ZIP code, run a map pack rank check, or track rankings after profile work.
 ---
 
 # Local Rank Tracker by Area

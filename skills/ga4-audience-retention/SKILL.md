@@ -1,6 +1,6 @@
 ---
 name: ga4-audience-retention
-description: Analyses who a GA4 property's users are and whether they come back, from live data through the InsightfulPipe MCP. Pulls new vs returning users by week, runs GA4's own weekly retention cohorts, compares the value of users by the channel that first brought them, breaks performance down by device, browser, country and city, measures the mobile vs desktop gap, and reads age, gender and interests when GA4 has them. Flags segments that behave like automated traffic before it ranks anything. Use when someone asks for a new vs returning report, a retention or cohort analysis, user lifetime value by channel, a device, browser or geo breakdown, a mobile conversion gap, or a demographics and interests report. Offers to create a GA4 audience for a segment it finds, only after the user confirms.
+description: Analyses GA4 users with new vs returning trends, weekly retention cohorts, user value by first channel, device, browser, country and city splits, the mobile gap and demographics. Use when asked for a cohort or retention report, new vs returning users, or a geo or device breakdown.
 ---
 
 # GA4 Audience and Retention Analyst

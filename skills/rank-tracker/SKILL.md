@@ -1,6 +1,6 @@
 ---
 name: rank-tracker
-description: Tracks where a site ranks on Google for its target keywords, on live data through the InsightfulPipe MCP. Takes a live SERP snapshot for up to 5 keywords a run, sets it next to the Search Console 28-day average and dated DataForSEO history, shows which SERP features are on page one and which ones the site or its YouTube videos already hold, ranks the feature opportunities, and checks the local 3-pack in a city. Use when someone asks for rank tracking, keyword positions, a live SERP check, SERP features, featured snippet or AI Overview opportunities, or local pack rankings. Can save each snapshot to a Google Sheet only after the user confirms.
+description: Tracks Google rankings for up to 5 keywords a run with a live SERP snapshot set against Search Console averages, shows which SERP features you hold and could win, and checks the local 3-pack. Use when asked for rank tracking, keyword positions, a live SERP check or featured snippet opportunities.
 ---
 
 # Rank and SERP Feature Tracker

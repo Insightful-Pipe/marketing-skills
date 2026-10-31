@@ -1,6 +1,6 @@
 ---
 name: x-ads-manager
-description: Reviews and manages an X (Twitter) Ads account on live data through the InsightfulPipe MCP. Checks account readiness, promoted post engagement rate, keyword, follower lookalike and conversation targeting, video completion, X Pixel conversions and the cost per engagement trend, writes the monthly client report, drafts a campaign and line item from a brief, and writes promoted post variations. Use when someone asks to audit, review, report on, pause or build X Ads or Twitter Ads. Creates or pauses anything only after the user confirms the exact payload, and always creates paused.
+description: Audits and manages X Ads (Twitter Ads), grading promoted post engagement, keyword, lookalike and conversation targeting, video completion, X Pixel conversions and cost per engagement, and drafts paused campaigns and posts. Use when asked to audit, report on, pause or build X or Twitter ads.
 ---
 
 # X Ads Manager

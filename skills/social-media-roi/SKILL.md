@@ -1,6 +1,6 @@
 ---
 name: social-media-roi
-description: Works out the ROI of organic social media in money, per network. Reads GA4 sessions, key events and revenue by source, the first-user view for assists, store orders with social-only discount codes (Shopify or WooCommerce), organic views from the social connectors and the brand's own CPMs from its ad accounts, then sets them against team hours, tools, production and creator fees. Returns a floor-to-ceiling ROI range per network, the attribution model and its blind spots, a decision per network and a UTM convention for posts and bio links. Use when someone asks for social media ROI, how to measure social media ROI, a social media ROI calculator, whether organic social is worth the time, or which network deserves more effort. Works from pasted exports with no connection.
+description: Calculates organic social media ROI in money per network from GA4, store orders, discount codes and team costs, giving a floor to ceiling range, a decision per network and a UTM plan. Use when asked for social media ROI, a social media ROI calculator or whether organic social is worth the time.
 ---
 
 # Social Media ROI Analyst

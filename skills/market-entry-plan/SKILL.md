@@ -1,6 +1,6 @@
 ---
 name: market-entry-plan
-description: Builds a market entry strategy for one country or region that has already been chosen, for software, service and B2B businesses. Starts from the demand the business already gets from that market (Search Console and GA4 by country, paying customers by billing country, Google Ads and Meta results by location), prices local search from DataForSEO volumes and CPCs, lists the rivals that rank and advertise there from public ad libraries, then picks the entry route (sell from home, directory, local partner, local entity) by stated rules, says what to localise and when, sets local prices, ranks channels against a cost-per-customer ceiling from the business's own numbers and sizes a 90-day test with stop rules. Use when someone asks for a market entry plan, international expansion strategy, how to expand a business internationally or how to launch in or test a new country. Works from pasted data with nothing connected. Can put the plan into a Google Sheet only after the user confirms.
+description: Plans entry into one chosen country, using demand by country from Search Console, GA4 and ads, local search costs and rival ads to set the route, local prices and a 90-day test. Use when asked for a market entry or international expansion plan. Not for picking countries (use market-research).
 ---
 
 # Market Entry Plan

@@ -1,6 +1,6 @@
 ---
 name: ecommerce-store-report
-description: Builds the weekly or monthly sales report for an online store from its own orders, not from ad-platform claims. Works from an orders export (Shopify, WooCommerce, Magento or any cart) or pulls orders through the InsightfulPipe MCP, then reports net sales, orders, AOV, new and returning buyers, sales by channel (online, POS, wholesale, marketplace apps) and by country, rising and falling products, discount and refund share and payment methods, against the prior period and the same period last year, and explains the three biggest movements in plain words. Flags partial periods and refunds booked in a later period, adds GA4 traffic and Klaviyo email revenue when connected, and saves the table to Google Sheets only after the user confirms. Use when someone asks for a Shopify sales report, a monthly or weekly store report, an ecommerce KPI report, or why store sales went up or down.
+description: Builds the weekly or monthly sales report from a store's orders (Shopify, WooCommerce, Magento), with net sales, AOV, new and returning buyers, channels, countries and products against last period and last year. Use when asked for a Shopify sales report, ecommerce KPI report, or why sales changed.
 ---
 
 # Ecommerce Store Report

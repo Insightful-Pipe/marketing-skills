@@ -1,6 +1,6 @@
 ---
 name: pmax-asset-group-analyzer
-description: Reviews Google Performance Max campaigns on live data through the InsightfulPipe MCP. Pulls asset groups, assets, signals, search themes, search terms, channel split and placements itself, ranks asset groups against your target, finds weak or missing assets, and explains where the money goes. When an account has no Performance Max yet, it checks readiness and drafts a paused campaign from the account's own search terms and ads. Use when someone asks why PMax isn't working, which asset groups or assets to fix, whether PMax is eating brand traffic, where PMax spend goes, or how to set up a first PMax campaign.
+description: Reviews Google Ads Performance Max campaigns by asset group, asset, audience signal, search term and channel split, and drafts a first PMax campaign when none exists. Use when PMax isn't working, an asset group needs fixing, PMax eats brand traffic or you ask where PMax spend goes.
 ---
 
 # Performance Max Asset Group Analyzer

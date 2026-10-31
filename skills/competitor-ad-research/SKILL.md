@@ -1,6 +1,6 @@
 ---
 name: competitor-ad-research
-description: Researches competitors' live ads in the public Meta, Google, Microsoft and LinkedIn ad libraries through the InsightfulPipe MCP. Finds each competitor's ads itself, then maps their longest-running ads, offers and prices, landing pages, launch volume, new ads this week, hooks and angles, video vs static mix, country differences and the top advertisers for a category keyword, and compares them with your own ads. Use when someone asks what competitors are advertising, wants a swipe file, an ad library comparison, competitor offers or landing pages, or a category ad benchmark. Read only.
+description: Researches competitors' live ads in the public Meta, Google, Microsoft and LinkedIn ad libraries, mapping longest-running ads, offers, landing pages and hooks. Use when asking what competitors advertise, for a swipe file or a category ad benchmark. Not for a SWOT (use competitor-swot-analyzer)
 ---
 
 # Competitor Ad Research

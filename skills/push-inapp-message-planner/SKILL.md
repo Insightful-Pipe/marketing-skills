@@ -1,6 +1,6 @@
 ---
 name: push-inapp-message-planner
-description: Plans an app's or website's push notifications and in-app messages, the push notification strategy end to end. Works out who each platform lets you reach (iOS and Android 13 and later ask permission, older Android is on by default, iPhone web push needs a web app added to the Home Screen), when to show the permission prompt, which lifecycle moments get a push, an in-app message or an email, daily and weekly caps from the app's own opt-outs and uninstalls, quiet hours, and copy checked against length budgets, plus the numbers to track. Reads App Store and Google Play reviews for notification complaints, GA4 app events and hours, and Klaviyo email flows through the InsightfulPipe MCP when connected; push results come from the provider's export. Use for a push notification strategy, push notification examples, in-app messaging best practices, how often to send pushes, when to ask for permission, or why users turn notifications off. Changes nothing.
+description: Plans push notifications and in-app messages for iOS, Android and web, setting the permission ask, caps from the app's opt-outs, quiet hours and copy, using GA4 and App Store and Google Play reviews. Use when asked for a push notification strategy, push frequency or when to ask permission.
 ---
 
 # Push and In-App Message Planner

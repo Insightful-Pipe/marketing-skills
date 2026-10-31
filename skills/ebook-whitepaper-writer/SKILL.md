@@ -1,6 +1,6 @@
 ---
 name: ebook-whitepaper-writer
-description: Writes a whitepaper or an ebook, guide or playbook in full, from a brief, notes and drafts, or by compiling and updating the brand's strongest articles. Delivers the outline, every chapter, one pull quote per chapter, an evidence ledger where each figure carries its source and date, a page-by-page layout brief for the designer and a short summary for the download page. With Search Console and GA4 connected through the InsightfulPipe MCP it picks chapters from the articles that earn the most clicks and key events, fills gaps from real question queries, and sets chapter length from how far readers really get in the brand's long articles. Use when someone asks to write a whitepaper, an ebook, a guide, a playbook or a downloadable report, wants a whitepaper template filled in, or wants their best blog posts turned into one asset. Saves the download page as a WordPress draft only after the user confirms.
+description: Writes a whitepaper, ebook, guide or playbook in full, from a brief or by compiling your best blog posts picked by Search Console clicks and GA4 key events, with an evidence ledger and a layout brief for the designer. Use when asking to write a whitepaper or ebook, or turn blog posts into a guide.
 ---
 
 # Whitepaper and Ebook Writer

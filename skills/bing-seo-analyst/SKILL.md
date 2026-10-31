@@ -1,6 +1,6 @@
 ---
 name: bing-seo-analyst
-description: Analyses a site's Bing search performance on live Bing Webmaster Tools data through the InsightfulPipe MCP. Pulls clicks, impressions, queries, pages, crawl stats and sitemaps itself, asks Bing for link and keyword detail, compares Bing with Google Search Console on the same 28 days, finds the pages Google sends traffic to but Bing never shows, checks crawl health, shows who ranks on Bing for your topics and ranks what to fix first. Use when someone asks how their site does on Bing, for a Bing query, keyword or top pages report, Bing vs Google, Bing crawl errors, Bing backlinks or what to do about Bing SEO. Offers to submit URLs to Bing only after the user confirms.
+description: Analyses Bing search performance from Bing Webmaster Tools, splits brand and non-brand queries, compares Bing with Google Search Console, finds pages Google ranks that Bing never shows and checks crawl health. Use when asked how a site does on Bing, for Bing vs Google or about Bing crawl errors.
 ---
 
 # Bing Webmaster SEO Analyst

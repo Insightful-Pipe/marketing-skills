@@ -1,6 +1,6 @@
 ---
 name: marketing-capacity-planner
-description: Plans whether a marketing team or agency can deliver the work, and which clients make money. Reads a timesheet export, the team's hours and the retainers, measures billable utilisation per person against an editable target band, retainer hours used against hours sold, out-of-scope work and each client's margin (fee minus hours cost minus tools). Sizes each client's recurring work from real account size (active campaigns and ads in Google Ads and Meta, posts on Facebook and Instagram) pulled through the InsightfulPipe MCP, times the team's own hours per unit from the timesheet, so under-priced retainers stand out. Then builds next month's or the next sprint's plan per person, with the team's own estimate accuracy and unplanned-work reserve, and lists what does not fit. Works from pasted exports with nothing connected. Use for team capacity planning, resource capacity planning, a capacity planning template, agency client profitability, billable utilization, retainer hours tracking or scope creep.
+description: Plans team capacity from a timesheet export, with billable utilization per person, retainer hours burned, scope creep and each client's margin, then next month's workload plan. Use for agency client profitability or retainer hours tracking. Not for team structure (use marketing-team-planner).
 ---
 
 # Marketing Capacity Planner

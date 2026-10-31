@@ -1,6 +1,6 @@
 ---
 name: meta-catalog-product-set-planner
-description: Plans Meta catalog ads (Advantage+ catalog ads, formerly dynamic product ads) from profit and stock instead of guesswork. Joins each product's price, stock, unit cost and store sales with its catalog ad spend, keeps out-of-stock, low-stock and low-margin products out of spend, groups the rest into product sets (profit leaders, new arrivals, stock movers, price bands), decides which sets go to broad prospecting and which to viewed or added-to-cart retargeting, writes catalog ad text with Meta's product template tags, and plans price and sale overlays. Works from a pasted catalog CSV, sales export and cost sheet, or live through the InsightfulPipe MCP (Meta Ads, Shopify, WooCommerce, Magento). Use when someone asks to set up Facebook catalog ads, build product sets, split a catalog for prospecting and retargeting, or stop catalog ads spending on products that lose money. Creates or updates product sets only after the user confirms.
+description: Plans Meta Advantage+ catalog ads (dynamic product ads) from margin and stock, keeps losing or low-stock products out of spend, and builds product sets for prospecting and retargeting with ad text. Use when setting up Facebook catalog ads, building product sets, or splitting a Shopify catalog.
 ---
 
 # Meta Catalog Ads and Product Set Planner

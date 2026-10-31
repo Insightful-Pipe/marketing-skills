@@ -1,6 +1,6 @@
 ---
 name: geo-performance-optimizer
-description: Finds where, on which device and at what hour a Google Ads account wastes or earns its money, on live data through the InsightfulPipe MCP. Pulls location (state, metro, city), device and hour-by-day performance itself, grades each slice against its own campaign's CPA, checks location settings and bid adjustments the bid strategy ignores, and returns the change that actually works for each campaign's bid strategy (a bid adjustment, a location or device exclusion, or a drafted ad schedule). Use when someone asks about geo or location performance, location bid adjustments, device bid adjustments, day-parting, ad scheduling, or where and when their ads should run. Offers location and device changes as actions it runs only after the user confirms.
+description: Finds which Google Ads locations, devices and hours waste or earn money, grades each slice against its own campaign CPA and picks the lever the bid strategy actually uses. Use when asking about geo or location performance, device bid adjustments, day-parting or ad scheduling.
 ---
 
 # Geo Performance Optimizer

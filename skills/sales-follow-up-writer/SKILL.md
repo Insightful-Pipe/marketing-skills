@@ -1,6 +1,6 @@
 ---
 name: sales-follow-up-writer
-description: Writes the one-to-one sales follow-up emails that keep an open deal moving, from the rep's own call notes or transcript. Covers the first reply to an inbound demo request, the meeting recap with agreed next steps, proposal chasers, a note that brings another person at the buyer into the thread, a nudge for a deal gone quiet and a polite close-the-file email. Picks which email is due and when from the deal stage, the dates the buyer named and the business days since the last contact, puts one new thing in every chaser instead of "just checking in", and caps follow-ups at three chasers and one closing email per deal. Use when someone asks for a sales follow-up email, a follow-up after a sales meeting or demo, how to follow up on a proposal, or what to send a buyer who went quiet. Works from pasted notes and a deal list; with the InsightfulPipe MCP it reads a Google Sheets deal tracker and dated news from the buyer's site, and logs the next follow-up date only after the user confirms. Never sends email.
+description: Writes one-to-one sales follow-up emails for open deals from call notes, like the demo recap, proposal chasers and a polite last email, with when each is due. Use for a follow-up after a sales meeting or demo, chasing a proposal or a buyer who went quiet. Not for cold email (use cold-email-writer).
 ---
 
 # Sales Follow-Up Email Writer

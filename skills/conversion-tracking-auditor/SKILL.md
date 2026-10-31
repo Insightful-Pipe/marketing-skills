@@ -1,6 +1,6 @@
 ---
 name: conversion-tracking-auditor
-description: Audits conversion tracking end to end on live data through the InsightfulPipe MCP. Reads what Google Ads actually counts (primary and secondary actions, goals, counting, attribution), checks that every counted action still fires, measures conversion lag against lookback windows, checks offline imports and enhanced conversions, then compares the Ads, Meta and LinkedIn conversions with the tags in Google Tag Manager and the key events in GA4. Use when someone asks to audit, check or fix conversion tracking, asks whether their conversions can be trusted, sees conversions drop or double, is moving to Smart Bidding, needs tracking QA before and after a site launch, redesign or platform move (events, key events and ad conversions that vanished, doubled or lost parameters, by page template), or wants a Conversion Linker and Google Ads conversion tag set up in GTM. Offers fixes (conversion settings, GTM tags, GA4 key events, Meta custom conversions) that it runs only after the user confirms.
+description: Audits conversion tracking across Google Ads, GTM, GA4, Meta and LinkedIn, checking what counts, broken tags, double counting, lag and offline imports, plus tracking QA after a site launch. Use when conversions drop or double, before Smart Bidding, or after a redesign.
 ---
 
 # Conversion Tracking Auditor

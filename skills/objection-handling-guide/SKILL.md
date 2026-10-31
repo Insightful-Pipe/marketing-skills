@@ -1,6 +1,6 @@
 ---
 name: objection-handling-guide
-description: Builds a sales objection handling guide from the team's own evidence instead of a stock list. Reads pasted call notes, transcripts and CRM lost reasons, and when connected through the InsightfulPipe MCP also reads comments on the company's Facebook, Instagram, LinkedIn and YouTube posts, Google Business Profile and app store reviews, and Search Console queries that carry doubt words. Sorts each objection into one of seven types, counts the deals and public voices behind it, adds up the pipeline it touched and how often it lost the deal, ranks them, and writes a reply for each (what is fair, one question back, one linked proof point or the proof still to collect, the next step and a short script). Marks which objections a page, ad or one-pager should answer before the call. Use when someone asks for objection handling scripts, common sales objections and responses, a rebuttal sheet or battle-tested replies, or asks why deals stall. Changes nothing in any account.
+description: Builds a sales objection handling guide from your own call notes, lost reasons, comments and reviews, ranking objections by pipeline touched and writing a sourced reply card for each. Use for objection handling scripts, common sales objections and responses, a rebuttal sheet or why deals stall.
 ---
 
 # Sales Objection Handling Guide

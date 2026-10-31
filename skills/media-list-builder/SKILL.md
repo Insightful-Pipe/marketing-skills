@@ -1,6 +1,6 @@
 ---
 name: media-list-builder
-description: Builds a media list for one story from what writers actually published. Finds the journalists, trade and local outlets, bloggers, newsletters and YouTube shows that covered the story's topic, its competitors or its category in the last 6 to 12 months, then gives each writer a beat, recent articles with links and dates, outlet reach, why they fit, a priority score and the contact route they publish. Use when someone asks how to build a media list, wants a media list template filled in, asks how to find journalists to pitch, or needs press targets for a launch, data story or announcement. Works from pasted articles or outlet lists, and pulls dated coverage itself through DataForSEO when that MCP server is connected through InsightfulPipe. Never guesses an email address. Writes the finished list to Google Sheets only after the user confirms.
+description: Builds a media list for one story from journalists, trade outlets, bloggers and YouTube shows that covered your topic or competitors in the last year, with recent articles, scores and contact routes. Use to build a media list or find journalists to pitch. Not for pitches (use media-pitch-writer)
 ---
 
 # Media List Builder

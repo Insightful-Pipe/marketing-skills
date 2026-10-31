@@ -1,6 +1,6 @@
 ---
 name: marketing-psychology
-description: Applies behavioural science to marketing on live evidence through the InsightfulPipe MCP. Tags every live Google Ads headline and description (and Meta ad text, if connected) by persuasion lever, such as social proof, loss framing, urgency, zero price or risk reversal, measures which levers your audience actually clicks and converts on, reads your top landing pages to see where those levers sit, runs an ethics check for dark patterns, and returns ranked, testable changes. Also covers mental models, decision biases, pricing psychology and checklists for pages, emails and ads. Use when someone asks why an offer or page underperforms, which persuasion angles work for their audience, how to apply psychology, cognitive biases or pricing psychology to a page, ad, email or offer, or whether their tactics cross into manipulation. Offers a paused challenger ad and callouts it creates only after the user confirms.
+description: Tests persuasion levers such as social proof, loss framing and urgency on your Google Ads and Meta ad lines, maps where they sit on landing pages and flags dark patterns. Use when asking about cognitive biases, pricing psychology, which persuasion angles work, or manipulative tactics.
 ---
 
 # Marketing Psychology

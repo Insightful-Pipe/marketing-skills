@@ -1,6 +1,6 @@
 ---
 name: international-seo-planner
-description: Plans and audits international SEO for a multi-country or multi-language site. Finds which countries already bring search impressions, sizes each market with local keyword volumes in its own language, picks the URL setup (subfolders, country domains or subdomains) and the right language and region codes, checks hreflang as a whole set across every version (return links, codes, self references, x-default, canonicals, status), finds pages Google shows in the wrong country, and writes the corrected hreflang tags, sitemap entries and a localized keyword list per market. Use when someone asks about international SEO, expanding to a new country or language, hreflang errors or an hreflang checker, an hreflang tag generator, subfolder vs ccTLD for countries, or why the wrong country version ranks. Works from a pasted URL list, sitemap or hreflang export; Search Console, DataForSEO, the crawler and Bing Webmaster through the InsightfulPipe MCP make it run on live data.
+description: Plans international SEO and checks hreflang across country and language versions, sizes new markets with local keyword volume, picks subfolders vs ccTLDs and writes corrected hreflang tags. Use when asked about hreflang errors, expanding to a new country, or the wrong country version ranking.
 ---
 
 # International SEO and Hreflang Planner

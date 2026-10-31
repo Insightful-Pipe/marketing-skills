@@ -1,6 +1,6 @@
 ---
 name: linkedin-ad-copy-writer
-description: Writes LinkedIn ad copy for every format LinkedIn sells (single image and video intro text and headlines, document ad teasers, carousel card lines, Message Ads, Conversation Ads as a full branching tree, event ads and lead form intros) from what already earns leads in the account. Ranks past creatives by cost per lead or result and click rate, breaks the winners down by member seniority and job function, reads their words, then returns a character-counted set with the text before "see more" checked on its own. Works from a pasted brief and past ads or a Campaign Manager export, and reads LinkedIn Ads and the company page through the InsightfulPipe MCP when connected. Use when someone asks for LinkedIn ad copy, sponsored content text, LinkedIn headlines, InMail or Conversation Ad scripts, document or carousel ad copy, or "more ads like our best LinkedIn ad". Can save one single image creative as a draft only after the user confirms.
+description: Writes LinkedIn ad copy from the account's lowest cost per lead ads, with character counts, for intro text, headlines, document, carousel, event, Message Ads and Conversation Ad trees. Use when asked for LinkedIn ad copy, sponsored content text, InMail scripts or more ads like our best one.
 ---
 
 # LinkedIn Ad Copy Writer

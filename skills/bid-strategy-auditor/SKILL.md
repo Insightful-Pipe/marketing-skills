@@ -1,6 +1,6 @@
 ---
 name: bid-strategy-auditor
-description: Audits Google Ads bid strategies on live data through the InsightfulPipe MCP and sets up value-based bidding, data exclusions and seasonality adjustments. Pulls each campaign's strategy, target, Google's status, 12 weeks of conversions, conversion delay, change history, bid simulations and portfolios, then gives every campaign a verdict (working, too early, adjust target, change strategy, or budget is the limit) with a re-check date and a rollback rule. Use when someone asks whether Smart Bidding is working, which bid strategy or target CPA/ROAS to use, why a campaign misses its target or stays in learning, or whether to use portfolios. Also use to value leads from close rates and deal sizes, set conversion value rules, bid on profit or margin instead of revenue, find break-even ROAS, find broken-tracking days for a data exclusion, or size a seasonality adjustment for a short sale. Offers target edits, strategy switches, portfolio changes and conversion values as actions it runs only after the user confirms.
+description: Audits Google Ads Smart Bidding per campaign and sets target CPA or ROAS, value-based and profit bidding, data exclusions and seasonality adjustments. Use when asking if Smart Bidding works, which bid strategy to use, why a campaign is stuck in learning, or what break-even ROAS is.
 ---
 
 # Bid Strategy Auditor

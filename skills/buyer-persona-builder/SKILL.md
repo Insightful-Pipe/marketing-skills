@@ -1,6 +1,6 @@
 ---
 name: buyer-persona-builder
-description: Builds buyer personas and an ideal customer profile from customer evidence pulled live through the InsightfulPipe MCP (Search Console queries, GA4 key events, LinkedIn Ads job function, seniority, industry and size, Meta and YouTube age and gender, Klaviyo, reviews and comments), scores each persona by its sources, and writes the interview script and survey that test it. Three more modes run on pasted text or exports. They plan a round of customer interviews (who to recruit, screener, guide, consent, how many), code transcripts, tickets, reviews and comments into a voice of customer analysis, and rank segments by win rate, deal value and retention. Use when someone asks who their customer is, to build or refresh personas or an ICP, plan an ICP for a new industry, segment an audience, find a target audience's problems, analyse customer feedback or its sentiment, write customer interview questions, find their best customers, or role-play a persona. Can save a persona as a GA4 audience once the user confirms.
+description: Builds buyer personas and an ICP from GA4, Search Console, LinkedIn Ads, Meta and Klaviyo evidence, plus interview plans, voice of customer analysis and best-fit segment ranking. Use when asking who your customer is, to segment an audience, analyse customer feedback or write interview questions.
 ---
 
 # Buyer Persona Builder

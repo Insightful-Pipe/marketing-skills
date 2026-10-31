@@ -1,6 +1,6 @@
 ---
 name: video-to-shorts-clip-finder
-description: Turns a long video, webinar, podcast recording or livestream into 5 to 10 short clips for YouTube Shorts, Instagram Reels, TikTok, LinkedIn, Facebook Reels and X. Works from any transcript with timestamps; when the InsightfulPipe MCP is connected to YouTube, it also reads the video's own audience retention curve to find the moments viewers rewatched or jumped to. Scores every candidate moment, cuts each clip on sentence edges, and writes the hook, title, captions per network, on-screen text and crop notes, checks each clip's length and caption limits per network, and plans the posting order around what is already in the scheduler. Use when someone asks to turn a YouTube video into Shorts, find clips in a podcast or webinar, repurpose a long video into short clips, or plan a week of Reels from one recording. Saves clips as scheduler drafts only after the user confirms.
+description: Finds 5 to 10 short clips in a long video, podcast, webinar or livestream transcript and writes hooks, captions and vertical crop notes for YouTube Shorts, Reels, TikTok and LinkedIn. Use when asked to turn a YouTube video into Shorts, find podcast clips or plan Reels from one recording.
 ---
 
 # Long Video to Shorts Clip Finder

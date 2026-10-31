@@ -1,6 +1,6 @@
 ---
 name: seo-audit
-description: Runs a full SEO audit of a site on live data through the InsightfulPipe MCP, or an E-E-A-T and helpful content review of its key pages. The audit pulls Search Console indexation and performance, Bing crawl stats, PageSpeed lab metrics, on-page tags, redirects and status codes, GA4 landing pages and a backlink summary itself, scores eight areas, and ranks the fixes by the search impressions at stake. Use when someone asks to audit, health-check or diagnose a site's SEO, asks why organic traffic dropped or pages aren't indexed, wants broken links, redirect chains, duplicate titles, missing H1s, thin or orphan pages, canonical, robots, alt text or hreflang checked, or wants a content inventory. Also use for an E-E-A-T checklist, a helpful content audit, author bios and trust pages, or a check of AI-assisted or templated pages against Google's scaled content rules; the review works from URLs or pasted text. Runs Bing sitemap and URL submissions only after the user confirms.
+description: Audits a site's SEO from Search Console, Bing, PageSpeed and GA4, covering indexation, broken links, redirects, titles, H1s, thin pages and speed, ranked by impressions, plus an E-E-A-T and helpful content review. Use when organic traffic dropped, pages aren't indexed, or for an SEO health check.
 ---
 
 # SEO Audit

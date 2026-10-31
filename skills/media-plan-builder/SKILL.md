@@ -1,6 +1,6 @@
 ---
 name: media-plan-builder
-description: Builds a paid media plan from a brief for a launch, a new budget or a campaign flight. Sets success numbers from the user's margin and customer value, picks the ad platforms with a reason for each one left out, checks each line can buy the platform's learning volume, splits the budget by platform and month with a flighting pattern (always-on, pulsed or burst), and forecasts impressions, reach, frequency, clicks, results and cost per result for each line from the platforms' own planning data (Google Keyword Planner, Meta audience estimates, LinkedIn budget pricing, TikTok bid recommendations) through the InsightfulPipe MCP, or from the user's numbers. Every number shows its assumption. Adds the creative per line, launch gates set before spend, and a tracker sheet. Use when someone asks for a media plan or media plan template, how to split a launch budget across ad platforms, or which ad platforms a new business should start with. Writes the tracker into Google Sheets only after the user confirms.
+description: Builds a paid media plan for a launch, new budget or flight across Google, Meta, LinkedIn and TikTok, with target CPA, platform picks, monthly budget split, flighting, forecasts and launch gates. Use when asking for a media plan, how to split a launch budget or which ad platforms to start with.
 ---
 
 # Paid Media Plan Builder

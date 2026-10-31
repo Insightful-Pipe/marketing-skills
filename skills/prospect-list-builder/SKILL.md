@@ -1,6 +1,6 @@
 ---
 name: prospect-list-builder
-description: Builds a B2B prospect list of real target companies from public sources (business listings, Meta, LinkedIn and Google ad libraries, Google search results, App Store and Google Play) through the InsightfulPipe MCP, or from a list the user pastes. Every row carries the dated public evidence that put it there and a reason to reach out. Removes current customers, open deals and do-not-contact names, grades each company against the user's own must-haves, writes people-search filter strings for the user's own prospecting tool, and hands the list to lead enrichment. Agency mode lists local businesses with fixable marketing gaps (no ads running, thin reviews, slow mobile pages). Use when someone asks to find B2B leads, build a lead list, a prospect list, a target account list or an outbound list, or to find local businesses to sell to. Never looks up or guesses personal email addresses, and saves to a new Google Sheets tab only after the user confirms.
+description: Builds a B2B prospect list of real companies from business listings, ad libraries, search results and app stores, each with dated evidence and a reason to reach out, minus customers and open deals. Use to find B2B leads, build a lead list or target account list, or find local businesses to pitch.
 ---
 
 # B2B Prospect List Builder

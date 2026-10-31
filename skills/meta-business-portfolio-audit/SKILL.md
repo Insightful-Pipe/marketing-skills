@@ -1,6 +1,6 @@
 ---
 name: meta-business-portfolio-audit
-description: Audits a Meta Business portfolio (formerly Facebook Business Manager) for setup, access and security. Maps every ad account to the business that owns it and to its Pages, Instagram accounts, datasets (pixels) and catalogs, through the InsightfulPipe MCP or from what the user pastes. Finds a pixel not connected to the ad account that needs it, an ad account with no Page or Instagram account, orphan assets, people and partners who shouldn't have access, and recent campaign, budget, payment and role changes nobody recognises. Use when someone sets up Business Manager, takes over or hands over a portfolio between agencies, asks how to connect a pixel to an ad account, or thinks their Facebook ad account was hacked. Gives a setup checklist, and pauses unrecognised campaigns only after the user confirms.
+description: Audits a Meta Business portfolio (Facebook Business Manager) for ad account ownership, Pages, Instagram, pixels, catalogs, user and partner access, and changes nobody recognises. Use when setting up Business Manager, handing over between agencies, connecting a pixel, or a hacked Facebook ad account.
 ---
 
 # Meta Business Portfolio Audit

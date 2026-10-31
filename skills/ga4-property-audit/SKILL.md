@@ -1,6 +1,6 @@
 ---
 name: ga4-property-audit
-description: Audits a GA4 property's setup and data quality on live data through the InsightfulPipe MCP, or sets up a new or empty property step by step. The audit reads the property settings, streams, retention, key events, enhanced measurement, custom definitions, Google Ads and BigQuery links and the GA4 tag in Google Tag Manager, then checks tag coverage against Search Console, Unassigned and (not set) traffic, cross-domain gaps, bots and spam hostnames, scores eight areas and ranks the fixes. Setup mode is a GA4 setup checklist in order (time zone and currency, retention, data stream, installing the tag with GTM, WordPress or Shopify, enhanced measurement, internal traffic, unwanted referrals, cross-domain, key events, Google Ads, Search Console and BigQuery links), checked on the live property or from Admin screenshots. Use when someone asks to audit, health-check or take over a GA4 property, asks why GA4 numbers look wrong, or asks how to set up Google Analytics 4. Changes settings only after the user confirms.
+description: Audits a GA4 property's setup and data quality, from streams, key events, retention and links to Unassigned traffic, bots and coverage against Search Console, or walks a new property through setup. Use when GA4 numbers look wrong, taking over a property, or setting up GA4.
 ---
 
 # GA4 Property Audit

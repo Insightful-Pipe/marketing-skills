@@ -1,6 +1,6 @@
 ---
 name: linkedin-ads-auditor
-description: Audits a LinkedIn Ads account on live data through the InsightfulPipe MCP. Pulls campaigns, groups, ads, conversions, lead forms, placements, reach, demographics and daily delivery itself, grades eight areas (tracking, efficiency and campaign structure, Audience Network and expansion, targeting, frequency, bidding and pacing, ad formats, lead gen and lead quality) and ranks the fixes by money at stake. Use when someone asks why LinkedIn CPL is high, how to improve LinkedIn lead quality, to audit or take over a LinkedIn Ads account, to review LinkedIn targeting or how to reorganise LinkedIn campaigns, or for a LinkedIn report on event, message, document, video or thought leader ads, Audience Network or expansion on vs off, frequency, bid types, group pacing or Insight Tag health. Offers a few setting changes it runs only after the user confirms.
+description: Audits a LinkedIn Ads account across tracking, structure, Audience Network, targeting, frequency, bidding, formats and lead quality, ranking fixes by spend at stake. Use when asked to audit a LinkedIn account, why LinkedIn CPL is high, check the Insight Tag or reorganise campaigns.
 ---
 
 # LinkedIn Ads Auditor

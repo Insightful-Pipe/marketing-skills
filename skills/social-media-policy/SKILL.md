@@ -1,6 +1,6 @@
 ---
 name: social-media-policy
-description: "Writes a complete social media policy pack for a business: employee social media guidelines, public community guidelines with the moderation rules behind them, a post approval workflow, a comment response-time and escalation matrix, account access rules and disclosure rules for sponsored posts and employees, plus a regulated-industry checklist (finance, health, alcohol) and a list of every clause that needs legal review. Use when someone asks for a social media policy or template, social media guidelines for employees, community guidelines, moderation rules or who approves posts. Works from what the user describes or pastes; with Facebook Pages or Instagram connected through the InsightfulPipe MCP it reads 90 days of the account's own comments to calibrate the moderation rules, and sets reply targets from the measured reply times. Not legal advice. Offers to hide spam, abuse and personal-data comments only after the user confirms the exact list."
+description: Writes a social media policy pack with employee guidelines, community guidelines, moderation rules, post approvals, reply times and disclosure rules, plus regulated industry checklists. Use when asked for a social media policy template, employee social media guidelines or community guidelines.
 ---
 
 # Social Media Policy Writer

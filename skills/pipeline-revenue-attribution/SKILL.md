@@ -1,6 +1,6 @@
 ---
 name: pipeline-revenue-attribution
-description: Credits CRM pipeline and closed revenue to the sources that produced them, paid and unpaid (each ad campaign, organic search, email, referrals, partners, events), from the UTMs and click ids stored on each lead, and reports cost per qualified lead, per opportunity and per won deal, pipeline and revenue per dollar, days to close and sales velocity by source. Compares first-touch with last-touch credit and sourced against influenced pipeline, marks recent months as still maturing from the business's own lead-to-close time, names the sources whose leads stall at the first stage, and builds the qualified stages as an offline conversion import set. Works from a pasted CRM export; pulls spend from Google Ads, Meta, LinkedIn and Microsoft Ads, and the export from Google Sheets or BigQuery, through the InsightfulPipe MCP. Use when someone asks for B2B marketing attribution, pipeline or revenue by channel, closed-loop reporting, cost per opportunity, or which campaigns bring leads that never close.
+description: Credits CRM pipeline and closed revenue to every source and campaign from a CRM export plus ad spend, with cost per opportunity and won deal, first vs last touch, sourced vs influenced and stalled leads. Use when asking for B2B attribution, pipeline or revenue by channel or closed-loop reporting.
 ---
 
 # Pipeline and Revenue Attribution

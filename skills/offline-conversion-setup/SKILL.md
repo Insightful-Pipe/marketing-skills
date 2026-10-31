@@ -1,6 +1,6 @@
 ---
 name: offline-conversion-setup
-description: Sets up offline conversion tracking so Google Ads, Microsoft Ads, Meta, LinkedIn and ChatGPT Ads bid on the leads that become customers, not on form fills. Measures the current setup on the user's own CRM export (share of leads carrying a click ID, per entry path), picks the stage each platform should bid on from that stage's real monthly count and how many land inside the platform's window, values every stage from the account's own win rate, writes the script that keeps click IDs and UTMs in hidden form fields, maps CRM stages to conversion actions, sets a daily upload schedule with GA4 Measurement Protocol events, then checks how many uploads each platform matched. Use when someone asks to import offline conversions, send CRM results or qualified leads back to Google Ads, capture the GCLID in a hidden form field, set up offline conversion tracking, or fix uploads that get rejected. Works from a pasted CRM export or through the InsightfulPipe MCP, and uploads only after the user confirms.
+description: Sets up offline conversion imports so Google Ads, Microsoft Ads, Meta, LinkedIn and ChatGPT Ads bid on CRM stages, valuing each stage and writing a GCLID hidden field script, stage map and daily uploads. Use when importing offline conversions, sending qualified leads back or fixing rejected uploads.
 ---
 
 # Offline Conversion Setup

@@ -1,6 +1,6 @@
 ---
 name: meta-ad-rejection-fixer
-description: Fixes rejected Facebook and Instagram ads and restricted Meta ad accounts. Finds disapproved, with-issues and stuck-in-review ads and disabled or restricted ad accounts, explains in plain words which Meta policy each one most likely hit, rewrites the copy and flags the image or video so it can pass, checks whether the campaign needs a special ad category (housing, employment, financial products, social issues or politics) and what targeting that removes, and drafts the review request or appeal. Use when someone says their Facebook ad was rejected or not approved, their ad account is disabled or restricted, or they want to appeal a Meta decision. Works from a pasted rejection notice or Account Quality screen, or reads the account through the InsightfulPipe MCP. Never submits an appeal; creates a replacement creative only after the user confirms.
+description: Fixes rejected Facebook and Instagram ads and disabled or restricted Meta ad accounts. Names the likely policy, rewrites the copy, checks special ad categories and drafts the appeal. Use when a Facebook ad was rejected or not approved, an ad account is disabled, or to appeal a Meta decision.
 ---
 
 # Meta Ad Rejection and Account Restriction Fixer

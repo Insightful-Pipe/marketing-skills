@@ -1,6 +1,6 @@
 ---
 name: onboarding-cro
-description: Maps the new-user journey from first visit to signup, onboarding, activation and the first return, on live GA4 data pulled through the InsightfulPipe MCP, finds the step that loses the most people, and designs the onboarding fix (activation metric, first-run patterns, onboarding emails, personalisation). Use when someone asks to improve onboarding, activation, time to value, the first-run or new-user experience, the "aha moment", or to design or map a user journey. Reads Klaviyo onboarding flows when connected, and offers a key event and stage audiences that it creates only after the user confirms.
+description: Maps the new user journey in GA4 from first visit to activation and return, finds the biggest drop and designs the onboarding fix and emails, reading Klaviyo flows. Use when asked to improve onboarding, activation, time to value or the aha moment. Not for signup pages (use signup-flow-cro).
 ---
 
 # Onboarding CRO

@@ -1,6 +1,6 @@
 ---
 name: podcast-episode-kit
-description: Preps and packages one podcast episode. Before recording it writes a sourced guest brief, a podcast episode outline timed to the target length, and podcast interview questions in order that skip what the guest already said on other shows. After recording it turns the transcript into title options, short and full descriptions, show notes with timestamps and links, chapters checked against YouTube and Spotify rules, verbatim pull quotes and the episode page, each timestamp and quote citing its transcript line. Through the InsightfulPipe MCP, titles use phrases with measured search volume (DataForSEO, Search Console) and are checked against the show's best YouTube episodes. Use when someone asks for podcast show notes, a show notes template, episode titles, chapters, interview questions for a guest, or an episode outline. Works from a pasted transcript with no connection. Saves a WordPress draft only after the user confirms.
+description: Preps and packages one podcast episode, with the guest brief, timed outline and interview questions before recording, then titles, descriptions, show notes with timestamps, chapters and quotes from the transcript. Use when asking for podcast show notes, episode titles, chapters or guest questions.
 ---
 
 # Podcast Episode Prep and Show Notes

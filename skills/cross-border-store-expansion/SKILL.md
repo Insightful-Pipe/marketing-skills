@@ -1,6 +1,6 @@
 ---
 name: cross-border-store-expansion
-description: Sets up an online store to sell into countries it has already chosen. Prices each product per market on landed cost (duty, VAT or GST, payment and currency fees) so margin holds, rounds to the store's own price endings, sets shipping rates and free-shipping thresholds from the store's own order values, plans duties and taxes at checkout, local payment methods, which pages to translate first and a launch checklist per market. Before a market goes live it checks that market against the store's own orders, conversion and search clicks from that country. Works from a described product and country list, or reads Shopify, WooCommerce or Magento plus GA4, Search Console and DataForSEO through the InsightfulPipe MCP. Use when someone asks how to sell internationally on Shopify, how to set up Shopify Markets, what to charge in another currency, or how to launch a store in new countries. It can draft a hidden international shipping, duties and returns page only after the user confirms.
+description: Sets up a store to sell in countries already chosen, pricing each market on landed cost with duty, VAT and currency fees, plus shipping rates, local payments, translation and a launch checklist. Use when asked to set up Shopify Markets, sell internationally or price in another currency.
 ---
 
 # Cross-Border Store Setup Planner

@@ -1,6 +1,6 @@
 ---
 name: cold-email-infrastructure-planner
-description: Plans the cold email sending setup before the first email goes out, from the user's own weekly target. Works out how many separate sending domains, mailboxes and warmed spares the volume needs, keeps cold mail off the main domain, checks SPF, DKIM, DMARC, MX and the tracking domain line by line (looked up with dig, or pasted), sets list verification rules, builds a dated warm-up and ramp calendar that counts follow-ups, and sets the bounce and spam levels that hold, pause or stop sending. Spam stop rules follow Gmail and Yahoo bulk-sender limits (Gmail recommends under 0.1 percent; both require under 0.3 percent) and Microsoft's 2025 sender rules; per-mailbox caps are labelled practitioner convention. Use for cold email deliverability, cold email domain setup, how many cold emails to send per day, or how many inboxes or domains to buy. With the InsightfulPipe MCP it reads a mailbox tracker in Google Sheets and, after confirmation, writes the calendar to a new tab. Never buys domains, edits DNS or sends.
+description: Plans the cold email sending setup before launch. Sizes domains and mailboxes from weekly volume, checks SPF, DKIM and DMARC records, and builds a warm-up ramp with stop rules. Use for cold email deliverability, domain setup or how many inboxes to buy. Not for copy (use cold-email-writer).
 ---
 
 # Cold Email Deliverability Setup Planner

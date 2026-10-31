@@ -1,6 +1,6 @@
 ---
 name: free-tool-strategy
-description: Plans a free marketing tool or lead magnet (calculator, generator, checker, quiz, template, checklist) on live data through the InsightfulPipe MCP, and audits the ones a business already has. Planning finds tool-shaped searches around the customer's problem, measures demand, reads who ranks and how strong they are, scores ideas on eight factors with kill criteria, then writes the strategy for the winner (format, gating, build scope, page plan, measurement, promotion). The audit measures every existing lead magnet and free tool (visits, opt-in or use rate, paid cost per lead and per customer, and customers from a CRM or email-platform export) and says which to promote, fix, retire or leave to mature. Use when someone mentions a free tool, engineering as marketing, a calculator or generator for lead generation, interactive content, lead magnet ideas, a gated download, lead magnet conversion rate, opt-in rate or lead magnet metrics, or asks which tool or resource to build or which magnets bring customers.
+description: Plans a lead magnet or marketing tool such as a calculator, generator, checker, quiz or template from search demand and who ranks, and audits existing magnets by the customers they bring. Use when asked about engineering as marketing, lead magnet ideas, opt-in rate, or which calculator to build.
 ---
 
 # Free Tool Strategy

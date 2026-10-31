@@ -1,6 +1,6 @@
 ---
 name: software-marketplace-ads-planner
-description: Plans and reviews paid placements on software review sites and app marketplaces, including Capterra PPC (and its sister site GetApp), G2 sponsored listings and G2 Clicks, TrustRadius and Shopify App Store ads. Before any spend it sets a target cost per signup or demo from the business's own numbers, works out the highest bid each category can pay, compares the listing's review count and rating with the top listings on the category pages the user pastes, checks each destination page against the listing, and writes a stop rule. Once ads run, it matches the directory's click and spend report to GA4 signups by UTM and marks each category keep, lower bid, fix listing, stop or too early. Use when someone asks whether Capterra ads are worth it, how to run Capterra PPC or G2 ads, what to bid on a directory, or how a running directory campaign is doing. Works from pasted reports and pages; GA4, Search Console and the crawler through the InsightfulPipe MCP are an upgrade. It changes nothing on any directory.
+description: Plans and reviews paid placements on software directories like Capterra, G2 and the Shopify App Store, setting max bids from target cost per signup and grading categories on GA4 signups. Use when asked if Capterra ads are worth it, how to run Capterra PPC or G2 ads, or what to bid.
 ---
 
 # Software Directory Ads Planner

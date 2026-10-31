@@ -1,6 +1,6 @@
 ---
 name: sales-playbook-builder
-description: Builds the sales playbook a new sales hire, an SDR or a founder handing off sales can run from, using the team's own CRM opportunity export, outbound sequence report and call notes. Sets who to target and who to disqualify by value per opportunity, the deal stages with exit criteria and stall limits, weekly activity targets worked back from quota with the team's own reply, meeting, show and win rates (math shown), the outreach cadence per channel, call and email standards backed by the notes, CRM hygiene rules with today's counts, and a dated 30-60-90 day ramp plan with a quota ramp. Every section cites the team's evidence or is marked an assumption to test. Use when someone asks for a sales playbook or sales playbook template, an SDR playbook, activity targets from quota, a ramp plan for new reps, or how to hand off founder-led sales. Works from pasted or uploaded exports; reads them from Google Sheets through the InsightfulPipe MCP when connected, and adds a scorecard tab only after the user confirms.
+description: Builds a sales playbook from a CRM export, sequence report and call notes, with who to target, deal stages, weekly activity targets worked back from quota and a 30-60-90 day ramp plan for new reps. Use when asked for a sales or SDR playbook, activity targets from quota or founder-led sales handoff.
 ---
 
 # Sales Playbook Builder

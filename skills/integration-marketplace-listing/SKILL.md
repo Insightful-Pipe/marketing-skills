@@ -1,6 +1,6 @@
 ---
 name: integration-marketplace-listing
-description: Audits and rewrites a software product's listings in the marketplaces people install it from (WordPress.org plugin directory, Shopify App Store, Chrome Web Store, Atlassian Marketplace, HubSpot App Marketplace and similar), plans the review ask and picks the next marketplace to list in. Checks every field against the marketplace's documented limits and rules at run time, compares name, claims, screenshots, rating and review count with rival listings, measures installs per listing visit and sign-ups per marketplace referral, and writes each field to fit. Works from pasted listings and install stats; with the InsightfulPipe MCP it reads public listing pages with the site crawler and marketplace referral sign-ups from GA4. Use when someone asks about Shopify app store optimization, Chrome Web Store SEO, WordPress plugin directory SEO, why a plugin or integration gets few installs, how to get more app reviews, or which app marketplace to list in next. Organic listings only; it changes no listing.
+description: Audits and rewrites app and plugin listings on the Shopify App Store, Chrome Web Store, WordPress.org and Atlassian Marketplace against field limits and rivals, and plans the review ask. Use when asked about Shopify app store optimization, Chrome Web Store SEO, or getting more app reviews.
 ---
 
 # Plugin and Integration Marketplace Optimizer

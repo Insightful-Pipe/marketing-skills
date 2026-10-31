@@ -1,6 +1,6 @@
 ---
 name: digital-pr-link-campaign
-description: Plans a digital PR campaign that earns links from news sites. It finds the newsworthy finding in data the user owns (survey results, Shopify orders, GA4 or a pasted export) and tests each candidate on base size, effect size, freshness, press appetite and privacy, outlines the study page that carries the story, builds a media list from outlets that ran the same kind of story in the last 12 months (syndicated press releases removed, and a check of whether each outlet linked its source), writes the pitch, the exclusive offer, the follow-up and replies to reporter requests, and sets a results check that counts new referring domains against the site's own monthly baseline. Use when someone asks for digital PR link building, digital PR campaign ideas, how to get backlinks from news sites, a data-led PR campaign, a media list for a survey, or a reply to a journalist request. Works from pasted data with nothing connected. Never sends a pitch; saves the tracker to Google Sheets only after the user confirms.
+description: Plans a data-led digital PR campaign for news links, testing the story in your survey, Shopify or GA4 data, building a media list from outlets that ran similar stories and drafting pitches. Use when asked for digital PR link building, backlinks from news sites or a reply to a journalist request.
 ---
 
 # Digital PR Link Campaign Planner

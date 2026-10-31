@@ -1,6 +1,6 @@
 ---
 name: podcast-guest-pitching
-description: Gets a founder or expert booked as a guest on other people's podcasts. Builds a show list for the guest's topics and audience, vets every show on stated thresholds (an episode in the last 60 days, a regular schedule, guests in recent episodes, median views of settled episodes), ranks the rest on topic fit, writes the guest one-sheet, drafts a pitch per host tied to one named recent episode plus two follow-ups, and keeps a booking tracker. After each episode airs it measures visits, sign-ups and promo-code orders per show. Works from a pasted bio and show list; through the InsightfulPipe MCP it uses YouTube Data, DataForSEO Google results, GA4, Shopify and Google Sheets. Use when someone asks about podcast guesting, how to get booked on podcasts, a podcast guest pitch template, a podcast one-sheet or a podcast tour. Never sends a pitch, and writes the sheet only after the user confirms.
+description: Gets a founder or expert booked as a guest on other podcasts, vetting active shows on YouTube, writing the one-sheet, a pitch per host with follow-ups and a booking tracker, then measuring visits and promo-code orders per episode. Use for podcast guesting, a podcast tour or a podcast guest pitch.
 ---
 
 # Podcast Guesting Planner

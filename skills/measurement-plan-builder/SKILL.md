@@ -1,6 +1,6 @@
 ---
 name: measurement-plan-builder
-description: Builds a measurement plan on live data through the InsightfulPipe MCP, with a North Star metric and its inputs and guardrails, a KPI tree with a baseline on every node or the reason it has none, a measurement plan table, and a tracking plan with an event taxonomy. Reads what GA4, Search Console, Google Ads, Meta, LinkedIn and Tag Manager already measure first, says which sources can be trusted, and ranks the tracking fixes by how many KPIs each one unblocks. Use when someone asks for a North Star, a KPI tree or metric system, a measurement plan, a tracking plan, an event taxonomy or naming convention, or asks what they should be tracking. Offers to mark firing events as key events, register custom dimensions and write the tracking plan into a Google Sheet, only after the user confirms.
+description: Builds a measurement plan from what GA4, Search Console, Google Ads, Meta, LinkedIn and Tag Manager track today, with a North Star metric, a KPI tree with baselines and a tracking plan. Use when asking for a North Star, KPI tree, tracking plan, event taxonomy or what to track.
 ---
 
 # Measurement Plan Builder

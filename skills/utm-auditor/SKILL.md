@@ -1,6 +1,6 @@
 ---
 name: utm-auditor
-description: Audits UTM and campaign tagging on live data through the InsightfulPipe MCP. Reads the source, medium and campaign values GA4 actually received, then reads the tracking templates, URL suffixes and URL tags set in Google Ads, Meta and LinkedIn, finds the case splits, untagged ads, unknown mediums and overridden templates that break channel reporting, and writes one naming convention to fix them. Use when someone asks to audit, clean up or standardise UTMs, asks why paid traffic shows as Unassigned, Direct or Referral in GA4, or wants a UTM naming convention. Offers a few fixes (Google Ads URL templates, a new Meta creative with URL tags, a GA4 channel rule) that it runs only after the user confirms.
+description: Audits UTM tagging in GA4 and tracking templates, URL suffixes and URL tags in Google Ads, Meta and LinkedIn, finds case splits and untagged ads, and writes one naming convention. Use when UTMs need cleanup or paid traffic shows as Unassigned or Direct in GA4. Not for new links (use bulk-utm-links).
 ---
 
 # UTM Auditor

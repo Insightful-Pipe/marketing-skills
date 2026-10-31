@@ -1,6 +1,6 @@
 ---
 name: content-repurposer
-description: Turns one blog post into a pack of ready-to-edit drafts, and turns a webinar, podcast, video or interview transcript into a blog article, through the InsightfulPipe MCP. Picks the post from Search Console clicks or DataForSEO estimates (or takes your URL), reads the words people search to find it, checks which hook styles your own Facebook Page rewards, then writes an X thread, thread hooks, standalone posts, hot takes, LinkedIn, Facebook and Threads posts, an email section, search and social ad copy, and audience versions. From a transcript or caption file it writes an article in the speaker's order, aimed at a search no page of the site already ranks for, with timestamped quotes. Every line traces to the post or transcript and fits each limit. Use to repurpose or atomise an article, write a thread, tweets or hot takes, adapt a piece for an audience, or convert a video, podcast or transcript to a blog post. It only drafts, and saves a scheduler or WordPress draft only after the user confirms.
+description: Repurposes one blog post into an X thread, hooks, tweets, hot takes, LinkedIn, Facebook and Threads posts, email and ad copy, or turns a podcast, webinar or video transcript into a blog article. Use when asked to repurpose an article, write a thread, or convert a transcript to a blog post.
 ---
 
 # Content Repurposer

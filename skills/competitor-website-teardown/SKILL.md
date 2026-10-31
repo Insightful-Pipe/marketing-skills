@@ -1,6 +1,6 @@
 ---
 name: competitor-website-teardown
-description: Tears down up to four competitor websites against yours on live data through the InsightfulPipe MCP. Measures each site's search footprint, which kinds of pages bring its traffic, home page positioning, pricing page (plans, entry price, value metric, discounts, FAQs), mobile speed on the home and pricing pages, and YouTube channel output, then ranks the five moves worth copying. Use when someone asks to tear down, benchmark or compare competitor websites, pricing pages, site structure, page speed or YouTube channels, or asks what a competitor's site does better. Read only.
+description: Tears down up to four competitor websites against yours on search traffic, ranking page types, home and pricing pages, mobile speed and YouTube output, then ranks five moves to copy. Use when you want to benchmark competitor sites, compare pricing pages or see what their site does better.
 ---
 
 # Competitor Website Teardown

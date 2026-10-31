@@ -1,6 +1,6 @@
 ---
 name: poas-profit-report
-description: "Profit on ad spend (POAS) calculator and report for online stores. Rebuilds ad results on gross profit instead of revenue: product cost, fulfilment, shipping, payment fees, discounts and refunds come off every order line, each product gets its own margin, and each campaign's platform revenue is priced at the margin of what it sold, so POAS sits next to ROAS per campaign, product group and product. Sets break-even and target ROAS per product group on the value basis the platforms record, names the campaigns and products whose revenue hides a loss, counts orders no campaign can claim, and checks live Google Ads target ROAS. Works from an orders export and a cost sheet with nothing connected, or pulls Shopify, WooCommerce, Magento, Google Ads, Meta, TikTok, Pinterest, Merchant Center and Google Sheets through the InsightfulPipe MCP. Use for POAS, profit on ad spend, POAS vs ROAS, which campaigns or products make money after costs, or what ROAS target to set. Changes nothing in any account."
+description: Calculates profit on ad spend (POAS) next to ROAS per campaign, product group and product for Google Ads, Meta, TikTok and Pinterest, from a store's own costs, fees and refunds, and sets break-even and target ROAS. Use for POAS vs ROAS, which campaigns make money, or what ROAS target to set.
 ---
 
 # Profit on Ad Spend (POAS) Report

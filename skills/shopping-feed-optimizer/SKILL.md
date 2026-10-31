@@ -1,6 +1,6 @@
 ---
 name: shopping-feed-optimizer
-description: Audits and optimizes product feeds for Google Shopping, Meta Catalog, and other platforms. Identifies feed quality issues, provides title/description optimization, and recommends feed structure improvements. Triggers when user asks about "product feed," "shopping feed," "Merchant Center," "catalog ads," "feed optimization," or has Shopping campaign performance issues. Essential for e-commerce advertisers.
+description: Audits product feeds for Google Shopping, Merchant Center and Meta Catalog from an export, scoring attributes, GTINs, titles, images, prices and custom labels. Use when asked to fix a feed, rewrite titles or clear disapprovals. Not for campaign structure (use google-shopping-retail-pmax-review)
 ---
 
 # Shopping Feed Optimizer

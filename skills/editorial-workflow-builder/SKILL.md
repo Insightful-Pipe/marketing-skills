@@ -1,6 +1,6 @@
 ---
 name: editorial-workflow-builder
-description: Designs a content team's editorial workflow from idea to published, with stages, one owner per stage, approvers only where there is real risk, turnaround targets, a brief template, a review checklist, a status board, where AI drafting fits and where a person must check, and a monthly capacity plan for new pieces and refreshes. Measures the current content production process first, reading WordPress publish and last-modified dates and open drafts through the InsightfulPipe MCP to find real monthly output and how long drafts wait, and setting that against Search Console clicks and GA4 key events per piece to show whether new pieces or refreshes pay more per hour. Works from a pasted list of pieces and dates when nothing is connected. Use when someone asks for a content workflow, an editorial process or workflow template, content SOPs, who should approve content, how many posts the team can ship a month, or why content keeps getting stuck. Builds the status board in Google Sheets only after the user confirms.
+description: Designs a content team's editorial workflow from idea to published, with stage owners, approvals, turnaround targets and a capacity plan measured from WordPress output and draft waits. Use when asking for a content workflow or SOP, who should approve content, or how many posts we can ship a month.
 ---
 
 # Editorial Workflow Builder

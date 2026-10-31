@@ -1,6 +1,6 @@
 ---
 name: meta-ads-creative-ranker
-description: Ranks Meta (Facebook and Instagram) ads by what they actually deliver, on live data through the InsightfulPipe MCP or from a pasted Ads Manager export. Sorts ads into six tiers against your target cost per result or ROAS, builds a leaderboard and a kill list, compares copy angles, formats, video lengths and calls to action, shows engagement and social proof, and reads the video funnel. Also checks creative variety after Meta's Andromeda update (exact copies, near-copies, how much of each ad set's spend sits on one concept, which concepts to make next), and reviews Meta and Instagram partnership ads (creator handle vs the brand's own handle, creators ranked by cost per result with their hook rate shown, which creator posts get more money). Use when someone asks which Meta ads or creatives win or lose, which ads to pause, which angle or format works, whether their creative is varied enough for Andromeda, or how their partnership ads perform. Pauses kill-list ads only after the user confirms.
+description: Ranks Meta Ads creatives (Facebook, Instagram) by cost per result or ROAS into tiers, a leaderboard and a kill list, and checks Andromeda variety and partnership ads. Use when asking which Meta ads win, which to pause, or which angle or format works. Not for briefs (use ugc-brief-generator)
 ---
 
 # Meta Ads Creative Ranker

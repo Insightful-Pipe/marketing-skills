@@ -1,6 +1,6 @@
 ---
 name: customer-journey-map
-description: Builds a customer journey map from how customers really behave, from first hearing of the business to buying, coming back and recommending it. For every stage it shows the touchpoints, the question and feeling at that step, the content and channel that serve it, where people stall, who owns each touchpoint and the metric that proves it works, and tags every cell measured or assumed. Works from pasted stages, touchpoints, quotes, call logs and GA4 or CRM exports, and pulls the evidence itself through the InsightfulPipe MCP when GA4, Search Console, Klaviyo, Mailchimp, Microsoft Clarity, CallRail, Google Business Profile or Google Sheets is connected. Ends with the five touchpoints to fix first, ranked by the bookings or sales each loses a month. Use when someone asks for a customer journey map or template, journey mapping, how customers find and buy from them, or where they stall between first contact and repeat purchase. Writes the map to a Google Sheet only after the user confirms.
+description: Maps the customer journey from GA4, Search Console, Klaviyo or Mailchimp, call logs and Google reviews, tags every cell measured or assumed, and ranks the five touchpoints losing the most sales. Use when asked for a customer journey map or template, journey mapping, or where customers stall.
 ---
 
 # Customer Journey Map

@@ -1,6 +1,6 @@
 ---
 name: server-side-tracking-planner
-description: Decides whether a website needs server-side tracking and, if it does, writes the build plan. Measures how many orders or leads GA4 and the ad platforms miss against the store or CRM, takes out what consent refusals explain, and weighs the recoverable loss against hosting and upkeep before recommending anything. The plan covers where the server Tag Manager container runs and on which first-party subdomain or path, which tags move to it, how each platform's Conversions API or Events API gets its events, one shared event id against double counting, which customer fields are hashed, how consent travels with each event, a monthly hosting estimate and a test sequence. Reads the live container and tests each ad click id through landing page redirects. Use for server-side tagging in Google Tag Manager, server-side tracking setup, server-side vs client-side tracking or sales hidden by ad blockers and Safari. Works from pastes too. Drafts Tag Manager changes only after the user confirms, and never publishes.
+description: Decides if a site needs server-side tracking by weighing orders GA4 and ad platforms miss against hosting cost, then plans the server GTM container, Conversions API events, event ids, hashing and tests. Use for server-side tagging, server-side vs client-side tracking or sales lost to ad blockers.
 ---
 
 # Server-Side Tracking Planner

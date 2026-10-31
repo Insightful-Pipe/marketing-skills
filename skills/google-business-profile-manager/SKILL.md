@@ -1,6 +1,6 @@
 ---
 name: google-business-profile-manager
-description: Manages Google Business Profile locations on live data through the InsightfulPipe MCP. Pulls profile details, verification, hours, attributes, photos, posts, reviews, calls, direction requests, website clicks and search keywords itself, grades seven areas per location, ranks locations against each other, and builds the unanswered-review queue. Use when someone asks to audit, report on, compare or tidy up one or more Google Business Profiles (Google Maps listings), check reviews or profile completeness, or wants an offer or event post or new hours drafted. Also use it when a Google Business Profile is suspended, disabled, removed, unverified, failed verification or is stuck in review. It reads the verification state and profile fields, checks them against Google's guidelines, lists what to change, and prepares the reinstatement appeal, evidence list and video verification shot list. Offers review replies, posts, post edits and photo uploads as actions it runs only after the user confirms.
+description: Audits Google Business Profile locations on Google Maps, grading completeness, hours, photos, posts, reviews and calls, ranks the locations, and drafts posts and review replies. Use when asked to audit a Google Business Profile, fix a suspended or unverified profile, or draft an offer post.
 ---
 
 # Google Business Profile Manager

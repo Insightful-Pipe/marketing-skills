@@ -1,6 +1,6 @@
 ---
 name: reddit-ads-manager
-description: Sets up and reviews Reddit Ads from Reddit Ads Manager exports. Ranks each subreddit by cost per result against the account's own average, with a minimum spend before any community is called a winner or cut, checks interest and keyword targeting, bids, budgets, the Reddit Pixel and Conversions API, reads the comments on promoted posts, writes the monthly results read, and drafts ads that read like a post from that community. Use when someone asks whether Reddit Ads are worth it, wants a Reddit Ads audit, report or strategy, asks which subreddits to target or cut, or wants a first Reddit campaign drafted from a brief. With the InsightfulPipe MCP it also checks Reddit sessions and sign-ups in GA4 and pulls buyer questions from Search Console. It changes nothing in Reddit.
+description: Reviews Reddit Ads from Ads Manager exports, ranking subreddits by cost per result, checking targeting, bids, the Reddit Pixel and Conversions API, reading ad comments and drafting post-style ads. Use when asking if Reddit Ads are worth it, which subreddits to cut, or for a first Reddit campaign.
 ---
 
 # Reddit Ads Manager

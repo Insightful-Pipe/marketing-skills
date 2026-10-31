@@ -1,6 +1,6 @@
 ---
 name: linkedin-ads-campaign-builder
-description: Builds a LinkedIn Ads campaign from a brief on live data through the InsightfulPipe MCP. Reads the ad account first (organization page, existing groups, campaigns, conversions, lead forms and where past spend really went), picks the objective and bidding, builds targeting from the account's own targeting codes, prices it with LinkedIn's suggested bids, writes five intro texts and five headlines, runs a pre-flight checklist, and drafts the exact campaign group, campaign and single image creative payloads. Use when someone asks to create, set up, launch or plan a LinkedIn campaign or funnel, or wants LinkedIn ad intro text or headlines for a B2B offer. Creates anything only after the user confirms each payload, and new campaigns start paused.
+description: Builds a new LinkedIn Ads campaign or three-stage funnel from a brief, with objective, targeting, suggested bid pricing, intro text and headlines, a pre-flight check and paused campaign payloads. Use when asked to create, set up, launch or plan a LinkedIn campaign or funnel.
 ---
 
 # LinkedIn Ads Campaign Builder

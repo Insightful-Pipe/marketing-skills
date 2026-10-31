@@ -1,6 +1,6 @@
 ---
 name: google-ads-weekly-brief
-description: Writes the weekly Google Ads brief for a client, boss or team from live account data through the InsightfulPipe MCP, and reviews the last 90 days of Google Ads change history for impact. The weekly brief pulls this week against last week and the 4-week average, changes with a before/after read, conversion-action mix, impression share and pacing, then writes a headline, scorecard, wins, concerns, next steps and approvals as an email, Slack post, slides or a 3-sentence summary. The change history impact review lists every edit of the last 90 days by date, person and type, judges each on equal windows before and after, after conversion lag and against campaigns nobody touched, and sorts them into helped, hurt, trade-off, no clear effect or too recent, flagging hurt changes still in place as worth undoing. Use for a weekly report, client update, Google Ads change history report, or "who made changes in my Google Ads account". Works from pasted exports too; changes nothing unless you confirm an undo.
+description: Writes the weekly Google Ads brief for a client, boss or team as an email, Slack post or slides, and reviews 90 days of change history for edits that helped or hurt. Use for a weekly report, client update or who changed my Google Ads account. Not for monthly reports (use month-end-report-generator).
 ---
 
 # Google Ads Weekly Brief

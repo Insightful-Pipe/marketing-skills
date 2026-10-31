@@ -1,6 +1,6 @@
 ---
 name: creator-program-builder
-description: Builds an always-on creator program from the creators a brand has already paid. Scores each creator on real results (YouTube views, engagement and the paid-promotion flag of their videos, site visits and sign-ups from GA4, and Meta or TikTok ad results when their content runs as partnership or Spark ads, all through the InsightfulPipe MCP), then decides who to renew, raise, keep for ads only, put on probation or drop. Designs the tiers, recruiting pools, pay ceilings from the brand's own target cost per result, monthly content quotas, usage rights, disclosure rules, onboarding kit, tracking convention and quarterly review. Works from a pasted roster and results when nothing is connected. Use when someone asks to build, plan, scale or review a creator program, UGC creator program, ambassador roster or always-on influencer program, or asks which creators to renew. Can write the scorecard to a Google Sheet only after the user confirms.
+description: Builds an always-on creator or ambassador program from creators already paid, scoring each on YouTube views, GA4 sign-ups and Meta or TikTok ad results to renew, raise or drop, then sets tiers, pay and quotas. Use when asked to build or review a creator program or which creators to renew.
 ---
 
 # Creator Program Builder

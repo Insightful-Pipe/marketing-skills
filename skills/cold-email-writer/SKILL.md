@@ -1,6 +1,6 @@
 ---
 name: cold-email-writer
-description: Writes B2B cold email for one offer and one segment, from a pasted brief and lead list or a CSV. Builds the first email and two to four follow-ups with the business days between each, subject lines, and a personal first line for every prospect, each built on one public fact with its source URL and date (a dated page on their site, an ad in the Meta, Google, LinkedIn, Microsoft or TikTok ad library, an app update). A prospect with no usable fact gets a segment line, never invented praise. Checks every draft (one question, one link at most, a word ceiling, only provable claims, where the address came from, an opt-out line) and gives each prospect a send status under UK, EU, US and Canadian email rules. Cadence mode adds LinkedIn and phone touches; reply mode sorts replies and drafts answers. Use for a cold email template, how to write a cold email or first lines for a lead list. With the InsightfulPipe MCP it looks facts up itself and puts companies clicking your LinkedIn ads first. Never sends.
+description: Writes B2B cold email sequences for a lead list, with subject lines, follow-ups and a personal first line per prospect built on one dated public fact, and sorts replies. Use for a cold email template or first lines for a lead list. Not for open deal follow-ups (use sales-follow-up-writer).
 ---
 
 # B2B Cold Email Writer

@@ -1,6 +1,6 @@
 ---
 name: campaign-launch-preflight
-description: Runs a go/no-go preflight on a Google Ads, Meta or LinkedIn Ads campaign through the InsightfulPipe MCP, before it launches or before its budget goes up. Reads the ad account, campaign, ads, conversion tracking, GA4, Search Console and the landing page itself, and can take the plan from a Notion campaign brief. Returns GO, GO WITH FIXES or NO-GO with the blockers first. Use when someone asks whether a campaign is ready to launch, wants a launch or readiness checklist, is about to switch a campaign on, wants to check a campaign against its Notion brief before it goes live, or asks whether it is safe to raise a budget. Switching on, budget steps and a verdict comment on the Notion brief are offered as exact payloads and run only after the user confirms.
+description: Runs a go or no-go preflight on a Google Ads, Meta or LinkedIn Ads campaign, checking tracking, GA4, the landing page and budget before launch or a budget raise. Use when asked is my campaign ready to launch, for a launch checklist, or whether it is safe to raise the budget.
 ---
 
 # Campaign Launch Preflight

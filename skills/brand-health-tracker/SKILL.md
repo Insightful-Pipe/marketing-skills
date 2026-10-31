@@ -1,6 +1,6 @@
 ---
 name: brand-health-tracker
-description: Tracks brand health month by month and runs a one-off brand audit. Leads with share of search (your brand searches divided by all brand searches in your category, against named competitors), then adds branded search clicks, direct and returning users, branded CPC and impression share, review rating and volume, follower growth, AI answer mentions and an awareness and consideration survey. Judges every change against that signal's own normal month-to-month range, so only real moves get flagged, and explains what moved each one. Works from pasted numbers and exports, or pulls DataForSEO, Search Console, Bing, GA4, Google Ads, Google Business Profile, app stores, Facebook, Instagram, LinkedIn, TikTok and YouTube itself through the InsightfulPipe MCP. Use when someone asks for brand health tracking, share of search, a brand audit, brand awareness or consideration tracking, branded search trends, or whether the brand is getting stronger than its competitors.
+description: Tracks brand health monthly, led by share of search against named competitors, plus branded search, direct users, reviews and followers from Search Console, GA4, Google Ads and social pages. Use when asked for share of search, a brand audit, brand awareness tracking or branded search trends.
 ---
 
 # Brand Health Tracker

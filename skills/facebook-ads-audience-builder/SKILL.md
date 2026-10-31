@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-audience-builder
-description: Builds a Meta (Facebook and Instagram) Ads audience plan from the live ad account through the InsightfulPipe MCP. Reads your custom, lookalike and saved audiences, pixel, linked Page and Instagram account and 90 days of ad set results itself, ranks Advantage+ audience against manual targeting and lookalikes against each other, sizes each Advantage+, broad and interest option with Meta's reach estimate, and lays out cold, warm and hot tiers with exclusions. Drafts exact specs for the retargeting and customer-list lookalike audiences to create, and offers ad set changes only after the user confirms. Use when someone asks who to target on Meta, how to set up lookalikes or retargeting, whether Advantage+ audience beats their own targeting, or which lookalike works best.
+description: Builds a Meta Ads audience plan for Facebook and Instagram with cold, warm and hot tiers, exclusions, and specs for retargeting and lookalike audiences. Use when asking who to target on Facebook, how to set up lookalikes or retargeting, or if Advantage+ audience beats manual targeting.
 ---
 
 # Facebook Ads Audience Builder

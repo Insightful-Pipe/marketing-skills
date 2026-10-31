@@ -1,6 +1,6 @@
 ---
 name: amazon-search-term-harvester
-description: Runs the weekly Amazon PPC search term harvest from a Sponsored Products or Sponsored Brands search term report and a bulk file download. Moves converting search terms from auto, broad and phrase campaigns into exact match, adds cross-campaign negatives so a term stops competing with itself, negates terms once they have had enough clicks to expect about two orders at the account's own conversion rate and have none, finds competitor ASINs worth targeting directly, keeps a watch list for terms whose orders may still arrive, and returns bulk-operations rows the user reviews and uploads. Use when someone asks for Amazon search term report analysis, Amazon keyword harvesting, Amazon PPC negative keywords, or wants to clean up auto campaigns. Works from pasted or uploaded exports; can read the report from Google Sheets through the InsightfulPipe MCP and write the rows to a new tab only after the user confirms.
+description: Runs the weekly Amazon search term harvest, moving converting terms into exact match, adding negative and cross-campaign negative keywords and spotting competitor ASINs, as bulk rows to upload. Use when asked for search term report analysis, Amazon negative keywords, or to clean up auto campaigns.
 ---
 
 # Amazon Search Term Harvester

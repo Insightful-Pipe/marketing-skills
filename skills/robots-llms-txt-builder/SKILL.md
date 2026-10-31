@@ -1,6 +1,6 @@
 ---
 name: robots-llms-txt-builder
-description: Writes and tests a site's robots.txt, XML sitemap (or sitemap index) and llms.txt. Reads the live files, builds a test list from the sitemap and the pages that earn Search Console clicks, checks every URL against the rules for Googlebot, Bingbot and each AI crawler, explains AI crawlers by purpose (model training, AI search index, user fetch) so the owner sets a policy per purpose, then drafts corrected files and retests them so no page that earns traffic gets blocked. Works from a pasted robots.txt and URL list; with the InsightfulPipe MCP it reads the files, Search Console, Bing and page status itself. Use when someone asks to create, fix or audit robots.txt, block or allow GPTBot, ClaudeBot or other AI bots, generate an XML sitemap, or write an llms.txt or llms-full.txt. Delivers files and a diff; never deploys.
+description: Writes and tests robots.txt, XML sitemaps and llms.txt, checking every URL for Googlebot, Bingbot and AI crawlers so no page with clicks gets blocked, and sets AI bot policy by purpose. Use when asked to fix robots.txt, block GPTBot or ClaudeBot, generate an XML sitemap or write an llms.txt.
 ---
 
 # Robots.txt, llms.txt and XML Sitemap Builder

@@ -1,6 +1,6 @@
 ---
 name: facebook-ads-creative-tester
-description: Plans, sizes, launches and reads Meta (Facebook and Instagram) creative tests on live data through the InsightfulPipe MCP. Pulls the account's own baseline, compares video, image, carousel, collection and flexible formats, writes a one-variable test plan with sample size, length, budget and winner rules, prepares the variant ads from your media library, calls the result with a significance test, and reports which headline, primary text, image or video wins inside flexible-format and dynamic creative ads. Use when someone wants to A/B test hooks, images, copy, formats or concepts on Meta, asks which creative format works best, wants to upload creatives and launch a test variant, asks whether a running test has a winner, or wants to see dynamic creative or flexible ad results by asset. Creates campaigns, ad sets, creatives and ads (always paused) only after the user confirms.
+description: Plans, sizes and reads Facebook and Instagram creative A/B tests on Meta with sample size, budget and significance, compares ad formats, and ranks assets inside flexible or dynamic creative ads. Use when testing hooks, images or ad copy, asking which format works best, or if a test has a winner.
 ---
 
 # Facebook Ads Creative Tester

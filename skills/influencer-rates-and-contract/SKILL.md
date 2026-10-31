@@ -1,6 +1,6 @@
 ---
 name: influencer-rates-and-contract
-description: Sets a fair fee for an influencer or creator deal and writes the deal terms. Prices each deliverable from the creator's real recent views (an opening offer, a target and a walk-away, at a cost per 1,000 views from your own past deals or labelled defaults), caps it at what the results are worth to you, and switches to a base plus bonus when views swing. Prices organic reuse, paid usage, whitelisting and exclusivity separately by term length, then writes a term sheet covering deliverables, timeline, approval rounds, disclosure, rights, payment and kill fee, and flags the clauses a lawyer should check. Creator mode builds a creator's own rate card. Reads YouTube creators live through the InsightfulPipe MCP; other platforms work from pasted stats. Use when someone asks how much to pay an influencer, what to charge for a sponsored post, for an influencer rate calculator, rate card or influencer contract template, or to price usage rights or whitelisting. Changes nothing in any account.
+description: Prices an influencer or creator deal from the creator's real recent views, with an opening offer, target and walk-away, prices usage rights, whitelisting and exclusivity, and writes a term sheet with lawyer flags. Use when asked how much to pay an influencer, for a rate card or a contract template.
 ---
 
 # Influencer Rate Calculator and Contract Terms

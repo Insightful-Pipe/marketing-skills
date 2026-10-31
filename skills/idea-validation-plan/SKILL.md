@@ -1,6 +1,6 @@
 ---
 name: idea-validation-plan
-description: Tests whether a new product, offer or feature has demand before anyone builds it. Measures search demand, CPC, trend and how many rivals already advertise, writes down the riskiest assumptions, designs cheap tests (buyer conversations, a fake door or waitlist page with a paid smoke test, a pre-sale), sets pass and kill thresholds from the user's own price and margin before any test starts, sizes the paid test so it buys enough visits to read the result, and turns the results into a go, change or stop call. Use when someone asks how to validate a business or product idea, wants a fake door test, a smoke test, a waitlist test or a pre-sale, asks whether there is demand for something before building it, or wants a go or no-go decision on a new offer. Works from what the user pastes; with the InsightfulPipe MCP it pulls DataForSEO, ad library, Google Ads, Meta, GA4, Search Console and Google Sheets data itself, and drafts paused test campaigns only after the user confirms.
+description: Tests demand for a new product, offer or feature before it is built, using search volume, CPC and rival ads, then sizes a fake door, smoke test or pre-sale with pass and kill lines. Use when asked to validate a business idea, run a waitlist test or make a go or no-go call.
 ---
 
 # Idea Validation Plan

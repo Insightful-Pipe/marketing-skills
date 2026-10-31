@@ -1,6 +1,6 @@
 ---
 name: google-ads-campaign-builder
-description: Builds a Google Ads Search campaign from a short brief using live account data through the InsightfulPipe MCP. Runs a launch-readiness checklist, mines any earlier campaign for the same service, pulls Keyword Planner ideas, then drafts the campaign, keywords, negatives, budget, bidding, ads and assets with the exact create payloads. Two more modes also work without a connection. Keyword plan and budget forecast does Google Ads keyword research for a place and says how much to spend to get X leads or sales (low, mid and high cases, break-even CPA), from the account, DataForSEO or a pasted Keyword Planner export. Smart campaign migration reads what a Smart campaign paid for and moves it to a Search campaign in stages. Use to create or launch a Search campaign, run a launch checklist, ask how much to spend on Google Ads or for a budget calculator, or switch a Smart campaign to Search. Creates everything paused and only after the user confirms.
+description: Builds a Google Ads Search campaign from a short brief with a launch checklist, keywords, negatives, ads and paused payloads, plus keyword budget forecasts and Smart campaign migration. Use to create a Search campaign, ask how much to spend on Google Ads, or switch a Smart campaign to Search.
 ---
 
 # Google Ads Campaign Builder

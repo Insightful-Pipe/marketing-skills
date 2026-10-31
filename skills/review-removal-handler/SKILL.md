@@ -1,6 +1,6 @@
 ---
 name: review-removal-handler
-description: Decides which negative or suspicious reviews can be reported and removed, and which will stay. Tests each Google, Yelp or Amazon review against that site's written content policy and names the exact clause it breaks (fake engagement, conflict of interest, off-topic, personal information, harassment, advertising, repetitive content), finds review bombing bursts and copy-paste clusters on the review timeline, drafts the report note, and a calm public reply on Google and Yelp (Amazon has no seller replies on reviews), and keeps a tracker that checks on the next run whether a reported review is gone and when to appeal. Use when someone asks how to report a Google review, remove fake or negative reviews, deal with a review attack, or whether a review breaks policy. Works from pasted reviews, or reads Google Business Profile reviews live through the InsightfulPipe MCP. Posts a Google reply only after the user confirms the exact text.
+description: Tests negative or fake Google, Yelp and Amazon reviews against each site's content policy, spots review bombing, drafts report notes and calm replies, and tracks appeals. Use when asked how to report a Google review, remove fake reviews, handle a review attack, or whether a review breaks policy.
 ---
 
 # Fake Review Removal Handler

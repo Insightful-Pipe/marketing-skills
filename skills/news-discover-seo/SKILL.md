@@ -1,6 +1,6 @@
 ---
 name: news-discover-seo
-description: Google Discover and Google News SEO optimizer for publishers, media sites and large blogs. Reads the site's own Discover and Google News performance from Search Console (through the InsightfulPipe MCP, or from a pasted Discover export), finds which sections, articles and headline styles earn Discover traffic, checks each top article for what Discover and News look for (max-image-preview large, a representative image at least 1200 px wide, Article markup with author and dates, a real byline, indexing and canonical), checks the news sitemap and editorial pages, screens headlines for clickbait against engagement data, and writes non-clickbait headline options and image briefs, with fixes ranked by the Discover impressions at stake. Use when someone asks how to get on Google Discover, why Discover traffic dropped or never started, how to optimize for Google News, or wants Discover headlines and images reviewed. It only reads and changes nothing.
+description: Reviews Google Discover and Google News traffic from Search Console for publishers, checks articles for large image previews, Article markup, bylines and the news sitemap, and flags clickbait headlines. Use when asked how to get on Google Discover, why Discover traffic dropped or Google News SEO.
 ---
 
 # Google Discover and News SEO Optimizer

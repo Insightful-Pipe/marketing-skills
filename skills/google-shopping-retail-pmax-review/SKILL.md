@@ -1,6 +1,6 @@
 ---
 name: google-shopping-retail-pmax-review
-description: Reviews how Google Shopping and retail Performance Max campaigns are built and where their money goes, product by product. Reads product groups, asset group listing filters, campaign priorities, custom labels, Merchant Center item status and Shopping search terms, judges every product against your own target (a product is only called a loser after spending 2 to 3 times your target cost per sale with no sale), splits products that barely serve into not eligible, not targeted and outbid, and ends with a proposed product-group and custom label layout. Works from a pasted Shopping product report and feed export, or live through the InsightfulPipe MCP. Use when someone asks to audit or restructure Shopping campaigns, asks how to split products between Standard Shopping and PMax, how to use custom labels, why many products get no impressions, or which Shopping search terms need negatives. New structure is drafted paused and applied only after the user confirms.
+description: Reviews Google Shopping and retail Performance Max structure product by product against target, splits unserved products into not eligible, not targeted or outbid, and proposes a custom label layout. Use when auditing Shopping campaigns, splitting Standard Shopping and PMax, or using custom labels.
 ---
 
 # Google Shopping and Retail PMax Review

@@ -1,6 +1,6 @@
 ---
 name: event-sponsorship-roi
-description: Event ROI calculator and sponsorship planner. Before you sign, it turns an organiser's attendee numbers into expected qualified leads, deals and gross profit using your own CRM conversion rates and deal values, shows break-even and a walk-away fee, compares packages side by side and lists what to negotiate. It then plans the activation (on-site presence, content, offer and a tracking kit), and after the event it measures leads, pipeline, revenue, cost per outcome and ROI from GA4 UTM and QR traffic, CallRail calls on the event number, promo-code orders in Shopify or WooCommerce and the CRM, and says whether to renew. Use when someone asks whether to sponsor or exhibit at a trade show, conference, sports team, community event or charity gala, wants to compare sponsorship packages, needs sponsorship activation ideas, or asks how to measure event or sponsorship ROI. Works from pasted prospectuses and exports; reads connected sources through the InsightfulPipe MCP. Reads only.
+description: Prices a sponsorship or exhibitor package from your CRM conversion rates with break-even, a walk-away fee and a buy, negotiate or pass verdict, then measures event ROI from GA4, CallRail and Shopify promo codes. Use when deciding whether to sponsor, comparing packages or measuring sponsorship ROI.
 ---
 
 # Event and Sponsorship ROI Calculator

@@ -1,6 +1,6 @@
 ---
 name: award-entry-writer
-description: "Picks the marketing, industry and business awards worth entering and writes the award submission. Reads each award's own rules (category, eligibility window, deadlines, fee, word limits, judging weights, judges, past winners), scores fit and effort, and drops any award whose deadline has passed or whose trophy depends on buying a table. Then maps the criteria, splits the word limit by weight, builds the results section from dated data (Klaviyo, GA4, Shopify, Google Ads or Meta through the InsightfulPipe MCP, or a pasted export) against the period before and the same weeks a year earlier, checks it against the rest of the business, gives every claim a verdict, writes each section to its word budget, scores the draft the way a judge would, and lists the attachments and dated deadlines. Use when someone asks how to write an award submission, an award entry or application, which awards to enter, or for award entry examples. Writes the awards calendar to Google Sheets only after the user confirms."
+description: Picks the marketing and business awards worth entering and writes the award submission to each award's criteria and word limits, with results checked in GA4, Klaviyo, Shopify, Google Ads or Meta. Use when asked which awards to enter, to write an award entry or application, or to check a draft.
 ---
 
 # Award Entry Writer

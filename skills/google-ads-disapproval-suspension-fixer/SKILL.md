@@ -1,6 +1,6 @@
 ---
 name: google-ads-disapproval-suspension-fixer
-description: Fixes Google Ads disapprovals, limited approvals and account suspensions. Lists every disapproved or limited ad, keyword, sitelink and other asset, explains in plain words which policy each one hits using Google's own policy topic and evidence, checks the landing page, and rewrites or re-points each item so it can pass review. For suspensions (circumventing systems, suspicious payments, unpaid balance, misrepresentation, repeat violations) and verification or certification holds, including the US and Canada limits on housing, employment and credit targeting, it lists the proof to collect and drafts the appeal for the user to send. Use when someone says an ad was disapproved, an ad is eligible (limited), the account is suspended, or Google asked for verification. Works from a pasted email or notice, or live through the InsightfulPipe MCP. Edits ads only after the user confirms.
+description: Fixes Google Ads disapproved and limited ads, keywords and assets with plain policy reasons and compliant rewrites, and drafts proof lists and appeals for suspensions and verification holds. Use when an ad is disapproved, the account is suspended, or Google asks for verification.
 ---
 
 # Google Ads Disapproval and Suspension Fixer

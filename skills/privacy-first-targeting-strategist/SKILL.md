@@ -1,6 +1,6 @@
 ---
 name: privacy-first-targeting-strategist
-description: Builds an advertising plan for a world with less tracking from your live accounts through the InsightfulPipe MCP. Reads which conversions depend on browser cookies, whether server-side and enhanced conversions are on and fed, Tag Manager consent settings, first-party audiences (Customer Match, Meta custom audiences, email lists) and how much spend relies on cross-site targeting, then scores six pillars and writes the roadmap. Use for iOS App Tracking Transparency, cookie limits, consent mode, first-party data, Conversions API, server-side tracking, offline conversions or contextual targeting. Its app tracking opt-in mode raises an iOS app's ATT opt-in rate; it values each point from iOS against Android results, checks the pre-prompt and purpose string against Apple's rules, redesigns them and reads the change by app version. Offers Customer Match lists and offline conversion uploads only after the user confirms.
+description: Scores how exposed Google Ads, Meta, LinkedIn and TikTok are to tracking loss and writes a first-party data roadmap. Use for Conversions API, consent mode, server-side tracking, Customer Match, offline conversions, cookie loss or a low iOS ATT opt-in rate.
 ---
 
 # Privacy-First Targeting Strategist

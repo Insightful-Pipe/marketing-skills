@@ -1,6 +1,6 @@
 ---
 name: applovin-ads-analyzer
-description: Analyzes AppLovin Ads (Axon Ads Manager) campaigns for app installs and for web and e-commerce sales, on live data through the InsightfulPipe MCP or from an AppLovin dashboard CSV. Grades cost per install or purchase and ROAS against your target by campaign, country and creative set, states the minimum spend before anything is judged, measures how long new campaigns took to reach goal, finds worn creative sets and assets, checks budget pacing and recent changes, and puts AppLovin on one cost-per-result scale with Meta and TikTok. Use when someone asks to review, audit, optimize or report on AppLovin or Axon campaigns, asks whether AppLovin works for their store or app, or wants AppLovin compared with Meta and TikTok. Offers to clone a winning creative set, add fresh assets or pause a worn set, only after the user confirms.
+description: Analyzes AppLovin Ads (Axon Ads Manager) campaigns for app installs or web sales, grading CPI, cost per purchase and ROAS by campaign, country and creative set, and finding worn creatives. Use when asked to review, audit or report on AppLovin or Axon, or compare AppLovin with Meta and TikTok.
 ---
 
 # AppLovin Ads Analyzer

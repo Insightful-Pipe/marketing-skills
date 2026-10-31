@@ -1,6 +1,6 @@
 ---
 name: lost-deal-reengagement
-description: Turns a closed lost deals export into a ranked list of deals worth another try, with a date for each retry and a play for each group. Codes each loss by whether its cause can change (budget, price, timing, a competitor contract, a missing capability, no decision) or cannot (poor fit), dates the earliest retry from that cause (the quarter the buyer named, the competitor renewal, the next budget year, a ship date), ranks by deal value weighted by the user's fit rules, and checks public evidence of change at each account (open roles, new ads, dated news, app updates). Plans three plays, a personal note from the account owner, a lost-deals nurture track and a Google Ads Customer Match audience, and drafts the notes. Use when someone asks how to re-engage closed lost opportunities, what to do with closed lost deals, for a closed lost email template, or which lost deals to revive this quarter. Works from a CSV or a Google Sheet with no CRM connection; builds the audience only after the user confirms.
+description: Ranks closed lost deals worth another try, codes each loss cause, dates the retry from it and checks accounts for signs of change, then drafts owner notes, a nurture track and a Customer Match audience. Use when asked what to do with closed lost deals, to re-engage them or for a closed lost email.
 ---
 
 # Closed Lost Deal Re-engagement Planner

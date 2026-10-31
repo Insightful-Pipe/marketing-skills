@@ -1,6 +1,6 @@
 ---
 name: ab-test-designer
-description: Designs A/B tests and reads out finished ones on live data through the InsightfulPipe MCP. Pulls baselines and daily volume from GA4 and Google Ads itself, sizes the test (sample size, minimum detectable effect, duration, whether it is worth running), writes the hypothesis, one-variable variants for website copy, ads or email, success and guardrail rules, and judges results with significance, confidence intervals, sample-ratio and segment checks. Email tests (subject line, preview text, sender, call to action) run on the numbers the user pastes from their email tool. Use when someone asks to plan, size or read an A/B test, split test, email or subject line test, Google Ads experiment or ad variation, asks "is this result significant?", "how long should this test run?" or "which ad won?", or wants copy variants for a page test. Can create the challenger search ad, paused, only after the user confirms.
+description: Designs and reads out A/B tests on Google Ads, GA4 pages and email, with sample size, duration, significance and a winner verdict. Use when someone wants to plan a split test, asks is this significant, how long to run it, or which ad won. Not for channel lift (use incrementality-test-designer)
 ---
 
 # A/B Test Designer

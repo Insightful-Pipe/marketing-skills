@@ -1,6 +1,6 @@
 ---
 name: seo-blog-writer
-description: Writes an SEO blog post draft, or reworks an existing page so AI answers can quote it, from live data through the InsightfulPipe MCP. For a new post it finds the opportunity in your Search Console (query clusters with impressions but no page of their own), pulls keyword data and the live Google top 10 from DataForSEO, picks the format (roundup, X vs Y, alternatives, tutorial or explainer), reads each option's own page for its facts, and writes headline options and an answer-first draft with a self-check. For an existing page it collects the questions the page should settle and the pages AI Overviews, ChatGPT and Perplexity cite for them today, then returns a section-by-section before and after. Use when someone asks to write a blog post or SEO article, a best-of roundup, comparison or alternatives page, headlines, an answer-first rewrite, or to optimize a page for AI Overviews, ChatGPT or other LLM answers. Works from pasted text too. Can save a draft to WordPress after the user confirms.
+description: Writes SEO blog posts, roundups, X vs Y comparisons and alternatives pages from Search Console gaps and the live Google top 10, or reworks an existing page so AI Overviews and ChatGPT can quote it. Use when asked to write a blog post or SEO article, headlines, or optimize a page for AI answers.
 ---
 
 # SEO Blog Writer

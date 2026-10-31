@@ -1,6 +1,6 @@
 ---
 name: funnel-dropoff-diagnostician
-description: Finds where a conversion funnel loses people, on live data pulled through the InsightfulPipe MCP. Builds the funnel itself from GA4 events, pages and sessions, adds the ad and search steps above the site (impression share, impressions and clicks from Google Ads, Meta, LinkedIn and Search Console), compares every step with the prior period and across devices, channels, countries or regions, campaigns and landing pages, and ranks the leaks by the conversions they cost. Use when someone asks where they are losing people, why conversions dropped, for a signup, checkout, lead-form or full-funnel (impression to revenue) report, to compare mobile and desktop, to judge a redesign before and after, or to design a marketing funnel. Offers a GA4 key event and a drop-off audience that it creates only after the user confirms.
+description: Finds where a signup, checkout or lead funnel loses people, from GA4 events plus Google Ads, Meta, LinkedIn and Search Console steps, and ranks leaks by conversions lost. Use when asked where we lose people, why conversions dropped, mobile vs desktop, or before and after a redesign.
 ---
 
 # Funnel Drop-off Diagnostician

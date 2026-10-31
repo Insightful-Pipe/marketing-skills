@@ -1,6 +1,6 @@
 ---
 name: meta-reach-frequency-planner
-description: Plans and reads out awareness and reach flights on Facebook and Instagram. Chooses the Reach, ThruPlay or ad recall lift goal, decides auction or reservation buying, builds the account's own results-by-exposure curve from 7-day frequency bands to set the weekly frequency target and cap where results level off, checks the audience can absorb the budget, sizes the budget and dates, and says whether a brand lift study is possible. Works from a pasted Ads Manager export or a description, and pulls the data itself when the Meta Ads MCP server is connected through InsightfulPipe. Use when someone asks what a good frequency for Facebook ads is, how to set a frequency cap, how to plan a reach and frequency or reservation campaign, or how an awareness flight is going. Offers a new capped ad set, budget, end date and pause changes only after the user confirms.
+description: Plans Facebook and Instagram reach and awareness flights, choosing the Reach, ThruPlay or ad recall goal, auction or reservation, and a frequency cap set where your own results level off. Use when asking what a good Facebook ad frequency is, how to set a frequency cap, or to plan a reach campaign.
 ---
 
 # Meta Reach and Frequency Planner

@@ -1,6 +1,6 @@
 ---
 name: pricing-research-survey
-description: Designs and analyses willingness-to-pay research and calculates price elasticity from real sales. Writes a Van Westendorp price sensitivity survey and a Gabor-Granger price ladder, then reads the answers from Google Sheets or a pasted CSV, removes contradictory and implausible responses, draws the four cumulative curves, finds the acceptable price range, optimal and indifference price points with bootstrap intervals, and builds the demand, revenue and profit curves per segment where the sample supports it. Estimates price elasticity from a live price test or a past price change using Shopify or WooCommerce orders and GA4 sessions, with a confidence interval, removing discounted orders and seasonality, and holds back when the data cannot carry a number. Places competitor prices against the range. Use when someone asks how to calculate price elasticity, wants a willingness to pay survey written or analysed, has Van Westendorp or Gabor-Granger results, or asks whether a price change hurt sales.
+description: Writes and analyses Van Westendorp and Gabor-Granger price surveys, and measures price elasticity from Shopify or WooCommerce orders. Use when asked to calculate price elasticity, run a willingness to pay survey or check whether a price change hurt sales. Not for tiers (use pricing-strategy)
 ---
 
 # Pricing Research and Price Elasticity Analyzer

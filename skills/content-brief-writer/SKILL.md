@@ -1,6 +1,6 @@
 ---
 name: content-brief-writer
-description: Writes an SEO content brief for one target keyword from the live Google top 10, through the InsightfulPipe MCP. Pulls the SERP, People Also Ask, related searches, keyword volume and difficulty, the competitors' headings and word counts, and your own Search Console data itself, then decides whether to write a new page or refresh one you already have, and returns an outline, the questions to answer, secondary keywords and the angle the top 10 misses. Use when someone asks for a content brief, an SEO article outline, a PAA or question harvest, or "what should a page on X cover". It only reads; it never publishes or edits a page.
+description: Writes an SEO content brief for one keyword from the live Google top 10, People Also Ask, competitor headings and your Search Console, and says new page or refresh. Use when asked for a content brief, an article outline or what a page should cover. Not for full drafts (use seo-blog-writer).
 ---
 
 # Content Brief Writer from SERP Top 10

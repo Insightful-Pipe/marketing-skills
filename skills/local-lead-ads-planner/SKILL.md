@@ -1,6 +1,6 @@
 ---
 name: local-lead-ads-planner
-description: Plans and grades a service business's spend on local lead platforms (Yelp Ads, Angi, Thumbtack and Nextdoor Ads) by booked jobs instead of lead counts. Works from pasted lead lists, invoices and job values, or reads calls, call length and form leads per tracking number through CallRail and call clicks and reviews through Google Business Profile with the InsightfulPipe MCP. Works out the most a lead and a booked job can cost from the owner's margin and close rate, gives each platform a scale, keep, fix first or cut call, picks the service categories and ZIP codes worth paying for, compares each profile with the businesses shown beside it, sets a lead response-time target from the business's own data, and drafts credit or dispute requests for leads that break a platform's refund rules. Use when someone asks if Yelp ads are worth it, compares Thumbtack vs Angi leads, plans Nextdoor ads for a small business, or wants to know which lead source to keep, cut or grow.
+description: Grades Yelp Ads, Angi, Thumbtack and Nextdoor Ads spend by booked jobs, not leads, sets the most a lead can cost, picks services and ZIP codes to keep, and drafts lead credit requests. Use when asked if Yelp ads are worth it, Thumbtack vs Angi, or which lead source to cut.
 ---
 
 # Local Lead Ads Planner

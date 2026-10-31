@@ -1,6 +1,6 @@
 ---
 name: app-store-localization
-description: App Store and Google Play listing localization (ASO localization). Picks which countries and languages to localize the listing for next from evidence (users and sign-ups by country in GA4, the app's rating and rank in each country's store, how crowded each store's results are), researches the search terms people use in each locale instead of translating the English keyword list, flags literal translations nobody searches using local Google volume as a labelled proxy, and writes localized App Store and Google Play metadata inside every character and byte limit, with a back-translation for each line. Plans the extra localizations Apple lists for some storefronts, checked against Apple's current table. Works from a pasted listing and export, or live through the InsightfulPipe MCP. Use when someone asks to localize or translate an app store listing, which countries to localize for, or for ASO in another language. Read-only, it changes nothing in the stores.
+description: Localizes App Store and Google Play listings, picking which countries to localize next and finding the keywords each locale searches instead of translating, then writes metadata within limits. Use when asked to translate an app store listing, which markets to localize, or ASO in another language.
 ---
 
 # App Store Listing Localizer

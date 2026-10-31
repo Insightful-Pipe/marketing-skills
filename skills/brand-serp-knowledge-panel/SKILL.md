@@ -1,6 +1,6 @@
 ---
 name: brand-serp-knowledge-panel
-description: Audits and improves the brand SERP, the page people see when they search a company or founder name. Labels every result on page one (owned, official profile, third party such as press and reviews, competitor, negative, or a different entity with the same name), checks sitelinks, the Google knowledge panel and its facts, People Also Ask, review ratings, negative results, and which domain leads when the company owns several. Builds one entity fact sheet, checks it against the site's Organization and WebSite markup, the panel, the profiles and the site name Google shows, plans how to claim or earn a knowledge panel, and drafts the JSON-LD with sameAs links. Works from a brand name and a screenshot, or on live data through the InsightfulPipe MCP (DataForSEO results page with the knowledge graph block, Search Console and Bing brand queries). Use for a brand SERP audit, entity SEO, getting or fixing a Google knowledge panel, sitelinks, a bad result on the brand name, or which owned domain ranks for the brand.
+description: Audits what Google shows for a brand or founder name, labels every page-one result, checks sitelinks, the knowledge panel, People Also Ask and negative results, and drafts Organization JSON-LD with sameAs. Use when asked for a brand SERP audit, to get or fix a Google knowledge panel, or entity SEO.
 ---
 
 # Brand SERP and Knowledge Panel Optimizer

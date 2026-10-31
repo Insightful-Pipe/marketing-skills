@@ -1,6 +1,6 @@
 ---
 name: google-ad-grants-manager
-description: Keeps a nonprofit's Google Ad Grants account compliant and helps it use more of the 10,000 USD monthly grant. Checks every Ad Grants rule that can get the account deactivated (5% account CTR each month, no Quality Score 1 or 2 keywords, no single-word keywords outside the allowed exceptions, 2 ad groups per campaign, 2 sitelinks, geo-targeting, conversion tracking that records conversions, conversion-based Smart Bidding), names the exact keywords, campaigns or conversion actions behind each miss, works out which keywords to pause and the account CTR after each pause, measures how many conversions came from keywords averaging above the 2 USD manual bid cap, and builds a spend plan. Runs on live data through the InsightfulPipe MCP or on pasted exports. Use when someone mentions Google Ad Grants, the 5% CTR rule, an Ad Grants warning or suspension, or a nonprofit Google Ads account that won't spend. Pauses keywords, adds keywords, negatives or sitelinks, and sets locations only after the user confirms.
+description: Checks a nonprofit's Google Ad Grants account against every compliance rule, plans keyword pauses to get back over the 5% CTR line and builds a plan to spend more of the grant. Use when asked about Ad Grants, the 5% CTR rule, a grant warning or suspension, or a grant account that won't spend.
 ---
 
 # Google Ad Grants Manager

@@ -1,6 +1,6 @@
 ---
 name: gaql-report-builder
-description: Turns a plain Google Ads reporting question into a working GAQL (Google Ads Query Language) query, or repairs a query that fails, checks it against the rules and refusals of the current API, runs it live through the InsightfulPipe MCP when Google Ads is connected, explains every field and returns the table. Also gives the same report as an API call, a Google Ads script and a BigQuery Data Transfer query. Use when someone asks for a GAQL query, a custom Google Ads report, a Google Ads API report query or GAQL examples, or pastes a query or an error that will not run. Without a connection it returns the query with a syntax check, clearly marked as not run.
+description: Writes and fixes GAQL (Google Ads Query Language) queries from a plain reporting question, runs them read-only when Google Ads is connected, and adds API, Google Ads script and BigQuery versions. Use when asking for a GAQL query, a custom Google Ads report, GAQL examples, or a query that errors.
 ---
 
 # GAQL Query Builder
