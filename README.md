@@ -21,7 +21,32 @@ Each folder in [`skills/`](skills/) holds:
 /plugin install marketing-skills@insightfulpipe
 ```
 
-Claude Code keeps its list of skill descriptions within a size limit, so with every skill installed Claude sees the names of all of them but the full description of only some. A skill may then not start by itself from a plain request: call it by name (for example `/google-ads-account-audit`), or install just the skills you need, below.
+Claude Code keeps its list of skill descriptions within a size limit, so with every skill installed Claude sees the names of all of them but the full description of only some. A skill may then not start by itself from a plain request: call it by name (for example `/google-ads-account-audit`), or install one area's plugin or just the skills you need, below.
+
+### Claude Code: one area, as a plugin (recommended)
+
+Each area of the library is also its own plugin. A plugin holds a few dozen skills at most, so Claude sees far more of each skill's description than with the whole library installed. Install the areas you work in:
+
+| Plugin | Install in Claude Code |
+|---|---|
+| [Agency and Reporting](https://github.com/Insightful-Pipe/agency-reporting-skills) | `/plugin marketplace add Insightful-Pipe/agency-reporting-skills` then `/plugin install insightfulpipe-agency-reporting@insightfulpipe-agency-reporting` |
+| [Analytics & CRO](https://github.com/Insightful-Pipe/analytics-cro-skills) | `/plugin marketplace add Insightful-Pipe/analytics-cro-skills` then `/plugin install insightfulpipe-analytics-cro@insightfulpipe-analytics-cro` |
+| [B2B Sales](https://github.com/Insightful-Pipe/b2b-sales-skills) | `/plugin marketplace add Insightful-Pipe/b2b-sales-skills` then `/plugin install insightfulpipe-b2b-sales@insightfulpipe-b2b-sales` |
+| [Content, Copywriting & Ad Creative](https://github.com/Insightful-Pipe/content-creative-skills) | `/plugin marketplace add Insightful-Pipe/content-creative-skills` then `/plugin install insightfulpipe-content-creative@insightfulpipe-content-creative` |
+| [E-commerce](https://github.com/Insightful-Pipe/ecommerce-skills) | `/plugin marketplace add Insightful-Pipe/ecommerce-skills` then `/plugin install insightfulpipe-ecommerce@insightfulpipe-ecommerce` |
+| [Email Marketing](https://github.com/Insightful-Pipe/email-marketing-skills) | `/plugin marketplace add Insightful-Pipe/email-marketing-skills` then `/plugin install insightfulpipe-email-marketing@insightfulpipe-email-marketing` |
+| [Google Ads](https://github.com/Insightful-Pipe/google-ads-skills) | `/plugin marketplace add Insightful-Pipe/google-ads-skills` then `/plugin install insightfulpipe-google-ads@insightfulpipe-google-ads` |
+| [Growth & App Marketing](https://github.com/Insightful-Pipe/growth-skills) | `/plugin marketplace add Insightful-Pipe/growth-skills` then `/plugin install insightfulpipe-growth@insightfulpipe-growth` |
+| [LinkedIn Ads](https://github.com/Insightful-Pipe/linkedin-skills) | `/plugin marketplace add Insightful-Pipe/linkedin-skills` then `/plugin install insightfulpipe-linkedin-ads@insightfulpipe-linkedin-ads` |
+| [Local Marketing](https://github.com/Insightful-Pipe/local-skills) | `/plugin marketplace add Insightful-Pipe/local-skills` then `/plugin install insightfulpipe-local@insightfulpipe-local` |
+| [Marketing Strategy](https://github.com/Insightful-Pipe/marketing-strategy-skills) | `/plugin marketplace add Insightful-Pipe/marketing-strategy-skills` then `/plugin install insightfulpipe-marketing-strategy@insightfulpipe-marketing-strategy` |
+| [Meta Ads](https://github.com/Insightful-Pipe/meta-ads-skills) | `/plugin marketplace add Insightful-Pipe/meta-ads-skills` then `/plugin install insightfulpipe-meta-ads@insightfulpipe-meta-ads` |
+| [Paid Media](https://github.com/Insightful-Pipe/paid-media-skills) | `/plugin marketplace add Insightful-Pipe/paid-media-skills` then `/plugin install insightfulpipe-paid-media@insightfulpipe-paid-media` |
+| [PR & Communications](https://github.com/Insightful-Pipe/pr-skills) | `/plugin marketplace add Insightful-Pipe/pr-skills` then `/plugin install insightfulpipe-pr@insightfulpipe-pr` |
+| [SEO](https://github.com/Insightful-Pipe/seo-skills) | `/plugin marketplace add Insightful-Pipe/seo-skills` then `/plugin install insightfulpipe-seo@insightfulpipe-seo` |
+| [Social Media](https://github.com/Insightful-Pipe/social-media-skills) | `/plugin marketplace add Insightful-Pipe/social-media-skills` then `/plugin install insightfulpipe-social-media@insightfulpipe-social-media` |
+
+Any agent that reads Agent Skills (Claude Code, Codex, Cursor and others) can also install a plugin's skills with `npx skills add Insightful-Pipe/<repo>`, or one skill with `--skill <name>`.
 
 ### Claude Code: the skills you need
 
